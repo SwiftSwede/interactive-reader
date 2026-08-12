@@ -1,0 +1,1 @@
+/Users/kylote/Documents/Obsidian Vault/Business-Wiki/concepts/interactive-reader-prd.md

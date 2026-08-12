@@ -1,0 +1,42 @@
+# Profe Kyle Interactive Reader App
+
+## Read the PRD first
+Before starting any work, read docs/PRD.md (the Product Requirements Document).
+It contains the full architecture, data structure, feature build order, and design principles.
+Follow it as your north star. Do not make decisions that contradict the PRD without asking.
+
+## Current Phase
+We are building Phase 1 — the free story MVP (demand test).
+Only build features listed in Phase 1, Section 7 of the PRD.
+Do not build Phase 2+ features.
+
+## Tech Stack
+- Next.js 14+ (App Router)
+- Supabase (PostgreSQL + Auth)
+- Stripe Checkout (payments)
+- TanStack Query (data fetching)
+- Vercel (hosting)
+- Edge TTS (audio generation, free)
+- Bunny Stream (pronunciation video hosting, existing account)
+
+## Rules
+1. No em dashes (—) in UI text. Use colons, periods, or commas. Em dashes are an AI telltale. The only em dashes in the app are in story content (—The End—) which is Kyle's existing format.
+2. Phonetic transcriptions use Kyle's symbol system only. Never use IPA. Never use approximate phonetics. Use the exact symbols: ö, ü, ä, ör, ë, i, ee, dz, th, ...l, ', v, z, dy.
+3. UI copy is in Spanish for navigation/CTA, English for learning content. "Guardar en mazo" not "Save to deck." The audience is Spanish-speaking.
+4. Mobile-first always. If a feature doesn't work on a 375px wide screen, it doesn't ship.
+5. Never break a working slice. When adding a new feature, do not modify code from previous working slices unless absolutely necessary. If you must, explain why.
+6. Commit after every working slice. Git commit with the slice name and what works.
+7. Follow the data structure in the PRD. Do not create new tables or fields without updating the PRD first.
+8. Kyle's voice in all generated text. Direct, warm, self-deprecating, no jargon, no corporate language. If you generate user-facing text (error messages, feedback, tips), it must sound like Kyle wrote it.
+9. Reading is primary. No feature may interrupt or overlay the reading experience. SRS, TPRS, and other tools live on separate pages.
+10. Contractions everywhere in English content. The app teaches spoken English. Even UI text in English uses contractions.
+
+## Existing code assets
+PronunciationPro2 at ~/Desktop/webdev/PronunciationPro2/ contains a working Azure Speech pronunciation assessment pipeline with LatAm-specific coaching rules. The server code (TypeScript/Express) and client (React) are reference implementations for Phase 3. Do not rebuild this from scratch when we reach Phase 3.
+
+## Build discipline
+- Build one vertical slice at a time (see PRD Section 7 for the slice list)
+- Each slice must be fully working and verified on a real device before the next begins
+- Git commit after every working slice
+- Do not skip ahead to later phases
+- If something breaks, revert to the last working commit and fix from there
