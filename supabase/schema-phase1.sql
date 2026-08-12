@@ -18,6 +18,20 @@ CREATE TABLE IF NOT EXISTS stories (
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
+-- ── Expressions (multi-word units) ─────────────────────────
+-- Must be created BEFORE words because words references expressions(id)
+
+CREATE TABLE IF NOT EXISTS expressions (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  story_id UUID NOT NULL REFERENCES stories(id) ON DELETE CASCADE,
+  text TEXT NOT NULL,
+  spanish_translation TEXT NOT NULL DEFAULT '',
+  explanation TEXT NOT NULL DEFAULT '',
+  word_ids UUID[] NOT NULL DEFAULT '{}'
+);
+
+CREATE INDEX IF NOT EXISTS idx_expressions_story_id ON expressions(story_id);
+
 -- ── Words ──────────────────────────────────────────────────
 
 CREATE TABLE IF NOT EXISTS words (
@@ -36,19 +50,6 @@ CREATE TABLE IF NOT EXISTS words (
 
 CREATE INDEX IF NOT EXISTS idx_words_story_id ON words(story_id);
 CREATE INDEX IF NOT EXISTS idx_words_expression_id ON words(expression_id);
-
--- ── Expressions (multi-word units) ─────────────────────────
-
-CREATE TABLE IF NOT EXISTS expressions (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  story_id UUID NOT NULL REFERENCES stories(id) ON DELETE CASCADE,
-  text TEXT NOT NULL,
-  spanish_translation TEXT NOT NULL DEFAULT '',
-  explanation TEXT NOT NULL DEFAULT '',
-  word_ids UUID[] NOT NULL DEFAULT '{}'
-);
-
-CREATE INDEX IF NOT EXISTS idx_expressions_story_id ON expressions(story_id);
 
 -- ── Story Audio ────────────────────────────────────────────
 
