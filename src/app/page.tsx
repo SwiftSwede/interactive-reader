@@ -2,6 +2,7 @@ import { supabase } from "@/lib/supabase";
 import { readFileSync } from "fs";
 import { join } from "path";
 import InteractiveStory from "@/components/InteractiveStory";
+import ComprehensionQuestions from "@/components/ComprehensionQuestions";
 import type { WordData, ExpressionData } from "@/components/WordTooltip";
 
 // ── Types matching Supabase snake_case columns ─────────────
@@ -209,26 +210,14 @@ export default async function StoryPage() {
 
         {/* Comprehension Questions */}
         {comprehensionQuestions.length > 0 && (
-          <section className="mt-12 border-t border-gray-100 pt-8">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">
-              Comprehension Questions
-            </h3>
-            <div className="space-y-4">
-              {comprehensionQuestions.map((q, idx) => (
-                <div key={q.id} className="rounded-lg border border-gray-100 p-4">
-                  <p className="font-medium text-gray-900 mb-2">
-                    {idx + 1}. {q.question}
-                  </p>
-                  {q.answer && (
-                    <p className="text-sm text-gray-600">
-                      <span className="text-gray-400">Answer: </span>
-                      {q.answer}
-                    </p>
-                  )}
-                </div>
-              ))}
-            </div>
-          </section>
+          <ComprehensionQuestions
+            questions={comprehensionQuestions.map((q) => ({
+              id: q.id,
+              position: q.position,
+              question: q.question,
+              answer: q.answer,
+            }))}
+          />
         )}
 
         {/* Personal Questions */}
