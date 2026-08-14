@@ -16,7 +16,7 @@ type PersonalQuestionsProps = {
 
 type CorrectionSegment = {
   text: string;
-  type: "correct" | "added" | "deleted";
+  type: "correct" | "added" | "deleted" | "moved";
 };
 
 type FeedbackState = {
@@ -193,7 +193,7 @@ export default function PersonalQuestions({
                     {state.corrections.map((seg, i) => {
                       // Add space before each segment (except the first),
                       // unless the segment starts with punctuation
-                      const needsSpace = i > 0 && !/^[.,;:!?'"]/.test(seg.text);
+                      const needsSpace = i > 0 && !/^[.,;:!?'"']/.test(seg.text);
 
                       if (seg.type === "added") {
                         return (
@@ -227,9 +227,31 @@ export default function PersonalQuestions({
                           </span>
                         );
                       }
+                      if (seg.type === "moved") {
+                        return (
+                          <span
+                            key={i}
+                            style={{
+                              color: "#b45309",
+                              backgroundColor: "#fef3c7",
+                              borderRadius: "2px",
+                              padding: "0 2px",
+                            }}
+                          >
+                            {needsSpace ? " " : ""}{seg.text}
+                          </span>
+                        );
+                      }
                       return <span key={i}>{needsSpace ? " " : ""}{seg.text}</span>;
                     })}
                   </p>
+
+                  {/* Color legend */}
+                  <div className="mt-2 flex gap-3 text-xs text-gray-400">
+                    <span style={{ color: "#059669" }}>verde = falta</span>
+                    <span style={{ color: "#dc2626" }}>rojo = sobra</span>
+                    <span style={{ color: "#b45309" }}>ambar = mover</span>
+                  </div>
 
                   {/* Spanish note from Kyle */}
                   {state.note && (
