@@ -191,6 +191,10 @@ export default function PersonalQuestions({
                   {/* Render corrected text with visual markup */}
                   <p className="text-sm text-gray-800 leading-relaxed">
                     {state.corrections.map((seg, i) => {
+                      // Add space before each segment (except the first),
+                      // unless the segment starts with punctuation
+                      const needsSpace = i > 0 && !/^[.,;:!?'"]/.test(seg.text);
+
                       if (seg.type === "added") {
                         return (
                           <span
@@ -203,7 +207,7 @@ export default function PersonalQuestions({
                               padding: "0 2px",
                             }}
                           >
-                            {seg.text}
+                            {needsSpace ? " " : ""}{seg.text}
                           </span>
                         );
                       }
@@ -219,11 +223,11 @@ export default function PersonalQuestions({
                               padding: "0 2px",
                             }}
                           >
-                            {seg.text}
+                            {needsSpace ? " " : ""}{seg.text}
                           </span>
                         );
                       }
-                      return <span key={i}>{seg.text}</span>;
+                      return <span key={i}>{needsSpace ? " " : ""}{seg.text}</span>;
                     })}
                   </p>
 
