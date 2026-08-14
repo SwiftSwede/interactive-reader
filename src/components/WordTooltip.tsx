@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback, memo } from "react";
 
 // ── Types ──────────────────────────────────────────────────
 
@@ -42,7 +42,7 @@ type WordTooltipProps = {
   isAudioCurrent: boolean;
 };
 
-export default function WordTooltip({
+function WordTooltip({
   word,
   expression,
   isHighlighted,
@@ -262,3 +262,5 @@ export default function WordTooltip({
     </>
   );
 }
+
+export default memo(WordTooltip);
