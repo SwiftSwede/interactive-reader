@@ -43,3 +43,5 @@ supabase/.temp/
 # Logs
 *.logtsconfig.tsbuildinfo
 tsconfig.tsbuildinfo
+.vercel
+.env*
