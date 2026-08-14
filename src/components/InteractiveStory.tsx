@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect, useRef, useMemo } from "react";
 import WordTooltip, {
   type WordData,
   type ExpressionData,
@@ -23,24 +23,59 @@ export default function InteractiveStory({
 }: InteractiveStoryProps) {
   const [seenPositions, setSeenPositions] = useState<Set<number>>(new Set());
   const [activePosition, setActivePosition] = useState<number | null>(null);
+  const [activeExpressionId, setActiveExpressionId] = useState<string | null>(
+    null
+  );
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Build expression lookup
-  const expressionMap = new Map<string, ExpressionData>();
-  for (const expr of expressions) {
-    expressionMap.set(expr.id, expr);
-  }
+  const expressionMap = useMemo(() => {
+    const map = new Map<string, ExpressionData>();
+    for (const expr of expressions) {
+      map.set(expr.id, expr);
+    }
+    return map;
+  }, [expressions]);
+
+  // Build expression group map: expression_id -> Set of word positions
+  const expressionPositions = useMemo(() => {
+    const map = new Map<string, Set<number>>();
+    for (const word of words) {
+      if (word.expression_id) {
+        let positions = map.get(word.expression_id);
+        if (!positions) {
+          positions = new Set();
+          map.set(word.expression_id, positions);
+        }
+        positions.add(word.position);
+      }
+    }
+    return map;
+  }, [words]);
 
   // Split body text into paragraphs, then tokenize each paragraph
   const paragraphs = bodyText.split("\n").filter((p) => p.trim());
 
   const handleActivate = useCallback((word: WordData) => {
     setActivePosition(word.position);
-    setSeenPositions((prev) => new Set(prev).add(word.position));
-  }, []);
+    setActiveExpressionId(word.expression_id);
+    setSeenPositions((prev) => {
+      const next = new Set(prev);
+      next.add(word.position);
+      // Also mark all words in the same expression as seen
+      if (word.expression_id) {
+        const positions = expressionPositions.get(word.expression_id);
+        if (positions) {
+          for (const pos of positions) next.add(pos);
+        }
+      }
+      return next;
+    });
+  }, [expressionPositions]);
 
   const handleDismiss = useCallback(() => {
     setActivePosition(null);
+    setActiveExpressionId(null);
   }, []);
 
   // Click outside the story area dismisses the active tooltip
@@ -48,16 +83,13 @@ export default function InteractiveStory({
     if (activePosition === null) return;
 
     const handleOutsideClick = (e: MouseEvent) => {
-      // Check if the click was inside the container or on a tooltip
       const target = e.target as Node;
       const container = containerRef.current;
       if (container && container.contains(target)) return;
 
-      // Also check if click was on a pinned tooltip (which is position:fixed, outside container)
       const tooltip = (target as HTMLElement)?.closest?.(".word-tooltip-pinned");
       if (tooltip) return;
 
-      // Click was outside, dismiss
       handleDismiss();
     };
 
@@ -65,8 +97,6 @@ export default function InteractiveStory({
     return () => document.removeEventListener("click", handleOutsideClick);
   }, [activePosition, handleDismiss]);
 
-  // For each paragraph, we need to know which tokens belong to it
-  // and map them to global word positions
   let wordPosition = 0;
 
   return (
@@ -81,7 +111,6 @@ export default function InteractiveStory({
               const word = words[currentPos];
 
               if (!word) {
-                // Fallback: just render the token as plain text
                 return <span key={tokenIdx}>{token} </span>;
               }
 
@@ -98,7 +127,6 @@ export default function InteractiveStory({
                 .replace(/\u201D/g, '"');
 
               if (tokenNorm !== wordNorm) {
-                // Position mismatch - render as plain text
                 return <span key={tokenIdx}>{token} </span>;
               }
 
@@ -109,6 +137,11 @@ export default function InteractiveStory({
 
               const isHighlighted = seenPositions.has(word.position);
               const isActive = activePosition === word.position;
+              // This word is part of the active expression group (but not the clicked word itself)
+              const isExpressionActive =
+                !!word.expression_id &&
+                word.expression_id === activeExpressionId &&
+                activePosition !== word.position;
 
               return (
                 <span key={tokenIdx}>
@@ -119,6 +152,7 @@ export default function InteractiveStory({
                     onActivate={handleActivate}
                     onDismiss={handleDismiss}
                     isActive={isActive}
+                    isExpressionActive={isExpressionActive}
                   />
                   {tokenIdx < tokens.length - 1 ? " " : ""}
                 </span>

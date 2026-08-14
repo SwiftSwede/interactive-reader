@@ -49,6 +49,12 @@ body {
   background-color: rgb(229 231 235); /* gray-200 */
 }
 
+/* Words in the same expression group as the active word */
+.word-expr-active {
+  background-color: rgb(219 234 254); /* blue-100 */
+  border-radius: 2px;
+}
+
 /* ── Tooltip ───────────────────────────────────────────── */
 
 .word-tooltip {
