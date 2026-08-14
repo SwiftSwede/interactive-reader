@@ -3,6 +3,7 @@ import { readFileSync } from "fs";
 import { join } from "path";
 import InteractiveStory from "@/components/InteractiveStory";
 import ComprehensionQuestions from "@/components/ComprehensionQuestions";
+import PersonalQuestions from "@/components/PersonalQuestions";
 import type { WordData, ExpressionData } from "@/components/WordTooltip";
 
 // ── Types matching Supabase snake_case columns ─────────────
@@ -219,20 +220,15 @@ export default async function StoryPage() {
           />
         )}
 
-        {/* Personal Questions */}
+        {/* Personal Questions with AI feedback */}
         {personalQuestions.length > 0 && (
-          <section className="mt-8">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">
-              Personal Questions
-            </h3>
-            <div className="space-y-3">
-              {personalQuestions.map((q, idx) => (
-                <p key={q.id} className="text-gray-800">
-                  {idx + 1}. {q.question}
-                </p>
-              ))}
-            </div>
-          </section>
+          <PersonalQuestions
+            questions={personalQuestions.map((q) => ({
+              id: q.id,
+              position: q.position,
+              question: q.question,
+            }))}
+          />
         )}
 
         {/* Upgrade CTA placeholder (Phase 2 will add Stripe) */}
