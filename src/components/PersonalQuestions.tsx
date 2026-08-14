@@ -20,16 +20,18 @@ type FeedbackState = {
   error: string | null;
 };
 
+const MAX_ATTEMPTS = 3;
+
 // ── Component ──────────────────────────────────────────────
 
 export default function PersonalQuestions({
   questions,
 }: PersonalQuestionsProps) {
-  // Track each question's answer text and feedback state independently
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [feedbackStates, setFeedbackStates] = useState<
     Record<number, FeedbackState>
   >({});
+  const [attempts, setAttempts] = useState<Record<number, number>>({});
 
   const handleAnswerChange = (position: number, value: string) => {
     setAnswers((prev) => ({ ...prev, [position]: value }));
@@ -67,6 +69,12 @@ export default function PersonalQuestions({
         return;
       }
 
+      // Increment attempt count on successful feedback
+      setAttempts((prev) => ({
+        ...prev,
+        [position]: (prev[position] || 0) + 1,
+      }));
+
       setFeedbackStates((prev) => ({
         ...prev,
         [position]: {
@@ -87,6 +95,17 @@ export default function PersonalQuestions({
     }
   };
 
+  const handleRetry = (position: number) => {
+    const used = attempts[position] || 0;
+    if (used >= MAX_ATTEMPTS) return;
+
+    setFeedbackStates((prev) => ({
+      ...prev,
+      [position]: { loading: false, feedback: null, error: null },
+    }));
+    setAnswers((prev) => ({ ...prev, [position]: "" }));
+  };
+
   return (
     <section className="mt-8">
       <h3 className="text-lg font-semibold text-gray-900 mb-1">
@@ -100,6 +119,9 @@ export default function PersonalQuestions({
         {questions.map((q, idx) => {
           const state = feedbackStates[q.position];
           const answer = answers[q.position] || "";
+          const usedAttempts = attempts[q.position] || 0;
+          const attemptsLeft = MAX_ATTEMPTS - usedAttempts;
+          const maxedOut = usedAttempts >= MAX_ATTEMPTS;
 
           return (
             <div
@@ -112,18 +134,27 @@ export default function PersonalQuestions({
 
               {/* Text input */}
               <textarea
-                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-800 resize-none focus:outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400"
+                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-800 resize-none focus:outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400 disabled:bg-gray-50 disabled:text-gray-400"
                 placeholder="Escribe tu respuesta en ingles..."
                 rows={3}
                 value={answer}
                 onChange={(e) =>
                   handleAnswerChange(q.position, e.target.value)
                 }
-                disabled={state?.loading === true}
+                disabled={state?.loading === true || maxedOut}
               />
 
+              {/* Attempt counter */}
+              {usedAttempts > 0 && (
+                <p className="mt-1 text-xs text-gray-400">
+                  {maxedOut
+                    ? `Has usado tus ${MAX_ATTEMPTS} intentos.`
+                    : `${attemptsLeft} ${attemptsLeft === 1 ? "intento restante" : "intentos restantes"}.`}
+                </p>
+              )}
+
               {/* Comprobar button */}
-              {!state?.feedback && (
+              {!state?.feedback && !maxedOut && (
                 <button
                   onClick={() => handleCheck(q.position, q.question)}
                   disabled={!answer.trim() || state?.loading === true}
@@ -152,23 +183,21 @@ export default function PersonalQuestions({
                   <p className="text-sm text-gray-800 whitespace-pre-wrap">
                     {state.feedback}
                   </p>
-                  {/* Try again button */}
-                  <button
-                    onClick={() => {
-                      setFeedbackStates((prev) => ({
-                        ...prev,
-                        [q.position]: {
-                          loading: false,
-                          feedback: null,
-                          error: null,
-                        },
-                      }));
-                    }}
-                    className="mt-2 text-xs text-indigo-500 hover:text-indigo-700"
-                    type="button"
-                  >
-                    Intentar de nuevo
-                  </button>
+                  {/* Try again button or limit message */}
+                  {maxedOut ? (
+                    <p className="mt-2 text-xs text-gray-400">
+                      Si quieres seguir practicando con feedback de IA,
+                      considera unirte al AI Coach cuando este disponible.
+                    </p>
+                  ) : (
+                    <button
+                      onClick={() => handleRetry(q.position)}
+                      className="mt-2 text-xs text-indigo-500 hover:text-indigo-700"
+                      type="button"
+                    >
+                      Intentar de nuevo
+                    </button>
+                  )}
                 </div>
               )}
             </div>
