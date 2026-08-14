@@ -36,7 +36,7 @@ supabase/.temp/
 
 # Audio files (generated, large, not in git)
 public/audio/words/
-public/audio/stories/
+public/audio/stories/*.mp3
 
 # Cursor
 .cursor/

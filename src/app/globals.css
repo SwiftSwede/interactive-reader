@@ -55,6 +55,13 @@ body {
   border-radius: 2px;
 }
 
+/* Current word during audio playback (karaoke highlight) */
+.word-audio-current {
+  background-color: rgb(254 240 138); /* yellow-200 */
+  border-radius: 2px;
+  transition: background-color 0.1s ease;
+}
+
 /* ── Tooltip ───────────────────────────────────────────── */
 
 .word-tooltip {

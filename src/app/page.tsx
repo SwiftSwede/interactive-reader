@@ -1,4 +1,6 @@
 import { supabase } from "@/lib/supabase";
+import { readFileSync } from "fs";
+import { join } from "path";
 import InteractiveStory from "@/components/InteractiveStory";
 import type { WordData, ExpressionData } from "@/components/WordTooltip";
 
@@ -188,16 +190,18 @@ export default async function StoryPage() {
       <article className="max-w-2xl mx-auto px-4 py-6">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">{story.title}</h2>
 
-        {/* Play button placeholder (Slice 7 will add audio) */}
-        <div className="mb-6 rounded-lg bg-gray-50 border border-gray-100 px-4 py-3">
-          <p className="text-sm text-gray-400">Audio coming soon</p>
-        </div>
-
-        {/* Interactive story text */}
+        {/* Interactive story text with audio */}
         <InteractiveStory
           bodyText={story.body_text}
           words={words}
           expressions={expressions}
+          audioUrl="/audio/stories/pre-int-story-the-soccer-jersey.mp3"
+          timestamps={JSON.parse(
+            readFileSync(
+              join(process.cwd(), "public/audio/stories/word-timestamps.json"),
+              "utf-8"
+            )
+          )}
         />
 
         {/* End marker */}

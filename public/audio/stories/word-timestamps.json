@@ -1,0 +1,6794 @@
+[
+  {
+    "position": 0,
+    "text": "The",
+    "start": 0.0,
+    "end": 1.56
+  },
+  {
+    "position": 1,
+    "text": "summers",
+    "start": 1.56,
+    "end": 2.02
+  },
+  {
+    "position": 2,
+    "text": "of",
+    "start": 2.02,
+    "end": 2.64
+  },
+  {
+    "position": 3,
+    "text": "my",
+    "start": 2.64,
+    "end": 2.92
+  },
+  {
+    "position": 4,
+    "text": "childhood",
+    "start": 2.92,
+    "end": 3.76
+  },
+  {
+    "position": 5,
+    "text": "were",
+    "start": 3.76,
+    "end": 4.2
+  },
+  {
+    "position": 6,
+    "text": "long,",
+    "start": 4.2,
+    "end": 4.88
+  },
+  {
+    "position": 7,
+    "text": "long",
+    "start": 5.22,
+    "end": 5.62
+  },
+  {
+    "position": 8,
+    "text": "seasons.",
+    "start": 5.62,
+    "end": 6.6
+  },
+  {
+    "position": 9,
+    "text": "I",
+    "start": 7.64,
+    "end": 7.94
+  },
+  {
+    "position": 10,
+    "text": "was",
+    "start": 7.94,
+    "end": 8.2
+  },
+  {
+    "position": 11,
+    "text": "out",
+    "start": 8.2,
+    "end": 8.78
+  },
+  {
+    "position": 12,
+    "text": "of",
+    "start": 8.78,
+    "end": 8.9
+  },
+  {
+    "position": 13,
+    "text": "school",
+    "start": 8.9,
+    "end": 9.42
+  },
+  {
+    "position": 14,
+    "text": "starting",
+    "start": 9.42,
+    "end": 9.98
+  },
+  {
+    "position": 15,
+    "text": "in",
+    "start": 9.98,
+    "end": 10.14
+  },
+  {
+    "position": 16,
+    "text": "May",
+    "start": 10.14,
+    "end": 10.4
+  },
+  {
+    "position": 17,
+    "text": "and",
+    "start": 10.4,
+    "end": 10.7
+  },
+  {
+    "position": 18,
+    "text": "both",
+    "start": 10.7,
+    "end": 11.26
+  },
+  {
+    "position": 19,
+    "text": "of",
+    "start": 11.26,
+    "end": 11.48
+  },
+  {
+    "position": 20,
+    "text": "my",
+    "start": 11.48,
+    "end": 11.84
+  },
+  {
+    "position": 21,
+    "text": "immigrant",
+    "start": 11.84,
+    "end": 12.56
+  },
+  {
+    "position": 22,
+    "text": "parents",
+    "start": 12.56,
+    "end": 13.22
+  },
+  {
+    "position": 23,
+    "text": "worked",
+    "start": 13.22,
+    "end": 13.56
+  },
+  {
+    "position": 24,
+    "text": "long",
+    "start": 13.56,
+    "end": 14.0
+  },
+  {
+    "position": 25,
+    "text": "hours",
+    "start": 14.0,
+    "end": 14.84
+  },
+  {
+    "position": 26,
+    "text": "in",
+    "start": 14.84,
+    "end": 15.14
+  },
+  {
+    "position": 27,
+    "text": "order",
+    "start": 15.14,
+    "end": 15.56
+  },
+  {
+    "position": 28,
+    "text": "to",
+    "start": 15.56,
+    "end": 15.8
+  },
+  {
+    "position": 29,
+    "text": "get",
+    "start": 15.8,
+    "end": 16.02
+  },
+  {
+    "position": 30,
+    "text": "their",
+    "start": 16.02,
+    "end": 16.4
+  },
+  {
+    "position": 31,
+    "text": "piece",
+    "start": 16.4,
+    "end": 16.92
+  },
+  {
+    "position": 32,
+    "text": "of",
+    "start": 16.92,
+    "end": 17.68
+  },
+  {
+    "position": 33,
+    "text": "the",
+    "start": 17.68,
+    "end": 17.92
+  },
+  {
+    "position": 34,
+    "text": "American",
+    "start": 17.92,
+    "end": 18.42
+  },
+  {
+    "position": 35,
+    "text": "dream.",
+    "start": 18.42,
+    "end": 18.92
+  },
+  {
+    "position": 36,
+    "text": "My",
+    "start": 19.84,
+    "end": 20.3
+  },
+  {
+    "position": 37,
+    "text": "father",
+    "start": 20.3,
+    "end": 20.76
+  },
+  {
+    "position": 38,
+    "text": "was",
+    "start": 20.76,
+    "end": 21.08
+  },
+  {
+    "position": 39,
+    "text": "a",
+    "start": 21.08,
+    "end": 21.3
+  },
+  {
+    "position": 40,
+    "text": "huge",
+    "start": 21.3,
+    "end": 22.38
+  },
+  {
+    "position": 41,
+    "text": "Real",
+    "start": 22.38,
+    "end": 23.42
+  },
+  {
+    "position": 42,
+    "text": "Madrid",
+    "start": 23.42,
+    "end": 24.04
+  },
+  {
+    "position": 43,
+    "text": "fan.",
+    "start": 24.04,
+    "end": 24.48
+  },
+  {
+    "position": 44,
+    "text": "He",
+    "start": 24.73,
+    "end": 25.28
+  },
+  {
+    "position": 45,
+    "text": "paid",
+    "start": 25.28,
+    "end": 25.62
+  },
+  {
+    "position": 46,
+    "text": "a",
+    "start": 25.62,
+    "end": 25.82
+  },
+  {
+    "position": 47,
+    "text": "premium",
+    "start": 25.82,
+    "end": 26.7
+  },
+  {
+    "position": 48,
+    "text": "cable",
+    "start": 26.7,
+    "end": 27.54
+  },
+  {
+    "position": 49,
+    "text": "subscription",
+    "start": 27.54,
+    "end": 28.44
+  },
+  {
+    "position": 50,
+    "text": "in",
+    "start": 28.44,
+    "end": 29.28
+  },
+  {
+    "position": 51,
+    "text": "order",
+    "start": 29.28,
+    "end": 29.92
+  },
+  {
+    "position": 52,
+    "text": "to",
+    "start": 29.92,
+    "end": 30.26
+  },
+  {
+    "position": 53,
+    "text": "get",
+    "start": 30.26,
+    "end": 30.44
+  },
+  {
+    "position": 54,
+    "text": "all",
+    "start": 30.44,
+    "end": 31.08
+  },
+  {
+    "position": 55,
+    "text": "the",
+    "start": 31.08,
+    "end": 31.92
+  },
+  {
+    "position": 56,
+    "text": "La",
+    "start": 31.92,
+    "end": 32.36
+  },
+  {
+    "position": 57,
+    "text": "Liga",
+    "start": 32.36,
+    "end": 32.82
+  },
+  {
+    "position": 58,
+    "text": "and",
+    "start": 32.82,
+    "end": 33.64
+  },
+  {
+    "position": 59,
+    "text": "Champions",
+    "start": 33.64,
+    "end": 34.32
+  },
+  {
+    "position": 60,
+    "text": "League",
+    "start": 34.32,
+    "end": 35.02
+  },
+  {
+    "position": 61,
+    "text": "games.",
+    "start": 35.02,
+    "end": 35.86
+  },
+  {
+    "position": 62,
+    "text": "However,",
+    "start": 36.42,
+    "end": 37.16
+  },
+  {
+    "position": 63,
+    "text": "during",
+    "start": 37.64,
+    "end": 38.08
+  },
+  {
+    "position": 64,
+    "text": "the",
+    "start": 38.08,
+    "end": 38.32
+  },
+  {
+    "position": 65,
+    "text": "summer",
+    "start": 38.32,
+    "end": 38.66
+  },
+  {
+    "position": 66,
+    "text": "was",
+    "start": 38.66,
+    "end": 39.02
+  },
+  {
+    "position": 67,
+    "text": "the",
+    "start": 39.02,
+    "end": 39.26
+  },
+  {
+    "position": 68,
+    "text": "international",
+    "start": 39.26,
+    "end": 40.38
+  },
+  {
+    "position": 69,
+    "text": "window",
+    "start": 40.38,
+    "end": 41.14
+  },
+  {
+    "position": 70,
+    "text": "for",
+    "start": 41.14,
+    "end": 41.68
+  },
+  {
+    "position": 71,
+    "text": "European",
+    "start": 41.68,
+    "end": 42.56
+  },
+  {
+    "position": 72,
+    "text": "teams.",
+    "start": 42.56,
+    "end": 43.76
+  },
+  {
+    "position": 73,
+    "text": "There",
+    "start": 44.26,
+    "end": 44.52
+  },
+  {
+    "position": 74,
+    "text": "were",
+    "start": 44.52,
+    "end": 44.66
+  },
+  {
+    "position": 75,
+    "text": "no",
+    "start": 44.66,
+    "end": 45.12
+  },
+  {
+    "position": 76,
+    "text": "La",
+    "start": 45.12,
+    "end": 45.52
+  },
+  {
+    "position": 77,
+    "text": "Liga",
+    "start": 45.52,
+    "end": 45.94
+  },
+  {
+    "position": 78,
+    "text": "games",
+    "start": 45.94,
+    "end": 46.44
+  },
+  {
+    "position": 79,
+    "text": "anymore,",
+    "start": 46.44,
+    "end": 47.1
+  },
+  {
+    "position": 80,
+    "text": "just",
+    "start": 47.48,
+    "end": 47.94
+  },
+  {
+    "position": 81,
+    "text": "the",
+    "start": 47.94,
+    "end": 48.2
+  },
+  {
+    "position": 82,
+    "text": "Olympics,",
+    "start": 48.2,
+    "end": 48.72
+  },
+  {
+    "position": 83,
+    "text": "the",
+    "start": 49.5,
+    "end": 49.52
+  },
+  {
+    "position": 84,
+    "text": "European",
+    "start": 49.52,
+    "end": 49.98
+  },
+  {
+    "position": 85,
+    "text": "Championship,",
+    "start": 49.98,
+    "end": 51.26
+  },
+  {
+    "position": 86,
+    "text": "Copa",
+    "start": 51.9,
+    "end": 52.36
+  },
+  {
+    "position": 87,
+    "text": "Am\u00e9rica",
+    "start": 52.36,
+    "end": 52.36
+  },
+  {
+    "position": 88,
+    "text": "or",
+    "start": 52.8,
+    "end": 53.76
+  },
+  {
+    "position": 89,
+    "text": "FIFA",
+    "start": 53.76,
+    "end": 54.22
+  },
+  {
+    "position": 90,
+    "text": "World",
+    "start": 54.22,
+    "end": 54.66
+  },
+  {
+    "position": 91,
+    "text": "Cup.",
+    "start": 54.66,
+    "end": 54.94
+  },
+  {
+    "position": 92,
+    "text": "My",
+    "start": 55.64,
+    "end": 56.06
+  },
+  {
+    "position": 93,
+    "text": "summer",
+    "start": 56.06,
+    "end": 56.42
+  },
+  {
+    "position": 94,
+    "text": "days",
+    "start": 56.42,
+    "end": 56.76
+  },
+  {
+    "position": 95,
+    "text": "were",
+    "start": 56.76,
+    "end": 57.02
+  },
+  {
+    "position": 96,
+    "text": "spent",
+    "start": 57.02,
+    "end": 57.32
+  },
+  {
+    "position": 97,
+    "text": "watching",
+    "start": 57.32,
+    "end": 57.82
+  },
+  {
+    "position": 98,
+    "text": "these",
+    "start": 57.82,
+    "end": 58.18
+  },
+  {
+    "position": 99,
+    "text": "international",
+    "start": 58.18,
+    "end": 58.98
+  },
+  {
+    "position": 100,
+    "text": "games,",
+    "start": 58.98,
+    "end": 60.02
+  },
+  {
+    "position": 101,
+    "text": "replays",
+    "start": 60.7,
+    "end": 61.54
+  },
+  {
+    "position": 102,
+    "text": "of",
+    "start": 61.54,
+    "end": 61.66
+  },
+  {
+    "position": 103,
+    "text": "classic",
+    "start": 61.66,
+    "end": 62.24
+  },
+  {
+    "position": 104,
+    "text": "Real",
+    "start": 62.24,
+    "end": 62.8
+  },
+  {
+    "position": 105,
+    "text": "Madrid",
+    "start": 62.8,
+    "end": 63.2
+  },
+  {
+    "position": 106,
+    "text": "games,",
+    "start": 63.2,
+    "end": 63.9
+  },
+  {
+    "position": 107,
+    "text": "playing",
+    "start": 64.34,
+    "end": 64.6
+  },
+  {
+    "position": 108,
+    "text": "FIFA",
+    "start": 64.6,
+    "end": 65.08
+  },
+  {
+    "position": 109,
+    "text": "online",
+    "start": 65.08,
+    "end": 65.58
+  },
+  {
+    "position": 110,
+    "text": "against",
+    "start": 65.58,
+    "end": 66.18
+  },
+  {
+    "position": 111,
+    "text": "players",
+    "start": 66.18,
+    "end": 66.76
+  },
+  {
+    "position": 112,
+    "text": "from",
+    "start": 66.76,
+    "end": 67.08
+  },
+  {
+    "position": 113,
+    "text": "all",
+    "start": 67.08,
+    "end": 67.36
+  },
+  {
+    "position": 114,
+    "text": "over",
+    "start": 67.36,
+    "end": 67.76
+  },
+  {
+    "position": 115,
+    "text": "the",
+    "start": 67.76,
+    "end": 67.9
+  },
+  {
+    "position": 116,
+    "text": "world,",
+    "start": 67.9,
+    "end": 68.4
+  },
+  {
+    "position": 117,
+    "text": "and",
+    "start": 69.0,
+    "end": 69.12
+  },
+  {
+    "position": 118,
+    "text": "then",
+    "start": 69.12,
+    "end": 69.34
+  },
+  {
+    "position": 119,
+    "text": "heading",
+    "start": 69.34,
+    "end": 69.78
+  },
+  {
+    "position": 120,
+    "text": "to",
+    "start": 69.78,
+    "end": 70.14
+  },
+  {
+    "position": 121,
+    "text": "the",
+    "start": 70.14,
+    "end": 70.32
+  },
+  {
+    "position": 122,
+    "text": "local",
+    "start": 70.32,
+    "end": 70.82
+  },
+  {
+    "position": 123,
+    "text": "park",
+    "start": 70.82,
+    "end": 71.28
+  },
+  {
+    "position": 124,
+    "text": "to",
+    "start": 71.28,
+    "end": 71.88
+  },
+  {
+    "position": 125,
+    "text": "play",
+    "start": 71.88,
+    "end": 72.1
+  },
+  {
+    "position": 126,
+    "text": "soccer",
+    "start": 72.1,
+    "end": 72.58
+  },
+  {
+    "position": 127,
+    "text": "with",
+    "start": 72.58,
+    "end": 72.86
+  },
+  {
+    "position": 128,
+    "text": "the",
+    "start": 72.86,
+    "end": 73.3
+  },
+  {
+    "position": 129,
+    "text": "other",
+    "start": 73.3,
+    "end": 73.72
+  },
+  {
+    "position": 130,
+    "text": "immigrant",
+    "start": 73.72,
+    "end": 74.26
+  },
+  {
+    "position": 131,
+    "text": "kids",
+    "start": 74.26,
+    "end": 74.9
+  },
+  {
+    "position": 132,
+    "text": "in",
+    "start": 74.9,
+    "end": 75.64
+  },
+  {
+    "position": 133,
+    "text": "the",
+    "start": 75.64,
+    "end": 76.08
+  },
+  {
+    "position": 134,
+    "text": "neighborhood.",
+    "start": 76.08,
+    "end": 76.72
+  },
+  {
+    "position": 135,
+    "text": "I",
+    "start": 77.1,
+    "end": 77.82
+  },
+  {
+    "position": 136,
+    "text": "analyzed",
+    "start": 77.82,
+    "end": 78.54
+  },
+  {
+    "position": 137,
+    "text": "all",
+    "start": 78.54,
+    "end": 78.9
+  },
+  {
+    "position": 138,
+    "text": "the",
+    "start": 78.9,
+    "end": 79.22
+  },
+  {
+    "position": 139,
+    "text": "games",
+    "start": 79.22,
+    "end": 79.64
+  },
+  {
+    "position": 140,
+    "text": "I",
+    "start": 79.64,
+    "end": 80.1
+  },
+  {
+    "position": 141,
+    "text": "watched",
+    "start": 80.1,
+    "end": 80.72
+  },
+  {
+    "position": 142,
+    "text": "and",
+    "start": 80.72,
+    "end": 81.06
+  },
+  {
+    "position": 143,
+    "text": "devised",
+    "start": 81.06,
+    "end": 82.02
+  },
+  {
+    "position": 144,
+    "text": "new",
+    "start": 82.02,
+    "end": 82.56
+  },
+  {
+    "position": 145,
+    "text": "strategies",
+    "start": 82.56,
+    "end": 83.56
+  },
+  {
+    "position": 146,
+    "text": "to",
+    "start": 83.56,
+    "end": 84.34
+  },
+  {
+    "position": 147,
+    "text": "implement",
+    "start": 84.34,
+    "end": 84.9
+  },
+  {
+    "position": 148,
+    "text": "in",
+    "start": 84.9,
+    "end": 85.68
+  },
+  {
+    "position": 149,
+    "text": "our",
+    "start": 85.68,
+    "end": 85.96
+  },
+  {
+    "position": 150,
+    "text": "afternoon",
+    "start": 85.96,
+    "end": 86.74
+  },
+  {
+    "position": 151,
+    "text": "pickup",
+    "start": 86.74,
+    "end": 87.26
+  },
+  {
+    "position": 152,
+    "text": "matches.",
+    "start": 87.26,
+    "end": 87.76
+  },
+  {
+    "position": 153,
+    "text": "I",
+    "start": 88.5,
+    "end": 88.64
+  },
+  {
+    "position": 154,
+    "text": "always",
+    "start": 88.64,
+    "end": 89.3
+  },
+  {
+    "position": 155,
+    "text": "made",
+    "start": 89.3,
+    "end": 89.66
+  },
+  {
+    "position": 156,
+    "text": "sure",
+    "start": 89.66,
+    "end": 90.08
+  },
+  {
+    "position": 157,
+    "text": "to",
+    "start": 90.08,
+    "end": 90.34
+  },
+  {
+    "position": 158,
+    "text": "wear",
+    "start": 90.34,
+    "end": 90.54
+  },
+  {
+    "position": 159,
+    "text": "my",
+    "start": 90.54,
+    "end": 90.76
+  },
+  {
+    "position": 160,
+    "text": "number",
+    "start": 90.76,
+    "end": 91.16
+  },
+  {
+    "position": 161,
+    "text": "7",
+    "start": 91.16,
+    "end": 91.7
+  },
+  {
+    "position": 162,
+    "text": "Cristiano",
+    "start": 91.7,
+    "end": 92.98
+  },
+  {
+    "position": 163,
+    "text": "Ronaldo",
+    "start": 92.98,
+    "end": 93.42
+  },
+  {
+    "position": 164,
+    "text": "jersey.",
+    "start": 93.42,
+    "end": 93.94
+  },
+  {
+    "position": 165,
+    "text": "I",
+    "start": 94.84,
+    "end": 95.24
+  },
+  {
+    "position": 166,
+    "text": "wasn\u2019t",
+    "start": 95.24,
+    "end": 95.58
+  },
+  {
+    "position": 167,
+    "text": "the",
+    "start": 95.58,
+    "end": 95.84
+  },
+  {
+    "position": 168,
+    "text": "only",
+    "start": 95.84,
+    "end": 96.12
+  },
+  {
+    "position": 169,
+    "text": "one.",
+    "start": 96.12,
+    "end": 96.5
+  },
+  {
+    "position": 170,
+    "text": "Most",
+    "start": 97.22,
+    "end": 97.56
+  },
+  {
+    "position": 171,
+    "text": "of",
+    "start": 97.56,
+    "end": 97.8
+  },
+  {
+    "position": 172,
+    "text": "the",
+    "start": 97.8,
+    "end": 97.96
+  },
+  {
+    "position": 173,
+    "text": "other",
+    "start": 97.96,
+    "end": 98.16
+  },
+  {
+    "position": 174,
+    "text": "kids",
+    "start": 98.16,
+    "end": 98.52
+  },
+  {
+    "position": 175,
+    "text": "either",
+    "start": 98.52,
+    "end": 99.14
+  },
+  {
+    "position": 176,
+    "text": "wore",
+    "start": 99.14,
+    "end": 99.54
+  },
+  {
+    "position": 177,
+    "text": "their",
+    "start": 99.54,
+    "end": 99.92
+  },
+  {
+    "position": 178,
+    "text": "CR7",
+    "start": 99.92,
+    "end": 101.62
+  },
+  {
+    "position": 179,
+    "text": "jersey",
+    "start": 101.62,
+    "end": 102.14
+  },
+  {
+    "position": 180,
+    "text": "or",
+    "start": 102.14,
+    "end": 102.84
+  },
+  {
+    "position": 181,
+    "text": "their",
+    "start": 102.84,
+    "end": 103.18
+  },
+  {
+    "position": 182,
+    "text": "Messi",
+    "start": 103.18,
+    "end": 103.76
+  },
+  {
+    "position": 183,
+    "text": "number",
+    "start": 103.76,
+    "end": 104.18
+  },
+  {
+    "position": 184,
+    "text": "10",
+    "start": 104.18,
+    "end": 104.64
+  },
+  {
+    "position": 185,
+    "text": "jersey",
+    "start": 104.64,
+    "end": 105.1
+  },
+  {
+    "position": 186,
+    "text": "from",
+    "start": 105.1,
+    "end": 105.56
+  },
+  {
+    "position": 187,
+    "text": "Barcelona.",
+    "start": 105.56,
+    "end": 106.52
+  },
+  {
+    "position": 188,
+    "text": "While",
+    "start": 107.42,
+    "end": 107.58
+  },
+  {
+    "position": 189,
+    "text": "Americans",
+    "start": 107.58,
+    "end": 107.98
+  },
+  {
+    "position": 190,
+    "text": "would",
+    "start": 107.98,
+    "end": 108.28
+  },
+  {
+    "position": 191,
+    "text": "often",
+    "start": 108.28,
+    "end": 108.58
+  },
+  {
+    "position": 192,
+    "text": "play",
+    "start": 108.58,
+    "end": 109.0
+  },
+  {
+    "position": 193,
+    "text": "shirts",
+    "start": 109.0,
+    "end": 109.54
+  },
+  {
+    "position": 194,
+    "text": "versus",
+    "start": 109.54,
+    "end": 110.12
+  },
+  {
+    "position": 195,
+    "text": "skins",
+    "start": 110.12,
+    "end": 110.54
+  },
+  {
+    "position": 196,
+    "text": "to",
+    "start": 110.86,
+    "end": 111.38
+  },
+  {
+    "position": 197,
+    "text": "differentiate",
+    "start": 111.38,
+    "end": 112.0
+  },
+  {
+    "position": 198,
+    "text": "teams,",
+    "start": 112.0,
+    "end": 112.7
+  },
+  {
+    "position": 199,
+    "text": "we",
+    "start": 113.32,
+    "end": 113.8
+  },
+  {
+    "position": 200,
+    "text": "were",
+    "start": 113.8,
+    "end": 114.06
+  },
+  {
+    "position": 201,
+    "text": "so",
+    "start": 114.06,
+    "end": 114.58
+  },
+  {
+    "position": 202,
+    "text": "evenly",
+    "start": 114.58,
+    "end": 115.52
+  },
+  {
+    "position": 203,
+    "text": "split",
+    "start": 115.52,
+    "end": 115.98
+  },
+  {
+    "position": 204,
+    "text": "between",
+    "start": 115.98,
+    "end": 116.52
+  },
+  {
+    "position": 205,
+    "text": "Barcelona",
+    "start": 116.52,
+    "end": 117.36
+  },
+  {
+    "position": 206,
+    "text": "and",
+    "start": 117.36,
+    "end": 118.4
+  },
+  {
+    "position": 207,
+    "text": "Real",
+    "start": 118.4,
+    "end": 118.94
+  },
+  {
+    "position": 208,
+    "text": "Madrid",
+    "start": 118.94,
+    "end": 119.64
+  },
+  {
+    "position": 209,
+    "text": "jerseys,",
+    "start": 120.16,
+    "end": 120.68
+  },
+  {
+    "position": 210,
+    "text": "we",
+    "start": 121.16,
+    "end": 121.26
+  },
+  {
+    "position": 211,
+    "text": "often",
+    "start": 121.26,
+    "end": 121.58
+  },
+  {
+    "position": 212,
+    "text": "just",
+    "start": 121.58,
+    "end": 121.84
+  },
+  {
+    "position": 213,
+    "text": "played",
+    "start": 121.84,
+    "end": 122.18
+  },
+  {
+    "position": 214,
+    "text": "Barcelona",
+    "start": 122.18,
+    "end": 123.38
+  },
+  {
+    "position": 215,
+    "text": "versus",
+    "start": 123.38,
+    "end": 123.38
+  },
+  {
+    "position": 216,
+    "text": "Real",
+    "start": 124.26,
+    "end": 125.2
+  },
+  {
+    "position": 217,
+    "text": "Madrid,",
+    "start": 125.2,
+    "end": 125.62
+  },
+  {
+    "position": 218,
+    "text": "or",
+    "start": 126.08,
+    "end": 126.32
+  },
+  {
+    "position": 219,
+    "text": "better",
+    "start": 126.32,
+    "end": 126.54
+  },
+  {
+    "position": 220,
+    "text": "said,",
+    "start": 126.54,
+    "end": 126.92
+  },
+  {
+    "position": 221,
+    "text": "Messi",
+    "start": 126.92,
+    "end": 127.66
+  },
+  {
+    "position": 222,
+    "text": "versus",
+    "start": 127.66,
+    "end": 127.66
+  },
+  {
+    "position": 223,
+    "text": "Ronaldo.",
+    "start": 128.58,
+    "end": 129.26
+  },
+  {
+    "position": 224,
+    "text": "All",
+    "start": 129.26,
+    "end": 130.68
+  },
+  {
+    "position": 225,
+    "text": "the",
+    "start": 131.24,
+    "end": 131.38
+  },
+  {
+    "position": 226,
+    "text": "Messi",
+    "start": 131.38,
+    "end": 131.64
+  },
+  {
+    "position": 227,
+    "text": "fans",
+    "start": 131.64,
+    "end": 132.08
+  },
+  {
+    "position": 228,
+    "text": "copied",
+    "start": 132.08,
+    "end": 132.68
+  },
+  {
+    "position": 229,
+    "text": "the",
+    "start": 132.68,
+    "end": 132.98
+  },
+  {
+    "position": 230,
+    "text": "mannerisms",
+    "start": 132.98,
+    "end": 134.32
+  },
+  {
+    "position": 231,
+    "text": "of",
+    "start": 134.32,
+    "end": 134.52
+  },
+  {
+    "position": 232,
+    "text": "Messi.",
+    "start": 134.52,
+    "end": 134.9
+  },
+  {
+    "position": 233,
+    "text": "From",
+    "start": 135.48,
+    "end": 135.7
+  },
+  {
+    "position": 234,
+    "text": "his",
+    "start": 135.7,
+    "end": 135.92
+  },
+  {
+    "position": 235,
+    "text": "dribbling",
+    "start": 135.92,
+    "end": 136.44
+  },
+  {
+    "position": 236,
+    "text": "to",
+    "start": 136.44,
+    "end": 136.96
+  },
+  {
+    "position": 237,
+    "text": "his",
+    "start": 136.96,
+    "end": 137.16
+  },
+  {
+    "position": 238,
+    "text": "passing,",
+    "start": 137.16,
+    "end": 137.64
+  },
+  {
+    "position": 239,
+    "text": "from",
+    "start": 138.4,
+    "end": 138.64
+  },
+  {
+    "position": 240,
+    "text": "his",
+    "start": 138.64,
+    "end": 138.92
+  },
+  {
+    "position": 241,
+    "text": "resting",
+    "start": 138.92,
+    "end": 139.36
+  },
+  {
+    "position": 242,
+    "text": "posture",
+    "start": 139.36,
+    "end": 140.08
+  },
+  {
+    "position": 243,
+    "text": "to",
+    "start": 140.08,
+    "end": 140.92
+  },
+  {
+    "position": 244,
+    "text": "his",
+    "start": 140.92,
+    "end": 141.26
+  },
+  {
+    "position": 245,
+    "text": "goal",
+    "start": 141.26,
+    "end": 141.6
+  },
+  {
+    "position": 246,
+    "text": "celebrations.",
+    "start": 141.6,
+    "end": 142.5
+  },
+  {
+    "position": 247,
+    "text": "While",
+    "start": 143.24,
+    "end": 143.7
+  },
+  {
+    "position": 248,
+    "text": "all",
+    "start": 143.7,
+    "end": 144.3
+  },
+  {
+    "position": 249,
+    "text": "of",
+    "start": 144.3,
+    "end": 144.48
+  },
+  {
+    "position": 250,
+    "text": "us",
+    "start": 144.48,
+    "end": 144.68
+  },
+  {
+    "position": 251,
+    "text": "Ronaldo",
+    "start": 144.68,
+    "end": 145.02
+  },
+  {
+    "position": 252,
+    "text": "fans",
+    "start": 145.02,
+    "end": 145.78
+  },
+  {
+    "position": 253,
+    "text": "copied",
+    "start": 145.78,
+    "end": 146.56
+  },
+  {
+    "position": 254,
+    "text": "our",
+    "start": 146.56,
+    "end": 147.22
+  },
+  {
+    "position": 255,
+    "text": "idol\u2019s",
+    "start": 147.22,
+    "end": 147.88
+  },
+  {
+    "position": 256,
+    "text": "mannerisms.",
+    "start": 147.88,
+    "end": 149.28
+  },
+  {
+    "position": 257,
+    "text": "We",
+    "start": 149.88,
+    "end": 150.34
+  },
+  {
+    "position": 258,
+    "text": "all",
+    "start": 150.34,
+    "end": 150.56
+  },
+  {
+    "position": 259,
+    "text": "jumped,",
+    "start": 150.56,
+    "end": 151.2
+  },
+  {
+    "position": 260,
+    "text": "crossed",
+    "start": 151.98,
+    "end": 152.14
+  },
+  {
+    "position": 261,
+    "text": "our",
+    "start": 152.14,
+    "end": 152.76
+  },
+  {
+    "position": 262,
+    "text": "arms",
+    "start": 152.76,
+    "end": 153.4
+  },
+  {
+    "position": 263,
+    "text": "in",
+    "start": 153.4,
+    "end": 153.92
+  },
+  {
+    "position": 264,
+    "text": "front",
+    "start": 153.92,
+    "end": 154.06
+  },
+  {
+    "position": 265,
+    "text": "of",
+    "start": 154.06,
+    "end": 154.2
+  },
+  {
+    "position": 266,
+    "text": "our",
+    "start": 154.2,
+    "end": 154.38
+  },
+  {
+    "position": 267,
+    "text": "chest,",
+    "start": 154.38,
+    "end": 155.02
+  },
+  {
+    "position": 268,
+    "text": "spinned",
+    "start": 155.7,
+    "end": 156.26
+  },
+  {
+    "position": 269,
+    "text": "and",
+    "start": 156.78,
+    "end": 156.84
+  },
+  {
+    "position": 270,
+    "text": "threw",
+    "start": 156.84,
+    "end": 157.2
+  },
+  {
+    "position": 271,
+    "text": "our",
+    "start": 157.2,
+    "end": 157.78
+  },
+  {
+    "position": 272,
+    "text": "arms",
+    "start": 157.78,
+    "end": 159.4
+  },
+  {
+    "position": 273,
+    "text": "downwards",
+    "start": 159.4,
+    "end": 160.2
+  },
+  {
+    "position": 274,
+    "text": "to",
+    "start": 160.2,
+    "end": 160.98
+  },
+  {
+    "position": 275,
+    "text": "honor",
+    "start": 160.98,
+    "end": 161.72
+  },
+  {
+    "position": 276,
+    "text": "our",
+    "start": 161.72,
+    "end": 162.3
+  },
+  {
+    "position": 277,
+    "text": "hero.",
+    "start": 162.3,
+    "end": 162.84
+  },
+  {
+    "position": 278,
+    "text": "For",
+    "start": 163.72,
+    "end": 163.98
+  },
+  {
+    "position": 279,
+    "text": "those",
+    "start": 163.98,
+    "end": 164.28
+  },
+  {
+    "position": 280,
+    "text": "of",
+    "start": 164.28,
+    "end": 164.48
+  },
+  {
+    "position": 281,
+    "text": "us",
+    "start": 164.48,
+    "end": 164.68
+  },
+  {
+    "position": 282,
+    "text": "who",
+    "start": 164.68,
+    "end": 164.82
+  },
+  {
+    "position": 283,
+    "text": "could",
+    "start": 164.82,
+    "end": 165.04
+  },
+  {
+    "position": 284,
+    "text": "convince",
+    "start": 165.04,
+    "end": 165.46
+  },
+  {
+    "position": 285,
+    "text": "our",
+    "start": 165.46,
+    "end": 165.96
+  },
+  {
+    "position": 286,
+    "text": "mothers",
+    "start": 165.96,
+    "end": 166.44
+  },
+  {
+    "position": 287,
+    "text": "to",
+    "start": 166.44,
+    "end": 166.78
+  },
+  {
+    "position": 288,
+    "text": "let",
+    "start": 166.78,
+    "end": 166.94
+  },
+  {
+    "position": 289,
+    "text": "us",
+    "start": 166.94,
+    "end": 167.1
+  },
+  {
+    "position": 290,
+    "text": "choose",
+    "start": 167.1,
+    "end": 167.52
+  },
+  {
+    "position": 291,
+    "text": "our",
+    "start": 167.52,
+    "end": 168.16
+  },
+  {
+    "position": 292,
+    "text": "hair",
+    "start": 168.16,
+    "end": 169.36
+  },
+  {
+    "position": 293,
+    "text": "styles,",
+    "start": 169.78,
+    "end": 169.78
+  },
+  {
+    "position": 294,
+    "text": "we",
+    "start": 169.78,
+    "end": 170.02
+  },
+  {
+    "position": 295,
+    "text": "even",
+    "start": 170.02,
+    "end": 170.44
+  },
+  {
+    "position": 296,
+    "text": "cut",
+    "start": 170.44,
+    "end": 170.72
+  },
+  {
+    "position": 297,
+    "text": "our",
+    "start": 170.72,
+    "end": 171.2
+  },
+  {
+    "position": 298,
+    "text": "hair",
+    "start": 171.2,
+    "end": 171.62
+  },
+  {
+    "position": 299,
+    "text": "like",
+    "start": 171.62,
+    "end": 171.88
+  },
+  {
+    "position": 300,
+    "text": "him.",
+    "start": 171.88,
+    "end": 172.2
+  },
+  {
+    "position": 301,
+    "text": "My",
+    "start": 172.98,
+    "end": 173.24
+  },
+  {
+    "position": 302,
+    "text": "wall",
+    "start": 173.24,
+    "end": 173.48
+  },
+  {
+    "position": 303,
+    "text": "was",
+    "start": 173.48,
+    "end": 173.9
+  },
+  {
+    "position": 304,
+    "text": "covered",
+    "start": 173.9,
+    "end": 174.54
+  },
+  {
+    "position": 305,
+    "text": "with",
+    "start": 174.54,
+    "end": 175.42
+  },
+  {
+    "position": 306,
+    "text": "Ronaldo",
+    "start": 175.42,
+    "end": 175.9
+  },
+  {
+    "position": 307,
+    "text": "posters.",
+    "start": 175.9,
+    "end": 176.52
+  },
+  {
+    "position": 308,
+    "text": "Truly,",
+    "start": 177.24,
+    "end": 177.7
+  },
+  {
+    "position": 309,
+    "text": "I",
+    "start": 178.22,
+    "end": 178.72
+  },
+  {
+    "position": 310,
+    "text": "knew",
+    "start": 178.72,
+    "end": 178.96
+  },
+  {
+    "position": 311,
+    "text": "everything",
+    "start": 178.96,
+    "end": 179.84
+  },
+  {
+    "position": 312,
+    "text": "about",
+    "start": 179.84,
+    "end": 180.64
+  },
+  {
+    "position": 313,
+    "text": "him.",
+    "start": 180.64,
+    "end": 181.14
+  },
+  {
+    "position": 314,
+    "text": "One",
+    "start": 182.24,
+    "end": 182.5
+  },
+  {
+    "position": 315,
+    "text": "day,",
+    "start": 182.5,
+    "end": 182.82
+  },
+  {
+    "position": 316,
+    "text": "my",
+    "start": 183.22,
+    "end": 183.44
+  },
+  {
+    "position": 317,
+    "text": "CR7",
+    "start": 183.44,
+    "end": 184.48
+  },
+  {
+    "position": 318,
+    "text": "jersey",
+    "start": 184.48,
+    "end": 184.96
+  },
+  {
+    "position": 319,
+    "text": "had",
+    "start": 184.96,
+    "end": 185.26
+  },
+  {
+    "position": 320,
+    "text": "become",
+    "start": 185.26,
+    "end": 185.64
+  },
+  {
+    "position": 321,
+    "text": "too",
+    "start": 185.64,
+    "end": 186.2
+  },
+  {
+    "position": 322,
+    "text": "small.",
+    "start": 186.2,
+    "end": 187.2
+  },
+  {
+    "position": 323,
+    "text": "Then",
+    "start": 187.88,
+    "end": 188.1
+  },
+  {
+    "position": 324,
+    "text": "it",
+    "start": 188.1,
+    "end": 188.26
+  },
+  {
+    "position": 325,
+    "text": "got",
+    "start": 188.26,
+    "end": 188.4
+  },
+  {
+    "position": 326,
+    "text": "torn",
+    "start": 188.4,
+    "end": 188.88
+  },
+  {
+    "position": 327,
+    "text": "and",
+    "start": 188.88,
+    "end": 189.5
+  },
+  {
+    "position": 328,
+    "text": "had",
+    "start": 189.5,
+    "end": 189.66
+  },
+  {
+    "position": 329,
+    "text": "holes",
+    "start": 189.66,
+    "end": 190.06
+  },
+  {
+    "position": 330,
+    "text": "in",
+    "start": 190.06,
+    "end": 190.32
+  },
+  {
+    "position": 331,
+    "text": "it.",
+    "start": 190.32,
+    "end": 190.52
+  },
+  {
+    "position": 332,
+    "text": "My",
+    "start": 191.08,
+    "end": 191.18
+  },
+  {
+    "position": 333,
+    "text": "mother",
+    "start": 191.18,
+    "end": 191.34
+  },
+  {
+    "position": 334,
+    "text": "said,",
+    "start": 191.34,
+    "end": 191.7
+  },
+  {
+    "position": 335,
+    "text": "\u201cIf",
+    "start": 192.55,
+    "end": 192.9
+  },
+  {
+    "position": 336,
+    "text": "you",
+    "start": 192.9,
+    "end": 193.16
+  },
+  {
+    "position": 337,
+    "text": "wear",
+    "start": 193.16,
+    "end": 193.5
+  },
+  {
+    "position": 338,
+    "text": "that",
+    "start": 193.5,
+    "end": 193.76
+  },
+  {
+    "position": 339,
+    "text": "old",
+    "start": 193.76,
+    "end": 194.06
+  },
+  {
+    "position": 340,
+    "text": "jersey,",
+    "start": 194.06,
+    "end": 194.64
+  },
+  {
+    "position": 341,
+    "text": "people",
+    "start": 194.98,
+    "end": 195.28
+  },
+  {
+    "position": 342,
+    "text": "are",
+    "start": 195.28,
+    "end": 195.48
+  },
+  {
+    "position": 343,
+    "text": "going",
+    "start": 195.48,
+    "end": 195.96
+  },
+  {
+    "position": 344,
+    "text": "to",
+    "start": 195.96,
+    "end": 196.08
+  },
+  {
+    "position": 345,
+    "text": "think",
+    "start": 196.08,
+    "end": 196.42
+  },
+  {
+    "position": 346,
+    "text": "we\u2019re",
+    "start": 196.42,
+    "end": 196.82
+  },
+  {
+    "position": 347,
+    "text": "poor!\u201d",
+    "start": 196.82,
+    "end": 197.36
+  },
+  {
+    "position": 348,
+    "text": "Then",
+    "start": 198.3,
+    "end": 198.62
+  },
+  {
+    "position": 349,
+    "text": "she",
+    "start": 198.62,
+    "end": 198.92
+  },
+  {
+    "position": 350,
+    "text": "did",
+    "start": 198.92,
+    "end": 199.32
+  },
+  {
+    "position": 351,
+    "text": "what",
+    "start": 199.32,
+    "end": 199.56
+  },
+  {
+    "position": 352,
+    "text": "she",
+    "start": 199.56,
+    "end": 199.78
+  },
+  {
+    "position": 353,
+    "text": "did",
+    "start": 199.78,
+    "end": 200.0
+  },
+  {
+    "position": 354,
+    "text": "whenever",
+    "start": 200.0,
+    "end": 200.38
+  },
+  {
+    "position": 355,
+    "text": "we",
+    "start": 200.38,
+    "end": 200.86
+  },
+  {
+    "position": 356,
+    "text": "needed",
+    "start": 200.86,
+    "end": 201.12
+  },
+  {
+    "position": 357,
+    "text": "new",
+    "start": 201.12,
+    "end": 201.36
+  },
+  {
+    "position": 358,
+    "text": "clothes.",
+    "start": 201.36,
+    "end": 201.74
+  },
+  {
+    "position": 359,
+    "text": "She",
+    "start": 202.52,
+    "end": 202.76
+  },
+  {
+    "position": 360,
+    "text": "went",
+    "start": 202.76,
+    "end": 202.92
+  },
+  {
+    "position": 361,
+    "text": "shopping.",
+    "start": 202.92,
+    "end": 203.36
+  },
+  {
+    "position": 362,
+    "text": "Our",
+    "start": 203.36,
+    "end": 204.26
+  },
+  {
+    "position": 363,
+    "text": "mother",
+    "start": 204.26,
+    "end": 204.66
+  },
+  {
+    "position": 364,
+    "text": "was",
+    "start": 204.66,
+    "end": 204.98
+  },
+  {
+    "position": 365,
+    "text": "proud.",
+    "start": 204.98,
+    "end": 205.48
+  },
+  {
+    "position": 366,
+    "text": "She",
+    "start": 206.12,
+    "end": 206.32
+  },
+  {
+    "position": 367,
+    "text": "didn\u2019t",
+    "start": 206.32,
+    "end": 206.78
+  },
+  {
+    "position": 368,
+    "text": "want",
+    "start": 206.78,
+    "end": 207.12
+  },
+  {
+    "position": 369,
+    "text": "to",
+    "start": 207.12,
+    "end": 207.3
+  },
+  {
+    "position": 370,
+    "text": "buy",
+    "start": 207.3,
+    "end": 207.64
+  },
+  {
+    "position": 371,
+    "text": "our",
+    "start": 207.64,
+    "end": 208.16
+  },
+  {
+    "position": 372,
+    "text": "clothes",
+    "start": 208.16,
+    "end": 208.6
+  },
+  {
+    "position": 373,
+    "text": "from",
+    "start": 208.6,
+    "end": 209.0
+  },
+  {
+    "position": 374,
+    "text": "Wal-Mart",
+    "start": 209.0,
+    "end": 209.0
+  },
+  {
+    "position": 375,
+    "text": "or",
+    "start": 209.5,
+    "end": 209.96
+  },
+  {
+    "position": 376,
+    "text": "Costco.",
+    "start": 209.96,
+    "end": 210.52
+  },
+  {
+    "position": 377,
+    "text": "She",
+    "start": 211.22,
+    "end": 211.42
+  },
+  {
+    "position": 378,
+    "text": "didn\u2019t",
+    "start": 211.42,
+    "end": 211.66
+  },
+  {
+    "position": 379,
+    "text": "want",
+    "start": 211.66,
+    "end": 211.88
+  },
+  {
+    "position": 380,
+    "text": "to",
+    "start": 211.88,
+    "end": 212.0
+  },
+  {
+    "position": 381,
+    "text": "buy",
+    "start": 212.0,
+    "end": 212.28
+  },
+  {
+    "position": 382,
+    "text": "knockoff",
+    "start": 212.28,
+    "end": 212.92
+  },
+  {
+    "position": 383,
+    "text": "brand",
+    "start": 213.36,
+    "end": 213.68
+  },
+  {
+    "position": 384,
+    "text": "name",
+    "start": 213.68,
+    "end": 214.04
+  },
+  {
+    "position": 385,
+    "text": "jerseys",
+    "start": 214.04,
+    "end": 214.62
+  },
+  {
+    "position": 386,
+    "text": "from",
+    "start": 214.62,
+    "end": 214.84
+  },
+  {
+    "position": 387,
+    "text": "some",
+    "start": 214.84,
+    "end": 215.24
+  },
+  {
+    "position": 388,
+    "text": "weekend",
+    "start": 215.24,
+    "end": 216.14
+  },
+  {
+    "position": 389,
+    "text": "Latino",
+    "start": 216.14,
+    "end": 216.98
+  },
+  {
+    "position": 390,
+    "text": "market",
+    "start": 216.98,
+    "end": 217.5
+  },
+  {
+    "position": 391,
+    "text": "in",
+    "start": 217.5,
+    "end": 218.12
+  },
+  {
+    "position": 392,
+    "text": "a",
+    "start": 218.12,
+    "end": 218.24
+  },
+  {
+    "position": 393,
+    "text": "dusty",
+    "start": 218.24,
+    "end": 218.7
+  },
+  {
+    "position": 394,
+    "text": "gravel",
+    "start": 218.7,
+    "end": 219.32
+  },
+  {
+    "position": 395,
+    "text": "parking",
+    "start": 219.32,
+    "end": 219.86
+  },
+  {
+    "position": 396,
+    "text": "lot.",
+    "start": 219.86,
+    "end": 220.2
+  },
+  {
+    "position": 397,
+    "text": "The",
+    "start": 220.8,
+    "end": 221.0
+  },
+  {
+    "position": 398,
+    "text": "only",
+    "start": 221.0,
+    "end": 221.36
+  },
+  {
+    "position": 399,
+    "text": "things",
+    "start": 221.36,
+    "end": 221.8
+  },
+  {
+    "position": 400,
+    "text": "that",
+    "start": 221.8,
+    "end": 222.04
+  },
+  {
+    "position": 401,
+    "text": "were",
+    "start": 222.04,
+    "end": 222.2
+  },
+  {
+    "position": 402,
+    "text": "good",
+    "start": 222.2,
+    "end": 222.44
+  },
+  {
+    "position": 403,
+    "text": "enough",
+    "start": 222.44,
+    "end": 222.68
+  },
+  {
+    "position": 404,
+    "text": "were",
+    "start": 222.68,
+    "end": 223.16
+  },
+  {
+    "position": 405,
+    "text": "authentic",
+    "start": 223.16,
+    "end": 224.18
+  },
+  {
+    "position": 406,
+    "text": "brand",
+    "start": 224.18,
+    "end": 225.0
+  },
+  {
+    "position": 407,
+    "text": "name",
+    "start": 225.0,
+    "end": 225.42
+  },
+  {
+    "position": 408,
+    "text": "clothes",
+    "start": 225.42,
+    "end": 226.16
+  },
+  {
+    "position": 409,
+    "text": "bought",
+    "start": 226.42,
+    "end": 226.42
+  },
+  {
+    "position": 410,
+    "text": "from",
+    "start": 226.84,
+    "end": 227.34
+  },
+  {
+    "position": 411,
+    "text": "the",
+    "start": 227.34,
+    "end": 227.6
+  },
+  {
+    "position": 412,
+    "text": "source.",
+    "start": 227.6,
+    "end": 227.92
+  },
+  {
+    "position": 413,
+    "text": "Mother",
+    "start": 228.78,
+    "end": 229.34
+  },
+  {
+    "position": 414,
+    "text": "didn\u2019t",
+    "start": 229.34,
+    "end": 229.66
+  },
+  {
+    "position": 415,
+    "text": "like",
+    "start": 229.66,
+    "end": 229.82
+  },
+  {
+    "position": 416,
+    "text": "dealing",
+    "start": 229.82,
+    "end": 230.26
+  },
+  {
+    "position": 417,
+    "text": "with",
+    "start": 230.26,
+    "end": 230.64
+  },
+  {
+    "position": 418,
+    "text": "the",
+    "start": 230.64,
+    "end": 231.2
+  },
+  {
+    "position": 419,
+    "text": "shopping",
+    "start": 231.2,
+    "end": 232.0
+  },
+  {
+    "position": 420,
+    "text": "assistants",
+    "start": 232.0,
+    "end": 232.0
+  },
+  {
+    "position": 421,
+    "text": "in",
+    "start": 233.36,
+    "end": 233.56
+  },
+  {
+    "position": 422,
+    "text": "the",
+    "start": 233.56,
+    "end": 233.7
+  },
+  {
+    "position": 423,
+    "text": "stores.",
+    "start": 233.7,
+    "end": 234.24
+  },
+  {
+    "position": 424,
+    "text": "Her",
+    "start": 234.88,
+    "end": 235.1
+  },
+  {
+    "position": 425,
+    "text": "English",
+    "start": 235.1,
+    "end": 235.56
+  },
+  {
+    "position": 426,
+    "text": "wasn\u2019t",
+    "start": 235.56,
+    "end": 236.24
+  },
+  {
+    "position": 427,
+    "text": "great",
+    "start": 236.66,
+    "end": 237.04
+  },
+  {
+    "position": 428,
+    "text": "and",
+    "start": 237.04,
+    "end": 237.46
+  },
+  {
+    "position": 429,
+    "text": "she",
+    "start": 237.46,
+    "end": 237.72
+  },
+  {
+    "position": 430,
+    "text": "struggled",
+    "start": 237.72,
+    "end": 238.28
+  },
+  {
+    "position": 431,
+    "text": "to",
+    "start": 238.28,
+    "end": 238.92
+  },
+  {
+    "position": 432,
+    "text": "explain",
+    "start": 238.92,
+    "end": 239.38
+  },
+  {
+    "position": 433,
+    "text": "what",
+    "start": 239.38,
+    "end": 239.86
+  },
+  {
+    "position": 434,
+    "text": "she",
+    "start": 239.86,
+    "end": 240.24
+  },
+  {
+    "position": 435,
+    "text": "needed.",
+    "start": 240.24,
+    "end": 240.64
+  },
+  {
+    "position": 436,
+    "text": "So",
+    "start": 241.24,
+    "end": 241.42
+  },
+  {
+    "position": 437,
+    "text": "she",
+    "start": 241.42,
+    "end": 241.62
+  },
+  {
+    "position": 438,
+    "text": "did",
+    "start": 241.62,
+    "end": 241.78
+  },
+  {
+    "position": 439,
+    "text": "what",
+    "start": 241.78,
+    "end": 241.94
+  },
+  {
+    "position": 440,
+    "text": "she",
+    "start": 241.94,
+    "end": 242.16
+  },
+  {
+    "position": 441,
+    "text": "usually",
+    "start": 242.16,
+    "end": 242.7
+  },
+  {
+    "position": 442,
+    "text": "did,",
+    "start": 242.7,
+    "end": 243.02
+  },
+  {
+    "position": 443,
+    "text": "and",
+    "start": 243.02,
+    "end": 243.62
+  },
+  {
+    "position": 444,
+    "text": "she",
+    "start": 243.62,
+    "end": 243.78
+  },
+  {
+    "position": 445,
+    "text": "spoke",
+    "start": 243.78,
+    "end": 244.12
+  },
+  {
+    "position": 446,
+    "text": "with",
+    "start": 244.12,
+    "end": 244.46
+  },
+  {
+    "position": 447,
+    "text": "her",
+    "start": 244.46,
+    "end": 244.62
+  },
+  {
+    "position": 448,
+    "text": "hands",
+    "start": 244.62,
+    "end": 245.12
+  },
+  {
+    "position": 449,
+    "text": "and",
+    "start": 245.12,
+    "end": 245.48
+  },
+  {
+    "position": 450,
+    "text": "simple",
+    "start": 245.48,
+    "end": 246.12
+  },
+  {
+    "position": 451,
+    "text": "words",
+    "start": 246.12,
+    "end": 246.48
+  },
+  {
+    "position": 452,
+    "text": "when",
+    "start": 246.48,
+    "end": 246.8
+  },
+  {
+    "position": 453,
+    "text": "she",
+    "start": 246.8,
+    "end": 247.2
+  },
+  {
+    "position": 454,
+    "text": "went",
+    "start": 247.2,
+    "end": 247.88
+  },
+  {
+    "position": 455,
+    "text": "to",
+    "start": 247.88,
+    "end": 248.26
+  },
+  {
+    "position": 456,
+    "text": "the",
+    "start": 248.26,
+    "end": 248.78
+  },
+  {
+    "position": 457,
+    "text": "Adidas",
+    "start": 248.78,
+    "end": 249.54
+  },
+  {
+    "position": 458,
+    "text": "store",
+    "start": 249.54,
+    "end": 249.98
+  },
+  {
+    "position": 459,
+    "text": "to",
+    "start": 249.98,
+    "end": 250.6
+  },
+  {
+    "position": 460,
+    "text": "replace",
+    "start": 250.6,
+    "end": 250.94
+  },
+  {
+    "position": 461,
+    "text": "my",
+    "start": 250.94,
+    "end": 251.32
+  },
+  {
+    "position": 462,
+    "text": "old",
+    "start": 251.32,
+    "end": 251.64
+  },
+  {
+    "position": 463,
+    "text": "jersey.",
+    "start": 251.64,
+    "end": 252.04
+  },
+  {
+    "position": 464,
+    "text": "\u201cMy",
+    "start": 253.2,
+    "end": 253.68
+  },
+  {
+    "position": 465,
+    "text": "son.",
+    "start": 253.68,
+    "end": 255.06
+  },
+  {
+    "position": 466,
+    "text": "Soccer.",
+    "start": 256.3,
+    "end": 256.76
+  },
+  {
+    "position": 467,
+    "text": "Jersey",
+    "start": 257.42,
+    "end": 258.26
+  },
+  {
+    "position": 468,
+    "text": "old.",
+    "start": 258.26,
+    "end": 258.92
+  },
+  {
+    "position": 469,
+    "text": "Loves",
+    "start": 259.58,
+    "end": 260.36
+  },
+  {
+    "position": 470,
+    "text": "Spanish",
+    "start": 260.36,
+    "end": 260.96
+  },
+  {
+    "position": 471,
+    "text": "soccer.",
+    "start": 260.96,
+    "end": 261.48
+  },
+  {
+    "position": 472,
+    "text": "Where",
+    "start": 265.76,
+    "end": 265.76
+  },
+  {
+    "position": 473,
+    "text": "soccer",
+    "start": 265.76,
+    "end": 265.76
+  },
+  {
+    "position": 474,
+    "text": "jerseys?",
+    "start": 267.32,
+    "end": 267.42
+  },
+  {
+    "position": 475,
+    "text": "How",
+    "start": 267.42,
+    "end": 267.42
+  },
+  {
+    "position": 476,
+    "text": "much?\u201d",
+    "start": 267.42,
+    "end": 267.42
+  },
+  {
+    "position": 477,
+    "text": "My",
+    "start": 267.42,
+    "end": 267.42
+  },
+  {
+    "position": 478,
+    "text": "mother",
+    "start": 267.42,
+    "end": 267.42
+  },
+  {
+    "position": 479,
+    "text": "bought",
+    "start": 267.42,
+    "end": 267.42
+  },
+  {
+    "position": 480,
+    "text": "a",
+    "start": 267.42,
+    "end": 267.42
+  },
+  {
+    "position": 481,
+    "text": "jersey",
+    "start": 267.42,
+    "end": 267.42
+  },
+  {
+    "position": 482,
+    "text": "and",
+    "start": 267.42,
+    "end": 267.88
+  },
+  {
+    "position": 483,
+    "text": "brought",
+    "start": 267.88,
+    "end": 268.18
+  },
+  {
+    "position": 484,
+    "text": "it",
+    "start": 268.18,
+    "end": 268.4
+  },
+  {
+    "position": 485,
+    "text": "home,",
+    "start": 268.4,
+    "end": 268.64
+  },
+  {
+    "position": 486,
+    "text": "along",
+    "start": 269.14,
+    "end": 269.62
+  },
+  {
+    "position": 487,
+    "text": "with",
+    "start": 269.62,
+    "end": 270.06
+  },
+  {
+    "position": 488,
+    "text": "the",
+    "start": 270.06,
+    "end": 270.2
+  },
+  {
+    "position": 489,
+    "text": "rest",
+    "start": 270.2,
+    "end": 270.54
+  },
+  {
+    "position": 490,
+    "text": "of",
+    "start": 270.54,
+    "end": 271.06
+  },
+  {
+    "position": 491,
+    "text": "her",
+    "start": 271.06,
+    "end": 271.22
+  },
+  {
+    "position": 492,
+    "text": "shopping",
+    "start": 271.22,
+    "end": 271.64
+  },
+  {
+    "position": 493,
+    "text": "haul.",
+    "start": 271.64,
+    "end": 272.04
+  },
+  {
+    "position": 494,
+    "text": "That",
+    "start": 272.64,
+    "end": 272.94
+  },
+  {
+    "position": 495,
+    "text": "day",
+    "start": 272.94,
+    "end": 273.32
+  },
+  {
+    "position": 496,
+    "text": "I",
+    "start": 273.52,
+    "end": 273.56
+  },
+  {
+    "position": 497,
+    "text": "had",
+    "start": 273.56,
+    "end": 273.88
+  },
+  {
+    "position": 498,
+    "text": "one",
+    "start": 273.88,
+    "end": 274.08
+  },
+  {
+    "position": 499,
+    "text": "of",
+    "start": 274.08,
+    "end": 274.2
+  },
+  {
+    "position": 500,
+    "text": "the",
+    "start": 274.2,
+    "end": 274.34
+  },
+  {
+    "position": 501,
+    "text": "greatest",
+    "start": 274.34,
+    "end": 275.2
+  },
+  {
+    "position": 502,
+    "text": "disappointments",
+    "start": 275.2,
+    "end": 276.54
+  },
+  {
+    "position": 503,
+    "text": "of",
+    "start": 276.54,
+    "end": 277.02
+  },
+  {
+    "position": 504,
+    "text": "my",
+    "start": 277.02,
+    "end": 277.3
+  },
+  {
+    "position": 505,
+    "text": "life!",
+    "start": 277.3,
+    "end": 278.0
+  },
+  {
+    "position": 506,
+    "text": "I",
+    "start": 278.6,
+    "end": 278.84
+  },
+  {
+    "position": 507,
+    "text": "would",
+    "start": 278.84,
+    "end": 278.96
+  },
+  {
+    "position": 508,
+    "text": "even",
+    "start": 278.96,
+    "end": 279.12
+  },
+  {
+    "position": 509,
+    "text": "say",
+    "start": 279.12,
+    "end": 279.38
+  },
+  {
+    "position": 510,
+    "text": "that",
+    "start": 279.38,
+    "end": 279.54
+  },
+  {
+    "position": 511,
+    "text": "on",
+    "start": 279.54,
+    "end": 279.92
+  },
+  {
+    "position": 512,
+    "text": "that",
+    "start": 279.92,
+    "end": 280.18
+  },
+  {
+    "position": 513,
+    "text": "day",
+    "start": 280.18,
+    "end": 280.52
+  },
+  {
+    "position": 514,
+    "text": "I",
+    "start": 281.1,
+    "end": 281.3
+  },
+  {
+    "position": 515,
+    "text": "died",
+    "start": 281.3,
+    "end": 281.92
+  },
+  {
+    "position": 516,
+    "text": "a",
+    "start": 281.92,
+    "end": 282.34
+  },
+  {
+    "position": 517,
+    "text": "little",
+    "start": 282.34,
+    "end": 282.6
+  },
+  {
+    "position": 518,
+    "text": "inside.",
+    "start": 282.6,
+    "end": 283.16
+  },
+  {
+    "position": 519,
+    "text": "Instead",
+    "start": 283.88,
+    "end": 284.38
+  },
+  {
+    "position": 520,
+    "text": "of",
+    "start": 284.38,
+    "end": 284.6
+  },
+  {
+    "position": 521,
+    "text": "the",
+    "start": 284.6,
+    "end": 284.72
+  },
+  {
+    "position": 522,
+    "text": "white",
+    "start": 284.72,
+    "end": 285.04
+  },
+  {
+    "position": 523,
+    "text": "and",
+    "start": 285.04,
+    "end": 285.3
+  },
+  {
+    "position": 524,
+    "text": "gold",
+    "start": 285.3,
+    "end": 285.58
+  },
+  {
+    "position": 525,
+    "text": "colors",
+    "start": 285.58,
+    "end": 286.04
+  },
+  {
+    "position": 526,
+    "text": "of",
+    "start": 286.04,
+    "end": 286.44
+  },
+  {
+    "position": 527,
+    "text": "a",
+    "start": 286.44,
+    "end": 286.62
+  },
+  {
+    "position": 528,
+    "text": "Real",
+    "start": 286.62,
+    "end": 286.96
+  },
+  {
+    "position": 529,
+    "text": "Madrid",
+    "start": 286.96,
+    "end": 287.28
+  },
+  {
+    "position": 530,
+    "text": "jersey,",
+    "start": 287.28,
+    "end": 288.02
+  },
+  {
+    "position": 531,
+    "text": "there",
+    "start": 288.02,
+    "end": 288.72
+  },
+  {
+    "position": 532,
+    "text": "was",
+    "start": 288.72,
+    "end": 288.96
+  },
+  {
+    "position": 533,
+    "text": "the",
+    "start": 288.96,
+    "end": 289.22
+  },
+  {
+    "position": 534,
+    "text": "dark",
+    "start": 289.22,
+    "end": 289.52
+  },
+  {
+    "position": 535,
+    "text": "blue",
+    "start": 289.52,
+    "end": 289.92
+  },
+  {
+    "position": 536,
+    "text": "and",
+    "start": 289.92,
+    "end": 290.6
+  },
+  {
+    "position": 537,
+    "text": "maroon",
+    "start": 290.6,
+    "end": 291.12
+  },
+  {
+    "position": 538,
+    "text": "of",
+    "start": 291.12,
+    "end": 291.68
+  },
+  {
+    "position": 539,
+    "text": "FC",
+    "start": 291.68,
+    "end": 292.26
+  },
+  {
+    "position": 540,
+    "text": "Barcelona",
+    "start": 292.26,
+    "end": 293.04
+  },
+  {
+    "position": 541,
+    "text": "with",
+    "start": 293.04,
+    "end": 293.9
+  },
+  {
+    "position": 542,
+    "text": "the",
+    "start": 293.9,
+    "end": 294.1
+  },
+  {
+    "position": 543,
+    "text": "number",
+    "start": 294.1,
+    "end": 294.34
+  },
+  {
+    "position": 544,
+    "text": "10",
+    "start": 294.34,
+    "end": 294.7
+  },
+  {
+    "position": 545,
+    "text": "and",
+    "start": 294.7,
+    "end": 294.96
+  },
+  {
+    "position": 546,
+    "text": "Messi",
+    "start": 294.96,
+    "end": 295.24
+  },
+  {
+    "position": 547,
+    "text": "on",
+    "start": 295.24,
+    "end": 295.58
+  },
+  {
+    "position": 548,
+    "text": "the",
+    "start": 295.58,
+    "end": 295.72
+  },
+  {
+    "position": 549,
+    "text": "back.",
+    "start": 295.72,
+    "end": 296.1
+  },
+  {
+    "position": 550,
+    "text": "I\u2019d",
+    "start": 296.9,
+    "end": 297.58
+  },
+  {
+    "position": 551,
+    "text": "always",
+    "start": 297.58,
+    "end": 298.6
+  },
+  {
+    "position": 552,
+    "text": "worn",
+    "start": 298.6,
+    "end": 299.08
+  },
+  {
+    "position": 553,
+    "text": "the",
+    "start": 299.08,
+    "end": 299.3
+  },
+  {
+    "position": 554,
+    "text": "CR7",
+    "start": 299.3,
+    "end": 300.34
+  },
+  {
+    "position": 555,
+    "text": "jersey.",
+    "start": 300.34,
+    "end": 300.8
+  },
+  {
+    "position": 556,
+    "text": "Any",
+    "start": 301.6,
+    "end": 301.92
+  },
+  {
+    "position": 557,
+    "text": "Ronaldo",
+    "start": 301.92,
+    "end": 302.42
+  },
+  {
+    "position": 558,
+    "text": "fan",
+    "start": 302.42,
+    "end": 302.9
+  },
+  {
+    "position": 559,
+    "text": "caught",
+    "start": 302.9,
+    "end": 303.42
+  },
+  {
+    "position": 560,
+    "text": "with",
+    "start": 303.42,
+    "end": 304.36
+  },
+  {
+    "position": 561,
+    "text": "a",
+    "start": 304.36,
+    "end": 304.52
+  },
+  {
+    "position": 562,
+    "text": "Messi",
+    "start": 304.52,
+    "end": 304.86
+  },
+  {
+    "position": 563,
+    "text": "jersey",
+    "start": 304.86,
+    "end": 305.4
+  },
+  {
+    "position": 564,
+    "text": "would",
+    "start": 305.4,
+    "end": 306.02
+  },
+  {
+    "position": 565,
+    "text": "be",
+    "start": 306.02,
+    "end": 306.22
+  },
+  {
+    "position": 566,
+    "text": "called",
+    "start": 306.22,
+    "end": 306.58
+  },
+  {
+    "position": 567,
+    "text": "out",
+    "start": 306.58,
+    "end": 306.96
+  },
+  {
+    "position": 568,
+    "text": "as",
+    "start": 306.96,
+    "end": 307.22
+  },
+  {
+    "position": 569,
+    "text": "a",
+    "start": 307.22,
+    "end": 307.36
+  },
+  {
+    "position": 570,
+    "text": "fraud.",
+    "start": 307.36,
+    "end": 307.88
+  },
+  {
+    "position": 571,
+    "text": "With",
+    "start": 307.88,
+    "end": 309.0
+  },
+  {
+    "position": 572,
+    "text": "tears",
+    "start": 309.0,
+    "end": 309.48
+  },
+  {
+    "position": 573,
+    "text": "in",
+    "start": 309.48,
+    "end": 310.58
+  },
+  {
+    "position": 574,
+    "text": "my",
+    "start": 310.58,
+    "end": 310.72
+  },
+  {
+    "position": 575,
+    "text": "eyes,",
+    "start": 310.72,
+    "end": 311.22
+  },
+  {
+    "position": 576,
+    "text": "I",
+    "start": 312.14,
+    "end": 312.58
+  },
+  {
+    "position": 577,
+    "text": "found",
+    "start": 312.58,
+    "end": 312.9
+  },
+  {
+    "position": 578,
+    "text": "the",
+    "start": 312.9,
+    "end": 312.9
+  },
+  {
+    "position": 579,
+    "text": "strength",
+    "start": 312.9,
+    "end": 313.34
+  },
+  {
+    "position": 580,
+    "text": "to",
+    "start": 313.34,
+    "end": 313.56
+  },
+  {
+    "position": 581,
+    "text": "say,",
+    "start": 313.56,
+    "end": 313.8
+  },
+  {
+    "position": 582,
+    "text": "\u201cI\u2019ll",
+    "start": 314.54,
+    "end": 314.92
+  },
+  {
+    "position": 583,
+    "text": "never",
+    "start": 314.92,
+    "end": 315.32
+  },
+  {
+    "position": 584,
+    "text": "wear",
+    "start": 315.32,
+    "end": 316.2
+  },
+  {
+    "position": 585,
+    "text": "that",
+    "start": 316.2,
+    "end": 316.52
+  },
+  {
+    "position": 586,
+    "text": "uniform.\u201d",
+    "start": 316.52,
+    "end": 317.14
+  },
+  {
+    "position": 587,
+    "text": "\u201cMy",
+    "start": 318.68,
+    "end": 318.9
+  },
+  {
+    "position": 588,
+    "text": "son,",
+    "start": 318.9,
+    "end": 319.2
+  },
+  {
+    "position": 589,
+    "text": "first",
+    "start": 319.84,
+    "end": 320.04
+  },
+  {
+    "position": 590,
+    "text": "you\u2019re",
+    "start": 320.04,
+    "end": 320.32
+  },
+  {
+    "position": 591,
+    "text": "gonna",
+    "start": 320.32,
+    "end": 320.32
+  },
+  {
+    "position": 592,
+    "text": "try",
+    "start": 320.54,
+    "end": 320.84
+  },
+  {
+    "position": 593,
+    "text": "it",
+    "start": 320.84,
+    "end": 321.04
+  },
+  {
+    "position": 594,
+    "text": "on!",
+    "start": 321.04,
+    "end": 321.22
+  },
+  {
+    "position": 595,
+    "text": "If",
+    "start": 321.8,
+    "end": 321.98
+  },
+  {
+    "position": 596,
+    "text": "you",
+    "start": 321.98,
+    "end": 322.08
+  },
+  {
+    "position": 597,
+    "text": "make",
+    "start": 322.08,
+    "end": 322.24
+  },
+  {
+    "position": 598,
+    "text": "up",
+    "start": 322.24,
+    "end": 322.42
+  },
+  {
+    "position": 599,
+    "text": "your",
+    "start": 322.42,
+    "end": 322.58
+  },
+  {
+    "position": 600,
+    "text": "mind",
+    "start": 322.58,
+    "end": 322.84
+  },
+  {
+    "position": 601,
+    "text": "about",
+    "start": 322.84,
+    "end": 323.08
+  },
+  {
+    "position": 602,
+    "text": "things",
+    "start": 323.08,
+    "end": 323.5
+  },
+  {
+    "position": 603,
+    "text": "before",
+    "start": 323.5,
+    "end": 323.94
+  },
+  {
+    "position": 604,
+    "text": "you",
+    "start": 323.94,
+    "end": 324.2
+  },
+  {
+    "position": 605,
+    "text": "try,",
+    "start": 324.2,
+    "end": 324.48
+  },
+  {
+    "position": 606,
+    "text": "my",
+    "start": 324.88,
+    "end": 324.94
+  },
+  {
+    "position": 607,
+    "text": "son,",
+    "start": 324.94,
+    "end": 325.36
+  },
+  {
+    "position": 608,
+    "text": "you",
+    "start": 325.86,
+    "end": 325.96
+  },
+  {
+    "position": 609,
+    "text": "won\u2019t",
+    "start": 325.96,
+    "end": 326.28
+  },
+  {
+    "position": 610,
+    "text": "go",
+    "start": 326.28,
+    "end": 326.38
+  },
+  {
+    "position": 611,
+    "text": "very",
+    "start": 326.38,
+    "end": 326.62
+  },
+  {
+    "position": 612,
+    "text": "far",
+    "start": 326.62,
+    "end": 326.96
+  },
+  {
+    "position": 613,
+    "text": "in",
+    "start": 326.96,
+    "end": 327.24
+  },
+  {
+    "position": 614,
+    "text": "this",
+    "start": 327.24,
+    "end": 327.42
+  },
+  {
+    "position": 615,
+    "text": "life.\u201d",
+    "start": 327.42,
+    "end": 327.86
+  },
+  {
+    "position": 616,
+    "text": "My",
+    "start": 328.28,
+    "end": 328.44
+  },
+  {
+    "position": 617,
+    "text": "mother",
+    "start": 328.44,
+    "end": 328.76
+  },
+  {
+    "position": 618,
+    "text": "had",
+    "start": 328.76,
+    "end": 329.0
+  },
+  {
+    "position": 619,
+    "text": "pulled",
+    "start": 329.0,
+    "end": 329.5
+  },
+  {
+    "position": 620,
+    "text": "the",
+    "start": 329.5,
+    "end": 329.94
+  },
+  {
+    "position": 621,
+    "text": "dark",
+    "start": 329.94,
+    "end": 330.3
+  },
+  {
+    "position": 622,
+    "text": "blue",
+    "start": 330.3,
+    "end": 330.66
+  },
+  {
+    "position": 623,
+    "text": "and",
+    "start": 330.66,
+    "end": 331.08
+  },
+  {
+    "position": 624,
+    "text": "maroon",
+    "start": 331.08,
+    "end": 331.68
+  },
+  {
+    "position": 625,
+    "text": "FC",
+    "start": 331.68,
+    "end": 332.48
+  },
+  {
+    "position": 626,
+    "text": "Barcelona",
+    "start": 332.48,
+    "end": 333.08
+  },
+  {
+    "position": 627,
+    "text": "jersey",
+    "start": 333.08,
+    "end": 333.66
+  },
+  {
+    "position": 628,
+    "text": "over",
+    "start": 333.66,
+    "end": 334.18
+  },
+  {
+    "position": 629,
+    "text": "my",
+    "start": 334.18,
+    "end": 334.44
+  },
+  {
+    "position": 630,
+    "text": "shoulders",
+    "start": 334.44,
+    "end": 334.94
+  },
+  {
+    "position": 631,
+    "text": "and",
+    "start": 334.94,
+    "end": 335.88
+  },
+  {
+    "position": 632,
+    "text": "already",
+    "start": 335.88,
+    "end": 336.5
+  },
+  {
+    "position": 633,
+    "text": "my",
+    "start": 336.5,
+    "end": 336.84
+  },
+  {
+    "position": 634,
+    "text": "arms",
+    "start": 336.84,
+    "end": 337.38
+  },
+  {
+    "position": 635,
+    "text": "were",
+    "start": 337.38,
+    "end": 337.56
+  },
+  {
+    "position": 636,
+    "text": "through",
+    "start": 337.56,
+    "end": 337.94
+  },
+  {
+    "position": 637,
+    "text": "the",
+    "start": 337.94,
+    "end": 338.26
+  },
+  {
+    "position": 638,
+    "text": "sleeves.",
+    "start": 338.26,
+    "end": 338.74
+  },
+  {
+    "position": 639,
+    "text": "She",
+    "start": 339.38,
+    "end": 339.6
+  },
+  {
+    "position": 640,
+    "text": "pulled",
+    "start": 339.6,
+    "end": 339.94
+  },
+  {
+    "position": 641,
+    "text": "it",
+    "start": 339.94,
+    "end": 340.14
+  },
+  {
+    "position": 642,
+    "text": "down",
+    "start": 340.14,
+    "end": 340.5
+  },
+  {
+    "position": 643,
+    "text": "and",
+    "start": 340.5,
+    "end": 341.06
+  },
+  {
+    "position": 644,
+    "text": "carefully",
+    "start": 341.06,
+    "end": 341.84
+  },
+  {
+    "position": 645,
+    "text": "smoothed",
+    "start": 341.84,
+    "end": 343.46
+  },
+  {
+    "position": 646,
+    "text": "all",
+    "start": 343.46,
+    "end": 343.8
+  },
+  {
+    "position": 647,
+    "text": "the",
+    "start": 343.8,
+    "end": 344.16
+  },
+  {
+    "position": 648,
+    "text": "creases",
+    "start": 344.16,
+    "end": 344.9
+  },
+  {
+    "position": 649,
+    "text": "on",
+    "start": 344.9,
+    "end": 345.6
+  },
+  {
+    "position": 650,
+    "text": "the",
+    "start": 345.6,
+    "end": 346.0
+  },
+  {
+    "position": 651,
+    "text": "abominable",
+    "start": 346.0,
+    "end": 347.66
+  },
+  {
+    "position": 652,
+    "text": "Barcelona",
+    "start": 347.66,
+    "end": 348.58
+  },
+  {
+    "position": 653,
+    "text": "jersey",
+    "start": 348.58,
+    "end": 349.42
+  },
+  {
+    "position": 654,
+    "text": "with",
+    "start": 349.42,
+    "end": 350.0
+  },
+  {
+    "position": 655,
+    "text": "the",
+    "start": 350.0,
+    "end": 350.22
+  },
+  {
+    "position": 656,
+    "text": "ugly",
+    "start": 350.22,
+    "end": 351.08
+  },
+  {
+    "position": 657,
+    "text": "crest",
+    "start": 351.08,
+    "end": 351.74
+  },
+  {
+    "position": 658,
+    "text": "which",
+    "start": 351.74,
+    "end": 352.42
+  },
+  {
+    "position": 659,
+    "text": "had",
+    "start": 352.42,
+    "end": 352.64
+  },
+  {
+    "position": 660,
+    "text": "the",
+    "start": 352.64,
+    "end": 352.84
+  },
+  {
+    "position": 661,
+    "text": "letters",
+    "start": 352.84,
+    "end": 353.26
+  },
+  {
+    "position": 662,
+    "text": "of",
+    "start": 353.26,
+    "end": 353.68
+  },
+  {
+    "position": 663,
+    "text": "FCB",
+    "start": 353.68,
+    "end": 355.1
+  },
+  {
+    "position": 664,
+    "text": "written",
+    "start": 355.1,
+    "end": 356.14
+  },
+  {
+    "position": 665,
+    "text": "in",
+    "start": 356.14,
+    "end": 356.52
+  },
+  {
+    "position": 666,
+    "text": "the",
+    "start": 356.52,
+    "end": 356.66
+  },
+  {
+    "position": 667,
+    "text": "middle.",
+    "start": 356.66,
+    "end": 356.94
+  },
+  {
+    "position": 668,
+    "text": "I",
+    "start": 357.46,
+    "end": 358.1
+  },
+  {
+    "position": 669,
+    "text": "wept.",
+    "start": 358.1,
+    "end": 359.12
+  },
+  {
+    "position": 670,
+    "text": "\u201cI\u2019ll",
+    "start": 360.1,
+    "end": 360.88
+  },
+  {
+    "position": 671,
+    "text": "never",
+    "start": 360.88,
+    "end": 361.24
+  },
+  {
+    "position": 672,
+    "text": "wear",
+    "start": 361.24,
+    "end": 361.6
+  },
+  {
+    "position": 673,
+    "text": "it!\u201d",
+    "start": 361.6,
+    "end": 362.0
+  },
+  {
+    "position": 674,
+    "text": "\u201cWhy",
+    "start": 362.96,
+    "end": 363.28
+  },
+  {
+    "position": 675,
+    "text": "not?",
+    "start": 363.28,
+    "end": 363.6
+  },
+  {
+    "position": 676,
+    "text": "This",
+    "start": 364.02,
+    "end": 364.2
+  },
+  {
+    "position": 677,
+    "text": "jersey",
+    "start": 364.2,
+    "end": 364.38
+  },
+  {
+    "position": 678,
+    "text": "fits",
+    "start": 364.38,
+    "end": 364.86
+  },
+  {
+    "position": 679,
+    "text": "you\u2026",
+    "start": 364.86,
+    "end": 365.28
+  },
+  {
+    "position": 680,
+    "text": "like",
+    "start": 365.28,
+    "end": 366.44
+  },
+  {
+    "position": 681,
+    "text": "a",
+    "start": 366.44,
+    "end": 366.66
+  },
+  {
+    "position": 682,
+    "text": "glove.\u201d",
+    "start": 366.66,
+    "end": 367.04
+  },
+  {
+    "position": 683,
+    "text": "\u201cCristiano",
+    "start": 368.08,
+    "end": 368.6
+  },
+  {
+    "position": 684,
+    "text": "Ronaldo",
+    "start": 368.6,
+    "end": 369.1
+  },
+  {
+    "position": 685,
+    "text": "would",
+    "start": 369.1,
+    "end": 369.98
+  },
+  {
+    "position": 686,
+    "text": "never",
+    "start": 369.98,
+    "end": 370.46
+  },
+  {
+    "position": 687,
+    "text": "put",
+    "start": 370.46,
+    "end": 370.92
+  },
+  {
+    "position": 688,
+    "text": "it",
+    "start": 370.92,
+    "end": 371.06
+  },
+  {
+    "position": 689,
+    "text": "on",
+    "start": 371.06,
+    "end": 371.26
+  },
+  {
+    "position": 690,
+    "text": "his",
+    "start": 371.26,
+    "end": 371.44
+  },
+  {
+    "position": 691,
+    "text": "back.\u201d",
+    "start": 371.44,
+    "end": 371.82
+  },
+  {
+    "position": 692,
+    "text": "\u201cYou",
+    "start": 372.7,
+    "end": 373.16
+  },
+  {
+    "position": 693,
+    "text": "aren\u2019t",
+    "start": 373.16,
+    "end": 373.64
+  },
+  {
+    "position": 694,
+    "text": "Cristiano",
+    "start": 373.64,
+    "end": 374.4
+  },
+  {
+    "position": 695,
+    "text": "Ronaldo.",
+    "start": 374.4,
+    "end": 374.96
+  },
+  {
+    "position": 696,
+    "text": "Anyway,",
+    "start": 375.82,
+    "end": 376.3
+  },
+  {
+    "position": 697,
+    "text": "it",
+    "start": 376.62,
+    "end": 376.74
+  },
+  {
+    "position": 698,
+    "text": "isn\u2019t",
+    "start": 376.74,
+    "end": 377.06
+  },
+  {
+    "position": 699,
+    "text": "what\u2019s",
+    "start": 377.06,
+    "end": 377.34
+  },
+  {
+    "position": 700,
+    "text": "on",
+    "start": 377.34,
+    "end": 377.48
+  },
+  {
+    "position": 701,
+    "text": "your",
+    "start": 377.48,
+    "end": 377.66
+  },
+  {
+    "position": 702,
+    "text": "back",
+    "start": 377.66,
+    "end": 378.0
+  },
+  {
+    "position": 703,
+    "text": "that",
+    "start": 378.0,
+    "end": 378.28
+  },
+  {
+    "position": 704,
+    "text": "counts,",
+    "start": 378.28,
+    "end": 378.66
+  },
+  {
+    "position": 705,
+    "text": "it\u2019s",
+    "start": 379.14,
+    "end": 379.32
+  },
+  {
+    "position": 706,
+    "text": "what",
+    "start": 379.32,
+    "end": 379.48
+  },
+  {
+    "position": 707,
+    "text": "you\u2019ve",
+    "start": 379.48,
+    "end": 379.84
+  },
+  {
+    "position": 708,
+    "text": "got",
+    "start": 379.84,
+    "end": 380.0
+  },
+  {
+    "position": 709,
+    "text": "inside",
+    "start": 380.0,
+    "end": 380.96
+  },
+  {
+    "position": 710,
+    "text": "your",
+    "start": 380.96,
+    "end": 381.72
+  },
+  {
+    "position": 711,
+    "text": "head.\u201d",
+    "start": 381.72,
+    "end": 382.18
+  },
+  {
+    "position": 712,
+    "text": "\u201cYou\u2019ll",
+    "start": 382.18,
+    "end": 382.88
+  },
+  {
+    "position": 713,
+    "text": "never",
+    "start": 382.88,
+    "end": 383.18
+  },
+  {
+    "position": 714,
+    "text": "put",
+    "start": 383.18,
+    "end": 383.48
+  },
+  {
+    "position": 715,
+    "text": "it",
+    "start": 383.48,
+    "end": 383.62
+  },
+  {
+    "position": 716,
+    "text": "in",
+    "start": 383.62,
+    "end": 383.8
+  },
+  {
+    "position": 717,
+    "text": "my",
+    "start": 383.8,
+    "end": 384.04
+  },
+  {
+    "position": 718,
+    "text": "head",
+    "start": 384.04,
+    "end": 384.4
+  },
+  {
+    "position": 719,
+    "text": "to",
+    "start": 384.4,
+    "end": 384.7
+  },
+  {
+    "position": 720,
+    "text": "wear",
+    "start": 384.7,
+    "end": 384.98
+  },
+  {
+    "position": 721,
+    "text": "a",
+    "start": 384.98,
+    "end": 384.98
+  },
+  {
+    "position": 722,
+    "text": "FC",
+    "start": 385.34,
+    "end": 385.96
+  },
+  {
+    "position": 723,
+    "text": "Barcelona",
+    "start": 385.96,
+    "end": 386.7
+  },
+  {
+    "position": 724,
+    "text": "jersey!\u201d",
+    "start": 386.7,
+    "end": 387.48
+  },
+  {
+    "position": 725,
+    "text": "My",
+    "start": 388.14,
+    "end": 388.52
+  },
+  {
+    "position": 726,
+    "text": "mother",
+    "start": 388.52,
+    "end": 389.02
+  },
+  {
+    "position": 727,
+    "text": "sighed",
+    "start": 389.02,
+    "end": 391.9
+  },
+  {
+    "position": 728,
+    "text": "in",
+    "start": 391.9,
+    "end": 392.08
+  },
+  {
+    "position": 729,
+    "text": "despair",
+    "start": 392.08,
+    "end": 392.54
+  },
+  {
+    "position": 730,
+    "text": "and",
+    "start": 392.54,
+    "end": 393.18
+  },
+  {
+    "position": 731,
+    "text": "explained",
+    "start": 393.18,
+    "end": 393.54
+  },
+  {
+    "position": 732,
+    "text": "to",
+    "start": 393.54,
+    "end": 393.8
+  },
+  {
+    "position": 733,
+    "text": "me,",
+    "start": 393.8,
+    "end": 393.98
+  },
+  {
+    "position": 734,
+    "text": "\u201cI",
+    "start": 394.28,
+    "end": 395.02
+  },
+  {
+    "position": 735,
+    "text": "don\u2019t",
+    "start": 395.02,
+    "end": 395.34
+  },
+  {
+    "position": 736,
+    "text": "have",
+    "start": 395.34,
+    "end": 395.56
+  },
+  {
+    "position": 737,
+    "text": "all",
+    "start": 395.56,
+    "end": 396.08
+  },
+  {
+    "position": 738,
+    "text": "the",
+    "start": 396.08,
+    "end": 396.42
+  },
+  {
+    "position": 739,
+    "text": "time",
+    "start": 396.42,
+    "end": 396.78
+  },
+  {
+    "position": 740,
+    "text": "in",
+    "start": 396.78,
+    "end": 397.06
+  },
+  {
+    "position": 741,
+    "text": "the",
+    "start": 397.06,
+    "end": 397.28
+  },
+  {
+    "position": 742,
+    "text": "world",
+    "start": 397.28,
+    "end": 397.72
+  },
+  {
+    "position": 743,
+    "text": "to",
+    "start": 397.72,
+    "end": 397.94
+  },
+  {
+    "position": 744,
+    "text": "go",
+    "start": 397.94,
+    "end": 398.08
+  },
+  {
+    "position": 745,
+    "text": "shopping",
+    "start": 398.08,
+    "end": 398.54
+  },
+  {
+    "position": 746,
+    "text": "for",
+    "start": 398.54,
+    "end": 398.9
+  },
+  {
+    "position": 747,
+    "text": "you",
+    "start": 398.9,
+    "end": 399.14
+  },
+  {
+    "position": 748,
+    "text": "and",
+    "start": 399.14,
+    "end": 399.68
+  },
+  {
+    "position": 749,
+    "text": "your",
+    "start": 399.68,
+    "end": 399.82
+  },
+  {
+    "position": 750,
+    "text": "father.",
+    "start": 399.82,
+    "end": 400.28
+  },
+  {
+    "position": 751,
+    "text": "I\u2019m",
+    "start": 400.86,
+    "end": 401.02
+  },
+  {
+    "position": 752,
+    "text": "working",
+    "start": 401.02,
+    "end": 401.3
+  },
+  {
+    "position": 753,
+    "text": "two",
+    "start": 401.3,
+    "end": 401.66
+  },
+  {
+    "position": 754,
+    "text": "jobs",
+    "start": 401.66,
+    "end": 402.24
+  },
+  {
+    "position": 755,
+    "text": "right",
+    "start": 402.24,
+    "end": 402.5
+  },
+  {
+    "position": 756,
+    "text": "now",
+    "start": 402.5,
+    "end": 402.82
+  },
+  {
+    "position": 757,
+    "text": "and",
+    "start": 402.82,
+    "end": 403.54
+  },
+  {
+    "position": 758,
+    "text": "I\u2019m",
+    "start": 403.54,
+    "end": 403.76
+  },
+  {
+    "position": 759,
+    "text": "lucky",
+    "start": 403.76,
+    "end": 404.04
+  },
+  {
+    "position": 760,
+    "text": "if",
+    "start": 404.04,
+    "end": 404.36
+  },
+  {
+    "position": 761,
+    "text": "I",
+    "start": 404.36,
+    "end": 404.46
+  },
+  {
+    "position": 762,
+    "text": "have",
+    "start": 404.46,
+    "end": 404.68
+  },
+  {
+    "position": 763,
+    "text": "30",
+    "start": 404.68,
+    "end": 405.24
+  },
+  {
+    "position": 764,
+    "text": "minutes",
+    "start": 405.24,
+    "end": 405.58
+  },
+  {
+    "position": 765,
+    "text": "to",
+    "start": 405.58,
+    "end": 406.32
+  },
+  {
+    "position": 766,
+    "text": "go",
+    "start": 406.32,
+    "end": 406.52
+  },
+  {
+    "position": 767,
+    "text": "out",
+    "start": 406.52,
+    "end": 406.68
+  },
+  {
+    "position": 768,
+    "text": "for",
+    "start": 406.68,
+    "end": 406.96
+  },
+  {
+    "position": 769,
+    "text": "groceries.",
+    "start": 406.96,
+    "end": 407.46
+  },
+  {
+    "position": 770,
+    "text": "Do",
+    "start": 408.08,
+    "end": 408.44
+  },
+  {
+    "position": 771,
+    "text": "you",
+    "start": 408.44,
+    "end": 408.58
+  },
+  {
+    "position": 772,
+    "text": "know",
+    "start": 408.58,
+    "end": 408.78
+  },
+  {
+    "position": 773,
+    "text": "how",
+    "start": 408.78,
+    "end": 409.0
+  },
+  {
+    "position": 774,
+    "text": "far",
+    "start": 409.0,
+    "end": 409.36
+  },
+  {
+    "position": 775,
+    "text": "away",
+    "start": 409.36,
+    "end": 409.7
+  },
+  {
+    "position": 776,
+    "text": "the",
+    "start": 409.7,
+    "end": 410.08
+  },
+  {
+    "position": 777,
+    "text": "Adidas",
+    "start": 410.08,
+    "end": 410.74
+  },
+  {
+    "position": 778,
+    "text": "store",
+    "start": 410.74,
+    "end": 411.06
+  },
+  {
+    "position": 779,
+    "text": "is",
+    "start": 411.06,
+    "end": 411.3
+  },
+  {
+    "position": 780,
+    "text": "from",
+    "start": 411.3,
+    "end": 411.5
+  },
+  {
+    "position": 781,
+    "text": "here?",
+    "start": 411.5,
+    "end": 411.76
+  },
+  {
+    "position": 782,
+    "text": "1",
+    "start": 412.52,
+    "end": 412.52
+  },
+  {
+    "position": 783,
+    "text": "hour.",
+    "start": 412.82,
+    "end": 413.48
+  },
+  {
+    "position": 784,
+    "text": "And",
+    "start": 413.48,
+    "end": 414.32
+  },
+  {
+    "position": 785,
+    "text": "I\u2019m",
+    "start": 414.32,
+    "end": 414.52
+  },
+  {
+    "position": 786,
+    "text": "not",
+    "start": 414.52,
+    "end": 414.78
+  },
+  {
+    "position": 787,
+    "text": "going",
+    "start": 414.78,
+    "end": 415.84
+  },
+  {
+    "position": 788,
+    "text": "back",
+    "start": 415.84,
+    "end": 416.28
+  },
+  {
+    "position": 789,
+    "text": "to",
+    "start": 416.28,
+    "end": 416.74
+  },
+  {
+    "position": 790,
+    "text": "that",
+    "start": 416.74,
+    "end": 416.94
+  },
+  {
+    "position": 791,
+    "text": "store",
+    "start": 416.94,
+    "end": 417.4
+  },
+  {
+    "position": 792,
+    "text": "to",
+    "start": 417.4,
+    "end": 417.9
+  },
+  {
+    "position": 793,
+    "text": "ask",
+    "start": 417.9,
+    "end": 418.28
+  },
+  {
+    "position": 794,
+    "text": "for",
+    "start": 418.28,
+    "end": 418.54
+  },
+  {
+    "position": 795,
+    "text": "an",
+    "start": 418.54,
+    "end": 418.74
+  },
+  {
+    "position": 796,
+    "text": "exchange.",
+    "start": 418.74,
+    "end": 419.26
+  },
+  {
+    "position": 797,
+    "text": "It\u2019ll",
+    "start": 420.06,
+    "end": 420.26
+  },
+  {
+    "position": 798,
+    "text": "take",
+    "start": 420.26,
+    "end": 420.42
+  },
+  {
+    "position": 799,
+    "text": "10",
+    "start": 420.42,
+    "end": 420.88
+  },
+  {
+    "position": 800,
+    "text": "minutes",
+    "start": 420.88,
+    "end": 421.16
+  },
+  {
+    "position": 801,
+    "text": "for",
+    "start": 421.16,
+    "end": 421.5
+  },
+  {
+    "position": 802,
+    "text": "me",
+    "start": 421.5,
+    "end": 421.74
+  },
+  {
+    "position": 803,
+    "text": "to",
+    "start": 421.74,
+    "end": 422.38
+  },
+  {
+    "position": 804,
+    "text": "try",
+    "start": 422.38,
+    "end": 422.78
+  },
+  {
+    "position": 805,
+    "text": "to",
+    "start": 422.78,
+    "end": 422.98
+  },
+  {
+    "position": 806,
+    "text": "explain",
+    "start": 422.98,
+    "end": 423.42
+  },
+  {
+    "position": 807,
+    "text": "in",
+    "start": 423.42,
+    "end": 423.64
+  },
+  {
+    "position": 808,
+    "text": "English",
+    "start": 423.64,
+    "end": 423.98
+  },
+  {
+    "position": 809,
+    "text": "what",
+    "start": 423.98,
+    "end": 424.78
+  },
+  {
+    "position": 810,
+    "text": "the",
+    "start": 424.78,
+    "end": 425.18
+  },
+  {
+    "position": 811,
+    "text": "issue",
+    "start": 425.18,
+    "end": 425.5
+  },
+  {
+    "position": 812,
+    "text": "is.",
+    "start": 425.5,
+    "end": 425.92
+  },
+  {
+    "position": 813,
+    "text": "Do",
+    "start": 426.42,
+    "end": 426.62
+  },
+  {
+    "position": 814,
+    "text": "you",
+    "start": 426.62,
+    "end": 426.78
+  },
+  {
+    "position": 815,
+    "text": "think",
+    "start": 426.78,
+    "end": 427.14
+  },
+  {
+    "position": 816,
+    "text": "I",
+    "start": 427.14,
+    "end": 427.5
+  },
+  {
+    "position": 817,
+    "text": "wanna",
+    "start": 427.5,
+    "end": 427.84
+  },
+  {
+    "position": 818,
+    "text": "explain",
+    "start": 428.02,
+    "end": 428.4
+  },
+  {
+    "position": 819,
+    "text": "how",
+    "start": 428.4,
+    "end": 428.78
+  },
+  {
+    "position": 820,
+    "text": "my",
+    "start": 428.78,
+    "end": 428.94
+  },
+  {
+    "position": 821,
+    "text": "son",
+    "start": 428.94,
+    "end": 429.34
+  },
+  {
+    "position": 822,
+    "text": "is",
+    "start": 429.34,
+    "end": 429.92
+  },
+  {
+    "position": 823,
+    "text": "a",
+    "start": 429.92,
+    "end": 430.06
+  },
+  {
+    "position": 824,
+    "text": "spoiled",
+    "start": 430.06,
+    "end": 430.64
+  },
+  {
+    "position": 825,
+    "text": "brat",
+    "start": 430.64,
+    "end": 431.04
+  },
+  {
+    "position": 826,
+    "text": "who",
+    "start": 431.04,
+    "end": 431.58
+  },
+  {
+    "position": 827,
+    "text": "doesn\u2019t",
+    "start": 431.58,
+    "end": 432.04
+  },
+  {
+    "position": 828,
+    "text": "appreciate",
+    "start": 432.04,
+    "end": 432.7
+  },
+  {
+    "position": 829,
+    "text": "all",
+    "start": 432.7,
+    "end": 433.38
+  },
+  {
+    "position": 830,
+    "text": "the",
+    "start": 433.38,
+    "end": 433.66
+  },
+  {
+    "position": 831,
+    "text": "work",
+    "start": 433.66,
+    "end": 433.96
+  },
+  {
+    "position": 832,
+    "text": "his",
+    "start": 433.96,
+    "end": 434.52
+  },
+  {
+    "position": 833,
+    "text": "father",
+    "start": 435.38,
+    "end": 435.88
+  },
+  {
+    "position": 834,
+    "text": "and",
+    "start": 435.88,
+    "end": 435.88
+  },
+  {
+    "position": 835,
+    "text": "mother",
+    "start": 435.88,
+    "end": 435.88
+  },
+  {
+    "position": 836,
+    "text": "do",
+    "start": 435.88,
+    "end": 436.64
+  },
+  {
+    "position": 837,
+    "text": "to",
+    "start": 436.64,
+    "end": 436.92
+  },
+  {
+    "position": 838,
+    "text": "provide",
+    "start": 436.92,
+    "end": 437.36
+  },
+  {
+    "position": 839,
+    "text": "for",
+    "start": 437.36,
+    "end": 437.72
+  },
+  {
+    "position": 840,
+    "text": "him?",
+    "start": 437.72,
+    "end": 437.98
+  },
+  {
+    "position": 841,
+    "text": "So",
+    "start": 438.6,
+    "end": 439.02
+  },
+  {
+    "position": 842,
+    "text": "you\u2019re",
+    "start": 439.02,
+    "end": 439.28
+  },
+  {
+    "position": 843,
+    "text": "gonna",
+    "start": 439.28,
+    "end": 439.28
+  },
+  {
+    "position": 844,
+    "text": "wear",
+    "start": 439.52,
+    "end": 439.78
+  },
+  {
+    "position": 845,
+    "text": "this",
+    "start": 439.78,
+    "end": 440.06
+  },
+  {
+    "position": 846,
+    "text": "jersey",
+    "start": 440.06,
+    "end": 440.4
+  },
+  {
+    "position": 847,
+    "text": "or",
+    "start": 440.4,
+    "end": 441.1
+  },
+  {
+    "position": 848,
+    "text": "you",
+    "start": 441.1,
+    "end": 441.42
+  },
+  {
+    "position": 849,
+    "text": "won\u2019t",
+    "start": 441.42,
+    "end": 441.68
+  },
+  {
+    "position": 850,
+    "text": "be",
+    "start": 441.68,
+    "end": 441.8
+  },
+  {
+    "position": 851,
+    "text": "getting",
+    "start": 441.8,
+    "end": 442.08
+  },
+  {
+    "position": 852,
+    "text": "another",
+    "start": 442.08,
+    "end": 442.5
+  },
+  {
+    "position": 853,
+    "text": "one",
+    "start": 442.5,
+    "end": 442.88
+  },
+  {
+    "position": 854,
+    "text": "until",
+    "start": 442.88,
+    "end": 443.46
+  },
+  {
+    "position": 855,
+    "text": "you\u2019re",
+    "start": 443.46,
+    "end": 443.74
+  },
+  {
+    "position": 856,
+    "text": "18",
+    "start": 443.74,
+    "end": 444.04
+  },
+  {
+    "position": 857,
+    "text": "and",
+    "start": 444.04,
+    "end": 444.94
+  },
+  {
+    "position": 858,
+    "text": "find",
+    "start": 444.94,
+    "end": 445.22
+  },
+  {
+    "position": 859,
+    "text": "yourself",
+    "start": 445.22,
+    "end": 445.58
+  },
+  {
+    "position": 860,
+    "text": "a",
+    "start": 445.58,
+    "end": 445.78
+  },
+  {
+    "position": 861,
+    "text": "job.",
+    "start": 445.78,
+    "end": 446.04
+  },
+  {
+    "position": 862,
+    "text": "And",
+    "start": 446.64,
+    "end": 446.76
+  },
+  {
+    "position": 863,
+    "text": "don\u2019t",
+    "start": 446.76,
+    "end": 447.12
+  },
+  {
+    "position": 864,
+    "text": "even",
+    "start": 447.12,
+    "end": 447.66
+  },
+  {
+    "position": 865,
+    "text": "think",
+    "start": 447.66,
+    "end": 448.36
+  },
+  {
+    "position": 866,
+    "text": "about",
+    "start": 448.36,
+    "end": 449.1
+  },
+  {
+    "position": 867,
+    "text": "just",
+    "start": 449.1,
+    "end": 449.34
+  },
+  {
+    "position": 868,
+    "text": "wearing",
+    "start": 449.34,
+    "end": 449.64
+  },
+  {
+    "position": 869,
+    "text": "a",
+    "start": 449.64,
+    "end": 449.82
+  },
+  {
+    "position": 870,
+    "text": "t-shirt",
+    "start": 449.82,
+    "end": 449.82
+  },
+  {
+    "position": 871,
+    "text": "for",
+    "start": 450.14,
+    "end": 450.54
+  },
+  {
+    "position": 872,
+    "text": "your",
+    "start": 450.54,
+    "end": 450.68
+  },
+  {
+    "position": 873,
+    "text": "pickup",
+    "start": 450.68,
+    "end": 450.86
+  },
+  {
+    "position": 874,
+    "text": "games",
+    "start": 450.98,
+    "end": 451.3
+  },
+  {
+    "position": 875,
+    "text": "or",
+    "start": 451.3,
+    "end": 451.82
+  },
+  {
+    "position": 876,
+    "text": "putting",
+    "start": 451.82,
+    "end": 452.08
+  },
+  {
+    "position": 877,
+    "text": "a",
+    "start": 452.08,
+    "end": 452.24
+  },
+  {
+    "position": 878,
+    "text": "hole",
+    "start": 452.24,
+    "end": 452.44
+  },
+  {
+    "position": 879,
+    "text": "in",
+    "start": 452.44,
+    "end": 452.64
+  },
+  {
+    "position": 880,
+    "text": "it",
+    "start": 452.64,
+    "end": 452.82
+  },
+  {
+    "position": 881,
+    "text": "with",
+    "start": 452.82,
+    "end": 453.24
+  },
+  {
+    "position": 882,
+    "text": "scissors,",
+    "start": 453.24,
+    "end": 453.48
+  },
+  {
+    "position": 883,
+    "text": "cause",
+    "start": 453.48,
+    "end": 453.48
+  },
+  {
+    "position": 884,
+    "text": "I\u2019ll",
+    "start": 454.34,
+    "end": 454.62
+  },
+  {
+    "position": 885,
+    "text": "know",
+    "start": 454.62,
+    "end": 454.82
+  },
+  {
+    "position": 886,
+    "text": "and",
+    "start": 454.82,
+    "end": 455.86
+  },
+  {
+    "position": 887,
+    "text": "there",
+    "start": 455.86,
+    "end": 456.08
+  },
+  {
+    "position": 888,
+    "text": "will",
+    "start": 456.08,
+    "end": 456.44
+  },
+  {
+    "position": 889,
+    "text": "be",
+    "start": 456.44,
+    "end": 457.2
+  },
+  {
+    "position": 890,
+    "text": "consequences,\u201d",
+    "start": 457.2,
+    "end": 457.92
+  },
+  {
+    "position": 891,
+    "text": "and",
+    "start": 458.74,
+    "end": 459.18
+  },
+  {
+    "position": 892,
+    "text": "with",
+    "start": 459.18,
+    "end": 459.34
+  },
+  {
+    "position": 893,
+    "text": "that",
+    "start": 459.34,
+    "end": 459.62
+  },
+  {
+    "position": 894,
+    "text": "she",
+    "start": 459.62,
+    "end": 459.96
+  },
+  {
+    "position": 895,
+    "text": "raised",
+    "start": 459.96,
+    "end": 460.4
+  },
+  {
+    "position": 896,
+    "text": "her",
+    "start": 460.4,
+    "end": 460.58
+  },
+  {
+    "position": 897,
+    "text": "hand",
+    "start": 460.58,
+    "end": 461.06
+  },
+  {
+    "position": 898,
+    "text": "to",
+    "start": 461.06,
+    "end": 461.62
+  },
+  {
+    "position": 899,
+    "text": "threaten",
+    "start": 461.62,
+    "end": 461.98
+  },
+  {
+    "position": 900,
+    "text": "me",
+    "start": 461.98,
+    "end": 462.22
+  },
+  {
+    "position": 901,
+    "text": "with",
+    "start": 462.22,
+    "end": 462.52
+  },
+  {
+    "position": 902,
+    "text": "an",
+    "start": 462.52,
+    "end": 462.92
+  },
+  {
+    "position": 903,
+    "text": "invisible",
+    "start": 462.92,
+    "end": 463.48
+  },
+  {
+    "position": 904,
+    "text": "flip",
+    "start": 463.48,
+    "end": 463.96
+  },
+  {
+    "position": 905,
+    "text": "flop",
+    "start": 463.96,
+    "end": 464.5
+  },
+  {
+    "position": 906,
+    "text": "in",
+    "start": 464.5,
+    "end": 465.18
+  },
+  {
+    "position": 907,
+    "text": "her",
+    "start": 465.18,
+    "end": 465.32
+  },
+  {
+    "position": 908,
+    "text": "hand.",
+    "start": 465.32,
+    "end": 465.76
+  },
+  {
+    "position": 909,
+    "text": "The",
+    "start": 466.4,
+    "end": 466.54
+  },
+  {
+    "position": 910,
+    "text": "message",
+    "start": 466.54,
+    "end": 466.82
+  },
+  {
+    "position": 911,
+    "text": "was",
+    "start": 466.82,
+    "end": 467.64
+  },
+  {
+    "position": 912,
+    "text": "understood.",
+    "start": 467.64,
+    "end": 468.26
+  },
+  {
+    "position": 913,
+    "text": "So",
+    "start": 468.88,
+    "end": 469.2
+  },
+  {
+    "position": 914,
+    "text": "I",
+    "start": 469.2,
+    "end": 469.4
+  },
+  {
+    "position": 915,
+    "text": "was",
+    "start": 469.4,
+    "end": 469.66
+  },
+  {
+    "position": 916,
+    "text": "obliged",
+    "start": 469.66,
+    "end": 470.34
+  },
+  {
+    "position": 917,
+    "text": "to",
+    "start": 470.34,
+    "end": 470.92
+  },
+  {
+    "position": 918,
+    "text": "wear",
+    "start": 470.92,
+    "end": 471.22
+  },
+  {
+    "position": 919,
+    "text": "the",
+    "start": 471.22,
+    "end": 471.48
+  },
+  {
+    "position": 920,
+    "text": "Messi",
+    "start": 471.48,
+    "end": 471.48
+  },
+  {
+    "position": 921,
+    "text": "jersey.",
+    "start": 471.82,
+    "end": 472.28
+  },
+  {
+    "position": 922,
+    "text": "When",
+    "start": 472.86,
+    "end": 473.12
+  },
+  {
+    "position": 923,
+    "text": "I",
+    "start": 473.12,
+    "end": 473.28
+  },
+  {
+    "position": 924,
+    "text": "arrived",
+    "start": 473.28,
+    "end": 473.9
+  },
+  {
+    "position": 925,
+    "text": "at",
+    "start": 473.9,
+    "end": 474.1
+  },
+  {
+    "position": 926,
+    "text": "the",
+    "start": 474.1,
+    "end": 474.3
+  },
+  {
+    "position": 927,
+    "text": "soccer",
+    "start": 474.3,
+    "end": 474.72
+  },
+  {
+    "position": 928,
+    "text": "field,",
+    "start": 474.72,
+    "end": 475.24
+  },
+  {
+    "position": 929,
+    "text": "all",
+    "start": 475.24,
+    "end": 475.94
+  },
+  {
+    "position": 930,
+    "text": "my",
+    "start": 475.94,
+    "end": 476.26
+  },
+  {
+    "position": 931,
+    "text": "fellow",
+    "start": 476.26,
+    "end": 476.68
+  },
+  {
+    "position": 932,
+    "text": "CR7",
+    "start": 476.68,
+    "end": 477.86
+  },
+  {
+    "position": 933,
+    "text": "worshippers",
+    "start": 477.86,
+    "end": 477.86
+  },
+  {
+    "position": 934,
+    "text": "gave",
+    "start": 478.74,
+    "end": 479.44
+  },
+  {
+    "position": 935,
+    "text": "me",
+    "start": 479.44,
+    "end": 479.84
+  },
+  {
+    "position": 936,
+    "text": "a",
+    "start": 479.84,
+    "end": 480.46
+  },
+  {
+    "position": 937,
+    "text": "dirty",
+    "start": 480.46,
+    "end": 481.02
+  },
+  {
+    "position": 938,
+    "text": "look,",
+    "start": 481.02,
+    "end": 481.88
+  },
+  {
+    "position": 939,
+    "text": "while",
+    "start": 481.88,
+    "end": 482.52
+  },
+  {
+    "position": 940,
+    "text": "all",
+    "start": 482.52,
+    "end": 482.94
+  },
+  {
+    "position": 941,
+    "text": "the",
+    "start": 482.94,
+    "end": 483.2
+  },
+  {
+    "position": 942,
+    "text": "Messi",
+    "start": 483.2,
+    "end": 483.66
+  },
+  {
+    "position": 943,
+    "text": "worshippers",
+    "start": 483.66,
+    "end": 483.66
+  },
+  {
+    "position": 944,
+    "text": "came",
+    "start": 484.54,
+    "end": 485.06
+  },
+  {
+    "position": 945,
+    "text": "and",
+    "start": 485.06,
+    "end": 485.8
+  },
+  {
+    "position": 946,
+    "text": "gave",
+    "start": 485.8,
+    "end": 486.08
+  },
+  {
+    "position": 947,
+    "text": "me",
+    "start": 486.08,
+    "end": 486.34
+  },
+  {
+    "position": 948,
+    "text": "a",
+    "start": 486.34,
+    "end": 486.46
+  },
+  {
+    "position": 949,
+    "text": "pat",
+    "start": 486.46,
+    "end": 486.72
+  },
+  {
+    "position": 950,
+    "text": "on",
+    "start": 486.72,
+    "end": 487.06
+  },
+  {
+    "position": 951,
+    "text": "the",
+    "start": 487.06,
+    "end": 487.22
+  },
+  {
+    "position": 952,
+    "text": "back",
+    "start": 487.22,
+    "end": 487.5
+  },
+  {
+    "position": 953,
+    "text": "and",
+    "start": 487.5,
+    "end": 488.1
+  },
+  {
+    "position": 954,
+    "text": "told",
+    "start": 488.1,
+    "end": 488.36
+  },
+  {
+    "position": 955,
+    "text": "me",
+    "start": 488.36,
+    "end": 488.6
+  },
+  {
+    "position": 956,
+    "text": "that",
+    "start": 488.6,
+    "end": 489.22
+  },
+  {
+    "position": 957,
+    "text": "they",
+    "start": 489.22,
+    "end": 489.4
+  },
+  {
+    "position": 958,
+    "text": "were",
+    "start": 489.4,
+    "end": 489.54
+  },
+  {
+    "position": 959,
+    "text": "glad",
+    "start": 489.54,
+    "end": 489.86
+  },
+  {
+    "position": 960,
+    "text": "that",
+    "start": 489.86,
+    "end": 490.12
+  },
+  {
+    "position": 961,
+    "text": "I",
+    "start": 490.12,
+    "end": 490.22
+  },
+  {
+    "position": 962,
+    "text": "had",
+    "start": 490.22,
+    "end": 490.4
+  },
+  {
+    "position": 963,
+    "text": "finally",
+    "start": 490.4,
+    "end": 491.02
+  },
+  {
+    "position": 964,
+    "text": "come",
+    "start": 491.02,
+    "end": 491.4
+  },
+  {
+    "position": 965,
+    "text": "to",
+    "start": 491.4,
+    "end": 491.64
+  },
+  {
+    "position": 966,
+    "text": "my",
+    "start": 491.64,
+    "end": 491.8
+  },
+  {
+    "position": 967,
+    "text": "senses",
+    "start": 491.8,
+    "end": 492.28
+  },
+  {
+    "position": 968,
+    "text": "and",
+    "start": 492.28,
+    "end": 493.04
+  },
+  {
+    "position": 969,
+    "text": "realized",
+    "start": 493.04,
+    "end": 493.62
+  },
+  {
+    "position": 970,
+    "text": "that",
+    "start": 493.62,
+    "end": 494.0
+  },
+  {
+    "position": 971,
+    "text": "Messi",
+    "start": 494.0,
+    "end": 494.44
+  },
+  {
+    "position": 972,
+    "text": "was",
+    "start": 494.44,
+    "end": 495.3
+  },
+  {
+    "position": 973,
+    "text": "the",
+    "start": 495.3,
+    "end": 495.54
+  },
+  {
+    "position": 974,
+    "text": "GOAT.",
+    "start": 495.54,
+    "end": 495.76
+  },
+  {
+    "position": 975,
+    "text": "When",
+    "start": 496.54,
+    "end": 496.94
+  },
+  {
+    "position": 976,
+    "text": "the",
+    "start": 496.94,
+    "end": 497.06
+  },
+  {
+    "position": 977,
+    "text": "game",
+    "start": 497.06,
+    "end": 497.24
+  },
+  {
+    "position": 978,
+    "text": "got",
+    "start": 497.24,
+    "end": 497.24
+  },
+  {
+    "position": 979,
+    "text": "started,",
+    "start": 497.24,
+    "end": 497.66
+  },
+  {
+    "position": 980,
+    "text": "I",
+    "start": 497.66,
+    "end": 498.26
+  },
+  {
+    "position": 981,
+    "text": "tried",
+    "start": 498.26,
+    "end": 498.72
+  },
+  {
+    "position": 982,
+    "text": "to",
+    "start": 498.72,
+    "end": 499.1
+  },
+  {
+    "position": 983,
+    "text": "go",
+    "start": 499.1,
+    "end": 499.32
+  },
+  {
+    "position": 984,
+    "text": "over",
+    "start": 499.32,
+    "end": 499.74
+  },
+  {
+    "position": 985,
+    "text": "to",
+    "start": 499.74,
+    "end": 499.94
+  },
+  {
+    "position": 986,
+    "text": "the",
+    "start": 499.94,
+    "end": 500.1
+  },
+  {
+    "position": 987,
+    "text": "CR7",
+    "start": 500.1,
+    "end": 501.14
+  },
+  {
+    "position": 988,
+    "text": "side,",
+    "start": 501.14,
+    "end": 501.78
+  },
+  {
+    "position": 989,
+    "text": "but",
+    "start": 501.78,
+    "end": 502.54
+  },
+  {
+    "position": 990,
+    "text": "was",
+    "start": 502.54,
+    "end": 502.76
+  },
+  {
+    "position": 991,
+    "text": "quickly",
+    "start": 502.76,
+    "end": 503.32
+  },
+  {
+    "position": 992,
+    "text": "rejected.",
+    "start": 503.32,
+    "end": 504.12
+  },
+  {
+    "position": 993,
+    "text": "They",
+    "start": 504.72,
+    "end": 505.08
+  },
+  {
+    "position": 994,
+    "text": "yelled",
+    "start": 505.08,
+    "end": 505.52
+  },
+  {
+    "position": 995,
+    "text": "at",
+    "start": 505.52,
+    "end": 505.66
+  },
+  {
+    "position": 996,
+    "text": "me",
+    "start": 505.66,
+    "end": 505.9
+  },
+  {
+    "position": 997,
+    "text": "to",
+    "start": 505.9,
+    "end": 506.1
+  },
+  {
+    "position": 998,
+    "text": "get",
+    "start": 506.1,
+    "end": 506.38
+  },
+  {
+    "position": 999,
+    "text": "onto",
+    "start": 506.38,
+    "end": 506.8
+  },
+  {
+    "position": 1000,
+    "text": "my",
+    "start": 506.8,
+    "end": 507.1
+  },
+  {
+    "position": 1001,
+    "text": "side,",
+    "start": 507.1,
+    "end": 507.68
+  },
+  {
+    "position": 1002,
+    "text": "the",
+    "start": 507.68,
+    "end": 508.26
+  },
+  {
+    "position": 1003,
+    "text": "Messi",
+    "start": 508.26,
+    "end": 508.6
+  },
+  {
+    "position": 1004,
+    "text": "side.",
+    "start": 508.6,
+    "end": 509.1
+  },
+  {
+    "position": 1005,
+    "text": "Dejected,",
+    "start": 509.72,
+    "end": 509.72
+  },
+  {
+    "position": 1006,
+    "text": "I",
+    "start": 510.26,
+    "end": 510.9
+  },
+  {
+    "position": 1007,
+    "text": "went",
+    "start": 510.9,
+    "end": 511.14
+  },
+  {
+    "position": 1008,
+    "text": "over",
+    "start": 511.14,
+    "end": 511.46
+  },
+  {
+    "position": 1009,
+    "text": "and",
+    "start": 511.46,
+    "end": 511.78
+  },
+  {
+    "position": 1010,
+    "text": "joined",
+    "start": 511.78,
+    "end": 512.44
+  },
+  {
+    "position": 1011,
+    "text": "my",
+    "start": 512.44,
+    "end": 512.78
+  },
+  {
+    "position": 1012,
+    "text": "sworn",
+    "start": 512.78,
+    "end": 513.56
+  },
+  {
+    "position": 1013,
+    "text": "enemies.",
+    "start": 513.56,
+    "end": 514.34
+  },
+  {
+    "position": 1014,
+    "text": "They",
+    "start": 515.06,
+    "end": 515.34
+  },
+  {
+    "position": 1015,
+    "text": "put",
+    "start": 515.34,
+    "end": 515.52
+  },
+  {
+    "position": 1016,
+    "text": "me",
+    "start": 515.52,
+    "end": 515.72
+  },
+  {
+    "position": 1017,
+    "text": "on",
+    "start": 515.72,
+    "end": 515.9
+  },
+  {
+    "position": 1018,
+    "text": "defence",
+    "start": 515.9,
+    "end": 516.28
+  },
+  {
+    "position": 1019,
+    "text": "when",
+    "start": 516.64,
+    "end": 517.04
+  },
+  {
+    "position": 1020,
+    "text": "the",
+    "start": 517.04,
+    "end": 517.16
+  },
+  {
+    "position": 1021,
+    "text": "game",
+    "start": 517.16,
+    "end": 517.34
+  },
+  {
+    "position": 1022,
+    "text": "started,",
+    "start": 517.34,
+    "end": 517.82
+  },
+  {
+    "position": 1023,
+    "text": "and",
+    "start": 517.82,
+    "end": 518.42
+  },
+  {
+    "position": 1024,
+    "text": "I",
+    "start": 518.42,
+    "end": 518.6
+  },
+  {
+    "position": 1025,
+    "text": "easily",
+    "start": 518.6,
+    "end": 519.5
+  },
+  {
+    "position": 1026,
+    "text": "let",
+    "start": 519.5,
+    "end": 520.16
+  },
+  {
+    "position": 1027,
+    "text": "the",
+    "start": 520.16,
+    "end": 520.58
+  },
+  {
+    "position": 1028,
+    "text": "other",
+    "start": 520.58,
+    "end": 520.76
+  },
+  {
+    "position": 1029,
+    "text": "teams",
+    "start": 520.76,
+    "end": 521.32
+  },
+  {
+    "position": 1030,
+    "text": "forwards",
+    "start": 521.32,
+    "end": 522.58
+  },
+  {
+    "position": 1031,
+    "text": "get",
+    "start": 522.58,
+    "end": 523.06
+  },
+  {
+    "position": 1032,
+    "text": "passed.",
+    "start": 523.06,
+    "end": 523.06
+  },
+  {
+    "position": 1033,
+    "text": "I",
+    "start": 524.36,
+    "end": 524.72
+  },
+  {
+    "position": 1034,
+    "text": "didn\u2019t",
+    "start": 524.72,
+    "end": 525.06
+  },
+  {
+    "position": 1035,
+    "text": "have",
+    "start": 525.06,
+    "end": 525.36
+  },
+  {
+    "position": 1036,
+    "text": "the",
+    "start": 525.36,
+    "end": 525.62
+  },
+  {
+    "position": 1037,
+    "text": "desire",
+    "start": 525.62,
+    "end": 526.26
+  },
+  {
+    "position": 1038,
+    "text": "to",
+    "start": 526.26,
+    "end": 526.74
+  },
+  {
+    "position": 1039,
+    "text": "play",
+    "start": 526.74,
+    "end": 527.14
+  },
+  {
+    "position": 1040,
+    "text": "with",
+    "start": 527.14,
+    "end": 527.62
+  },
+  {
+    "position": 1041,
+    "text": "such",
+    "start": 527.62,
+    "end": 528.36
+  },
+  {
+    "position": 1042,
+    "text": "a",
+    "start": 528.36,
+    "end": 528.64
+  },
+  {
+    "position": 1043,
+    "text": "horrendous",
+    "start": 528.64,
+    "end": 529.82
+  },
+  {
+    "position": 1044,
+    "text": "jersey",
+    "start": 529.82,
+    "end": 530.04
+  },
+  {
+    "position": 1045,
+    "text": "on",
+    "start": 530.04,
+    "end": 530.52
+  },
+  {
+    "position": 1046,
+    "text": "my",
+    "start": 530.52,
+    "end": 530.7
+  },
+  {
+    "position": 1047,
+    "text": "body.",
+    "start": 530.7,
+    "end": 531.16
+  },
+  {
+    "position": 1048,
+    "text": "After",
+    "start": 532.08,
+    "end": 532.48
+  },
+  {
+    "position": 1049,
+    "text": "letting",
+    "start": 532.48,
+    "end": 532.78
+  },
+  {
+    "position": 1050,
+    "text": "the",
+    "start": 532.78,
+    "end": 532.98
+  },
+  {
+    "position": 1051,
+    "text": "CR7",
+    "start": 532.98,
+    "end": 533.82
+  },
+  {
+    "position": 1052,
+    "text": "team",
+    "start": 533.82,
+    "end": 534.22
+  },
+  {
+    "position": 1053,
+    "text": "score",
+    "start": 534.22,
+    "end": 534.52
+  },
+  {
+    "position": 1054,
+    "text": "3",
+    "start": 534.52,
+    "end": 534.52
+  },
+  {
+    "position": 1055,
+    "text": "goals,",
+    "start": 534.9,
+    "end": 535.48
+  },
+  {
+    "position": 1056,
+    "text": "team",
+    "start": 536.03,
+    "end": 536.36
+  },
+  {
+    "position": 1057,
+    "text": "Messi",
+    "start": 536.36,
+    "end": 536.72
+  },
+  {
+    "position": 1058,
+    "text": "told",
+    "start": 536.72,
+    "end": 537.02
+  },
+  {
+    "position": 1059,
+    "text": "me",
+    "start": 537.02,
+    "end": 537.22
+  },
+  {
+    "position": 1060,
+    "text": "to",
+    "start": 537.22,
+    "end": 537.36
+  },
+  {
+    "position": 1061,
+    "text": "get",
+    "start": 537.36,
+    "end": 537.68
+  },
+  {
+    "position": 1062,
+    "text": "off",
+    "start": 537.68,
+    "end": 537.94
+  },
+  {
+    "position": 1063,
+    "text": "the",
+    "start": 537.94,
+    "end": 538.16
+  },
+  {
+    "position": 1064,
+    "text": "field",
+    "start": 538.16,
+    "end": 538.66
+  },
+  {
+    "position": 1065,
+    "text": "and",
+    "start": 538.66,
+    "end": 539.2
+  },
+  {
+    "position": 1066,
+    "text": "watch",
+    "start": 539.2,
+    "end": 539.56
+  },
+  {
+    "position": 1067,
+    "text": "from",
+    "start": 539.56,
+    "end": 539.86
+  },
+  {
+    "position": 1068,
+    "text": "the",
+    "start": 539.86,
+    "end": 540.02
+  },
+  {
+    "position": 1069,
+    "text": "sidelines",
+    "start": 540.02,
+    "end": 540.8
+  },
+  {
+    "position": 1070,
+    "text": "and",
+    "start": 540.8,
+    "end": 541.28
+  },
+  {
+    "position": 1071,
+    "text": "replaced",
+    "start": 541.28,
+    "end": 541.62
+  },
+  {
+    "position": 1072,
+    "text": "me",
+    "start": 541.62,
+    "end": 542.04
+  },
+  {
+    "position": 1073,
+    "text": "with",
+    "start": 542.04,
+    "end": 542.62
+  },
+  {
+    "position": 1074,
+    "text": "the",
+    "start": 542.62,
+    "end": 542.76
+  },
+  {
+    "position": 1075,
+    "text": "5-year-old",
+    "start": 542.76,
+    "end": 542.76
+  },
+  {
+    "position": 1076,
+    "text": "Messi",
+    "start": 543.48,
+    "end": 543.78
+  },
+  {
+    "position": 1077,
+    "text": "fan",
+    "start": 543.78,
+    "end": 544.16
+  },
+  {
+    "position": 1078,
+    "text": "who",
+    "start": 544.16,
+    "end": 544.66
+  },
+  {
+    "position": 1079,
+    "text": "could",
+    "start": 544.66,
+    "end": 544.84
+  },
+  {
+    "position": 1080,
+    "text": "barely",
+    "start": 544.84,
+    "end": 545.18
+  },
+  {
+    "position": 1081,
+    "text": "kick",
+    "start": 545.18,
+    "end": 545.42
+  },
+  {
+    "position": 1082,
+    "text": "a",
+    "start": 545.42,
+    "end": 545.56
+  },
+  {
+    "position": 1083,
+    "text": "ball.",
+    "start": 545.56,
+    "end": 545.86
+  },
+  {
+    "position": 1084,
+    "text": "That",
+    "start": 546.86,
+    "end": 547.2
+  },
+  {
+    "position": 1085,
+    "text": "Sunday",
+    "start": 547.2,
+    "end": 547.62
+  },
+  {
+    "position": 1086,
+    "text": "morning",
+    "start": 547.62,
+    "end": 548.02
+  },
+  {
+    "position": 1087,
+    "text": "when",
+    "start": 548.02,
+    "end": 548.68
+  },
+  {
+    "position": 1088,
+    "text": "we",
+    "start": 548.68,
+    "end": 548.82
+  },
+  {
+    "position": 1089,
+    "text": "went",
+    "start": 548.82,
+    "end": 548.96
+  },
+  {
+    "position": 1090,
+    "text": "to",
+    "start": 548.96,
+    "end": 549.14
+  },
+  {
+    "position": 1091,
+    "text": "church,",
+    "start": 549.14,
+    "end": 549.5
+  },
+  {
+    "position": 1092,
+    "text": "I",
+    "start": 549.5,
+    "end": 550.06
+  },
+  {
+    "position": 1093,
+    "text": "prayed",
+    "start": 550.06,
+    "end": 550.34
+  },
+  {
+    "position": 1094,
+    "text": "to",
+    "start": 550.34,
+    "end": 550.6
+  },
+  {
+    "position": 1095,
+    "text": "God.",
+    "start": 550.6,
+    "end": 550.96
+  },
+  {
+    "position": 1096,
+    "text": "I",
+    "start": 551.8,
+    "end": 552.08
+  },
+  {
+    "position": 1097,
+    "text": "asked",
+    "start": 552.08,
+    "end": 552.38
+  },
+  {
+    "position": 1098,
+    "text": "him",
+    "start": 552.38,
+    "end": 552.5
+  },
+  {
+    "position": 1099,
+    "text": "to",
+    "start": 552.5,
+    "end": 552.66
+  },
+  {
+    "position": 1100,
+    "text": "send",
+    "start": 552.66,
+    "end": 552.76
+  },
+  {
+    "position": 1101,
+    "text": "as",
+    "start": 552.76,
+    "end": 552.94
+  },
+  {
+    "position": 1102,
+    "text": "quickly",
+    "start": 552.94,
+    "end": 553.42
+  },
+  {
+    "position": 1103,
+    "text": "as",
+    "start": 553.42,
+    "end": 554.0
+  },
+  {
+    "position": 1104,
+    "text": "possible",
+    "start": 554.0,
+    "end": 554.58
+  },
+  {
+    "position": 1105,
+    "text": "some",
+    "start": 554.58,
+    "end": 554.82
+  },
+  {
+    "position": 1106,
+    "text": "sort",
+    "start": 554.82,
+    "end": 555.04
+  },
+  {
+    "position": 1107,
+    "text": "of",
+    "start": 555.04,
+    "end": 555.22
+  },
+  {
+    "position": 1108,
+    "text": "plague",
+    "start": 555.22,
+    "end": 555.66
+  },
+  {
+    "position": 1109,
+    "text": "or",
+    "start": 555.66,
+    "end": 556.42
+  },
+  {
+    "position": 1110,
+    "text": "natural",
+    "start": 556.42,
+    "end": 556.92
+  },
+  {
+    "position": 1111,
+    "text": "disaster",
+    "start": 556.92,
+    "end": 557.66
+  },
+  {
+    "position": 1112,
+    "text": "to",
+    "start": 557.66,
+    "end": 558.3
+  },
+  {
+    "position": 1113,
+    "text": "destroy",
+    "start": 558.3,
+    "end": 558.72
+  },
+  {
+    "position": 1114,
+    "text": "my",
+    "start": 558.72,
+    "end": 558.96
+  },
+  {
+    "position": 1115,
+    "text": "closet",
+    "start": 558.96,
+    "end": 559.48
+  },
+  {
+    "position": 1116,
+    "text": "so",
+    "start": 559.48,
+    "end": 560.28
+  },
+  {
+    "position": 1117,
+    "text": "that",
+    "start": 560.28,
+    "end": 560.4
+  },
+  {
+    "position": 1118,
+    "text": "my",
+    "start": 560.4,
+    "end": 560.54
+  },
+  {
+    "position": 1119,
+    "text": "mom",
+    "start": 560.54,
+    "end": 560.9
+  },
+  {
+    "position": 1120,
+    "text": "would",
+    "start": 560.9,
+    "end": 561.3
+  },
+  {
+    "position": 1121,
+    "text": "be",
+    "start": 561.3,
+    "end": 561.46
+  },
+  {
+    "position": 1122,
+    "text": "forced",
+    "start": 561.46,
+    "end": 562.06
+  },
+  {
+    "position": 1123,
+    "text": "to",
+    "start": 562.06,
+    "end": 562.3
+  },
+  {
+    "position": 1124,
+    "text": "buy",
+    "start": 562.3,
+    "end": 562.54
+  },
+  {
+    "position": 1125,
+    "text": "me",
+    "start": 562.54,
+    "end": 562.78
+  },
+  {
+    "position": 1126,
+    "text": "a",
+    "start": 562.78,
+    "end": 562.88
+  },
+  {
+    "position": 1127,
+    "text": "new",
+    "start": 562.88,
+    "end": 563.3
+  },
+  {
+    "position": 1128,
+    "text": "CR7",
+    "start": 563.3,
+    "end": 564.96
+  },
+  {
+    "position": 1129,
+    "text": "Real",
+    "start": 564.96,
+    "end": 565.88
+  },
+  {
+    "position": 1130,
+    "text": "Madrid",
+    "start": 565.88,
+    "end": 566.92
+  },
+  {
+    "position": 1131,
+    "text": "jersey.",
+    "start": 566.92,
+    "end": 568.12
+  }
+]
