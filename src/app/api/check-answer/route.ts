@@ -2,36 +2,51 @@ import { NextRequest, NextResponse } from "next/server";
 
 // ── API Route: /api/check-answer ───────────────────────────
 // Receives a personal question and the student's English answer.
-// Calls OpenRouter (GPT-4o-mini) to give feedback in Spanish
-// on grammar, vocabulary, and naturalness. Kyle's voice: direct,
-// warm, no jargon. The correct answer is NOT revealed (there is
-// no single correct answer for personal questions).
+// Calls OpenRouter (GPT-4o-mini) to return the corrected text with
+// inline markup for additions, deletions, and a short Spanish note.
+//
+// The AI returns JSON with:
+//   - corrections: array of segments, each is { text, type }
+//     where type is "correct" | "added" | "deleted"
+//   - note: a short Spanish explanation (1-2 sentences, Kyle's voice)
 //
 // Environment variable OPENROUTER_API_KEY is server-side only.
-// It is never exposed to the browser.
 
 type CheckAnswerRequest = {
   question: string;
   answer: string;
 };
 
-const SYSTEM_PROMPT = `You are Profe Kyle, a Canadian English teacher who has lived in Latin America and speaks Spanish. You're giving feedback to a Spanish-speaking Latin American adult learner who is practicing English.
+const SYSTEM_PROMPT = `You are Profe Kyle, a Canadian English teacher who has lived in Latin America and speaks Spanish. You're correcting a Spanish-speaking Latin American adult learner's English answer to a personal question.
 
-Your job: read the student's answer to a personal question and give brief, helpful feedback.
+Your job: return the student's text with inline corrections and a very short note in Spanish.
+
+OUTPUT FORMAT: Return ONLY a JSON object. No markdown, no code fences, no explanation outside the JSON.
+
+The JSON must have this exact shape:
+{
+  "corrections": [
+    { "text": "the student's text or corrected text", "type": "correct" }
+  ],
+  "note": "One short sentence in Spanish explaining the main error or confirming correctness."
+}
+
+The "corrections" array reconstructs the student's answer word by word, but with corrections marked:
+- type "correct": text that is fine as-is
+- type "added": text you are inserting (was missing, needed to be added)
+- type "deleted": text the student wrote that should be removed
 
 Rules:
-- Write your feedback in SPANISH (the student is learning English, but feedback should be in their language).
-- Be direct and warm. No corporate language. No "Great job!" empty praise.
-- If the grammar is correct, say so briefly. If there are errors, point them out and explain why.
-- Correct vocabulary choices. If they used a word awkwardly, suggest a more natural alternative.
-- Comment on naturalness: does this sound like something a native speaker would say?
-- Keep it short: 3-5 sentences max. Don't overwhelm.
-- Use Kyle's voice: "Te faltó el verbo auxiliar aquí:" not "The auxiliary verb is missing in this sentence."
-- If the answer is very short or empty, gently encourage them to write more.
-- Do NOT reveal a "correct answer." There is no single correct answer for personal questions.
-- Code-switching is fine: mix English and Spanish naturally, like Kyle does.
-
-Format your response as plain text. No markdown headers, no bullet points, no special formatting. Just talk to the student.`;
+- Keep corrections minimal. Only fix actual errors (grammar, word order, missing words, wrong words).
+- Do NOT rewrite the sentence to be "better" if it's already grammatically correct.
+- Each correction segment should be a word or short phrase, not a whole sentence.
+- The "note" should be in Spanish, 1-2 sentences max, in Kyle's voice: direct and warm.
+  Example: "Te falto la 's' en 'plays'. Recuerda la tercera persona del singular."
+  Example: "Todo esta bien. Tu respuesta es clara y correcta."
+- If the answer is very short (under 5 words), encourage them to write more in the note.
+- Do NOT change the student's meaning. Fix the English, don't rewrite their ideas.
+- Preserve the student's original capitalization and punctuation style unless it's wrong.
+- Return ONLY the JSON. No other text.`;
 
 export async function POST(request: NextRequest) {
   let body: CheckAnswerRequest;
@@ -88,8 +103,8 @@ export async function POST(request: NextRequest) {
               content: `Pregunta: ${question}\n\nRespuesta del estudiante: ${answer}`,
             },
           ],
-          max_tokens: 300,
-          temperature: 0.7,
+          max_tokens: 500,
+          temperature: 0.3,
         }),
       }
     );
@@ -103,16 +118,49 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await response.json();
-    const feedback = data.choices?.[0]?.message?.content;
+    const rawContent = data.choices?.[0]?.message?.content;
 
-    if (!feedback) {
+    if (!rawContent) {
       return NextResponse.json(
         { error: "No se pudo procesar tu respuesta. Intenta de nuevo." },
         { status: 502 }
       );
     }
 
-    return NextResponse.json({ feedback: feedback.trim() });
+    // Parse the JSON response from the AI.
+    // GPT-4o-mini sometimes wraps in markdown code fences despite instructions.
+    let jsonStr = rawContent.trim();
+    if (jsonStr.startsWith("```")) {
+      jsonStr = jsonStr.replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/, "");
+    }
+
+    let parsed: { corrections: Array<{ text: string; type: string }>; note: string };
+
+    try {
+      parsed = JSON.parse(jsonStr);
+    } catch {
+      console.error("Failed to parse AI response as JSON:", jsonStr);
+      return NextResponse.json(
+        { error: "No se pudo procesar tu respuesta. Intenta de nuevo." },
+        { status: 502 }
+      );
+    }
+
+    // Validate structure
+    if (!parsed.corrections || !Array.isArray(parsed.corrections)) {
+      return NextResponse.json(
+        { error: "No se pudo procesar tu respuesta. Intenta de nuevo." },
+        { status: 502 }
+      );
+    }
+
+    return NextResponse.json({
+      corrections: parsed.corrections.map((c) => ({
+        text: c.text || "",
+        type: c.type === "added" ? "added" : c.type === "deleted" ? "deleted" : "correct",
+      })),
+      note: parsed.note || "",
+    });
   } catch (err) {
     console.error("Check answer error:", err);
     return NextResponse.json(

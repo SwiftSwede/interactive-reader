@@ -14,9 +14,15 @@ type PersonalQuestionsProps = {
   questions: Question[];
 };
 
+type CorrectionSegment = {
+  text: string;
+  type: "correct" | "added" | "deleted";
+};
+
 type FeedbackState = {
   loading: boolean;
-  feedback: string | null;
+  corrections: CorrectionSegment[] | null;
+  note: string | null;
   error: string | null;
 };
 
@@ -42,10 +48,9 @@ export default function PersonalQuestions({
 
     if (!answer || answer.length < 2) return;
 
-    // Set loading state
     setFeedbackStates((prev) => ({
       ...prev,
-      [position]: { loading: true, feedback: null, error: null },
+      [position]: { loading: true, corrections: null, note: null, error: null },
     }));
 
     try {
@@ -62,14 +67,14 @@ export default function PersonalQuestions({
           ...prev,
           [position]: {
             loading: false,
-            feedback: null,
+            corrections: null,
+            note: null,
             error: data.error || "Algo salio mal. Intenta de nuevo.",
           },
         }));
         return;
       }
 
-      // Increment attempt count on successful feedback
       setAttempts((prev) => ({
         ...prev,
         [position]: (prev[position] || 0) + 1,
@@ -79,7 +84,8 @@ export default function PersonalQuestions({
         ...prev,
         [position]: {
           loading: false,
-          feedback: data.feedback,
+          corrections: data.corrections,
+          note: data.note,
           error: null,
         },
       }));
@@ -88,7 +94,8 @@ export default function PersonalQuestions({
         ...prev,
         [position]: {
           loading: false,
-          feedback: null,
+          corrections: null,
+          note: null,
           error: "Algo salio mal. Intenta de nuevo.",
         },
       }));
@@ -101,7 +108,7 @@ export default function PersonalQuestions({
 
     setFeedbackStates((prev) => ({
       ...prev,
-      [position]: { loading: false, feedback: null, error: null },
+      [position]: { loading: false, corrections: null, note: null, error: null },
     }));
     setAnswers((prev) => ({ ...prev, [position]: "" }));
   };
@@ -154,7 +161,7 @@ export default function PersonalQuestions({
               )}
 
               {/* Comprobar button */}
-              {!state?.feedback && !maxedOut && (
+              {!state?.corrections && !maxedOut && (
                 <button
                   onClick={() => handleCheck(q.position, q.question)}
                   disabled={!answer.trim() || state?.loading === true}
@@ -174,25 +181,69 @@ export default function PersonalQuestions({
                 <p className="mt-2 text-sm text-red-500">{state.error}</p>
               )}
 
-              {/* AI Feedback */}
-              {state?.feedback && (
+              {/* AI Feedback: inline corrections */}
+              {state?.corrections && (
                 <div className="mt-3 rounded-lg bg-indigo-50 border border-indigo-100 px-3 py-3">
-                  <p className="text-xs text-indigo-400 mb-1 font-medium">
-                    Feedback de Profe Kyle:
+                  <p className="text-xs text-indigo-400 mb-2 font-medium">
+                    Correccion de Profe Kyle:
                   </p>
-                  <p className="text-sm text-gray-800 whitespace-pre-wrap">
-                    {state.feedback}
+
+                  {/* Render corrected text with visual markup */}
+                  <p className="text-sm text-gray-800 leading-relaxed">
+                    {state.corrections.map((seg, i) => {
+                      if (seg.type === "added") {
+                        return (
+                          <span
+                            key={i}
+                            style={{
+                              color: "#059669",
+                              fontWeight: 600,
+                              backgroundColor: "#d1fae5",
+                              borderRadius: "2px",
+                              padding: "0 2px",
+                            }}
+                          >
+                            {seg.text}
+                          </span>
+                        );
+                      }
+                      if (seg.type === "deleted") {
+                        return (
+                          <span
+                            key={i}
+                            style={{
+                              color: "#dc2626",
+                              textDecoration: "line-through",
+                              backgroundColor: "#fee2e2",
+                              borderRadius: "2px",
+                              padding: "0 2px",
+                            }}
+                          >
+                            {seg.text}
+                          </span>
+                        );
+                      }
+                      return <span key={i}>{seg.text}</span>;
+                    })}
                   </p>
+
+                  {/* Spanish note from Kyle */}
+                  {state.note && (
+                    <p className="mt-2 text-sm text-gray-600 italic">
+                      {state.note}
+                    </p>
+                  )}
+
                   {/* Try again button or limit message */}
                   {maxedOut ? (
-                    <p className="mt-2 text-xs text-gray-400">
+                    <p className="mt-3 text-xs text-gray-400">
                       Si quieres seguir practicando con feedback de IA,
                       considera unirte al AI Coach cuando este disponible.
                     </p>
                   ) : (
                     <button
                       onClick={() => handleRetry(q.position)}
-                      className="mt-2 text-xs text-indigo-500 hover:text-indigo-700"
+                      className="mt-3 text-xs text-indigo-500 hover:text-indigo-700"
                       type="button"
                     >
                       Intentar de nuevo
