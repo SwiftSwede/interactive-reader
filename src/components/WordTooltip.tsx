@@ -39,7 +39,6 @@ type WordTooltipProps = {
   onDismiss: () => void;
   isActive: boolean;
   isExpressionActive: boolean;
-  isAudioCurrent: boolean;
 };
 
 function WordTooltip({
@@ -50,7 +49,6 @@ function WordTooltip({
   onDismiss,
   isActive,
   isExpressionActive,
-  isAudioCurrent,
 }: WordTooltipProps) {
   const spanRef = useRef<HTMLSpanElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -196,9 +194,7 @@ function WordTooltip({
         ref={spanRef}
         className={`word-span ${isHighlighted ? "word-seen" : ""} ${
           tooltip.visible ? "word-active" : ""
-        } ${isExpressionActive ? "word-expr-active" : ""} ${
-          isAudioCurrent ? "word-audio-current" : ""
-        }`}
+        } ${isExpressionActive ? "word-expr-active" : ""}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={handleClick}

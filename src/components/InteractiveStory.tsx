@@ -38,9 +38,19 @@ export default function InteractiveStory({
   const [activeExpressionId, setActiveExpressionId] = useState<string | null>(
     null
   );
-  const [audioCurrentTime, setAudioCurrentTime] = useState(0);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Refs for direct-DOM karaoke highlight (bypasses React render cycle).
+  // Driving the highlight through React state (setAudioCurrentTime 60x/sec)
+  // causes re-renders that mobile browsers can't keep up with, resulting
+  // in the highlight flashing for 1 frame and disappearing.
+  // Instead, StoryAudioPlayer calls onAudioTime with the current time,
+  // and a RAF loop here directly toggles the .word-audio-current CSS class
+  // on the appropriate DOM element via classList.
+  const audioTimeRef = useRef(0);
+  const karaokeRafRef = useRef<number | null>(null);
+  const highlightedPosRef = useRef<number>(-1);
 
   // Build expression lookup
   const expressionMap = useMemo(() => {
@@ -67,55 +77,92 @@ export default function InteractiveStory({
     return map;
   }, [words]);
 
-  // Find current word based on audio time.
-  // We use "last word whose start time has passed" rather than
-  // "is currentTime within [start, end)" because on mobile,
-  // audio.currentTime jumps in chunks. If it jumps past a word's
-  // end time, the old logic would lose the highlight for that word
-  // even though the audio is still pronouncing it. With this approach,
-  // the highlight stays on a word from its start until the next word
-  // begins, matching what the listener actually hears.
-  const currentAudioPosition = useMemo(() => {
-    if (!isAudioPlaying || audioCurrentTime === 0) return -1;
+  // ── Karaoke: direct DOM manipulation ───────────────────
+  // Finds the word span elements once, then on each RAF tick
+  // toggles the .word-audio-current class directly. No React
+  // state updates, no re-renders, no virtual DOM diffing.
 
-    // Binary search for the last word whose start <= currentTime
-    let lo = 0;
-    let hi = timestamps.length - 1;
-    let result = -1;
+  const getWordSpans = useCallback(() => {
+    return containerRef.current?.querySelectorAll<HTMLElement>(".word-span");
+  }, []);
 
-    while (lo <= hi) {
-      const mid = Math.floor((lo + hi) / 2);
-      const ts = timestamps[mid];
-
-      if (ts.start <= audioCurrentTime) {
-        result = ts.position;
-        lo = mid + 1;
-      } else {
-        hi = mid - 1;
+  // Binary search: last word whose start <= time
+  const findPositionAtTime = useCallback(
+    (time: number) => {
+      if (time <= 0) return -1;
+      let lo = 0;
+      let hi = timestamps.length - 1;
+      let result = -1;
+      while (lo <= hi) {
+        const mid = Math.floor((lo + hi) / 2);
+        const ts = timestamps[mid];
+        if (ts.start <= time) {
+          result = ts.position;
+          lo = mid + 1;
+        } else {
+          hi = mid - 1;
+        }
       }
+      return result;
+    },
+    [timestamps]
+  );
+
+  // The RAF loop that does the actual highlight via direct DOM access
+  const karaokeTick = useCallback(() => {
+    const spans = getWordSpans();
+    if (!spans) return;
+
+    // Interpolate the audio time for smoothness on mobile
+    const time = audioTimeRef.current;
+    const newPos = findPositionAtTime(time);
+
+    if (newPos !== highlightedPosRef.current) {
+      // Remove highlight from old word
+      if (highlightedPosRef.current >= 0 && highlightedPosRef.current < spans.length) {
+        spans[highlightedPosRef.current].classList.remove("word-audio-current");
+      }
+      // Add highlight to new word
+      if (newPos >= 0 && newPos < spans.length) {
+        spans[newPos].classList.add("word-audio-current");
+
+        // Auto-scroll: only if word is near viewport edge
+        const target = spans[newPos];
+        const rect = target.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        if (rect.top < 80 || rect.bottom > viewportHeight - 100) {
+          target.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+      highlightedPosRef.current = newPos;
     }
 
-    return result;
-  }, [audioCurrentTime, isAudioPlaying, timestamps]);
+    karaokeRafRef.current = requestAnimationFrame(karaokeTick);
+  }, [getWordSpans, findPositionAtTime]);
 
-  // Auto-scroll current word into view during playback
+  // Start/stop the karaoke RAF loop based on play state
   useEffect(() => {
-    if (currentAudioPosition < 0 || !isAudioPlaying) return;
-
-    const spans = containerRef.current?.querySelectorAll(".word-span");
-    if (!spans || currentAudioPosition >= spans.length) return;
-
-    const target = spans[currentAudioPosition];
-    if (target) {
-      const rect = target.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-
-      // Only scroll if the word is near the edge of the viewport
-      if (rect.top < 80 || rect.bottom > viewportHeight - 100) {
-        target.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (isAudioPlaying) {
+      karaokeRafRef.current = requestAnimationFrame(karaokeTick);
+    } else {
+      if (karaokeRafRef.current) {
+        cancelAnimationFrame(karaokeRafRef.current);
+        karaokeRafRef.current = null;
       }
+      // Clear highlight when audio stops
+      const spans = getWordSpans();
+      if (spans && highlightedPosRef.current >= 0 && highlightedPosRef.current < spans.length) {
+        spans[highlightedPosRef.current].classList.remove("word-audio-current");
+      }
+      highlightedPosRef.current = -1;
     }
-  }, [currentAudioPosition, isAudioPlaying]);
+    return () => {
+      if (karaokeRafRef.current) {
+        cancelAnimationFrame(karaokeRafRef.current);
+        karaokeRafRef.current = null;
+      }
+    };
+  }, [isAudioPlaying, karaokeTick, getWordSpans]);
 
   // Split body text into paragraphs, then tokenize each paragraph
   const paragraphs = bodyText.split("\n").filter((p) => p.trim());
@@ -160,8 +207,10 @@ export default function InteractiveStory({
     return () => document.removeEventListener("click", handleOutsideClick);
   }, [activePosition, handleDismiss]);
 
-  const handleTimeUpdate = useCallback((time: number) => {
-    setAudioCurrentTime(time);
+  // StoryAudioPlayer calls this ~60x/sec with the current audio time.
+  // We store it in a ref (no state update) so React never re-renders.
+  const handleAudioTimeUpdate = useCallback((time: number) => {
+    audioTimeRef.current = time;
   }, []);
 
   const handlePlayStateChange = useCallback((playing: boolean) => {
@@ -178,7 +227,7 @@ export default function InteractiveStory({
       <StoryAudioPlayer
         audioUrl={audioUrl}
         duration={audioDuration}
-        onTimeUpdate={handleTimeUpdate}
+        onTimeUpdate={handleAudioTimeUpdate}
         onPlayStateChange={handlePlayStateChange}
       />
 
@@ -223,7 +272,6 @@ export default function InteractiveStory({
                   !!word.expression_id &&
                   word.expression_id === activeExpressionId &&
                   activePosition !== word.position;
-                const isAudioCurrent = currentAudioPosition === word.position;
 
                 return (
                   <span key={tokenIdx}>
@@ -235,7 +283,6 @@ export default function InteractiveStory({
                       onDismiss={handleDismiss}
                       isActive={isActive}
                       isExpressionActive={isExpressionActive}
-                      isAudioCurrent={isAudioCurrent}
                     />
                     {tokenIdx < tokens.length - 1 ? " " : ""}
                   </span>
