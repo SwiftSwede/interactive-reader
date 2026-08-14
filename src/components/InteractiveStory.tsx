@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import WordTooltip, {
   type WordData,
   type ExpressionData,
@@ -23,6 +23,7 @@ export default function InteractiveStory({
 }: InteractiveStoryProps) {
   const [seenPositions, setSeenPositions] = useState<Set<number>>(new Set());
   const [activePosition, setActivePosition] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // Build expression lookup
   const expressionMap = new Map<string, ExpressionData>();
@@ -42,12 +43,34 @@ export default function InteractiveStory({
     setActivePosition(null);
   }, []);
 
+  // Click outside the story area dismisses the active tooltip
+  useEffect(() => {
+    if (activePosition === null) return;
+
+    const handleOutsideClick = (e: MouseEvent) => {
+      // Check if the click was inside the container or on a tooltip
+      const target = e.target as Node;
+      const container = containerRef.current;
+      if (container && container.contains(target)) return;
+
+      // Also check if click was on a pinned tooltip (which is position:fixed, outside container)
+      const tooltip = (target as HTMLElement)?.closest?.(".word-tooltip-pinned");
+      if (tooltip) return;
+
+      // Click was outside, dismiss
+      handleDismiss();
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+    return () => document.removeEventListener("click", handleOutsideClick);
+  }, [activePosition, handleDismiss]);
+
   // For each paragraph, we need to know which tokens belong to it
   // and map them to global word positions
   let wordPosition = 0;
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4" ref={containerRef}>
       {paragraphs.map((paragraph, paraIdx) => {
         const tokens = paragraph.split(/\s+/).filter((t) => t);
 

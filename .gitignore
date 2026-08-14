@@ -43,3 +43,4 @@ public/audio/stories/
 
 # Logs
 *.logtsconfig.tsbuildinfo
+tsconfig.tsbuildinfo

@@ -56,10 +56,10 @@ export default function WordTooltip({
     y: 0,
   });
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isPinned, setIsPinned] = useState(false);
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Determine what to show in the tooltip
-  const displayText = expression ? expression.text : word.text;
   const displayTranslation = expression
     ? expression.spanish_translation
     : word.spanish_translation;
@@ -88,7 +88,7 @@ export default function WordTooltip({
     positionTooltip();
   }, [positionTooltip]);
 
-  // Hide tooltip
+  // Hide tooltip (only if not pinned)
   const hideTooltip = useCallback(() => {
     setTooltip((prev) => ({ ...prev, visible: false }));
   }, []);
@@ -124,8 +124,9 @@ export default function WordTooltip({
     });
   };
 
-  // Desktop: hover events
+  // Desktop: hover shows tooltip (quick peek, not pinned)
   const handleMouseEnter = () => {
+    if (isPinned) return; // Don't re-trigger hover if pinned
     if (hoverTimer.current) clearTimeout(hoverTimer.current);
     hoverTimer.current = setTimeout(() => {
       showTooltip();
@@ -133,32 +134,40 @@ export default function WordTooltip({
     }, 150);
   };
 
+  // Desktop: mouse leave hides tooltip only if not pinned
   const handleMouseLeave = () => {
+    if (isPinned) return; // Pinned tooltip stays open
     if (hoverTimer.current) clearTimeout(hoverTimer.current);
     hideTooltip();
     onDismiss();
   };
 
-  // Mobile: tap to toggle
+  // Click: pin the tooltip open so user can interact with play button
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (tooltip.visible) {
+    if (isPinned) {
+      // Already pinned, unpin and hide
+      setIsPinned(false);
       hideTooltip();
       onDismiss();
     } else {
+      // Pin it open
+      if (hoverTimer.current) clearTimeout(hoverTimer.current);
+      setIsPinned(true);
       showTooltip();
       onActivate(word);
     }
   };
 
-  // Listen for external dismiss (clicking elsewhere)
+  // When parent says this word is no longer active (another word clicked, or click outside)
   useEffect(() => {
     if (!isActive) {
+      setIsPinned(false);
       hideTooltip();
     }
   }, [isActive, hideTooltip]);
 
-  // Reposition on scroll/resize
+  // Reposition on scroll/resize (only when visible)
   useEffect(() => {
     if (!tooltip.visible) return;
     const handleReposition = () => positionTooltip();
@@ -193,8 +202,20 @@ export default function WordTooltip({
 
       {tooltip.visible && (
         <span
-          className="word-tooltip"
+          className={`word-tooltip ${isPinned ? "word-tooltip-pinned" : ""}`}
           style={{ left: tooltip.x, top: tooltip.y }}
+          onClick={(e) => e.stopPropagation()}
+          onMouseEnter={() => {
+            // If hovering the tooltip while it was shown by hover (not pinned), keep it open
+            if (hoverTimer.current) clearTimeout(hoverTimer.current);
+          }}
+          onMouseLeave={() => {
+            // If not pinned, hide when leaving the tooltip area
+            if (!isPinned) {
+              hideTooltip();
+              onDismiss();
+            }
+          }}
         >
           <span className="word-tooltip-inner">
             <span className="word-tooltip-translation">

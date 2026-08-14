@@ -60,6 +60,11 @@ body {
   animation: tooltip-fade-in 0.12s ease;
 }
 
+/* Pinned tooltip (after click) is interactive */
+.word-tooltip-pinned {
+  pointer-events: auto;
+}
+
 .word-tooltip-inner {
   display: flex;
   flex-direction: column;
