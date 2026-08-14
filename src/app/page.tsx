@@ -171,7 +171,6 @@ export default async function StoryPage() {
     expressions,
     comprehensionQuestions,
     personalQuestions,
-    pronunciationDrill,
   } = data;
 
   return (
@@ -233,42 +232,6 @@ export default async function StoryPage() {
                 </p>
               ))}
             </div>
-          </section>
-        )}
-
-        {/* Extreme Pronunciation */}
-        {pronunciationDrill && (
-          <section className="mt-8 border-t border-gray-100 pt-8">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">
-              Extreme Pronunciation
-            </h3>
-
-            {/* Symbol legend */}
-            {pronunciationDrill.symbol_legend && (
-              <div className="rounded-lg bg-gray-50 p-4 mb-4">
-                <p className="text-sm font-medium text-gray-700 mb-2">
-                  Sounds that dont exist
-                </p>
-                <pre className="text-sm text-gray-600 whitespace-pre-wrap font-mono">
-                  {pronunciationDrill.symbol_legend}
-                </pre>
-              </div>
-            )}
-
-            {/* Practica Coral */}
-            {pronunciationDrill.practica_coral_standard && (
-              <div className="mt-4">
-                <p className="text-sm font-medium text-gray-700 mb-2">
-                  Practica Coral
-                </p>
-                <p className="text-gray-800 mb-2">
-                  {pronunciationDrill.practica_coral_standard}
-                </p>
-                <p className="text-gray-500 italic">
-                  {pronunciationDrill.practica_coral_phonetic}
-                </p>
-              </div>
-            )}
           </section>
         )}
 
