@@ -34,9 +34,8 @@ yarn-error.log*
 # Supabase
 supabase/.temp/
 
-# Audio files (generated, large, not in git)
-public/audio/words/
-public/audio/stories/*.mp3
+# Audio files: committed to git for Vercel deployment (~14MB total)
+# Word audio and story MP3s are needed at build/runtime on Vercel
 
 # Cursor
 .cursor/
