@@ -3,11 +3,20 @@
 import { useEffect, useState } from "react";
 
 /**
- * Detects WhatsApp's in-app browser and tries to redirect to the
- * external browser. On Android, this auto-opens Chrome via an
- * intent:// URL. On iOS, WhatsApp uses a restricted WKWebView that
- * blocks all auto-open mechanisms, so we show a minimal banner with
- * a tap-to-open link instead.
+ * Detects in-app browsers that throttle requestAnimationFrame or have
+ * other limitations that break the karaoke highlight. Redirects Android
+ * users to Chrome via an intent:// URL. Shows a tap-to-open banner on
+ * iOS (where auto-open is blocked by WKWebView).
+ *
+ * Known problematic browsers:
+ * - WhatsApp in-app browser (restricted WebView on both platforms)
+ * - Samsung Internet Browser (throttles RAF during audio playback)
+ * - Facebook / Instagram in-app browsers (restricted WebViews)
+ *
+ * Browsers that work fine (no redirect):
+ * - Chrome (Android + desktop)
+ * - Safari (iOS + desktop)
+ * - Firefox, Edge, etc.
  */
 export default function InAppBrowserRedirect() {
   const [showIOSBanner, setShowIOSBanner] = useState(false);
@@ -15,10 +24,15 @@ export default function InAppBrowserRedirect() {
   useEffect(() => {
     const ua = navigator.userAgent;
 
-    // Check if we're inside WhatsApp's in-app browser
+    // Browsers that have issues with the karaoke highlight
     const isWhatsApp = /WhatsApp/i.test(ua);
+    const isSamsungBrowser = /SamsungBrowser/i.test(ua);
+    const isFacebook = /FBAN|FBAV/i.test(ua);
+    const isInstagram = /Instagram/i.test(ua);
 
-    if (!isWhatsApp) return;
+    const needsRedirect = isWhatsApp || isSamsungBrowser || isFacebook || isInstagram;
+
+    if (!needsRedirect) return;
 
     // iOS: WKWebView blocks window.open and intent:// URLs.
     // No way to auto-open Safari. Show a banner with a tap-to-open link.
@@ -30,11 +44,9 @@ export default function InAppBrowserRedirect() {
     }
 
     // Android: redirect to Chrome via intent:// URL.
-    // This forces the page to open in Chrome instead of WhatsApp's WebView.
     const currentUrl = window.location.href;
     const intentUrl = `intent://${currentUrl.replace(/^https?:\/\//, "")}#Intent;scheme=https;package=com.android.chrome;end`;
 
-    // Small delay so the page has a chance to register the redirect
     window.location.href = intentUrl;
   }, []);
 
