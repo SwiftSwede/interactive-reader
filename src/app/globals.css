@@ -78,10 +78,40 @@ body {
   color: rgb(17 24 39); /* gray-900 */
 }
 
+.word-tooltip-phonetic-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .word-tooltip-phonetic {
   font-family: monospace;
   font-size: 13px;
   color: rgb(107 114 128); /* gray-500 */
+}
+
+.word-tooltip-play-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgb(243 244 246); /* gray-100 */
+  color: rgb(79 70 229); /* indigo-600 */
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease;
+  pointer-events: auto;
+}
+
+.word-tooltip-play-btn:hover {
+  background-color: rgb(229 231 235); /* gray-200 */
+}
+
+.word-tooltip-play-btn:active {
+  background-color: rgb(209 213 219); /* gray-300 */
 }
 
 .word-tooltip-expression {

@@ -133,6 +133,7 @@ async function getFreeStory() {
       part_of_speech: w.part_of_speech,
       is_transparent: w.is_transparent,
       expression_id: w.expression_id,
+      audio_url: w.audio_url,
     })) as WordData[],
     expressions: (expressions || []).map((e) => ({
       id: (e as ExpressionRow).id,
