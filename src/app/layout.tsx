@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import InAppBrowserRedirect from "@/components/InAppBrowserRedirect";
 
 const geistSans = Geist({
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <InAppBrowserRedirect />
         {children}
+        <Analytics />
       </body>
     </html>
   );
