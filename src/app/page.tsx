@@ -1,4 +1,6 @@
 import { supabase } from "@/lib/supabase";
+import InteractiveStory from "@/components/InteractiveStory";
+import type { WordData, ExpressionData } from "@/components/WordTooltip";
 
 // ── Types matching Supabase snake_case columns ─────────────
 
@@ -42,6 +44,29 @@ type PronunciationDrillRow = {
   practica_coral_phonetic: string;
 };
 
+type WordRow = {
+  id: string;
+  story_id: string;
+  position: number;
+  text: string;
+  lemma: string;
+  spanish_translation: string;
+  phonetic_transcription: string;
+  part_of_speech: string;
+  audio_url: string;
+  expression_id: string | null;
+  is_transparent: boolean;
+};
+
+type ExpressionRow = {
+  id: string;
+  story_id: string;
+  text: string;
+  spanish_translation: string;
+  explanation: string;
+  word_ids: string[];
+};
+
 // ── Data fetching ──────────────────────────────────────────
 
 async function getFreeStory() {
@@ -56,6 +81,28 @@ async function getFreeStory() {
   if (error || !story) return null;
 
   const storyRow = story as StoryRow;
+
+  // Fetch all words for this story (Supabase default limit is 1000, we have 1132)
+  const { data: wordsPage1 } = await supabase
+    .from("words")
+    .select("*")
+    .eq("story_id", storyRow.id)
+    .order("position", { ascending: true })
+    .range(0, 999);
+
+  const { data: wordsPage2 } = await supabase
+    .from("words")
+    .select("*")
+    .eq("story_id", storyRow.id)
+    .order("position", { ascending: true })
+    .range(1000, 1999);
+
+  const wordRows = [...(wordsPage1 || []), ...(wordsPage2 || [])] as WordRow[];
+
+  const { data: expressions } = await supabase
+    .from("expressions")
+    .select("*")
+    .eq("story_id", storyRow.id);
 
   const { data: compQuestions } = await supabase
     .from("comprehension_questions")
@@ -77,6 +124,22 @@ async function getFreeStory() {
 
   return {
     story: storyRow,
+    words: wordRows.map((w) => ({
+      id: w.id,
+      position: w.position,
+      text: w.text,
+      spanish_translation: w.spanish_translation,
+      phonetic_transcription: w.phonetic_transcription,
+      part_of_speech: w.part_of_speech,
+      is_transparent: w.is_transparent,
+      expression_id: w.expression_id,
+    })) as WordData[],
+    expressions: (expressions || []).map((e) => ({
+      id: (e as ExpressionRow).id,
+      text: (e as ExpressionRow).text,
+      spanish_translation: (e as ExpressionRow).spanish_translation,
+      explanation: (e as ExpressionRow).explanation,
+    })) as ExpressionData[],
     comprehensionQuestions: (compQuestions || []) as CompQuestionRow[],
     personalQuestions: (personalQuestions || []) as PersonalQuestionRow[],
     pronunciationDrill: drill as PronunciationDrillRow | null,
@@ -98,10 +161,14 @@ export default async function StoryPage() {
     );
   }
 
-  const { story, comprehensionQuestions, personalQuestions, pronunciationDrill } = data;
-
-  // Split body into paragraphs
-  const paragraphs = story.body_text.split("\n").filter((p) => p.trim());
+  const {
+    story,
+    words,
+    expressions,
+    comprehensionQuestions,
+    personalQuestions,
+    pronunciationDrill,
+  } = data;
 
   return (
     <main className="min-h-screen bg-white">
@@ -125,14 +192,12 @@ export default async function StoryPage() {
           <p className="text-sm text-gray-400">Audio coming soon</p>
         </div>
 
-        {/* Story text */}
-        <div className="space-y-4">
-          {paragraphs.map((paragraph, idx) => (
-            <p key={idx} className="text-gray-800 leading-relaxed text-base">
-              {paragraph}
-            </p>
-          ))}
-        </div>
+        {/* Interactive story text */}
+        <InteractiveStory
+          bodyText={story.body_text}
+          words={words}
+          expressions={expressions}
+        />
 
         {/* End marker */}
         <p className="text-center text-gray-400 mt-8 italic">The End</p>
@@ -221,9 +286,7 @@ export default async function StoryPage() {
           <p className="text-sm text-gray-500">
             Unlock all 50+ stories for $47
           </p>
-          <p className="text-xs text-gray-400 mt-2">
-            Coming soon
-          </p>
+          <p className="text-xs text-gray-400 mt-2">Coming soon</p>
         </div>
       </article>
     </main>

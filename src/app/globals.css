@@ -24,3 +24,86 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ── Interactive word spans ────────────────────────────── */
+
+.word-span {
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 0.15s ease;
+  padding: 0 1px;
+}
+
+.word-span:hover {
+  background-color: rgb(243 244 246); /* gray-100 */
+}
+
+.word-seen {
+  text-decoration: underline;
+  text-decoration-color: rgb(209 213 219); /* gray-300 */
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.word-active {
+  background-color: rgb(229 231 235); /* gray-200 */
+}
+
+/* ── Tooltip ───────────────────────────────────────────── */
+
+.word-tooltip {
+  position: fixed;
+  z-index: 50;
+  width: 260px;
+  max-width: calc(100vw - 16px);
+  pointer-events: none;
+  animation: tooltip-fade-in 0.12s ease;
+}
+
+.word-tooltip-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: white;
+  border: 1px solid rgb(229 231 219);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 10px 14px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.word-tooltip-translation {
+  font-weight: 600;
+  color: rgb(17 24 39); /* gray-900 */
+}
+
+.word-tooltip-phonetic {
+  font-family: monospace;
+  font-size: 13px;
+  color: rgb(107 114 128); /* gray-500 */
+}
+
+.word-tooltip-expression {
+  font-size: 12px;
+  color: rgb(79 70 229); /* indigo-600 */
+  font-style: italic;
+}
+
+.word-tooltip-pos {
+  font-size: 11px;
+  color: rgb(156 163 175); /* gray-400 */
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+@keyframes tooltip-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
