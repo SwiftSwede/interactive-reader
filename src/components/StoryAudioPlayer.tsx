@@ -24,12 +24,22 @@ export default function StoryAudioPlayer({
   const [currentTime, setCurrentTime] = useState(0);
   const rafRef = useRef<number | null>(null);
 
-  // RAF loop for smooth time updates (drives karaoke highlight)
+  // Interpolation refs: sync to audio.currentTime via timeupdate event,
+  // then interpolate with performance.now() between updates.
+  // On mobile, audio.currentTime jumps in chunks (large decoder buffers),
+  // causing karaoke highlights to flash for 1 frame and disappear.
+  // Interpolation gives smooth 60fps timing regardless.
+  const audioTimeRef = useRef(0);
+  const perfTimeRef = useRef(0);
+
+  // RAF loop: interpolate between timeupdate events for smooth highlight
   const updateTime = useCallback(() => {
     const audio = audioRef.current;
     if (audio && !audio.paused) {
-      setCurrentTime(audio.currentTime);
-      onTimeUpdate(audio.currentTime);
+      const elapsed = (performance.now() - perfTimeRef.current) / 1000;
+      const interpolatedTime = audioTimeRef.current + elapsed;
+      setCurrentTime(interpolatedTime);
+      onTimeUpdate(interpolatedTime);
       rafRef.current = requestAnimationFrame(updateTime);
     }
   }, [onTimeUpdate]);
@@ -54,6 +64,9 @@ export default function StoryAudioPlayer({
     const handlePlay = () => {
       setIsPlaying(true);
       onPlayStateChange(true);
+      // Initialize interpolation refs so RAF starts from the right point
+      audioTimeRef.current = audio.currentTime;
+      perfTimeRef.current = performance.now();
       rafRef.current = requestAnimationFrame(updateTime);
     };
 
@@ -71,20 +84,32 @@ export default function StoryAudioPlayer({
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
 
+    // timeupdate fires every ~250ms on both desktop and mobile.
+    // We use it to sync the interpolation base, correcting any drift.
+    // We do NOT call onTimeUpdate here; the RAF loop handles that
+    // to avoid double state updates and highlight jitter.
+    const handleTimeUpdate = () => {
+      audioTimeRef.current = audio.currentTime;
+      perfTimeRef.current = performance.now();
+    };
+
     const handleSeek = () => {
+      audioTimeRef.current = audio.currentTime;
+      perfTimeRef.current = performance.now();
       setCurrentTime(audio.currentTime);
-      onTimeUpdate(audio.currentTime);
     };
 
     audio.addEventListener("play", handlePlay);
     audio.addEventListener("pause", handlePause);
     audio.addEventListener("ended", handleEnded);
+    audio.addEventListener("timeupdate", handleTimeUpdate);
     audio.addEventListener("seeked", handleSeek);
 
     return () => {
       audio.removeEventListener("play", handlePlay);
       audio.removeEventListener("pause", handlePause);
       audio.removeEventListener("ended", handleEnded);
+      audio.removeEventListener("timeupdate", handleTimeUpdate);
       audio.removeEventListener("seeked", handleSeek);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };

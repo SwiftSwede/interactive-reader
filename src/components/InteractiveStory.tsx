@@ -67,11 +67,18 @@ export default function InteractiveStory({
     return map;
   }, [words]);
 
-  // Binary search for current word based on audio time
+  // Find current word based on audio time.
+  // We use "last word whose start time has passed" rather than
+  // "is currentTime within [start, end)" because on mobile,
+  // audio.currentTime jumps in chunks. If it jumps past a word's
+  // end time, the old logic would lose the highlight for that word
+  // even though the audio is still pronouncing it. With this approach,
+  // the highlight stays on a word from its start until the next word
+  // begins, matching what the listener actually hears.
   const currentAudioPosition = useMemo(() => {
     if (!isAudioPlaying || audioCurrentTime === 0) return -1;
 
-    // Binary search timestamps for the word being spoken
+    // Binary search for the last word whose start <= currentTime
     let lo = 0;
     let hi = timestamps.length - 1;
     let result = -1;
@@ -80,26 +87,11 @@ export default function InteractiveStory({
       const mid = Math.floor((lo + hi) / 2);
       const ts = timestamps[mid];
 
-      if (audioCurrentTime >= ts.start && audioCurrentTime < ts.end) {
+      if (ts.start <= audioCurrentTime) {
         result = ts.position;
-        break;
-      } else if (audioCurrentTime < ts.start) {
-        hi = mid - 1;
-      } else {
         lo = mid + 1;
-      }
-    }
-
-    // If we didn't find an exact match, find the last word that started before current time
-    if (result === -1 && timestamps.length > 0) {
-      for (let i = timestamps.length - 1; i >= 0; i--) {
-        if (timestamps[i].start <= audioCurrentTime) {
-          // Only return if we're within a reasonable gap (2 seconds)
-          if (audioCurrentTime - timestamps[i].end < 2) {
-            result = timestamps[i].position;
-          }
-          break;
-        }
+      } else {
+        hi = mid - 1;
       }
     }
 
