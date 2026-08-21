@@ -39,6 +39,8 @@ type WordTooltipProps = {
   onDismiss: () => void;
   isActive: boolean;
   isExpressionActive: boolean;
+  hintClass?: string;
+  onFirstInteraction?: () => void;
 };
 
 function WordTooltip({
@@ -49,6 +51,8 @@ function WordTooltip({
   onDismiss,
   isActive,
   isExpressionActive,
+  hintClass,
+  onFirstInteraction,
 }: WordTooltipProps) {
   const spanRef = useRef<HTMLSpanElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -147,6 +151,7 @@ function WordTooltip({
   // Click: pin the tooltip open so user can interact with play button
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
+    if (onFirstInteraction) onFirstInteraction();
     if (isPinned) {
       // Already pinned, unpin and hide
       setIsPinned(false);
@@ -194,7 +199,7 @@ function WordTooltip({
         ref={spanRef}
         className={`word-span ${isHighlighted ? "word-seen" : ""} ${
           tooltip.visible ? "word-active" : ""
-        } ${isExpressionActive ? "word-expr-active" : ""}`}
+        } ${isExpressionActive ? "word-expr-active" : ""} ${hintClass || ""}`.trim()}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={handleClick}

@@ -135,7 +135,7 @@ export default function StoryAudioPlayer({
   const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
-    <div className="mb-6 rounded-lg bg-gray-50 border border-gray-100 px-4 py-3">
+    <div className="mb-6 rounded-lg bg-blue-50 border border-blue-100 px-4 py-4">
       <audio
         ref={audioRef}
         src={audioUrl}
@@ -146,37 +146,39 @@ export default function StoryAudioPlayer({
         {/* Play/pause button */}
         <button
           onClick={handleToggle}
-          className="flex items-center justify-center w-10 h-10 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition-colors flex-shrink-0"
+          className="flex items-center justify-center w-14 h-14 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors flex-shrink-0 shadow-sm"
           aria-label={isPlaying ? "Pausar" : "Reproducir"}
           type="button"
         >
           {isPlaying ? (
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1" /><rect x="14" y="5" width="4" height="14" rx="1" /></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1" /><rect x="14" y="5" width="4" height="14" rx="1" /></svg>
           ) : (
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
           )}
         </button>
 
-        {/* Progress bar */}
-        <div
-          className="flex-1 h-2 bg-gray-200 rounded-full cursor-pointer relative"
-          onClick={handleSeek}
-        >
+        <div className="flex flex-col flex-1 gap-1">
+          <span className="text-sm font-medium text-blue-900">
+            {isPlaying ? "Escuchando..." : "Lee y escucha"}
+          </span>
+
+          {/* Progress bar */}
           <div
-            className="absolute h-2 bg-indigo-600 rounded-full"
-            style={{ width: `${progressPercent}%` }}
-          />
+            className="w-full h-2 bg-blue-200 rounded-full cursor-pointer relative"
+            onClick={handleSeek}
+          >
+            <div
+              className="absolute h-2 bg-blue-600 rounded-full"
+              style={{ width: `${progressPercent}%` }}
+            />
+          </div>
         </div>
 
         {/* Time display */}
-        <span className="text-xs text-gray-500 tabular-nums flex-shrink-0">
+        <span className="text-xs text-blue-400 tabular-nums flex-shrink-0">
           {formatTime(currentTime)} / {formatTime(duration)}
         </span>
       </div>
-
-      <p className="text-xs text-gray-400 mt-2">
-        Escucha la historia y sigue el texto
-      </p>
     </div>
   );
 }

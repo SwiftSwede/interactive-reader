@@ -39,6 +39,7 @@ export default function InteractiveStory({
     null
   );
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Refs for direct-DOM karaoke highlight (bypasses React render cycle).
@@ -283,6 +284,8 @@ export default function InteractiveStory({
                       onDismiss={handleDismiss}
                       isActive={isActive}
                       isExpressionActive={isExpressionActive}
+                      hintClass={!hasInteracted && currentPos < 4 ? "word-hint" : undefined}
+                      onFirstInteraction={() => setHasInteracted(true)}
                     />
                     {tokenIdx < tokens.length - 1 ? " " : ""}
                   </span>

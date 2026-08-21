@@ -155,3 +155,44 @@ body {
     transform: translateY(0);
   }
 }
+
+/* ── Word hint pulse (signals interactivity on first load) ─── */
+
+@keyframes word-hint-pulse {
+  0%, 100% { background-color: transparent; }
+  50% { background-color: rgb(219, 234, 254); /* blue-100 */ }
+}
+
+.word-hint {
+  animation: word-hint-pulse 2s ease-in-out infinite;
+}
+
+/* ── Micro-explanation callout ──────────────────────────── */
+
+.micro-explanation {
+  background-color: rgb(239, 246, 255); /* blue-50 */
+  border: 1px solid rgb(219, 234, 254); /* blue-100 */
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgb(55, 65, 81); /* gray-700 */
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.micro-explanation-dismiss {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: none;
+  border: none;
+  color: rgb(156, 163, 175); /* gray-400 */
+  cursor: pointer;
+  font-size: 16px;
+  padding: 2px 6px;
+}
+
+.micro-explanation-dismiss:hover {
+  color: rgb(75, 85, 99); /* gray-600 */
+}
