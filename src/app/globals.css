@@ -196,3 +196,112 @@ body {
 .micro-explanation-dismiss:hover {
   color: rgb(75, 85, 99); /* gray-600 */
 }
+
+/* ── Sticky audio player (Slice 11) ─────────────────────── */
+/* Spotify "now playing" bar. Visible only while story audio plays. */
+
+body.sticky-audio-active {
+  padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px) + 16px);
+}
+
+.sticky-audio-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  animation: sticky-audio-in 0.18s ease;
+}
+
+.sticky-audio-player-bar {
+  pointer-events: auto;
+  position: relative;
+  height: 48px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: rgb(239 246 255); /* blue-50, matches the top player */
+  border-top: 1px solid rgb(219 234 254); /* blue-100 */
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.sticky-audio-player-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgb(191 219 254); /* blue-200 */
+  overflow: hidden;
+}
+
+.sticky-audio-player-progress-fill {
+  height: 100%;
+  background: rgb(37 99 235); /* blue-600 */
+}
+
+.sticky-audio-player-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: transparent;
+  color: rgb(37 99 235); /* blue-600 */
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.sticky-audio-player-toggle:hover {
+  color: rgb(29 78 216); /* blue-700 */
+}
+
+.sticky-audio-player-toggle:active {
+  color: rgb(30 64 175); /* blue-800 */
+}
+
+.sticky-audio-player-time {
+  margin-left: auto;
+  padding-right: 14px;
+  font-size: 12px;
+  line-height: 1;
+  color: rgb(30 64 175); /* blue-800 */
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes sticky-audio-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 768px) {
+  body.sticky-audio-active {
+    padding-bottom: calc(48px + 32px);
+  }
+
+  .sticky-audio-player {
+    bottom: 16px;
+    padding-bottom: 0;
+  }
+
+  .sticky-audio-player-bar {
+    width: 480px;
+    max-width: calc(100vw - 32px);
+    border: 1px solid rgb(219 234 254); /* blue-100 */
+    border-top: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+  }
+}
