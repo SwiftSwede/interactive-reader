@@ -135,3 +135,51 @@ export async function deleteSession(
   revalidatePath(`/teacher/classes/${courseId}`);
   return { ok: true };
 }
+
+export type UnlockAnswersResult =
+  | { ok: true }
+  | { ok: false; error: string };
+
+export async function unlockAnswers(
+  formData: FormData
+): Promise<UnlockAnswersResult> {
+  const teacher = await requireTeacher("/teacher");
+  const courseId = String(formData.get("courseId") ?? "").trim();
+  const sessionId = String(formData.get("sessionId") ?? "").trim();
+
+  if (!courseId || !sessionId) {
+    return { ok: false, error: "No encontré esa clase." };
+  }
+
+  const supabase = await createClient();
+
+  const { data: course } = await supabase
+    .from("courses")
+    .select("id")
+    .eq("id", courseId)
+    .eq("teacher_id", teacher.id)
+    .maybeSingle();
+
+  if (!course) {
+    return { ok: false, error: "Ese curso no es tuyo." };
+  }
+
+  const { data, error } = await supabase
+    .from("course_sessions")
+    .update({ answers_revealed: true })
+    .eq("id", sessionId)
+    .eq("course_id", courseId)
+    .select("id")
+    .maybeSingle();
+
+  if (error || !data) {
+    console.error("unlockAnswers failed:", error);
+    return {
+      ok: false,
+      error: "No pude desbloquear las respuestas. Inténtalo de nuevo.",
+    };
+  }
+
+  revalidatePath(`/teacher/classes/${courseId}`);
+  return { ok: true };
+}

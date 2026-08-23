@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { getStoryBySlug } from "@/lib/stories";
 import { resolveSessionAccess } from "@/lib/sessions";
+import { loadOwnComprehensionResponses } from "@/lib/comprehension";
 import StoryReader from "@/components/StoryReader";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
 
@@ -45,5 +46,24 @@ export default async function StorySlugPage({
     );
   }
 
-  return <StoryReader data={data} />;
+  const allowReveal = access.kind === "open" || access.allowReveal;
+  const unlockAt =
+    access.kind === "ok" && !access.allowReveal
+      ? access.session.sessionEndTime
+      : undefined;
+  const sessionId =
+    access.kind === "ok" && access.saveResponses ? access.session.id : undefined;
+  const savedResponses = sessionId
+    ? await loadOwnComprehensionResponses(sessionId)
+    : undefined;
+
+  return (
+    <StoryReader
+      data={data}
+      allowReveal={allowReveal}
+      unlockAt={unlockAt}
+      sessionId={sessionId}
+      savedResponses={savedResponses}
+    />
+  );
 }

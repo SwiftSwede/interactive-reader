@@ -1,13 +1,27 @@
 import { readFileSync } from "fs";
 import { join } from "path";
 import InteractiveStory from "@/components/InteractiveStory";
-import ComprehensionQuestions from "@/components/ComprehensionQuestions";
+import ComprehensionQuestions, {
+  type SavedComprehensionResponse,
+} from "@/components/ComprehensionQuestions";
 import PersonalQuestions from "@/components/PersonalQuestions";
 import DictationPractice from "@/components/DictationPractice";
 import MicroExplanation from "@/components/MicroExplanation";
 import type { LoadedStory } from "@/lib/stories";
 
-export default function StoryReader({ data }: { data: LoadedStory }) {
+export default function StoryReader({
+  data,
+  allowReveal = true,
+  unlockAt,
+  sessionId,
+  savedResponses,
+}: {
+  data: LoadedStory;
+  allowReveal?: boolean;
+  unlockAt?: string;
+  sessionId?: string;
+  savedResponses?: SavedComprehensionResponse[];
+}) {
   const {
     story,
     words,
@@ -59,6 +73,10 @@ export default function StoryReader({ data }: { data: LoadedStory }) {
                 question: q.question,
                 answer: q.answer,
               }))}
+              allowReveal={allowReveal}
+              unlockAt={unlockAt}
+              sessionId={sessionId}
+              savedResponses={savedResponses}
             />
           </>
         )}

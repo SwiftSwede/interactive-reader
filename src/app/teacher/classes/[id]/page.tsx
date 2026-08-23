@@ -2,11 +2,13 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { requireTeacher } from "@/lib/auth-server";
 import { createClient } from "@/lib/supabase/server";
+import { areAnswersUnlocked } from "@/lib/sessions";
 import { signOut } from "@/app/dashboard/actions";
 import type { CourseLevel } from "@/types";
 import CreateSessionForm from "./CreateSessionForm";
 import CopySessionLink from "./CopySessionLink";
 import DeleteSessionButton from "./DeleteSessionButton";
+import UnlockAnswersButton from "./UnlockAnswersButton";
 import LocalDateTime from "@/components/LocalDateTime";
 
 export const metadata = {
@@ -21,6 +23,8 @@ type StoryOption = {
 type SessionRow = {
   id: string;
   session_start_time: string;
+  session_end_time: string;
+  answers_revealed: boolean;
   session_link_token: string;
   notes: string | null;
   stories: { title: string; slug: string } | { title: string; slug: string }[] | null;
@@ -84,7 +88,7 @@ export default async function CourseClassPage({
   const { data: sessionRows } = await supabase
     .from("course_sessions")
     .select(
-      "id, session_start_time, session_link_token, notes, stories ( title, slug )"
+      "id, session_start_time, session_end_time, answers_revealed, session_link_token, notes, stories ( title, slug )"
     )
     .eq("course_id", course.id)
     .order("session_start_time", { ascending: false });
@@ -176,6 +180,10 @@ export default async function CourseClassPage({
                 const story = storyFromJoin(session.stories);
                 const attendedNames =
                   attendedNamesBySession.get(session.id) ?? [];
+                const unlocked = areAnswersUnlocked({
+                  answersRevealed: session.answers_revealed,
+                  sessionEndTime: session.session_end_time,
+                });
                 return (
                   <li key={session.id} className="px-3 py-3">
                     <p className="font-medium text-gray-900">
@@ -194,6 +202,18 @@ export default async function CourseClassPage({
                       <p className="mt-0.5 break-words text-sm text-gray-500">
                         {attendedNames.join(", ")}
                       </p>
+                    )}
+                    {unlocked ? (
+                      <p className="mt-2 text-sm text-gray-500">
+                        Respuestas desbloqueadas.
+                      </p>
+                    ) : (
+                      <div className="mt-2">
+                        <UnlockAnswersButton
+                          courseId={course.id}
+                          sessionId={session.id}
+                        />
+                      </div>
                     )}
                     <div className="mt-2 grid grid-cols-2 items-stretch gap-2">
                       {story ? (

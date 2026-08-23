@@ -20,7 +20,12 @@ type SessionRow = {
 
 export type SessionAccess =
   | { kind: "open" }
-  | { kind: "ok" }
+  | {
+      kind: "ok";
+      session: CourseSession;
+      allowReveal: boolean;
+      saveResponses: boolean;
+    }
   | { kind: "invalid" }
   | { kind: "refused" };
 
@@ -48,6 +53,34 @@ export function isWithinSessionWindow(
     t >= new Date(session.sessionStartTime).getTime() &&
     t <= new Date(session.sessionEndTime).getTime()
   );
+}
+
+export function areAnswersUnlocked(
+  session: Pick<CourseSession, "answersRevealed" | "sessionEndTime">,
+  now = new Date()
+): boolean {
+  return (
+    session.answersRevealed ||
+    now.getTime() >= new Date(session.sessionEndTime).getTime()
+  );
+}
+
+async function persistAnswersRevealedIfEnded(
+  session: CourseSession
+): Promise<void> {
+  if (session.answersRevealed) return;
+  if (!areAnswersUnlocked(session)) return;
+
+  const admin = createAdminClient();
+  const { error } = await admin
+    .from("course_sessions")
+    .update({ answers_revealed: true })
+    .eq("id", session.id)
+    .eq("answers_revealed", false);
+
+  if (error) {
+    console.error("persistAnswersRevealedIfEnded failed:", error);
+  }
 }
 
 async function recordSessionAttendance(
@@ -181,7 +214,10 @@ export async function resolveSessionAccess(
   }
 
   const profile = await getProfile(user.id);
-  if (profile?.role === "teacher") return { kind: "ok" };
+  if (profile?.role === "teacher") {
+    await persistAnswersRevealedIfEnded(session);
+    return { kind: "ok", session, allowReveal: true, saveResponses: false };
+  }
 
   if (profile?.role === "student-classroom") {
     const displayName =
@@ -190,7 +226,13 @@ export async function resolveSessionAccess(
         : "";
     await enrollClassroomStudent(session.courseId, user.id, displayName);
     await recordSessionAttendance(session, user.id);
-    return { kind: "ok" };
+    await persistAnswersRevealedIfEnded(session);
+    return {
+      kind: "ok",
+      session,
+      allowReveal: areAnswersUnlocked(session),
+      saveResponses: true,
+    };
   }
 
   return { kind: "refused" };
