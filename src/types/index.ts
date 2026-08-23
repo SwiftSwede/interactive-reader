@@ -105,14 +105,79 @@ export interface SoundVideo {
   course: string; // which pronunciation course this video is from
 }
 
-// ── User (Phase 2) ─────────────────────────────────────────
+// ── Profile (PRD User entity) ──────────────────────────────
 
-export interface User {
+export type UserRole = "student-classroom" | "student-consumer" | "teacher";
+export type SubscriptionStatus = "active" | "cancelled" | "paused" | "none";
+export type CourseLevel = "pre-intermediate" | "intermediate";
+
+export interface Profile {
   id: string;
   email: string;
-  purchased: boolean; // has paid $47
+  role: UserRole;
+  stripeCustomerId: string | null;
+  subscriptionStatus: SubscriptionStatus;
+  purchased: boolean;
   purchasedAt: string | null;
   createdAt: string;
+}
+
+export interface SubscriptionPeriod {
+  id: string;
+  userId: string;
+  stripeSubscriptionId: string;
+  startedAt: string;
+  endedAt: string | null;
+  status: "active" | "cancelled" | "paused";
+}
+
+export interface Course {
+  id: string;
+  name: string;
+  level: CourseLevel;
+  teacherId: string;
+  createdAt: string;
+  archived: boolean;
+}
+
+export interface CourseEnrollment {
+  id: string;
+  courseId: string;
+  studentId: string;
+  enrolledAt: string;
+  displayName: string;
+}
+
+export interface CourseSession {
+  id: string;
+  courseId: string;
+  storyId: string;
+  sessionDate: string;
+  sessionStartTime: string;
+  sessionEndTime: string;
+  answersRevealed: boolean;
+  notes: string | null;
+  sessionLinkToken: string;
+  createdAt: string;
+}
+
+export interface SessionAttendance {
+  id: string;
+  courseSessionId: string;
+  studentId: string;
+  attended: boolean;
+  firstOpenedAt: string;
+}
+
+export interface ComprehensionResponse {
+  id: string;
+  userId: string;
+  comprehensionQuestionId: string;
+  courseSessionId: string | null;
+  responseText: string;
+  revealedAnswer: boolean;
+  revealedAt: string | null;
+  submittedAt: string;
 }
 
 // ── SRS Card (Phase 2) ─────────────────────────────────────

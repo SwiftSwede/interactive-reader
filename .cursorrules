@@ -2,18 +2,20 @@
 
 ## Read the PRD first
 Before starting any work, read docs/PRD.md (the Product Requirements Document).
-It contains the full architecture, data structure, feature build order, and design principles.
+It contains the full architecture, data structure, feature build order (53 slices across 7 phases), and design principles.
 Follow it as your north star. Do not make decisions that contradict the PRD without asking.
 
 ## Current Phase
-We are building Phase 1 — the free story MVP (demand test).
-Only build features listed in Phase 1, Section 7 of the PRD.
-Do not build Phase 2+ features.
+Phase 1 and 1.5 are COMPLETE.
+We are now building Phase 2a — Auth + Course Management (the Zoom virtual handout).
+Only build features listed in Phase 2a, Section 7 of the PRD (slices 13, 16–22).
+Slices 14–15 (Stripe webhooks) are deferred until StripeCart events are verified. Do not skip them forever: return to 14–15 before production class billing.
+Do not build Phase 2b+ features.
 
 ## Tech Stack
 - Next.js 14+ (App Router)
-- Supabase (PostgreSQL + Auth)
-- Stripe Checkout (payments)
+- Supabase (PostgreSQL + Auth, magic link)
+- Stripe Checkout + StripeCart (payments, webhook auto-account creation)
 - TanStack Query (data fetching)
 - Vercel (hosting)
 - Edge TTS (audio generation, free)
@@ -21,22 +23,43 @@ Do not build Phase 2+ features.
 
 ## Rules
 1. No em dashes (—) in UI text. Use colons, periods, or commas. Em dashes are an AI telltale. The only em dashes in the app are in story content (—The End—) which is Kyle's existing format.
-2. Phonetic transcriptions use Kyle's symbol system only. Never use IPA. Never use approximate phonetics. Use the exact symbols: ö, ü, ä, ör, ë, i, ee, dz, th, ...l, ', v, z, dy.
+2. Phonetic transcriptions use IPA everywhere. The app uses IPA for all phonetic displays: tooltips, dictation, choral practice, pronunciation explanations. Kyle's custom symbols (ö, ü, ä, etc.) are deprecated in the app but remain in source story files and teaching materials. One system for the student, not two.
 3. UI copy is in Spanish for navigation/CTA, English for learning content. "Guardar en mazo" not "Save to deck." The audience is Spanish-speaking.
 4. Mobile-first always. If a feature doesn't work on a 375px wide screen, it doesn't ship.
 5. Never break a working slice. When adding a new feature, do not modify code from previous working slices unless absolutely necessary. If you must, explain why.
-6. Commit after every working slice. Git commit with the slice name and what works.
+6. Commit after every working slice. Git commit with the slice name and what works. Also push to GitHub (origin/main).
 7. Follow the data structure in the PRD. Do not create new tables or fields without updating the PRD first.
 8. Kyle's voice in all generated text. Direct, warm, self-deprecating, no jargon, no corporate language. If you generate user-facing text (error messages, feedback, tips), it must sound like Kyle wrote it.
-9. Reading is primary. No feature may interrupt or overlay the reading experience. SRS, TPRS, and other tools live on separate pages.
+9. Reading is primary. No feature may interrupt or overlay the reading experience. SRS, TPRS, and other tools live on separate pages or behind a clear post-story transition.
 10. Contractions everywhere in English content. The app teaches spoken English. Even UI text in English uses contractions.
+11. Feedback must be small and actionable. AI feedback identifies no more than two priorities at once, explains them in Kyle's Spanish voice, and offers a next attempt. Never show a giant correction block.
+12. No AI overclaiming. The app must never claim an official test score, a CEFR level, a diagnosis, or objective pronunciation perfection. Azure and LLM output is practice guidance.
+13. Do not infer what the learner "thought." Store observable behavior. If the reason matters, ask the learner in simple language.
+14. Keep the reader calm. Dictation, reverse translation, and pronunciation practice begin after the story or from an explicit learner choice. They never pop up while somebody is reading.
 
-## Existing code assets
-PronunciationPro2 at ~/Desktop/webdev/PronunciationPro2/ contains a working Azure Speech pronunciation assessment pipeline with LatAm-specific coaching rules. The server code (TypeScript/Express) and client (React) are reference implementations for Phase 3. Do not rebuild this from scratch when we reach Phase 3.
+## UI Design North Stars
+- Mobile: Spotify (bottom tabs, card lists, persistent "now playing" bar for audio)
+- Desktop: Netflix (horizontal rows, grid density, hover interactions)
+- 500 million LatAm users already know these patterns. When a student opens the app for the first time, they should know where to tap without instructions.
 
 ## Build discipline
 - Build one vertical slice at a time (see PRD Section 7 for the slice list)
 - Each slice must be fully working and verified on a real device before the next begins
-- Git commit after every working slice
+- Git commit AND push to GitHub after every working slice
 - Do not skip ahead to later phases
 - If something breaks, revert to the last working commit and fix from there
+
+## Existing code assets
+- PronunciationPro2 at ~/Desktop/webdev/PronunciationPro2/ contains a working Azure Speech pronunciation assessment pipeline with LatAm-specific coaching rules. The server code (TypeScript/Express) and client (React) are reference implementations for Phase 3. Do not rebuild this from scratch when we reach Phase 3.
+- The project is at ~/Desktop/webdev/interactive-reader/. GitHub repo: github.com/SwiftSwede/interactive-reader (public). After every commit, push to origin/main.
+
+## Key decisions (resolved 2026-08-21)
+- Teacher-first build strategy: Phase 2 = full teacher dashboard. Consumer paid tier = Phase 5.
+- Same reader, different overlay: Classroom and consumer students use identical components. Context determines active features.
+- Magic link auth: no passwords. Email -> magic link -> click -> in.
+- Stripe webhook auto-creates user accounts from payment email.
+- 90-min class window: reveal gated during class, auto-unlocks at 90 min, manual override available.
+- Choral practice + dictation: consumer only. Classroom students do choral practice live with Kyle on Zoom.
+- Personal questions: oral in class ("Discutir en clase" label), text input + AI in review mode.
+- No due dates: Kyle's methodology: learn IN class, not outside.
+- IPA everywhere in the app.
