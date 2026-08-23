@@ -41,6 +41,7 @@ type WordTooltipProps = {
   isExpressionActive: boolean;
   hintClass?: string;
   onFirstInteraction?: () => void;
+  onLookup?: (word: WordData) => void;
 };
 
 function WordTooltip({
@@ -53,6 +54,7 @@ function WordTooltip({
   isExpressionActive,
   hintClass,
   onFirstInteraction,
+  onLookup,
 }: WordTooltipProps) {
   const spanRef = useRef<HTMLSpanElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -163,6 +165,7 @@ function WordTooltip({
       setIsPinned(true);
       showTooltip();
       onActivate(word);
+      onLookup?.(word);
     }
   };
 

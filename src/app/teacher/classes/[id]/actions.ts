@@ -85,6 +85,7 @@ export async function createSession(
   }
 
   revalidatePath(`/teacher/classes/${courseId}`);
+  revalidatePath("/teacher");
   return { ok: true, message: `Listo. ${story.title} ya tiene clase.` };
 }
 
@@ -133,6 +134,7 @@ export async function deleteSession(
   }
 
   revalidatePath(`/teacher/classes/${courseId}`);
+  revalidatePath("/teacher");
   return { ok: true };
 }
 
@@ -181,5 +183,7 @@ export async function unlockAnswers(
   }
 
   revalidatePath(`/teacher/classes/${courseId}`);
+  revalidatePath(`/teacher/classes/${courseId}/sessions/${sessionId}`);
+  revalidatePath("/teacher");
   return { ok: true };
 }

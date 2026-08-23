@@ -180,6 +180,15 @@ export interface ComprehensionResponse {
   submittedAt: string;
 }
 
+export interface WordLookup {
+  id: string;
+  userId: string;
+  wordId: string;
+  storyId: string;
+  courseSessionId: string | null;
+  lookedUpAt: string;
+}
+
 // ── SRS Card (Phase 2) ─────────────────────────────────────
 
 export interface SRSCard {

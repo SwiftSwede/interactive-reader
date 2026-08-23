@@ -1,7 +1,12 @@
 import { createClient } from "@/lib/supabase/server";
 import { getStoryBySlug } from "@/lib/stories";
-import { resolveSessionAccess } from "@/lib/sessions";
+import {
+  resolveSessionAccess,
+  isWithinSessionWindow,
+  areAnswersUnlocked,
+} from "@/lib/sessions";
 import { loadOwnComprehensionResponses } from "@/lib/comprehension";
+import { getProfile } from "@/lib/auth-server";
 import StoryReader from "@/components/StoryReader";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
 
@@ -57,6 +62,23 @@ export default async function StorySlugPage({
     ? await loadOwnComprehensionResponses(sessionId)
     : undefined;
 
+  let readerMode: "classroom-live" | "classroom-review" | "open" = "open";
+  if (access.kind === "ok" && access.saveResponses) {
+    const live =
+      isWithinSessionWindow(access.session) &&
+      !areAnswersUnlocked(access.session);
+    readerMode = live ? "classroom-live" : "classroom-review";
+  }
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  let trackLookups = false;
+  if (user) {
+    const profile = await getProfile(user.id);
+    trackLookups = profile != null && profile.role !== "teacher";
+  }
+
   return (
     <StoryReader
       data={data}
@@ -64,6 +86,8 @@ export default async function StorySlugPage({
       unlockAt={unlockAt}
       sessionId={sessionId}
       savedResponses={savedResponses}
+      trackLookups={trackLookups}
+      readerMode={readerMode}
     />
   );
 }

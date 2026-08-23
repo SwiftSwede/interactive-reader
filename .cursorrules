@@ -6,11 +6,9 @@ It contains the full architecture, data structure, feature build order (53 slice
 Follow it as your north star. Do not make decisions that contradict the PRD without asking.
 
 ## Current Phase
-Phase 1 and 1.5 are COMPLETE.
-We are now building Phase 2a — Auth + Course Management (the Zoom virtual handout).
-Only build features listed in Phase 2a, Section 7 of the PRD (slices 13, 16–22).
-Slices 14–15 (Stripe webhooks) are deferred until StripeCart events are verified. Do not skip them forever: return to 14–15 before production class billing.
-Do not build Phase 2b+ features.
+Phase 1, 1.5, 2a, and 2b are COMPLETE.
+Next is Phase 2c (writing class). Slices 14–15 (Stripe webhooks) are still deferred until StripeCart events are verified. Return to 14–15 before production class billing.
+Do not build Phase 2c+ until asked.
 
 ## Tech Stack
 - Next.js 14+ (App Router)

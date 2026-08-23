@@ -6,6 +6,7 @@ import WordTooltip, {
   type ExpressionData,
 } from "./WordTooltip";
 import StoryAudioPlayer from "./StoryAudioPlayer";
+import { recordWordLookup } from "@/app/story/[slug]/actions";
 
 // ── Types ──────────────────────────────────────────────────
 
@@ -22,6 +23,9 @@ type InteractiveStoryProps = {
   expressions: ExpressionData[];
   audioUrl: string;
   timestamps: WordTimestamp[];
+  storyId?: string;
+  sessionId?: string;
+  trackLookups?: boolean;
 };
 
 // ── Component ──────────────────────────────────────────────
@@ -32,6 +36,9 @@ export default function InteractiveStory({
   expressions,
   audioUrl,
   timestamps,
+  storyId,
+  sessionId,
+  trackLookups = false,
 }: InteractiveStoryProps) {
   const [seenPositions, setSeenPositions] = useState<Set<number>>(new Set());
   const [activePosition, setActivePosition] = useState<number | null>(null);
@@ -184,6 +191,18 @@ export default function InteractiveStory({
     });
   }, [expressionPositions]);
 
+  const handleLookup = useCallback(
+    (word: WordData) => {
+      if (!trackLookups || !storyId) return;
+      void recordWordLookup({
+        wordId: word.id,
+        storyId,
+        sessionId,
+      });
+    },
+    [trackLookups, storyId, sessionId]
+  );
+
   const handleDismiss = useCallback(() => {
     setActivePosition(null);
     setActiveExpressionId(null);
@@ -286,6 +305,7 @@ export default function InteractiveStory({
                       isExpressionActive={isExpressionActive}
                       hintClass={!hasInteracted && currentPos < 4 ? "word-hint" : undefined}
                       onFirstInteraction={() => setHasInteracted(true)}
+                      onLookup={handleLookup}
                     />
                     {tokenIdx < tokens.length - 1 ? " " : ""}
                   </span>

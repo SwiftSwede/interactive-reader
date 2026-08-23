@@ -15,12 +15,16 @@ export default function StoryReader({
   unlockAt,
   sessionId,
   savedResponses,
+  trackLookups = false,
+  readerMode = "open",
 }: {
   data: LoadedStory;
   allowReveal?: boolean;
   unlockAt?: string;
   sessionId?: string;
   savedResponses?: SavedComprehensionResponse[];
+  trackLookups?: boolean;
+  readerMode?: "classroom-live" | "classroom-review" | "open";
 }) {
   const {
     story,
@@ -59,6 +63,9 @@ export default function StoryReader({
               "utf-8"
             )
           )}
+          storyId={story.id}
+          sessionId={sessionId}
+          trackLookups={trackLookups}
         />
 
         <p className="text-center text-gray-400 mt-8 italic">The End</p>
@@ -83,18 +90,23 @@ export default function StoryReader({
 
         {personalQuestions.length > 0 && (
           <>
-            <MicroExplanation text="Estas preguntas no tienen una respuesta correcta. Conectan la historia con tu vida y te hacen pensar en como usar el vocabulario nuevo. El Profe Kyle te da feedback enfocado en una o dos cosas para mejorar." />
+            {readerMode !== "classroom-live" && (
+              <MicroExplanation text="Estas preguntas no tienen una respuesta correcta. Conectan la historia con tu vida y te hacen pensar en como usar el vocabulario nuevo. El Profe Kyle te da feedback enfocado en una o dos cosas para mejorar." />
+            )}
             <PersonalQuestions
               questions={personalQuestions.map((q) => ({
                 id: q.id,
                 position: q.position,
                 question: q.question,
               }))}
+              mode={readerMode === "classroom-live" ? "classroom-live" : "write"}
             />
           </>
         )}
 
-        {pronunciationDrill && pronunciationDrill.practica_coral_standard && (
+        {readerMode !== "classroom-live" &&
+          pronunciationDrill &&
+          pronunciationDrill.practica_coral_standard && (
           <DictationPractice
             audioUrl="/audio/stories/practica-coral-soccery-jersey.mp3"
             standardText={pronunciationDrill.practica_coral_standard}

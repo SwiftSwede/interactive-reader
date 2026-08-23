@@ -78,3 +78,54 @@ export async function saveComprehensionResponse(input: {
 
   return { ok: true };
 }
+
+export async function recordWordLookup(input: {
+  wordId: string;
+  storyId: string;
+  sessionId?: string;
+}): Promise<void> {
+  try {
+    const wordId = input.wordId.trim();
+    const storyId = input.storyId.trim();
+    if (!wordId || !storyId) return;
+
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (!user) return;
+
+    const profile = await getProfile(user.id);
+    if (!profile || profile.role === "teacher") return;
+
+    const { data: word } = await supabase
+      .from("words")
+      .select("id, story_id")
+      .eq("id", wordId)
+      .maybeSingle();
+
+    if (!word || word.story_id !== storyId) return;
+
+    const row: {
+      user_id: string;
+      word_id: string;
+      story_id: string;
+      course_session_id?: string;
+    } = {
+      user_id: user.id,
+      word_id: wordId,
+      story_id: storyId,
+    };
+
+    if (input.sessionId) {
+      row.course_session_id = input.sessionId;
+    }
+
+    const { error } = await supabase.from("word_lookups").insert(row);
+    if (error && error.code !== "23505") {
+      console.error("recordWordLookup failed:", error);
+    }
+  } catch (error) {
+    console.error("recordWordLookup failed:", error);
+  }
+}
