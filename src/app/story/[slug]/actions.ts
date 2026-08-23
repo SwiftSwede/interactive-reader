@@ -1,7 +1,12 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { getProfile } from "@/lib/auth-server";
+
+function revalidateTeacherViews() {
+  revalidatePath("/teacher", "layout");
+}
 
 export type SaveComprehensionResult = { ok: true } | { ok: false };
 
@@ -76,6 +81,7 @@ export async function saveComprehensionResponse(input: {
     return { ok: false };
   }
 
+  revalidateTeacherViews();
   return { ok: true };
 }
 
@@ -124,6 +130,10 @@ export async function recordWordLookup(input: {
     const { error } = await supabase.from("word_lookups").insert(row);
     if (error && error.code !== "23505") {
       console.error("recordWordLookup failed:", error);
+      return;
+    }
+    if (!error) {
+      revalidateTeacherViews();
     }
   } catch (error) {
     console.error("recordWordLookup failed:", error);

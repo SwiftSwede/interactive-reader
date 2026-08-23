@@ -1,9 +1,14 @@
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { promoteTeacherIfNeeded, getProfile } from "@/lib/auth-server";
 import { safeNextPath } from "@/lib/auth";
 import type { CourseSession } from "@/types";
+
+function revalidateTeacherViews() {
+  revalidatePath("/teacher", "layout");
+}
 
 type SessionRow = {
   id: string;
@@ -110,14 +115,19 @@ async function recordSessionAttendance(
     }
 
     if (error?.code === "23505" && inWindow) {
-      await supabase
+      const { error: updateError } = await supabase
         .from("session_attendance")
         .update({ attended: true })
         .eq("course_session_id", session.id)
         .eq("student_id", studentId)
         .eq("attended", false);
+      if (updateError) {
+        console.error("recordSessionAttendance update failed:", updateError);
+        return;
+      }
     }
 
+    revalidateTeacherViews();
     return;
   }
 
@@ -129,7 +139,9 @@ async function recordSessionAttendance(
 
     if (error) {
       console.error("recordSessionAttendance update failed:", error);
+      return;
     }
+    revalidateTeacherViews();
   }
 }
 

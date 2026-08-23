@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { signOut } from "@/app/dashboard/actions";
+import TeacherLiveRefresh from "./TeacherLiveRefresh";
 
 export default function TeacherLayout({
   children,
@@ -37,6 +38,7 @@ export default function TeacherLayout({
           </div>
         </div>
       </header>
+      <TeacherLiveRefresh />
       {children}
     </div>
   );

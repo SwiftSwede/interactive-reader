@@ -52,23 +52,25 @@ export default function CourseRoster({
 
   return (
     <div>
-      <div className="mb-3 flex flex-wrap gap-2">
-        <SortChip
-          active={sortKey === "name"}
-          onClick={() => setSortKey("name")}
-          label="Nombre"
-        />
-        <SortChip
-          active={sortKey === "attendance"}
-          onClick={() => setSortKey("attendance")}
-          label="Asistencia"
-        />
-        <SortChip
-          active={sortKey === "activity"}
-          onClick={() => setSortKey("activity")}
-          label="Actividad"
-        />
-      </div>
+      {students.length >= 2 && (
+        <div className="mb-3 flex flex-wrap gap-2">
+          <SortChip
+            active={sortKey === "name"}
+            onClick={() => setSortKey("name")}
+            label="Nombre"
+          />
+          <SortChip
+            active={sortKey === "attendance"}
+            onClick={() => setSortKey("attendance")}
+            label="Asistencia"
+          />
+          <SortChip
+            active={sortKey === "activity"}
+            onClick={() => setSortKey("activity")}
+            label="Actividad"
+          />
+        </div>
+      )}
       <ul className="divide-y divide-gray-100 rounded-lg border border-gray-100">
         {sorted.map((student) => (
           <li key={student.studentId}>
