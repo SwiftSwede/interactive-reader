@@ -64,6 +64,15 @@ export default async function WritingPage({
     );
   }
 
+  if (access.kind === "expired") {
+    return (
+      <StoryAccessMessage
+        title="Esta clase es nueva"
+        body="Tu suscripción ya no está activa, así que las clases nuevas no se abren. Las que tomaste cuando pagabas siguen ahí. Si crees que es un error, escríbeme."
+      />
+    );
+  }
+
   if (access.kind !== "ok") {
     return (
       <StoryAccessMessage

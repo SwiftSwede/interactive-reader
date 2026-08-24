@@ -10,6 +10,7 @@ import {
   studentSessionPath,
   type SessionType,
 } from "@/lib/activities";
+import { classroomStudentCanAccessSession } from "@/lib/classroom-access";
 import type { CourseSession } from "@/types";
 
 function revalidateTeacherViews() {
@@ -43,7 +44,8 @@ export type SessionAccess =
       saveResponses: boolean;
     }
   | { kind: "invalid" }
-  | { kind: "refused" };
+  | { kind: "refused" }
+  | { kind: "expired" };
 
 export function mapSession(row: SessionRow): CourseSession {
   const sessionType: SessionType = isSessionType(row.session_type)
@@ -244,6 +246,9 @@ export async function loadSessionAccess(
   }
 
   if (profile?.role === "student-classroom") {
+    const allowed = await classroomStudentCanAccessSession(profile, session);
+    if (!allowed) return { kind: "expired" };
+
     const displayName =
       typeof user.user_metadata?.display_name === "string"
         ? user.user_metadata.display_name.trim()
