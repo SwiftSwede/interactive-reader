@@ -7,8 +7,9 @@ import LocalDateTime from "@/components/LocalDateTime";
 import {
   courseLevelLabel,
   currentSessionKindLabel,
-  mapSessionRow,
+  loadSessionsForCourses,
   pickCurrentSession,
+  sessionTitle,
   studentCountLabel,
   type TeacherSession,
 } from "@/lib/teacher";
@@ -22,21 +23,6 @@ type CourseRow = {
   name: string;
   level: CourseLevel;
   created_at: string;
-};
-
-type SessionListRow = {
-  id: string;
-  course_id: string;
-  story_id: string;
-  session_start_time: string;
-  session_end_time: string;
-  answers_revealed: boolean;
-  notes: string | null;
-  session_link_token: string;
-  stories:
-    | { title: string; slug: string }
-    | { title: string; slug: string }[]
-    | null;
 };
 
 type EnrollmentCountRow = {
@@ -56,21 +42,14 @@ export default async function TeacherPage() {
   const courses = (data ?? []) as CourseRow[];
   const courseIds = courses.map((course) => course.id);
 
-  const [{ data: enrollmentRows }, { data: sessionRows }] = await Promise.all([
+  const [{ data: enrollmentRows }, sessions] = await Promise.all([
     courseIds.length > 0
       ? supabase
           .from("course_enrollments")
           .select("course_id")
           .in("course_id", courseIds)
       : Promise.resolve({ data: [] }),
-    courseIds.length > 0
-      ? supabase
-          .from("course_sessions")
-          .select(
-            "id, course_id, story_id, session_start_time, session_end_time, answers_revealed, notes, session_link_token, stories ( title, slug )"
-          )
-          .in("course_id", courseIds)
-      : Promise.resolve({ data: [] }),
+    loadSessionsForCourses(supabase, courseIds),
   ]);
 
   const studentCountByCourse = new Map<string, number>();
@@ -82,11 +61,10 @@ export default async function TeacherPage() {
   }
 
   const sessionsByCourse = new Map<string, TeacherSession[]>();
-  for (const row of (sessionRows ?? []) as SessionListRow[]) {
-    const mapped = mapSessionRow(row);
-    const list = sessionsByCourse.get(mapped.courseId) ?? [];
-    list.push(mapped);
-    sessionsByCourse.set(mapped.courseId, list);
+  for (const session of sessions) {
+    const list = sessionsByCourse.get(session.courseId) ?? [];
+    list.push(session);
+    sessionsByCourse.set(session.courseId, list);
   }
 
   return (
@@ -131,7 +109,7 @@ export default async function TeacherPage() {
                       <div className="mt-1 text-sm text-gray-600">
                         <p>
                           {currentSessionKindLabel(current.kind)}:{" "}
-                          {current.session.story?.title ?? "Historia"}
+                          {sessionTitle(current.session)}
                         </p>
                         <LocalDateTime iso={current.session.start} />
                       </div>

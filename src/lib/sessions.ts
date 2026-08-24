@@ -1,25 +1,36 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { after } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { promoteTeacherIfNeeded, getProfile } from "@/lib/auth-server";
 import { safeNextPath } from "@/lib/auth";
+import {
+  isSessionType,
+  studentSessionPath,
+  type SessionType,
+} from "@/lib/activities";
 import type { CourseSession } from "@/types";
 
 function revalidateTeacherViews() {
-  revalidatePath("/teacher", "layout");
+  after(() => {
+    revalidatePath("/teacher", "layout");
+  });
 }
 
 type SessionRow = {
   id: string;
   course_id: string;
-  story_id: string;
+  session_type?: string | null;
+  story_id: string | null;
+  writing_prompt_id?: string | null;
   session_date: string;
   session_start_time: string;
   session_end_time: string;
   answers_revealed: boolean;
   notes: string | null;
   session_link_token: string;
+  timer_started_at?: string | null;
   created_at: string;
 };
 
@@ -34,23 +45,32 @@ export type SessionAccess =
   | { kind: "invalid" }
   | { kind: "refused" };
 
-function mapSession(row: SessionRow): CourseSession {
+export function mapSession(row: SessionRow): CourseSession {
+  const sessionType: SessionType = isSessionType(row.session_type)
+    ? row.session_type
+    : row.writing_prompt_id
+      ? "writing"
+      : "story";
+
   return {
     id: row.id,
     courseId: row.course_id,
+    sessionType,
     storyId: row.story_id,
+    writingPromptId: row.writing_prompt_id ?? null,
     sessionDate: row.session_date,
     sessionStartTime: row.session_start_time,
     sessionEndTime: row.session_end_time,
     answersRevealed: row.answers_revealed,
     notes: row.notes,
     sessionLinkToken: row.session_link_token,
+    timerStartedAt: row.timer_started_at ?? null,
     createdAt: row.created_at,
   };
 }
 
 export function isWithinSessionWindow(
-  session: CourseSession,
+  session: Pick<CourseSession, "sessionStartTime" | "sessionEndTime">,
   now = new Date()
 ): boolean {
   const t = now.getTime();
@@ -73,6 +93,7 @@ export function areAnswersUnlocked(
 async function persistAnswersRevealedIfEnded(
   session: CourseSession
 ): Promise<void> {
+  if (session.sessionType !== "story") return;
   if (session.answersRevealed) return;
   if (!areAnswersUnlocked(session)) return;
 
@@ -145,10 +166,6 @@ async function recordSessionAttendance(
   }
 }
 
-function sessionStoryPath(slug: string, token: string): string {
-  return `/story/${slug}?session=${token}`;
-}
-
 async function getSessionByToken(token: string): Promise<CourseSession | null> {
   const supabase = await createClient();
   const { data, error } = await supabase.rpc("get_session_by_token", {
@@ -197,33 +214,28 @@ async function enrollClassroomStudent(
   }
 }
 
-export async function resolveSessionAccess(
-  slug: string,
-  sessionToken: string | undefined
+export async function loadSessionAccess(
+  sessionToken: string | undefined,
+  loginNext?: string
 ): Promise<SessionAccess> {
   if (!sessionToken) return { kind: "open" };
 
   const token = sessionToken.trim();
-  const next = safeNextPath(sessionStoryPath(slug, token));
+  if (!token) return { kind: "open" };
+
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
   if (!user) {
+    const next = safeNextPath(loginNext ?? `/writing?session=${token}`);
     redirect(`/login?next=${encodeURIComponent(next)}`);
   }
 
   await promoteTeacherIfNeeded(user.id, user.email);
   const session = await getSessionByToken(token);
   if (!session) return { kind: "invalid" };
-
-  const storySlug = await getStorySlug(session.storyId);
-  if (!storySlug) return { kind: "invalid" };
-
-  if (storySlug !== slug) {
-    redirect(sessionStoryPath(storySlug, token));
-  }
 
   const profile = await getProfile(user.id);
   if (profile?.role === "teacher") {
@@ -248,4 +260,67 @@ export async function resolveSessionAccess(
   }
 
   return { kind: "refused" };
+}
+
+export async function resolveSessionAccess(
+  slug: string,
+  sessionToken: string | undefined
+): Promise<SessionAccess> {
+  const loginNext = sessionToken
+    ? `/story/${slug}?session=${sessionToken}`
+    : undefined;
+  const access = await loadSessionAccess(sessionToken, loginNext);
+  if (access.kind !== "ok") return access;
+
+  if (access.session.sessionType === "writing") {
+    redirect(
+      studentSessionPath({
+        sessionType: "writing",
+        token: access.session.sessionLinkToken,
+      })
+    );
+  }
+
+  if (!access.session.storyId) return { kind: "invalid" };
+
+  const storySlug = await getStorySlug(access.session.storyId);
+  if (!storySlug) return { kind: "invalid" };
+
+  if (storySlug !== slug) {
+    redirect(
+      studentSessionPath({
+        sessionType: "story",
+        token: access.session.sessionLinkToken,
+        storySlug,
+      })
+    );
+  }
+
+  return access;
+}
+
+export async function resolveWritingSessionAccess(
+  sessionToken: string | undefined
+): Promise<SessionAccess> {
+  if (!sessionToken?.trim()) return { kind: "invalid" };
+
+  const loginNext = `/writing?session=${sessionToken.trim()}`;
+  const access = await loadSessionAccess(sessionToken, loginNext);
+  if (access.kind !== "ok") return access;
+
+  if (access.session.sessionType === "story") {
+    const storySlug = access.session.storyId
+      ? await getStorySlug(access.session.storyId)
+      : null;
+    if (!storySlug) return { kind: "invalid" };
+    redirect(
+      studentSessionPath({
+        sessionType: "story",
+        token: access.session.sessionLinkToken,
+        storySlug,
+      })
+    );
+  }
+
+  return access;
 }

@@ -110,6 +110,8 @@ export interface SoundVideo {
 export type UserRole = "student-classroom" | "student-consumer" | "teacher";
 export type SubscriptionStatus = "active" | "cancelled" | "paused" | "none";
 export type CourseLevel = "pre-intermediate" | "intermediate";
+export type SessionType = "story" | "writing";
+export type WritingSubmissionStatus = "draft" | "submitted" | "corrected";
 
 export interface Profile {
   id: string;
@@ -151,14 +153,56 @@ export interface CourseEnrollment {
 export interface CourseSession {
   id: string;
   courseId: string;
-  storyId: string;
+  sessionType: SessionType;
+  storyId: string | null;
+  writingPromptId: string | null;
   sessionDate: string;
   sessionStartTime: string;
   sessionEndTime: string;
   answersRevealed: boolean;
   notes: string | null;
   sessionLinkToken: string;
+  timerStartedAt: string | null;
   createdAt: string;
+}
+
+export interface WritingPrompt {
+  id: string;
+  title: string;
+  promptText: string;
+  writingTimeMinutes: number;
+  level: CourseLevel;
+  structureLesson: string | null;
+  rubricText: string | null;
+  exampleParagraph: string | null;
+  createdBy: string;
+  createdAt: string;
+}
+
+export interface WritingSubmission {
+  id: string;
+  writingPromptId: string;
+  userId: string;
+  courseSessionId: string | null;
+  submissionText: string;
+  startedAt: string | null;
+  submittedAt: string | null;
+  elapsedSeconds: number | null;
+  wordCount: number;
+  wpm: number | null;
+  status: WritingSubmissionStatus;
+  createdAt: string;
+}
+
+export interface WritingCorrection {
+  id: string;
+  writingSubmissionId: string;
+  correctedText: string;
+  correctionDiff: Array<{ text: string; type: "kept" | "added" | "deleted" }>;
+  inlineNotes: Array<{ word_index: number; note: string }> | null;
+  goodVocabulary: number[] | null;
+  correctedBy: string;
+  correctedAt: string;
 }
 
 export interface SessionAttendance {

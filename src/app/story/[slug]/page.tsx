@@ -3,7 +3,6 @@ import { getStoryBySlug } from "@/lib/stories";
 import {
   resolveSessionAccess,
   isWithinSessionWindow,
-  areAnswersUnlocked,
 } from "@/lib/sessions";
 import { loadOwnComprehensionResponses } from "@/lib/comprehension";
 import { getProfile } from "@/lib/auth-server";
@@ -64,10 +63,9 @@ export default async function StorySlugPage({
 
   let readerMode: "classroom-live" | "classroom-review" | "open" = "open";
   if (access.kind === "ok" && access.saveResponses) {
-    const live =
-      isWithinSessionWindow(access.session) &&
-      !areAnswersUnlocked(access.session);
-    readerMode = live ? "classroom-live" : "classroom-review";
+    readerMode = isWithinSessionWindow(access.session)
+      ? "classroom-live"
+      : "classroom-review";
   }
 
   const {

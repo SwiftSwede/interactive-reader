@@ -6,6 +6,8 @@ import {
   loadCourseSessions,
   loadSessionStudentStatus,
   loadStudentLookups,
+  loadWritingSubmissions,
+  sessionTitle,
 } from "@/lib/teacher";
 
 export const metadata = {
@@ -39,17 +41,23 @@ export default async function StudentDetailPage({
 
   const perSession = await Promise.all(
     sessions.map(async (session) => {
-      const [students, lookups] = await Promise.all([
+      const [students, lookups, submissions] = await Promise.all([
         loadSessionStudentStatus(
           supabase,
           course.id,
           session.id,
           session.storyId
         ),
-        loadStudentLookups(supabase, session.id, studentId),
+        session.sessionType === "story"
+          ? loadStudentLookups(supabase, session.id, studentId)
+          : Promise.resolve([]),
+        session.sessionType === "writing"
+          ? loadWritingSubmissions(supabase, session.id)
+          : Promise.resolve([]),
       ]);
       const status = students.find((row) => row.studentId === studentId);
-      return { session, status, lookups };
+      const writing = submissions.find((row) => row.userId === studentId);
+      return { session, status, lookups, writing };
     })
   );
 
@@ -82,8 +90,9 @@ export default async function StudentDetailPage({
         </p>
       ) : (
         <ul className="mt-8 space-y-6">
-          {focusedFirst.map(({ session, status, lookups }) => {
+          {focusedFirst.map(({ session, status, lookups, writing }) => {
             const focused = session.id === focusSessionId;
+            const isWriting = session.sessionType === "writing";
             return (
               <li
                 key={session.id}
@@ -96,65 +105,103 @@ export default async function StudentDetailPage({
                   href={`/teacher/classes/${course.id}/sessions/${session.id}`}
                   className="font-medium text-gray-900 hover:underline"
                 >
-                  {session.story?.title ?? "Historia"}
+                  {sessionTitle(session)}
                 </Link>
                 <LocalDateTime iso={session.start} />
                 <p className="mt-2 text-sm text-gray-600">
                   {status?.opened
                     ? status.attended
-                      ? "Abrió la historia. Llegó a tiempo."
-                      : "Abrió la historia. Fuera de la ventana de clase."
-                    : "Todavía no abre esta historia."}
+                      ? `Abrió ${isWriting ? "la escritura" : "la historia"}. Llegó a tiempo.`
+                      : `Abrió ${isWriting ? "la escritura" : "la historia"}. Fuera de la ventana de clase.`
+                    : `Todavía no abre ${isWriting ? "esta escritura" : "esta historia"}.`}
                 </p>
                 {status?.openedAt && (
                   <LocalDateTime iso={status.openedAt} />
                 )}
 
-                <h3 className="mt-4 text-sm font-semibold text-gray-800">
-                  Comprensión
-                </h3>
-                {!status || status.answers.length === 0 ? (
-                  <p className="mt-1 text-sm text-gray-400">
-                    Todavía no escribió respuestas.
-                  </p>
+                {isWriting ? (
+                  <>
+                    <h3 className="mt-4 text-sm font-semibold text-gray-800">
+                      Escritura
+                    </h3>
+                    {!writing || !writing.submissionText.trim() ? (
+                      <p className="mt-1 text-sm text-gray-400">
+                        Todavía no escribió.
+                      </p>
+                    ) : (
+                      <div className="mt-2">
+                        <p className="whitespace-pre-wrap text-sm text-gray-800">
+                          {writing.submissionText}
+                        </p>
+                        <p className="mt-2 text-xs text-gray-500">
+                          {writing.wordCount} palabras
+                          {writing.wpm ? ` · ${writing.wpm} ppm` : ""}
+                          {writing.status === "corrected"
+                            ? " · Corregido"
+                            : writing.status === "submitted"
+                              ? " · Entregado"
+                              : " · Borrador"}
+                        </p>
+                        {writing.id && (
+                          <Link
+                            href={`/teacher/classes/${course.id}/sessions/${session.id}/submissions/${writing.id}`}
+                            className="mt-2 inline-block text-sm text-indigo-600 underline-offset-2 hover:underline"
+                          >
+                            Corregir
+                          </Link>
+                        )}
+                      </div>
+                    )}
+                  </>
                 ) : (
-                  <ul className="mt-2 space-y-2">
-                    {status.answers.map((answer) => (
-                      <li key={answer.questionId}>
-                        <p className="text-xs font-medium text-gray-500">
-                          {answer.position}. {answer.question}
-                        </p>
-                        <p className="mt-0.5 text-sm text-gray-800">
-                          {answer.responseText.trim() || "(vacío)"}
-                        </p>
-                        <LocalDateTime iso={answer.submittedAt} />
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                  <>
+                    <h3 className="mt-4 text-sm font-semibold text-gray-800">
+                      Comprensión
+                    </h3>
+                    {!status || status.answers.length === 0 ? (
+                      <p className="mt-1 text-sm text-gray-400">
+                        Todavía no escribió respuestas.
+                      </p>
+                    ) : (
+                      <ul className="mt-2 space-y-2">
+                        {status.answers.map((answer) => (
+                          <li key={answer.questionId}>
+                            <p className="text-xs font-medium text-gray-500">
+                              {answer.position}. {answer.question}
+                            </p>
+                            <p className="mt-0.5 text-sm text-gray-800">
+                              {answer.responseText.trim() || "(vacío)"}
+                            </p>
+                            <LocalDateTime iso={answer.submittedAt} />
+                          </li>
+                        ))}
+                      </ul>
+                    )}
 
-                <h3 className="mt-4 text-sm font-semibold text-gray-800">
-                  Palabras que tocó
-                </h3>
-                {lookups.length === 0 ? (
-                  <p className="mt-1 text-sm text-gray-400">
-                    No tocó ninguna palabra, o todavía no lo estamos
-                    guardando.
-                  </p>
-                ) : (
-                  <ul className="mt-2 space-y-2">
-                    {lookups.map((lookup) => (
-                      <li
-                        key={`${lookup.text}-${lookup.lookedUpAt}`}
-                        className="flex flex-wrap items-baseline gap-2"
-                      >
-                        <span className="rounded-full bg-gray-100 px-2.5 py-1 text-sm text-gray-800">
-                          {lookup.text}
-                        </span>
-                        <LocalDateTime iso={lookup.lookedUpAt} />
-                      </li>
-                    ))}
-                  </ul>
+                    <h3 className="mt-4 text-sm font-semibold text-gray-800">
+                      Palabras que tocó
+                    </h3>
+                    {lookups.length === 0 ? (
+                      <p className="mt-1 text-sm text-gray-400">
+                        No tocó ninguna palabra, o todavía no lo estamos
+                        guardando.
+                      </p>
+                    ) : (
+                      <ul className="mt-2 space-y-2">
+                        {lookups.map((lookup) => (
+                          <li
+                            key={`${lookup.text}-${lookup.lookedUpAt}`}
+                            className="flex flex-wrap items-baseline gap-2"
+                          >
+                            <span className="rounded-full bg-gray-100 px-2.5 py-1 text-sm text-gray-800">
+                              {lookup.text}
+                            </span>
+                            <LocalDateTime iso={lookup.lookedUpAt} />
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </>
                 )}
               </li>
             );

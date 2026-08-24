@@ -1,19 +1,37 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { areAnswersUnlocked } from "@/lib/sessions";
+import { studentSessionPath } from "@/lib/activities";
 import UnlockAnswersButton from "../../UnlockAnswersButton";
 import CopySessionLink from "../../CopySessionLink";
 import LocalDateTime from "@/components/LocalDateTime";
+import StartWritingTimerButton from "./StartWritingTimerButton";
 import {
   getOwnedCourse,
   loadCourseSessions,
   loadLookedUpWords,
   loadSessionStudentStatus,
+  loadWritingSubmissions,
+  sessionTitle,
 } from "@/lib/teacher";
 
 export const metadata = {
   title: "Clase - Profe Kyle",
 };
+
+function openedLabel(opened: boolean, attended: boolean, isWriting: boolean) {
+  const noun = isWriting ? "la escritura" : "la historia";
+  if (!opened) return `Todavía no abre ${noun}.`;
+  if (attended) return `Abrió ${noun}. Llegó a tiempo.`;
+  return `Abrió ${noun}. Fuera de la ventana de clase.`;
+}
+
+function submissionStatusLabel(status: string | undefined) {
+  if (status === "corrected") return "Corregido";
+  if (status === "submitted") return "Entregado";
+  if (status === "draft") return "Escribiendo";
+  return "Sin texto";
+}
 
 export default async function SessionDetailPage({
   params,
@@ -29,19 +47,31 @@ export default async function SessionDetailPage({
     notFound();
   }
 
-  const [students, lookedUpWords] = await Promise.all([
+  const isWriting = session.sessionType === "writing";
+  const [students, lookedUpWords, submissions] = await Promise.all([
     loadSessionStudentStatus(
       supabase,
       course.id,
       session.id,
       session.storyId
     ),
-    loadLookedUpWords(supabase, session.id),
+    isWriting ? Promise.resolve([]) : loadLookedUpWords(supabase, session.id),
+    isWriting ? loadWritingSubmissions(supabase, session.id) : Promise.resolve([]),
   ]);
+
+  const submissionByStudent = new Map(
+    submissions.map((row) => [row.userId, row])
+  );
 
   const unlocked = areAnswersUnlocked({
     answersRevealed: session.answersRevealed,
     sessionEndTime: session.end,
+  });
+
+  const copyHref = studentSessionPath({
+    sessionType: session.sessionType,
+    token: session.token,
+    storySlug: session.story?.slug,
   });
 
   return (
@@ -55,7 +85,7 @@ export default async function SessionDetailPage({
         </Link>
       </p>
       <h1 className="mt-2 text-2xl font-bold text-gray-900">
-        {session.story?.title ?? "Historia"}
+        {sessionTitle(session)}
       </h1>
       <LocalDateTime iso={session.start} />
       {session.notes && (
@@ -63,12 +93,19 @@ export default async function SessionDetailPage({
       )}
 
       <div className="mt-4 grid grid-cols-2 gap-2">
-        {session.story ? (
-          <CopySessionLink slug={session.story.slug} token={session.token} />
-        ) : (
-          <span />
-        )}
-        {unlocked ? (
+        <CopySessionLink href={copyHref} />
+        {isWriting ? (
+          session.timerStartedAt ? (
+            <p className="flex items-center text-sm text-gray-500">
+              Tiempo iniciado.
+            </p>
+          ) : (
+            <StartWritingTimerButton
+              courseId={course.id}
+              sessionId={session.id}
+            />
+          )
+        ) : unlocked ? (
           <p className="flex items-center text-sm text-gray-500">
             Respuestas desbloqueadas.
           </p>
@@ -80,37 +117,51 @@ export default async function SessionDetailPage({
         )}
       </div>
 
-      <div className="mt-10">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
-          Palabras más consultadas
-        </h2>
-        {lookedUpWords === null ? (
-          <p className="text-sm text-gray-500">
-            Todavía no estamos guardando las palabras. Eso llega con el
-            siguiente paso.
+      {isWriting && session.writingPrompt && (
+        <div className="mt-8 rounded-lg border border-gray-100 px-3 py-3">
+          <p className="text-xs font-medium text-gray-500">Pregunta</p>
+          <p className="mt-1 whitespace-pre-wrap text-sm text-gray-800">
+            {session.writingPrompt.promptText}
           </p>
-        ) : lookedUpWords.length === 0 ? (
-          <p className="text-sm text-gray-500">
-            Todavía nadie ha tocado una palabra.
+          <p className="mt-2 text-xs text-gray-500">
+            {session.writingPrompt.writingTimeMinutes} minutos
           </p>
-        ) : (
-          <ol className="divide-y divide-gray-100 rounded-lg border border-gray-100">
-            {lookedUpWords.map((word) => (
-              <li
-                key={word.text}
-                className="flex items-baseline justify-between gap-3 px-3 py-2"
-              >
-                <span className="font-medium text-gray-900">{word.text}</span>
-                <span className="text-sm text-gray-500">
-                  {word.studentCount === 1
-                    ? "1 estudiante"
-                    : `${word.studentCount} estudiantes`}
-                </span>
-              </li>
-            ))}
-          </ol>
-        )}
-      </div>
+        </div>
+      )}
+
+      {!isWriting && (
+        <div className="mt-10">
+          <h2 className="mb-3 text-lg font-semibold text-gray-900">
+            Palabras más consultadas
+          </h2>
+          {lookedUpWords === null ? (
+            <p className="text-sm text-gray-500">
+              Todavía no estamos guardando las palabras. Eso llega con el
+              siguiente paso.
+            </p>
+          ) : lookedUpWords.length === 0 ? (
+            <p className="text-sm text-gray-500">
+              Todavía nadie ha tocado una palabra.
+            </p>
+          ) : (
+            <ol className="divide-y divide-gray-100 rounded-lg border border-gray-100">
+              {lookedUpWords.map((word) => (
+                <li
+                  key={word.text}
+                  className="flex items-baseline justify-between gap-3 px-3 py-2"
+                >
+                  <span className="font-medium text-gray-900">{word.text}</span>
+                  <span className="text-sm text-gray-500">
+                    {word.studentCount === 1
+                      ? "1 estudiante"
+                      : `${word.studentCount} estudiantes`}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          )}
+        </div>
+      )}
 
       <div className="mt-10">
         <h2 className="mb-3 text-lg font-semibold text-gray-900">
@@ -122,47 +173,63 @@ export default async function SessionDetailPage({
           </p>
         ) : (
           <ul className="space-y-4">
-            {students.map((student) => (
-              <li
-                key={student.studentId}
-                className="rounded-lg border border-gray-100 px-3 py-3"
-              >
-                <Link
-                  href={`/teacher/classes/${course.id}/students/${student.studentId}?session=${session.id}`}
-                  className="font-medium text-gray-900 hover:underline"
+            {students.map((student) => {
+              const submission = submissionByStudent.get(student.studentId);
+              return (
+                <li
+                  key={student.studentId}
+                  className="rounded-lg border border-gray-100 px-3 py-3"
                 >
-                  {student.displayName}
-                </Link>
-                <p className="mt-1 text-sm text-gray-600">
-                  {student.opened
-                    ? student.attended
-                      ? "Abrió la historia. Llegó a tiempo."
-                      : "Abrió la historia. Fuera de la ventana de clase."
-                    : "Todavía no abre la historia."}
-                </p>
-                {student.openedAt && (
-                  <LocalDateTime iso={student.openedAt} />
-                )}
-                {student.answers.length === 0 ? (
-                  <p className="mt-2 text-sm text-gray-400">
-                    Todavía no escribió respuestas.
+                  <Link
+                    href={
+                      isWriting && submission
+                        ? `/teacher/classes/${course.id}/sessions/${session.id}/submissions/${submission.id}`
+                        : `/teacher/classes/${course.id}/students/${student.studentId}?session=${session.id}`
+                    }
+                    className="font-medium text-gray-900 hover:underline"
+                  >
+                    {student.displayName}
+                  </Link>
+                  <p className="mt-1 text-sm text-gray-600">
+                    {openedLabel(student.opened, student.attended, isWriting)}
                   </p>
-                ) : (
-                  <ul className="mt-3 space-y-2">
-                    {student.answers.map((answer) => (
-                      <li key={answer.questionId}>
-                        <p className="text-xs font-medium text-gray-500">
-                          {answer.position}. {answer.question}
+                  {student.openedAt && (
+                    <LocalDateTime iso={student.openedAt} />
+                  )}
+                  {isWriting ? (
+                    <div className="mt-2 text-sm text-gray-700">
+                      <p>{submissionStatusLabel(submission?.status)}</p>
+                      {submission && (
+                        <p className="mt-0.5 text-sm text-gray-500">
+                          {submission.wordCount} palabras
+                          {session.writingPrompt?.level === "pre-intermediate" &&
+                          submission.wpm
+                            ? ` · ${submission.wpm} ppm`
+                            : ""}
                         </p>
-                        <p className="mt-0.5 text-sm text-gray-800">
-                          {answer.responseText.trim() || "(vacío)"}
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
+                      )}
+                    </div>
+                  ) : student.answers.length === 0 ? (
+                    <p className="mt-2 text-sm text-gray-400">
+                      Todavía no escribió respuestas.
+                    </p>
+                  ) : (
+                    <ul className="mt-3 space-y-2">
+                      {student.answers.map((answer) => (
+                        <li key={answer.questionId}>
+                          <p className="text-xs font-medium text-gray-500">
+                            {answer.position}. {answer.question}
+                          </p>
+                          <p className="mt-0.5 text-sm text-gray-800">
+                            {answer.responseText.trim() || "(vacío)"}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         )}
       </div>

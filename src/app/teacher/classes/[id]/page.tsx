@@ -12,7 +12,9 @@ import {
   getOwnedCourse,
   loadCourseRoster,
   loadCourseSessions,
+  sessionTitle,
 } from "@/lib/teacher";
+import { studentSessionPath } from "@/lib/activities";
 
 export const metadata = {
   title: "Clases - Profe Kyle",
@@ -82,7 +84,7 @@ export default async function CourseClassPage({
         {courseLevelLabel(course.level as CourseLevel)}
       </p>
       <p className="mt-2 text-sm text-gray-600">
-        Una clase es un Zoom: una historia, 90 minutos, un link para el chat.
+        Una clase es un Zoom: una actividad, 90 minutos, un link para el chat.
       </p>
 
       <div className="mt-8">
@@ -96,7 +98,11 @@ export default async function CourseClassPage({
         <h2 className="mb-3 text-lg font-semibold text-gray-900">
           Nueva clase
         </h2>
-        <CreateSessionForm courseId={course.id} stories={stories} />
+        <CreateSessionForm
+          courseId={course.id}
+          courseLevel={course.level as CourseLevel}
+          stories={stories}
+        />
       </div>
 
       <div className="mt-10">
@@ -120,7 +126,7 @@ export default async function CourseClassPage({
                     className="block"
                   >
                     <p className="font-medium text-gray-900 hover:underline">
-                      {session.story?.title ?? "Historia"}
+                      {sessionTitle(session)}
                     </p>
                     <LocalDateTime iso={session.start} />
                   </Link>
@@ -135,27 +141,28 @@ export default async function CourseClassPage({
                       {attendedNames.join(", ")}
                     </p>
                   )}
-                  {unlocked ? (
-                    <p className="mt-2 text-sm text-gray-500">
-                      Respuestas desbloqueadas.
-                    </p>
-                  ) : (
-                    <div className="mt-2">
-                      <UnlockAnswersButton
-                        courseId={course.id}
-                        sessionId={session.id}
-                      />
-                    </div>
-                  )}
-                  <div className="mt-2 grid grid-cols-2 items-stretch gap-2">
-                    {session.story ? (
-                      <CopySessionLink
-                        slug={session.story.slug}
-                        token={session.token}
-                      />
+                  {session.sessionType === "story" ? (
+                    unlocked ? (
+                      <p className="mt-2 text-sm text-gray-500">
+                        Respuestas desbloqueadas.
+                      </p>
                     ) : (
-                      <span />
-                    )}
+                      <div className="mt-2">
+                        <UnlockAnswersButton
+                          courseId={course.id}
+                          sessionId={session.id}
+                        />
+                      </div>
+                    )
+                  ) : null}
+                  <div className="mt-2 grid grid-cols-2 items-stretch gap-2">
+                    <CopySessionLink
+                      href={studentSessionPath({
+                        sessionType: session.sessionType,
+                        token: session.token,
+                        storySlug: session.story?.slug,
+                      })}
+                    />
                     <DeleteSessionButton
                       courseId={course.id}
                       sessionId={session.id}

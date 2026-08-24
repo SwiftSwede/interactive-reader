@@ -2,17 +2,13 @@
 
 import { useState } from "react";
 
-export default function CopySessionLink({
-  slug,
-  token,
-}: {
-  slug: string;
-  token: string;
-}) {
+export default function CopySessionLink({ href }: { href: string }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    const url = `${window.location.origin}/story/${slug}?session=${token}`;
+    const url = href.startsWith("http")
+      ? href
+      : `${window.location.origin}${href}`;
     try {
       await navigator.clipboard.writeText(url);
       setCopied(true);
