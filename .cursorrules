@@ -6,9 +6,11 @@ It contains the full architecture, data structure, feature build order (53 slice
 Follow it as your north star. Do not make decisions that contradict the PRD without asking.
 
 ## Current Phase
-Phase 1, 1.5, 2a, and 2b are COMPLETE.
-Next is Phase 2c (writing class). Slices 14–15 (Stripe webhooks) are still deferred until StripeCart events are verified. Return to 14–15 before production class billing.
-Do not build Phase 2c+ until asked.
+**COMPLETE:** Phase 1, 1.5, 2a (slices 13–22 + 14–15 Stripe webhooks), 2b, 2c (slices 22a–22e writing class).
+**Next feature build:** Phase 2.5 (slices 30–32: Bunny Stream IPA popups, dictation → IPA → video, consumer choral practice).
+Do not build Phase 2.5+ until asked.
+
+**Production (learn.profekyle.com):** Site and live Stripe webhook are up (200 on test delivery). Remaining ops: Supabase Auth Site URL + redirect URLs, bulk import of existing ThriveCart/Stripe subscribers, legacy price ID mapping. Teacher invite remains for nicknames and exceptions.
 
 ## Tech Stack
 - Next.js 14+ (App Router)
@@ -39,6 +41,19 @@ Do not build Phase 2c+ until asked.
 - Mobile: Spotify (bottom tabs, card lists, persistent "now playing" bar for audio)
 - Desktop: Netflix (horizontal rows, grid density, hover interactions)
 - 500 million LatAm users already know these patterns. When a student opens the app for the first time, they should know where to tap without instructions.
+
+## Code Quality and Architecture
+- Follow web app design best practices at all times.
+- Structure the codebase to be future-proof, well-organized, flexible, and easy to extend.
+- Prefer composition over inheritance. Extract reusable logic into hooks or utility functions.
+- Keep components small and focused. One component = one responsibility.
+- Use TypeScript properly: define types for all data structures, avoid `any`, use the PRD's data structure definitions as the source of truth for types.
+- Name variables and functions descriptively. Code should be self-documenting.
+- Do not hardcode values that should be configurable (story IDs, API URLs, audio paths). Use constants, env vars, or config files.
+- Think ahead: every component you build should be designed so that adding the next feature (the next slice in the PRD) does not require rewriting what you already built. If a component is tightly coupled to one specific story or one specific use case, refactor it to be generic.
+- Separation of concerns: data fetching, business logic, and presentation should be in separate layers.
+- Follow Next.js App Router conventions. Server components by default, client components only when interactivity is needed (and marked with "use client").
+- Keep the file structure organized: components in `src/components/`, API routes in `src/app/api/`, types in `src/types/`, utilities in `src/lib/`.
 
 ## Build discipline
 - Build one vertical slice at a time (see PRD Section 7 for the slice list)
