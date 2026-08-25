@@ -1,5 +1,11 @@
 import { createAdminClient } from "@/lib/supabase/admin";
-import type { CourseSession, Profile } from "@/types";
+import type { CourseSession, Profile, SubscriptionStatus } from "@/types";
+
+export function isActiveClassroomSubscription(
+  status: SubscriptionStatus | null | undefined
+): boolean {
+  return status === "active";
+}
 
 export async function classroomStudentCanAccessSession(
   profile: Profile,

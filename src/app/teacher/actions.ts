@@ -3,6 +3,11 @@
 import { revalidatePath } from "next/cache";
 import { requireTeacher } from "@/lib/auth-server";
 import { createClient } from "@/lib/supabase/server";
+import {
+  enrollMatchingStudentsInCourse,
+  moveStudentToClassroomLevel,
+  otherCourseLevel,
+} from "@/lib/classroom-placement";
 import type { CourseLevel } from "@/types";
 
 export type CreateCourseResult =
@@ -10,6 +15,10 @@ export type CreateCourseResult =
   | { ok: false; error: string };
 
 const LEVELS: CourseLevel[] = ["pre-intermediate", "intermediate"];
+
+function courseLevelLabel(level: CourseLevel): string {
+  return level === "pre-intermediate" ? "Pre-intermedio" : "Intermedio";
+}
 
 export async function createCourse(
   _prev: CreateCourseResult | null,
@@ -28,13 +37,17 @@ export async function createCourse(
   }
 
   const supabase = await createClient();
-  const { error } = await supabase.from("courses").insert({
-    name,
-    level,
-    teacher_id: teacher.id,
-  });
+  const { data: created, error } = await supabase
+    .from("courses")
+    .insert({
+      name,
+      level,
+      teacher_id: teacher.id,
+    })
+    .select("id")
+    .single();
 
-  if (error) {
+  if (error || !created) {
     console.error("createCourse failed:", error);
     return {
       ok: false,
@@ -42,6 +55,98 @@ export async function createCourse(
     };
   }
 
+  const enrolled = await enrollMatchingStudentsInCourse({
+    courseId: created.id,
+    level,
+  });
+
   revalidatePath("/teacher");
-  return { ok: true, message: `Listo. ${name} ya está en tu lista.` };
+  if (enrolled === 0) {
+    return { ok: true, message: `Listo. ${name} ya está en tu lista.` };
+  }
+  if (enrolled === 1) {
+    return {
+      ok: true,
+      message: `Listo. ${name} ya está en tu lista, con 1 estudiante.`,
+    };
+  }
+  return {
+    ok: true,
+    message: `Listo. ${name} ya está en tu lista, con ${enrolled} estudiantes.`,
+  };
+}
+
+export type MoveStudentResult =
+  | { ok: true; message: string }
+  | { ok: false; error: string };
+
+export async function moveStudentToOtherGroup(
+  formData: FormData
+): Promise<MoveStudentResult> {
+  const teacher = await requireTeacher("/teacher");
+  const courseId = String(formData.get("courseId") ?? "").trim();
+  const studentId = String(formData.get("studentId") ?? "").trim();
+
+  if (!courseId || !studentId) {
+    return { ok: false, error: "No encontré a ese estudiante." };
+  }
+
+  const supabase = await createClient();
+  const { data: course } = await supabase
+    .from("courses")
+    .select("id, teacher_id, level, archived")
+    .eq("id", courseId)
+    .eq("teacher_id", teacher.id)
+    .maybeSingle();
+
+  if (!course || course.archived) {
+    return { ok: false, error: "Ese curso no es tuyo." };
+  }
+
+  const { data: enrollment } = await supabase
+    .from("course_enrollments")
+    .select("student_id")
+    .eq("course_id", courseId)
+    .eq("student_id", studentId)
+    .maybeSingle();
+
+  if (!enrollment) {
+    return { ok: false, error: "Ese estudiante no está en este curso." };
+  }
+
+  const fromLevel = course.level as CourseLevel;
+  const toLevel = otherCourseLevel(fromLevel);
+
+  try {
+    const { enrolledInLiveCourse } = await moveStudentToClassroomLevel({
+      studentId,
+      toLevel,
+    });
+    revalidatePath("/teacher", "layout");
+    const label = courseLevelLabel(toLevel);
+    if (!enrolledInLiveCourse) {
+      return {
+        ok: true,
+        message: `Listo. Ahora es ${label}. Cuando crees ese curso, entra sola.`,
+      };
+    }
+    return {
+      ok: true,
+      message: `Listo. Ahora es ${label}. Sigue pagando igual.`,
+    };
+  } catch (error) {
+    console.error("moveStudentToOtherGroup failed:", error);
+    const message = error instanceof Error ? error.message : "";
+    if (message.includes("classroom_level")) {
+      return {
+        ok: false,
+        error:
+          "Falta una pieza en Supabase. Abre el SQL Editor y corre schema-classroom-level.sql.",
+      };
+    }
+    return {
+      ok: false,
+      error: "No pude moverlo. Inténtalo de nuevo.",
+    };
+  }
 }

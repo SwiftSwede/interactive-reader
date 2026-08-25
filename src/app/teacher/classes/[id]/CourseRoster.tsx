@@ -4,14 +4,18 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import LocalDateTime from "@/components/LocalDateTime";
 import type { RosterStudent } from "@/lib/teacher";
+import type { CourseLevel } from "@/types";
+import MoveStudentButton from "./MoveStudentButton";
 
 type SortKey = "name" | "attendance" | "activity";
 
 export default function CourseRoster({
   courseId,
+  courseLevel,
   students,
 }: {
   courseId: string;
+  courseLevel: CourseLevel;
   students: RosterStudent[];
 }) {
   const [sortKey, setSortKey] = useState<SortKey>("name");
@@ -73,10 +77,10 @@ export default function CourseRoster({
       )}
       <ul className="divide-y divide-gray-100 rounded-lg border border-gray-100">
         {sorted.map((student) => (
-          <li key={student.studentId}>
+          <li key={student.studentId} className="px-3 py-3">
             <Link
               href={`/teacher/classes/${courseId}/students/${student.studentId}`}
-              className="block px-3 py-3 hover:bg-gray-50 md:flex md:items-baseline md:justify-between md:gap-4"
+              className="block hover:bg-gray-50 md:flex md:items-baseline md:justify-between md:gap-4"
             >
               <p className="font-medium text-gray-900">{student.displayName}</p>
               <div className="mt-0.5 md:mt-0 md:text-right">
@@ -95,6 +99,11 @@ export default function CourseRoster({
                 )}
               </div>
             </Link>
+            <MoveStudentButton
+              courseId={courseId}
+              studentId={student.studentId}
+              fromLevel={courseLevel}
+            />
           </li>
         ))}
       </ul>

@@ -5,6 +5,7 @@ import type { CourseLevel } from "@/types";
 import CreateCourseForm from "./CreateCourseForm";
 import LocalDateTime from "@/components/LocalDateTime";
 import {
+  countActiveStudentsByCourse,
   courseLevelLabel,
   currentSessionKindLabel,
   loadSessionsForCourses,
@@ -25,10 +26,6 @@ type CourseRow = {
   created_at: string;
 };
 
-type EnrollmentCountRow = {
-  course_id: string;
-};
-
 export default async function TeacherPage() {
   const teacher = await requireTeacher("/teacher");
   const supabase = await createClient();
@@ -42,23 +39,10 @@ export default async function TeacherPage() {
   const courses = (data ?? []) as CourseRow[];
   const courseIds = courses.map((course) => course.id);
 
-  const [{ data: enrollmentRows }, sessions] = await Promise.all([
-    courseIds.length > 0
-      ? supabase
-          .from("course_enrollments")
-          .select("course_id")
-          .in("course_id", courseIds)
-      : Promise.resolve({ data: [] }),
+  const [studentCountByCourse, sessions] = await Promise.all([
+    countActiveStudentsByCourse(supabase, courseIds),
     loadSessionsForCourses(supabase, courseIds),
   ]);
-
-  const studentCountByCourse = new Map<string, number>();
-  for (const row of (enrollmentRows ?? []) as EnrollmentCountRow[]) {
-    studentCountByCourse.set(
-      row.course_id,
-      (studentCountByCourse.get(row.course_id) ?? 0) + 1
-    );
-  }
 
   const sessionsByCourse = new Map<string, TeacherSession[]>();
   for (const session of sessions) {

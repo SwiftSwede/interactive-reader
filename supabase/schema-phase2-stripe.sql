@@ -5,8 +5,19 @@
 --   STRIPE_SECRET_KEY=sk_test_...
 --   STRIPE_WEBHOOK_SECRET=whsec_...   (from `stripe listen` locally, or Workbench in prod)
 --   APP_ORIGIN=http://localhost:3000  (prod: https://learn.profekyle.com)
---   STRIPE_PRICE_PRE_INTERMEDIATE=price_...,price_...
---   STRIPE_PRICE_INTERMEDIATE=price_...
+--   STRIPE_PRICE_PRE_INTERMEDIATE=price_...,price_...  (comma-separated; include legacy ThriveCart IDs)
+--   STRIPE_PRICE_INTERMEDIATE=price_...,price_...
+--
+-- Live classroom prices (2026-08-25):
+--   Pre-int: price_1TS8vhLUSDWbekSXTBa1D9U4,
+--            price_1NlZczLUSDWbekSXTK4dUSuJ,
+--            thrivecart-17280-product-8-5900-month-usd,
+--            thrivecart-17280-product-10-6900-month-usd
+--   Intermediate: price_1TS4VvLUSDWbekSXiMziWE1S,
+--                 price_1NlNR5LUSDWbekSX8FBfXtLX
+-- Import existing live subscribers:
+--   npx tsx scripts/import-stripe-subscribers.ts
+--   npx tsx scripts/import-stripe-subscribers.ts --apply
 --
 -- Local test:
 --   stripe listen --forward-to localhost:3000/api/webhooks/stripe

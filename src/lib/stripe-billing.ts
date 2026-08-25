@@ -11,18 +11,34 @@ import {
   subscriptionPriceId,
   subscriptionStartedAt,
 } from "@/lib/stripe";
-import type { CourseLevel, SubscriptionStatus } from "@/types";
+import { isActiveClassroomSubscription } from "@/lib/classroom-access";
+import { enrollInClassroomHome } from "@/lib/classroom-placement";
+import type { SubscriptionStatus } from "@/types";
 
 function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+function expandedCustomer(
+  customer: Stripe.Subscription["customer"]
+): Stripe.Customer | null {
+  if (!customer || typeof customer === "string") return null;
+  if ("deleted" in customer && customer.deleted) return null;
+  return customer;
+}
+
 async function customerEmail(
   customerId: string,
-  fallback?: string | null
+  fallback?: string | null,
+  expanded?: Stripe.Customer | null
 ): Promise<string | null> {
   if (fallback && isValidEmail(fallback)) {
     return fallback.trim().toLowerCase();
+  }
+
+  const expandedEmail = expanded?.email?.trim().toLowerCase();
+  if (expandedEmail && isValidEmail(expandedEmail)) {
+    return expandedEmail;
   }
 
   const customer = await getStripe().customers.retrieve(customerId);
@@ -33,8 +49,17 @@ async function customerEmail(
 
 async function customerDisplayName(
   customerId: string,
-  email: string
+  email: string,
+  expanded?: Stripe.Customer | null,
+  skipStripeRetrieve?: boolean
 ): Promise<string> {
+  if (expanded?.name?.trim()) {
+    return expanded.name.trim();
+  }
+  if (skipStripeRetrieve) {
+    return email.split("@")[0] ?? email;
+  }
+
   const customer = await getStripe().customers.retrieve(customerId);
   if (!customer.deleted && customer.name?.trim()) {
     return customer.name.trim();
@@ -111,38 +136,6 @@ async function upsertSubscriptionPeriod(params: {
 
   if (error) {
     throw new Error(`Failed to insert subscription period: ${error.message}`);
-  }
-}
-
-async function enrollInLevel(
-  studentId: string,
-  level: CourseLevel,
-  displayName: string
-): Promise<void> {
-  const admin = createAdminClient();
-  const { data: courses, error } = await admin
-    .from("courses")
-    .select("id")
-    .eq("level", level)
-    .eq("archived", false);
-
-  if (error) {
-    console.error("enrollInLevel load courses failed:", error);
-    return;
-  }
-
-  for (const course of courses ?? []) {
-    const { error: insertError } = await admin
-      .from("course_enrollments")
-      .insert({
-        course_id: course.id,
-        student_id: studentId,
-        display_name: displayName,
-      });
-
-    if (insertError && insertError.code !== "23505") {
-      console.error("enrollInLevel insert failed:", insertError);
-    }
   }
 }
 
@@ -233,7 +226,8 @@ async function sendClassroomMagicLink(email: string): Promise<void> {
 
 export async function syncClassroomFromSubscription(
   subscription: Stripe.Subscription,
-  emailHint?: string | null
+  emailHint?: string | null,
+  options?: { skipMagicLink?: boolean; skipStripeRetrieve?: boolean }
 ): Promise<void> {
   const customerId = subscriptionCustomerId(subscription);
   if (!customerId) {
@@ -241,14 +235,20 @@ export async function syncClassroomFromSubscription(
     return;
   }
 
-  const email = await customerEmail(customerId, emailHint);
+  const expanded = expandedCustomer(subscription.customer);
+  const email = await customerEmail(customerId, emailHint, expanded);
   if (!email) {
     console.error("stripe billing: no email for customer", customerId);
     return;
   }
 
   const status = subscriptionLifecycleStatus(subscription);
-  const displayName = await customerDisplayName(customerId, email);
+  const displayName = await customerDisplayName(
+    customerId,
+    email,
+    expanded,
+    options?.skipStripeRetrieve
+  );
   const ensured = await ensureClassroomUser({
     email,
     customerId,
@@ -267,11 +267,15 @@ export async function syncClassroomFromSubscription(
   });
 
   const level = courseLevelForPriceId(subscriptionPriceId(subscription));
-  if (level) {
-    await enrollInLevel(userId, level, displayName);
+  if (isActiveClassroomSubscription(status)) {
+    await enrollInClassroomHome({
+      studentId: userId,
+      priceLevel: level,
+      displayName,
+    });
   }
 
-  if (created && status !== "cancelled") {
+  if (created && isActiveClassroomSubscription(status) && !options?.skipMagicLink) {
     await sendClassroomMagicLink(email);
   }
 }

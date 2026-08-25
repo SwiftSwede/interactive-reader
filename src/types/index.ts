@@ -121,6 +121,7 @@ export interface Profile {
   subscriptionStatus: SubscriptionStatus;
   purchased: boolean;
   purchasedAt: string | null;
+  classroomLevel: CourseLevel | null;
   createdAt: string;
 }
 

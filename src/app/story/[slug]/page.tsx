@@ -47,6 +47,15 @@ export default async function StorySlugPage({
     );
   }
 
+  if (access.kind === "wrong-group") {
+    return (
+      <StoryAccessMessage
+        title="Este link es del otro grupo"
+        body="Pídele el link de tu clase al Profe Kyle. Este es del otro horario."
+      />
+    );
+  }
+
   const supabase = await createClient();
   const data = await getStoryBySlug(supabase, slug);
 

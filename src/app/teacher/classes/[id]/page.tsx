@@ -46,7 +46,11 @@ export default async function CourseClassPage({
 
   const stories = (storyRows ?? []) as StoryOption[];
   const sessions = await loadCourseSessions(supabase, course.id);
-  const roster = await loadCourseRoster(supabase, course.id, sessions);
+  const { students: roster, displayNames } = await loadCourseRoster(
+    supabase,
+    course.id,
+    sessions
+  );
   const sessionIds = sessions.map((session) => session.id);
 
   const { data: attendanceRows } =
@@ -58,9 +62,7 @@ export default async function CourseClassPage({
           .eq("attended", true)
       : { data: [] };
 
-  const nameByStudentId = new Map(
-    roster.map((row) => [row.studentId, row.displayName])
-  );
+  const nameByStudentId = new Map(Object.entries(displayNames));
 
   const attendedNamesBySession = new Map<string, string[]>();
   for (const row of (attendanceRows ?? []) as {
@@ -91,7 +93,15 @@ export default async function CourseClassPage({
         <h2 className="mb-3 text-lg font-semibold text-gray-900">
           Estudiantes
         </h2>
-        <CourseRoster courseId={course.id} students={roster} />
+        <p className="mb-3 text-sm text-gray-600">
+          Solo quienes siguen pagando. Si pausaron en ThriveCart, no salen
+          aquí. Moverlos de grupo no cambia lo que pagan.
+        </p>
+        <CourseRoster
+          courseId={course.id}
+          courseLevel={course.level as CourseLevel}
+          students={roster}
+        />
       </div>
 
       <div className="mt-8">

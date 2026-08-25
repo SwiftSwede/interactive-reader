@@ -1,8 +1,9 @@
 import { redirect } from "next/navigation";
 import { requireTeacher } from "@/lib/auth-server";
+import { isActiveClassroomSubscription } from "@/lib/classroom-access";
 import { createClient } from "@/lib/supabase/server";
 import { isSessionType, type SessionType } from "@/lib/activities";
-import type { CourseLevel } from "@/types";
+import type { CourseLevel, SubscriptionStatus } from "@/types";
 
 export type OwnedCourse = {
   id: string;
@@ -46,6 +47,11 @@ export type RosterStudent = {
   attendedCount: number;
   sessionCount: number;
   lastActivityAt: string | null;
+};
+
+export type CourseRosterResult = {
+  students: RosterStudent[];
+  displayNames: Record<string, string>;
 };
 
 export type CurrentSessionKind = "live" | "upcoming" | "past";
@@ -100,6 +106,56 @@ export function studentCountLabel(count: number): string {
   if (count === 0) return "Sin estudiantes";
   if (count === 1) return "1 estudiante";
   return `${count} estudiantes`;
+}
+
+async function activeStudentIdSet(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  studentIds: string[]
+): Promise<Set<string>> {
+  const uniqueIds = [...new Set(studentIds)];
+  if (uniqueIds.length === 0) return new Set();
+
+  const { data } = await supabase
+    .from("profiles")
+    .select("id, subscription_status")
+    .in("id", uniqueIds);
+
+  return new Set(
+    (
+      (data ?? []) as {
+        id: string;
+        subscription_status: SubscriptionStatus;
+      }[]
+    )
+      .filter((row) => isActiveClassroomSubscription(row.subscription_status))
+      .map((row) => row.id)
+  );
+}
+
+export async function countActiveStudentsByCourse(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  courseIds: string[]
+): Promise<Map<string, number>> {
+  const counts = new Map<string, number>();
+  if (courseIds.length === 0) return counts;
+
+  const { data } = await supabase
+    .from("course_enrollments")
+    .select("course_id, student_id")
+    .in("course_id", courseIds);
+
+  const rows = (data ?? []) as { course_id: string; student_id: string }[];
+  const activeIds = await activeStudentIdSet(
+    supabase,
+    rows.map((row) => row.student_id)
+  );
+
+  for (const row of rows) {
+    if (!activeIds.has(row.student_id)) continue;
+    counts.set(row.course_id, (counts.get(row.course_id) ?? 0) + 1);
+  }
+
+  return counts;
 }
 
 export function pickCurrentSession(
@@ -239,7 +295,7 @@ export async function loadCourseRoster(
   supabase: Awaited<ReturnType<typeof createClient>>,
   courseId: string,
   sessions: TeacherSession[]
-): Promise<RosterStudent[]> {
+): Promise<CourseRosterResult> {
   const sessionIds = sessions.map((session) => session.id);
 
   const [{ data: enrollmentRows }, { data: attendanceRows }, { data: responseRows }] =
@@ -331,18 +387,31 @@ export async function loadCourseRoster(
     consider(row.user_id, row.submitted_at ?? row.created_at);
   }
 
-  const roster: RosterStudent[] = (
-    (enrollmentRows ?? []) as { student_id: string; display_name: string }[]
-  ).map((row) => ({
-    studentId: row.student_id,
-    displayName: row.display_name.trim() || "Sin nombre",
-    attendedCount: attendedByStudent.get(row.student_id) ?? 0,
-    sessionCount: sessions.length,
-    lastActivityAt: lastActivityByStudent.get(row.student_id) ?? null,
-  }));
+  const enrollmentList = (enrollmentRows ?? []) as {
+    student_id: string;
+    display_name: string;
+  }[];
+  const activeIds = await activeStudentIdSet(
+    supabase,
+    enrollmentList.map((row) => row.student_id)
+  );
+
+  const roster: RosterStudent[] = enrollmentList
+    .filter((row) => activeIds.has(row.student_id))
+    .map((row) => ({
+      studentId: row.student_id,
+      displayName: row.display_name.trim() || "Sin nombre",
+      attendedCount: attendedByStudent.get(row.student_id) ?? 0,
+      sessionCount: sessions.length,
+      lastActivityAt: lastActivityByStudent.get(row.student_id) ?? null,
+    }));
 
   roster.sort((a, b) => a.displayName.localeCompare(b.displayName, "es"));
-  return roster;
+  const displayNames: Record<string, string> = {};
+  for (const row of enrollmentList) {
+    displayNames[row.student_id] = row.display_name.trim() || "Sin nombre";
+  }
+  return { students: roster, displayNames };
 }
 
 export type SessionStudentStatus = {
@@ -438,22 +507,31 @@ export async function loadSessionStudentStatus(
     answersByStudent.set(row.user_id, list);
   }
 
-  const students: SessionStudentStatus[] = (
-    (enrollmentRows ?? []) as Enrollment[]
-  ).map((row) => {
-    const attendance = attendanceByStudent.get(row.student_id);
-    const answers = (answersByStudent.get(row.student_id) ?? []).sort(
-      (a, b) => a.position - b.position
-    );
-    return {
-      studentId: row.student_id,
-      displayName: row.display_name.trim() || "Sin nombre",
-      opened: Boolean(attendance),
-      attended: attendance?.attended === true,
-      openedAt: attendance?.first_opened_at ?? null,
-      answers,
-    };
-  });
+  const enrollmentList = (enrollmentRows ?? []) as Enrollment[];
+  const activeIds = await activeStudentIdSet(
+    supabase,
+    enrollmentList.map((row) => row.student_id)
+  );
+
+  const students: SessionStudentStatus[] = enrollmentList
+    .filter(
+      (row) =>
+        activeIds.has(row.student_id) || attendanceByStudent.has(row.student_id)
+    )
+    .map((row) => {
+      const attendance = attendanceByStudent.get(row.student_id);
+      const answers = (answersByStudent.get(row.student_id) ?? []).sort(
+        (a, b) => a.position - b.position
+      );
+      return {
+        studentId: row.student_id,
+        displayName: row.display_name.trim() || "Sin nombre",
+        opened: Boolean(attendance),
+        attended: attendance?.attended === true,
+        openedAt: attendance?.first_opened_at ?? null,
+        answers,
+      };
+    });
 
   students.sort((a, b) => a.displayName.localeCompare(b.displayName, "es"));
   return students;

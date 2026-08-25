@@ -11,7 +11,8 @@ import {
   type SessionType,
 } from "@/lib/activities";
 import { classroomStudentCanAccessSession } from "@/lib/classroom-access";
-import type { CourseSession } from "@/types";
+import { seedClassroomLevelIfEmpty } from "@/lib/classroom-placement";
+import type { CourseLevel, CourseSession } from "@/types";
 
 function revalidateTeacherViews() {
   after(() => {
@@ -45,7 +46,8 @@ export type SessionAccess =
     }
   | { kind: "invalid" }
   | { kind: "refused" }
-  | { kind: "expired" };
+  | { kind: "expired" }
+  | { kind: "wrong-group" };
 
 export function mapSession(row: SessionRow): CourseSession {
   const sessionType: SessionType = isSessionType(row.session_type)
@@ -194,7 +196,7 @@ async function enrollClassroomStudent(
   courseId: string,
   studentId: string,
   displayName: string
-): Promise<void> {
+): Promise<"ok" | "wrong-group"> {
   const supabase = await createClient();
   const { data: existing } = await supabase
     .from("course_enrollments")
@@ -203,7 +205,35 @@ async function enrollClassroomStudent(
     .eq("student_id", studentId)
     .maybeSingle();
 
-  if (existing) return;
+  if (existing) return "ok";
+
+  const { data: course } = await supabase
+    .from("courses")
+    .select("level")
+    .eq("id", courseId)
+    .maybeSingle();
+
+  if (!course) return "wrong-group";
+
+  const courseLevel = course.level as CourseLevel;
+  const admin = createAdminClient();
+  const { data: profile } = await admin
+    .from("profiles")
+    .select("classroom_level")
+    .eq("id", studentId)
+    .maybeSingle();
+
+  const home = profile?.classroom_level;
+  if (
+    (home === "pre-intermediate" || home === "intermediate") &&
+    home !== courseLevel
+  ) {
+    return "wrong-group";
+  }
+
+  if (!home) {
+    await seedClassroomLevelIfEmpty(studentId, courseLevel);
+  }
 
   const { error } = await supabase.from("course_enrollments").insert({
     course_id: courseId,
@@ -214,6 +244,7 @@ async function enrollClassroomStudent(
   if (error && error.code !== "23505") {
     console.error("enrollClassroomStudent failed:", error);
   }
+  return "ok";
 }
 
 export async function loadSessionAccess(
@@ -253,7 +284,12 @@ export async function loadSessionAccess(
       typeof user.user_metadata?.display_name === "string"
         ? user.user_metadata.display_name.trim()
         : "";
-    await enrollClassroomStudent(session.courseId, user.id, displayName);
+    const enrolled = await enrollClassroomStudent(
+      session.courseId,
+      user.id,
+      displayName
+    );
+    if (enrolled === "wrong-group") return { kind: "wrong-group" };
     await recordSessionAttendance(session, user.id);
     await persistAnswersRevealedIfEnded(session);
     return {

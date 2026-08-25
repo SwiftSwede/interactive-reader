@@ -73,6 +73,15 @@ export default async function WritingPage({
     );
   }
 
+  if (access.kind === "wrong-group") {
+    return (
+      <StoryAccessMessage
+        title="Este link es del otro grupo"
+        body="Pídele el link de tu clase al Profe Kyle. Este es del otro horario."
+      />
+    );
+  }
+
   if (access.kind !== "ok") {
     return (
       <StoryAccessMessage

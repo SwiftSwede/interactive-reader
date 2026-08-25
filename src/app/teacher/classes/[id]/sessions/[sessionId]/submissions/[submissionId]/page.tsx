@@ -26,11 +26,12 @@ export default async function WritingSubmissionPage({
     notFound();
   }
 
-  const [submissions, roster, correction] = await Promise.all([
-    loadWritingSubmissions(supabase, session.id),
-    loadCourseRoster(supabase, course.id, sessions),
-    loadWritingCorrection(supabase, submissionId),
-  ]);
+  const [submissions, { students: roster, displayNames }, correction] =
+    await Promise.all([
+      loadWritingSubmissions(supabase, session.id),
+      loadCourseRoster(supabase, course.id, sessions),
+      loadWritingCorrection(supabase, submissionId),
+    ]);
   const submission = submissions.find((row) => row.id === submissionId);
   if (!submission) {
     notFound();
@@ -38,6 +39,7 @@ export default async function WritingSubmissionPage({
 
   const studentName =
     roster.find((row) => row.studentId === submission.userId)?.displayName ??
+    displayNames[submission.userId] ??
     "Sin nombre";
 
   return (

@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "import-subscribers": "tsx scripts/import-stripe-subscribers.ts",
+    "check-auth-redirect": "tsx scripts/check-auth-redirect.ts",
+    "check-stripe-schema": "tsx scripts/check-stripe-schema.ts",
+    "seed-classroom-level": "tsx scripts/seed-classroom-level.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.4",

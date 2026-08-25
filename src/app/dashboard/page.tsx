@@ -80,6 +80,10 @@ export default async function DashboardPage() {
               <h2 className="mb-3 text-lg font-semibold text-gray-900">
                 Estudiantes de clase
               </h2>
+              <p className="mb-3 text-sm text-gray-600">
+                Solo quienes siguen pagando. Si pausaron en ThriveCart, no salen
+                aquí. Para PayPal o becas, invítalos abajo.
+              </p>
               {classroomStudents.length === 0 ? (
                 <p className="text-sm text-gray-500">
                   Todavía no hay nadie. Invita al primero.

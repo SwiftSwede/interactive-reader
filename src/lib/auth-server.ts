@@ -1,9 +1,10 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { isActiveClassroomSubscription } from "@/lib/classroom-access";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { isTeacherEmail, safeNextPath } from "@/lib/auth";
-import type { Profile, SubscriptionStatus, UserRole } from "@/types";
+import type { CourseLevel, Profile, SubscriptionStatus, UserRole } from "@/types";
 
 type ProfileRow = {
   id: string;
@@ -13,11 +14,12 @@ type ProfileRow = {
   subscription_status: SubscriptionStatus;
   purchased: boolean;
   purchased_at: string | null;
+  classroom_level: CourseLevel | null;
   created_at: string;
 };
 
 const PROFILE_COLUMNS =
-  "id, email, role, stripe_customer_id, subscription_status, purchased, purchased_at, created_at";
+  "id, email, role, stripe_customer_id, subscription_status, purchased, purchased_at, classroom_level, created_at";
 
 export function mapProfile(row: ProfileRow): Profile {
   return {
@@ -28,6 +30,7 @@ export function mapProfile(row: ProfileRow): Profile {
     subscriptionStatus: row.subscription_status,
     purchased: row.purchased,
     purchasedAt: row.purchased_at,
+    classroomLevel: row.classroom_level,
     createdAt: row.created_at,
   };
 }
@@ -50,8 +53,23 @@ export async function getProfile(userId: string): Promise<Profile | null> {
     .eq("id", userId)
     .maybeSingle();
 
-  if (error || !data) return null;
-  return mapProfile(data as ProfileRow);
+  if (!error && data) {
+    return mapProfile(data as ProfileRow);
+  }
+
+  const { data: fallback } = await supabase
+    .from("profiles")
+    .select(
+      "id, email, role, stripe_customer_id, subscription_status, purchased, purchased_at, created_at"
+    )
+    .eq("id", userId)
+    .maybeSingle();
+
+  if (!fallback) return null;
+  return mapProfile({
+    ...(fallback as Omit<ProfileRow, "classroom_level">),
+    classroom_level: null,
+  });
 }
 
 export async function promoteTeacherIfNeeded(
@@ -114,13 +132,17 @@ export async function getClassroomStudents(): Promise<ClassroomStudent[]> {
   const admin = createAdminClient();
   const { data, error } = await admin
     .from("profiles")
-    .select("id, email")
+    .select("id, email, subscription_status")
     .eq("role", "student-classroom");
 
   if (error || !data) return [];
 
+  const activeRows = data.filter((row) =>
+    isActiveClassroomSubscription(row.subscription_status)
+  );
+
   const students = await Promise.all(
-    data.map(async (row) => {
+    activeRows.map(async (row) => {
       const { data: authUser } = await admin.auth.admin.getUserById(row.id);
       const displayName =
         typeof authUser.user?.user_metadata?.display_name === "string"
