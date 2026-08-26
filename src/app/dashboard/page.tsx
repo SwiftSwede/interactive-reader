@@ -6,6 +6,7 @@ import {
   getProfile,
   promoteTeacherIfNeeded,
 } from "@/lib/auth-server";
+import BackLink from "@/components/BackLink";
 import { signOut } from "./actions";
 import InviteStudentForm from "./InviteStudentForm";
 
@@ -33,7 +34,10 @@ export default async function DashboardPage() {
     <main className="min-h-screen bg-white">
       <header className="border-b border-gray-100 px-4 py-4">
         <div className="mx-auto flex max-w-md items-center justify-between gap-3">
-          <p className="text-sm text-gray-500">Profe Kyle</p>
+          <div className="flex min-w-0 items-center gap-1">
+            {isTeacher ? <BackLink href="/teacher" /> : null}
+            <p className="text-sm text-gray-500">Profe Kyle</p>
+          </div>
           <div className="flex items-center gap-4">
             {isTeacher && (
               <Link
