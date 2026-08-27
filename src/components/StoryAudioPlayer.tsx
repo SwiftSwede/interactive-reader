@@ -18,21 +18,28 @@ function formatTime(seconds: number) {
   return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
-// Spotify-style mini player. Visible only while story audio is playing.
+// Spotify-style mini player. Stays after first play so pause/resume
+// does not force a scroll back to the top player.
 // Portaled to document.body so position:fixed is never clipped by ancestors.
 function StickyNowPlaying({
   currentTime,
   duration,
+  isPlaying,
   onToggle,
 }: {
   currentTime: number;
   duration: number;
+  isPlaying: boolean;
   onToggle: () => void;
 }) {
   const progressPercent = duration > 0 ? Math.min((currentTime / duration) * 100, 100) : 0;
 
   return (
-    <div className="sticky-audio-player" role="region" aria-label="Reproduciendo">
+    <div
+      className="sticky-audio-player"
+      role="region"
+      aria-label={isPlaying ? "Reproduciendo" : "Audio pausado"}
+    >
       <div className="sticky-audio-player-bar">
         <div
           className="sticky-audio-player-progress"
@@ -51,13 +58,19 @@ function StickyNowPlaying({
         <button
           onClick={onToggle}
           className="sticky-audio-player-toggle"
-          aria-label="Pausar"
+          aria-label={isPlaying ? "Pausar" : "Reproducir"}
           type="button"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <rect x="6" y="5" width="4" height="14" rx="1" />
-            <rect x="14" y="5" width="4" height="14" rx="1" />
-          </svg>
+          {isPlaying ? (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <rect x="6" y="5" width="4" height="14" rx="1" />
+              <rect x="14" y="5" width="4" height="14" rx="1" />
+            </svg>
+          ) : (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          )}
         </button>
 
         <span className="sticky-audio-player-time">{formatTime(currentTime)}</span>
@@ -76,6 +89,7 @@ export default function StoryAudioPlayer({
 }: StoryAudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const rafRef = useRef<number | null>(null);
 
@@ -117,6 +131,7 @@ export default function StoryAudioPlayer({
     if (!audio) return;
 
     const handlePlay = () => {
+      setHasStarted(true);
       setIsPlaying(true);
       onPlayStateChange(true);
       // Initialize interpolation refs so RAF starts from the right point
@@ -172,7 +187,7 @@ export default function StoryAudioPlayer({
 
   // Keep page content clear of the sticky bar while it is visible
   useEffect(() => {
-    if (!isPlaying) {
+    if (!hasStarted) {
       document.body.classList.remove("sticky-audio-active");
       return;
     }
@@ -180,7 +195,7 @@ export default function StoryAudioPlayer({
     return () => {
       document.body.classList.remove("sticky-audio-active");
     };
-  }, [isPlaying]);
+  }, [hasStarted]);
 
   // Seek when user clicks on progress bar
   const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -240,11 +255,12 @@ export default function StoryAudioPlayer({
         </span>
       </div>
 
-      {isPlaying
+      {hasStarted
         ? createPortal(
             <StickyNowPlaying
               currentTime={currentTime}
               duration={duration}
+              isPlaying={isPlaying}
               onToggle={handleToggle}
             />,
             document.body

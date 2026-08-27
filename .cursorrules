@@ -25,7 +25,7 @@ Do not build Phase 2.5+ until asked.
 
 ## Rules
 1. No em dashes (—) in UI text. Use colons, periods, or commas. Em dashes are an AI telltale. The only em dashes in the app are in story content (—The End—) which is Kyle's existing format.
-2. Phonetic transcriptions use IPA everywhere. The app uses IPA for all phonetic displays: tooltips, dictation, choral practice, pronunciation explanations. Kyle's custom symbols (ö, ü, ä, etc.) are deprecated in the app but remain in source story files and teaching materials. One system for the student, not two.
+2. Phonetic transcriptions use IPA everywhere. The app uses IPA for all phonetic displays: tooltips, dictation, choral practice, pronunciation explanations. Kyle's custom symbols (ö, ü, ä, etc.) are deprecated in the app but remain in source story files and teaching materials. One system for the student, not two. New transcriptions use ɑ (not ɔ) for Kyle's open vowel (want, walk, thought). See `src/lib/ipa-conventions.ts`.
 3. UI copy is in Spanish for navigation/CTA, English for learning content. "Guardar en mazo" not "Save to deck." The audience is Spanish-speaking.
 4. Mobile-first always. If a feature doesn't work on a 375px wide screen, it doesn't ship.
 5. Never break a working slice. When adding a new feature, do not modify code from previous working slices unless absolutely necessary. If you must, explain why.

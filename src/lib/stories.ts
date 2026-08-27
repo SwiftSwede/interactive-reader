@@ -1,5 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { WordData, ExpressionData } from "@/components/WordTooltip";
+import type { PronunciationWordNote } from "@/types";
 
 export type StoryRow = {
   id: string;
@@ -39,7 +40,29 @@ export type PronunciationDrillRow = {
   focus_content: string;
   practica_coral_standard: string;
   practica_coral_phonetic: string;
+  practica_coral_ipa: string;
+  word_notes: PronunciationWordNote[];
+  coral_audio_url: string;
 };
+
+function parseWordNotes(value: unknown): PronunciationWordNote[] {
+  if (!Array.isArray(value)) return [];
+  const notes: PronunciationWordNote[] = [];
+  for (const item of value) {
+    if (
+      item &&
+      typeof item === "object" &&
+      typeof (item as { word?: unknown }).word === "string" &&
+      typeof (item as { note?: unknown }).note === "string"
+    ) {
+      notes.push({
+        word: (item as PronunciationWordNote).word,
+        note: (item as PronunciationWordNote).note,
+      });
+    }
+  }
+  return notes;
+}
 
 type WordRow = {
   id: string;
@@ -137,7 +160,24 @@ async function loadStoryRelated(
     })),
     comprehensionQuestions: (compQuestions || []) as CompQuestionRow[],
     personalQuestions: (personalQuestions || []) as PersonalQuestionRow[],
-    pronunciationDrill: (drill as PronunciationDrillRow | null) ?? null,
+    pronunciationDrill: drill
+      ? {
+          ...(drill as PronunciationDrillRow),
+          practica_coral_ipa:
+            typeof (drill as { practica_coral_ipa?: unknown })
+              .practica_coral_ipa === "string"
+              ? (drill as PronunciationDrillRow).practica_coral_ipa
+              : "",
+          coral_audio_url:
+            typeof (drill as { coral_audio_url?: unknown }).coral_audio_url ===
+            "string"
+              ? (drill as PronunciationDrillRow).coral_audio_url
+              : "",
+          word_notes: parseWordNotes(
+            (drill as { word_notes?: unknown }).word_notes
+          ),
+        }
+      : null,
   };
 }
 

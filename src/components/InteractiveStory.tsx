@@ -42,6 +42,7 @@ export default function InteractiveStory({
 }: InteractiveStoryProps) {
   const [seenPositions, setSeenPositions] = useState<Set<number>>(new Set());
   const [activePosition, setActivePosition] = useState<number | null>(null);
+  const [pinnedPosition, setPinnedPosition] = useState<number | null>(null);
   const [activeExpressionId, setActiveExpressionId] = useState<string | null>(
     null
   );
@@ -191,6 +192,14 @@ export default function InteractiveStory({
     });
   }, [expressionPositions]);
 
+  const handlePin = useCallback(
+    (word: WordData) => {
+      handleActivate(word);
+      setPinnedPosition(word.position);
+    },
+    [handleActivate]
+  );
+
   const handleLookup = useCallback(
     (word: WordData) => {
       if (!trackLookups || !storyId) return;
@@ -206,25 +215,39 @@ export default function InteractiveStory({
   const handleDismiss = useCallback(() => {
     setActivePosition(null);
     setActiveExpressionId(null);
+    setPinnedPosition(null);
   }, []);
 
-  // Click outside the story area dismisses the active tooltip
+  // Dismiss on a real outside click, not on the click that opened or pinned
+  // the tooltip. Word spans handle their own clicks. The video modal is
+  // excluded so Cerrar does not unpin.
   useEffect(() => {
     if (activePosition === null) return;
 
     const handleOutsideClick = (e: MouseEvent) => {
-      const target = e.target as Node;
-      const container = containerRef.current;
-      if (container && container.contains(target)) return;
-
-      const tooltip = (target as HTMLElement)?.closest?.(".word-tooltip-pinned");
-      if (tooltip) return;
+      const path = e.composedPath();
+      const clickedInsideProtected = path.some((node) => {
+        if (!(node instanceof Element)) return false;
+        return (
+          node.closest(".word-span") != null ||
+          node.closest(".word-tooltip") != null ||
+          node.closest(".sound-video-modal") != null ||
+          node.tagName === "DIALOG"
+        );
+      });
+      if (clickedInsideProtected) return;
 
       handleDismiss();
     };
 
-    document.addEventListener("click", handleOutsideClick);
-    return () => document.removeEventListener("click", handleOutsideClick);
+    const timeoutId = window.setTimeout(() => {
+      document.addEventListener("click", handleOutsideClick);
+    }, 0);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      document.removeEventListener("click", handleOutsideClick);
+    };
   }, [activePosition, handleDismiss]);
 
   // StoryAudioPlayer calls this ~60x/sec with the current audio time.
@@ -300,8 +323,12 @@ export default function InteractiveStory({
                       expression={expression}
                       isHighlighted={isHighlighted}
                       onActivate={handleActivate}
-                      onDismiss={handleDismiss}
+                      onPin={handlePin}
                       isActive={isActive}
+                      allowHoverActivate={
+                        pinnedPosition === null ||
+                        pinnedPosition === word.position
+                      }
                       isExpressionActive={isExpressionActive}
                       hintClass={!hasInteracted && currentPos < 4 ? "word-hint" : undefined}
                       onFirstInteraction={() => setHasInteracted(true)}

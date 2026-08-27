@@ -12,6 +12,7 @@ config({ path: ".env.local" });
 
 import { createClient } from "@supabase/supabase-js";
 import { WebSocket } from "ws";
+import { KYLE_IPA_ALPHA_RULE } from "../src/lib/ipa-conventions";
 
 // ── Config ─────────────────────────────────────────────────
 
@@ -87,7 +88,7 @@ Return a single JSON object with this structure:
 
 RULES:
 1. Translate to NEUTRAL LATIN AMERICAN Spanish. Not European Spanish. Use "carro" not "coche", "computadora" not "ordenador", "ustedes" not "vosotros".
-2. Use standard IPA for American English pronunciation.
+2. Use standard IPA for American English pronunciation. ${KYLE_IPA_ALPHA_RULE}
 3. Include EVERY word in the story, including articles, prepositions, pronouns, etc.
 4. Preserve punctuation attached to words (e.g. "jersey." not "jersey" and ".")
 5. For proper nouns (Cristiano Ronaldo, Real Madrid, Barcelona, Adidas, Messi), set spanish_translation to the name itself and is_transparent to true.

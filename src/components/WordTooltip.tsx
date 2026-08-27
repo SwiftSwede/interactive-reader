@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect, useCallback, memo } from "react";
+import IpaText from "./IpaText";
 
 // ── Types ──────────────────────────────────────────────────
 
@@ -36,8 +37,9 @@ type WordTooltipProps = {
   expression: ExpressionData | null;
   isHighlighted: boolean;
   onActivate: (word: WordData) => void;
-  onDismiss: () => void;
+  onPin: (word: WordData) => void;
   isActive: boolean;
+  allowHoverActivate: boolean;
   isExpressionActive: boolean;
   hintClass?: string;
   onFirstInteraction?: () => void;
@@ -49,8 +51,9 @@ function WordTooltip({
   expression,
   isHighlighted,
   onActivate,
-  onDismiss,
+  onPin,
   isActive,
+  allowHoverActivate,
   isExpressionActive,
   hintClass,
   onFirstInteraction,
@@ -79,7 +82,7 @@ function WordTooltip({
     if (!span) return;
 
     const rect = span.getBoundingClientRect();
-    const tooltipWidth = 260; // max-width of tooltip
+    const tooltipWidth = 320;
     const viewportWidth = window.innerWidth;
 
     // Center the tooltip under the word, but clamp to viewport
@@ -132,9 +135,9 @@ function WordTooltip({
     });
   };
 
-  // Desktop: hover shows tooltip (quick peek, not pinned)
+  // Desktop: hover shows a peek. Mouse leave does not close it.
   const handleMouseEnter = () => {
-    if (isPinned) return; // Don't re-trigger hover if pinned
+    if (isPinned || !allowHoverActivate) return;
     if (hoverTimer.current) clearTimeout(hoverTimer.current);
     hoverTimer.current = setTimeout(() => {
       showTooltip();
@@ -142,31 +145,20 @@ function WordTooltip({
     }, 150);
   };
 
-  // Desktop: mouse leave hides tooltip only if not pinned
   const handleMouseLeave = () => {
-    if (isPinned) return; // Pinned tooltip stays open
     if (hoverTimer.current) clearTimeout(hoverTimer.current);
-    hideTooltip();
-    onDismiss();
   };
 
-  // Click: pin the tooltip open so user can interact with play button
+  // First click pins. Later clicks on this word stay pinned.
+  // Close happens on click outside or click on another word.
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (onFirstInteraction) onFirstInteraction();
-    if (isPinned) {
-      // Already pinned, unpin and hide
-      setIsPinned(false);
-      hideTooltip();
-      onDismiss();
-    } else {
-      // Pin it open
-      if (hoverTimer.current) clearTimeout(hoverTimer.current);
-      setIsPinned(true);
-      showTooltip();
-      onActivate(word);
-      onLookup?.(word);
-    }
+    if (hoverTimer.current) clearTimeout(hoverTimer.current);
+    setIsPinned(true);
+    showTooltip();
+    onPin(word);
+    if (!isPinned) onLookup?.(word);
   };
 
   // When parent says this word is no longer active (another word clicked, or click outside)
@@ -211,30 +203,22 @@ function WordTooltip({
       </span>
 
       {tooltip.visible && (
-        <span
+        <div
           className={`word-tooltip ${isPinned ? "word-tooltip-pinned" : ""}`}
           style={{ left: tooltip.x, top: tooltip.y }}
           onClick={(e) => e.stopPropagation()}
           onMouseEnter={() => {
-            // If hovering the tooltip while it was shown by hover (not pinned), keep it open
             if (hoverTimer.current) clearTimeout(hoverTimer.current);
           }}
-          onMouseLeave={() => {
-            // If not pinned, hide when leaving the tooltip area
-            if (!isPinned) {
-              hideTooltip();
-              onDismiss();
-            }
-          }}
         >
-          <span className="word-tooltip-inner">
+          <div className="word-tooltip-inner">
             <span className="word-tooltip-translation">
               {displayTranslation || "Sin traduccion"}
             </span>
             {displayPhonetic && (
               <span className="word-tooltip-phonetic-row">
                 <span className="word-tooltip-phonetic">
-                  {displayPhonetic}
+                  <IpaText text={displayPhonetic} interactive={isPinned} />
                 </span>
                 {word.audio_url && (
                   <button
@@ -260,8 +244,8 @@ function WordTooltip({
             {word.part_of_speech && (
               <span className="word-tooltip-pos">{word.part_of_speech}</span>
             )}
-          </span>
-        </span>
+          </div>
+        </div>
       )}
     </>
   );

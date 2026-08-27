@@ -29,7 +29,7 @@ export interface Word {
   text: string; // the English word as it appears
   lemma: string; // base form, e.g. "went" → "go"
   spanishTranslation: string; // best translation in context
-  phoneticTranscription: string; // Kyle's system: ö, ü, ä, ör, ë, etc.
+  phoneticTranscription: string; // IPA, e.g. "/ðə/"
   partOfSpeech: string;
   audioUrl: string; // path to MP3, /audio/words/[id].mp3
   expressionId: string | null; // if part of a multi-word expression
@@ -83,6 +83,11 @@ export interface PersonalQuestion {
 
 export type DrillFocusType = "sounds" | "ed-s-rules" | "emphasized-syllable";
 
+export interface PronunciationWordNote {
+  word: string;
+  note: string;
+}
+
 export interface PronunciationDrill {
   id: string;
   storyId: string;
@@ -90,19 +95,32 @@ export interface PronunciationDrill {
   focusType: DrillFocusType;
   focusContent: string; // the specific drill content for this story
   practicaCoralStandard: string; // sentence in standard spelling
-  practicaCoralPhonetic: string; // same sentence, phonetically respelled
+  practicaCoralPhonetic: string; // Kyle's respelling, for source files
+  practicaCoralIpa: string; // student-facing IPA
+  wordNotes: PronunciationWordNote[];
+  coralAudioUrl: string;
 }
 
 // ── Sound Video (pronunciation teaching videos) ───────────
 
 export interface SoundVideo {
-  symbol: string; // Kyle's phonetic symbol: "ör", "ö", "ü", etc.
+  symbol: string; // Kyle's nickname for teaching materials: "ör", "ö", "ü"
+  ipa: string; // app lookup key, e.g. "ɝ"
+  ipaAliases: string[]; // extra IPA forms that open the same video
   name: string; // "Dog RRRRRRR", "Short U", "Angry Monkey"
-  bunnyVideoId: string; // Bunny Stream video ID
+  bunnyVideoId: string; // Bunny Stream video ID; empty until uploaded
   durationSeconds: number; // 120-240 range
   description: string; // short explanation of the sound
   examples: string[]; // example words: "fur", "learn", "sir"
   course: string; // which pronunciation course this video is from
+}
+
+export interface ChoralPracticeCompletion {
+  id: string;
+  userId: string;
+  storyId: string;
+  roundsCompleted: number;
+  completedAt: string;
 }
 
 // ── Profile (PRD User entity) ──────────────────────────────

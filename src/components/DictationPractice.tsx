@@ -2,24 +2,25 @@
 
 import { useRef, useState } from "react";
 import MicroExplanation from "./MicroExplanation";
+import IpaText from "./IpaText";
+import type { PronunciationWordNote } from "@/types";
 
 type DictationPracticeProps = {
   audioUrl: string;
   standardText: string;
   phoneticText: string;
-  explanation: string;
+  ipaText?: string;
+  wordNotes?: PronunciationWordNote[];
+  explanation?: string;
   microExplanation: string;
-};
-
-type WordExplanation = {
-  word: string;
-  note: string;
 };
 
 export default function DictationPractice({
   audioUrl,
   standardText,
   phoneticText,
+  ipaText,
+  wordNotes = [],
   explanation,
   microExplanation,
 }: DictationPracticeProps) {
@@ -27,6 +28,7 @@ export default function DictationPractice({
   const [userText, setUserText] = useState("");
   const [hasPlayed, setHasPlayed] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const studentIpa = ipaText?.trim() || phoneticText;
 
   const playClip = () => {
     const audio = audioRef.current;
@@ -64,7 +66,7 @@ export default function DictationPractice({
           <button
             onClick={playClip}
             type="button"
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors min-h-11"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <path d="M8 5v14l11-7z" />
@@ -84,7 +86,7 @@ export default function DictationPractice({
             onClick={handleSubmit}
             disabled={!userText.trim()}
             type="button"
-            className="px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-medium disabled:opacity-40 disabled:cursor-not-allowed hover:bg-gray-800 transition-colors"
+            className="px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-medium disabled:opacity-40 disabled:cursor-not-allowed hover:bg-gray-800 transition-colors min-h-11"
           >
             Comprobar
           </button>
@@ -93,7 +95,6 @@ export default function DictationPractice({
 
       {phase === "revealed" && (
         <div className="space-y-4">
-          {/* Side-by-side comparison */}
           <div className="grid grid-cols-1 gap-3">
             <div className="rounded-lg bg-red-50 border border-red-100 p-3">
               <p className="text-xs text-gray-500 mb-1">Tu respuesta:</p>
@@ -105,28 +106,44 @@ export default function DictationPractice({
             </div>
           </div>
 
-          {/* Phonetic respelling */}
           <div className="rounded-lg bg-amber-50 border border-amber-100 p-3">
             <p className="text-xs text-gray-500 mb-1">Como suena:</p>
-            <p className="text-gray-800 font-mono text-sm leading-relaxed">
-              {phoneticText}
+            <p className="text-gray-800 text-sm leading-relaxed">
+              <IpaText text={studentIpa} interactive />
+            </p>
+            <p className="text-xs text-gray-500 mt-2">
+              Toca un sonido para ver el video.
             </p>
           </div>
 
-          {/* Kyle's explanation */}
-          <div className="rounded-lg bg-blue-50 border border-blue-100 p-4 space-y-2">
-            <p className="text-xs font-medium text-blue-900 mb-2">
-              Notas del Profe Kyle:
-            </p>
-            <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
-              {explanation}
-            </p>
-          </div>
+          {(wordNotes.length > 0 || explanation) && (
+            <div className="rounded-lg bg-blue-50 border border-blue-100 p-4 space-y-3">
+              <p className="text-xs font-medium text-blue-900">
+                Notas del Profe Kyle:
+              </p>
+              {wordNotes.length > 0
+                ? wordNotes.map((item) => (
+                    <div key={item.word}>
+                      <p className="text-sm font-semibold text-gray-800">
+                        {item.word}
+                      </p>
+                      <p className="text-sm text-gray-700 leading-relaxed">
+                        {item.note}
+                      </p>
+                    </div>
+                  ))
+                : (
+                    <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
+                      {explanation}
+                    </p>
+                  )}
+            </div>
+          )}
 
           <button
             onClick={handleRetry}
             type="button"
-            className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+            className="text-sm text-blue-600 hover:text-blue-700 font-medium min-h-11"
           >
             Intentar de nuevo
           </button>

@@ -10,7 +10,8 @@
     "import-subscribers": "tsx scripts/import-stripe-subscribers.ts",
     "check-auth-redirect": "tsx scripts/check-auth-redirect.ts",
     "check-stripe-schema": "tsx scripts/check-stripe-schema.ts",
-    "seed-classroom-level": "tsx scripts/seed-classroom-level.ts"
+    "seed-classroom-level": "tsx scripts/seed-classroom-level.ts",
+    "seed-phase2.5": "tsx scripts/seed-phase2.5.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.4",
@@ -22,7 +23,8 @@
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "stripe": "^22.5.0",
-    "ws": "^8.21.3"
+    "ws": "^8.21.3",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
