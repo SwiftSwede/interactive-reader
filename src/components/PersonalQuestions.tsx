@@ -117,7 +117,7 @@ export default function PersonalQuestions({
 
   if (mode === "classroom-live") {
     return (
-      <section className="mt-8">
+      <section>
         <h3 className="text-lg font-semibold text-gray-900 mb-1">
           Personal Questions
         </h3>
@@ -144,7 +144,7 @@ export default function PersonalQuestions({
   }
 
   return (
-    <section className="mt-8">
+    <section>
       <h3 className="text-lg font-semibold text-gray-900 mb-1">
         Personal Questions
       </h3>

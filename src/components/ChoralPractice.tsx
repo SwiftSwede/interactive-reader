@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePlaybackRate } from "./PlaybackRateContext";
 import MicroExplanation from "./MicroExplanation";
 
 const PLAYS_PER_ROUND = 10;
@@ -28,6 +29,11 @@ export default function ChoralPractice({
   const [saveError, setSaveError] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const cancelRef = useRef({ cancelled: false });
+  const { rate } = usePlaybackRate();
+
+  useEffect(() => {
+    if (audioRef.current) audioRef.current.playbackRate = rate;
+  }, [rate]);
 
   const completed = rounds >= TOTAL_ROUNDS;
 
@@ -70,6 +76,7 @@ export default function ChoralPractice({
       audio.addEventListener("ended", finish);
       audio.addEventListener("error", finish);
       audio.currentTime = 0;
+      audio.playbackRate = rate;
       audio.play().catch(finish);
     });
 
@@ -126,7 +133,7 @@ export default function ChoralPractice({
   };
 
   return (
-    <section className="mt-12 mb-8">
+    <section>
       <audio ref={audioRef} src={audioUrl} preload="metadata" />
 
       <h3 className="text-lg font-bold text-gray-900 mb-2">Práctica coral</h3>

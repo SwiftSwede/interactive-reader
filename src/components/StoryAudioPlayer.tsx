@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
+import { usePlaybackRate } from "./PlaybackRateContext";
 
 // ── Types ──────────────────────────────────────────────────
 
@@ -13,9 +14,48 @@ type StoryAudioPlayerProps = {
 };
 
 function formatTime(seconds: number) {
-  const m = Math.floor(seconds / 60);
-  const s = Math.floor(seconds % 60);
-  return `${m}:${s.toString().padStart(2, "0")}`;
+  const m = Math.floor(seconds);
+  const mins = Math.floor(m / 60);
+  const s = m % 60;
+  return `${mins}:${s.toString().padStart(2, "0")}`;
+}
+
+function SeekBar({
+  currentTime,
+  duration,
+  onSeek,
+  compact = false,
+}: {
+  currentTime: number;
+  duration: number;
+  onSeek: (time: number) => void;
+  compact?: boolean;
+}) {
+  const max = Math.max(duration, 0);
+  const progressPercent = max > 0 ? Math.min((currentTime / max) * 100, 100) : 0;
+
+  return (
+    <div className={compact ? "sticky-audio-player-seek" : undefined}>
+      <div className="audio-seek-wrap">
+        <div className="audio-seek-track" aria-hidden="true">
+          <div
+            className="audio-seek-fill"
+            style={{ width: `${progressPercent}%` }}
+          />
+        </div>
+        <input
+          type="range"
+          className="audio-seek"
+          min={0}
+          max={max || 0}
+          step={0.1}
+          value={Math.min(currentTime, max)}
+          onChange={(e) => onSeek(Number(e.target.value))}
+          aria-label="Progreso"
+        />
+      </div>
+    </div>
+  );
 }
 
 // Spotify-style mini player. Stays after first play so pause/resume
@@ -25,15 +65,21 @@ function StickyNowPlaying({
   currentTime,
   duration,
   isPlaying,
+  rate,
   onToggle,
+  onSeek,
+  onSkip,
+  onToggleSpeed,
 }: {
   currentTime: number;
   duration: number;
   isPlaying: boolean;
+  rate: number;
   onToggle: () => void;
+  onSeek: (time: number) => void;
+  onSkip: (delta: number) => void;
+  onToggleSpeed: () => void;
 }) {
-  const progressPercent = duration > 0 ? Math.min((currentTime / duration) * 100, 100) : 0;
-
   return (
     <div
       className="sticky-audio-player"
@@ -41,39 +87,57 @@ function StickyNowPlaying({
       aria-label={isPlaying ? "Reproduciendo" : "Audio pausado"}
     >
       <div className="sticky-audio-player-bar">
-        <div
-          className="sticky-audio-player-progress"
-          role="progressbar"
-          aria-valuemin={0}
-          aria-valuemax={Math.max(Math.floor(duration), 0)}
-          aria-valuenow={Math.floor(currentTime)}
-          aria-label="Progreso"
-        >
-          <div
-            className="sticky-audio-player-progress-fill"
-            style={{ width: `${progressPercent}%` }}
-          />
+        <SeekBar
+          currentTime={currentTime}
+          duration={duration}
+          onSeek={onSeek}
+          compact
+        />
+
+        <div className="sticky-audio-player-controls">
+          <button
+            type="button"
+            className="audio-skip-btn"
+            onClick={() => onSkip(-10)}
+            aria-label="Retroceder 10 segundos"
+          >
+            «10s
+          </button>
+          <button
+            onClick={onToggle}
+            className="sticky-audio-player-toggle"
+            aria-label={isPlaying ? "Pausar" : "Reproducir"}
+            type="button"
+          >
+            {isPlaying ? (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <rect x="6" y="5" width="4" height="14" rx="1" />
+                <rect x="14" y="5" width="4" height="14" rx="1" />
+              </svg>
+            ) : (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            )}
+          </button>
+          <button
+            type="button"
+            className="audio-skip-btn"
+            onClick={() => onSkip(10)}
+            aria-label="Adelantar 10 segundos"
+          >
+            10s»
+          </button>
+          <button
+            type="button"
+            className="audio-speed-btn"
+            onClick={onToggleSpeed}
+            aria-label={`Velocidad ${rate}x`}
+          >
+            {rate}x
+          </button>
+          <span className="sticky-audio-player-time">{formatTime(currentTime)}</span>
         </div>
-
-        <button
-          onClick={onToggle}
-          className="sticky-audio-player-toggle"
-          aria-label={isPlaying ? "Pausar" : "Reproducir"}
-          type="button"
-        >
-          {isPlaying ? (
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <rect x="6" y="5" width="4" height="14" rx="1" />
-              <rect x="14" y="5" width="4" height="14" rx="1" />
-            </svg>
-          ) : (
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          )}
-        </button>
-
-        <span className="sticky-audio-player-time">{formatTime(currentTime)}</span>
       </div>
     </div>
   );
@@ -92,6 +156,7 @@ export default function StoryAudioPlayer({
   const [hasStarted, setHasStarted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const rafRef = useRef<number | null>(null);
+  const { rate, toggle: toggleSpeed } = usePlaybackRate();
 
   // Interpolation refs: sync to audio.currentTime via timeupdate event,
   // then interpolate with performance.now() between updates.
@@ -113,17 +178,47 @@ export default function StoryAudioPlayer({
     }
   }, [onTimeUpdate]);
 
+  const applyTime = useCallback(
+    (time: number) => {
+      const audio = audioRef.current;
+      if (!audio) return;
+      const max = duration > 0 ? duration : audio.duration || 0;
+      const next = Math.max(0, Math.min(time, max));
+      audio.currentTime = next;
+      audioTimeRef.current = next;
+      perfTimeRef.current = performance.now();
+      setCurrentTime(next);
+      onTimeUpdate(next);
+    },
+    [duration, onTimeUpdate]
+  );
+
+  const handleSkip = useCallback(
+    (delta: number) => {
+      const audio = audioRef.current;
+      if (!audio) return;
+      applyTime(audio.currentTime + delta);
+    },
+    [applyTime]
+  );
+
   // Play/pause toggle
   const handleToggle = useCallback(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
     if (audio.paused) {
+      audio.playbackRate = rate;
       audio.play();
     } else {
       audio.pause();
     }
-  }, []);
+  }, [rate]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio) audio.playbackRate = rate;
+  }, [rate]);
 
   // Audio event listeners
   useEffect(() => {
@@ -197,17 +292,7 @@ export default function StoryAudioPlayer({
     };
   }, [hasStarted]);
 
-  // Seek when user clicks on progress bar
-  const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    const rect = e.currentTarget.getBoundingClientRect();
-    const percent = (e.clientX - rect.left) / rect.width;
-    audio.currentTime = percent * audio.duration;
-  };
-
-  const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
+  const speedLabel = rate === 1 ? "1x" : "0.75x";
 
   return (
     <div className="mb-6 rounded-lg bg-blue-50 border border-blue-100 px-4 py-4">
@@ -217,8 +302,15 @@ export default function StoryAudioPlayer({
         preload="metadata"
       />
 
-      <div className="flex items-center gap-3">
-        {/* Play/pause button */}
+      <div className="flex items-center gap-2">
+        <button
+          type="button"
+          className="audio-skip-btn"
+          onClick={() => handleSkip(-10)}
+          aria-label="Retroceder 10 segundos"
+        >
+          «10s
+        </button>
         <button
           onClick={handleToggle}
           className="flex items-center justify-center w-14 h-14 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors flex-shrink-0 shadow-sm"
@@ -231,25 +323,35 @@ export default function StoryAudioPlayer({
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
           )}
         </button>
+        <button
+          type="button"
+          className="audio-skip-btn"
+          onClick={() => handleSkip(10)}
+          aria-label="Adelantar 10 segundos"
+        >
+          10s»
+        </button>
 
-        <div className="flex flex-col flex-1 gap-1">
+        <div className="flex flex-col flex-1 gap-1 min-w-0">
           <span className="text-sm font-medium text-blue-900">
             {isPlaying ? "Escuchando..." : "Lee y escucha"}
           </span>
-
-          {/* Progress bar */}
-          <div
-            className="w-full h-2 bg-blue-200 rounded-full cursor-pointer relative"
-            onClick={handleSeek}
-          >
-            <div
-              className="absolute h-2 bg-blue-600 rounded-full"
-              style={{ width: `${progressPercent}%` }}
-            />
-          </div>
+          <SeekBar
+            currentTime={currentTime}
+            duration={duration}
+            onSeek={applyTime}
+          />
         </div>
 
-        {/* Time display */}
+        <button
+          type="button"
+          className="audio-speed-btn"
+          onClick={toggleSpeed}
+          aria-label={`Velocidad ${speedLabel}`}
+        >
+          {speedLabel}
+        </button>
+
         <span className="text-xs text-blue-400 tabular-nums flex-shrink-0">
           {formatTime(currentTime)} / {formatTime(duration)}
         </span>
@@ -261,7 +363,11 @@ export default function StoryAudioPlayer({
               currentTime={currentTime}
               duration={duration}
               isPlaying={isPlaying}
+              rate={rate}
               onToggle={handleToggle}
+              onSeek={applyTime}
+              onSkip={handleSkip}
+              onToggleSpeed={toggleSpeed}
             />,
             document.body
           )

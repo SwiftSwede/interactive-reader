@@ -195,7 +195,7 @@ export default function ComprehensionQuestions({
   };
 
   return (
-    <section className="mt-12 border-t border-gray-100 pt-8">
+    <section>
       <h3 className="text-lg font-semibold text-gray-900 mb-1">
         Comprehension Questions
       </h3>

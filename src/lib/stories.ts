@@ -1,6 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { WordData, ExpressionData } from "@/components/WordTooltip";
 import type { PronunciationWordNote } from "@/types";
+import { stripStressMarks } from "@/lib/pronunciation/referenceText";
 
 export type StoryRow = {
   id: string;
@@ -160,9 +161,15 @@ async function loadStoryRelated(
     })),
     comprehensionQuestions: (compQuestions || []) as CompQuestionRow[],
     personalQuestions: (personalQuestions || []) as PersonalQuestionRow[],
-    pronunciationDrill: drill
+        pronunciationDrill: drill
       ? {
           ...(drill as PronunciationDrillRow),
+          practica_coral_standard: stripStressMarks(
+            typeof (drill as PronunciationDrillRow).practica_coral_standard ===
+              "string"
+              ? (drill as PronunciationDrillRow).practica_coral_standard
+              : ""
+          ),
           practica_coral_ipa:
             typeof (drill as { practica_coral_ipa?: unknown })
               .practica_coral_ipa === "string"

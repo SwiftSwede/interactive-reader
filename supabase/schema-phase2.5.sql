@@ -64,6 +64,7 @@ ALTER TABLE public.pronunciation_drills
 
 UPDATE public.pronunciation_drills pd
 SET
+  practica_coral_standard = 'Most of the other kids wore their Messi jersey.',
   practica_coral_ipa = '/moʊst əv ði ˈʌðər kɪdz wɔɹ ðɛɹ ˈmɛsi ˈdʒɝzi/',
   coral_audio_url = '/audio/stories/practica-coral-soccery-jersey.mp3',
   word_notes = '[

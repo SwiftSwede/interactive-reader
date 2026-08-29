@@ -250,6 +250,9 @@ export const SOUND_VIDEO_CATALOG: SoundVideo[] = [
   ]),
 ];
 
+export const SOCCER_JERSEY_CORAL_STANDARD =
+  "Most of the other kids wore their Messi jersey.";
+
 export const SOCCER_JERSEY_CORAL_IPA =
   "/moʊst əv ði ˈʌðər kɪdz wɔɹ ðɛɹ ˈmɛsi ˈdʒɝzi/";
 

@@ -1,0 +1,1283 @@
+{
+  "rulebook": {
+    "locale": "en-US",
+    "audience": "es-LatAm",
+    "bullets": [
+      {
+        "title": "La Schwa (ə) - La vocal más común del inglés",
+        "topic": "vowels",
+        "appliesToExamples": {
+          "words": ["about", "again", "the", "a", "to", "of"],
+          "pairs": ["a boy", "the man", "to me"]
+        },
+        "whenToShow": [
+          "Only show when student pronounces unstressed vowels with full Spanish vowel quality (pure a, e, o)",
+          "Show when student over-articulates function words"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "En inglés, las vocales sin énfasis se reducen a la schwa (ə). Es el sonido más común del inglés porque hablamos con un ritmo 'stress-timed', no 'syllable-timed' como el español.",
+          "tipEs": "Para pronunciar la schwa: emite sonido de tu garganta sin hacer nada con tu boca, lengua ni labios. Es como un sonido neutro y flojo. Aparece en sílabas átonas y palabras funcionales (the, a, of, to, for, at).",
+          "practiceEs": "Practica: 'about' (əbaʊt), 'again' (əgɛn), 'the man' (thə mæn), 'a boy' (ə bɔɪ), 'to me' (tə mi). Repite: 'The German actor's second performance was sublime.'"
+        },
+        "coachNotes": [
+          "All sources agree on schwa as the most important reduction vowel",
+          "Can appear as any vowel letter: a, e, i, o, u",
+          "Function words (articles, prepositions, conjunctions) use schwa in connected speech"
+        ]
+      },
+      {
+        "title": "Vocales débiles: /ɪ/, /i/, /u/",
+        "topic": "vowels",
+        "appliesToExamples": {
+          "words": ["in", "it", "him", "he", "she", "me", "you", "to"],
+          "pairs": ["to eat", "the apple", "he is"]
+        },
+        "whenToShow": [
+          "Show when student pronounces weak vowels with full Spanish quality",
+          "Show when function words are over-articulated"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "Además de la schwa, las vocales /ɪ/, /i/, /u/ también se pronuncian débiles en sílabas átonas y palabras funcionales para mantener el ritmo del inglés.",
+          "tipEs": "/ɪ/ débil solo antes de consonante (in, it, him, his). /i/ débil solo al final de palabra (he, she, me, happy, slowly). /u/ débil solo al final de palabra (you, who, to, do).",
+          "practiceEs": "Practica: 'in' (ɪn), 'it' (ɪt), 'he' (hi), 'she' (ʃi), 'you' (ju), 'to' (tu). Frase: 'He wants to go with him.'"
+        },
+        "coachNotes": [
+          "These weak vowels complement schwa in the reduction system",
+          "Position in word determines which weak vowel is used"
+        ]
+      },
+      {
+        "title": "Short A (æ) - El sonido 'a' corto",
+        "topic": "vowels",
+        "appliesToExamples": {
+          "words": ["cat", "bad", "ask", "cash", "plan", "sad"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student pronounces /æ/ as Spanish 'a' or 'e'",
+          "Show when word accuracy is low for words with /æ/"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "El sonido /æ/ no existe en español. Es más abierto que la 'a' española y la mandíbula baja más. Los latinos suelen pronunciarlo como 'a' o 'e' española.",
+          "tipEs": "Abre la boca más que con la 'a' española. La lengua está baja y adelante. Piensa en un sonido entre 'a' y 'e' pero más abierto.",
+          "practiceEs": "Practica: 'cat' (kæt), 'bad' (bæd), 'ask' (æsk), 'cash' (kæʃ), 'plan' (plæn). Frase: 'The cat sat on the mat.'"
+        },
+        "coachNotes": [
+          "One of the most challenging vowels for Spanish speakers",
+          "Critical for intelligibility in common words"
+        ]
+      },
+      {
+        "title": "Short U (ʌ) - El sonido 'ö' o 'angry monkey'",
+        "topic": "vowels",
+        "appliesToExamples": {
+          "words": ["cup", "love", "come", "bus", "money", "Monday"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student pronounces /ʌ/ as Spanish 'a' or 'o'",
+          "Show when word accuracy is low for words with /ʌ/"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "El sonido /ʌ/ no existe en español. Es una vocal central media-baja. Los latinos suelen confundirlo con 'a' o 'o' española.",
+          "tipEs": "Mandíbula media, lengua centrada, labios relajados. No es ni 'a' ni 'o'. Piensa en un sonido neutro y corto en el centro de la boca.",
+          "practiceEs": "Practica: 'cup' (kʌp), 'love' (lʌv), 'come' (kʌm), 'bus' (bʌs), 'money' (mʌni). Frase: 'My brother loves Monday.'"
+        },
+        "coachNotes": [
+          "Called 'angry monkey' or 'short u' in teaching materials",
+          "Distinct from schwa despite similar quality - appears in stressed syllables"
+        ]
+      },
+      {
+        "title": "Angry Monkey (ʊ) - El sonido 'ü'",
+        "topic": "vowels",
+        "appliesToExamples": {
+          "words": ["book", "good", "look", "put", "could", "should"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student pronounces /ʊ/ as Spanish 'u' or English /u:/",
+          "Show when word accuracy is low for words with /ʊ/"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "El sonido /ʊ/ no existe en español. Es más corto y relajado que la 'u' española. Los latinos suelen pronunciarlo como 'u' larga.",
+          "tipEs": "Labios ligeramente redondeados, lengua alta y posterior pero relajada. Es más corto que la 'u' española. Piensa en una 'u' floja.",
+          "practiceEs": "Practica: 'book' (bʊk), 'good' (gʊd), 'look' (lʊk), 'put' (pʊt), 'could' (kʊd). Frase: 'The good book is full.'"
+        },
+        "coachNotes": [
+          "Distinct from long /u:/ (moon, you)",
+          "Common in high-frequency words"
+        ]
+      },
+      {
+        "title": "Listerine Vowel (ɑ) - El sonido 'ä'",
+        "topic": "vowels",
+        "appliesToExamples": {
+          "words": ["hot", "dog", "boss", "coffee", "want", "watch"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student pronounces /ɑ/ as Spanish 'o'",
+          "Show when word accuracy is low for words with /ɑ/"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "El sonido /ɑ/ es más abierto que la 'o' española. La boca está muy abierta y la lengua está baja y posterior.",
+          "tipEs": "Abre la boca mucho, como cuando el dentista te revisa. La lengua está baja y atrás. No redondees los labios como con la 'o' española.",
+          "practiceEs": "Practica: 'hot' (hɑt), 'dog' (dɑg), 'boss' (bɑs), 'coffee' (kɑfi), 'want' (wɑnt). Frase: 'The dog wants hot coffee.'"
+        },
+        "coachNotes": [
+          "Called 'listerine vowel' because mouth position resembles gargling",
+          "Very different from Spanish 'o'"
+        ]
+      },
+      {
+        "title": "R-colored vowel (ɝ/ɚ) - El sonido 'ör' o 'dog RRRRR'",
+        "topic": "vowels",
+        "appliesToExamples": {
+          "words": ["bird", "girl", "turn", "better", "burger", "early"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student pronounces /ɝ/ or /ɚ/ without R-coloring",
+          "Show when word accuracy is low for words with R-colored vowels"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "Los sonidos /ɝ/ (tónico) y /ɚ/ (átono) son vocales con color de R. No existen en español. La lengua se enrolla hacia atrás sin tocar nada.",
+          "tipEs": "Enrolla la lengua hacia atrás sin tocar el paladar. La punta flota. Mantén la tensión en la lengua. Es un sonido continuo, no como la R española.",
+          "practiceEs": "Practica: 'bird' (bɝd), 'girl' (gɝl), 'turn' (tɝn), 'better' (bɛtɚ), 'burger' (bɝgɚ). Frase: 'The early bird gets the worm.'"
+        },
+        "coachNotes": [
+          "One of the most distinctive features of American English",
+          "Both stressed /ɝ/ and unstressed /ɚ/ versions exist"
+        ]
+      },
+      {
+        "title": "Short I (ɪ) - Entre 'i' y 'e' española",
+        "topic": "vowels",
+        "appliesToExamples": {
+          "words": ["bit", "sit", "fish", "give", "milk", "quick"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student pronounces /ɪ/ as Spanish 'i' or long English /i:/",
+          "Show when word accuracy is low for words with /ɪ/"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "El sonido /ɪ/ no existe en español. Está entre la 'i' y la 'e' española. Es más corto y relajado que la 'i' española.",
+          "tipEs": "Mandíbula media cerrada, lengua cerca del frente pero relajada. No tenses la lengua como con la 'i' española. Es un sonido corto.",
+          "practiceEs": "Practica: 'bit' (bɪt), 'sit' (sɪt), 'fish' (fɪʃ), 'give' (gɪv), 'milk' (mɪlk). Frase: 'Sit still and think quickly.'"
+        },
+        "coachNotes": [
+          "Distinct from long /i:/ (beat, sheep)",
+          "Very common in unstressed syllables and high-frequency words"
+        ]
+      },
+      {
+        "title": "Short E (ɛ) - La 'e' corta",
+        "topic": "vowels",
+        "appliesToExamples": {
+          "words": ["bet", "red", "get", "left", "friend", "said"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student pronounces /ɛ/ as Spanish 'e' or /æ/",
+          "Show when word accuracy is low for words with /ɛ/"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "El sonido /ɛ/ es similar a la 'e' española pero más abierto. La mandíbula baja un poco más.",
+          "tipEs": "Abre la boca un poco más que con la 'e' española. La lengua está en posición media-baja. Es más abierto que la 'e' española.",
+          "practiceEs": "Practica: 'bet' (bɛt), 'red' (rɛd), 'get' (gɛt), 'left' (lɛft), 'friend' (frɛnd). Frase: 'Get the red pen from the left.'"
+        },
+        "coachNotes": [
+          "Similar to but more open than Spanish 'e'",
+          "Often confused with /æ/ by Spanish speakers"
+        ]
+      },
+      {
+        "title": "Diptongos del inglés",
+        "topic": "vowels",
+        "appliesToExamples": {
+          "words": ["fight", "pain", "boy", "shout", "go"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student pronounces diphthongs as pure Spanish vowels",
+          "Show when diphthongs lack glide movement"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "El inglés tiene 5 diptongos principales: /aɪ/ (fight), /eɪ/ (pain), /ɔɪ/ (boy), /aʊ/ (shout), /oʊ/ (go). Son vocales que se mueven - la lengua necesita moverse para crearlos.",
+          "tipEs": "Con diptongos, empieza en una posición y desliza hacia otra. No pronuncies dos vocales separadas como en español. El movimiento debe ser suave y continuo.",
+          "practiceEs": "Practica: /aɪ/ 'fight', 'my', 'time' | /eɪ/ 'pain', 'say', 'make' | /ɔɪ/ 'boy', 'coin', 'joy' | /aʊ/ 'shout', 'now', 'house' | /oʊ/ 'go', 'show', 'boat'"
+        },
+        "coachNotes": [
+          "English has 5 main diphthongs vs Spanish 13",
+          "Movement quality is critical - not two separate vowels"
+        ]
+      },
+      {
+        "title": "TH sin vibración (θ) - 'th' sorda",
+        "topic": "consonants",
+        "appliesToExamples": {
+          "words": ["think", "thank", "bath", "mouth", "thick"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student substitutes /t/ or /s/ for /θ/",
+          "Show when word accuracy is low for words with /θ/"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "El sonido /θ/ no existe en español. Es una fricativa dental sin vibración de las cuerdas vocales. Los latinos suelen sustituirlo con 't' o 's'.",
+          "tipEs": "La punta de la lengua flota detrás de los dientes superiores (NO entre los dientes). Empuja aire sin vibración. Es como una 's' suave pero con la lengua en los dientes.",
+          "practiceEs": "Practica: 'think' (θɪŋk), 'thank' (θæŋk), 'bath' (bæθ), 'mouth' (maʊθ), 'thick' (θɪk). Frase: 'I think the bath is thick with bubbles.'"
+        },
+        "coachNotes": [
+          "Tongue position: behind upper teeth, not between teeth (more efficient)",
+          "Voiceless - no vocal cord vibration"
+        ]
+      },
+      {
+        "title": "TH con vibración (ð) - 'th' sonora",
+        "topic": "consonants",
+        "appliesToExamples": {
+          "words": ["the", "this", "that", "mother", "breathe"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student substitutes /d/ or /z/ for /ð/",
+          "Show when word accuracy is low for words with /ð/"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "El sonido /ð/ es como /θ/ pero con vibración de las cuerdas vocales. Es parecido a la 'd' suave del español (como en 'cada') pero con la lengua en los dientes.",
+          "tipEs": "Igual que /θ/ pero con vibración. La punta de la lengua flota detrás de los dientes superiores. Vibra las cuerdas vocales mientras empujas aire.",
+          "practiceEs": "Practica: 'the' (ðə), 'this' (ðɪs), 'that' (ðæt), 'mother' (mʌðɚ), 'breathe' (brið). Frase: 'The mother breathes with this rhythm.'"
+        },
+        "coachNotes": [
+          "Voiced counterpart of /θ/",
+          "Similar to Spanish soft 'd' but with tongue at teeth"
+        ]
+      },
+      {
+        "title": "CH (tʃ) - Africada sorda",
+        "topic": "consonants",
+        "appliesToExamples": {
+          "words": ["cheese", "church", "watch", "teacher", "lunch"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student pronounces /tʃ/ as Spanish 'ch' (which is softer)",
+          "Show when word accuracy is low for words with /tʃ/"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "El sonido /tʃ/ es similar a la 'ch' española pero más fuerte y tenso. Es una africada (combinación de /t/ + /ʃ/).",
+          "tipEs": "Empieza con una parada completa (como 't') y suelta con fricción (como 'sh'). Es más explosivo que la 'ch' española.",
+          "practiceEs": "Practica: 'cheese' (tʃiz), 'church' (tʃɝtʃ), 'watch' (wɑtʃ), 'teacher' (titʃɚ), 'lunch' (lʌntʃ). Frase: 'The teacher eats cheese at church.'"
+        },
+        "coachNotes": [
+          "Stronger and more tense than Spanish 'ch'",
+          "Affricate = stop + fricative"
+        ]
+      },
+      {
+        "title": "J (dʒ) - Africada sonora",
+        "topic": "consonants",
+        "appliesToExamples": {
+          "words": ["judge", "gym", "age", "bridge", "giant"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student substitutes Spanish 'y' or English /j/ for /dʒ/",
+          "Show when word accuracy is low for words with /dʒ/"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "El sonido /dʒ/ no existe en español. Es la versión sonora de /tʃ/. Es una africada (combinación de /d/ + /ʒ/).",
+          "tipEs": "Empieza con una parada completa (como 'd') y suelta con fricción (como 'zh'). Vibra las cuerdas vocales. NO es la 'y' española.",
+          "practiceEs": "Practica: 'judge' (dʒʌdʒ), 'gym' (dʒɪm), 'age' (eɪdʒ), 'bridge' (brɪdʒ), 'giant' (dʒaɪənt). Frase: 'The judge jumps in the gym.'"
+        },
+        "coachNotes": [
+          "Voiced counterpart of /tʃ/",
+          "Often confused with Spanish 'y' /j/"
+        ]
+      },
+      {
+        "title": "V (v) - Fricativa labiodental",
+        "topic": "consonants",
+        "appliesToExamples": {
+          "words": ["very", "have", "love", "visit", "vacation"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student substitutes /b/ for /v/",
+          "Show when word accuracy is low for words with /v/"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "El sonido /v/ no existe en español. Los latinos suelen pronunciarlo como 'b'. Es una fricativa - los labios NO se cierran completamente.",
+          "tipEs": "Los dientes superiores tocan el labio inferior. Empuja aire con vibración. Los labios NO se cierran como con 'b'. Es fricción continua.",
+          "practiceEs": "Practica: 'very' (vɛri), 'have' (hæv), 'love' (lʌv), 'visit' (vɪzɪt), 'vacation' (veɪkeɪʃən). Frase: 'I have a very lovely vacation.'"
+        },
+        "coachNotes": [
+          "Critical distinction from /b/ for Spanish speakers",
+          "Labiodental fricative - teeth touch lower lip"
+        ]
+      },
+      {
+        "title": "Z (z) - Fricativa alveolar sonora",
+        "topic": "consonants",
+        "appliesToExamples": {
+          "words": ["zoo", "lazy", "easy", "rise", "cousin"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student substitutes /s/ for /z/",
+          "Show when word accuracy is low for words with /z/"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "El sonido /z/ no existe en español. Es la versión sonora de /s/. Los latinos suelen pronunciar todo como 's' sin vibración.",
+          "tipEs": "Igual posición que 's' pero con vibración de las cuerdas vocales. Siente la vibración en la garganta. Es como el zumbido de una abeja.",
+          "practiceEs": "Practica: 'zoo' (zu), 'lazy' (leɪzi), 'easy' (izi), 'rise' (raɪz), 'cousin' (kʌzən). Frase: 'My lazy cousin visits the zoo on Thursdays.'"
+        },
+        "coachNotes": [
+          "Voiced counterpart of /s/",
+          "Critical for plural/possessive endings"
+        ]
+      },
+      {
+        "title": "Parada Glotal (ʔ) - Comerse la T",
+        "topic": "consonants",
+        "appliesToExamples": {
+          "words": ["button", "mountain", "sentence", "important"],
+          "pairs": ["but why", "what do", "at night"]
+        },
+        "whenToShow": [
+          "Show when student fully pronounces /t/ in contexts where glottal stop should occur",
+          "Show when connected speech sounds choppy due to released stops"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "La parada glotal (ʔ) reemplaza la 't' cuando una vocal o 'n' viene antes y una consonante viene después. Es una técnica para hablar más rápido y natural.",
+          "tipEs": "Corta el aire en la garganta sin pronunciar la 't'. Piensa en 'uh-oh' - ese corte es la parada glotal. Los músculos del glotis paran/cortan el sonido.",
+          "practiceEs": "Practica: 'button' (bʌʔən), 'mountain' (maʊnʔən), 'but why' (bʌʔ waɪ), 'what do' (wʌʔ du), 'at night' (æʔ naɪt). Frase: 'That sentence about the button is important.'"
+        },
+        "coachNotes": [
+          "Occurs when vowel/n precedes and consonant follows",
+          "Essential for natural rhythm and speed",
+          "Not 'bad' pronunciation - it's standard in American English"
+        ]
+      },
+      {
+        "title": "Flap T/D (ɾ) - La T/D suave entre vocales",
+        "topic": "consonants",
+        "appliesToExamples": {
+          "words": ["water", "better", "city", "later", "ladder"],
+          "pairs": ["get it", "what is", "at all"]
+        },
+        "whenToShow": [
+          "Show when student pronounces clear /t/ or /d/ between vowels instead of flap",
+          "Show when connected speech lacks smooth linking"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "Cuando la 't' o 'd' está entre dos vocales, se pronuncia como una 'd' suave o la 'r' simple española (como en 'pero'). Esto hace el habla más fluida.",
+          "tipEs": "La lengua toca rápidamente el paladar, como la 'r' simple española. NO es una 't' fuerte ni una 'd' completa. Es un toque rápido y suave.",
+          "practiceEs": "Practica: 'water' (wɑɾɚ), 'better' (bɛɾɚ), 'city' (sɪɾi), 'later' (leɪɾɚ), 'get it' (gɛɾɪt), 'what is' (wʌɾɪz). Frase: 'Get a better water bottle later.'"
+        },
+        "coachNotes": [
+          "Applies to both /t/ and /d/ between vowels",
+          "Similar to Spanish single 'r' (pero, caro)",
+          "Critical for natural connected speech"
+        ]
+      },
+      {
+        "title": "T suave al final - Unreleased stop",
+        "topic": "consonants",
+        "appliesToExamples": {
+          "words": ["what", "it", "cat", "night", "want"],
+          "pairs": ["what do", "it is", "cat food"]
+        },
+        "whenToShow": [
+          "Show when student releases final /t/ with aspiration",
+          "Show when speech sounds choppy at word boundaries"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "Cuando la 't' está al final de una oración/cláusula O cuando una consonante viene antes y una vocal después, se suaviza. No la sueltes con explosión de aire.",
+          "tipEs": "Coloca la lengua en posición de 't' pero no sueltes el aire. Es una parada sin explosión. Esto permite unir palabras más suavemente.",
+          "practiceEs": "Practica: 'what' (wʌt̚), 'it is' (ɪt̚ɪz), 'want' (wɑnt̚), 'most episodes' (moʊst̚ɛpɪsoʊdz). Frase: 'What do you want? Most episodes are boring.'"
+        },
+        "coachNotes": [
+          "Applies at end of sentence/clause or before vowel with preceding consonant",
+          "Part of stop consonant reduction system (p, b, t, d, k, g)"
+        ]
+      },
+      {
+        "title": "T eliminada - Deleted T",
+        "topic": "consonants",
+        "appliesToExamples": {
+          "words": [],
+          "pairs": ["just listen", "want from", "next time"]
+        },
+        "whenToShow": [
+          "Show when student pronounces /t/ between two consonants",
+          "Show when connected speech sounds over-articulated"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "Cuando una consonante viene antes de la 't' y otra consonante viene después, eliminamos completamente la 't'. Esto hace el habla más rápida y natural.",
+          "tipEs": "Simplemente no pronuncies la 't'. Conecta las dos consonantes directamente. Es como si la 't' no existiera.",
+          "practiceEs": "Practica: 'just listen' (dʒʌs lɪsən), 'want from' (wɑn frəm), 'next time' (nɛks taɪm). Frase: 'Just listen to what I want from you next time.'"
+        },
+        "coachNotes": [
+          "Occurs when consonant + t + consonant",
+          "Complete deletion, not reduction"
+        ]
+      },
+      {
+        "title": "Consonantes explosivas (Stop consonants)",
+        "topic": "consonants",
+        "appliesToExamples": {
+          "words": ["pop", "baby", "tit", "dad", "kick", "gag"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student releases all stop consonants fully",
+          "Show when speech lacks smooth flow"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "Las consonantes explosivas (p, b, t, d, k, g) al principio de palabra o en sílaba tónica se pronuncian completamente. Pero en medio o al final de palabra se suavizan - no las sueltes.",
+          "tipEs": "Al principio: pronunciación completa con explosión. En medio/final: coloca la lengua/labios en posición pero no sueltes el aire. Esto permite hablar más suave y unir palabras.",
+          "practiceEs": "Practica: 'pop' (pɑp̚), 'baby' (beɪbi), 'dad' (dæd̚), 'kick' (kɪk̚). Frase: 'My dad liked watching it. The cat carried the mouse.'"
+        },
+        "coachNotes": [
+          "Applies to all stop consonants: p, b, t, d, k, g",
+          "Initial/stressed: full release. Medial/final: unreleased",
+          "Critical for smooth connected speech"
+        ]
+      },
+      {
+        "title": "Enlace consonante-vocal (Consonant-Vowel linking)",
+        "topic": "linking",
+        "appliesToExamples": {
+          "words": [],
+          "pairs": ["an apple", "turn off", "take it", "come on"]
+        },
+        "whenToShow": [
+          "Show when student pauses between words ending in consonant and starting with vowel",
+          "Show when rightUnexpectedBreak is high between consonant-vowel boundaries"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "Cuando una palabra termina en consonante y la siguiente empieza con vocal, las unimos como si fueran una sola palabra. Esto es fundamental para hablar con fluidez.",
+          "tipEs": "Mueve la consonante final a la palabra siguiente. 'An apple' se convierte en 'a-napple'. No hagas pausa entre las palabras.",
+          "practiceEs": "Practica: 'an apple' (ə-næpəl), 'turn off' (tɚ-nɔf), 'take it' (teɪ-kɪt), 'come on' (kʌ-mɑn). Frase: 'Turn it off and come on over.'"
+        },
+        "coachNotes": [
+          "Most basic and important linking pattern",
+          "Consonant moves to next syllable",
+          "Creates smooth flow without pauses"
+        ]
+      },
+      {
+        "title": "Enlace vocal-vocal con semi-consonantes (Vowel-Vowel linking)",
+        "topic": "linking",
+        "appliesToExamples": {
+          "words": [],
+          "pairs": ["the apple", "to open", "I am", "go out"]
+        },
+        "whenToShow": [
+          "Show when student pauses between words ending and starting with vowels",
+          "Show when glottal stops appear between vowels inappropriately"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "Cuando una palabra termina en vocal y la siguiente empieza con vocal, insertamos una semi-consonante (y o w) para conectarlas suavemente.",
+          "tipEs": "Si la primera vocal es /i/ o /eɪ/, inserta 'y'. Si es /u/ o /oʊ/, inserta 'w'. 'The apple' = 'the-y-apple'. 'To open' = 'to-w-open'.",
+          "practiceEs": "Practica: 'the apple' (ði-y-æpəl), 'to open' (tu-w-oʊpən), 'I am' (aɪ-y-æm), 'go out' (goʊ-w-aʊt). Frase: 'I am going to open the apple.'"
+        },
+        "coachNotes": [
+          "Use /j/ (y) after /i/, /ɪ/, /eɪ/",
+          "Use /w/ after /u/, /ʊ/, /oʊ/",
+          "Prevents glottal stops and maintains flow"
+        ]
+      },
+      {
+        "title": "H-Deletion - Comerse la H",
+        "topic": "linking",
+        "appliesToExamples": {
+          "words": ["him", "his", "her", "he"],
+          "pairs": ["like him", "told her", "has been", "hadn't done"]
+        },
+        "whenToShow": [
+          "Show when student pronounces /h/ in unstressed function words",
+          "Show when connected speech lacks natural rhythm"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "En inglés americano, eliminamos la 'h' de palabras funcionales átonas de una sílaba: he, his, her, him, hers, y conjugaciones de 'have' como auxiliar. Esto mantiene el ritmo del inglés.",
+          "tipEs": "Simplemente no pronuncies la 'h'. Une la palabra directamente con la anterior. 'I like him' = 'I like-im'. 'It hasn't been' = 'it-azn-been'.",
+          "practiceEs": "Practica: 'like him' (laɪkɪm), 'told her' (toʊldɚ), 'has been' (æzbɪn), 'hadn't done' (hædndʌn). Frase: 'I like him but I wish he hadn't done that.'"
+        },
+        "coachNotes": [
+          "Only in unstressed monosyllabic function words",
+          "Includes: he, his, her, him, hers, have/has/had (auxiliary)",
+          "Does NOT apply to content words or stressed positions"
+        ]
+      },
+      {
+        "title": "Enlace consonante continua + consonante continua",
+        "topic": "linking",
+        "appliesToExamples": {
+          "words": [],
+          "pairs": ["more rice", "his number", "feel like", "enough for"]
+        },
+        "whenToShow": [
+          "Show when student doesn't lengthen continuous consonants at boundaries",
+          "Show when linking sounds choppy"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "Las consonantes continuas (th, f, s, z, sh, zh, v, m, n, l, r) se pueden alargar. Cuando una palabra termina con una continua y la siguiente empieza con otra continua, alarga la primera.",
+          "tipEs": "Pronuncia la consonante continua por más tiempo. 'More rice' - alarga la 'r'. La duración extra conecta las palabras suavemente.",
+          "practiceEs": "Practica: 'more rice' (mɔɔɔr:aɪs), 'his number' (hɪɪɪz:nʌmbɚ), 'feel like' (fiil:laɪk). Nota la diferencia: 'more ice' (mɔr aɪs) vs 'more rice' (mɔɔr:aɪs)."
+        },
+        "coachNotes": [
+          "Continuous consonants: th, f, s, z, sh, zh, v, m, n, l, r",
+          "Lengthen the first continuous consonant",
+          "Creates smooth connection"
+        ]
+      },
+      {
+        "title": "Enlace de parejas fricativas - Fricative pairs",
+        "topic": "linking",
+        "appliesToExamples": {
+          "words": [],
+          "pairs": ["was sitting", "have four", "beneath the", "wife vacation"]
+        },
+        "whenToShow": [
+          "Show when student pronounces both fricatives in voiced/voiceless pairs",
+          "Show when linking sounds unnatural"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "Las parejas fricativas (th/dz, sh/zh, ch/dy, k/g, f/v, s/z, p/b, t/d) se simplifican en los límites de palabras. Sonora + sorda = elimina la sonora. Sorda + sonora = transiciona suavemente.",
+          "tipEs": "Si palabra 1 termina en fricativa sonora y palabra 2 empieza con su pareja sorda, elimina la sonora. Si es al revés, transiciona encendiendo la vibración.",
+          "practiceEs": "Practica: 'was sitting' (wə-sitting), 'have four' (hæ-four), 'beneath the' (bənii-the), 'wife vacation' (waɪf-vacation). Frase: 'I have four dogs.'"
+        },
+        "coachNotes": [
+          "Fricative pairs: th/dz, sh/zh, ch/dy, k/g, f/v, s/z, p/b, t/d",
+          "Voiced + voiceless = delete voiced",
+          "Voiceless + voiced = smooth transition (turn on voicing)"
+        ]
+      },
+      {
+        "title": "Reducción de preposiciones: FOR",
+        "topic": "reductions",
+        "appliesToExamples": {
+          "words": ["for"],
+          "pairs": ["for work", "for you", "for hours"]
+        },
+        "whenToShow": [
+          "Show when student pronounces 'for' with full vowel /ɔ/",
+          "Show when function words are over-articulated"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "'For' se reduce a 'för' (fɚ) en habla conectada. La vocal se convierte en R-colored schwa, no la 'o' completa.",
+          "tipEs": "Pronuncia 'for' rápido y con flojera: 'för' (fɚ). No digas 'for' (fɔr) completo. Es una palabra funcional sin énfasis.",
+          "practiceEs": "Practica: 'for work' (fɚ wɝk), 'for you' (fɚ ju), 'for hours' (fɚr aʊɚz). Frase: 'This is for work. She walked for 4 hours.'"
+        },
+        "coachNotes": [
+          "Reduces to /fɚ/ in connected speech",
+          "Full form /fɔr/ only when stressed or final"
+        ]
+      },
+      {
+        "title": "Reducción de preposiciones: OF",
+        "topic": "reductions",
+        "appliesToExamples": {
+          "words": ["of"],
+          "pairs": ["pair of", "bottle of", "pound of"]
+        },
+        "whenToShow": [
+          "Show when student pronounces 'of' as /ɑv/ or /ɔf/",
+          "Show when function words are over-articulated"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "'Of' se reduce a 'ë' (ə) antes de consonantes en habla conectada. Es solo una schwa, casi desaparece.",
+          "tipEs": "Pronuncia 'of' como schwa 'ë' (ə) antes de consonantes. Antes de vocales, mantén la 'v': 'of apples' (əv æpəlz).",
+          "practiceEs": "Practica: 'pair of pants' (pɛrə pænts), 'bottle of water' (bɑtələ wɑtɚ), 'pound of beef' (paʊndə bif). Frase: 'I need a new pair of pants.'"
+        },
+        "coachNotes": [
+          "Reduces to /ə/ before consonants",
+          "Keeps /v/ before vowels: 'of apples' /əv/",
+          "One of the most reduced words in English"
+        ]
+      },
+      {
+        "title": "Reducción de preposiciones: AT",
+        "topic": "reductions",
+        "appliesToExamples": {
+          "words": ["at"],
+          "pairs": ["at nine", "at eight", "at me", "at night"]
+        },
+        "whenToShow": [
+          "Show when student pronounces 'at' with full /æ/ vowel",
+          "Show when function words are over-articulated"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "'At' se reduce a 'a'' (ət̚) antes de consonantes. Antes de vocales, se convierte en 'ad' (æd) con flap.",
+          "tipEs": "Antes de consonantes: 'a'' (ət̚) con schwa y T suave. Antes de vocales: 'ad' (æd) con flap D. 'At nine' (ət̚ naɪn), 'at eight' (æd eɪt).",
+          "practiceEs": "Practica: 'at nine' (ət̚ naɪn), 'at eight' (æd eɪt), 'at me' (æd mi), 'at night' (ət̚ naɪt). Frase: 'Let's meet at nine. He's looking at me.'"
+        },
+        "coachNotes": [
+          "Before consonants: /ət̚/ with schwa",
+          "Before vowels: /æd/ with flap",
+          "T becomes flap before vowels"
+        ]
+      },
+      {
+        "title": "Reducción de preposiciones: TO",
+        "topic": "reductions",
+        "appliesToExamples": {
+          "words": ["to"],
+          "pairs": ["to sing", "to me", "to eat", "to open"]
+        },
+        "whenToShow": [
+          "Show when student pronounces 'to' with full /u/ vowel",
+          "Show when function words are over-articulated"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "'To' se reduce a 'të' (tə) antes de consonantes. Antes de vocales, se pronuncia 'tu' (tu) con semi-consonante 'w'.",
+          "tipEs": "Antes de consonantes: 'të' (tə) con schwa. Antes de vocales: 'tu-w' (tuw) con 'w' de enlace. 'To sing' (tə sɪŋ), 'to eat' (tuw it).",
+          "practiceEs": "Practica: 'to sing' (tə sɪŋ), 'to me' (tə mi), 'to eat' (tuw it), 'to open' (tuw oʊpən). Frase: 'I like to sing. They wanted to talk to you.'"
+        },
+        "coachNotes": [
+          "Before consonants: /tə/ with schwa",
+          "Before vowels: /tu/ + /w/ linking",
+          "Never fully reduced to zero unlike 'of'"
+        ]
+      },
+      {
+        "title": "Reducción de conjunciones: AND, BUT, OR, BECAUSE",
+        "topic": "reductions",
+        "appliesToExamples": {
+          "words": ["and", "but", "or", "because"],
+          "pairs": ["cats and dogs", "nice but small", "tea or coffee"]
+        },
+        "whenToShow": [
+          "Show when student pronounces conjunctions with full vowels",
+          "Show when function words are over-articulated"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "Las conjunciones se reducen en habla conectada: 'and' = 'ën' (ən), 'but' = 'bu'' (bət̚), 'or' = 'ör' (ɚ), 'because' = '(bë)cöz' (bəkəz o kəz).",
+          "tipEs": "'And' = schwa + n. 'But' = schwa + T suave (antes de vocales: flap). 'Or' = R-colored schwa. 'Because' = a veces se reduce a solo 'cuz'.",
+          "practiceEs": "Practica: 'cats and dogs' (kætsən dɑgz), 'but not' (bət̚ nɑt), 'tea or coffee' (tiɚ kɑfi), 'because I'm tired' (kəz aɪm taɪɚd)."
+        },
+        "coachNotes": [
+          "AND = /ən/ or /n/ after vowels",
+          "BUT = /bət̚/ before consonants, /bəd/ before vowels",
+          "OR = /ɚ/",
+          "BECAUSE = /bəkəz/ or /kəz/ (very reduced)"
+        ]
+      },
+      {
+        "title": "Reducción de artículos: A, AN, THE",
+        "topic": "reductions",
+        "appliesToExamples": {
+          "words": ["a", "an", "the"],
+          "pairs": ["a boy", "an apple", "the man", "the elephant"]
+        },
+        "whenToShow": [
+          "Show when student pronounces articles with full vowels",
+          "Show when function words are over-articulated"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "Los artículos se reducen a schwa en habla conectada: 'a' = 'ë' (ə), 'an' = 'ën' (ən), 'the' = 'thë' (ðə) antes de consonantes, 'thi' (ði) antes de vocales.",
+          "tipEs": "'A/an' siempre con schwa. 'The' = 'thë' (ðə) antes de consonantes, 'thi' (ði) con 'y' de enlace antes de vocales: 'the-y-apple'.",
+          "practiceEs": "Practica: 'a boy' (ə bɔɪ), 'an apple' (ən æpəl), 'the man' (ðə mæn), 'the elephant' (ði-y-ɛləfənt). Frase: 'The woman talked to a person in a café.'"
+        },
+        "coachNotes": [
+          "A = /ə/, AN = /ən/",
+          "THE = /ðə/ before consonants, /ði/ before vowels",
+          "Most common words in English - critical to reduce properly"
+        ]
+      },
+      {
+        "title": "Terminaciones -ED: /d/, /t/, /ɪd/",
+        "topic": "reductions",
+        "appliesToExamples": {
+          "words": ["played", "kicked", "wanted", "loved", "washed"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student mispronounces -ED endings",
+          "Show when student adds extra syllable incorrectly"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "La terminación -ED tiene 3 pronunciaciones: /d/ después de sonidos sonoros, /t/ después de sonidos sordos, /ɪd/ después de /t/ o /d/.",
+          "tipEs": "/d/ después de b,g,j,l,m,n,r,th-sonora,v,z,vocales (played). /t/ después de f,k,p,s,sh,ch,th-sorda (kicked). /ɪd/ después de t,d (wanted).",
+          "practiceEs": "Practica: /d/: played, loved, buzzed | /t/: kicked, washed, laughed | /ɪd/: wanted, needed, decided. Frase: 'He wanted to play but kicked the ball.'"
+        },
+        "coachNotes": [
+          "Three allomorphs based on final sound",
+          "Only /ɪd/ adds syllable",
+          "Voicing assimilation rule"
+        ]
+      },
+      {
+        "title": "Terminaciones -S: /z/, /s/, /ɪz/",
+        "topic": "reductions",
+        "appliesToExamples": {
+          "words": ["plays", "kicks", "washes", "dogs", "cats"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student mispronounces -S endings (plural, possessive, 3rd person)",
+          "Show when student adds extra syllable incorrectly"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "La terminación -S tiene 3 pronunciaciones: /z/ después de sonidos sonoros, /s/ después de sonidos sordos, /ɪz/ después de s,z,sh,ch,j.",
+          "tipEs": "/z/ después de b,g,l,m,n,r,th-sonora,v,vocales (plays). /s/ después de f,k,p,t,th-sorda (kicks). /ɪz/ después de s,z,sh,ch,j (washes).",
+          "practiceEs": "Practica: /z/: plays, dogs, runs | /s/: kicks, cats, laughs | /ɪz/: washes, judges, buzzes. Frase: 'She washes the dishes and kicks the cats.'"
+        },
+        "coachNotes": [
+          "Three allomorphs based on final sound",
+          "Only /ɪz/ adds syllable",
+          "Same voicing rule as -ED",
+          "Applies to plurals, possessives, and 3rd person singular"
+        ]
+      },
+      {
+        "title": "Stress-Timed Language - Ritmo del inglés",
+        "topic": "rhythm",
+        "appliesToExamples": {
+          "words": [],
+          "pairs": ["CATS CHASE MICE", "The CATS are CHASing the MICE"]
+        },
+        "whenToShow": [
+          "Show when student pronounces all syllables with equal duration (Spanish rhythm)",
+          "Show when unstressed syllables are not reduced"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "El inglés es 'stress-timed' (basado en el énfasis), no 'syllable-timed' como el español. Las sílabas tónicas se pronuncian en intervalos regulares, y las átonas se acortan para adaptarse al ritmo.",
+          "tipEs": "Enfatiza las palabras de contenido (sustantivos, verbos, adjetivos) y reduce las palabras funcionales (artículos, preposiciones, auxiliares). El ritmo se basa en los beats tónicos, no en cada sílaba.",
+          "practiceEs": "Practica: 'CATS CHASE MICE' → 'The CATS CHASE the MICE' → 'The CATS are CHASing the MICE' → 'The CATS've been CHASing the MICE'. Todas tienen el mismo ritmo."
+        },
+        "coachNotes": [
+          "Fundamental difference from Spanish syllable-timing",
+          "Explains why contractions, reductions, and linking exist",
+          "Content words stressed, function words reduced"
+        ]
+      },
+      {
+        "title": "Énfasis de palabras - Word stress",
+        "topic": "stress",
+        "appliesToExamples": {
+          "words": ["record", "present", "content", "subject"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student misplaces word stress",
+          "Show when stress pattern affects meaning (noun vs verb)"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "En inglés, el énfasis puede caer en cualquier sílaba de una palabra, y el patrón no es predecible como en español. El énfasis puede cambiar el significado (REcord vs reCORD).",
+          "tipEs": "La sílaba tónica se pronuncia más larga, más alta y más clara. Las sílabas átonas se reducen. Aprende el patrón de énfasis de cada palabra.",
+          "practiceEs": "Practica: REcord (sustantivo) vs reCORD (verbo), PREsent (sustantivo) vs preSENT (verbo), CONtent (sustantivo) vs conTENT (adjetivo)."
+        },
+        "coachNotes": [
+          "No predictable pattern like Spanish penultimate stress",
+          "Stress can distinguish word class (noun vs verb)",
+          "Critical for intelligibility"
+        ]
+      },
+      {
+        "title": "Contracciones comunes",
+        "topic": "reductions",
+        "appliesToExamples": {
+          "words": ["I'm", "you're", "he's", "we've", "they'll", "won't"],
+          "pairs": []
+        },
+        "whenToShow": [
+          "Show when student doesn't use contractions in natural speech",
+          "Show when contractions are mispronounced"
+        ],
+        "coachSpanish": {
+          "shortWhyEs": "Las contracciones son esenciales en inglés hablado. Existen porque el inglés es 'stress-timed' y necesitamos reducir palabras funcionales para mantener el ritmo.",
+          "tipEs": "Usa contracciones en habla natural. No digas 'I am', di 'I'm'. No digas 'he is', di 'he's'. Las contracciones son normales, no informales.",
+          "practiceEs": "Practica: I'm (aɪm), you're (jʊr), he's (hiz), we've (wiv), they'll (ðeɪl), won't (woʊnt). Frase: 'I'm sure you're right. He's been here. We've seen it.'"
+        },
+        "coachNotes": [
+          "Essential for natural rhythm",
+          "Not informal - standard in spoken English",
+          "Part of stress-timed language system"
+        ]
+      }
+    ]
+  },
+  "kb": {
+    "version": 1,
+    "locale": "en-US",
+    "rules": [
+      {
+        "id": "flap_t_common_words",
+        "kind": "word",
+        "reasonCode": "flap_t_between_vowels",
+        "when": {
+          "wordRegex": "water|better|later|letter|city|pretty|matter|butter|little|bottle|battle|getting|sitting|writing|eating",
+          "phonemeIncludes": [
+            {
+              "regex": "^(t|d)$",
+              "minAccuracy": 60
+            }
+          ],
+          "phonemeExcludes": [
+            {
+              "regex": "^(ɾ|dx)$"
+            }
+          ]
+        },
+        "coaching": {
+          "shortWhyEs": "En '${word}', la T entre vocales se pronuncia como una D suave o la R simple española (ɾ), no como T fuerte. Esto hace el habla más fluida y natural.",
+          "tipEs": "Toca rápidamente el paladar con la lengua, como la 'r' simple española en 'pero'. NO es una 't' fuerte. Es un toque rápido y suave: '${word}' → [con flap ɾ].",
+          "practiceEs": "Repite 5 veces: '${word}' con flap suave. Luego en frase: 'Get some ${word} later.'"
+        }
+      },
+      {
+        "id": "flap_t_pair_linking",
+        "kind": "pair",
+        "reasonCode": "flap_t_across_word_boundary",
+        "when": {
+          "leftWordRegex": "get|what|at|it|not|put|but|let|set|got",
+          "rightWordRegex": "it|a|an|all|out|up|in|on|over|off",
+          "rightUnexpectedBreakMin": 0.5,
+          "minLeftAccuracy": 0,
+          "maxLeftAccuracy": 85
+        },
+        "coaching": {
+          "shortWhyEs": "En '${pair}', la T/D entre las dos palabras se pronuncia como flap suave (ɾ) porque está entre vocales. Esto conecta las palabras suavemente.",
+          "tipEs": "Une las palabras con un toque rápido de la lengua, como la 'r' simple española: '${leftWord} ${rightWord}' → '${leftWord}-ɾ-${rightWord}'. Sin pausa.",
+          "practiceEs": "Repite: '${pair}' sin pausa, con flap suave. Practica en frase: 'I need to ${pair} now.'"
+        }
+      },
+      {
+        "id": "glottal_stop_button_mountain",
+        "kind": "word",
+        "reasonCode": "glottal_stop_before_n",
+        "when": {
+          "wordRegex": "button|mountain|sentence|curtain|important|certain|fountain|written|kitten|cotton|eaten|forgotten",
+          "phonemeIncludes": [
+            {
+              "regex": "^t$",
+              "minAccuracy": 60
+            }
+          ]
+        },
+        "coaching": {
+          "shortWhyEs": "En '${word}', la T antes de N se reemplaza con parada glotal (ʔ). No pronuncies la 't' - corta el aire en la garganta.",
+          "tipEs": "Corta el sonido en la garganta sin pronunciar 't'. Como en 'uh-oh'. '${word}' → [bʌʔən] o [maʊnʔən]. Es natural y correcto.",
+          "practiceEs": "Repite: '${word}' con parada glotal, no con 't'. Practica: 'That ${word} is important.'"
+        }
+      },
+      {
+        "id": "glottal_stop_pair_before_consonant",
+        "kind": "pair",
+        "reasonCode": "glottal_stop_at_word_boundary",
+        "when": {
+          "leftWordRegex": "but|what|that|at|it|not|get",
+          "rightWordRegex": "why|when|where|the|this|that|my|your|we|they|can|do",
+          "rightUnexpectedBreakMin": 0.5,
+          "minLeftAccuracy": 0,
+          "maxLeftAccuracy": 85
+        },
+        "coaching": {
+          "shortWhyEs": "En '${pair}', la T al final de '${leftWord}' se reemplaza con parada glotal (ʔ) porque viene consonante después. No pronuncies la 't' completa.",
+          "tipEs": "Corta el aire en la garganta sin pronunciar 't'. '${leftWord} ${rightWord}' → '${leftWord}ʔ ${rightWord}'. Como 'uh-oh'. Sin explosión de 't'.",
+          "practiceEs": "Repite: '${pair}' con parada glotal. Practica: '${pair} is important to me.'"
+        }
+      },
+      {
+        "id": "consonant_vowel_linking",
+        "kind": "pair",
+        "reasonCode": "consonant_vowel_boundary",
+        "when": {
+          "leftWordRegex": "turn|take|come|an|in|on|with|from",
+          "rightWordRegex": "off|on|over|it|out|up|apple|hour|all",
+          "rightUnexpectedBreakMin": 0.5
+        },
+        "coaching": {
+          "shortWhyEs": "En '${pair}', debes unir la consonante final de '${leftWord}' con la vocal inicial de '${rightWord}'. Sin pausa entre las palabras.",
+          "tipEs": "Mueve la consonante final a la siguiente palabra. '${leftWord} ${rightWord}' → '${leftWord}-${rightWord}' como una sola palabra. Fluido y conectado.",
+          "practiceEs": "Repite: '${pair}' sin pausa. Practica rápido: '${pair}' 5 veces seguidas."
+        }
+      },
+      {
+        "id": "vowel_vowel_linking_y",
+        "kind": "pair",
+        "reasonCode": "vowel_vowel_y_glide",
+        "when": {
+          "leftWordRegex": "the|he|she|we|me|be|see|my|I|try|say|day|they",
+          "rightWordRegex": "apple|end|is|are|am|only|other|answer|idea|office",
+          "rightUnexpectedBreakMin": 0.5
+        },
+        "coaching": {
+          "shortWhyEs": "En '${pair}', inserta una 'y' suave entre las dos vocales para conectarlas. '${leftWord}' termina en vocal alta/frontal, así que usa 'y'.",
+          "tipEs": "Une con 'y': '${leftWord} ${rightWord}' → '${leftWord}-y-${rightWord}'. Sin pausa ni corte glotal. Fluido.",
+          "practiceEs": "Repite: '${leftWord}-y-${rightWord}' 5 veces. Practica: 'I think ${pair} good.'"
+        }
+      },
+      {
+        "id": "vowel_vowel_linking_w",
+        "kind": "pair",
+        "reasonCode": "vowel_vowel_w_glide",
+        "when": {
+          "leftWordRegex": "to|do|you|who|go|so|no|show|how|now",
+          "rightWordRegex": "open|eat|it|a|an|all|every|other|ask|end",
+          "rightUnexpectedBreakMin": 0.5
+        },
+        "coaching": {
+          "shortWhyEs": "En '${pair}', inserta una 'w' suave entre las dos vocales para conectarlas. '${leftWord}' termina en vocal posterior/redondeada, así que usa 'w'.",
+          "tipEs": "Une con 'w': '${leftWord} ${rightWord}' → '${leftWord}-w-${rightWord}'. Sin pausa ni corte glotal. Fluido.",
+          "practiceEs": "Repite: '${leftWord}-w-${rightWord}' 5 veces. Practica: 'I want ${pair} now.'"
+        }
+      },
+      {
+        "id": "h_deletion_him_her",
+        "kind": "pair",
+        "reasonCode": "h_deletion_function_word",
+        "when": {
+          "leftWordRegex": "like|told|give|ask|see|call|help|with|for",
+          "rightWordRegex": "him|his|her|he",
+          "rightUnexpectedBreakMin": 0.5
+        },
+        "coaching": {
+          "shortWhyEs": "En '${pair}', elimina la 'h' de '${rightWord}' y une directamente con '${leftWord}'. Las palabras funcionales átonas pierden la 'h' en inglés americano.",
+          "tipEs": "No pronuncies la 'h': '${leftWord} ${rightWord}' → '${leftWord}-${rightWord}' (sin h). 'Like him' = 'like-im'. Es natural y correcto.",
+          "practiceEs": "Repite: '${pair}' sin 'h'. Practica: 'I ${pair} but I wish he hadn't done that.'"
+        }
+      },
+      {
+        "id": "h_deletion_have_auxiliary",
+        "kind": "pair",
+        "reasonCode": "h_deletion_auxiliary_have",
+        "when": {
+          "leftWordRegex": "I|you|we|they|could|should|would|might|must",
+          "rightWordRegex": "have|has|had",
+          "rightUnexpectedBreakMin": 0.5
+        },
+        "coaching": {
+          "shortWhyEs": "En '${pair}', elimina la 'h' de '${rightWord}' cuando es auxiliar. Une directamente: '${leftWord} ${rightWord}' → '${leftWord}-${rightWord}' (sin h).",
+          "tipEs": "No pronuncies la 'h': 'I have' = 'I-ave', 'could have' = 'could-ave'. Solo cuando 'have' es auxiliar, no verbo principal.",
+          "practiceEs": "Repite: '${pair}' sin 'h'. Practica: '${pair} been there before.'"
+        }
+      },
+      {
+        "id": "schwa_article_a",
+        "kind": "word",
+        "reasonCode": "article_reduction",
+        "when": {
+          "wordRegex": "^a$",
+          "minWordAccuracy": 0,
+          "maxWordAccuracy": 85,
+          "errorTypes": ["Mispronunciation"]
+        },
+        "coaching": {
+          "shortWhyEs": "El artículo 'a' se pronuncia como schwa (ə), no como 'a' o 'ei'. Es una palabra funcional sin énfasis.",
+          "tipEs": "Pronuncia 'a' como 'ë' (ə): sonido neutro de la garganta sin mover la boca. 'A boy' = 'ë boy'. Rápido y flojo.",
+          "practiceEs": "Repite: 'a boy', 'a girl', 'a man', 'a woman', 'a car'. Todos con schwa (ə), no 'a' completa."
+        }
+      },
+      {
+        "id": "schwa_article_the",
+        "kind": "word",
+        "reasonCode": "article_reduction",
+        "when": {
+          "wordRegex": "^the$",
+          "minWordAccuracy": 0,
+          "maxWordAccuracy": 85,
+          "errorTypes": ["Mispronunciation"]
+        },
+        "coaching": {
+          "shortWhyEs": "El artículo 'the' se pronuncia 'thë' (ðə) antes de consonantes y 'thi' (ði) antes de vocales. No 'de' ni 'di' completo.",
+          "tipEs": "Antes de consonantes: 'thë' (ðə) con schwa. Antes de vocales: 'thi' (ði) con 'i' corta. 'The man' = 'thë man'. 'The apple' = 'thi-y-apple'.",
+          "practiceEs": "Repite: 'the man', 'the car' (con ðə) | 'the apple', 'the end' (con ði). Rápido y reducido."
+        }
+      },
+      {
+        "id": "schwa_preposition_to",
+        "kind": "word",
+        "reasonCode": "preposition_reduction",
+        "when": {
+          "wordRegex": "^to$",
+          "minWordAccuracy": 0,
+          "maxWordAccuracy": 85,
+          "errorTypes": ["Mispronunciation"]
+        },
+        "coaching": {
+          "shortWhyEs": "'To' se reduce a 'të' (tə) antes de consonantes. Es una palabra funcional sin énfasis, no se pronuncia 'tu' completo.",
+          "tipEs": "Antes de consonantes: 'të' (tə) con schwa. 'To me' = 'të me'. Antes de vocales: 'tu-w' con enlace. 'To eat' = 'tu-w-eat'.",
+          "practiceEs": "Repite: 'to me', 'to go', 'to sing' (con tə) | 'to eat', 'to open' (con tuw). Rápido y reducido."
+        }
+      },
+      {
+        "id": "schwa_preposition_of",
+        "kind": "word",
+        "reasonCode": "preposition_reduction",
+        "when": {
+          "wordRegex": "^of$",
+          "minWordAccuracy": 0,
+          "maxWordAccuracy": 85,
+          "errorTypes": ["Mispronunciation"]
+        },
+        "coaching": {
+          "shortWhyEs": "'Of' se reduce a solo schwa 'ë' (ə) antes de consonantes. Casi desaparece. Es la palabra más reducida del inglés.",
+          "tipEs": "Antes de consonantes: solo 'ë' (ə). 'Pair of pants' = 'pair-ë-pants'. Antes de vocales: 'ëv'. 'Of apples' = 'ëv apples'.",
+          "practiceEs": "Repite: 'pair of pants', 'bottle of water', 'cup of tea' (con ə). Muy reducido, casi invisible."
+        }
+      },
+      {
+        "id": "schwa_preposition_for",
+        "kind": "word",
+        "reasonCode": "preposition_reduction",
+        "when": {
+          "wordRegex": "^for$",
+          "minWordAccuracy": 0,
+          "maxWordAccuracy": 85,
+          "errorTypes": ["Mispronunciation"]
+        },
+        "coaching": {
+          "shortWhyEs": "'For' se reduce a 'för' (fɚ) con R-colored schwa. No se pronuncia 'for' (fɔr) completo.",
+          "tipEs": "Pronuncia 'för' (fɚ) rápido: schwa con color de R. 'For you' = 'för you'. 'For work' = 'för work'. Flojo y reducido.",
+          "practiceEs": "Repite: 'for you', 'for me', 'for work', 'for hours' (con fɚ). No 'for' completo."
+        }
+      },
+      {
+        "id": "schwa_conjunction_and",
+        "kind": "word",
+        "reasonCode": "conjunction_reduction",
+        "when": {
+          "wordRegex": "^and$",
+          "minWordAccuracy": 0,
+          "maxWordAccuracy": 85,
+          "errorTypes": ["Mispronunciation"]
+        },
+        "coaching": {
+          "shortWhyEs": "'And' se reduce a 'ën' (ən) o solo 'n' después de vocales. No se pronuncia 'and' (ænd) completo.",
+          "tipEs": "Pronuncia 'ën' (ən) rápido con schwa. Después de vocales puede ser solo 'n'. 'Cats and dogs' = 'cats-ən-dogs' o 'cats-n-dogs'.",
+          "practiceEs": "Repite: 'cats and dogs', 'bread and butter', 'you and me' (con ən o n). Muy reducido."
+        }
+      },
+      {
+        "id": "ed_ending_voiced",
+        "kind": "word",
+        "reasonCode": "ed_ending_after_voiced",
+        "when": {
+          "wordRegex": "played|loved|called|lived|buzzed|cleaned|bothered|raised|used|amazed",
+          "phonemeIncludes": [
+            {
+              "regex": "^t$",
+              "minAccuracy": 50
+            }
+          ]
+        },
+        "coaching": {
+          "shortWhyEs": "En '${word}', la terminación -ED se pronuncia /d/ porque viene después de un sonido sonoro. No es /t/ ni /ɪd/.",
+          "tipEs": "Pronuncia solo /d/ al final, sin vocal extra. '${word}' termina en sonido sonoro, así que -ED = /d/. Rápido y suave.",
+          "practiceEs": "Repite: '${word}' con /d/ final. Practica: 'Yesterday I ${word}.'"
+        }
+      },
+      {
+        "id": "ed_ending_voiceless",
+        "kind": "word",
+        "reasonCode": "ed_ending_after_voiceless",
+        "when": {
+          "wordRegex": "kicked|washed|laughed|watched|kissed|danced|slipped|worked|helped|stopped",
+          "phonemeIncludes": [
+            {
+              "regex": "^d$",
+              "minAccuracy": 50
+            }
+          ]
+        },
+        "coaching": {
+          "shortWhyEs": "En '${word}', la terminación -ED se pronuncia /t/ porque viene después de un sonido sordo. No es /d/ ni /ɪd/.",
+          "tipEs": "Pronuncia solo /t/ al final, sin vocal extra. '${word}' termina en sonido sordo, así que -ED = /t/. Rápido y seco.",
+          "practiceEs": "Repite: '${word}' con /t/ final. Practica: 'Yesterday I ${word}.'"
+        }
+      },
+      {
+        "id": "ed_ending_extra_syllable",
+        "kind": "word",
+        "reasonCode": "ed_ending_after_t_d",
+        "when": {
+          "wordRegex": "wanted|needed|decided|started|ended|added|waited|hated|dated|loaded",
+          "minWordAccuracy": 0,
+          "maxWordAccuracy": 85
+        },
+        "coaching": {
+          "shortWhyEs": "En '${word}', la terminación -ED se pronuncia /ɪd/ (sílaba extra) porque la raíz termina en /t/ o /d/. Es la única vez que -ED añade sílaba.",
+          "tipEs": "Añade sílaba /ɪd/ al final. 'Want' + 'ed' = 'want-id'. 'Need' + 'ed' = 'need-id'. Con vocal /ɪ/ corta.",
+          "practiceEs": "Repite: '${word}' con sílaba extra /ɪd/. Practica: 'Yesterday I ${word} to go.'"
+        }
+      },
+      {
+        "id": "s_ending_voiced",
+        "kind": "word",
+        "reasonCode": "s_ending_after_voiced",
+        "when": {
+          "wordRegex": "plays|dogs|runs|comes|sees|goes|loves|calls|lives|says",
+          "phonemeIncludes": [
+            {
+              "regex": "^s$",
+              "minAccuracy": 50
+            }
+          ],
+          "phonemeExcludes": [
+            {
+              "regex": "^z$"
+            }
+          ]
+        },
+        "coaching": {
+          "shortWhyEs": "En '${word}', la terminación -S se pronuncia /z/ porque viene después de un sonido sonoro. No es /s/ ni /ɪz/.",
+          "tipEs": "Pronuncia /z/ con vibración al final. '${word}' termina en sonido sonoro, así que -S = /z/. Como zumbido de abeja.",
+          "practiceEs": "Repite: '${word}' con /z/ final. Practica: 'He ${word} every day.'"
+        }
+      },
+      {
+        "id": "s_ending_voiceless",
+        "kind": "word",
+        "reasonCode": "s_ending_after_voiceless",
+        "when": {
+          "wordRegex": "kicks|cats|laughs|walks|stops|helps|makes|takes|works|thinks",
+          "phonemeIncludes": [
+            {
+              "regex": "^z$",
+              "minAccuracy": 50
+            }
+          ]
+        },
+        "coaching": {
+          "shortWhyEs": "En '${word}', la terminación -S se pronuncia /s/ porque viene después de un sonido sordo. No es /z/ ni /ɪz/.",
+          "tipEs": "Pronuncia /s/ sin vibración al final. '${word}' termina en sonido sordo, así que -S = /s/. Seco y sin vibración.",
+          "practiceEs": "Repite: '${word}' con /s/ final. Practica: 'She ${word} every day.'"
+        }
+      },
+      {
+        "id": "s_ending_extra_syllable",
+        "kind": "word",
+        "reasonCode": "s_ending_after_sibilant",
+        "when": {
+          "wordRegex": "washes|watches|kisses|judges|buzzes|pushes|catches|teaches|churches|boxes",
+          "minWordAccuracy": 0,
+          "maxWordAccuracy": 85
+        },
+        "coaching": {
+          "shortWhyEs": "En '${word}', la terminación -S se pronuncia /ɪz/ (sílaba extra) porque la raíz termina en sonido sibilante (s, z, sh, ch, j). Es la única vez que -S añade sílaba.",
+          "tipEs": "Añade sílaba /ɪz/ al final. 'Wash' + 'es' = 'wash-iz'. 'Watch' + 'es' = 'watch-iz'. Con vocal /ɪ/ corta.",
+          "practiceEs": "Repite: '${word}' con sílaba extra /ɪz/. Practica: 'She ${word} every day.'"
+        }
+      },
+      {
+        "id": "short_a_common_words",
+        "kind": "word",
+        "reasonCode": "short_a_vowel",
+        "when": {
+          "wordRegex": "cat|bad|man|can|have|back|ask|cash|plan|sad|fast|hand",
+          "minWordAccuracy": 0,
+          "maxWordAccuracy": 80,
+          "errorTypes": ["Mispronunciation"]
+        },
+        "coaching": {
+          "shortWhyEs": "En '${word}', la vocal es /æ/ (short a), no la 'a' española. Es más abierta - la mandíbula baja más.",
+          "tipEs": "Abre la boca más que con 'a' española. La lengua está baja y adelante. Es entre 'a' y 'e' pero más abierto. /æ/.",
+          "practiceEs": "Repite: '${word}' con /æ/ abierta. Practica: 'The ${word} is bad.' Siente la mandíbula bajar."
+        }
+      },
+      {
+        "id": "short_u_common_words",
+        "kind": "word",
+        "reasonCode": "short_u_vowel",
+        "when": {
+          "wordRegex": "cup|love|come|bus|some|money|Monday|brother|mother|other",
+          "minWordAccuracy": 0,
+          "maxWordAccuracy": 80,
+          "errorTypes": ["Mispronunciation"]
+        },
+        "coaching": {
+          "shortWhyEs": "En '${word}', la vocal es /ʌ/ (short u), no 'a' ni 'o' española. Es una vocal central neutra.",
+          "tipEs": "Mandíbula media, lengua centrada, labios relajados. No es 'a' ni 'o'. Es un sonido neutro en el centro de la boca. /ʌ/.",
+          "practiceEs": "Repite: '${word}' con /ʌ/ central. Practica: 'My ${word} is coming.' Relajado y central."
+        }
+      },
+      {
+        "id": "angry_monkey_common_words",
+        "kind": "word",
+        "reasonCode": "angry_monkey_vowel",
+        "when": {
+          "wordRegex": "book|good|look|put|could|should|would|took|foot|full",
+          "minWordAccuracy": 0,
+          "maxWordAccuracy": 80,
+          "errorTypes": ["Mispronunciation"]
+        },
+        "coaching": {
+          "shortWhyEs": "En '${word}', la vocal es /ʊ/ (angry monkey), no la 'u' española completa. Es más corta y relajada.",
+          "tipEs": "Labios ligeramente redondeados, lengua alta y posterior pero relajada. Es más corto que 'u' española. /ʊ/ flojo.",
+          "practiceEs": "Repite: '${word}' con /ʊ/ corta. Practica: 'The ${word} is good.' Corto y relajado."
+        }
+      },
+      {
+        "id": "r_colored_vowel_common_words",
+        "kind": "word",
+        "reasonCode": "r_colored_vowel",
+        "when": {
+          "wordRegex": "bird|girl|turn|work|first|word|world|learn|early|heard",
+          "minWordAccuracy": 0,
+          "maxWordAccuracy": 80,
+          "errorTypes": ["Mispronunciation"]
+        },
+        "coaching": {
+          "shortWhyEs": "En '${word}', la vocal es /ɝ/ o /ɚ/ (R-colored vowel). La lengua se enrolla hacia atrás sin tocar nada. Es el sonido más distintivo del inglés americano.",
+          "tipEs": "Enrolla la lengua hacia atrás sin tocar el paladar. La punta flota. Mantén tensión en la lengua. Es continuo, no como R española.",
+          "practiceEs": "Repite: '${word}' con lengua enrollada. Practica: 'The early ${word} gets the worm.' Lengua atrás."
+        }
+      },
+      {
+        "id": "th_voiceless_common_words",
+        "kind": "word",
+        "reasonCode": "th_voiceless",
+        "when": {
+          "wordRegex": "think|thank|thing|three|through|mouth|bath|math|both|nothing",
+          "minWordAccuracy": 0,
+          "maxWordAccuracy": 80,
+          "errorTypes": ["Mispronunciation", "Omission"]
+        },
+        "coaching": {
+          "shortWhyEs": "En '${word}', el sonido TH es /θ/ sin vibración. La lengua flota detrás de los dientes superiores. No es 't' ni 's'.",
+          "tipEs": "Lengua detrás de los dientes superiores (no entre ellos). Empuja aire sin vibración. Como 's' suave pero con lengua en dientes.",
+          "practiceEs": "Repite: '${word}' con /θ/ suave. Practica: 'I ${word} it's good.' Lengua en dientes, sin vibración."
+        }
+      },
+      {
+        "id": "th_voiced_common_words",
+        "kind": "word",
+        "reasonCode": "th_voiced",
+        "when": {
+          "wordRegex": "this|that|these|those|they|them|then|there|mother|brother|father|other|weather|another",
+          "minWordAccuracy": 0,
+          "maxWordAccuracy": 80,
+          "errorTypes": ["Mispronunciation", "Omission"]
+        },
+        "coaching": {
+          "shortWhyEs": "En '${word}', el sonido TH es /ð/ con vibración. Como /θ/ pero vibrando las cuerdas vocales. Similar a 'd' suave española.",
+          "tipEs": "Lengua detrás de los dientes superiores. Vibra las cuerdas vocales mientras empujas aire. Como 'd' en 'cada' pero con lengua en dientes.",
+          "practiceEs": "Repite: '${word}' con /ð/ vibrado. Practica: 'I see ${word} over there.' Lengua en dientes, con vibración."
+        }
+      },
+      {
+        "id": "v_sound_common_words",
+        "kind": "word",
+        "reasonCode": "v_sound",
+        "when": {
+          "wordRegex": "very|have|love|give|live|over|never|every|even|seven",
+          "minWordAccuracy": 0,
+          "maxWordAccuracy": 80,
+          "errorTypes": ["Mispronunciation"]
+        },
+        "coaching": {
+          "shortWhyEs": "En '${word}', el sonido V es /v/, no 'b'. Los dientes superiores tocan el labio inferior. Es fricción continua, no explosión.",
+          "tipEs": "Dientes superiores tocan labio inferior. Empuja aire con vibración. Los labios NO se cierran como con 'b'. Fricción continua /v/.",
+          "practiceEs": "Repite: '${word}' con /v/ fricativo. Practica: 'I ${word} it very much.' Dientes en labio, fricción."
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,847 @@
+{
+  "version": 1,
+  "locale": "en-US",
+  "audience": "es-LatAm",
+  "targets": {
+    "vowels": [
+      {
+        "id": "vowel_short_i",
+        "type": "vowel",
+        "targetPhonemeRegex": "^(ɪ|ih)$",
+        "nameEs": "I Corta (sit)",
+        "ipa": "ɪ",
+        "likelySpanishSubstitutions": [
+          "i"
+        ],
+        "coachEs": {
+          "shortWhyEs": "Este sonido no existe en español y a menudo lo confundes con la \"i\" o \"e\" de español.",
+          "tipEs": "Relaja tu boca. Para hacer la \"i\" larga (como en 'eat'), sonríes ampliamente. Para esta \"i\" corta, relaja los labios y la lengua. Es un sonido muy corto y relajado. Piensa en una sonrisa ligera o una mueca, no una sonrisa completa.",
+          "practiceEs": "Repite: sit, ship, it. Ahora contrasta: seat/sit, sheep/ship, eat/it."
+        },
+        "minimalPairs": [
+          "seat/sit",
+          "sheep/ship",
+          "leave/live"
+        ],
+        "examples": [
+          "sit",
+          "it",
+          "ship",
+          "live"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Azure phoneme accuracy for target is low",
+            "Word accuracy is low and errorType is Mispronunciation",
+            "Substitution with phoneme /i/ is detected"
+          ],
+          "commonSpellings": [
+            "i"
+          ]
+        }
+      },
+      {
+        "id": "vowel_long_ee",
+        "type": "vowel",
+        "targetPhonemeRegex": "^(i|iː|iy)$",
+        "nameEs": "I Larga (sheep)",
+        "ipa": "iː",
+        "likelySpanishSubstitutions": [
+          "i"
+        ],
+        "coachEs": {
+          "shortWhyEs": "Este sonido se parece a la \"i\" del español, pero en inglés suele ser más largo y tenso. Si lo haces corto o flojo, puede sonar como /ɪ/ (ship).",
+          "tipEs": "Sonríe un poco más y tensa ligeramente la lengua. Mantén el sonido más tiempo: iiiii. Asegúrate de que sea largo y claro (no corto).",
+          "practiceEs": "Contrasta: sheep/ship, seat/sit, leave/live. Luego repite: sheep, seat, leave, need."
+        },
+        "minimalPairs": [
+          "sheep/ship",
+          "seat/sit",
+          "leave/live"
+        ],
+        "examples": [
+          "sheep",
+          "seat",
+          "leave",
+          "need"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Azure phoneme accuracy for target is low",
+            "Word accuracy is low and errorType is Mispronunciation"
+          ],
+          "commonSpellings": [
+            "ee",
+            "ea",
+            "ie",
+            "e"
+          ]
+        }
+      },
+      {
+        "id": "vowel_schwa",
+        "type": "vowel",
+        "targetPhonemeRegex": "^(ə|ax)$",
+        "nameEs": "Schwa (about)",
+        "ipa": "ə",
+        "likelySpanishSubstitutions": [
+          "a",
+          "e",
+          "o",
+          "u"
+        ],
+        "coachEs": {
+          "shortWhyEs": "Esta es la vocal más común en inglés, pero no existe en español. La usamos en sílabas no acentuadas para hablar más rápido y con ritmo.",
+          "tipEs": "Relájate por completo. No muevas la lengua, ni los labios, ni la mandíbula. Es el sonido más perezoso que puedes hacer. Solo deja salir un poco de aire con voz. Nunca tiene acento y es muy rápido.",
+          "practiceEs": "Escucha la diferencia: la palabra \"about\", la \"a\" es una schwa. En \"sofa\", la \"a\" final es una schwa. Repite: about, sofa, the."
+        },
+        "minimalPairs": [],
+        "examples": [
+          "about",
+          "sofa",
+          "taken",
+          "the"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Phoneme is in an unstressed syllable and has low accuracy",
+            "Prosody/rhythm score is low",
+            "Full vowel is pronounced in an unstressed syllable"
+          ],
+          "commonSpellings": [
+            "a",
+            "e",
+            "i",
+            "o",
+            "u"
+          ]
+        }
+      },
+      {
+        "id": "vowel_short_u",
+        "type": "vowel",
+        "targetPhonemeRegex": "^(ʌ|ah)$",
+        "nameEs": "U Corta (cup)",
+        "ipa": "ʌ",
+        "likelySpanishSubstitutions": [
+          "a"
+        ],
+        "coachEs": {
+          "shortWhyEs": "Este sonido no existe en español. Cuando lo escuchas, tu cerebro piensa que es una \"a\", pero es un sonido diferente.",
+          "tipEs": "Piensa en la \"a\" de español. Ahora, sin mover mucho la boca, lleva tu lengua un poco hacia atrás, hacia el centro de tu boca. Es un sonido corto y viene desde un poco más atrás que la \"a\".",
+          "practiceEs": "Repite: cup, but, sun. Ahora contrasta: cop/cup, cat/cut."
+        },
+        "minimalPairs": [
+          "cop/cup",
+          "cat/cut",
+          "hat/hut"
+        ],
+        "examples": [
+          "cup",
+          "sun",
+          "love",
+          "but"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Azure phoneme accuracy for target is low",
+            "Substitution with phoneme /a/ is detected"
+          ],
+          "commonSpellings": [
+            "u",
+            "o"
+          ]
+        }
+      },
+      {
+        "id": "vowel_short_oo",
+        "type": "vowel",
+        "targetPhonemeRegex": "^(ʊ|uh)$",
+        "nameEs": "U Corta (book)",
+        "ipa": "ʊ",
+        "likelySpanishSubstitutions": [
+          "u"
+        ],
+        "coachEs": {
+          "shortWhyEs": "Este sonido no existe en español y es diferente a la \"u\" larga de 'blue'. Lo confundes con la \"u\" de español.",
+          "tipEs": "Para hacer la \"u\" larga (como en 'moon'), pones los labios como si fueras a dar un beso. Para este sonido, relaja los labios. Deben estar redondeados, pero más abiertos y relajados. La lengua también baja un poco desde la posición de la \"u\".",
+          "practiceEs": "Repite: book, look, put. Ahora contrasta: pool/pull, Luke/look."
+        },
+        "minimalPairs": [
+          "pool/pull",
+          "Luke/look",
+          "fool/full"
+        ],
+        "examples": [
+          "book",
+          "look",
+          "put",
+          "foot"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Azure phoneme accuracy for target is low",
+            "Substitution with phoneme /u/ is detected"
+          ],
+          "commonSpellings": [
+            "oo",
+            "u"
+          ]
+        }
+      },
+      {
+        "id": "vowel_long_o",
+        "type": "vowel",
+        "targetPhonemeRegex": "^(oʊ|ow)$",
+        "nameEs": "O Larga (go)",
+        "ipa": "oʊ",
+        "likelySpanishSubstitutions": [
+          "o"
+        ],
+        "coachEs": {
+          "shortWhyEs": "La \"o\" en inglés es un diptongo, se mueve. La \"o\" en español es un solo sonido, fijo (un monoptongo).",
+          "tipEs": "Empieza con la boca redondeada para la \"o\" y luego ciérrala un poco, como si terminaras en una pequeña \"u\". El sonido se desliza: O-U. Asegúrate de que tus labios se muevan.",
+          "practiceEs": "Repite: go, no, home. Siente cómo tus labios se cierran al final del sonido."
+        },
+        "minimalPairs": [],
+        "examples": [
+          "go",
+          "home",
+          "boat",
+          "phone"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Azure phoneme accuracy for target is low",
+            "Vowel is pronounced as a monophthong"
+          ],
+          "commonSpellings": [
+            "o",
+            "oa",
+            "ow"
+          ]
+        }
+      },
+      {
+        "id": "vowel_long_u",
+        "type": "vowel",
+        "targetPhonemeRegex": "^(uː|uw)$",
+        "nameEs": "U Larga (moon)",
+        "ipa": "uː",
+        "likelySpanishSubstitutions": [
+          "u"
+        ],
+        "coachEs": {
+          "shortWhyEs": "Aunque este sonido es similar a la \"u\" en español, en inglés es más largo. Tiendes a decirlo demasiado corto.",
+          "tipEs": "Sostén el sonido por más tiempo. Pon los labios como si fueras a dar un beso y alarga el sonido: uuuu. Siente la vibración.",
+          "practiceEs": "Repite: moon, blue, food. Exagera la duración al principio."
+        },
+        "minimalPairs": [
+          "pull/pool",
+          "full/fool"
+        ],
+        "examples": [
+          "moon",
+          "blue",
+          "food",
+          "you"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Vowel duration is too short",
+            "Prosody score is low on words with this vowel"
+          ],
+          "commonSpellings": [
+            "oo",
+            "u",
+            "ew",
+            "ue"
+          ]
+        }
+      },
+      {
+        "id": "vowel_y_glide_initial",
+        "type": "vowel",
+        "targetPhonemeRegex": "^(juː|yuw)$",
+        "nameEs": "U con Y Oculta (university)",
+        "ipa": "juː",
+        "likelySpanishSubstitutions": [
+          "u"
+        ],
+        "coachEs": {
+          "shortWhyEs": "Cuando la \"u\" empieza una palabra en inglés, a menudo tiene un sonido de \"y\" (o una \"i\" española) escondido al principio.",
+          "tipEs": "Imagina que hay una \"i\" española justo antes de la \"u\". No digas \"universidad\", di \"iuniversidad\". Ese pequeño deslizamiento al principio es la clave. Piensa en \"iunaitid\", no \"united\".",
+          "practiceEs": "Repite: university, unicorn, use, you."
+        },
+        "minimalPairs": [],
+        "examples": [
+          "university",
+          "unicorn",
+          "use",
+          "united"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Initial /j/ glide is missing before /uː/"
+          ],
+          "commonSpellings": [
+            "u"
+          ]
+        }
+      },
+      {
+        "id": "vowel_r_colored_er",
+        "type": "vowel",
+        "targetPhonemeRegex": "^(ɜr|ər|er)$",
+        "nameEs": "Vocal con R (her, bird)",
+        "ipa": "ɜr / ər",
+        "likelySpanishSubstitutions": [
+          "eɾ",
+          "iɾ",
+          "uɾ"
+        ],
+        "coachEs": {
+          "shortWhyEs": "En inglés, la vocal y la \"r\" se fusionan en un solo sonido. En español, las pronuncias como dos sonidos separados (e-r, i-r).",
+          "tipEs": "Este es un solo sonido. No pronuncies la vocal que ves escrita. Enfócate en el sonido de la \"r\" americana. Para hacerla, levanta la parte de atrás de tu lengua, no la punta. Para que suene aún mejor, empuja tus labios un poco hacia adelante, como un beso suave.",
+          "practiceEs": "Repite: her, bird, fur, learn. Siente cómo es un solo sonido largo."
+        },
+        "minimalPairs": [],
+        "examples": [
+          "her",
+          "bird",
+          "work",
+          "learn",
+          "first"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Vowel and /r/ are pronounced as two separate sounds",
+            "Spanish flap/trill /ɾ/ or /r/ is used instead of American /r/"
+          ],
+          "commonSpellings": [
+            "er",
+            "ir",
+            "ur",
+            "or"
+          ]
+        }
+      }
+    ],
+    "consonants": [
+      {
+        "id": "consonant_h",
+        "type": "consonant",
+        "targetPhonemeRegex": "^(h|hh)$",
+        "nameEs": "H Suave (home)",
+        "ipa": "h",
+        "likelySpanishSubstitutions": [
+          "x"
+        ],
+        "coachEs": {
+          "shortWhyEs": "Pronuncias la \"h\" en inglés demasiado fuerte, como la \"j\" en español (ej. 'jamón').",
+          "tipEs": "La \"h\" en inglés es solo aire. Es un susurro suave. Imagina que estás empañando un vidrio con tu aliento. No debe haber raspado en la garganta. Es muy suave.",
+          "practiceEs": "Repite: home, have, help. Pon tu mano frente a tu boca, solo debes sentir aire caliente."
+        },
+        "minimalPairs": [],
+        "examples": [
+          "home",
+          "happy",
+          "hello",
+          "ahead"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Azure phoneme accuracy for target is low",
+            "Substitution with phoneme /x/ (Spanish Jota) is detected"
+          ]
+        }
+      },
+      {
+        "id": "consonant_th_voiceless",
+        "type": "consonant",
+        "targetPhonemeRegex": "^(θ|th)$",
+        "nameEs": "TH Sorda (think)",
+        "ipa": "θ",
+        "likelySpanishSubstitutions": [
+          "t",
+          "s"
+        ],
+        "coachEs": {
+          "shortWhyEs": "Este sonido no existe en español y lo reemplazas con una \"t\" o una \"s\".",
+          "tipEs": "La forma más eficiente: coloca la punta de tu lengua justo detrás de tus dientes frontales superiores, sin tocarlos. Ahora, sopla aire entre la lengua y los dientes. No uses tu voz, es solo aire.",
+          "practiceEs": "Repite: think, thank, bath, three. Contraste: think/tink, thin/sin."
+        },
+        "minimalPairs": [
+          "thin/sin",
+          "think/tink",
+          "path/pass"
+        ],
+        "examples": [
+          "think",
+          "thank",
+          "bath",
+          "three"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Azure phoneme accuracy for target is low",
+            "Substitution with phoneme /t/ or /s/ is detected"
+          ],
+          "commonSpellings": [
+            "th"
+          ]
+        }
+      },
+      {
+        "id": "consonant_th_voiced",
+        "type": "consonant",
+        "targetPhonemeRegex": "^(ð|dh)$",
+        "nameEs": "TH Sonora (this)",
+        "ipa": "ð",
+        "likelySpanishSubstitutions": [
+          "d"
+        ],
+        "coachEs": {
+          "shortWhyEs": "Este sonido es raro en español y lo reemplazas con una \"d\".",
+          "tipEs": "La posición es la misma que la TH sorda (lengua detrás de los dientes superiores). La única diferencia es que ahora usas tu voz. Haz que tus cuerdas vocales vibren. Siente la vibración en tu garganta. Es como el sonido de la \"d\" en la palabra española \"dedo\" (la segunda \"d\").",
+          "practiceEs": "Repite: this, that, them, mother. Contraste: this/dis, then/den."
+        },
+        "minimalPairs": [
+          "then/den",
+          "they/day",
+          "breathe/breed"
+        ],
+        "examples": [
+          "this",
+          "that",
+          "the",
+          "mother"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Azure phoneme accuracy for target is low",
+            "Substitution with phoneme /d/ is detected"
+          ],
+          "commonSpellings": [
+            "th"
+          ]
+        }
+      },
+      {
+        "id": "consonant_t_d_alveolar",
+        "type": "consonant",
+        "excludeFromAutoRuleGeneration": true,
+        "targetPhonemeRegex": "^t$|^d$",
+        "nameEs": "T y D Americanas",
+        "ipa": "t, d",
+        "likelySpanishSubstitutions": [
+          "t̪",
+          "d̪"
+        ],
+        "coachEs": {
+          "shortWhyEs": "La \"t\" y \"d\" en español se hacen tocando los dientes (dental). En inglés, se hacen tocando la encía detrás de los dientes (alveolar).",
+          "tipEs": "Encuentra con tu lengua la pequeña cresta o encía que está justo detrás de tus dientes superiores. Ese es el punto de contacto. Toca ahí para decir \"t\" y \"d\", no en los dientes. El sonido será más seco y americano.",
+          "practiceEs": "Repite: ten, two, day, do. Siente cómo tu lengua no toca tus dientes."
+        },
+        "minimalPairs": [],
+        "examples": [
+          "ten",
+          "day",
+          "time",
+          "down"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Phoneme is detected as dental instead of alveolar"
+          ],
+          "commonSpellings": [
+            "t",
+            "d",
+            "tt",
+            "dd"
+          ]
+        }
+      },
+      {
+        "id": "consonant_d_final_devoiced",
+        "type": "consonant",
+        "targetPhonemeRegex": "^d$",
+        "nameEs": "D Final",
+        "ipa": "d",
+        "likelySpanishSubstitutions": [
+          "t"
+        ],
+        "coachEs": {
+          "shortWhyEs": "Inconscientemente, cambias el sonido de la \"d\" final por una \"t\". Dices 'debt' en lugar de 'dead'.",
+          "tipEs": "Asegúrate de usar tu voz al final de la palabra. La \"d\" es sonora, la \"t\" no. Siente la vibración en tu garganta hasta el final. Alarga la vocal antes de la \"d\" final para darte tiempo de activar la voz.",
+          "practiceEs": "Repite: bad, need, good, made. Contraste: bad/bat, need/neat."
+        },
+        "minimalPairs": [
+          "bad/bat",
+          "made/mate",
+          "send/sent"
+        ],
+        "examples": [
+          "bad",
+          "dead",
+          "need",
+          "made"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Final /d/ is devoiced to /t/"
+          ],
+          "commonSpellings": [
+            "d",
+            "ed"
+          ]
+        }
+      },
+      {
+        "id": "consonant_ed_endings",
+        "type": "consonant",
+        "targetPhonemeRegex": "^(t|d|ɪd)$",
+        "nameEs": "Terminaciones -ED",
+        "ipa": "t, d, ɪd",
+        "likelySpanishSubstitutions": [
+          "ed"
+        ],
+        "coachEs": {
+          "shortWhyEs": "Las terminaciones -ED del pasado simple tienen tres pronunciaciones diferentes. No siempre se pronuncian como suenan.",
+          "tipEs": "Regla simple: 1) Si el sonido antes de -ED no tiene voz (p, k, s, f, sh, ch), suena como /t/ (ej. looked). 2) Si el sonido tiene voz (b, g, v, l, m, n, r, y vocales), suena como /d/ (ej. lived). 3) Si el sonido es /t/ o /d/, suena como /ɪd/ (ej. wanted, needed).",
+          "practiceEs": "Practica los tres grupos: /t/ (asked, helped), /d/ (called, played), /ɪd/ (started, decided)."
+        },
+        "minimalPairs": [],
+        "examples": [
+          "looked",
+          "lived",
+          "wanted",
+          "played",
+          "needed"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Incorrect -ED pronunciation rule is applied"
+          ],
+          "commonSpellings": [
+            "ed"
+          ]
+        }
+      },
+      {
+        "id": "consonant_glottal_stop",
+        "type": "consonant",
+        "targetPhonemeRegex": "^ʔ$",
+        "nameEs": "Glottal Stop (button)",
+        "ipa": "ʔ",
+        "likelySpanishSubstitutions": [
+          "t"
+        ],
+        "coachEs": {
+          "shortWhyEs": "Para sonar más natural y fluido, los nativos a menudo reemplazan el sonido /t/ con una pausa corta en la garganta, especialmente al final de palabras o en medio de otras.",
+          "tipEs": "En lugar de pronunciar la \"t\" en palabras como 'button' o 'mountain', corta el aire en tu garganta por un instante. Es el mismo músculo que usas para decir \"uh-oh\". Para una palabra como 'but' seguida de una consonante (ej. 'but now'), no digas la \"t\", solo haz esa pausa corta.",
+          "practiceEs": "Repite: button (bu-en), mountain (moun-en), but not (bu-not)."
+        },
+        "minimalPairs": [],
+        "examples": [
+          "button",
+          "mountain",
+          "important",
+          "but"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Prosody/rhythm score is low",
+            "Full /t/ is pronounced where a glottal stop is expected"
+          ]
+        }
+      },
+      {
+        "id": "consonant_stops_aspiration",
+        "type": "consonant",
+        "excludeFromAutoRuleGeneration": true,
+        "targetPhonemeRegex": "^(p|t|k|b|d|g)$",
+        "nameEs": "Consonantes Oclusivas (P, T, K)",
+        "ipa": "p, t, k, b, d, g",
+        "likelySpanishSubstitutions": [],
+        "coachEs": {
+          "shortWhyEs": "Las consonantes como P, T, K, B, D, G tienen diferente fuerza en inglés dependiendo de su posición.",
+          "tipEs": "Al inicio de una palabra o sílaba acentuada, son explosivas. Suelta una pequeña explosión de aire (ej. 'pen', 'ten', 'key'). Al final de una palabra, son muy suaves, casi no se escuchan (ej. 'stop', 'cat', 'book'). No las explotes al final.",
+          "practiceEs": "Explosivas: pen, top, come. Suaves: map, what, back."
+        },
+        "minimalPairs": [],
+        "examples": [
+          "pen",
+          "top",
+          "key",
+          "map",
+          "what",
+          "book"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Insufficient aspiration at the beginning of stressed syllables",
+            "Over-aspiration at the end of words"
+          ]
+        }
+      },
+      {
+        "id": "consonant_dark_l",
+        "type": "consonant",
+        "targetPhonemeRegex": "^ɫ$",
+        "nameEs": "L Oscura (pull)",
+        "ipa": "ɫ",
+        "likelySpanishSubstitutions": [
+          "l"
+        ],
+        "coachEs": {
+          "shortWhyEs": "En inglés hay dos sonidos de \"L\". La \"L oscura\" se usa al final de palabras o antes de consonantes, y es diferente a la \"L\" de español.",
+          "tipEs": "Para la \"L\" normal (light L), la punta de tu lengua toca la encía. Para la \"L oscura\", la parte de atrás de tu lengua se levanta hacia el paladar blando, y la punta puede bajar o aplanarse. El sonido es más gutural. Piensa en el sonido \"ohl\".",
+          "practiceEs": "Repite: pull, full, milk, world. Siente la diferencia con: light, love."
+        },
+        "minimalPairs": [
+          "light/pull"
+        ],
+        "examples": [
+          "pull",
+          "full",
+          "milk",
+          "world",
+          "feel"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Clear /l/ is used at the end of a word or before a consonant"
+          ],
+          "commonSpellings": [
+            "l",
+            "ll"
+          ]
+        }
+      },
+      {
+        "id": "consonant_r",
+        "type": "consonant",
+        "targetPhonemeRegex": "^r$",
+        "nameEs": "R Americana",
+        "ipa": "r",
+        "likelySpanishSubstitutions": [
+          "ɾ",
+          "r"
+        ],
+        "coachEs": {
+          "shortWhyEs": "La \"r\" americana es muy diferente a la \"r\" española. No usas la punta de la lengua para vibrar.",
+          "tipEs": "Hay dos formas: 1) Levanta y tensa la parte de atrás de tu lengua, como si gruñeras. La punta de la lengua no toca nada. 2) Empuja tus labios un poco hacia adelante, como si fueras a dar un beso suave. Esto refinará el sonido y lo hará sonar mucho más natural.",
+          "practiceEs": "Repite: red, run, right, car. Siente la tensión en la parte de atrás de tu lengua."
+        },
+        "minimalPairs": [],
+        "examples": [
+          "red",
+          "run",
+          "right",
+          "car",
+          "very"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Spanish flap/trill /ɾ/ or /r/ is used instead of American /r/"
+          ],
+          "commonSpellings": [
+            "r",
+            "rr"
+          ]
+        }
+      },
+      {
+        "id": "consonant_v",
+        "type": "consonant",
+        "targetPhonemeRegex": "^v$",
+        "nameEs": "V Labiodental (very)",
+        "ipa": "v",
+        "likelySpanishSubstitutions": [
+          "b"
+        ],
+        "coachEs": {
+          "shortWhyEs": "En la mayoría de los dialectos del español, la B y la V suenan igual. En inglés, son muy diferentes.",
+          "tipEs": "La \"V\" es la gemela sonora de la \"F\". Haz el sonido de la \"F\" (dientes superiores sobre el labio inferior, soplando aire). Ahora, haz lo mismo pero activa tu voz. Siente la vibración en tus labios y dientes. Es un zumbido.",
+          "practiceEs": "Repite: very, voice, have, live. Contraste: very/berry, vote/boat."
+        },
+        "minimalPairs": [
+          "very/berry",
+          "vote/boat",
+          "van/ban"
+        ],
+        "examples": [
+          "very",
+          "voice",
+          "have",
+          "live"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Azure phoneme accuracy for target is low",
+            "Substitution with phoneme /b/ is detected"
+          ],
+          "commonSpellings": [
+            "v"
+          ]
+        }
+      },
+      {
+        "id": "consonant_y",
+        "type": "consonant",
+        "targetPhonemeRegex": "^(j|y)$",
+        "nameEs": "Y Suave (yes)",
+        "ipa": "j",
+        "likelySpanishSubstitutions": [
+          "dʒ",
+          "ʝ",
+          "ʃ"
+        ],
+        "coachEs": {
+          "shortWhyEs": "Dependiendo de tu país, pronuncias la \"y\" (o \"ll\") en español muy fuerte. En inglés, la \"y\" es un sonido muy suave y deslizante.",
+          "tipEs": "El sonido de la \"y\" inglesa es como una \"i\" española muy corta y rápida que se desliza hacia la siguiente vocal. Piensa en la palabra \"hielo\". Ese primer sonido es la \"y\" inglesa. No debe haber fricción ni fuerza.",
+          "practiceEs": "Repite: yes, you, yellow, beyond. Imagina una \"i\" antes de la vocal: i-es, i-u."
+        },
+        "minimalPairs": [
+          "yes/Jess",
+          "year/jeer"
+        ],
+        "examples": [
+          "yes",
+          "you",
+          "yellow",
+          "beyond"
+        ],
+        "detectionHints": {
+          "triggerWhen": [
+            "Azure phoneme accuracy for target is low",
+            "Substitution with /dʒ/ (yeísmo), /ʝ/ or /ʃ/ (rioplatense) is detected"
+          ],
+          "commonSpellings": [
+            "y",
+            "i"
+          ]
+        }
+      }
+    ]
+  },
+  "confusionGroups": [
+    {
+      "id": "confusion_i_vs_ee",
+      "targets": [
+        "vowel_short_i",
+        "vowel_long_ee"
+      ],
+      "noteEs": "Los hispanohablantes a menudo colapsan estos dos sonidos en la \"i\" española. La diferencia es clave para la claridad (ej. 'ship' vs 'sheep').",
+      "priority": "high"
+    },
+    {
+      "id": "confusion_u_vs_oo",
+      "targets": [
+        "vowel_short_u",
+        "vowel_long_u"
+      ],
+      "noteEs": "La \"u\" corta de 'cup' se confunde con la \"a\" española, mientras que la \"u\" larga de 'moon' se acorta demasiado.",
+      "priority": "high"
+    },
+    {
+      "id": "confusion_oo_short_vs_long",
+      "targets": [
+        "vowel_short_oo",
+        "vowel_long_u"
+      ],
+      "noteEs": "La diferencia entre la vocal de 'pull' (corta, labios relajados) y 'pool' (larga, labios tensos) es muy difícil y causa muchos malentendidos.",
+      "priority": "high"
+    },
+    {
+      "id": "confusion_th_voiceless_vs_t_s",
+      "targets": [
+        "consonant_th_voiceless"
+      ],
+      "noteEs": "La TH sorda se reemplaza consistentemente con /t/ o /s/, afectando palabras de alta frecuencia como 'think' y 'three'.",
+      "priority": "high"
+    },
+    {
+      "id": "confusion_th_voiced_vs_d",
+      "targets": [
+        "consonant_th_voiced"
+      ],
+      "noteEs": "La TH sonora se reemplaza consistentemente con /d/, afectando palabras de alta frecuencia como 'the', 'this' y 'that'.",
+      "priority": "high"
+    },
+    {
+      "id": "confusion_b_vs_v",
+      "targets": [
+        "consonant_v"
+      ],
+      "noteEs": "Debido a que B y V son iguales en español, los estudiantes no distinguen entre palabras como 'very' y 'berry'.",
+      "priority": "high"
+    },
+    {
+      "id": "confusion_h_vs_jota",
+      "targets": [
+        "consonant_h"
+      ],
+      "noteEs": "La H inglesa es un susurro suave, no el sonido fuerte de la J española. Este error es muy común y notable.",
+      "priority": "medium"
+    },
+    {
+      "id": "confusion_y_vs_yeismo",
+      "targets": [
+        "consonant_y"
+      ],
+      "noteEs": "La pronunciación fuerte de la Y/LL en muchos dialectos del español interfiere con la Y suave inglesa.",
+      "priority": "medium"
+    },
+    {
+      "id": "confusion_d_final_vs_t",
+      "targets": [
+        "consonant_d_final_devoiced"
+      ],
+      "noteEs": "Cambiar la /d/ final por /t/ (ej. 'bad' -> 'bat') es un error sutil pero persistente que afecta la claridad.",
+      "priority": "medium"
+    },
+    {
+      "id": "confusion_schwa_vs_full_vowel",
+      "targets": [
+        "vowel_schwa"
+      ],
+      "noteEs": "No reducir las vocales no acentuadas a schwa es la principal razón de un ritmo de habla poco natural y \"extranjero\".",
+      "priority": "high"
+    },
+    {
+      "id": "confusion_r_american_vs_spanish",
+      "targets": [
+        "consonant_r",
+        "vowel_r_colored_er"
+      ],
+      "noteEs": "La mecánica de la R americana (parte trasera de la lengua) es fundamentalmente diferente de la R española (punta de la lengua).",
+      "priority": "high"
+    },
+    {
+      "id": "confusion_dark_l_vs_clear_l",
+      "targets": [
+        "consonant_dark_l"
+      ],
+      "noteEs": "Usar la L española en todas las posiciones en lugar de la L oscura al final de las palabras es un error común.",
+      "priority": "low"
+    },
+    {
+      "id": "confusion_t_d_dental_vs_alveolar",
+      "targets": [
+        "consonant_t_d_alveolar"
+      ],
+      "noteEs": "La sutil diferencia en el punto de articulación de la T y la D (dientes vs. encía) contribuye a un acento extranjero.",
+      "priority": "low"
+    },
+    {
+      "id": "confusion_ed_endings",
+      "targets": [
+        "consonant_ed_endings"
+      ],
+      "noteEs": "La aplicación incorrecta de las tres reglas de pronunciación de -ED es una fuente constante de errores gramaticales y de pronunciación.",
+      "priority": "medium"
+    }
+  ]
+}

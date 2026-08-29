@@ -6,9 +6,9 @@ It contains the full architecture, data structure, feature build order (53 slice
 Follow it as your north star. Do not make decisions that contradict the PRD without asking.
 
 ## Current Phase
-**COMPLETE:** Phase 1, 1.5, 2a (slices 13–22 + 14–15 Stripe webhooks), 2b, 2c (slices 22a–22e writing class).
-**Next feature build:** Phase 2.5 (slices 30–32: Bunny Stream IPA popups, dictation → IPA → video, consumer choral practice).
-Do not build Phase 2.5+ until asked.
+**COMPLETE:** Phase 1, 1.5, 2a (slices 13–22 + 14–15 Stripe webhooks), 2b, 2c (slices 22a–22e writing class), 2.5 (slices 30–32), 3 (slices 33–35 voice recording + Azure assessment).
+**Next feature build:** Phase 4 (slices 36–39: knowledge graph, evidence tracking, N+1 routing, student dashboard).
+Do not build Phase 4+ until asked.
 
 **Session types supported:** `story` (Phase 2a), `writing` (Phase 2c), `exam` (Phase 5, slices 49a–49e — spec complete, not yet built). The exam session type uses group-based submission: one writer per group, Supabase Realtime sync to group members, teacher-led review mode. See PRD Section 4 (GroupExamPrompt, ExamGroup, GroupExamSubmission) and Section 7 (slices 49a–49e).
 

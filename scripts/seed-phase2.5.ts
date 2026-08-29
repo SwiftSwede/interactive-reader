@@ -9,6 +9,7 @@ import { createAdminClient } from "../src/lib/supabase/admin";
 import {
   SOUND_VIDEO_CATALOG,
   SOCCER_JERSEY_CORAL_IPA,
+  SOCCER_JERSEY_CORAL_STANDARD,
   SOCCER_JERSEY_WORD_NOTES,
 } from "../src/lib/sound-catalog";
 
@@ -57,6 +58,7 @@ async function main() {
   const { error: drillError } = await admin
     .from("pronunciation_drills")
     .update({
+      practica_coral_standard: SOCCER_JERSEY_CORAL_STANDARD,
       practica_coral_ipa: SOCCER_JERSEY_CORAL_IPA,
       coral_audio_url: "/audio/stories/practica-coral-soccery-jersey.mp3",
       word_notes: SOCCER_JERSEY_WORD_NOTES,

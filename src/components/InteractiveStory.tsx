@@ -10,7 +10,7 @@ import { recordWordLookup } from "@/app/story/[slug]/actions";
 
 // ── Types ──────────────────────────────────────────────────
 
-type WordTimestamp = {
+export type WordTimestamp = {
   position: number;
   text: string;
   start: number;
@@ -26,6 +26,7 @@ type InteractiveStoryProps = {
   storyId?: string;
   sessionId?: string;
   trackLookups?: boolean;
+  hideAudio?: boolean;
 };
 
 // ── Component ──────────────────────────────────────────────
@@ -39,6 +40,7 @@ export default function InteractiveStory({
   storyId,
   sessionId,
   trackLookups = false,
+  hideAudio = false,
 }: InteractiveStoryProps) {
   const [seenPositions, setSeenPositions] = useState<Set<number>>(new Set());
   const [activePosition, setActivePosition] = useState<number | null>(null);
@@ -267,12 +269,14 @@ export default function InteractiveStory({
 
   return (
     <div ref={containerRef}>
-      <StoryAudioPlayer
-        audioUrl={audioUrl}
-        duration={audioDuration}
-        onTimeUpdate={handleAudioTimeUpdate}
-        onPlayStateChange={handlePlayStateChange}
-      />
+      {!hideAudio && (
+        <StoryAudioPlayer
+          audioUrl={audioUrl}
+          duration={audioDuration}
+          onTimeUpdate={handleAudioTimeUpdate}
+          onPlayStateChange={handlePlayStateChange}
+        />
+      )}
 
       <div className="space-y-4">
         {paragraphs.map((paragraph, paraIdx) => {
@@ -330,7 +334,11 @@ export default function InteractiveStory({
                         pinnedPosition === word.position
                       }
                       isExpressionActive={isExpressionActive}
-                      hintClass={!hasInteracted && currentPos < 4 ? "word-hint" : undefined}
+                      hintClass={
+                        !hideAudio && !hasInteracted && currentPos < 4
+                          ? "word-hint"
+                          : undefined
+                      }
                       onFirstInteraction={() => setHasInteracted(true)}
                       onLookup={handleLookup}
                     />

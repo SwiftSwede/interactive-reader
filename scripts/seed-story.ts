@@ -12,6 +12,7 @@ config({ path: ".env.local" });
 import { createClient } from "@supabase/supabase-js";
 import { readFileSync } from "fs";
 import { WebSocket } from "ws";
+import { stripStressMarks } from "../src/lib/pronunciation/referenceText";
 
 // ── Config ─────────────────────────────────────────────────
 
@@ -119,10 +120,10 @@ function parseStoryMarkdown(markdown: string) {
   if (practicaCoralIdx >= 0) {
     const coralLines = lines.slice(practicaCoralIdx + 1).filter((l) => l.trim());
     if (coralLines.length >= 2) {
-      practicaCoralStandard = coralLines[0].trim();
+      practicaCoralStandard = stripStressMarks(coralLines[0].trim());
       practicaCoralPhonetic = coralLines[1].trim();
     } else if (coralLines.length === 1) {
-      practicaCoralStandard = coralLines[0].trim();
+      practicaCoralStandard = stripStressMarks(coralLines[0].trim());
     }
   }
 

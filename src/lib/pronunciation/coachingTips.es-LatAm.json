@@ -1,0 +1,69 @@
+{
+  "_comment": "Override or extend coaching tips by reasonCode. These take priority over rule defaults. Edit this file to add your own teaching knowledge.",
+
+  "th_sound": {
+    "shortWhyEs": "En \"${word}\", el sonido TH puede sonar como T, D o S. En español no existe este sonido.",
+    "tipEs": "Pon la punta de la lengua entre los dientes y sopla aire suavemente. No toques el paladar.",
+    "practiceEs": "Practica: \"think\" vs \"tink\", \"the\" vs \"de\". Repite 5 veces exagerando la lengua entre los dientes."
+  },
+
+  "r_sound": {
+    "shortWhyEs": "La R en \"${word}\" suena diferente a la R del español. La R americana no vibra.",
+    "tipEs": "Curva la lengua hacia atrás sin tocar el paladar. Los labios se redondean un poco. No hagas vibrar la lengua.",
+    "practiceEs": "Practica: \"red\" (no \"rred\"), \"very\" (no \"berry\"). Repite despacio 5 veces."
+  },
+
+  "v_b": {
+    "shortWhyEs": "En \"${word}\", la V debe sonar diferente a la B. En español muchas veces suenan igual.",
+    "tipEs": "Para la V, muerde suavemente tu labio inferior con los dientes de arriba y sopla. Para la B, los dos labios se tocan.",
+    "practiceEs": "Practica: \"very\" vs \"berry\", \"van\" vs \"ban\". Siente la diferencia en el labio."
+  },
+
+  "vowel_i": {
+    "shortWhyEs": "En \"${word}\", la vocal corta /ɪ/ (como en \"ship\") puede sonar como la /i/ larga (como en \"sheep\").",
+    "tipEs": "La /ɪ/ corta es más relajada y breve. No estires los labios tanto. Piensa en un sonido entre \"i\" y \"e\".",
+    "practiceEs": "Practica: \"ship\" vs \"sheep\", \"sit\" vs \"seat\". La corta es más rápida y relajada."
+  },
+
+  "vowel_ae": {
+    "shortWhyEs": "En \"${word}\", la vocal /æ/ (como en \"cat\") no existe en español. Puede sonar como \"e\" o \"a\".",
+    "tipEs": "Abre la boca más de lo normal y baja la mandíbula. Es un sonido entre la \"a\" y la \"e\" del español.",
+    "practiceEs": "Practica: \"cat\" vs \"cut\", \"bad\" vs \"bed\". Exagera la apertura de la boca."
+  },
+
+  "vowel_uh": {
+    "shortWhyEs": "En \"${word}\", la vocal /ʌ/ (como en \"cup\") puede confundirse con la \"a\" o la \"o\" del español.",
+    "tipEs": "Relaja la boca en posición neutral (ni abierta ni cerrada). Es un sonido corto y central.",
+    "practiceEs": "Practica: \"cup\" vs \"cop\", \"cut\" vs \"cat\". El sonido /ʌ/ es corto y relajado."
+  },
+
+  "final_consonant": {
+    "shortWhyEs": "En \"${word}\", el sonido final puede haberse perdido. En español no es común terminar palabras con estos sonidos.",
+    "tipEs": "Exagera la consonante final. Si termina en \"-ed\", decide si suena /t/, /d/ o /ɪd/. Suelta el aire al final.",
+    "practiceEs": "Practica: di \"${word}\" y mantén el sonido final un poco más largo de lo normal."
+  },
+
+  "initial_cluster": {
+    "shortWhyEs": "En \"${word}\", el grupo de consonantes al inicio (como \"sp\", \"st\", \"sk\") puede ser difícil. En español se agrega una \"e\" antes.",
+    "tipEs": "No digas \"e\" antes de la S. Empieza directamente con el sonido S y pasa rápido a la siguiente consonante.",
+    "practiceEs": "Practica: \"school\" (no \"eschool\"), \"stop\" (no \"estop\"). Empieza con SSS y añade la consonante."
+  },
+
+  "sh_sound": {
+    "shortWhyEs": "En \"${word}\", el sonido SH (/ʃ/) puede confundirse con la S normal. Son diferentes.",
+    "tipEs": "Para SH, redondea los labios como si fueras a decir \"shhh\" para callar a alguien. La lengua está más atrás que para la S.",
+    "practiceEs": "Practica: \"ship\" vs \"sip\", \"she\" vs \"see\". Redondea los labios para SH."
+  },
+
+  "flap_t_between_vowels": {
+    "shortWhyEs": "En \"${word}\", en inglés americano la T entre vocales suele sonar como una D suave (un toque rápido).",
+    "tipEs": "No hagas una T fuerte ni una pausa. Haz un toque rápido con la lengua (suena como una “D suave” en inglés o como una “r” rápida) y conecta las palabras.",
+    "practiceEs": "Practica en bloques: \"${word}\" (x5). Luego dilo dentro de la frase completa, cada vez más natural."
+  },
+
+  "linking_vowel_vowel_glide": {
+    "shortWhyEs": "En \"${word}\", hay vocal con vocal. En inglés normalmente se conectan sin cortar la voz.",
+    "tipEs": "Mantén el aire y la voz entre las dos palabras. Usa un deslizamiento suave (a veces se siente como una mini “y” o “w”) para pasar de una vocal a la otra.",
+    "practiceEs": "Di \"${word}\" sin parar el aire (x5). Luego repítelo en una frase completa."
+  }
+}

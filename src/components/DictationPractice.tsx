@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { usePlaybackRate } from "./PlaybackRateContext";
 import MicroExplanation from "./MicroExplanation";
 import IpaText from "./IpaText";
 import type { PronunciationWordNote } from "@/types";
@@ -29,11 +30,17 @@ export default function DictationPractice({
   const [hasPlayed, setHasPlayed] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const studentIpa = ipaText?.trim() || phoneticText;
+  const { rate } = usePlaybackRate();
+
+  useEffect(() => {
+    if (audioRef.current) audioRef.current.playbackRate = rate;
+  }, [rate]);
 
   const playClip = () => {
     const audio = audioRef.current;
     if (!audio) return;
     audio.currentTime = 0;
+    audio.playbackRate = rate;
     audio.play();
     setHasPlayed(true);
   };
@@ -48,7 +55,7 @@ export default function DictationPractice({
   };
 
   return (
-    <section className="mt-12 mb-8">
+    <section>
       <audio ref={audioRef} src={audioUrl} preload="metadata" />
 
       <h3 className="text-lg font-bold text-gray-900 mb-2">
