@@ -344,6 +344,7 @@ export default function StorySteps({
             <div
               className={active.id === "comprehension" ? "step-panel" : "hidden"}
               hidden={active.id !== "comprehension"}
+              aria-hidden={active.id !== "comprehension" ? true : undefined}
             >
               <ComprehensionQuestions
                 questions={comprehensionQuestions.map((q) => ({
@@ -365,6 +366,7 @@ export default function StorySteps({
             <div
               className={active.id === "personal" ? "step-panel" : "hidden"}
               hidden={active.id !== "personal"}
+              aria-hidden={active.id !== "personal" ? true : undefined}
             >
               <PersonalQuestions
                 questions={personalQuestions.map((q) => ({

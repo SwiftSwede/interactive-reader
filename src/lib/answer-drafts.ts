@@ -11,6 +11,7 @@ export function draftKey(kind: "comprehension" | "personal", questionId: string)
 }
 
 export function readDraft<T>(key: string): T | null {
+  if (typeof window === "undefined") return null;
   try {
     const raw = localStorage.getItem(key);
     if (!raw) return null;
@@ -21,6 +22,7 @@ export function readDraft<T>(key: string): T | null {
 }
 
 export function writeDraft(key: string, value: unknown): void {
+  if (typeof window === "undefined") return;
   try {
     localStorage.setItem(key, JSON.stringify(value));
   } catch {
@@ -29,6 +31,7 @@ export function writeDraft(key: string, value: unknown): void {
 }
 
 export function clearDraft(key: string): void {
+  if (typeof window === "undefined") return;
   try {
     localStorage.removeItem(key);
   } catch {
