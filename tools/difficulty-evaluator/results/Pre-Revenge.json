@@ -1,0 +1,94 @@
+{
+  "story_title": "Revenge",
+  "profiler": {
+    "word_count": 919,
+    "unique_word_count": 357,
+    "evp_coverage_pct": 89.1,
+    "level_distribution": {
+      "A1": 225,
+      "A2": 55,
+      "B1": 28,
+      "B2": 10,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 63.0,
+      "A2": 78.4,
+      "B1": 86.3,
+      "B2": 89.1,
+      "C1": 89.1,
+      "C2": 89.1
+    },
+    "cognate_count": 43,
+    "cognate_pct": 12.0,
+    "false_friend_count": 0,
+    "off_list_count": 39,
+    "off_list_pct": 10.9,
+    "vocab_difficulty_raw": 1.44,
+    "vocab_difficulty_adjusted": 1.43,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Revenge",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "piece of my mind",
+          "picture of perfect health",
+          "beat-up",
+          "end up like",
+          "scratch that"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "present simple",
+          "second conditional",
+          "as though clauses",
+          "relative clauses"
+        ],
+        "notes": "Dominated by past simple with frequent past perfect (had raised, had seen, had already turned around) and one second conditional. Past perfect appears 5-6 times, making it a noticeable minority of sentences."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Disney World",
+          "McDonald's",
+          "Ford Focus",
+          "Canadian setting",
+          "electric mobility scooter"
+        ],
+        "notes": "Most references (McDonald's, Disney) are globally known. Canadian context is light and doesn't impede comprehension. Mobility scooter is mildly North American but inferable."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Many short dialogue exchanges keep average length low. Some longer narrative sentences with subordinate clauses, but overall moderate complexity."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 2.03,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.43,
+      "evp_coverage_pct": 89.1,
+      "cognate_pct": 12.0,
+      "off_list_pct": 10.9
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.03,
+    "estimated_cefr": "A2/B1"
+  }
+}

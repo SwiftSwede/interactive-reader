@@ -1,0 +1,98 @@
+{
+  "story_title": "Can You Remind Me",
+  "profiler": {
+    "word_count": 421,
+    "unique_word_count": 166,
+    "evp_coverage_pct": 90.4,
+    "level_distribution": {
+      "A1": 119,
+      "A2": 19,
+      "B1": 10,
+      "B2": 1,
+      "C1": 0,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 71.7,
+      "A2": 83.1,
+      "B1": 89.2,
+      "B2": 89.8,
+      "C1": 89.8,
+      "C2": 90.4
+    },
+    "cognate_count": 15,
+    "cognate_pct": 9.0,
+    "false_friend_count": 1,
+    "off_list_count": 16,
+    "off_list_pct": 9.6,
+    "vocab_difficulty_raw": 1.31,
+    "vocab_difficulty_adjusted": 1.41,
+    "estimated_cefr": "C2"
+  },
+  "rubric": {
+    "story_title": "Can You Remind Me",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 1,
+        "items_found": [
+          "heading out",
+          "says it all",
+          "tired of"
+        ],
+        "count": 3
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "present perfect",
+          "going to future",
+          "basic reported speech"
+        ],
+        "notes": "Dominated by present simple with some present perfect and basic reported speech using 'if' and 'that' clauses."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Dwayne Johnson",
+          "Margaret Thatcher",
+          "Houston",
+          "Texas",
+          "Zumba",
+          "Moby Dick",
+          "Honda"
+        ],
+        "notes": "Names and brands are globally recognizable. No specific North American customs or cultural practices are central to the plot."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "Short to moderate sentences, mostly subject-verb-object with some basic conjunctions and reported speech clauses."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "She asks him rhetorically if he has actually forgotten.",
+            "is_trap_active": false,
+            "reason": "While 'actually' is a classic false friend for 'actualmente', the context of forgetting makes the meaning 'really' or 'in fact' clear enough, though it may cause a brief pause."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.47,
+    "estimated_cefr": "A1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.41",
+      "evp_coverage_pct": "90.4",
+      "cognate_pct": "9.0",
+      "off_list_pct": "9.6"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.47,
+    "estimated_cefr": "A1"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "story_title": "Properties of Love",
+  "profiler": {
+    "word_count": 2333,
+    "unique_word_count": 703,
+    "evp_coverage_pct": 87.9,
+    "level_distribution": {
+      "A1": 412,
+      "A2": 124,
+      "B1": 62,
+      "B2": 18,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 58.6,
+      "A2": 76.2,
+      "B1": 85.1,
+      "B2": 87.6,
+      "C1": 87.9,
+      "C2": 87.9
+    },
+    "cognate_count": 99,
+    "cognate_pct": 14.1,
+    "false_friend_count": 3,
+    "off_list_count": 85,
+    "off_list_pct": 12.1,
+    "vocab_difficulty_raw": 1.5,
+    "vocab_difficulty_adjusted": 1.77,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Properties of Love",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "take it easy on me",
+          "came face to face with",
+          "came across",
+          "meat on her bones",
+          "couldn't help but",
+          "know their place",
+          "could care less",
+          "bump into",
+          "missing out",
+          "kicked off",
+          "turn water into wine",
+          "little birdie has told me",
+          "getting awfully cozy",
+          "lovebirds",
+          "make sure"
+        ],
+        "count": 15
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "past continuous",
+          "present perfect",
+          "past perfect",
+          "future simple",
+          "modals (should, could, would, might)",
+          "relative clauses",
+          "participial clauses"
+        ],
+        "notes": "The text is dominated by simple past and present tenses but contains a noticeable minority of complex structures like past perfect, present perfect continuous, and participial clauses."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Bolivian setting (Santa Cruz de la Sierra, bolivianos)",
+          "Class differences (campesina, upper class)",
+          "Instagram",
+          "Planetarium/Cassiopeia"
+        ],
+        "notes": "The cultural setting is Latin American (Bolivia) and deals with class differences, which is highly familiar to the target learner. No unfamiliar North American customs are present."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 18,
+        "notes": "Mixed lengths with some compound and complex sentences containing multiple subordinate clauses. A few sentences exceed 30 words, but the narrative is generally straightforward."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "She actually had some meat on her bones",
+            "is_trap_active": true,
+            "reason": "Spanish speaker might read as 'currently' (actualmente) instead of 'in fact'."
+          },
+          {
+            "word": "once",
+            "context": "Once inside, he flipped a switch",
+            "is_trap_active": true,
+            "reason": "Spanish speaker might read as 'eleven' (once) instead of 'as soon as'."
+          },
+          {
+            "word": "parents",
+            "context": "until his parents died",
+            "is_trap_active": true,
+            "reason": "Spanish speaker might read as 'relatives' (parientes) instead of specifically 'father and mother'."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.63,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.77",
+      "evp_coverage_pct": "87.9",
+      "cognate_pct": "14.1",
+      "off_list_pct": "12.1"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.63,
+    "estimated_cefr": "B1"
+  }
+}

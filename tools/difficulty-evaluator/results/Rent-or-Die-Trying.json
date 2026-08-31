@@ -1,0 +1,114 @@
+{
+  "story_title": "Rent or Die Trying",
+  "profiler": {
+    "word_count": 1197,
+    "unique_word_count": 408,
+    "evp_coverage_pct": 89.2,
+    "level_distribution": {
+      "A1": 256,
+      "A2": 55,
+      "B1": 28,
+      "B2": 24,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 62.7,
+      "A2": 76.2,
+      "B1": 83.1,
+      "B2": 89.0,
+      "C1": 89.2,
+      "C2": 89.2
+    },
+    "cognate_count": 70,
+    "cognate_pct": 17.2,
+    "false_friend_count": 0,
+    "off_list_count": 44,
+    "off_list_pct": 10.8,
+    "vocab_difficulty_raw": 1.51,
+    "vocab_difficulty_adjusted": 1.48,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Rent or Die Trying",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "hit the jackpot",
+          "bachelor pad",
+          "figure out",
+          "dead serious",
+          "sad puppy",
+          "pull myself together",
+          "sleuthing around",
+          "heart sank into my stomach",
+          "out of reach",
+          "head in my hands",
+          "flexing to",
+          "looking down on",
+          "deer in the headlights",
+          "what the fuck",
+          "nuts",
+          "pissed",
+          "flex on the world",
+          "put on paper",
+          "vouch for",
+          "turning out"
+        ],
+        "count": 20
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "present perfect",
+          "first conditional",
+          "second conditional",
+          "passive voice",
+          "relative clauses",
+          "reported speech",
+          "participial clauses"
+        ],
+        "notes": "The text is dominated by simple past and present simple, but contains a noticeable minority of complex structures like second conditionals, passives, and past perfect, fitting a level 3 profile."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "bachelor pad",
+          "renters insurance",
+          "guarantor",
+          "proof of income",
+          "deer in the headlights",
+          "crypto millionaire"
+        ],
+        "notes": "The concept of 'renters insurance' and the strict rental process (guarantor, proof of income) are somewhat North American/institutional, but the plot is followable without deep cultural knowledge."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 17,
+        "notes": "Mixed lengths with some complex sentences containing subordinate clauses, averaging around 15-25 words."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 2.74,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.48,
+      "evp_coverage_pct": 89.2,
+      "cognate_pct": 17.2,
+      "off_list_pct": 10.8
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.74,
+    "estimated_cefr": "B1"
+  }
+}

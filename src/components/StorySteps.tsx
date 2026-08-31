@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import {
   BookOpen,
   Check,
@@ -19,6 +20,7 @@ import MicroExplanation from "./MicroExplanation";
 import StoryTextSheet from "./StoryTextSheet";
 import BackLink from "./BackLink";
 import { PlaybackRateProvider } from "./PlaybackRateContext";
+import { recordStoryOpened } from "@/app/story/[slug]/actions";
 import type { LoadedStory } from "@/lib/stories";
 import type { PronunciationWordNote } from "@/types";
 
@@ -109,6 +111,12 @@ export default function StorySteps({
     window.scrollTo(0, 0);
   }, [active.id]);
 
+  // Reading progress and passive topic exposure. One idempotent write per
+  // story open; a no-op for anonymous readers.
+  useEffect(() => {
+    void recordStoryOpened({ storyId: story.id });
+  }, [story.id]);
+
   const goTo = (index: number) => {
     setSheetOpen(false);
     setActiveIndex(index);
@@ -133,7 +141,15 @@ export default function StorySteps({
             <div className="max-w-2xl mx-auto">
               <div className="flex items-center gap-2">
                 <BackLink href="/dashboard" showLabel />
-                <p className="text-label-sm text-text-muted">Profe Kyle</p>
+                <p className="min-w-0 flex-1 text-label-sm text-text-muted">
+                  Profe Kyle
+                </p>
+                <Link
+                  href="/progress"
+                  className="inline-flex h-11 items-center text-label-md text-text-secondary hover:text-text-accent"
+                >
+                  Tu progreso
+                </Link>
               </div>
               <p className="text-label-sm text-text-muted mt-1">Historia</p>
               <h1 className="text-headline-md text-text-primary">
@@ -234,6 +250,7 @@ export default function StorySteps({
                   question: q.question,
                 }))}
                 mode={readerMode === "classroom-live" ? "classroom-live" : "write"}
+                sessionId={sessionId}
                 microExplanation={
                   readerMode === "classroom-live"
                     ? undefined
@@ -249,6 +266,8 @@ export default function StorySteps({
                 phoneticText={pronunciationDrill.practica_coral_phonetic}
                 ipaText={coralIpa}
                 wordNotes={wordNotes}
+                storyId={story.id}
+                sessionId={sessionId}
                 microExplanation="Sabias que la mayoria de los errores de escucha no son por falta de vocabulario, sino porque las palabras suenan diferente cuando se hablan rapido? Este ejercicio te muestra exactamente donde tu oido te falla."
               />
             )}
@@ -265,6 +284,7 @@ export default function StorySteps({
               <PronunciationPractice
                 referenceText={pronunciationDrill.practica_coral_standard}
                 kyleIpa={coralIpa}
+                storyId={story.id}
               />
             )}
 
@@ -292,7 +312,13 @@ export default function StorySteps({
               </button>
             ) : (
               <p className="step-nav-done">
-                Listo! Has practicado todos los ejercicios.
+                Listo! Has practicado todos los ejercicios.{" "}
+                <Link
+                  href="/progress"
+                  className="text-text-accent underline-offset-2 hover:underline"
+                >
+                  Tu progreso
+                </Link>
               </p>
             )}
           </nav>

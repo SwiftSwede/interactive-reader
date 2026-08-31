@@ -1,0 +1,108 @@
+{
+  "story_title": "Office Saint",
+  "profiler": {
+    "word_count": 1381,
+    "unique_word_count": 479,
+    "evp_coverage_pct": 88.5,
+    "level_distribution": {
+      "A1": 269,
+      "A2": 86,
+      "B1": 43,
+      "B2": 22,
+      "C1": 4,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 56.2,
+      "A2": 74.1,
+      "B1": 83.1,
+      "B2": 87.7,
+      "C1": 88.5,
+      "C2": 88.5
+    },
+    "cognate_count": 86,
+    "cognate_pct": 18.0,
+    "false_friend_count": 0,
+    "off_list_count": 55,
+    "off_list_pct": 11.5,
+    "vocab_difficulty_raw": 1.6,
+    "vocab_difficulty_adjusted": 1.51,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Office Saint",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "years in the making",
+          "kept our heads down",
+          "kept up with",
+          "take my chances",
+          "brought up",
+          "play our part",
+          "go a long way",
+          "pushovers",
+          "chime in",
+          "go overboard",
+          "part ways",
+          "gave them hell"
+        ],
+        "count": 12
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past perfect",
+          "present perfect",
+          "past continuous",
+          "present continuous",
+          "first conditional",
+          "modals (can, should, would, could, might)",
+          "relative clauses (that, who, which)",
+          "reported speech",
+          "going to future"
+        ],
+        "notes": "Dominated by simple past and present simple in dialogue, but past perfect, present perfect, conditionals, and relative clauses appear as a noticeable minority (~20-25% of sentences). The text is mostly accessible but has recurring higher-level structures."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Slack (workplace communication tool)",
+          "defund the police movement",
+          "social media activism culture (hashtag campaigns, profile pic filters)",
+          "workplace morale and community initiatives (North American corporate norm)",
+          "voluntary departure as euphemism for firing",
+          "Greta Thunberg / United Nations climate speech",
+          "Notre Dame fire donation culture",
+          "commies (Cold War-era political slang)"
+        ],
+        "notes": "The plot is followable without cultural knowledge, but the North American corporate expectation to participate in political/social causes and the euphemistic firing culture add comprehension weight. Most global events referenced (Ukraine, Notre Dame) are internationally known."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Heavy use of short dialogue lines keeps the average sentence length low. Narrative sentences occasionally include subordinate clauses but remain straightforward. Mostly subject-verb-object with some conjunctions."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 2.6,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.51",
+      "evp_coverage_pct": "88.5",
+      "cognate_pct": "18.0",
+      "off_list_pct": "11.5"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.6,
+    "estimated_cefr": "B1"
+  }
+}

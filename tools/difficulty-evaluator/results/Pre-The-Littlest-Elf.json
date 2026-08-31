@@ -1,0 +1,98 @@
+{
+  "story_title": "The Littlest Elf",
+  "profiler": {
+    "word_count": 1003,
+    "unique_word_count": 342,
+    "evp_coverage_pct": 88.3,
+    "level_distribution": {
+      "A1": 227,
+      "A2": 33,
+      "B1": 33,
+      "B2": 8,
+      "C1": 0,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 66.4,
+      "A2": 76.0,
+      "B1": 85.7,
+      "B2": 88.0,
+      "C1": 88.0,
+      "C2": 88.3
+    },
+    "cognate_count": 33,
+    "cognate_pct": 9.6,
+    "false_friend_count": 1,
+    "off_list_count": 40,
+    "off_list_pct": 11.7,
+    "vocab_difficulty_raw": 1.42,
+    "vocab_difficulty_adjusted": 1.5,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "The Littlest Elf",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 1,
+        "items_found": [
+          "set out",
+          "take care of"
+        ],
+        "count": 2
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past continuous",
+          "present perfect (I've missed you)",
+          "present continuous for future (was leaving)",
+          "modals (couldn't, should, must, would, could)",
+          "too...to structures",
+          "the nearer...the slower comparative",
+          "subordinate clauses with because, when, while, that, if"
+        ],
+        "notes": "Dominated by past simple with basic modals and short subordinate clauses. A few instances of past continuous and one present perfect. One 'the nearer...the slower' structure is slightly more advanced but is a one-off. Overall profile is simple with occasional level-3 structures."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Santa Claus / Saint Nicholas",
+          "North Pole",
+          "Christmas Eve",
+          "reindeer and sleigh"
+        ],
+        "notes": "Christmas and Santa Claus are universally known cultural references. No North American-specific customs or institutional knowledge required. Fully accessible to Latin American learners."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Mostly short to moderate sentences with simple subject-verb-object patterns. Some compound sentences joined by 'and' or 'but'. Occasional subordinate clauses with 'because,' 'when,' 'while.' A few longer sentences (20+ words) but average remains moderate."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "mayor",
+            "context": "Even the mayor was there.",
+            "is_trap_active": true,
+            "reason": "Spanish 'mayor' means 'older/elder,' and in a village context a Spanish speaker could interpret 'the mayor' as 'the elder,' which partially fits. The confusion is plausible but context (village official sending someone off) provides some disambiguation. Borderline trap."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.5,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.5,
+      "evp_coverage_pct": 88.3,
+      "cognate_pct": 9.6,
+      "off_list_pct": 11.7
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.5,
+    "estimated_cefr": "A2"
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "story_title": "Gold Digger",
+  "profiler": {
+    "word_count": 1184,
+    "unique_word_count": 413,
+    "evp_coverage_pct": 89.3,
+    "level_distribution": {
+      "A1": 252,
+      "A2": 66,
+      "B1": 29,
+      "B2": 18,
+      "C1": 4,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 61.0,
+      "A2": 77.0,
+      "B1": 84.0,
+      "B2": 88.4,
+      "C1": 89.3,
+      "C2": 89.3
+    },
+    "cognate_count": 70,
+    "cognate_pct": 16.9,
+    "false_friend_count": 5,
+    "off_list_count": 44,
+    "off_list_pct": 10.7,
+    "vocab_difficulty_raw": 1.53,
+    "vocab_difficulty_adjusted": 1.95,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Gold Digger",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "on the market",
+          "taken",
+          "resting bitch face",
+          "turn that frown upside down",
+          "turn out",
+          "figure out",
+          "make ends meet",
+          "live off of",
+          "sugar daddy",
+          "hang out",
+          "chill",
+          "wedding bells",
+          "deep pockets",
+          "fountain of youth",
+          "swamped"
+        ],
+        "count": 15
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "present perfect",
+          "first conditional",
+          "basic modals (must, can, would, could, should)"
+        ],
+        "notes": "The text is dominated by simple tenses and conversational structures. It contains a few basic modals and relative clauses, but complex structures are rare."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Mercedes",
+          "Instagram",
+          "Apollo",
+          "sugar daddy / sugar baby",
+          "alimony"
+        ],
+        "notes": "The cultural setting is universal office and dating culture. References like Mercedes, Instagram, and sugar daddies are globally understood by educated adults."
+      },
+      "sentence_structure": {
+        "score": 1,
+        "avg_sentence_length": 10,
+        "notes": "As a dialogue, the text consists of very short, punchy sentences with simple structures. Many sentences are under 10 words."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "attendance",
+            "context": "everyone in attendance",
+            "is_trap_active": false,
+            "reason": "Context of a wedding makes it clear it refers to people present, not 'assistance' or 'help'."
+          },
+          {
+            "word": "once",
+            "context": "take me out once to prove",
+            "is_trap_active": false,
+            "reason": "Context clearly indicates 'one time' rather than the number 'eleven'."
+          },
+          {
+            "word": "pretend",
+            "context": "I'll pretend I never heard that.",
+            "is_trap_active": false,
+            "reason": "The Spanish meaning 'to attempt/try' does not fit the context; the English meaning 'to act as if' is obvious."
+          },
+          {
+            "word": "prove",
+            "context": "prove he can afford a woman of my level",
+            "is_trap_active": false,
+            "reason": "The Spanish meaning 'to taste/try' makes no sense here; 'demonstrate' is clear from context."
+          },
+          {
+            "word": "realize",
+            "context": "realize that you're taken",
+            "is_trap_active": false,
+            "reason": "The Spanish meaning 'to carry out/perform' does not fit; 'become aware' is the only logical meaning."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.135,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.95,
+      "evp_coverage_pct": 89.3,
+      "cognate_pct": 16.9,
+      "off_list_pct": 10.7
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.135,
+    "estimated_cefr": "A2/B1"
+  }
+}

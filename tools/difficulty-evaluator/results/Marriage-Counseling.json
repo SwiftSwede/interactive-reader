@@ -1,0 +1,143 @@
+{
+  "story_title": "Marriage Counseling",
+  "profiler": {
+    "word_count": 1946,
+    "unique_word_count": 565,
+    "evp_coverage_pct": 91.0,
+    "level_distribution": {
+      "A1": 352,
+      "A2": 87,
+      "B1": 51,
+      "B2": 18,
+      "C1": 3,
+      "C2": 3
+    },
+    "cumulative_pct": {
+      "A1": 62.3,
+      "A2": 77.7,
+      "B1": 86.7,
+      "B2": 89.9,
+      "C1": 90.4,
+      "C2": 91.0
+    },
+    "cognate_count": 97,
+    "cognate_pct": 17.2,
+    "false_friend_count": 6,
+    "off_list_count": 51,
+    "off_list_pct": 9.0,
+    "vocab_difficulty_raw": 1.53,
+    "vocab_difficulty_adjusted": 2.05,
+    "estimated_cefr": "C1"
+  },
+  "rubric": {
+    "story_title": "Marriage Counseling",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "from what I gather",
+          "what counts",
+          "going downhill",
+          "hit it off",
+          "one thing led to another",
+          "summer fling",
+          "shotgun wedding",
+          "stand up for myself",
+          "cup of tea",
+          "drive you crazy",
+          "air out our grievances",
+          "freak in the sheets",
+          "rocking her world",
+          "get off his back",
+          "blink an eye",
+          "look forward to",
+          "bubbling up",
+          "take a friend up on an invitation",
+          "out of place",
+          "in other words",
+          "how so"
+        ],
+        "count": 21
+      },
+      "grammatical_complexity": {
+        "score": 4,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "past continuous",
+          "present perfect",
+          "past perfect continuous",
+          "wish + past simple/past perfect",
+          "as though + subjunctive (were)",
+          "reported speech with backshifting",
+          "second conditional (if I were to have)"
+        ],
+        "notes": "The text features a mix of simple dialogue and complex structures. Wish structures, past perfect continuous, and subjunctive-like forms appear regularly throughout the dialogue, making it grammatically dense for an L2 learner."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Thanksgiving",
+          "shotgun wedding",
+          "mow the lawn",
+          "blue-collar"
+        ],
+        "notes": "Most references are universal or easily understood from context. Thanksgiving is the main North American-specific reference, but it does not hinder overall comprehension of the plot."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 15,
+        "notes": "As a dialogue, the text has many short, simple sentences, but it also contains several long, complex sentences with multiple subordinate clauses and reported speech."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "I’m actually this woman’s husband.",
+            "is_trap_active": true,
+            "reason": "A Spanish speaker might confuse it with 'actualmente' (currently), though context provides some clues."
+          },
+          {
+            "word": "once",
+            "context": "once I got pregnant, it suddenly became something much more serious.",
+            "is_trap_active": true,
+            "reason": "A Spanish speaker might initially read it as the number 'once' (eleven), though the context of getting pregnant makes the temporal meaning clear."
+          },
+          {
+            "word": "realize",
+            "context": "Many times we don’t realize how our actions can affect other people",
+            "is_trap_active": true,
+            "reason": "A Spanish speaker might confuse it with 'realizar' (to carry out/perform), which would make the sentence confusing."
+          },
+          {
+            "word": "respect",
+            "context": "Do you respect your husband?",
+            "is_trap_active": false,
+            "reason": "The meaning of esteem/regard is clear in this context and aligns with the Spanish 'respeto'."
+          },
+          {
+            "word": "subject",
+            "context": "this can be a very touchy subject",
+            "is_trap_active": false,
+            "reason": "The meaning of topic is clear from context and does not trigger the 'sujeto' (person) false friend."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 3.07,
+    "estimated_cefr": "B1/B2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "2.05",
+      "evp_coverage_pct": "91.0",
+      "cognate_pct": "17.2",
+      "off_list_pct": "9.0"
+    }
+  },
+  "final": {
+    "overall_difficulty": 3.07,
+    "estimated_cefr": "B1/B2"
+  }
+}

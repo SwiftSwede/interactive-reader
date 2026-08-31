@@ -1,0 +1,97 @@
+{
+  "story_title": "Bad Recipe",
+  "profiler": {
+    "word_count": 744,
+    "unique_word_count": 309,
+    "evp_coverage_pct": 89.3,
+    "level_distribution": {
+      "A1": 204,
+      "A2": 44,
+      "B1": 20,
+      "B2": 8,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 66.0,
+      "A2": 80.3,
+      "B1": 86.7,
+      "B2": 89.3,
+      "C1": 89.3,
+      "C2": 89.3
+    },
+    "cognate_count": 45,
+    "cognate_pct": 14.6,
+    "false_friend_count": 1,
+    "off_list_count": 33,
+    "off_list_pct": 10.7,
+    "vocab_difficulty_raw": 1.39,
+    "vocab_difficulty_adjusted": 1.44,
+    "estimated_cefr": "A2+"
+  },
+  "rubric": {
+    "story_title": "Bad Recipe",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 1,
+        "items_found": [
+          "called for (recipe called for = required)",
+          "take a break",
+          "made a face"
+        ],
+        "count": 3
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past continuous",
+          "past perfect",
+          "going to future",
+          "present simple (dialogue)",
+          "basic modals (shouldn't, didn't have to)",
+          "first conditional (if you want)",
+          "relative clauses (who, that)"
+        ],
+        "notes": "Past simple dominates but past continuous, past perfect, relative clauses, and modals appear in roughly 20% of sentences, creating a mix of simple and moderately complex structures."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "concha (Mexican pastry - familiar to LatAm learners)",
+          "fahrenheit (temperature scale, but contextually clear)"
+        ],
+        "notes": "The story is set in a universal domestic context. The concha is a Mexican pastry familiar to Latin American learners. Fahrenheit may cause minor confusion but context makes it clear. No significant cultural barriers."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "Mostly moderate sentences with some conjunctions and compound structures. One notable 30-word sentence, but average is around 14 words. Sentence variety is present but not extreme."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "jar",
+            "context": "From her cupboard she pulled out a jar of organic honey.",
+            "is_trap_active": false,
+            "reason": "While 'jarra' in Spanish means pitcher/jug, the context of pulling it from a cupboard with honey inside makes it clear this is a small container. A Spanish speaker would understand the meaning from context without confusion."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.58,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.44",
+      "evp_coverage_pct": "89.3",
+      "cognate_pct": "14.6",
+      "off_list_pct": "10.7"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.58,
+    "estimated_cefr": "A2"
+  }
+}

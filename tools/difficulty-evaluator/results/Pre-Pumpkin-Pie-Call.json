@@ -1,0 +1,134 @@
+{
+  "story_title": "Pre-Pumpkin Pie Call",
+  "profiler": {
+    "word_count": 1174,
+    "unique_word_count": 405,
+    "evp_coverage_pct": 88.6,
+    "level_distribution": {
+      "A1": 261,
+      "A2": 52,
+      "B1": 29,
+      "B2": 17,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 64.4,
+      "A2": 77.3,
+      "B1": 84.4,
+      "B2": 88.6,
+      "C1": 88.6,
+      "C2": 88.6
+    },
+    "cognate_count": 57,
+    "cognate_pct": 14.1,
+    "false_friend_count": 5,
+    "off_list_count": 46,
+    "off_list_pct": 11.4,
+    "vocab_difficulty_raw": 1.45,
+    "vocab_difficulty_adjusted": 1.91,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Pre-Pumpkin Pie Call",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "in ages",
+          "make ends meet",
+          "make a name for myself",
+          "out of work",
+          "It is what it is",
+          "from scratch",
+          "pain in the ass",
+          "bitten off more than you can chew",
+          "take your time",
+          "jinx me"
+        ],
+        "count": 10
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "present perfect",
+          "past continuous",
+          "first conditional",
+          "modals (could, should, would, might)",
+          "reported speech",
+          "relative clauses"
+        ],
+        "notes": "The text is dominated by simple tenses and basic structures typical of dialogue, but present perfect, past continuous, and first conditionals appear as a noticeable minority. Reported speech and relative clauses are also present."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Thanksgiving",
+          "pumpkin pie",
+          "shoveling the driveway",
+          "raking the leaves",
+          "Fahrenheit",
+          "evaporated milk"
+        ],
+        "notes": "Thanksgiving and pumpkin pie are central to the plot. While the conversation is easy to follow, understanding the North American cultural context of Thanksgiving and suburban chores adds to comprehension."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 15,
+        "notes": "Mixed lengths typical of a conversational dialogue. Some short exchanges, but also several complex sentences with subordinate clauses (e.g., 'For now I’m gonna get as much experience as I can so that even if I don’t stay here forever...')."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "grocery",
+            "context": "I’m gonna go to the grocery store to pick up the ingredients.",
+            "is_trap_active": true,
+            "reason": "Spanish 'grosería' means rudeness or insult. A learner might be confused by the similarity, though 'store' provides some context."
+          },
+          {
+            "word": "large",
+            "context": "two large eggs",
+            "is_trap_active": true,
+            "reason": "Spanish 'largo' means long. A learner might initially think of 'long eggs', which is confusing in this context."
+          },
+          {
+            "word": "once",
+            "context": "Once I got arthritis, I stopped making a lot of your favorite recipes.",
+            "is_trap_active": false,
+            "reason": "Spanish 'once' means eleven. In this context, it clearly functions as a conjunction meaning 'as soon as' or 'after', making the trap inactive."
+          },
+          {
+            "word": "pie",
+            "context": "I need some pumpkin pie.",
+            "is_trap_active": false,
+            "reason": "Spanish 'pie' means foot. The context of baking, Thanksgiving, and recipes makes it obvious that it refers to a dessert."
+          },
+          {
+            "word": "rare",
+            "context": "And to what do I owe this rare call to?",
+            "is_trap_active": false,
+            "reason": "Spanish 'raro' means strange or unusual. The English meaning of 'rare' as 'unusual' overlaps here, so the learner would understand the intended meaning."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.87,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.91",
+      "evp_coverage_pct": "88.6",
+      "cognate_pct": "14.1",
+      "off_list_pct": "11.4"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.87,
+    "estimated_cefr": "B1"
+  }
+}

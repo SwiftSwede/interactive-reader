@@ -1,0 +1,104 @@
+{
+  "story_title": "New Year’s Resolution",
+  "profiler": {
+    "word_count": 946,
+    "unique_word_count": 341,
+    "evp_coverage_pct": 89.1,
+    "level_distribution": {
+      "A1": 227,
+      "A2": 44,
+      "B1": 23,
+      "B2": 10,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 66.6,
+      "A2": 79.5,
+      "B1": 86.2,
+      "B2": 89.1,
+      "C1": 89.1,
+      "C2": 89.1
+    },
+    "cognate_count": 45,
+    "cognate_pct": 13.2,
+    "false_friend_count": 1,
+    "off_list_count": 37,
+    "off_list_pct": 10.9,
+    "vocab_difficulty_raw": 1.39,
+    "vocab_difficulty_adjusted": 1.46,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "New Year’s Resolution",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "get back into shape",
+          "what has gotten into you",
+          "kept on going",
+          "show up",
+          "sugar daddy"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "past continuous",
+          "present perfect",
+          "past perfect",
+          "going to future",
+          "reported speech",
+          "second conditional"
+        ],
+        "notes": "The text is dominated by simple tenses in dialogue and narrative, but contains a noticeable minority of present perfect, past perfect, and reported speech structures."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "New Year's Resolution",
+          "Zumba",
+          "Brazilian booty workout",
+          "seekingarrangement.com",
+          "sugar daddy",
+          "plastic surgery procedures (tummy tuck, butt lift)"
+        ],
+        "notes": "The concept of a sugar daddy and plastic surgery are widely understood in global pop culture. The plot is easily followable without specific North American cultural knowledge."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "The text features a lot of short dialogue exchanges and simple narrative sentences, keeping the average length moderate."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "Actually, I’m still the same weight.",
+            "is_trap_active": false,
+            "reason": "While 'actually' looks like 'actualmente' (currently), in this context both 'in fact' and 'currently' make sense, so the confusion does not disrupt comprehension."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.04,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.46",
+      "evp_coverage_pct": "89.1",
+      "cognate_pct": "13.2",
+      "off_list_pct": "10.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.04,
+    "estimated_cefr": "A2/B1"
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "story_title": "Food Kidnapping",
+  "profiler": {
+    "word_count": 1686,
+    "unique_word_count": 574,
+    "evp_coverage_pct": 82.9,
+    "level_distribution": {
+      "A1": 303,
+      "A2": 84,
+      "B1": 60,
+      "B2": 25,
+      "C1": 2,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 52.8,
+      "A2": 67.4,
+      "B1": 77.9,
+      "B2": 82.2,
+      "C1": 82.6,
+      "C2": 82.9
+    },
+    "cognate_count": 85,
+    "cognate_pct": 14.8,
+    "false_friend_count": 2,
+    "off_list_count": 98,
+    "off_list_pct": 17.1,
+    "vocab_difficulty_raw": 1.62,
+    "vocab_difficulty_adjusted": 1.74,
+    "estimated_cefr": "B2+"
+  },
+  "rubric": {
+    "story_title": "Food Kidnapping",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "ragtag group",
+          "holding back",
+          "crossed the line",
+          "sorry excuse for a man",
+          "watered down",
+          "pissed off",
+          "smile and nod",
+          "caves to",
+          "had it coming",
+          "come to their senses",
+          "side with",
+          "get their take"
+        ],
+        "count": 12
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present perfect",
+          "present continuous",
+          "past continuous",
+          "modals (must, should, would)",
+          "first conditional",
+          "reported speech"
+        ],
+        "notes": "The text features a mix of simple and complex structures typical of a news broadcast and interviews. Present perfect, reported speech, and conditionals appear regularly but do not dominate the text."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Colombian food (arepas, pan de bono, buñuelos)",
+          "Canadian food (maple syrup, Canadian whiskey)",
+          "grilled-cheese sandwich and tomato soup",
+          "narco, guerrilla, and paramilitary violence in Colombia",
+          "Saudi Arabia and the Koran"
+        ],
+        "notes": "The cultural setting is a mix of Latin American (specifically Colombian) and Canadian elements. A Latin American learner will easily understand the Colombian references and context. North American references like maple syrup and grilled cheese are globally recognizable enough to be understood from context."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 17,
+        "notes": "The text has mixed sentence lengths, typical of spoken dialogue and news reporting. It includes some complex sentences with subordinate clauses and reported speech, but remains largely accessible."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "grocery",
+            "context": "at the grocery store",
+            "is_trap_active": false,
+            "reason": "While 'grocery' looks like 'grosería' (rudeness) in Spanish, the context of 'grocery store' makes it clear that it refers to a place to buy food."
+          },
+          {
+            "word": "realize",
+            "context": "you realize there are things much more delicious",
+            "is_trap_active": false,
+            "reason": "Although 'realize' resembles 'realizar' (to carry out/perform), the sentence structure 'you realize there are...' makes it clear that it means 'to become aware'."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.67,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.74,
+      "evp_coverage_pct": 82.9,
+      "cognate_pct": 14.8,
+      "off_list_pct": 17.1
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.67,
+    "estimated_cefr": "B1"
+  }
+}

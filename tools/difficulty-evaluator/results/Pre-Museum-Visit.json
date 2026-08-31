@@ -1,0 +1,111 @@
+{
+  "story_title": "Pre-Museum Visit",
+  "profiler": {
+    "word_count": 1034,
+    "unique_word_count": 396,
+    "evp_coverage_pct": 88.1,
+    "level_distribution": {
+      "A1": 233,
+      "A2": 54,
+      "B1": 38,
+      "B2": 17,
+      "C1": 5,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 58.8,
+      "A2": 72.5,
+      "B1": 82.1,
+      "B2": 86.4,
+      "C1": 87.6,
+      "C2": 88.1
+    },
+    "cognate_count": 72,
+    "cognate_pct": 18.2,
+    "false_friend_count": 2,
+    "off_list_count": 47,
+    "off_list_pct": 11.9,
+    "vocab_difficulty_raw": 1.6,
+    "vocab_difficulty_adjusted": 1.7,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Pre-Museum Visit",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "get over with",
+          "catch up on",
+          "take a day off",
+          "last resort",
+          "hanging out",
+          "every once in a while",
+          "quite a bit",
+          "suffer through"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "third conditional",
+          "second conditional",
+          "used to",
+          "relative clauses",
+          "reported speech"
+        ],
+        "notes": "The text is mostly dialogue using simple tenses, but contains noticeable instances of third and second conditionals, 'used to', and relative clauses."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Group of Seven (Canadian artists)",
+          "Grand Theft Auto 6",
+          "BIPOC",
+          "modern feminist art themes",
+          "American West landscapes"
+        ],
+        "notes": "References to specific Canadian art history and modern North American academic art culture (BIPOC, feminist voices) add comprehension weight, though the plot remains followable."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 14,
+        "notes": "Mostly moderate-length dialogue sentences with some longer, complex sentences containing multiple subordinate clauses."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "pretend",
+            "context": "Try to pretend you’re a little bit excited to be here.",
+            "is_trap_active": true,
+            "reason": "Spanish 'pretender' means to attempt or try, which could confuse the learner here, though context provides some clues."
+          },
+          {
+            "word": "once",
+            "context": "every once in a while",
+            "is_trap_active": false,
+            "reason": "While 'once' means eleven in Spanish, here it is part of a fixed idiomatic expression where the individual word meaning is less of a trap than the phrase itself."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.61,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.7",
+      "evp_coverage_pct": "88.1",
+      "cognate_pct": "18.2",
+      "off_list_pct": "11.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.61,
+    "estimated_cefr": "B1"
+  }
+}

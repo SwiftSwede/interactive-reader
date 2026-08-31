@@ -1,0 +1,107 @@
+{
+  "story_title": "Full Schedule",
+  "profiler": {
+    "word_count": 826,
+    "unique_word_count": 330,
+    "evp_coverage_pct": 93.0,
+    "level_distribution": {
+      "A1": 225,
+      "A2": 43,
+      "B1": 25,
+      "B2": 11,
+      "C1": 2,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 68.2,
+      "A2": 81.2,
+      "B1": 88.8,
+      "B2": 92.1,
+      "C1": 92.7,
+      "C2": 93.0
+    },
+    "cognate_count": 53,
+    "cognate_pct": 16.1,
+    "false_friend_count": 2,
+    "off_list_count": 23,
+    "off_list_pct": 7.0,
+    "vocab_difficulty_raw": 1.45,
+    "vocab_difficulty_adjusted": 1.56,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Full Schedule",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "blown away",
+          "compose yourself",
+          "set up a date",
+          "going out",
+          "feel like a dufus"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "present simple",
+          "present continuous",
+          "present perfect",
+          "going to future",
+          "first conditional",
+          "modals (should, might, could, can)",
+          "relative clauses (that, who)"
+        ],
+        "notes": "The text is a mix of simple and continuous tenses with a noticeable minority of present perfect and past continuous structures. Subordinate clauses and basic conditionals appear throughout the dialogue and narrative."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "golf with directors",
+          "racquetball with clients",
+          "monthly manicure for a male lawyer"
+        ],
+        "notes": "The text features North American corporate networking culture (golf and racquetball with clients/directors) and a male getting a manicure. These are inferable from context but reflect specific workplace norms."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 11,
+        "notes": "The text consists mostly of short to moderate sentences, heavily driven by dialogue. Average sentence length is low, with simple and compound structures dominating."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "Well, actually, today is my first day at my new job.",
+            "is_trap_active": false,
+            "reason": "In this context, 'actually' means 'in fact', but the Spanish false friend 'actualmente' means 'currently'. Since she is talking about her current new job, the Spanish meaning aligns perfectly with the context, neutralizing the trap."
+          },
+          {
+            "word": "pretend",
+            "context": "No way was Jack going to miss his manicure appointment on Friday to pretend to be friends with a beautiful lady in a serious relationship.",
+            "is_trap_active": true,
+            "reason": "In English, 'pretend' means to act as if. In Spanish, 'pretender' means to try to. A Spanish speaker might misinterpret 'pretend to be friends' as 'try to be friends', which slightly alters the meaning of Jack's intention."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.07,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.56,
+      "evp_coverage_pct": 93.0,
+      "cognate_pct": 16.1,
+      "off_list_pct": 7.0
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.07,
+    "estimated_cefr": "A2/B1"
+  }
+}

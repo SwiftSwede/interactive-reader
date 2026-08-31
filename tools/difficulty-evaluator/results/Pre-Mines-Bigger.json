@@ -1,0 +1,95 @@
+{
+  "story_title": "Mine_s Bigger",
+  "profiler": {
+    "word_count": 473,
+    "unique_word_count": 205,
+    "evp_coverage_pct": 82.9,
+    "level_distribution": {
+      "A1": 133,
+      "A2": 25,
+      "B1": 7,
+      "B2": 5,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 64.9,
+      "A2": 77.1,
+      "B1": 80.5,
+      "B2": 82.9,
+      "C1": 82.9,
+      "C2": 82.9
+    },
+    "cognate_count": 24,
+    "cognate_pct": 11.7,
+    "false_friend_count": 0,
+    "off_list_count": 35,
+    "off_list_pct": 17.1,
+    "vocab_difficulty_raw": 1.32,
+    "vocab_difficulty_adjusted": 1.32,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Mine_s Bigger",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 1,
+        "items_found": [
+          "turns off",
+          "pulls up"
+        ],
+        "count": 2
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "going to future",
+          "basic modals (can, may, has to)",
+          "comparatives (bigger, sexier, flashier)",
+          "first conditional (if her friends get something)"
+        ],
+        "notes": "Dominated by present simple with occasional present continuous and one instance of past simple. Basic modals and comparatives appear regularly. Subordinate clauses with if, when, while, that are present but simple. No complex tenses like present perfect, passives, or advanced conditionals."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Los Cabos",
+          "Zona T (Bogotá)",
+          "Gringos",
+          "tequila",
+          "Mercedes",
+          "Camaro",
+          "Chevrolet",
+          "Heathrow Airport",
+          "pop stars (Madonna, Britney Spears, Christina Aguilera, Kylie Minogue)"
+        ],
+        "notes": "Setting includes Latin American locations familiar to the learner. Pop culture references are globally known celebrities. No North American-specific customs or institutional references requiring background knowledge."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 11,
+        "notes": "Short, simple sentences dominate. Mostly subject-verb-object with some conjunctions (and, but, so). A few longer compound sentences (up to 31 words) but average is around 11 words per sentence."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 1.45,
+    "estimated_cefr": "A1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.32",
+      "evp_coverage_pct": "82.9",
+      "cognate_pct": "11.7",
+      "off_list_pct": "17.1"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.45,
+    "estimated_cefr": "A1"
+  }
+}

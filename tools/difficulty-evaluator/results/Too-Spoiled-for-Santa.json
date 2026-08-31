@@ -1,0 +1,116 @@
+{
+  "story_title": "Too Spoiled for Santa",
+  "profiler": {
+    "word_count": 1336,
+    "unique_word_count": 453,
+    "evp_coverage_pct": 86.8,
+    "level_distribution": {
+      "A1": 288,
+      "A2": 61,
+      "B1": 26,
+      "B2": 15,
+      "C1": 2,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 63.6,
+      "A2": 77.0,
+      "B1": 82.8,
+      "B2": 86.1,
+      "C1": 86.5,
+      "C2": 86.8
+    },
+    "cognate_count": 48,
+    "cognate_pct": 10.6,
+    "false_friend_count": 1,
+    "off_list_count": 60,
+    "off_list_pct": 13.2,
+    "vocab_difficulty_raw": 1.44,
+    "vocab_difficulty_adjusted": 1.48,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Too Spoiled for Santa",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "Mister Bigshot",
+          "cold, hard cash",
+          "in one piece",
+          "tip of the iceberg",
+          "make a scene",
+          "No stick, just carrot",
+          "holy cow",
+          "working overtime",
+          "coal in his stocking",
+          "take kindly to",
+          "shape up",
+          "take down a notch",
+          "keep her mouth shut",
+          "big suck"
+        ],
+        "count": 14
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "past continuous",
+          "present perfect",
+          "past perfect",
+          "second conditional",
+          "modals",
+          "reported speech",
+          "relative clauses"
+        ],
+        "notes": "The text is mostly dialogue with simple sentences, but contains a noticeable minority of complex structures like second conditionals ('if he were my kid'), reported speech, and multi-clause sentences with relative clauses."
+      },
+      "cultural_reference_load": {
+        "score": 4,
+        "references_found": [
+          "Boxing Day",
+          "snowmobile",
+          "shoveling the driveway",
+          "raking leaves",
+          "coal in his stocking",
+          "welfare parasite",
+          "new-age parents",
+          "Optimus Prime / Megatron / Transformers"
+        ],
+        "notes": "Heavy North American and specifically Canadian cultural references (Boxing Day, snowmobiles, suburban winter chores) and specific Christmas traditions (coal in stocking) that require background knowledge to fully grasp the context."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 9,
+        "notes": "As a dialogue, the average sentence length is short, but there are several long, complex sentences with multiple subordinate clauses and participial phrases interspersed throughout."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "parents",
+            "context": "They’re “new-age” parents.",
+            "is_trap_active": false,
+            "reason": "While 'parents' translates to 'parientes' (relatives) in Spanish, the context of discussing child-rearing and discipline makes it clear that it refers to the mother and father."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.79,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.48",
+      "evp_coverage_pct": "86.8",
+      "cognate_pct": "10.6",
+      "off_list_pct": "13.2"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.79,
+    "estimated_cefr": "B1"
+  }
+}

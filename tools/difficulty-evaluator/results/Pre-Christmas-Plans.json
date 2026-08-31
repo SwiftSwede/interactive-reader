@@ -1,0 +1,111 @@
+{
+  "story_title": "Pre-Christmas Plans",
+  "profiler": {
+    "word_count": 1330,
+    "unique_word_count": 433,
+    "evp_coverage_pct": 89.1,
+    "level_distribution": {
+      "A1": 289,
+      "A2": 65,
+      "B1": 24,
+      "B2": 8,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 66.7,
+      "A2": 81.8,
+      "B1": 87.3,
+      "B2": 89.1,
+      "C1": 89.1,
+      "C2": 89.1
+    },
+    "cognate_count": 65,
+    "cognate_pct": 15.0,
+    "false_friend_count": 2,
+    "off_list_count": 47,
+    "off_list_pct": 10.9,
+    "vocab_difficulty_raw": 1.35,
+    "vocab_difficulty_adjusted": 1.52,
+    "estimated_cefr": "A2+"
+  },
+  "rubric": {
+    "story_title": "Pre-Christmas Plans",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "thank goodness",
+          "love handles",
+          "check it out",
+          "eat like royalty",
+          "head out"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "present perfect",
+          "first conditional",
+          "wish (I wish I had)",
+          "basic modals (must, can, should)",
+          "basic relative clauses (who, that, which)"
+        ],
+        "notes": "Dominated by simple tenses in dialogue format. Present perfect, first conditional, and wish appear 1-2 times each but do not dominate. Mostly short exchanges with basic structures."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Whistler (Canadian ski resort)",
+          "Airbnb",
+          "eBay",
+          "Etsy",
+          "Mercedes",
+          "Christmas gift-giving culture",
+          "plastic surgery as gift"
+        ],
+        "notes": "Mostly universal or globally known references. Whistler is specific but context (skiing, cabin) makes it understandable. Christmas shopping and gift-giving norms are widely recognized in LatAm. No heavy cultural barriers."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Dialogue format with mostly short, simple exchanges. A few longer compound sentences in Rick's cooking explanation, but overall moderate length with basic conjunctions."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "dessert",
+            "context": "My sister is the dessert and pastry master. She's in charge of making anything sweet.",
+            "is_trap_active": false,
+            "reason": "Context of food, sweet things, and pastry makes the meaning unambiguously clear. A Spanish speaker would not confuse this with 'desierto' here."
+          },
+          {
+            "word": "subject",
+            "context": "Changing the subject. Did you get all your shopping done for Christmas?",
+            "is_trap_active": false,
+            "reason": "The phrase 'changing the subject' is a common conversational expression. Even if 'sujeto' means 'person' in Spanish, the context of shifting topics in conversation is clear from the following question."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.76,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.52",
+      "evp_coverage_pct": "89.1",
+      "cognate_pct": "15.0",
+      "off_list_pct": "10.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.76,
+    "estimated_cefr": "A2"
+  }
+}

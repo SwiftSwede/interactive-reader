@@ -1,0 +1,118 @@
+{
+  "story_title": "Stood Up",
+  "profiler": {
+    "word_count": 970,
+    "unique_word_count": 362,
+    "evp_coverage_pct": 89.2,
+    "level_distribution": {
+      "A1": 233,
+      "A2": 59,
+      "B1": 23,
+      "B2": 6,
+      "C1": 1,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 64.4,
+      "A2": 80.7,
+      "B1": 87.0,
+      "B2": 88.7,
+      "C1": 89.0,
+      "C2": 89.2
+    },
+    "cognate_count": 69,
+    "cognate_pct": 19.1,
+    "false_friend_count": 4,
+    "off_list_count": 39,
+    "off_list_pct": 10.8,
+    "vocab_difficulty_raw": 1.41,
+    "vocab_difficulty_adjusted": 1.78,
+    "estimated_cefr": "A2+"
+  },
+  "rubric": {
+    "story_title": "Stood Up",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "pick up",
+          "catch the hint",
+          "get going",
+          "stand up",
+          "show up"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "present simple",
+          "first conditional",
+          "modals (might, must)"
+        ],
+        "notes": "The text is dominated by past simple and present simple, but includes several instances of past perfect, past continuous, and basic conditionals, making it a mix of simple and complex structures."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Medellín",
+          "Paisa",
+          "Rionegro",
+          "Parque Biblioteca España",
+          "Colombianas"
+        ],
+        "notes": "The cultural setting is Latin American (Colombian), which is highly accessible to the target learner. The dating custom of 'standing someone up' is explicitly explained in the text."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "Sentences are mostly moderate in length with some conjunctions and compound structures. Average length is around 12 words, fitting the 12-18 word range."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "Alejandra wasn't actually going to meet him for coffee.",
+            "is_trap_active": false,
+            "reason": "While 'actually' can be confused with 'actualmente' (currently), the context of her planning to stand him up makes the meaning 'in reality' clear."
+          },
+          {
+            "word": "location",
+            "context": "meet a man at a certain location at a certain time.",
+            "is_trap_active": false,
+            "reason": "The meaning here is identical to the Spanish 'locación' (place/position), so there is no false friend trap."
+          },
+          {
+            "word": "novel",
+            "context": "It’s a novel by Pedro Mozzarelli.",
+            "is_trap_active": false,
+            "reason": "Although 'novela' in LatAm often means a TV soap opera, the context of reading a book in a cafe makes it clear she is referring to a fiction book."
+          },
+          {
+            "word": "once",
+            "context": "Alejandra asked her mother once why they don't just cancel the date...",
+            "is_trap_active": false,
+            "reason": "While 'once' means eleven in Spanish, the grammatical context (asked her mother [time] why) makes it obvious it means 'one time'."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.88,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.78",
+      "evp_coverage_pct": "89.2",
+      "cognate_pct": "19.1",
+      "off_list_pct": "10.8"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.88,
+    "estimated_cefr": "A2"
+  }
+}

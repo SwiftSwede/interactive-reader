@@ -1,0 +1,102 @@
+{
+  "story_title": "Pre-Airport Farewell",
+  "profiler": {
+    "word_count": 1186,
+    "unique_word_count": 398,
+    "evp_coverage_pct": 94.2,
+    "level_distribution": {
+      "A1": 270,
+      "A2": 58,
+      "B1": 36,
+      "B2": 11,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 67.8,
+      "A2": 82.4,
+      "B1": 91.5,
+      "B2": 94.2,
+      "C1": 94.2,
+      "C2": 94.2
+    },
+    "cognate_count": 57,
+    "cognate_pct": 14.3,
+    "false_friend_count": 1,
+    "off_list_count": 23,
+    "off_list_pct": 5.8,
+    "vocab_difficulty_raw": 1.43,
+    "vocab_difficulty_adjusted": 1.5,
+    "estimated_cefr": "B1"
+  },
+  "rubric": {
+    "story_title": "Pre-Airport Farewell",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "not my first rodeo",
+          "pain in the neck",
+          "middle of nowhere",
+          "smooth sailing",
+          "grow up",
+          "let me know"
+        ],
+        "count": 6
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "future continuous",
+          "first conditional",
+          "modals (can, must, could, should)",
+          "reported speech",
+          "relative clauses",
+          "wish / if only"
+        ],
+        "notes": "The text is mostly simple dialogue but contains a noticeable minority of complex structures, including several first conditionals, a 'wish' clause, reported speech, and modals."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "airport security procedures (liquids in zip-lock bags, metal detectors, bins)",
+          "Canadian winter weather (minus fifteen degrees celsius)"
+        ],
+        "notes": "Airport security procedures are standard global practice for anyone who flies, and the cold weather is easily understood from context. No heavy or unfamiliar cultural knowledge is required."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "The text is a dialogue with mostly short, simple sentences. There are some compound and complex sentences, but the average length remains moderate."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "large",
+            "context": "No, I just have this small backpack as my personal item and this large backpack as my carry-on.",
+            "is_trap_active": false,
+            "reason": "The direct contrast with 'small backpack' immediately clarifies that 'large' means 'big' rather than the Spanish 'largo' (long)."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.15,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.5",
+      "evp_coverage_pct": "94.2",
+      "cognate_pct": "14.3",
+      "off_list_pct": "5.8"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.15,
+    "estimated_cefr": "A2/B1"
+  }
+}

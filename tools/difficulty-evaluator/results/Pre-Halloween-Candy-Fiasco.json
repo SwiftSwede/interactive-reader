@@ -1,0 +1,119 @@
+{
+  "story_title": "Halloween Candy Fiasco",
+  "profiler": {
+    "word_count": 1191,
+    "unique_word_count": 391,
+    "evp_coverage_pct": 92.1,
+    "level_distribution": {
+      "A1": 264,
+      "A2": 55,
+      "B1": 27,
+      "B2": 10,
+      "C1": 1,
+      "C2": 3
+    },
+    "cumulative_pct": {
+      "A1": 67.5,
+      "A2": 81.6,
+      "B1": 88.5,
+      "B2": 91.0,
+      "C1": 91.3,
+      "C2": 92.1
+    },
+    "cognate_count": 54,
+    "cognate_pct": 13.8,
+    "false_friend_count": 3,
+    "off_list_count": 31,
+    "off_list_pct": 7.9,
+    "vocab_difficulty_raw": 1.44,
+    "vocab_difficulty_adjusted": 1.72,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Halloween Candy Fiasco",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "mess up",
+          "run along",
+          "piss off",
+          "get away with it",
+          "back to normal",
+          "in my wildest of dreams",
+          "trick or treat"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past continuous",
+          "present perfect",
+          "past perfect",
+          "going to future",
+          "modals (could, would, must)",
+          "reported speech",
+          "relative clauses"
+        ],
+        "notes": "The text is dominated by past simple and present simple in dialogue, but features a noticeable minority of sentences with past perfect, present perfect, and modals. Subordinate clauses are used throughout."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Halloween",
+          "trick-or-treating",
+          "Marvel superheroes",
+          "Disney's Frozen",
+          "Freddy Krueger",
+          "teepeed (toilet papering a house)",
+          "Rockets (cheap candy)"
+        ],
+        "notes": "The story is heavily based on North American Halloween customs, but the narrator is a Latin American immigrant who explicitly contrasts the customs with his home culture, which helps bridge the cultural gap for the target reader."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 16,
+        "notes": "Mixed lengths with a good number of compound and complex sentences. Average length is moderate, with some longer narrative sentences containing subordinate clauses."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "disgust",
+            "context": "cause so much revulsion among people",
+            "is_trap_active": false,
+            "reason": "While 'disgusto' in Spanish means displeasure, the context of kids reacting in 'disgust' to bad candy makes the meaning clear."
+          },
+          {
+            "word": "grocery",
+            "context": "cheap candy at the grocery store",
+            "is_trap_active": false,
+            "reason": "The context of 'store' makes it clear this is a place to buy things, not the Spanish 'grosería' (rudeness)."
+          },
+          {
+            "word": "parents",
+            "context": "go to your parents. They're waiting for you on the sidewalk.",
+            "is_trap_active": false,
+            "reason": "The context clearly refers to the child's mother and father, not general relatives ('parientes')."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.52,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.72,
+      "evp_coverage_pct": 92.1,
+      "cognate_pct": 13.8,
+      "off_list_pct": 7.9
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.52,
+    "estimated_cefr": "B1"
+  }
+}

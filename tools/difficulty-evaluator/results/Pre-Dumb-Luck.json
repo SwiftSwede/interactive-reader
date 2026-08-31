@@ -1,0 +1,112 @@
+{
+  "story_title": "Dumb Luck",
+  "profiler": {
+    "word_count": 923,
+    "unique_word_count": 323,
+    "evp_coverage_pct": 92.3,
+    "level_distribution": {
+      "A1": 230,
+      "A2": 45,
+      "B1": 16,
+      "B2": 7,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 71.2,
+      "A2": 85.1,
+      "B1": 90.1,
+      "B2": 92.3,
+      "C1": 92.3,
+      "C2": 92.3
+    },
+    "cognate_count": 49,
+    "cognate_pct": 15.2,
+    "false_friend_count": 2,
+    "off_list_count": 25,
+    "off_list_pct": 7.7,
+    "vocab_difficulty_raw": 1.33,
+    "vocab_difficulty_adjusted": 1.49,
+    "estimated_cefr": "B1"
+  },
+  "rubric": {
+    "story_title": "Dumb Luck",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "talking to a wall",
+          "sharpest tool in the shed",
+          "greatest thing since sliced bread",
+          "take no for an answer",
+          "read my lips",
+          "deal with",
+          "test out"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past continuous",
+          "present perfect",
+          "past perfect",
+          "reported speech with backshifting",
+          "first conditional",
+          "basic modals (can, should)",
+          "relative clauses (who, that)",
+          "subordinate clauses (because, while, if)"
+        ],
+        "notes": "Dominated by past simple with dialogue in present/simple past. Past perfect and reported speech appear in the final paragraphs. Subordinate clauses are scattered throughout. Complex structures appear in roughly 20-25% of sentences."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Starbucks",
+          "Vancouver",
+          "bucks (slang for dollars)",
+          "two cream (coffee ordering custom)",
+          "minimum wage",
+          "beta testers"
+        ],
+        "notes": "Mostly globally recognizable references. Starbucks and Vancouver are well-known. 'Bucks' as slang and 'two cream' coffee ordering are mildly North American but inferable from context. No customs that would block comprehension."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Mix of very short dialogue lines and moderate narrative sentences. Mostly subject-verb-object with some compound sentences. A few longer sentences with subordinate clauses but nothing over 25 words."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "large",
+            "context": "get me a large coffee with two cream",
+            "is_trap_active": false,
+            "reason": "'Large coffee' is a globally understood phrase due to international coffee chains. Context makes the size meaning unmistakable."
+          },
+          {
+            "word": "test",
+            "context": "We can give you a test",
+            "is_trap_active": false,
+            "reason": "Spanish 'test' is borrowed from English and means exam/trial. The meaning here is essentially identical. No confusion likely."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.15,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.49",
+      "evp_coverage_pct": "92.3",
+      "cognate_pct": "15.2",
+      "off_list_pct": "7.7"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.15,
+    "estimated_cefr": "A2/B1"
+  }
+}

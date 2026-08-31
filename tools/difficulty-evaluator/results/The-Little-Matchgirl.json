@@ -1,0 +1,104 @@
+{
+  "story_title": "The Little Matchgirl",
+  "profiler": {
+    "word_count": 1029,
+    "unique_word_count": 386,
+    "evp_coverage_pct": 89.4,
+    "level_distribution": {
+      "A1": 227,
+      "A2": 49,
+      "B1": 46,
+      "B2": 21,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 58.8,
+      "A2": 71.5,
+      "B1": 83.4,
+      "B2": 88.9,
+      "C1": 89.4,
+      "C2": 89.4
+    },
+    "cognate_count": 43,
+    "cognate_pct": 11.1,
+    "false_friend_count": 2,
+    "off_list_count": 41,
+    "off_list_pct": 10.6,
+    "vocab_difficulty_raw": 1.61,
+    "vocab_difficulty_adjusted": 1.79,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "The Little Matchgirl",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 1,
+        "items_found": [
+          "what was the good of that",
+          "went out (flame)",
+          "left behind"
+        ],
+        "count": 2
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past perfect",
+          "present simple (dialogue)",
+          "past continuous",
+          "second conditional (if she only dared)",
+          "modal (could, might, would)",
+          "participial phrases (leaning, trembling)",
+          "inverted word order (Her little feet she had drawn...)"
+        ],
+        "notes": "Mostly past simple with regular use of past perfect, conditionals, and subordinate clauses. Inverted word order and literary participial constructions appear several times. Roughly 20-25% of sentences contain level-3 structures."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "New Year's Eve",
+          "Christmas tree",
+          "roast goose"
+        ],
+        "notes": "19th century European fairy tale setting. New Year's Eve and Christmas trees are universally known. Roast goose is understandable from context. No North American-specific customs."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 22,
+        "notes": "Literary prose with varied sentence lengths. Many sentences have multiple subordinate clauses joined by semicolons and dashes. Some sentences exceed 30 words. Average around 20-25 words."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "large",
+            "context": "They were very large slippers, which her mother had until then worn",
+            "is_trap_active": true,
+            "reason": "Spanish 'largo' means 'long,' not 'big.' A Spanish speaker might initially think 'long slippers,' though context (they were her mother's, she lost them) somewhat clarifies they are big."
+          },
+          {
+            "word": "once",
+            "context": "she never once now thought",
+            "is_trap_active": true,
+            "reason": "Spanish 'once' means 'eleven.' In this adverbial construction 'never once,' a Spanish speaker could be confused, though the 'never' context partially disambiguates."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.94,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.79",
+      "evp_coverage_pct": "89.4",
+      "cognate_pct": "11.1",
+      "off_list_pct": "10.6"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.94,
+    "estimated_cefr": "A2"
+  }
+}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import MicroExplanation from "./MicroExplanation";
+import { recordPersonalResponse } from "@/app/story/[slug]/actions";
 
 // ── Types ──────────────────────────────────────────────────
 
@@ -15,6 +16,8 @@ type PersonalQuestionsProps = {
   questions: Question[];
   mode?: "classroom-live" | "write";
   microExplanation?: string;
+  /** Classroom attribution. Omitted in open mode. */
+  sessionId?: string;
 };
 
 type CorrectionSegment = {
@@ -37,6 +40,7 @@ export default function PersonalQuestions({
   questions,
   mode = "write",
   microExplanation,
+  sessionId,
 }: PersonalQuestionsProps) {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [feedbackStates, setFeedbackStates] = useState<
@@ -48,7 +52,11 @@ export default function PersonalQuestions({
     setAnswers((prev) => ({ ...prev, [position]: value }));
   };
 
-  const handleCheck = async (position: number, question: string) => {
+  const handleCheck = async (
+    position: number,
+    question: string,
+    questionId: string
+  ) => {
     const answer = answers[position]?.trim();
 
     if (!answer || answer.length < 2) return;
@@ -80,10 +88,8 @@ export default function PersonalQuestions({
         return;
       }
 
-      setAttempts((prev) => ({
-        ...prev,
-        [position]: (prev[position] || 0) + 1,
-      }));
+      const attemptNumber = (attempts[position] || 0) + 1;
+      setAttempts((prev) => ({ ...prev, [position]: attemptNumber }));
 
       setFeedbackStates((prev) => ({
         ...prev,
@@ -94,6 +100,18 @@ export default function PersonalQuestions({
           error: null,
         },
       }));
+
+      // Fire and forget: the learner already has their feedback, and the action
+      // is a no-op for anonymous users.
+      const corrections = (data.corrections ?? []) as CorrectionSegment[];
+      void recordPersonalResponse({
+        personalQuestionId: questionId,
+        responseText: answer,
+        attemptNumber,
+        correctionCount: corrections.filter((seg) => seg.type !== "correct")
+          .length,
+        sessionId,
+      });
     } catch {
       setFeedbackStates((prev) => ({
         ...prev,
@@ -200,7 +218,7 @@ export default function PersonalQuestions({
               {/* Comprobar button */}
               {!state?.corrections && !maxedOut && (
                 <button
-                  onClick={() => handleCheck(q.position, q.question)}
+                  onClick={() => handleCheck(q.position, q.question, q.id)}
                   disabled={!answer.trim() || state?.loading === true}
                   className={`mt-2 min-h-11 text-label-md px-5 py-3 rounded-card transition-colors ${
                     answer.trim() && state?.loading !== true

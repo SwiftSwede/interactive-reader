@@ -6,9 +6,8 @@ It contains the full architecture, data structure, feature build order (53 slice
 Follow it as your north star. Do not make decisions that contradict the PRD without asking.
 
 ## Current Phase
-**COMPLETE:** Phase 1, 1.5, 2a (slices 13–22 + 14–15 Stripe webhooks), 2b, 2c (slices 22a–22e writing class), 2.5 (slices 30–32), 3 (slices 33–35 voice recording + Azure assessment).
-**Next feature build:** Phase 4 (slices 36–39: knowledge graph, evidence tracking, N+1 routing, student dashboard).
-Do not build Phase 4+ until asked.
+**COMPLETE:** Phase 1, 1.5, 2a (slices 13–22 + 14–15 Stripe webhooks), 2b, 2c (slices 22a–22e writing class), 2.5 (slices 30–32), 3 (slices 33–35), 4 (slices 36–39: knowledge graph, evidence, N+1 routing, `/progress`).
+**Next feature build:** Phase 5 (slices 40+). Do not build Phase 5 until asked.
 
 **Session types supported:** `story` (Phase 2a), `writing` (Phase 2c), `exam` (Phase 5, slices 49a–49e — spec complete, not yet built). The exam session type uses group-based submission: one writer per group, Supabase Realtime sync to group members, teacher-led review mode. See PRD Section 4 (GroupExamPrompt, ExamGroup, GroupExamSubmission) and Section 7 (slices 49a–49e).
 
@@ -22,6 +21,11 @@ Do not build Phase 4+ until asked.
 - Vercel (hosting)
 - Edge TTS (audio generation, free)
 - Bunny Stream (pronunciation video hosting, existing account)
+
+## Local dev
+- This app runs at **http://localhost:3004** only (`npm run dev` is pinned to `--port 3004`).
+- Verify UI in the browser at that URL. Never probe 3000, 3001, 3002, or 3003 for this repo. Those ports belong to other apps or hung leftover `next dev` processes that hang curl.
+- If you need a health check, use `curl --max-time 2 http://127.0.0.1:3004/`. If it is not 200, tell Kyle. Do not start a second Next server and do not scan other ports.
 
 ## Rules
 1. No em dashes (—) in UI text. Use colons, periods, or commas. Em dashes are an AI telltale. The only em dashes in the app are in story content (—The End—) which is Kyle's existing format.
@@ -40,55 +44,64 @@ Do not build Phase 4+ until asked.
 14. Keep the reader calm. Dictation, reverse translation, and pronunciation practice begin after the story or from an explicit learner choice. They never pop up while somebody is reading.
 15. Group exam: level-differentiated Task 2. Intermediate = paragraph restructuring (scrambled 7-9 sentence paragraph, letter-coded reordering). Pre-intermediate = sentence correction (7 incorrect + 3 correct sentences, identify and fix errors). The `task2_type` field on GroupExamPrompt auto-selects based on level but can be teacher-overridden. Task 1 (fill-in-the-translation) and Task 3 (translation with conditionals 9-10) are the same for both levels.
 16. Group exam: one writer per group. Only the designated writer can submit answers. Other group members see a read-only view with live updates via Supabase Realtime. The ExamGroup entity tracks `writer_id` and `member_ids` for attribution. This is the only session type with group-based (not individual) submission.
+17. Read DESIGN.md before any UI work. It defines all color tokens, spacing, typography, components, navigation architecture, and page layouts. The app uses a Paper Light theme (warm off-white background, terracotta + moss palette). NOT dark mode. When creating or modifying any UI, read and follow DESIGN.md first.
 
 ## UI Design North Stars
-- Mobile: Spotify (bottom tabs, card lists, persistent "now playing" bar for audio)
-- Desktop: Netflix (horizontal rows, grid density, hover interactions)
-- 500 million LatAm users already know these patterns. When a student opens the app for the first time, they should know where to tap without instructions.
+- Read and follow DESIGN.md at the project root BEFORE writing or modifying any UI. It is the source of truth for all colors, fonts, spacing, components, navigation, and page layouts. Do not contradict it.
+- The app uses a "Paper Light" theme (warm off-white #faf6f0 background, earthy terracotta + moss palette). NOT dark mode. The previous instruction to "build dark-first" is obsolete and wrong.
+- One layout, not two. The app is a mobile app that breathes on desktop (centered, max-width 672px). No separate desktop layout. No sidebars, no multi-column dashboards, no split views. See DESIGN.md "Desktop Adaptations" section.
+- Mobile-first always. Test at 375px width. 500 million LatAm users already know bottom-tab and card-list patterns. When a student opens the app for the first time, they should know where to tap without instructions.
+- Calm, like reading a book. No gamification, no flashy animations, no emojis as icons. See DESIGN.md "Do's and Don'ts" section.
 
 ## Frontend Design Standards
-These rules apply to every UI element built, even during functional phases. Good design hygiene now prevents accumulating UI debt that requires a full redesign later.
+These rules are a quick reference. DESIGN.md is the full spec. When in doubt, read DESIGN.md.
 
 ### Visual System
-- Use a consistent color palette defined in a single CSS variables file (`globals.css` or a Tailwind config). Never scatter hex values across components. Define: primary, primary-dark, secondary, background, surface, text-primary, text-secondary, error, success, warning.
-- Dark theme is the default aesthetic direction (aligned with Spotify). Use dark backgrounds (#121212 or similar) with light text. If a light theme is needed later, it can be added as a toggle, but build dark-first.
-- Typography: use a single font family for the app (system font stack or a Google Font like Inter). Story content can use a serif font for readability if desired. Define font sizes as a scale: xs (12px), sm (14px), base (16px), lg (18px), xl (20px), 2xl (24px), 3xl (30px). Never use arbitrary pixel values.
-- Spacing: use a consistent spacing scale (4px base: 4, 8, 12, 16, 20, 24, 32, 40, 48, 64). Never use arbitrary margins/padding.
-- Border radius: pick 2-3 values and use them consistently (e.g., 8px for cards, 12px for modals, 9999px for pills/buttons).
-- Shadows: define 2-3 elevation levels (subtle for cards, medium for modals, none for flat surfaces). Don't invent new shadows per component.
+- All color tokens, typography, spacing, border radius, and elevation rules are defined in DESIGN.md. Read it before touching any UI.
+- Color tokens are CSS variables in globals.css, mapped to Tailwind classes via the @theme block. Use `bg-paper`, `text-text-primary`, `border-paper-line`, `bg-accent`, etc. Never scatter hex values across components. Never use Material Design 3 token names.
+- Theme is Paper Light (warm off-white). NOT dark mode. NOT pure white for reading areas. Use `--paper` (#faf6f0).
+- Two font families: Lora (headlines + story text, serif) and Roboto Flex (UI labels, sans-serif). Self-host via next/font with font-display: swap. See DESIGN.md for the full type scale.
+- Spacing: 4px base scale (4, 8, 12, 16, 20, 24, 32, 40, 48, 64). No arbitrary values.
+- Border radius: 8px (small), 16px (cards/buttons/inputs), 24px (modals/sheets), 9999px (step nav pills + circular elements only). See DESIGN.md for the pill vs. rounded rectangle rule.
+- Elevation: tonal layering (white on paper + 1px borders). No shadows on cards. Sticky elements (audio player, header) may use a subtle shadow. See DESIGN.md.
 
 ### Component Consistency
-- Buttons: define primary (filled, brand color), secondary (outlined), and text (no background) button styles. Use them consistently. Never create one-off button styles.
-- Inputs: all text inputs (text fields, textareas) share the same styling. Focus state is clearly visible (border color change + subtle ring).
-- Cards: content cards (story cards, assignment cards, student cards) share the same base styling: background, radius, padding, shadow.
-- Icons: use a single icon library (Lucide React is recommended, ships with Next.js). Never mix icon sources.
+- Buttons: primary (filled terracotta), secondary (outlined), ghost (text/icon), and step-nav (pill, step navigation only). Defined in DESIGN.md.
+- Inputs: shared styling. Focus state thickens border to 2px terracotta. See DESIGN.md.
+- Cards: white surface, 1px paper-line border, 24px radius, no shadow. See DESIGN.md.
+- Icons: Lucide React only. Never emojis. See DESIGN.md icon mapping table.
 - Every interactive element must have a clear hover state (desktop) and active/pressed state (mobile).
 
 ### UX States (non-negotiable)
-Every feature that fetches data or performs an action must handle ALL of these states:
-- **Loading state:** never show a blank screen while waiting for data. Use skeleton loaders (gray pulse shapes matching the content layout) or a simple spinner with a Spanish message ("Cargando...").
-- **Error state:** if data fails to load, show a friendly error message in Kyle's voice ("Algo salió mal. Intenta de nuevo.") with a retry button. Never show a raw error code or stack trace to the user.
-- **Empty state:** if there's no data (no assignments, no completed exercises, no word lookups yet), show a helpful message ("Aún no tienes clases asignadas. Tu profe te enviará un enlace.") not a blank page.
-- **Success state:** after an action completes (answer submitted, feedback received), show a brief visual confirmation (checkmark, color flash, toast message) before transitioning.
+Every feature that fetches data or performs an action must handle ALL of these states. See DESIGN.md "Loading, Empty, and Error States" section for full specs.
+- **Loading state:** skeleton loaders (gray pulse shapes matching content layout). Never blank screens.
+- **Error state:** friendly message in Kyle's voice ("Algo salio mal. Intenta de nuevo.") with retry button. Never raw error codes.
+- **Empty state:** helpful message in Spanish, Kyle's voice, with Lucide icon. Never blank pages.
+- **Success state:** brief visual confirmation before transitioning.
 
 ### Touch and Mobile
-- Minimum touch target size: 44x44px for any tappable element (buttons, word spans, tabs). Smaller targets are acceptable for word spans in the story reader (they're text, not buttons), but interactive controls must meet 44px.
-- No hover-dependent functionality on mobile. If a feature requires hover on desktop, it must have a tap equivalent on mobile.
-- Prevent layout shift: reserve space for dynamic content (audio player, tooltips, modals) so the page doesn't jump when they appear.
-- Test every feature at 375px width (iPhone SE) and 768px width (iPad) before considering it done.
+- Minimum touch target: 44x44px for all interactive elements. 48x48px for primary actions. See DESIGN.md.
+- No hover-dependent functionality on mobile.
+- Prevent layout shift: reserve space for dynamic content (audio player, tooltips, modals).
+- Test at 375px width before considering anything done.
 
 ### Accessibility
-- Color contrast: text must meet WCAG AA contrast ratios (4.5:1 for normal text, 3:1 for large text) against its background. This is especially important with a dark theme.
-- Keyboard navigation: all interactive elements must be reachable and operable via keyboard (Tab, Enter, Escape). Modal dialogs must trap focus and close on Escape.
-- Screen reader support: use semantic HTML (button, nav, main, section, aria-label where needed). Decorative elements get aria-hidden.
-- Never rely on color alone to convey meaning. A green word is also marked with an icon or text label. Red strikethrough also has a text explanation.
-- Respect prefers-reduced-motion: disable animations and transitions for users who have this setting enabled.
+- Color contrast: WCAG AA (4.5:1 normal, 3:1 large) against the paper background.
+- Keyboard navigation: all interactive elements reachable via Tab/Enter/Escape. Modals trap focus.
+- Screen reader support: semantic HTML, aria-label where needed, aria-hidden on decorative elements.
+- Never rely on color alone. Green also has icon/text. Red also has explanation.
+- Respect prefers-reduced-motion: disable animations for users with this setting.
 
 ### Animations and Transitions
-- Subtle and fast: transitions are 150-250ms, never longer. Easing should be smooth (ease-out for entrances, ease-in for exits).
-- No flashy animations. No bouncing, no spinning (except a loading spinner). The app feels calm, like reading a book.
-- Page transitions: simple fade or slide. No complex choreography.
-- The audio progress bar and karaoke highlight are the only elements that move continuously. Everything else is static unless interacted with.
+- 200ms transitions. Fade + slight slide for step transitions. No bounce, no rotation, no scale.
+- No flashy animations. No spinning (except loading skeletons). The app feels calm, like reading a book.
+- The audio progress bar and karaoke highlight are the only elements that move continuously.
+
+### Navigation Architecture
+- Two modes that never overlap: Browsing mode (bottom tab bar: Inicio, Lecciones, Herramientas) and Lesson mode (header with back button + lesson-specific subheader, no tab bar). See DESIGN.md "Navigation Architecture" section.
+- Tab bar and sticky audio player never coexist (different modes).
+- New lesson types plug into Lesson mode without architecture changes.
+- See DESIGN.md "Page Layouts" section for every page's section order, spacing, and focal point.
 
 ## Security Standards
 These rules apply to all backend code, API routes, database access, and authentication flows. Security is not optional, even for an early-stage product with "non-sensitive" data.

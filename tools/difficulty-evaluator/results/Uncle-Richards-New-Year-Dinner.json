@@ -1,0 +1,107 @@
+{
+  "story_title": "Uncle Richard_s New Year Dinner",
+  "profiler": {
+    "word_count": 1021,
+    "unique_word_count": 359,
+    "evp_coverage_pct": 90.8,
+    "level_distribution": {
+      "A1": 249,
+      "A2": 35,
+      "B1": 28,
+      "B2": 12,
+      "C1": 0,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 69.4,
+      "A2": 79.1,
+      "B1": 86.9,
+      "B2": 90.3,
+      "C1": 90.3,
+      "C2": 90.8
+    },
+    "cognate_count": 35,
+    "cognate_pct": 9.7,
+    "false_friend_count": 2,
+    "off_list_count": 33,
+    "off_list_pct": 9.2,
+    "vocab_difficulty_raw": 1.42,
+    "vocab_difficulty_adjusted": 1.6,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Uncle Richard_s New Year Dinner",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "on speaking terms",
+          "had nothing to do with it",
+          "make up with him",
+          "turned out perfectly",
+          "lived up to standards",
+          "did full justice to",
+          "put aside your differences"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past continuous",
+          "past perfect",
+          "present simple (dialogue)",
+          "second/mixed conditional",
+          "subjunctive (if only he were)",
+          "modals (could, would, must)"
+        ],
+        "notes": "Past simple dominates, but past perfect, conditionals, and subjunctive appear as a noticeable minority. Roughly 25-30% of sentences contain level-3+ structures."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "New Year's Day as business holiday vs. celebration",
+          "rural early-1900s American setting (woodshed, pantry)",
+          "raisin pudding, roast pork, turnips as traditional foods"
+        ],
+        "notes": "Family dynamics and New Year's are universal. Period-specific items (woodshed, pantry) are inferable from context. No heavy cultural knowledge needed."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 16,
+        "notes": "Mix of short simple sentences and moderate compound/complex sentences. Some longer sentences with subordinate clauses but average stays in 12-18 word range."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "large",
+            "context": "Richard Baker was a large man with a red face who looked successful.",
+            "is_trap_active": false,
+            "reason": "Spanish 'largo' means long, but context of describing a man's build alongside 'red face' and 'looked successful' suggests big/stout. Mild confusion possible but context disambiguates."
+          },
+          {
+            "word": "once",
+            "context": "Would he order her to leave his house at once?",
+            "is_trap_active": false,
+            "reason": "Spanish 'once' means eleven, but 'at once' meaning immediately is clear from the context of ordering someone to leave."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.28,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.6",
+      "evp_coverage_pct": "90.8",
+      "cognate_pct": "9.7",
+      "off_list_pct": "9.2"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.28,
+    "estimated_cefr": "A2/B1"
+  }
+}

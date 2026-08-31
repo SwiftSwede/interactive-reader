@@ -1,0 +1,136 @@
+{
+  "story_title": "The Catfish",
+  "profiler": {
+    "word_count": 1645,
+    "unique_word_count": 485,
+    "evp_coverage_pct": 90.3,
+    "level_distribution": {
+      "A1": 313,
+      "A2": 65,
+      "B1": 44,
+      "B2": 13,
+      "C1": 3,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 64.5,
+      "A2": 77.9,
+      "B1": 87.0,
+      "B2": 89.7,
+      "C1": 90.3,
+      "C2": 90.3
+    },
+    "cognate_count": 67,
+    "cognate_pct": 13.8,
+    "false_friend_count": 6,
+    "off_list_count": 47,
+    "off_list_pct": 9.7,
+    "vocab_difficulty_raw": 1.47,
+    "vocab_difficulty_adjusted": 2.04,
+    "estimated_cefr": "C1"
+  },
+  "rubric": {
+    "story_title": "The Catfish",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "no harm, no foul",
+          "missing out on",
+          "back and forth",
+          "out of shape",
+          "body shaming",
+          "catfishing"
+        ],
+        "count": 6
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present perfect",
+          "present perfect continuous",
+          "modals (can, should, would, could, may)",
+          "first conditional",
+          "relative clauses",
+          "reported speech"
+        ],
+        "notes": "The text is dominated by simple tenses typical of dialogue, but contains a noticeable minority of sentences with present perfect, modals, relative clauses, and reported speech."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "H1-B visa",
+          "Bumble",
+          "Instagram",
+          "American sitcoms",
+          "arranged marriage",
+          "filet mignon",
+          "chai tea",
+          "Golden Retriever"
+        ],
+        "notes": "Most references are globally known (Instagram, dating apps, New York). H1-B visa is specific but understandable from context. Indian cultural references are explicitly explained."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "Mostly short to moderate dialogue lines with occasional compound or complex sentences. Average length is manageable for an intermediate learner."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "Well, not actually twenty-one. I’m actually thirty.",
+            "is_trap_active": true,
+            "reason": "Spanish speaker might confuse it with 'actualmente' (currently), though context helps clarify."
+          },
+          {
+            "word": "large",
+            "context": "My family has a large farm in India",
+            "is_trap_active": true,
+            "reason": "Spanish 'largo' means long, not big. A learner might be confused about the farm's dimensions."
+          },
+          {
+            "word": "parents",
+            "context": "My parents arranged a marriage for me back home",
+            "is_trap_active": true,
+            "reason": "Spanish 'parientes' means relatives in general, not specifically father and mother."
+          },
+          {
+            "word": "sauce",
+            "context": "covered in a red wine sauce",
+            "is_trap_active": false,
+            "reason": "Spanish 'salsa' also means sauce, so the meaning is clear."
+          },
+          {
+            "word": "success",
+            "context": "And have you had any success with this?",
+            "is_trap_active": true,
+            "reason": "Spanish 'suceso' means event or occurrence, not achievement."
+          },
+          {
+            "word": "taller",
+            "context": "like taller and skinnier girls than you",
+            "is_trap_active": true,
+            "reason": "Spanish 'taller' means workshop. Could cause a brief moment of confusion."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.31,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 2.04,
+      "evp_coverage_pct": 90.3,
+      "cognate_pct": 13.8,
+      "off_list_pct": 9.7
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.31,
+    "estimated_cefr": "A2/B1"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "story_title": "Moving the Goalposts",
+  "profiler": {
+    "word_count": 896,
+    "unique_word_count": 324,
+    "evp_coverage_pct": 93.5,
+    "level_distribution": {
+      "A1": 203,
+      "A2": 55,
+      "B1": 32,
+      "B2": 10,
+      "C1": 1,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 62.7,
+      "A2": 79.6,
+      "B1": 89.5,
+      "B2": 92.6,
+      "C1": 92.9,
+      "C2": 93.5
+    },
+    "cognate_count": 40,
+    "cognate_pct": 12.3,
+    "false_friend_count": 0,
+    "off_list_count": 21,
+    "off_list_pct": 6.5,
+    "vocab_difficulty_raw": 1.54,
+    "vocab_difficulty_adjusted": 1.49,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Moving the Goalposts",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "grabbing a bite to eat",
+          "get the better of him",
+          "kick you off",
+          "give me a break",
+          "got caught up in",
+          "out of your hair",
+          "move the goalposts",
+          "true to your word"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "present perfect (you've dammed up, it's been a week, haven't taken into consideration)",
+          "past perfect (hadn't left, had gotten bigger, had some weak spots)",
+          "third conditional (would've done the same)",
+          "modals (could, would, should)",
+          "passive (to be perceived, supposed to be gone)",
+          "relative clauses (that ran along his property, who wakes up to bad news)"
+        ],
+        "notes": "Text is dominated by past simple narration with dialogue. Present perfect, past perfect, and a third conditional appear as a noticeable minority (~20% of sentences). Complex structures are present but not pervasive."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Canadian politeness/compromise stereotype",
+          "Canadian farm/lakeland setting",
+          "beaver dams (North American wildlife)"
+        ],
+        "notes": "The Canadian politeness stereotype is lightly referenced but globally recognizable. The farm/beaver setting is universal enough. No deep cultural knowledge required to follow the plot."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 14,
+        "notes": "Mix of very short dialogue lines ('Hello', 'Yeah', 'No') and moderate narrative sentences with subordinate clauses. Some longer sentences with multiple clauses ('With his pajamas still on and without grabbing a bite to eat first, he put on his rubber boots and went outside to check what was going on.')."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 2.4,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.49",
+      "evp_coverage_pct": "93.5",
+      "cognate_pct": "12.3",
+      "off_list_pct": "6.5"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.4,
+    "estimated_cefr": "A2/B1"
+  }
+}

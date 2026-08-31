@@ -1,0 +1,134 @@
+{
+  "story_title": "The Gift of the Magi",
+  "profiler": {
+    "word_count": 2087,
+    "unique_word_count": 743,
+    "evp_coverage_pct": 85.1,
+    "level_distribution": {
+      "A1": 363,
+      "A2": 114,
+      "B1": 87,
+      "B2": 55,
+      "C1": 9,
+      "C2": 4
+    },
+    "cumulative_pct": {
+      "A1": 48.9,
+      "A2": 64.2,
+      "B1": 75.9,
+      "B2": 83.3,
+      "C1": 84.5,
+      "C2": 85.1
+    },
+    "cognate_count": 110,
+    "cognate_pct": 14.8,
+    "false_friend_count": 6,
+    "off_list_count": 111,
+    "off_list_pct": 14.9,
+    "vocab_difficulty_raw": 1.81,
+    "vocab_difficulty_adjusted": 2.37,
+    "estimated_cefr": "B2+"
+  },
+  "rubric": {
+    "story_title": "The Gift of the Magi",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "doesn't go far (money not being enough)",
+          "turned all of them inside out (searched thoroughly)",
+          "on the sly (secretly)",
+          "had me going (confused/tricked me)",
+          "gave way to (yielded to)"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 4,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past perfect (had been flung, had been saving, had spent)",
+          "past continuous (was being paid)",
+          "present simple (narrative effect)",
+          "third conditional with inversion (Had the queen of Sheba lived... Della would have let)",
+          "third conditional with inversion (Had King Solomon been... Jim would have pulled)",
+          "participial clauses (being slender, being wise)",
+          "relative clauses (who, that, which)",
+          "passive voice (was made, was shrunk)",
+          "reported speech"
+        ],
+        "notes": "Literary prose with regular use of inverted third conditionals, past perfect, participial clauses, and complex multi-clause sentences. These higher-level structures appear throughout, not as one-off occurrences."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Christmas/Christmas Eve gift-giving customs",
+          "Coney Island chorus girl (US entertainment reference)",
+          "Broadway window (US shopping reference)",
+          "The Magi / Babe in the manger (biblical reference, known in Catholic LatAm culture)",
+          "US currency (dollars, pennies)"
+        ],
+        "notes": "Christmas and the Magi are well-known in Latin American Catholic culture. Coney Island and Broadway are minor references that don't affect plot comprehension. Overall cultural accessibility is good."
+      },
+      "sentence_structure": {
+        "score": 4,
+        "avg_sentence_length": 22,
+        "notes": "Literary prose with long, varied sentences. Multiple subordinate clauses, participial phrases, and rhetorical structures. Many sentences exceed 30 words. Classic O. Henry style with complex narrative constructions throughout."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "carpet",
+            "context": "a tear or two splashed on the worn red carpet",
+            "is_trap_active": true,
+            "reason": "Spanish 'carpeta' means folder/file folder. A Spanish speaker might initially think of a folder, though context (worn, red, tear splashing on it) hints at floor covering."
+          },
+          {
+            "word": "fence",
+            "context": "a gray cat walking a gray fence in a gray backyard",
+            "is_trap_active": false,
+            "reason": "Spanish 'feria' means fair/market, but the context of a backyard and a cat walking on it makes the barrier meaning clear."
+          },
+          {
+            "word": "large",
+            "context": "Madame, large, too white, chilly, hardly looked the Sofronie",
+            "is_trap_active": true,
+            "reason": "Spanish 'largo' means long/tall, not big. A Spanish speaker might interpret this as describing height rather than overall size."
+          },
+          {
+            "word": "once",
+            "context": "Once she faltered for a minute and stood still",
+            "is_trap_active": false,
+            "reason": "Spanish 'once' means eleven, but the context of a single action following clearly indicates 'one time' or 'as soon as.'"
+          },
+          {
+            "word": "rare",
+            "context": "Something fine and rare and sterling",
+            "is_trap_active": false,
+            "reason": "Spanish 'raro' means strange/unusual, which overlaps significantly with the English meaning of unusual. Not a significant trap."
+          },
+          {
+            "word": "vegetable",
+            "context": "bulldozing the grocer and the vegetable man",
+            "is_trap_active": false,
+            "reason": "Spanish 'vegetal' covers both plant and vegetable meanings. Meanings overlap sufficiently; not a trap."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.81,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "2.37",
+      "evp_coverage_pct": "85.1",
+      "cognate_pct": "14.8",
+      "off_list_pct": "14.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.81,
+    "estimated_cefr": "B1"
+  }
+}

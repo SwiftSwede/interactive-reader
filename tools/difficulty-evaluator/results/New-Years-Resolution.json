@@ -1,0 +1,126 @@
+{
+  "story_title": "New Year_s Resolution (2)",
+  "profiler": {
+    "word_count": 1436,
+    "unique_word_count": 480,
+    "evp_coverage_pct": 92.3,
+    "level_distribution": {
+      "A1": 299,
+      "A2": 72,
+      "B1": 53,
+      "B2": 17,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 62.3,
+      "A2": 77.3,
+      "B1": 88.3,
+      "B2": 91.9,
+      "C1": 92.3,
+      "C2": 92.3
+    },
+    "cognate_count": 66,
+    "cognate_pct": 13.8,
+    "false_friend_count": 3,
+    "off_list_count": 37,
+    "off_list_pct": 7.7,
+    "vocab_difficulty_raw": 1.53,
+    "vocab_difficulty_adjusted": 1.77,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "New Year_s Resolution (2)",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "came across",
+          "caught my eye",
+          "hit me like a ton of bricks",
+          "looked it up",
+          "make something of myself",
+          "hanging out",
+          "take that back",
+          "bring me down",
+          "kept on",
+          "put my heart and soul into",
+          "give up",
+          "pipe dream",
+          "look forward to"
+        ],
+        "count": 13
+      },
+      "grammatical_complexity": {
+        "score": 4,
+        "tenses_found": [
+          "past simple",
+          "past perfect",
+          "past continuous",
+          "present simple",
+          "present perfect",
+          "going to future",
+          "will future",
+          "first conditional",
+          "reported speech"
+        ],
+        "notes": "The text frequently uses past perfect to establish background and sequence (e.g., 'had happened', 'had been', 'had sent'). Reported speech and conditionals appear regularly. Complex structures are a noticeable and recurring pattern."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "New Year's Eve/Day",
+          "Instagram",
+          "FIFA (video game)",
+          "Steve Jobs",
+          "Michael Phelps",
+          "Dwayne 'The Rock' Johnson",
+          "Lance Armstrong",
+          "2-weeks notice"
+        ],
+        "notes": "Most references are globally known pop culture or sports figures. '2-weeks notice' is a US workplace norm but easily understood from context. No heavy or obscure cultural barriers."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 14,
+        "notes": "A mix of short, punchy dialogue lines and moderately complex narrative sentences with subordinate clauses. Average length is moderate, but variety adds some complexity."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "Actually, I take that back.",
+            "is_trap_active": false,
+            "reason": "While 'actually' looks like 'actualmente' (currently), the context of correcting a previous statement makes the meaning 'in fact' or 'wait' clear."
+          },
+          {
+            "word": "quit",
+            "context": "I couldn't quit my job yet.",
+            "is_trap_active": false,
+            "reason": "'Quit' looks like 'quitar' (to remove), but 'quit my job' is a very common collocation that learners typically acquire early on, making the trap inactive."
+          },
+          {
+            "word": "success",
+            "context": "Success isn't always about greatness.",
+            "is_trap_active": false,
+            "reason": "'Success' looks like 'suceso' (event), but the context of the motivational quote makes the meaning of 'achievement' obvious."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.88,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.77,
+      "evp_coverage_pct": 92.3,
+      "cognate_pct": 13.8,
+      "off_list_pct": 7.7
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.88,
+    "estimated_cefr": "B1"
+  }
+}

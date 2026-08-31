@@ -1,0 +1,104 @@
+{
+  "story_title": "Worst Halloween Ever",
+  "profiler": {
+    "word_count": 888,
+    "unique_word_count": 325,
+    "evp_coverage_pct": 91.1,
+    "level_distribution": {
+      "A1": 232,
+      "A2": 37,
+      "B1": 20,
+      "B2": 7,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 71.4,
+      "A2": 82.8,
+      "B1": 88.9,
+      "B2": 91.1,
+      "C1": 91.1,
+      "C2": 91.1
+    },
+    "cognate_count": 35,
+    "cognate_pct": 10.8,
+    "false_friend_count": 1,
+    "off_list_count": 29,
+    "off_list_pct": 8.9,
+    "vocab_difficulty_raw": 1.33,
+    "vocab_difficulty_adjusted": 1.44,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Worst Halloween Ever",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "suck it up",
+          "come on to him",
+          "pull himself together",
+          "make up for",
+          "fit in",
+          "ran out of",
+          "take off (Butch took off)"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past perfect (had asked, had left)",
+          "present simple (in dialogue)",
+          "modals (can't, should, would, couldn't)",
+          "conditional with unless",
+          "basic reported speech"
+        ],
+        "notes": "Text is dominated by past simple narration with dialogue. A few past perfect instances and basic modals appear. Subordinate clauses are present but simple. No advanced structures like third conditionals or passive voice."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Halloween/trick-or-treating",
+          "Power Rangers",
+          "Tootsie Rolls",
+          "9th/12th grade US school system",
+          "real men wear pink",
+          "Scots wear skirts (kilts)",
+          "Halloween curfew"
+        ],
+        "notes": "Halloween is globally known in Latin America. Power Rangers are known worldwide. Tootsie Rolls and US grade numbering are minor references understandable from context. The 'real men wear pink' and Scots/kilts references are light cultural notes that don't block comprehension."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Mix of short dialogue lines and moderate narrative sentences. Mostly subject-verb-object with some conjunctions. A few longer sentences with subordinate clauses but nothing excessively complex."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "embarrassed",
+            "context": "Rory felt so embarrassed, but he was going to suck it up.",
+            "is_trap_active": true,
+            "reason": "Classic false friend. Spanish speaker reads 'embarazada' (pregnant). In this context, a boy in a pink costume being teased—the word 'embarrassed' could cause genuine confusion as 'pregnant' makes no sense here but the similarity would create a moment of confusion."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.13,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.44",
+      "evp_coverage_pct": "91.1",
+      "cognate_pct": "10.8",
+      "off_list_pct": "8.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.13,
+    "estimated_cefr": "A2/B1"
+  }
+}

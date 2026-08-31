@@ -1,0 +1,128 @@
+{
+  "story_title": "Noise Rebellion",
+  "profiler": {
+    "word_count": 1803,
+    "unique_word_count": 626,
+    "evp_coverage_pct": 85.3,
+    "level_distribution": {
+      "A1": 334,
+      "A2": 90,
+      "B1": 71,
+      "B2": 28,
+      "C1": 10,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 53.4,
+      "A2": 67.7,
+      "B1": 79.1,
+      "B2": 83.5,
+      "C1": 85.1,
+      "C2": 85.3
+    },
+    "cognate_count": 94,
+    "cognate_pct": 15.0,
+    "false_friend_count": 5,
+    "off_list_count": 92,
+    "off_list_pct": 14.7,
+    "vocab_difficulty_raw": 1.68,
+    "vocab_difficulty_adjusted": 2.12,
+    "estimated_cefr": "B2+"
+  },
+  "rubric": {
+    "story_title": "Noise Rebellion",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "took off (fled)",
+          "caving in (psychological collapse)",
+          "went through (experienced)",
+          "looked on (watched)"
+        ],
+        "count": 4
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past continuous",
+          "present perfect",
+          "past perfect",
+          "passive voice",
+          "reported speech",
+          "relative clauses (who, that)",
+          "as though + subjunctive (were)",
+          "It's time that we rise up"
+        ],
+        "notes": "Past simple dominates narration, but present perfect, passive voice, and reported speech appear regularly in dialogue. Past perfect and subjunctive-like structures appear occasionally. Roughly 20-25% of sentences contain level-3+ structures."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Knock-off Jordans",
+          "Lebron James Miami Heat jersey",
+          "New York Yankees baseball cap",
+          "Michelin-star restaurant",
+          "ancient Slavs and vikings",
+          "sensory deprivation tank",
+          "Dead Sea"
+        ],
+        "notes": "Set in Cali, Colombia with LatAm characters and customs familiar to the target learner. US sports brands (Jordans, Yankees, Lebron) are globally known. The Slavs/Vikings historical analogy is obscure but explained in context. Sensory deprivation tanks may be unfamiliar but are described clearly."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 16,
+        "notes": "Mix of short dialogue exchanges and longer descriptive sentences with subordinate clauses. Some sentences exceed 25 words in narrative passages. Average around 16 words per sentence."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "dessert",
+            "context": "like a garnish on an overpriced dessert at a Michelin-star restaurant",
+            "is_trap_active": false,
+            "reason": "Context of a restaurant makes the food meaning clear; unlikely to be confused with 'desierto' (desert)."
+          },
+          {
+            "word": "large",
+            "context": "A large New York Yankees baseball cap was perched precariously on his head",
+            "is_trap_active": false,
+            "reason": "Describing a hat; 'big' is the obvious meaning, not 'long' (largo)."
+          },
+          {
+            "word": "once",
+            "context": "Once inside they took off his clothes and placed him inside the sensory deprivation tank",
+            "is_trap_active": false,
+            "reason": "Context of entering a tank makes 'as soon as' clear; 'eleven' (once in Spanish) makes no sense here."
+          },
+          {
+            "word": "parents",
+            "context": "The parents quickly grabbed their young children and moved away",
+            "is_trap_active": false,
+            "reason": "Context of grabbing children makes 'father and mother' obvious, not general 'relatives' (parientes)."
+          },
+          {
+            "word": "song",
+            "context": "Before the song could finish playing",
+            "is_trap_active": false,
+            "reason": "Context of playing music makes 'musical piece' clear; Spanish 'son' (sound/rhythm) is close enough in meaning that confusion is minimal."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.29,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 2.12,
+      "evp_coverage_pct": 85.3,
+      "cognate_pct": 15.0,
+      "off_list_pct": 14.7
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.29,
+    "estimated_cefr": "A2/B1"
+  }
+}

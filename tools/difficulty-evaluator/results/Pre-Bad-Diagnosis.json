@@ -1,0 +1,116 @@
+{
+  "story_title": "Bad Diagnosis",
+  "profiler": {
+    "word_count": 1056,
+    "unique_word_count": 397,
+    "evp_coverage_pct": 91.4,
+    "level_distribution": {
+      "A1": 261,
+      "A2": 62,
+      "B1": 33,
+      "B2": 7,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 65.7,
+      "A2": 81.4,
+      "B1": 89.7,
+      "B2": 91.4,
+      "C1": 91.4,
+      "C2": 91.4
+    },
+    "cognate_count": 72,
+    "cognate_pct": 18.1,
+    "false_friend_count": 3,
+    "off_list_count": 34,
+    "off_list_pct": 8.6,
+    "vocab_difficulty_raw": 1.41,
+    "vocab_difficulty_adjusted": 1.63,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Bad Diagnosis",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "give the benefit of the doubt",
+          "kill two birds with one stone",
+          "figure out",
+          "sort out",
+          "pull up (results on computer)"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "present simple (dialogue)",
+          "past continuous",
+          "present perfect",
+          "past perfect (hadn't checked, had just interrupted, had just asked)",
+          "going to future",
+          "first conditional",
+          "modals (can, should, would, could)",
+          "relative clauses",
+          "reported/indirect speech"
+        ],
+        "notes": "Dominated by simple past narrative and present simple dialogue, but past perfect appears 3-4 times, along with a first conditional, reported speech, and relative clauses. These higher structures appear as a noticeable minority (~15% of sentences)."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Nintendo Switch (globally known)",
+          "Sketchers sneakers (brand)",
+          "WhatsApp voice notes (globally known)",
+          "summer vacation",
+          "supper"
+        ],
+        "notes": "No North American-specific customs that would impede comprehension. Brands and technology are globally recognized. Medical visit setting is universal. Light references only."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 15,
+        "notes": "Mixed lengths. Dialogue lines are very short (3-10 words), but narrative sentences range from 15-25 words with subordinate clauses and compound structures. Some sentences over 20 words in narrative passages."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "Did he actually just ask the nurse to let another patient come into the same office...",
+            "is_trap_active": false,
+            "reason": "Used emphatically in a rhetorical question about what just happened. Context makes it clear this means 'really/in fact,' not 'currently.' A Spanish speaker may briefly stumble but the sentence structure clarifies meaning."
+          },
+          {
+            "word": "record",
+            "context": "clicked on his daughter's chat and pressed record",
+            "is_trap_active": false,
+            "reason": "Used in the context of pressing a button to record a WhatsApp voice note. The action of 'pressing record' is universally understood in digital contexts. Spanish 'recordar' (to remember) is clearly not the intended meaning here."
+          },
+          {
+            "word": "test",
+            "context": "the suspicious growth that made me want to test for it",
+            "is_trap_active": false,
+            "reason": "'Test' is borrowed into Spanish with the same meaning (medical test/exam). In a medical context about cancer screening, the meaning is transparent. Not a genuine false friend trap."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.14,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.63",
+      "evp_coverage_pct": "91.4",
+      "cognate_pct": "18.1",
+      "off_list_pct": "8.6"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.14,
+    "estimated_cefr": "A2/B1"
+  }
+}

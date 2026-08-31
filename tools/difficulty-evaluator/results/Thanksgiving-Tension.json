@@ -1,0 +1,117 @@
+{
+  "story_title": "Thanksgiving Tension",
+  "profiler": {
+    "word_count": 1090,
+    "unique_word_count": 428,
+    "evp_coverage_pct": 92.1,
+    "level_distribution": {
+      "A1": 278,
+      "A2": 61,
+      "B1": 36,
+      "B2": 14,
+      "C1": 5,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 65.0,
+      "A2": 79.2,
+      "B1": 87.6,
+      "B2": 90.9,
+      "C1": 92.1,
+      "C2": 92.1
+    },
+    "cognate_count": 63,
+    "cognate_pct": 14.7,
+    "false_friend_count": 2,
+    "off_list_count": 34,
+    "off_list_pct": 7.9,
+    "vocab_difficulty_raw": 1.49,
+    "vocab_difficulty_adjusted": 1.64,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Thanksgiving Tension",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "let down",
+          "pulled up",
+          "cutting you off",
+          "dish up",
+          "looked down upon",
+          "what got into her",
+          "temper tantrum"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "present simple",
+          "present continuous",
+          "modals (could, would, must)",
+          "first conditional",
+          "passive voice",
+          "relative clauses",
+          "participial clauses"
+        ],
+        "notes": "The narrative is dominated by past simple and past continuous, with a noticeable minority of sentences using past perfect, passive voice, and relative clauses. The dialogue features present simple, modals, and first conditionals."
+      },
+      "cultural_reference_load": {
+        "score": 4,
+        "references_found": [
+          "Thanksgiving",
+          "carry-on suitcase",
+          "dormitory",
+          "woke",
+          "American football on Thanksgiving",
+          "Monopoly",
+          "US college tuition ($11,000 a year)",
+          "saying grace",
+          "Thanksgiving food (turkey, mashed potatoes, stuffing, pumpkin pie)",
+          "veganism"
+        ],
+        "notes": "The entire setting and plot revolve around a US Thanksgiving dinner, including specific traditions like watching American football, saying grace, and eating traditional Thanksgiving foods. Missing this cultural context means missing the backdrop of the family tension."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 15,
+        "notes": "Mixed sentence lengths. The narrative contains several compound and complex sentences with subordinate clauses (e.g., 'While she was convinced...', 'Her political science professor... had already told the students that...'). Average length is moderate, but some sentences exceed 25 words."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "parents",
+            "context": "Her parents still thought she was still their sweet, little angel.",
+            "is_trap_active": false,
+            "reason": "Although 'parents' translates to 'parientes' (relatives in general) in Spanish, the context immediately refers to her 'mom and dad', making the meaning clear."
+          },
+          {
+            "word": "pie",
+            "context": "She’ll be back soon for pumpkin pie",
+            "is_trap_active": false,
+            "reason": "In the context of a Thanksgiving dinner and 'pumpkin pie', it is obvious that it refers to the dessert, not the Spanish word for foot."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.64,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.64",
+      "evp_coverage_pct": "92.1",
+      "cognate_pct": "14.7",
+      "off_list_pct": "7.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.64,
+    "estimated_cefr": "B1"
+  }
+}

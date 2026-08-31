@@ -1,0 +1,116 @@
+{
+  "story_title": "Blue Valentine_s Day",
+  "profiler": {
+    "word_count": 979,
+    "unique_word_count": 352,
+    "evp_coverage_pct": 92.6,
+    "level_distribution": {
+      "A1": 252,
+      "A2": 48,
+      "B1": 13,
+      "B2": 9,
+      "C1": 4,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 71.6,
+      "A2": 85.2,
+      "B1": 88.9,
+      "B2": 91.5,
+      "C1": 92.6,
+      "C2": 92.6
+    },
+    "cognate_count": 50,
+    "cognate_pct": 14.2,
+    "false_friend_count": 2,
+    "off_list_count": 26,
+    "off_list_pct": 7.4,
+    "vocab_difficulty_raw": 1.36,
+    "vocab_difficulty_adjusted": 1.53,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Blue Valentine_s Day",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "break up with",
+          "off limits",
+          "living this lie",
+          "gone downhill",
+          "in your shoes",
+          "done up",
+          "average Joe",
+          "figure out",
+          "burst into tears",
+          "dug in",
+          "bring it up",
+          "take a break",
+          "hold you back",
+          "dropped her off"
+        ],
+        "count": 14
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "past continuous",
+          "present perfect",
+          "past perfect",
+          "going to future",
+          "first conditional",
+          "modals (should, would, could)"
+        ],
+        "notes": "A mix of simple and complex structures. Past perfect and present perfect appear multiple times, alongside conditionals and relative clauses, making up roughly 20-30% of the sentences."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Valentine's Day dating rules",
+          "tipping culture ($30 tip)",
+          "boardwalk"
+        ],
+        "notes": "Valentine's Day is globally known, but the specific 'rules' about breaking up before it and the tipping culture are light North American references that can be understood from context."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 15,
+        "notes": "Moderate sentences with some conjunctions and compound structures. Average length is around 12-18 words, with occasional longer complex sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "dessert",
+            "context": "It was her favorite dessert.",
+            "is_trap_active": false,
+            "reason": "Context clearly indicates food eaten after a meal, making confusion with 'desierto' unlikely."
+          },
+          {
+            "word": "once",
+            "context": "Once she finished, I would have to bring it up.",
+            "is_trap_active": false,
+            "reason": "Used as a time conjunction meaning 'as soon as', which is clear from the context of waiting for her to finish eating."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.36,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.53,
+      "evp_coverage_pct": 92.6,
+      "cognate_pct": 14.2,
+      "off_list_pct": 7.4
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.36,
+    "estimated_cefr": "A2/B1"
+  }
+}

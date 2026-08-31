@@ -1,0 +1,106 @@
+{
+  "story_title": "Ryan_s Present",
+  "profiler": {
+    "word_count": 985,
+    "unique_word_count": 351,
+    "evp_coverage_pct": 88.3,
+    "level_distribution": {
+      "A1": 233,
+      "A2": 47,
+      "B1": 26,
+      "B2": 2,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 66.4,
+      "A2": 79.8,
+      "B1": 87.2,
+      "B2": 87.7,
+      "C1": 88.3,
+      "C2": 88.3
+    },
+    "cognate_count": 54,
+    "cognate_pct": 15.4,
+    "false_friend_count": 1,
+    "off_list_count": 41,
+    "off_list_pct": 11.7,
+    "vocab_difficulty_raw": 1.36,
+    "vocab_difficulty_adjusted": 1.4,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Ryan_s Present",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "let him down / let down (disappoint)",
+          "take advantage of",
+          "make it (arrive)",
+          "pulled up (arrive by vehicle)",
+          "screw you"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past perfect (had ordered, hadn't picked up, had forgotten, hadn't ordered)",
+          "present perfect (haven't seen)",
+          "present simple (dialogue)",
+          "modals (must've, must be)",
+          "going to future (wasn't going to be)",
+          "relative clauses (that promised, that said)",
+          "reported speech (It said that there was)"
+        ],
+        "notes": "Past simple dominates but past perfect appears 4-5 times throughout, present perfect once, and modals several times. Relative clauses are frequent. This mix of simple narrative with recurring past perfect pushes it to a 3."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Black Friday",
+          "Toys 'R' Us (US toy retailer, now defunct)",
+          "Wal-Mart Supercenter",
+          "Craigslist",
+          "eggnog (North American Christmas drink)",
+          "liquor store (US concept)",
+          "Amazon",
+          "New Jersey",
+          "Christmas Eve / Santa traditions"
+        ],
+        "notes": "Multiple US-specific brands and customs (Black Friday, Toys 'R' Us closure, Wal-Mart 24/7, Craigslist marketplace, eggnog). A Latin American learner would recognize Christmas and Santa but not eggnog, Black Friday shopping culture, or the specific US retail brands. Plot is followable without this knowledge but cultural context adds significant comprehension weight."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 15,
+        "notes": "Mix of very short dialogue lines and medium narrative sentences. Some longer sentences with relative clauses (e.g., 'It was the toy that promised to take kids on Latin American adventures...'). Average around 15 words, with occasional compound-complex sentences. Mostly straightforward SVO structure."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "parents",
+            "context": "promised parents to make their kids bilingual",
+            "is_trap_active": false,
+            "reason": "The word 'parents' appears alongside 'kids' and 'bilingual,' making the father-and-mother meaning immediately clear from context. A Spanish speaker would not confuse this with 'parientes' (relatives) given the surrounding references to children."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.07,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.4",
+      "evp_coverage_pct": "88.3",
+      "cognate_pct": "15.4",
+      "off_list_pct": "11.7"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.07,
+    "estimated_cefr": "A2/B1"
+  }
+}

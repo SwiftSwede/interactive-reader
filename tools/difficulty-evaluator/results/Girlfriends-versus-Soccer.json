@@ -1,0 +1,102 @@
+{
+  "story_title": "Girlfriends versus Soccer (2)",
+  "profiler": {
+    "word_count": 1099,
+    "unique_word_count": 365,
+    "evp_coverage_pct": 89.3,
+    "level_distribution": {
+      "A1": 249,
+      "A2": 41,
+      "B1": 21,
+      "B2": 12,
+      "C1": 3,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 68.2,
+      "A2": 79.5,
+      "B1": 85.2,
+      "B2": 88.5,
+      "C1": 89.3,
+      "C2": 89.3
+    },
+    "cognate_count": 40,
+    "cognate_pct": 11.0,
+    "false_friend_count": 0,
+    "off_list_count": 39,
+    "off_list_pct": 10.7,
+    "vocab_difficulty_raw": 1.4,
+    "vocab_difficulty_adjusted": 1.37,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Girlfriends versus Soccer (2)",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "figure out",
+          "get a rise out of",
+          "push his buttons",
+          "without a care in the world",
+          "checks out",
+          "wicked (slang)",
+          "get too carried away",
+          "riled up",
+          "fired up"
+        ],
+        "count": 9
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "past continuous",
+          "present perfect",
+          "going to future",
+          "modals (can, must, might, would)",
+          "reported speech",
+          "first conditional",
+          "relative clauses"
+        ],
+        "notes": "The text is a dialogue dominated by simple tenses, but contains a noticeable minority of sentences with past continuous, present perfect, reported speech, and basic conditionals."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Real Madrid, Barcelona, Clásico",
+          "Cristiano Ronaldo, Juventus, Manchester United",
+          "Tik Tok",
+          "Trudeau",
+          "muffin top",
+          "wicked (slang)"
+        ],
+        "notes": "Most references are global pop culture or sports. 'Trudeau' is specific to Canadian politics but clear from context. 'Muffin top' and 'wicked' are North American slang but inferable."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "Mostly short to moderate sentences typical of a dialogue. Occasional compound or complex sentences, but average length remains in the 12-18 word range."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 2.41,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.37",
+      "evp_coverage_pct": "89.3",
+      "cognate_pct": "11.0",
+      "off_list_pct": "10.7"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.41,
+    "estimated_cefr": "A2/B1"
+  }
+}

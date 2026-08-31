@@ -1,0 +1,132 @@
+{
+  "story_title": "Gangster Santa",
+  "profiler": {
+    "word_count": 1994,
+    "unique_word_count": 639,
+    "evp_coverage_pct": 83.1,
+    "level_distribution": {
+      "A1": 362,
+      "A2": 78,
+      "B1": 55,
+      "B2": 32,
+      "C1": 2,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 56.7,
+      "A2": 68.9,
+      "B1": 77.5,
+      "B2": 82.5,
+      "C1": 82.8,
+      "C2": 83.1
+    },
+    "cognate_count": 76,
+    "cognate_pct": 11.9,
+    "false_friend_count": 3,
+    "off_list_count": 108,
+    "off_list_pct": 16.9,
+    "vocab_difficulty_raw": 1.57,
+    "vocab_difficulty_adjusted": 1.85,
+    "estimated_cefr": "B2+"
+  },
+  "rubric": {
+    "story_title": "Gangster Santa",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "stop by",
+          "make up",
+          "in the nick of time",
+          "took off",
+          "pass the time",
+          "seeing things",
+          "out of sight",
+          "shut you up",
+          "on top of that",
+          "hard of hearing",
+          "keep his trap shut",
+          "crosses the line",
+          "pass up",
+          "get in touch with",
+          "pay you a little visit",
+          "ending up"
+        ],
+        "count": 16
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "past continuous",
+          "present perfect",
+          "past perfect",
+          "going to future",
+          "modals (should, would, might, could, may)",
+          "first conditional",
+          "relative clauses",
+          "passive voice"
+        ],
+        "notes": "A mix of simple and complex structures. Past perfect, conditionals, and relative clauses appear as a noticeable minority. Dialogue is mostly simple, but narrative and Santa's monologue contain more complex grammar."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Santa Claus / reindeer / sleigh",
+          "Bailey's Irish Cream",
+          "United Airlines",
+          "Little Mermaid Barbie",
+          "Bad Bunny lyrics",
+          "Colombian cartels",
+          "fentanyl overdose",
+          "Rio Grande",
+          "Baby Jesus (Latin American Christmas tradition)"
+        ],
+        "notes": "The text explicitly addresses the cultural difference between Santa and Baby Jesus in Latin America, making it highly accessible. References to cartels, Bad Bunny, and the Rio Grande are very familiar to a Latin American reader. US-specific elements like fentanyl are understandable from context."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 13,
+        "notes": "Mixed lengths. Dialogue consists of short, simple sentences, while the narrative and Santa's monologue feature longer, more complex sentences with subordinate clauses and colons."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "once",
+            "context": "like you once were",
+            "is_trap_active": true,
+            "reason": "Spanish 'once' means eleven. A Spanish speaker might be confused by 'once were', though context provides some clues."
+          },
+          {
+            "word": "parents",
+            "context": "your parents make up to make you behave",
+            "is_trap_active": false,
+            "reason": "Spanish 'parientes' means relatives. While not an exact match for 'parents', the immediate context of 'mom and dad' clarifies the meaning."
+          },
+          {
+            "word": "sock",
+            "context": "sticking a sock in your mouth to shut you up",
+            "is_trap_active": false,
+            "reason": "Spanish 'saco' means jacket. The context of 'stinky feet' makes it clear that it refers to a foot covering, not a jacket."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.71,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.85",
+      "evp_coverage_pct": "83.1",
+      "cognate_pct": "11.9",
+      "off_list_pct": "16.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.71,
+    "estimated_cefr": "B1"
+  }
+}

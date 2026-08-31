@@ -1,0 +1,136 @@
+{
+  "story_title": "Grandma Gossip",
+  "profiler": {
+    "word_count": 1077,
+    "unique_word_count": 410,
+    "evp_coverage_pct": 86.8,
+    "level_distribution": {
+      "A1": 268,
+      "A2": 53,
+      "B1": 26,
+      "B2": 6,
+      "C1": 3,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 65.4,
+      "A2": 78.3,
+      "B1": 84.6,
+      "B2": 86.1,
+      "C1": 86.8,
+      "C2": 86.8
+    },
+    "cognate_count": 62,
+    "cognate_pct": 15.1,
+    "false_friend_count": 4,
+    "off_list_count": 54,
+    "off_list_pct": 13.2,
+    "vocab_difficulty_raw": 1.38,
+    "vocab_difficulty_adjusted": 1.69,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Grandma Gossip",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "gimme the dirt",
+          "spill the beans",
+          "slid into his DMs",
+          "plain English",
+          "make the first move",
+          "eye candy",
+          "loaded (wealthy)",
+          "pull that off",
+          "on fire (metaphorical)",
+          "made it to third base",
+          "kicked him to the curb",
+          "goodie-two-shoes",
+          "had her way with him",
+          "packing heat (innuendo)",
+          "je ne sais quois",
+          "fairy godmother"
+        ],
+        "count": 16
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple (dominant)",
+          "past simple",
+          "present continuous",
+          "present perfect (has he made it, hasn't passed away)",
+          "past perfect (hadn't passed away)",
+          "second conditional (If I were your age... I would be buying)",
+          "third conditional (would've turned out differently... if your grandfather hadn't passed away)",
+          "first conditional (If 14 is old enough, then yeah)",
+          "modals (can, should, would, could)",
+          "relative clauses (who cares, that send him)",
+          "comparatives (bigger, more expensive)"
+        ],
+        "notes": "Dialogue is dominated by simple present and past tenses, but conditionals (including a third conditional), present perfect, and past perfect appear as a noticeable minority. Complex structures are scattered throughout rather than concentrated."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Young and the Restless (US soap opera)",
+          "Harlequin novels (romance novel brand)",
+          "third base (US baseball metaphor for sexual progression)",
+          "Disney movies",
+          "college sweetheart (US dating concept)",
+          "Punta Cana (Caribbean destination, known to LatAm learners)",
+          "Instagram/DMs (universal internet culture)"
+        ],
+        "notes": "The 'third base' reference is specifically North American dating culture and would likely confuse a LatAm learner. Harlequin novels and Young and the Restless are US-specific but contextually inferable. Plot remains followable without cultural knowledge."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Dialogue format with predominantly short, punchy exchanges. A few longer compound-complex sentences (e.g., the mother's dating history) push complexity up, but the average remains moderate."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "once",
+            "context": "I'm only bringing it out once my demands are met",
+            "is_trap_active": true,
+            "reason": "Spanish 'once' means 'eleven'; here it means 'as soon as/when', which could genuinely confuse a Spanish speaker."
+          },
+          {
+            "word": "respect",
+            "context": "He won't respect you",
+            "is_trap_active": false,
+            "reason": "Spanish 'respecto' means 'regarding', but in this context the meaning of esteem/regard is clear from the dating conversation."
+          },
+          {
+            "word": "soap",
+            "context": "those soap operas and dirty novels",
+            "is_trap_active": false,
+            "reason": "'Soap operas' is a recognized compound term; the individual word 'soap' vs Spanish 'sopa' (soup) is not a trap in this compound."
+          },
+          {
+            "word": "subject",
+            "context": "will you promise to change the subject",
+            "is_trap_active": false,
+            "reason": "Spanish 'sujeto' means 'person/individual', but 'change the subject' is a transparent collocation meaning 'change the topic'."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.56,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.69",
+      "evp_coverage_pct": "86.8",
+      "cognate_pct": "15.1",
+      "off_list_pct": "13.2"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.56,
+    "estimated_cefr": "B1"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "story_title": "Game Question and Answers",
+  "profiler": {
+    "word_count": 1443,
+    "unique_word_count": 494,
+    "evp_coverage_pct": 80.8,
+    "level_distribution": {
+      "A1": 305,
+      "A2": 55,
+      "B1": 20,
+      "B2": 17,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 61.7,
+      "A2": 72.9,
+      "B1": 76.9,
+      "B2": 80.4,
+      "C1": 80.8,
+      "C2": 80.8
+    },
+    "cognate_count": 63,
+    "cognate_pct": 12.8,
+    "false_friend_count": 5,
+    "off_list_count": 95,
+    "off_list_pct": 19.2,
+    "vocab_difficulty_raw": 1.39,
+    "vocab_difficulty_adjusted": 1.87,
+    "estimated_cefr": "B2+"
+  },
+  "rubric": {
+    "story_title": "Game Question and Answers",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "gym rat",
+          "sweet tooth",
+          "belly flop",
+          "something came up",
+          "get out of",
+          "broke down",
+          "hit on",
+          "kill time",
+          "rolled out the red carpet"
+        ],
+        "count": 9
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "basic modals",
+          "second conditional",
+          "reported speech"
+        ],
+        "notes": "The text is dominated by short, simple questions and answers. A few instances of second conditionals and reported speech appear, but they are rare."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Forever 21",
+          "Gold's Gym",
+          "keg stand",
+          "Chevrolet Camaro",
+          "Heathrow airport",
+          "various pop culture names (Madonna, Batman, Angelina Jolie, etc.)"
+        ],
+        "notes": "Most references are globally known pop culture figures or basic concepts. 'Keg stand' is a specific US college party culture reference, but the overall cultural load is light and understandable from context."
+      },
+      "sentence_structure": {
+        "score": 1,
+        "avg_sentence_length": 8,
+        "notes": "The text consists almost entirely of very short questions and brief parenthetical answers. Average sentence length is well under 12 words."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "carpet",
+            "context": "Who rolled out the red carpet for Olga?",
+            "is_trap_active": false,
+            "reason": "The phrase 'rolled out the red carpet' is a globally understood expression, making the false friend meaning of 'carpeta' (folder) unlikely."
+          },
+          {
+            "word": "dessert",
+            "context": "What did Dorian do when Olga got her dessert?",
+            "is_trap_active": false,
+            "reason": "Context of a restaurant dinner makes it clear it refers to food, not a desert (desierto)."
+          },
+          {
+            "word": "parents",
+            "context": "Were there parents supervising the kids at the party?",
+            "is_trap_active": false,
+            "reason": "The context of supervising kids makes it clear it refers to mothers and fathers, not general relatives (parientes)."
+          },
+          {
+            "word": "sauce",
+            "context": "What dangerous thing did the officer find in one of their bags? (Mexican hot sauce)",
+            "is_trap_active": false,
+            "reason": "'Hot sauce' is a clear food item, and Latin American speakers are familiar with 'salsa' meaning sauce."
+          },
+          {
+            "word": "song",
+            "context": "What song was everybody singing?",
+            "is_trap_active": false,
+            "reason": "The context of singing makes it clear it refers to a musical piece, not just a sound (son)."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.11,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.87,
+      "evp_coverage_pct": 80.8,
+      "cognate_pct": 12.8,
+      "off_list_pct": 19.2
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.11,
+    "estimated_cefr": "A2/B1"
+  }
+}

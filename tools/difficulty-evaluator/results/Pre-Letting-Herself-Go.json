@@ -1,0 +1,113 @@
+{
+  "story_title": "Pre-Letting Herself Go (2)",
+  "profiler": {
+    "word_count": 1293,
+    "unique_word_count": 406,
+    "evp_coverage_pct": 91.6,
+    "level_distribution": {
+      "A1": 293,
+      "A2": 44,
+      "B1": 20,
+      "B2": 13,
+      "C1": 1,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 72.2,
+      "A2": 83.0,
+      "B1": 87.9,
+      "B2": 91.1,
+      "C1": 91.4,
+      "C2": 91.6
+    },
+    "cognate_count": 44,
+    "cognate_pct": 10.8,
+    "false_friend_count": 2,
+    "off_list_count": 34,
+    "off_list_pct": 8.4,
+    "vocab_difficulty_raw": 1.35,
+    "vocab_difficulty_adjusted": 1.56,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-Letting Herself Go (2)",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "letting herself go",
+          "shoot up dope",
+          "hang out",
+          "catch up",
+          "lost touch",
+          "drop it",
+          "make sense",
+          "TLC",
+          "get rid of",
+          "like a pro",
+          "in the meantime",
+          "it'll do"
+        ],
+        "count": 12
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "past continuous",
+          "present perfect",
+          "present perfect continuous",
+          "first conditional",
+          "modals (would, could, should)"
+        ],
+        "notes": "A mix of simple and complex structures. Present perfect and past continuous appear as a noticeable minority. Conditionals and relative clauses are present throughout the dialogue."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "TLC (Tender Loving Care)",
+          "Uber",
+          "Tulum, Punta Cana, Ibiza"
+        ],
+        "notes": "Mostly universal settings and situations. TLC might require a brief explanation, but Uber and travel destinations are globally known."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "Dominated by short, conversational dialogue typical of a script. Some moderate compound sentences in the narrative stage directions."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "It’s actually how we met.",
+            "is_trap_active": false,
+            "reason": "While 'actually' looks like 'actualmente' (currently), the context of explaining how they met makes it clear it means 'in fact'."
+          },
+          {
+            "word": "embarrassed",
+            "context": "[The barista walks away, embarrassed]",
+            "is_trap_active": false,
+            "reason": "A barista walking away 'embarazada' (pregnant) doesn't make sense in this context, so the reader can infer it means ashamed."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.37,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.56,
+      "evp_coverage_pct": 91.6,
+      "cognate_pct": 10.8,
+      "off_list_pct": 8.4
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.37,
+    "estimated_cefr": "A2/B1"
+  }
+}

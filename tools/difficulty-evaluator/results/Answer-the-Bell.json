@@ -1,0 +1,141 @@
+{
+  "story_title": "Answer the Bell",
+  "profiler": {
+    "word_count": 1949,
+    "unique_word_count": 597,
+    "evp_coverage_pct": 85.8,
+    "level_distribution": {
+      "A1": 322,
+      "A2": 96,
+      "B1": 64,
+      "B2": 26,
+      "C1": 3,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 53.9,
+      "A2": 70.0,
+      "B1": 80.7,
+      "B2": 85.1,
+      "C1": 85.6,
+      "C2": 85.8
+    },
+    "cognate_count": 93,
+    "cognate_pct": 15.6,
+    "false_friend_count": 4,
+    "off_list_count": 85,
+    "off_list_pct": 14.2,
+    "vocab_difficulty_raw": 1.62,
+    "vocab_difficulty_adjusted": 1.95,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Answer the Bell",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "slim pickings",
+          "come by (opportunity she could come by)",
+          "showing her the ropes",
+          "off his rocker",
+          "pissing me off",
+          "stopped in their tracks",
+          "the grass was greener on the other side",
+          "to top it all off",
+          "wound up (wound up and struck)",
+          "came to (before he came to)",
+          "going down (if I'm going down)",
+          "stand out"
+        ],
+        "count": 12
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past continuous",
+          "past perfect (she'd been training, he'd been hiding)",
+          "present perfect (has been renamed)",
+          "first conditional (if you let her go, we can answer)",
+          "second conditional (if you knew the truth you'd realize)",
+          "wish structure (Jenny wished she had extra time)",
+          "modals (can, should, must, would, might)",
+          "relative clauses (who, that, which)",
+          "passive voice (the day was saved)",
+          "participial clauses (looking down, his hands tucked)",
+          "reported speech"
+        ],
+        "notes": "Narrative is dominated by past simple with a noticeable minority of more complex structures (past perfect, conditionals, wish). Complex structures appear in roughly 25-30% of sentences, but the text is not grammatically dense throughout."
+      },
+      "cultural_reference_load": {
+        "score": 4,
+        "references_found": [
+          "Canadian provincial alcohol sales laws (liquor stores vs grocery stores)",
+          "Air Canada (specific brand)",
+          "oil patch workers / camps up north (Alberta oil sands culture)",
+          "British Columbia as 'hippy' / 'progressive province'",
+          "Trudeau (Canadian PM)",
+          "systemic racism / social justice discourse (North American political context)",
+          "hockey sticks as the 'most Canadian way' to stop an attacker",
+          "passive-aggressive Canadian stereotype",
+          "land of opportunity / freedom (American Dream trope applied to Canada)",
+          "redneck (North American class/cultural term)",
+          "body shaming / big-boned (body positivity discourse)",
+          "machismo (Latin American cultural concept, but used in English context)",
+          "coppers (slang for police)",
+          "mid / middy (slang for mediocre attractiveness)"
+        ],
+        "notes": "The entire plot hinges on understanding that Canadian provinces restrict alcohol sales to separate liquor stores, not grocery stores. Missing this cultural context means missing the central conflict. Additional layers of Canadian political and social discourse (systemic racism, progressive provinces, oil patch culture) add further comprehension weight."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 20,
+        "notes": "Mixed lengths with some very long compound-complex sentences (e.g., the outside observer passage at 40+ words) and many shorter dialogue lines. Subordinate clauses and participial phrases appear regularly but do not dominate."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "Actually, you're in hippy British Columbia and you're a minority.",
+            "is_trap_active": false,
+            "reason": "Used as 'in fact' which is the English meaning. A Spanish speaker might initially think 'actualmente' (currently), but the context of correcting a misconception makes the English meaning clear."
+          },
+          {
+            "word": "grocery",
+            "context": "Why is there no alcohol at the grocery stores here?",
+            "is_trap_active": false,
+            "reason": "Repeated extensively in the context of stores, shopping, and buying alcohol. The Spanish 'grosería' (rudeness) is so far from the contextual meaning that confusion is unlikely after the first mention."
+          },
+          {
+            "word": "once",
+            "context": "you might deal with some foreigner who didn't speak Spanish once a day",
+            "is_trap_active": false,
+            "reason": "Clearly means 'one time' in context. 'Once a day' is a common expression that a learner would recognize as frequency, not the number eleven."
+          },
+          {
+            "word": "realize",
+            "context": "Silvia realized that the man was off his rocker.",
+            "is_trap_active": true,
+            "reason": "Spanish 'realizar' means 'to carry out/perform,' while English 'realize' means 'to become aware.' A Spanish speaker could initially read this as 'Silvia carried out that the man...' which makes no sense, but the oddity might prompt re-reading. Appears multiple times in the text, so the trap recurs."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 3.04,
+    "estimated_cefr": "B1/B2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.95",
+      "evp_coverage_pct": "85.8",
+      "cognate_pct": "15.6",
+      "off_list_pct": "14.2"
+    }
+  },
+  "final": {
+    "overall_difficulty": 3.04,
+    "estimated_cefr": "B1/B2"
+  }
+}

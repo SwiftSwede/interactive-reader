@@ -1,0 +1,111 @@
+{
+  "story_title": "Pre-Tourists for Breakfast (2)",
+  "profiler": {
+    "word_count": 1259,
+    "unique_word_count": 363,
+    "evp_coverage_pct": 87.3,
+    "level_distribution": {
+      "A1": 226,
+      "A2": 60,
+      "B1": 15,
+      "B2": 15,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 62.3,
+      "A2": 78.8,
+      "B1": 82.9,
+      "B2": 87.1,
+      "C1": 87.3,
+      "C2": 87.3
+    },
+    "cognate_count": 59,
+    "cognate_pct": 16.3,
+    "false_friend_count": 0,
+    "off_list_count": 46,
+    "off_list_pct": 12.7,
+    "vocab_difficulty_raw": 1.44,
+    "vocab_difficulty_adjusted": 1.43,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Pre-Tourists for Breakfast (2)",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "sharpest tool in the shed",
+          "dig in",
+          "write off",
+          "short-staffed",
+          "big suckers",
+          "stuffed",
+          "get out of here",
+          "filling their bellies",
+          "small talk",
+          "give me a bite",
+          "sunny side up",
+          "split them",
+          "craving",
+          "set a good example",
+          "put tuition to work",
+          "behind on the orders",
+          "start you off"
+        ],
+        "count": 17
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "past continuous",
+          "present perfect",
+          "first conditional",
+          "wish + past",
+          "had better",
+          "modals (can, would, should)"
+        ],
+        "notes": "Dominated by simple tenses typical of dialogue, but contains a noticeable minority of sentences with past continuous, present perfect, conditionals, and 'wish' structures."
+      },
+      "cultural_reference_load": {
+        "score": 4,
+        "references_found": [
+          "Denny's restaurant chain",
+          "American breakfast items (hash browns, pumpkin spice pancakes, sunny side up eggs, French toast, waffles)",
+          "Cinco de Mayo (US commercial context)",
+          "Tipping culture (waiter's complaint at the end)",
+          "Crayons for kids at restaurants",
+          "Writing off a meal as a business expense",
+          "Card payment methods (tap or insert)"
+        ],
+        "notes": "Heavy cultural references where missing the context (especially tipping and specific breakfast foods) means missing the punchline and key details of the story."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "Mostly short, conversational sentences typical of a dialogue. Occasional compound and complex sentences, but generally straightforward."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 2.73,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.43",
+      "evp_coverage_pct": "87.3",
+      "cognate_pct": "16.3",
+      "off_list_pct": "12.7"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.73,
+    "estimated_cefr": "B1"
+  }
+}

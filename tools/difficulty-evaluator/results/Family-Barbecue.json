@@ -1,0 +1,101 @@
+{
+  "story_title": "Family Barbecue",
+  "profiler": {
+    "word_count": 1178,
+    "unique_word_count": 385,
+    "evp_coverage_pct": 89.9,
+    "level_distribution": {
+      "A1": 267,
+      "A2": 49,
+      "B1": 23,
+      "B2": 6,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 69.4,
+      "A2": 82.1,
+      "B1": 88.1,
+      "B2": 89.6,
+      "C1": 89.9,
+      "C2": 89.9
+    },
+    "cognate_count": 38,
+    "cognate_pct": 9.9,
+    "false_friend_count": 1,
+    "off_list_count": 39,
+    "off_list_pct": 10.1,
+    "vocab_difficulty_raw": 1.34,
+    "vocab_difficulty_adjusted": 1.42,
+    "estimated_cefr": "A2+"
+  },
+  "rubric": {
+    "story_title": "Family Barbecue",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "make a fuss",
+          "give you a lickin'",
+          "keep this up",
+          "picking up (wind)",
+          "changed its mind (weather)"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "present perfect (have never given)",
+          "I wish I were (subjunctive)",
+          "modals (can, should, must, might)",
+          "first conditional (if you want)"
+        ],
+        "notes": "Dominated by simple tenses in conversational dialogue. A few modals and one 'I wish' structure, but complex grammar is rare and not recurring."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "barbecue culture",
+          "condiments (relish, ketchup, mayonnaise)",
+          "paper plates vs regular plates",
+          "beer/coolers at family gatherings"
+        ],
+        "notes": "Barbecue and family gathering context is universally relatable. Some condiment names like 'relish' may be unfamiliar but are understandable from context."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 10,
+        "notes": "Short conversational exchanges typical of dialogue. Mostly simple sentences with occasional conjunctions. Very few compound or complex sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "once",
+            "context": "You only cook once a year.",
+            "is_trap_active": false,
+            "reason": "The phrase 'once a year' is a common frequency expression. 'Only' and 'a year' provide strong context that 'once' means 'one time,' not 'eleven' as in Spanish."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.73,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.42",
+      "evp_coverage_pct": "89.9",
+      "cognate_pct": "9.9",
+      "off_list_pct": "10.1"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.73,
+    "estimated_cefr": "A2"
+  }
+}

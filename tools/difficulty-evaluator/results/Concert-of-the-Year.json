@@ -1,0 +1,122 @@
+{
+  "story_title": "Concert of the Year",
+  "profiler": {
+    "word_count": 1134,
+    "unique_word_count": 386,
+    "evp_coverage_pct": 87.3,
+    "level_distribution": {
+      "A1": 252,
+      "A2": 53,
+      "B1": 20,
+      "B2": 10,
+      "C1": 1,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 65.3,
+      "A2": 79.0,
+      "B1": 84.2,
+      "B2": 86.8,
+      "C1": 87.0,
+      "C2": 87.3
+    },
+    "cognate_count": 58,
+    "cognate_pct": 15.0,
+    "false_friend_count": 2,
+    "off_list_count": 49,
+    "off_list_pct": 12.7,
+    "vocab_difficulty_raw": 1.39,
+    "vocab_difficulty_adjusted": 1.53,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Concert of the Year",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "cheap out",
+          "nosebleeds",
+          "come along",
+          "I'm good",
+          "broke up",
+          "opened for",
+          "silver lining",
+          "living under a rock",
+          "made it back",
+          "hang a right",
+          "piss yourself",
+          "pop a squat",
+          "filled to the brim",
+          "passed through Diana's system"
+        ],
+        "count": 14
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "past continuous",
+          "past perfect",
+          "first conditional",
+          "modals (can, must, have to)",
+          "relative clauses (who, that)",
+          "reported speech"
+        ],
+        "notes": "The text is a dialogue dominated by simple tenses and conversational structures, but contains a noticeable minority of past perfect, past continuous, and conditionals, along with relative clauses."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Bad Bunny",
+          "Black Sabbath",
+          "AC/DC",
+          "nosebleeds (concert seating)",
+          "vodka cran",
+          "designated driver",
+          "VIP passes / backstage",
+          "concession"
+        ],
+        "notes": "The setting is a Bad Bunny concert in Miami, which is highly familiar to a Latin American learner. North American concert culture terms like 'nosebleeds' and 'vodka cran' are present but easily understood from context."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "As a dialogue, the text features mostly short to moderate conversational sentences with some compound and complex structures, averaging around 14 words per sentence."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "contest",
+            "context": "My boyfriend won a contest so we had VIP passes to go backstage",
+            "is_trap_active": false,
+            "reason": "The context of 'winning a contest' makes it clear that it means a competition, not the Spanish 'contestar' (to answer)."
+          },
+          {
+            "word": "song",
+            "context": "I don’t wanna miss a song cause of my bladder.",
+            "is_trap_active": false,
+            "reason": "In the context of a concert and music, 'song' is easily understood as a musical piece, not the Spanish 'son' (sound/rhythm)."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.36,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.53",
+      "evp_coverage_pct": "87.3",
+      "cognate_pct": "15.0",
+      "off_list_pct": "12.7"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.36,
+    "estimated_cefr": "A2/B1"
+  }
+}

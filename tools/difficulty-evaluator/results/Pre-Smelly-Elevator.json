@@ -1,0 +1,103 @@
+{
+  "story_title": "Smelly Elevator",
+  "profiler": {
+    "word_count": 786,
+    "unique_word_count": 358,
+    "evp_coverage_pct": 91.1,
+    "level_distribution": {
+      "A1": 218,
+      "A2": 56,
+      "B1": 34,
+      "B2": 16,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 60.9,
+      "A2": 76.5,
+      "B1": 86.0,
+      "B2": 90.5,
+      "C1": 91.1,
+      "C2": 91.1
+    },
+    "cognate_count": 47,
+    "cognate_pct": 13.1,
+    "false_friend_count": 1,
+    "off_list_count": 32,
+    "off_list_pct": 8.9,
+    "vocab_difficulty_raw": 1.55,
+    "vocab_difficulty_adjusted": 1.63,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Smelly Elevator",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "landed my dream job",
+          "get across",
+          "have a hard time",
+          "deal with",
+          "take it anymore",
+          "first taste of freedom",
+          "scrunched up her face",
+          "shit like that"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "third conditional",
+          "present simple",
+          "relative clauses",
+          "gerund phrases",
+          "infinitive clauses"
+        ],
+        "notes": "The text is mostly narrative past simple and past continuous, with noticeable instances of past perfect and a third conditional. Subordinate clauses and gerund/infinitive phrases are used throughout."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "university student life",
+          "apartment living",
+          "marijuana use"
+        ],
+        "notes": "The setting and themes are universal and easily understood by a Latin American adult without specific North American cultural knowledge."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 16,
+        "notes": "Mixed sentence lengths with some compound and complex sentences containing multiple subordinate clauses. A few sentences exceed 30 words."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "parents",
+            "context": "stay at home with your parents",
+            "is_trap_active": false,
+            "reason": "While 'parents' can be confused with 'parientes' (relatives), the context of a young person living at home makes it clear it refers to mother and father."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.19,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.63,
+      "evp_coverage_pct": 91.1,
+      "cognate_pct": 13.1,
+      "off_list_pct": 8.9
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.19,
+    "estimated_cefr": "A2/B1"
+  }
+}

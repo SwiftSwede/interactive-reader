@@ -1,0 +1,102 @@
+{
+  "story_title": "Student Killer",
+  "profiler": {
+    "word_count": 1111,
+    "unique_word_count": 416,
+    "evp_coverage_pct": 89.2,
+    "level_distribution": {
+      "A1": 260,
+      "A2": 65,
+      "B1": 31,
+      "B2": 14,
+      "C1": 0,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 62.5,
+      "A2": 78.1,
+      "B1": 85.6,
+      "B2": 88.9,
+      "C1": 88.9,
+      "C2": 89.2
+    },
+    "cognate_count": 79,
+    "cognate_pct": 19.0,
+    "false_friend_count": 0,
+    "off_list_count": 45,
+    "off_list_pct": 10.8,
+    "vocab_difficulty_raw": 1.47,
+    "vocab_difficulty_adjusted": 1.41,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Student Killer",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "showed up",
+          "run out of time",
+          "went off without a hitch",
+          "getting in touch with",
+          "reaching out to me",
+          "to the back of my mind",
+          "makes sense",
+          "killing off",
+          "in my wildest of dreams",
+          "on our hands",
+          "let it show"
+        ],
+        "count": 11
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "present perfect",
+          "past perfect",
+          "present simple",
+          "modals (could, ought to)",
+          "first conditional",
+          "reported speech",
+          "indirect questions"
+        ],
+        "notes": "The text is dominated by narrative past simple, but includes a noticeable minority of past perfect, present perfect, and past continuous clauses, along with reported speech and conditionals."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Zoom",
+          "Youtube",
+          "Instagram",
+          "Whatsapp",
+          "Miami Police Missing Persons Department"
+        ],
+        "notes": "The setting is highly relatable for a Latin American learner (taking online English classes). Tech platforms and basic geography are globally understood. No unfamiliar North American customs are present."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 17,
+        "notes": "A mix of short, punchy dialogue and narrative sentences with some longer, multi-clause sentences (e.g., 'So I put the news about Yalimar where I had put the other memories...')."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 2.42,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.41",
+      "evp_coverage_pct": "89.2",
+      "cognate_pct": "19.0",
+      "off_list_pct": "10.8"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.42,
+    "estimated_cefr": "A2/B1"
+  }
+}

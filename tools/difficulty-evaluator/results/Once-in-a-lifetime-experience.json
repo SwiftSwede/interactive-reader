@@ -1,0 +1,121 @@
+{
+  "story_title": "Once in a lifetime experience",
+  "profiler": {
+    "word_count": 1713,
+    "unique_word_count": 548,
+    "evp_coverage_pct": 91.2,
+    "level_distribution": {
+      "A1": 333,
+      "A2": 102,
+      "B1": 48,
+      "B2": 15,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 60.8,
+      "A2": 79.4,
+      "B1": 88.1,
+      "B2": 90.9,
+      "C1": 91.2,
+      "C2": 91.2
+    },
+    "cognate_count": 98,
+    "cognate_pct": 17.9,
+    "false_friend_count": 2,
+    "off_list_count": 48,
+    "off_list_pct": 8.8,
+    "vocab_difficulty_raw": 1.5,
+    "vocab_difficulty_adjusted": 1.65,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Once in a lifetime experience",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "hustle and bustle",
+          "watered-down",
+          "rolled around (time)",
+          "at the top of his lungs",
+          "boring into the back of my head",
+          "in over my head",
+          "made my way",
+          "made a mental note",
+          "geared towards",
+          "checking out",
+          "take 'no' for an answer",
+          "Don't mention it"
+        ],
+        "count": 12
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past continuous (was sharing, was yelling, was sweating)",
+          "past perfect (had been yelling, had started, had adopted)",
+          "present perfect (I've been to)",
+          "first conditional (If you're really interested...)",
+          "mixed conditional (If I wasn't already sweating...)",
+          "modals (could, would, should)",
+          "participial clauses (Not wanting to have...)",
+          "relative clauses (that I go to, who had been yelling)",
+          "reported speech",
+          "gonna (informal future)"
+        ],
+        "notes": "Dominated by past simple narration with a noticeable minority of past continuous, past perfect, conditionals, and participial clauses. Complex structures appear regularly but do not dominate."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Miami Beach, bikinis",
+          "New York skyscrapers, Empire State Building, Central Park, Statue of Liberty",
+          "Rodeo Drive, the Boardwalk (Los Angeles)",
+          "Cartagena walled city",
+          "aguardiente (Colombian drink)",
+          "Colombian pesos",
+          "small bus system (similar to LatAm colectivos)",
+          "Independence Day (movie), Will Smith"
+        ],
+        "notes": "Story is set in Cartagena, Colombia—a familiar Latin American context. US city references are globally known landmarks. The small bus system and social dynamics are very familiar to LatAm readers. Light US-specific references at the start are understandable from context."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 17,
+        "notes": "Mixed sentence lengths with some complex multi-clause sentences (participial openings, relative clauses, conditional structures). Average around 17 words. Narrative style with varied sentence types."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "fence",
+            "context": "surrounded by a high metal fence",
+            "is_trap_active": false,
+            "reason": "The context 'high metal fence' surrounding a home makes it clear this is a barrier/enclosure, not a 'feria' (fair). The adjective 'metal' disambiguates completely."
+          },
+          {
+            "word": "once",
+            "context": "Once in a Lifetime Experience",
+            "is_trap_active": false,
+            "reason": "The phrase 'once in a lifetime' is a well-known English expression. Even if a beginner momentarily thinks of 'eleven,' the phrase 'in a lifetime' makes the meaning 'one time' obvious from context."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.55,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.65",
+      "evp_coverage_pct": "91.2",
+      "cognate_pct": "17.9",
+      "off_list_pct": "8.8"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.55,
+    "estimated_cefr": "B1"
+  }
+}

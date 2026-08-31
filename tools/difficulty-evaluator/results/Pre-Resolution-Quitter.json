@@ -1,0 +1,113 @@
+{
+  "story_title": "Pre-Resolution Quitter",
+  "profiler": {
+    "word_count": 1226,
+    "unique_word_count": 358,
+    "evp_coverage_pct": 89.9,
+    "level_distribution": {
+      "A1": 239,
+      "A2": 47,
+      "B1": 26,
+      "B2": 9,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 66.8,
+      "A2": 79.9,
+      "B1": 87.2,
+      "B2": 89.7,
+      "C1": 89.9,
+      "C2": 89.9
+    },
+    "cognate_count": 52,
+    "cognate_pct": 14.5,
+    "false_friend_count": 1,
+    "off_list_count": 36,
+    "off_list_pct": 10.1,
+    "vocab_difficulty_raw": 1.4,
+    "vocab_difficulty_adjusted": 1.48,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Pre-Resolution Quitter",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "sleep in",
+          "out of it",
+          "giving you a hard time",
+          "burn off",
+          "sit this one out",
+          "ease into things",
+          "hard on you",
+          "get into the swing of things",
+          "on the right track",
+          "take it easy",
+          "I am dragging",
+          "come up",
+          "binge watch",
+          "keep up-to-date",
+          "loosen up",
+          "feel bad for"
+        ],
+        "count": 16
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "will future",
+          "first conditional",
+          "basic passive (was declined)",
+          "basic reported speech (I didn't know you knew)"
+        ],
+        "notes": "Dominated by simple tenses and basic future forms. Frequent use of first conditionals and basic subordinate clauses, but no advanced or complex structures like past perfect or third conditionals."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "New Year's resolution",
+          "Emily in Paris",
+          "brunch",
+          "crossfit",
+          "oat milk latte"
+        ],
+        "notes": "The setting is a modern gym, which is highly universal. References like 'New Year's resolution' and 'brunch' are easily understood from context by an educated LatAm adult."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "Conversational dialogue with short to moderate sentences. Occasional compound sentences with conjunctions, but mostly straightforward subject-verb-object structures."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "once",
+            "context": "It won’t feel that long once we start.",
+            "is_trap_active": false,
+            "reason": "Although 'once' means 'eleven' in Spanish, in this context it is used as a time conjunction ('as soon as'). The sentence structure makes it clear that it is not referring to the number."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.14,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.48",
+      "evp_coverage_pct": "89.9",
+      "cognate_pct": "14.5",
+      "off_list_pct": "10.1"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.14,
+    "estimated_cefr": "A2/B1"
+  }
+}

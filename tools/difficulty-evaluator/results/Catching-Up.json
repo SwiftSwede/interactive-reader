@@ -1,0 +1,129 @@
+{
+  "story_title": "Catching Up",
+  "profiler": {
+    "word_count": 1302,
+    "unique_word_count": 442,
+    "evp_coverage_pct": 86.2,
+    "level_distribution": {
+      "A1": 278,
+      "A2": 51,
+      "B1": 36,
+      "B2": 16,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 62.9,
+      "A2": 74.4,
+      "B1": 82.6,
+      "B2": 86.2,
+      "C1": 86.2,
+      "C2": 86.2
+    },
+    "cognate_count": 60,
+    "cognate_pct": 13.6,
+    "false_friend_count": 3,
+    "off_list_count": 61,
+    "off_list_pct": 13.8,
+    "vocab_difficulty_raw": 1.45,
+    "vocab_difficulty_adjusted": 1.71,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Catching Up",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "catch up with",
+          "fell off the face of the Earth",
+          "out of this world",
+          "knocked her up",
+          "bored out of my tree",
+          "not the sharpest tool in the shed",
+          "get him wasted",
+          "put it on my tab",
+          "for old time's sake",
+          "tight-lipped",
+          "ladies of the night",
+          "mess with",
+          "nowhere to be found",
+          "best bet"
+        ],
+        "count": 14
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "present perfect",
+          "past continuous",
+          "basic modals (could, should, must, would)",
+          "first conditional",
+          "going to future"
+        ],
+        "notes": "Dialogue-heavy text dominated by simple tenses. Modals and conditionals appear occasionally but are not dominant. Present perfect appears a few times. No advanced structures like past perfect, third conditionals, or passive voice."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Canadian country bar",
+          "caesar cocktail (clamato juice, tabasco, worcestershire)",
+          "paralyzer drink",
+          "rye and coke/ginger ale",
+          "high school social groups: jocks, goths, nerds, slackers",
+          "bush parties / house parties",
+          "trailer park",
+          "child support",
+          "distance education",
+          "Pablo/prostitutes stereotype about Colombia",
+          "twerking, champeta"
+        ],
+        "notes": "North American high school social dynamics (jocks, goths, nerds, bush parties) and Canadian drink culture (caesar, paralyzer) require cultural knowledge. The Colombian references (champeta, twerking) are familiar to the learner. Plot is followable but cultural context adds significant comprehension depth."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Dialogue format keeps sentences short and conversational. Mostly subject-verb-object with some compound sentences and basic subordinate clauses. A few longer explanatory sentences about drink recipes."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "once",
+            "context": "But once we entered high school, everything changed.",
+            "is_trap_active": true,
+            "reason": "English 'once' means 'when/as soon as' here, but Spanish 'once' means 'eleven.' A Spanish speaker could be confused by this conjunction usage."
+          },
+          {
+            "word": "parents",
+            "context": "His parents were divorced.",
+            "is_trap_active": true,
+            "reason": "English 'parents' = mother and father; Spanish 'parientes' = relatives in general. Context of divorce makes it somewhat clear but the false friend mapping is still active."
+          },
+          {
+            "word": "sauce",
+            "context": "tabasco sauce, worcestershire sauce",
+            "is_trap_active": false,
+            "reason": "In the context of cocktail ingredients, 'tabasco sauce' is clearly a condiment. The Spanish 'salsa' also means sauce, so the primary meaning overlaps. Not an active trap."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.46,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.71",
+      "evp_coverage_pct": "86.2",
+      "cognate_pct": "13.6",
+      "off_list_pct": "13.8"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.46,
+    "estimated_cefr": "A2/B1"
+  }
+}

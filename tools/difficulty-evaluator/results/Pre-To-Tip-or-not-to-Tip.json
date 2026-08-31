@@ -1,0 +1,116 @@
+{
+  "story_title": "To Tip or not to Tip",
+  "profiler": {
+    "word_count": 1126,
+    "unique_word_count": 376,
+    "evp_coverage_pct": 94.4,
+    "level_distribution": {
+      "A1": 250,
+      "A2": 60,
+      "B1": 28,
+      "B2": 15,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 66.5,
+      "A2": 82.4,
+      "B1": 89.9,
+      "B2": 93.9,
+      "C1": 94.4,
+      "C2": 94.4
+    },
+    "cognate_count": 68,
+    "cognate_pct": 18.1,
+    "false_friend_count": 1,
+    "off_list_count": 21,
+    "off_list_pct": 5.6,
+    "vocab_difficulty_raw": 1.48,
+    "vocab_difficulty_adjusted": 1.51,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "To Tip or not to Tip",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "guilt you into tipping",
+          "on the house",
+          "screwing up",
+          "give the waitress shit",
+          "out of this world",
+          "make up for",
+          "dine and dash",
+          "put themselves through this",
+          "shove it up your ass",
+          "take a shit",
+          "refrain from",
+          "catch her attention",
+          "sick of waiting",
+          "good to go",
+          "came out to",
+          "weighed my options",
+          "on top of that",
+          "start to finish"
+        ],
+        "count": 18
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "first conditional",
+          "second conditional",
+          "modals (should have, couldn't, wouldn't)",
+          "relative clauses",
+          "reported speech"
+        ],
+        "notes": "The text is dominated by past simple narrative, but features a noticeable minority of past perfect structures and conditionals, along with basic relative clauses and reported speech."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "North American tipping culture",
+          "tipping machines",
+          "dine and dash",
+          "busser",
+          "hostess"
+        ],
+        "notes": "The plot revolves around tipping expectations and guilt-tipping, which is a specific North American cultural norm. The story is followable without deep knowledge of it, but understanding the context adds significantly to the comprehension of the conflict."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 16,
+        "notes": "Mixed sentence lengths with a good number of compound and complex sentences containing subordinate clauses. Average length is moderate."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "dessert",
+            "context": "No. I want some dessert, she replied.",
+            "is_trap_active": false,
+            "reason": "Although 'dessert' looks like 'desierto' (desert) in Spanish, the context of a restaurant meal makes the meaning of a sweet after-meal course obvious to the learner."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.65,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.51",
+      "evp_coverage_pct": "94.4",
+      "cognate_pct": "18.1",
+      "off_list_pct": "5.6"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.65,
+    "estimated_cefr": "B1"
+  }
+}

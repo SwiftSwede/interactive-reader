@@ -1,0 +1,98 @@
+{
+  "story_title": "Long Journey for Nothing (2)",
+  "profiler": {
+    "word_count": 1022,
+    "unique_word_count": 349,
+    "evp_coverage_pct": 90.3,
+    "level_distribution": {
+      "A1": 225,
+      "A2": 50,
+      "B1": 33,
+      "B2": 6,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 64.5,
+      "A2": 78.8,
+      "B1": 88.3,
+      "B2": 90.0,
+      "C1": 90.3,
+      "C2": 90.3
+    },
+    "cognate_count": 54,
+    "cognate_pct": 15.5,
+    "false_friend_count": 0,
+    "off_list_count": 34,
+    "off_list_pct": 9.7,
+    "vocab_difficulty_raw": 1.44,
+    "vocab_difficulty_adjusted": 1.38,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Long Journey for Nothing (2)",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "dead weight",
+          "get rid of",
+          "set us back $200",
+          "step on it",
+          "tell me about it"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "present perfect continuous (we've been waiting, we've been wanting)",
+          "first conditional (if I get another speeding ticket, they'll take my license)",
+          "wish structure (I wish I could)",
+          "past perfect (had forced them)",
+          "reported speech (it specifically said... that they had to be)",
+          "modals (can, should, must, would)"
+        ],
+        "notes": "Dominated by simple tenses in dialogue, but present perfect continuous, first conditional, wish structure, past perfect, and reported speech appear as a noticeable minority. Complex structures are scattered throughout rather than concentrated."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "AirBnB",
+          "Uber",
+          "customs/immigration procedures",
+          "proof of vaccination for entry",
+          "travel insurance",
+          "wine region of Chile"
+        ],
+        "notes": "Mostly universal travel concepts familiar to any LatAm adult. AirBnB and Uber are globally known. Customs and vaccination requirements are universally understood post-Covid. No North American-specific customs that would impede comprehension."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 11,
+        "notes": "Predominantly short dialogue utterances with simple subject-verb-object patterns. Some compound sentences with conjunctions. A few longer narrative sentences in stage directions. Overall very accessible sentence structure."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 2.01,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.38",
+      "evp_coverage_pct": "90.3",
+      "cognate_pct": "15.5",
+      "off_list_pct": "9.7"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.01,
+    "estimated_cefr": "A2/B1"
+  }
+}

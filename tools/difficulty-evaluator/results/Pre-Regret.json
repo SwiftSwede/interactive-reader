@@ -1,0 +1,113 @@
+{
+  "story_title": "Regret",
+  "profiler": {
+    "word_count": 498,
+    "unique_word_count": 209,
+    "evp_coverage_pct": 91.4,
+    "level_distribution": {
+      "A1": 139,
+      "A2": 29,
+      "B1": 16,
+      "B2": 6,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 66.5,
+      "A2": 80.4,
+      "B1": 88.0,
+      "B2": 90.9,
+      "C1": 91.4,
+      "C2": 91.4
+    },
+    "cognate_count": 33,
+    "cognate_pct": 15.8,
+    "false_friend_count": 3,
+    "off_list_count": 18,
+    "off_list_pct": 8.6,
+    "vocab_difficulty_raw": 1.43,
+    "vocab_difficulty_adjusted": 1.7,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Regret",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "have a crush on",
+          "pinky promise",
+          "keep her mouth shut",
+          "shuts up",
+          "break a pinky promise"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "present perfect",
+          "past perfect",
+          "modal perfect (shouldn't have said)",
+          "first conditional (if you ever want...)"
+        ],
+        "notes": "Dominated by simple present and past tenses. A few instances of perfect tenses and conditionals, but they do not dominate the text."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "high school junior",
+          "recess",
+          "cheerleaders",
+          "sitting in a tree K-i-s-s-i-n-g rhyme",
+          "school dance"
+        ],
+        "notes": "Contains US-specific school culture references like 'high school junior', 'recess', 'cheerleaders', and the playground rhyme. These add comprehension weight but the plot is followable."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "Short, simple sentences dominate the text. Mostly subject-verb-object with basic conjunctions."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "embarrassed",
+            "context": "I leave embarrassed.",
+            "is_trap_active": true,
+            "reason": "Classic false friend for Spanish speakers (embarazada = pregnant). Context helps, but the word itself is a trap."
+          },
+          {
+            "word": "once",
+            "context": "after being betrayed not once, not twice but three times",
+            "is_trap_active": false,
+            "reason": "Context makes it clear it means 'one time', not the number eleven."
+          },
+          {
+            "word": "realize",
+            "context": "I realize that Vanesa had told the most gossipy girl in school my secret.",
+            "is_trap_active": true,
+            "reason": "Spanish 'realizar' means to carry out or perform. The context of becoming aware is clear, but the word is a common trap."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.06,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.7,
+      "evp_coverage_pct": 91.4,
+      "cognate_pct": 15.8,
+      "off_list_pct": 8.6
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.06,
+    "estimated_cefr": "A2/B1"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "story_title": "The Quake",
+  "profiler": {
+    "word_count": 1218,
+    "unique_word_count": 484,
+    "evp_coverage_pct": 91.1,
+    "level_distribution": {
+      "A1": 271,
+      "A2": 84,
+      "B1": 61,
+      "B2": 21,
+      "C1": 2,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 56.0,
+      "A2": 73.3,
+      "B1": 86.0,
+      "B2": 90.3,
+      "C1": 90.7,
+      "C2": 91.1
+    },
+    "cognate_count": 65,
+    "cognate_pct": 13.4,
+    "false_friend_count": 4,
+    "off_list_count": 43,
+    "off_list_pct": 8.9,
+    "vocab_difficulty_raw": 1.65,
+    "vocab_difficulty_adjusted": 2.03,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "The Quake",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "for good",
+          "all hands on deck",
+          "kept their emotions in check",
+          "cough up",
+          "finish her off",
+          "compose himself"
+        ],
+        "count": 6
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "past perfect continuous",
+          "present simple",
+          "going to future",
+          "about to",
+          "first conditional",
+          "participial phrases",
+          "relative clauses"
+        ],
+        "notes": "Dominated by past simple narration, but past perfect and past continuous appear regularly throughout (roughly 20-25% of sentences). Participial phrases ('Unable to see anything', 'Through a series of movements') add complexity. One conditional-like structure ('If God was going to take...')."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "earthquake alert system",
+          "search and rescue operations",
+          "political commentary on rescue priorities"
+        ],
+        "notes": "Earthquake scenario is highly familiar to Latin American learners. Cellphone earthquake alerts are common in countries like Mexico. No North American-specific customs or institutions. The political critique about politicians being rescued first resonates with LatAm readers."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 16,
+        "notes": "Mixed lengths with very short punchy sentences ('Nothing.') alongside longer sentences with subordinate clauses. Narrative style uses fragments and short sentences for dramatic effect, balanced with compound-complex sentences for description."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "large",
+            "context": "he threw off a large piece of concrete",
+            "is_trap_active": false,
+            "reason": "Collocated with 'piece of concrete,' the meaning of big in size is clear from context. A Spanish speaker might briefly think 'largo' (long) but the physical object context disambiguates."
+          },
+          {
+            "word": "location",
+            "context": "About the same location as his apartment",
+            "is_trap_active": false,
+            "reason": "Used to mean place/position, which is close enough to the Spanish 'locación' in this spatial context. No real confusion likely."
+          },
+          {
+            "word": "parents",
+            "context": "her parents' lifetime",
+            "is_trap_active": false,
+            "reason": "'Parents' is such a basic, early-learned word that most adult learners know it means father and mother, not the broader Spanish 'parientes.' Context with 'grandmother' further clarifies."
+          },
+          {
+            "word": "test",
+            "context": "Something that said this was a test",
+            "is_trap_active": false,
+            "reason": "Spanish 'test' is borrowed from English and means exam/trial. Here it means a drill/test of the alert system. The meanings overlap sufficiently that confusion is unlikely."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.11,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 2.03,
+      "evp_coverage_pct": 91.1,
+      "cognate_pct": 13.4,
+      "off_list_pct": 8.9
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.11,
+    "estimated_cefr": "A2/B1"
+  }
+}

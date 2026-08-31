@@ -1,0 +1,89 @@
+{
+  "story_title": "Hard to Please",
+  "profiler": {
+    "word_count": 419,
+    "unique_word_count": 159,
+    "evp_coverage_pct": 88.7,
+    "level_distribution": {
+      "A1": 109,
+      "A2": 15,
+      "B1": 10,
+      "B2": 7,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 68.6,
+      "A2": 78.0,
+      "B1": 84.3,
+      "B2": 88.7,
+      "C1": 88.7,
+      "C2": 88.7
+    },
+    "cognate_count": 20,
+    "cognate_pct": 12.6,
+    "false_friend_count": 0,
+    "off_list_count": 18,
+    "off_list_pct": 11.3,
+    "vocab_difficulty_raw": 1.4,
+    "vocab_difficulty_adjusted": 1.38,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Hard to Please",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 1,
+        "items_found": [
+          "found out",
+          "hard to please"
+        ],
+        "count": 2
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "past simple",
+          "past perfect (had found out, had received)",
+          "reported speech (told him that she wanted)",
+          "basic modals (will have to)",
+          "subordinate clauses with even though, so, when, before"
+        ],
+        "notes": "Dominated by past simple throughout. A couple of past perfect instances and basic reported speech appear but do not constitute a significant portion of sentences. Overall simple grammatical profile."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Valentine's Day",
+          "Christian Louboutin (luxury brand)",
+          "Miss Universe",
+          "Kardashian sisters",
+          "Miami/Aventura, Florida"
+        ],
+        "notes": "References are mostly globally known pop culture (Kardashians, Miss Universe, luxury brands). Valentine's Day gift-giving customs are universally understood. No deep North American-specific cultural knowledge required."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "Short to moderate sentences with simple structures. Many subject-verb-object patterns. Some compound sentences with 'so' and 'because'. Repetitive structure throughout the story."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 1.61,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.38",
+      "evp_coverage_pct": "88.7",
+      "cognate_pct": "12.6",
+      "off_list_pct": "11.3"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.61,
+    "estimated_cefr": "A2"
+  }
+}

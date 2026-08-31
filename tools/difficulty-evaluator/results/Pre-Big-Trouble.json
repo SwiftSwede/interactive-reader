@@ -1,0 +1,114 @@
+{
+  "story_title": "Pre-Big Trouble",
+  "profiler": {
+    "word_count": 1149,
+    "unique_word_count": 356,
+    "evp_coverage_pct": 91.6,
+    "level_distribution": {
+      "A1": 235,
+      "A2": 53,
+      "B1": 28,
+      "B2": 8,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 66.0,
+      "A2": 80.9,
+      "B1": 88.8,
+      "B2": 91.0,
+      "C1": 91.6,
+      "C2": 91.6
+    },
+    "cognate_count": 47,
+    "cognate_pct": 13.2,
+    "false_friend_count": 1,
+    "off_list_count": 30,
+    "off_list_pct": 8.4,
+    "vocab_difficulty_raw": 1.43,
+    "vocab_difficulty_adjusted": 1.52,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-Big Trouble",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "find out",
+          "take the fall for",
+          "going down (If I'm going down, you're going down with me)",
+          "rat out",
+          "snitch on",
+          "get off scot-free",
+          "play dirty",
+          "watch your mouth",
+          "play hardball",
+          "come up with",
+          "get carried away",
+          "costs a pretty penny",
+          "keep up your end of the bargain",
+          "take advantage of",
+          "broke up (an attempted robbery)"
+        ],
+        "count": 15
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "present perfect (have been listening, haven't fired, have gone through)",
+          "first conditional (If you rat me out, I'm gonna rat you out)",
+          "second conditional (If I were that rich, I wouldn't be babysitting you)",
+          "modals (may have gotten, ought to, would)",
+          "as long as clauses",
+          "relative clauses (that ask to see, who...)"
+        ],
+        "notes": "Dialogue-heavy text dominated by simple tenses and short sentences, but conditionals, present perfect, and modal constructions appear as a noticeable minority (~25% of utterances). The second conditional and present perfect continuous add complexity beyond level 2."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "suburban moms (gossip culture)",
+          "babysitter culture / blacklisting",
+          "doorbell camera",
+          "high schooler babysitting norms",
+          "multiplayer gaming with strangers (online safety concern)"
+        ],
+        "notes": "Babysitting as a teen job is somewhat North American but globally understood through media. 'Suburban moms' gossip network is a light cultural reference inferable from context. No heavy institutional or holiday references. A LatAm learner can follow the plot without deep cultural knowledge."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 11,
+        "notes": "Dialogue format with many short exchanges. Most utterances are under 12 words. Some longer compound-complex sentences appear (e.g., the conditional threat sentences), but the overall average remains low due to the back-and-forth dialogue structure."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "parents",
+            "context": "My parents are gonna kill me. They're gonna take away my video games",
+            "is_trap_active": false,
+            "reason": "The word 'parents' is such a high-frequency A1 word that any learner at this level knows it means 'father and mother' in English, not the Spanish 'parientes' (relatives in general). Context also makes the meaning completely clear — the child is worried about his mother and father punishing him."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.36,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.52,
+      "evp_coverage_pct": 91.6,
+      "cognate_pct": 13.2,
+      "off_list_pct": 8.4
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.36,
+    "estimated_cefr": "A2/B1"
+  }
+}

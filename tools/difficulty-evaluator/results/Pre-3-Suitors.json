@@ -1,0 +1,113 @@
+{
+  "story_title": "Pre-3 Suitors",
+  "profiler": {
+    "word_count": 1866,
+    "unique_word_count": 491,
+    "evp_coverage_pct": 93.1,
+    "level_distribution": {
+      "A1": 303,
+      "A2": 89,
+      "B1": 45,
+      "B2": 17,
+      "C1": 3,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 61.7,
+      "A2": 79.8,
+      "B1": 89.0,
+      "B2": 92.5,
+      "C1": 93.1,
+      "C2": 93.1
+    },
+    "cognate_count": 75,
+    "cognate_pct": 15.3,
+    "false_friend_count": 3,
+    "off_list_count": 34,
+    "off_list_pct": 6.9,
+    "vocab_difficulty_raw": 1.53,
+    "vocab_difficulty_adjusted": 1.79,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-3 Suitors",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "get to the point",
+          "part ways",
+          "in vain",
+          "at stake",
+          "have a say",
+          "blink of an eye",
+          "idle chit chat"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "modals (can, will, would, should, may)",
+          "present perfect",
+          "third/mixed conditionals",
+          "relative clauses",
+          "reported speech"
+        ],
+        "notes": "The text is mostly simple tenses typical of dialogue, but contains a few instances of mixed conditionals and present perfect in the princes' final speeches, pushing the complexity up to a 3."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "fairy tale tropes (kings, princesses, magic items)"
+        ],
+        "notes": "The setting is a universal fairy tale world with no specific North American or regional cultural references."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 9,
+        "notes": "As a dialogue, the text is dominated by short, conversational sentences. A few longer, complex sentences appear at the end during the princes' arguments, but the average remains low."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "carpet",
+            "context": "I found this magic flying carpet.",
+            "is_trap_active": false,
+            "reason": "While 'carpet' is a false friend to 'carpeta' (folder), the phrase 'magic flying carpet' is a globally recognized fairy tale trope, making the meaning clear from context."
+          },
+          {
+            "word": "once",
+            "context": "He was once again a fine young man.",
+            "is_trap_active": false,
+            "reason": "In the phrase 'once again', the meaning is clear and the Spanish speaker is unlikely to confuse it with the number eleven."
+          },
+          {
+            "word": "respect",
+            "context": "With all due respect",
+            "is_trap_active": false,
+            "reason": "The Spanish word 'respeto' means respect, so the English word is not a true false friend in this context, despite the profiler flagging 'respecto'."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.09,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.79",
+      "evp_coverage_pct": "93.1",
+      "cognate_pct": "15.3",
+      "off_list_pct": "6.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.09,
+    "estimated_cefr": "A2/B1"
+  }
+}

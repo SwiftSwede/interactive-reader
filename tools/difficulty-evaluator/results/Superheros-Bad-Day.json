@@ -1,0 +1,122 @@
+{
+  "story_title": "Superhero_s Bad Day",
+  "profiler": {
+    "word_count": 1323,
+    "unique_word_count": 490,
+    "evp_coverage_pct": 85.9,
+    "level_distribution": {
+      "A1": 284,
+      "A2": 69,
+      "B1": 42,
+      "B2": 23,
+      "C1": 1,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 58.0,
+      "A2": 72.0,
+      "B1": 80.6,
+      "B2": 85.3,
+      "C1": 85.5,
+      "C2": 85.9
+    },
+    "cognate_count": 70,
+    "cognate_pct": 14.3,
+    "false_friend_count": 2,
+    "off_list_count": 69,
+    "off_list_pct": 14.1,
+    "vocab_difficulty_raw": 1.56,
+    "vocab_difficulty_adjusted": 1.7,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Superhero_s Bad Day",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "keeping tabs on",
+          "make sense",
+          "back down",
+          "under control",
+          "blow your brains out",
+          "keeping his cool",
+          "cover could be blown",
+          "fishy",
+          "stay put",
+          "get fired",
+          "screw off",
+          "knucklehead"
+        ],
+        "count": 12
+      },
+      "grammatical_complexity": {
+        "score": 4,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "present perfect",
+          "first conditional",
+          "passive voice",
+          "modals",
+          "reported speech",
+          "participial clauses",
+          "relative clauses"
+        ],
+        "notes": "The text features a regular mix of complex structures including past perfect, passive voice, conditionals, and participial clauses throughout the narrative, alongside simpler dialogue."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Machu Picchu",
+          "Incan sun god",
+          "Cusco",
+          "Callao",
+          "chicharron",
+          "choros",
+          "cachangas",
+          "cuy chactado",
+          "Goku"
+        ],
+        "notes": "The story is set in Peru and uses Latin American cultural references and foods that a Latin American learner would easily recognize. 'Goku' is a globally known pop culture reference."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 13,
+        "notes": "The text has a mix of short, simple dialogue sentences and moderately complex narrative sentences with subordinate clauses."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "mayor",
+            "context": "some of Keiko’s other henchmen had taken the mayor hostage.",
+            "is_trap_active": false,
+            "reason": "The context clearly refers to a political figure being taken hostage, making the English meaning obvious despite the Spanish meaning of 'older'."
+          },
+          {
+            "word": "once",
+            "context": "It once commented to her father while praying",
+            "is_trap_active": false,
+            "reason": "Used as an adverb of time meaning 'one time'. The Spanish meaning of 'eleven' makes no grammatical sense in this context, so the trap is not active."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.61,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.7",
+      "evp_coverage_pct": "85.9",
+      "cognate_pct": "14.3",
+      "off_list_pct": "14.1"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.61,
+    "estimated_cefr": "B1"
+  }
+}

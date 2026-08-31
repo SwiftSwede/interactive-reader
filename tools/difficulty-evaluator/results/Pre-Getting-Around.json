@@ -1,0 +1,112 @@
+{
+  "story_title": "Pre-Getting Around",
+  "profiler": {
+    "word_count": 1174,
+    "unique_word_count": 423,
+    "evp_coverage_pct": 92.2,
+    "level_distribution": {
+      "A1": 267,
+      "A2": 85,
+      "B1": 23,
+      "B2": 14,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 63.1,
+      "A2": 83.2,
+      "B1": 88.7,
+      "B2": 92.0,
+      "C1": 92.2,
+      "C2": 92.2
+    },
+    "cognate_count": 62,
+    "cognate_pct": 14.7,
+    "false_friend_count": 2,
+    "off_list_count": 33,
+    "off_list_pct": 7.8,
+    "vocab_difficulty_raw": 1.45,
+    "vocab_difficulty_adjusted": 1.61,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-Getting Around",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "stick out like a sore thumb",
+          "stand out",
+          "take off",
+          "get around",
+          "find out",
+          "on the spot",
+          "makes sense",
+          "will do"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present perfect",
+          "present perfect continuous",
+          "past continuous",
+          "second conditional",
+          "passive voice",
+          "modals",
+          "relative clauses"
+        ],
+        "notes": "The text features a mix of simple conversational tenses and more complex structures like present perfect continuous, conditionals, and passives, appearing regularly but not dominating."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Canadian winter culture",
+          "Carnaval",
+          "mototaxi",
+          "motorbike passenger laws to prevent assassinations",
+          "July 26th Revolution Street"
+        ],
+        "notes": "The setting is highly relatable to a Latin American learner, dealing with local crime, mototaxis, and Carnaval. The Canadian references are basic and easily understood from context."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "As a dialogue, the text consists mostly of short to moderate sentences with occasional compound-complex structures."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "No, actually, this will be my fifth time I think.",
+            "is_trap_active": false,
+            "reason": "Used as a discourse marker for correction/emphasis. Context makes it clear it does not mean 'currently'."
+          },
+          {
+            "word": "once",
+            "context": "Once in the capital 7 years ago.",
+            "is_trap_active": false,
+            "reason": "Context clearly indicates 'one time' rather than the number 'eleven'."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.18,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.61",
+      "evp_coverage_pct": "92.2",
+      "cognate_pct": "14.7",
+      "off_list_pct": "7.8"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.18,
+    "estimated_cefr": "A2/B1"
+  }
+}

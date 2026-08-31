@@ -1,0 +1,120 @@
+{
+  "story_title": "Strange Interviewee (2)",
+  "profiler": {
+    "word_count": 1066,
+    "unique_word_count": 380,
+    "evp_coverage_pct": 92.4,
+    "level_distribution": {
+      "A1": 247,
+      "A2": 62,
+      "B1": 30,
+      "B2": 11,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 65.0,
+      "A2": 81.3,
+      "B1": 89.2,
+      "B2": 92.1,
+      "C1": 92.4,
+      "C2": 92.4
+    },
+    "cognate_count": 67,
+    "cognate_pct": 17.6,
+    "false_friend_count": 2,
+    "off_list_count": 29,
+    "off_list_pct": 7.6,
+    "vocab_difficulty_raw": 1.45,
+    "vocab_difficulty_adjusted": 1.62,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Strange Interviewee (2)",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "salt and pepper hair",
+          "spot on",
+          "give back",
+          "burnt out",
+          "picked up Spanish",
+          "get back on track",
+          "open book",
+          "make a move on her",
+          "hurting for money",
+          "don't get me wrong",
+          "go through with"
+        ],
+        "count": 11
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present perfect",
+          "past perfect",
+          "second/mixed conditional",
+          "present continuous",
+          "modals (can, would, could, should)",
+          "passive voice",
+          "relative clauses"
+        ],
+        "notes": "Dialogue is dominated by present and past simple, but present perfect, past perfect, a mixed conditional ('If it weren't for that, I wouldn't have been able to go'), and passive voice appear as a noticeable minority. Complex structures are present but not dominant."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Harvard",
+          "MIT",
+          "Microsoft",
+          "bachelor's/master's degree system",
+          "company health insurance",
+          "sick leave",
+          "paid vacation",
+          "minimum wage",
+          "elementary school janitor",
+          "resumé"
+        ],
+        "notes": "US workplace benefits (health insurance, sick leave, paid vacation) and educational degree terminology are moderately specific to North American corporate/academic culture. Harvard, MIT, and Microsoft are globally known. The school system terms (elementary school, janitor) are understandable from context but add slight friction."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 16,
+        "notes": "Mostly short to moderate dialogue lines with simple subject-verb-object patterns. Some compound sentences and a few with subordinate clauses, but the overall profile is conversational and straightforward."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "Well, I actually don't wanna leave my job at Microsoft.",
+            "is_trap_active": true,
+            "reason": "Spanish speaker may read 'actualmente' (currently) instead of 'in fact.' The meaning is close enough that confusion is possible but not severe."
+          },
+          {
+            "word": "parents",
+            "context": "Working hard was something that my parents instilled in me from a young age.",
+            "is_trap_active": false,
+            "reason": "Spanish 'parientes' means relatives generally, but context ('instilled in me from a young age') strongly suggests parents, not general relatives. Trap is largely neutralized by context."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.64,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.62",
+      "evp_coverage_pct": "92.4",
+      "cognate_pct": "17.6",
+      "off_list_pct": "7.6"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.64,
+    "estimated_cefr": "B1"
+  }
+}

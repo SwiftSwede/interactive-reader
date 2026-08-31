@@ -1,0 +1,113 @@
+{
+  "story_title": "The Whistle",
+  "profiler": {
+    "word_count": 836,
+    "unique_word_count": 349,
+    "evp_coverage_pct": 93.4,
+    "level_distribution": {
+      "A1": 197,
+      "A2": 60,
+      "B1": 44,
+      "B2": 19,
+      "C1": 3,
+      "C2": 3
+    },
+    "cumulative_pct": {
+      "A1": 56.4,
+      "A2": 73.6,
+      "B1": 86.2,
+      "B2": 91.7,
+      "C1": 92.6,
+      "C2": 93.4
+    },
+    "cognate_count": 56,
+    "cognate_pct": 16.0,
+    "false_friend_count": 3,
+    "off_list_count": 23,
+    "off_list_pct": 6.6,
+    "vocab_difficulty_raw": 1.71,
+    "vocab_difficulty_adjusted": 1.91,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "The Whistle",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "take up my pen",
+          "give up",
+          "brought upon them",
+          "came into the world"
+        ],
+        "count": 4
+      },
+      "grammatical_complexity": {
+        "score": 4,
+        "tenses_found": [
+          "past simple",
+          "present simple",
+          "present perfect",
+          "past perfect",
+          "second conditional",
+          "participial clauses",
+          "relative clauses",
+          "passive voice"
+        ],
+        "notes": "The text is grammatically dense, featuring frequent participial clauses, relative clauses, and a mix of past perfect and present perfect alongside simple tenses. Second conditionals and passive structures also appear."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "coppers (historical currency)",
+          "court favor",
+          "attendance on levees",
+          "equipages",
+          "apples of King John"
+        ],
+        "notes": "The text contains 18th-century historical and aristocratic references (levees, court favor, equipages) that require background knowledge, though the overarching moral themes are universal."
+      },
+      "sentence_structure": {
+        "score": 5,
+        "avg_sentence_length": 35,
+        "notes": "Sentences are exceptionally long and complex, featuring multiple layers of subordination, participial phrases, and lists. The prose style is highly literary and archaic."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "attendance",
+            "context": "sacrificing his time in attendance on levees",
+            "is_trap_active": false,
+            "reason": "While 'asistencia' in Spanish often means help, the context of 'attendance on levees' (waiting upon royalty) makes the meaning of being present clear enough, though the historical context is obscure."
+          },
+          {
+            "word": "once",
+            "context": "find that I had once more given too much for the whistle",
+            "is_trap_active": false,
+            "reason": "The phrase 'once more' clearly indicates 'one time more' rather than the Spanish number eleven, neutralizing the false friend trap."
+          },
+          {
+            "word": "respect",
+            "context": "all the respect of his fellow citizens",
+            "is_trap_active": false,
+            "reason": "In this context, 'respect' means esteem, which aligns perfectly with the Spanish cognate 'respeto', making it a true cognate rather than a false friend."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.87,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.91",
+      "evp_coverage_pct": "93.4",
+      "cognate_pct": "16.0",
+      "off_list_pct": "6.6"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.87,
+    "estimated_cefr": "B1"
+  }
+}

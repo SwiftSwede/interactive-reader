@@ -1,7 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { saveComprehensionResponse } from "@/app/story/[slug]/actions";
+import {
+  recordComprehensionSelfCheck,
+  saveComprehensionResponse,
+} from "@/app/story/[slug]/actions";
 import MicroExplanation from "./MicroExplanation";
 
 // ── Types ──────────────────────────────────────────────────
@@ -171,7 +174,16 @@ export default function ComprehensionQuestions({
   const handleReveal = (position: number, questionId: string) => {
     if (!canReveal) return;
     setRevealed((prev) => new Set(prev).add(position));
-    flushSave(questionId, answers[position] || "", true);
+
+    if (sessionId) {
+      // Classroom: the save path already records progress and evidence.
+      flushSave(questionId, answers[position] || "", true);
+      return;
+    }
+
+    // Open reading: no session to save against, but a logged-in learner still
+    // earns reading progress. The action is a no-op when signed out.
+    void recordComprehensionSelfCheck({ questionId });
   };
 
   const handleAnswerChange = (

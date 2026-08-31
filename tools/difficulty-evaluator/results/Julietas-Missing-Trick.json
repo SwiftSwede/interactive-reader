@@ -1,0 +1,122 @@
+{
+  "story_title": "Julieta’s Missing Trick (2)",
+  "profiler": {
+    "word_count": 2245,
+    "unique_word_count": 726,
+    "evp_coverage_pct": 84.7,
+    "level_distribution": {
+      "A1": 384,
+      "A2": 137,
+      "B1": 58,
+      "B2": 30,
+      "C1": 2,
+      "C2": 4
+    },
+    "cumulative_pct": {
+      "A1": 52.9,
+      "A2": 71.8,
+      "B1": 79.8,
+      "B2": 83.9,
+      "C1": 84.2,
+      "C2": 84.7
+    },
+    "cognate_count": 107,
+    "cognate_pct": 14.7,
+    "false_friend_count": 1,
+    "off_list_count": 111,
+    "off_list_pct": 15.3,
+    "vocab_difficulty_raw": 1.6,
+    "vocab_difficulty_adjusted": 1.68,
+    "estimated_cefr": "B2+"
+  },
+  "rubric": {
+    "story_title": "Julieta’s Missing Trick (2)",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "in a pickle",
+          "cash cow",
+          "keep the authorities at bay",
+          "keep my business afloat",
+          "took off",
+          "hide out",
+          "pulled up",
+          "get around that rule",
+          "done for",
+          "flagged down",
+          "get it through their thick skulls",
+          "sweet talk",
+          "suited up",
+          "jaws dropped",
+          "hitched a ride",
+          "tricking himself out"
+        ],
+        "count": 16
+      },
+      "grammatical_complexity": {
+        "score": 4,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past continuous",
+          "present perfect",
+          "past perfect",
+          "first conditional",
+          "modals (could, would, should)",
+          "reported speech with backshifting",
+          "participial clauses",
+          "relative clauses with prepositions",
+          "indirect questions"
+        ],
+        "notes": "The text regularly features past perfect, participial clauses, and reported speech throughout the narrative, making it a solid level 4 rather than just a few isolated complex structures."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Asunción",
+          "Ciudad del Este",
+          "Gran Chaco",
+          "Chacarita",
+          "guaraní (currency and language)",
+          "lomitería",
+          "mototaxi",
+          "terremotos",
+          "Shakira's 'La Tortura'",
+          "Los Torres del Paine",
+          "Punta Arenas"
+        ],
+        "notes": "The cultural setting is entirely Latin American (Paraguay and Chile). A Latin American learner would easily recognize these places, foods, and customs, requiring no unfamiliar North American cultural knowledge."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 17,
+        "notes": "Mixed sentence lengths with a good number of compound and complex sentences containing subordinate clauses. Some sentences exceed 25 words, but the average remains moderate."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "rope",
+            "context": "I pulled myself slowly up the rope and made it to the back tire.",
+            "is_trap_active": false,
+            "reason": "While 'rope' looks like the Spanish word 'ropa' (clothing), the physical action of pulling oneself up a rope attached to a tire makes it immediately clear that it refers to a cord, not clothes."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.6,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.68,
+      "evp_coverage_pct": 84.7,
+      "cognate_pct": 14.7,
+      "off_list_pct": 15.3
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.6,
+    "estimated_cefr": "B1"
+  }
+}

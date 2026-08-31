@@ -1,0 +1,109 @@
+{
+  "story_title": "Pre-I Heard Something (2)",
+  "profiler": {
+    "word_count": 1197,
+    "unique_word_count": 378,
+    "evp_coverage_pct": 90.7,
+    "level_distribution": {
+      "A1": 239,
+      "A2": 61,
+      "B1": 29,
+      "B2": 13,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 63.2,
+      "A2": 79.4,
+      "B1": 87.0,
+      "B2": 90.5,
+      "C1": 90.7,
+      "C2": 90.7
+    },
+    "cognate_count": 64,
+    "cognate_pct": 16.9,
+    "false_friend_count": 1,
+    "off_list_count": 35,
+    "off_list_pct": 9.3,
+    "vocab_difficulty_raw": 1.47,
+    "vocab_difficulty_adjusted": 1.5,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-I Heard Something (2)",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "freak me out",
+          "back to the point",
+          "messing with your mind",
+          "drama queen",
+          "rooting for you",
+          "the misses",
+          "let myself in",
+          "keep on canceling",
+          "check out",
+          "man of the house",
+          "knock us unconscious",
+          "keep you guys waiting"
+        ],
+        "count": 12
+      },
+      "grammatical_complexity": {
+        "score": 4,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "past continuous",
+          "present perfect",
+          "first conditional",
+          "second conditional",
+          "modals (can, should, could, would, might)",
+          "going to future"
+        ],
+        "notes": "The text frequently uses first and second conditionals, present perfect, and past continuous. Complex structures appear regularly throughout the dialogue, particularly in hypothetical scenarios about the intruder."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "911 (emergency number)",
+          "football game (American football context)",
+          "child support",
+          "suburbs"
+        ],
+        "notes": "References like 911 and American football are specific to North America but are globally recognizable enough that a Latin American learner can understand the context without missing the plot."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 14,
+        "notes": "As a dialogue, sentences are generally short to moderate, but there is a noticeable mix of complex sentences with subordinate clauses, particularly in conditional structures."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "ignore",
+            "context": "I’m just gonna ignore that since it makes no sense.",
+            "is_trap_active": false,
+            "reason": "While 'ignorar' in Spanish means 'to not know', the context of dismissing a statement that 'makes no sense' makes it clear that the English meaning is to deliberately not pay attention."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.7,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.5",
+      "evp_coverage_pct": "90.7",
+      "cognate_pct": "16.9",
+      "off_list_pct": "9.3"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.7,
+    "estimated_cefr": "B1"
+  }
+}

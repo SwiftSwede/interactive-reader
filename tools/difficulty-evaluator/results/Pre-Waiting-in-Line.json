@@ -1,0 +1,112 @@
+{
+  "story_title": "Waiting in Line",
+  "profiler": {
+    "word_count": 1203,
+    "unique_word_count": 419,
+    "evp_coverage_pct": 92.8,
+    "level_distribution": {
+      "A1": 284,
+      "A2": 63,
+      "B1": 30,
+      "B2": 8,
+      "C1": 3,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 67.8,
+      "A2": 82.8,
+      "B1": 90.0,
+      "B2": 91.9,
+      "C1": 92.6,
+      "C2": 92.8
+    },
+    "cognate_count": 71,
+    "cognate_pct": 16.9,
+    "false_friend_count": 1,
+    "off_list_count": 30,
+    "off_list_pct": 7.2,
+    "vocab_difficulty_raw": 1.42,
+    "vocab_difficulty_adjusted": 1.48,
+    "estimated_cefr": "B1"
+  },
+  "rubric": {
+    "story_title": "Waiting in Line",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "the old lady (slang for wife)",
+          "stay the course",
+          "screw it",
+          "pissed off",
+          "take it easy",
+          "take forever",
+          "come on",
+          "waiting on (meaning wait for)",
+          "in charge of",
+          "roll my eyes",
+          "2-for-1 deal"
+        ],
+        "count": 11
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "past continuous",
+          "present perfect",
+          "basic modals (can't, must've, would, will)",
+          "first conditional",
+          "basic relative clauses (who, that)",
+          "participial clauses (Being my first time, Pissed off)"
+        ],
+        "notes": "Dominated by present simple and past simple. A few instances of basic modals and relative clauses. Participial clauses appear twice but do not dominate the text."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "grocery store sections (produce, dairy)",
+          "express checkout",
+          "self-checkout",
+          "coupons",
+          "2-for-1 deals",
+          "weekly flier",
+          "collecting points (loyalty programs)",
+          "Make a Wish Foundation"
+        ],
+        "notes": "North American grocery shopping norms (coupons, express lanes, loyalty points) and a specific US charity reference. Plot is followable without deep cultural knowledge, but context adds nuance."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 16,
+        "notes": "Moderate sentences with some conjunctions. Mostly subject-verb-object with occasional compound and complex sentences. A few longer sentences over 30 words, but average remains in the 12-18 word range."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "grocery",
+            "context": "I go into the grocery store and grab my shopping cart at the entrance.",
+            "is_trap_active": false,
+            "reason": "Although 'grocery' looks like 'grosería' (rudeness), the context of 'grocery store', 'shopping cart', and 'produce section' makes it completely obvious that it refers to a food store."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.29,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.48",
+      "evp_coverage_pct": "92.8",
+      "cognate_pct": "16.9",
+      "off_list_pct": "7.2"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.29,
+    "estimated_cefr": "A2/B1"
+  }
+}

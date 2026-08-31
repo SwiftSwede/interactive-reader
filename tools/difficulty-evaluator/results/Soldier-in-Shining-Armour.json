@@ -1,0 +1,120 @@
+{
+  "story_title": "Soldier in Shining Armour",
+  "profiler": {
+    "word_count": 2324,
+    "unique_word_count": 691,
+    "evp_coverage_pct": 87.4,
+    "level_distribution": {
+      "A1": 384,
+      "A2": 131,
+      "B1": 62,
+      "B2": 22,
+      "C1": 4,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 55.6,
+      "A2": 74.5,
+      "B1": 83.5,
+      "B2": 86.7,
+      "C1": 87.3,
+      "C2": 87.4
+    },
+    "cognate_count": 106,
+    "cognate_pct": 15.3,
+    "false_friend_count": 2,
+    "off_list_count": 87,
+    "off_list_pct": 12.6,
+    "vocab_difficulty_raw": 1.57,
+    "vocab_difficulty_adjusted": 1.72,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Soldier in Shining Armour",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "passed out",
+          "eye candy",
+          "get her fill",
+          "check out",
+          "at first sight",
+          "happily ever after",
+          "roll her eyes",
+          "sob story",
+          "sort out",
+          "gear up",
+          "big-boned",
+          "stuck with"
+        ],
+        "count": 12
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past continuous",
+          "present perfect",
+          "past perfect",
+          "going to future",
+          "relative clauses",
+          "reported speech",
+          "participial clauses"
+        ],
+        "notes": "The text is dominated by past simple and past continuous, but includes noticeable instances of present perfect, past perfect, relative clauses, and reported speech, making it a mix of simple and complex structures."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Instagram",
+          "Western Union",
+          "US Army",
+          "Syria",
+          "Iraq",
+          "soap operas",
+          "El Salvador",
+          "Gringas",
+          "Profe Kyle"
+        ],
+        "notes": "The cultural setting is highly accessible to a Latin American learner. The story is set in El Salvador and references familiar concepts like soap operas, 'Gringas', and 'Profe'. Global internet concepts (Instagram, Western Union, scams) are universally understood."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 15,
+        "notes": "Moderate sentences with some conjunctions and subordinate clauses. Average length is around 15 words, with occasional compound sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "parents",
+            "context": "Her parents were dancing az well, along with a few cousins with their partners.",
+            "is_trap_active": false,
+            "reason": "While 'parents' means father and mother in English and 'parientes' means relatives in Spanish, the context of a family gathering makes the meaning clear enough, and the distinction does not break comprehension."
+          },
+          {
+            "word": "soap",
+            "context": "It was just like in the soap operas.",
+            "is_trap_active": false,
+            "reason": "'Soap operas' is a known fixed expression equivalent to 'telenovelas'. The Spanish speaker is unlikely to confuse it with 'sopa' (soup) in this context."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.27,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.72",
+      "evp_coverage_pct": "87.4",
+      "cognate_pct": "15.3",
+      "off_list_pct": "12.6"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.27,
+    "estimated_cefr": "A2/B1"
+  }
+}

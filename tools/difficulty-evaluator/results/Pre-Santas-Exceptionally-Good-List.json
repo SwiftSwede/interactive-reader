@@ -1,0 +1,105 @@
+{
+  "story_title": "Santa_s Exceptionally Good List",
+  "profiler": {
+    "word_count": 1381,
+    "unique_word_count": 373,
+    "evp_coverage_pct": 91.4,
+    "level_distribution": {
+      "A1": 275,
+      "A2": 38,
+      "B1": 13,
+      "B2": 14,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 73.7,
+      "A2": 83.9,
+      "B1": 87.4,
+      "B2": 91.2,
+      "C1": 91.4,
+      "C2": 91.4
+    },
+    "cognate_count": 43,
+    "cognate_pct": 11.5,
+    "false_friend_count": 1,
+    "off_list_count": 32,
+    "off_list_pct": 8.6,
+    "vocab_difficulty_raw": 1.32,
+    "vocab_difficulty_adjusted": 1.41,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Santa_s Exceptionally Good List",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "get by",
+          "stand up for yourself",
+          "make fun of",
+          "had had enough",
+          "quite a bit"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past continuous",
+          "past perfect",
+          "present perfect",
+          "would for habitual past",
+          "going to future",
+          "first conditional",
+          "reported speech",
+          "basic modals (could, would)"
+        ],
+        "notes": "Text is dominated by past simple with a noticeable minority of sentences using past continuous, past perfect, present perfect, and habitual 'would'. Reported speech and first conditionals appear occasionally. Roughly 20-25% of sentences contain level-3 structures."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Wal-Mart",
+          "Gameboy Color / Pokemon / Super Mario / Ash Ketchum",
+          "shoveling snow",
+          "raking leaves in fall",
+          "eggnog",
+          "principal's office",
+          "recess"
+        ],
+        "notes": "Pokemon and Super Mario are globally known pop culture. Winter activities (shoveling snow, raking leaves) and eggnog are unfamiliar to most Latin American learners but are easily understood from context and do not block comprehension. Christmas/Santa customs are well known in LatAm."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 16,
+        "notes": "Mix of very short dialogue lines and moderate narrative sentences with basic conjunctions. Some compound sentences but mostly straightforward subject-verb-object patterns. Average around 15-17 words per sentence."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "once",
+            "context": "Once a month I would clean the toilets.",
+            "is_trap_active": false,
+            "reason": "In 'once a month,' the meaning 'one time per month' is clear from context. A Spanish speaker might momentarily think of 'eleven' (once in Spanish) but 'eleven a month' makes no sense, so the correct meaning is immediately deducible."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.92,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.41",
+      "evp_coverage_pct": "91.4",
+      "cognate_pct": "11.5",
+      "off_list_pct": "8.6"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.92,
+    "estimated_cefr": "A2"
+  }
+}

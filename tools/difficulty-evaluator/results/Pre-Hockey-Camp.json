@@ -1,0 +1,114 @@
+{
+  "story_title": "Pre-Hockey Camp",
+  "profiler": {
+    "word_count": 1024,
+    "unique_word_count": 329,
+    "evp_coverage_pct": 90.6,
+    "level_distribution": {
+      "A1": 236,
+      "A2": 37,
+      "B1": 20,
+      "B2": 5,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 71.7,
+      "A2": 83.0,
+      "B1": 89.1,
+      "B2": 90.6,
+      "C1": 90.6,
+      "C2": 90.6
+    },
+    "cognate_count": 36,
+    "cognate_pct": 10.9,
+    "false_friend_count": 2,
+    "off_list_count": 31,
+    "off_list_pct": 9.4,
+    "vocab_difficulty_raw": 1.31,
+    "vocab_difficulty_adjusted": 1.5,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-Hockey Camp",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "go through (socks)",
+          "pooped",
+          "get into shape",
+          "go-getter",
+          "beat up",
+          "off-switch",
+          "tone it down",
+          "get it"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "going to future",
+          "present perfect",
+          "first conditional",
+          "modals (can, must, couldn't have)",
+          "reported speech",
+          "comparatives"
+        ],
+        "notes": "The text is mostly simple dialogue but contains a noticeable minority of sentences with present perfect, first conditionals, and reported speech."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "hockey camp",
+          "skating lines",
+          "McDavid (Connor McDavid)",
+          "Nintendo Switch",
+          "Mario Kart",
+          "Spot It!",
+          "Energizer bunny"
+        ],
+        "notes": "Contains some North American sports culture (hockey, McDavid) and pop culture references (Energizer bunny), but they are mostly understandable from context or globally known (Nintendo, Mario Kart)."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 11,
+        "notes": "Short, conversational dialogue lines with some compound sentences and basic subordinate clauses."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "parents",
+            "context": "I don’t wanna get evil looks from the other parents cause my son acting like a crazed chimpanzee.",
+            "is_trap_active": false,
+            "reason": "In the context of a kids' camp, 'other parents' clearly refers to the mothers and fathers of the other children, not general relatives."
+          },
+          {
+            "word": "taller",
+            "context": "You’re 2 years older, 1 foot taller and 15 pounds heavier than him.",
+            "is_trap_active": false,
+            "reason": "Used alongside 'older' and 'heavier' in a direct comparison, making the meaning of 'tall' obvious rather than the Spanish 'taller' (workshop)."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.15,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.5,
+      "evp_coverage_pct": 90.6,
+      "cognate_pct": 10.9,
+      "off_list_pct": 9.4
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.15,
+    "estimated_cefr": "A2/B1"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "story_title": "Pre-Different Hemispheres (2)",
+  "profiler": {
+    "word_count": 868,
+    "unique_word_count": 338,
+    "evp_coverage_pct": 90.5,
+    "level_distribution": {
+      "A1": 223,
+      "A2": 54,
+      "B1": 19,
+      "B2": 9,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 66.0,
+      "A2": 82.0,
+      "B1": 87.6,
+      "B2": 90.2,
+      "C1": 90.5,
+      "C2": 90.5
+    },
+    "cognate_count": 43,
+    "cognate_pct": 12.7,
+    "false_friend_count": 1,
+    "off_list_count": 32,
+    "off_list_pct": 9.5,
+    "vocab_difficulty_raw": 1.4,
+    "vocab_difficulty_adjusted": 1.45,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-Different Hemispheres (2)",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "drive me crazy",
+          "cold snap",
+          "dirt cheap",
+          "take a turn for the worst",
+          "deadbeat dad",
+          "let you go"
+        ],
+        "count": 6
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "present perfect",
+          "first conditional",
+          "second conditional",
+          "relative clauses",
+          "reported speech"
+        ],
+        "notes": "The text is mostly conversational and uses simple tenses, but includes a noticeable minority of sentences with conditionals, present perfect, and relative clauses."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "plugging in the car in winter",
+          "wind chill",
+          "Cancún or Punta Cana"
+        ],
+        "notes": "The setting is mostly universal, but the reference to plugging in a car due to extreme cold (-40 degrees) is specific to northern climates and might briefly confuse a Latin American learner, though the context of cold weather is clear."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 15,
+        "notes": "Mixed lengths typical of spoken dialogue. Some longer sentences with multiple clauses and reported speech, but generally straightforward."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "quit",
+            "context": "Why don't you just quit volunteering for the shelter?",
+            "is_trap_active": false,
+            "reason": "While 'quit' looks like 'quitar' (to remove), the context of 'quit volunteering' makes it clear that it means to stop doing an activity, though it may cause a brief pause."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.39,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.45,
+      "evp_coverage_pct": 90.5,
+      "cognate_pct": 12.7,
+      "off_list_pct": 9.5
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.39,
+    "estimated_cefr": "A2/B1"
+  }
+}

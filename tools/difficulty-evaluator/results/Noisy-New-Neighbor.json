@@ -1,0 +1,109 @@
+{
+  "story_title": "Noisy New Neighbor (2)",
+  "profiler": {
+    "word_count": 1433,
+    "unique_word_count": 458,
+    "evp_coverage_pct": 87.1,
+    "level_distribution": {
+      "A1": 277,
+      "A2": 74,
+      "B1": 30,
+      "B2": 13,
+      "C1": 4,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 60.5,
+      "A2": 76.6,
+      "B1": 83.2,
+      "B2": 86.0,
+      "C1": 86.9,
+      "C2": 87.1
+    },
+    "cognate_count": 61,
+    "cognate_pct": 13.3,
+    "false_friend_count": 1,
+    "off_list_count": 59,
+    "off_list_pct": 12.9,
+    "vocab_difficulty_raw": 1.49,
+    "vocab_difficulty_adjusted": 1.56,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Noisy New Neighbor (2)",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "digging the vibe",
+          "keep things low-key",
+          "get pumped",
+          "my bad",
+          "gonna be lit",
+          "catch up on",
+          "take a chill pill",
+          "No more Mr. Nice Guy",
+          "breaking in the pad",
+          "I'll pass",
+          "enter the zone",
+          "pack it up"
+        ],
+        "count": 12
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "past continuous",
+          "present perfect",
+          "going to future",
+          "first conditional",
+          "modals (could, would, must, should)"
+        ],
+        "notes": "Dominated by simple tenses in dialogue format. Present perfect and past continuous appear only 2-3 times each. Conditionals appear a few times. Modals are frequent but basic. Complex structures are rare overall."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "house-warming party",
+          "Black Lives Matter documentary",
+          "gym/pre-workout culture",
+          "noise by-laws and decibel limits",
+          "sushi delivery"
+        ],
+        "notes": "Most references are understandable from context. Black Lives Matter is globally known. House-warming parties and noise ordinances are followable without specific cultural knowledge. No heavy North American-specific customs that would block comprehension."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 11,
+        "notes": "Predominantly short dialogue lines with simple subject-verb-object patterns. Some moderate narrative sentences with conjunctions. A few longer descriptive sentences in stage directions, but overall average is low due to dialogue format."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "once",
+            "context": "Once I enter the zone, I forget about time.",
+            "is_trap_active": false,
+            "reason": "The context of 'enter the zone' and 'forget about time' makes it clear that 'once' means 'when/as soon as,' not the Spanish 'eleven.' A Spanish speaker would understand from context."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.17,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.56",
+      "evp_coverage_pct": "87.1",
+      "cognate_pct": "13.3",
+      "off_list_pct": "12.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.17,
+    "estimated_cefr": "A2/B1"
+  }
+}

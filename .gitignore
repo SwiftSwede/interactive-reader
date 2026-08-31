@@ -34,6 +34,9 @@ yarn-error.log*
 # Supabase
 supabase/.temp/
 
+# Scratch dir for sandboxed test runs (tsx TMPDIR)
+.tmp/
+
 # Audio files: committed to git for Vercel deployment (~14MB total)
 # Word audio and story MP3s are needed at build/runtime on Vercel
 

@@ -1,0 +1,113 @@
+{
+  "story_title": "Pre-Work VS FIFA World Cup",
+  "profiler": {
+    "word_count": 1170,
+    "unique_word_count": 439,
+    "evp_coverage_pct": 88.8,
+    "level_distribution": {
+      "A1": 259,
+      "A2": 59,
+      "B1": 39,
+      "B2": 27,
+      "C1": 4,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 59.0,
+      "A2": 72.4,
+      "B1": 81.3,
+      "B2": 87.5,
+      "C1": 88.4,
+      "C2": 88.8
+    },
+    "cognate_count": 65,
+    "cognate_pct": 14.8,
+    "false_friend_count": 1,
+    "off_list_count": 49,
+    "off_list_pct": 11.2,
+    "vocab_difficulty_raw": 1.63,
+    "vocab_difficulty_adjusted": 1.69,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Pre-Work VS FIFA World Cup",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "called in sick",
+          "came down with",
+          "take lightly",
+          "hold down the fort",
+          "took them for their word",
+          "put on hold",
+          "in a bind",
+          "look into",
+          "going a little too far",
+          "witch hunt",
+          "bought it",
+          "get out of work",
+          "make them feel seen"
+        ],
+        "count": 13
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present perfect",
+          "past continuous",
+          "modals (would, could, should)",
+          "third conditional (would've just asked)",
+          "reported speech",
+          "passive voice (were denied)",
+          "relative clauses (who, that, which)"
+        ],
+        "notes": "The text is mostly simple tenses but contains a noticeable minority of complex structures like reported speech, conditionals, and passive voice throughout the dialogue."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Chikungunya",
+          "Semana Santa",
+          "World Cup",
+          "Copa America",
+          "Wimbledon",
+          "the Masters",
+          "notary office for marriage"
+        ],
+        "notes": "The cultural setting is highly accessible to a Latin American learner. References like Semana Santa, Copa America, and getting married at a notary office are standard in Latin America. Global sports events like Wimbledon and the Masters are widely known."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 17,
+        "notes": "Mixed lengths typical of a dialogue, with some complex sentences containing subordinate clauses and reported speech, averaging around 15-20 words."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "once",
+            "context": "I was young once too, if you can believe it.",
+            "is_trap_active": false,
+            "reason": "While 'once' means 'eleven' in Spanish, the context of 'I was young once too' makes the meaning 'one time / formerly' perfectly clear, and 'eleven' would make no sense."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.41,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.69",
+      "evp_coverage_pct": "88.8",
+      "cognate_pct": "14.8",
+      "off_list_pct": "11.2"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.41,
+    "estimated_cefr": "A2/B1"
+  }
+}

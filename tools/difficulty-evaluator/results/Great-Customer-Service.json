@@ -1,0 +1,130 @@
+{
+  "story_title": "Great Customer Service",
+  "profiler": {
+    "word_count": 2020,
+    "unique_word_count": 627,
+    "evp_coverage_pct": 91.1,
+    "level_distribution": {
+      "A1": 368,
+      "A2": 107,
+      "B1": 65,
+      "B2": 27,
+      "C1": 4,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 58.7,
+      "A2": 75.8,
+      "B1": 86.1,
+      "B2": 90.4,
+      "C1": 91.1,
+      "C2": 91.1
+    },
+    "cognate_count": 109,
+    "cognate_pct": 17.4,
+    "false_friend_count": 3,
+    "off_list_count": 56,
+    "off_list_pct": 8.9,
+    "vocab_difficulty_raw": 1.58,
+    "vocab_difficulty_adjusted": 1.82,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Great Customer Service",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "second-guess",
+          "ladies of the night",
+          "make yourself at home",
+          "on the house",
+          "big shots",
+          "blacked out",
+          "screw us over",
+          "thumbs up",
+          "didn't skip a beat",
+          "looked her up and down",
+          "gave up",
+          "make my way",
+          "lost count",
+          "break loose"
+        ],
+        "count": 14
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past continuous",
+          "present perfect continuous",
+          "past perfect",
+          "modals (can, should, would, must)",
+          "first conditional",
+          "second conditional (would have been)",
+          "passive voice",
+          "reported speech",
+          "participial clauses",
+          "relative clauses",
+          "going to future"
+        ],
+        "notes": "Past simple narrative dominates, but past perfect, passive, reported speech, and participial clauses appear as a noticeable minority (~20-25% of sentences). One second conditional ('I would've been happy'). Not dense enough for level 4."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Lonely Planet (travel guide brand)",
+          "Netflix series",
+          "James Bond",
+          "busboy (North American hotel/restaurant term)",
+          "tipping culture",
+          "Daiquiri / Mojito (cocktails)",
+          "VIP",
+          "Caribbean setting"
+        ],
+        "notes": "Most references are globally known or familiar to LatAm learners. Caribbean setting is culturally close. 'Busboy' is a North American term but understandable from context. No heavy cultural barriers."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 16,
+        "notes": "Mix of very short dialogue lines and medium-length narrative sentences. Some compound sentences with conjunctions. A few longer sentences with subordinate clauses, but most are straightforward SVO structures."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "assist",
+            "context": "we'll be glad to assist you",
+            "is_trap_active": true,
+            "reason": "Spanish 'asistir' primarily means 'to attend,' so a Spanish speaker might misread this as 'attend to you' rather than 'help you.' In a hotel context the confusion is possible though context somewhat mitigates it."
+          },
+          {
+            "word": "exit",
+            "context": "At the exit a man with a big smile came running up to me",
+            "is_trap_active": true,
+            "reason": "Spanish 'éxito' means 'success.' A Spanish speaker could genuinely misread 'exit' as related to success, though the spatial context (a man at the exit) provides some disambiguation."
+          },
+          {
+            "word": "gentle",
+            "context": "The noise of the gentle waves called me to the water",
+            "is_trap_active": true,
+            "reason": "Spanish 'gentil' means 'elegant/noble' rather than 'mild/soft.' Applied to waves, a Spanish speaker might find the collocation confusing, though context of ocean waves helps."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.65,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.82",
+      "evp_coverage_pct": "91.1",
+      "cognate_pct": "17.4",
+      "off_list_pct": "8.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.65,
+    "estimated_cefr": "B1"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "story_title": "Vacay Recap",
+  "profiler": {
+    "word_count": 1432,
+    "unique_word_count": 477,
+    "evp_coverage_pct": 87.0,
+    "level_distribution": {
+      "A1": 286,
+      "A2": 66,
+      "B1": 44,
+      "B2": 17,
+      "C1": 1,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 60.0,
+      "A2": 73.8,
+      "B1": 83.0,
+      "B2": 86.6,
+      "C1": 86.8,
+      "C2": 87.0
+    },
+    "cognate_count": 64,
+    "cognate_pct": 13.4,
+    "false_friend_count": 2,
+    "off_list_count": 62,
+    "off_list_pct": 13.0,
+    "vocab_difficulty_raw": 1.52,
+    "vocab_difficulty_adjusted": 1.68,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Vacay Recap",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "shoot the shit",
+          "kicked in",
+          "leave me hangin'",
+          "grab some rays",
+          "catch some rays",
+          "shut up",
+          "get a peep out of you",
+          "shit-faced",
+          "screwed over",
+          "and then some",
+          "back up",
+          "put off",
+          "letting my guard down",
+          "full of shit",
+          "black out",
+          "changed their tune",
+          "to top it all off",
+          "have the gall",
+          "lay off on ribbing me",
+          "spill the beans",
+          "wingman",
+          "moves like Jagger",
+          "gave up"
+        ],
+        "count": 23
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "present perfect",
+          "past continuous",
+          "modals (can, should, must, would)",
+          "first/second conditionals",
+          "reported speech",
+          "third conditional (would have gone)"
+        ],
+        "notes": "The text is mostly simple past and present simple dialogue, but contains a noticeable minority of complex structures like present perfect, reported speech, and a third conditional, fitting a level 3 profile."
+      },
+      "cultural_reference_load": {
+        "score": 4,
+        "references_found": [
+          "Timmies (Tim Hortons)",
+          "double-double (coffee order)",
+          "Metis (Canadian mixed indigenous heritage)",
+          "McDonald's coffee beans",
+          "Tinder",
+          "Oilers, Vegas Golden Knights, Stanley Cup Playoffs (NHL hockey)",
+          "brown sugar (slang for racial attraction)",
+          "all-inclusive resort culture in Latin America"
+        ],
+        "notes": "Heavy reliance on Canadian-specific cultural markers (Tim Hortons, Metis, NHL hockey) and North American dating/app culture (Tinder, wingman) that a Latin American learner might miss, though the main plot is followable."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 15,
+        "notes": "Mixed lengths typical of conversational dialogue. Some short exchanges, but also several compound and complex sentences with multiple clauses, especially when Scott is telling his story."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "grocery",
+            "context": "trips to grocery stores",
+            "is_trap_active": false,
+            "reason": "The word 'stores' immediately clarifies that 'grocery' refers to a shop, not the Spanish 'grosería' (rudeness)."
+          },
+          {
+            "word": "test",
+            "context": "tomorrow I'll test it out",
+            "is_trap_active": false,
+            "reason": "Used as a verb meaning to try something, which is easily understood from context, even if the Spanish speaker only knows 'test' as a noun for an exam."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.85,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.68",
+      "evp_coverage_pct": "87.0",
+      "cognate_pct": "13.4",
+      "off_list_pct": "13.0"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.85,
+    "estimated_cefr": "B1"
+  }
+}

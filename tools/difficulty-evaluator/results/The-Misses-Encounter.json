@@ -1,0 +1,127 @@
+{
+  "story_title": "The Misses Encounter",
+  "profiler": {
+    "word_count": 1222,
+    "unique_word_count": 421,
+    "evp_coverage_pct": 91.7,
+    "level_distribution": {
+      "A1": 276,
+      "A2": 52,
+      "B1": 40,
+      "B2": 15,
+      "C1": 1,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 65.6,
+      "A2": 77.9,
+      "B1": 87.4,
+      "B2": 91.0,
+      "C1": 91.2,
+      "C2": 91.7
+    },
+    "cognate_count": 68,
+    "cognate_pct": 16.2,
+    "false_friend_count": 3,
+    "off_list_count": 35,
+    "off_list_pct": 8.3,
+    "vocab_difficulty_raw": 1.49,
+    "vocab_difficulty_adjusted": 1.74,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "The Misses Encounter",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "born yesterday",
+          "came out of the blue",
+          "busting my ass",
+          "flip the script",
+          "blow over",
+          "dead wrong",
+          "sugar daddy",
+          "make a scene",
+          "give me a break",
+          "take him for all he's worth",
+          "piece of shit",
+          "slave away",
+          "taste of the high life",
+          "run out of",
+          "make out to be",
+          "barging in"
+        ],
+        "count": 16
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "present perfect",
+          "past continuous",
+          "going to future",
+          "first conditional",
+          "modals (must, can, should)",
+          "relative clauses",
+          "indirect questions"
+        ],
+        "notes": "Dialogue is dominated by simple tenses but present perfect and past continuous appear as a noticeable minority. A few complex multi-clause sentences with subordinate clauses. First conditional appears once. Overall a mix of simple and moderately complex structures."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "CEO caught cheating at Coldplay concert",
+          "sugar daddy",
+          "influencers/feed (social media)",
+          "communications homework",
+          "soccer games"
+        ],
+        "notes": "Mostly universal themes (infidelity, divorce, restaurant dining). The Coldplay CEO reference is a specific viral event but not essential to understanding the plot. Social media references are globally understood. No North American-specific customs that would block comprehension."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 14,
+        "notes": "Mixed lengths typical of dialogue. Many short exchanges but also several long, complex sentences with multiple subordinate clauses (e.g., 'The only reason I'm in this neighborhood is because your son needed some special art supplies recommended by his teacher and the only place that had them happens to be just down the street.')."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "dessert",
+            "context": "I take you someplace more private to get some… dessert.",
+            "is_trap_active": false,
+            "reason": "In a restaurant context after a meal, the meaning of 'sweet course after meal' is clear. A Spanish speaker would not confuse this with 'desierto' (desert/wasteland) in this context."
+          },
+          {
+            "word": "once",
+            "context": "you'll see your son once a year for your birthday",
+            "is_trap_active": false,
+            "reason": "Used as an adverb meaning 'one time,' clearly distinguishable from Spanish 'once' (eleven) by the context of frequency."
+          },
+          {
+            "word": "tramp",
+            "context": "Who's this tramp?",
+            "is_trap_active": false,
+            "reason": "Used as a derogatory noun for a woman in an angry confrontation. While a Spanish speaker might not know the exact English meaning, the context (angry wife confronting the other woman) makes it clear it's an insult. The false friend 'trampa' (trap/trick) would not fit the context at all."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.57,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.74",
+      "evp_coverage_pct": "91.7",
+      "cognate_pct": "16.2",
+      "off_list_pct": "8.3"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.57,
+    "estimated_cefr": "B1"
+  }
+}

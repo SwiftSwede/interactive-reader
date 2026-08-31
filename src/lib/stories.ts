@@ -8,6 +8,9 @@ export type StoryRow = {
   title: string;
   slug: string;
   level: string;
+  // Optional until schema-phase4a.sql runs. Display only: dialogues and Movie
+  // Talks are still content_type "story" in the knowledge graph.
+  kind?: string | null;
   cefr: string;
   body_text: string;
   body_html: string;

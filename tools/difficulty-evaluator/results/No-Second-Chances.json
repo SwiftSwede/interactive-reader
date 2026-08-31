@@ -1,0 +1,111 @@
+{
+  "story_title": "No Second Chances",
+  "profiler": {
+    "word_count": 1257,
+    "unique_word_count": 455,
+    "evp_coverage_pct": 88.6,
+    "level_distribution": {
+      "A1": 259,
+      "A2": 84,
+      "B1": 42,
+      "B2": 13,
+      "C1": 3,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 56.9,
+      "A2": 75.4,
+      "B1": 84.6,
+      "B2": 87.5,
+      "C1": 88.1,
+      "C2": 88.6
+    },
+    "cognate_count": 83,
+    "cognate_pct": 18.2,
+    "false_friend_count": 1,
+    "off_list_count": 52,
+    "off_list_pct": 11.4,
+    "vocab_difficulty_raw": 1.57,
+    "vocab_difficulty_adjusted": 1.61,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "No Second Chances",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "live up to",
+          "puppy dog eyes",
+          "No dice",
+          "having none of it",
+          "tail between their legs",
+          "broke (gave in)",
+          "stickler for the rules",
+          "taken aback",
+          "last straw",
+          "put in her place",
+          "dead wrong"
+        ],
+        "count": 11
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past perfect (he'd realized, they'd gotten)",
+          "present perfect (hasn't been)",
+          "past continuous",
+          "first conditional (If you don't hand it in)",
+          "second conditional (If it were)",
+          "reported speech",
+          "relative clauses (who, that, which)",
+          "participial clauses (Coming to class late)",
+          "infinitive constructions"
+        ],
+        "notes": "Dominated by past simple and present simple, but past perfect, conditionals, and reported speech appear as a noticeable minority. Complex structures appear in roughly 20-25% of sentences."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "hippy Vancouver",
+          "Canadian university office hours",
+          "Canadian educational strictness vs Latin American norms",
+          "Latin American family influence on education",
+          "WhatsApp in classroom"
+        ],
+        "notes": "The story is about a Canadian teacher in Latin America, so the learner would find the LatAm cultural side highly relatable. Canadian references (Vancouver hippy culture, office hours) are light and inferable from context. The cultural clash is central to the plot but the learner understands their own side well."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 18,
+        "notes": "Mixed lengths with some long multi-clause sentences and many shorter punchy ones. Subordinate clauses and conjunctions appear regularly. Average around 18 words per sentence."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "embarrassed",
+            "context": "Embarrassed and ashamed, he went to his professor's office hours to ask if he could redo it.",
+            "is_trap_active": false,
+            "reason": "While a Spanish speaker might initially think of 'embarazada' (pregnant), the context of receiving a bad grade, feeling ashamed, and going to office hours makes the meaning of 'self-conscious/ashamed' clear. The pairing with 'ashamed' further disambiguates."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.63,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.61,
+      "evp_coverage_pct": 88.6,
+      "cognate_pct": 18.2,
+      "off_list_pct": 11.4
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.63,
+    "estimated_cefr": "B1"
+  }
+}

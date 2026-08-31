@@ -1,0 +1,118 @@
+{
+  "story_title": "Private Message",
+  "profiler": {
+    "word_count": 976,
+    "unique_word_count": 415,
+    "evp_coverage_pct": 87.5,
+    "level_distribution": {
+      "A1": 251,
+      "A2": 68,
+      "B1": 25,
+      "B2": 17,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 60.5,
+      "A2": 76.9,
+      "B1": 82.9,
+      "B2": 87.0,
+      "C1": 87.5,
+      "C2": 87.5
+    },
+    "cognate_count": 61,
+    "cognate_pct": 14.7,
+    "false_friend_count": 2,
+    "off_list_count": 52,
+    "off_list_pct": 12.5,
+    "vocab_difficulty_raw": 1.49,
+    "vocab_difficulty_adjusted": 1.67,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Private Message",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "split up",
+          "given up",
+          "caught her eye",
+          "go through that",
+          "checking up on",
+          "give up",
+          "live a little",
+          "getting cold",
+          "not even close",
+          "short and sweet",
+          "in great shape",
+          "bugging me",
+          "jaw dropped"
+        ],
+        "count": 13
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present perfect",
+          "past perfect",
+          "past continuous",
+          "first conditional",
+          "second conditional",
+          "reported speech",
+          "relative clauses",
+          "participial clauses"
+        ],
+        "notes": "The text is dominated by simple tenses in dialogue, but features a noticeable minority of past perfect, conditionals, and reported speech structures, alongside participial clauses."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Valentine's Day",
+          "Tinder and Bumble",
+          "Nancy Drew",
+          "Starbucks",
+          "US address format (Davis and 23rd ave)"
+        ],
+        "notes": "Cultural references are mostly global pop culture or easily understood from context. Nancy Drew is a specific US reference but the context ('Great detective work') makes the meaning clear."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 14,
+        "notes": "A mix of short dialogue lines and moderately complex narrative sentences with subordinate clauses and participial phrases."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "Imagine if I actually responded to one of these creeps.",
+            "is_trap_active": true,
+            "reason": "Spanish 'actualmente' means 'currently', which could confuse the reader here where it means 'in fact' or 'really'."
+          },
+          {
+            "word": "pretend",
+            "context": "she could pretend that this was how she always dressed",
+            "is_trap_active": true,
+            "reason": "Spanish 'pretender' means 'to try/attempt', which makes the sentence confusing if read with the Spanish meaning instead of 'to act as if'."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.75,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.67",
+      "evp_coverage_pct": "87.5",
+      "cognate_pct": "14.7",
+      "off_list_pct": "12.5"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.75,
+    "estimated_cefr": "B1"
+  }
+}

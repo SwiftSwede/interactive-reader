@@ -1,0 +1,92 @@
+{
+  "story_title": "Master English",
+  "profiler": {
+    "word_count": 453,
+    "unique_word_count": 160,
+    "evp_coverage_pct": 88.8,
+    "level_distribution": {
+      "A1": 113,
+      "A2": 20,
+      "B1": 6,
+      "B2": 3,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 70.6,
+      "A2": 83.1,
+      "B1": 86.9,
+      "B2": 88.8,
+      "C1": 88.8,
+      "C2": 88.8
+    },
+    "cognate_count": 19,
+    "cognate_pct": 11.9,
+    "false_friend_count": 0,
+    "off_list_count": 18,
+    "off_list_pct": 11.2,
+    "vocab_difficulty_raw": 1.29,
+    "vocab_difficulty_adjusted": 1.23,
+    "estimated_cefr": "A2+"
+  },
+  "rubric": {
+    "story_title": "Master English",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "show off",
+          "hang up",
+          "came out",
+          "feel like"
+        ],
+        "count": 4
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "future with 'will' and 'going to'",
+          "modals (must, couldn't)",
+          "relative clauses (who)"
+        ],
+        "notes": "Dominated by simple tenses, mostly past simple. A few instances of past continuous and past perfect, but the text remains structurally simple."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "McDonald's",
+          "fortune cookies",
+          "young grasshopper (Kung Fu TV show reference)",
+          "gringo"
+        ],
+        "notes": "Mostly accessible. 'Fortune cookies' and 'young grasshopper' are specific cultural references but do not impede overall comprehension of the plot."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 11,
+        "notes": "Short, simple sentences with a lot of direct dialogue. Mostly subject-verb-object structures."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 1.77,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.23",
+      "evp_coverage_pct": "88.8",
+      "cognate_pct": "11.9",
+      "off_list_pct": "11.2"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.77,
+    "estimated_cefr": "A2"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "story_title": "No Way",
+  "profiler": {
+    "word_count": 762,
+    "unique_word_count": 310,
+    "evp_coverage_pct": 92.6,
+    "level_distribution": {
+      "A1": 214,
+      "A2": 43,
+      "B1": 15,
+      "B2": 14,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 69.0,
+      "A2": 82.9,
+      "B1": 87.7,
+      "B2": 92.3,
+      "C1": 92.6,
+      "C2": 92.6
+    },
+    "cognate_count": 46,
+    "cognate_pct": 14.8,
+    "false_friend_count": 2,
+    "off_list_count": 23,
+    "off_list_pct": 7.4,
+    "vocab_difficulty_raw": 1.41,
+    "vocab_difficulty_adjusted": 1.58,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "No Way",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "made her way",
+          "taking so long",
+          "hit on her",
+          "puppy-dog eyes",
+          "dropped her off",
+          "pick me up",
+          "walk the streets",
+          "no way"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "present simple",
+          "present perfect",
+          "going to future",
+          "first conditional",
+          "basic relative clauses"
+        ],
+        "notes": "Dominated by simple tenses in narrative and dialogue. A few instances of past continuous and present perfect, but mostly straightforward sentence structures."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Ariana Grande",
+          "basement",
+          "tube top"
+        ],
+        "notes": "The plot revolves around universal themes of teenage rebellion, partying, and peer pressure. Pop culture reference (Ariana Grande) is globally known. No unfamiliar North American-specific customs are required to understand the story."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "Short to moderate sentences with basic conjunctions. Mostly subject-verb-object structures with occasional compound sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "once",
+            "context": "I was once in situations just like that.",
+            "is_trap_active": false,
+            "reason": "While 'once' means eleven in Spanish, the context of 'I was once in situations' makes it clear it means 'one time' or 'formerly'."
+          },
+          {
+            "word": "parents",
+            "context": "Will there be parents there?",
+            "is_trap_active": false,
+            "reason": "Although 'parientes' means relatives in general in Spanish, the context of a teenager going to a party makes it obvious that it refers specifically to the host's mother and father."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.92,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.58,
+      "evp_coverage_pct": 92.6,
+      "cognate_pct": 14.8,
+      "off_list_pct": 7.4
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.92,
+    "estimated_cefr": "A2"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "story_title": "Bad Negotiator",
+  "profiler": {
+    "word_count": 849,
+    "unique_word_count": 336,
+    "evp_coverage_pct": 87.8,
+    "level_distribution": {
+      "A1": 208,
+      "A2": 50,
+      "B1": 26,
+      "B2": 7,
+      "C1": 3,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 61.9,
+      "A2": 76.8,
+      "B1": 84.5,
+      "B2": 86.6,
+      "C1": 87.5,
+      "C2": 87.8
+    },
+    "cognate_count": 59,
+    "cognate_pct": 17.6,
+    "false_friend_count": 0,
+    "off_list_count": 41,
+    "off_list_pct": 12.2,
+    "vocab_difficulty_raw": 1.47,
+    "vocab_difficulty_adjusted": 1.46,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Bad Negotiator",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "figure out",
+          "comes out to",
+          "shut her mouth",
+          "meant to be",
+          "hit with a bout of"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past perfect",
+          "past continuous",
+          "second conditional",
+          "modals (could, must have, should, might)"
+        ],
+        "notes": "The text is dominated by past simple and past perfect, with a noticeable minority of sentences using past continuous, modals, and a second conditional. Complex structures appear regularly but do not dominate."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "US college major/minor system",
+          "Latin American haggling culture",
+          "mate de coca",
+          "altitude sickness in Cusco"
+        ],
+        "notes": "The story is set in Latin America and deals with customs familiar to the target learner (haggling, mate de coca, altitude sickness). The only US-specific reference is the college major/minor system, which is globally understood."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12.8,
+        "notes": "Moderate sentences with some conjunctions and occasional compound/complex sentences. Average length is around 12-13 words, with a few longer sentences containing subordinate clauses."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 1.89,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.46",
+      "evp_coverage_pct": "87.8",
+      "cognate_pct": "17.6",
+      "off_list_pct": "12.2"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.89,
+    "estimated_cefr": "A2"
+  }
+}

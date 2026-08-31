@@ -1,0 +1,30 @@
+Total items to process: 202
+  pre-int-stories: 58
+  int-stories: 58
+  pre-int-dialogues: 44
+  int-dialogues: 42
+
+[1/202] pre-int-stories      Pre-Athletic-Failure.md                 
+  -> skipped (already done)
+[2/202] pre-int-stories      Pre-Bad-Bet.md                           (175984.8/min, ETA 0m)
+  -> skipped (already done)
+[3/202] pre-int-stories      Pre-Bad-Diagnosis.md                     (185520.3/min, ETA 0m)
+  -> skipped (already done)
+[4/202] pre-int-stories      Pre-Bad-Negotiator.md                    (195488.0/min, ETA 0m)
+  -> skipped (already done)
+[5/202] pre-int-stories      Pre-Bad-Recipe.md                        (201891.9/min, ETA 0m)
+  -> skipped (already done)
+[6/202] pre-int-stories      Pre-Can-You-Remind-Me.md                 (190361.8/min, ETA 0m)
+[7/202] pre-int-stories      Pre-Caribbean-Rapunzel.md                (11.3/min, ETA 17m)
+  -> error: Running vocabulary profiler...
+  Profiler done: 520 unique words, 91.5% EVP coverage, adjusted difficulty 1.97
+Calling LLM (z-ai/glm-5.2)...
+Traceback (most recent call last):
+  File "/Users/kylote/De
+[8/202] pre-int-stories      Pre-Copa-America-Nightmare.md            (4.9/min, ETA 40m)
+[9/202] pre-int-stories      Pre-Dear-Santa.md                        (4.2/min, ETA 46m)
+[10/202] pre-int-stories      Pre-Dumb-Luck.md                         (3.9/min, ETA 49m)
+[11/202] pre-int-stories      Pre-Embarrassed-in-Public.md             (3.7/min, ETA 52m)
+[12/202] pre-int-stories      Pre-Emergency-Stop.md                    (3.5/min, ETA 54m)
+[13/202] pre-int-stories      Pre-First-Review.md                      (3.3/min, ETA 58m)
+[14/202] pre-int-stories      Pre-Flustered-and-Driving.md             (3.1/min, ETA 62m)

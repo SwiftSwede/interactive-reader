@@ -1,0 +1,97 @@
+{
+  "story_title": "Pee in the Sea (2)",
+  "profiler": {
+    "word_count": 918,
+    "unique_word_count": 296,
+    "evp_coverage_pct": 94.9,
+    "level_distribution": {
+      "A1": 203,
+      "A2": 42,
+      "B1": 22,
+      "B2": 12,
+      "C1": 1,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 68.6,
+      "A2": 82.8,
+      "B1": 90.2,
+      "B2": 94.3,
+      "C1": 94.6,
+      "C2": 94.9
+    },
+    "cognate_count": 42,
+    "cognate_pct": 14.2,
+    "false_friend_count": 1,
+    "off_list_count": 15,
+    "off_list_pct": 5.1,
+    "vocab_difficulty_raw": 1.47,
+    "vocab_difficulty_adjusted": 1.54,
+    "estimated_cefr": "B1"
+  },
+  "rubric": {
+    "story_title": "Pee in the Sea (2)",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "pump myself up",
+          "figure out",
+          "take a leak",
+          "passed away",
+          "drowned out",
+          "come on",
+          "relieve myself"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "second conditional",
+          "would for past habit",
+          "reported speech elements",
+          "modals (could, would)"
+        ],
+        "notes": "Past simple dominates but past perfect appears frequently throughout (had no idea, had never thought, had had trouble, had been strange, had tried). Second conditional appears once. 'Would' for habitual past used multiple times. Mix of simple and complex structures with noticeable minority of higher-level forms."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [],
+        "notes": "Universal setting: beach, family, public restrooms. No North American-specific customs or references. Fully accessible to Latin American learner."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Mix of very short dialogue lines and moderate narrative sentences. Some compound sentences with conjunctions. Average around 13 words. No long multi-clause sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "embarrassed",
+            "context": "I quickly pulled up my shorts in shame and ran away embarrassed.",
+            "is_trap_active": false,
+            "reason": "Classic false friend (embarazada = pregnant), but context strongly disambiguates: 'in shame' precedes it and the situation (pulling up shorts, running away) makes the meaning of self-consciousness clear. A Spanish speaker might momentarily stumble but context resolves it quickly."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.11,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.54",
+      "evp_coverage_pct": "94.9",
+      "cognate_pct": "14.2",
+      "off_list_pct": "5.1"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.11,
+    "estimated_cefr": "A2/B1"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "story_title": "Too Much Trick or Treat",
+  "profiler": {
+    "word_count": 1155,
+    "unique_word_count": 401,
+    "evp_coverage_pct": 88.5,
+    "level_distribution": {
+      "A1": 270,
+      "A2": 40,
+      "B1": 30,
+      "B2": 13,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 67.3,
+      "A2": 77.3,
+      "B1": 84.8,
+      "B2": 88.0,
+      "C1": 88.5,
+      "C2": 88.5
+    },
+    "cognate_count": 44,
+    "cognate_pct": 11.0,
+    "false_friend_count": 2,
+    "off_list_count": 46,
+    "off_list_pct": 11.5,
+    "vocab_difficulty_raw": 1.41,
+    "vocab_difficulty_adjusted": 1.58,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Too Much Trick or Treat",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "left out",
+          "hold tight",
+          "didn't budge",
+          "brought her back to reality",
+          "made to walk forward"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to (future)",
+          "past continuous",
+          "past perfect",
+          "present perfect",
+          "first conditional"
+        ],
+        "notes": "The text is dominated by simple tenses in dialogue, but includes a noticeable minority of past perfect, past continuous, and conditionals in the narrative sections."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Halloween",
+          "trick-or-treating",
+          "Halloween curfews",
+          "driving to a middle-class neighborhood of single-family homes for better candy",
+          "elaborate graveyard/zombie house decorations"
+        ],
+        "notes": "While Halloween is globally known, the specific cultural practice of driving to a wealthy neighborhood to get a 'huge haul' of candy and the existence of trick-or-treating curfews are specific North American customs that add comprehension weight."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 11,
+        "notes": "The text is heavily dialogue-driven with short, simple sentences. Narrative sentences are moderate in length with some basic conjunctions."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "“Actually, I think I threw it out,” he responded after getting the hint.",
+            "is_trap_active": true,
+            "reason": "A Spanish speaker might initially read this as 'actualmente' (currently), though context provides some clues."
+          },
+          {
+            "word": "grocery",
+            "context": "You can always just go to the grocery store to get some.",
+            "is_trap_active": true,
+            "reason": "Looks like 'grosería' (rudeness/insult) in Spanish. A learner might be confused by 'go to the rudeness store' if they don't know the English word."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.32,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.58",
+      "evp_coverage_pct": "88.5",
+      "cognate_pct": "11.0",
+      "off_list_pct": "11.5"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.32,
+    "estimated_cefr": "A2/B1"
+  }
+}

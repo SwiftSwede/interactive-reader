@@ -1,0 +1,133 @@
+{
+  "story_title": "Good Riddance",
+  "profiler": {
+    "word_count": 1301,
+    "unique_word_count": 410,
+    "evp_coverage_pct": 91.7,
+    "level_distribution": {
+      "A1": 267,
+      "A2": 59,
+      "B1": 35,
+      "B2": 15,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 65.1,
+      "A2": 79.5,
+      "B1": 88.0,
+      "B2": 91.7,
+      "C1": 91.7,
+      "C2": 91.7
+    },
+    "cognate_count": 61,
+    "cognate_pct": 14.9,
+    "false_friend_count": 3,
+    "off_list_count": 34,
+    "off_list_pct": 8.3,
+    "vocab_difficulty_raw": 1.46,
+    "vocab_difficulty_adjusted": 1.72,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Good Riddance",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "cover for you",
+          "keep you in the dark",
+          "breaking my back",
+          "little to show for it",
+          "lined up",
+          "behind your back / behind our backs",
+          "stabbing people in the back",
+          "stink eye",
+          "knocked up",
+          "worked up",
+          "sinking ship",
+          "whipping boy",
+          "screws something up",
+          "figure out",
+          "taste of her own medicine",
+          "out of earshot",
+          "good riddance",
+          "half-ass",
+          "shorthanded"
+        ],
+        "count": 19
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "present perfect",
+          "past simple",
+          "past continuous",
+          "going to future",
+          "first conditional",
+          "second conditional (What would she do?)",
+          "modals (could, would, should)",
+          "reported speech",
+          "passive voice (have to be made, be forced to fire)",
+          "relative clauses (who, that, which)",
+          "infinitive of purpose"
+        ],
+        "notes": "Dialogue is dominated by simple tenses but present perfect, past continuous, passives, reported speech, and conditionals appear as a noticeable minority (~20-25% of sentences). Complex structures are distributed throughout rather than clustered."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Christmas (universal)",
+          "football team (potential soccer/American football confusion)",
+          "Chief Financial Officer (corporate title)",
+          "designer heels (fashion status)",
+          "corporate office culture"
+        ],
+        "notes": "Workplace dynamics are fairly universal and accessible. 'Football team' could cause minor confusion but context (single mother, knocked up) makes the meaning clear. No North American-specific customs or holidays that would block comprehension."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "Mostly short to moderate dialogue lines with some compound and complex sentences. A handful of longer sentences (20+ words) with subordinate clauses, but the majority are conversational and direct. Average falls in the 12-18 word range."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "than actually running this operation",
+            "is_trap_active": true,
+            "reason": "Spanish speaker may read 'actualmente' (currently) instead of 'in fact.' Context somewhat helps but the contrast between 'strutting around' and 'actually running' could still confuse."
+          },
+          {
+            "word": "discuss",
+            "context": "we were just discussing my plans for Friday",
+            "is_trap_active": true,
+            "reason": "Spanish 'discutir' means to argue/contest. Katrina is downplaying the conversation, but a Spanish speaker might think she means they were arguing, changing the tone significantly."
+          },
+          {
+            "word": "once",
+            "context": "We had lunch once.",
+            "is_trap_active": false,
+            "reason": "Spanish 'once' means eleven, but the context of having lunch makes it clear this means 'one time.' The sentence structure and preceding dialogue make confusion unlikely."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.52,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.72",
+      "evp_coverage_pct": "91.7",
+      "cognate_pct": "14.9",
+      "off_list_pct": "8.3"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.52,
+    "estimated_cefr": "B1"
+  }
+}

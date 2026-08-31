@@ -1,0 +1,114 @@
+{
+  "story_title": "What is Gringo_",
+  "profiler": {
+    "word_count": 1058,
+    "unique_word_count": 470,
+    "evp_coverage_pct": 87.7,
+    "level_distribution": {
+      "A1": 253,
+      "A2": 78,
+      "B1": 50,
+      "B2": 26,
+      "C1": 2,
+      "C2": 3
+    },
+    "cumulative_pct": {
+      "A1": 53.8,
+      "A2": 70.4,
+      "B1": 81.1,
+      "B2": 86.6,
+      "C1": 87.0,
+      "C2": 87.7
+    },
+    "cognate_count": 74,
+    "cognate_pct": 15.7,
+    "false_friend_count": 2,
+    "off_list_count": 58,
+    "off_list_pct": 12.3,
+    "vocab_difficulty_raw": 1.68,
+    "vocab_difficulty_adjusted": 1.82,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "What is Gringo_",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "tossed around",
+          "rolling stone of a word",
+          "know shit about anything",
+          "catch up with me",
+          "live on the run",
+          "take it on the chin",
+          "threw my caution to a gust of northbound wind",
+          "sure as shit ain't",
+          "giving off",
+          "stand out",
+          "stomach it"
+        ],
+        "count": 11
+      },
+      "grammatical_complexity": {
+        "score": 4,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present perfect",
+          "past perfect",
+          "past continuous",
+          "relative clauses",
+          "participial clauses",
+          "conditionals"
+        ],
+        "notes": "Complex structures like past perfect, relative clauses, and participial phrases appear regularly throughout the text, making up a significant portion of the sentences."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "gringo",
+          "favela",
+          "Bogota",
+          "Colombia",
+          "Neil Armstrong"
+        ],
+        "notes": "The text is heavily focused on Latin American cultural concepts from a foreigner's perspective. A Latin American learner would understand the cultural context perfectly, perhaps even better than the author."
+      },
+      "sentence_structure": {
+        "score": 4,
+        "avg_sentence_length": 22,
+        "notes": "Sentences are long and varied, with multiple subordinate clauses and participial phrases. Many sentences exceed 30 words, contributing to narrative complexity."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "at things that weren't actually funny.",
+            "is_trap_active": false,
+            "reason": "In this context, 'actually' means 'really' or 'in fact'. While a Spanish speaker might initially think of 'actualmente' (currently), the surrounding context makes the meaning clear."
+          },
+          {
+            "word": "once",
+            "context": "I once came across a passing traveler",
+            "is_trap_active": false,
+            "reason": "Here 'once' means 'one time'. The Spanish meaning 'eleven' makes no sense in this context, so the trap is not active."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.8,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.82",
+      "evp_coverage_pct": "87.7",
+      "cognate_pct": "15.7",
+      "off_list_pct": "12.3"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.8,
+    "estimated_cefr": "B1"
+  }
+}

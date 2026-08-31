@@ -1,0 +1,121 @@
+{
+  "story_title": "The Lottery",
+  "profiler": {
+    "word_count": 2012,
+    "unique_word_count": 588,
+    "evp_coverage_pct": 85.5,
+    "level_distribution": {
+      "A1": 327,
+      "A2": 99,
+      "B1": 54,
+      "B2": 21,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 55.6,
+      "A2": 72.4,
+      "B1": 81.6,
+      "B2": 85.2,
+      "C1": 85.5,
+      "C2": 85.5
+    },
+    "cognate_count": 72,
+    "cognate_pct": 12.2,
+    "false_friend_count": 2,
+    "off_list_count": 85,
+    "off_list_pct": 14.5,
+    "vocab_difficulty_raw": 1.55,
+    "vocab_difficulty_adjusted": 1.71,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "The Lottery",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "making out",
+          "bigger fish to fry",
+          "jack shit",
+          "was toast",
+          "weight has been lifted off of my shoulders",
+          "screwed",
+          "take off",
+          "catch up",
+          "wave down",
+          "run out",
+          "get out of here",
+          "come on",
+          "gas up",
+          "check out",
+          "come flocking"
+        ],
+        "count": 15
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "present perfect",
+          "modals (would, could, should, can, will)",
+          "second conditional (if you took)",
+          "reported speech",
+          "relative clauses"
+        ],
+        "notes": "The text is a mix of simple and complex structures. Past perfect, past continuous, and modals appear regularly throughout the narrative, though the dialogue is mostly simple."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Baloto (Colombian lottery)",
+          "San Miguel (Catholic saint)",
+          "El Poblado (Medellín neighborhood)",
+          "mazamorra (Colombian food)",
+          "Nacional game (Atlético Nacional football)",
+          "La Ceja (Colombian town)",
+          "plantains"
+        ],
+        "notes": "The setting is deeply Colombian and highly accessible to a Latin American learner. References to local foods, places, and customs are familiar and require no additional background knowledge."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "The text is dominated by short, simple sentences, particularly in the extensive dialogue. Narrative sentences are moderate in length with some conjunctions and subordinate clauses."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "billion",
+            "context": "he won the 3 billion peso prize",
+            "is_trap_active": true,
+            "reason": "Spanish 'billón' means 10^12, while English 'billion' means 10^9. A Spanish speaker might initially interpret this as 3 trillion pesos, though the context of a lottery prize makes it clear it is a large sum."
+          },
+          {
+            "word": "soap",
+            "context": "the lady who watches soap operas all day",
+            "is_trap_active": false,
+            "reason": "While 'soap' means jabón and not sopa, the term 'soap operas' is a widely known fixed expression for telenovelas, making the false friend trap unlikely to cause genuine confusion."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.36,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.71",
+      "evp_coverage_pct": "85.5",
+      "cognate_pct": "12.2",
+      "off_list_pct": "14.5"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.36,
+    "estimated_cefr": "A2/B1"
+  }
+}

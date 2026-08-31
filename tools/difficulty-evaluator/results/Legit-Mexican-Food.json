@@ -1,0 +1,135 @@
+{
+  "story_title": "Legit Mexican Food",
+  "profiler": {
+    "word_count": 1716,
+    "unique_word_count": 498,
+    "evp_coverage_pct": 83.1,
+    "level_distribution": {
+      "A1": 284,
+      "A2": 58,
+      "B1": 44,
+      "B2": 28,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 57.0,
+      "A2": 68.7,
+      "B1": 77.5,
+      "B2": 83.1,
+      "C1": 83.1,
+      "C2": 83.1
+    },
+    "cognate_count": 64,
+    "cognate_pct": 12.9,
+    "false_friend_count": 4,
+    "off_list_count": 84,
+    "off_list_pct": 16.9,
+    "vocab_difficulty_raw": 1.56,
+    "vocab_difficulty_adjusted": 1.93,
+    "estimated_cefr": "B2+"
+  },
+  "rubric": {
+    "story_title": "Legit Mexican Food",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "rip-off",
+          "read my mind",
+          "messing with me",
+          "leave me hanging",
+          "something to chew on",
+          "sharpest tool in the shed",
+          "breathe fire",
+          "screaming uncle",
+          "passed out",
+          "take it easy on him",
+          "go get 'em tiger",
+          "saw a ghost",
+          "beat the shit out of you",
+          "real deal",
+          "spare you the pain"
+        ],
+        "count": 15
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple (dominant)",
+          "past simple",
+          "present continuous",
+          "present perfect (I've gotten stupider, I've seen TikToks)",
+          "going to future (I'm gonna order)",
+          "reported speech (I thought this was...)",
+          "first conditional (If I'm gonna order...)",
+          "basic modals (can, should, would)",
+          "relative clauses (who started this restaurant)",
+          "comparatives (not as good as)"
+        ],
+        "notes": "Dialogue is dominated by simple present and past tenses with short sentences. Present perfect, reported speech, and conditionals appear occasionally but are not frequent. Complex structures are rare and scattered."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Taco Bell (US fast food brand)",
+          "Speedy Gonzalez cartoons (US pop culture)",
+          "Slurpees (US/Canadian brand)",
+          "TikToks (global social media)",
+          "Pisco Sour (Peruvian drink)",
+          "Caipirinhas (Brazilian drink)",
+          "Mexican taco culture (cow eye, tongue, brain tacos)",
+          "screaming uncle (US idiom)"
+        ],
+        "notes": "Most Latin American references (Pisco Sour, caipirinhas, Mexican food) would be familiar to a LatAm learner. US-specific references like Taco Bell, Speedy Gonzalez, and Slurpees are somewhat known globally and understandable from context. The setting in Canada is lightly referenced."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 10,
+        "notes": "Dialogue format with very short utterances. Many sentences are 3-8 words. Some compound sentences and conjunctions appear but overall the text is simple and conversational."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "No, it's actually its own country.",
+            "is_trap_active": true,
+            "reason": "Spanish 'actualmente' means 'currently/nowadays.' A Spanish speaker could misread this as 'it's currently its own country' rather than 'in fact, it's its own country.'"
+          },
+          {
+            "word": "dessert",
+            "context": "Would you like some dessert?",
+            "is_trap_active": true,
+            "reason": "Spanish 'desierto' means 'desert/wasteland.' While the restaurant context helps, the spelling similarity to 'desierto' is a genuine trap for lower-level learners."
+          },
+          {
+            "word": "once",
+            "context": "It was once a part of Portugal.",
+            "is_trap_active": true,
+            "reason": "Spanish 'once' means 'eleven.' A Spanish speaker could be confused reading 'it was once a part' as potentially involving the number eleven."
+          },
+          {
+            "word": "sauce",
+            "context": "the sauces you add to them are",
+            "is_trap_active": false,
+            "reason": "Spanish 'salsa' means 'sauce' in food context. This is effectively a cognate, not a false friend. The dance meaning of 'salsa' is irrelevant here."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.48,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.93",
+      "evp_coverage_pct": "83.1",
+      "cognate_pct": "12.9",
+      "off_list_pct": "16.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.48,
+    "estimated_cefr": "A2/B1"
+  }
+}

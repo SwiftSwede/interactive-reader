@@ -1,0 +1,100 @@
+{
+  "story_title": "Just a Daydream",
+  "profiler": {
+    "word_count": 730,
+    "unique_word_count": 322,
+    "evp_coverage_pct": 87.3,
+    "level_distribution": {
+      "A1": 199,
+      "A2": 52,
+      "B1": 19,
+      "B2": 9,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 61.8,
+      "A2": 78.0,
+      "B1": 83.9,
+      "B2": 86.6,
+      "C1": 87.3,
+      "C2": 87.3
+    },
+    "cognate_count": 50,
+    "cognate_pct": 15.5,
+    "false_friend_count": 1,
+    "off_list_count": 41,
+    "off_list_pct": 12.7,
+    "vocab_difficulty_raw": 1.44,
+    "vocab_difficulty_adjusted": 1.49,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Just a Daydream",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "gave up",
+          "middle of nowhere",
+          "jaw dropped",
+          "too good to be true",
+          "nudged me back to reality"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "present perfect",
+          "modals",
+          "relative clauses",
+          "adverbial clauses"
+        ],
+        "notes": "The text is mostly past simple and past continuous, but includes past perfect (he had done), present perfect (We've arrived), and several subordinate clauses (where my car was parked, that cut through)."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Porsche Spyder",
+          "Maroon 5",
+          "Adam Levine",
+          "Harry Styles"
+        ],
+        "notes": "Pop culture references are globally known. No North American-specific customs or institutional references that would hinder comprehension for a Latin American learner."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "Moderate sentences with some conjunctions and subordinate clauses. Average length is around 12 words, with occasional longer compound or complex sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "large",
+            "context": "On the ground was a large thick burgundy blanket.",
+            "is_trap_active": true,
+            "reason": "Spanish 'largo' means long, whereas English 'large' means big in size. A Spanish speaker might initially misinterpret it, though the context of a blanket makes it understandable."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.9,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.49",
+      "evp_coverage_pct": "87.3",
+      "cognate_pct": "15.5",
+      "off_list_pct": "12.7"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.9,
+    "estimated_cefr": "A2"
+  }
+}

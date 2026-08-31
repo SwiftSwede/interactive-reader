@@ -1,0 +1,102 @@
+{
+  "story_title": "La Castaña and the 3 Bears",
+  "profiler": {
+    "word_count": 936,
+    "unique_word_count": 331,
+    "evp_coverage_pct": 87.0,
+    "level_distribution": {
+      "A1": 223,
+      "A2": 48,
+      "B1": 11,
+      "B2": 5,
+      "C1": 0,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 67.4,
+      "A2": 81.9,
+      "B1": 85.2,
+      "B2": 86.7,
+      "C1": 86.7,
+      "C2": 87.0
+    },
+    "cognate_count": 37,
+    "cognate_pct": 11.2,
+    "false_friend_count": 1,
+    "off_list_count": 43,
+    "off_list_pct": 13.0,
+    "vocab_difficulty_raw": 1.31,
+    "vocab_difficulty_adjusted": 1.39,
+    "estimated_cefr": "A2+"
+  },
+  "rubric": {
+    "story_title": "La Castaña and the 3 Bears",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "give up",
+          "check it out",
+          "Don't mind if I do",
+          "as hard as a rock",
+          "take a bite out of"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "present perfect",
+          "present perfect continuous",
+          "past perfect",
+          "third conditional",
+          "first conditional",
+          "basic modals"
+        ],
+        "notes": "The text is dominated by past simple, but includes a noticeable minority of complex structures like past continuous, present perfect, past perfect, and a one-off third conditional."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Los Roques, Venezuela",
+          "Chicharron sandwiches",
+          "Peruvian breakfast",
+          "Mojitos",
+          "Instagram"
+        ],
+        "notes": "The setting and cultural references are Latin American (Venezuela, Peru) or globally known (Instagram), making it highly accessible to the target learner."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "Mostly short to moderate sentences with basic conjunctions. A few longer sentences with subordinate clauses, but overall straightforward narrative structure."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "there were actually 3 bears standing over her.",
+            "is_trap_active": true,
+            "reason": "A Spanish speaker might read 'actually' as 'actualmente' (currently), which slightly alters the intended emphasis of 'in fact' or 'really' confirming the reality of the bears."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.97,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.39",
+      "evp_coverage_pct": "87.0",
+      "cognate_pct": "11.2",
+      "off_list_pct": "13.0"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.97,
+    "estimated_cefr": "A2"
+  }
+}

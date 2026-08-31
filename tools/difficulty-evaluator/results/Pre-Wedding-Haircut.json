@@ -1,0 +1,116 @@
+{
+  "story_title": "Pre-Wedding Haircut_",
+  "profiler": {
+    "word_count": 1016,
+    "unique_word_count": 321,
+    "evp_coverage_pct": 93.8,
+    "level_distribution": {
+      "A1": 224,
+      "A2": 37,
+      "B1": 27,
+      "B2": 11,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 69.8,
+      "A2": 81.3,
+      "B1": 89.7,
+      "B2": 93.1,
+      "C1": 93.8,
+      "C2": 93.8
+    },
+    "cognate_count": 42,
+    "cognate_pct": 13.1,
+    "false_friend_count": 0,
+    "off_list_count": 20,
+    "off_list_pct": 6.2,
+    "vocab_difficulty_raw": 1.44,
+    "vocab_difficulty_adjusted": 1.4,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-Wedding Haircut_",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "piece of work",
+          "piss me off",
+          "look up",
+          "hangs up",
+          "heads out",
+          "get you in",
+          "turn down"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "past continuous (was wondering)",
+          "wish structure (I wish I could)",
+          "first conditional (If you need...)",
+          "indirect questions"
+        ],
+        "notes": "Dominated by simple tenses typical of dialogue. A few instances of indirect questions, wish structures, and conditionals appear but are not frequent enough to push beyond level 2."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "hockey game",
+          "Edmonton Oilers",
+          "tipping culture ($10 tip on $40 haircut)",
+          "Oilers' country (Edmonton context)",
+          "barbershop culture with sports logos"
+        ],
+        "notes": "Tipping norms and hockey/Edmonton Oilers references require North American cultural knowledge. The plot is followable without it, but the humor and motivation depend on understanding these customs."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "Dialogue format with short, conversational sentences. Mostly subject-verb-object with some compound sentences and basic conjunctions. A few longer narrative sentences in stage directions."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "sort",
+            "context": "Is that some sort of joke?",
+            "is_trap_active": true,
+            "reason": "Listed as cognate with Spanish 'suerte' (luck), but used here meaning 'type/kind.' A Spanish speaker could be confused, though context makes the meaning somewhat inferable."
+          },
+          {
+            "word": "fine",
+            "context": "Fine, fine. Your threats worked.",
+            "is_trap_active": false,
+            "reason": "Listed as cognate with Spanish 'fino' (thin/refined), but used as an interjection meaning 'okay.' This usage is extremely common and unlikely to confuse most learners."
+          },
+          {
+            "word": "regular",
+            "context": "Fred calls his regular hair salon.",
+            "is_trap_active": false,
+            "reason": "Spanish 'regular' means 'mediocre/so-so,' but context of calling a usual salon makes the meaning clear."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.17,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.4",
+      "evp_coverage_pct": "93.8",
+      "cognate_pct": "13.1",
+      "off_list_pct": "6.2"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.17,
+    "estimated_cefr": "A2/B1"
+  }
+}

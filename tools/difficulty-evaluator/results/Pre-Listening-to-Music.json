@@ -1,0 +1,113 @@
+{
+  "story_title": "Pre-Listening to Music",
+  "profiler": {
+    "word_count": 1061,
+    "unique_word_count": 329,
+    "evp_coverage_pct": 91.8,
+    "level_distribution": {
+      "A1": 227,
+      "A2": 51,
+      "B1": 11,
+      "B2": 10,
+      "C1": 3,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 69.0,
+      "A2": 84.5,
+      "B1": 87.8,
+      "B2": 90.9,
+      "C1": 91.8,
+      "C2": 91.8
+    },
+    "cognate_count": 46,
+    "cognate_pct": 14.0,
+    "false_friend_count": 1,
+    "off_list_count": 27,
+    "off_list_pct": 8.2,
+    "vocab_difficulty_raw": 1.38,
+    "vocab_difficulty_adjusted": 1.42,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-Listening to Music",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "long face",
+          "feeling down",
+          "cheer you up",
+          "put on (music)",
+          "kidding me",
+          "my jam",
+          "over and over again",
+          "woke up on the wrong side of the bed",
+          "turn down (volume)",
+          "get it (understand)",
+          "what's up with"
+        ],
+        "count": 11
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "present perfect",
+          "basic modals (can, should, would, might)",
+          "first conditional",
+          "comparatives/superlatives",
+          "basic relative clauses"
+        ],
+        "notes": "Dominated by simple tenses and short conversational structures. Present perfect and first conditionals appear a few times but do not dominate the text."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Led Zeppelin",
+          "Black dog",
+          "The Beatles",
+          "Pet Sounds",
+          "Oasis",
+          "Coldplay",
+          "The Verve",
+          "Wonderwall",
+          "Britpop",
+          "middle school"
+        ],
+        "notes": "Pop culture references are globally known bands and artists. 'Middle school' is a North American term but easily understood from context. Office norms are universal."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 10,
+        "notes": "Dialogue format with short, conversational sentences. Mostly subject-verb-object with some basic conjunctions."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "song",
+            "context": "I haven’t listened to this song in a long time.",
+            "is_trap_active": false,
+            "reason": "The entire context is about listening to music, bands, and lyrics. A Spanish speaker would not confuse 'song' with 'son' in this context."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.13,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.42",
+      "evp_coverage_pct": "91.8",
+      "cognate_pct": "14.0",
+      "off_list_pct": "8.2"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.13,
+    "estimated_cefr": "A2/B1"
+  }
+}

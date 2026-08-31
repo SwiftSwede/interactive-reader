@@ -1,0 +1,105 @@
+{
+  "story_title": "Pre-iPhone Fairy",
+  "profiler": {
+    "word_count": 960,
+    "unique_word_count": 353,
+    "evp_coverage_pct": 90.4,
+    "level_distribution": {
+      "A1": 222,
+      "A2": 59,
+      "B1": 28,
+      "B2": 9,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 62.9,
+      "A2": 79.6,
+      "B1": 87.5,
+      "B2": 90.1,
+      "C1": 90.4,
+      "C2": 90.4
+    },
+    "cognate_count": 52,
+    "cognate_pct": 14.7,
+    "false_friend_count": 1,
+    "off_list_count": 34,
+    "off_list_pct": 9.6,
+    "vocab_difficulty_raw": 1.46,
+    "vocab_difficulty_adjusted": 1.55,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-iPhone Fairy",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "lay low",
+          "get your hands on",
+          "relieve myself",
+          "get smart with me",
+          "top-of-the-line",
+          "screw off",
+          "sugar daddy",
+          "lightweight"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "present perfect",
+          "past continuous",
+          "past perfect",
+          "reported speech",
+          "relative clauses"
+        ],
+        "notes": "The text is a mix of simple and complex structures. Present perfect, past continuous, and past perfect appear as a noticeable minority, along with reported speech and relative clauses."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "reggaeton",
+          "iPhone",
+          "Tinkerbell",
+          "PhD"
+        ],
+        "notes": "Cultural references are either universal or familiar to Latin American learners (reggaeton). No unfamiliar North American customs are present."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "Mostly moderate sentences with some conjunctions and compound sentences, typical of spoken dialogue. A few longer sentences, but average length remains in the 12-18 word range."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "prove",
+            "context": "She told me to make a wish to prove to me that she wasn’t lying.",
+            "is_trap_active": false,
+            "reason": "In Spanish, 'probar' can also mean 'to prove' (probar que), so the context makes the meaning clear and it is not an active trap."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.02,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.55",
+      "evp_coverage_pct": "90.4",
+      "cognate_pct": "14.7",
+      "off_list_pct": "9.6"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.02,
+    "estimated_cefr": "A2/B1"
+  }
+}

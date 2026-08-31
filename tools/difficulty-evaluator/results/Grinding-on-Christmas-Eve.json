@@ -1,0 +1,131 @@
+{
+  "story_title": "Grinding on Christmas Eve",
+  "profiler": {
+    "word_count": 1272,
+    "unique_word_count": 421,
+    "evp_coverage_pct": 94.1,
+    "level_distribution": {
+      "A1": 274,
+      "A2": 77,
+      "B1": 31,
+      "B2": 12,
+      "C1": 0,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 65.1,
+      "A2": 83.4,
+      "B1": 90.7,
+      "B2": 93.6,
+      "C1": 93.6,
+      "C2": 94.1
+    },
+    "cognate_count": 65,
+    "cognate_pct": 15.4,
+    "false_friend_count": 4,
+    "off_list_count": 25,
+    "off_list_pct": 5.9,
+    "vocab_difficulty_raw": 1.47,
+    "vocab_difficulty_adjusted": 1.83,
+    "estimated_cefr": "B1"
+  },
+  "rubric": {
+    "story_title": "Grinding on Christmas Eve",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "burning the midnight oil",
+          "have a screw loose",
+          "get a headstart",
+          "draw the short straw",
+          "put food on the table",
+          "jumping ship",
+          "nitty gritty",
+          "put my nose to the grindstone",
+          "greener pastures",
+          "wet behind the ears",
+          "swallow your words",
+          "figure out",
+          "what he was made of",
+          "begs the question"
+        ],
+        "count": 14
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "present perfect",
+          "past perfect",
+          "second conditional",
+          "first conditional",
+          "modals",
+          "passive voice",
+          "relative clauses"
+        ],
+        "notes": "The dialogue is mostly simple and compound sentences, but contains a noticeable minority of complex structures like second conditionals ('If I had a choice, I wouldn't be working'), present perfect, past perfect ('he had had enough'), and passives."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "pumpkin pie",
+          "health insurance and dental",
+          "pay and a half for overtime",
+          "second quarter (business context)"
+        ],
+        "notes": "References are mostly light and related to North American workplace norms and food, but they are easily understood from context without missing the plot."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "As a dialogue, the text features mostly short to moderate sentences with some conjunctions. A few longer, complex sentences appear, but the average remains accessible."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "people who actually care about you",
+            "is_trap_active": false,
+            "reason": "Used as an intensifier meaning 'really', context makes it clear it does not mean 'currently'."
+          },
+          {
+            "word": "once",
+            "context": "do a walkaround once per hour",
+            "is_trap_active": false,
+            "reason": "Used with 'per hour', clearly meaning 'one time', not the number eleven."
+          },
+          {
+            "word": "pie",
+            "context": "delicious pumpkin pie",
+            "is_trap_active": false,
+            "reason": "Context of food and 'pumpkin' makes it clear it refers to the dessert, not a foot."
+          },
+          {
+            "word": "subject",
+            "context": "switches the subject to her dog",
+            "is_trap_active": false,
+            "reason": "Context of conversation makes it clear it means 'topic', which is also a valid meaning in Spanish."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.45,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.83",
+      "evp_coverage_pct": "94.1",
+      "cognate_pct": "15.4",
+      "off_list_pct": "5.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.45,
+    "estimated_cefr": "A2/B1"
+  }
+}

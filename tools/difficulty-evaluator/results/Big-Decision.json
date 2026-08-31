@@ -1,0 +1,121 @@
+{
+  "story_title": "Big Decision",
+  "profiler": {
+    "word_count": 1130,
+    "unique_word_count": 393,
+    "evp_coverage_pct": 91.9,
+    "level_distribution": {
+      "A1": 253,
+      "A2": 66,
+      "B1": 25,
+      "B2": 14,
+      "C1": 3,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 64.4,
+      "A2": 81.2,
+      "B1": 87.5,
+      "B2": 91.1,
+      "C1": 91.9,
+      "C2": 91.9
+    },
+    "cognate_count": 68,
+    "cognate_pct": 17.3,
+    "false_friend_count": 2,
+    "off_list_count": 32,
+    "off_list_pct": 8.1,
+    "vocab_difficulty_raw": 1.47,
+    "vocab_difficulty_adjusted": 1.65,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Big Decision",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "take a year off",
+          "find myself",
+          "fall into my lap",
+          "out of thin air",
+          "brought this up",
+          "made up my mind",
+          "put food on the table",
+          "take advantage of",
+          "lying around",
+          "in no time",
+          "strong suits",
+          "get worked up",
+          "end up",
+          "have me beat",
+          "old school",
+          "bad vibes"
+        ],
+        "count": 16
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "present perfect",
+          "going to future",
+          "modals (might, can, should, would, could)",
+          "first conditional",
+          "used to"
+        ],
+        "notes": "The text is dominated by simple tenses and basic modals typical of spoken dialogue, but includes a noticeable minority of present perfect, conditionals, and 'used to' structures."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "7/11 (convenience store)",
+          "student loans and debt",
+          "scholarships for minorities",
+          "handicap parking spots",
+          "Mark Zuckerberg",
+          "hockey and beer culture",
+          "portfolio requirement for architecture school"
+        ],
+        "notes": "The dialogue relies on North American university and financial aid systems, as well as specific cultural touchstones like 7/11 and hockey, which require some background knowledge but are mostly followable from context."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "As a dialogue, the text consists mostly of short to moderate sentences with some compound structures and basic subordination."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "parents",
+            "context": "That’s what our parents taught us.",
+            "is_trap_active": false,
+            "reason": "The preceding context ('your father and I') makes it clear that 'parents' refers to mother and father, not general relatives (parientes)."
+          },
+          {
+            "word": "pretend",
+            "context": "Maybe you can pretend you're autistic.",
+            "is_trap_active": true,
+            "reason": "Spanish 'pretender' means to try or intend. A Spanish speaker might misinterpret this as 'try to be autistic' rather than 'act as if you are autistic'."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.65,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.65,
+      "evp_coverage_pct": 91.9,
+      "cognate_pct": 17.3,
+      "off_list_pct": 8.1
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.65,
+    "estimated_cefr": "B1"
+  }
+}

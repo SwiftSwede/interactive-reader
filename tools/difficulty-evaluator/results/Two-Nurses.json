@@ -1,0 +1,113 @@
+{
+  "story_title": "Two Nurses",
+  "profiler": {
+    "word_count": 1299,
+    "unique_word_count": 465,
+    "evp_coverage_pct": 90.3,
+    "level_distribution": {
+      "A1": 276,
+      "A2": 67,
+      "B1": 53,
+      "B2": 20,
+      "C1": 3,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 59.4,
+      "A2": 73.8,
+      "B1": 85.2,
+      "B2": 89.5,
+      "C1": 90.1,
+      "C2": 90.3
+    },
+    "cognate_count": 73,
+    "cognate_pct": 15.7,
+    "false_friend_count": 1,
+    "off_list_count": 45,
+    "off_list_pct": 9.7,
+    "vocab_difficulty_raw": 1.6,
+    "vocab_difficulty_adjusted": 1.63,
+    "estimated_cefr": "C1"
+  },
+  "rubric": {
+    "story_title": "Two Nurses",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "make a big deal",
+          "kept her mouth shut",
+          "make due (make do)",
+          "turns out",
+          "make their way up the ranks",
+          "get ahead in the world",
+          "screwed up her face",
+          "wet behind the ears",
+          "throw themselves at you",
+          "make out with",
+          "curse out"
+        ],
+        "count": 11
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "past continuous",
+          "present perfect",
+          "past perfect",
+          "second conditional",
+          "first conditional",
+          "basic passive",
+          "reported speech",
+          "modals (can, should, must, would)"
+        ],
+        "notes": "Dialogue-dominated text with mostly simple tenses, but second conditionals, past perfect, present perfect, and passive voice appear as a noticeable minority. Complex structures appear in roughly 20-25% of sentences."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Manhattan/Long Island/New Jersey geography",
+          "Chief Nursing Officer (hospital hierarchy)",
+          "unions making it hard to fire nurses",
+          "graveyard shifts",
+          "Pedialyte (US brand)",
+          "medium-rare steak",
+          "illegal Mexican immigrant experience"
+        ],
+        "notes": "US hospital setting with some references a LatAm learner may not fully know (Pedialyte brand, union dynamics), but the plot is followable without deep cultural knowledge. The Mexican immigrant backstory is actually familiar territory for the target learner."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Heavy dialogue with short, punchy exchanges. Narrative sentences are moderate with some subordinate clauses. Average sentence length is manageable for an intermediate learner."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "rare",
+            "context": "It must have been from the medium-rare steak I ate for lunch yesterday.",
+            "is_trap_active": true,
+            "reason": "Spanish 'raro' means strange/unusual. In this cooking context, 'rare' means undercooked, which a Spanish speaker would not deduce from the cognate. However, the steak/food context provides some clues."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.49,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.63",
+      "evp_coverage_pct": "90.3",
+      "cognate_pct": "15.7",
+      "off_list_pct": "9.7"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.49,
+    "estimated_cefr": "A2/B1"
+  }
+}

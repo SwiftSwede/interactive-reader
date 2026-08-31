@@ -125,6 +125,14 @@ export default async function DashboardPage() {
               pego en el chat de Zoom. Por ahora, esto confirma que tu sesión
               funciona.
             </p>
+            <p className="mt-6">
+              <Link
+                href="/progress"
+                className="text-sm text-gray-800 underline-offset-2 hover:underline"
+              >
+                Tu progreso
+              </Link>
+            </p>
           </>
         )}
       </section>

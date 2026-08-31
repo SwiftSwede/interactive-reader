@@ -1,0 +1,98 @@
+{
+  "story_title": "Pre-Grown-Up Fight",
+  "profiler": {
+    "word_count": 836,
+    "unique_word_count": 307,
+    "evp_coverage_pct": 92.2,
+    "level_distribution": {
+      "A1": 211,
+      "A2": 37,
+      "B1": 28,
+      "B2": 6,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 68.7,
+      "A2": 80.8,
+      "B1": 89.9,
+      "B2": 91.9,
+      "C1": 92.2,
+      "C2": 92.2
+    },
+    "cognate_count": 43,
+    "cognate_pct": 14.0,
+    "false_friend_count": 0,
+    "off_list_count": 24,
+    "off_list_pct": 7.8,
+    "vocab_difficulty_raw": 1.41,
+    "vocab_difficulty_adjusted": 1.35,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-Grown-Up Fight",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "silent treatment",
+          "panties in a bunch",
+          "deal with this",
+          "blowing this out of proportion",
+          "giving her the time of day",
+          "did yourself up",
+          "make up for",
+          "building up"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "past continuous",
+          "present perfect",
+          "past perfect",
+          "going to future",
+          "modals (can, should, could, must)",
+          "indirect questions",
+          "basic relative clauses"
+        ],
+        "notes": "The text is mostly conversational and uses simple tenses, but includes a noticeable minority of complex structures like past perfect ('had been building up'), present perfect ('have been giving'), and indirect questions ('how old she was', 'where she was going to school')."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "fairy godfather",
+          "Christmas present",
+          "PhD"
+        ],
+        "notes": "The cultural references are universal or globally known. The situation (a couple arguing about flirting with a waitress) is universally understandable and requires no specific North American cultural knowledge."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 10,
+        "notes": "As a dialogue, the text consists of short, punchy sentences with occasional compound structures and basic conjunctions. Average sentence length is well under 15 words."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 2.06,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.35,
+      "evp_coverage_pct": 92.2,
+      "cognate_pct": 14.0,
+      "off_list_pct": 7.8
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.06,
+    "estimated_cefr": "A2/B1"
+  }
+}

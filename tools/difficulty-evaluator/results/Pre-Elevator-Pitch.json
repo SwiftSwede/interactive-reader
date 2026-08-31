@@ -1,0 +1,116 @@
+{
+  "story_title": "Pre-Elevator Pitch",
+  "profiler": {
+    "word_count": 1165,
+    "unique_word_count": 422,
+    "evp_coverage_pct": 89.8,
+    "level_distribution": {
+      "A1": 231,
+      "A2": 80,
+      "B1": 44,
+      "B2": 22,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 54.7,
+      "A2": 73.7,
+      "B1": 84.1,
+      "B2": 89.3,
+      "C1": 89.8,
+      "C2": 89.8
+    },
+    "cognate_count": 90,
+    "cognate_pct": 21.3,
+    "false_friend_count": 3,
+    "off_list_count": 43,
+    "off_list_pct": 10.2,
+    "vocab_difficulty_raw": 1.64,
+    "vocab_difficulty_adjusted": 1.81,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Pre-Elevator Pitch",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "to no avail",
+          "gives me the creeps",
+          "strength in numbers",
+          "have what it takes",
+          "go-ahead"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "present perfect",
+          "passive voice",
+          "first conditional",
+          "second conditional",
+          "modal verbs (can, should, would, could)",
+          "tag questions",
+          "relative clauses"
+        ],
+        "notes": "Dominated by present simple in dialogue, but passives, conditionals, and relative clauses appear as a noticeable minority (~25% of sentences). A few long complex sentences with multiple subordinate clauses."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "elevator pitch concept",
+          "golf course business culture",
+          "corporate hierarchy (VP, CFO, CEO)",
+          "business email vs Gmail norms",
+          "janitor as low-status job"
+        ],
+        "notes": "Mostly universal business settings. Golf course reference is mildly North American but contextually clear. Corporate hierarchy and email norms are globally understood."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 16,
+        "notes": "Mixed lengths typical of dialogue. Many short exchanges but also several long multi-clause sentences, especially in Steve's frustrated responses and Raj's pitch."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "ignore",
+            "context": "My secretary has been given explicit instructions to ignore all emails",
+            "is_trap_active": true,
+            "reason": "Spanish 'ignorar' means 'to not know/be unaware,' not 'to deliberately disregard.' A Spanish speaker could misread this as the secretary not knowing about the emails."
+          },
+          {
+            "word": "once",
+            "context": "once we get the go-ahead from you",
+            "is_trap_active": true,
+            "reason": "Spanish 'once' means 'eleven.' The temporal meaning 'as soon as' is a genuine false friend trap in this context."
+          },
+          {
+            "word": "respect",
+            "context": "He's just showing respect by looking you in the eyes",
+            "is_trap_active": false,
+            "reason": "The Spanish false friend 'respecto' means 'regarding/with respect to,' but 'showing respect' is clear enough from context that confusion is unlikely."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.39,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.81",
+      "evp_coverage_pct": "89.8",
+      "cognate_pct": "21.3",
+      "off_list_pct": "10.2"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.39,
+    "estimated_cefr": "A2/B1"
+  }
+}

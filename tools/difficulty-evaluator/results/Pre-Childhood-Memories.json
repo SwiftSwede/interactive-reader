@@ -1,0 +1,101 @@
+{
+  "story_title": "Pre-Childhood Memories",
+  "profiler": {
+    "word_count": 1035,
+    "unique_word_count": 344,
+    "evp_coverage_pct": 91.9,
+    "level_distribution": {
+      "A1": 245,
+      "A2": 47,
+      "B1": 14,
+      "B2": 10,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 71.2,
+      "A2": 84.9,
+      "B1": 89.0,
+      "B2": 91.9,
+      "C1": 91.9,
+      "C2": 91.9
+    },
+    "cognate_count": 50,
+    "cognate_pct": 14.5,
+    "false_friend_count": 1,
+    "off_list_count": 28,
+    "off_list_pct": 8.1,
+    "vocab_difficulty_raw": 1.33,
+    "vocab_difficulty_adjusted": 1.41,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-Childhood Memories",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "spring cleaning",
+          "have a crush on",
+          "had had enough",
+          "look up (information)",
+          "throw out (discard)"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "would have (conditional)",
+          "used to",
+          "I wish I were (subjunctive)",
+          "basic modals (can, should, would)"
+        ],
+        "notes": "Dominated by simple past and present simple, but past perfect appears 3 times, 'would have' conditionals twice, 'used to' several times, and 'I wish I were' once. These form a noticeable minority of sentences."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "garage sale",
+          "Backstreet Boys",
+          "Valentine's Day",
+          "Agatha Christie"
+        ],
+        "notes": "Garage sale is a North American custom but context makes it clear. Backstreet Boys and Valentine's Day are globally known. Agatha Christie is universal. No heavy cultural knowledge required."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Dialogue format with mostly short, conversational sentences. A few longer compound sentences (up to 30 words) but average is moderate. Mostly subject-verb-object with some conjunctions."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "People actually do that? I only read if I have to.",
+            "is_trap_active": false,
+            "reason": "A Spanish speaker might read 'actually' as 'actualmente' (currently/nowadays), but in this context both interpretations ('Do people really do that?' vs 'Do people nowadays do that?') lead to similar comprehension. The trap is mild and context disambiguates sufficiently."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.02,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.41",
+      "evp_coverage_pct": "91.9",
+      "cognate_pct": "14.5",
+      "off_list_pct": "8.1"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.02,
+    "estimated_cefr": "A2/B1"
+  }
+}

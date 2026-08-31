@@ -1,0 +1,148 @@
+{
+  "story_title": "Shattered Perceptions",
+  "profiler": {
+    "word_count": 1604,
+    "unique_word_count": 549,
+    "evp_coverage_pct": 88.7,
+    "level_distribution": {
+      "A1": 304,
+      "A2": 95,
+      "B1": 56,
+      "B2": 29,
+      "C1": 3,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 55.4,
+      "A2": 72.7,
+      "B1": 82.9,
+      "B2": 88.2,
+      "C1": 88.7,
+      "C2": 88.7
+    },
+    "cognate_count": 103,
+    "cognate_pct": 18.8,
+    "false_friend_count": 7,
+    "off_list_count": 62,
+    "off_list_pct": 11.3,
+    "vocab_difficulty_raw": 1.63,
+    "vocab_difficulty_adjusted": 2.27,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Shattered Perceptions",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "on the other hand",
+          "on top of that",
+          "gone to shit",
+          "cut to the chase",
+          "make yourself at home",
+          "neither here nor there",
+          "team player",
+          "pulled up"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "present perfect",
+          "present simple",
+          "present continuous",
+          "conditionals (would)",
+          "modals (can, must, will, mustn't)",
+          "reported speech",
+          "relative clauses (who, that, which)",
+          "participial clauses (looking at, dressed in)"
+        ],
+        "notes": "Dominated by past simple narrative with dialogue in present simple. Past perfect, present perfect, and conditional structures appear as a noticeable minority. Relative clauses and participial constructions recur throughout. No highly advanced structures like third conditionals or inversion."
+      },
+      "cultural_reference_load": {
+        "score": 4,
+        "references_found": [
+          "Seattle vs Boise US geography and political stereotypes",
+          "anti-cop protests and police defunding",
+          "open-carry state gun culture",
+          "African-American vs black terminology norms",
+          "mandatory anti-racism training in corporate settings",
+          "workplace diversity hiring practices",
+          "Washington Post and CNN as US media references",
+          "business casual dress code",
+          "US salary and benefits structure ($50K-$100K, medical/dental, paid vacation)"
+        ],
+        "notes": "The entire plot hinges on understanding US racial politics, corporate diversity culture, and the progressive-vs-conservative cultural divide. A Latin American learner would likely miss the significance of the African-American correction, the anti-racism training concept, and the open-carry gun culture without specific US cultural knowledge."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 15,
+        "notes": "Mixed lengths throughout. Dialogue lines are short (3-10 words) while narrative sentences range from 15-25 words with some compound and complex structures. Subordinate clauses appear regularly but do not dominate."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "No, it's actually in South America.",
+            "is_trap_active": true,
+            "reason": "Used in the English sense of 'in fact' which differs from Spanish 'actualmente' (currently). A Spanish speaker may momentarily confuse it, though context (correcting a geographic misconception) makes the intended meaning recoverable."
+          },
+          {
+            "word": "exit",
+            "context": "Alejandra grabbed her bags and headed to the exit.",
+            "is_trap_active": false,
+            "reason": "Context of an airport makes 'way out' the obvious meaning. Spanish 'éxito' (success) would make no sense here."
+          },
+          {
+            "word": "location",
+            "context": "As the taxi driver made his way to the interview location",
+            "is_trap_active": false,
+            "reason": "Clearly means 'place' in this context. The Spanish meaning 'locación' (renting) would not fit."
+          },
+          {
+            "word": "once",
+            "context": "once you take the training, your eyes will be opened",
+            "is_trap_active": true,
+            "reason": "Used as 'as soon as/when' which is very different from Spanish 'once' (eleven). A Spanish speaker could be momentarily confused, though the sentence structure makes 'eleven' nonsensical."
+          },
+          {
+            "word": "proper",
+            "context": "This here is 20 years of following proper grazing principles.",
+            "is_trap_active": false,
+            "reason": "Means 'correct/appropriate' which is close enough to the Spanish 'propio' in some contexts, and the surrounding context of grazing principles makes the meaning clear."
+          },
+          {
+            "word": "prove",
+            "context": "she had spent the past few years working hard to prove to the world",
+            "is_trap_active": false,
+            "reason": "Context of hard work and demonstrating capability makes 'demonstrate' the clear meaning, not Spanish 'probar' (to try/taste)."
+          },
+          {
+            "word": "success",
+            "context": "God has given me a lot of success over the years.",
+            "is_trap_active": false,
+            "reason": "Context of achievement and God's blessings makes 'success' clearly mean accomplishment, not Spanish 'suceso' (event/occurrence)."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.93,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "2.27",
+      "evp_coverage_pct": "88.7",
+      "cognate_pct": "18.8",
+      "off_list_pct": "11.3"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.93,
+    "estimated_cefr": "B1"
+  }
+}

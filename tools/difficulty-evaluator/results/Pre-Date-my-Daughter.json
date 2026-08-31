@@ -1,0 +1,116 @@
+{
+  "story_title": "Pre-Date my Daughter",
+  "profiler": {
+    "word_count": 1121,
+    "unique_word_count": 419,
+    "evp_coverage_pct": 90.7,
+    "level_distribution": {
+      "A1": 266,
+      "A2": 54,
+      "B1": 42,
+      "B2": 15,
+      "C1": 2,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 63.5,
+      "A2": 76.4,
+      "B1": 86.4,
+      "B2": 90.0,
+      "C1": 90.5,
+      "C2": 90.7
+    },
+    "cognate_count": 59,
+    "cognate_pct": 14.1,
+    "false_friend_count": 1,
+    "off_list_count": 39,
+    "off_list_pct": 9.3,
+    "vocab_difficulty_raw": 1.52,
+    "vocab_difficulty_adjusted": 1.58,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-Date my Daughter",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "second thoughts",
+          "winning him over",
+          "cut the bullshit",
+          "puppy love",
+          "fine and dandy",
+          "run-of-the-mill",
+          "goody-two-shoes",
+          "cup of Joe",
+          "piece of cake",
+          "love at first sight",
+          "fingers crossed",
+          "give you a hand",
+          "speak highly of",
+          "think straight",
+          "go on and on",
+          "deal with",
+          "find out"
+        ],
+        "count": 17
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "present perfect",
+          "past continuous",
+          "modals (can, should, must, would)",
+          "first conditional",
+          "subordinate clauses (because, while, when, if)",
+          "relative clauses",
+          "infinitive clauses"
+        ],
+        "notes": "The text is mostly conversational dialogue with a mix of simple and complex structures. Present perfect, past continuous, and conditionals appear regularly but do not dominate."
+      },
+      "cultural_reference_load": {
+        "score": 4,
+        "references_found": [
+          "American football (The Bears, quarterback, Tom Brady, Caleb Williams)",
+          "US geography (Chicago, Illinois, Midwestern, University of Michigan)",
+          "US religious landscape (Jehovas, Mormons, Midwestern protestants)",
+          "US social issues (school shooters, drug dealers, strippers)",
+          "marijuana farmers"
+        ],
+        "notes": "The plot relies heavily on understanding US sports culture, geography, and religious/social stereotypes. A Latin American learner would miss significant context in the father's interrogation."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "As a dialogue, the text features mostly short to moderate sentences with some compound and complex structures. Average length is manageable for an intermediate learner."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "parents",
+            "context": "Are you having second thoughts about me meeting your parents?",
+            "is_trap_active": false,
+            "reason": "Although 'parents' can be confused with 'parientes' (relatives) in Spanish, it is a basic A1 word that most learners correctly associate with 'padres' (father and mother) in this context."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.67,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.58",
+      "evp_coverage_pct": "90.7",
+      "cognate_pct": "14.1",
+      "off_list_pct": "9.3"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.67,
+    "estimated_cefr": "B1"
+  }
+}

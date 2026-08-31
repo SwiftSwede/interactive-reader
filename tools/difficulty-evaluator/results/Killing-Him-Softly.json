@@ -1,0 +1,107 @@
+{
+  "story_title": "Killing Him Softly",
+  "profiler": {
+    "word_count": 1284,
+    "unique_word_count": 432,
+    "evp_coverage_pct": 94.2,
+    "level_distribution": {
+      "A1": 289,
+      "A2": 71,
+      "B1": 32,
+      "B2": 14,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 66.9,
+      "A2": 83.3,
+      "B1": 90.7,
+      "B2": 94.0,
+      "C1": 94.2,
+      "C2": 94.2
+    },
+    "cognate_count": 55,
+    "cognate_pct": 12.7,
+    "false_friend_count": 1,
+    "off_list_count": 25,
+    "off_list_pct": 5.8,
+    "vocab_difficulty_raw": 1.44,
+    "vocab_difficulty_adjusted": 1.53,
+    "estimated_cefr": "B1"
+  },
+  "rubric": {
+    "story_title": "Killing Him Softly",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "blowing him off",
+          "rough patch",
+          "caught the hint",
+          "heart sank to his stomach",
+          "turn out to be",
+          "got caught up on",
+          "overstay his welcome",
+          "making out",
+          "brought up",
+          "cheer himself up"
+        ],
+        "count": 10
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past perfect (had been, hadn't seen, had taken, had stopped)",
+          "past continuous (was blowing, was telling, was pointing)",
+          "present perfect (haven't broken up)",
+          "third conditional / mixed conditional (If you had passed... you would have sworn)",
+          "conditional perfect (wouldn't have gotten)",
+          "relative clauses (that he had taken Rose to... which subsequently became)",
+          "participial clauses (Feeling good after catching up)",
+          "basic modals (wouldn't, shouldn't, could)"
+        ],
+        "notes": "Past simple dominates the narrative and dialogue. Past perfect, conditionals, and complex relative clauses appear as a noticeable minority (~20-25% of sentences). The third conditional and multi-clause relative construction add complexity but are not pervasive."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "chai tea latte (global beverage)",
+          "Facebook (universal social media)",
+          "rock show/bar (universal music culture)",
+          "college roommate (slightly North American but concept is universal)"
+        ],
+        "notes": "The story deals with universal relationship dynamics (needing space, breaking up, seeing an ex with someone new). No North American-specific customs, holidays, or institutional references. Fully accessible to a Latin American adult."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 16,
+        "notes": "Mixed lengths. Many short dialogue lines ('Good night.' 'Sure.' 'Thanks.') pull the average down, but narrative paragraphs contain multi-clause sentences with subordinate clauses, e.g., 'After work one day, he went to a funky café that he had taken Rose to on their first date and which subsequently became one of their favorite places to go to relax and chat.' (35 words)."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "subject",
+            "context": "Carlos changed the subject and the two talked for another two hours.",
+            "is_trap_active": false,
+            "reason": "In this context 'changed the subject' clearly refers to changing the topic of conversation. While Spanish 'sujeto' commonly means 'person/individual,' the verb 'changed the' makes the topic meaning obvious. A Spanish speaker would not be confused here."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.36,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.53",
+      "evp_coverage_pct": "94.2",
+      "cognate_pct": "12.7",
+      "off_list_pct": "5.8"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.36,
+    "estimated_cefr": "A2/B1"
+  }
+}

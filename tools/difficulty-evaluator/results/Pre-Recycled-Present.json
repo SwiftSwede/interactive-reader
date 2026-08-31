@@ -1,0 +1,107 @@
+{
+  "story_title": "Recycled Present",
+  "profiler": {
+    "word_count": 760,
+    "unique_word_count": 289,
+    "evp_coverage_pct": 92.4,
+    "level_distribution": {
+      "A1": 205,
+      "A2": 32,
+      "B1": 17,
+      "B2": 11,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 70.9,
+      "A2": 82.0,
+      "B1": 87.9,
+      "B2": 91.7,
+      "C1": 92.4,
+      "C2": 92.4
+    },
+    "cognate_count": 30,
+    "cognate_pct": 10.4,
+    "false_friend_count": 2,
+    "off_list_count": 22,
+    "off_list_pct": 7.6,
+    "vocab_difficulty_raw": 1.4,
+    "vocab_difficulty_adjusted": 1.6,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Recycled Present",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "guilt him into",
+          "deep down inside",
+          "straight face",
+          "play along",
+          "under his breath",
+          "run along",
+          "found a home for"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "present perfect",
+          "going to future",
+          "reported speech",
+          "relative clauses"
+        ],
+        "notes": "The narrative is mostly past simple with a noticeable minority of past perfect, past continuous, and reported speech structures."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Christmas gift-giving",
+          "birthday party"
+        ],
+        "notes": "The cultural setting is universal. Gift-giving, birthday parties, and family dynamics are easily understood by a Latin American learner."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 11,
+        "notes": "Mostly short to moderate sentences with some conjunctions. A few longer compound-complex sentences, but the average remains low."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "She was actually his wife’s auntie.",
+            "is_trap_active": true,
+            "reason": "Spanish 'actualmente' means 'currently', so a Spanish speaker might briefly confuse this with a time reference rather than 'in fact'."
+          },
+          {
+            "word": "parents",
+            "context": "The parents were in the kitchen drinking alcoholic beverages.",
+            "is_trap_active": false,
+            "reason": "While 'parientes' means relatives in general, the context of a children's birthday party makes it clear that it refers to the mothers and fathers."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.13,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.6",
+      "evp_coverage_pct": "92.4",
+      "cognate_pct": "10.4",
+      "off_list_pct": "7.6"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.13,
+    "estimated_cefr": "A2/B1"
+  }
+}

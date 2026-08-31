@@ -1,0 +1,124 @@
+{
+  "story_title": "Overprotective",
+  "profiler": {
+    "word_count": 1743,
+    "unique_word_count": 558,
+    "evp_coverage_pct": 87.6,
+    "level_distribution": {
+      "A1": 338,
+      "A2": 73,
+      "B1": 57,
+      "B2": 20,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 60.6,
+      "A2": 73.7,
+      "B1": 83.9,
+      "B2": 87.5,
+      "C1": 87.6,
+      "C2": 87.6
+    },
+    "cognate_count": 79,
+    "cognate_pct": 14.2,
+    "false_friend_count": 3,
+    "off_list_count": 69,
+    "off_list_pct": 12.4,
+    "vocab_difficulty_raw": 1.51,
+    "vocab_difficulty_adjusted": 1.76,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Overprotective",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "green thumb",
+          "don't get him started",
+          "in the sack",
+          "firecracker (figurative)",
+          "creeped me out",
+          "feel me up",
+          "world of pain",
+          "city slicker",
+          "at a crossroads",
+          "made up his mind",
+          "second-guessing",
+          "piece of shit"
+        ],
+        "count": 12
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "past continuous",
+          "present perfect",
+          "past perfect",
+          "modals (would, should, could, will)",
+          "first conditional (past context)",
+          "reported speech",
+          "relative clauses (who, that, which)",
+          "basic passive"
+        ],
+        "notes": "Narrative is dominated by past simple with a noticeable minority of past perfect, past continuous, conditionals, and reported speech. Complex structures appear in roughly 20-25% of sentences."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Facebook (universally known)",
+          "Punta Cana resort (LatAm learners would recognize)",
+          "Raid bug spray brand (context makes meaning clear)",
+          "eco-resort concept",
+          "whale watching"
+        ],
+        "notes": "Most references are universal or recognizable to LatAm learners. Punta Cana is in the Dominican Republic. Raid brand may be unfamiliar but context clarifies it as bug spray. No heavy North American-specific cultural knowledge required."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 17,
+        "notes": "Mixed lengths with many short dialogue lines balanced by longer narrative sentences with subordinate clauses. Some sentences over 25 words in the descriptive passages."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "collar",
+            "context": "The first resort employee he found he grabbed by the collar.",
+            "is_trap_active": false,
+            "reason": "Context of grabbing someone by the collar makes it clear this refers to clothing, not a necklace (Spanish 'collar')."
+          },
+          {
+            "word": "gentle",
+            "context": "Gentle waves rolled onto the beach.",
+            "is_trap_active": false,
+            "reason": "Applied to waves, the meaning of mild/soft is obvious from context. Spanish 'gentil' (elegant/noble) would not make sense here."
+          },
+          {
+            "word": "once",
+            "context": "Once he made up his mind, he moved quickly.",
+            "is_trap_active": false,
+            "reason": "Used as a conjunction meaning 'as soon as.' While Spanish 'once' means eleven, the sentence structure makes the temporal meaning clear."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.58,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.76",
+      "evp_coverage_pct": "87.6",
+      "cognate_pct": "14.2",
+      "off_list_pct": "12.4"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.58,
+    "estimated_cefr": "B1"
+  }
+}

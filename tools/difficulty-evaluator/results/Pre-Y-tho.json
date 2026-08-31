@@ -1,0 +1,114 @@
+{
+  "story_title": "Pre-Y tho_",
+  "profiler": {
+    "word_count": 1675,
+    "unique_word_count": 460,
+    "evp_coverage_pct": 89.1,
+    "level_distribution": {
+      "A1": 310,
+      "A2": 62,
+      "B1": 24,
+      "B2": 8,
+      "C1": 4,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 67.4,
+      "A2": 80.9,
+      "B1": 86.1,
+      "B2": 87.8,
+      "C1": 88.7,
+      "C2": 89.1
+    },
+    "cognate_count": 60,
+    "cognate_pct": 13.0,
+    "false_friend_count": 1,
+    "off_list_count": 50,
+    "off_list_pct": 10.9,
+    "vocab_difficulty_raw": 1.39,
+    "vocab_difficulty_adjusted": 1.46,
+    "estimated_cefr": "A2+"
+  },
+  "rubric": {
+    "story_title": "Pre-Y tho_",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "ball and chain",
+          "evil eye",
+          "throwing themselves at you",
+          "treat me like shit",
+          "get her off my back",
+          "to each his own",
+          "keep in touch",
+          "hands full",
+          "messed up",
+          "get by",
+          "breadwinner",
+          "father figure",
+          "keep it in mind",
+          "get going",
+          "help you out",
+          "are fire"
+        ],
+        "count": 16
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "Present Simple",
+          "Past Simple",
+          "Present Continuous",
+          "Present Perfect",
+          "Past Continuous",
+          "Second Conditional",
+          "Tag Questions",
+          "Reported Speech"
+        ],
+        "notes": "The dialogue is mostly simple and conversational, but contains noticeable instances of second conditionals, present perfect, and frequent tag questions."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Uber",
+          "Canadian geography (Edmonton, Alberta, Ontario, Toronto, Montreal)",
+          "Instagram model",
+          "Netflix",
+          "Strip clubs",
+          "Gringo"
+        ],
+        "notes": "Cultural references are mostly global pop culture or basic geography that can be understood from context. The setting implies a Latin American country, which is familiar to the target learner."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "As a dialogue, the text consists mostly of short, conversational turns. There are occasional longer, compound-complex sentences, but the average remains moderate."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "once",
+            "context": "Once every two years.",
+            "is_trap_active": true,
+            "reason": "The word 'once' means 'eleven' in Spanish, which is a classic false friend. However, the context 'every two years' makes it clear that it refers to frequency, neutralizing the confusion."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.44,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.46",
+      "evp_coverage_pct": "89.1",
+      "cognate_pct": "13.0",
+      "off_list_pct": "10.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.44,
+    "estimated_cefr": "A2/B1"
+  }
+}

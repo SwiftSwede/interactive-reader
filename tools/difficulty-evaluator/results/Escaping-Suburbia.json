@@ -1,0 +1,119 @@
+{
+  "story_title": "Escaping Suburbia",
+  "profiler": {
+    "word_count": 1732,
+    "unique_word_count": 525,
+    "evp_coverage_pct": 89.5,
+    "level_distribution": {
+      "A1": 314,
+      "A2": 94,
+      "B1": 37,
+      "B2": 20,
+      "C1": 5,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 59.8,
+      "A2": 77.7,
+      "B1": 84.8,
+      "B2": 88.6,
+      "C1": 89.5,
+      "C2": 89.5
+    },
+    "cognate_count": 88,
+    "cognate_pct": 16.8,
+    "false_friend_count": 2,
+    "off_list_count": 55,
+    "off_list_pct": 10.5,
+    "vocab_difficulty_raw": 1.53,
+    "vocab_difficulty_adjusted": 1.66,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Escaping Suburbia",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "figure out",
+          "going through the motions",
+          "stay afloat",
+          "in a funk",
+          "on his last legs",
+          "bound to it",
+          "old farts",
+          "make the jump",
+          "work out",
+          "nest egg",
+          "sweating like pigs",
+          "open game",
+          "empty-handed"
+        ],
+        "count": 13
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "present perfect",
+          "past continuous",
+          "first conditional",
+          "second conditional",
+          "wish structure",
+          "modals (would, could, should, might)"
+        ],
+        "notes": "The dialogue is dominated by simple tenses but features a noticeable minority of sentences using present perfect, conditionals, and a 'wish' structure, placing it at a solid intermediate level."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "American Dream",
+          "suburban lifestyle",
+          "strip mall",
+          "Olive Garden",
+          "Wal-Mart",
+          "US states (Idaho, Texas, Florida) associated with low taxes",
+          "European showering/air conditioning stereotypes"
+        ],
+        "notes": "The text heavily discusses the US suburban experience and the 'American Dream', which requires some cultural understanding, though the plot and emotional context remain accessible."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "As a dialogue, the text consists mostly of moderate-length sentences with some conjunctions and compound structures, but avoids overly long or complex multi-clause sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "once",
+            "context": "they only showered once a week",
+            "is_trap_active": false,
+            "reason": "In the phrase 'once a week', the meaning of 'one time' is highly transparent and unlikely to be confused with the Spanish 'eleven'."
+          },
+          {
+            "word": "parents",
+            "context": "You have your parents who tell you that this is what life is.",
+            "is_trap_active": false,
+            "reason": "The context clearly refers to mother and father, making the false friend 'parientes' (relatives) an unlikely source of confusion."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.55,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.66,
+      "evp_coverage_pct": 89.5,
+      "cognate_pct": 16.8,
+      "off_list_pct": 10.5
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.55,
+    "estimated_cefr": "B1"
+  }
+}

@@ -40,9 +40,13 @@ function formatSeconds(ms: number): number {
 export default function PronunciationPractice({
   referenceText,
   kyleIpa,
+  storyId,
 }: {
   referenceText: string;
   kyleIpa?: string;
+  /** Lets the server file the attempt against this story. Optional: anonymous
+   * free-story practice stays in-session. */
+  storyId?: string;
 }) {
   const [isRecording, setIsRecording] = useState(false);
   const [elapsedMs, setElapsedMs] = useState(0);
@@ -202,6 +206,7 @@ export default function PronunciationPractice({
       const data = await assessPronunciation({
         audioBlob,
         referenceText,
+        storyId,
       });
       setResult(data);
     } catch (caught) {

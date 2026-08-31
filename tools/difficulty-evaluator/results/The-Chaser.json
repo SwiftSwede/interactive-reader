@@ -1,0 +1,109 @@
+{
+  "story_title": "The Chaser",
+  "profiler": {
+    "word_count": 1077,
+    "unique_word_count": 388,
+    "evp_coverage_pct": 90.7,
+    "level_distribution": {
+      "A1": 224,
+      "A2": 55,
+      "B1": 45,
+      "B2": 20,
+      "C1": 5,
+      "C2": 3
+    },
+    "cumulative_pct": {
+      "A1": 57.7,
+      "A2": 71.9,
+      "B1": 83.5,
+      "B2": 88.7,
+      "C1": 89.9,
+      "C2": 90.7
+    },
+    "cognate_count": 68,
+    "cognate_pct": 17.5,
+    "false_friend_count": 2,
+    "off_list_count": 36,
+    "off_list_pct": 9.3,
+    "vocab_difficulty_raw": 1.68,
+    "vocab_difficulty_adjusted": 1.82,
+    "estimated_cefr": "C2"
+  },
+  "rubric": {
+    "story_title": "The Chaser",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "stock in trade",
+          "just as well",
+          "save up",
+          "look after",
+          "slip a little",
+          "better off",
+          "make your acquaintance"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "present simple",
+          "past perfect (had been told, had been given)",
+          "present perfect (has happened)",
+          "second conditional (If I did not sell... I should not have mentioned)",
+          "hypothetical would (She would never divorce you)",
+          "modals (may, should, need not)",
+          "relative clauses (which contained, who need)",
+          "reported speech patterns"
+        ],
+        "notes": "Dominated by simple tenses in narration, but the old man's dialogue regularly uses hypothetical structures, second conditionals, modal verbs, and past perfect. These complex structures appear in roughly 25-30% of sentences, concentrated in the old man's speech."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Pell Street (place name)",
+          "siren (mythological, globally known)",
+          "Au revoir (French, universally known)"
+        ],
+        "notes": "No North American-specific cultural references. The setting is universal: a mysterious old man selling potions. A Latin American learner would have no cultural barriers to understanding the plot."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 19,
+        "notes": "Mixed lengths. The opening sentence is very long (40+ words) with multiple subordinate clauses. The old man's dialogue contains several complex sentences with subordinate clauses and parenthetical interruptions. Alan's lines are shorter. Average is moderate but with significant variation."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "She will actually be jealous?",
+            "is_trap_active": false,
+            "reason": "In this interrogative context, 'actually' clearly means 'really/truly.' A Spanish speaker might briefly think 'actualmente' (currently), but the surrounding dialogue about future behavior makes the intended meaning clear."
+          },
+          {
+            "word": "large",
+            "context": "my stock in trade is not very large",
+            "is_trap_active": false,
+            "reason": "Spanish 'largo' means 'long,' but here 'large' refers to quantity/size of inventory. The context of selling goods makes 'big/not much' the obvious interpretation, and the slight mismatch does not cause real confusion."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.35,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.82",
+      "evp_coverage_pct": "90.7",
+      "cognate_pct": "17.5",
+      "off_list_pct": "9.3"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.35,
+    "estimated_cefr": "A2/B1"
+  }
+}

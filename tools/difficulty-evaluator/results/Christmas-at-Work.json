@@ -1,0 +1,108 @@
+{
+  "story_title": "Christmas at Work",
+  "profiler": {
+    "word_count": 1209,
+    "unique_word_count": 481,
+    "evp_coverage_pct": 90.0,
+    "level_distribution": {
+      "A1": 290,
+      "A2": 84,
+      "B1": 41,
+      "B2": 15,
+      "C1": 2,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 60.3,
+      "A2": 77.8,
+      "B1": 86.3,
+      "B2": 89.4,
+      "C1": 89.8,
+      "C2": 90.0
+    },
+    "cognate_count": 73,
+    "cognate_pct": 15.2,
+    "false_friend_count": 1,
+    "off_list_count": 48,
+    "off_list_pct": 10.0,
+    "vocab_difficulty_raw": 1.52,
+    "vocab_difficulty_adjusted": 1.56,
+    "estimated_cefr": "C2"
+  },
+  "rubric": {
+    "story_title": "Christmas at Work",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "hit the ground running",
+          "put in a good word",
+          "mean business",
+          "treading water",
+          "pull it off",
+          "cogs in the machine",
+          "sleep walking"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past continuous",
+          "past perfect (frequent)",
+          "present perfect",
+          "present simple (dialogue)",
+          "present continuous",
+          "second conditional",
+          "passive voice",
+          "reported speech",
+          "participial clauses",
+          "relative clauses"
+        ],
+        "notes": "Narrative is dominated by past simple with a noticeable minority of past perfect, passive constructions, and reported speech. Second conditional appears once. Complex structures appear regularly but do not dominate."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Fahrenheit temperature (-13 degrees)",
+          "LRT (Light Rail Transit, Canadian)",
+          "Die Hard movie",
+          "White Christmas (song)",
+          "corporate board/investors culture",
+          "remote work debate"
+        ],
+        "notes": "Most references are globally recognizable or inferable from context. Fahrenheit and LRT are mildly Canadian-specific but don't block comprehension. Christmas customs are universal enough for LatAm learners."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 16,
+        "notes": "Mixed lengths with some long complex sentences (30+ words) containing subordinate clauses and participial phrases, interspersed with shorter dialogue lines. Narrative passages show moderate complexity."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "parents",
+            "context": "my parents have a huge place",
+            "is_trap_active": false,
+            "reason": "Spanish 'parientes' means relatives broadly, but context ('work for my father,' 'relationship with my parents') makes it clear these are father and mother. Mild potential confusion but context resolves it."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.42,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.56",
+      "evp_coverage_pct": "90.0",
+      "cognate_pct": "15.2",
+      "off_list_pct": "10.0"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.42,
+    "estimated_cefr": "A2/B1"
+  }
+}

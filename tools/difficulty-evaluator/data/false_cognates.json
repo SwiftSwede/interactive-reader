@@ -1,0 +1,410 @@
+[
+  {
+    "english": "actually",
+    "spanish": "actualmente",
+    "english_meaning": "in fact, really",
+    "spanish_meaning": "currently, nowadays"
+  },
+  {
+    "english": "assist",
+    "spanish": "asistir",
+    "english_meaning": "to help",
+    "spanish_meaning": "to attend"
+  },
+  {
+    "english": "attendance",
+    "spanish": "asistencia",
+    "english_meaning": "presence at an event",
+    "spanish_meaning": "assistance/help"
+  },
+  {
+    "english": "billion",
+    "spanish": "billón",
+    "english_meaning": "thousand million (10^9)",
+    "spanish_meaning": "million million (10^12)"
+  },
+  {
+    "english": "carpet",
+    "spanish": "carpeta",
+    "english_meaning": "floor covering",
+    "spanish_meaning": "folder/file folder"
+  },
+  {
+    "english": "collar",
+    "spanish": "collar",
+    "english_meaning": "necktie/neck band",
+    "spanish_meaning": "necklace"
+  },
+  {
+    "english": "complexion",
+    "spanish": "complexión",
+    "english_meaning": "skin appearance",
+    "spanish_meaning": "body type/build"
+  },
+  {
+    "english": "conductor",
+    "spanish": "conductor",
+    "english_meaning": "bus/train driver or electrical",
+    "spanish_meaning": "driver (general)"
+  },
+  {
+    "english": "contest",
+    "spanish": "contestar",
+    "english_meaning": "competition",
+    "spanish_meaning": "to answer"
+  },
+  {
+    "english": "deception",
+    "spanish": "decepción",
+    "english_meaning": "trickery/lying",
+    "spanish_meaning": "disappointment"
+  },
+  {
+    "english": "delicate",
+    "spanish": "delicado",
+    "english_meaning": "fragile/refined",
+    "spanish_meaning": "indiscreet/sensitive"
+  },
+  {
+    "english": "dessert",
+    "spanish": "desierto",
+    "english_meaning": "sweet course after meal",
+    "spanish_meaning": "desert/wasteland"
+  },
+  {
+    "english": "discuss",
+    "spanish": "discutir",
+    "english_meaning": "to talk about",
+    "spanish_meaning": "to argue/contest"
+  },
+  {
+    "english": "disgust",
+    "spanish": "disgusto",
+    "english_meaning": "strong revulsion",
+    "spanish_meaning": "displeasure/upset"
+  },
+  {
+    "english": "embarrassed",
+    "spanish": "embarazada",
+    "english_meaning": "self-conscious/ashamed",
+    "spanish_meaning": "pregnant"
+  },
+  {
+    "english": "exit",
+    "spanish": "éxito",
+    "english_meaning": "way out/departure",
+    "spanish_meaning": "success"
+  },
+  {
+    "english": "exquisite",
+    "spanish": "exquisito",
+    "english_meaning": "very fine/precious",
+    "spanish_meaning": "delicious/tasty"
+  },
+  {
+    "english": "fabric",
+    "spanish": "fábrica",
+    "english_meaning": "cloth/material",
+    "spanish_meaning": "factory"
+  },
+  {
+    "english": "fence",
+    "spanish": "feria",
+    "english_meaning": "barrier/enclosure",
+    "spanish_meaning": "fair/market"
+  },
+  {
+    "english": "gentle",
+    "spanish": "gentil",
+    "english_meaning": "mild/kind",
+    "spanish_meaning": "elegant/noble"
+  },
+  {
+    "english": "grocery",
+    "spanish": "grosería",
+    "english_meaning": "food store",
+    "spanish_meaning": "rudeness/insult"
+  },
+  {
+    "english": "ignore",
+    "spanish": "ignorar",
+    "english_meaning": "to deliberately not pay attention",
+    "spanish_meaning": "to not know/be unaware"
+  },
+  {
+    "english": "illusion",
+    "spanish": "ilusión",
+    "english_meaning": "optical trick",
+    "spanish_meaning": "hope/dream"
+  },
+  {
+    "english": "intend",
+    "spanish": "pretender",
+    "english_meaning": "to plan/mean to",
+    "spanish_meaning": "to pretend/attempt"
+  },
+  {
+    "english": "jar",
+    "spanish": "jarra",
+    "english_meaning": "glass container",
+    "spanish_meaning": "pitcher/jug"
+  },
+  {
+    "english": "large",
+    "spanish": "largo",
+    "english_meaning": "big in size",
+    "spanish_meaning": "long"
+  },
+  {
+    "english": "lecture",
+    "spanish": "lectura",
+    "english_meaning": "academic talk",
+    "spanish_meaning": "reading"
+  },
+  {
+    "english": "library",
+    "spanish": "librería",
+    "english_meaning": "collection of books/loan library",
+    "spanish_meaning": "bookstore"
+  },
+  {
+    "english": "location",
+    "spanish": "locación",
+    "english_meaning": "place/position",
+    "spanish_meaning": "location/renting"
+  },
+  {
+    "english": "manta",
+    "spanish": "manta",
+    "english_meaning": "sea animal (ray)",
+    "spanish_meaning": "blanket"
+  },
+  {
+    "english": "mayor",
+    "spanish": "mayor",
+    "english_meaning": "head of city government",
+    "spanish_meaning": "older/elder"
+  },
+  {
+    "english": "novel",
+    "spanish": "novela",
+    "english_meaning": "long fiction book",
+    "spanish_meaning": "TV show/drama (LatAm)"
+  },
+  {
+    "english": "once",
+    "spanish": "once",
+    "english_meaning": "one time / as soon as",
+    "spanish_meaning": "eleven"
+  },
+  {
+    "english": "parents",
+    "spanish": "parientes",
+    "english_meaning": "father and mother",
+    "spanish_meaning": "relatives (general)"
+  },
+  {
+    "english": "parole",
+    "spanish": "palabra",
+    "english_meaning": "early prison release",
+    "spanish_meaning": "word"
+  },
+  {
+    "english": "pie",
+    "spanish": "pie",
+    "english_meaning": "baked dessert",
+    "spanish_meaning": "foot"
+  },
+  {
+    "english": "poll",
+    "spanish": "polo",
+    "english_meaning": "survey/vote",
+    "spanish_meaning": "pole/laundry"
+  },
+  {
+    "english": "preservative",
+    "spanish": "preservativo",
+    "english_meaning": "food additive/protective",
+    "spanish_meaning": "condom"
+  },
+  {
+    "english": "pretend",
+    "spanish": "pretender",
+    "english_meaning": "to act as if",
+    "spanish_meaning": "to attempt/try to"
+  },
+  {
+    "english": "procure",
+    "spanish": "procurar",
+    "english_meaning": "to obtain",
+    "spanish_meaning": "to try to / attempt"
+  },
+  {
+    "english": "proper",
+    "spanish": "propio",
+    "english_meaning": "correct/appropriate",
+    "spanish_meaning": "own"
+  },
+  {
+    "english": "prove",
+    "spanish": "probar",
+    "english_meaning": "to demonstrate",
+    "spanish_meaning": "to try/taste"
+  },
+  {
+    "english": "quit",
+    "spanish": "quitar",
+    "english_meaning": "to stop doing",
+    "spanish_meaning": "to remove/take off"
+  },
+  {
+    "english": "rare",
+    "spanish": "raro",
+    "english_meaning": "unusual/undercooked",
+    "spanish_meaning": "strange/unusual"
+  },
+  {
+    "english": "realize",
+    "spanish": "realizar",
+    "english_meaning": "to become aware",
+    "spanish_meaning": "to carry out/perform"
+  },
+  {
+    "english": "record",
+    "spanish": "recordar",
+    "english_meaning": "to document/audio/video",
+    "spanish_meaning": "to remember"
+  },
+  {
+    "english": "remove",
+    "spanish": "remover",
+    "english_meaning": "to take away/delete",
+    "spanish_meaning": "to stir/move"
+  },
+  {
+    "english": "respect",
+    "spanish": "respecto",
+    "english_meaning": "esteem/regard",
+    "spanish_meaning": "with respect to/regarding"
+  },
+  {
+    "english": "revolt",
+    "spanish": "revoltar",
+    "english_meaning": "to rebel",
+    "spanish_meaning": "to stir/mess up"
+  },
+  {
+    "english": "rope",
+    "spanish": "ropa",
+    "english_meaning": "thick string/cord",
+    "spanish_meaning": "clothing"
+  },
+  {
+    "english": "sane",
+    "spanish": "sano",
+    "english_meaning": "mentally healthy",
+    "spanish_meaning": "healthy (general)"
+  },
+  {
+    "english": "sauce",
+    "spanish": "salsa",
+    "english_meaning": "liquid condiment",
+    "spanish_meaning": "sauce (also dance)"
+  },
+  {
+    "english": "sensible",
+    "spanish": "sensible",
+    "english_meaning": "practical/reasonable",
+    "spanish_meaning": "sensitive/easily upset"
+  },
+  {
+    "english": "soap",
+    "spanish": "sopa",
+    "english_meaning": "cleaning product",
+    "spanish_meaning": "soup"
+  },
+  {
+    "english": "sock",
+    "spanish": "saco",
+    "english_meaning": "foot covering",
+    "spanish_meaning": "sack/jacket"
+  },
+  {
+    "english": "song",
+    "spanish": "son",
+    "english_meaning": "musical piece",
+    "spanish_meaning": "sound/rhythm"
+  },
+  {
+    "english": "stamp",
+    "spanish": "estampa",
+    "english_meaning": "postage stamp",
+    "spanish_meaning": "print/shape/figure"
+  },
+  {
+    "english": "subject",
+    "spanish": "sujeto",
+    "english_meaning": "topic/undergoer",
+    "spanish_meaning": "person/individual"
+  },
+  {
+    "english": "success",
+    "spanish": "suceso",
+    "english_meaning": "achievement",
+    "spanish_meaning": "event/occurrence"
+  },
+  {
+    "english": "supply",
+    "spanish": "suplicar",
+    "english_meaning": "to provide",
+    "spanish_meaning": "to beg/plead"
+  },
+  {
+    "english": "sympathetic",
+    "spanish": "simpático",
+    "english_meaning": "feeling compassion",
+    "spanish_meaning": "nice/likable"
+  },
+  {
+    "english": "taller",
+    "spanish": "taller",
+    "english_meaning": "comparative of tall",
+    "spanish_meaning": "workshop/garage"
+  },
+  {
+    "english": "test",
+    "spanish": "test",
+    "english_meaning": "trial/exam",
+    "spanish_meaning": "exam (but borrowed from English)"
+  },
+  {
+    "english": "theme",
+    "spanish": "tema",
+    "english_meaning": "recurring motif / unifying subject (literary, musical)",
+    "spanish_meaning": "topic / subject / matter (broader, everyday use)"
+  },
+  {
+    "english": "tramp",
+    "spanish": "trampa",
+    "english_meaning": "homeless person",
+    "spanish_meaning": "trap/trick"
+  },
+  {
+    "english": "tuna",
+    "spanish": "tuna",
+    "english_meaning": "fish",
+    "spanish_meaning": "prickly pear cactus"
+  },
+  {
+    "english": "vase",
+    "spanish": "vaso",
+    "english_meaning": "flower container",
+    "spanish_meaning": "drinking glass"
+  },
+  {
+    "english": "vegetable",
+    "spanish": "vegetal",
+    "english_meaning": "plant for eating",
+    "spanish_meaning": "plant (general)/vegetable"
+  }
+]

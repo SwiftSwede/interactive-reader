@@ -1,0 +1,145 @@
+{
+  "story_title": "The Human Scale Part 1",
+  "profiler": {
+    "word_count": 1450,
+    "unique_word_count": 545,
+    "evp_coverage_pct": 87.7,
+    "level_distribution": {
+      "A1": 272,
+      "A2": 108,
+      "B1": 69,
+      "B2": 24,
+      "C1": 5,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 49.9,
+      "A2": 69.7,
+      "B1": 82.4,
+      "B2": 86.8,
+      "C1": 87.7,
+      "C2": 87.7
+    },
+    "cognate_count": 103,
+    "cognate_pct": 18.9,
+    "false_friend_count": 7,
+    "off_list_count": 67,
+    "off_list_pct": 12.3,
+    "vocab_difficulty_raw": 1.71,
+    "vocab_difficulty_adjusted": 2.33,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "The Human Scale Part 1",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "day in and day out",
+          "sweet spot",
+          "give or take",
+          "give up on",
+          "no-go zone",
+          "in their right mind",
+          "the more the merrier"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple (dominant)",
+          "past simple",
+          "present continuous",
+          "modals (can, should, would, could, might)",
+          "second conditional (if you did not need...)",
+          "passive voice (were limited, were invented, were killed, were injured)",
+          "relative clauses (who, where, that)",
+          "comparatives",
+          "infinitive clauses",
+          "gerunds"
+        ],
+        "notes": "Text is dominated by present simple with past simple for historical examples. Modals and relative clauses appear throughout. A few second conditionals and passive constructions appear as a noticeable minority. No present perfect, past perfect, or third conditionals. Overall a mix of simple and moderately complex structures."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Tokyo, Damascus, Amman, London, Singapore (global geography)",
+          "Eiffel Tower, St. Paul's Cathedral (global landmarks)",
+          "American car spending statistics ($773.50/month)",
+          "UK road fatality statistics",
+          "suburbia",
+          "cul-de-sac",
+          "Veteran's Association",
+          "taverna"
+        ],
+        "notes": "Most references are global geography and landmarks an educated LatAm adult would recognize. US/UK statistics are contextualized clearly. Suburbia and car-dependent urban models are increasingly familiar in LatAm. No deeply unfamiliar cultural practices that would block comprehension."
+      },
+      "sentence_structure": {
+        "score": 4,
+        "avg_sentence_length": 24,
+        "notes": "Long, varied sentences with multiple subordinate clauses, relative clauses, and parenthetical insertions. Several sentences exceed 30 words. Examples include sentences with em-dash interruptions and stacked relative clauses. Academic/essay prose style with narrative complexity."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "actually too numerous to even really begin to explore",
+            "is_trap_active": true,
+            "reason": "Used to mean 'in fact/really.' A Spanish speaker could misread it as 'actualmente' (currently), though context somewhat mitigates confusion."
+          },
+          {
+            "word": "grocery",
+            "context": "grocery store or supermarket",
+            "is_trap_active": false,
+            "reason": "'Grocery store' is a widely recognized term in global English; paired with 'supermarket' the meaning is clear."
+          },
+          {
+            "word": "large",
+            "context": "large modern city / large groups of people",
+            "is_trap_active": false,
+            "reason": "Context (city size, groups of people) makes 'big' meaning obvious; 'largo' (long) would not fit."
+          },
+          {
+            "word": "library",
+            "context": "more tax income to fund your local library",
+            "is_trap_active": true,
+            "reason": "Classic false friend: English 'library' = biblioteca, Spanish 'librería' = bookstore. An educated adult may know this, but it remains a common trap."
+          },
+          {
+            "word": "once",
+            "context": "Once again, the human scale is not exclusionary",
+            "is_trap_active": false,
+            "reason": "'Once again' is a common set phrase; context makes it clear this is not the number eleven."
+          },
+          {
+            "word": "parents",
+            "context": "children unable to drive being forced to rely on parents turned private chauffeurs",
+            "is_trap_active": false,
+            "reason": "Context (children relying on parents who drive them) makes the meaning of 'father and mother' unambiguous."
+          },
+          {
+            "word": "taller",
+            "context": "much taller than the older, human-scaled five-story limit",
+            "is_trap_active": false,
+            "reason": "Context (buildings, floors, height) makes comparative of 'tall' obvious; 'taller' as workshop makes no sense here."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.8,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "2.33",
+      "evp_coverage_pct": "87.7",
+      "cognate_pct": "18.9",
+      "off_list_pct": "12.3"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.8,
+    "estimated_cefr": "B1"
+  }
+}

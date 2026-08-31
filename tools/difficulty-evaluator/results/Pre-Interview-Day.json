@@ -1,0 +1,95 @@
+{
+  "story_title": "Pre-Interview Day (2)",
+  "profiler": {
+    "word_count": 1226,
+    "unique_word_count": 359,
+    "evp_coverage_pct": 91.1,
+    "level_distribution": {
+      "A1": 229,
+      "A2": 55,
+      "B1": 25,
+      "B2": 17,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 63.8,
+      "A2": 79.1,
+      "B1": 86.1,
+      "B2": 90.8,
+      "C1": 91.1,
+      "C2": 91.1
+    },
+    "cognate_count": 63,
+    "cognate_pct": 17.5,
+    "false_friend_count": 0,
+    "off_list_count": 32,
+    "off_list_pct": 8.9,
+    "vocab_difficulty_raw": 1.49,
+    "vocab_difficulty_adjusted": 1.42,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-Interview Day (2)",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "seems off",
+          "jump in",
+          "pay cut",
+          "make it",
+          "twice the man you are",
+          "clearing that up",
+          "out of earshot",
+          "looks like the one"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "present perfect continuous",
+          "present perfect simple",
+          "past simple",
+          "first conditional",
+          "modals (can, would, might, should)"
+        ],
+        "notes": "The text is mostly simple dialogue but features a noticeable minority of present perfect continuous and first conditional structures, along with basic subordinate clauses."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "US workplace benefits (medical, dental, maternity leave)",
+          "San Antonio as a majority Latino city",
+          "classified ad"
+        ],
+        "notes": "The setting is a US job interview, but the cultural references are either familiar to LatAm learners or clearly explained within the context."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "As a dialogue, the text consists mostly of short to moderate sentences with occasional compound and complex sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 2.23,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.42,
+      "evp_coverage_pct": 91.1,
+      "cognate_pct": 17.5,
+      "off_list_pct": 8.9
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.23,
+    "estimated_cefr": "A2/B1"
+  }
+}

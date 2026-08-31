@@ -1,0 +1,111 @@
+{
+  "story_title": "Pre-Vacay with a Bear",
+  "profiler": {
+    "word_count": 870,
+    "unique_word_count": 301,
+    "evp_coverage_pct": 93.0,
+    "level_distribution": {
+      "A1": 210,
+      "A2": 36,
+      "B1": 20,
+      "B2": 14,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 69.8,
+      "A2": 81.7,
+      "B1": 88.4,
+      "B2": 93.0,
+      "C1": 93.0,
+      "C2": 93.0
+    },
+    "cognate_count": 56,
+    "cognate_pct": 18.6,
+    "false_friend_count": 2,
+    "off_list_count": 21,
+    "off_list_pct": 7.0,
+    "vocab_difficulty_raw": 1.42,
+    "vocab_difficulty_adjusted": 1.56,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-Vacay with a Bear",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "at each other's throats",
+          "make a quick buck",
+          "make up an excuse",
+          "get along",
+          "made of money",
+          "under the table",
+          "learned our lesson"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "going to future (gonna)",
+          "past simple",
+          "basic modals (can, couldn't, might)",
+          "gerunds (by letting, by letting me)",
+          "infinitive of purpose",
+          "indirect questions (where to take a nap, what rides we're gonna go on)",
+          "relative clauses (who worked under the table)"
+        ],
+        "notes": "Dominated by simple tenses and going-to future, but a noticeable minority of sentences contain subordinate clauses, indirect questions, and gerund constructions that push it above level 2."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Disney World / Walt Disney World",
+          "AirBNB and superhost concept",
+          "Incredible Hulk",
+          "Porsche",
+          "CPAP machine"
+        ],
+        "notes": "Most references are globally known brands or concepts. Disney World, AirBNB, and Porsche are familiar to educated LatAm adults. CPAP machine is medical, not cultural. No unfamiliar customs or institutional references."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Dialogue format keeps most sentences short to moderate. A few longer compound-complex sentences (e.g., the construction worker sentence at 27 words), but the majority are simple or compound sentences under 15 words."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "parents",
+            "context": "You invited your parents?!",
+            "is_trap_active": false,
+            "reason": "While 'parents' vs 'parientes' is a classic false friend, the immediate context references 'your father' and 'your mother' repeatedly, making the meaning unmistakable."
+          },
+          {
+            "word": "theme",
+            "context": "a room in a Disney World theme hotel",
+            "is_trap_active": false,
+            "reason": "'Theme park' and 'theme hotel' are globally recognized collocations. The Spanish 'tema' can also mean theme in this context, so confusion is unlikely."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.17,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.56",
+      "evp_coverage_pct": "93.0",
+      "cognate_pct": "18.6",
+      "off_list_pct": "7.0"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.17,
+    "estimated_cefr": "A2/B1"
+  }
+}

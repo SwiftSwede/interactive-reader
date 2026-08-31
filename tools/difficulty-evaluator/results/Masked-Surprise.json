@@ -1,0 +1,124 @@
+{
+  "story_title": "Masked Surprise",
+  "profiler": {
+    "word_count": 1183,
+    "unique_word_count": 443,
+    "evp_coverage_pct": 91.9,
+    "level_distribution": {
+      "A1": 277,
+      "A2": 68,
+      "B1": 40,
+      "B2": 20,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 62.5,
+      "A2": 77.9,
+      "B1": 86.9,
+      "B2": 91.4,
+      "C1": 91.9,
+      "C2": 91.9
+    },
+    "cognate_count": 70,
+    "cognate_pct": 15.8,
+    "false_friend_count": 4,
+    "off_list_count": 36,
+    "off_list_pct": 8.1,
+    "vocab_difficulty_raw": 1.53,
+    "vocab_difficulty_adjusted": 1.91,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Masked Surprise",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "suck it up",
+          "weasel his way out of it",
+          "fresh off the boat",
+          "double-take",
+          "jailbait",
+          "over the moon",
+          "gave him the time of day",
+          "got the scraps"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "present perfect",
+          "past perfect",
+          "present simple",
+          "modals (would, could, must)",
+          "participial clauses",
+          "first conditional"
+        ],
+        "notes": "A mix of simple and complex structures. Past perfect and participial clauses appear as a noticeable minority. Narrative framing uses present simple, while the main story relies heavily on past tenses."
+      },
+      "cultural_reference_load": {
+        "score": 4,
+        "references_found": [
+          "COVID-19 lockdowns in Washington State",
+          "US political context (Democrats governing)",
+          "US stereotypes about grocery store workers (fresh off the boat immigrants, chain-smoking single white mothers)",
+          "jailbait",
+          "Superman",
+          "Evil Witch of the West"
+        ],
+        "notes": "Heavy cultural references regarding US pandemic politics and specific stereotypes about grocery store workers. Pop culture references (Superman, Evil Witch of the West) are globally known but the political and social commentary requires specific North American context."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 17,
+        "notes": "Mixed lengths with some complex sentences containing subordinate clauses. Average around 17 words per sentence, with narrative complexity varying between short dialogue and longer descriptive sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "she explained to him that she was actually going to university",
+            "is_trap_active": true,
+            "reason": "Spanish 'actualmente' means 'currently', so a Spanish speaker might misread this as 'currently going to university' instead of 'in fact'."
+          },
+          {
+            "word": "grocery",
+            "context": "going to the grocery store to pick up supplies",
+            "is_trap_active": true,
+            "reason": "Spanish 'grosería' means rudeness or insult. Although 'store' provides context, the word itself is a strong false friend."
+          },
+          {
+            "word": "pretend",
+            "context": "pretend we were being healthy",
+            "is_trap_active": true,
+            "reason": "Spanish 'pretender' means 'to attempt' or 'to try to'. A learner might think they were 'attempting to be healthy' rather than 'acting as if they were healthy'."
+          },
+          {
+            "word": "sauce",
+            "context": "tomato sauce",
+            "is_trap_active": false,
+            "reason": "Spanish 'salsa' translates directly to 'sauce', making this a true cognate rather than a false friend in this context."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.92,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.91,
+      "evp_coverage_pct": 91.9,
+      "cognate_pct": 15.8,
+      "off_list_pct": 8.1
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.92,
+    "estimated_cefr": "B1"
+  }
+}

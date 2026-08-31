@@ -1,0 +1,123 @@
+{
+  "story_title": "Halloween Costume (2)",
+  "profiler": {
+    "word_count": 808,
+    "unique_word_count": 288,
+    "evp_coverage_pct": 84.0,
+    "level_distribution": {
+      "A1": 178,
+      "A2": 36,
+      "B1": 21,
+      "B2": 7,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 61.8,
+      "A2": 74.3,
+      "B1": 81.6,
+      "B2": 84.0,
+      "C1": 84.0,
+      "C2": 84.0
+    },
+    "cognate_count": 51,
+    "cognate_pct": 17.7,
+    "false_friend_count": 5,
+    "off_list_count": 46,
+    "off_list_pct": 16.0,
+    "vocab_difficulty_raw": 1.41,
+    "vocab_difficulty_adjusted": 1.81,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Halloween Costume (2)",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "make sense",
+          "it sucked",
+          "quite a bit"
+        ],
+        "count": 3
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "present simple",
+          "present perfect",
+          "would for past future"
+        ],
+        "notes": "Dominated by past simple, but contains a noticeable minority of past perfect and reported speech structures, as well as relative clauses."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Halloween",
+          "trick-or-treating",
+          "US Presidents (Washington, Lincoln, Roosevelt)",
+          "American history",
+          "Civil War general",
+          "British Columbia"
+        ],
+        "notes": "The plot relies on understanding North American Halloween customs and US historical figures, contrasted with Latin American history that the learner would know but the characters do not."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "Mostly short to moderate sentences with a high frequency of dialogue. Some compound and basic complex sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "someone actually knew who I had dressed up as",
+            "is_trap_active": true,
+            "reason": "Spanish 'actualmente' means currently, but here it means 'in fact' or 'really'."
+          },
+          {
+            "word": "embarrassed",
+            "context": "I felt a little bit embarrassed.",
+            "is_trap_active": true,
+            "reason": "Spanish 'embarazada' means pregnant, which could cause confusion or amusement for the learner."
+          },
+          {
+            "word": "ignore",
+            "context": "all of the other kids were ignoring her",
+            "is_trap_active": true,
+            "reason": "Spanish 'ignorar' means to not know, whereas here it means to deliberately not pay attention."
+          },
+          {
+            "word": "once",
+            "context": "I was once a nerdy young boy",
+            "is_trap_active": true,
+            "reason": "Spanish 'once' means eleven, but here it means 'one time' or 'formerly'."
+          },
+          {
+            "word": "parents",
+            "context": "My parents made me go up to her",
+            "is_trap_active": true,
+            "reason": "Spanish 'parientes' means relatives in general, but here it specifically means mother and father."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.39,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.81,
+      "evp_coverage_pct": 84.0,
+      "cognate_pct": 17.7,
+      "off_list_pct": 16.0
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.39,
+    "estimated_cefr": "A2/B1"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "story_title": "Pre-New Suitors",
+  "profiler": {
+    "word_count": 1121,
+    "unique_word_count": 371,
+    "evp_coverage_pct": 90.0,
+    "level_distribution": {
+      "A1": 252,
+      "A2": 59,
+      "B1": 14,
+      "B2": 8,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 67.9,
+      "A2": 83.8,
+      "B1": 87.6,
+      "B2": 89.8,
+      "C1": 90.0,
+      "C2": 90.0
+    },
+    "cognate_count": 60,
+    "cognate_pct": 16.2,
+    "false_friend_count": 2,
+    "off_list_count": 37,
+    "off_list_pct": 10.0,
+    "vocab_difficulty_raw": 1.34,
+    "vocab_difficulty_adjusted": 1.52,
+    "estimated_cefr": "C1"
+  },
+  "rubric": {
+    "story_title": "Pre-New Suitors",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "long time no see",
+          "check me out",
+          "messing with you",
+          "freshman 15",
+          "lining up",
+          "give up",
+          "that a girl",
+          "hold up",
+          "sugar daddy",
+          "broke up",
+          "stings"
+        ],
+        "count": 11
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "present perfect continuous",
+          "second conditional",
+          "basic modals",
+          "relative clauses"
+        ],
+        "notes": "Dominated by simple tenses typical of dialogue, but includes present perfect continuous and a second conditional, making it a mix of simple and complex structures."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "freshman 15",
+          "sugar daddy websites",
+          "frappuccino",
+          "American Express",
+          "coffee shop ordering culture"
+        ],
+        "notes": "Includes specific North American college culture ('freshman 15') and modern dating/financial arrangement culture ('sugar daddy'), but the plot is followable without deep knowledge."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "Mostly short, conversational dialogue typical of a spoken interaction. Occasional longer compound sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "Actually, I have.",
+            "is_trap_active": false,
+            "reason": "Used to mean 'in fact' to confirm a choice. Context makes it clear it doesn't mean 'currently'."
+          },
+          {
+            "word": "large",
+            "context": "a large cappuccino",
+            "is_trap_active": false,
+            "reason": "Used as a standard coffee size. While 'largo' means 'long' in Spanish, coffee shop sizing is globally understood enough to avoid confusion."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.51,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.52",
+      "evp_coverage_pct": "90.0",
+      "cognate_pct": "16.2",
+      "off_list_pct": "10.0"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.51,
+    "estimated_cefr": "B1"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "story_title": "Crazy New Job",
+  "profiler": {
+    "word_count": 1248,
+    "unique_word_count": 460,
+    "evp_coverage_pct": 86.3,
+    "level_distribution": {
+      "A1": 269,
+      "A2": 70,
+      "B1": 40,
+      "B2": 16,
+      "C1": 1,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 58.5,
+      "A2": 73.7,
+      "B1": 82.4,
+      "B2": 85.9,
+      "C1": 86.1,
+      "C2": 86.3
+    },
+    "cognate_count": 60,
+    "cognate_pct": 13.0,
+    "false_friend_count": 2,
+    "off_list_count": 63,
+    "off_list_pct": 13.7,
+    "vocab_difficulty_raw": 1.52,
+    "vocab_difficulty_adjusted": 1.72,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Crazy New Job",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "biting at the bit",
+          "make my mark",
+          "on behalf of",
+          "pop in",
+          "cuddly teddy bear",
+          "No shit, Sherlock",
+          "shit load",
+          "get away with",
+          "keep it in mind",
+          "out of your own pocket",
+          "stone ages",
+          "get settled in",
+          "clock in",
+          "chit-chat"
+        ],
+        "count": 14
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "present perfect",
+          "future with will",
+          "going to future",
+          "first conditional (multiple instances)",
+          "passive voice",
+          "relative clauses",
+          "subordinate clauses (since, if, when, where)"
+        ],
+        "notes": "Dominated by present simple in dialogue, but multiple first conditionals, present perfect, and subordinate clauses appear throughout. Not dense enough for level 4, but complex structures are a noticeable minority."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "office cubicle culture",
+          "clocking in / time cards",
+          "water cooler",
+          "biweekly pay schedule (15th and 30th)",
+          "No shit, Sherlock (Sherlock Holmes reference)",
+          "teddy bear metaphor",
+          "abortion debate / my body my choice (US political slogan)",
+          "vaccine debate"
+        ],
+        "notes": "Office culture is fairly universal and recognizable from media. The abortion/vaccine debate is US-flavored but the gist is understandable from context. No deep cultural knowledge required to follow the plot."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Mostly short dialogue lines with simple structures. Some moderate compound sentences and stage directions. Average length is manageable for an intermediate learner."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "Actually, every two weeks.",
+            "is_trap_active": true,
+            "reason": "Classic false friend. Spanish speaker would read 'actualmente' as 'currently/nowadays,' but here it means 'in fact.' Context of correcting a misconception helps somewhat but the trap is active."
+          },
+          {
+            "word": "once",
+            "context": "Once logged in, she goes to the internet browser",
+            "is_trap_active": false,
+            "reason": "Spanish 'once' means 'eleven,' but in this context 'once' means 'as soon as / after.' The sentence structure makes it clear this is not about the number eleven, so the trap is unlikely to cause lasting confusion."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.52,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.72",
+      "evp_coverage_pct": "86.3",
+      "cognate_pct": "13.0",
+      "off_list_pct": "13.7"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.52,
+    "estimated_cefr": "B1"
+  }
+}

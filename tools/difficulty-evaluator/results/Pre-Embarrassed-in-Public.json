@@ -1,0 +1,96 @@
+{
+  "story_title": "Embarrassed in Public",
+  "profiler": {
+    "word_count": 341,
+    "unique_word_count": 117,
+    "evp_coverage_pct": 92.3,
+    "level_distribution": {
+      "A1": 88,
+      "A2": 13,
+      "B1": 6,
+      "B2": 1,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 75.2,
+      "A2": 86.3,
+      "B1": 91.5,
+      "B2": 92.3,
+      "C1": 92.3,
+      "C2": 92.3
+    },
+    "cognate_count": 14,
+    "cognate_pct": 12.0,
+    "false_friend_count": 1,
+    "off_list_count": 9,
+    "off_list_pct": 7.7,
+    "vocab_difficulty_raw": 1.26,
+    "vocab_difficulty_adjusted": 1.32,
+    "estimated_cefr": "B1"
+  },
+  "rubric": {
+    "story_title": "Embarrassed in Public",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "show off",
+          "sucks",
+          "of course"
+        ],
+        "count": 3
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "past continuous",
+          "past perfect",
+          "used to (past habit)"
+        ],
+        "notes": "Dominated by simple tenses and highly repetitive dialogue structures. A few instances of past continuous and one past perfect, but overall very basic sentence patterns."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Coachella concert",
+          "Cirque Du Soleil",
+          "speedo"
+        ],
+        "notes": "References to specific entertainment events and a swimwear brand, but they are easily understood from context and do not impede comprehension of the plot."
+      },
+      "sentence_structure": {
+        "score": 1,
+        "avg_sentence_length": 8,
+        "notes": "Very short, simple sentences with a highly repetitive dialogue structure. Mostly subject-verb-object."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "embarrassed",
+            "context": "He was embarrassed.",
+            "is_trap_active": true,
+            "reason": "The classic false friend 'embarrassed' vs 'embarazada' (pregnant) is highly active here, especially in the title 'Embarrassed in Public', which a Spanish speaker might initially misread as 'Pregnant in Public'."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.75,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.32",
+      "evp_coverage_pct": "92.3",
+      "cognate_pct": "12.0",
+      "off_list_pct": "7.7"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.75,
+    "estimated_cefr": "A2"
+  }
+}

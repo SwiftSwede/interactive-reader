@@ -1,0 +1,106 @@
+{
+  "story_title": "Dear Santa",
+  "profiler": {
+    "word_count": 1066,
+    "unique_word_count": 267,
+    "evp_coverage_pct": 93.3,
+    "level_distribution": {
+      "A1": 201,
+      "A2": 32,
+      "B1": 9,
+      "B2": 7,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 75.3,
+      "A2": 87.3,
+      "B1": 90.6,
+      "B2": 93.3,
+      "C1": 93.3,
+      "C2": 93.3
+    },
+    "cognate_count": 30,
+    "cognate_pct": 11.2,
+    "false_friend_count": 2,
+    "off_list_count": 18,
+    "off_list_pct": 6.7,
+    "vocab_difficulty_raw": 1.29,
+    "vocab_difficulty_adjusted": 1.45,
+    "estimated_cefr": "B1"
+  },
+  "rubric": {
+    "story_title": "Dear Santa",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "looked forward to",
+          "let me down",
+          "make it up to me",
+          "make up",
+          "put all the pieces together",
+          "made sense"
+        ],
+        "count": 6
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "present simple",
+          "future simple",
+          "second conditional"
+        ],
+        "notes": "Dominated by past simple narrative, but includes regular use of past perfect, past continuous, and a second conditional. Subordinate clauses are frequent."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Christmas",
+          "Santa",
+          "GI Joe",
+          "eggnog"
+        ],
+        "notes": "Christmas and Santa are globally understood. Brands like Rolex, Lego, and Jaguar are internationally known. Eggnog is slightly North American but contextually clear as a drink left for Santa."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "Moderate sentences with some conjunctions and subordinate clauses. Average length is around 12-18 words, with a few longer complex sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "once",
+            "context": "I told him that he had let me down once again",
+            "is_trap_active": false,
+            "reason": "Used in the fixed phrase 'once again', which is easily understood from context and does not trigger the Spanish meaning of 'eleven'."
+          },
+          {
+            "word": "parents",
+            "context": "My parents had told me that the best way...",
+            "is_trap_active": false,
+            "reason": "The text explicitly mentions 'mother' and 'father' in the same context, making the meaning perfectly clear and avoiding the broader Spanish meaning of 'parientes' (relatives)."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.14,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.45,
+      "evp_coverage_pct": 93.3,
+      "cognate_pct": 11.2,
+      "off_list_pct": 6.7
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.14,
+    "estimated_cefr": "A2/B1"
+  }
+}

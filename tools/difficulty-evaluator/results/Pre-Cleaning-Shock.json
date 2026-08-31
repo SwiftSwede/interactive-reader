@@ -1,0 +1,99 @@
+{
+  "story_title": "Pre-Cleaning Shock",
+  "profiler": {
+    "word_count": 966,
+    "unique_word_count": 293,
+    "evp_coverage_pct": 91.5,
+    "level_distribution": {
+      "A1": 203,
+      "A2": 34,
+      "B1": 19,
+      "B2": 12,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 69.3,
+      "A2": 80.9,
+      "B1": 87.4,
+      "B2": 91.5,
+      "C1": 91.5,
+      "C2": 91.5
+    },
+    "cognate_count": 34,
+    "cognate_pct": 11.6,
+    "false_friend_count": 1,
+    "off_list_count": 25,
+    "off_list_pct": 8.5,
+    "vocab_difficulty_raw": 1.4,
+    "vocab_difficulty_adjusted": 1.48,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-Cleaning Shock",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "take it easy",
+          "sleep in",
+          "wrap my head around",
+          "pissed off",
+          "on top of that"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple (dominant)",
+          "will future",
+          "going to future (gonna)",
+          "present perfect (you've never slept)",
+          "zero conditional (if dirty, I clean)",
+          "modals (can, might, should)"
+        ],
+        "notes": "Dominated by simple tenses in conversational dialogue. Present perfect appears once or twice. Zero conditionals used for Richard's cleaning routine. No past perfect, third conditionals, or advanced structures."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "spring cleaning (North American concept)",
+          "wearing shoes inside vs. removing at entrance (LatAm vs. Canadian cultural difference)",
+          "snow/mud tracking (Canadian climate context)",
+          "Mr Clean and Windex (brand names)"
+        ],
+        "notes": "The shoe-in-house cultural difference is central to the plot and reflects a real LatAm vs. North American divide. Spring cleaning is explained in-text. Brands are minor. The cultural gap drives the humor but the dialogue explains itself."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 11,
+        "notes": "Short conversational dialogue with mostly simple sentences. Some compound sentences with 'but,' 'and,' 'so.' Richard's cleaning routine explanation has slightly longer sentences with repeated conditional patterns, but overall structure remains simple."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "once",
+            "context": "the one time per year that you give the apartment or house a deep clean",
+            "is_trap_active": false,
+            "reason": "Used in frequency expressions like 'once per year,' 'once a week,' 'once a month.' A Spanish speaker might momentarily read 'once' as 'eleven,' but the surrounding context (per year, per week) makes it immediately clear it means 'one time.' The trap is not active."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.89,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.48",
+      "evp_coverage_pct": "91.5",
+      "cognate_pct": "11.6",
+      "off_list_pct": "8.5"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.89,
+    "estimated_cefr": "A2"
+  }
+}

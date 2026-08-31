@@ -1,0 +1,122 @@
+{
+  "story_title": "My ayahuasca experience",
+  "profiler": {
+    "word_count": 2136,
+    "unique_word_count": 657,
+    "evp_coverage_pct": 89.0,
+    "level_distribution": {
+      "A1": 370,
+      "A2": 113,
+      "B1": 67,
+      "B2": 30,
+      "C1": 4,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 56.3,
+      "A2": 73.5,
+      "B1": 83.7,
+      "B2": 88.3,
+      "C1": 88.9,
+      "C2": 89.0
+    },
+    "cognate_count": 110,
+    "cognate_pct": 16.7,
+    "false_friend_count": 2,
+    "off_list_count": 72,
+    "off_list_pct": 11.0,
+    "vocab_difficulty_raw": 1.61,
+    "vocab_difficulty_adjusted": 1.77,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "My ayahuasca experience",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "on top of this",
+          "kept my cool",
+          "smooth sailing",
+          "get rid of",
+          "left, right and center",
+          "crossroads in life",
+          "worn off",
+          "settle down",
+          "left out",
+          "come back to life",
+          "make sense",
+          "check out"
+        ],
+        "count": 12
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present perfect",
+          "past continuous",
+          "past perfect",
+          "second conditional",
+          "reported speech with backshifting",
+          "modal perfect (must have)",
+          "relative clauses",
+          "cleft-like structure (it wasn't until)"
+        ],
+        "notes": "Dominated by past and present simple, but past perfect, reported speech, and a second conditional appear regularly enough to push beyond level 2. Complex structures appear in roughly 25-30% of sentences."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "UFC/MMA",
+          "The Wolf of Wall Street / Jordan Belfort / quaaludes",
+          "French-English relations in Canada",
+          "Argentinian culture",
+          "Bogotá",
+          "Buenos Aires",
+          "caldo",
+          "finca",
+          "COP (Colombian pesos)",
+          "ayahuasca ceremony"
+        ],
+        "notes": "Most references are Latin American or globally known pop culture. The Wolf of Wall Street reference requires specific film knowledge but is widely known. Canadian French-English relations are minor and contextual. Ayahuasca and Latin American settings are familiar to the target reader."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 19,
+        "notes": "Mixed lengths with many compound and complex sentences containing subordinate clauses. Some sentences over 25 words, but also many shorter simple sentences. Narrative style with moderate complexity."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "ignore",
+            "context": "My stomach is still giving me signals that it wants to puke, but I ignore it.",
+            "is_trap_active": false,
+            "reason": "Context makes it clear the narrator is deliberately not responding to stomach signals. A Spanish speaker might initially think 'ignorar' (to not know), but the situational context disambiguates."
+          },
+          {
+            "word": "once",
+            "context": "Once we're out of the city, there are toll booths with lots of traffic.",
+            "is_trap_active": true,
+            "reason": "Spanish 'once' means 'eleven.' A Spanish speaker could momentarily read this as 'Eleven we're out of the city,' though the driving context eventually clarifies the temporal meaning."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.68,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.77",
+      "evp_coverage_pct": "89.0",
+      "cognate_pct": "16.7",
+      "off_list_pct": "11.0"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.68,
+    "estimated_cefr": "B1"
+  }
+}

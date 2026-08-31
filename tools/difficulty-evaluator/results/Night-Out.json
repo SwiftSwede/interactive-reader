@@ -1,0 +1,131 @@
+{
+  "story_title": "Night Out",
+  "profiler": {
+    "word_count": 1837,
+    "unique_word_count": 468,
+    "evp_coverage_pct": 91.2,
+    "level_distribution": {
+      "A1": 303,
+      "A2": 87,
+      "B1": 24,
+      "B2": 11,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 64.7,
+      "A2": 83.3,
+      "B1": 88.5,
+      "B2": 90.8,
+      "C1": 91.2,
+      "C2": 91.2
+    },
+    "cognate_count": 74,
+    "cognate_pct": 15.8,
+    "false_friend_count": 2,
+    "off_list_count": 41,
+    "off_list_pct": 8.8,
+    "vocab_difficulty_raw": 1.41,
+    "vocab_difficulty_adjusted": 1.6,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Night Out",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "chilling",
+          "take 'no' for an answer",
+          "No ands, ifs or buts",
+          "singing your heart out",
+          "dolled up",
+          "looks who's talking",
+          "in one piece",
+          "party pooper",
+          "belt out",
+          "bend his arm",
+          "hitting it off",
+          "match made in heaven",
+          "ying to your yang",
+          "melts in your mouth",
+          "making my mouth water",
+          "in good shape",
+          "last call",
+          "making out",
+          "keep in touch",
+          "My treat",
+          "plastered",
+          "throwing up"
+        ],
+        "count": 22
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "past continuous",
+          "present perfect",
+          "going to future",
+          "first conditional",
+          "reported speech"
+        ],
+        "notes": "The text is mostly dialogue using simple tenses, but includes a noticeable minority of sentences with present perfect, past continuous, conditionals, and reported speech."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Netflix",
+          "Spotify",
+          "Uber",
+          "Jagermeister shots",
+          "Moscow mules",
+          "lager",
+          "pitchers",
+          "wings flavors (buffalo, cajun, lemon pepper)",
+          "last call",
+          "middle school",
+          "Johnny Cash"
+        ],
+        "notes": "Bar culture, specific wing flavors, and the US school system reference (middle school) add moderate cultural weight, though the plot is easily followable."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "As a dialogue, the text consists mostly of short to moderate sentences with basic conjunctions. Average length is around 12 words."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "once",
+            "context": "Just once and we promise not to bug you for the rest of the night.",
+            "is_trap_active": false,
+            "reason": "The context of singing a song makes it clear that 'once' means 'one time', not the number eleven."
+          },
+          {
+            "word": "parents",
+            "context": "most parents would be happy if their daughter stayed at home.",
+            "is_trap_active": false,
+            "reason": "The context of a daughter staying at home makes it clear that 'parents' refers to mother and father, not relatives in general."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.53,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.6",
+      "evp_coverage_pct": "91.2",
+      "cognate_pct": "15.8",
+      "off_list_pct": "8.8"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.53,
+    "estimated_cefr": "B1"
+  }
+}

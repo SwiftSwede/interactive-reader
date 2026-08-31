@@ -1,0 +1,106 @@
+{
+  "story_title": "Locked Out",
+  "profiler": {
+    "word_count": 980,
+    "unique_word_count": 378,
+    "evp_coverage_pct": 91.0,
+    "level_distribution": {
+      "A1": 229,
+      "A2": 67,
+      "B1": 32,
+      "B2": 12,
+      "C1": 4,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 60.6,
+      "A2": 78.3,
+      "B1": 86.8,
+      "B2": 89.9,
+      "C1": 91.0,
+      "C2": 91.0
+    },
+    "cognate_count": 44,
+    "cognate_pct": 11.6,
+    "false_friend_count": 1,
+    "off_list_count": 34,
+    "off_list_pct": 9.0,
+    "vocab_difficulty_raw": 1.53,
+    "vocab_difficulty_adjusted": 1.6,
+    "estimated_cefr": "C1"
+  },
+  "rubric": {
+    "story_title": "Locked Out",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "brain juices flowing",
+          "short fuse",
+          "out and about",
+          "give up",
+          "hold out hope",
+          "make do",
+          "cost a fortune",
+          "taking stock"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "past perfect (she'd seen, she'd made)",
+          "third conditional (If there had been... she might have tried)",
+          "second conditional (If the door didn't... she'd have to)",
+          "wish structures (I wish I could)",
+          "modals (can, could, might, would, should)",
+          "reported speech elements",
+          "relative clauses (who, that, which)"
+        ],
+        "notes": "Dominant profile is simple past with present simple in dialogue. Complex structures (past perfect, third conditional, wish, mixed conditionals) appear as a noticeable minority, roughly 20-25% of sentences. The third conditional is a one-off but past perfect and conditionals recur."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Dragon Ball Z / Goku Super Saiyan (globally known anime)",
+          "imperial measurements (5 foot 2, 115 pounds)",
+          "apartment complex with security guards",
+          "work-from-home day"
+        ],
+        "notes": "Mostly universal setting. Dragon Ball Z is globally known in LatAm. Imperial measurements may cause minor confusion but are inferable. No North American-specific customs or institutional references that would impede comprehension."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 17,
+        "notes": "Mixed lengths. Dialogue sentences are short (5-10 words) while narrative sentences frequently run 20-30 words with subordinate clauses. Several compound-complex sentences with multiple clauses. Average is pulled up by longer narrative passages."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "rope",
+            "context": "Do you have a rope or something you can send out?",
+            "is_trap_active": true,
+            "reason": "Spanish 'ropa' means clothing, so a Spanish speaker would initially be confused about why the guard is asking for clothes. However, the surrounding context (tying a screwdriver, sending it out the window) eventually clarifies the meaning. The trap is active but contextually resolvable."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.43,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.6",
+      "evp_coverage_pct": "91.0",
+      "cognate_pct": "11.6",
+      "off_list_pct": "9.0"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.43,
+    "estimated_cefr": "A2/B1"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "story_title": "After Work Kidnapping",
+  "profiler": {
+    "word_count": 1987,
+    "unique_word_count": 603,
+    "evp_coverage_pct": 90.9,
+    "level_distribution": {
+      "A1": 346,
+      "A2": 105,
+      "B1": 75,
+      "B2": 20,
+      "C1": 0,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 57.4,
+      "A2": 74.8,
+      "B1": 87.2,
+      "B2": 90.5,
+      "C1": 90.5,
+      "C2": 90.9
+    },
+    "cognate_count": 99,
+    "cognate_pct": 16.4,
+    "false_friend_count": 3,
+    "off_list_count": 55,
+    "off_list_pct": 9.1,
+    "vocab_difficulty_raw": 1.59,
+    "vocab_difficulty_adjusted": 1.85,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "After Work Kidnapping",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "party in the pants",
+          "take the fall",
+          "not the sharpest tools in the shed",
+          "have it coming",
+          "snap out of",
+          "eat away at",
+          "feel up",
+          "scared shitless",
+          "stop short of",
+          "get them on her side",
+          "wash over"
+        ],
+        "count": 11
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past continuous",
+          "past perfect (recurring: had grabbed, had listened, had happened, had arrived, had gone, had begun)",
+          "present simple (dialogue)",
+          "first conditional (If you leave earlier, we'll kill you)",
+          "mixed/unreal conditional (This would have never happened if police like you would do their jobs)",
+          "passive voice (being pressed, being pointed, being dragged)",
+          "modals (could, would, might, should)",
+          "participial clauses (sporting Chinese knockoff clothing)",
+          "relative clauses (that had grabbed her, who would jump out)"
+        ],
+        "notes": "Past simple dominates narration, but past perfect, passive constructions, conditionals, and participial clauses appear regularly enough to push beyond level 2. Roughly 25-30% of sentences contain structures at level 3-4."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "rush hour (universal)",
+          "prince charming (universal fairy tale)",
+          "Chinese knockoff brand-name clothing (global concept)",
+          "corrupt police (familiar to LatAm readers)"
+        ],
+        "notes": "The story appears set in a Latin American or developing-country context with themes (dangerous city, corrupt police, white-skin beauty standards) that would be familiar to a Latin American reader. No North American-specific customs or institutions are referenced."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 17,
+        "notes": "Mixed lengths throughout. Many short dialogue exchanges ('No.' 'Yes.' 'Fine!') bring the average down, but narrative sentences frequently contain subordinate clauses, participial phrases, and relative clauses. Some sentences exceed 25 words."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "delicate",
+            "context": "She had nothing to protect her delicate feet from pebbles, glass or rough asphalt.",
+            "is_trap_active": false,
+            "reason": "Used to mean 'fragile,' which overlaps with Spanish 'delicado.' Context of feet being unprotected from rough surfaces makes the meaning clear."
+          },
+          {
+            "word": "embarrassed",
+            "context": "\"Shut up!\" yelled the young man back, embarrassed.",
+            "is_trap_active": false,
+            "reason": "While 'embarrassed' vs 'embarazada' is a classic false friend, the context (a young man being told to shut up after being teased about liking the woman) makes it clear he is ashamed/self-conscious, not pregnant."
+          },
+          {
+            "word": "parents",
+            "context": "Her parents had already arrived and were talking to the police.",
+            "is_trap_active": false,
+            "reason": "Spanish 'parientes' means relatives in general, but context (mother and father arriving, mother speaking) makes it clear these are her father and mother specifically."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.46,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.85",
+      "evp_coverage_pct": "90.9",
+      "cognate_pct": "16.4",
+      "off_list_pct": "9.1"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.46,
+    "estimated_cefr": "A2/B1"
+  }
+}

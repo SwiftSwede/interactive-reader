@@ -1,0 +1,121 @@
+{
+  "story_title": "History of Christmas",
+  "profiler": {
+    "word_count": 1250,
+    "unique_word_count": 523,
+    "evp_coverage_pct": 78.8,
+    "level_distribution": {
+      "A1": 245,
+      "A2": 70,
+      "B1": 63,
+      "B2": 31,
+      "C1": 2,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 46.8,
+      "A2": 60.2,
+      "B1": 72.3,
+      "B2": 78.2,
+      "C1": 78.6,
+      "C2": 78.8
+    },
+    "cognate_count": 107,
+    "cognate_pct": 20.5,
+    "false_friend_count": 3,
+    "off_list_count": 111,
+    "off_list_pct": 21.2,
+    "vocab_difficulty_raw": 1.73,
+    "vocab_difficulty_adjusted": 1.92,
+    "estimated_cefr": "A2"
+  },
+  "rubric": {
+    "story_title": "History of Christmas",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "sitting at someone's knee",
+          "what's the deal with",
+          "down with Christmas",
+          "ran with it",
+          "struck a cultural cord",
+          "came into the picture"
+        ],
+        "count": 6
+      },
+      "grammatical_complexity": {
+        "score": 4,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present perfect",
+          "present perfect continuous",
+          "past perfect",
+          "passive voice",
+          "modals (would, could)",
+          "relative clauses",
+          "participial clauses"
+        ],
+        "notes": "The text regularly uses present perfect, passive voice, and participial clauses. Complex sentences with relative clauses are frequent throughout the historical narrative."
+      },
+      "cultural_reference_load": {
+        "score": 4,
+        "references_found": [
+          "Dr. Seuss",
+          "Kris Kringle",
+          "Charles Dickens",
+          "Washington Irving",
+          "Thomas Nast",
+          "Oliver Cromwell and the Puritans",
+          "Pilgrims in North America",
+          "Sinterklaas",
+          "Saturnalia and Juvenalia",
+          "Yule"
+        ],
+        "notes": "The text is dense with historical and cultural references specific to European and North American history, including authors, historical figures, and ancient festivals that a Latin American learner may not be familiar with."
+      },
+      "sentence_structure": {
+        "score": 4,
+        "avg_sentence_length": 18,
+        "notes": "Sentences are long and varied, with multiple subordinate clauses and participial phrases. Some sentences exceed 30 words, adding narrative complexity."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "it was actually outlawed in Boston from 1659 to 1681",
+            "is_trap_active": true,
+            "reason": "Spanish 'actualmente' means 'currently', which would confuse the reader in this past tense context."
+          },
+          {
+            "word": "large",
+            "context": "Families would bring home large logs",
+            "is_trap_active": true,
+            "reason": "Spanish 'largo' means 'long', not 'big in size', so a learner might misunderstand the dimension of the logs."
+          },
+          {
+            "word": "once",
+            "context": "but we basically reinvented it once we did",
+            "is_trap_active": true,
+            "reason": "Spanish 'once' means 'eleven', which makes no sense here; the English meaning is 'as soon as' or 'when'."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 3.28,
+    "estimated_cefr": "B1/B2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.92",
+      "evp_coverage_pct": "78.8",
+      "cognate_pct": "20.5",
+      "off_list_pct": "21.2"
+    }
+  },
+  "final": {
+    "overall_difficulty": 3.28,
+    "estimated_cefr": "B1/B2"
+  }
+}

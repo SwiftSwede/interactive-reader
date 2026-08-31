@@ -1,0 +1,130 @@
+{
+  "story_title": "Run-ins",
+  "profiler": {
+    "word_count": 1456,
+    "unique_word_count": 532,
+    "evp_coverage_pct": 88.5,
+    "level_distribution": {
+      "A1": 318,
+      "A2": 83,
+      "B1": 46,
+      "B2": 21,
+      "C1": 2,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 59.8,
+      "A2": 75.4,
+      "B1": 84.0,
+      "B2": 88.0,
+      "C1": 88.3,
+      "C2": 88.5
+    },
+    "cognate_count": 76,
+    "cognate_pct": 14.3,
+    "false_friend_count": 3,
+    "off_list_count": 61,
+    "off_list_pct": 11.5,
+    "vocab_difficulty_raw": 1.53,
+    "vocab_difficulty_adjusted": 1.81,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Run-ins",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "run-ins",
+          "run into / running into",
+          "big shot",
+          "catch up (on life)",
+          "dodged a bullet",
+          "grow further apart",
+          "gave up on",
+          "getting wasted",
+          "deep pockets",
+          "sucked at",
+          "bugging me"
+        ],
+        "count": 11
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past perfect (had allowed, had hoped, had been trying, had come in)",
+          "past continuous (was coming, was going to start)",
+          "present perfect (haven't seen, have been going)",
+          "second conditional (If I were having luck... I wouldn't be living)",
+          "mixed conditional (If he went... he'd have to deal with)",
+          "relative clauses (who worked, who ended up, that worked)",
+          "participial clauses (rubbing the back, changing or using)",
+          "modals (could, would, must have been)"
+        ],
+        "notes": "Narrative is dominated by past simple, but past perfect appears 6+ times, second/mixed conditionals appear twice, and relative clauses are frequent throughout. Complex structures form a noticeable minority of sentences."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "hockey practice",
+          "sleepovers",
+          "living in parents' basement as failure marker",
+          "P.E. class",
+          "house parties",
+          "day trading",
+          "grocery store bagging by staff",
+          "post office notice of arrival card",
+          "Ford Focus",
+          "McDonald's",
+          "Amazon",
+          "Facebook",
+          "Mario Kart",
+          "Lego"
+        ],
+        "notes": "Most references are globally known brands or universal school experiences. Hockey and sleepovers are mildly North American but inferable from context. The 'basement' failure trope is North American but contextually clear. Plot is fully followable without cultural knowledge."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 13,
+        "notes": "Mixed lengths. Dialogue lines are short, but narrative sentences like the description of Jeremy's appearance and the paragraph about seeing classmates are long with multiple subordinate clauses. Average is moderate but variety is wide."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "Just got back from my honeymoon, actually.",
+            "is_trap_active": false,
+            "reason": "Spanish speaker might think 'actualmente' (currently), but the context of just returning from a honeymoon makes the 'in fact' meaning clear."
+          },
+          {
+            "word": "grocery",
+            "context": "Fred quickly grabbed what he needed to get from the grocery list and went to the checkout counter.",
+            "is_trap_active": false,
+            "reason": "Spanish 'grosería' means rudeness, but 'grocery store,' 'grocery list,' and 'groceries' are all clearly food-related from context. No realistic confusion."
+          },
+          {
+            "word": "parents",
+            "context": "Here to see my parents.",
+            "is_trap_active": false,
+            "reason": "Spanish 'parientes' means relatives generally, but seeing 'my parents' in context of visiting home and living in 'my parents' basement' makes the father-and-mother meaning unambiguous."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.59,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.81",
+      "evp_coverage_pct": "88.5",
+      "cognate_pct": "14.3",
+      "off_list_pct": "11.5"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.59,
+    "estimated_cefr": "B1"
+  }
+}

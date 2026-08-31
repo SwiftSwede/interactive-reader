@@ -1,0 +1,120 @@
+{
+  "story_title": "The Hidden Artist",
+  "profiler": {
+    "word_count": 1404,
+    "unique_word_count": 487,
+    "evp_coverage_pct": 91.4,
+    "level_distribution": {
+      "A1": 295,
+      "A2": 88,
+      "B1": 37,
+      "B2": 23,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 60.6,
+      "A2": 78.6,
+      "B1": 86.2,
+      "B2": 91.0,
+      "C1": 91.4,
+      "C2": 91.4
+    },
+    "cognate_count": 74,
+    "cognate_pct": 15.2,
+    "false_friend_count": 3,
+    "off_list_count": 42,
+    "off_list_pct": 8.6,
+    "vocab_difficulty_raw": 1.54,
+    "vocab_difficulty_adjusted": 1.78,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "The Hidden Artist",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "bring me back down to earth",
+          "going downhill",
+          "looking forward to",
+          "weight had been lifted off of my shoulders",
+          "no way in hell",
+          "sooner rather than later"
+        ],
+        "count": 6
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present perfect",
+          "past perfect",
+          "past continuous",
+          "would for habitual past",
+          "second conditional",
+          "participial clauses",
+          "relative clauses (who, that, which)",
+          "basic modals (would, could)"
+        ],
+        "notes": "Dominated by past simple and present simple, but present perfect, past perfect, past continuous, second conditional, and participial clauses appear as a noticeable minority. Relative clauses recur throughout. Complex structures appear in roughly 20-25% of sentences."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Target (retail store)",
+          "Rust Belt (US socioeconomic region)",
+          "quarterback (American football)",
+          "community college (US education system)",
+          "two weeks notice (workplace norm)",
+          "food court (mall culture)",
+          "Cincinnati, Ohio (US geography)",
+          "cheap Chinese-made products (cultural commentary)"
+        ],
+        "notes": "The Rust Belt concept and American football quarterback reference require specific US cultural knowledge. The socioeconomic despair of the Rust Belt is central to the story's themes. A LatAm learner can follow the plot but would miss nuances of regional decline and high school sports culture."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "Mix of short dialogue lines and moderate-length narrative sentences. Many sentences are simple SVO structures with basic conjunctions. Some sentences reach 20-25 words with subordinate clauses, but the average is kept low by frequent short dialogue exchanges."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "embarrassed",
+            "context": "a bit embarrassed that somebody would ask me about my drawings",
+            "is_trap_active": true,
+            "reason": "Classic false friend; Spanish 'embarazada' means pregnant. However, context (being asked about drawings) makes the shame/self-consciousness meaning fairly inferable, and many learners know this false friend."
+          },
+          {
+            "word": "once",
+            "context": "once I finished high school",
+            "is_trap_active": false,
+            "reason": "Used as a temporal conjunction meaning 'after/as soon as.' Spanish 'once' means eleven, but the context of finishing high school makes the temporal meaning clear."
+          },
+          {
+            "word": "realize",
+            "context": "you were never able to realize your dreams",
+            "is_trap_active": false,
+            "reason": "Used to mean 'achieve/make real,' which is actually close to Spanish 'realizar' (to carry out/perform). The false friend trap (Spanish 'realizar' vs English 'realize' = become aware) is not active here since the English meaning aligns with the Spanish cognate."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.28,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.78",
+      "evp_coverage_pct": "91.4",
+      "cognate_pct": "15.2",
+      "off_list_pct": "8.6"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.28,
+    "estimated_cefr": "A2/B1"
+  }
+}

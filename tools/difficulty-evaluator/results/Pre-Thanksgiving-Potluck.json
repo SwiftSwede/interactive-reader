@@ -1,0 +1,131 @@
+{
+  "story_title": "Thanksgiving Potluck",
+  "profiler": {
+    "word_count": 1088,
+    "unique_word_count": 406,
+    "evp_coverage_pct": 92.9,
+    "level_distribution": {
+      "A1": 266,
+      "A2": 69,
+      "B1": 31,
+      "B2": 10,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 65.5,
+      "A2": 82.5,
+      "B1": 90.1,
+      "B2": 92.6,
+      "C1": 92.9,
+      "C2": 92.9
+    },
+    "cognate_count": 78,
+    "cognate_pct": 19.2,
+    "false_friend_count": 5,
+    "off_list_count": 29,
+    "off_list_pct": 7.1,
+    "vocab_difficulty_raw": 1.44,
+    "vocab_difficulty_adjusted": 1.89,
+    "estimated_cefr": "B1"
+  },
+  "rubric": {
+    "story_title": "Thanksgiving Potluck",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "on board with it",
+          "in over my head",
+          "broke the news",
+          "play it cool",
+          "get to me (pressure started to get to me)",
+          "dig in",
+          "set the mood"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present perfect",
+          "past continuous",
+          "first conditional (It'd be weird)",
+          "wish (I wish)",
+          "modals (should, could, would, must)",
+          "reported speech",
+          "relative clauses (that included, who took)"
+        ],
+        "notes": "Dominated by simple tenses in dialogue, but present perfect, past continuous, conditionals, and 'wish' structures appear as a noticeable minority. Subordinate clauses are frequent in narrative sections."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Thanksgiving (central theme)",
+          "Black Friday",
+          "potluck (explained in text)",
+          "Thanksgiving dishes: turkey, stuffing, pumpkin pie, green bean casserole",
+          "Lord's prayer before meals",
+          "Creedence Clearwater Revival",
+          "Kakaotalk (Korean messaging app)"
+        ],
+        "notes": "Thanksgiving is the central cultural element and is unfamiliar to most Latin American learners. However, the text explains the potluck concept and lists the dishes, so the plot remains followable without deep cultural knowledge."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 16,
+        "notes": "Mix of short dialogue lines and moderate narrative sentences. Most sentences are straightforward with basic conjunctions. A few longer sentences with subordinate clauses but nothing excessively complex."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "Actually, there was no turkey.",
+            "is_trap_active": false,
+            "reason": "While 'actually' vs 'actualmente' is a classic false friend, the context (discussing whether turkey was present) makes the 'in fact' meaning clear."
+          },
+          {
+            "word": "large",
+            "context": "one of my coworkers lived in an apartment complex with a large event salon",
+            "is_trap_active": false,
+            "reason": "'Large' is basic A1 vocabulary that most learners know as 'big,' not confused with Spanish 'largo' (long) at this level."
+          },
+          {
+            "word": "once",
+            "context": "more than once a year",
+            "is_trap_active": false,
+            "reason": "Context of frequency ('more than ___ a year') makes the 'one time' meaning obvious; unlikely to be read as 'eleven.'"
+          },
+          {
+            "word": "pie",
+            "context": "pumpkin pie",
+            "is_trap_active": false,
+            "reason": "In a food/dessert context alongside turkey and stuffing, the 'baked dessert' meaning is clear; unlikely to be confused with 'foot.'"
+          },
+          {
+            "word": "sauce",
+            "context": "spaghetti and meat sauce",
+            "is_trap_active": false,
+            "reason": "Spanish 'salsa' also means sauce, so this is not a true false friend in this context."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.42,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.89",
+      "evp_coverage_pct": "92.9",
+      "cognate_pct": "19.2",
+      "off_list_pct": "7.1"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.42,
+    "estimated_cefr": "A2/B1"
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "story_title": "Thanksgiving Invite",
+  "profiler": {
+    "word_count": 1194,
+    "unique_word_count": 424,
+    "evp_coverage_pct": 90.8,
+    "level_distribution": {
+      "A1": 276,
+      "A2": 66,
+      "B1": 28,
+      "B2": 11,
+      "C1": 4,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 65.1,
+      "A2": 80.7,
+      "B1": 87.3,
+      "B2": 89.9,
+      "C1": 90.8,
+      "C2": 90.8
+    },
+    "cognate_count": 63,
+    "cognate_pct": 14.9,
+    "false_friend_count": 5,
+    "off_list_count": 39,
+    "off_list_pct": 9.2,
+    "vocab_difficulty_raw": 1.44,
+    "vocab_difficulty_adjusted": 1.9,
+    "estimated_cefr": "C1"
+  },
+  "rubric": {
+    "story_title": "Thanksgiving Invite",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "make yourself at home",
+          "follow my lead",
+          "steer you wrong",
+          "snap at him",
+          "snap him out of it",
+          "dig in",
+          "throw together",
+          "missing out",
+          "pop your cherry",
+          "evil eye",
+          "at your disposal",
+          "when in doubt"
+        ],
+        "count": 12
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple (dominant)",
+          "past simple",
+          "present perfect",
+          "going to future",
+          "first conditional",
+          "modals (can, should, would)",
+          "basic relative clauses (that, who)",
+          "comparatives"
+        ],
+        "notes": "Dominated by present simple in dialogue. Present perfect and past simple appear a few times. One first conditional in the grace prayer. Relative clauses are basic. Complex structures are rare, appearing in 1-2 instances at most."
+      },
+      "cultural_reference_load": {
+        "score": 4,
+        "references_found": [
+          "Thanksgiving dinner customs",
+          "saying grace before meals",
+          "American football (Falcons, losing streak, game on TV)",
+          "green bean casserole",
+          "cranberry sauce",
+          "stuffing",
+          "gravy",
+          "white meat vs dark meat",
+          "passing dishes clockwise",
+          "casserole culture",
+          "evil eye concept",
+          "Day of the Dead (familiar to learner)"
+        ],
+        "notes": "The entire plot revolves around experiencing an American Thanksgiving for the first time. Many specific food items and customs (grace, clockwise passing, football during dinner) require cultural knowledge. The plot is followable but much of the detail would be lost without understanding Thanksgiving culture."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "Dialogue format with mostly short, simple sentences. Some moderate compound sentences with conjunctions. Occasional longer explanatory sentences about food. No complex multi-clause structures."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "We actually don't have Thanksgiving where I'm from.",
+            "is_trap_active": true,
+            "reason": "Spanish speaker may read 'actualmente' (currently) instead of 'in fact.' Context partially clarifies but the nuance is lost."
+          },
+          {
+            "word": "large",
+            "context": "A large group of people is gathered in a home",
+            "is_trap_active": false,
+            "reason": "Context (group of people) makes it clear this means 'big,' not 'long' (largo)."
+          },
+          {
+            "word": "parents",
+            "context": "We'll save the ends of the table for my parents.",
+            "is_trap_active": false,
+            "reason": "Context (table seating at family dinner) makes it clear this means mother and father, not general relatives."
+          },
+          {
+            "word": "sauce",
+            "context": "soy sauce / cranberry sauce",
+            "is_trap_active": false,
+            "reason": "Spanish 'salsa' also means sauce, so no confusion here."
+          },
+          {
+            "word": "test",
+            "context": "Don't test her.",
+            "is_trap_active": true,
+            "reason": "Spanish speaker knows 'test' as exam; here it means 'provoke/challenge,' which could cause confusion."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.67,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.9",
+      "evp_coverage_pct": "90.8",
+      "cognate_pct": "14.9",
+      "off_list_pct": "9.2"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.67,
+    "estimated_cefr": "B1"
+  }
+}

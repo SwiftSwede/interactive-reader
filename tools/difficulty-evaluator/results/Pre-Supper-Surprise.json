@@ -1,0 +1,105 @@
+{
+  "story_title": "Supper Surprise",
+  "profiler": {
+    "word_count": 1129,
+    "unique_word_count": 444,
+    "evp_coverage_pct": 89.9,
+    "level_distribution": {
+      "A1": 270,
+      "A2": 83,
+      "B1": 29,
+      "B2": 14,
+      "C1": 2,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 60.8,
+      "A2": 79.5,
+      "B1": 86.0,
+      "B2": 89.2,
+      "C1": 89.6,
+      "C2": 89.9
+    },
+    "cognate_count": 54,
+    "cognate_pct": 12.2,
+    "false_friend_count": 1,
+    "off_list_count": 45,
+    "off_list_pct": 10.1,
+    "vocab_difficulty_raw": 1.49,
+    "vocab_difficulty_adjusted": 1.55,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Supper Surprise",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "my ass is killing me",
+          "take it easy",
+          "cleared his throat",
+          "came to a stop",
+          "dishing themselves up"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "present perfect",
+          "present continuous",
+          "passive voice (was being boiled, were yelled at)",
+          "reported speech",
+          "relative clauses (that, who)",
+          "as though it were (irrealis/subjunctive)"
+        ],
+        "notes": "Past simple dominates but past perfect, past continuous, passive, and relative clauses appear as a noticeable minority throughout. Reported speech and irrealis 'as though it were' add complexity."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "vallenato",
+          "buseta",
+          "lulo",
+          "cassava",
+          "sugarcane water",
+          "Gabo (Gabriel García Márquez)",
+          "Caribbean village culture"
+        ],
+        "notes": "Story is set in a Latin American (Colombian Caribbean) context. All major cultural references (vallenato, buseta, lulo, cassava, Gabo) would be familiar to a Latin American learner. The only potentially unfamiliar term is 'wife beaters' (US slang for tank-top undershirts), but it is minor and inferable from context."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 19,
+        "notes": "Mixed sentence lengths. Some long descriptive sentences with subordinate clauses (e.g., 28-word opening sentence) interspersed with short dialogue lines. Average around 18-20 words with moderate narrative complexity."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "once",
+            "context": "Once you've been on one buseta, you've been on them all.",
+            "is_trap_active": false,
+            "reason": "Spanish speaker would recognize 'once' as 'eleven' in Spanish, but the context 'Once you've been on one buseta, you've been on them all' makes it clear this is a conjunction meaning 'as soon as.' The parallel structure with 'one buseta' disambiguates it. Mild initial confusion possible but context resolves it quickly."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.07,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.55",
+      "evp_coverage_pct": "89.9",
+      "cognate_pct": "12.2",
+      "off_list_pct": "10.1"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.07,
+    "estimated_cefr": "A2/B1"
+  }
+}

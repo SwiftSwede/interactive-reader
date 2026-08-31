@@ -1,0 +1,113 @@
+{
+  "story_title": "Copa America Nightmare",
+  "profiler": {
+    "word_count": 1317,
+    "unique_word_count": 413,
+    "evp_coverage_pct": 93.5,
+    "level_distribution": {
+      "A1": 246,
+      "A2": 85,
+      "B1": 35,
+      "B2": 16,
+      "C1": 2,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 59.6,
+      "A2": 80.1,
+      "B1": 88.6,
+      "B2": 92.5,
+      "C1": 93.0,
+      "C2": 93.5
+    },
+    "cognate_count": 69,
+    "cognate_pct": 16.7,
+    "false_friend_count": 2,
+    "off_list_count": 27,
+    "off_list_pct": 6.5,
+    "vocab_difficulty_raw": 1.57,
+    "vocab_difficulty_adjusted": 1.7,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Copa America Nightmare",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "figure out",
+          "set off",
+          "on the safe side",
+          "took off",
+          "kicked in",
+          "had had enough",
+          "screwed",
+          "scaredy cats"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past continuous",
+          "past perfect (multiple instances)",
+          "conditional (would have been)",
+          "was about to",
+          "was gonna",
+          "passive (being taken)",
+          "relative clauses (who, that, where)",
+          "as though clauses"
+        ],
+        "notes": "Narrative is mostly past simple with regular use of past perfect, past continuous, and relative clauses throughout. One conditional and some reported thought. Roughly 20-30% of sentences contain level-3 structures."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Copa America",
+          "metro card",
+          "Uber",
+          "dive bars",
+          "blocks as distance",
+          "Canadian stereotype about asking questions"
+        ],
+        "notes": "Story is set in a Latin American city; most cultural elements are familiar to LatAm learners. 'Dive bars' and 'blocks' as distance are mildly North American but inferable from context. Copa America and Guadalajara are recognizable."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 17,
+        "notes": "Mixed lengths with some compound and complex sentences. Multiple subordinate clauses in narrative passages. Average around 15-20 words with occasional longer sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "He had no idea that robberies like that actually happened.",
+            "is_trap_active": false,
+            "reason": "Context makes the meaning 'in fact' clear. A Spanish speaker might initially think 'currently' but the sentence is about past events, making the 'in fact/really' reading obvious."
+          },
+          {
+            "word": "collar",
+            "context": "grabbed the young man by the collar of his jacket",
+            "is_trap_active": false,
+            "reason": "The phrase 'collar of his jacket' makes it unambiguous that this refers to the neck band of a garment, not a necklace. Context fully disambiguates."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.36,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.7",
+      "evp_coverage_pct": "93.5",
+      "cognate_pct": "16.7",
+      "off_list_pct": "6.5"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.36,
+    "estimated_cefr": "A2/B1"
+  }
+}

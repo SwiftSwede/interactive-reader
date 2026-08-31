@@ -1,0 +1,107 @@
+{
+  "story_title": "Temperature Rising",
+  "profiler": {
+    "word_count": 718,
+    "unique_word_count": 285,
+    "evp_coverage_pct": 91.2,
+    "level_distribution": {
+      "A1": 189,
+      "A2": 45,
+      "B1": 14,
+      "B2": 11,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 66.3,
+      "A2": 82.1,
+      "B1": 87.0,
+      "B2": 90.9,
+      "C1": 91.2,
+      "C2": 91.2
+    },
+    "cognate_count": 32,
+    "cognate_pct": 11.2,
+    "false_friend_count": 2,
+    "off_list_count": 25,
+    "off_list_pct": 8.8,
+    "vocab_difficulty_raw": 1.42,
+    "vocab_difficulty_adjusted": 1.58,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Temperature Rising",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "pile into",
+          "poke fun at",
+          "love handles",
+          "take a dip",
+          "pass out",
+          "no wonder",
+          "by no means"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past continuous",
+          "past perfect (5 instances)",
+          "first conditional (2 instances)",
+          "modals (can, had better)",
+          "subordinate clauses (because, if, that, when)"
+        ],
+        "notes": "Dominated by past simple and past continuous, but past perfect appears frequently enough (5 instances) to be a noticeable minority. Two first conditionals in dialogue. Overall a mix of simple and moderately complex structures."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "beach trip",
+          "soccer",
+          "Celsius temperatures",
+          "ham sandwich"
+        ],
+        "notes": "Fully universal setting. Celsius is the temperature scale used in Latin America. No North American-specific customs or references. A LatAm learner would find this culturally transparent."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Mix of very short dialogue lines and moderate narrative sentences. Most sentences are simple or compound with basic subordination. No sentences over 25 words. Average length kept low by frequent short dialogue exchanges."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "location",
+            "context": "We found a prime location on the beach and got set up.",
+            "is_trap_active": false,
+            "reason": "Used to mean 'spot/place' which is close enough to the Spanish 'locación' that a learner would understand it correctly in this context."
+          },
+          {
+            "word": "parents",
+            "context": "a thick blue sweater that my parents had gotten her for her birthday",
+            "is_trap_active": false,
+            "reason": "While Spanish 'parientes' means relatives in general, the context of 'my parents had gotten her for her birthday' makes it clear these are the mother and father, not just any relatives. The mother is also a character in the scene."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.02,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.58,
+      "evp_coverage_pct": 91.2,
+      "cognate_pct": 11.2,
+      "off_list_pct": 8.8
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.02,
+    "estimated_cefr": "A2/B1"
+  }
+}

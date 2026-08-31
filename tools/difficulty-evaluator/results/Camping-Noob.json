@@ -1,0 +1,122 @@
+{
+  "story_title": "Camping Noob",
+  "profiler": {
+    "word_count": 1436,
+    "unique_word_count": 462,
+    "evp_coverage_pct": 89.6,
+    "level_distribution": {
+      "A1": 280,
+      "A2": 82,
+      "B1": 34,
+      "B2": 18,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 60.6,
+      "A2": 78.4,
+      "B1": 85.7,
+      "B2": 89.6,
+      "C1": 89.6,
+      "C2": 89.6
+    },
+    "cognate_count": 73,
+    "cognate_pct": 15.8,
+    "false_friend_count": 0,
+    "off_list_count": 48,
+    "off_list_pct": 10.4,
+    "vocab_difficulty_raw": 1.49,
+    "vocab_difficulty_adjusted": 1.46,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Camping Noob",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "sweating buckets",
+          "get a taste of",
+          "great outdoors",
+          "sugar daddies",
+          "sweating bullets",
+          "end up",
+          "pass out",
+          "cross something off of your bucket list",
+          "live a little",
+          "take a dip",
+          "gung-ho",
+          "chit-chat",
+          "Last one in the pool is a rotten egg",
+          "twice in a row",
+          "wears the pants in this relationship",
+          "has nothing on this",
+          "turning back",
+          "head back"
+        ],
+        "count": 18
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "present perfect",
+          "second conditional",
+          "would rather",
+          "relative clauses",
+          "future time clauses"
+        ],
+        "notes": "The text is mostly simple tenses but contains a noticeable minority of sentences with second conditionals, present perfect, and relative clauses."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "peanut butter and banana sandwich",
+          "skinny-dipping",
+          "glamping",
+          "sugar daddies",
+          "wears the pants in this relationship",
+          "bucket list"
+        ],
+        "notes": "Most cultural references are either globally known or explained directly in the dialogue (e.g., skinny-dipping, glamping)."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 15,
+        "notes": "Mixed lengths typical of dialogue, with some longer compound-complex sentences containing multiple subordinate clauses."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "fair",
+            "context": "Hey, this isn't fair.",
+            "is_trap_active": false,
+            "reason": "While 'fair' can mean 'feria' in Spanish, the context of a race makes the meaning of 'justo' clear."
+          },
+          {
+            "word": "quiet",
+            "context": "Connecting with nature. Quiet. Fresh air.",
+            "is_trap_active": false,
+            "reason": "Spanish 'quieto' means still, but the context of nature makes the meaning of 'silencio/tranquilo' obvious."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.49,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.46,
+      "evp_coverage_pct": 89.6,
+      "cognate_pct": 15.8,
+      "off_list_pct": 10.4
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.49,
+    "estimated_cefr": "A2/B1"
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "story_title": "What Is He Thinking About",
+  "profiler": {
+    "word_count": 1111,
+    "unique_word_count": 402,
+    "evp_coverage_pct": 89.3,
+    "level_distribution": {
+      "A1": 252,
+      "A2": 63,
+      "B1": 30,
+      "B2": 14,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 62.7,
+      "A2": 78.4,
+      "B1": 85.8,
+      "B2": 89.3,
+      "C1": 89.3,
+      "C2": 89.3
+    },
+    "cognate_count": 48,
+    "cognate_pct": 11.9,
+    "false_friend_count": 0,
+    "off_list_count": 43,
+    "off_list_pct": 10.7,
+    "vocab_difficulty_raw": 1.46,
+    "vocab_difficulty_adjusted": 1.43,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "What Is He Thinking About",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "blown me off / blowing me off",
+          "strike up (conversation)",
+          "give up",
+          "tough nut to crack",
+          "cheating on me",
+          "eating me up inside",
+          "wait up for me",
+          "keep me in the dark",
+          "bring your A-game"
+        ],
+        "count": 9
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past perfect",
+          "present perfect",
+          "present perfect continuous",
+          "second conditional",
+          "third conditional",
+          "mixed conditional",
+          "modals (could, would)",
+          "was supposed to",
+          "imperative"
+        ],
+        "notes": "Dominant profile is past simple narrative, but past perfect, present perfect continuous, and conditionals (including two third conditionals at the climax) appear as a noticeable minority. The final paragraph contains a complex mixed conditional with multiple subordinate clauses."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "cheerleader",
+          "class nerd",
+          "baby doll (lingerie)",
+          "A-game (sports idiom)",
+          "barbecued steak"
+        ],
+        "notes": "Cheerleader and class nerd are North American school culture references but are understandable from context. The pre-Columbian/conquistador references are familiar to Latin American learners. Overall the story is about universal relationship dynamics with light cultural flavor."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "Mostly short to moderate sentences with frequent dialogue. Some compound sentences with conjunctions. One very long complex sentence near the end (the pre-Columbian civilization question) stands out from the otherwise conversational style."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 2.43,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.43",
+      "evp_coverage_pct": "89.3",
+      "cognate_pct": "11.9",
+      "off_list_pct": "10.7"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.43,
+    "estimated_cefr": "A2/B1"
+  }
+}

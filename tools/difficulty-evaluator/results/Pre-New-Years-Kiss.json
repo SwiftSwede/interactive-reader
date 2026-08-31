@@ -1,0 +1,117 @@
+{
+  "story_title": "New Year_s Kiss",
+  "profiler": {
+    "word_count": 1193,
+    "unique_word_count": 457,
+    "evp_coverage_pct": 89.3,
+    "level_distribution": {
+      "A1": 270,
+      "A2": 75,
+      "B1": 38,
+      "B2": 19,
+      "C1": 5,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 59.1,
+      "A2": 75.5,
+      "B1": 83.8,
+      "B2": 88.0,
+      "C1": 89.1,
+      "C2": 89.3
+    },
+    "cognate_count": 77,
+    "cognate_pct": 16.8,
+    "false_friend_count": 3,
+    "off_list_count": 49,
+    "off_list_pct": 10.7,
+    "vocab_difficulty_raw": 1.57,
+    "vocab_difficulty_adjusted": 1.81,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "New Year_s Kiss",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "make out",
+          "pass up",
+          "take his shot",
+          "keep him company"
+        ],
+        "count": 4
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past continuous",
+          "past perfect",
+          "present perfect",
+          "going to future",
+          "present simple (dialogue)",
+          "first conditional",
+          "participial clauses",
+          "relative clauses"
+        ],
+        "notes": "Dominated by past simple narration with a noticeable minority of sentences using past continuous, past perfect, and participial constructions. Subordinate clauses appear regularly but are not overwhelming."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "New Year's Eve midnight kiss tradition",
+          "tipping culture (keeping the change)",
+          "VIP table/club culture",
+          "Tesla",
+          "Zara",
+          "Johnnie Walker",
+          "Netflix",
+          "Antonio Banderas"
+        ],
+        "notes": "Most references are globally known brands or universal party customs. The midnight kiss tradition and tipping norm are light North American references that can be inferred from context."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 18,
+        "notes": "Mixed lengths with several long sentences containing multiple subordinate clauses (e.g., the sentence about watching coworkers drink tequila). Average is moderate but narrative complexity varies."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "he actually knew how to move his body to the rhythm",
+            "is_trap_active": true,
+            "reason": "Spanish 'actualmente' means 'currently/n nowadays'; a Spanish speaker could misread this as 'currently knew how to move' rather than 'in fact knew how to move.'"
+          },
+          {
+            "word": "embarrassed",
+            "context": "He felt a little embarrassed being rejected.",
+            "is_trap_active": true,
+            "reason": "Classic false friend: Spanish 'embarazada' means 'pregnant.' A Spanish speaker could be confused or amused by this sentence."
+          },
+          {
+            "word": "large",
+            "context": "In the large rooftop nightclub",
+            "is_trap_active": false,
+            "reason": "Spanish 'largo' means 'long,' but 'large' is such a basic, high-frequency English word that most learners at this level know it means 'big.' Context also makes it clear."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.39,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.81",
+      "evp_coverage_pct": "89.3",
+      "cognate_pct": "16.8",
+      "off_list_pct": "10.7"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.39,
+    "estimated_cefr": "A2/B1"
+  }
+}

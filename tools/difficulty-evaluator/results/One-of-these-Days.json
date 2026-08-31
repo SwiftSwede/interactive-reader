@@ -1,0 +1,96 @@
+{
+  "story_title": "One of these Days",
+  "profiler": {
+    "word_count": 921,
+    "unique_word_count": 373,
+    "evp_coverage_pct": 88.7,
+    "level_distribution": {
+      "A1": 213,
+      "A2": 50,
+      "B1": 41,
+      "B2": 22,
+      "C1": 4,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 57.1,
+      "A2": 70.5,
+      "B1": 81.5,
+      "B2": 87.4,
+      "C1": 88.5,
+      "C2": 88.7
+    },
+    "cognate_count": 45,
+    "cognate_pct": 12.1,
+    "false_friend_count": 1,
+    "off_list_count": 42,
+    "off_list_pct": 11.3,
+    "vocab_difficulty_raw": 1.66,
+    "vocab_difficulty_adjusted": 1.71,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "One of these Days",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 1,
+        "items_found": [
+          "so much the better",
+          "at arm's length",
+          "looked him in the eye"
+        ],
+        "count": 3
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past continuous (were drying, was boiling)",
+          "past perfect (had arranged, had put, hadn't changed, had shaved)",
+          "first conditional (if you don't... he'll shoot)",
+          "participial clauses (bent over the spittoon, sweating, panting; drying his hands; stretching his legs)",
+          "relative clauses (which he arranged, where he kept)",
+          "reported speech (wants to know if you'll pull)"
+        ],
+        "notes": "Past simple dominates but past perfect, past continuous, and participial clauses appear regularly throughout. Literary style with some complex sentence patterns. Mix of simple and complex structures."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Latin American small-town political power dynamics",
+          "military/political violence (twenty dead men)"
+        ],
+        "notes": "Set in a Latin American context (García Márquez). The political violence and power dynamics are familiar to Latin American readers. No North American cultural references. Universal setting."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 13,
+        "notes": "Mix of very short dialogue lines and longer descriptive sentences with subordinate clauses. Some sentences with participial phrases and multiple modifiers. Average pulled down by frequent short dialogue."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "mayor",
+            "context": "The Mayor wants to know if you'll pull his tooth.",
+            "is_trap_active": false,
+            "reason": "While 'mayor' in Spanish means 'older,' the context quickly makes it clear this is a title of authority. The Mayor sends a bill 'to you or the town,' confirming political role. Initial confusion possible but context resolves it within the first exchange."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.91,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.71",
+      "evp_coverage_pct": "88.7",
+      "cognate_pct": "12.1",
+      "off_list_pct": "11.3"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.91,
+    "estimated_cefr": "A2"
+  }
+}

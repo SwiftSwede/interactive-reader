@@ -1,0 +1,118 @@
+{
+  "story_title": "Snow White",
+  "profiler": {
+    "word_count": 1703,
+    "unique_word_count": 492,
+    "evp_coverage_pct": 93.1,
+    "level_distribution": {
+      "A1": 323,
+      "A2": 76,
+      "B1": 41,
+      "B2": 17,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 65.7,
+      "A2": 81.1,
+      "B1": 89.4,
+      "B2": 92.9,
+      "C1": 93.1,
+      "C2": 93.1
+    },
+    "cognate_count": 54,
+    "cognate_pct": 11.0,
+    "false_friend_count": 2,
+    "off_list_count": 34,
+    "off_list_pct": 6.9,
+    "vocab_difficulty_raw": 1.47,
+    "vocab_difficulty_adjusted": 1.66,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Snow White",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "get rid of",
+          "once and for all",
+          "get away with this",
+          "fishy",
+          "door to door",
+          "happily ever after",
+          "getting to know each other",
+          "stand in the way",
+          "all of a sudden",
+          "danced the night away",
+          "take a look at",
+          "keep watch over",
+          "fell fast asleep",
+          "turned red with rage"
+        ],
+        "count": 14
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "second conditional",
+          "reported speech with backshifting",
+          "relative clauses (who, whose, that)",
+          "modals (must, could, would)"
+        ],
+        "notes": "The text is dominated by past simple and past continuous, but features a noticeable minority of past perfect structures for backstory, relative clauses, and a second conditional. Reported speech with backshifting also appears."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "social media influencers",
+          "livestreams",
+          "vlogs",
+          "Youtube",
+          "selfie",
+          "fairy tale elements (dwarfs, jewel mines, glass coffin)"
+        ],
+        "notes": "The cultural references are based on universal internet culture and the classic Snow White fairy tale. No specific North American or regional cultural knowledge is required."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 11,
+        "notes": "Sentences are mostly short to moderate in length, with a mix of simple and compound structures. Average length is under 12 words, though some dialogue and narrative sentences reach the 20-word range."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "location",
+            "context": "She had even tagged the location as “dwarfs’ cottage in the dark forest”.",
+            "is_trap_active": false,
+            "reason": "The context of tagging a location on social media makes it clear that it refers to a place, not the Spanish meaning of renting."
+          },
+          {
+            "word": "once",
+            "context": "At once, Snow White fell to the ground in a deep sleep.",
+            "is_trap_active": false,
+            "reason": "Used as an adverb meaning 'immediately' or in the idiom 'once and for all'. The context makes it clear it is not the number eleven."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.25,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.66",
+      "evp_coverage_pct": "93.1",
+      "cognate_pct": "11.0",
+      "off_list_pct": "6.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.25,
+    "estimated_cefr": "A2/B1"
+  }
+}

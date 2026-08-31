@@ -1,0 +1,107 @@
+{
+  "story_title": "Birthday Supper",
+  "profiler": {
+    "word_count": 1209,
+    "unique_word_count": 367,
+    "evp_coverage_pct": 90.7,
+    "level_distribution": {
+      "A1": 235,
+      "A2": 55,
+      "B1": 30,
+      "B2": 12,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 64.0,
+      "A2": 79.0,
+      "B1": 87.2,
+      "B2": 90.5,
+      "C1": 90.7,
+      "C2": 90.7
+    },
+    "cognate_count": 50,
+    "cognate_pct": 13.6,
+    "false_friend_count": 1,
+    "off_list_count": 34,
+    "off_list_pct": 9.3,
+    "vocab_difficulty_raw": 1.47,
+    "vocab_difficulty_adjusted": 1.55,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Birthday Supper",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "pay you back",
+          "good one",
+          "behind my back",
+          "bull in a China shop",
+          "strong suit",
+          "getting the hang of it",
+          "blow something up",
+          "ready to go",
+          "dried out",
+          "stuck with",
+          "turned up",
+          "reeked of"
+        ],
+        "count": 12
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "present perfect",
+          "present perfect continuous",
+          "going to future",
+          "first conditional",
+          "imperatives",
+          "basic modals"
+        ],
+        "notes": "Dominated by simple tenses and short conversational exchanges. A few instances of present perfect and conditionals, but mostly basic structures."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "McDonald's",
+          "Fahrenheit vs Celsius"
+        ],
+        "notes": "Universal cooking and relationship setting. No specific North American cultural knowledge required."
+      },
+      "sentence_structure": {
+        "score": 1,
+        "avg_sentence_length": 8,
+        "notes": "Dialogue format with very short, simple sentences. Mostly subject-verb-object or brief conversational responses."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "once",
+            "context": "Once it starts flaking apart it should be good.",
+            "is_trap_active": false,
+            "reason": "While 'once' means eleven in Spanish, the context of cooking and the clause structure make it clear it is being used as a time conjunction meaning 'as soon as'."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.97,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.55",
+      "evp_coverage_pct": "90.7",
+      "cognate_pct": "13.6",
+      "off_list_pct": "9.3"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.97,
+    "estimated_cefr": "A2"
+  }
+}

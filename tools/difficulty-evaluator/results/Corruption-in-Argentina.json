@@ -1,0 +1,100 @@
+{
+  "story_title": "Corruption in Argentina",
+  "profiler": {
+    "word_count": 851,
+    "unique_word_count": 324,
+    "evp_coverage_pct": 92.6,
+    "level_distribution": {
+      "A1": 193,
+      "A2": 54,
+      "B1": 34,
+      "B2": 16,
+      "C1": 3,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 59.6,
+      "A2": 76.2,
+      "B1": 86.7,
+      "B2": 91.7,
+      "C1": 92.6,
+      "C2": 92.6
+    },
+    "cognate_count": 54,
+    "cognate_pct": 16.7,
+    "false_friend_count": 0,
+    "off_list_count": 24,
+    "off_list_pct": 7.4,
+    "vocab_difficulty_raw": 1.61,
+    "vocab_difficulty_adjusted": 1.58,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Corruption in Argentina",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "by the books",
+          "out of the blue",
+          "undercut",
+          "day in court",
+          "drag out",
+          "move our court date up",
+          "paid off",
+          "get acquired",
+          "hiring like crazy",
+          "turnover"
+        ],
+        "count": 10
+      },
+      "grammatical_complexity": {
+        "score": 4,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "past perfect continuous",
+          "past perfect passive",
+          "present simple",
+          "reported speech with backshifting",
+          "mixed conditionals",
+          "passive voice",
+          "relative clauses"
+        ],
+        "notes": "The text regularly features complex structures such as past perfect continuous, past perfect passive, reported speech, and mixed conditionals throughout the narrative."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Recoleta, Palermo, San Telmo, Puerto Madero",
+          "severance pay",
+          "lien",
+          "day in court"
+        ],
+        "notes": "The story is set in Argentina and contrasts US and Argentine business/legal cultures. Latin American readers will easily relate to the context of corruption and local geography. Legal terms like 'lien' are specific but understandable from context."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 17,
+        "notes": "Mixed sentence lengths with several long, compound-complex sentences containing multiple subordinate clauses. Some sentences exceed 30 words."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 2.82,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.58,
+      "evp_coverage_pct": 92.6,
+      "cognate_pct": 16.7,
+      "off_list_pct": 7.4
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.82,
+    "estimated_cefr": "B1"
+  }
+}

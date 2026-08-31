@@ -1,0 +1,107 @@
+{
+  "story_title": "New Band Member (2)",
+  "profiler": {
+    "word_count": 819,
+    "unique_word_count": 293,
+    "evp_coverage_pct": 89.4,
+    "level_distribution": {
+      "A1": 201,
+      "A2": 35,
+      "B1": 18,
+      "B2": 7,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 68.6,
+      "A2": 80.5,
+      "B1": 86.7,
+      "B2": 89.1,
+      "C1": 89.4,
+      "C2": 89.4
+    },
+    "cognate_count": 37,
+    "cognate_pct": 12.6,
+    "false_friend_count": 2,
+    "off_list_count": 31,
+    "off_list_pct": 10.6,
+    "vocab_difficulty_raw": 1.37,
+    "vocab_difficulty_adjusted": 1.54,
+    "estimated_cefr": "A2+"
+  },
+  "rubric": {
+    "story_title": "New Band Member (2)",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "from the top",
+          "had it down pat",
+          "all of a sudden",
+          "tough pill to swallow",
+          "give up"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past continuous",
+          "past perfect continuous",
+          "present continuous",
+          "basic modals (can, should, could, would)",
+          "reported speech",
+          "infinitive clauses"
+        ],
+        "notes": "The text is dominated by simple past and past continuous, but includes noticeable instances of past perfect continuous, reported speech, and modals, making up roughly 15-20% of the sentences."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "punk band",
+          "battle of the bands",
+          "egg salad",
+          "garage band practice"
+        ],
+        "notes": "The cultural references are universal or easily understood from context. 'Battle of the bands' is a globally known concept through media, and no specific North American customs are required to understand the plot."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Moderate sentences with some conjunctions and compound structures. Average length is around 13 words, with a few longer sentences containing dialogue tags and multiple clauses."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "contest",
+            "context": "Do you want to win the contest? $5000 dollars?",
+            "is_trap_active": false,
+            "reason": "Although 'contest' looks like 'contestar' (to answer) in Spanish, the context of winning $5000 makes it clear that it means a competition."
+          },
+          {
+            "word": "song",
+            "context": "It was the song we were going to be playing at a battle of the bands.",
+            "is_trap_active": false,
+            "reason": "'Song' is a basic A1 vocabulary word taught early on as 'canción'. The similarity to the Spanish 'son' (sound/rhythm) is unlikely to cause confusion for an adult learner."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.81,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.54,
+      "evp_coverage_pct": 89.4,
+      "cognate_pct": 12.6,
+      "off_list_pct": 10.6
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.81,
+    "estimated_cefr": "A2"
+  }
+}

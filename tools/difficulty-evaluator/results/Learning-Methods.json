@@ -1,0 +1,116 @@
+{
+  "story_title": "Learning Methods",
+  "profiler": {
+    "word_count": 1293,
+    "unique_word_count": 412,
+    "evp_coverage_pct": 91.5,
+    "level_distribution": {
+      "A1": 279,
+      "A2": 59,
+      "B1": 27,
+      "B2": 12,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 67.7,
+      "A2": 82.0,
+      "B1": 88.6,
+      "B2": 91.5,
+      "C1": 91.5,
+      "C2": 91.5
+    },
+    "cognate_count": 57,
+    "cognate_pct": 13.8,
+    "false_friend_count": 2,
+    "off_list_count": 35,
+    "off_list_pct": 8.5,
+    "vocab_difficulty_raw": 1.4,
+    "vocab_difficulty_adjusted": 1.54,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Learning Methods",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "take advantage of",
+          "take things into my own hands",
+          "spaced out",
+          "hold my own",
+          "tongue-tied",
+          "not a lick of",
+          "get sidetracked",
+          "grown up"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "present perfect",
+          "past continuous",
+          "going to future",
+          "third conditional (would have been fluent if I had known)",
+          "first conditional (if I speak too soon, I will reinforce)",
+          "modals (could, would, might)",
+          "relative clauses (who, which, that)",
+          "reported speech"
+        ],
+        "notes": "Dominated by present simple and present perfect in a conversational style. Present perfect appears frequently throughout. One third conditional and one first conditional. Relative clauses recur. The mix of simple and complex structures with present perfect as a noticeable minority places this at level 3."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Duolingo",
+          "Reddit",
+          "Real Madrid",
+          "AirBNB",
+          "Google Maps",
+          "40-hour/60-hour work weeks",
+          "overtime pay"
+        ],
+        "notes": "Most references (Duolingo, Reddit, AirBNB, Google Maps, Real Madrid) are globally known brands/topics a Latin American adult would recognize. The 40-hour work week and overtime concept is mildly culturally specific but understandable from context. No North American-specific customs that would block comprehension."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 11,
+        "notes": "Dialogue format with many short conversational turns. Mostly subject-verb-object with some compound sentences using 'but' and 'and'. A few longer sentences with subordinate clauses but average remains moderate. Occasional run-on instructions ('Read to increase vocabulary. Learn the real pronunciation.') but these are short imperatives."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "people who've actually learned a language before",
+            "is_trap_active": true,
+            "reason": "Spanish speaker may interpret 'actually' as 'actualmente' (currently), creating confusion about whether the advice comes from people who are currently learning vs. people who have genuinely learned."
+          },
+          {
+            "word": "once",
+            "context": "you'll only know if it works once you have to use it in the workplace",
+            "is_trap_active": false,
+            "reason": "While 'once' looks like the Spanish word for 'eleven,' the context makes it clear this means 'when/as soon as.' The sentence structure ('once you have to use it') would not make sense with the number eleven, so the trap is neutralized."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.26,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.54",
+      "evp_coverage_pct": "91.5",
+      "cognate_pct": "13.8",
+      "off_list_pct": "8.5"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.26,
+    "estimated_cefr": "A2/B1"
+  }
+}

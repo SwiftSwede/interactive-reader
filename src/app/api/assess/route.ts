@@ -18,6 +18,11 @@ import {
 } from "@/lib/pronunciation/rateLimit";
 import type { PronunciationAssessmentResponse } from "@/lib/pronunciation/types";
 import { azureReferenceText } from "@/lib/pronunciation/referenceText";
+import { getTagsForStory, loadTagIndex } from "@/lib/content-tags";
+import {
+  focusTagIdsForWeakSounds,
+  recordStoryActivityEvidence,
+} from "@/lib/topic-evidence";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
@@ -27,7 +32,91 @@ const MAX_AUDIO_BYTES = 12 * 1024 * 1024;
 const FieldsSchema = z.object({
   referenceText: z.string().trim().min(1).max(500),
   locale: z.string().trim().min(2).max(16).optional(),
+  storyId: z.string().uuid().optional(),
 });
+
+type SupabaseRouteClient = Awaited<ReturnType<typeof createClient>>;
+
+/**
+ * Stores a summary of one assessment and updates phonetic topic evidence.
+ *
+ * Practice guidance only: no CEFR level, no pass/fail, no audio retained. A
+ * failure here must never turn a successful assessment into an error for the
+ * learner, so everything is caught and logged.
+ */
+async function persistPronunciationAttempt(
+  supabase: SupabaseRouteClient,
+  input: {
+    userId: string;
+    storyId: string | null;
+    referenceText: string;
+    overall: { accuracy: number; fluency: number; completeness: number };
+    weakSounds: string[];
+  }
+): Promise<void> {
+  try {
+    let drillId: string | null = null;
+    if (input.storyId) {
+      const { data: drill } = await supabase
+        .from("pronunciation_drills")
+        .select("id")
+        .eq("story_id", input.storyId)
+        .maybeSingle();
+      drillId = (drill?.id as string) ?? null;
+    }
+
+    const { data: inserted, error } = await supabase
+      .from("pronunciation_attempts")
+      .insert({
+        user_id: input.userId,
+        story_id: input.storyId,
+        pronunciation_drill_id: drillId,
+        reference_text: input.referenceText,
+        accuracy_score: input.overall.accuracy,
+        fluency_score: input.overall.fluency,
+        completeness_score: input.overall.completeness,
+        weak_sounds: input.weakSounds,
+      })
+      .select("id")
+      .maybeSingle();
+
+    if (error) {
+      console.error("pronunciation_attempts insert failed:", error.message);
+      return;
+    }
+
+    if (!input.storyId) return;
+
+    const tags = await getTagsForStory(supabase, input.storyId);
+    if (tags.length === 0) return;
+
+    const tagNameById = new Map<string, string>();
+    for (const [id, tag] of await loadTagIndex(supabase)) {
+      tagNameById.set(id, tag.name);
+    }
+
+    const focusTagIds = focusTagIdsForWeakSounds(
+      tags,
+      input.weakSounds,
+      tagNameById
+    );
+
+    await recordStoryActivityEvidence(supabase, {
+      userId: input.userId,
+      storyId: input.storyId,
+      sourceType: "pronunciation",
+      positiveStatus: "practiced",
+      focusTagIds,
+      sourceId: (inserted?.id as string) ?? null,
+      evidenceDetail: {
+        accuracy: input.overall.accuracy,
+        weak_sounds: input.weakSounds,
+      },
+    });
+  } catch (error) {
+    console.error("persistPronunciationAttempt failed:", error);
+  }
+}
 
 function audioExtension(file: File): string {
   const fromName = file.name.split(".").pop()?.toLowerCase();
@@ -75,6 +164,7 @@ export async function POST(request: Request) {
     const parsed = FieldsSchema.safeParse({
       referenceText: form.get("referenceText"),
       locale: form.get("locale") || undefined,
+      storyId: form.get("storyId") || undefined,
     });
     if (!parsed.success) {
       return NextResponse.json({ error: "Pedido invalido." }, { status: 400 });
@@ -172,6 +262,23 @@ export async function POST(request: Request) {
         topIssues,
         connectedSpeechIssues,
       };
+
+      // Slice 37: persist a summary for logged-in learners so the progress page
+      // and the recommender have something to work with. Anonymous stays
+      // in-session. The audio is never stored, and nothing here is a score.
+      if (user) {
+        await persistPronunciationAttempt(supabase, {
+          userId: user.id,
+          storyId: parsed.data.storyId ?? null,
+          referenceText: assessment.referenceText,
+          overall: assessment.overall,
+          weakSounds: topIssues
+            .map((issue) => issue.focusIpa)
+            .filter(
+              (ipa): ipa is string => typeof ipa === "string" && ipa !== ""
+            ),
+        });
+      }
 
       return NextResponse.json(body);
     } finally {

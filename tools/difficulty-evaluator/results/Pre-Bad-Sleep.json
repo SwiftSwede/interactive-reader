@@ -1,0 +1,105 @@
+{
+  "story_title": "Pre-Bad Sleep",
+  "profiler": {
+    "word_count": 959,
+    "unique_word_count": 346,
+    "evp_coverage_pct": 92.8,
+    "level_distribution": {
+      "A1": 244,
+      "A2": 45,
+      "B1": 16,
+      "B2": 13,
+      "C1": 2,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 70.5,
+      "A2": 83.5,
+      "B1": 88.2,
+      "B2": 91.9,
+      "C1": 92.5,
+      "C2": 92.8
+    },
+    "cognate_count": 46,
+    "cognate_pct": 13.3,
+    "false_friend_count": 1,
+    "off_list_count": 25,
+    "off_list_pct": 7.2,
+    "vocab_difficulty_raw": 1.4,
+    "vocab_difficulty_adjusted": 1.46,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-Bad Sleep",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "I'm dragging",
+          "went through the same thing",
+          "shut-eye",
+          "Look what the cat dragged in",
+          "gave me the creeps",
+          "screwed",
+          "go on and on",
+          "check out his pad"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present perfect",
+          "past continuous",
+          "second conditional",
+          "wish structure",
+          "going to future",
+          "will future",
+          "modals (can, should, would)",
+          "reported speech",
+          "purpose clauses (so that)"
+        ],
+        "notes": "Dominated by simple tenses typical of dialogue, but present perfect, past continuous, second conditional, and wish structures appear as a noticeable minority. Reported speech and purpose clauses add moderate complexity."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "office lunchroom",
+          "human resources"
+        ],
+        "notes": "Universal workplace and family setting. No North American-specific customs or cultural knowledge required. HR as a concept is globally understood in corporate environments."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Dialogue format with mostly short, conversational sentences. Some compound sentences with conjunctions and a few subordinate clauses, but overall moderate length and straightforward structure."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "pretend",
+            "context": "Then I walk past their rooms at 11pm and see lights come from under the door. I open it and there they're playing video games.",
+            "is_trap_active": false,
+            "reason": "Spanish 'pretender' means 'to attempt/try to,' while English 'pretend' means 'to act as if.' The trap is partially active since a Spanish speaker might initially misread it, but the context (lights under the door, catching them playing games) makes it clear the children are faking being asleep, so the confusion is quickly resolved."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.09,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.46",
+      "evp_coverage_pct": "92.8",
+      "cognate_pct": "13.3",
+      "off_list_pct": "7.2"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.09,
+    "estimated_cefr": "A2/B1"
+  }
+}

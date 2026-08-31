@@ -1,0 +1,114 @@
+{
+  "story_title": "Pre-Not My Dog",
+  "profiler": {
+    "word_count": 1331,
+    "unique_word_count": 373,
+    "evp_coverage_pct": 90.1,
+    "level_distribution": {
+      "A1": 256,
+      "A2": 43,
+      "B1": 19,
+      "B2": 16,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 68.6,
+      "A2": 80.2,
+      "B1": 85.3,
+      "B2": 89.5,
+      "C1": 90.1,
+      "C2": 90.1
+    },
+    "cognate_count": 42,
+    "cognate_pct": 11.3,
+    "false_friend_count": 1,
+    "off_list_count": 37,
+    "off_list_pct": 9.9,
+    "vocab_difficulty_raw": 1.41,
+    "vocab_difficulty_adjusted": 1.5,
+    "estimated_cefr": "C1"
+  },
+  "rubric": {
+    "story_title": "Pre-Not My Dog",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "deal with",
+          "check it out",
+          "head over there",
+          "catch her",
+          "trick you into",
+          "have a good time",
+          "look it up",
+          "good for something",
+          "see you around",
+          "gotta run",
+          "by the way",
+          "pretty please",
+          "go ahead",
+          "play fetch"
+        ],
+        "count": 14
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "present perfect",
+          "past continuous",
+          "modals (can, should, must, would, might)",
+          "first conditional",
+          "second conditional (wish)",
+          "reported speech",
+          "relative clauses",
+          "passive voice"
+        ],
+        "notes": "The dialogue is mostly simple but contains a noticeable mix of present perfect, past continuous, conditionals, and relative clauses throughout."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "dog breeds (Fox Terrier, Cocker Spaniel, Labrador, Beagle)",
+          "spayed and neutered",
+          "playdate",
+          "kidnapping joke"
+        ],
+        "notes": "The setting is a universal park scene. Dog breeds and concepts like 'playdate' or 'spaying' are easily understood from context."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "As a dialogue, the text consists of short, conversational sentences with some compound structures and basic subordinate clauses."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "These dogs might actually be good for something.",
+            "is_trap_active": false,
+            "reason": "While 'actually' looks like 'actualmente' (currently), the context 'might actually be good for something' makes it clear it means 'in fact' or 'really'."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.45,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.5",
+      "evp_coverage_pct": "90.1",
+      "cognate_pct": "11.3",
+      "off_list_pct": "9.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.45,
+    "estimated_cefr": "A2/B1"
+  }
+}

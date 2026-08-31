@@ -1,0 +1,97 @@
+{
+  "story_title": "Pre-Halloween Walk with Mom",
+  "profiler": {
+    "word_count": 1043,
+    "unique_word_count": 301,
+    "evp_coverage_pct": 89.4,
+    "level_distribution": {
+      "A1": 207,
+      "A2": 34,
+      "B1": 17,
+      "B2": 10,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 68.8,
+      "A2": 80.1,
+      "B1": 85.7,
+      "B2": 89.0,
+      "C1": 89.4,
+      "C2": 89.4
+    },
+    "cognate_count": 40,
+    "cognate_pct": 13.3,
+    "false_friend_count": 0,
+    "off_list_count": 32,
+    "off_list_pct": 10.6,
+    "vocab_difficulty_raw": 1.38,
+    "vocab_difficulty_adjusted": 1.34,
+    "estimated_cefr": "A2+"
+  },
+  "rubric": {
+    "story_title": "Pre-Halloween Walk with Mom",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "run out of",
+          "in character",
+          "throw that out",
+          "grab a handful",
+          "trick or treat"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "modals (can, should, might, could)",
+          "first conditional",
+          "reported speech"
+        ],
+        "notes": "Dominated by simple tenses and short dialogue. Contains a few basic modals, a first conditional, and reported speech, but these are infrequent."
+      },
+      "cultural_reference_load": {
+        "score": 4,
+        "references_found": [
+          "Halloween trick-or-treating",
+          "checking candy for safety (homemade vs. wrapped)",
+          "Ring video doorbells",
+          "Snickers",
+          "Tootsie Roll",
+          "ketchup potato chips",
+          "moose droppings (treat name)",
+          "Halloween curfew"
+        ],
+        "notes": "The plot heavily relies on North American (specifically Canadian) Halloween customs, such as checking candy wrappers for safety, the concept of 'trick or treat', and specific local snacks."
+      },
+      "sentence_structure": {
+        "score": 1,
+        "avg_sentence_length": 8,
+        "notes": "Very short, simple sentences in a dialogue format. Mostly subject-verb-object."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 1.95,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.34",
+      "evp_coverage_pct": "89.4",
+      "cognate_pct": "13.3",
+      "off_list_pct": "10.6"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.95,
+    "estimated_cefr": "A2"
+  }
+}

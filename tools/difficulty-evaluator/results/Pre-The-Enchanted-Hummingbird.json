@@ -1,0 +1,117 @@
+{
+  "story_title": "The Enchanted Hummingbird",
+  "profiler": {
+    "word_count": 2058,
+    "unique_word_count": 555,
+    "evp_coverage_pct": 88.8,
+    "level_distribution": {
+      "A1": 333,
+      "A2": 93,
+      "B1": 48,
+      "B2": 16,
+      "C1": 3,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 60.0,
+      "A2": 76.8,
+      "B1": 85.4,
+      "B2": 88.3,
+      "C1": 88.8,
+      "C2": 88.8
+    },
+    "cognate_count": 77,
+    "cognate_pct": 13.9,
+    "false_friend_count": 2,
+    "off_list_count": 62,
+    "off_list_pct": 11.2,
+    "vocab_difficulty_raw": 1.51,
+    "vocab_difficulty_adjusted": 1.67,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "The Enchanted Hummingbird",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "head to toe",
+          "come across",
+          "pass out",
+          "gig was up",
+          "sort things out",
+          "came up with",
+          "make it (outside)",
+          "couldn't help but"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "present perfect",
+          "first conditional",
+          "second conditional",
+          "would for conditional",
+          "reported speech",
+          "imperatives"
+        ],
+        "notes": "Dominantly past simple narrative with regular use of past perfect, conditionals, and reported speech as a noticeable minority. Second conditional appears once but past perfect and first conditionals recur."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "hockey player (Canadian sport)",
+          "Toronto nightclubs",
+          "golf cart culture",
+          "poutine (Canadian dish)",
+          "maple syrup (Canadian)",
+          "Fairmont Chateau Lake Louise (Canadian landmark)",
+          "Canadian stereotype of Colombia as dangerous",
+          "el Eje Cafetero (Colombian - familiar to LatAm)",
+          "mute soup (Colombian - familiar to LatAm)"
+        ],
+        "notes": "Canadian cultural references (poutine, Lake Louise, maple syrup, hockey) require some background knowledge but are understandable from context. Colombian references are familiar to LatAm learners. The mix is moderate."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "Mostly short to moderate sentences. Dialogue is very short. Narrative sentences are moderate with some subordinate clauses. The old man's instructions paragraph has longer sentences but overall average stays moderate."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "once",
+            "context": "Once upon in a time in a distant land",
+            "is_trap_active": false,
+            "reason": "Used in the fairy tale opening 'Once upon a time,' a globally recognized set phrase. A Spanish speaker would not confuse this with 'once' (eleven)."
+          },
+          {
+            "word": "sauce",
+            "context": "Throw him a t-bone steak with barbecue sauce on it",
+            "is_trap_active": false,
+            "reason": "In this context 'sauce' means exactly what Spanish 'salsa' means (a liquid condiment). The cognate is actually a true friend here, not a false friend."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.35,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.67,
+      "evp_coverage_pct": 88.8,
+      "cognate_pct": 13.9,
+      "off_list_pct": 11.2
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.35,
+    "estimated_cefr": "A2/B1"
+  }
+}

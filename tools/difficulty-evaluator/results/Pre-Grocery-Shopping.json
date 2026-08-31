@@ -1,0 +1,126 @@
+{
+  "story_title": "Pre-Grocery Shopping (2)",
+  "profiler": {
+    "word_count": 1351,
+    "unique_word_count": 408,
+    "evp_coverage_pct": 87.0,
+    "level_distribution": {
+      "A1": 271,
+      "A2": 37,
+      "B1": 35,
+      "B2": 12,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 66.4,
+      "A2": 75.5,
+      "B1": 84.1,
+      "B2": 87.0,
+      "C1": 87.0,
+      "C2": 87.0
+    },
+    "cognate_count": 47,
+    "cognate_pct": 11.5,
+    "false_friend_count": 5,
+    "off_list_count": 53,
+    "off_list_pct": 13.0,
+    "vocab_difficulty_raw": 1.4,
+    "vocab_difficulty_adjusted": 1.9,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Pre-Grocery Shopping (2)",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "party pooper",
+          "ran out",
+          "a ton of",
+          "puppy-dog eyes"
+        ],
+        "count": 4
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "going to future",
+          "basic modals (can, would, should)",
+          "first conditional",
+          "subordinate clauses (when, while, if, once)"
+        ],
+        "notes": "Dominated by simple tenses and short dialogue structures. A few instances of modals and subordinate clauses, but overall grammatical profile is simple."
+      },
+      "cultural_reference_load": {
+        "score": 4,
+        "references_found": [
+          "American football",
+          "Lucky Charms and Fruit Rollups",
+          "looney (Canadian $1 coin)",
+          "homo milk (Canadian homogenized milk)",
+          "SPCA",
+          "eh (Canadian tag question)",
+          "rewards card"
+        ],
+        "notes": "Contains heavy North American, specifically Canadian, cultural references like 'looney', 'homo milk', and 'eh', as well as US brand names. Missing these means missing important context, though the grocery shopping plot is followable."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "Mostly short, simple dialogue sentences with occasional compound sentences and conjunctions."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "dessert",
+            "context": "But fruit isn't dessert.",
+            "is_trap_active": false,
+            "reason": "Context of food and eating makes the meaning clear despite the similarity to 'desierto'."
+          },
+          {
+            "word": "grocery",
+            "context": "I need you to go to the grocery store.",
+            "is_trap_active": false,
+            "reason": "Used with 'store', making it clear it refers to a shop rather than 'grosería' (rudeness)."
+          },
+          {
+            "word": "once",
+            "context": "I'll go once the game finishes.",
+            "is_trap_active": true,
+            "reason": "Used as a conjunction meaning 'as soon as', which is a classic false friend for Spanish speakers who might read it as the number eleven."
+          },
+          {
+            "word": "parents",
+            "context": "all the other kids have horrible parents",
+            "is_trap_active": false,
+            "reason": "Context of kids and mothers/fathers makes it clear it refers to parents, not general 'parientes' (relatives)."
+          },
+          {
+            "word": "pie",
+            "context": "How about we grab some pumpkin pie",
+            "is_trap_active": false,
+            "reason": "Used in a food context, making it clear it refers to a baked dessert rather than 'pie' (foot)."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.27,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.9,
+      "evp_coverage_pct": 87.0,
+      "cognate_pct": 11.5,
+      "off_list_pct": 13.0
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.27,
+    "estimated_cefr": "A2/B1"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "story_title": "The Emperor_s New Suit",
+  "profiler": {
+    "word_count": 1397,
+    "unique_word_count": 395,
+    "evp_coverage_pct": 94.4,
+    "level_distribution": {
+      "A1": 255,
+      "A2": 63,
+      "B1": 38,
+      "B2": 13,
+      "C1": 4,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 64.6,
+      "A2": 80.5,
+      "B1": 90.1,
+      "B2": 93.4,
+      "C1": 94.4,
+      "C2": 94.4
+    },
+    "cognate_count": 61,
+    "cognate_pct": 15.4,
+    "false_friend_count": 1,
+    "off_list_count": 22,
+    "off_list_pct": 5.6,
+    "vocab_difficulty_raw": 1.52,
+    "vocab_difficulty_adjusted": 1.56,
+    "estimated_cefr": "B1"
+  },
+  "rubric": {
+    "story_title": "The Emperor_s New Suit",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "showing off",
+          "find out",
+          "take place",
+          "as light as a feather"
+        ],
+        "count": 4
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "present simple (dialogue)",
+          "past perfect (had been there, had nothing to fear)",
+          "would/conditional (would be, would have been)",
+          "reported speech (they said they could make)",
+          "modal verbs (could, should, must)",
+          "subordinate clauses (because, so that, if, while, as if, which)",
+          "relative clauses (who, which, that)"
+        ],
+        "notes": "Dominated by past simple with extensive subordinate clauses throughout. Past perfect, reported speech, and conditionals appear as a noticeable minority. Complex structures are frequent enough to warrant a 3, but the text never reaches the density of level 4."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [],
+        "notes": "Classic Hans Christian Andersen fairy tale with universal themes (emperor, ministers, parades, weaving). No North American or culture-specific references. Fully accessible to a Latin American learner."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 19,
+        "notes": "Mixed sentence lengths with many compound and complex sentences containing subordinate clauses. Some sentences exceed 30 words (e.g., the description of the cloth's qualities). Average is moderate but variety is wide, with both short dialogue lines and long narrative sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "once",
+            "context": "Then he turned once more to the mirror",
+            "is_trap_active": false,
+            "reason": "Used in the phrase 'once more' meaning 'una vez más.' While Spanish 'once' means 'eleven,' the context of turning to look in a mirror makes the 'one time' meaning clear. A Spanish speaker may briefly stumble but context disambiguates quickly."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.97,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.56",
+      "evp_coverage_pct": "94.4",
+      "cognate_pct": "15.4",
+      "off_list_pct": "5.6"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.97,
+    "estimated_cefr": "A2"
+  }
+}

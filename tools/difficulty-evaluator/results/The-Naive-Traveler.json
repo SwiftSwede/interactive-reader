@@ -1,0 +1,118 @@
+{
+  "story_title": "The Naive Traveler",
+  "profiler": {
+    "word_count": 1968,
+    "unique_word_count": 660,
+    "evp_coverage_pct": 88.2,
+    "level_distribution": {
+      "A1": 404,
+      "A2": 92,
+      "B1": 49,
+      "B2": 30,
+      "C1": 6,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 61.2,
+      "A2": 75.2,
+      "B1": 82.6,
+      "B2": 87.1,
+      "C1": 88.0,
+      "C2": 88.2
+    },
+    "cognate_count": 108,
+    "cognate_pct": 16.4,
+    "false_friend_count": 2,
+    "off_list_count": 78,
+    "off_list_pct": 11.8,
+    "vocab_difficulty_raw": 1.53,
+    "vocab_difficulty_adjusted": 1.68,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "The Naive Traveler",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "feel him out",
+          "figure out",
+          "fit in",
+          "letdown",
+          "lit up (face lit up)",
+          "touched down",
+          "shrugged it off",
+          "eyed me up",
+          "came true",
+          "taken care of"
+        ],
+        "count": 10
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past continuous",
+          "past perfect",
+          "present perfect",
+          "second conditional",
+          "third conditional",
+          "basic passive",
+          "reported speech",
+          "modals (could, would, should, must)"
+        ],
+        "notes": "Past simple dominates but past perfect, past continuous, conditionals, and passive voice appear as a noticeable minority. One third conditional ('If I hadn't just had...') and one formal second conditional ('If somebody were to ask me...') add complexity."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Long Island",
+          "emo music",
+          "smoking pot",
+          "green card love scheme",
+          "GoPro",
+          "Uber",
+          "chicken cordon bleu",
+          "Pedialyte",
+          "button-up shirt"
+        ],
+        "notes": "Story is set in Colombia, which is familiar territory for the learner. Most references (reggaeton, motel culture, pesos) are LatAm-familiar. US-specific items (Long Island, green card, emo) are light and inferable from context."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 16,
+        "notes": "Mixed lengths throughout. Dialogue contains many short utterances while narrative sections feature longer sentences with subordinate clauses and relative clauses. Average falls in the 15-18 word range."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "realize",
+            "context": "it seemed to take the guy a few seconds to realize that he should talk to me",
+            "is_trap_active": true,
+            "reason": "Spanish 'realizar' means 'to carry out/perform,' while English 'realize' means 'to become aware.' A Spanish speaker could initially be confused, though context (taking a few seconds to do something) provides some disambiguation."
+          },
+          {
+            "word": "sauce",
+            "context": "I couldn't tell if it was the sauce or the meat",
+            "is_trap_active": false,
+            "reason": "In a food context, 'salsa' meaning sauce is the primary Spanish meaning. The dance meaning is irrelevant here. No confusion likely."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.65,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.68",
+      "evp_coverage_pct": "88.2",
+      "cognate_pct": "16.4",
+      "off_list_pct": "11.8"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.65,
+    "estimated_cefr": "B1"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "story_title": "Rainy and Wet",
+  "profiler": {
+    "word_count": 598,
+    "unique_word_count": 261,
+    "evp_coverage_pct": 92.3,
+    "level_distribution": {
+      "A1": 186,
+      "A2": 39,
+      "B1": 10,
+      "B2": 6,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 71.3,
+      "A2": 86.2,
+      "B1": 90.0,
+      "B2": 92.3,
+      "C1": 92.3,
+      "C2": 92.3
+    },
+    "cognate_count": 40,
+    "cognate_pct": 15.3,
+    "false_friend_count": 0,
+    "off_list_count": 20,
+    "off_list_pct": 7.7,
+    "vocab_difficulty_raw": 1.32,
+    "vocab_difficulty_adjusted": 1.28,
+    "estimated_cefr": "B1"
+  },
+  "rubric": {
+    "story_title": "Rainy and Wet",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "sunshine and rainbows",
+          "shake off the morning blues",
+          "flag a taxi",
+          "look what the cat dragged in"
+        ],
+        "count": 4
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "past simple",
+          "present simple (in dialogue)",
+          "going to future",
+          "past continuous",
+          "basic modals (should, could)"
+        ],
+        "notes": "The text is dominated by simple past tense with a few basic modals and some basic subordinate clauses (that, if, whether). Complex structures are rare."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [],
+        "notes": "The setting and events (walking to work, rain, street vendors, potholes, office buildings) are universal and highly familiar to a Latin American learner."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "Sentences are mostly moderate in length with some conjunctions and compound predicates. Average length is around 12 words, fitting the 12-18 word range."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 1.63,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.28",
+      "evp_coverage_pct": "92.3",
+      "cognate_pct": "15.3",
+      "off_list_pct": "7.7"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.63,
+    "estimated_cefr": "A2"
+  }
+}

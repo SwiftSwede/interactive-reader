@@ -1,0 +1,119 @@
+{
+  "story_title": "Baby Arrival",
+  "profiler": {
+    "word_count": 1371,
+    "unique_word_count": 427,
+    "evp_coverage_pct": 91.8,
+    "level_distribution": {
+      "A1": 266,
+      "A2": 57,
+      "B1": 49,
+      "B2": 15,
+      "C1": 3,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 62.3,
+      "A2": 75.6,
+      "B1": 87.1,
+      "B2": 90.6,
+      "C1": 91.3,
+      "C2": 91.8
+    },
+    "cognate_count": 66,
+    "cognate_pct": 15.5,
+    "false_friend_count": 2,
+    "off_list_count": 35,
+    "off_list_pct": 8.2,
+    "vocab_difficulty_raw": 1.57,
+    "vocab_difficulty_adjusted": 1.7,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Baby Arrival",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "knocking me up",
+          "messing with",
+          "out of commission",
+          "breadwinner",
+          "piss me off",
+          "give a shit",
+          "step on it",
+          "get on all fours",
+          "hook me up to",
+          "drugged out",
+          "shoot me up",
+          "spoon feed",
+          "little bugger",
+          "baby-poppin' machine"
+        ],
+        "count": 14
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "present perfect continuous",
+          "first conditional",
+          "imperatives",
+          "purpose clauses (so that)",
+          "time clauses (before, after, until, by the time)",
+          "relative clauses (that, who)"
+        ],
+        "notes": "The text is a dialogue dominated by simple tenses and informal contractions (gonna, gotta). However, it contains a noticeable minority of sentences with first conditionals, present perfect continuous, and purpose/time clauses, placing it at a level 3."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Dante's 9 circles of hell",
+          "Google Maps",
+          "C-section",
+          "epidural",
+          "triage"
+        ],
+        "notes": "The setting and situations (pregnancy, hospital procedures, driving to the hospital) are universal and easily understood by a Latin American learner. References like Google Maps are globally known. Dante's circles are a literary reference that is generally known or easily inferred from context."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "As a dialogue, the text features mostly short to moderate conversational sentences. There are some compound and complex sentences with conjunctions, but the average length remains within the 12-18 word range."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "Well, actually, we give you the morphine ahead of time so that by the time you deliver...",
+            "is_trap_active": true,
+            "reason": "Spanish 'actualmente' means 'currently' or 'nowadays'. In this context, a learner might briefly confuse the timeline of when the morphine is given, though the rest of the sentence clarifies it."
+          },
+          {
+            "word": "ignore",
+            "context": "Ignore my husband.",
+            "is_trap_active": false,
+            "reason": "Spanish 'ignorar' means 'to not know'. Here it means 'to deliberately not pay attention'. The context of a wife telling a doctor to disregard her husband's silly comment makes the meaning clear."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.51,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.7",
+      "evp_coverage_pct": "91.8",
+      "cognate_pct": "15.5",
+      "off_list_pct": "8.2"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.51,
+    "estimated_cefr": "B1"
+  }
+}

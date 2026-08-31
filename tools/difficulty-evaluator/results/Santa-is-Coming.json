@@ -1,0 +1,130 @@
+{
+  "story_title": "Santa is Coming",
+  "profiler": {
+    "word_count": 1592,
+    "unique_word_count": 454,
+    "evp_coverage_pct": 88.8,
+    "level_distribution": {
+      "A1": 302,
+      "A2": 58,
+      "B1": 26,
+      "B2": 17,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 66.5,
+      "A2": 79.3,
+      "B1": 85.0,
+      "B2": 88.8,
+      "C1": 88.8,
+      "C2": 88.8
+    },
+    "cognate_count": 56,
+    "cognate_pct": 12.3,
+    "false_friend_count": 4,
+    "off_list_count": 51,
+    "off_list_pct": 11.2,
+    "vocab_difficulty_raw": 1.4,
+    "vocab_difficulty_adjusted": 1.75,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Santa is Coming",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "hit the sack",
+          "heads-up",
+          "fool-proof",
+          "doze off",
+          "burn off",
+          "take into account",
+          "sleep in",
+          "come up with"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "going to future",
+          "past simple",
+          "present perfect",
+          "second conditional",
+          "first conditional",
+          "reported speech",
+          "modals (can, should, would)"
+        ],
+        "notes": "Dominated by simple present and going-to future typical of dialogue. Present perfect appears several times (I've cleaned, I've put away, I've done). One second conditional (If he stopped... he would run out of time) and a few first conditionals. Complex structures are a noticeable minority but not dominant."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "leaving cookies/eggnog for Santa",
+          "leaving carrots for reindeer",
+          "naughty/nice list",
+          "coal in stocking",
+          "Santa at the shopping mall",
+          "eggnog",
+          "gingersnaps",
+          "Santa Tracker app",
+          "Crib (Cribbage card game)",
+          "glögg (Swedish Christmas wine)",
+          "furnace room"
+        ],
+        "notes": "Santa Claus is globally known, but specific North American traditions (eggnog, coal in stocking, leaving food for reindeer, mall Santa) add comprehension weight. Cribbage and glögg are niche. Plot is followable without deep cultural knowledge but nuances are missed."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 11,
+        "notes": "Dialogue format with short conversational exchanges. Mostly subject-verb-object. Occasional compound sentences with 'and', 'but', 'so'. A few longer sentences with subordinate clauses but average remains low."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "ignore",
+            "context": "we shouldn't ignore 'em for too long",
+            "is_trap_active": false,
+            "reason": "Context (not paying attention to the kids) makes the meaning clear enough, though a Spanish speaker might initially think 'not know.'"
+          },
+          {
+            "word": "once",
+            "context": "Maybe once a month",
+            "is_trap_active": false,
+            "reason": "Used as a frequency adverb; context makes it unambiguous. Spanish 'once' (eleven) doesn't fit here."
+          },
+          {
+            "word": "pretend",
+            "context": "We pretend to sleep",
+            "is_trap_active": true,
+            "reason": "Spanish 'pretender' means 'to attempt/try to.' A Spanish speaker could read 'pretend to sleep' as 'try to sleep,' which would cause genuine confusion since the girls are faking sleep, not trying to fall asleep."
+          },
+          {
+            "word": "test",
+            "context": "you passed the mommy test",
+            "is_trap_active": false,
+            "reason": "Used playfully in a clear context; Spanish 'test' is borrowed from English and means the same thing."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.48,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.75",
+      "evp_coverage_pct": "88.8",
+      "cognate_pct": "12.3",
+      "off_list_pct": "11.2"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.48,
+    "estimated_cefr": "A2/B1"
+  }
+}

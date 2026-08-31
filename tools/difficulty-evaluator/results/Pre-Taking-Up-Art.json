@@ -1,0 +1,100 @@
+{
+  "story_title": "Pre-Taking Up Art (2)",
+  "profiler": {
+    "word_count": 659,
+    "unique_word_count": 273,
+    "evp_coverage_pct": 92.7,
+    "level_distribution": {
+      "A1": 193,
+      "A2": 31,
+      "B1": 23,
+      "B2": 5,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 70.7,
+      "A2": 82.1,
+      "B1": 90.5,
+      "B2": 92.3,
+      "C1": 92.7,
+      "C2": 92.7
+    },
+    "cognate_count": 38,
+    "cognate_pct": 13.9,
+    "false_friend_count": 0,
+    "off_list_count": 20,
+    "off_list_pct": 7.3,
+    "vocab_difficulty_raw": 1.38,
+    "vocab_difficulty_adjusted": 1.32,
+    "estimated_cefr": "B1"
+  },
+  "rubric": {
+    "story_title": "Pre-Taking Up Art (2)",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "taken up",
+          "all ears",
+          "artistic bone in your body",
+          "stormed out",
+          "picked up",
+          "get over",
+          "gave up on"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "present perfect",
+          "past continuous",
+          "modals (should, must, can)",
+          "first conditional",
+          "mixed conditional (would've stormed)",
+          "relative clauses",
+          "tag questions"
+        ],
+        "notes": "A mix of simple and complex structures. Present perfect, past continuous, and relative clauses appear regularly throughout the dialogue, making up a noticeable minority of sentences."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Starbucks",
+          "Amazon",
+          "Instagram",
+          "Youtube",
+          "Keeping Up with the Kardashians",
+          "Netflix"
+        ],
+        "notes": "References are mostly global pop culture and brands that an educated Latin American adult would easily recognize. No unfamiliar North American customs are present."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "Moderate sentences with some conjunctions and compound structures, typical of conversational dialogue. A few longer sentences exist, but the average remains accessible."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 2.2,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.32",
+      "evp_coverage_pct": "92.7",
+      "cognate_pct": "13.9",
+      "off_list_pct": "7.3"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.2,
+    "estimated_cefr": "A2/B1"
+  }
+}

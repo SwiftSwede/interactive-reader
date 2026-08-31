@@ -1,0 +1,138 @@
+{
+  "story_title": "Caribbean Rapunzel",
+  "profiler": {
+    "word_count": 2175,
+    "unique_word_count": 520,
+    "evp_coverage_pct": 91.5,
+    "level_distribution": {
+      "A1": 340,
+      "A2": 77,
+      "B1": 38,
+      "B2": 18,
+      "C1": 2,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 65.4,
+      "A2": 80.2,
+      "B1": 87.5,
+      "B2": 91.0,
+      "C1": 91.3,
+      "C2": 91.5
+    },
+    "cognate_count": 52,
+    "cognate_pct": 10.0,
+    "false_friend_count": 5,
+    "off_list_count": 44,
+    "off_list_pct": 8.5,
+    "vocab_difficulty_raw": 1.46,
+    "vocab_difficulty_adjusted": 1.97,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Caribbean Rapunzel",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "all of a sudden",
+          "Here's the deal",
+          "chip away at",
+          "get used to it",
+          "sick and tired",
+          "happily ever after",
+          "deal with",
+          "take care of",
+          "calming herself down",
+          "looking for",
+          "filed for"
+        ],
+        "count": 11
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "present simple",
+          "present continuous",
+          "present perfect",
+          "future simple",
+          "modals (must, could, would, may)",
+          "first conditional",
+          "reported speech",
+          "relative clauses"
+        ],
+        "notes": "The text is dominated by simple past narrative, but regularly features reported speech, modals, and subordinate clauses, placing it at a solid intermediate level."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Cartagena",
+          "bocadillo with cheese",
+          "nispero",
+          "hacienda",
+          "RCN and Caracol news",
+          "stratus 1 neighborhood",
+          "scopolamine",
+          "la Guajira",
+          "salsa singer"
+        ],
+        "notes": "The cultural references are highly specific to Colombia and Latin America, which the target learner would easily recognize. No unfamiliar North American cultural knowledge is required."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "Mostly simple and compound sentences with a moderate length. Some complex sentences with subordinate clauses, but the narrative style remains straightforward and accessible."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "fence",
+            "context": "approached the fence of the hacienda",
+            "is_trap_active": false,
+            "reason": "Context of approaching a hacienda makes it clear it is a physical barrier, not a fair (feria)."
+          },
+          {
+            "word": "large",
+            "context": "in the large hacienda",
+            "is_trap_active": false,
+            "reason": "Used to describe a hacienda, context implies size rather than length (largo)."
+          },
+          {
+            "word": "once",
+            "context": "And at once, the senator went to the tower.",
+            "is_trap_active": false,
+            "reason": "Used in the phrase 'at once', which is a common set phrase meaning immediately; context prevents confusion with the number eleven."
+          },
+          {
+            "word": "prove",
+            "context": "look everywhere in the room for something to prove that someone else had been there",
+            "is_trap_active": false,
+            "reason": "Context of finding evidence makes the meaning of 'demonstrate' clear, avoiding confusion with 'taste/try' (probar)."
+          },
+          {
+            "word": "rope",
+            "context": "grabbed hold of her hair like a rope",
+            "is_trap_active": false,
+            "reason": "Context of climbing a wall using hair makes it clear it refers to a cord, not clothing (ropa)."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.34,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.97,
+      "evp_coverage_pct": 91.5,
+      "cognate_pct": 10.0,
+      "off_list_pct": 8.5
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.34,
+    "estimated_cefr": "A2/B1"
+  }
+}

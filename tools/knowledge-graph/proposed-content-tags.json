@@ -1,0 +1,167 @@
+{
+  "generatedAt": "2026-08-31T05:35:45.058Z",
+  "note": "Review each entry, then set approved: true. scripts/apply-content-tags.ts only writes approved entries.",
+  "reinforcedFrequency": 0.6,
+  "stories": [
+    {
+      "contentType": "story",
+      "contentId": "40dea0f7-f264-454e-9135-f551eda06ddd",
+      "slug": "the-soccer-jersey",
+      "title": "The Soccer Jersey",
+      "level": "pre-intermediate",
+      "approved": true,
+      "tags": [
+        {
+          "tagType": "grammar",
+          "tagName": "first_conditional",
+          "coverageLevel": "reinforced",
+          "why": "evaluator tense label, common at this level"
+        },
+        {
+          "tagType": "grammar",
+          "tagName": "gerunds",
+          "coverageLevel": "reinforced",
+          "why": "evaluator tense label, common at this level"
+        },
+        {
+          "tagType": "grammar",
+          "tagName": "infinitive_clauses",
+          "coverageLevel": "reinforced",
+          "why": "evaluator tense label, common at this level"
+        },
+        {
+          "tagType": "grammar",
+          "tagName": "modals_basic",
+          "coverageLevel": "reinforced",
+          "why": "evaluator tense label, common at this level"
+        },
+        {
+          "tagType": "grammar",
+          "tagName": "passive_voice",
+          "coverageLevel": "reinforced",
+          "why": "evaluator tense label, common at this level"
+        },
+        {
+          "tagType": "grammar",
+          "tagName": "past_perfect",
+          "coverageLevel": "reinforced",
+          "why": "evaluator tense label, common at this level"
+        },
+        {
+          "tagType": "grammar",
+          "tagName": "past_simple",
+          "coverageLevel": "reinforced",
+          "why": "evaluator tense label, common at this level"
+        },
+        {
+          "tagType": "grammar",
+          "tagName": "present_perfect",
+          "coverageLevel": "reinforced",
+          "why": "evaluator tense label, common at this level"
+        },
+        {
+          "tagType": "grammar",
+          "tagName": "present_simple",
+          "coverageLevel": "reinforced",
+          "why": "evaluator tense label, common at this level"
+        },
+        {
+          "tagType": "vocabulary",
+          "tagName": "sports",
+          "coverageLevel": "reinforced",
+          "why": "45 keyword hits in the story text"
+        },
+        {
+          "tagType": "vocabulary",
+          "tagName": "clothing",
+          "coverageLevel": "reinforced",
+          "why": "35 keyword hits in the story text"
+        },
+        {
+          "tagType": "vocabulary",
+          "tagName": "family",
+          "coverageLevel": "reinforced",
+          "why": "13 keyword hits in the story text"
+        },
+        {
+          "tagType": "vocabulary",
+          "tagName": "shopping",
+          "coverageLevel": "reinforced",
+          "why": "7 keyword hits in the story text"
+        },
+        {
+          "tagType": "vocabulary",
+          "tagName": "work",
+          "coverageLevel": "reinforced",
+          "why": "5 keyword hits in the story text"
+        },
+        {
+          "tagType": "phonetic",
+          "tagName": "american_r",
+          "coverageLevel": "introduced",
+          "why": "sound appears in the Práctica Coral IPA"
+        },
+        {
+          "tagType": "phonetic",
+          "tagName": "j_sound",
+          "coverageLevel": "introduced",
+          "why": "sound appears in the Práctica Coral IPA"
+        },
+        {
+          "tagType": "phonetic",
+          "tagName": "oo_short",
+          "coverageLevel": "introduced",
+          "why": "sound appears in the Práctica Coral IPA"
+        },
+        {
+          "tagType": "phonetic",
+          "tagName": "r_colored_vowels",
+          "coverageLevel": "introduced",
+          "why": "sound appears in the Práctica Coral IPA"
+        },
+        {
+          "tagType": "phonetic",
+          "tagName": "schwa_reduction",
+          "coverageLevel": "introduced",
+          "why": "sound appears in the Práctica Coral IPA"
+        },
+        {
+          "tagType": "phonetic",
+          "tagName": "short_e",
+          "coverageLevel": "introduced",
+          "why": "sound appears in the Práctica Coral IPA"
+        },
+        {
+          "tagType": "phonetic",
+          "tagName": "short_i_vs_long_e",
+          "coverageLevel": "introduced",
+          "why": "sound appears in the Práctica Coral IPA"
+        },
+        {
+          "tagType": "phonetic",
+          "tagName": "short_u",
+          "coverageLevel": "introduced",
+          "why": "sound appears in the Práctica Coral IPA"
+        },
+        {
+          "tagType": "phonetic",
+          "tagName": "th_voiced",
+          "coverageLevel": "introduced",
+          "why": "sound appears in the Práctica Coral IPA"
+        },
+        {
+          "tagType": "phonetic",
+          "tagName": "v_vs_b",
+          "coverageLevel": "introduced",
+          "why": "sound appears in the Práctica Coral IPA"
+        },
+        {
+          "tagType": "phonetic",
+          "tagName": "z_sound",
+          "coverageLevel": "introduced",
+          "why": "sound appears in the Práctica Coral IPA"
+        }
+      ]
+    }
+  ]
+}

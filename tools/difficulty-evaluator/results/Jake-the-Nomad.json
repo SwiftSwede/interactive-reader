@@ -1,0 +1,134 @@
+{
+  "story_title": "Jake the Nomad",
+  "profiler": {
+    "word_count": 2522,
+    "unique_word_count": 789,
+    "evp_coverage_pct": 84.0,
+    "level_distribution": {
+      "A1": 420,
+      "A2": 123,
+      "B1": 65,
+      "B2": 51,
+      "C1": 3,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 53.2,
+      "A2": 68.8,
+      "B1": 77.1,
+      "B2": 83.5,
+      "C1": 83.9,
+      "C2": 84.0
+    },
+    "cognate_count": 116,
+    "cognate_pct": 14.7,
+    "false_friend_count": 2,
+    "off_list_count": 126,
+    "off_list_pct": 16.0,
+    "vocab_difficulty_raw": 1.64,
+    "vocab_difficulty_adjusted": 1.8,
+    "estimated_cefr": "B2+"
+  },
+  "rubric": {
+    "story_title": "Jake the Nomad",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "hard to top",
+          "hit the town",
+          "dig into",
+          "wee hours",
+          "walk out on",
+          "get the fuck out of here",
+          "lost out on",
+          "fast forward",
+          "break down",
+          "rolling in laughter",
+          "hate on",
+          "on paper",
+          "off-their-rockers",
+          "take my word",
+          "puffed up",
+          "kicked out",
+          "rolled up",
+          "freak out",
+          "load of bullshit",
+          "slams on the brakes",
+          "go through life",
+          "dead-set on",
+          "avoiding the country like the plague",
+          "could care less",
+          "in my book"
+        ],
+        "count": 25
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past continuous",
+          "present perfect",
+          "past perfect",
+          "first conditional",
+          "modals (can, should, would, must)",
+          "relative clauses (who, that, which)",
+          "reported speech"
+        ],
+        "notes": "The text is dominated by simple past and present simple tenses in a conversational style. Past perfect and conditionals appear occasionally but do not dominate the text."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Kool-Aid Man",
+          "CNN En Espanol",
+          "China-virus",
+          "‘rona",
+          "BJJ",
+          "MMA",
+          "crypto bros",
+          "Marriott Residences Inn",
+          "WhatsApp",
+          "Twitter"
+        ],
+        "notes": "The setting is Latin America, which the learner knows well. Most pop culture and app references are globally known or easily understood from context."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "Very conversational, fragmented style with short sentences. Many one-line dialogues and brief narrative statements."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "that wasn't actually affecting Panama that much.",
+            "is_trap_active": true,
+            "reason": "Used to mean 'in fact' or 'really', whereas the Spanish 'actualmente' means 'currently' or 'nowadays'. A Spanish speaker might be confused."
+          },
+          {
+            "word": "exit",
+            "context": "As we all exit, it’s a choir of:",
+            "is_trap_active": true,
+            "reason": "Used as a verb meaning 'to leave', whereas the Spanish 'éxito' means 'success'. The similarity could cause confusion."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.64,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.8",
+      "evp_coverage_pct": "84.0",
+      "cognate_pct": "14.7",
+      "off_list_pct": "16.0"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.64,
+    "estimated_cefr": "B1"
+  }
+}

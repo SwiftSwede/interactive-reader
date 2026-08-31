@@ -1,0 +1,124 @@
+{
+  "story_title": "How NOT to do Halloween",
+  "profiler": {
+    "word_count": 1236,
+    "unique_word_count": 393,
+    "evp_coverage_pct": 85.0,
+    "level_distribution": {
+      "A1": 245,
+      "A2": 51,
+      "B1": 20,
+      "B2": 18,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 62.3,
+      "A2": 75.3,
+      "B1": 80.4,
+      "B2": 85.0,
+      "C1": 85.0,
+      "C2": 85.0
+    },
+    "cognate_count": 59,
+    "cognate_pct": 15.0,
+    "false_friend_count": 2,
+    "off_list_count": 59,
+    "off_list_pct": 15.0,
+    "vocab_difficulty_raw": 1.43,
+    "vocab_difficulty_adjusted": 1.57,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "How NOT to do Halloween",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "hang in there",
+          "swamped with work",
+          "out of the loop",
+          "getting shitfaced",
+          "in the prime of my youth",
+          "say otherwise",
+          "party pooper",
+          "you're set",
+          "spell this out for you",
+          "in plain English",
+          "in a heap of trouble",
+          "go down the drain",
+          "get the shit beat out of you",
+          "long behind me"
+        ],
+        "count": 14
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "present perfect",
+          "present perfect continuous",
+          "second conditional",
+          "passive voice",
+          "indirect questions"
+        ],
+        "notes": "The text is mostly simple tenses typical of dialogue, but contains noticeable instances of second conditionals, passives, and indirect questions that push it to a level 3."
+      },
+      "cultural_reference_load": {
+        "score": 4,
+        "references_found": [
+          "adult Halloween costume parties",
+          "Disney princesses",
+          "Maleficent",
+          "Elle Woods from Legally Blonde",
+          "Beyoncé / Queen B",
+          "Snow White",
+          "blackface",
+          "African-American terminology",
+          "TikTok reels",
+          "spring break videos from Miami",
+          "Amazon"
+        ],
+        "notes": "The entire plot hinges on the US cultural context and history of 'blackface' and its severe social and professional consequences. A Latin American learner may not understand why dressing up as Beyoncé with a spray tan is a fireable offense without this specific cultural background."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 14,
+        "notes": "As a dialogue, sentences are generally short to moderate, but there are several multi-clause sentences with conditionals and relative clauses that add complexity."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "Wow, that is actually a good idea.",
+            "is_trap_active": false,
+            "reason": "The context of agreeing with a suggestion makes it clear that 'actually' means 'in fact' or 'really', not 'currently'."
+          },
+          {
+            "word": "fabric",
+            "context": "I could just cut off some of that excess fabric with scissors to make it sexy.",
+            "is_trap_active": false,
+            "reason": "The context of cutting something with scissors from a costume clearly indicates cloth/material, not a factory."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.82,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.57",
+      "evp_coverage_pct": "85.0",
+      "cognate_pct": "15.0",
+      "off_list_pct": "15.0"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.82,
+    "estimated_cefr": "B1"
+  }
+}

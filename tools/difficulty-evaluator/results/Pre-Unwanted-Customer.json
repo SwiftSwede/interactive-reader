@@ -1,0 +1,114 @@
+{
+  "story_title": "Pre-Unwanted Customer",
+  "profiler": {
+    "word_count": 1705,
+    "unique_word_count": 462,
+    "evp_coverage_pct": 91.6,
+    "level_distribution": {
+      "A1": 284,
+      "A2": 76,
+      "B1": 41,
+      "B2": 17,
+      "C1": 5,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 61.5,
+      "A2": 77.9,
+      "B1": 86.8,
+      "B2": 90.5,
+      "C1": 91.6,
+      "C2": 91.6
+    },
+    "cognate_count": 74,
+    "cognate_pct": 16.0,
+    "false_friend_count": 3,
+    "off_list_count": 39,
+    "off_list_pct": 8.4,
+    "vocab_difficulty_raw": 1.54,
+    "vocab_difficulty_adjusted": 1.78,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-Unwanted Customer",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "get back in shape",
+          "look up",
+          "take a look",
+          "figure out",
+          "sign up for",
+          "worth the money",
+          "for my brain's sake"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "present perfect",
+          "basic modals (can, could, would, should, must)",
+          "first conditional",
+          "reported speech",
+          "subordinate clauses (because, if, who, that, while)"
+        ],
+        "notes": "The text is dominated by simple tenses typical of dialogue, but present perfect, modals, and subordinate clauses appear as a noticeable minority throughout the conversation."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "gym culture (leggings, personal trainers, group classes)",
+          "weight measurements in pounds",
+          "social media platforms (Instagram, Youtube, Whatsapp)"
+        ],
+        "notes": "The setting is a standard gym environment, which is universally understood. The use of 'pounds' for weight is US-specific but easily understood from context."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "The text consists mostly of short to moderate conversational exchanges typical of a dialogue, with occasional compound and complex sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "Actually, we do.",
+            "is_trap_active": true,
+            "reason": "A Spanish speaker might initially read this as 'actualmente' (currently), but the conversational context of correcting a misconception makes the meaning clear."
+          },
+          {
+            "word": "discuss",
+            "context": "sit down with one of our personal trainers to discuss some of the results",
+            "is_trap_active": true,
+            "reason": "Spanish 'discutir' means to argue. In this context, a learner might mistakenly think the trainer will argue with them, though the context of a consultation softens the confusion."
+          },
+          {
+            "word": "test",
+            "context": "1 month of test classes",
+            "is_trap_active": false,
+            "reason": "The word 'test' is widely used in Latin American Spanish to mean exam or trial, so it is not an active trap here."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.33,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.78,
+      "evp_coverage_pct": 91.6,
+      "cognate_pct": 16.0,
+      "off_list_pct": 8.4
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.33,
+    "estimated_cefr": "A2/B1"
+  }
+}

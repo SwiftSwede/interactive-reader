@@ -1,0 +1,134 @@
+{
+  "story_title": "Parent_s Night Out",
+  "profiler": {
+    "word_count": 1312,
+    "unique_word_count": 454,
+    "evp_coverage_pct": 92.1,
+    "level_distribution": {
+      "A1": 299,
+      "A2": 75,
+      "B1": 31,
+      "B2": 12,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 65.9,
+      "A2": 82.4,
+      "B1": 89.2,
+      "B2": 91.9,
+      "C1": 92.1,
+      "C2": 92.1
+    },
+    "cognate_count": 67,
+    "cognate_pct": 14.8,
+    "false_friend_count": 6,
+    "off_list_count": 36,
+    "off_list_pct": 7.9,
+    "vocab_difficulty_raw": 1.42,
+    "vocab_difficulty_adjusted": 1.98,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Parent_s Night Out",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "looking after",
+          "kicked in",
+          "live with myself",
+          "trippin",
+          "under control"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present perfect",
+          "past continuous",
+          "past perfect",
+          "first conditional",
+          "second conditional",
+          "modals (should, can, would, could)",
+          "reported speech",
+          "going to future"
+        ],
+        "notes": "Dominated by simple tenses in dialogue, but present perfect, past perfect, conditionals, and reported speech appear as a noticeable minority throughout the narrative sections."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "babysitter tipping ($100 for the night)",
+          "gala charity dinner",
+          "Planet Earth documentary",
+          "SUV",
+          "Russians as stereotypical kidnappers"
+        ],
+        "notes": "Mostly universal setting. Tipping a babysitter is mildly North American but understandable from context. Condors in the Andes is actually familiar to LatAm learners."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "Mix of very short dialogue lines and moderate narrative sentences. A few longer sentences with subordinate clauses, but average remains moderate."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "attendance",
+            "context": "Everyone in attendance was enjoying themself.",
+            "is_trap_active": false,
+            "reason": "Context of a gala dinner makes 'presence at event' clear; unlikely to be read as 'assistance.'"
+          },
+          {
+            "word": "dessert",
+            "context": "They can have dessert after supper",
+            "is_trap_active": false,
+            "reason": "Food context after supper makes the meaning clear; unlikely to be confused with 'desert.'"
+          },
+          {
+            "word": "ignore",
+            "context": "Just ignore it, her husband told her.",
+            "is_trap_active": false,
+            "reason": "Context of dismissing a phone message makes 'deliberately not pay attention' clear enough."
+          },
+          {
+            "word": "once",
+            "context": "every once in a while he likes to pretend",
+            "is_trap_active": true,
+            "reason": "Spanish 'once' means 'eleven'; the set phrase 'every once in a while' could confuse a Spanish speaker who doesn't know the expression."
+          },
+          {
+            "word": "parents",
+            "context": "Parent's Night Out",
+            "is_trap_active": false,
+            "reason": "Context of parents going out while a babysitter watches kids makes the meaning unambiguous."
+          },
+          {
+            "word": "pretend",
+            "context": "he likes to pretend that he doesn't like them",
+            "is_trap_active": true,
+            "reason": "Spanish 'pretender' means 'to attempt/try to'; a Spanish speaker could misread this as 'he likes to try not to like them,' which is confusing."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.19,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.98,
+      "evp_coverage_pct": 92.1,
+      "cognate_pct": 14.8,
+      "off_list_pct": 7.9
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.19,
+    "estimated_cefr": "A2/B1"
+  }
+}

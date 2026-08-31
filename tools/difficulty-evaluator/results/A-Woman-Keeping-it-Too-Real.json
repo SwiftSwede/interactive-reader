@@ -1,0 +1,107 @@
+{
+  "story_title": "A Woman Keeping it Too Real",
+  "profiler": {
+    "word_count": 1114,
+    "unique_word_count": 411,
+    "evp_coverage_pct": 92.5,
+    "level_distribution": {
+      "A1": 259,
+      "A2": 76,
+      "B1": 27,
+      "B2": 14,
+      "C1": 4,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 63.0,
+      "A2": 81.5,
+      "B1": 88.1,
+      "B2": 91.5,
+      "C1": 92.5,
+      "C2": 92.5
+    },
+    "cognate_count": 63,
+    "cognate_pct": 15.3,
+    "false_friend_count": 1,
+    "off_list_count": 31,
+    "off_list_pct": 7.5,
+    "vocab_difficulty_raw": 1.49,
+    "vocab_difficulty_adjusted": 1.56,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "A Woman Keeping it Too Real",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "seeing on the side",
+          "learn a thing or two",
+          "knew what was up",
+          "fooling around",
+          "take off",
+          "two birds with one stone",
+          "out of my hair",
+          "keep a straight face",
+          "put up with",
+          "take no for an answer",
+          "make out",
+          "stoop (how low do you have to stoop)"
+        ],
+        "count": 12
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "present simple",
+          "present perfect",
+          "modals (must, would)",
+          "reported speech",
+          "relative clauses"
+        ],
+        "notes": "The text is dominated by simple past and present tenses, but contains a noticeable minority of past perfect, present perfect, and relative clauses, particularly in the news report section."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Ford Focus",
+          "Tesla",
+          "baseball bat"
+        ],
+        "notes": "The plot revolves around universal themes of jealousy and assault. Brand names and objects like a baseball bat are globally recognizable and do not require specific North American cultural knowledge."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 17,
+        "notes": "Mixed sentence lengths. The narrative uses mostly moderate sentences, while the news report section features longer, more complex sentences with subordinate clauses."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "She actually went to Marissa’s place?",
+            "is_trap_active": false,
+            "reason": "While 'actually' looks like 'actualmente' (currently), the context of surprise and confirmation makes it clear that it means 'in fact' or 'really' in this sentence."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.47,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.56,
+      "evp_coverage_pct": 92.5,
+      "cognate_pct": 15.3,
+      "off_list_pct": 7.5
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.47,
+    "estimated_cefr": "A2/B1"
+  }
+}

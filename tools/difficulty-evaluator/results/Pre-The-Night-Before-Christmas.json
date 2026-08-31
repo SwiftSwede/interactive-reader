@@ -1,0 +1,116 @@
+{
+  "story_title": "Pre-The Night Before Christmas (2)",
+  "profiler": {
+    "word_count": 1117,
+    "unique_word_count": 335,
+    "evp_coverage_pct": 91.9,
+    "level_distribution": {
+      "A1": 252,
+      "A2": 33,
+      "B1": 18,
+      "B2": 5,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 75.2,
+      "A2": 85.1,
+      "B1": 90.4,
+      "B2": 91.9,
+      "C1": 91.9,
+      "C2": 91.9
+    },
+    "cognate_count": 41,
+    "cognate_pct": 12.2,
+    "false_friend_count": 3,
+    "off_list_count": 27,
+    "off_list_pct": 8.1,
+    "vocab_difficulty_raw": 1.27,
+    "vocab_difficulty_adjusted": 1.54,
+    "estimated_cefr": "B1"
+  },
+  "rubric": {
+    "story_title": "Pre-The Night Before Christmas (2)",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "make sure",
+          "no way",
+          "sweet dreams",
+          "no other choice",
+          "all there is to know"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "going to future",
+          "first conditional",
+          "present perfect",
+          "relative clauses",
+          "tag questions"
+        ],
+        "notes": "The text is dominated by simple tenses and basic future forms, but contains a noticeable minority of first conditionals, relative clauses, and a present perfect instance, fitting a level 3 profile."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Santa Claus",
+          "chimney",
+          "eggnog",
+          "cookies for Santa",
+          "carrots for reindeer",
+          "Bailey's",
+          "crib (card game)"
+        ],
+        "notes": "Christmas is known in Latin America, and Santa Claus is globally understood. Specific items like eggnog or Bailey's can be inferred from context without losing the plot."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "Mostly short, simple dialogue lines. A few longer compound sentences with multiple 'when' clauses, but the average remains moderate."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "once",
+            "context": "I never once stayed awake long enough",
+            "is_trap_active": true,
+            "reason": "Spanish 'once' means eleven, so 'never once' could momentarily confuse a Spanish speaker, though the context of 'never' helps."
+          },
+          {
+            "word": "parents",
+            "context": "Grandparents, uncles, aunties and parents play cards",
+            "is_trap_active": false,
+            "reason": "Listed alongside other relatives, context makes it clear it refers specifically to the mother and father, not general relatives."
+          },
+          {
+            "word": "pretend",
+            "context": "We’ll have to pretend we’re asleep.",
+            "is_trap_active": false,
+            "reason": "While 'pretender' in Spanish means to try/attempt, the context of 'pretend we're asleep' makes the meaning of acting as if asleep clear."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.06,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.54",
+      "evp_coverage_pct": "91.9",
+      "cognate_pct": "12.2",
+      "off_list_pct": "8.1"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.06,
+    "estimated_cefr": "A2/B1"
+  }
+}

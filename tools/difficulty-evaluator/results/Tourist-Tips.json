@@ -1,0 +1,129 @@
+{
+  "story_title": "Tourist Tips",
+  "profiler": {
+    "word_count": 1417,
+    "unique_word_count": 469,
+    "evp_coverage_pct": 85.1,
+    "level_distribution": {
+      "A1": 260,
+      "A2": 85,
+      "B1": 33,
+      "B2": 16,
+      "C1": 4,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 55.4,
+      "A2": 73.6,
+      "B1": 80.6,
+      "B2": 84.0,
+      "C1": 84.9,
+      "C2": 85.1
+    },
+    "cognate_count": 82,
+    "cognate_pct": 17.5,
+    "false_friend_count": 3,
+    "off_list_count": 70,
+    "off_list_pct": 14.9,
+    "vocab_difficulty_raw": 1.55,
+    "vocab_difficulty_adjusted": 1.78,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Tourist Tips",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "sweating bullets",
+          "sweating balls",
+          "rip you off / ripped off",
+          "screwing tourists over / getting screwed over",
+          "leave a bad taste in the mouths",
+          "look out of place",
+          "stick up people",
+          "watered-down",
+          "I don't swing that way",
+          "try your luck",
+          "in whatever shape or form",
+          "as much as the next guy",
+          "look at me funny",
+          "come across (old men)",
+          "hands away from the goods"
+        ],
+        "count": 15
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "present perfect (has reassured)",
+          "modals (must, should, would)",
+          "first conditional (if you do use...)",
+          "reported speech (I thought you said...)",
+          "participial clause (preventing pools of sweat forming)",
+          "subordinate clauses (since, because, when, if)"
+        ],
+        "notes": "Dialogue is dominated by simple tenses but contains a noticeable minority of reported speech, conditionals, modals, and participial clauses. Complex structures appear regularly but do not dominate."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Cartagena, Colombia setting",
+          "Fahrenheit temperatures",
+          "US states (Ohio, Minnesota, Vermont)",
+          "Caribbean custom of wearing jeans vs shorts",
+          "Taxi meters not working (common LatAm experience)",
+          "Tourist scams (free oyster, free massage)",
+          "Continent debate (America as one vs two continents)",
+          "Bazurto market, Bocagrande",
+          "Punta Cana, Cuba comparisons"
+        ],
+        "notes": "Setting is Cartagena, Colombia, which is familiar to LatAm learners. Most cultural references (pesos, taxi scams, continent debate, Caribbean customs) are accessible. US-specific references (Fahrenheit, US states) are minor and understandable from context."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Dialogue format with short conversational exchanges. Mostly subject-verb-object with some compound sentences and conjunctions. Occasional longer explanatory sentences from the concierge character."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "I'm wearing it right now actually.",
+            "is_trap_active": true,
+            "reason": "Spanish 'actualmente' means 'currently,' and the sentence is about what he is currently wearing, so a Spanish speaker could conflate the two meanings. Context somewhat helps but the trap is partially active."
+          },
+          {
+            "word": "fabric",
+            "context": "This fabric naturally wicks away sweat.",
+            "is_trap_active": false,
+            "reason": "Spanish 'fábrica' means 'factory,' but the context of touching linen clothing and discussing sweat-wicking material makes it clear this refers to cloth/material, not a factory."
+          },
+          {
+            "word": "once",
+            "context": "you're gonna wanna change once you get to the hotel",
+            "is_trap_active": false,
+            "reason": "Spanish 'once' means 'eleven,' but the temporal context ('once you get to the hotel') makes it clear this means 'as soon as.' The sentence structure makes confusion unlikely."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.53,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.78",
+      "evp_coverage_pct": "85.1",
+      "cognate_pct": "17.5",
+      "off_list_pct": "14.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.53,
+    "estimated_cefr": "B1"
+  }
+}

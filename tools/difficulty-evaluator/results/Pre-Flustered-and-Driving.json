@@ -1,0 +1,123 @@
+{
+  "story_title": "Flustered and Driving",
+  "profiler": {
+    "word_count": 1011,
+    "unique_word_count": 402,
+    "evp_coverage_pct": 89.6,
+    "level_distribution": {
+      "A1": 249,
+      "A2": 68,
+      "B1": 33,
+      "B2": 9,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 61.9,
+      "A2": 78.9,
+      "B1": 87.1,
+      "B2": 89.3,
+      "C1": 89.6,
+      "C2": 89.6
+    },
+    "cognate_count": 60,
+    "cognate_pct": 14.9,
+    "false_friend_count": 2,
+    "off_list_count": 42,
+    "off_list_pct": 10.4,
+    "vocab_difficulty_raw": 1.46,
+    "vocab_difficulty_adjusted": 1.61,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Flustered and Driving",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "on top of that",
+          "calm down",
+          "give it to me straight",
+          "move up (the deadline)",
+          "hand in",
+          "nowhere near",
+          "back on track",
+          "bumper-to-bumper",
+          "screwing him over",
+          "took him down",
+          "fender bender",
+          "elbow grease",
+          "wrong place at the wrong time",
+          "deal with"
+        ],
+        "count": 14
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past continuous",
+          "present continuous",
+          "past perfect (had forgotten)",
+          "modals (can't, should, would)",
+          "participial clauses (Distracted by..., Realizing that...)",
+          "reported speech (he was told that he would need)",
+          "relative clauses (that would take her back)",
+          "infinitive clauses (to deal with, to become)"
+        ],
+        "notes": "Dominated by past simple narrative with dialogue in present/simple tenses. Participial clauses and reported speech appear as a noticeable minority. Past perfect appears once. Roughly 20-25% of sentences contain level-3 structures."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "suburban driveway and lifestyle",
+          "school cafeteria lunch culture",
+          "freeway driving and 70 mph speed limit",
+          "exchanging insurance information after minor accident",
+          "hazard lights and putting vehicle in park",
+          "polo shirt tucked into khakis (preppy style)",
+          "army vet in waiting room",
+          "police barricade and yellow tape at crime scene",
+          "braces (orthodontic culture)"
+        ],
+        "notes": "North American suburban and car culture permeates the story. The insurance exchange after a fender bender and school cafeteria norms are culturally specific but followable from context. Plot remains comprehensible without deep cultural knowledge."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "Mix of very short dialogue lines and moderate narrative sentences. Mostly subject-verb-object with some compound sentences and basic subordinate clauses. No sentences over 30 words. Narrative sentences average 15-18 words; dialogue pulls the average down."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "I just wanted to double-check that you actually said that.",
+            "is_trap_active": true,
+            "reason": "Spanish speaker may read 'actually' as 'actualmente' (currently). Context somewhat disambiguates but the false friend meaning could cause a momentary confusion."
+          },
+          {
+            "word": "once",
+            "context": "Why can't we have a cafeteria lunch like our friends just this once?",
+            "is_trap_active": false,
+            "reason": "Spanish speaker may read 'once' as 'eleven.' However, 'just this once' is a common fixed expression and context makes it clear it means 'one time.' The confusion is unlikely to persist."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.63,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.61",
+      "evp_coverage_pct": "89.6",
+      "cognate_pct": "14.9",
+      "off_list_pct": "10.4"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.63,
+    "estimated_cefr": "B1"
+  }
+}

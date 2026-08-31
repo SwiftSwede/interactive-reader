@@ -1,0 +1,115 @@
+{
+  "story_title": "Pre-A Big Checkup",
+  "profiler": {
+    "word_count": 924,
+    "unique_word_count": 300,
+    "evp_coverage_pct": 90.0,
+    "level_distribution": {
+      "A1": 200,
+      "A2": 41,
+      "B1": 19,
+      "B2": 9,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 66.7,
+      "A2": 80.3,
+      "B1": 86.7,
+      "B2": 89.7,
+      "C1": 90.0,
+      "C2": 90.0
+    },
+    "cognate_count": 47,
+    "cognate_pct": 15.7,
+    "false_friend_count": 3,
+    "off_list_count": 30,
+    "off_list_pct": 10.0,
+    "vocab_difficulty_raw": 1.41,
+    "vocab_difficulty_adjusted": 1.68,
+    "estimated_cefr": "C1"
+  },
+  "rubric": {
+    "story_title": "Pre-A Big Checkup",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "short of breath",
+          "take a look at",
+          "in the way",
+          "put it",
+          "have a hard time",
+          "get under control",
+          "cut back on",
+          "waste of time"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "present perfect",
+          "first conditional",
+          "second conditional",
+          "third conditional (mixed)",
+          "wish structures",
+          "cleft sentences"
+        ],
+        "notes": "Frequent use of present perfect and a few conditionals and wish structures, but mostly simple dialogue."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Julia Roberts",
+          "pounds"
+        ],
+        "notes": "Mostly universal medical and lifestyle context. Julia Roberts is globally known."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "Mostly short dialogue lines with occasional longer compound sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "once",
+            "context": "Once a month.",
+            "is_trap_active": false,
+            "reason": "Context makes it clear it means 'one time', not 'eleven'."
+          },
+          {
+            "word": "realize",
+            "context": "You do realize we’ll have to amputate your feet",
+            "is_trap_active": true,
+            "reason": "Spanish 'realizar' means to carry out, which could confuse the learner here."
+          },
+          {
+            "word": "test",
+            "context": "a new burger to test",
+            "is_trap_active": false,
+            "reason": "Used as a verb meaning 'try', which is easily understood from context."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.15,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.68",
+      "evp_coverage_pct": "90.0",
+      "cognate_pct": "15.7",
+      "off_list_pct": "10.0"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.15,
+    "estimated_cefr": "A2/B1"
+  }
+}

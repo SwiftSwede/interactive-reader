@@ -1,0 +1,103 @@
+{
+  "story_title": "The Pedestrian",
+  "profiler": {
+    "word_count": 1452,
+    "unique_word_count": 568,
+    "evp_coverage_pct": 86.6,
+    "level_distribution": {
+      "A1": 282,
+      "A2": 98,
+      "B1": 69,
+      "B2": 35,
+      "C1": 7,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 49.6,
+      "A2": 66.9,
+      "B1": 79.0,
+      "B2": 85.2,
+      "C1": 86.4,
+      "C2": 86.6
+    },
+    "cognate_count": 86,
+    "cognate_pct": 15.1,
+    "false_friend_count": 1,
+    "off_list_count": 76,
+    "off_list_pct": 13.4,
+    "vocab_difficulty_raw": 1.76,
+    "vocab_difficulty_adjusted": 1.83,
+    "estimated_cefr": "B2+"
+  },
+  "rubric": {
+    "story_title": "The Pedestrian",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "make your way",
+          "as good as alone",
+          "what's up",
+          "speak up",
+          "cut down (from three cars to one)"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 4,
+        "tenses_found": [
+          "past simple (dominant)",
+          "would + infinitive (habitual past)",
+          "past perfect (had been vanishing, had never met, hadn't written)",
+          "present perfect (haven't explained, haven't done)",
+          "first conditional (if he closed his eyes)",
+          "passive voice (had been cut down)",
+          "participial clauses (sending patterns, smelling its rusty smell, examining its skeletal pattern)",
+          "relative clauses (where a curtain was still undrawn)",
+          "indirect questions (noticing his wrist watch)"
+        ],
+        "notes": "Literary prose dominated by past simple and habitual 'would', but participial clauses, past perfect, and multi-clause sentences appear regularly throughout (30-50% of sentences). The opening paragraph alone contains extremely complex layered subordination."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Channel 4, Channel 7, Channel 9 (TV channels)",
+          "cowboys",
+          "United States Cavalry",
+          "Christmas tree",
+          "Arizona"
+        ],
+        "notes": "Set in a dystopian future with minimal culture-specific references. Cowboys, cavalry, and Christmas trees are globally recognizable. TV channels are universal. Arizona is a geographic name. No North American customs or institutional knowledge required."
+      },
+      "sentence_structure": {
+        "score": 4,
+        "avg_sentence_length": 21,
+        "notes": "Bradbury's literary style features very long, varied sentences with multiple subordinate clauses, participial phrases, and semicolons. The opening sentence is over 60 words. Many sentences exceed 30 words with layered subordination. Narrative complexity throughout."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "rare",
+            "context": "what a rare, incredible thing; in a city of three million, there was only one police car left",
+            "is_trap_active": false,
+            "reason": "English 'rare' meaning 'uncommon' overlaps closely with Spanish 'raro' meaning 'strange/unusual.' In this context, 'rare' clearly means 'uncommon,' which a Spanish speaker would understand correctly. No confusion likely."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.55,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.83",
+      "evp_coverage_pct": "86.6",
+      "cognate_pct": "15.1",
+      "off_list_pct": "13.4"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.55,
+    "estimated_cefr": "B1"
+  }
+}

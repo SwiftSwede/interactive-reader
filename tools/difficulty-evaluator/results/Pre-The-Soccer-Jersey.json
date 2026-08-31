@@ -1,0 +1,109 @@
+{
+  "story_title": "The Soccer Jersey",
+  "profiler": {
+    "word_count": 1143,
+    "unique_word_count": 449,
+    "evp_coverage_pct": 87.3,
+    "level_distribution": {
+      "A1": 276,
+      "A2": 64,
+      "B1": 34,
+      "B2": 13,
+      "C1": 4,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 61.5,
+      "A2": 75.7,
+      "B1": 83.3,
+      "B2": 86.2,
+      "C1": 87.1,
+      "C2": 87.3
+    },
+    "cognate_count": 64,
+    "cognate_pct": 14.3,
+    "false_friend_count": 1,
+    "off_list_count": 57,
+    "off_list_pct": 12.7,
+    "vocab_difficulty_raw": 1.49,
+    "vocab_difficulty_adjusted": 1.54,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "The Soccer Jersey",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "piece of the American dream",
+          "shirts versus skins",
+          "died a little inside",
+          "make up your mind",
+          "fits you like a glove",
+          "come to my senses",
+          "give me a dirty look",
+          "give me a pat on the back",
+          "GOAT",
+          "called out as a fraud"
+        ],
+        "count": 10
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "present simple",
+          "past perfect",
+          "present perfect",
+          "first conditional",
+          "basic passive",
+          "modals (would, could)",
+          "infinitive of purpose",
+          "gerunds"
+        ],
+        "notes": "The narrative is dominated by past simple, but includes past perfect, first conditionals, present perfect, and passive voice. Subordinate clauses (while, when, if, that, who, which) are frequent throughout the text."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "American dream",
+          "shirts versus skins",
+          "Wal-Mart",
+          "Costco",
+          "Latino market",
+          "invisible flip flop (chancla)"
+        ],
+        "notes": "Most references are either globally known (Wal-Mart, American dream) or highly relatable to Latin American immigrants (Latino markets, the flip flop/chancla threat). 'Shirts versus skins' is explained in context."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 19,
+        "notes": "Average sentence length is around 19 words. The text features a mix of short dialogue and longer, complex narrative sentences with multiple subordinate clauses."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "parents",
+            "context": "both of my immigrant parents worked long hours in order to get their piece of the American dream.",
+            "is_trap_active": false,
+            "reason": "Although 'parents' looks like 'parientes' (relatives) in Spanish, it is such a basic and high-frequency A1 word that adult learners universally know it means 'padres' (mother and father) in English."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.51,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.54,
+      "evp_coverage_pct": 87.3,
+      "cognate_pct": 14.3,
+      "off_list_pct": 12.7
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.51,
+    "estimated_cefr": "B1"
+  }
+}

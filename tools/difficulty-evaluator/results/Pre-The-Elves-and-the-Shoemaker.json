@@ -1,0 +1,96 @@
+{
+  "story_title": "The Elves and the Shoemaker",
+  "profiler": {
+    "word_count": 738,
+    "unique_word_count": 273,
+    "evp_coverage_pct": 94.1,
+    "level_distribution": {
+      "A1": 190,
+      "A2": 37,
+      "B1": 20,
+      "B2": 10,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 69.6,
+      "A2": 83.2,
+      "B1": 90.5,
+      "B2": 94.1,
+      "C1": 94.1,
+      "C2": 94.1
+    },
+    "cognate_count": 31,
+    "cognate_pct": 11.4,
+    "false_friend_count": 1,
+    "off_list_count": 16,
+    "off_list_pct": 5.9,
+    "vocab_difficulty_raw": 1.42,
+    "vocab_difficulty_adjusted": 1.48,
+    "estimated_cefr": "B1"
+  },
+  "rubric": {
+    "story_title": "The Elves and the Shoemaker",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 1,
+        "items_found": [
+          "take his eyes off them",
+          "I'll tell you what"
+        ],
+        "count": 2
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past perfect (had said, had in the world was gone)",
+          "present simple (in dialogue)",
+          "modals (could, would, ought to, may)",
+          "passive (was gone, was already done, was gotten ready)",
+          "relative clauses (who worked, that comes, who paid him)",
+          "subordinate clauses (because, so that, when, if)",
+          "participial clauses (stitching and rapping and tapping, dancing and skipping)"
+        ],
+        "notes": "Past simple dominates, but past perfect, passive voice, relative clauses, and participial constructions appear as a noticeable minority. Subordinate clauses are frequent throughout. Roughly 20-25% of sentences contain level-3 structures."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Christmas-time",
+          "elves (European folklore)"
+        ],
+        "notes": "Universal fairy tale setting. Christmas is known in LatAm. Elves are globally recognized folklore figures. No North American-specific customs or institutional references."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 23,
+        "notes": "Mixed lengths with many compound-complex sentences joined by semicolons and conjunctions. Several sentences exceed 30 words. Subordinate clauses are frequent but not deeply nested. Average around 23 words when counting semicolon-separated units."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "once",
+            "context": "There was once a shoemaker, who worked very hard and was very honest",
+            "is_trap_active": true,
+            "reason": "Spanish 'once' means 'eleven.' A beginner could be confused reading 'There was eleven a shoemaker.' However, the fairy tale opening formula is widely recognized, and context makes the meaning recoverable. Mixed: the trap exists but context mitigates it."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.84,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.48",
+      "evp_coverage_pct": "94.1",
+      "cognate_pct": "11.4",
+      "off_list_pct": "5.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.84,
+    "estimated_cefr": "A2"
+  }
+}

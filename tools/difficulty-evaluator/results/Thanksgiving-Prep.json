@@ -1,0 +1,120 @@
+{
+  "story_title": "Thanksgiving Prep",
+  "profiler": {
+    "word_count": 1323,
+    "unique_word_count": 440,
+    "evp_coverage_pct": 91.1,
+    "level_distribution": {
+      "A1": 283,
+      "A2": 72,
+      "B1": 33,
+      "B2": 11,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 64.3,
+      "A2": 80.7,
+      "B1": 88.2,
+      "B2": 90.7,
+      "C1": 91.1,
+      "C2": 91.1
+    },
+    "cognate_count": 69,
+    "cognate_pct": 15.7,
+    "false_friend_count": 2,
+    "off_list_count": 39,
+    "off_list_pct": 8.9,
+    "vocab_difficulty_raw": 1.45,
+    "vocab_difficulty_adjusted": 1.6,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Thanksgiving Prep",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "figure out",
+          "lash out",
+          "zone out",
+          "wrap their head around",
+          "out of place",
+          "slip-up",
+          "dry sense of humor",
+          "get anything out of him",
+          "pass him by",
+          "pop in",
+          "know my way around",
+          "pay too much mind",
+          "dress up",
+          "make it"
+        ],
+        "count": 14
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "Present simple",
+          "Past simple",
+          "Present continuous",
+          "Going to future",
+          "Present perfect",
+          "Past continuous",
+          "First conditional",
+          "Modals (can, should, could, would, might)"
+        ],
+        "notes": "The text is mostly conversational and dominated by simple tenses, but present perfect, past continuous, and relative clauses appear regularly enough to push it to a 3."
+      },
+      "cultural_reference_load": {
+        "score": 4,
+        "references_found": [
+          "Thanksgiving",
+          "Turkey, ham, cranberry sauce, gravy",
+          "Montreal Canadiens (hockey)",
+          "Lloydminster/Vermillion (Canadian geography)",
+          "K.I.S.S.",
+          "One-eyed jack, crib, Uno (card games)",
+          "Kissing on the cheek vs. hugs and handshakes (greeting norms)",
+          "Not wearing shoes in the house"
+        ],
+        "notes": "The entire premise revolves around Thanksgiving and North American family customs. The cultural clash over greetings and the specific reference to the Montreal Canadiens add significant comprehension weight."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "As a dialogue, the text features mostly short to moderate sentences with some compound structures and basic conjunctions."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "parents",
+            "context": "My parents in the guest room.",
+            "is_trap_active": false,
+            "reason": "The context clearly distinguishes parents (mother and father) from other relatives like uncles, aunts, and grandparents mentioned elsewhere."
+          },
+          {
+            "word": "sauce",
+            "context": "Put some gravy or cranberry sauce on it",
+            "is_trap_active": false,
+            "reason": "Used clearly as a food condiment alongside turkey and gravy, leaving no room for confusion with the dance."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.68,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.6",
+      "evp_coverage_pct": "91.1",
+      "cognate_pct": "15.7",
+      "off_list_pct": "8.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.68,
+    "estimated_cefr": "B1"
+  }
+}

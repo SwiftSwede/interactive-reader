@@ -1,0 +1,117 @@
+{
+  "story_title": "AI_s Revenge",
+  "profiler": {
+    "word_count": 1305,
+    "unique_word_count": 547,
+    "evp_coverage_pct": 83.2,
+    "level_distribution": {
+      "A1": 245,
+      "A2": 92,
+      "B1": 75,
+      "B2": 39,
+      "C1": 2,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 44.8,
+      "A2": 61.6,
+      "B1": 75.3,
+      "B2": 82.4,
+      "C1": 82.8,
+      "C2": 83.2
+    },
+    "cognate_count": 94,
+    "cognate_pct": 17.2,
+    "false_friend_count": 2,
+    "off_list_count": 92,
+    "off_list_pct": 16.8,
+    "vocab_difficulty_raw": 1.83,
+    "vocab_difficulty_adjusted": 1.95,
+    "estimated_cefr": "B2+"
+  },
+  "rubric": {
+    "story_title": "AI_s Revenge",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "bag of bolts",
+          "put them in their place",
+          "like they own the place",
+          "wiping us off the face of the earth",
+          "ride or die",
+          "mess with",
+          "put up a fight",
+          "potty mouth",
+          "get in shape",
+          "hear out",
+          "look after",
+          "nuts for brains",
+          "cog suckers"
+        ],
+        "count": 13
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present perfect",
+          "present continuous",
+          "past perfect (shouldn't have let)",
+          "passive voice (frequent)",
+          "modal verbs (can, must, would)",
+          "first conditional (if it is not obvious)",
+          "relative clauses (which, who)",
+          "infinitive clauses",
+          "reported speech"
+        ],
+        "notes": "Dialogue format keeps many sentences simple, but Steve's speeches contain frequent passive voice, present perfect, and subordinate clauses. Complex structures appear in roughly 20-25% of sentences, concentrated in Steve's explanations."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Brad Pitt in Troy and Ocean's Eleven (globally known pop culture)",
+          "ChatGPT and Siri (globally known technology)",
+          "Amazon rainforest (geographically familiar to LatAm learners)"
+        ],
+        "notes": "The story is set in a fictional future with no North American-specific customs or institutional references. All cultural references are globally known pop culture or technology that a Latin American adult would recognize."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 15,
+        "notes": "Mixed lengths typical of dialogue: many very short exchanges ('Susan-Oh, yes.') balanced by Steve's long, multi-clause explanatory sentences with subordinate clauses and lists. Average is moderate but variance is high."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "respect",
+            "context": "You have always treated your digital colleagues with respect.",
+            "is_trap_active": false,
+            "reason": "Used as 'esteem/regard' which is exactly the Spanish 'respeto.' The false friend confusion ('respecto a' = 'with respect to') does not apply here."
+          },
+          {
+            "word": "subject",
+            "context": "where a subject is repeatedly violent and refuses corrective measures",
+            "is_trap_active": false,
+            "reason": "Used to mean 'person/individual,' which is the same as Spanish 'sujeto.' The English meaning of 'topic' is not relevant here, so no confusion is likely."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.49,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.95",
+      "evp_coverage_pct": "83.2",
+      "cognate_pct": "17.2",
+      "off_list_pct": "16.8"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.49,
+    "estimated_cefr": "A2/B1"
+  }
+}

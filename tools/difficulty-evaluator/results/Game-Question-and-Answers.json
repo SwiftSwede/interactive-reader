@@ -1,0 +1,159 @@
+{
+  "story_title": "Game Question and Answers",
+  "profiler": {
+    "word_count": 3149,
+    "unique_word_count": 950,
+    "evp_coverage_pct": 77.4,
+    "level_distribution": {
+      "A1": 460,
+      "A2": 139,
+      "B1": 81,
+      "B2": 51,
+      "C1": 3,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 48.4,
+      "A2": 63.1,
+      "B1": 71.6,
+      "B2": 76.9,
+      "C1": 77.3,
+      "C2": 77.4
+    },
+    "cognate_count": 159,
+    "cognate_pct": 16.7,
+    "false_friend_count": 8,
+    "off_list_count": 215,
+    "off_list_pct": 22.6,
+    "vocab_difficulty_raw": 1.64,
+    "vocab_difficulty_adjusted": 2.4,
+    "estimated_cefr": "A2"
+  },
+  "rubric": {
+    "story_title": "Game Question and Answers",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "gross out",
+          "get rid of",
+          "go crazy over",
+          "blow off",
+          "make up with",
+          "come up",
+          "get out of",
+          "rip off",
+          "worry wart",
+          "turn her frown upside down",
+          "have butterflies in her stomach",
+          "meat on their bones",
+          "on the run",
+          "out of shape",
+          "Mexican standoff",
+          "skinny-dipping"
+        ],
+        "count": 16
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present perfect",
+          "past continuous",
+          "basic modals"
+        ],
+        "notes": "The text is dominated by simple Wh-questions and short answers. Tenses are mostly simple past and present, with a few instances of past perfect and basic modals. No complex multi-clause sentences."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Coachella",
+          "Coors Light",
+          "Easter Egg Hunt",
+          "White House",
+          "UPS",
+          "Hawaii 5-0",
+          "tipping",
+          "boardwalk",
+          "Day of the Dead",
+          "arepas",
+          "yerba mate",
+          "cuy"
+        ],
+        "notes": "Contains a mix of North American cultural references (Coachella, Coors Light, Easter egg hunts, tipping) and Latin American references (Day of the Dead, arepas, yerba mate). The North American references require some background knowledge but are mostly pop culture or everyday items."
+      },
+      "sentence_structure": {
+        "score": 1,
+        "avg_sentence_length": 8,
+        "notes": "The text consists entirely of short questions and one-word or very short phrase answers. Average sentence length is well under 12 words."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "embarrassed",
+            "context": "Embarrassed in Public",
+            "is_trap_active": true,
+            "reason": "Spanish speakers often confuse 'embarrassed' with 'embarazada' (pregnant)."
+          },
+          {
+            "word": "fence",
+            "context": "What fell out of J.Lo’s pocket when she jumped over the fence?",
+            "is_trap_active": true,
+            "reason": "Looks like 'feria' (fair/market) in Spanish, though context of jumping over it might hint at a barrier."
+          },
+          {
+            "word": "mayor",
+            "context": "Who did the choros take hostage? (The mayor)",
+            "is_trap_active": true,
+            "reason": "Looks like 'mayor' (older/elder) in Spanish, which could confuse the learner about who was taken hostage."
+          },
+          {
+            "word": "once",
+            "context": "How often does the Morillo family have a family gathering? (Once a year)",
+            "is_trap_active": true,
+            "reason": "Looks like 'once' (eleven) in Spanish, which could confuse the frequency."
+          },
+          {
+            "word": "parents",
+            "context": "What did I try to convince J.Lo’s parents to do?",
+            "is_trap_active": true,
+            "reason": "Looks like 'parientes' (relatives in general) in Spanish."
+          },
+          {
+            "word": "pretend",
+            "context": "Who did Tom pretend just died to get out of going to the hair appointment?",
+            "is_trap_active": true,
+            "reason": "Looks like 'pretender' (to attempt/try to) in Spanish."
+          },
+          {
+            "word": "location",
+            "context": "Who gave Daniela the correct location of the Easter egg?",
+            "is_trap_active": false,
+            "reason": "While 'locación' can mean renting in Spanish, the context of finding an Easter egg makes the 'place/position' meaning clear."
+          },
+          {
+            "word": "song",
+            "context": "What song could Elizabeth hear Bianca singing from the hospital?",
+            "is_trap_active": false,
+            "reason": "Context of singing makes the musical meaning clear, avoiding confusion with 'son' (sound/rhythm)."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.62,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "2.4",
+      "evp_coverage_pct": "77.4",
+      "cognate_pct": "16.7",
+      "off_list_pct": "22.6"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.62,
+    "estimated_cefr": "B1"
+  }
+}

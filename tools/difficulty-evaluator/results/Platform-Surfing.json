@@ -1,0 +1,135 @@
+{
+  "story_title": "Platform Surfing",
+  "profiler": {
+    "word_count": 1234,
+    "unique_word_count": 427,
+    "evp_coverage_pct": 83.8,
+    "level_distribution": {
+      "A1": 232,
+      "A2": 70,
+      "B1": 35,
+      "B2": 16,
+      "C1": 4,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 54.3,
+      "A2": 70.7,
+      "B1": 78.9,
+      "B2": 82.7,
+      "C1": 83.6,
+      "C2": 83.8
+    },
+    "cognate_count": 65,
+    "cognate_pct": 15.2,
+    "false_friend_count": 2,
+    "off_list_count": 69,
+    "off_list_pct": 16.2,
+    "vocab_difficulty_raw": 1.58,
+    "vocab_difficulty_adjusted": 1.75,
+    "estimated_cefr": "B2+"
+  },
+  "rubric": {
+    "story_title": "Platform Surfing",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "time of the month",
+          "washed-up",
+          "take advantage of",
+          "get your panties in a bunch",
+          "playing with fire",
+          "gone downhill",
+          "all Greek to me",
+          "riddled with",
+          "falls for",
+          "past her prime",
+          "bunch of nobodies",
+          "make sense",
+          "hang out with",
+          "look up",
+          "feel like",
+          "take a break"
+        ],
+        "count": 16
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "going to future",
+          "present perfect",
+          "first conditional",
+          "relative clauses",
+          "reported speech",
+          "passive voice",
+          "modals"
+        ],
+        "notes": "The dialogue is dominated by present simple and continuous, but present perfect, relative clauses, and a long reported speech sentence appear frequently enough to push the complexity to level 3."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Netflix",
+          "Disney+",
+          "Prime",
+          "Metacritic",
+          "Youtube",
+          "Lindsay Lohan",
+          "Britney Spears",
+          "Kevin Federline",
+          "Keanu Reaves",
+          "Ryan Reynolds",
+          "Deadpool",
+          "Wolverine",
+          "Hayao Miyazaki",
+          "Lion King (Mufasa)",
+          "Gladiator 2",
+          "Josh Hartnett",
+          "The Hangover",
+          "Friends",
+          "Seinfeld",
+          "weed is legal now"
+        ],
+        "notes": "Heavy on pop culture references, but most are globally known celebrities and streaming platforms. The reference to marijuana legalization is North American-specific but understandable from context."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 15,
+        "notes": "Mostly short to moderate dialogue lines, but includes a few complex, multi-clause sentences, particularly the movie synopsis read aloud by Dan."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "Well, have you actually WATCHED the movies?",
+            "is_trap_active": false,
+            "reason": "While 'actually' vs 'actualmente' is a classic false friend, the context of asking if someone really watched something makes the intended meaning clear."
+          },
+          {
+            "word": "pretend",
+            "context": "trying to pretend that a 40-year-old Lindsay Lohan is the most desirable woman in the world",
+            "is_trap_active": true,
+            "reason": "Spanish 'pretender' means to try or attempt. A learner might initially read this as 'trying to attempt that...', though the context of acting makes it somewhat decipherable."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.68,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.75",
+      "evp_coverage_pct": "83.8",
+      "cognate_pct": "15.2",
+      "off_list_pct": "16.2"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.68,
+    "estimated_cefr": "B1"
+  }
+}

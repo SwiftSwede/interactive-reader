@@ -1,0 +1,113 @@
+{
+  "story_title": "This Is How You Fail To Ghost Him",
+  "profiler": {
+    "word_count": 975,
+    "unique_word_count": 430,
+    "evp_coverage_pct": 84.9,
+    "level_distribution": {
+      "A1": 221,
+      "A2": 64,
+      "B1": 50,
+      "B2": 24,
+      "C1": 4,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 51.4,
+      "A2": 66.3,
+      "B1": 77.9,
+      "B2": 83.5,
+      "C1": 84.4,
+      "C2": 84.9
+    },
+    "cognate_count": 69,
+    "cognate_pct": 16.0,
+    "false_friend_count": 4,
+    "off_list_count": 65,
+    "off_list_pct": 15.1,
+    "vocab_difficulty_raw": 1.72,
+    "vocab_difficulty_adjusted": 2.08,
+    "estimated_cefr": "B2+"
+  },
+  "rubric": {
+    "story_title": "This Is How You Fail To Ghost Him",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "ghost him",
+          "checking out",
+          "truth be told",
+          "blah blah blah",
+          "dick pic",
+          "fuk boi"
+        ],
+        "count": 6
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "present perfect",
+          "modal verbs (will, cannot)"
+        ],
+        "notes": "Dominated by simple present tense in a second-person narrative style, but features a high frequency of subordinate clauses (that, how, when, because) and some present perfect and past simple."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Tinder",
+          "Bumble",
+          "OKCupid",
+          "Teach for America",
+          "Spam",
+          "apps (appetizers)"
+        ],
+        "notes": "Mostly global internet culture and pop culture references. 'Teach for America' and 'apps' as appetizers are US-specific but inferable from context."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 15,
+        "notes": "Mixed lengths. Many short imperative sentences combined with longer, complex sentences containing multiple subordinate clauses."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "pretend",
+            "context": "Pretend you are lying in a bed that happens to be in a Greek taverna",
+            "is_trap_active": false,
+            "reason": "While 'pretender' in Spanish means to try/attempt, the context of imagining a Greek taverna makes the 'act as if' meaning clear."
+          },
+          {
+            "word": "realize",
+            "context": "then realize he is a fuk boi",
+            "is_trap_active": false,
+            "reason": "The Spanish meaning 'to carry out/perform' makes no sense in this context, so the reader will understand it means 'to become aware'."
+          },
+          {
+            "word": "song",
+            "context": "blaring an Adele song about love",
+            "is_trap_active": false,
+            "reason": "An 'Adele song' is clearly a musical piece, not just a sound/rhythm (son)."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.47,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 2.08,
+      "evp_coverage_pct": 84.9,
+      "cognate_pct": 16.0,
+      "off_list_pct": 15.1
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.47,
+    "estimated_cefr": "A2/B1"
+  }
+}

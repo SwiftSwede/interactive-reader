@@ -1,0 +1,105 @@
+{
+  "story_title": "Worry Wart",
+  "profiler": {
+    "word_count": 767,
+    "unique_word_count": 297,
+    "evp_coverage_pct": 86.9,
+    "level_distribution": {
+      "A1": 185,
+      "A2": 42,
+      "B1": 20,
+      "B2": 10,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 62.3,
+      "A2": 76.4,
+      "B1": 83.2,
+      "B2": 86.5,
+      "C1": 86.9,
+      "C2": 86.9
+    },
+    "cognate_count": 44,
+    "cognate_pct": 14.8,
+    "false_friend_count": 1,
+    "off_list_count": 39,
+    "off_list_pct": 13.1,
+    "vocab_difficulty_raw": 1.45,
+    "vocab_difficulty_adjusted": 1.51,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Worry Wart",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "weight on her shoulders",
+          "deep pockets",
+          "take care of",
+          "stiff as a board",
+          "pay it any mind",
+          "take over",
+          "go along with",
+          "worry wart"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "future simple",
+          "present continuous",
+          "present perfect",
+          "future perfect",
+          "first conditional",
+          "past simple",
+          "participial clauses"
+        ],
+        "notes": "The text is dominated by future simple tense, but includes a noticeable minority of sentences with present perfect, first conditionals, future perfect, and participial clauses."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Juan Valdez",
+          "Starbucks",
+          "Bogotá",
+          "Brazil",
+          "Chile",
+          "marijuana edibles"
+        ],
+        "notes": "The setting is highly familiar to a Latin American learner, featuring local brands and cities. The marijuana edibles reference is globally understood enough not to cause confusion."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Mostly short to moderate sentences with some conjunctions and occasional compound/complex structures."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "realize",
+            "context": "she’ll realize how bad of a condition her boss is in",
+            "is_trap_active": true,
+            "reason": "While 'realizar' in Spanish means to carry out or perform, the context of 'realize how bad of a condition' makes it clear that it means to become aware, though the initial similarity might cause a brief pause."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.1,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.51,
+      "evp_coverage_pct": 86.9,
+      "cognate_pct": 14.8,
+      "off_list_pct": 13.1
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.1,
+    "estimated_cefr": "A2/B1"
+  }
+}

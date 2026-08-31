@@ -1,0 +1,124 @@
+{
+  "story_title": "Too Much Responsibility",
+  "profiler": {
+    "word_count": 1480,
+    "unique_word_count": 453,
+    "evp_coverage_pct": 94.7,
+    "level_distribution": {
+      "A1": 276,
+      "A2": 82,
+      "B1": 48,
+      "B2": 19,
+      "C1": 3,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 60.9,
+      "A2": 79.0,
+      "B1": 89.6,
+      "B2": 93.8,
+      "C1": 94.5,
+      "C2": 94.7
+    },
+    "cognate_count": 71,
+    "cognate_pct": 15.7,
+    "false_friend_count": 3,
+    "off_list_count": 24,
+    "off_list_pct": 5.3,
+    "vocab_difficulty_raw": 1.59,
+    "vocab_difficulty_adjusted": 1.84,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Too Much Responsibility",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "hold off on leaving",
+          "cover for her",
+          "take some of the load off of Sergio's shoulders",
+          "swamped with work",
+          "hang in there",
+          "led on",
+          "stand up for myself",
+          "get our books in order",
+          "take the company public",
+          "taken over by the suits",
+          "bottom-line",
+          "straight to the point",
+          "make the books look better"
+        ],
+        "count": 13
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past perfect (had just finished, had been working, had recently left, hadn't seen, had been hoping, had been planning)",
+          "present perfect (haven't found, haven't shaved, has given)",
+          "past continuous (was attending, was in the middle of)",
+          "present continuous (is being closed, are going to hire)",
+          "first conditional (If you leave, I'll make sure...)",
+          "passive voice (been replaced, being shut down, being closed, got taken over)",
+          "modals (could, would, should, might)",
+          "comparative structures (as hard if not harder than, more like 40 than 25)",
+          "relative clauses (who, that, which)"
+        ],
+        "notes": "Dominated by past simple narrative with frequent past perfect and several passive constructions. Conditionals and modals appear in dialogue. Complex structures appear in roughly 25-30% of sentences."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "2-week notice (US workplace norm)",
+          "take the company public (IPO concept)",
+          "the suits (corporate culture slang)",
+          "lunch allowance (workplace benefit)",
+          "overtime pay"
+        ],
+        "notes": "Corporate workplace setting is universally recognizable. The '2-week notice' is somewhat US-specific but clear from context. Business concepts like IPOs and shareholders are familiar to educated adults. No heavy cultural barriers."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 14,
+        "notes": "Mixed lengths with many short dialogue lines balanced by longer narrative sentences with subordinate clauses. Some complex sentences like 'Not only was he designing and guiding the other designers under him, he was attending management meetings...' Average around 14 words but with significant variety."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "discuss",
+            "context": "there wasn't anything left to discuss",
+            "is_trap_active": false,
+            "reason": "Context makes it clear this means talking things over, not arguing. The sentence implies wrapping up a conversation, not starting a fight."
+          },
+          {
+            "word": "once",
+            "context": "once she left, Sergio was swamped with work",
+            "is_trap_active": false,
+            "reason": "Clearly temporal ('as soon as / after'), not the number eleven. Context is unambiguous."
+          },
+          {
+            "word": "quit",
+            "context": "then I quit",
+            "is_trap_active": false,
+            "reason": "Sergio is clearly resigning from his job. The context of the entire story about workplace frustration makes the meaning unmistakable."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.6,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.84",
+      "evp_coverage_pct": "94.7",
+      "cognate_pct": "15.7",
+      "off_list_pct": "5.3"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.6,
+    "estimated_cefr": "B1"
+  }
+}

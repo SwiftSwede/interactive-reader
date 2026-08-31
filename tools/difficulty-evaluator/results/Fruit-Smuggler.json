@@ -1,0 +1,117 @@
+{
+  "story_title": "Fruit Smuggler",
+  "profiler": {
+    "word_count": 1446,
+    "unique_word_count": 555,
+    "evp_coverage_pct": 84.5,
+    "level_distribution": {
+      "A1": 284,
+      "A2": 94,
+      "B1": 64,
+      "B2": 26,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 51.2,
+      "A2": 68.1,
+      "B1": 79.6,
+      "B2": 84.3,
+      "C1": 84.5,
+      "C2": 84.5
+    },
+    "cognate_count": 81,
+    "cognate_pct": 14.6,
+    "false_friend_count": 2,
+    "off_list_count": 86,
+    "off_list_pct": 15.5,
+    "vocab_difficulty_raw": 1.65,
+    "vocab_difficulty_adjusted": 1.79,
+    "estimated_cefr": "B2+"
+  },
+  "rubric": {
+    "story_title": "Fruit Smuggler",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "want in",
+          "make a living",
+          "had in store for him",
+          "figured out",
+          "slap on the wrist",
+          "onto something",
+          "turned sour",
+          "take off (for Mexico)",
+          "looking into",
+          "to no use",
+          "passed out"
+        ],
+        "count": 11
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past perfect (had gone, had never heard, had majored, had saved up, had gotten)",
+          "past continuous (was talking, was heading)",
+          "present perfect (hasn't made it)",
+          "first conditional (If they find it...)",
+          "participial clauses (dressed in, Looking at, tied to)",
+          "relative clauses (that the intimidating man was talking to)",
+          "reported speech (he thought to himself)",
+          "modals (must be able to, would pay)"
+        ],
+        "notes": "Past simple dominates, but past perfect appears 5+ times and participial clauses appear 3+ times as a noticeable minority. First conditional and reported speech also present. Solid level 3 profile."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Whole Foods Market (US grocery brand)",
+          "Upper East Side (NYC neighborhood)",
+          "JFK airport",
+          "US customs/immigration procedures",
+          "GoPro, Instagram, YouTube (global pop culture)",
+          "Gringo (LatAm term, familiar to learner)",
+          "Latin American fruits (lulo, níspero, guanabana, etc. - familiar to learner)"
+        ],
+        "notes": "Most of the setting is Latin American, which the learner would recognize well. US-specific references (Whole Foods, Upper East Side, customs procedures) are light and understandable from context. The plot is fully followable without knowing these details."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 17,
+        "notes": "Mixed lengths. Some very long sentences with multiple subordinate clauses (e.g., the opening paragraph sentence at 40+ words), but many short simple sentences throughout. Average around 15-20 words."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "large",
+            "context": "a large Latin American living room",
+            "is_trap_active": false,
+            "reason": "Spanish speaker might think 'largo' (long), but in the context of a living room, 'big' is the obvious meaning. Minimal confusion risk."
+          },
+          {
+            "word": "rope",
+            "context": "He was tied up tight by rope.",
+            "is_trap_active": true,
+            "reason": "Spanish speaker might think 'ropa' (clothing). 'Tied up tight by clothing' is odd enough to cause a moment of confusion, though context eventually disambiguates."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.69,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.79",
+      "evp_coverage_pct": "84.5",
+      "cognate_pct": "14.6",
+      "off_list_pct": "15.5"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.69,
+    "estimated_cefr": "B1"
+  }
+}

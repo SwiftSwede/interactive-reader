@@ -1,0 +1,106 @@
+{
+  "story_title": "Pre-Hungry in a New City (2)",
+  "profiler": {
+    "word_count": 899,
+    "unique_word_count": 325,
+    "evp_coverage_pct": 89.2,
+    "level_distribution": {
+      "A1": 228,
+      "A2": 34,
+      "B1": 17,
+      "B2": 10,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 70.2,
+      "A2": 80.6,
+      "B1": 85.8,
+      "B2": 88.9,
+      "C1": 89.2,
+      "C2": 89.2
+    },
+    "cognate_count": 46,
+    "cognate_pct": 14.2,
+    "false_friend_count": 2,
+    "off_list_count": 35,
+    "off_list_pct": 10.8,
+    "vocab_difficulty_raw": 1.35,
+    "vocab_difficulty_adjusted": 1.53,
+    "estimated_cefr": "A2+"
+  },
+  "rubric": {
+    "story_title": "Pre-Hungry in a New City (2)",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "figure out",
+          "fill you up",
+          "check out",
+          "get used to",
+          "tag along"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "present perfect (Have you tried it before?)",
+          "basic modals (should, can)"
+        ],
+        "notes": "Dominated by simple tenses in conversational dialogue. Present perfect appears once. Subordinate clauses are basic (if, when, that). No complex structures like conditionals or passives."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Vancouver geography (Granville Street, downtown)",
+          "McDonald's and Subway as cheap food",
+          "street activists seeking donations",
+          "shawarma as Middle Eastern food",
+          "bucks as slang for dollars"
+        ],
+        "notes": "Mostly global brands and food items recognizable to LatAm learners. Street donation-seekers are mildly North American but context makes it clear. No heavy cultural knowledge required."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 11,
+        "notes": "Dialogue format with short conversational exchanges. Mostly subject-verb-object. Some compound sentences with 'but' and 'and'. Occasional subordinate clauses but nothing complex."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "grocery",
+            "context": "I don't wanna go to the grocery store yet.",
+            "is_trap_active": false,
+            "reason": "The phrase 'grocery store' in the context of being hungry and needing food makes the meaning clear despite superficial similarity to 'grosería.'"
+          },
+          {
+            "word": "sauce",
+            "context": "magical yogurt sauce",
+            "is_trap_active": false,
+            "reason": "Spanish 'salsa' also means sauce, so this is not a false friend. The dance meaning is secondary and irrelevant here."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.76,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.53",
+      "evp_coverage_pct": "89.2",
+      "cognate_pct": "14.2",
+      "off_list_pct": "10.8"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.76,
+    "estimated_cefr": "A2"
+  }
+}

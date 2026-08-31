@@ -1,0 +1,104 @@
+{
+  "story_title": "Pre-Cold Weather",
+  "profiler": {
+    "word_count": 1036,
+    "unique_word_count": 346,
+    "evp_coverage_pct": 90.5,
+    "level_distribution": {
+      "A1": 232,
+      "A2": 49,
+      "B1": 22,
+      "B2": 9,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 67.1,
+      "A2": 81.2,
+      "B1": 87.6,
+      "B2": 90.2,
+      "C1": 90.5,
+      "C2": 90.5
+    },
+    "cognate_count": 47,
+    "cognate_pct": 13.6,
+    "false_friend_count": 1,
+    "off_list_count": 33,
+    "off_list_pct": 9.5,
+    "vocab_difficulty_raw": 1.4,
+    "vocab_difficulty_adjusted": 1.43,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-Cold Weather",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "running low on",
+          "Holy cow",
+          "size up",
+          "Ice Queen",
+          "No joke"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future (gonna)",
+          "modal 'would' (I'd go)",
+          "wish (I wish)",
+          "causative (getting you to get)",
+          "first conditional (if you don't wanna freeze)",
+          "reported speech (the lady told me that that doesn't exist here)"
+        ],
+        "notes": "Dominated by simple tenses and informal spoken forms (gonna, wanna). A few modals, a wish structure, and one instance of reported speech. Complex structures are rare and do not dominate the text."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Canadian winter culture (minus 30 degrees, layering)",
+          "Wal-Mart as budget brand reference",
+          "Canada Goose as luxury winter brand",
+          "plastic bag charges / tote bags",
+          "installment payments not available in North America",
+          "Christmas present"
+        ],
+        "notes": "The winter clothing culture and specific brand references (Canada Goose, Wal-Mart) require some North American context. The installment payment difference is a real cultural/institutional gap a Latin American immigrant would encounter. Plot is followable without deep cultural knowledge."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 11,
+        "notes": "Dialogue-heavy text with short exchanges. Most sentences are simple or compound with basic conjunctions. A few longer sentences with subordinate clauses, but the average remains moderate."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "grocery",
+            "context": "Are you okay with getting groceries?",
+            "is_trap_active": false,
+            "reason": "While 'grocery' resembles Spanish 'grosería' (rudeness), the context of a shopping list with eggs, butter, milk, etc. makes it immediately clear this refers to food shopping. The false friend trap is not active in context."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.88,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.43",
+      "evp_coverage_pct": "90.5",
+      "cognate_pct": "13.6",
+      "off_list_pct": "9.5"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.88,
+    "estimated_cefr": "A2"
+  }
+}

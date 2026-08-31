@@ -1,0 +1,108 @@
+{
+  "story_title": "Valentine_s Day",
+  "profiler": {
+    "word_count": 859,
+    "unique_word_count": 323,
+    "evp_coverage_pct": 84.5,
+    "level_distribution": {
+      "A1": 212,
+      "A2": 44,
+      "B1": 10,
+      "B2": 5,
+      "C1": 1,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 65.6,
+      "A2": 79.3,
+      "B1": 82.4,
+      "B2": 83.9,
+      "C1": 84.2,
+      "C2": 84.5
+    },
+    "cognate_count": 45,
+    "cognate_pct": 13.9,
+    "false_friend_count": 2,
+    "off_list_count": 50,
+    "off_list_pct": 15.5,
+    "vocab_difficulty_raw": 1.32,
+    "vocab_difficulty_adjusted": 1.49,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Valentine_s Day",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "making herself up",
+          "getting to know",
+          "getting started",
+          "start you off",
+          "took away",
+          "cheesy",
+          "do good"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "present simple",
+          "present continuous",
+          "future (going to)",
+          "first conditional",
+          "modals (must, can, will)"
+        ],
+        "notes": "Dominated by simple past and present simple in dialogue. A few instances of past continuous, past perfect, and one first conditional. Mostly simple sentence structures."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Valentine's Day",
+          "French fine dining menu items",
+          "Edith Piaf / 'la vie en rose'"
+        ],
+        "notes": "Valentine's Day is widely celebrated in Latin America. French cuisine and Edith Piaf are global cultural references. No unfamiliar North American-specific customs."
+      },
+      "sentence_structure": {
+        "score": 1,
+        "avg_sentence_length": 8.5,
+        "notes": "Very short, simple sentences throughout. Mostly subject-verb-object. Average sentence length is well under 12 words."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "carpet",
+            "context": "a busser from the restaurant rolled out a red carpet for her.",
+            "is_trap_active": false,
+            "reason": "While 'carpet' looks like 'carpeta' (folder), the context of 'rolling out a red carpet' makes the meaning clear as a floor covering or walkway."
+          },
+          {
+            "word": "dessert",
+            "context": "For dessert, the waiter brought the couple creme brulee.",
+            "is_trap_active": false,
+            "reason": "While 'dessert' looks like 'desierto' (desert), the context of a waiter bringing food after the main course makes the meaning obvious."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.65,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.49",
+      "evp_coverage_pct": "84.5",
+      "cognate_pct": "13.9",
+      "off_list_pct": "15.5"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.65,
+    "estimated_cefr": "A2"
+  }
+}

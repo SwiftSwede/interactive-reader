@@ -5,6 +5,7 @@ import { Play } from "lucide-react";
 import { usePlaybackRate } from "./PlaybackRateContext";
 import MicroExplanation from "./MicroExplanation";
 import IpaText from "./IpaText";
+import { recordDictationAttempt } from "@/app/story/[slug]/actions";
 import type { PronunciationWordNote } from "@/types";
 
 type DictationPracticeProps = {
@@ -15,6 +16,9 @@ type DictationPracticeProps = {
   wordNotes?: PronunciationWordNote[];
   explanation?: string;
   microExplanation: string;
+  /** Omitted for anonymous free-story practice, which stays in-session. */
+  storyId?: string;
+  sessionId?: string;
 };
 
 export default function DictationPractice({
@@ -25,6 +29,8 @@ export default function DictationPractice({
   wordNotes = [],
   explanation,
   microExplanation,
+  storyId,
+  sessionId,
 }: DictationPracticeProps) {
   const [phase, setPhase] = useState<"listening" | "revealed">("listening");
   const [userText, setUserText] = useState("");
@@ -47,7 +53,16 @@ export default function DictationPractice({
   };
 
   const handleSubmit = () => {
+    // Reveal first: the learner never waits on a network round trip, and the
+    // action is a no-op for anonymous users.
     setPhase("revealed");
+
+    if (!storyId) return;
+    void recordDictationAttempt({
+      storyId,
+      responseText: userText,
+      sessionId,
+    });
   };
 
   const handleRetry = () => {

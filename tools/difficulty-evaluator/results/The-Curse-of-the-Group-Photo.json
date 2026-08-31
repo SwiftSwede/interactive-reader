@@ -1,0 +1,121 @@
+{
+  "story_title": "The Curse of the Group Photo",
+  "profiler": {
+    "word_count": 1194,
+    "unique_word_count": 480,
+    "evp_coverage_pct": 88.5,
+    "level_distribution": {
+      "A1": 262,
+      "A2": 83,
+      "B1": 53,
+      "B2": 21,
+      "C1": 4,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 54.6,
+      "A2": 71.9,
+      "B1": 82.9,
+      "B2": 87.3,
+      "C1": 88.1,
+      "C2": 88.5
+    },
+    "cognate_count": 72,
+    "cognate_pct": 15.0,
+    "false_friend_count": 3,
+    "off_list_count": 55,
+    "off_list_pct": 11.5,
+    "vocab_difficulty_raw": 1.65,
+    "vocab_difficulty_adjusted": 1.91,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "The Curse of the Group Photo",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "dodged a bullet",
+          "out of the blue",
+          "came to a head",
+          "shake to their core",
+          "broke up with",
+          "follow through with",
+          "came across",
+          "get rid of",
+          "put down (euthanize)",
+          "put on us (curse)"
+        ],
+        "count": 10
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "past perfect (hadn't arrived, had asked, had planned, had made, had heard)",
+          "present perfect (has been put)",
+          "would + base (second conditional-like: would end up, would be)",
+          "modals (could, couldn't, would)",
+          "relative clauses (who stood, who would be)",
+          "reported speech",
+          "participial clauses (rubbing her baby bump)"
+        ],
+        "notes": "Dominated by past simple with frequent past perfect (6-7 instances) and several relative clauses. Conditionals and modals appear as a noticeable minority. Roughly 25-30% of sentences contain level-3+ structures."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Valentine's Day",
+          "Christmas",
+          "Instagram",
+          "Sunday brunches with the girls",
+          "Virgin Mary",
+          "shelter cat adoption"
+        ],
+        "notes": "Most references are globally known or understandable from context. 'Sunday brunches' is mildly North American but inferable. Virgin Mary is well known in LatAm Catholic culture. No deeply unfamiliar customs."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 14,
+        "notes": "Mix of very short dialogue lines and longer narrative sentences. Some sentences with multiple noun phrases and subordinate clauses (e.g., the list of thoughts about pregnancy). Average around 14 words but with notable variety."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "grocery",
+            "context": "Grocery bills ballooned as Vicky struggled to dial in a diet",
+            "is_trap_active": false,
+            "reason": "The context of 'bills ballooned' and 'diet' makes it clear this refers to food expenses, not rudeness (grosería)."
+          },
+          {
+            "word": "once",
+            "context": "I'd like to just have one uneventful group photo for once.",
+            "is_trap_active": false,
+            "reason": "The phrase 'for once' is common enough and contextually clear it means 'one time,' not 'eleven.'"
+          },
+          {
+            "word": "test",
+            "context": "reluctantly picking up a pregnancy test from the pharmacy",
+            "is_trap_active": false,
+            "reason": "Spanish 'test' is borrowed from English and means the same thing. 'Pregnancy test' is completely transparent."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.62,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.91",
+      "evp_coverage_pct": "88.5",
+      "cognate_pct": "15.0",
+      "off_list_pct": "11.5"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.62,
+    "estimated_cefr": "B1"
+  }
+}

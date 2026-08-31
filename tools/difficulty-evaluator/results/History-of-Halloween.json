@@ -1,0 +1,121 @@
+{
+  "story_title": "History of Halloween (2)",
+  "profiler": {
+    "word_count": 1129,
+    "unique_word_count": 474,
+    "evp_coverage_pct": 82.3,
+    "level_distribution": {
+      "A1": 225,
+      "A2": 76,
+      "B1": 49,
+      "B2": 36,
+      "C1": 2,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 47.5,
+      "A2": 63.5,
+      "B1": 73.8,
+      "B2": 81.4,
+      "C1": 81.9,
+      "C2": 82.3
+    },
+    "cognate_count": 80,
+    "cognate_pct": 16.9,
+    "false_friend_count": 3,
+    "off_list_count": 84,
+    "off_list_pct": 17.7,
+    "vocab_difficulty_raw": 1.77,
+    "vocab_difficulty_adjusted": 2.04,
+    "estimated_cefr": "B2+"
+  },
+  "rubric": {
+    "story_title": "History of Halloween (2)",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "deck out",
+          "just around the corner",
+          "dive into",
+          "kicked off",
+          "took over",
+          "fell out of favor",
+          "make it (across the Atlantic)",
+          "took hold"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present perfect",
+          "past perfect",
+          "passive voice",
+          "relative clauses (which, that, who)",
+          "participial clauses (extending, causing)",
+          "it was not until... that... cleft structure",
+          "infinitive of purpose"
+        ],
+        "notes": "Mix of simple and complex structures. Passive voice appears regularly (6-7 instances). Relative clauses and participial clauses throughout. Past perfect and cleft structures appear but are not dominant. Present simple and past simple carry most of the narrative."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Halloween customs (trick-or-treating, costumes, jack-o'-lanterns)",
+          "Samhain / Celtic-Gaelic festival",
+          "All Saints' Day / All Hallows' Eve",
+          "soul cakes",
+          "bobbing for apples",
+          "Puritans",
+          "trunk-or-treats / tailgate culture",
+          "National Trick-or-Treat Day"
+        ],
+        "notes": "Halloween itself is globally known, but many specific traditions (soul cakes, bobbing for apples, trunk-or-treats, Puritan disapproval) are unfamiliar to LatAm learners. The historical narrative is followable without deep cultural knowledge, but understanding adds significantly to comprehension."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 20,
+        "notes": "Mixed lengths with many compound-complex sentences containing subordinate clauses. Some sentences exceed 30 words. Narrative is informational/expository style with moderate syntactic variety."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "Halloween obviously remains a popular holiday in America today, but it actually almost didn't make it across the Atlantic.",
+            "is_trap_active": false,
+            "reason": "Context ('obviously remains... today, but it ___ almost didn't') makes it clear that 'actually' means 'in fact' rather than 'currently.' The contrast with 'today' disambiguates."
+          },
+          {
+            "word": "large",
+            "context": "featured large public parties to commemorate the upcoming harvest",
+            "is_trap_active": false,
+            "reason": "Collocation with 'public parties' makes it clear 'large' means 'big in size/attendance,' not 'long.' A Spanish speaker would not confuse 'large parties' with 'long parties' in this context."
+          },
+          {
+            "word": "once",
+            "context": "This year, once again, we'll all be enjoying our favorite candy",
+            "is_trap_active": false,
+            "reason": "In the phrase 'once again,' the meaning 'one time' is transparent. A Spanish speaker would not read this as 'eleven again.' The fixed expression is recognizable."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.61,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "2.04",
+      "evp_coverage_pct": "82.3",
+      "cognate_pct": "16.9",
+      "off_list_pct": "17.7"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.61,
+    "estimated_cefr": "B1"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "story_title": "Pre-Renovations",
+  "profiler": {
+    "word_count": 588,
+    "unique_word_count": 250,
+    "evp_coverage_pct": 92.8,
+    "level_distribution": {
+      "A1": 173,
+      "A2": 31,
+      "B1": 16,
+      "B2": 10,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 69.2,
+      "A2": 81.6,
+      "B1": 88.0,
+      "B2": 92.0,
+      "C1": 92.8,
+      "C2": 92.8
+    },
+    "cognate_count": 39,
+    "cognate_pct": 15.6,
+    "false_friend_count": 1,
+    "off_list_count": 18,
+    "off_list_pct": 7.2,
+    "vocab_difficulty_raw": 1.44,
+    "vocab_difficulty_adjusted": 1.54,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-Renovations",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "fixer-upper",
+          "Tell me about it",
+          "get rid of",
+          "No worries"
+        ],
+        "count": 4
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "past perfect",
+          "going to future",
+          "first conditional",
+          "modals (can, would)"
+        ],
+        "notes": "Dominated by simple tenses and basic 'going to' future, but contains a noticeable minority of sentences with past perfect, conditionals, and relative clauses."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "North American housing prices and rent",
+          "Craigslist",
+          "nursing home",
+          "taking items to the dump",
+          "70's interior design"
+        ],
+        "notes": "References to Craigslist, housing market prices, and taking things to the dump are specific to North American norms but can be inferred from context."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 11,
+        "notes": "Short, conversational sentences typical of a dialogue. A few compound and complex sentences, but mostly simple subject-verb-object structures."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "The structure is actually solid.",
+            "is_trap_active": true,
+            "reason": "A Spanish speaker might read 'actually' as 'actualmente' (currently), which fits the context well enough ('The structure is currently solid') that they may miss the intended meaning of 'in fact'."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.31,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.54",
+      "evp_coverage_pct": "92.8",
+      "cognate_pct": "15.6",
+      "off_list_pct": "7.2"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.31,
+    "estimated_cefr": "A2/B1"
+  }
+}

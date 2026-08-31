@@ -1,0 +1,125 @@
+{
+  "story_title": "Date with a Werewolf",
+  "profiler": {
+    "word_count": 1193,
+    "unique_word_count": 410,
+    "evp_coverage_pct": 89.5,
+    "level_distribution": {
+      "A1": 246,
+      "A2": 67,
+      "B1": 31,
+      "B2": 17,
+      "C1": 4,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 60.0,
+      "A2": 76.3,
+      "B1": 83.9,
+      "B2": 88.0,
+      "C1": 89.0,
+      "C2": 89.5
+    },
+    "cognate_count": 66,
+    "cognate_pct": 16.1,
+    "false_friend_count": 4,
+    "off_list_count": 43,
+    "off_list_pct": 10.5,
+    "vocab_difficulty_raw": 1.56,
+    "vocab_difficulty_adjusted": 1.89,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Date with a Werewolf",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "leave you speechless",
+          "get off my chest",
+          "up front",
+          "pull that one out of left field",
+          "messed up in the head",
+          "spit it out",
+          "take your word for",
+          "turned on",
+          "catch my breath",
+          "one bad breakup away from"
+        ],
+        "count": 10
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "present perfect",
+          "second conditional",
+          "wish/if only",
+          "modals",
+          "passive voice",
+          "relative clauses"
+        ],
+        "notes": "The dialogue is dominated by simple tenses but contains noticeable instances of second conditionals, wish structures, and present perfect, pushing the complexity to a 3."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Netflix",
+          "BookTok",
+          "furries",
+          "smutty erotic novel tropes"
+        ],
+        "notes": "References are mostly global internet culture or easily inferred from context. No heavy North American institutional or traditional customs are present."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 14,
+        "notes": "Mixed lengths typical of dialogue. Some complex sentences with subordinate clauses, but mostly moderate compound and simple sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "novel",
+            "context": "It’s a smutty erotic novel.",
+            "is_trap_active": false,
+            "reason": "While 'novela' in LatAm often means soap opera, the context of 'books' and reading makes the 'book' meaning clear."
+          },
+          {
+            "word": "once",
+            "context": "Once I get full wolf, I lose all sense of who I am",
+            "is_trap_active": true,
+            "reason": "Spanish 'once' means eleven. A learner might briefly stumble, though context makes it clear it means 'as soon as'."
+          },
+          {
+            "word": "pretend",
+            "context": "Do you think you could… pretend… to rescue someone?",
+            "is_trap_active": true,
+            "reason": "Spanish 'pretender' means to intend or try. The context of acting out a rescue makes the English meaning clear, but the trap is active."
+          },
+          {
+            "word": "test",
+            "context": "government test experiment",
+            "is_trap_active": false,
+            "reason": "Spanish 'test' is borrowed from English and usually means exam, but paired with 'experiment' the meaning is transparent."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.72,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.89",
+      "evp_coverage_pct": "89.5",
+      "cognate_pct": "16.1",
+      "off_list_pct": "10.5"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.72,
+    "estimated_cefr": "B1"
+  }
+}

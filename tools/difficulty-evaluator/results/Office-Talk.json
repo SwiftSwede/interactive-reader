@@ -1,0 +1,105 @@
+{
+  "story_title": "Office Talk",
+  "profiler": {
+    "word_count": 426,
+    "unique_word_count": 202,
+    "evp_coverage_pct": 91.6,
+    "level_distribution": {
+      "A1": 142,
+      "A2": 26,
+      "B1": 12,
+      "B2": 5,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 70.3,
+      "A2": 83.2,
+      "B1": 89.1,
+      "B2": 91.6,
+      "C1": 91.6,
+      "C2": 91.6
+    },
+    "cognate_count": 31,
+    "cognate_pct": 15.3,
+    "false_friend_count": 1,
+    "off_list_count": 17,
+    "off_list_pct": 8.4,
+    "vocab_difficulty_raw": 1.35,
+    "vocab_difficulty_adjusted": 1.4,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Office Talk",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "mess with",
+          "ball and chain",
+          "fell for",
+          "put thought into",
+          "higher-ups",
+          "staying out of this",
+          "take on",
+          "catch you later",
+          "do lunch",
+          "running away from your demons"
+        ],
+        "count": 10
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "present perfect",
+          "basic modals"
+        ],
+        "notes": "Dominated by simple tenses and short conversational structures typical of a dialogue. A few basic modals and relative clauses appear, but complex structures are rare."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "farmer's market",
+          "yoga retreat",
+          "ayahuasca retreat",
+          "office bonuses",
+          "higher-ups"
+        ],
+        "notes": "The setting is a generic office break room. Wellness trends like yoga and ayahuasca are globally known. Office culture references are light and easily understood from context."
+      },
+      "sentence_structure": {
+        "score": 1,
+        "avg_sentence_length": 7,
+        "notes": "Very short, simple sentences typical of spoken dialogue. Mostly subject-verb-object with frequent ellipsis and fragments."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "subject",
+            "context": "Changing the subject.",
+            "is_trap_active": false,
+            "reason": "Used in the common collocation 'changing the subject', which clearly indicates the meaning of 'topic' rather than the Spanish 'sujeto' (person)."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.97,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.4",
+      "evp_coverage_pct": "91.6",
+      "cognate_pct": "15.3",
+      "off_list_pct": "8.4"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.97,
+    "estimated_cefr": "A2"
+  }
+}

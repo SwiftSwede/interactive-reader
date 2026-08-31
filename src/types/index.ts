@@ -6,11 +6,16 @@
 
 export type StoryLevel = "beginner" | "pre-intermediate" | "intermediate";
 
+// Dialogues and Movie Talks share the reader schema. Kind drives display only:
+// ContentTag.content_type stays "story" for all of them.
+export type StoryKind = "story" | "dialogue" | "movie_talk";
+
 export interface Story {
   id: string;
   title: string;
   slug: string;
   level: StoryLevel;
+  kind: StoryKind;
   cefr: string; // e.g. "A2/B1"
   bodyText: string; // plain text of the story
   bodyHtml: string; // story with word spans, generated from annotation
@@ -291,4 +296,111 @@ export interface UserHighlight {
   color: string; // highlight color
   note: string | null; // user's personal note
   createdAt: string;
+}
+
+// ── Knowledge graph (Phase 4, slice 36) ────────────────────
+// Tags describe language, not stories. The junction is polymorphic so a
+// writing prompt or an exam can carry the same tag as a story.
+
+export type TagType = "grammar" | "vocabulary" | "phonetic";
+
+/** The catalog item that carries a tag. Phase 4 only writes "story". */
+export type ContentType = "story" | "writing_prompt" | "exam_prompt";
+
+export type CoverageLevel = "introduced" | "reinforced" | "mastered";
+
+export interface LanguageTag {
+  id: string;
+  tagType: TagType;
+  name: string; // stable key, e.g. "present_perfect"
+  displayName: string; // e.g. "Present Perfect"
+  prerequisites: string[]; // grammar only; other tag types are empty
+}
+
+export interface ContentTag {
+  id: string;
+  contentType: ContentType;
+  contentId: string; // no FK: resolved per contentType by the app layer
+  tagType: TagType;
+  tagId: string;
+  coverageLevel: CoverageLevel;
+}
+
+/** What the recommender returns. Never a bare storyId. */
+export interface ContentRef {
+  contentType: ContentType;
+  contentId: string;
+}
+
+// ── Topic evidence (Phase 4, slice 37) ─────────────────────
+
+export type EvidenceStatus = "seen" | "practiced" | "needs_more_practice";
+
+/**
+ * The activity that produced a signal. A different axis from ContentType:
+ * content_type is the catalog item, source_type is what the learner did.
+ * Passive exposure is "reading"; tapping a word is "word_lookup".
+ */
+export type EvidenceSourceType =
+  | "reading"
+  | "word_lookup"
+  | "comprehension"
+  | "personal_response"
+  | "dictation"
+  | "pronunciation"
+  | "writing"
+  | "exam";
+
+export interface UserTopicEvidence {
+  id: string;
+  userId: string;
+  tagType: TagType;
+  tagId: string;
+  status: EvidenceStatus;
+  sourceType: EvidenceSourceType;
+  sourceId: string | null;
+  evidenceDetail: Record<string, unknown>;
+  updatedAt: string;
+}
+
+// ── Practice attempts (Phase 4, slice 37) ──────────────────
+// Dictation reuses the story's Práctica Coral sentence, so an attempt points
+// at the pronunciation drill rather than a separate prompt catalog.
+
+export interface DictationAttempt {
+  id: string;
+  userId: string;
+  storyId: string;
+  pronunciationDrillId: string | null;
+  responseText: string;
+  accuracy: number | null; // share of words matched, practice guidance only
+  errorAnalysis: Record<string, unknown> | null;
+  submittedAt: string;
+}
+
+/**
+ * Azure output kept as practice guidance. Never an official score, never CEFR.
+ */
+export interface PronunciationAttempt {
+  id: string;
+  userId: string;
+  storyId: string | null;
+  pronunciationDrillId: string | null;
+  referenceText: string;
+  accuracyScore: number | null;
+  fluencyScore: number | null;
+  completenessScore: number | null;
+  weakSounds: string[]; // IPA symbols that came back low
+  createdAt: string;
+}
+
+export interface PersonalResponseRecord {
+  id: string;
+  userId: string;
+  personalQuestionId: string;
+  courseSessionId: string | null;
+  responseText: string;
+  attemptNumber: number;
+  feedbackJson: Record<string, unknown> | null;
+  submittedAt: string;
 }

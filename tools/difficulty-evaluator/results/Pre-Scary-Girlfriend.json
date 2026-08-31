@@ -1,0 +1,116 @@
+{
+  "story_title": "Pre-Scary Girlfriend_",
+  "profiler": {
+    "word_count": 1641,
+    "unique_word_count": 444,
+    "evp_coverage_pct": 88.7,
+    "level_distribution": {
+      "A1": 281,
+      "A2": 63,
+      "B1": 36,
+      "B2": 12,
+      "C1": 1,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 63.3,
+      "A2": 77.5,
+      "B1": 85.6,
+      "B2": 88.3,
+      "C1": 88.5,
+      "C2": 88.7
+    },
+    "cognate_count": 61,
+    "cognate_pct": 13.7,
+    "false_friend_count": 2,
+    "off_list_count": 50,
+    "off_list_pct": 11.3,
+    "vocab_difficulty_raw": 1.46,
+    "vocab_difficulty_adjusted": 1.64,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Pre-Scary Girlfriend_",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "giving me the creeps",
+          "worry wart",
+          "blow your head off",
+          "run along",
+          "hang out",
+          "pull up",
+          "go way back",
+          "get out of",
+          "take off",
+          "on the house",
+          "pay for cover"
+        ],
+        "count": 11
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "second conditional",
+          "first conditional",
+          "zero conditional",
+          "reported speech",
+          "past perfect"
+        ],
+        "notes": "Dominated by simple tenses typical of dialogue, but contains a noticeable minority of conditionals, reported speech, and past perfect structures."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Halloween costumes and trick-or-treating",
+          "toque (Canadian winter hat)",
+          "convenience store",
+          "sucker (lollipop)",
+          "bucks (dollars)",
+          "club VIP section and paying for cover"
+        ],
+        "notes": "Halloween is globally known but specific customs like 'asking for candy' and 'toque' add moderate cultural weight. Club culture (bouncer, cover charge) is generally understood but adds context."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "Dialogue format with short, conversational sentences. Occasional compound sentences and basic subordinate clauses."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "pretend",
+            "context": "If you just put your hand in your sweater pocket and pretend to have a gun...",
+            "is_trap_active": true,
+            "reason": "Spanish 'pretender' means to intend or try, whereas English 'pretend' means to act as if. The context of faking having a gun makes the English meaning clear to a native speaker, but the word itself is a classic false friend that could cause a momentary pause."
+          },
+          {
+            "word": "realize",
+            "context": "I’m beginning to realize that there’s a lot about you I don’t know about.",
+            "is_trap_active": true,
+            "reason": "Spanish 'realizar' means to carry out or perform, whereas English 'realize' means to become aware. The context helps, but the lexical similarity is a strong trap for Spanish speakers."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.74,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.64",
+      "evp_coverage_pct": "88.7",
+      "cognate_pct": "13.7",
+      "off_list_pct": "11.3"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.74,
+    "estimated_cefr": "B1"
+  }
+}

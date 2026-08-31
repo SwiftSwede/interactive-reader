@@ -1,0 +1,99 @@
+{
+  "story_title": "Emergency Stop",
+  "profiler": {
+    "word_count": 411,
+    "unique_word_count": 163,
+    "evp_coverage_pct": 87.7,
+    "level_distribution": {
+      "A1": 112,
+      "A2": 19,
+      "B1": 7,
+      "B2": 5,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 68.7,
+      "A2": 80.4,
+      "B1": 84.7,
+      "B2": 87.7,
+      "C1": 87.7,
+      "C2": 87.7
+    },
+    "cognate_count": 25,
+    "cognate_pct": 15.3,
+    "false_friend_count": 1,
+    "off_list_count": 20,
+    "off_list_pct": 12.3,
+    "vocab_difficulty_raw": 1.34,
+    "vocab_difficulty_adjusted": 1.41,
+    "estimated_cefr": "A2+"
+  },
+  "rubric": {
+    "story_title": "Emergency Stop",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 1,
+        "items_found": [
+          "stressed out",
+          "had had enough",
+          "handed in"
+        ],
+        "count": 3
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past continuous (was finishing, was thinking)",
+          "past perfect (had always had, had had enough, had done)",
+          "present perfect passive (has been shot)",
+          "going to future in past (were going to fit)",
+          "basic modals (couldn't)"
+        ],
+        "notes": "Dominated by simple past tense. Past continuous and past perfect appear in a handful of sentences but are simple in form. Present perfect appears once. Overall the grammatical profile is basic with a few slightly more advanced structures appearing infrequently."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "cumbia (Latin American music genre)",
+          "Celia Cruz (Cuban singer)",
+          "Marc Anthony (Puerto Rican singer)",
+          "Simón Bolívar Boulevard",
+          "San Martín Avenue",
+          "El Dorado Street"
+        ],
+        "notes": "The cultural setting is entirely Latin American. Street names reference Latin American historical figures. Music references (cumbia, Celia Cruz, Marc Anthony) are well-known to the target learner. No North American-specific cultural knowledge needed."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 11,
+        "notes": "Predominantly short, simple sentences with some compound sentences using 'and' and 'when'. A few sentences reach 12-14 words but most are under 12. Repetitive structure (they drove, they picked up, they put, they turned on sirens) aids comprehension."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "location",
+            "context": "The pair drove to the location and picked up the young girl.",
+            "is_trap_active": false,
+            "reason": "In this context, 'location' clearly means 'place' or 'position' — they drove to it. While Spanish 'locación' can refer to renting/leasing in real estate contexts, the driving context makes the meaning unambiguous. A Spanish speaker would not be confused here."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.37,
+    "estimated_cefr": "A1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.41",
+      "evp_coverage_pct": "87.7",
+      "cognate_pct": "15.3",
+      "off_list_pct": "12.3"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.37,
+    "estimated_cefr": "A1"
+  }
+}

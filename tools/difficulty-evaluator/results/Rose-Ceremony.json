@@ -1,0 +1,132 @@
+{
+  "story_title": "Rose Ceremony",
+  "profiler": {
+    "word_count": 1634,
+    "unique_word_count": 498,
+    "evp_coverage_pct": 87.3,
+    "level_distribution": {
+      "A1": 321,
+      "A2": 61,
+      "B1": 35,
+      "B2": 16,
+      "C1": 1,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 64.5,
+      "A2": 76.7,
+      "B1": 83.7,
+      "B2": 86.9,
+      "C1": 87.1,
+      "C2": 87.3
+    },
+    "cognate_count": 66,
+    "cognate_pct": 13.3,
+    "false_friend_count": 3,
+    "off_list_count": 63,
+    "off_list_pct": 12.7,
+    "vocab_difficulty_raw": 1.43,
+    "vocab_difficulty_adjusted": 1.69,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Rose Ceremony",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "sugar daddies",
+          "shower us with presents",
+          "settle down",
+          "get hitched",
+          "batshit crazy",
+          "at our disposal",
+          "treats her like crap",
+          "burst into tears",
+          "feel like it",
+          "keep the change",
+          "hot girl summers",
+          "the bomb",
+          "get it straight",
+          "stay away from him",
+          "goes back"
+        ],
+        "count": 15
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "present perfect",
+          "going to future",
+          "basic modals",
+          "first conditional",
+          "reported speech",
+          "inversion with 'nor'"
+        ],
+        "notes": "The text is mostly conversational and dominated by simple tenses, but includes noticeable instances of present perfect, reported speech, and conditionals. A one-off inversion ('nor have I ever seen') appears, but complex structures are a minority of the sentences."
+      },
+      "cultural_reference_load": {
+        "score": 4,
+        "references_found": [
+          "Rose Ceremony / One Rose (The Bachelor reality TV format)",
+          "Valentine's Day",
+          "sugar daddies / OnlyFans (internet sugar baby culture)",
+          "Tulum, Miami, Bahamas, Ibiza, Dubai, Coachella (luxury travel and festival destinations)",
+          "Tik Tok videos",
+          "Meatpacking District (NYC neighborhood)",
+          "hot girl summers (internet slang/meme)",
+          "hedge fund / CEO at Time Warner (US corporate structures)",
+          "diet coke",
+          "Uber",
+          "allowance",
+          "college (US higher education system, workshops, discussion groups)"
+        ],
+        "notes": "The dialogue relies heavily on North American internet culture, reality TV tropes, and the sugar baby lifestyle. While global brands like Uber and TikTok are known, the nuances of 'sugar daddy' culture, 'Rose Ceremonies', and US college norms require specific cultural background."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 15,
+        "notes": "As a dialogue, the text features many short, conversational exchanges, but also includes several compound and complex sentences with multiple subordinate clauses, particularly when characters explain their situations or make long hypothetical statements."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "how batshit crazy she actually is",
+            "is_trap_active": false,
+            "reason": "In this context, it means 'in fact' or 'really', modifying the adjective 'crazy'. While it looks like 'actualmente' (currently), the context of describing someone's personality makes the meaning clear."
+          },
+          {
+            "word": "large",
+            "context": "In a large living room",
+            "is_trap_active": false,
+            "reason": "Used to describe the size of a room. The Spanish false friend 'largo' means 'long', but 'large living room' is a common collocation where 'big' is the obvious intended meaning."
+          },
+          {
+            "word": "parents",
+            "context": "Do your parents know about all of this stuff?",
+            "is_trap_active": false,
+            "reason": "Immediately followed by references to 'My daddy' and 'My mother', making it completely clear that 'parents' refers to father and mother, not general relatives ('parientes')."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.86,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.69",
+      "evp_coverage_pct": "87.3",
+      "cognate_pct": "13.3",
+      "off_list_pct": "12.7"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.86,
+    "estimated_cefr": "B1"
+  }
+}

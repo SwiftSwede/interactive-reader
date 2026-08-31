@@ -1,0 +1,102 @@
+{
+  "story_title": "Bad Bet",
+  "profiler": {
+    "word_count": 964,
+    "unique_word_count": 353,
+    "evp_coverage_pct": 92.1,
+    "level_distribution": {
+      "A1": 231,
+      "A2": 47,
+      "B1": 29,
+      "B2": 16,
+      "C1": 1,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 65.4,
+      "A2": 78.8,
+      "B1": 87.0,
+      "B2": 91.5,
+      "C1": 91.8,
+      "C2": 92.1
+    },
+    "cognate_count": 49,
+    "cognate_pct": 13.9,
+    "false_friend_count": 1,
+    "off_list_count": 28,
+    "off_list_pct": 7.9,
+    "vocab_difficulty_raw": 1.5,
+    "vocab_difficulty_adjusted": 1.58,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Bad Bet",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "make a big payday",
+          "make a comeback",
+          "get out of this mess",
+          "Just this once",
+          "attend to",
+          "sneak out",
+          "looked over my shoulder"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "present perfect",
+          "going to future",
+          "reported speech",
+          "indirect questions",
+          "first conditional"
+        ],
+        "notes": "Dominated by past simple, but past perfect, past continuous, and reported speech appear frequently enough to add noticeable complexity."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "sports betting",
+          "Champions League soccer teams",
+          "sports bar"
+        ],
+        "notes": "Soccer and betting are universally understood in Latin America. No unfamiliar North American cultural practices are present."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 15,
+        "notes": "Moderate sentences with some conjunctions and compound structures. Average length is around 12-18 words."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "once",
+            "context": "Come on. Just this once.",
+            "is_trap_active": false,
+            "reason": "While 'once' means eleven in Spanish, the phrase 'Just this once' is contextually clear as meaning 'one time' and would not cause lasting confusion."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.92,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.58",
+      "evp_coverage_pct": "92.1",
+      "cognate_pct": "13.9",
+      "off_list_pct": "7.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.92,
+    "estimated_cefr": "A2"
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "story_title": "Hockey Convo",
+  "profiler": {
+    "word_count": 1015,
+    "unique_word_count": 391,
+    "evp_coverage_pct": 88.0,
+    "level_distribution": {
+      "A1": 234,
+      "A2": 63,
+      "B1": 33,
+      "B2": 13,
+      "C1": 0,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 59.8,
+      "A2": 76.0,
+      "B1": 84.4,
+      "B2": 87.7,
+      "C1": 87.7,
+      "C2": 88.0
+    },
+    "cognate_count": 56,
+    "cognate_pct": 14.3,
+    "false_friend_count": 5,
+    "off_list_count": 47,
+    "off_list_pct": 12.0,
+    "vocab_difficulty_raw": 1.5,
+    "vocab_difficulty_adjusted": 1.95,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Hockey Convo",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "take a flier",
+          "cross your fingers",
+          "fell into your lap",
+          "no-brainer",
+          "hold down the fort",
+          "pain in the ass",
+          "dragging his feet",
+          "sign off on it",
+          "take advantage of",
+          "damned if you do, damned if you don't",
+          "put up a stinker",
+          "stood on his head",
+          "choking in the playoffs",
+          "put up a fight",
+          "finish them off",
+          "hot streak",
+          "figured out",
+          "get rid of",
+          "hold off",
+          "sweet hands",
+          "hit the jackpot",
+          "soft goals"
+        ],
+        "count": 22
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "present perfect",
+          "first conditional",
+          "modals (should, might, can, would)",
+          "modal perfect (should've been)",
+          "reported speech",
+          "subordinate clauses (if, because, when, where)"
+        ],
+        "notes": "The text is a dialogue dominated by simple tenses, but it contains a noticeable minority of sentences with present perfect, conditionals, and reported speech, placing it at a level 3."
+      },
+      "cultural_reference_load": {
+        "score": 4,
+        "references_found": [
+          "hockey playoffs",
+          "periods",
+          "goalie",
+          "NHL draft (pick number, drafted)",
+          "Russian players defecting / Soviet times",
+          "Montreal, Winnipeg, St. Louis, Washington (NHL teams)",
+          "tuna casserole",
+          "maternity leave norms",
+          "game 7"
+        ],
+        "notes": "The text is heavily reliant on North American sports culture, specifically hockey and the NHL draft system. A Latin American learner would likely struggle to follow the plot without understanding these specific cultural and institutional references."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 10,
+        "notes": "As a dialogue, the text consists mostly of short, conversational sentences. There are occasional compound and complex sentences, but the average length remains moderate."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "dessert",
+            "context": "Is there any pie after? For dessert?",
+            "is_trap_active": false,
+            "reason": "The context of eating pie after a meal makes the meaning clear."
+          },
+          {
+            "word": "large",
+            "context": "A large truck drives into a yard",
+            "is_trap_active": false,
+            "reason": "Describing a truck, the meaning of 'big in size' is obvious."
+          },
+          {
+            "word": "pie",
+            "context": "Is there any pie after? For dessert?",
+            "is_trap_active": false,
+            "reason": "Context clearly indicates a baked dessert, not a foot."
+          },
+          {
+            "word": "record",
+            "context": "We had the best record in the league.",
+            "is_trap_active": false,
+            "reason": "In the context of a sports league, it clearly refers to standings, not remembering."
+          },
+          {
+            "word": "tuna",
+            "context": "A tuna casserole in the oven.",
+            "is_trap_active": false,
+            "reason": "Context of making supper makes it clear it is a food item, not a cactus."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.78,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.95,
+      "evp_coverage_pct": 88.0,
+      "cognate_pct": 14.3,
+      "off_list_pct": 12.0
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.78,
+    "estimated_cefr": "B1"
+  }
+}

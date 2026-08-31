@@ -1,0 +1,132 @@
+{
+  "story_title": "Paris Points of View",
+  "profiler": {
+    "word_count": 1372,
+    "unique_word_count": 467,
+    "evp_coverage_pct": 84.6,
+    "level_distribution": {
+      "A1": 275,
+      "A2": 62,
+      "B1": 29,
+      "B2": 26,
+      "C1": 3,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 58.9,
+      "A2": 72.2,
+      "B1": 78.4,
+      "B2": 83.9,
+      "C1": 84.6,
+      "C2": 84.6
+    },
+    "cognate_count": 66,
+    "cognate_pct": 14.1,
+    "false_friend_count": 4,
+    "off_list_count": 72,
+    "off_list_pct": 15.4,
+    "vocab_difficulty_raw": 1.53,
+    "vocab_difficulty_adjusted": 1.91,
+    "estimated_cefr": "B2+"
+  },
+  "rubric": {
+    "story_title": "Paris Points of View",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "stick out like sore thumbs",
+          "doubles as",
+          "pain in the ass",
+          "hustle and bustle",
+          "doldrums",
+          "put us up",
+          "when in Rome, do as the Romans do",
+          "party pooper",
+          "hit up",
+          "on the double",
+          "live a little",
+          "by the looks of it"
+        ],
+        "count": 12
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "present perfect",
+          "going to future",
+          "modals (can, should, must, would)",
+          "first conditional",
+          "reported speech",
+          "relative clauses",
+          "participial clauses"
+        ],
+        "notes": "A mix of simple and complex structures typical of conversational dialogue. Present perfect and reported speech appear as a noticeable minority, with relative clauses and conditionals sprinkled throughout."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Starbucks drive-thru",
+          "SUV",
+          "American suburbia",
+          "Guatemalan to clean the house",
+          "AirBNB",
+          "McDonald's",
+          "French breakfast (croissant and coffee vs eggs/bacon)",
+          "bike share program"
+        ],
+        "notes": "Cultural references contrast American and French lifestyles. LatAm learners are generally familiar with American brands (Starbucks, McDonald's) and French stereotypes, making the context easily understandable."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 15,
+        "notes": "Mixed lengths typical of spoken dialogue. Ranges from short interjections to longer, multi-clause sentences with conjunctions and relative clauses."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "actually",
+            "context": "It’s actually more commonly eaten for lunch",
+            "is_trap_active": true,
+            "reason": "Spanish speakers often confuse 'actually' with 'actualmente' (currently), though context provides some clues."
+          },
+          {
+            "word": "delicate",
+            "context": "my supple, soft and delicate hands",
+            "is_trap_active": false,
+            "reason": "In this context, it aligns closely enough with the Spanish 'delicado' (fragile/refined) that it is not a significant trap."
+          },
+          {
+            "word": "large",
+            "context": "Can we get an extra large of this coffee",
+            "is_trap_active": false,
+            "reason": "Used as a size designation for coffee, which is globally understood in English contexts, overriding the 'largo' (long) confusion."
+          },
+          {
+            "word": "once",
+            "context": "Better to do it once a month",
+            "is_trap_active": true,
+            "reason": "Spanish 'once' means eleven. While 'once a month' is contextually clear, the word itself triggers a false friend reading."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.72,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.91",
+      "evp_coverage_pct": "84.6",
+      "cognate_pct": "14.1",
+      "off_list_pct": "15.4"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.72,
+    "estimated_cefr": "B1"
+  }
+}

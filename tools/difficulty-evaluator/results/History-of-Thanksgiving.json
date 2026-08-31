@@ -1,0 +1,110 @@
+{
+  "story_title": "History of Thanksgiving",
+  "profiler": {
+    "word_count": 1034,
+    "unique_word_count": 475,
+    "evp_coverage_pct": 80.6,
+    "level_distribution": {
+      "A1": 207,
+      "A2": 99,
+      "B1": 41,
+      "B2": 31,
+      "C1": 4,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 43.6,
+      "A2": 64.4,
+      "B1": 73.1,
+      "B2": 79.6,
+      "C1": 80.4,
+      "C2": 80.6
+    },
+    "cognate_count": 77,
+    "cognate_pct": 16.2,
+    "false_friend_count": 2,
+    "off_list_count": 92,
+    "off_list_pct": 19.4,
+    "vocab_difficulty_raw": 1.77,
+    "vocab_difficulty_adjusted": 1.96,
+    "estimated_cefr": "C1+"
+  },
+  "rubric": {
+    "story_title": "History of Thanksgiving",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "dates back to",
+          "got their fill of",
+          "whip up",
+          "hitch a ride",
+          "doubled back"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past perfect",
+          "modal perfect (might have been, would have made, may have brought)",
+          "passive voice",
+          "relative clauses (which, that, who)",
+          "participial clauses (filling the shells)",
+          "reported speech/quotations"
+        ],
+        "notes": "Simple tenses dominate but modal perfects and past perfect appear regularly throughout (roughly 20-25% of sentences). Passive voice and relative clauses recur. Archaic quotes add grammatical complexity."
+      },
+      "cultural_reference_load": {
+        "score": 4,
+        "references_found": [
+          "Thanksgiving holiday and its history",
+          "Pilgrims and Plymouth Colony",
+          "Mayflower",
+          "Wampanoag Indians",
+          "traditional Thanksgiving foods (turkey, stuffing, cranberry sauce, pumpkin pie, mashed potatoes)",
+          "New England geography",
+          "early American colonial history"
+        ],
+        "notes": "The entire text is about Thanksgiving, a North American holiday largely unfamiliar to Latin American learners. Understanding the historical context (Pilgrims, Mayflower, Plymouth) is essential to following the text. Missing this context means missing significant portions of the narrative."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 26,
+        "notes": "Mixed sentence lengths. Many complex sentences with subordinate clauses and embedded quotations. Some sentences exceed 30 words, especially the archaic quotes. Narrative and expository style with moderate complexity."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "pie",
+            "context": "pumpkin pie",
+            "is_trap_active": false,
+            "reason": "Used clearly in the context of a Thanksgiving meal and desserts. The food context makes the meaning unambiguous despite the Spanish 'pie' meaning 'foot'."
+          },
+          {
+            "word": "sauce",
+            "context": "cranberry sauce",
+            "is_trap_active": false,
+            "reason": "Spanish 'salsa' can also mean sauce, so the meanings align. No confusion likely in this food context."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.54,
+    "estimated_cefr": "B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.96",
+      "evp_coverage_pct": "80.6",
+      "cognate_pct": "16.2",
+      "off_list_pct": "19.4"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.54,
+    "estimated_cefr": "B1"
+  }
+}

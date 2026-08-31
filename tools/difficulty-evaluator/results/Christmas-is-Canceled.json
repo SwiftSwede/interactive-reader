@@ -1,0 +1,117 @@
+{
+  "story_title": "Christmas is Canceled",
+  "profiler": {
+    "word_count": 1591,
+    "unique_word_count": 515,
+    "evp_coverage_pct": 89.1,
+    "level_distribution": {
+      "A1": 309,
+      "A2": 86,
+      "B1": 42,
+      "B2": 20,
+      "C1": 1,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 60.0,
+      "A2": 76.7,
+      "B1": 84.9,
+      "B2": 88.7,
+      "C1": 88.9,
+      "C2": 89.1
+    },
+    "cognate_count": 69,
+    "cognate_pct": 13.4,
+    "false_friend_count": 3,
+    "off_list_count": 56,
+    "off_list_pct": 10.9,
+    "vocab_difficulty_raw": 1.52,
+    "vocab_difficulty_adjusted": 1.74,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Christmas is Canceled",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "bend the curve",
+          "ease off the gas",
+          "full of shit",
+          "piece of shit",
+          "take down posts"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "past continuous",
+          "present perfect",
+          "past perfect",
+          "mixed/conditional (If you had worn... you would be able to)",
+          "modals (must, can, should, may, would)",
+          "reported speech",
+          "relative clauses"
+        ],
+        "notes": "The text is a mix of simple and complex structures. Mixed conditionals, past perfect, and present perfect appear as a noticeable minority, alongside frequent subordinate clauses and modals."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Canadian government context (Prime Minister, Ottawa, Ontario)",
+          "North American Christmas traditions (ginger snap cookies, date squares, poppycock)",
+          "Christmas carols ('the little drummer boy', 'joy to the world', 'dreaming of a white Christmas')",
+          "squad car",
+          "food bank",
+          "homeless shelter"
+        ],
+        "notes": "The story relies on North American/Canadian government and Christmas traditions. While the pandemic context is globally understood, specific foods, carols, and the Canadian setting add moderate cultural weight."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 18,
+        "notes": "Mixed sentence lengths with several compound and complex sentences containing subordinate clauses. Average length is moderate, with some longer sentences in the Prime Minister's dialogue."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "grocery",
+            "context": "Susan went to the grocery store to buy a few more packs of masks",
+            "is_trap_active": false,
+            "reason": "While 'grocery' looks like 'grosería' (rudeness) in Spanish, the context of 'store' and 'buy masks' makes the meaning clear."
+          },
+          {
+            "word": "ignore",
+            "context": "Just ignore it.",
+            "is_trap_active": false,
+            "reason": "In this imperative context, the meaning of deliberately disregarding the knock on the door is clear, even if Spanish 'ignorar' can mean 'to not know'."
+          },
+          {
+            "word": "realize",
+            "context": "We don't realize how dangerous this virus is.",
+            "is_trap_active": true,
+            "reason": "'Realize' means to become aware, whereas Spanish 'realizar' means to carry out or perform. A Spanish speaker might initially confuse this as 'We don't perform/carry out how dangerous this virus is'."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.42,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.74,
+      "evp_coverage_pct": 89.1,
+      "cognate_pct": 13.4,
+      "off_list_pct": 10.9
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.42,
+    "estimated_cefr": "A2/B1"
+  }
+}

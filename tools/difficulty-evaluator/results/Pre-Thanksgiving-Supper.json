@@ -1,0 +1,100 @@
+{
+  "story_title": "Thanksgiving Supper",
+  "profiler": {
+    "word_count": 990,
+    "unique_word_count": 351,
+    "evp_coverage_pct": 92.9,
+    "level_distribution": {
+      "A1": 244,
+      "A2": 55,
+      "B1": 20,
+      "B2": 7,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 69.5,
+      "A2": 85.2,
+      "B1": 90.9,
+      "B2": 92.9,
+      "C1": 92.9,
+      "C2": 92.9
+    },
+    "cognate_count": 47,
+    "cognate_pct": 13.4,
+    "false_friend_count": 1,
+    "off_list_count": 25,
+    "off_list_pct": 7.1,
+    "vocab_difficulty_raw": 1.36,
+    "vocab_difficulty_adjusted": 1.39,
+    "estimated_cefr": "B1"
+  },
+  "rubric": {
+    "story_title": "Thanksgiving Supper",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "catch up",
+          "shut off",
+          "dish up",
+          "hang out"
+        ],
+        "count": 4
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "second conditional",
+          "third conditional"
+        ],
+        "notes": "The text is dominated by simple past and present tenses, but contains a few noticeable conditionals, including a third conditional, which raises the complexity slightly."
+      },
+      "cultural_reference_load": {
+        "score": 3,
+        "references_found": [
+          "Thanksgiving",
+          "apple salad",
+          "turkey",
+          "football game on television",
+          "say grace",
+          "high school"
+        ],
+        "notes": "The story is set around a US Thanksgiving dinner, which includes specific customs like watching football and saying grace. The plot is still followable without knowing the holiday, but understanding the context adds to comprehension."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 16,
+        "notes": "Sentences are a mix of simple and compound-complex structures with subordinate clauses, averaging around 16 words."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "once",
+            "context": "Once everybody had finished dishing up, we began to eat.",
+            "is_trap_active": true,
+            "reason": "Spanish 'once' means eleven, which could momentarily confuse a Spanish speaker, but the context makes it clear it means 'after' or 'as soon as'."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.32,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.39,
+      "evp_coverage_pct": 92.9,
+      "cognate_pct": 13.4,
+      "off_list_pct": 7.1
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.32,
+    "estimated_cefr": "A2/B1"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "story_title": "Unexpected Employee",
+  "profiler": {
+    "word_count": 1311,
+    "unique_word_count": 452,
+    "evp_coverage_pct": 91.8,
+    "level_distribution": {
+      "A1": 274,
+      "A2": 86,
+      "B1": 33,
+      "B2": 19,
+      "C1": 3,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 60.6,
+      "A2": 79.6,
+      "B1": 86.9,
+      "B2": 91.2,
+      "C1": 91.8,
+      "C2": 91.8
+    },
+    "cognate_count": 65,
+    "cognate_pct": 14.4,
+    "false_friend_count": 1,
+    "off_list_count": 37,
+    "off_list_pct": 8.2,
+    "vocab_difficulty_raw": 1.53,
+    "vocab_difficulty_adjusted": 1.58,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Unexpected Employee",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "shot in the dark",
+          "call her bluff",
+          "pan out",
+          "getting on my nerves",
+          "let you down",
+          "cover for you",
+          "mull over",
+          "scoping things out"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "past continuous",
+          "past perfect continuous",
+          "will future",
+          "first conditional",
+          "modals (can, should, would, might)",
+          "reported speech",
+          "relative clauses (who, that, whose)",
+          "participial clauses"
+        ],
+        "notes": "Dominated by past and present simple with dialogue, but contains a noticeable minority of more complex structures: past perfect continuous ('had been messaging'), first conditional ('If I don't get... I will be giving'), reported speech with backshifting, and relative clauses throughout. Roughly 20-25% of sentences contain level-3 structures."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "bucks (slang for dollars)",
+          "iPhone",
+          "cops (slang for police)"
+        ],
+        "notes": "The setting is a tropical city with motorcycle snatch-theft, which is highly familiar to Latin American learners. No North American-specific customs, holidays, or institutional references. 'Bucks' and 'cops' are globally known slang terms. The cultural context is essentially universal."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Many short dialogue lines ('20 bucks,' 'No, it's broken,' 'Hey.') keep the average low. Narrative sentences are moderate with some conjunctions and basic subordinate clauses. A few longer sentences reach 25+ words but most are under 18."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "location",
+            "context": "I will be giving your location to the police.",
+            "is_trap_active": false,
+            "reason": "In this context, 'location' means place/position, which aligns closely with the Spanish 'locación' (which also means location/position). The alternative Spanish meaning of 'renting/leasing' is irrelevant here. Context makes the meaning completely clear."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.02,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.58,
+      "evp_coverage_pct": 91.8,
+      "cognate_pct": 14.4,
+      "off_list_pct": 8.2
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.02,
+    "estimated_cefr": "A2/B1"
+  }
+}

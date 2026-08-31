@@ -1,0 +1,127 @@
+{
+  "story_title": "Taken for a Spy",
+  "profiler": {
+    "word_count": 1340,
+    "unique_word_count": 471,
+    "evp_coverage_pct": 83.7,
+    "level_distribution": {
+      "A1": 250,
+      "A2": 74,
+      "B1": 42,
+      "B2": 21,
+      "C1": 5,
+      "C2": 2
+    },
+    "cumulative_pct": {
+      "A1": 53.1,
+      "A2": 68.8,
+      "B1": 77.7,
+      "B2": 82.2,
+      "C1": 83.2,
+      "C2": 83.7
+    },
+    "cognate_count": 83,
+    "cognate_pct": 17.6,
+    "false_friend_count": 0,
+    "off_list_count": 77,
+    "off_list_pct": 16.3,
+    "vocab_difficulty_raw": 1.64,
+    "vocab_difficulty_adjusted": 1.56,
+    "estimated_cefr": "B2+"
+  },
+  "rubric": {
+    "story_title": "Taken for a Spy",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "pull the wool over my eyes",
+          "loosen your lips",
+          "run off your mouths",
+          "blow you to smithereens",
+          "went all out",
+          "take me for a fool",
+          "come up with",
+          "get in your way",
+          "pull up the photos",
+          "play the fool / acting the fool"
+        ],
+        "count": 10
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple (dominant)",
+          "past simple",
+          "present perfect (frequent: you've been, has been tracking, you've seen, they've trained)",
+          "present continuous",
+          "first conditional (If you don't talk, the higher we raise)",
+          "passive voice (strapped down, fitted with, used for, sent here, trained)",
+          "modals (can, should, would, must)",
+          "relative clauses (which are immune, which use, who are)",
+          "comparatives"
+        ],
+        "notes": "Dialogue is dominated by present simple, but present perfect appears frequently (10+ instances), passive voice recurs, and relative clauses appear throughout. Roughly 20-25% of sentences contain structures beyond basic tenses."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Chinese Triad (organized crime)",
+          "fentanyl empire / US drug crisis",
+          "AHL / Bakersfield Condors (minor league hockey)",
+          "all-inclusive resort (common in LatAm too)",
+          "Thai massage (globally known)",
+          "US government spy operations (globally known via film)"
+        ],
+        "notes": "Most references are followable from context or global pop culture. Hockey and AHL are North American but not central to understanding the plot. The fentanyl/China connection to the US is somewhat specific but explained in dialogue."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "Dialogue format with mostly short to moderate exchanges. A few longer descriptive sentences (e.g., the machine gun turret description) but average remains in the 12-18 word range. Occasional compound sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "coach",
+            "context": "my coach can tell you that I can barely speak English",
+            "is_trap_active": false,
+            "reason": "Spanish 'coche' means car, but context (speaking about a person who can vouch for English ability) makes the trainer meaning clear."
+          },
+          {
+            "word": "pain",
+            "context": "relieve the pain in my tight back",
+            "is_trap_active": false,
+            "reason": "Spanish 'pena' means shame/pity, but the context of 'tight back' makes physical pain obvious."
+          },
+          {
+            "word": "season",
+            "context": "on vacation after finishing up his season",
+            "is_trap_active": false,
+            "reason": "Spanish 'sazón' means seasoning (food), but context of a hockey player finishing his season makes the meaning clear."
+          },
+          {
+            "word": "resort",
+            "context": "the resort said there was Thai massage included",
+            "is_trap_active": false,
+            "reason": "Spanish 'resorte' means mechanical spring, but context of vacation and massage makes the hotel meaning clear."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.47,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.56",
+      "evp_coverage_pct": "83.7",
+      "cognate_pct": "17.6",
+      "off_list_pct": "16.3"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.47,
+    "estimated_cefr": "A2/B1"
+  }
+}

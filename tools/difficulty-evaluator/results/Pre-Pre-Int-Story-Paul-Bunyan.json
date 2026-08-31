@@ -1,0 +1,126 @@
+{
+  "story_title": "Pre-Int Story_ Paul Bunyan",
+  "profiler": {
+    "word_count": 1212,
+    "unique_word_count": 440,
+    "evp_coverage_pct": 92.3,
+    "level_distribution": {
+      "A1": 276,
+      "A2": 84,
+      "B1": 28,
+      "B2": 16,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 62.7,
+      "A2": 81.8,
+      "B1": 88.2,
+      "B2": 91.8,
+      "C1": 92.3,
+      "C2": 92.3
+    },
+    "cognate_count": 59,
+    "cognate_pct": 13.4,
+    "false_friend_count": 5,
+    "off_list_count": 34,
+    "off_list_pct": 7.7,
+    "vocab_difficulty_raw": 1.48,
+    "vocab_difficulty_adjusted": 1.95,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Pre-Int Story_ Paul Bunyan",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "before long",
+          "left their mark",
+          "grew up",
+          "play tricks"
+        ],
+        "count": 4
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "past simple (dominant)",
+          "present simple (framing at end)",
+          "would for past habit",
+          "could for ability",
+          "so...that structures",
+          "basic relative clauses (who, where, that)",
+          "past passive (was covered, was gone)"
+        ],
+        "notes": "Text is dominated by past simple with frequent 'so...that' constructions and basic relative clauses. 'Would' used for past habit and 'could' for ability. No present perfect, conditionals, or advanced structures. A few participial phrases ('thinking it was an earthquake'). Overall simple grammatical profile."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Paul Bunyan folklore tradition",
+          "Maine/Minnesota/Dakota geography",
+          "sourdough bread",
+          "lumberjack culture",
+          "hot cakes (pancakes)",
+          "Great Lakes",
+          "Puget Sound"
+        ],
+        "notes": "American tall tale tradition is self-explanatory within the text. Geographic names are just place names. Sourdough is explained in context. Lumberjack culture is accessible. No customs or institutional references that would block comprehension."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 18,
+        "notes": "Moderate sentence length with frequent 'so...that' constructions and basic subordinate clauses. Mostly compound and simple sentences. No sentences over 30 words. Narrative is straightforward."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "large",
+            "context": "Paul was so large at birth that five large birds had to carry him",
+            "is_trap_active": false,
+            "reason": "'Large' is an extremely basic English word that most learners know means 'big.' The Spanish 'largo' (long) is unlikely to cause confusion here, especially in context of a baby's size."
+          },
+          {
+            "word": "once",
+            "context": "Once, Paul rolled over so much in his sleep that he caused an earthquake.",
+            "is_trap_active": false,
+            "reason": "While 'once' looks like Spanish 'once' (eleven), the sentence structure makes it clear this is a time adverb ('one time'). A Spanish speaker reading 'Eleven, Paul rolled over' would immediately recognize the error from context."
+          },
+          {
+            "word": "parents",
+            "context": "His mother and father were shocked when they first saw the boy.",
+            "is_trap_active": false,
+            "reason": "'Parents' is a very basic word. Even though Spanish 'parientes' means relatives in general, the preceding context ('mother and father') and the word's frequency make confusion unlikely."
+          },
+          {
+            "word": "supply",
+            "context": "His parents needed 10 cows to supply milk for his meals.",
+            "is_trap_active": false,
+            "reason": "The English 'supply' (provide) and Spanish 'suplicar' (beg/plead) are phonetically and orthographically different enough that the false friend trap is weak. Context of cows and milk makes 'provide' the obvious meaning."
+          },
+          {
+            "word": "taller",
+            "context": "Every time Paul looked, Babe seemed to grow taller.",
+            "is_trap_active": false,
+            "reason": "Context of growing ('grow taller') makes the height meaning clear. A Spanish speaker might briefly think of 'taller' (workshop) but the verb 'grow' immediately disambiguates."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.89,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.95,
+      "evp_coverage_pct": 92.3,
+      "cognate_pct": 13.4,
+      "off_list_pct": 7.7
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.89,
+    "estimated_cefr": "A2"
+  }
+}

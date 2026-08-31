@@ -1,0 +1,93 @@
+{
+  "story_title": "Pre-Last-Minute Flight",
+  "profiler": {
+    "word_count": 1039,
+    "unique_word_count": 329,
+    "evp_coverage_pct": 88.4,
+    "level_distribution": {
+      "A1": 202,
+      "A2": 57,
+      "B1": 25,
+      "B2": 7,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 61.4,
+      "A2": 78.7,
+      "B1": 86.3,
+      "B2": 88.4,
+      "C1": 88.4,
+      "C2": 88.4
+    },
+    "cognate_count": 54,
+    "cognate_pct": 16.4,
+    "false_friend_count": 0,
+    "off_list_count": 38,
+    "off_list_pct": 11.6,
+    "vocab_difficulty_raw": 1.44,
+    "vocab_difficulty_adjusted": 1.39,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Pre-Last-Minute Flight",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "on file",
+          "I'm screwed",
+          "packed light",
+          "safe and sound",
+          "makes sense"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "future with will/going to",
+          "basic modals (can, must, would)",
+          "first conditional",
+          "reported speech"
+        ],
+        "notes": "Dominated by simple tenses in a dialogue format. A few instances of basic modals and conditionals. Reported speech and concessive clauses appear rarely at the end."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "airport security procedures (laptops in bins, liquid limits)",
+          "Rihanna",
+          "Casco Viejo",
+          "Panamanian return ticket law"
+        ],
+        "notes": "Airport security norms are relatively universal but specific to modern aviation. Pop culture and geographic references are easily understood from context."
+      },
+      "sentence_structure": {
+        "score": 1,
+        "avg_sentence_length": 8,
+        "notes": "Short, conversational exchanges typical of a dialogue. Mostly subject-verb-object. Very few complex sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": []
+      }
+    },
+    "overall_difficulty": 1.67,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.39,
+      "evp_coverage_pct": 88.4,
+      "cognate_pct": 16.4,
+      "off_list_pct": 11.6
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.67,
+    "estimated_cefr": "A2"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "story_title": "First Review",
+  "profiler": {
+    "word_count": 1146,
+    "unique_word_count": 374,
+    "evp_coverage_pct": 90.6,
+    "level_distribution": {
+      "A1": 237,
+      "A2": 63,
+      "B1": 33,
+      "B2": 5,
+      "C1": 1,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 63.4,
+      "A2": 80.2,
+      "B1": 89.0,
+      "B2": 90.4,
+      "C1": 90.6,
+      "C2": 90.6
+    },
+    "cognate_count": 52,
+    "cognate_pct": 13.9,
+    "false_friend_count": 3,
+    "off_list_count": 35,
+    "off_list_pct": 9.4,
+    "vocab_difficulty_raw": 1.44,
+    "vocab_difficulty_adjusted": 1.71,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "First Review",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 2,
+        "items_found": [
+          "get off to a great start",
+          "side of the story",
+          "kept my cool",
+          "sort out",
+          "I was spent",
+          "deal with"
+        ],
+        "count": 5
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple (dominant)",
+          "past perfect (had bought, had forgotten, hadn't been able)",
+          "present continuous (I'm wondering, I'm about to go)",
+          "present perfect (has left)",
+          "would for future-in-past (would make money, would take care)",
+          "modals (can, will, would)",
+          "passive voice (were taken care of, is designed)",
+          "reported speech",
+          "first conditional (if there is any water damage...you will be paying)",
+          "relative clauses (who promised me, who had left the tap)"
+        ],
+        "notes": "Dominated by past simple with regular use of past perfect and reported speech throughout. Subordinate clauses appear frequently. Conditional and passive structures appear but are not dominant. A solid level 3: mixed simple and complex structures with complex forms as a noticeable minority."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Airbnb hosting/platform culture",
+          "Carulla (Colombian grocery chain)",
+          "Bogotá street references (Caracas and 63)",
+          "Cartagena",
+          "laundromat concept",
+          "building rules regarding sex workers"
+        ],
+        "notes": "Set in Colombia with locations and brands a Latin American learner would recognize. Airbnb is globally known. The laundromat concept is slightly North American but understandable from context. Light cultural references that do not impede comprehension."
+      },
+      "sentence_structure": {
+        "score": 3,
+        "avg_sentence_length": 17,
+        "notes": "Mix of short dialogue exchanges and moderate-to-long narrative sentences. Some compound and complex sentences with subordinate clauses. Narrative sentences average 15-25 words while dialogue lines are shorter, balancing out to a moderate overall length."
+      },
+      "false_friend_assessment": {
+        "modifier": 0,
+        "items": [
+          {
+            "word": "grocery",
+            "context": "Where is the nearest grocery store?",
+            "is_trap_active": false,
+            "reason": "Context of buying food and 'grocery store' makes the meaning clear despite similarity to 'grosería.' A Spanish speaker may pause but context resolves it quickly."
+          },
+          {
+            "word": "realize",
+            "context": "you made me realize that I didn't buy any for the apartment",
+            "is_trap_active": true,
+            "reason": "Spanish 'realizar' means 'to carry out/perform.' In this sentence, a Spanish speaker could initially misread 'realize' as 'carry out,' though the context of becoming aware of a mistake somewhat clarifies it."
+          },
+          {
+            "word": "soap",
+            "context": "I just turned on the sink and put my clothes and the soap in it",
+            "is_trap_active": true,
+            "reason": "Spanish 'sopa' means 'soup.' A Spanish speaker reading 'put my clothes and the soap in it' alongside a sink could be genuinely confused—putting soup in a sink with clothes sounds absurd, which might actually help them infer the correct meaning, but the initial confusion is real."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.26,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.71",
+      "evp_coverage_pct": "90.6",
+      "cognate_pct": "13.9",
+      "off_list_pct": "9.4"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.26,
+    "estimated_cefr": "A2/B1"
+  }
+}

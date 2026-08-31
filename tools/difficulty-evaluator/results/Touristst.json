@@ -1,0 +1,122 @@
+{
+  "story_title": "Touristst",
+  "profiler": {
+    "word_count": 742,
+    "unique_word_count": 319,
+    "evp_coverage_pct": 84.6,
+    "level_distribution": {
+      "A1": 204,
+      "A2": 43,
+      "B1": 17,
+      "B2": 6,
+      "C1": 0,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 63.9,
+      "A2": 77.4,
+      "B1": 82.8,
+      "B2": 84.6,
+      "C1": 84.6,
+      "C2": 84.6
+    },
+    "cognate_count": 56,
+    "cognate_pct": 17.6,
+    "false_friend_count": 2,
+    "off_list_count": 49,
+    "off_list_pct": 15.4,
+    "vocab_difficulty_raw": 1.35,
+    "vocab_difficulty_adjusted": 1.49,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Touristst",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "check out",
+          "drop off",
+          "fawned over",
+          "twiddled her thumbs",
+          "bored out of her tree",
+          "behind our backs",
+          "shitfaced",
+          "making a ruckus",
+          "pay their respects",
+          "show us around",
+          "go off on your own"
+        ],
+        "count": 11
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "past simple",
+          "present simple",
+          "present continuous",
+          "going to future",
+          "past continuous",
+          "past perfect passive (had been marked)",
+          "modal perfect (may have been born)",
+          "reported speech (asked if I could go)",
+          "so...that construction",
+          "non-defining relative clause (which seemed strange)",
+          "passive gerund (after being invited)"
+        ],
+        "notes": "Dominated by simple past and present simple, especially in dialogue. Complex structures appear occasionally (passive gerund, past perfect passive, modal perfect, so...that) but are not frequent enough to constitute a noticeable minority of sentences."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Day of the Dead (Día de los Muertos)",
+          "Guanajuato, Mexico",
+          "chile en nogada",
+          "agua de jamaica",
+          "pan de muerto",
+          "tamales",
+          "Virgen de Guadalupe",
+          "Katerina/Catrina skull",
+          "Instagram",
+          "EDM festival"
+        ],
+        "notes": "The entire cultural setting is Mexican/Latin American. A Latin American learner would recognize all cultural references including Day of the Dead, Mexican foods, and the Virgen de Guadalupe. No unfamiliar North American customs."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 13,
+        "notes": "Short to moderate sentences throughout. Dialogue lines are very short (often 2-6 words). Narrative sentences are moderate with some conjunctions. No long multi-clause sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "once",
+            "context": "Gabby didn't complain once the entire time",
+            "is_trap_active": false,
+            "reason": "Spanish speaker might initially think 'eleven' but 'didn't complain eleven the entire time' makes no sense, so context immediately disambiguates. Not a persistent trap."
+          },
+          {
+            "word": "respect",
+            "context": "they pay respect to their ancestors",
+            "is_trap_active": false,
+            "reason": "English 'respect' (esteem) maps to Spanish 'respeto' (esteem), which is the same meaning. The false friend 'respecto' (regarding) is a different word. No confusion in this context."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.0,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.49",
+      "evp_coverage_pct": "84.6",
+      "cognate_pct": "17.6",
+      "off_list_pct": "15.4"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.0,
+    "estimated_cefr": "A2/B1"
+  }
+}

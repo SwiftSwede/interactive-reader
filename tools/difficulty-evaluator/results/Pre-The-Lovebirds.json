@@ -1,0 +1,124 @@
+{
+  "story_title": "Pre-The Lovebirds",
+  "profiler": {
+    "word_count": 1237,
+    "unique_word_count": 449,
+    "evp_coverage_pct": 87.1,
+    "level_distribution": {
+      "A1": 283,
+      "A2": 62,
+      "B1": 29,
+      "B2": 15,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 63.0,
+      "A2": 76.8,
+      "B1": 83.3,
+      "B2": 86.6,
+      "C1": 87.1,
+      "C2": 87.1
+    },
+    "cognate_count": 74,
+    "cognate_pct": 16.5,
+    "false_friend_count": 3,
+    "off_list_count": 58,
+    "off_list_pct": 12.9,
+    "vocab_difficulty_raw": 1.44,
+    "vocab_difficulty_adjusted": 1.68,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Pre-The Lovebirds",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "look it up",
+          "try it out",
+          "passed out",
+          "dig in",
+          "make due (do)",
+          "getting started",
+          "follow your lead",
+          "make out",
+          "fifth wheel",
+          "lovey-dovey",
+          "early bird",
+          "bound to be up"
+        ],
+        "count": 12
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "first conditional",
+          "basic modals (can, should, would)",
+          "relative clauses (who, that)"
+        ],
+        "notes": "Dominated by simple tenses and conversational structures. A few instances of basic modals and relative clauses, but complex structures are rare."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "Valentine's Day",
+          "breakfast in bed",
+          "Taylor Swift",
+          "Instagram reel",
+          "Google",
+          "Amazon",
+          "this side of the Mississippi",
+          "Disney Hotel",
+          "Mexican motels (cultural difference)"
+        ],
+        "notes": "Mostly global pop culture and tech references. The 'motel' cultural difference is actually aimed at the US character, so a LatAm learner will understand it perfectly. 'This side of the Mississippi' is a minor US geography reference but clear from context."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 10,
+        "notes": "Dialogue format with short, conversational sentences. Mostly subject-verb-object with some simple compound sentences."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "dessert",
+            "context": "Can I get a taste of dessert before I start?",
+            "is_trap_active": false,
+            "reason": "Context of eating breakfast makes the meaning clear, though 'desierto' is a common false friend."
+          },
+          {
+            "word": "grocery",
+            "context": "the grocery store ran out of oranges",
+            "is_trap_active": false,
+            "reason": "Context of buying oranges makes it clear it refers to a store, not 'grosería' (rudeness)."
+          },
+          {
+            "word": "theme",
+            "context": "Is that an Egyptian theme?",
+            "is_trap_active": false,
+            "reason": "'Tema' in Spanish can also mean theme or motif, so it functions more as a cognate here."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.2,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": 1.68,
+      "evp_coverage_pct": 87.1,
+      "cognate_pct": 16.5,
+      "off_list_pct": 12.9
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.2,
+    "estimated_cefr": "A2/B1"
+  }
+}

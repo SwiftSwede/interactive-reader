@@ -1,0 +1,106 @@
+{
+  "story_title": "Pre-Good Price",
+  "profiler": {
+    "word_count": 1251,
+    "unique_word_count": 375,
+    "evp_coverage_pct": 86.1,
+    "level_distribution": {
+      "A1": 239,
+      "A2": 44,
+      "B1": 19,
+      "B2": 16,
+      "C1": 5,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 63.7,
+      "A2": 75.5,
+      "B1": 80.5,
+      "B2": 84.8,
+      "C1": 86.1,
+      "C2": 86.1
+    },
+    "cognate_count": 47,
+    "cognate_pct": 12.5,
+    "false_friend_count": 1,
+    "off_list_count": 52,
+    "off_list_pct": 13.9,
+    "vocab_difficulty_raw": 1.46,
+    "vocab_difficulty_adjusted": 1.51,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Pre-Good Price",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "take no for an answer",
+          "get lost",
+          "read my lips",
+          "watch my back",
+          "rip you off",
+          "give him shit",
+          "pissed off",
+          "creeped out"
+        ],
+        "count": 8
+      },
+      "grammatical_complexity": {
+        "score": 2,
+        "tenses_found": [
+          "present simple",
+          "present continuous",
+          "past simple",
+          "going to future (gonna)",
+          "would (wouldn't take)",
+          "could have (could've)",
+          "second conditional (if I had to choose... I'd choose)",
+          "basic modals (can, should)"
+        ],
+        "notes": "Dominated by present simple and going-to future in conversational dialogue. One second conditional and one modal perfect appear but are isolated occurrences. Mostly simple sentence structures."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "USA-Mexico border crossing",
+          "Mexican market haggling culture",
+          "pesos",
+          "breakfast burritos",
+          "flip flop threat (chancleta)",
+          "Americans/Canadians as tourists in Mexico"
+        ],
+        "notes": "The entire setting—a Mexican border market with aggressive sellers—is highly familiar to Latin American learners. The flip-flop threat, haggling norms, and tourist dynamics are part of everyday LatAm cultural knowledge."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "Dialogue format with many very short exchanges ('No.' 'Exactly.' 'What?'). A few longer compound sentences with subordinate clauses, but the average remains moderate. Conversational style throughout."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "grocery",
+            "context": "much cheaper than in the grocery stores in Arizona",
+            "is_trap_active": false,
+            "reason": "The word appears in the phrase 'grocery stores,' which makes it clear this refers to a type of store/shop. The Spanish false friend 'grosería' (rudeness) would not fit the context at all, so confusion is very unlikely."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 1.8,
+    "estimated_cefr": "A2",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.51",
+      "evp_coverage_pct": "86.1",
+      "cognate_pct": "12.5",
+      "off_list_pct": "13.9"
+    }
+  },
+  "final": {
+    "overall_difficulty": 1.8,
+    "estimated_cefr": "A2"
+  }
+}

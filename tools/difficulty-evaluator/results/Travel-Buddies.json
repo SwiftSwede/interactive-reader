@@ -1,0 +1,111 @@
+{
+  "story_title": "Travel Buddies (2)",
+  "profiler": {
+    "word_count": 1180,
+    "unique_word_count": 429,
+    "evp_coverage_pct": 86.7,
+    "level_distribution": {
+      "A1": 271,
+      "A2": 66,
+      "B1": 25,
+      "B2": 8,
+      "C1": 2,
+      "C2": 0
+    },
+    "cumulative_pct": {
+      "A1": 63.2,
+      "A2": 78.6,
+      "B1": 84.4,
+      "B2": 86.2,
+      "C1": 86.7,
+      "C2": 86.7
+    },
+    "cognate_count": 66,
+    "cognate_pct": 15.4,
+    "false_friend_count": 1,
+    "off_list_count": 57,
+    "off_list_pct": 13.3,
+    "vocab_difficulty_raw": 1.4,
+    "vocab_difficulty_adjusted": 1.46,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Travel Buddies (2)",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "first things first",
+          "caught dead (can't be caught dead in)",
+          "get some action",
+          "chat up",
+          "down for (girls who are down for)",
+          "out like a light",
+          "full blast",
+          "grub (slang for food)",
+          "pad (slang for apartment)",
+          "playing around (joking)",
+          "sick party (slang for awesome)"
+        ],
+        "count": 11
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "going to future",
+          "present perfect continuous (We've been planning)",
+          "present perfect (has already come back)",
+          "past continuous (were you talking)",
+          "first conditional (If I go... how am I gonna)",
+          "reported speech (I thought you were joking)",
+          "modals (can, should, must, would)"
+        ],
+        "notes": "The text is mostly conversational and uses simple tenses, but includes a noticeable minority of sentences with present perfect, past continuous, conditionals, and reported speech."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Cusco, Machu Picchu, Peru",
+          "guinea pig (cuy)",
+          "ayahuasca ceremony",
+          "Eat, Pray and Love",
+          "reggaeton",
+          "hostel parties / backpackers"
+        ],
+        "notes": "The setting is in Latin America (Peru) and references local customs (cuy, ayahuasca, Machu Picchu) that a Latin American learner would recognize. Pop culture references are globally known."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 14,
+        "notes": "As a dialogue, the text consists mostly of short, conversational sentences with some compound and complex sentences mixed in."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "actually",
+            "context": "You actually wanna do that? I thought you were joking.",
+            "is_trap_active": false,
+            "reason": "The contrast with 'I thought you were joking' makes it clear that 'actually' means 'really' or 'in fact', neutralizing the confusion with the Spanish 'actualmente' (currently)."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.19,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.46",
+      "evp_coverage_pct": "86.7",
+      "cognate_pct": "15.4",
+      "off_list_pct": "13.3"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.19,
+    "estimated_cefr": "A2/B1"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "story_title": "Athletic Failure",
+  "profiler": {
+    "word_count": 1022,
+    "unique_word_count": 361,
+    "evp_coverage_pct": 91.7,
+    "level_distribution": {
+      "A1": 234,
+      "A2": 55,
+      "B1": 33,
+      "B2": 7,
+      "C1": 1,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 64.8,
+      "A2": 80.1,
+      "B1": 89.2,
+      "B2": 91.1,
+      "C1": 91.4,
+      "C2": 91.7
+    },
+    "cognate_count": 58,
+    "cognate_pct": 16.1,
+    "false_friend_count": 4,
+    "off_list_count": 30,
+    "off_list_pct": 8.3,
+    "vocab_difficulty_raw": 1.46,
+    "vocab_difficulty_adjusted": 1.82,
+    "estimated_cefr": "B2"
+  },
+  "rubric": {
+    "story_title": "Athletic Failure",
+    "content_type": "story",
+    "dimensions": {
+      "idiom_density": {
+        "score": 3,
+        "items_found": [
+          "out of place",
+          "fed up with",
+          "give up",
+          "get in the way",
+          "keep up with",
+          "stick to",
+          "hang out"
+        ],
+        "count": 7
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "past simple",
+          "past continuous",
+          "past perfect",
+          "present simple",
+          "present perfect",
+          "mixed conditional"
+        ],
+        "notes": "Dominated by past simple, but includes noticeable instances of past continuous, past perfect, and a mixed conditional ('If it weren't for me, my team would've won')."
+      },
+      "cultural_reference_load": {
+        "score": 2,
+        "references_found": [
+          "freshman year of high school",
+          "Los Angeles Angels in the Major Leagues",
+          "Baja California del Sur"
+        ],
+        "notes": "Mostly universal sports and school settings. 'Freshman year' is US-specific but easily understood from context. Baseball and Mexican geography are familiar to LatAm learners."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 11,
+        "notes": "Mostly short to moderate sentences with straightforward subject-verb-object patterns. Occasional compound sentences and basic subordinate clauses."
+      },
+      "false_friend_assessment": {
+        "modifier": 1,
+        "items": [
+          {
+            "word": "embarrassed",
+            "context": "I felt embarrassed and hurt",
+            "is_trap_active": true,
+            "reason": "Spanish 'embarazada' means pregnant, which is a classic and highly confusing false friend in this emotional context."
+          },
+          {
+            "word": "once",
+            "context": "Once again, the other students laughed.",
+            "is_trap_active": true,
+            "reason": "Spanish 'once' means eleven. A learner might briefly stumble on this adverbial usage."
+          },
+          {
+            "word": "prove",
+            "context": "I felt confident that I would prove that I could be good at a sport.",
+            "is_trap_active": true,
+            "reason": "Spanish 'probar' primarily means to try or taste, though it can mean prove. The context makes it somewhat clear, but the trap is partially active."
+          },
+          {
+            "word": "success",
+            "context": "I've had the success that I've had.",
+            "is_trap_active": true,
+            "reason": "Spanish 'suceso' means an event or occurrence, not achievement. The context clarifies it, but the lexical mismatch is a trap."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.45,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.82",
+      "evp_coverage_pct": "91.7",
+      "cognate_pct": "16.1",
+      "off_list_pct": "8.3"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.45,
+    "estimated_cefr": "A2/B1"
+  }
+}
