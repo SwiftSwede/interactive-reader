@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
+import { Play, Pause, SkipBack, SkipForward, Gauge } from "lucide-react";
 import { usePlaybackRate } from "./PlaybackRateContext";
 
 // ── Types ──────────────────────────────────────────────────
@@ -101,7 +102,8 @@ function StickyNowPlaying({
             onClick={() => onSkip(-10)}
             aria-label="Retroceder 10 segundos"
           >
-            «10s
+            <SkipBack size={16} aria-hidden="true" />
+            <span className="text-[11px]">10s</span>
           </button>
           <button
             onClick={onToggle}
@@ -110,14 +112,9 @@ function StickyNowPlaying({
             type="button"
           >
             {isPlaying ? (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <rect x="6" y="5" width="4" height="14" rx="1" />
-                <rect x="14" y="5" width="4" height="14" rx="1" />
-              </svg>
+              <Pause size={16} aria-hidden="true" />
             ) : (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M8 5v14l11-7z" />
-              </svg>
+              <Play size={16} aria-hidden="true" />
             )}
           </button>
           <button
@@ -126,7 +123,8 @@ function StickyNowPlaying({
             onClick={() => onSkip(10)}
             aria-label="Adelantar 10 segundos"
           >
-            10s»
+            <span className="text-[11px]">10s</span>
+            <SkipForward size={16} aria-hidden="true" />
           </button>
           <button
             type="button"
@@ -134,7 +132,8 @@ function StickyNowPlaying({
             onClick={onToggleSpeed}
             aria-label={`Velocidad ${rate}x`}
           >
-            {rate}x
+            <Gauge size={16} aria-hidden="true" />
+            <span className="text-[11px]">{rate}x</span>
           </button>
           <span className="sticky-audio-player-time">{formatTime(currentTime)}</span>
         </div>
@@ -295,66 +294,69 @@ export default function StoryAudioPlayer({
   const speedLabel = rate === 1 ? "1x" : "0.75x";
 
   return (
-    <div className="mb-6 rounded-lg bg-blue-50 border border-blue-100 px-4 py-4">
+    <div className="mb-6 rounded-card bg-audio-bg border border-audio-border px-4 py-4">
       <audio
         ref={audioRef}
         src={audioUrl}
         preload="metadata"
       />
 
-      <div className="flex items-center gap-2">
-        <button
-          type="button"
-          className="audio-skip-btn"
-          onClick={() => handleSkip(-10)}
-          aria-label="Retroceder 10 segundos"
-        >
-          «10s
-        </button>
-        <button
-          onClick={handleToggle}
-          className="flex items-center justify-center w-14 h-14 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors flex-shrink-0 shadow-sm"
-          aria-label={isPlaying ? "Pausar" : "Reproducir"}
-          type="button"
-        >
-          {isPlaying ? (
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1" /><rect x="14" y="5" width="4" height="14" rx="1" /></svg>
-          ) : (
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
-          )}
-        </button>
-        <button
-          type="button"
-          className="audio-skip-btn"
-          onClick={() => handleSkip(10)}
-          aria-label="Adelantar 10 segundos"
-        >
-          10s»
-        </button>
-
-        <div className="flex flex-col flex-1 gap-1 min-w-0">
-          <span className="text-sm font-medium text-blue-900">
+      <div className="flex flex-col gap-2">
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            className="audio-skip-btn"
+            onClick={() => handleSkip(-10)}
+            aria-label="Retroceder 10 segundos"
+          >
+            <SkipBack size={16} aria-hidden="true" />
+            <span className="text-[11px]">10s</span>
+          </button>
+          <button
+            onClick={handleToggle}
+            className="flex items-center justify-center w-12 h-12 rounded-full bg-accent text-white hover:bg-accent-hover transition-colors flex-shrink-0"
+            aria-label={isPlaying ? "Pausar" : "Reproducir"}
+            type="button"
+          >
+            {isPlaying ? (
+              <Pause size={20} aria-hidden="true" />
+            ) : (
+              <Play size={20} aria-hidden="true" />
+            )}
+          </button>
+          <button
+            type="button"
+            className="audio-skip-btn"
+            onClick={() => handleSkip(10)}
+            aria-label="Adelantar 10 segundos"
+          >
+            <span className="text-[11px]">10s</span>
+            <SkipForward size={16} aria-hidden="true" />
+          </button>
+          {/* Status text is the flexible spacer on wider screens. At 375px the
+              controls need the room, so only the spacer remains. */}
+          <span className="hidden sm:block flex-1 min-w-0 truncate text-label-md text-text-accent">
             {isPlaying ? "Escuchando..." : "Lee y escucha"}
           </span>
-          <SeekBar
-            currentTime={currentTime}
-            duration={duration}
-            onSeek={applyTime}
-          />
+          <span className="flex-1 sm:hidden" aria-hidden="true" />
+          <button
+            type="button"
+            className="audio-speed-btn"
+            onClick={toggleSpeed}
+            aria-label={`Velocidad ${speedLabel}`}
+          >
+            <Gauge size={16} aria-hidden="true" />
+            <span className="text-[11px]">{speedLabel}</span>
+          </button>
+          <span className="text-label-sm text-text-muted tabular-nums flex-shrink-0">
+            {formatTime(currentTime)} / {formatTime(duration)}
+          </span>
         </div>
-
-        <button
-          type="button"
-          className="audio-speed-btn"
-          onClick={toggleSpeed}
-          aria-label={`Velocidad ${speedLabel}`}
-        >
-          {speedLabel}
-        </button>
-
-        <span className="text-xs text-blue-400 tabular-nums flex-shrink-0">
-          {formatTime(currentTime)} / {formatTime(duration)}
-        </span>
+        <SeekBar
+          currentTime={currentTime}
+          duration={duration}
+          onSeek={applyTime}
+        />
       </div>
 
       {hasStarted
