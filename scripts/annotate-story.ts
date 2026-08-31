@@ -2,13 +2,16 @@
 // word-by-word translations (LatAm Spanish), IPA transcriptions,
 // and multi-word expression grouping.
 //
-// Run with: npx tsx scripts/annotate-story.ts
+// Usage:
+//   npx tsx scripts/annotate-story.ts --slug flustered-and-driving
 //
-// Uses OpenRouter API to call Claude Sonnet.
+// Fetches the story from Supabase by slug, splits the body into paragraphs,
+// sends each paragraph to Claude Sonnet via OpenRouter, and inserts
+// word-by-word translations (LatAm Spanish), IPA transcriptions, and
+// multi-word expression groupings.
 
-// Load environment variables from .env.local
 import { config } from "dotenv";
-config({ path: ".env.local" });
+config({ path: ".env.local", override: true });
 
 import { createClient } from "@supabase/supabase-js";
 import { WebSocket } from "ws";
@@ -35,7 +38,18 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
   realtime: { transport: WebSocket as any },
 });
 
-const STORY_SLUG = "the-soccer-jersey";
+// ── Parse CLI args ─────────────────────────────────────────
+
+function parseSlug(): string {
+  const args = process.argv.slice(2);
+  const idx = args.indexOf("--slug");
+  if (idx >= 0 && args[idx + 1]) return args[idx + 1];
+  console.error("Usage: npx tsx scripts/annotate-story.ts --slug <slug>");
+  console.error("Example: npx tsx scripts/annotate-story.ts --slug flustered-and-driving");
+  process.exit(1);
+}
+
+const STORY_SLUG = parseSlug();
 
 // ── The LLM Prompt ─────────────────────────────────────────
 
@@ -318,7 +332,7 @@ async function main() {
     .from("stories")
     .select("*")
     .eq("slug", STORY_SLUG)
-    .single();
+    .maybeSingle();
 
   if (error || !story) {
     console.error("Story not found:", error);

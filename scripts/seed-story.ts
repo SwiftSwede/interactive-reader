@@ -1,23 +1,35 @@
-// Seed script: inserts The Soccer Jersey story into Supabase
-// Run with: npx tsx scripts/seed-story.ts
+// Seed script: inserts a story from the Obsidian vault into Supabase.
 //
-// This script reads the story markdown from the Obsidian vault,
-// parses it, and inserts the story + comprehension questions +
-// personal questions + pronunciation drill into the database.
+// Usage:
+//   npx tsx scripts/seed-story.ts --slug flustered-and-driving --file "pre-int stories/Pre-Flustered-and-Driving.md"
+//
+// If --file is omitted, the script tries to resolve it from the slug:
+//   flustered-and-driving → searches pre-int stories/ and int stories/ for *Flustered-and-Driving.md
+//
+// If --slug is omitted, it's derived from --file:
+//   Pre-Flustered-and-Driving.md → flustered-and-driving
+//
+// Flags:
+//   --slug <slug>         URL-safe slug for the story (default: derived from filename)
+//   --file <path>         Path relative to vault raw/stories/ folder, or absolute path
+//   --free                Mark as free story (default: false)
+//   --level <level>       Override level (default: from frontmatter)
+//   --no-answers          Skip AI answer generation for answerless comprehension questions
+//
+// For pre-intermediate stories with comprehension questions that have no answers,
+// the script calls Claude Sonnet via OpenRouter to generate factual answers.
+// This only runs when needed (questions parsed without answers).
 
-// Load environment variables from .env.local
 import { config } from "dotenv";
-config({ path: ".env.local" });
+config({ path: ".env.local", override: true });
 
 import { createClient } from "@supabase/supabase-js";
-import { readFileSync } from "fs";
+import { readFileSync, existsSync } from "fs";
 import { WebSocket } from "ws";
 import { stripStressMarks } from "../src/lib/pronunciation/referenceText";
 
 // ── Config ─────────────────────────────────────────────────
 
-// Use the secret key for seeding (bypasses RLS, allows inserts)
-// Set SUPABASE_SECRET_KEY in .env.local (from Supabase Dashboard > Settings > API Keys > secret key)
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const SUPABASE_KEY = process.env.SUPABASE_SECRET_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
@@ -31,8 +43,72 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
   realtime: { transport: WebSocket as any },
 });
 
-const STORY_FILE_PATH =
-  "/Users/kylote/Documents/Obsidian Vault/Language-Wiki/raw/stories/pre-int stories/Pre-The-Soccer-Jersey.md";
+const VAULT_BASE = "/Users/kylote/Documents/Obsidian Vault/Language-Wiki/raw/stories";
+
+// ── Parse CLI args ─────────────────────────────────────────
+
+function parseArgs() {
+  const args = process.argv.slice(2);
+  const get = (flag: string): string | null => {
+    const idx = args.indexOf(flag);
+    return idx >= 0 && args[idx + 1] ? args[idx + 1] : null;
+  };
+  const has = (flag: string): boolean => args.includes(flag);
+
+  let slug = get("--slug");
+  let file = get("--file");
+  const isFree = has("--free");
+  const levelOverride = get("--level");
+  const skipAnswers = has("--no-answers");
+
+  // Derive slug from file if not provided
+  if (!slug && file) {
+    const basename = file.split("/").pop()!.replace(/\.md$/, "");
+    slug = basename
+      .replace(/^Pre-/, "")
+      .replace(/^Int-/, "")
+      .replace(/\s+/g, "-")
+      .replace(/[^a-zA-Z0-9-]/g, "")
+      .toLowerCase();
+  }
+
+  // Try to resolve file from slug if not provided
+  if (!file && slug) {
+    const caps = slug
+      .split("-")
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join("-");
+    const candidates = [
+      `${VAULT_BASE}/pre-int stories/Pre-${caps}.md`,
+      `${VAULT_BASE}/int stories/Int-${caps}.md`,
+      `${VAULT_BASE}/int stories/${caps}.md`,
+      `${VAULT_BASE}/pre-int stories/${caps}.md`,
+    ];
+    for (const c of candidates) {
+      if (existsSync(c)) {
+        file = c;
+        break;
+      }
+    }
+  }
+
+  // Resolve relative file path to absolute
+  if (file && !file.startsWith("/")) {
+    file = `${VAULT_BASE}/${file}`;
+  }
+
+  if (!slug) {
+    console.error("Could not determine slug. Use --slug <slug> or --file <path>");
+    process.exit(1);
+  }
+  if (!file || !existsSync(file)) {
+    console.error(`Could not find story file. Resolved: ${file}`);
+    console.error(`Use --file "pre-int stories/Pre-Story-Name.md" or provide an absolute path.`);
+    process.exit(1);
+  }
+
+  return { slug, file, isFree, levelOverride, skipAnswers };
+}
 
 // ── Parse the story markdown ───────────────────────────────
 
@@ -46,36 +122,42 @@ function parseStoryMarkdown(markdown: string) {
     const fmText = frontmatterMatch[1];
     for (const line of fmText.split("\n")) {
       const match = line.match(/^(\w+):\s*(.+)/);
-      if (match) frontmatter[match[1]] = match[2].trim();
+      if (match) frontmatter[match[1]] = match[2].trim().replace(/^"(.*)"$/, "$1");
     }
   }
 
-  // Find the story body (between the # Title line and —The End—)
+  // Find the story body (between the # Title line and —The End— or —THE END—)
   const bodyStart = lines.findIndex((l) => l.startsWith("# "));
-  const endIdx = lines.findIndex((l) => l.trim() === "—The End—");
+  const endIdx = lines.findIndex((l) => {
+    const trimmed = l.trim();
+    return trimmed === "—The End—" || trimmed === "—THE END—";
+  });
 
   let bodyLines: string[] = [];
   if (bodyStart >= 0 && endIdx >= 0) {
-    // Skip the title line and the blank line after it
     bodyLines = lines.slice(bodyStart + 1, endIdx).filter((l) => {
-      // Skip the duplicate title line (e.g., "The Soccer Jersey" appears twice)
       return l.trim() !== frontmatter.title;
     });
   }
 
-  // Clean up the body: remove leading/trailing blank lines, preserve paragraph breaks
   let bodyText = bodyLines.join("\n").trim();
 
   // Find comprehension questions
-  const compStart = lines.findIndex((l) => l.trim() === "Comprehension Questions");
-  const compEnd = lines.findIndex((l) => l.trim() === "Personal Questions");
+  // Handle both "Comprehension Questions" and "Comprehension questions"
+  const compHeaderIdx = lines.findIndex((l) => {
+    const t = l.trim().toLowerCase();
+    return t === "comprehension questions" || t === "comprensión";
+  });
+  const persHeaderIdx = lines.findIndex((l) => {
+    const t = l.trim().toLowerCase();
+    return t === "personal questions" || t === "preguntas personales";
+  });
 
   const comprehensionQuestions: { question: string; answer: string | null }[] = [];
-  if (compStart >= 0 && compEnd >= 0) {
-    const compLines = lines.slice(compStart + 1, compEnd).filter((l) => l.trim());
+  if (compHeaderIdx >= 0) {
+    const endIdx2 = persHeaderIdx >= 0 ? persHeaderIdx : lines.length;
+    const compLines = lines.slice(compHeaderIdx + 1, endIdx2).filter((l) => l.trim());
     for (const line of compLines) {
-      // Questions end with "?" and answers follow on the same line or next line
-      // Format: "Question? Answer." or "Question? Answer"
       const match = line.match(/^(.+?\?)\s+(.+)$/);
       if (match) {
         comprehensionQuestions.push({
@@ -92,38 +174,63 @@ function parseStoryMarkdown(markdown: string) {
   }
 
   // Find personal questions
-  const persStart = lines.findIndex((l) => l.trim() === "Personal Questions");
-  const pronStart = lines.findIndex((l) => l.trim() === "Extreme Pronunciation");
+  const pronHeaderIdx = lines.findIndex((l) => {
+    const t = l.trim().toLowerCase();
+    return t === "extreme pronunciation" || t === "pronunciación extrema";
+  });
 
   const personalQuestions: string[] = [];
-  if (persStart >= 0 && pronStart >= 0) {
-    const persLines = lines.slice(persStart + 1, pronStart).filter((l) => l.trim());
+  if (persHeaderIdx >= 0) {
+    const endIdx3 = pronHeaderIdx >= 0 ? pronHeaderIdx : lines.length;
+    const persLines = lines.slice(persHeaderIdx + 1, endIdx3).filter((l) => l.trim());
     for (const line of persLines) {
       if (line.trim()) personalQuestions.push(line.trim());
     }
   }
 
   // Find extreme pronunciation block
-  const extremePronStart = lines.findIndex((l) => l.trim() === "Extreme Pronunciation");
-  const practicaCoralIdx = lines.findIndex((l) => l.trim() === "Práctica Coral");
+  const practicaCoralIdx = lines.findIndex((l) => {
+    const t = l.trim().toLowerCase();
+    return t === "práctica coral" || t === "practica coral";
+  });
 
-  // Extract symbol legend (everything between "Extreme Pronunciation" and "Práctica Coral")
   let symbolLegend = "";
-  if (extremePronStart >= 0 && practicaCoralIdx >= 0) {
-    const legendLines = lines.slice(extremePronStart + 1, practicaCoralIdx).filter((l) => l.trim());
+  if (pronHeaderIdx >= 0 && practicaCoralIdx >= 0) {
+    const legendLines = lines.slice(pronHeaderIdx + 1, practicaCoralIdx).filter((l) => l.trim());
     symbolLegend = legendLines.join("\n").trim();
   }
 
+  // Detect focus type from the pronunciation block content
+  let focusType: "sounds" | "ed-s-rules" | "emphasized-syllable" = "sounds";
+  const legendLower = symbolLegend.toLowerCase();
+  if (legendLower.includes("-ed") && legendLower.includes("-s")) {
+    focusType = "ed-s-rules";
+  } else if (legendLower.includes("emphasized") || legendLower.includes("stressed") || legendLower.includes("syllable")) {
+    focusType = "emphasized-syllable";
+  }
+
   // Extract Práctica Coral sentences
+  // The standard text and phonetic respelling may be separated by blank lines.
+  // Collect the first two non-empty lines after the header.
   let practicaCoralStandard = "";
   let practicaCoralPhonetic = "";
   if (practicaCoralIdx >= 0) {
-    const coralLines = lines.slice(practicaCoralIdx + 1).filter((l) => l.trim());
+    const coralLines: string[] = [];
+    for (let i = practicaCoralIdx + 1; i < lines.length; i++) {
+      const t = lines[i].trim();
+      if (!t) continue; // skip blank lines, don't break
+      // Skip timestamps, student names, or other trailing data
+      if (/^\d+:\d+$/.test(t)) continue;
+      if (/^[A-Z][a-z]+-\d/.test(t)) continue; // e.g. "Gina-3:50"
+      coralLines.push(t);
+      if (coralLines.length >= 2) break; // we have standard + phonetic
+    }
     if (coralLines.length >= 2) {
-      practicaCoralStandard = stripStressMarks(coralLines[0].trim());
-      practicaCoralPhonetic = coralLines[1].trim();
+      practicaCoralStandard = stripStressMarks(coralLines[0]);
+      practicaCoralPhonetic = coralLines[1];
     } else if (coralLines.length === 1) {
-      practicaCoralStandard = stripStressMarks(coralLines[0].trim());
+      practicaCoralStandard = stripStressMarks(coralLines[0]);
+      practicaCoralPhonetic = ""; // empty string, not null
     }
   }
 
@@ -136,45 +243,171 @@ function parseStoryMarkdown(markdown: string) {
     personalQuestions,
     pronunciationDrill: {
       symbolLegend,
-      focusType: "sounds" as const,
-      focusContent: symbolLegend, // For this story, the focus is the sounds legend
+      focusType,
+      focusContent: symbolLegend,
       practicaCoralStandard,
       practicaCoralPhonetic,
     },
   };
 }
 
+// ── AI answer generation for answerless comprehension questions ──
+
+async function generateAnswers(
+  storyTitle: string,
+  storyBody: string,
+  questions: string[]
+): Promise<string[]> {
+  const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY!;
+  if (!OPENROUTER_API_KEY) {
+    console.error("Missing OPENROUTER_API_KEY. Cannot generate answers.");
+    console.error("Add it to .env.local or use --no-answers to skip.");
+    process.exit(1);
+  }
+
+  const prompt = `You are an English teaching assistant for Profe Kyle, a Canadian English teacher for Latin American Spanish speakers.
+
+Read the following pre-intermediate English story. Then answer ${questions.length} comprehension questions about it.
+
+RULES:
+1. Each answer must be a SHORT, FACTUAL phrase — 1-10 words. These are pre-intermediate factual recall questions; the answer should be directly findable in the text.
+2. Answer in English (the story is in English).
+3. Keep answers simple enough for a pre-intermediate (A2/B1) learner to understand.
+4. Do NOT repeat the question. Just give the answer.
+5. If a question asks "what" or "who", give the specific thing or person from the story.
+6. Return ONLY a JSON array of strings, one per question, in order. No explanation.
+
+Story title: ${storyTitle}
+
+Story:
+${storyBody}
+
+Questions:
+${questions.map((q, i) => `${i + 1}. ${q}`).join("\n")}
+
+Return a JSON array of ${questions.length} answer strings:`;
+
+  console.log(`  Calling Claude Sonnet to generate ${questions.length} answers...`);
+
+  const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${OPENROUTER_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: "anthropic/claude-sonnet-4",
+      messages: [{ role: "user", content: prompt }],
+      temperature: 0.3,
+      max_tokens: 2000,
+    }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error(`OpenRouter API error ${response.status}:`, errorText);
+    process.exit(1);
+  }
+
+  const data = await response.json();
+  const content = data.choices?.[0]?.message?.content;
+
+  if (!content) {
+    console.error("No content in LLM response:", JSON.stringify(data, null, 2));
+    process.exit(1);
+  }
+
+  let jsonStr = content.trim();
+  if (jsonStr.startsWith("```")) {
+    jsonStr = jsonStr.replace(/^```(?:json)?\n?/, "").replace(/```$/, "").trim();
+  }
+
+  try {
+    const answers = JSON.parse(jsonStr) as string[];
+    if (!Array.isArray(answers) || answers.length !== questions.length) {
+      console.error(`Expected ${questions.length} answers, got ${answers.length}`);
+      console.error("Raw:", jsonStr.substring(0, 500));
+      process.exit(1);
+    }
+    return answers;
+  } catch (err) {
+    console.error("Failed to parse LLM response as JSON array");
+    console.error("First 500 chars:", jsonStr.substring(0, 500));
+    console.error("Parse error:", err);
+    process.exit(1);
+  }
+}
+
 // ── Main ───────────────────────────────────────────────────
 
 async function main() {
+  const { slug, file, isFree, levelOverride, skipAnswers } = parseArgs();
+
   console.log("Reading story file...");
-  const markdown = readFileSync(STORY_FILE_PATH, "utf-8");
+  console.log(`  File: ${file}`);
+  const markdown = readFileSync(file, "utf-8");
 
   console.log("Parsing story markdown...");
   const parsed = parseStoryMarkdown(markdown);
 
-  console.log(`Title: ${parsed.title}`);
-  console.log(`Level: ${parsed.level}`);
-  console.log(`CEFR: ${parsed.cefr}`);
-  console.log(`Body length: ${parsed.bodyText.length} chars`);
-  console.log(`Comprehension questions: ${parsed.comprehensionQuestions.length}`);
-  console.log(`Personal questions: ${parsed.personalQuestions.length}`);
-  console.log(`Práctica Coral: ${parsed.pronunciationDrill.practicaCoralStandard}`);
+  const level = levelOverride || parsed.level;
+
+  console.log(`  Title: ${parsed.title}`);
+  console.log(`  Slug: ${slug}`);
+  console.log(`  Level: ${level}`);
+  console.log(`  CEFR: ${parsed.cefr}`);
+  console.log(`  Body: ${parsed.bodyText.length} chars, ~${parsed.bodyText.split(/\s+/).length} words`);
+  console.log(`  Comprehension questions: ${parsed.comprehensionQuestions.length}`);
+  console.log(`  Personal questions: ${parsed.personalQuestions.length}`);
+  console.log(`  Pronunciation focus: ${parsed.pronunciationDrill.focusType}`);
+  console.log(`  Práctica Coral: ${parsed.pronunciationDrill.practicaCoralStandard}`);
+  console.log(`  is_free: ${isFree}`);
   console.log("");
 
+  // Generate answers for answerless comprehension questions
+  const answerless = parsed.comprehensionQuestions.filter((q) => !q.answer);
+  if (answerless.length > 0 && !skipAnswers) {
+    console.log(`${answerless.length} of ${parsed.comprehensionQuestions.length} comprehension questions have no answer.`);
+    console.log("Generating answers with Claude Sonnet...");
+
+    const answers = await generateAnswers(
+      parsed.title,
+      parsed.bodyText,
+      answerless.map((q) => q.question)
+    );
+
+    // Fill in the answers
+    let answerIdx = 0;
+    for (const q of parsed.comprehensionQuestions) {
+      if (!q.answer) {
+        q.answer = answers[answerIdx++];
+      }
+    }
+
+    console.log("Generated answers:");
+    for (const q of parsed.comprehensionQuestions) {
+      console.log(`  Q: ${q.question}`);
+      console.log(`  A: ${q.answer}`);
+    }
+    console.log("");
+  } else if (answerless.length > 0 && skipAnswers) {
+    console.log(`${answerless.length} questions have no answer. Skipping (--no-answers flag set).`);
+  }
+
   // Check if story already exists
-  const slug = "the-soccer-jersey";
   const { data: existing } = await supabase
     .from("stories")
     .select("id")
     .eq("slug", slug)
-    .single();
+    .maybeSingle();
 
   if (existing) {
     console.log("Story already exists. Deleting old records...");
     await supabase.from("pronunciation_drills").delete().eq("story_id", existing.id);
     await supabase.from("personal_questions").delete().eq("story_id", existing.id);
     await supabase.from("comprehension_questions").delete().eq("story_id", existing.id);
+    await supabase.from("words").delete().eq("story_id", existing.id);
+    await supabase.from("expressions").delete().eq("story_id", existing.id);
     await supabase.from("stories").delete().eq("id", existing.id);
     console.log("Old records deleted.");
   }
@@ -187,12 +420,13 @@ async function main() {
     .insert({
       title: parsed.title,
       slug,
-      level: parsed.level,
+      level,
       cefr: parsed.cefr,
+      kind: "story",
       body_text: parsed.bodyText,
-      body_html: "", // Will be generated in Slice 3 (annotation)
+      body_html: "",
       word_count: wordCount,
-      is_free: true,
+      is_free: isFree,
     })
     .select()
     .single();
@@ -235,18 +469,18 @@ async function main() {
   console.log("Inserting pronunciation drill...");
   const { error: drillError } = await supabase.from("pronunciation_drills").insert({
     story_id: story.id,
-    symbol_legend: parsed.pronunciationDrill.symbolLegend,
+    symbol_legend: parsed.pronunciationDrill.symbolLegend || null,
     focus_type: parsed.pronunciationDrill.focusType,
-    focus_content: parsed.pronunciationDrill.focusContent,
-    practica_coral_standard: parsed.pronunciationDrill.practicaCoralStandard,
-    practica_coral_phonetic: parsed.pronunciationDrill.practicaCoralPhonetic,
+    focus_content: parsed.pronunciationDrill.focusContent || null,
+    practica_coral_standard: parsed.pronunciationDrill.practicaCoralStandard || null,
+    practica_coral_phonetic: parsed.pronunciationDrill.practicaCoralPhonetic || null,
   });
   if (drillError) console.error("Error inserting pronunciation drill:", drillError);
   console.log("Pronunciation drill inserted.");
 
   console.log("");
-  console.log("Done! The Soccer Jersey is now in the database.");
-  console.log("Next step: Slice 2 — render the story on a page.");
+  console.log(`Done! "${parsed.title}" is now in the database.`);
+  console.log(`Next step: annotate words → npx tsx scripts/annotate-story.ts --slug ${slug}`);
 }
 
 main().catch((err) => {

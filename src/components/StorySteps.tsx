@@ -19,6 +19,8 @@ import PronunciationPractice from "./PronunciationPractice";
 import MicroExplanation from "./MicroExplanation";
 import StoryTextSheet from "./StoryTextSheet";
 import BackLink from "./BackLink";
+import MusicBlanks, { youtubeEmbedId } from "./MusicBlanks";
+import type { LyricBlank } from "@/types";
 import { PlaybackRateProvider } from "./PlaybackRateContext";
 import { recordStoryOpened } from "@/app/story/[slug]/actions";
 import type { LoadedStory } from "@/lib/stories";
@@ -37,7 +39,12 @@ type Step = {
   label: string;
 };
 
-const STORY_AUDIO_URL = "/audio/stories/pre-int-story-the-soccer-jersey.mp3";
+// Audio files follow a slug-based convention:
+//   /audio/stories/{slug}.mp3          — full story narration
+//   /audio/stories/{slug}-timestamps.json — word-level timing for karaoke
+// The server component (StoryReader.tsx) checks if the file exists and
+// passes the URL + timestamps down. If no audio exists, the player is
+// hidden and karaoke is disabled.
 
 export default function StorySteps({
   data,
@@ -49,6 +56,7 @@ export default function StorySteps({
   trackLookups = false,
   readerMode = "open",
   showPractice,
+  storyAudioUrl,
   coralAudio,
   coralIpa,
   wordNotes,
@@ -63,6 +71,7 @@ export default function StorySteps({
   trackLookups?: boolean;
   readerMode?: "classroom-live" | "classroom-review" | "open";
   showPractice: boolean;
+  storyAudioUrl: string | null;
   coralAudio: string;
   coralIpa: string;
   wordNotes: PronunciationWordNote[];
@@ -77,8 +86,25 @@ export default function StorySteps({
     pronunciationDrill,
   } = data;
 
+  const storyStepLabel =
+    story.kind === "dialogue"
+      ? "El diálogo"
+      : story.kind === "movie_talk"
+        ? "El video"
+        : story.kind === "song"
+          ? "La canción"
+          : "El cuento";
+  const kindLabel =
+    story.kind === "dialogue"
+      ? "Diálogo"
+      : story.kind === "movie_talk"
+        ? "Movie Talk"
+        : story.kind === "song"
+          ? "Música"
+          : "Historia";
+
   const steps = useMemo<Step[]>(() => {
-    const list: Step[] = [{ id: "story", label: "El cuento" }];
+    const list: Step[] = [{ id: "story", label: storyStepLabel }];
     if (comprehensionQuestions.length > 0) {
       list.push({ id: "comprehension", label: "Comprensión" });
     }
@@ -86,16 +112,20 @@ export default function StorySteps({
       list.push({ id: "personal", label: "Personal" });
     }
     if (showPractice && pronunciationDrill?.practica_coral_standard) {
-      list.push({ id: "dictation", label: "Dictado" });
-      list.push({ id: "choral", label: "Coral" });
+      if (coralAudio) {
+        list.push({ id: "dictation", label: "Dictado" });
+        list.push({ id: "choral", label: "Coral" });
+      }
       list.push({ id: "pronunciation", label: "Pronunciación" });
     }
     return list;
   }, [
+    storyStepLabel,
     comprehensionQuestions.length,
     personalQuestions.length,
     showPractice,
     pronunciationDrill?.practica_coral_standard,
+    coralAudio,
   ]);
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -122,15 +152,31 @@ export default function StorySteps({
     setActiveIndex(index);
   };
 
+  const youtubeId = youtubeEmbedId(story.youtube_url);
+  const lyricBlanks: LyricBlank[] = Array.isArray(story.lyric_blanks)
+    ? (story.lyric_blanks as LyricBlank[]).filter(
+        (row) =>
+          row &&
+          typeof row.prompt === "string" &&
+          typeof row.answer === "string"
+      )
+    : [];
+
   const storyProps = {
     bodyText: story.body_text,
     words,
     expressions,
-    audioUrl: STORY_AUDIO_URL,
+    audioUrl: storyAudioUrl ?? "",
+    hideAudio: !storyAudioUrl,
     timestamps,
     storyId: story.id,
     sessionId,
     trackLookups,
+    kind: (story.kind ?? "story") as
+      | "story"
+      | "dialogue"
+      | "movie_talk"
+      | "song",
   };
 
   return (
@@ -151,7 +197,7 @@ export default function StorySteps({
                   Tu progreso
                 </Link>
               </div>
-              <p className="text-label-sm text-text-muted mt-1">Historia</p>
+              <p className="text-label-sm text-text-muted mt-1">{kindLabel}</p>
               <h1 className="text-headline-md text-text-primary">
                 {story.title}
               </h1>
@@ -215,14 +261,35 @@ export default function StorySteps({
                 <h2 className="text-headline-lg text-text-primary mb-2">
                   {story.title}
                 </h2>
+                {story.kind === "movie_talk" && (
+                  <p className="mb-4 text-label-md text-text-secondary">
+                    Escenas: toca el texto. Los cortes *** marcan cada clip.
+                  </p>
+                )}
+                {story.kind === "song" && youtubeId && (
+                  <div className="mb-6 overflow-hidden rounded-card border border-paper-line bg-text-primary">
+                    <iframe
+                      title={story.title}
+                      src={`https://www.youtube.com/embed/${youtubeId}`}
+                      className="aspect-video w-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                )}
+                {story.kind === "song" && (
+                  <MusicBlanks blanks={lyricBlanks} />
+                )}
                 <MicroExplanation
                   dismissKey="story"
                   text="Leer en ingles es la base de todo. Tu cerebro necesita ver las palabras en contexto para aprenderlas de verdad. Toca cualquier palabra para ver su traduccion y pronunciacion."
                 />
                 <InteractiveStory {...storyProps} />
+                {story.kind !== "story" && story.kind !== "song" ? null : (
                 <p className="text-center text-text-muted mt-8 italic">
                   The End
                 </p>
+                )}
               </>
             )}
 
