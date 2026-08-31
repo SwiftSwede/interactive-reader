@@ -60,6 +60,7 @@ export default function StorySteps({
   coralAudio,
   coralIpa,
   wordNotes,
+  coralExplanation,
   choralCompleted,
 }: {
   data: LoadedStory;
@@ -75,6 +76,7 @@ export default function StorySteps({
   coralAudio: string;
   coralIpa: string;
   wordNotes: PronunciationWordNote[];
+  coralExplanation: string | null;
   choralCompleted: boolean;
 }) {
   const {
@@ -333,6 +335,7 @@ export default function StorySteps({
                 phoneticText={pronunciationDrill.practica_coral_phonetic}
                 ipaText={coralIpa}
                 wordNotes={wordNotes}
+                explanation={coralExplanation || undefined}
                 storyId={story.id}
                 sessionId={sessionId}
                 microExplanation="Sabias que la mayoria de los errores de escucha no son por falta de vocabulario, sino porque las palabras suenan diferente cuando se hablan rapido? Este ejercicio te muestra exactamente donde tu oido te falla."

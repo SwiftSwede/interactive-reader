@@ -108,6 +108,7 @@ export default async function StoryReader({
     pronunciationDrill && pronunciationDrill.word_notes.length > 0
       ? pronunciationDrill.word_notes
       : [];
+  const coralExplanation = pronunciationDrill?.coral_explanation || null;
 
   return (
     <SoundVideoProvider videos={soundVideos}>
@@ -125,6 +126,7 @@ export default async function StoryReader({
         coralAudio={coralAudio}
         coralIpa={coralIpa}
         wordNotes={wordNotes}
+        coralExplanation={coralExplanation}
         choralCompleted={choralCompleted}
       />
     </SoundVideoProvider>

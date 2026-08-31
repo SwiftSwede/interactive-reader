@@ -6,9 +6,9 @@
 
 export type StoryLevel = "beginner" | "pre-intermediate" | "intermediate";
 
-// Dialogues and Movie Talks share the reader schema. Kind drives display only:
-// ContentTag.content_type stays "story" for all of them.
-export type StoryKind = "story" | "dialogue" | "movie_talk";
+// Dialogues, Movie Talks, and songs share the reader schema. Kind drives
+// display only: ContentTag.content_type stays "story" for all of them.
+export type StoryKind = "story" | "dialogue" | "movie_talk" | "song";
 
 export interface Story {
   id: string;
@@ -21,8 +21,16 @@ export interface Story {
   bodyHtml: string; // story with word spans, generated from annotation
   wordCount: number;
   isFree: boolean; // true for the one free demo story
+  youtubeUrl: string | null;
+  lyricBlanks: LyricBlank[];
   createdAt: string;
   updatedAt: string;
+}
+
+export interface LyricBlank {
+  id: number;
+  prompt: string;
+  answer: string;
 }
 
 // ── Word ───────────────────────────────────────────────────
@@ -104,6 +112,7 @@ export interface PronunciationDrill {
   practicaCoralIpa: string; // student-facing IPA
   wordNotes: PronunciationWordNote[];
   coralAudioUrl: string;
+  coralExplanation: string | null; // Kyle's teaching notes for the Práctica Coral sentence
 }
 
 // ── Sound Video (pronunciation teaching videos) ───────────
@@ -133,8 +142,10 @@ export interface ChoralPracticeCompletion {
 export type UserRole = "student-classroom" | "student-consumer" | "teacher";
 export type SubscriptionStatus = "active" | "cancelled" | "paused" | "none";
 export type CourseLevel = "pre-intermediate" | "intermediate";
-export type SessionType = "story" | "writing";
+export type SessionType = "story" | "writing" | "exam";
 export type WritingSubmissionStatus = "draft" | "submitted" | "corrected";
+export type ExamTask2Type = "paragraph_restructuring" | "sentence_correction";
+export type GroupExamSubmissionStatus = "in_progress" | "submitted";
 
 export interface Profile {
   id: string;
@@ -180,6 +191,7 @@ export interface CourseSession {
   sessionType: SessionType;
   storyId: string | null;
   writingPromptId: string | null;
+  examPromptId: string | null;
   sessionDate: string;
   sessionStartTime: string;
   sessionEndTime: string;
@@ -227,6 +239,106 @@ export interface WritingCorrection {
   goodVocabulary: number[] | null;
   correctedBy: string;
   correctedAt: string;
+}
+
+export interface ExamVocabItem {
+  id: number;
+  english: string;
+  spanish: string;
+}
+
+export interface ExamFillSlot {
+  spanishWord: string;
+  expectedEnglish: string;
+  acceptableVariations: string[];
+  morphologicalNote: string | null;
+}
+
+export interface ExamFillSentence {
+  number: number;
+  sentence: string;
+  slots: ExamFillSlot[];
+}
+
+export interface ExamParagraphItem {
+  number: number;
+  sentence: string;
+  correctPosition: string;
+}
+
+export interface ExamCorrectionItem {
+  number: number;
+  sentence: string;
+  isCorrect: boolean;
+  correctedVersion: string | null;
+}
+
+export interface ExamTranslationItem {
+  number: number;
+  spanish: string;
+  acceptedEnglish: string[];
+  acceptableVariations: string[];
+}
+
+export interface GroupExamPrompt {
+  id: string;
+  title: string;
+  level: CourseLevel;
+  theme: string | null;
+  vocabularyList: ExamVocabItem[];
+  fillInTranslation: ExamFillSentence[];
+  task2Type: ExamTask2Type;
+  paragraphRestructuring: ExamParagraphItem[] | null;
+  sentenceCorrection: ExamCorrectionItem[] | null;
+  translationSentences: ExamTranslationItem[];
+  timeLimitMinutes: number;
+  createdBy: string;
+  createdAt: string;
+}
+
+export interface ExamGroup {
+  id: string;
+  courseSessionId: string;
+  groupLabel: string;
+  writerId: string;
+  memberIds: string[];
+  createdAt: string;
+}
+
+export interface ExamTask1Answer {
+  slotIndex: number;
+  answer: string;
+}
+
+export interface ExamTask2LetterAnswer {
+  sentenceNumber: number;
+  assignedLetter: string;
+}
+
+export interface ExamTask2CorrectionAnswer {
+  sentenceNumber: number;
+  isCorrect: boolean;
+  correctedText: string | null;
+}
+
+export interface ExamTask3Answer {
+  sentenceNumber: number;
+  englishTranslation: string;
+}
+
+export interface GroupExamSubmission {
+  id: string;
+  examPromptId: string;
+  examGroupId: string;
+  courseSessionId: string;
+  task1Answers: ExamTask1Answer[];
+  task2Answers: ExamTask2LetterAnswer[] | ExamTask2CorrectionAnswer[];
+  task3Answers: ExamTask3Answer[];
+  startedAt: string;
+  submittedAt: string | null;
+  status: GroupExamSubmissionStatus;
+  reviewRevealedAt: string | null;
+  createdAt: string;
 }
 
 export interface SessionAttendance {

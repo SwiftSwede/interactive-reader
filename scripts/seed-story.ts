@@ -209,21 +209,31 @@ function parseStoryMarkdown(markdown: string) {
     focusType = "emphasized-syllable";
   }
 
-  // Extract Práctica Coral sentences
+  // Extract Práctica Coral sentences + Kyle's Notes
   // The standard text and phonetic respelling may be separated by blank lines.
-  // Collect the first two non-empty lines after the header.
+  // After those two lines, there may be a "Kyle's Notes:" section with
+  // teaching notes about the Práctica Coral sentence.
   let practicaCoralStandard = "";
   let practicaCoralPhonetic = "";
+  let coralExplanation = "";
   if (practicaCoralIdx >= 0) {
     const coralLines: string[] = [];
+    let notesStartIdx = -1;
     for (let i = practicaCoralIdx + 1; i < lines.length; i++) {
       const t = lines[i].trim();
       if (!t) continue; // skip blank lines, don't break
       // Skip timestamps, student names, or other trailing data
       if (/^\d+:\d+$/.test(t)) continue;
       if (/^[A-Z][a-z]+-\d/.test(t)) continue; // e.g. "Gina-3:50"
-      coralLines.push(t);
-      if (coralLines.length >= 2) break; // we have standard + phonetic
+      if (coralLines.length < 2) {
+        coralLines.push(t);
+        if (coralLines.length >= 2) continue; // keep scanning for notes
+      }
+      // After the two coral lines, look for "Kyle's Notes:" header
+      if (/^kyle'?s?\s+notes?\s*:?/i.test(t)) {
+        notesStartIdx = i + 1;
+        break;
+      }
     }
     if (coralLines.length >= 2) {
       practicaCoralStandard = stripStressMarks(coralLines[0]);
@@ -231,6 +241,15 @@ function parseStoryMarkdown(markdown: string) {
     } else if (coralLines.length === 1) {
       practicaCoralStandard = stripStressMarks(coralLines[0]);
       practicaCoralPhonetic = ""; // empty string, not null
+    }
+    // Collect Kyle's Notes content (everything after the header until EOF)
+    if (notesStartIdx >= 0) {
+      const noteLines: string[] = [];
+      for (let i = notesStartIdx; i < lines.length; i++) {
+        const t = lines[i].trim();
+        if (t) noteLines.push(t);
+      }
+      coralExplanation = noteLines.join("\n").trim();
     }
   }
 
@@ -247,6 +266,7 @@ function parseStoryMarkdown(markdown: string) {
       focusContent: symbolLegend,
       practicaCoralStandard,
       practicaCoralPhonetic,
+      coralExplanation,
     },
   };
 }
@@ -361,6 +381,9 @@ async function main() {
   console.log(`  Personal questions: ${parsed.personalQuestions.length}`);
   console.log(`  Pronunciation focus: ${parsed.pronunciationDrill.focusType}`);
   console.log(`  Práctica Coral: ${parsed.pronunciationDrill.practicaCoralStandard}`);
+  if (parsed.pronunciationDrill.coralExplanation) {
+    console.log(`  Kyle's Notes: ${parsed.pronunciationDrill.coralExplanation.length} chars`);
+  }
   console.log(`  is_free: ${isFree}`);
   console.log("");
 
@@ -474,6 +497,7 @@ async function main() {
     focus_content: parsed.pronunciationDrill.focusContent || null,
     practica_coral_standard: parsed.pronunciationDrill.practicaCoralStandard || null,
     practica_coral_phonetic: parsed.pronunciationDrill.practicaCoralPhonetic || null,
+    coral_explanation: parsed.pronunciationDrill.coralExplanation || null,
   });
   if (drillError) console.error("Error inserting pronunciation drill:", drillError);
   console.log("Pronunciation drill inserted.");

@@ -16,6 +16,8 @@ export type StoryRow = {
   body_html: string;
   word_count: number;
   is_free: boolean;
+  youtube_url?: string | null;
+  lyric_blanks?: unknown;
   created_at: string;
   updated_at: string;
 };
@@ -47,6 +49,7 @@ export type PronunciationDrillRow = {
   practica_coral_ipa: string;
   word_notes: PronunciationWordNote[];
   coral_audio_url: string;
+  coral_explanation: string | null;
 };
 
 function parseWordNotes(value: unknown): PronunciationWordNote[] {
@@ -186,6 +189,11 @@ async function loadStoryRelated(
           word_notes: parseWordNotes(
             (drill as { word_notes?: unknown }).word_notes
           ),
+          coral_explanation:
+            typeof (drill as { coral_explanation?: unknown })
+              .coral_explanation === "string"
+              ? (drill as PronunciationDrillRow).coral_explanation
+              : null,
         }
       : null,
   };
