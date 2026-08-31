@@ -211,14 +211,17 @@ function parseStoryMarkdown(markdown: string) {
 
   // Extract Práctica Coral sentences + Kyle's Notes
   // The standard text and phonetic respelling may be separated by blank lines.
-  // After those two lines, there may be a "Kyle's Notes:" section with
-  // teaching notes about the Práctica Coral sentence.
+  // After those two lines, there may be a "Kyle's Word Notes:" section with
+  // word-by-word teaching notes (parsed into word_notes JSON), or a
+  // "Kyle's Notes:" section with a single text block (coral_explanation).
   let practicaCoralStandard = "";
   let practicaCoralPhonetic = "";
   let coralExplanation = "";
+  let coralWordNotes: { word: string; note: string }[] = [];
   if (practicaCoralIdx >= 0) {
     const coralLines: string[] = [];
     let notesStartIdx = -1;
+    let notesType: "word" | "text" | null = null;
     for (let i = practicaCoralIdx + 1; i < lines.length; i++) {
       const t = lines[i].trim();
       if (!t) continue; // skip blank lines, don't break
@@ -229,9 +232,15 @@ function parseStoryMarkdown(markdown: string) {
         coralLines.push(t);
         if (coralLines.length >= 2) continue; // keep scanning for notes
       }
-      // After the two coral lines, look for "Kyle's Notes:" header
+      // After the two coral lines, look for "Kyle's Word Notes:" or "Kyle's Notes:"
+      if (/^kyle'?s?\s+word\s+notes?\s*:?/i.test(t)) {
+        notesStartIdx = i + 1;
+        notesType = "word";
+        break;
+      }
       if (/^kyle'?s?\s+notes?\s*:?/i.test(t)) {
         notesStartIdx = i + 1;
+        notesType = "text";
         break;
       }
     }
@@ -242,8 +251,38 @@ function parseStoryMarkdown(markdown: string) {
       practicaCoralStandard = stripStressMarks(coralLines[0]);
       practicaCoralPhonetic = ""; // empty string, not null
     }
-    // Collect Kyle's Notes content (everything after the header until EOF)
-    if (notesStartIdx >= 0) {
+    // Collect notes content (everything after the header until EOF)
+    if (notesStartIdx >= 0 && notesType === "word") {
+      // Parse word-by-word notes: each entry is "Word: note text"
+      // Entries may span multiple lines; blank lines separate entries.
+      const rawNotes: string[] = [];
+      for (let i = notesStartIdx; i < lines.length; i++) {
+        const t = lines[i].trim();
+        if (t) rawNotes.push(t);
+      }
+      // Join all lines, then split on entries (Word: ...)
+      // An entry starts when a line begins with "Word:" pattern
+      let currentWord = "";
+      let currentNote = "";
+      for (const line of rawNotes) {
+        const match = line.match(/^([A-Za-z'\s]+?):\s*(.+)$/);
+        if (match) {
+          // New entry starts
+          if (currentWord) {
+            coralWordNotes.push({ word: currentWord, note: currentNote.trim() });
+          }
+          currentWord = match[1].trim();
+          currentNote = match[2].trim();
+        } else {
+          // Continuation of previous note
+          currentNote += " " + line;
+        }
+      }
+      if (currentWord) {
+        coralWordNotes.push({ word: currentWord, note: currentNote.trim() });
+      }
+    } else if (notesStartIdx >= 0 && notesType === "text") {
+      // Collect all text after the header as a single text block
       const noteLines: string[] = [];
       for (let i = notesStartIdx; i < lines.length; i++) {
         const t = lines[i].trim();
@@ -267,6 +306,7 @@ function parseStoryMarkdown(markdown: string) {
       practicaCoralStandard,
       practicaCoralPhonetic,
       coralExplanation,
+      coralWordNotes,
     },
   };
 }
@@ -384,6 +424,9 @@ async function main() {
   if (parsed.pronunciationDrill.coralExplanation) {
     console.log(`  Kyle's Notes: ${parsed.pronunciationDrill.coralExplanation.length} chars`);
   }
+  if (parsed.pronunciationDrill.coralWordNotes.length > 0) {
+    console.log(`  Kyle's Word Notes: ${parsed.pronunciationDrill.coralWordNotes.length} entries`);
+  }
   console.log(`  is_free: ${isFree}`);
   console.log("");
 
@@ -498,6 +541,7 @@ async function main() {
     practica_coral_standard: parsed.pronunciationDrill.practicaCoralStandard || null,
     practica_coral_phonetic: parsed.pronunciationDrill.practicaCoralPhonetic || null,
     coral_explanation: parsed.pronunciationDrill.coralExplanation || null,
+    word_notes: parsed.pronunciationDrill.coralWordNotes || [],
   });
   if (drillError) console.error("Error inserting pronunciation drill:", drillError);
   console.log("Pronunciation drill inserted.");
