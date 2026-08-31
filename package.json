@@ -11,7 +11,8 @@
     "check-auth-redirect": "tsx scripts/check-auth-redirect.ts",
     "check-stripe-schema": "tsx scripts/check-stripe-schema.ts",
     "seed-classroom-level": "tsx scripts/seed-classroom-level.ts",
-    "seed-phase2.5": "tsx scripts/seed-phase2.5.ts"
+    "seed-phase2.5": "tsx scripts/seed-phase2.5.ts",
+    "check-env": "tsx scripts/check-env.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.4",
