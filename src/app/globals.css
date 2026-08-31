@@ -143,23 +143,23 @@ body {
 }
 
 .word-span:hover {
-  background-color: rgb(243 244 246); /* gray-100 */
+  background-color: var(--surface-hover);
 }
 
 .word-seen {
   text-decoration: underline;
-  text-decoration-color: rgb(209 213 219); /* gray-300 */
+  text-decoration-color: var(--paper-line);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
 
 .word-active {
-  background-color: rgb(229 231 235); /* gray-200 */
+  background-color: var(--surface-hover);
 }
 
 /* Words in the same expression group as the active word */
 .word-expr-active {
-  background-color: rgb(219 234 254); /* blue-100 */
+  background-color: var(--accent-soft);
   border-radius: 2px;
 }
 
@@ -189,18 +189,19 @@ body {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  background: white;
-  border: 1px solid rgb(229 231 219);
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: var(--accent-soft);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-small);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   padding: 10px 14px;
+  font-family: var(--font-roboto-flex), system-ui, sans-serif;
   font-size: 14px;
   line-height: 1.4;
 }
 
 .word-tooltip-translation {
   font-weight: 600;
-  color: rgb(17 24 39); /* gray-900 */
+  color: var(--text-primary);
 }
 
 .word-tooltip-phonetic-row {
@@ -210,9 +211,9 @@ body {
 }
 
 .word-tooltip-phonetic {
-  font-family: monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 13px;
-  color: rgb(107 114 128); /* gray-500 */
+  color: var(--text-secondary);
 }
 
 .word-tooltip-play-btn {
@@ -223,8 +224,8 @@ body {
   height: 24px;
   border: none;
   border-radius: 50%;
-  background-color: rgb(243 244 246); /* gray-100 */
-  color: rgb(79 70 229); /* indigo-600 */
+  background-color: var(--surface);
+  color: var(--accent);
   cursor: pointer;
   flex-shrink: 0;
   transition: background-color 0.15s ease;
@@ -232,22 +233,22 @@ body {
 }
 
 .word-tooltip-play-btn:hover {
-  background-color: rgb(229 231 235); /* gray-200 */
+  background-color: var(--surface-hover);
 }
 
 .word-tooltip-play-btn:active {
-  background-color: rgb(209 213 219); /* gray-300 */
+  background-color: var(--paper-line);
 }
 
 .word-tooltip-expression {
   font-size: 12px;
-  color: rgb(79 70 229); /* indigo-600 */
+  color: var(--text-accent);
   font-style: italic;
 }
 
 .word-tooltip-pos {
   font-size: 11px;
-  color: rgb(156 163 175); /* gray-400 */
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
@@ -267,7 +268,7 @@ body {
 
 @keyframes word-hint-pulse {
   0%, 100% { background-color: transparent; }
-  50% { background-color: rgb(219, 234, 254); /* blue-100 */ }
+  50% { background-color: var(--accent-soft); }
 }
 
 .word-hint {
@@ -277,13 +278,14 @@ body {
 /* ── Micro-explanation callout ──────────────────────────── */
 
 .micro-explanation {
-  background-color: rgb(239, 246, 255); /* blue-50 */
-  border: 1px solid rgb(219, 234, 254); /* blue-100 */
-  border-radius: 8px;
-  padding: 10px 44px 10px 14px;
-  font-size: 14px;
-  line-height: 1.5;
-  color: rgb(55, 65, 81); /* gray-700 */
+  background-color: var(--accent-softer);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-card);
+  padding: 12px 44px 12px 12px;
+  font-family: var(--font-lora), Georgia, serif;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--text-secondary);
   position: relative;
   margin-bottom: 12px;
 }
@@ -299,14 +301,15 @@ body {
   height: 44px;
   background: none;
   border: none;
-  color: rgb(156, 163, 175); /* gray-400 */
+  border-radius: var(--radius-small);
+  color: var(--text-muted);
   cursor: pointer;
-  font-size: 16px;
   padding: 0;
 }
 
 .micro-explanation-dismiss:hover {
-  color: rgb(75, 85, 99); /* gray-600 */
+  color: var(--text-accent);
+  background: var(--accent-soft);
 }
 
 /* ── Story page paper surface ─────────────────────────── */
@@ -339,7 +342,7 @@ body {
 }
 
 .step-progress-line-filled {
-  background: var(--paper-dot-done);
+  background: var(--accent);
 }
 
 .step-progress-hit {
@@ -360,28 +363,34 @@ body {
 }
 
 .step-progress-hit:focus-visible {
-  outline: 2px solid var(--paper-dot-done);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
   border-radius: 9999px;
 }
 
 .step-progress-dot {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 8px;
   height: 8px;
   border-radius: 9999px;
-  background: var(--paper-line);
+  background: var(--paper-dot);
+  color: var(--surface);
   transition: width 0.15s ease, height 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
 }
 
 .step-progress-dot-done {
+  width: 14px;
+  height: 14px;
   background: var(--paper-dot-done);
 }
 
 .step-progress-dot-active {
   width: 12px;
   height: 12px;
-  background: var(--paper-dot);
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .step-panel {
@@ -397,40 +406,69 @@ body {
   margin-bottom: 24px;
 }
 
+/* Step nav buttons are the ONLY pills in the app (DESIGN.md). */
 .step-nav-btn {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   min-height: 44px;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 8px;
-  background: transparent;
-  color: rgb(75 85 99);
+  padding: 12px 24px;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+  color: var(--text-primary);
+  font-family: var(--font-roboto-flex), system-ui, sans-serif;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   cursor: pointer;
   text-align: left;
 }
 
 .step-nav-btn:hover {
-  color: rgb(17 24 39);
-  background: rgb(232 224 212 / 0.5);
+  background: var(--surface-hover);
 }
 
 .step-nav-btn:active {
-  background: rgb(232 224 212 / 0.8);
+  background: var(--paper-line);
 }
 
 .step-nav-btn:focus-visible {
-  outline: 2px solid var(--paper-dot-done);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
 .step-nav-btn-next {
   margin-left: auto;
   text-align: right;
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
 }
 
+.step-nav-btn-next:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.step-nav-btn-next:active {
+  background: var(--text-accent-dark);
+  border-color: var(--text-accent-dark);
+}
+
+.step-nav-done {
+  flex: 1;
+  margin: 0;
+  text-align: center;
+  align-self: center;
+  font-family: var(--font-roboto-flex), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+}
+
+/* Ghost button (DESIGN.md): transparent, accent text, 44px target. */
 .story-text-btn {
   display: inline-flex;
   align-items: center;
@@ -438,25 +476,27 @@ body {
   min-height: 44px;
   padding: 8px 12px;
   margin-bottom: 12px;
-  border: 1px solid var(--paper-line);
-  border-radius: 8px;
-  background: rgb(255 255 255 / 0.6);
-  color: rgb(55 65 81);
+  border: none;
+  border-radius: var(--radius-card);
+  background: transparent;
+  color: var(--text-accent);
+  font-family: var(--font-roboto-flex), system-ui, sans-serif;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   cursor: pointer;
 }
 
 .story-text-btn:hover {
-  background: rgb(255 255 255 / 0.9);
+  background: var(--accent-soft);
 }
 
 .story-text-btn:active {
-  background: white;
+  background: var(--surface-hover);
 }
 
 .story-text-btn:focus-visible {
-  outline: 2px solid var(--paper-dot-done);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -493,17 +533,21 @@ body {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  max-height: 85vh;
-  background: var(--paper);
-  border-radius: 16px 16px 0 0;
-  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.12);
+  width: 100%;
+  max-width: 672px;
+  margin: 0 auto;
+  max-height: 75vh;
+  background: var(--surface);
+  border-top: 1px solid var(--paper-line);
+  border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
   animation: story-sheet-in 0.2s ease-out;
 }
 
 .story-text-sheet-handle {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding-top: 8px;
   min-height: 28px;
   cursor: grab;
   touch-action: none;
@@ -511,10 +555,10 @@ body {
 }
 
 .story-text-sheet-handle-bar {
-  width: 40px;
+  width: 36px;
   height: 4px;
   border-radius: 9999px;
-  background: rgb(209 213 219);
+  background: var(--paper-line);
 }
 
 .story-text-sheet-toolbar {
@@ -528,9 +572,11 @@ body {
 
 .story-text-sheet-title {
   margin: 0;
-  font-size: 16px;
+  font-family: var(--font-lora), Georgia, serif;
+  font-size: 18px;
   font-weight: 600;
-  color: rgb(17 24 39);
+  line-height: 24px;
+  color: var(--text-primary);
 }
 
 .story-text-sheet-close {
@@ -541,16 +587,14 @@ body {
   min-height: 44px;
   padding: 0 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-card);
   background: transparent;
-  color: rgb(75 85 99);
-  font-size: 14px;
-  font-weight: 600;
+  color: var(--text-accent);
   cursor: pointer;
 }
 
 .story-text-sheet-close:hover {
-  background: rgb(232 224 212 / 0.6);
+  background: var(--accent-soft);
 }
 
 .story-text-sheet-body {
@@ -822,7 +866,7 @@ body.sticky-audio-active {
   text-decoration-style: dotted;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
-  text-decoration-color: rgb(209 213 219); /* gray-300 */
+  text-decoration-color: var(--paper-line);
   cursor: pointer;
   transition:
     color 0.15s ease,
@@ -831,19 +875,19 @@ body.sticky-audio-active {
 }
 
 .ipa-sound:hover {
-  color: rgb(37 99 235); /* blue-600 */
-  background-color: rgb(239 246 255); /* blue-50 */
+  color: var(--text-accent);
+  background-color: var(--accent-softer);
   text-decoration-style: solid;
   text-decoration-color: currentColor;
 }
 
 .ipa-sound:active {
-  color: rgb(30 64 175); /* blue-800 */
-  background-color: rgb(219 234 254); /* blue-100 */
+  color: var(--text-accent-dark);
+  background-color: var(--accent-soft);
 }
 
 .ipa-sound:focus-visible {
-  outline: 2px solid rgb(37 99 235);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -859,10 +903,9 @@ body.sticky-audio-active {
   width: min(560px, calc(100vw - 24px));
   max-height: calc(100vh - 32px);
   padding: 0;
-  border: none;
-  border-radius: 12px;
-  background: white;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-sheet);
+  background: var(--surface);
   overflow: auto;
 }
 
@@ -884,9 +927,11 @@ body.sticky-audio-active {
 .sound-video-modal-title {
   flex: 1;
   margin: 0;
-  font-size: 18px;
+  font-family: var(--font-lora), Georgia, serif;
+  font-size: 24px;
   font-weight: 700;
-  color: rgb(17 24 39);
+  line-height: 32px;
+  color: var(--text-primary);
 }
 
 .sound-video-modal-close {
@@ -897,35 +942,34 @@ body.sticky-audio-active {
   min-height: 44px;
   padding: 0 12px;
   border: none;
-  border-radius: 8px;
-  background: rgb(243 244 246);
-  color: rgb(17 24 39);
-  font-size: 14px;
-  font-weight: 600;
+  border-radius: var(--radius-card);
+  background: transparent;
+  color: var(--text-accent);
   cursor: pointer;
 }
 
 .sound-video-modal-close:hover {
-  background: rgb(229 231 235);
+  background: var(--accent-soft);
 }
 
 .sound-video-modal-close:active {
-  background: rgb(209 213 219);
+  background: var(--surface-hover);
 }
 
 .sound-video-modal-desc {
   margin: 0 0 12px;
-  font-size: 14px;
-  line-height: 1.5;
-  color: rgb(75 85 99);
+  font-family: var(--font-lora), Georgia, serif;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--text-secondary);
 }
 
 .sound-video-modal-frame {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: rgb(17 24 39);
-  border-radius: 8px;
+  background: var(--text-primary);
+  border-radius: var(--radius-small);
   overflow: hidden;
 }
 
@@ -940,11 +984,12 @@ body.sticky-audio-active {
 .sound-video-modal-empty {
   margin: 0;
   padding: 16px;
-  border-radius: 8px;
-  background: rgb(249 250 251);
-  font-size: 14px;
-  line-height: 1.5;
-  color: rgb(55 65 81);
+  border-radius: var(--radius-card);
+  background: var(--surface-hover);
+  font-family: var(--font-lora), Georgia, serif;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--text-secondary);
 }
 
 @media (prefers-reduced-motion: reduce) {

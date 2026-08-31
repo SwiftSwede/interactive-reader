@@ -1,21 +1,45 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { X } from "lucide-react";
 
 type MicroExplanationProps = {
   text: string;
+  dismissKey: string;
   onDismiss?: () => void;
 };
 
-export default function MicroExplanation({ text, onDismiss }: MicroExplanationProps) {
-  const [visible, setVisible] = useState(true);
+const STORAGE_PREFIX = "micro-explained:";
 
-  if (!visible) return null;
+export default function MicroExplanation({
+  text,
+  dismissKey,
+  onDismiss,
+}: MicroExplanationProps) {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    try {
+      if (localStorage.getItem(`${STORAGE_PREFIX}${dismissKey}`) === "1") {
+        return;
+      }
+    } catch {
+      // localStorage can be blocked
+    }
+    setVisible(true);
+  }, [dismissKey]);
 
   const handleDismiss = () => {
     setVisible(false);
+    try {
+      localStorage.setItem(`${STORAGE_PREFIX}${dismissKey}`, "1");
+    } catch {
+      // ignore
+    }
     if (onDismiss) onDismiss();
   };
+
+  if (!visible) return null;
 
   return (
     <div className="micro-explanation">
@@ -25,7 +49,7 @@ export default function MicroExplanation({ text, onDismiss }: MicroExplanationPr
         aria-label="Cerrar"
         type="button"
       >
-        x
+        <X size={16} aria-hidden="true" />
       </button>
       {text}
     </div>

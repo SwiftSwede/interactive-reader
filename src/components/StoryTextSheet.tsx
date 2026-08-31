@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type PointerEvent } from "react";
 import { createPortal } from "react-dom";
+import { X } from "lucide-react";
 import InteractiveStory, { type WordTimestamp } from "./InteractiveStory";
 import type { WordData, ExpressionData } from "./WordTooltip";
 
@@ -99,7 +100,7 @@ export default function StoryTextSheet({
     if (dy > 80) onClose();
   };
 
-  if (!open || typeof document === "undefined") return null;
+  if (!open) return null;
 
   return createPortal(
     <div
@@ -127,8 +128,9 @@ export default function StoryTextSheet({
             type="button"
             className="story-text-sheet-close"
             onClick={onClose}
+            aria-label="Cerrar"
           >
-            Cerrar
+            <X size={20} aria-hidden="true" />
           </button>
         </div>
         <div className="story-text-sheet-body">

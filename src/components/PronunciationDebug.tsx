@@ -50,7 +50,7 @@ function IpaLine({
 }) {
   if (!ipa) return null;
   return (
-    <p className="text-sm text-gray-800 leading-relaxed">
+    <p className="text-body-main text-text-primary">
       <span className="font-semibold">{label} </span>
       <IpaText text={ipa} interactive />
     </p>
@@ -91,12 +91,12 @@ export default function PronunciationDebug({
   };
 
   return (
-    <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-left space-y-3">
+    <div className="rounded-card border border-paper-line bg-accent-softer p-3 text-left space-y-3">
       <div className="space-y-2">
-        <p className="text-sm text-gray-800 leading-relaxed">
+        <p className="text-body-main text-text-primary">
           Esto es practica, no un examen. Los numeros son una guia de la IA:
         </p>
-        <ul className="text-sm text-gray-800 list-disc pl-5 space-y-1">
+        <ul className="text-body-main text-text-primary list-disc pl-5 space-y-1">
           <li>
             <span className="font-semibold">Claridad:</span>{" "}
             {round0(result.overall.accuracy)}
@@ -118,8 +118,8 @@ export default function PronunciationDebug({
         </ul>
       </div>
 
-      <div className="rounded-md bg-white border border-amber-100 p-3 space-y-2">
-        <p className="text-sm text-gray-800 leading-relaxed">
+      <div className="rounded-card bg-surface border border-paper-line p-3 space-y-2">
+        <p className="text-body-main text-text-primary">
           <span className="font-semibold">Lo que se oyo: </span>
           {heardWords || "No se entendio bien el audio."}
         </p>
@@ -128,7 +128,7 @@ export default function PronunciationDebug({
         {hasHeardSounds ? (
           <IpaLine label="IPA de lo que se oyo:" ipa={heardIpa} />
         ) : null}
-        <p className="text-xs text-gray-500 leading-relaxed">
+        <p className="text-label-sm text-text-muted">
           Lo que se oyo son las palabras que la IA saco de tu audio. El IA IPA es
           como el diccionario espera la oracion. El IPA de lo que se oyo es como
           la IA transcribe los sonidos que hiciste. Toca un sonido para ver el
@@ -137,11 +137,11 @@ export default function PronunciationDebug({
       </div>
 
       {result.topIssues.length === 0 ? (
-        <p className="text-sm text-gray-800 leading-relaxed">
+        <p className="text-body-main text-text-primary">
           Esa oracion se oye bien. Revisa el detalle si quieres ver cada sonido.
         </p>
       ) : (
-        <p className="text-xs font-medium text-amber-900">
+        <p className="text-label-sm text-text-accent">
           Una o dos cosas para practicar, y el detalle de cada palabra:
         </p>
       )}
@@ -153,9 +153,9 @@ export default function PronunciationDebug({
           return (
             <div
               key={`${word.word}-${index}`}
-              className="rounded-md bg-white border border-amber-100 p-3"
+              className="rounded-card bg-surface border border-paper-line p-3"
             >
-              <p className="text-sm text-gray-800">
+              <p className="text-body-main text-text-primary">
                 <span className="font-semibold">{word.word}</span>
                 {" · "}
                 {round0(word.accuracy)}
@@ -164,11 +164,11 @@ export default function PronunciationDebug({
                   ? ` · ${word.reasonCodes.join(", ")}`
                   : ""}
                 {debug && word.coaching && !tip ? (
-                  <span className="text-gray-500"> · coached, then filtered</span>
+                  <span className="text-text-muted"> · coached, then filtered</span>
                 ) : null}
               </p>
               {word.phonemes && word.phonemes.length > 0 ? (
-                <p className="text-xs text-gray-600 mt-2 flex flex-wrap gap-1">
+                <p className="text-label-sm text-text-secondary mt-2 flex flex-wrap gap-1">
                   {word.phonemes.map((phoneme, phonemeIndex) => {
                     const weak = phoneme.accuracy <= WEAK_SOUND_MAX;
                     const spoken = phoneme.spokenPhoneme;
@@ -179,8 +179,8 @@ export default function PronunciationDebug({
                         key={`${phoneme.phoneme}-${phonemeIndex}`}
                         className={
                           weak
-                            ? "rounded px-1.5 py-0.5 bg-red-100 text-red-800"
-                            : "rounded px-1.5 py-0.5 bg-gray-100 text-gray-600"
+                            ? "rounded px-1.5 py-0.5 bg-error-bg text-error"
+                            : "rounded px-1.5 py-0.5 bg-surface-hover text-text-secondary"
                         }
                       >
                         <IpaText text={`/${phoneme.phoneme}/`} interactive />
@@ -199,15 +199,15 @@ export default function PronunciationDebug({
               {tip ? (
                 <div className="mt-2 space-y-1">
                   {tip.focusIpa ? (
-                    <p className="text-sm font-medium text-gray-800">
+                    <p className="text-body-main font-semibold text-text-primary">
                       Practica{" "}
                       <IpaText text={`/${tip.focusIpa}/`} interactive />
                     </p>
                   ) : null}
-                  <p className="text-sm text-gray-700 leading-relaxed">
+                  <p className="text-body-main text-text-secondary">
                     {tip.shortWhyEs}
                   </p>
-                  <p className="text-sm text-gray-700 leading-relaxed">
+                  <p className="text-body-main text-text-secondary">
                     {tip.tipEs}
                   </p>
                 </div>

@@ -1,6 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import {
+  BookOpen,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import InteractiveStory, { type WordTimestamp } from "./InteractiveStory";
 import ComprehensionQuestions, {
   type SavedComprehensionResponse,
@@ -11,6 +17,7 @@ import ChoralPractice from "./ChoralPractice";
 import PronunciationPractice from "./PronunciationPractice";
 import MicroExplanation from "./MicroExplanation";
 import StoryTextSheet from "./StoryTextSheet";
+import BackLink from "./BackLink";
 import { PlaybackRateProvider } from "./PlaybackRateContext";
 import type { LoadedStory } from "@/lib/stories";
 import type { PronunciationWordNote } from "@/types";
@@ -96,7 +103,6 @@ export default function StorySteps({
   const active = steps[safeIndex];
   const prev = safeIndex > 0 ? steps[safeIndex - 1] : null;
   const next = safeIndex < steps.length - 1 ? steps[safeIndex + 1] : null;
-  const isLast = safeIndex === steps.length - 1;
   const isStory = active.id === "story";
 
   useEffect(() => {
@@ -122,12 +128,18 @@ export default function StorySteps({
   return (
     <PlaybackRateProvider>
       <main className="story-page min-h-screen">
-        <div className="story-page-header border-b border-[var(--paper-line)] sticky top-0 backdrop-blur-sm z-20">
-          <header className="px-4 pt-4 pb-2">
+        <div className="story-page-header border-b border-paper-line sticky top-0 backdrop-blur-sm z-20">
+          <header className="px-4 pt-2 pb-2">
             <div className="max-w-2xl mx-auto">
-              <p className="text-sm text-gray-500">Profe Kyle</p>
-              <h1 className="text-lg font-semibold text-gray-900">{story.title}</h1>
-              <p className="text-xs text-gray-400 mt-0.5">
+              <div className="flex items-center gap-2">
+                <BackLink href="/dashboard" showLabel />
+                <p className="text-label-sm text-text-muted">Profe Kyle</p>
+              </div>
+              <p className="text-label-sm text-text-muted mt-1">Historia</p>
+              <h1 className="text-headline-md text-text-primary">
+                {story.title}
+              </h1>
+              <p className="text-label-sm text-text-muted mt-0.5">
                 {story.level} - {story.cefr} - {story.word_count} palabras
               </p>
             </div>
@@ -158,7 +170,11 @@ export default function StorySteps({
                           ? " step-progress-dot-active"
                           : ""
                     }`}
-                  />
+                  >
+                    {index < safeIndex && (
+                      <Check size={10} strokeWidth={3} aria-hidden="true" />
+                    )}
+                  </span>
                 </button>
               </div>
             ))}
@@ -173,67 +189,57 @@ export default function StorySteps({
                 className="story-text-btn"
                 onClick={() => setSheetOpen(true)}
               >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                  <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z" />
-                </svg>
+                <BookOpen size={16} aria-hidden="true" />
                 Ver el texto
               </button>
             )}
 
             {active.id === "story" && (
               <>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <h2 className="text-headline-lg text-text-primary mb-2">
                   {story.title}
                 </h2>
-                <MicroExplanation text="Leer en ingles es la base de todo. Tu cerebro necesita ver las palabras en contexto para aprenderlas de verdad. Toca cualquier palabra para ver su traduccion y pronunciacion." />
+                <MicroExplanation
+                  dismissKey="story"
+                  text="Leer en ingles es la base de todo. Tu cerebro necesita ver las palabras en contexto para aprenderlas de verdad. Toca cualquier palabra para ver su traduccion y pronunciacion."
+                />
                 <InteractiveStory {...storyProps} />
-                <p className="text-center text-gray-400 mt-8 italic">The End</p>
+                <p className="text-center text-text-muted mt-8 italic">
+                  The End
+                </p>
               </>
             )}
 
             {active.id === "comprehension" && (
-              <>
-                <MicroExplanation text="Contesta antes de ver la respuesta. Si la lees primero, tu cerebro no trabaja. El esfuerzo de intentar es donde ocurre el aprendizaje. Escribir tu respuesta te ayuda a fijar el vocabulario en la memoria." />
-                <ComprehensionQuestions
-                  questions={comprehensionQuestions.map((q) => ({
-                    id: q.id,
-                    position: q.position,
-                    question: q.question,
-                    answer: q.answer,
-                  }))}
-                  allowReveal={allowReveal}
-                  unlockAt={unlockAt}
-                  sessionId={sessionId}
-                  savedResponses={savedResponses}
-                />
-              </>
+              <ComprehensionQuestions
+                questions={comprehensionQuestions.map((q) => ({
+                  id: q.id,
+                  position: q.position,
+                  question: q.question,
+                  answer: q.answer,
+                }))}
+                allowReveal={allowReveal}
+                unlockAt={unlockAt}
+                sessionId={sessionId}
+                savedResponses={savedResponses}
+                microExplanation="Contesta antes de ver la respuesta. Si la lees primero, tu cerebro no trabaja. El esfuerzo de intentar es donde ocurre el aprendizaje. Escribir tu respuesta te ayuda a fijar el vocabulario en la memoria."
+              />
             )}
 
             {active.id === "personal" && (
-              <>
-                {readerMode !== "classroom-live" && (
-                  <MicroExplanation text="Estas preguntas no tienen una respuesta correcta. Conectan la historia con tu vida y te hacen pensar en como usar el vocabulario nuevo. El Profe Kyle te da feedback enfocado en una o dos cosas para mejorar." />
-                )}
-                <PersonalQuestions
-                  questions={personalQuestions.map((q) => ({
-                    id: q.id,
-                    position: q.position,
-                    question: q.question,
-                  }))}
-                  mode={readerMode === "classroom-live" ? "classroom-live" : "write"}
-                />
-              </>
+              <PersonalQuestions
+                questions={personalQuestions.map((q) => ({
+                  id: q.id,
+                  position: q.position,
+                  question: q.question,
+                }))}
+                mode={readerMode === "classroom-live" ? "classroom-live" : "write"}
+                microExplanation={
+                  readerMode === "classroom-live"
+                    ? undefined
+                    : "Estas preguntas no tienen una respuesta correcta. Conectan la historia con tu vida y te hacen pensar en como usar el vocabulario nuevo. El Profe Kyle te da feedback enfocado en una o dos cosas para mejorar."
+                }
+              />
             )}
 
             {active.id === "dictation" && pronunciationDrill && (
@@ -262,17 +268,6 @@ export default function StorySteps({
               />
             )}
 
-            {isLast && (
-              <div className="mt-12 mb-4 rounded-xl bg-gray-50 border border-gray-100 p-6 text-center">
-                <p className="text-gray-700 font-medium mb-2">
-                  Want more stories like this?
-                </p>
-                <p className="text-sm text-gray-500">
-                  Unlock all 50+ stories for $47
-                </p>
-                <p className="text-xs text-gray-400 mt-2">Coming soon</p>
-              </div>
-            )}
           </div>
 
           <nav className="step-nav" aria-label="Navegación de pasos">
@@ -282,17 +277,23 @@ export default function StorySteps({
                 className="step-nav-btn"
                 onClick={() => goTo(safeIndex - 1)}
               >
-                ← {prev.label}
+                <ChevronLeft size={16} aria-hidden="true" />
+                {prev.label}
               </button>
             )}
-            {next && (
+            {next ? (
               <button
                 type="button"
                 className="step-nav-btn step-nav-btn-next"
                 onClick={() => goTo(safeIndex + 1)}
               >
-                {next.label} →
+                {next.label}
+                <ChevronRight size={16} aria-hidden="true" />
               </button>
+            ) : (
+              <p className="step-nav-done">
+                Listo! Has practicado todos los ejercicios.
+              </p>
             )}
           </nav>
         </article>

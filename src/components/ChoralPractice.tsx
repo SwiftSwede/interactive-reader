@@ -136,25 +136,36 @@ export default function ChoralPractice({
     <section>
       <audio ref={audioRef} src={audioUrl} preload="metadata" />
 
-      <h3 className="text-lg font-bold text-gray-900 mb-2">Práctica coral</h3>
+      <h3 className="text-headline-md text-text-primary mb-2">
+        Práctica coral
+      </h3>
 
-      <MicroExplanation text="Repetir en voz alta es como ir al gimnasio: tu boca necesita las repeticiones para que el sonido salga solo. No pienses. Escucha y repite." />
+      <p className="text-label-md text-text-secondary mb-3">
+        Escucha el clip y repite en voz alta. No pienses. Solo sigue.
+      </p>
+
+      <MicroExplanation
+        dismissKey="choral"
+        text="Repetir en voz alta es como ir al gimnasio: tu boca necesita las repeticiones para que el sonido salga solo. No pienses. Escucha y repite."
+      />
 
       {completed ? (
-        <div className="rounded-lg bg-green-50 border border-green-100 p-4">
-          <p className="text-gray-800 font-medium">¡Práctica completa!</p>
-          <p className="text-sm text-gray-600 mt-1">
+        <div className="rounded-card bg-success-bg border border-paper-line p-4">
+          <p className="text-body-main font-semibold text-success">
+            ¡Práctica completa!
+          </p>
+          <p className="text-body-main text-text-secondary mt-1">
             50 repeticiones. Eso ya es trabajo de verdad.
           </p>
           {saveError && (
-            <p className="text-sm text-gray-500 mt-2">
+            <p className="text-label-md text-text-secondary mt-2">
               No pude guardar tu progreso. La practica igual cuenta.
             </p>
           )}
         </div>
       ) : (
         <div className="space-y-4">
-          <p className="text-sm text-gray-500">
+          <p className="text-headline-md text-text-primary tabular-nums">
             Repeticiones: {plays}/{PLAYS_PER_ROUND}
           </p>
 
@@ -163,7 +174,7 @@ export default function ChoralPractice({
               <span
                 key={index}
                 className={`h-3 w-3 rounded-full ${
-                  index < rounds ? "bg-blue-600" : "bg-gray-200"
+                  index < rounds ? "bg-accent" : "bg-paper-line"
                 }`}
                 aria-hidden
               />
@@ -174,7 +185,7 @@ export default function ChoralPractice({
             type="button"
             onClick={startRound}
             disabled={playing}
-            className="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed min-h-11"
+            className="px-5 py-3 rounded-card bg-accent text-white text-label-md hover:bg-accent-hover transition-colors disabled:bg-surface-hover disabled:text-text-muted disabled:cursor-not-allowed min-h-11"
           >
             {playing
               ? "Repitiendo..."

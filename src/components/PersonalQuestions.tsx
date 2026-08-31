@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import MicroExplanation from "./MicroExplanation";
 
 // ── Types ──────────────────────────────────────────────────
 
@@ -13,6 +14,7 @@ type Question = {
 type PersonalQuestionsProps = {
   questions: Question[];
   mode?: "classroom-live" | "write";
+  microExplanation?: string;
 };
 
 type CorrectionSegment = {
@@ -34,6 +36,7 @@ const MAX_ATTEMPTS = 3;
 export default function PersonalQuestions({
   questions,
   mode = "write",
+  microExplanation,
 }: PersonalQuestionsProps) {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [feedbackStates, setFeedbackStates] = useState<
@@ -118,22 +121,22 @@ export default function PersonalQuestions({
   if (mode === "classroom-live") {
     return (
       <section>
-        <h3 className="text-lg font-semibold text-gray-900 mb-1">
+        <h3 className="text-headline-md text-text-primary mb-1">
           Personal Questions
         </h3>
-        <p className="mb-4 rounded-lg border border-indigo-100 bg-indigo-50 px-3 py-2 text-sm text-indigo-800">
+        <p className="mb-4 rounded-card border border-paper-line bg-accent-softer px-3 py-3 text-label-md text-text-accent">
           Discutir en clase
         </p>
-        <p className="mb-4 text-sm text-gray-500">
+        <p className="mb-4 text-label-md text-text-secondary">
           Hoy lo hablamos juntos. Después de clase puedes escribir aquí.
         </p>
         <div className="space-y-4">
           {questions.map((q, idx) => (
             <div
               key={q.id}
-              className="rounded-lg border border-gray-100 p-4"
+              className="rounded-card border border-paper-line bg-surface p-4"
             >
-              <p className="font-medium text-gray-900">
+              <p className="text-body-main font-semibold text-text-primary">
                 {idx + 1}. {q.question}
               </p>
             </div>
@@ -145,12 +148,16 @@ export default function PersonalQuestions({
 
   return (
     <section>
-      <h3 className="text-lg font-semibold text-gray-900 mb-1">
+      <h3 className="text-headline-md text-text-primary mb-1">
         Personal Questions
       </h3>
-      <p className="text-sm text-gray-500 mb-4">
+      <p className="text-label-md text-text-secondary mb-4">
         Escribe tu respuesta en ingles y recibe feedback de Profe Kyle.
       </p>
+
+      {microExplanation && (
+        <MicroExplanation dismissKey="personal" text={microExplanation} />
+      )}
 
       <div className="space-y-4">
         {questions.map((q, idx) => {
@@ -163,15 +170,15 @@ export default function PersonalQuestions({
           return (
             <div
               key={q.id}
-              className="rounded-lg border border-gray-100 p-4"
+              className="rounded-card border border-paper-line bg-surface p-4"
             >
-              <p className="font-medium text-gray-900 mb-3">
+              <p className="text-body-main font-semibold text-text-primary mb-3">
                 {idx + 1}. {q.question}
               </p>
 
               {/* Text input */}
               <textarea
-                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-800 resize-none focus:outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400 disabled:bg-gray-50 disabled:text-gray-400"
+                className="w-full rounded-card border border-paper-line bg-surface px-3 py-3 text-body-main text-text-primary placeholder:text-text-muted resize-none focus:outline-none focus:border-2 focus:border-accent disabled:bg-surface-hover disabled:text-text-muted"
                 placeholder="Escribe tu respuesta en ingles..."
                 rows={3}
                 value={answer}
@@ -183,7 +190,7 @@ export default function PersonalQuestions({
 
               {/* Attempt counter */}
               {usedAttempts > 0 && (
-                <p className="mt-1 text-xs text-gray-400">
+                <p className="mt-1 text-label-sm text-text-muted">
                   {maxedOut
                     ? `Has usado tus ${MAX_ATTEMPTS} intentos.`
                     : `${attemptsLeft} ${attemptsLeft === 1 ? "intento restante" : "intentos restantes"}.`}
@@ -195,10 +202,10 @@ export default function PersonalQuestions({
                 <button
                   onClick={() => handleCheck(q.position, q.question)}
                   disabled={!answer.trim() || state?.loading === true}
-                  className={`mt-2 text-sm font-medium px-4 py-1.5 rounded-lg transition-colors ${
+                  className={`mt-2 min-h-11 text-label-md px-5 py-3 rounded-card transition-colors ${
                     answer.trim() && state?.loading !== true
-                      ? "bg-indigo-600 text-white hover:bg-indigo-700"
-                      : "bg-gray-100 text-gray-400 cursor-not-allowed"
+                      ? "bg-accent text-white hover:bg-accent-hover"
+                      : "bg-surface-hover text-text-muted cursor-not-allowed"
                   }`}
                   type="button"
                 >
@@ -208,18 +215,18 @@ export default function PersonalQuestions({
 
               {/* Error */}
               {state?.error && (
-                <p className="mt-2 text-sm text-red-500">{state.error}</p>
+                <p className="mt-2 text-label-md text-error">{state.error}</p>
               )}
 
               {/* AI Feedback: inline corrections */}
               {state?.corrections && (
-                <div className="mt-3 rounded-lg bg-indigo-50 border border-indigo-100 px-3 py-3">
-                  <p className="text-xs text-indigo-400 mb-2 font-medium">
+                <div className="mt-3 rounded-card bg-accent-softer border border-paper-line px-3 py-3">
+                  <p className="text-label-sm text-text-accent mb-2">
                     Correccion de Profe Kyle:
                   </p>
 
                   {/* Render corrected text with visual markup */}
-                  <p className="text-sm text-gray-800 leading-relaxed">
+                  <p className="text-body-main text-text-primary">
                     {state.corrections.map((seg, i) => {
                       // Add space before each segment (except the first),
                       // unless the segment starts with punctuation
@@ -229,13 +236,7 @@ export default function PersonalQuestions({
                         return (
                           <span
                             key={i}
-                            style={{
-                              color: "#059669",
-                              fontWeight: 600,
-                              backgroundColor: "#d1fae5",
-                              borderRadius: "2px",
-                              padding: "0 2px",
-                            }}
+                            className="rounded-[2px] px-[2px] font-semibold text-success bg-success-bg"
                           >
                             {needsSpace ? " " : ""}{seg.text}
                           </span>
@@ -245,13 +246,7 @@ export default function PersonalQuestions({
                         return (
                           <span
                             key={i}
-                            style={{
-                              color: "#dc2626",
-                              textDecoration: "line-through",
-                              backgroundColor: "#fee2e2",
-                              borderRadius: "2px",
-                              padding: "0 2px",
-                            }}
+                            className="rounded-[2px] px-[2px] line-through text-error bg-error-bg"
                           >
                             {needsSpace ? " " : ""}{seg.text}
                           </span>
@@ -261,12 +256,7 @@ export default function PersonalQuestions({
                         return (
                           <span
                             key={i}
-                            style={{
-                              color: "#b45309",
-                              backgroundColor: "#fef3c7",
-                              borderRadius: "2px",
-                              padding: "0 2px",
-                            }}
+                            className="rounded-[2px] px-[2px] text-warning bg-accent-soft"
                           >
                             {needsSpace ? " " : ""}{seg.text}
                           </span>
@@ -277,29 +267,29 @@ export default function PersonalQuestions({
                   </p>
 
                   {/* Color legend */}
-                  <div className="mt-2 flex gap-3 text-xs text-gray-400">
-                    <span style={{ color: "#059669" }}>verde = falta</span>
-                    <span style={{ color: "#dc2626" }}>rojo = sobra</span>
-                    <span style={{ color: "#b45309" }}>ambar = mover</span>
+                  <div className="mt-2 flex flex-wrap gap-3 text-label-sm">
+                    <span className="text-success">verde = falta</span>
+                    <span className="text-error">rojo = sobra</span>
+                    <span className="text-warning">ambar = mover</span>
                   </div>
 
                   {/* Spanish note from Kyle */}
                   {state.note && (
-                    <p className="mt-2 text-sm text-gray-600 italic">
+                    <p className="mt-2 text-body-main text-text-secondary italic">
                       {state.note}
                     </p>
                   )}
 
                   {/* Try again button or limit message */}
                   {maxedOut ? (
-                    <p className="mt-3 text-xs text-gray-400">
+                    <p className="mt-3 text-label-sm text-text-muted">
                       Si quieres seguir practicando con feedback de IA,
                       considera unirte al AI Coach cuando este disponible.
                     </p>
                   ) : (
                     <button
                       onClick={() => handleRetry(q.position)}
-                      className="mt-3 text-xs text-indigo-500 hover:text-indigo-700"
+                      className="mt-3 min-h-11 rounded-card px-3 text-label-md text-text-accent hover:bg-accent-soft"
                       type="button"
                     >
                       Intentar de nuevo

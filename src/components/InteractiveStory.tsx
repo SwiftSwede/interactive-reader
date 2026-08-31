@@ -283,7 +283,7 @@ export default function InteractiveStory({
           const tokens = paragraph.split(/\s+/).filter((t) => t);
 
           return (
-            <p key={paraIdx} className="text-gray-800 leading-relaxed text-base">
+            <p key={paraIdx} className="text-story-body text-text-primary">
               {tokens.map((token, tokenIdx) => {
                 const currentPos = wordPosition++;
                 const word = words[currentPos];

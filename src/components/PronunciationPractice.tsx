@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Mic } from "lucide-react";
 import MicroExplanation from "./MicroExplanation";
 import PronunciationDebug from "./PronunciationDebug";
 import { assessPronunciation } from "@/lib/pronunciation/client";
@@ -216,26 +217,32 @@ export default function PronunciationPractice({
 
   return (
     <section>
-      <h3 className="text-lg font-bold text-gray-900 mb-2">
+      <h3 className="text-headline-md text-text-primary mb-2">
         Practica tu pronunciacion
       </h3>
 
-      <MicroExplanation text="Esto no es un examen. Graba la oracion, escuchate, y vuelve a intentar. El oido y la boca se entrenan juntos." />
+      <p className="text-label-md text-text-secondary mb-3">
+        Lee esta oracion en voz alta:
+      </p>
 
-      <p className="text-sm text-gray-500 mb-3">Lee esta oracion en voz alta:</p>
-      <p className="rounded-lg bg-gray-50 border border-gray-100 p-4 text-gray-900 font-medium leading-relaxed">
+      <MicroExplanation
+        dismissKey="pronunciation"
+        text="Esto no es un examen. Graba la oracion, escuchate, y vuelve a intentar. El oido y la boca se entrenan juntos."
+      />
+
+      <p className="rounded-card bg-surface border border-paper-line p-4 text-body-main font-semibold text-text-primary">
         {referenceText}
       </p>
 
       {!recorderSupported ? (
-        <p className="mt-4 text-sm text-gray-600">
+        <p className="mt-4 text-body-main text-text-secondary">
           Este navegador no deja grabar audio. Prueba en Chrome o Safari en tu
           celular.
         </p>
       ) : (
         <div className="mt-4 space-y-4">
           {isRecording && (
-            <p className="text-sm text-red-600" aria-live="polite">
+            <p className="text-label-md text-error" aria-live="polite">
               Grabando... {formatSeconds(elapsedMs)}s /{" "}
               {formatSeconds(MAX_RECORDING_MS)}s
             </p>
@@ -247,15 +254,16 @@ export default function PronunciationPractice({
                 type="button"
                 onClick={() => void startRecording()}
                 disabled={isSubmitting}
-                className="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 active:bg-blue-800 transition-colors min-h-11 disabled:opacity-40 disabled:cursor-not-allowed"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-card bg-accent text-white text-label-md hover:bg-accent-hover transition-colors min-h-11 disabled:bg-surface-hover disabled:text-text-muted disabled:cursor-not-allowed"
               >
+                <Mic size={16} aria-hidden="true" />
                 {audioBlob ? "Grabar otra vez" : "Empezar a grabar"}
               </button>
             ) : (
               <button
                 type="button"
                 onClick={stopRecording}
-                className="px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 active:bg-black transition-colors min-h-11"
+                className="px-5 py-3 rounded-card bg-accent text-white text-label-md hover:bg-accent-hover transition-colors min-h-11"
               >
                 Parar
               </button>
@@ -266,7 +274,7 @@ export default function PronunciationPractice({
                 type="button"
                 onClick={handleRetry}
                 disabled={isSubmitting}
-                className="px-4 py-2 rounded-lg border border-gray-200 text-gray-800 text-sm font-medium hover:bg-gray-50 active:bg-gray-100 transition-colors min-h-11 disabled:opacity-40 disabled:cursor-not-allowed"
+                className="px-5 py-3 rounded-card border border-paper-line text-text-primary text-label-md hover:bg-surface-hover transition-colors min-h-11 disabled:text-text-muted disabled:cursor-not-allowed"
               >
                 Borrar grabacion
               </button>
@@ -274,8 +282,10 @@ export default function PronunciationPractice({
           </div>
 
           {audioUrl && (
-            <div className="rounded-lg bg-gray-50 border border-gray-100 p-3">
-              <p className="text-xs text-gray-500 mb-2">Tu grabacion:</p>
+            <div className="rounded-card bg-surface border border-paper-line p-3">
+              <p className="text-label-sm text-text-secondary mb-2">
+                Tu grabacion:
+              </p>
               <audio controls src={audioUrl} className="w-full" />
             </div>
           )}
@@ -285,22 +295,22 @@ export default function PronunciationPractice({
               type="button"
               onClick={() => void handleAssess()}
               disabled={isSubmitting}
-              className="px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 active:bg-black transition-colors min-h-11 disabled:opacity-40 disabled:cursor-not-allowed"
+              className="px-5 py-3 rounded-card bg-accent text-white text-label-md hover:bg-accent-hover transition-colors min-h-11 disabled:bg-surface-hover disabled:text-text-muted disabled:cursor-not-allowed"
             >
               {isSubmitting ? "Revisando..." : "Revisar pronunciacion"}
             </button>
           )}
 
           {error && (
-            <div className="rounded-lg bg-red-50 border border-red-100 p-3">
-              <p className="text-sm text-gray-800">{error}</p>
+            <div className="rounded-card bg-error-bg border border-paper-line p-3">
+              <p className="text-body-main text-text-primary">{error}</p>
               <button
                 type="button"
                 onClick={() =>
                   permissionDenied ? void startRecording() : void handleAssess()
                 }
                 disabled={isSubmitting || (permissionDenied ? false : !audioBlob)}
-                className="mt-2 text-sm text-blue-600 hover:text-blue-700 font-medium min-h-11 disabled:opacity-40"
+                className="mt-2 min-h-11 rounded-card px-3 text-label-md text-text-accent hover:bg-accent-soft disabled:text-text-muted"
               >
                 Intentar de nuevo
               </button>

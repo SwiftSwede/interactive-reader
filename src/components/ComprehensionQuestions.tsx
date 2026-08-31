@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { saveComprehensionResponse } from "@/app/story/[slug]/actions";
+import MicroExplanation from "./MicroExplanation";
 
 // ── Types ──────────────────────────────────────────────────
 
@@ -24,6 +25,7 @@ type ComprehensionQuestionsProps = {
   unlockAt?: string;
   sessionId?: string;
   savedResponses?: SavedComprehensionResponse[];
+  microExplanation?: string;
 };
 
 const MAX_TIMEOUT_MS = 2_147_483_647;
@@ -66,6 +68,7 @@ export default function ComprehensionQuestions({
   unlockAt,
   sessionId,
   savedResponses,
+  microExplanation,
 }: ComprehensionQuestionsProps) {
   const initial = hydrateFromSaved(questions, savedResponses);
   const [revealed, setRevealed] = useState<Set<number>>(
@@ -196,14 +199,21 @@ export default function ComprehensionQuestions({
 
   return (
     <section>
-      <h3 className="text-lg font-semibold text-gray-900 mb-1">
+      <h3 className="text-headline-md text-text-primary mb-1">
         Comprehension Questions
       </h3>
-      <p className="text-sm text-gray-500 mb-4">
+      <p className="text-label-md text-text-secondary mb-4">
         {canReveal
           ? "Escribe tu respuesta y luego verifica si acertaste."
           : "Escribe tu respuesta. El Profe Kyle te dice cuándo puedes verificar."}
       </p>
+
+      {microExplanation && (
+        <MicroExplanation
+          dismissKey="comprehension"
+          text={microExplanation}
+        />
+      )}
 
       <div className="space-y-4">
         {questions.map((q, idx) => {
@@ -213,15 +223,15 @@ export default function ComprehensionQuestions({
           return (
             <div
               key={q.id}
-              className="rounded-lg border border-gray-100 p-4"
+              className="rounded-card border border-paper-line bg-surface p-4"
             >
-              <p className="font-medium text-gray-900 mb-3">
+              <p className="text-body-main font-semibold text-text-primary mb-3">
                 {idx + 1}. {q.question}
               </p>
 
               {/* Text input */}
               <textarea
-                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-800 resize-none focus:outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400"
+                className="w-full rounded-card border border-paper-line bg-surface px-3 py-3 text-body-main text-text-primary placeholder:text-text-muted resize-none focus:outline-none focus:border-2 focus:border-accent"
                 placeholder="Escribe tu respuesta en ingles..."
                 rows={2}
                 value={studentAnswer}
@@ -239,18 +249,18 @@ export default function ComprehensionQuestions({
 
               {/* Reveal button or answer */}
               {isRevealed ? (
-                <div className="mt-3 rounded-lg bg-gray-50 px-3 py-2">
-                  <p className="text-xs text-gray-400 mb-1">
+                <div className="mt-3 rounded-card bg-surface-hover px-3 py-3">
+                  <p className="text-label-sm text-text-muted mb-1">
                     Respuesta:
                   </p>
                   {studentAnswer.trim() && (
-                    <p className="text-sm text-gray-600 mb-2">
-                      <span className="text-gray-400">Tu respuesta: </span>
+                    <p className="text-body-main text-text-secondary mb-2">
+                      <span className="text-text-muted">Tu respuesta: </span>
                       {studentAnswer}
                     </p>
                   )}
                   {q.answer && (
-                    <p className="text-sm text-gray-800">
+                    <p className="text-body-main text-text-primary">
                       {q.answer}
                     </p>
                   )}
@@ -259,10 +269,10 @@ export default function ComprehensionQuestions({
                 <button
                   onClick={() => handleReveal(q.position, q.id)}
                   disabled={!studentAnswer.trim()}
-                  className={`mt-2 text-sm font-medium px-4 py-1.5 rounded-lg transition-colors ${
+                  className={`mt-2 min-h-11 text-label-md px-5 py-3 rounded-card transition-colors ${
                     studentAnswer.trim()
-                      ? "bg-indigo-600 text-white hover:bg-indigo-700"
-                      : "bg-gray-100 text-gray-400 cursor-not-allowed"
+                      ? "bg-accent text-white hover:bg-accent-hover"
+                      : "bg-surface-hover text-text-muted cursor-not-allowed"
                   }`}
                   type="button"
                 >
