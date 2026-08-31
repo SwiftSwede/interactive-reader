@@ -1,27 +1,9 @@
-// Next.js calls register() once when a server instance boots, before it serves
-// any request. We use it to check environment variables against the manifest so
-// a key that was never set on Vercel shows up in the runtime logs at startup,
-// not when a student taps an IPA symbol or tries to pay.
-//
-// This is intentionally non-fatal. Crashing the whole server because one
-// optional feature key is absent would take the site down over a video embed.
-// Missing REQUIRED vars log at error level; missing feature vars log at warn.
+// Next.js requires this file at src/instrumentation.ts. The startup env check
+// itself lives in scripts/check-env-startup.ts so all env tooling is in one place.
 
-import { checkEnv, formatEnvReport } from "@/lib/env-manifest";
+import { runStartupEnvCheck } from "../scripts/check-env-startup";
 
 export function register() {
-  // Only meaningful in the Node.js server runtime.
   if (process.env.NEXT_RUNTIME !== "nodejs") return;
-
-  const result = checkEnv();
-  if (result.missingRequired.length === 0 && result.missingByFeature.size === 0) {
-    return;
-  }
-
-  const report = formatEnvReport(result);
-  if (result.missingRequired.length > 0) {
-    console.error(report);
-  } else {
-    console.warn(report);
-  }
+  runStartupEnvCheck();
 }

@@ -6,10 +6,10 @@ It contains the full architecture, data structure, feature build order (53 slice
 Follow it as your north star. Do not make decisions that contradict the PRD without asking.
 
 ## Current Phase
-**COMPLETE:** Phase 1, 1.5, 2a (slices 13–22 + 14–15 Stripe webhooks), 2b, 2c (slices 22a–22e writing class), 2.5 (slices 30–32), 3 (slices 33–35), 4 (slices 36–39: knowledge graph, evidence, N+1 routing, `/progress`).
-**Next feature build:** Phase 5 (slices 40+). Do not build Phase 5 until asked.
+**COMPLETE:** Phase 1, 1.5, 2a–4, plus Phase 5 classroom lesson types (exam 49a–49e, dialogue 45, Movie Talk 46, music 47, video summary 54). Consumer paid tier, beginner UI, reverse translation, and print (slices 40–44, 50–53) are not built.
+**Next feature build:** remaining Phase 5 consumer slices, when asked.
 
-**Session types supported:** `story` (Phase 2a), `writing` (Phase 2c), `exam` (Phase 5, slices 49a–49e — spec complete, not yet built). The exam session type uses group-based submission: one writer per group, Supabase Realtime sync to group members, teacher-led review mode. See PRD Section 4 (GroupExamPrompt, ExamGroup, GroupExamSubmission) and Section 7 (slices 49a–49e).
+**Session types supported:** `story` (Phase 2a), `writing` (Phase 2c), `exam` (Phase 5, slices 49a–49e), `video_summary` (Phase 5, slice 54). Dialogue, Movie Talk, and music are `Story.kind` displays on story sessions (`dialogue` | `movie_talk` | `song`). Video summary is `Story.kind = "video_summary"` plus `session_type = "video_summary"`.
 
 **Production (learn.profekyle.com):** Site and live Stripe webhook are up (200 on test delivery). Remaining ops: Supabase Auth Site URL + redirect URLs, bulk import of existing ThriveCart/Stripe subscribers, legacy price ID mapping. Teacher invite remains for nicknames and exceptions.
 
@@ -161,6 +161,7 @@ These rules apply to all backend code, API routes, database access, and authenti
 - Separation of concerns: data fetching, business logic, and presentation should be in separate layers.
 - Follow Next.js App Router conventions. Server components by default, client components only when interactivity is needed (and marked with "use client").
 - Keep the file structure organized: components in `src/components/`, API routes in `src/app/api/`, types in `src/types/`, utilities in `src/lib/`.
+- Terminal scripts go in `scripts/`. When you create or materially change one, update `SCRIPTS.md` in the same task (see `.cursor/rules/scripts.mdc`).
 
 ## Build discipline
 - Build one vertical slice at a time (see PRD Section 7 for the slice list)

@@ -1,11 +1,11 @@
 // Single source of truth for the environment variables the app expects.
 //
-// Two consumers read this manifest:
-//   - src/instrumentation.ts runs checkEnv() once at server boot and logs a
-//     grouped report, so a missing key shows up in Vercel runtime logs instead
-//     of when a student taps a feature.
-//   - scripts/check-env.ts runs the same check before a deploy and exits
-//     non-zero when a REQUIRED var is missing.
+// Three consumers read this manifest:
+//   - scripts/check-env-startup.ts runs at server boot (via src/instrumentation.ts)
+//     and logs a grouped report, so a missing key shows up in Vercel runtime logs
+//     instead of when a student taps a feature.
+//   - scripts/check-env.ts runs the same check before a deploy and exits non-zero
+//     when a REQUIRED var is missing.
 //
 // When you add a new env var to the app, add it here too. That is the whole
 // point: the manifest is what turns "someone forgot to set it on Vercel" into

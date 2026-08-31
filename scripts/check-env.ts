@@ -13,7 +13,7 @@
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
 
-import { checkEnv, formatEnvReport } from "../src/lib/env-manifest";
+import { checkEnv, formatEnvReport } from "./env-manifest";
 
 const result = checkEnv();
 
