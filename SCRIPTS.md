@@ -62,6 +62,19 @@ Seeds the stub sample lessons for dialogue, Movie Talk, and music lesson types. 
 npx tsx scripts/seed-phase5-samples.ts
 ```
 
+### Generate word timestamps for karaoke (Whisper)
+
+Uses OpenAI Whisper to transcribe the story audio and generate word-level timing data for the karaoke highlight feature.
+
+```bash
+python3.11 scripts/generate-timestamps.py --audio public/audio/stories/{slug}.mp3 --slug {slug} --model base
+```
+
+Models: `tiny` (fastest, least accurate), `base` (good for clear narration), `small` (better accuracy, slower), `turbo` (best, 1.5GB download). `base` is recommended for Kyle's clear narration.
+
+**Cost:** Free (runs locally).
+**Time:** 30-60 seconds with `base` model.
+
 ### Generate Práctica Coral IPA
 
 Generates the IPA transcription for a story's Práctica Coral sentence and saves it to the pronunciation_drills table. Needed for the dictation step to show IPA.
@@ -149,13 +162,24 @@ npx tsx scripts/probe-phase4.ts
 
 ## Diagnostics
 
-### Check environment variables
+### Environment variable checks
 
-Checks all required env vars against the manifest and prints a grouped report. Run before a deploy.
+All env-check tooling lives under `scripts/`:
+
+| Script | When it runs | What it does |
+|--------|--------------|--------------|
+| `check-env.ts` | Before deploy (manual or CI) | Prints a grouped report; exits non-zero if a **required** var is missing |
+| `check-env-startup.ts` | Server boot (via `src/instrumentation.ts`) | Logs missing vars to runtime logs; never crashes the server |
+| `env-manifest.ts` | (imported by both) | Single source of truth for expected env vars |
+
+**Predeploy check** (run before shipping):
 
 ```bash
-npx tsx scripts/check-env.ts
+npm run check-env
+# or: npx tsx scripts/check-env.ts
 ```
+
+Locally it reads `.env.local`. On Vercel/CI the real environment is already populated.
 
 ### Check auth redirect
 
