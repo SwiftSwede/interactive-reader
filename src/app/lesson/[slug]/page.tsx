@@ -5,11 +5,12 @@ import {
   isWithinSessionWindow,
 } from "@/lib/sessions";
 import { loadOwnComprehensionResponses } from "@/lib/comprehension";
+import { loadOwnPersonalResponses } from "@/lib/personal-responses";
 import { getProfile } from "@/lib/auth-server";
 import StoryReader from "@/components/StoryReader";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
 
-export default async function StorySlugPage({
+export default async function LessonSlugPage({
   params,
   searchParams,
 }: {
@@ -24,7 +25,7 @@ export default async function StorySlugPage({
     return (
       <StoryAccessMessage
         title="Ese link no sirve"
-        body="Pídele el link de clase al Profe Kyle. A veces se copia mal, o ya no es de esta historia."
+        body="Pídele el link de clase al Profe Kyle. A veces se copia mal, o ya no es de esta lección."
       />
     );
   }
@@ -62,7 +63,7 @@ export default async function StorySlugPage({
   if (!data) {
     return (
       <StoryAccessMessage
-        title="No encontré esa historia"
+        title="No encontré esa lección"
         body="Revisa el link o pídeselo otra vez al Profe Kyle."
       />
     );
@@ -71,8 +72,8 @@ export default async function StorySlugPage({
   if (data.story.kind === "video_summary" && access.kind === "open") {
     return (
       <StoryAccessMessage
-        title="Este video es para clase"
-        body="Pídele el link de Zoom al Profe Kyle. Este no se abre solo."
+        title="Esta lección es para clase"
+        body="Pídele el link de Zoom al Profe Kyle. Esta no se abre sola."
       />
     );
   }
@@ -87,10 +88,17 @@ export default async function StorySlugPage({
     access.kind === "ok" && (access.saveResponses || isVideo)
       ? access.session.id
       : undefined;
-  const savedResponses =
-    sessionId && !isVideo
-      ? await loadOwnComprehensionResponses(sessionId)
-      : undefined;
+  const savedResponses = !isVideo
+    ? await loadOwnComprehensionResponses(
+        data.comprehensionQuestions.map((question) => question.id),
+        sessionId
+      )
+    : undefined;
+  const savedPersonalResponses = !isVideo
+    ? await loadOwnPersonalResponses(
+        data.personalQuestions.map((question) => question.id)
+      )
+    : undefined;
 
   let readerMode: "classroom-live" | "classroom-review" | "open" = "open";
   if (access.kind === "ok" && (access.saveResponses || isVideo)) {
@@ -117,6 +125,7 @@ export default async function StorySlugPage({
       unlockAt={unlockAt}
       sessionId={sessionId}
       savedResponses={savedResponses}
+      savedPersonalResponses={savedPersonalResponses}
       trackLookups={trackLookups}
       readerMode={readerMode}
       isTeacher={isTeacher}

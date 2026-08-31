@@ -20,10 +20,12 @@ import MicroExplanation from "./MicroExplanation";
 import StoryTextSheet from "./StoryTextSheet";
 import BackLink from "./BackLink";
 import MusicBlanks, { youtubeEmbedId } from "./MusicBlanks";
+import ClassroomYoutubePlayer from "./ClassroomYoutubePlayer";
 import type { LyricBlank } from "@/types";
 import { PlaybackRateProvider } from "./PlaybackRateContext";
-import { recordStoryOpened } from "@/app/story/[slug]/actions";
+import { recordStoryOpened } from "@/app/lesson/[slug]/actions";
 import type { LoadedStory } from "@/lib/stories";
+import type { SavedPersonalResponse } from "@/lib/personal-responses";
 import type { PronunciationWordNote } from "@/types";
 
 type StepId =
@@ -53,6 +55,7 @@ export default function StorySteps({
   unlockAt,
   sessionId,
   savedResponses,
+  savedPersonalResponses,
   trackLookups = false,
   readerMode = "open",
   showPractice,
@@ -62,6 +65,7 @@ export default function StorySteps({
   wordNotes,
   coralExplanation,
   choralCompleted,
+  isTeacher = false,
 }: {
   data: LoadedStory;
   timestamps: WordTimestamp[];
@@ -69,6 +73,7 @@ export default function StorySteps({
   unlockAt?: string;
   sessionId?: string;
   savedResponses?: SavedComprehensionResponse[];
+  savedPersonalResponses?: SavedPersonalResponse[];
   trackLookups?: boolean;
   readerMode?: "classroom-live" | "classroom-review" | "open";
   showPractice: boolean;
@@ -78,6 +83,7 @@ export default function StorySteps({
   wordNotes: PronunciationWordNote[];
   coralExplanation: string | null;
   choralCompleted: boolean;
+  isTeacher?: boolean;
 }) {
   const {
     story,
@@ -272,17 +278,20 @@ export default function StorySteps({
                     Escenas: toca el texto. Los cortes *** marcan cada clip.
                   </p>
                 )}
-                {story.kind === "song" && youtubeId && (
-                  <div className="mb-6 overflow-hidden rounded-card border border-paper-line bg-text-primary">
-                    <iframe
-                      title={story.title}
-                      src={`https://www.youtube.com/embed/${youtubeId}`}
-                      className="aspect-video w-full"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  </div>
-                )}
+                {(story.kind === "song" || story.kind === "movie_talk") &&
+                  youtubeId && (
+                    <div className="mb-6">
+                      <ClassroomYoutubePlayer
+                        videoId={youtubeId}
+                        title={story.title}
+                        sessionId={sessionId}
+                        isTeacher={isTeacher}
+                        live={
+                          readerMode === "classroom-live" && Boolean(sessionId)
+                        }
+                      />
+                    </div>
+                  )}
                 {story.kind === "song" && (
                   <MusicBlanks blanks={lyricBlanks} />
                 )}
@@ -297,39 +306,6 @@ export default function StorySteps({
                 </p>
                 )}
               </>
-            )}
-
-            {active.id === "comprehension" && (
-              <ComprehensionQuestions
-                questions={comprehensionQuestions.map((q) => ({
-                  id: q.id,
-                  position: q.position,
-                  question: q.question,
-                  answer: q.answer,
-                }))}
-                allowReveal={allowReveal}
-                unlockAt={unlockAt}
-                sessionId={sessionId}
-                savedResponses={savedResponses}
-                microExplanation="Contesta antes de ver la respuesta. Si la lees primero, tu cerebro no trabaja. El esfuerzo de intentar es donde ocurre el aprendizaje. Escribir tu respuesta te ayuda a fijar el vocabulario en la memoria."
-              />
-            )}
-
-            {active.id === "personal" && (
-              <PersonalQuestions
-                questions={personalQuestions.map((q) => ({
-                  id: q.id,
-                  position: q.position,
-                  question: q.question,
-                }))}
-                mode={readerMode === "classroom-live" ? "classroom-live" : "write"}
-                sessionId={sessionId}
-                microExplanation={
-                  readerMode === "classroom-live"
-                    ? undefined
-                    : "Estas preguntas no tienen una respuesta correcta. Conectan la historia con tu vida y te hacen pensar en como usar el vocabulario nuevo. El Profe Kyle te da feedback enfocado en una o dos cosas para mejorar."
-                }
-              />
             )}
 
             {active.id === "dictation" && pronunciationDrill && (
@@ -363,6 +339,50 @@ export default function StorySteps({
             )}
 
           </div>
+
+          {comprehensionQuestions.length > 0 && (
+            <div
+              className={active.id === "comprehension" ? "step-panel" : "hidden"}
+              hidden={active.id !== "comprehension"}
+            >
+              <ComprehensionQuestions
+                questions={comprehensionQuestions.map((q) => ({
+                  id: q.id,
+                  position: q.position,
+                  question: q.question,
+                  answer: q.answer,
+                }))}
+                allowReveal={allowReveal}
+                unlockAt={unlockAt}
+                sessionId={sessionId}
+                savedResponses={savedResponses}
+                microExplanation="Contesta antes de ver la respuesta. Si la lees primero, tu cerebro no trabaja. El esfuerzo de intentar es donde ocurre el aprendizaje. Escribir tu respuesta te ayuda a fijar el vocabulario en la memoria."
+              />
+            </div>
+          )}
+
+          {personalQuestions.length > 0 && (
+            <div
+              className={active.id === "personal" ? "step-panel" : "hidden"}
+              hidden={active.id !== "personal"}
+            >
+              <PersonalQuestions
+                questions={personalQuestions.map((q) => ({
+                  id: q.id,
+                  position: q.position,
+                  question: q.question,
+                }))}
+                mode={readerMode === "classroom-live" ? "classroom-live" : "write"}
+                sessionId={sessionId}
+                savedResponses={savedPersonalResponses}
+                microExplanation={
+                  readerMode === "classroom-live"
+                    ? undefined
+                    : "Estas preguntas no tienen una respuesta correcta. Conectan la historia con tu vida y te hacen pensar en como usar el vocabulario nuevo. El Profe Kyle te da feedback enfocado en una o dos cosas para mejorar."
+                }
+              />
+            </div>
+          )}
 
           <nav className="step-nav" aria-label="Navegación de pasos">
             {prev && (

@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import {
-  recordComprehensionSelfCheck,
   saveComprehensionResponse,
-} from "@/app/story/[slug]/actions";
+} from "@/app/lesson/[slug]/actions";
+import { draftKey, readDraft, writeDraft } from "@/lib/answer-drafts";
 import MicroExplanation from "./MicroExplanation";
 
 // ── Types ──────────────────────────────────────────────────
@@ -121,14 +121,45 @@ export default function ComprehensionQuestions({
     };
   }, []);
 
+  useEffect(() => {
+    const extraAnswers: Record<number, string> = {};
+    const extraRevealed: number[] = [];
+    for (const q of questions) {
+      if (answers[q.position] || revealed.has(q.position)) continue;
+      const draft = readDraft<{
+        responseText?: string;
+        revealedAnswer?: boolean;
+      }>(draftKey("comprehension", q.id));
+      if (!draft) continue;
+      if (draft.responseText) extraAnswers[q.position] = draft.responseText;
+      if (draft.revealedAnswer) extraRevealed.push(q.position);
+    }
+    if (Object.keys(extraAnswers).length > 0) {
+      setAnswers((prev) => ({ ...extraAnswers, ...prev }));
+    }
+    if (extraRevealed.length > 0) {
+      setRevealed((prev) => {
+        const next = new Set(prev);
+        for (const pos of extraRevealed) next.add(pos);
+        return next;
+      });
+    }
+    // Only fill gaps on mount. Server-hydrated answers win.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const persist = (
     questionId: string,
     text: string,
     revealedAnswer: boolean
   ) => {
-    if (!sessionId) return;
     const already = persistedRef.current.has(questionId);
     if (!text.trim() && !revealedAnswer && !already) return;
+
+    writeDraft(draftKey("comprehension", questionId), {
+      responseText: text,
+      revealedAnswer,
+    });
 
     void saveComprehensionResponse({
       sessionId,
@@ -138,8 +169,6 @@ export default function ComprehensionQuestions({
     }).then((result) => {
       if (result.ok) {
         persistedRef.current.add(questionId);
-      } else {
-        console.error("saveComprehensionResponse failed");
       }
     });
   };
@@ -162,7 +191,6 @@ export default function ComprehensionQuestions({
     text: string,
     revealedAnswer: boolean
   ) => {
-    if (!sessionId) return;
     const existing = timersRef.current[questionId];
     if (existing) window.clearTimeout(existing);
     timersRef.current[questionId] = window.setTimeout(() => {
@@ -174,16 +202,7 @@ export default function ComprehensionQuestions({
   const handleReveal = (position: number, questionId: string) => {
     if (!canReveal) return;
     setRevealed((prev) => new Set(prev).add(position));
-
-    if (sessionId) {
-      // Classroom: the save path already records progress and evidence.
-      flushSave(questionId, answers[position] || "", true);
-      return;
-    }
-
-    // Open reading: no session to save against, but a logged-in learner still
-    // earns reading progress. The action is a no-op when signed out.
-    void recordComprehensionSelfCheck({ questionId });
+    flushSave(questionId, answers[position] || "", true);
   };
 
   const handleAnswerChange = (

@@ -1,8 +1,14 @@
 -- Interactive Reader App — Phase 1 Database Schema
 -- Run this in the Supabase SQL Editor
 -- Based on PRD Section 4: Data Structure
+--
+-- Catalog map: there is no `lessons` table. Public URL is /lesson/[slug].
+-- This `stories` table is the catalog for reader-backed lessons (cuentos,
+-- dialogues, Movie Talk, songs, Traducción). Writing lives in
+-- writing_prompts. Exams live in exam_prompts. Do not rename this table.
+-- Full map: docs/PRD.md Section 4, "Catalog map".
 
--- ── Stories ────────────────────────────────────────────────
+-- ── Stories (reader-backed lesson catalog) ─────────────────
 
 CREATE TABLE IF NOT EXISTS stories (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),

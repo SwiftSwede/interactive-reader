@@ -34,6 +34,9 @@ type SessionRow = {
   notes: string | null;
   session_link_token: string;
   timer_started_at?: string | null;
+  video_playing?: boolean | null;
+  video_seconds?: number | null;
+  video_rate?: number | null;
   created_at: string;
 };
 
@@ -73,6 +76,9 @@ export function mapSession(row: SessionRow): CourseSession {
     notes: row.notes,
     sessionLinkToken: row.session_link_token,
     timerStartedAt: row.timer_started_at ?? null,
+    videoPlaying: row.video_playing ?? false,
+    videoSeconds: row.video_seconds ?? 0,
+    videoRate: row.video_rate ?? 1,
     createdAt: row.created_at,
   };
 }
@@ -313,7 +319,11 @@ export async function resolveSessionAccess(
   sessionToken: string | undefined
 ): Promise<SessionAccess> {
   const loginNext = sessionToken
-    ? `/story/${slug}?session=${sessionToken}`
+    ? studentSessionPath({
+        sessionType: "story",
+        token: sessionToken,
+        storySlug: slug,
+      })
     : undefined;
   const access = await loadSessionAccess(sessionToken, loginNext);
   if (access.kind !== "ok") return access;

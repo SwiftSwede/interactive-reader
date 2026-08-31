@@ -207,7 +207,7 @@ export async function createSession(
       ok: false,
       error:
         sessionType === "video_summary"
-          ? "Elige un video."
+          ? "Elige una traducción."
           : "Elige una historia.",
     };
   }
@@ -231,7 +231,7 @@ export async function createSession(
 
   if (sessionType === "video_summary") {
     if (story.kind !== "video_summary") {
-      return { ok: false, error: "Ese no es un video de clase." };
+      return { ok: false, error: "Esa no es una traducción de clase." };
     }
 
     const { error } = await supabase.from("course_sessions").insert({
@@ -262,7 +262,7 @@ export async function createSession(
   if (story.kind === "video_summary") {
     return {
       ok: false,
-      error: "Ese es un video. Elige el tipo Video.",
+      error: "Esa es una traducción. Elige el tipo Traducción.",
     };
   }
 

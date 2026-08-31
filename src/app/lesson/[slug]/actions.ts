@@ -49,39 +49,33 @@ async function canReadStory(
 export type SaveComprehensionResult = { ok: true } | { ok: false };
 
 export async function saveComprehensionResponse(input: {
-  sessionId: string;
   questionId: string;
   responseText: string;
   revealedAnswer?: boolean;
+  sessionId?: string;
 }): Promise<SaveComprehensionResult> {
-  const sessionId = input.sessionId.trim();
   const questionId = input.questionId.trim();
-  const responseText = input.responseText;
+  const responseText = input.responseText.slice(0, 500);
   const revealedAnswer = input.revealedAnswer === true;
+  const sessionId = input.sessionId?.trim() || undefined;
 
-  if (!sessionId || !questionId) {
+  if (!questionId) {
     return { ok: false };
   }
 
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const learner = await currentLearner();
+  if (!learner) return { ok: false };
 
-  if (!user) return { ok: false };
+  const { supabase, userId } = learner;
 
-  const profile = await getProfile(user.id);
-  if (profile?.role !== "student-classroom") {
-    return { ok: false };
+  if (sessionId) {
+    const { data: session } = await supabase
+      .from("course_sessions")
+      .select("id")
+      .eq("id", sessionId)
+      .maybeSingle();
+    if (!session) return { ok: false };
   }
-
-  const { data: session } = await supabase
-    .from("course_sessions")
-    .select("id")
-    .eq("id", sessionId)
-    .maybeSingle();
-
-  if (!session) return { ok: false };
 
   const { data: question } = await supabase
     .from("comprehension_questions")
@@ -91,38 +85,81 @@ export async function saveComprehensionResponse(input: {
 
   if (!question) return { ok: false };
 
-  const row: {
+  const payload: {
     user_id: string;
     comprehension_question_id: string;
-    course_session_id: string;
+    course_session_id: string | null;
     response_text: string;
     revealed_answer?: boolean;
     revealed_at?: string;
   } = {
-    user_id: user.id,
+    user_id: userId,
     comprehension_question_id: questionId,
-    course_session_id: sessionId,
+    course_session_id: sessionId ?? null,
     response_text: responseText,
   };
 
   if (revealedAnswer) {
-    row.revealed_answer = true;
-    row.revealed_at = new Date().toISOString();
+    payload.revealed_answer = true;
+    payload.revealed_at = new Date().toISOString();
   }
 
-  const { error } = await supabase.from("comprehension_responses").upsert(row, {
-    onConflict: "user_id,comprehension_question_id,course_session_id",
-  });
+  if (sessionId) {
+    const { error } = await supabase.from("comprehension_responses").upsert(
+      payload,
+      { onConflict: "user_id,comprehension_question_id,course_session_id" }
+    );
+    if (error) {
+      console.error("saveComprehensionResponse failed:", error);
+      return { ok: false };
+    }
+  } else {
+    const { data: existing, error: lookupError } = await supabase
+      .from("comprehension_responses")
+      .select("id, revealed_answer")
+      .eq("user_id", userId)
+      .eq("comprehension_question_id", questionId)
+      .is("course_session_id", null)
+      .order("submitted_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
 
-  if (error) {
-    console.error("saveComprehensionResponse failed:", error);
-    return { ok: false };
+    if (lookupError) {
+      console.error("saveComprehensionResponse lookup failed:", lookupError);
+      return { ok: false };
+    }
+
+    if (existing) {
+      const update: {
+        response_text: string;
+        revealed_answer?: boolean;
+        revealed_at?: string;
+      } = { response_text: responseText };
+      if (revealedAnswer || existing.revealed_answer) {
+        update.revealed_answer = true;
+        if (revealedAnswer) update.revealed_at = new Date().toISOString();
+      }
+      const { error } = await supabase
+        .from("comprehension_responses")
+        .update(update)
+        .eq("id", existing.id);
+      if (error) {
+        console.error("saveComprehensionResponse failed:", error);
+        return { ok: false };
+      }
+    } else {
+      const { error } = await supabase
+        .from("comprehension_responses")
+        .insert(payload);
+      if (error) {
+        console.error("saveComprehensionResponse failed:", error);
+        return { ok: false };
+      }
+    }
   }
 
-  // Revealing the answer is the observable end of the reading work, so it also
-  // closes out reading progress and topic evidence for classroom students.
   if (revealedAnswer) {
-    await recordComprehensionOutcome(supabase, user.id, {
+    await recordComprehensionOutcome(supabase, userId, {
       storyId: question.story_id as string,
       questionId,
       sessionId,
@@ -456,6 +493,16 @@ const PersonalResponseSchema = z.object({
   attemptNumber: z.number().int().min(1).max(10),
   correctionCount: z.number().int().min(0).max(200).optional(),
   sessionId: z.string().uuid().optional(),
+  corrections: z
+    .array(
+      z.object({
+        text: z.string().max(200),
+        type: z.enum(["correct", "added", "deleted", "moved", "placed"]),
+      })
+    )
+    .max(200)
+    .optional(),
+  note: z.string().max(1000).optional(),
 });
 
 /**
@@ -486,6 +533,10 @@ export async function recordPersonalResponse(
 
     if (!question) return;
 
+    const correctionCount =
+      parsed.data.correctionCount ??
+      parsed.data.corrections?.filter((seg) => seg.type !== "correct").length;
+
     const { data: inserted, error } = await supabase
       .from("personal_responses")
       .insert({
@@ -495,9 +546,15 @@ export async function recordPersonalResponse(
         response_text: responseText,
         attempt_number: attemptNumber,
         feedback_json:
-          parsed.data.correctionCount === undefined
-            ? null
-            : { correction_count: parsed.data.correctionCount },
+          parsed.data.corrections || parsed.data.note
+            ? {
+                correction_count: correctionCount ?? 0,
+                corrections: parsed.data.corrections ?? [],
+                note: parsed.data.note ?? "",
+              }
+            : correctionCount === undefined
+              ? null
+              : { correction_count: correctionCount },
       })
       .select("id")
       .maybeSingle();
@@ -514,9 +571,9 @@ export async function recordPersonalResponse(
       positiveStatus: "practiced",
       sourceId: (inserted?.id as string) ?? null,
       evidenceDetail:
-        parsed.data.correctionCount === undefined
+        correctionCount === undefined
           ? {}
-          : { correction_count: parsed.data.correctionCount },
+          : { correction_count: correctionCount },
     });
   } catch (error) {
     console.error("recordPersonalResponse failed:", error);

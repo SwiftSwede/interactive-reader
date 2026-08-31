@@ -5,7 +5,7 @@ import type {
   VideoSummaryNoteType,
   VideoSummaryTeachingNote,
 } from "@/types";
-import { addVideoSummaryNote } from "@/app/story/[slug]/video-summary-actions";
+import { addVideoSummaryNote } from "@/app/lesson/[slug]/video-summary-actions";
 
 const NOTE_TYPES: { id: VideoSummaryNoteType; label: string }[] = [
   { id: "vocabulary", label: "Vocabulario" },

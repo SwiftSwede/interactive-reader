@@ -52,6 +52,7 @@ The personality is grounded, intellectual, and tactile. A trusted mentor, not a 
 | `--error` | `#ba1a1a` | Incorrect answers, errors (clay red, not bright) |
 | `--error-bg` | `#ffdad6` | Error backgrounds |
 | `--warning` | `#644c23` | Warnings (earthy amber/ochre) |
+| `--warning-bg` | `#f5e6c4` | Warning / "moved word" highlight backgrounds |
 
 ## Typography
 
@@ -459,7 +460,7 @@ Pages: story lessons, writing lessons, exams, movie talk, music, future lesson t
 **Subheader (lesson mode):**
 - Sits directly below the main header, also sticky
 - Contains lesson-specific navigation:
-  - **Stories:** Progress dots (dot - line - dot - line - dot - line - dot - line - dot - line - dot). Active dot is larger. Dots are tappable (44px hit area).
+  - **Stories and Traducción:** Progress dots (dot - line - dot). Active dot is larger. Dots are tappable (44px hit area). No "Paso N de N" text. The dots are the step chrome.
   - **Writing:** Timer display (countdown, `headline-md`, tabular-nums). No dots.
   - **Exams:** Task navigation ("Tarea 1 de 3", `label-md`). No dots.
   - **Movie talk:** Scene markers (timeline with scene thumbnails or timestamps). No dots.
@@ -621,7 +622,7 @@ Step 2 - Comprension (Comprehension):
 Step 3 - Personal (Personal Questions):
 - "Ver el texto" button
 - Micro-explanation callout: "Estas preguntas no tienen una respuesta correcta..."
-- Question cards with textarea + "Comprobar" button. AI feedback shows inline (green additions, red strikethrough).
+- Question cards with textarea + "Comprobar" button. AI feedback shows inline (green additions, red strikethrough, amber moved words, underline-only at the destination). Legend chips use the same highlight marks as the words.
 - Bottom nav: left pill ("← Comprensión"), right pill ("Dictado →")
 
 Step 4 - Dictado (Dictation):
@@ -690,16 +691,16 @@ Task-based, collaborative (group of 2-3 students).
 Classroom only. `Story.kind = "video_summary"`. Session type is `video_summary` (uses `story_id`). Three steps with the same progress dots as stories.
 
 **Header zone:**
-- Main header: back button, "Profe Kyle", lesson type "Video", video name
-- Subheader: "Paso N de 3" (`label-md`, `--text-secondary`)
+- Main header: back button, "Profe Kyle", lesson type "Traducción", lesson name
+- Subheader: progress dots (3 dots, same widget as stories). No "Paso N de 3" text. Stories do not show that label; the dots are the global step chrome.
 
 **Content zone:**
-- Step 1 El Video: 16:9 YouTube embed (rounded 16px, paper-line border). Label "Toma notas de lo que ves." Primary "Empezar resumen".
+- Step 1 El Video: 16:9 `ClassroomYoutubePlayer` (rounded 16px, paper-line border). During `classroom-live`: teacher has YouTube controls; students see overlay "Toca el video para oír." After the first tap the overlay stays invisible and blocks student taps. After the 90-min window (`classroom-review`) and with no session (`open`): normal YouTube controls, no overlay. Label "Toma notas de lo que ves." Primary "Empezar resumen".
 - Step 2 Tu Resumen: 5-minute timer (same pattern as writing). Large textarea (min-height 300px). Entregar. Auto-submit at zero. Then "Esperando al profe."
 - Step 3 Traducción: Spanish paragraphs as plain Lora text (no word tooltips). Teacher textarea with terracotta 2px border. Listo uses moss (`--success`). Students see live English via Realtime. Empty: "El profe está traduciendo..." Teacher-only collapsible English original.
 - Teaching notes: yellow highlight (`teaching-note-mark`, same yellow as karaoke). Tap/hover shows the note. Teacher selects text, then a 44px popup (note + type).
 
-Keep the YouTube embed in review mode. Students never see other students' free writes.
+Keep the YouTube player in review mode (solo controls). Students never see other students' free writes.
 
 ### Music Lesson Page (detailed)
 Same Lesson mode shell as stories. `Story.kind = "song"`. Session type stays `story`.
@@ -709,7 +710,7 @@ Same Lesson mode shell as stories. `Story.kind = "song"`. Session type stays `st
 - Subheader: lyric tracker is the existing story progress dots if the song has practice steps. During the lyric step, no extra widget beyond the YouTube player in content.
 
 **Content zone (lyric step):**
-- 16:9 YouTube embed (rounded 16px, paper-line border)
+- 16:9 `ClassroomYoutubePlayer` (rounded 16px, paper-line border). Same live lock / review solo rules as Traducción.
 - Fill-in-the-blank listening (8-10 items in class; same card style as comprehension). "Comprobar" reveals answers. No score.
 - Interactive lyrics: same word-span tooltips as stories. Truquitos live as expressions/tooltips on connected speech, not a second phonetic system.
 - Karaoke uses the existing sticky audio player when story audio is present.
@@ -718,4 +719,4 @@ Same Lesson mode shell as stories. `Story.kind = "song"`. Session type stays `st
 Same as the story lesson page. Lesson type label "Diálogo". First step "El diálogo". Speaker names (`Name:`) render in terracotta `label-md` before the line. Same tooltips and practice steps.
 
 ### Movie Talk Lesson Page (detailed)
-Same as the story lesson page. Lesson type label "Movie Talk". First step "El video". `***` lines in the body are scene breaks (muted "Escena N" divider). Role reading uses the dialogue name styling when lines are `Name:`.
+Same as the story lesson page. Lesson type label "Movie Talk". First step "El video". If `youtube_url` is set, `ClassroomYoutubePlayer` uses the same live lock / review solo rules as music. `***` lines in the body are scene breaks (muted "Escena N" divider). Role reading uses the dialogue name styling when lines are `Name:`.

@@ -8,6 +8,7 @@ import type {
   TagType,
 } from "@/types";
 import { getEvidenceForUser } from "./topic-evidence";
+import { lessonPath } from "./activities";
 
 // ── N+1 activity routing (Phase 4, slice 38) ───────────────
 //
@@ -267,7 +268,7 @@ export async function resolveContentHref(
 
     if (error || !data) return null;
     return {
-      href: `/story/${data.slug as string}`,
+      href: lessonPath(data.slug as string),
       title: data.title as string,
     };
   }

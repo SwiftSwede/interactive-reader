@@ -112,7 +112,7 @@ export default function CreateSessionForm({
                 : "border-gray-200 text-gray-800"
             }`}
           >
-            Video
+            Traducción
           </button>
         </div>
       </fieldset>
@@ -313,12 +313,12 @@ export default function CreateSessionForm({
         </>
       ) : videoOptions.length === 0 ? (
         <p className="text-sm text-gray-500">
-          Todavía no hay un video de este nivel.
+          Todavía no hay una traducción de este nivel.
         </p>
       ) : (
         <label className="block">
           <span className="mb-1.5 block text-sm font-medium text-gray-700">
-            Video
+            Traducción
           </span>
           <select
             name="storyId"
@@ -327,7 +327,7 @@ export default function CreateSessionForm({
             className={fieldClass}
           >
             <option value="" disabled>
-              Elige un video
+              Elige una traducción
             </option>
             {videoOptions.map((story) => (
               <option key={story.id} value={story.id}>

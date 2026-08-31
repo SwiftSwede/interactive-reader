@@ -2,7 +2,10 @@
 // Based on PRD Section 4: Data Structure
 // These types define the shape of every entity in the system.
 
-// ── Story ──────────────────────────────────────────────────
+// ── Story (Postgres table: stories) ────────────────────────
+// Public URL is /lesson/[slug]. There is no lessons table. This type is the
+// catalog row for cuentos, dialogues, Movie Talk, songs, and Traducción.
+// Writing and exams are separate tables. See docs/PRD.md Section 4 Catalog map.
 
 export type StoryLevel = "beginner" | "pre-intermediate" | "intermediate";
 
@@ -206,6 +209,9 @@ export interface CourseSession {
   notes: string | null;
   sessionLinkToken: string;
   timerStartedAt: string | null;
+  videoPlaying: boolean;
+  videoSeconds: number;
+  videoRate: number;
   createdAt: string;
 }
 

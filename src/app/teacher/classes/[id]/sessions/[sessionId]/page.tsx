@@ -37,7 +37,7 @@ function openedLabel(
       : kind === "exam"
         ? "el examen"
         : kind === "video_summary"
-          ? "el video"
+          ? "la traducción"
           : "la historia";
   if (!opened) return `Todavía no abre ${noun}.`;
   if (attended) return `Abrió ${noun}. Llegó a tiempo.`;

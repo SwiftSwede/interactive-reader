@@ -5,6 +5,7 @@ import VideoSummaryPlayer from "@/components/VideoSummaryPlayer";
 import { getSoundVideos } from "@/lib/sound-videos";
 import type { LoadedStory } from "@/lib/stories";
 import type { SavedComprehensionResponse } from "@/components/ComprehensionQuestions";
+import type { SavedPersonalResponse } from "@/lib/personal-responses";
 import type { WordTimestamp } from "@/components/InteractiveStory";
 import {
   loadOwnFreeWrite,
@@ -70,6 +71,7 @@ export default async function StoryReader({
   unlockAt,
   sessionId,
   savedResponses,
+  savedPersonalResponses,
   trackLookups = false,
   readerMode = "open",
   isTeacher = false,
@@ -81,6 +83,7 @@ export default async function StoryReader({
   unlockAt?: string;
   sessionId?: string;
   savedResponses?: SavedComprehensionResponse[];
+  savedPersonalResponses?: SavedPersonalResponse[];
   trackLookups?: boolean;
   readerMode?: "classroom-live" | "classroom-review" | "open";
   isTeacher?: boolean;
@@ -169,6 +172,7 @@ export default async function StoryReader({
         unlockAt={unlockAt}
         sessionId={sessionId}
         savedResponses={savedResponses}
+        savedPersonalResponses={savedPersonalResponses}
         trackLookups={trackLookups}
         readerMode={readerMode}
         showPractice={showPractice}
@@ -178,6 +182,7 @@ export default async function StoryReader({
         wordNotes={wordNotes}
         coralExplanation={coralExplanation}
         choralCompleted={choralCompleted}
+        isTeacher={isTeacher}
       />
     </SoundVideoProvider>
   );

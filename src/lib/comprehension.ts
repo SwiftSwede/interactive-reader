@@ -10,11 +10,47 @@ type ResponseRow = {
   comprehension_question_id: string;
   response_text: string;
   revealed_answer: boolean;
+  course_session_id: string | null;
+  submitted_at: string;
 };
 
+function pickLatestForQuestions(
+  rows: ResponseRow[],
+  sessionId?: string
+): SavedComprehensionResponse[] {
+  const byQuestion = new Map<string, ResponseRow[]>();
+  for (const row of rows) {
+    const list = byQuestion.get(row.comprehension_question_id) ?? [];
+    list.push(row);
+    byQuestion.set(row.comprehension_question_id, list);
+  }
+
+  const picked: SavedComprehensionResponse[] = [];
+  for (const [, list] of byQuestion) {
+    const sessionMatch = sessionId
+      ? list.find((row) => row.course_session_id === sessionId)
+      : undefined;
+    const chosen =
+      sessionMatch ??
+      [...list].sort((a, b) =>
+        a.submitted_at < b.submitted_at ? 1 : -1
+      )[0];
+    if (!chosen) continue;
+    picked.push({
+      questionId: chosen.comprehension_question_id,
+      responseText: chosen.response_text,
+      revealedAnswer: chosen.revealed_answer,
+    });
+  }
+  return picked;
+}
+
 export async function loadOwnComprehensionResponses(
-  sessionId: string
+  questionIds: string[],
+  sessionId?: string
 ): Promise<SavedComprehensionResponse[]> {
+  if (questionIds.length === 0) return [];
+
   const supabase = await createClient();
   const {
     data: { user },
@@ -24,18 +60,18 @@ export async function loadOwnComprehensionResponses(
 
   const { data, error } = await supabase
     .from("comprehension_responses")
-    .select("comprehension_question_id, response_text, revealed_answer")
-    .eq("course_session_id", sessionId)
-    .eq("user_id", user.id);
+    .select(
+      "comprehension_question_id, response_text, revealed_answer, course_session_id, submitted_at"
+    )
+    .eq("user_id", user.id)
+    .in("comprehension_question_id", questionIds);
 
   if (error) {
     console.error("loadOwnComprehensionResponses failed:", error);
     return [];
   }
 
-  return ((data ?? []) as ResponseRow[]).map((row) => ({
-    questionId: row.comprehension_question_id,
-    responseText: row.response_text,
-    revealedAnswer: row.revealed_answer,
-  }));
+  return pickLatestForQuestions((data ?? []) as ResponseRow[], sessionId);
 }
+
+export { pickLatestForQuestions as pickComprehensionResponsesForTest };

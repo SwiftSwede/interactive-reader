@@ -5,7 +5,7 @@ import { createClient } from "@/lib/supabase/client";
 import {
   saveVideoSummaryTranslation,
   markParagraphReady,
-} from "@/app/story/[slug]/video-summary-actions";
+} from "@/app/lesson/[slug]/video-summary-actions";
 import {
   HighlightedText,
   TeachingNotePopup,

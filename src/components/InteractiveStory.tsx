@@ -6,7 +6,7 @@ import WordTooltip, {
   type ExpressionData,
 } from "./WordTooltip";
 import StoryAudioPlayer from "./StoryAudioPlayer";
-import { recordWordLookup } from "@/app/story/[slug]/actions";
+import { recordWordLookup } from "@/app/lesson/[slug]/actions";
 
 // ── Types ──────────────────────────────────────────────────
 

@@ -1,3 +1,7 @@
+# Profe Kyle Interactive Reader
+
+Web app for Kyle's English lessons. **Start here:** [docs/PRD.md](docs/PRD.md), Section 4 **Catalog map**. There is no `lessons` table: reader-backed lessons live in Postgres `stories`; public URLs are `/lesson/[slug]`. Local dev is **http://localhost:3004**.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

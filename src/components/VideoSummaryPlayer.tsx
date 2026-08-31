@@ -8,6 +8,7 @@ import { createClient } from "@/lib/supabase/client";
 import { youtubeEmbedId } from "@/components/MusicBlanks";
 import VideoSummaryFreeWrite from "@/components/VideoSummaryFreeWrite";
 import VideoSummaryTranslationStep from "@/components/VideoSummaryTranslationStep";
+import ClassroomYoutubePlayer from "@/components/ClassroomYoutubePlayer";
 import type {
   VideoSummaryFreeWrite as FreeWrite,
   VideoSummaryParagraph,
@@ -141,11 +142,8 @@ export default function VideoSummaryPlayer({
                 Tu progreso
               </Link>
             </div>
-            <p className="mt-1 text-label-sm text-text-muted">Video</p>
+            <p className="mt-1 text-label-sm text-text-muted">Traducción</p>
             <h1 className="text-headline-md text-text-primary">{title}</h1>
-            <p className="mt-1 text-label-md text-text-secondary">
-              Paso {activeIndex + 1} de 3
-            </p>
           </div>
         </header>
         <nav className="step-progress mx-auto max-w-2xl px-2" aria-label="Pasos">
@@ -186,19 +184,20 @@ export default function VideoSummaryPlayer({
       </div>
 
       <article className="mx-auto max-w-2xl px-4 py-6">
+        {youtubeId ? (
+          <div className={step === "video" ? "mb-4" : "hidden"}>
+            <ClassroomYoutubePlayer
+              videoId={youtubeId}
+              title={title}
+              sessionId={sessionId}
+              isTeacher={isTeacher}
+              live={readerMode === "classroom-live"}
+            />
+          </div>
+        ) : null}
         {step === "video" && (
           <>
-            {youtubeId ? (
-              <div className="mb-4 overflow-hidden rounded-card border border-paper-line bg-text-primary">
-                <iframe
-                  title={title}
-                  src={`https://www.youtube.com/embed/${youtubeId}`}
-                  className="aspect-video w-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-            ) : (
+            {youtubeId ? null : (
               <p className="text-body-main text-text-secondary">
                 Falta el video. Avísale al Profe Kyle.
               </p>

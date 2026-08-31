@@ -5,7 +5,7 @@ import { countWords, formatCountdown, remainingMs } from "@/lib/writing";
 import {
   saveVideoSummaryDraft,
   submitVideoSummary,
-} from "@/app/story/[slug]/video-summary-actions";
+} from "@/app/lesson/[slug]/video-summary-actions";
 
 export default function VideoSummaryFreeWrite({
   sessionId,

@@ -1,3 +1,6 @@
+// Loads rows from Postgres `stories` (reader-backed lessons). Public path is
+// /lesson/[slug]. Writing and exams are not in this table. See PRD Section 4.
+
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { WordData, ExpressionData } from "@/components/WordTooltip";
 import type { PronunciationWordNote } from "@/types";

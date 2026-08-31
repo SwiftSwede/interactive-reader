@@ -5,7 +5,7 @@ import { Play } from "lucide-react";
 import { usePlaybackRate } from "./PlaybackRateContext";
 import MicroExplanation from "./MicroExplanation";
 import IpaText from "./IpaText";
-import { recordDictationAttempt } from "@/app/story/[slug]/actions";
+import { recordDictationAttempt } from "@/app/lesson/[slug]/actions";
 import type { PronunciationWordNote } from "@/types";
 
 type DictationPracticeProps = {

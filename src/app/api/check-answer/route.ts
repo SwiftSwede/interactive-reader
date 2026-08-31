@@ -1,14 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
+import { buildCorrectionSegments } from "@/lib/personal-correction";
 
 // ── API Route: /api/check-answer ───────────────────────────
 // Receives a personal question and the student's English answer.
-// Calls OpenRouter (GPT-4o-mini) to return the corrected text with
-// inline markup for additions, deletions, moves, and a short Spanish note.
-//
-// The AI returns JSON with:
-//   - corrections: array of segments, each is { text, type }
-//     where type is "correct" | "added" | "deleted" | "moved"
-//   - note: a short Spanish explanation (1-2 sentences, Kyle's voice)
+// Calls OpenRouter (GPT-4o-mini) to return a fully corrected sentence
+// plus a short Spanish note. Visual markup (added / deleted / moved)
+// is computed here from the original vs corrected text, because the
+// model is reliable at writing a correct sentence and unreliable at
+// tagging each word.
 //
 // Environment variable OPENROUTER_API_KEY is server-side only.
 
@@ -29,32 +28,25 @@ You know the COMMON ERRORS Spanish speakers make in English (L1 interference):
 7. Present perfect vs past simple confusion: Spanish uses present perfect for recent past, English often uses past simple.
 8. Missing possessive with body parts: Spanish "se rompio la pierna" becomes "He broke his leg" (not "He broke the leg").
 9. "Good" vs "well": Spanish uses "bueno" for both. After a verb, English requires "well" ("He plays well," not "He plays good").
-10. Bare plural nouns: Spanish can say "Sabados juego futbol" but English needs a quantifier or preposition. "Saturdays I play soccer" sounds incomplete. Use "I play soccer every Saturday" or "On Saturdays I play soccer." When the student writes a bare plural like "Saturdays" or "Weekends" at the start, add "every" before it or "on" before it, and mark the original as "moved" or delete it and add the corrected form.
+10. Bare plural nouns: Spanish can say "Sabados juego futbol" but English needs a quantifier or preposition. "Saturdays I play soccer" sounds incomplete. Use "I play soccer every Saturday" or "On Saturdays I play soccer."
 11. "People is" vs "people are": Spanish "gente" is singular but English "people" is always plural.
 12. "I am agree": Spanish "estoy de acuerdo" makes students say "I am agree." Correct to "I agree" (delete "am").
+13. Time phrases: "at the time" for punctuality is wrong. English is "on time." "in time" means before a deadline.
 
-YOUR JOB: Return the student's text with inline corrections. Output ONLY a JSON object. No markdown, no code fences, no other text.
+YOUR JOB: Return the student's meaning in correct English. Output ONLY a JSON object. No markdown, no code fences, no other text.
 
 JSON shape:
 {
-  "corrections": [
-    { "text": "word or phrase", "type": "correct" }
-  ],
+  "corrected": "The fully corrected English sentence.",
   "note": "Short Spanish explanation."
 }
-
-Types:
-- "correct": text that is fine as-is
-- "added": text you are inserting (was missing)
-- "deleted": text the student wrote that should be removed entirely
-- "moved": text the student wrote that is CORRECT but in the WRONG POSITION. Show it at its original position in amber. Then show it again at the correct position as "added" in green. This visually shows "this word needs to move here."
 
 CRITICAL RULES:
 - This is a STATEMENT, not a question. The student is answering a personal question. Do NOT add "Do" or other question auxiliaries unless the student was clearly trying to ask a question.
 - Do NOT rephrase or improve style. Only fix actual grammar errors: word order, missing words, wrong words, verb tense, agreement.
-- Keep corrections minimal. If the sentence is grammatically correct, leave it alone.
-- Each segment should be a word or short phrase, not a whole sentence.
-- The corrected sentence (after applying all additions, deletions, and moves) MUST be a grammatically correct English sentence. Read it back to yourself: if it sounds wrong, you missed something. The student sees the corrected sentence with colors, so if the "correct" sentence is still wrong, the feedback is useless.
+- Keep corrections minimal. If the sentence is grammatically correct, return it unchanged.
+- "corrected" MUST be a grammatically correct English sentence with the student's meaning. Read it back to yourself.
+- Include every needed fix in "corrected". If the student wrote "Always I arrive at the time", "corrected" is "I always arrive on time".
 - The "note" is in Spanish, 1-2 sentences max, Kyle's voice: direct and warm.
   Use "te falto..." or "en ingles va despues de..." or "recuerda que..."
 - If the answer is very short (under 5 words), encourage them to write more in the note.
@@ -65,85 +57,29 @@ EXAMPLES:
 Input: "Never I watch soccer"
 Output:
 {
-  "corrections": [
-    { "text": "Never", "type": "moved" },
-    { "text": "I", "type": "correct" },
-    { "text": "never", "type": "added" },
-    { "text": "watch", "type": "correct" },
-    { "text": "soccer", "type": "correct" }
-  ],
+  "corrected": "I never watch soccer",
   "note": "En ingles, 'never' va despues del sujeto, no al principio. 'I never watch soccer.'"
 }
 
 Input: "No I like soccer"
 Output:
 {
-  "corrections": [
-    { "text": "No", "type": "deleted" },
-    { "text": "I", "type": "correct" },
-    { "text": "don't", "type": "added" },
-    { "text": "like", "type": "correct" },
-    { "text": "soccer", "type": "correct" }
-  ],
+  "corrected": "I don't like soccer",
   "note": "Para negar en ingles necesitas 'don't' (o 'doesn't'), no 'no'. 'I don't like soccer.'"
+}
+
+Input: "Always I arrive at the time"
+Output:
+{
+  "corrected": "I always arrive on time",
+  "note": "En ingles, 'always' va despues del sujeto. Y se dice 'on time', no 'at the time'."
 }
 
 Input: "I watch soccer Saturdays"
 Output:
 {
-  "corrections": [
-    { "text": "I", "type": "correct" },
-    { "text": "watch", "type": "correct" },
-    { "text": "soccer", "type": "correct" },
-    { "text": "Saturdays", "type": "deleted" },
-    { "text": "every", "type": "added" },
-    { "text": "Saturday", "type": "added" }
-  ],
+  "corrected": "I watch soccer every Saturday",
   "note": "Para decir que haces algo cada semana, usa 'every Saturday'. 'I watch soccer every Saturday.'"
-}
-
-Input: "Yes I watch soccer every weekend with my family he play very good"
-Output:
-{
-  "corrections": [
-    { "text": "Yes", "type": "correct" },
-    { "text": "I", "type": "correct" },
-    { "text": "watch", "type": "correct" },
-    { "text": "soccer", "type": "correct" },
-    { "text": "every", "type": "correct" },
-    { "text": "weekend", "type": "correct" },
-    { "text": "with", "type": "correct" },
-    { "text": "my", "type": "correct" },
-    { "text": "family", "type": "correct" },
-    { "text": "He", "type": "correct" },
-    { "text": "plays", "type": "added" },
-    { "text": "very", "type": "correct" },
-    { "text": "good", "type": "deleted" },
-    { "text": "well", "type": "added" }
-  ],
-  "note": "Te falto la 's' en 'plays' (tercera persona). Y despues de un verbo usa 'well', no 'good'. 'He plays very well.'"
-}
-
-Input: "In Mexico the most respected athlete is Chavez boxer because he win many fights"
-Output:
-{
-  "corrections": [
-    { "text": "In Mexico", "type": "correct" },
-    { "text": "the", "type": "correct" },
-    { "text": "most", "type": "correct" },
-    { "text": "respected", "type": "correct" },
-    { "text": "athlete", "type": "correct" },
-    { "text": "is", "type": "correct" },
-    { "text": "Chavez", "type": "correct" },
-    { "text": "the boxer", "type": "added" },
-    { "text": "because", "type": "correct" },
-    { "text": "he", "type": "correct" },
-    { "text": "won", "type": "added" },
-    { "text": "win", "type": "deleted" },
-    { "text": "many", "type": "correct" },
-    { "text": "fights", "type": "correct" }
-  ],
-  "note": "Cambia 'win' por 'won' porque es pasado. Y 'boxer' va antes del nombre: 'the boxer Chavez'."
 }
 
 Return ONLY the JSON object. No other text.`;
@@ -234,7 +170,11 @@ export async function POST(request: NextRequest) {
       jsonStr = jsonStr.replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/, "");
     }
 
-    let parsed: { corrections: Array<{ text: string; type: string }>; note: string };
+    let parsed: {
+      corrected?: string;
+      corrections?: Array<{ text: string; type: string }>;
+      note: string;
+    };
 
     try {
       parsed = JSON.parse(jsonStr);
@@ -246,24 +186,31 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Validate structure
-    if (!parsed.corrections || !Array.isArray(parsed.corrections)) {
+    const corrected =
+      typeof parsed.corrected === "string" ? parsed.corrected.trim() : "";
+    const corrections = corrected
+      ? buildCorrectionSegments(answer, corrected)
+      : Array.isArray(parsed.corrections)
+        ? parsed.corrections.map((c) => ({
+            text: c.text || "",
+            type:
+              c.type === "added" ? "added" :
+              c.type === "deleted" ? "deleted" :
+              c.type === "moved" ? "moved" :
+              c.type === "placed" ? "placed" :
+              "correct",
+          }))
+        : null;
+
+    if (!corrections) {
       return NextResponse.json(
         { error: "No se pudo procesar tu respuesta. Intenta de nuevo." },
         { status: 502 }
       );
     }
 
-    // Normalize types
     return NextResponse.json({
-      corrections: parsed.corrections.map((c) => ({
-        text: c.text || "",
-        type:
-          c.type === "added" ? "added" :
-          c.type === "deleted" ? "deleted" :
-          c.type === "moved" ? "moved" :
-          "correct",
-      })),
+      corrections,
       note: parsed.note || "",
     });
   } catch (err) {
