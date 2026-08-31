@@ -4,6 +4,7 @@ import { useActionState, useState } from "react";
 import { createSession, type CreateSessionResult } from "./actions";
 import {
   defaultWritingMinutes,
+  defaultExamTask2Type,
   type SessionType,
 } from "@/lib/activities";
 import type { CourseLevel } from "@/types";
@@ -17,6 +18,7 @@ const MINUTES = ["00", "15", "30", "45"];
 type StoryOption = {
   id: string;
   title: string;
+  kind?: string | null;
 };
 
 const fieldClass =
@@ -37,6 +39,9 @@ export default function CreateSessionForm({
   );
   const [sessionType, setSessionType] = useState<SessionType>("story");
   const defaultMinutes = defaultWritingMinutes(courseLevel);
+  const defaultTask2 = defaultExamTask2Type(courseLevel);
+  const storyOptions = stories.filter((row) => row.kind !== "video_summary");
+  const videoOptions = stories.filter((row) => row.kind === "video_summary");
 
   return (
     <form
@@ -87,11 +92,33 @@ export default function CreateSessionForm({
           >
             Escritura
           </button>
+          <button
+            type="button"
+            onClick={() => setSessionType("exam")}
+            className={`h-11 rounded-lg border text-sm font-medium ${
+              sessionType === "exam"
+                ? "border-gray-900 bg-gray-900 text-white"
+                : "border-gray-200 text-gray-800"
+            }`}
+          >
+            Examen
+          </button>
+          <button
+            type="button"
+            onClick={() => setSessionType("video_summary")}
+            className={`h-11 rounded-lg border text-sm font-medium ${
+              sessionType === "video_summary"
+                ? "border-gray-900 bg-gray-900 text-white"
+                : "border-gray-200 text-gray-800"
+            }`}
+          >
+            Video
+          </button>
         </div>
       </fieldset>
 
       {sessionType === "story" ? (
-        stories.length === 0 ? (
+        storyOptions.length === 0 ? (
           <p className="text-sm text-gray-500">
             Todavía no hay historias de este nivel.
           </p>
@@ -109,7 +136,7 @@ export default function CreateSessionForm({
               <option value="" disabled>
                 Elige una historia
               </option>
-              {stories.map((story) => (
+              {storyOptions.map((story) => (
                 <option key={story.id} value={story.id}>
                   {story.title}
                 </option>
@@ -117,7 +144,7 @@ export default function CreateSessionForm({
             </select>
           </label>
         )
-      ) : (
+      ) : sessionType === "writing" ? (
         <>
           <label className="block">
             <span className="mb-1.5 block text-sm font-medium text-gray-700">
@@ -182,6 +209,133 @@ export default function CreateSessionForm({
             </>
           )}
         </>
+      ) : sessionType === "exam" ? (
+        <>
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-medium text-gray-700">
+              Nombre
+            </span>
+            <input
+              name="examTitle"
+              required
+              className={fieldClass}
+              placeholder="Examen noviembre"
+            />
+          </label>
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-medium text-gray-700">
+              Tema (opcional)
+            </span>
+            <input name="examTheme" className={fieldClass} placeholder="Travel" />
+          </label>
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-medium text-gray-700">
+              Vocabulario
+            </span>
+            <textarea
+              name="examVocab"
+              required
+              rows={6}
+              className="w-full resize-y rounded-lg border border-gray-200 px-3 py-2 font-mono text-sm text-gray-800 focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-400"
+              placeholder={"go | ir\nwent | fue"}
+            />
+            <span className="mt-1 block text-xs text-gray-500">
+              Una por línea: english | spanish
+            </span>
+          </label>
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-medium text-gray-700">
+              Tarea 1: fill-in
+            </span>
+            <textarea
+              name="examTask1"
+              required
+              rows={6}
+              className="w-full resize-y rounded-lg border border-gray-200 px-3 py-2 font-mono text-sm text-gray-800 focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-400"
+              placeholder="The {niño|boy} {fue|went} home."
+            />
+            <span className="mt-1 block text-xs text-gray-500">
+              Huecos: {"{español|english}"} o {"{español|english|var1,var2}"}
+            </span>
+          </label>
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-medium text-gray-700">
+              Tarea 2
+            </span>
+            <select
+              name="examTask2Type"
+              defaultValue={defaultTask2}
+              className={fieldClass}
+            >
+              <option value="paragraph_restructuring">
+                Reordenar párrafo (intermedio)
+              </option>
+              <option value="sentence_correction">
+                Corregir oraciones (pre-intermedio)
+              </option>
+            </select>
+          </label>
+          <label className="block">
+            <span className="sr-only">Contenido de tarea 2</span>
+            <textarea
+              name="examTask2"
+              required
+              rows={8}
+              className="w-full resize-y rounded-lg border border-gray-200 px-3 py-2 font-mono text-sm text-gray-800 focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-400"
+              placeholder={
+                defaultTask2 === "paragraph_restructuring"
+                  ? "A | First sentence of the paragraph.\nB | Second sentence."
+                  : "ok | She is here.\nfix | She are here. | She is here."
+              }
+            />
+            <span className="mt-1 block text-xs text-gray-500">
+              {defaultTask2 === "paragraph_restructuring"
+                ? "Letra correcta | oración (el orden de las líneas es el revuelto)."
+                : "ok | sentence   o   fix | mal | bien"}
+            </span>
+          </label>
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-medium text-gray-700">
+              Tarea 3: traducción
+            </span>
+            <textarea
+              name="examTask3"
+              required
+              rows={8}
+              className="w-full resize-y rounded-lg border border-gray-200 px-3 py-2 font-mono text-sm text-gray-800 focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-400"
+              placeholder="Si yo fuera rico, viajaria. | If I were rich, I would travel."
+            />
+            <span className="mt-1 block text-xs text-gray-500">
+              español | english | variación. Las 9 y 10 son condicionales.
+            </span>
+          </label>
+          <input type="hidden" name="examTimeMinutes" value="35" />
+        </>
+      ) : videoOptions.length === 0 ? (
+        <p className="text-sm text-gray-500">
+          Todavía no hay un video de este nivel.
+        </p>
+      ) : (
+        <label className="block">
+          <span className="mb-1.5 block text-sm font-medium text-gray-700">
+            Video
+          </span>
+          <select
+            name="storyId"
+            required
+            defaultValue=""
+            className={fieldClass}
+          >
+            <option value="" disabled>
+              Elige un video
+            </option>
+            {videoOptions.map((story) => (
+              <option key={story.id} value={story.id}>
+                {story.title}
+              </option>
+            ))}
+          </select>
+        </label>
       )}
 
       <label className="block">
@@ -256,7 +410,11 @@ export default function CreateSessionForm({
 
       <button
         type="submit"
-        disabled={isPending || (sessionType === "story" && stories.length === 0)}
+        disabled={
+          isPending ||
+          (sessionType === "story" && storyOptions.length === 0) ||
+          (sessionType === "video_summary" && videoOptions.length === 0)
+        }
         className="w-full rounded-lg bg-gray-900 px-4 py-3 text-sm font-medium text-white disabled:opacity-60"
       >
         {isPending ? "Creando..." : "Crear clase"}

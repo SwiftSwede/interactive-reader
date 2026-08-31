@@ -8,7 +8,12 @@ export type StoryLevel = "beginner" | "pre-intermediate" | "intermediate";
 
 // Dialogues, Movie Talks, and songs share the reader schema. Kind drives
 // display only: ContentTag.content_type stays "story" for all of them.
-export type StoryKind = "story" | "dialogue" | "movie_talk" | "song";
+export type StoryKind =
+  | "story"
+  | "dialogue"
+  | "movie_talk"
+  | "song"
+  | "video_summary";
 
 export interface Story {
   id: string;
@@ -23,6 +28,8 @@ export interface Story {
   isFree: boolean; // true for the one free demo story
   youtubeUrl: string | null;
   lyricBlanks: LyricBlank[];
+  spanishSummary: string | null;
+  freeWriteMinutes: number;
   createdAt: string;
   updatedAt: string;
 }
@@ -142,7 +149,7 @@ export interface ChoralPracticeCompletion {
 export type UserRole = "student-classroom" | "student-consumer" | "teacher";
 export type SubscriptionStatus = "active" | "cancelled" | "paused" | "none";
 export type CourseLevel = "pre-intermediate" | "intermediate";
-export type SessionType = "story" | "writing" | "exam";
+export type SessionType = "story" | "writing" | "exam" | "video_summary";
 export type WritingSubmissionStatus = "draft" | "submitted" | "corrected";
 export type ExamTask2Type = "paragraph_restructuring" | "sentence_correction";
 export type GroupExamSubmissionStatus = "in_progress" | "submitted";
@@ -324,6 +331,46 @@ export interface ExamTask2CorrectionAnswer {
 export interface ExamTask3Answer {
   sentenceNumber: number;
   englishTranslation: string;
+}
+
+export type VideoSummaryNoteType =
+  | "vocabulary"
+  | "grammar"
+  | "pronunciation"
+  | "cultural";
+
+export interface VideoSummaryParagraph {
+  id: string;
+  storyId: string;
+  position: number;
+  spanishText: string;
+  englishTranslation: string | null;
+  translationStartedAt: string | null;
+  translationCompletedAt: string | null;
+}
+
+export interface VideoSummaryFreeWrite {
+  id: string;
+  storyId: string;
+  userId: string | null;
+  courseSessionId: string | null;
+  submissionText: string;
+  startedAt: string;
+  submittedAt: string | null;
+  elapsedSeconds: number;
+  wordCount: number;
+}
+
+export interface VideoSummaryTeachingNote {
+  id: string;
+  storyId: string;
+  courseSessionId: string;
+  paragraphPosition: number;
+  selectedText: string;
+  note: string;
+  noteType: VideoSummaryNoteType;
+  createdBy: string;
+  createdAt: string;
 }
 
 export interface GroupExamSubmission {

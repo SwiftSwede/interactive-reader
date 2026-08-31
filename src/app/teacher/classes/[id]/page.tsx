@@ -23,6 +23,7 @@ export const metadata = {
 type StoryOption = {
   id: string;
   title: string;
+  kind?: string | null;
 };
 
 function attendanceLabel(names: string[]): string {
@@ -40,7 +41,7 @@ export default async function CourseClassPage({
 
   const { data: storyRows } = await supabase
     .from("stories")
-    .select("id, title")
+    .select("id, title, kind")
     .eq("level", course.level)
     .order("title");
 

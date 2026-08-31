@@ -31,6 +31,7 @@ export type TeacherSession = {
   sessionType: SessionType;
   storyId: string | null;
   writingPromptId: string | null;
+  examPromptId: string | null;
   start: string;
   end: string;
   answersRevealed: boolean;
@@ -39,6 +40,13 @@ export type TeacherSession = {
   timerStartedAt: string | null;
   story: StoryRef | null;
   writingPrompt: WritingPromptRef | null;
+  examPrompt: ExamPromptRef | null;
+};
+
+export type ExamPromptRef = {
+  title: string;
+  level: CourseLevel;
+  timeLimitMinutes: number;
 };
 
 export type RosterStudent = {
@@ -63,12 +71,19 @@ export type CurrentSession = {
 
 type StoryJoin = StoryRef | StoryRef[] | null;
 type PromptJoin = WritingPromptRefRow | WritingPromptRefRow[] | null;
+type ExamPromptJoin = ExamPromptRefRow | ExamPromptRefRow[] | null;
 
 type WritingPromptRefRow = {
   title: string;
   prompt_text: string;
   writing_time_minutes: number;
   level: CourseLevel;
+};
+
+type ExamPromptRefRow = {
+  title: string;
+  level: CourseLevel;
+  time_limit_minutes: number;
 };
 
 function storyFromJoin(stories: StoryJoin): StoryRef | null {
@@ -91,9 +106,26 @@ function promptFromJoin(prompts: PromptJoin): WritingPromptRef | null {
   };
 }
 
+function examPromptFromJoin(prompts: ExamPromptJoin): ExamPromptRef | null {
+  const row = !prompts
+    ? null
+    : Array.isArray(prompts)
+      ? (prompts[0] ?? null)
+      : prompts;
+  if (!row) return null;
+  return {
+    title: row.title,
+    level: row.level,
+    timeLimitMinutes: row.time_limit_minutes,
+  };
+}
+
 export function sessionTitle(session: TeacherSession): string {
   if (session.sessionType === "writing") {
     return session.writingPrompt?.title || "Escritura";
+  }
+  if (session.sessionType === "exam") {
+    return session.examPrompt?.title || "Examen";
   }
   return session.story?.title ?? "Historia";
 }
@@ -218,6 +250,7 @@ type SessionRow = {
   session_type?: string | null;
   story_id: string | null;
   writing_prompt_id?: string | null;
+  exam_prompt_id?: string | null;
   session_start_time: string;
   session_end_time: string;
   answers_revealed: boolean;
@@ -226,6 +259,7 @@ type SessionRow = {
   timer_started_at?: string | null;
   stories: StoryJoin;
   writing_prompts?: PromptJoin;
+  exam_prompts?: ExamPromptJoin;
 };
 
 export function mapSessionRow(row: SessionRow): TeacherSession {
@@ -233,7 +267,9 @@ export function mapSessionRow(row: SessionRow): TeacherSession {
     ? row.session_type
     : row.writing_prompt_id
       ? "writing"
-      : "story";
+      : row.exam_prompt_id
+        ? "exam"
+        : "story";
 
   return {
     id: row.id,
@@ -241,6 +277,7 @@ export function mapSessionRow(row: SessionRow): TeacherSession {
     sessionType,
     storyId: row.story_id,
     writingPromptId: row.writing_prompt_id ?? null,
+    examPromptId: row.exam_prompt_id ?? null,
     start: row.session_start_time,
     end: row.session_end_time,
     answersRevealed: row.answers_revealed,
@@ -249,11 +286,12 @@ export function mapSessionRow(row: SessionRow): TeacherSession {
     timerStartedAt: row.timer_started_at ?? null,
     story: storyFromJoin(row.stories),
     writingPrompt: promptFromJoin(row.writing_prompts ?? null),
+    examPrompt: examPromptFromJoin(row.exam_prompts ?? null),
   };
 }
 
 export const SESSION_SELECT =
-  "id, course_id, session_type, story_id, writing_prompt_id, timer_started_at, session_start_time, session_end_time, answers_revealed, notes, session_link_token, stories ( title, slug ), writing_prompts ( title, prompt_text, writing_time_minutes, level )";
+  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, timer_started_at, session_start_time, session_end_time, answers_revealed, notes, session_link_token, stories ( title, slug ), writing_prompts ( title, prompt_text, writing_time_minutes, level ), exam_prompts ( title, level, time_limit_minutes )";
 
 const SESSION_SELECT_LEGACY =
   "id, course_id, story_id, session_start_time, session_end_time, answers_revealed, notes, session_link_token, stories ( title, slug )";
@@ -636,6 +674,48 @@ export type WritingCorrectionRow = {
   correctedAt: string;
 };
 
+export type VideoSummaryFreeWriteRow = {
+  id: string;
+  userId: string | null;
+  submissionText: string;
+  wordCount: number;
+  elapsedSeconds: number;
+  submittedAt: string | null;
+};
+
+export async function loadVideoSummaryFreeWrites(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  sessionId: string
+): Promise<VideoSummaryFreeWriteRow[]> {
+  const { data, error } = await supabase
+    .from("video_summary_free_writes")
+    .select(
+      "id, user_id, submission_text, word_count, elapsed_seconds, submitted_at"
+    )
+    .eq("course_session_id", sessionId)
+    .order("submitted_at", { ascending: true });
+
+  if (error || !data) return [];
+
+  return (
+    data as {
+      id: string;
+      user_id: string | null;
+      submission_text: string;
+      word_count: number | null;
+      elapsed_seconds: number | null;
+      submitted_at: string | null;
+    }[]
+  ).map((row) => ({
+    id: row.id,
+    userId: row.user_id,
+    submissionText: row.submission_text,
+    wordCount: row.word_count ?? 0,
+    elapsedSeconds: row.elapsed_seconds ?? 0,
+    submittedAt: row.submitted_at,
+  }));
+}
+
 export async function loadWritingSubmissions(
   supabase: Awaited<ReturnType<typeof createClient>>,
   sessionId: string
@@ -705,6 +785,87 @@ export async function loadWritingCorrection(
     goodVocabulary: row.good_vocabulary,
     correctedAt: row.corrected_at,
   };
+}
+
+export type ExamGroupRow = {
+  id: string;
+  groupLabel: string;
+  writerId: string;
+  memberIds: string[];
+};
+
+export type ExamSubmissionRow = {
+  id: string;
+  examGroupId: string;
+  task1Answers: unknown;
+  task2Answers: unknown;
+  task3Answers: unknown;
+  status: "in_progress" | "submitted";
+  submittedAt: string | null;
+  reviewRevealedAt: string | null;
+};
+
+export async function loadExamGroups(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  sessionId: string
+): Promise<ExamGroupRow[]> {
+  const { data, error } = await supabase
+    .from("exam_groups")
+    .select("id, group_label, writer_id, member_ids")
+    .eq("course_session_id", sessionId)
+    .order("group_label");
+
+  if (error || !data) return [];
+
+  return (
+    data as {
+      id: string;
+      group_label: string;
+      writer_id: string;
+      member_ids: string[];
+    }[]
+  ).map((row) => ({
+    id: row.id,
+    groupLabel: row.group_label,
+    writerId: row.writer_id,
+    memberIds: row.member_ids ?? [],
+  }));
+}
+
+export async function loadExamSubmissions(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  sessionId: string
+): Promise<ExamSubmissionRow[]> {
+  const { data, error } = await supabase
+    .from("group_exam_submissions")
+    .select(
+      "id, exam_group_id, task1_answers, task2_answers, task3_answers, status, submitted_at, review_revealed_at"
+    )
+    .eq("course_session_id", sessionId);
+
+  if (error || !data) return [];
+
+  return (
+    data as {
+      id: string;
+      exam_group_id: string;
+      task1_answers: unknown;
+      task2_answers: unknown;
+      task3_answers: unknown;
+      status: "in_progress" | "submitted";
+      submitted_at: string | null;
+      review_revealed_at: string | null;
+    }[]
+  ).map((row) => ({
+    id: row.id,
+    examGroupId: row.exam_group_id,
+    task1Answers: row.task1_answers,
+    task2Answers: row.task2_answers,
+    task3Answers: row.task3_answers,
+    status: row.status,
+    submittedAt: row.submitted_at,
+    reviewRevealedAt: row.review_revealed_at,
+  }));
 }
 
 

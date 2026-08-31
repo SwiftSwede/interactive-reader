@@ -170,6 +170,30 @@ body {
   transition: background-color 0.1s ease;
 }
 
+.teaching-note-mark {
+  background-color: rgb(254 240 138);
+}
+
+.teacher-typing-pulse {
+  animation: teacher-typing 1.6s ease-in-out infinite;
+}
+
+@keyframes teacher-typing {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .teacher-typing-pulse {
+    animation: none;
+  }
+}
+
 /* ── Tooltip ───────────────────────────────────────────── */
 
 .word-tooltip {

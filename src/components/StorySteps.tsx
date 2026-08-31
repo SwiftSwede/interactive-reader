@@ -181,6 +181,10 @@ export default function StorySteps({
       | "song",
   };
 
+  if (story.kind === "video_summary") {
+    return null;
+  }
+
   return (
     <PlaybackRateProvider>
       <main className="story-page min-h-screen">

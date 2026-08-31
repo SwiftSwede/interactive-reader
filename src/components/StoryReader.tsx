@@ -1,10 +1,17 @@
 import { createClient } from "@/lib/supabase/server";
 import SoundVideoProvider from "@/components/SoundVideoProvider";
 import StorySteps from "@/components/StorySteps";
+import VideoSummaryPlayer from "@/components/VideoSummaryPlayer";
 import { getSoundVideos } from "@/lib/sound-videos";
 import type { LoadedStory } from "@/lib/stories";
 import type { SavedComprehensionResponse } from "@/components/ComprehensionQuestions";
 import type { WordTimestamp } from "@/components/InteractiveStory";
+import {
+  loadOwnFreeWrite,
+  loadVideoSummaryNotes,
+  loadVideoSummaryParagraphs,
+} from "@/lib/video-summary";
+import { loadVideoSummaryFreeWrites } from "@/lib/teacher";
 import { existsSync, readFileSync } from "fs";
 import { join } from "path";
 
@@ -65,6 +72,9 @@ export default async function StoryReader({
   savedResponses,
   trackLookups = false,
   readerMode = "open",
+  isTeacher = false,
+  timerStartedAt = null,
+  answersRevealed = false,
 }: {
   data: LoadedStory;
   allowReveal?: boolean;
@@ -73,10 +83,50 @@ export default async function StoryReader({
   savedResponses?: SavedComprehensionResponse[];
   trackLookups?: boolean;
   readerMode?: "classroom-live" | "classroom-review" | "open";
+  isTeacher?: boolean;
+  timerStartedAt?: string | null;
+  answersRevealed?: boolean;
 }) {
   const { story, pronunciationDrill } = data;
 
   const supabase = await createClient();
+
+  if (story.kind === "video_summary" && sessionId) {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    const [paragraphs, notes, freeWrite, teacherFreeWrites] = await Promise.all([
+      loadVideoSummaryParagraphs(supabase, story.id),
+      loadVideoSummaryNotes(supabase, sessionId),
+      user && !isTeacher
+        ? loadOwnFreeWrite(supabase, sessionId, user.id)
+        : Promise.resolve(null),
+      isTeacher
+        ? loadVideoSummaryFreeWrites(supabase, sessionId)
+        : Promise.resolve([]),
+    ]);
+
+    return (
+      <VideoSummaryPlayer
+        storyId={story.id}
+        title={story.title}
+        youtubeUrl={story.youtube_url ?? null}
+        freeWriteMinutes={story.free_write_minutes ?? 5}
+        bodyText={story.body_text}
+        sessionId={sessionId}
+        isTeacher={isTeacher}
+        timerStartedAt={timerStartedAt}
+        answersRevealed={answersRevealed}
+        allowReveal={allowReveal}
+        paragraphs={paragraphs}
+        notes={notes}
+        freeWrite={freeWrite}
+        teacherFreeWrites={teacherFreeWrites}
+        readerMode={readerMode}
+      />
+    );
+  }
+
   const soundVideos = await getSoundVideos(supabase);
 
   let choralCompleted = false;

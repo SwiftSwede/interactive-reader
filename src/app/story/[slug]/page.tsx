@@ -68,19 +68,32 @@ export default async function StorySlugPage({
     );
   }
 
+  if (data.story.kind === "video_summary" && access.kind === "open") {
+    return (
+      <StoryAccessMessage
+        title="Este video es para clase"
+        body="Pídele el link de Zoom al Profe Kyle. Este no se abre solo."
+      />
+    );
+  }
+
   const allowReveal = access.kind === "open" || access.allowReveal;
   const unlockAt =
     access.kind === "ok" && !access.allowReveal
       ? access.session.sessionEndTime
       : undefined;
+  const isVideo = data.story.kind === "video_summary";
   const sessionId =
-    access.kind === "ok" && access.saveResponses ? access.session.id : undefined;
-  const savedResponses = sessionId
-    ? await loadOwnComprehensionResponses(sessionId)
-    : undefined;
+    access.kind === "ok" && (access.saveResponses || isVideo)
+      ? access.session.id
+      : undefined;
+  const savedResponses =
+    sessionId && !isVideo
+      ? await loadOwnComprehensionResponses(sessionId)
+      : undefined;
 
   let readerMode: "classroom-live" | "classroom-review" | "open" = "open";
-  if (access.kind === "ok" && access.saveResponses) {
+  if (access.kind === "ok" && (access.saveResponses || isVideo)) {
     readerMode = isWithinSessionWindow(access.session)
       ? "classroom-live"
       : "classroom-review";
@@ -90,8 +103,10 @@ export default async function StorySlugPage({
     data: { user },
   } = await supabase.auth.getUser();
   let trackLookups = false;
+  let isTeacher = false;
   if (user) {
     const profile = await getProfile(user.id);
+    isTeacher = profile?.role === "teacher";
     trackLookups = profile != null && profile.role !== "teacher";
   }
 
@@ -104,6 +119,13 @@ export default async function StorySlugPage({
       savedResponses={savedResponses}
       trackLookups={trackLookups}
       readerMode={readerMode}
+      isTeacher={isTeacher}
+      timerStartedAt={
+        access.kind === "ok" ? access.session.timerStartedAt : null
+      }
+      answersRevealed={
+        access.kind === "ok" ? access.session.answersRevealed : false
+      }
     />
   );
 }

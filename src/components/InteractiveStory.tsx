@@ -27,6 +27,7 @@ type InteractiveStoryProps = {
   sessionId?: string;
   trackLookups?: boolean;
   hideAudio?: boolean;
+  kind?: "story" | "dialogue" | "movie_talk" | "song";
 };
 
 // ── Component ──────────────────────────────────────────────
@@ -41,6 +42,7 @@ export default function InteractiveStory({
   sessionId,
   trackLookups = false,
   hideAudio = false,
+  kind = "story",
 }: InteractiveStoryProps) {
   const [seenPositions, setSeenPositions] = useState<Set<number>>(new Set());
   const [activePosition, setActivePosition] = useState<number | null>(null);
@@ -278,6 +280,23 @@ export default function InteractiveStory({
       <div className="space-y-4">
         {paragraphs.map((paragraph, paraIdx) => {
           const tokens = paragraph.split(/\s+/).filter((t) => t);
+          const sceneBreak =
+            kind === "movie_talk" && /^\*+\s*$/.test(paragraph.trim());
+          if (sceneBreak) {
+            return (
+              <p
+                key={paraIdx}
+                className="border-t border-paper-line pt-4 text-center text-label-sm text-text-muted"
+              >
+                Escena {paragraphs.slice(0, paraIdx).filter((line) => /^\*+\s*$/.test(line.trim())).length + 1}
+              </p>
+            );
+          }
+
+          const dialogueName =
+            kind === "dialogue"
+              ? paragraph.match(/^([A-Za-zÁÉÍÓÚáéíóúñÑ.' -]+):/)?.[1]
+              : null;
 
           return (
             <p key={paraIdx} className="text-story-body text-text-primary">
@@ -318,7 +337,14 @@ export default function InteractiveStory({
                   activePosition !== word.position;
 
                 return (
-                  <span key={tokenIdx}>
+                  <span
+                    key={tokenIdx}
+                    className={
+                      dialogueName && tokenIdx === 0
+                        ? "font-heading text-label-md text-text-accent"
+                        : undefined
+                    }
+                  >
                     <WordTooltip
                       word={word}
                       expression={expression}

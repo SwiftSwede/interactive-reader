@@ -18,6 +18,8 @@ export type StoryRow = {
   is_free: boolean;
   youtube_url?: string | null;
   lyric_blanks?: unknown;
+  spanish_summary?: string | null;
+  free_write_minutes?: number | null;
   created_at: string;
   updated_at: string;
 };

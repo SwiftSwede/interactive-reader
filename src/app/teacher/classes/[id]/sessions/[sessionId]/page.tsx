@@ -6,11 +6,18 @@ import UnlockAnswersButton from "../../UnlockAnswersButton";
 import CopySessionLink from "../../CopySessionLink";
 import LocalDateTime from "@/components/LocalDateTime";
 import StartWritingTimerButton from "./StartWritingTimerButton";
+import StartExamReviewButton from "./StartExamReviewButton";
+import ExamGroupForm from "./ExamGroupForm";
+import ExamReview from "./ExamReview";
+import { mapExamPromptRow, type ExamPromptRow } from "@/lib/exam";
 import {
   getOwnedCourse,
   loadCourseSessions,
+  loadExamGroups,
+  loadExamSubmissions,
   loadLookedUpWords,
   loadSessionStudentStatus,
+  loadVideoSummaryFreeWrites,
   loadWritingSubmissions,
   sessionTitle,
 } from "@/lib/teacher";
@@ -19,8 +26,19 @@ export const metadata = {
   title: "Clase - Profe Kyle",
 };
 
-function openedLabel(opened: boolean, attended: boolean, isWriting: boolean) {
-  const noun = isWriting ? "la escritura" : "la historia";
+function openedLabel(
+  opened: boolean,
+  attended: boolean,
+  kind: "story" | "writing" | "exam" | "video_summary"
+) {
+  const noun =
+    kind === "writing"
+      ? "la escritura"
+      : kind === "exam"
+        ? "el examen"
+        : kind === "video_summary"
+          ? "el video"
+          : "la historia";
   if (!opened) return `Todavía no abre ${noun}.`;
   if (attended) return `Abrió ${noun}. Llegó a tiempo.`;
   return `Abrió ${noun}. Fuera de la ventana de clase.`;
@@ -48,20 +66,47 @@ export default async function SessionDetailPage({
   }
 
   const isWriting = session.sessionType === "writing";
-  const [students, lookedUpWords, submissions] = await Promise.all([
-    loadSessionStudentStatus(
-      supabase,
-      course.id,
-      session.id,
-      session.storyId
-    ),
-    isWriting ? Promise.resolve([]) : loadLookedUpWords(supabase, session.id),
-    isWriting ? loadWritingSubmissions(supabase, session.id) : Promise.resolve([]),
-  ]);
+  const isExam = session.sessionType === "exam";
+  const isVideo = session.sessionType === "video_summary";
+  const [students, lookedUpWords, submissions, examGroups, examSubs, freeWrites] =
+    await Promise.all([
+      loadSessionStudentStatus(
+        supabase,
+        course.id,
+        session.id,
+        session.storyId
+      ),
+      isWriting || isExam || isVideo
+        ? Promise.resolve([])
+        : loadLookedUpWords(supabase, session.id),
+      isWriting
+        ? loadWritingSubmissions(supabase, session.id)
+        : Promise.resolve([]),
+      isExam ? loadExamGroups(supabase, session.id) : Promise.resolve([]),
+      isExam ? loadExamSubmissions(supabase, session.id) : Promise.resolve([]),
+      isVideo
+        ? loadVideoSummaryFreeWrites(supabase, session.id)
+        : Promise.resolve([]),
+    ]);
 
   const submissionByStudent = new Map(
     submissions.map((row) => [row.userId, row])
   );
+  const examSubByGroup = new Map(
+    examSubs.map((row) => [row.examGroupId, row])
+  );
+
+  let examPrompt = null;
+  if (isExam && session.examPromptId) {
+    const { data } = await supabase
+      .from("exam_prompts")
+      .select(
+        "id, title, level, theme, vocabulary_list, fill_in_translation, task2_type, paragraph_restructuring, sentence_correction, translation_sentences, time_limit_minutes, created_by, created_at"
+      )
+      .eq("id", session.examPromptId)
+      .maybeSingle();
+    if (data) examPrompt = mapExamPromptRow(data as ExamPromptRow);
+  }
 
   const unlocked = areAnswersUnlocked({
     answersRevealed: session.answersRevealed,
@@ -94,13 +139,24 @@ export default async function SessionDetailPage({
 
       <div className="mt-4 grid grid-cols-2 gap-2">
         <CopySessionLink href={copyHref} />
-        {isWriting ? (
+        {isWriting || isVideo ? (
           session.timerStartedAt ? (
             <p className="flex items-center text-sm text-gray-500">
               Tiempo iniciado.
             </p>
           ) : (
             <StartWritingTimerButton
+              courseId={course.id}
+              sessionId={session.id}
+            />
+          )
+        ) : isExam ? (
+          unlocked ? (
+            <p className="flex items-center text-sm text-gray-500">
+              Revisión abierta.
+            </p>
+          ) : (
+            <StartExamReviewButton
               courseId={course.id}
               sessionId={session.id}
             />
@@ -117,6 +173,21 @@ export default async function SessionDetailPage({
         )}
       </div>
 
+      {isVideo && (
+        <div className="mt-2">
+          {unlocked ? (
+            <p className="text-sm text-gray-500">Traducción abierta.</p>
+          ) : (
+            <UnlockAnswersButton
+              courseId={course.id}
+              sessionId={session.id}
+              label="Continuar"
+              pendingLabel="Abriendo..."
+            />
+          )}
+        </div>
+      )}
+
       {isWriting && session.writingPrompt && (
         <div className="mt-8 rounded-lg border border-gray-100 px-3 py-3">
           <p className="text-xs font-medium text-gray-500">Pregunta</p>
@@ -129,7 +200,54 @@ export default async function SessionDetailPage({
         </div>
       )}
 
-      {!isWriting && (
+      {isExam && (
+        <div className="mt-8">
+          <ExamGroupForm
+            courseId={course.id}
+            sessionId={session.id}
+            students={students.map((student) => ({
+              studentId: student.studentId,
+              displayName: student.displayName,
+            }))}
+            groups={examGroups}
+          />
+        </div>
+      )}
+
+      {isExam && unlocked && examPrompt && (
+        <div className="mt-10">
+          <h2 className="mb-3 text-lg font-semibold text-gray-900">
+            Revisión
+          </h2>
+          <ExamReview
+            prompt={examPrompt}
+            groups={examGroups.map((group) => {
+              const sub = examSubByGroup.get(group.id);
+              return {
+                id: group.id,
+                label: group.groupLabel,
+                task1: Array.isArray(sub?.task1Answers)
+                  ? (sub.task1Answers as Array<{
+                      slotIndex: number;
+                      answer: string;
+                    }>)
+                  : [],
+                task2: Array.isArray(sub?.task2Answers)
+                  ? (sub.task2Answers as never[])
+                  : [],
+                task3: Array.isArray(sub?.task3Answers)
+                  ? (sub.task3Answers as Array<{
+                      sentenceNumber: number;
+                      englishTranslation: string;
+                    }>)
+                  : [],
+              };
+            })}
+          />
+        </div>
+      )}
+
+      {!isWriting && !isExam && !isVideo && (
         <div className="mt-10">
           <h2 className="mb-3 text-lg font-semibold text-gray-900">
             Palabras más consultadas
@@ -163,6 +281,45 @@ export default async function SessionDetailPage({
         </div>
       )}
 
+      {isVideo && (
+        <div className="mt-10">
+          <h2 className="mb-3 text-lg font-semibold text-gray-900">
+            Resúmenes de estudiantes
+          </h2>
+          {freeWrites.length === 0 ? (
+            <p className="text-sm text-gray-500">
+              Todavía nadie ha entregado su resumen.
+            </p>
+          ) : (
+            <ul className="space-y-3">
+              {freeWrites.map((row) => {
+                const name =
+                  students.find((student) => student.studentId === row.userId)
+                    ?.displayName ?? "Sin nombre";
+                return (
+                  <li
+                    key={row.id}
+                    className="rounded-lg border border-gray-100 px-3 py-3"
+                  >
+                    <p className="text-sm font-medium text-gray-900">{name}</p>
+                    <p className="mt-1 text-xs text-gray-500">
+                      {row.wordCount} palabras
+                      {row.elapsedSeconds
+                        ? ` · ${Math.round(row.elapsedSeconds / 60)} min`
+                        : ""}
+                      {row.submittedAt ? " · Entregado" : " · Borrador"}
+                    </p>
+                    <p className="mt-2 whitespace-pre-wrap text-sm text-gray-800">
+                      {row.submissionText || "(vacío)"}
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </div>
+      )}
+
       <div className="mt-10">
         <h2 className="mb-3 text-lg font-semibold text-gray-900">
           Estudiantes
@@ -175,6 +332,12 @@ export default async function SessionDetailPage({
           <ul className="space-y-4">
             {students.map((student) => {
               const submission = submissionByStudent.get(student.studentId);
+              const examGroup = examGroups.find((group) =>
+                group.memberIds.includes(student.studentId)
+              );
+              const examSub = examGroup
+                ? examSubByGroup.get(examGroup.id)
+                : undefined;
               return (
                 <li
                   key={student.studentId}
@@ -191,10 +354,37 @@ export default async function SessionDetailPage({
                     {student.displayName}
                   </Link>
                   <p className="mt-1 text-sm text-gray-600">
-                    {openedLabel(student.opened, student.attended, isWriting)}
+                    {openedLabel(
+                      student.opened,
+                      student.attended,
+                      isExam
+                        ? "exam"
+                        : isWriting
+                          ? "writing"
+                          : isVideo
+                            ? "video_summary"
+                            : "story"
+                    )}
                   </p>
                   {student.openedAt && (
                     <LocalDateTime iso={student.openedAt} />
+                  )}
+                  {isExam && (
+                    <p className="mt-2 text-sm text-gray-700">
+                      {examGroup
+                        ? `${examGroup.groupLabel}${
+                            examGroup.writerId === student.studentId
+                              ? " · escribe"
+                              : ""
+                          }${
+                            examSub?.status === "submitted"
+                              ? " · entregado"
+                              : examSub
+                                ? " · en progreso"
+                                : ""
+                          }`
+                        : "Sin grupo"}
+                    </p>
                   )}
                   {isWriting ? (
                     <div className="mt-2 text-sm text-gray-700">
@@ -209,7 +399,7 @@ export default async function SessionDetailPage({
                         </p>
                       )}
                     </div>
-                  ) : student.answers.length === 0 ? (
+                  ) : isExam ? null : student.answers.length === 0 ? (
                     <p className="mt-2 text-sm text-gray-400">
                       Todavía no escribió respuestas.
                     </p>

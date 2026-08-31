@@ -685,3 +685,37 @@ Task-based, collaborative (group of 2-3 students).
 - Task 2: Paragraph restructuring (intermediate) or sentence correction (pre-intermediate). Scrambled sentences with letter input fields, or sentence list with correction textareas.
 - Task 3: Translation sentences. 10 Spanish sentences, textareas for English translations.
 - Submit button at the bottom (primary, full width). Only the designated group writer submits.
+
+### Video Summary Lesson Page (detailed)
+Classroom only. `Story.kind = "video_summary"`. Session type is `video_summary` (uses `story_id`). Three steps with the same progress dots as stories.
+
+**Header zone:**
+- Main header: back button, "Profe Kyle", lesson type "Video", video name
+- Subheader: "Paso N de 3" (`label-md`, `--text-secondary`)
+
+**Content zone:**
+- Step 1 El Video: 16:9 YouTube embed (rounded 16px, paper-line border). Label "Toma notas de lo que ves." Primary "Empezar resumen".
+- Step 2 Tu Resumen: 5-minute timer (same pattern as writing). Large textarea (min-height 300px). Entregar. Auto-submit at zero. Then "Esperando al profe."
+- Step 3 Traducción: Spanish paragraphs as plain Lora text (no word tooltips). Teacher textarea with terracotta 2px border. Listo uses moss (`--success`). Students see live English via Realtime. Empty: "El profe está traduciendo..." Teacher-only collapsible English original.
+- Teaching notes: yellow highlight (`teaching-note-mark`, same yellow as karaoke). Tap/hover shows the note. Teacher selects text, then a 44px popup (note + type).
+
+Keep the YouTube embed in review mode. Students never see other students' free writes.
+
+### Music Lesson Page (detailed)
+Same Lesson mode shell as stories. `Story.kind = "song"`. Session type stays `story`.
+
+**Header zone:**
+- Main header: back button, "Profe Kyle", lesson type "Música", song name
+- Subheader: lyric tracker is the existing story progress dots if the song has practice steps. During the lyric step, no extra widget beyond the YouTube player in content.
+
+**Content zone (lyric step):**
+- 16:9 YouTube embed (rounded 16px, paper-line border)
+- Fill-in-the-blank listening (8-10 items in class; same card style as comprehension). "Comprobar" reveals answers. No score.
+- Interactive lyrics: same word-span tooltips as stories. Truquitos live as expressions/tooltips on connected speech, not a second phonetic system.
+- Karaoke uses the existing sticky audio player when story audio is present.
+
+### Dialogue Lesson Page (detailed)
+Same as the story lesson page. Lesson type label "Diálogo". First step "El diálogo". Speaker names (`Name:`) render in terracotta `label-md` before the line. Same tooltips and practice steps.
+
+### Movie Talk Lesson Page (detailed)
+Same as the story lesson page. Lesson type label "Movie Talk". First step "El video". `***` lines in the body are scene breaks (muted "Escena N" divider). Role reading uses the dialogue name styling when lines are `Name:`.
