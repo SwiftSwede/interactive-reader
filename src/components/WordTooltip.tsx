@@ -36,10 +36,8 @@ type WordTooltipProps = {
   word: WordData;
   expression: ExpressionData | null;
   isHighlighted: boolean;
-  onActivate: (word: WordData) => void;
   onPin: (word: WordData) => void;
   isActive: boolean;
-  allowHoverActivate: boolean;
   isExpressionActive: boolean;
   hintClass?: string;
   onFirstInteraction?: () => void;
@@ -50,10 +48,8 @@ function WordTooltip({
   word,
   expression,
   isHighlighted,
-  onActivate,
   onPin,
   isActive,
-  allowHoverActivate,
   isExpressionActive,
   hintClass,
   onFirstInteraction,
@@ -68,7 +64,6 @@ function WordTooltip({
   });
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPinned, setIsPinned] = useState(false);
-  const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Determine what to show in the tooltip
   const displayTranslation = expression
@@ -135,26 +130,10 @@ function WordTooltip({
     });
   };
 
-  // Desktop: hover shows a peek. Mouse leave does not close it.
-  const handleMouseEnter = () => {
-    if (isPinned || !allowHoverActivate) return;
-    if (hoverTimer.current) clearTimeout(hoverTimer.current);
-    hoverTimer.current = setTimeout(() => {
-      showTooltip();
-      onActivate(word);
-    }, 150);
-  };
-
-  const handleMouseLeave = () => {
-    if (hoverTimer.current) clearTimeout(hoverTimer.current);
-  };
-
-  // First click pins. Later clicks on this word stay pinned.
-  // Close happens on click outside or click on another word.
+  // Click pins the tooltip. Close happens on click outside or another word.
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (onFirstInteraction) onFirstInteraction();
-    if (hoverTimer.current) clearTimeout(hoverTimer.current);
     setIsPinned(true);
     showTooltip();
     onPin(word);
@@ -181,13 +160,6 @@ function WordTooltip({
     };
   }, [tooltip.visible, positionTooltip]);
 
-  // Cleanup
-  useEffect(() => {
-    return () => {
-      if (hoverTimer.current) clearTimeout(hoverTimer.current);
-    };
-  }, []);
-
   return (
     <>
       <span
@@ -195,8 +167,6 @@ function WordTooltip({
         className={`word-span ${isHighlighted ? "word-seen" : ""} ${
           tooltip.visible ? "word-active" : ""
         } ${isExpressionActive ? "word-expr-active" : ""} ${hintClass || ""}`.trim()}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
         onClick={handleClick}
       >
         {word.text}
@@ -207,9 +177,6 @@ function WordTooltip({
           className={`word-tooltip ${isPinned ? "word-tooltip-pinned" : ""}`}
           style={{ left: tooltip.x, top: tooltip.y }}
           onClick={(e) => e.stopPropagation()}
-          onMouseEnter={() => {
-            if (hoverTimer.current) clearTimeout(hoverTimer.current);
-          }}
         >
           <div className="word-tooltip-inner">
             <span className="word-tooltip-translation">

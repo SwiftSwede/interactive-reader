@@ -44,7 +44,6 @@ export default function InteractiveStory({
 }: InteractiveStoryProps) {
   const [seenPositions, setSeenPositions] = useState<Set<number>>(new Set());
   const [activePosition, setActivePosition] = useState<number | null>(null);
-  const [pinnedPosition, setPinnedPosition] = useState<number | null>(null);
   const [activeExpressionId, setActiveExpressionId] = useState<string | null>(
     null
   );
@@ -197,7 +196,6 @@ export default function InteractiveStory({
   const handlePin = useCallback(
     (word: WordData) => {
       handleActivate(word);
-      setPinnedPosition(word.position);
     },
     [handleActivate]
   );
@@ -217,7 +215,6 @@ export default function InteractiveStory({
   const handleDismiss = useCallback(() => {
     setActivePosition(null);
     setActiveExpressionId(null);
-    setPinnedPosition(null);
   }, []);
 
   // Dismiss on a real outside click, not on the click that opened or pinned
@@ -326,13 +323,8 @@ export default function InteractiveStory({
                       word={word}
                       expression={expression}
                       isHighlighted={isHighlighted}
-                      onActivate={handleActivate}
                       onPin={handlePin}
                       isActive={isActive}
-                      allowHoverActivate={
-                        pinnedPosition === null ||
-                        pinnedPosition === word.position
-                      }
                       isExpressionActive={isExpressionActive}
                       hintClass={
                         !hideAudio && !hasInteracted && currentPos < 4

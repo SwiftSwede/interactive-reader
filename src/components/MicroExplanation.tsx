@@ -49,7 +49,7 @@ export default function MicroExplanation({
         aria-label="Cerrar"
         type="button"
       >
-        <X size={16} aria-hidden="true" />
+        <X size={14} aria-hidden="true" />
       </button>
       {text}
     </div>

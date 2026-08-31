@@ -281,30 +281,40 @@ body {
   background-color: var(--accent-softer);
   border: 1px solid var(--paper-line);
   border-radius: var(--radius-card);
-  padding: 12px 44px 12px 12px;
+  padding: 12px 40px 12px 12px;
   font-family: var(--font-lora), Georgia, serif;
   font-size: 16px;
   line-height: 28px;
   color: var(--text-secondary);
   position: relative;
+  overflow: hidden;
   margin-bottom: 12px;
 }
 
+/* Visible control is 28px so it sits inside the 16px card radius.
+   The ::before hit area is 44px, per DESIGN.md, without painting a
+   square that breaks the box. */
 .micro-explanation-dismiss {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 6px;
+  right: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 28px;
+  height: 28px;
   background: none;
   border: none;
   border-radius: var(--radius-small);
   color: var(--text-muted);
   cursor: pointer;
   padding: 0;
+}
+
+.micro-explanation-dismiss::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
 }
 
 .micro-explanation-dismiss:hover {
@@ -614,21 +624,88 @@ body {
 
 /* ── Audio seek range ───────────────────────────────── */
 
+.audio-seek-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.audio-seek-time {
+  flex-shrink: 0;
+  min-width: 2.5em;
+  font-family: var(--font-roboto-flex), system-ui, sans-serif;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.audio-seek-time:first-child {
+  text-align: left;
+}
+
+.audio-seek-time:last-child {
+  text-align: right;
+}
+
+.audio-player-controls {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+.audio-player-status {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-roboto-flex), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-accent);
+}
+
+.audio-player-transport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.audio-player-end {
+  justify-self: end;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 400px) {
+  .audio-player-status {
+    font-size: 12px;
+  }
+}
+
 .audio-seek-wrap {
   position: relative;
   height: 44px;
   display: flex;
   align-items: center;
+  flex: 1;
+  min-width: 0;
 }
 
 .audio-seek-track {
   position: absolute;
   left: 0;
   right: 0;
+  top: 50%;
   height: 4px;
   border-radius: 9999px;
   background: rgba(111, 70, 39, 0.15);
   pointer-events: none;
+  transform: translateY(-50%);
 }
 
 .audio-seek-fill {
@@ -750,35 +827,68 @@ body.sticky-audio-active {
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+  gap: 0;
+  padding: 4px 0 6px;
   background: var(--audio-bg);
   border-top: 1px solid var(--audio-border);
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .sticky-audio-player-seek {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
 }
 
 .sticky-audio-player-seek .audio-seek-wrap {
-  height: 24px;
+  height: 16px;
+  flex: 1;
+  min-width: 0;
 }
 
 .sticky-audio-player-seek .audio-seek {
-  height: 24px;
+  height: 16px;
+}
+
+.sticky-audio-player-seek .audio-seek-track {
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+}
+
+.sticky-audio-player-seek .audio-seek-time {
+  font-size: 11px;
 }
 
 .sticky-audio-player-controls {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  flex: 0 0 auto;
+  padding: 0 12px;
+}
+
+.sticky-audio-player-transport {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
-  flex: 1;
-  padding: 0 12px;
-  padding-top: 8px;
+}
+
+.sticky-audio-player-controls-slot {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.sticky-audio-player-controls-slot:last-child {
+  justify-content: flex-start;
+  padding-left: 4px;
 }
 
 .sticky-audio-player-toggle {
@@ -814,16 +924,6 @@ body.sticky-audio-active {
 .sticky-audio-player-controls .sticky-audio-player-toggle {
   width: 36px;
   height: 36px;
-}
-
-.sticky-audio-player-time {
-  margin-left: auto;
-  font-family: var(--font-roboto-flex), system-ui, sans-serif;
-  font-size: 12px;
-  line-height: 1;
-  color: var(--text-muted);
-  font-variant-numeric: tabular-nums;
-  flex-shrink: 0;
 }
 
 @keyframes sticky-audio-in {
@@ -1007,7 +1107,7 @@ body.sticky-audio-active {
 
 @media (min-width: 768px) {
   body.sticky-audio-active {
-    padding-bottom: calc(64px + 32px);
+    padding-bottom: calc(72px + 32px);
   }
 
   .sticky-audio-player {
@@ -1018,6 +1118,8 @@ body.sticky-audio-active {
   .sticky-audio-player-bar {
     width: 480px;
     max-width: calc(100vw - 32px);
+    height: 72px;
+    padding: 8px 0 8px;
     border: 1px solid var(--audio-border);
     border-top: 1px solid var(--audio-border);
     border-radius: var(--radius-sheet);
