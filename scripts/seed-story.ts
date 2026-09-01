@@ -136,7 +136,7 @@ function parseStoryMarkdown(markdown: string) {
   let bodyLines: string[] = [];
   if (bodyStart >= 0 && endIdx >= 0) {
     bodyLines = lines.slice(bodyStart + 1, endIdx).filter((l) => {
-      return l.trim() !== frontmatter.title;
+      return l.trim().toLowerCase() !== frontmatter.title.trim().toLowerCase();
     });
   }
 
