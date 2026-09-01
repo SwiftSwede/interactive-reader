@@ -226,10 +226,20 @@ export type RemoveClassroomStudentResult =
   | { ok: true }
   | { ok: false; reason: "not-found" | "teacher" | "stripe" | "error" };
 
+/** True when Stripe still manages this student (active or paused sub). */
+export function isLiveStripeManaged(
+  periodStatuses: Array<string | null | undefined>
+): boolean {
+  return periodStatuses.some(
+    (status) => status === "active" || status === "paused"
+  );
+}
+
 /**
  * Drops a classroom student from live class lists without deleting their
- * reading history. Stripe-paid students stay on the roster: pause them in
- * ThriveCart instead, or the webhook will put them back.
+ * reading history. Students with a live Stripe sub stay on the roster: pause
+ * them in ThriveCart instead, or the webhook will put them back. A leftover
+ * stripe_customer_id from a cancelled test purchase does not block Quitar.
  */
 export async function removeClassroomStudent(
   studentId: string
@@ -237,7 +247,7 @@ export async function removeClassroomStudent(
   const admin = createAdminClient();
   const { data: profile, error: loadError } = await admin
     .from("profiles")
-    .select("id, role, stripe_customer_id")
+    .select("id, role")
     .eq("id", studentId)
     .maybeSingle();
 
@@ -247,7 +257,21 @@ export async function removeClassroomStudent(
   }
   if (!profile) return { ok: false, reason: "not-found" };
   if (profile.role === "teacher") return { ok: false, reason: "teacher" };
-  if (profile.stripe_customer_id) return { ok: false, reason: "stripe" };
+
+  const { data: livePeriods, error: periodError } = await admin
+    .from("subscription_periods")
+    .select("status")
+    .eq("user_id", studentId);
+
+  if (periodError) {
+    console.error("removeClassroomStudent periods failed:", periodError);
+    return { ok: false, reason: "error" };
+  }
+  if (
+    isLiveStripeManaged((livePeriods ?? []).map((row) => row.status))
+  ) {
+    return { ok: false, reason: "stripe" };
+  }
 
   const { error: enrollError } = await admin
     .from("course_enrollments")
