@@ -85,13 +85,19 @@ async function inviteExistingStudent(params: {
   const removed = wasRemovedFromClassroom(params.subscriptionStatus);
   const otpError = await sendInviteOtp(params.email, params.redirectTo);
 
-  if (otpError) {
-    return { ok: false, error: inviteOtpErrorMessage(otpError) };
-  }
-
   await setClassroomProfile(params.userId, params.email);
   await updateDisplayName(params.userId, params.displayName);
   revalidatePath("/dashboard");
+
+  if (otpError) {
+    if (removed) {
+      return {
+        ok: true,
+        message: `Listo. ${params.displayName} vuelve al grupo. El email no salió: que pidan el código en /login.`,
+      };
+    }
+    return { ok: false, error: inviteOtpErrorMessage(otpError) };
+  }
 
   if (removed) {
     return {

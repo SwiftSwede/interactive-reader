@@ -27,3 +27,9 @@ test("other OTP failures still tell the teacher the email did not send", () => {
   assert.match(inviteOtpErrorMessage("Unable to send"), /email no salió/);
   assert.doesNotMatch(inviteOtpErrorMessage("Unable to send"), /ya está en el grupo/);
 });
+
+test("SMTP send failures mention Zoho, not a one-minute wait", () => {
+  const message = inviteOtpErrorMessage("Error sending magic link email");
+  assert.match(message, /Zoho/);
+  assert.doesNotMatch(message, /esperar un minuto/);
+});
