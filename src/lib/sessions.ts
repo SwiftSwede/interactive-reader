@@ -208,8 +208,8 @@ async function enrollClassroomStudent(
   studentId: string,
   displayName: string
 ): Promise<"ok" | "wrong-group"> {
-  const supabase = await createClient();
-  const { data: existing } = await supabase
+  const admin = createAdminClient();
+  const { data: existing } = await admin
     .from("course_enrollments")
     .select("id")
     .eq("course_id", courseId)
@@ -218,7 +218,9 @@ async function enrollClassroomStudent(
 
   if (existing) return "ok";
 
-  const { data: course } = await supabase
+  // Students can only SELECT courses they are already enrolled in. A first
+  // class-link open has no enrollment yet, so this lookup must bypass RLS.
+  const { data: course } = await admin
     .from("courses")
     .select("level")
     .eq("id", courseId)
@@ -227,7 +229,6 @@ async function enrollClassroomStudent(
   if (!course) return "wrong-group";
 
   const courseLevel = course.level as CourseLevel;
-  const admin = createAdminClient();
   const { data: profile } = await admin
     .from("profiles")
     .select("classroom_level")
@@ -246,7 +247,7 @@ async function enrollClassroomStudent(
     await seedClassroomLevelIfEmpty(studentId, courseLevel);
   }
 
-  const { error } = await supabase.from("course_enrollments").insert({
+  const { error } = await admin.from("course_enrollments").insert({
     course_id: courseId,
     student_id: studentId,
     display_name: displayName,
