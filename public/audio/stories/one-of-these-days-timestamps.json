@@ -1,0 +1,5498 @@
+[
+  {
+    "position": 0,
+    "text": "Monday",
+    "start": 0.0,
+    "end": 0.86
+  },
+  {
+    "position": 1,
+    "text": "dawned",
+    "start": 0.86,
+    "end": 1.86
+  },
+  {
+    "position": 2,
+    "text": "warm",
+    "start": 1.86,
+    "end": 2.34
+  },
+  {
+    "position": 3,
+    "text": "and",
+    "start": 2.34,
+    "end": 3.3
+  },
+  {
+    "position": 4,
+    "text": "rainless.",
+    "start": 3.3,
+    "end": 4.1
+  },
+  {
+    "position": 5,
+    "text": "Aurelio",
+    "start": 5.0,
+    "end": 5.44
+  },
+  {
+    "position": 6,
+    "text": "Escobar,",
+    "start": 5.44,
+    "end": 6.22
+  },
+  {
+    "position": 7,
+    "text": "a",
+    "start": 6.72,
+    "end": 7.02
+  },
+  {
+    "position": 8,
+    "text": "dentist",
+    "start": 7.02,
+    "end": 7.32
+  },
+  {
+    "position": 9,
+    "text": "without",
+    "start": 7.32,
+    "end": 7.78
+  },
+  {
+    "position": 10,
+    "text": "a",
+    "start": 7.78,
+    "end": 7.94
+  },
+  {
+    "position": 11,
+    "text": "degree,",
+    "start": 7.94,
+    "end": 8.28
+  },
+  {
+    "position": 12,
+    "text": "and",
+    "start": 9.0,
+    "end": 9.12
+  },
+  {
+    "position": 13,
+    "text": "a",
+    "start": 9.12,
+    "end": 9.22
+  },
+  {
+    "position": 14,
+    "text": "very",
+    "start": 9.22,
+    "end": 9.72
+  },
+  {
+    "position": 15,
+    "text": "early",
+    "start": 9.72,
+    "end": 10.3
+  },
+  {
+    "position": 16,
+    "text": "riser",
+    "start": 10.3,
+    "end": 10.94
+  },
+  {
+    "position": 17,
+    "text": "opened",
+    "start": 10.94,
+    "end": 11.84
+  },
+  {
+    "position": 18,
+    "text": "his",
+    "start": 11.84,
+    "end": 12.2
+  },
+  {
+    "position": 19,
+    "text": "office",
+    "start": 12.2,
+    "end": 12.54
+  },
+  {
+    "position": 20,
+    "text": "at",
+    "start": 12.54,
+    "end": 13.16
+  },
+  {
+    "position": 21,
+    "text": "six.",
+    "start": 13.16,
+    "end": 13.64
+  },
+  {
+    "position": 22,
+    "text": "He",
+    "start": 14.46,
+    "end": 14.68
+  },
+  {
+    "position": 23,
+    "text": "took",
+    "start": 14.68,
+    "end": 14.84
+  },
+  {
+    "position": 24,
+    "text": "some",
+    "start": 14.84,
+    "end": 15.06
+  },
+  {
+    "position": 25,
+    "text": "false",
+    "start": 15.06,
+    "end": 15.48
+  },
+  {
+    "position": 26,
+    "text": "teeth,",
+    "start": 15.48,
+    "end": 15.84
+  },
+  {
+    "position": 27,
+    "text": "still",
+    "start": 16.48,
+    "end": 16.86
+  },
+  {
+    "position": 28,
+    "text": "mounted",
+    "start": 16.86,
+    "end": 17.52
+  },
+  {
+    "position": 29,
+    "text": "in",
+    "start": 17.52,
+    "end": 17.8
+  },
+  {
+    "position": 30,
+    "text": "their",
+    "start": 17.8,
+    "end": 18.16
+  },
+  {
+    "position": 31,
+    "text": "plaster",
+    "start": 18.16,
+    "end": 18.74
+  },
+  {
+    "position": 32,
+    "text": "mold,",
+    "start": 18.74,
+    "end": 19.14
+  },
+  {
+    "position": 33,
+    "text": "out",
+    "start": 19.96,
+    "end": 20.16
+  },
+  {
+    "position": 34,
+    "text": "of",
+    "start": 20.16,
+    "end": 20.28
+  },
+  {
+    "position": 35,
+    "text": "the",
+    "start": 20.28,
+    "end": 20.44
+  },
+  {
+    "position": 36,
+    "text": "glass",
+    "start": 20.44,
+    "end": 20.66
+  },
+  {
+    "position": 37,
+    "text": "case,",
+    "start": 20.66,
+    "end": 21.22
+  },
+  {
+    "position": 38,
+    "text": "and",
+    "start": 21.78,
+    "end": 21.82
+  },
+  {
+    "position": 39,
+    "text": "put",
+    "start": 21.82,
+    "end": 22.0
+  },
+  {
+    "position": 40,
+    "text": "on",
+    "start": 22.0,
+    "end": 22.14
+  },
+  {
+    "position": 41,
+    "text": "the",
+    "start": 22.14,
+    "end": 22.28
+  },
+  {
+    "position": 42,
+    "text": "table",
+    "start": 22.28,
+    "end": 22.64
+  },
+  {
+    "position": 43,
+    "text": "a",
+    "start": 22.64,
+    "end": 23.2
+  },
+  {
+    "position": 44,
+    "text": "fistful",
+    "start": 23.2,
+    "end": 23.78
+  },
+  {
+    "position": 45,
+    "text": "of",
+    "start": 23.78,
+    "end": 23.96
+  },
+  {
+    "position": 46,
+    "text": "instruments",
+    "start": 23.96,
+    "end": 24.5
+  },
+  {
+    "position": 47,
+    "text": "which",
+    "start": 24.5,
+    "end": 25.14
+  },
+  {
+    "position": 48,
+    "text": "he",
+    "start": 25.14,
+    "end": 25.32
+  },
+  {
+    "position": 49,
+    "text": "arranged",
+    "start": 25.32,
+    "end": 25.66
+  },
+  {
+    "position": 50,
+    "text": "in",
+    "start": 25.66,
+    "end": 25.92
+  },
+  {
+    "position": 51,
+    "text": "size",
+    "start": 25.92,
+    "end": 26.3
+  },
+  {
+    "position": 52,
+    "text": "order",
+    "start": 26.3,
+    "end": 26.9
+  },
+  {
+    "position": 53,
+    "text": "as",
+    "start": 26.9,
+    "end": 27.7
+  },
+  {
+    "position": 54,
+    "text": "if",
+    "start": 27.7,
+    "end": 28.28
+  },
+  {
+    "position": 55,
+    "text": "they",
+    "start": 28.28,
+    "end": 28.84
+  },
+  {
+    "position": 56,
+    "text": "were",
+    "start": 28.84,
+    "end": 28.98
+  },
+  {
+    "position": 57,
+    "text": "on",
+    "start": 28.98,
+    "end": 29.4
+  },
+  {
+    "position": 58,
+    "text": "display.",
+    "start": 29.4,
+    "end": 30.12
+  },
+  {
+    "position": 59,
+    "text": "He",
+    "start": 30.92,
+    "end": 31.14
+  },
+  {
+    "position": 60,
+    "text": "wore",
+    "start": 31.14,
+    "end": 31.44
+  },
+  {
+    "position": 61,
+    "text": "a",
+    "start": 31.44,
+    "end": 31.64
+  },
+  {
+    "position": 62,
+    "text": "collarless",
+    "start": 31.64,
+    "end": 32.5
+  },
+  {
+    "position": 63,
+    "text": "striped",
+    "start": 32.5,
+    "end": 32.98
+  },
+  {
+    "position": 64,
+    "text": "shirt,",
+    "start": 32.98,
+    "end": 33.42
+  },
+  {
+    "position": 65,
+    "text": "clothes",
+    "start": 33.94,
+    "end": 34.44
+  },
+  {
+    "position": 66,
+    "text": "that",
+    "start": 34.44,
+    "end": 34.78
+  },
+  {
+    "position": 67,
+    "text": "the",
+    "start": 34.78,
+    "end": 34.9
+  },
+  {
+    "position": 68,
+    "text": "neck",
+    "start": 34.9,
+    "end": 35.16
+  },
+  {
+    "position": 69,
+    "text": "was",
+    "start": 35.16,
+    "end": 35.56
+  },
+  {
+    "position": 70,
+    "text": "a",
+    "start": 35.56,
+    "end": 35.72
+  },
+  {
+    "position": 71,
+    "text": "golden",
+    "start": 35.72,
+    "end": 36.1
+  },
+  {
+    "position": 72,
+    "text": "stud,",
+    "start": 36.1,
+    "end": 36.44
+  },
+  {
+    "position": 73,
+    "text": "and",
+    "start": 37.16,
+    "end": 37.28
+  },
+  {
+    "position": 74,
+    "text": "pants",
+    "start": 37.28,
+    "end": 37.62
+  },
+  {
+    "position": 75,
+    "text": "held",
+    "start": 37.62,
+    "end": 37.98
+  },
+  {
+    "position": 76,
+    "text": "up",
+    "start": 37.98,
+    "end": 38.22
+  },
+  {
+    "position": 77,
+    "text": "by",
+    "start": 38.22,
+    "end": 38.5
+  },
+  {
+    "position": 78,
+    "text": "suspenders.",
+    "start": 38.5,
+    "end": 39.14
+  },
+  {
+    "position": 79,
+    "text": "He",
+    "start": 39.94,
+    "end": 40.28
+  },
+  {
+    "position": 80,
+    "text": "was",
+    "start": 40.28,
+    "end": 40.46
+  },
+  {
+    "position": 81,
+    "text": "erect",
+    "start": 40.46,
+    "end": 40.8
+  },
+  {
+    "position": 82,
+    "text": "and",
+    "start": 40.8,
+    "end": 41.56
+  },
+  {
+    "position": 83,
+    "text": "skinny,",
+    "start": 41.56,
+    "end": 42.06
+  },
+  {
+    "position": 84,
+    "text": "with",
+    "start": 42.78,
+    "end": 42.88
+  },
+  {
+    "position": 85,
+    "text": "a",
+    "start": 42.88,
+    "end": 43.0
+  },
+  {
+    "position": 86,
+    "text": "look",
+    "start": 43.0,
+    "end": 43.34
+  },
+  {
+    "position": 87,
+    "text": "that",
+    "start": 43.34,
+    "end": 43.84
+  },
+  {
+    "position": 88,
+    "text": "rarely",
+    "start": 43.84,
+    "end": 44.58
+  },
+  {
+    "position": 89,
+    "text": "corresponded",
+    "start": 44.58,
+    "end": 45.94
+  },
+  {
+    "position": 90,
+    "text": "to",
+    "start": 45.94,
+    "end": 46.04
+  },
+  {
+    "position": 91,
+    "text": "the",
+    "start": 46.04,
+    "end": 46.18
+  },
+  {
+    "position": 92,
+    "text": "situation,",
+    "start": 46.18,
+    "end": 46.88
+  },
+  {
+    "position": 93,
+    "text": "the",
+    "start": 47.66,
+    "end": 47.76
+  },
+  {
+    "position": 94,
+    "text": "way",
+    "start": 47.76,
+    "end": 48.02
+  },
+  {
+    "position": 95,
+    "text": "deaf",
+    "start": 48.02,
+    "end": 48.42
+  },
+  {
+    "position": 96,
+    "text": "people",
+    "start": 48.42,
+    "end": 48.9
+  },
+  {
+    "position": 97,
+    "text": "have",
+    "start": 48.9,
+    "end": 49.54
+  },
+  {
+    "position": 98,
+    "text": "of",
+    "start": 49.54,
+    "end": 49.96
+  },
+  {
+    "position": 99,
+    "text": "looking.",
+    "start": 49.96,
+    "end": 50.3
+  },
+  {
+    "position": 100,
+    "text": "When",
+    "start": 51.22,
+    "end": 51.46
+  },
+  {
+    "position": 101,
+    "text": "he",
+    "start": 51.46,
+    "end": 51.58
+  },
+  {
+    "position": 102,
+    "text": "had",
+    "start": 51.58,
+    "end": 51.76
+  },
+  {
+    "position": 103,
+    "text": "things",
+    "start": 51.76,
+    "end": 52.16
+  },
+  {
+    "position": 104,
+    "text": "arranged",
+    "start": 52.16,
+    "end": 52.54
+  },
+  {
+    "position": 105,
+    "text": "on",
+    "start": 52.54,
+    "end": 53.0
+  },
+  {
+    "position": 106,
+    "text": "the",
+    "start": 53.0,
+    "end": 53.18
+  },
+  {
+    "position": 107,
+    "text": "table,",
+    "start": 53.18,
+    "end": 53.56
+  },
+  {
+    "position": 108,
+    "text": "he",
+    "start": 54.1,
+    "end": 54.3
+  },
+  {
+    "position": 109,
+    "text": "pulled",
+    "start": 54.3,
+    "end": 54.64
+  },
+  {
+    "position": 110,
+    "text": "the",
+    "start": 54.64,
+    "end": 54.94
+  },
+  {
+    "position": 111,
+    "text": "drill",
+    "start": 54.94,
+    "end": 55.46
+  },
+  {
+    "position": 112,
+    "text": "toward",
+    "start": 55.46,
+    "end": 56.04
+  },
+  {
+    "position": 113,
+    "text": "the",
+    "start": 56.04,
+    "end": 56.38
+  },
+  {
+    "position": 114,
+    "text": "dental",
+    "start": 56.38,
+    "end": 56.8
+  },
+  {
+    "position": 115,
+    "text": "chair,",
+    "start": 56.8,
+    "end": 57.24
+  },
+  {
+    "position": 116,
+    "text": "and",
+    "start": 57.24,
+    "end": 57.88
+  },
+  {
+    "position": 117,
+    "text": "sat",
+    "start": 57.88,
+    "end": 58.2
+  },
+  {
+    "position": 118,
+    "text": "down",
+    "start": 58.2,
+    "end": 58.62
+  },
+  {
+    "position": 119,
+    "text": "to",
+    "start": 58.62,
+    "end": 58.88
+  },
+  {
+    "position": 120,
+    "text": "polish",
+    "start": 58.88,
+    "end": 59.38
+  },
+  {
+    "position": 121,
+    "text": "the",
+    "start": 59.38,
+    "end": 59.66
+  },
+  {
+    "position": 122,
+    "text": "false",
+    "start": 59.66,
+    "end": 60.02
+  },
+  {
+    "position": 123,
+    "text": "teeth.",
+    "start": 60.02,
+    "end": 60.36
+  },
+  {
+    "position": 124,
+    "text": "He",
+    "start": 60.94,
+    "end": 61.2
+  },
+  {
+    "position": 125,
+    "text": "seemed",
+    "start": 61.2,
+    "end": 61.48
+  },
+  {
+    "position": 126,
+    "text": "not",
+    "start": 61.48,
+    "end": 61.78
+  },
+  {
+    "position": 127,
+    "text": "to",
+    "start": 61.78,
+    "end": 62.04
+  },
+  {
+    "position": 128,
+    "text": "be",
+    "start": 62.04,
+    "end": 62.1
+  },
+  {
+    "position": 129,
+    "text": "thinking",
+    "start": 62.1,
+    "end": 62.48
+  },
+  {
+    "position": 130,
+    "text": "about",
+    "start": 62.48,
+    "end": 62.8
+  },
+  {
+    "position": 131,
+    "text": "what",
+    "start": 62.8,
+    "end": 63.22
+  },
+  {
+    "position": 132,
+    "text": "he",
+    "start": 63.22,
+    "end": 63.38
+  },
+  {
+    "position": 133,
+    "text": "was",
+    "start": 63.38,
+    "end": 63.54
+  },
+  {
+    "position": 134,
+    "text": "doing,",
+    "start": 63.54,
+    "end": 63.94
+  },
+  {
+    "position": 135,
+    "text": "but",
+    "start": 64.4,
+    "end": 64.6
+  },
+  {
+    "position": 136,
+    "text": "worked",
+    "start": 64.6,
+    "end": 65.08
+  },
+  {
+    "position": 137,
+    "text": "steadily,",
+    "start": 65.08,
+    "end": 66.1
+  },
+  {
+    "position": 138,
+    "text": "pumping",
+    "start": 66.66,
+    "end": 66.98
+  },
+  {
+    "position": 139,
+    "text": "the",
+    "start": 66.98,
+    "end": 67.26
+  },
+  {
+    "position": 140,
+    "text": "drill",
+    "start": 67.26,
+    "end": 67.56
+  },
+  {
+    "position": 141,
+    "text": "with",
+    "start": 67.56,
+    "end": 67.9
+  },
+  {
+    "position": 142,
+    "text": "his",
+    "start": 67.9,
+    "end": 68.18
+  },
+  {
+    "position": 143,
+    "text": "feet,",
+    "start": 68.18,
+    "end": 68.56
+  },
+  {
+    "position": 144,
+    "text": "even",
+    "start": 69.08,
+    "end": 69.44
+  },
+  {
+    "position": 145,
+    "text": "when",
+    "start": 69.44,
+    "end": 69.7
+  },
+  {
+    "position": 146,
+    "text": "he",
+    "start": 69.7,
+    "end": 69.98
+  },
+  {
+    "position": 147,
+    "text": "didn't",
+    "start": 69.98,
+    "end": 70.34
+  },
+  {
+    "position": 148,
+    "text": "need",
+    "start": 70.34,
+    "end": 70.66
+  },
+  {
+    "position": 149,
+    "text": "it.",
+    "start": 70.66,
+    "end": 70.94
+  },
+  {
+    "position": 150,
+    "text": "After",
+    "start": 71.86,
+    "end": 72.18
+  },
+  {
+    "position": 151,
+    "text": "eight,",
+    "start": 72.18,
+    "end": 72.42
+  },
+  {
+    "position": 152,
+    "text": "he",
+    "start": 73.0,
+    "end": 73.1
+  },
+  {
+    "position": 153,
+    "text": "stopped",
+    "start": 73.1,
+    "end": 73.36
+  },
+  {
+    "position": 154,
+    "text": "for",
+    "start": 73.36,
+    "end": 73.74
+  },
+  {
+    "position": 155,
+    "text": "a",
+    "start": 73.74,
+    "end": 73.88
+  },
+  {
+    "position": 156,
+    "text": "while",
+    "start": 73.88,
+    "end": 74.16
+  },
+  {
+    "position": 157,
+    "text": "to",
+    "start": 74.16,
+    "end": 74.42
+  },
+  {
+    "position": 158,
+    "text": "look",
+    "start": 74.42,
+    "end": 74.64
+  },
+  {
+    "position": 159,
+    "text": "at",
+    "start": 74.64,
+    "end": 74.84
+  },
+  {
+    "position": 160,
+    "text": "the",
+    "start": 74.84,
+    "end": 75.08
+  },
+  {
+    "position": 161,
+    "text": "sky",
+    "start": 75.08,
+    "end": 75.46
+  },
+  {
+    "position": 162,
+    "text": "through",
+    "start": 75.46,
+    "end": 75.8
+  },
+  {
+    "position": 163,
+    "text": "the",
+    "start": 75.8,
+    "end": 75.94
+  },
+  {
+    "position": 164,
+    "text": "window,",
+    "start": 75.94,
+    "end": 76.32
+  },
+  {
+    "position": 165,
+    "text": "and",
+    "start": 76.9,
+    "end": 77.06
+  },
+  {
+    "position": 166,
+    "text": "he",
+    "start": 77.06,
+    "end": 77.18
+  },
+  {
+    "position": 167,
+    "text": "saw",
+    "start": 77.18,
+    "end": 77.38
+  },
+  {
+    "position": 168,
+    "text": "two",
+    "start": 77.38,
+    "end": 77.7
+  },
+  {
+    "position": 169,
+    "text": "pensive",
+    "start": 77.7,
+    "end": 78.24
+  },
+  {
+    "position": 170,
+    "text": "buzzards",
+    "start": 78.24,
+    "end": 78.92
+  },
+  {
+    "position": 171,
+    "text": "who",
+    "start": 78.92,
+    "end": 79.6
+  },
+  {
+    "position": 172,
+    "text": "were",
+    "start": 79.6,
+    "end": 79.72
+  },
+  {
+    "position": 173,
+    "text": "drying",
+    "start": 79.72,
+    "end": 80.26
+  },
+  {
+    "position": 174,
+    "text": "themselves",
+    "start": 80.26,
+    "end": 80.78
+  },
+  {
+    "position": 175,
+    "text": "in",
+    "start": 80.78,
+    "end": 81.38
+  },
+  {
+    "position": 176,
+    "text": "the",
+    "start": 81.38,
+    "end": 81.56
+  },
+  {
+    "position": 177,
+    "text": "sun",
+    "start": 81.56,
+    "end": 81.94
+  },
+  {
+    "position": 178,
+    "text": "on",
+    "start": 81.94,
+    "end": 82.56
+  },
+  {
+    "position": 179,
+    "text": "the",
+    "start": 82.56,
+    "end": 82.74
+  },
+  {
+    "position": 180,
+    "text": "rich",
+    "start": 82.74,
+    "end": 83.0
+  },
+  {
+    "position": 181,
+    "text": "pole",
+    "start": 83.0,
+    "end": 83.3
+  },
+  {
+    "position": 182,
+    "text": "of",
+    "start": 83.3,
+    "end": 83.72
+  },
+  {
+    "position": 183,
+    "text": "the",
+    "start": 83.72,
+    "end": 83.86
+  },
+  {
+    "position": 184,
+    "text": "house",
+    "start": 83.86,
+    "end": 84.06
+  },
+  {
+    "position": 185,
+    "text": "next",
+    "start": 84.06,
+    "end": 84.38
+  },
+  {
+    "position": 186,
+    "text": "door.",
+    "start": 84.38,
+    "end": 84.8
+  },
+  {
+    "position": 187,
+    "text": "He",
+    "start": 85.14,
+    "end": 85.46
+  },
+  {
+    "position": 188,
+    "text": "went",
+    "start": 85.46,
+    "end": 85.66
+  },
+  {
+    "position": 189,
+    "text": "on",
+    "start": 85.66,
+    "end": 85.96
+  },
+  {
+    "position": 190,
+    "text": "working",
+    "start": 85.96,
+    "end": 86.32
+  },
+  {
+    "position": 191,
+    "text": "with",
+    "start": 86.32,
+    "end": 86.72
+  },
+  {
+    "position": 192,
+    "text": "the",
+    "start": 86.72,
+    "end": 86.94
+  },
+  {
+    "position": 193,
+    "text": "idea",
+    "start": 86.94,
+    "end": 87.26
+  },
+  {
+    "position": 194,
+    "text": "that",
+    "start": 87.26,
+    "end": 87.58
+  },
+  {
+    "position": 195,
+    "text": "before",
+    "start": 87.58,
+    "end": 88.0
+  },
+  {
+    "position": 196,
+    "text": "lunch,",
+    "start": 88.0,
+    "end": 88.42
+  },
+  {
+    "position": 197,
+    "text": "it",
+    "start": 88.92,
+    "end": 89.28
+  },
+  {
+    "position": 198,
+    "text": "would",
+    "start": 89.28,
+    "end": 89.44
+  },
+  {
+    "position": 199,
+    "text": "rain",
+    "start": 89.44,
+    "end": 89.68
+  },
+  {
+    "position": 200,
+    "text": "again.",
+    "start": 89.68,
+    "end": 90.1
+  },
+  {
+    "position": 201,
+    "text": "The",
+    "start": 91.02,
+    "end": 91.22
+  },
+  {
+    "position": 202,
+    "text": "shrill",
+    "start": 91.22,
+    "end": 91.84
+  },
+  {
+    "position": 203,
+    "text": "voice",
+    "start": 91.84,
+    "end": 92.22
+  },
+  {
+    "position": 204,
+    "text": "of",
+    "start": 92.22,
+    "end": 92.56
+  },
+  {
+    "position": 205,
+    "text": "his",
+    "start": 92.56,
+    "end": 92.72
+  },
+  {
+    "position": 206,
+    "text": "eleven",
+    "start": 92.72,
+    "end": 93.14
+  },
+  {
+    "position": 207,
+    "text": "-year",
+    "start": 93.14,
+    "end": 93.4
+  },
+  {
+    "position": 208,
+    "text": "-old",
+    "start": 93.4,
+    "end": 93.58
+  },
+  {
+    "position": 209,
+    "text": "son",
+    "start": 93.58,
+    "end": 94.02
+  },
+  {
+    "position": 210,
+    "text": "interrupted",
+    "start": 94.02,
+    "end": 94.68
+  },
+  {
+    "position": 211,
+    "text": "his",
+    "start": 94.68,
+    "end": 94.94
+  },
+  {
+    "position": 212,
+    "text": "concentration.",
+    "start": 94.94,
+    "end": 95.58
+  },
+  {
+    "position": 213,
+    "text": "Bap",
+    "start": 96.4,
+    "end": 96.6
+  },
+  {
+    "position": 214,
+    "text": "-bap!",
+    "start": 96.6,
+    "end": 96.76
+  },
+  {
+    "position": 215,
+    "text": "What?",
+    "start": 97.82,
+    "end": 98.46
+  },
+  {
+    "position": 216,
+    "text": "The",
+    "start": 99.92,
+    "end": 100.24
+  },
+  {
+    "position": 217,
+    "text": "bear",
+    "start": 100.24,
+    "end": 100.5
+  },
+  {
+    "position": 218,
+    "text": "wants",
+    "start": 100.5,
+    "end": 100.74
+  },
+  {
+    "position": 219,
+    "text": "to",
+    "start": 100.74,
+    "end": 100.98
+  },
+  {
+    "position": 220,
+    "text": "know",
+    "start": 100.98,
+    "end": 101.28
+  },
+  {
+    "position": 221,
+    "text": "if",
+    "start": 101.28,
+    "end": 101.52
+  },
+  {
+    "position": 222,
+    "text": "you",
+    "start": 101.52,
+    "end": 101.6
+  },
+  {
+    "position": 223,
+    "text": "pull",
+    "start": 101.6,
+    "end": 101.9
+  },
+  {
+    "position": 224,
+    "text": "his",
+    "start": 101.9,
+    "end": 102.08
+  },
+  {
+    "position": 225,
+    "text": "tooth!",
+    "start": 102.08,
+    "end": 102.42
+  },
+  {
+    "position": 226,
+    "text": "Tell",
+    "start": 103.88,
+    "end": 104.52
+  },
+  {
+    "position": 227,
+    "text": "him",
+    "start": 104.52,
+    "end": 104.68
+  },
+  {
+    "position": 228,
+    "text": "I'm",
+    "start": 104.68,
+    "end": 104.8
+  },
+  {
+    "position": 229,
+    "text": "not",
+    "start": 104.8,
+    "end": 104.92
+  },
+  {
+    "position": 230,
+    "text": "here.",
+    "start": 104.92,
+    "end": 105.28
+  },
+  {
+    "position": 231,
+    "text": "He",
+    "start": 105.92,
+    "end": 106.0
+  },
+  {
+    "position": 232,
+    "text": "was",
+    "start": 106.0,
+    "end": 106.12
+  },
+  {
+    "position": 233,
+    "text": "polishing",
+    "start": 106.12,
+    "end": 106.7
+  },
+  {
+    "position": 234,
+    "text": "a",
+    "start": 106.7,
+    "end": 106.92
+  },
+  {
+    "position": 235,
+    "text": "gold",
+    "start": 106.92,
+    "end": 107.18
+  },
+  {
+    "position": 236,
+    "text": "tooth.",
+    "start": 107.18,
+    "end": 107.5
+  },
+  {
+    "position": 237,
+    "text": "He",
+    "start": 108.28,
+    "end": 108.6
+  },
+  {
+    "position": 238,
+    "text": "held",
+    "start": 108.6,
+    "end": 108.94
+  },
+  {
+    "position": 239,
+    "text": "it",
+    "start": 108.94,
+    "end": 109.12
+  },
+  {
+    "position": 240,
+    "text": "at",
+    "start": 109.12,
+    "end": 109.4
+  },
+  {
+    "position": 241,
+    "text": "arm's",
+    "start": 109.4,
+    "end": 110.42
+  },
+  {
+    "position": 242,
+    "text": "length",
+    "start": 110.42,
+    "end": 110.76
+  },
+  {
+    "position": 243,
+    "text": "and",
+    "start": 110.76,
+    "end": 111.22
+  },
+  {
+    "position": 244,
+    "text": "examined",
+    "start": 111.22,
+    "end": 111.8
+  },
+  {
+    "position": 245,
+    "text": "it",
+    "start": 111.8,
+    "end": 112.06
+  },
+  {
+    "position": 246,
+    "text": "with",
+    "start": 112.06,
+    "end": 112.26
+  },
+  {
+    "position": 247,
+    "text": "his",
+    "start": 112.26,
+    "end": 112.46
+  },
+  {
+    "position": 248,
+    "text": "eyes",
+    "start": 112.46,
+    "end": 112.92
+  },
+  {
+    "position": 249,
+    "text": "half",
+    "start": 112.92,
+    "end": 113.38
+  },
+  {
+    "position": 250,
+    "text": "closed.",
+    "start": 113.38,
+    "end": 114.1
+  },
+  {
+    "position": 251,
+    "text": "His",
+    "start": 114.74,
+    "end": 115.08
+  },
+  {
+    "position": 252,
+    "text": "son",
+    "start": 115.08,
+    "end": 115.6
+  },
+  {
+    "position": 253,
+    "text": "shouted",
+    "start": 115.6,
+    "end": 116.6
+  },
+  {
+    "position": 254,
+    "text": "again",
+    "start": 116.6,
+    "end": 117.04
+  },
+  {
+    "position": 255,
+    "text": "from",
+    "start": 117.04,
+    "end": 117.4
+  },
+  {
+    "position": 256,
+    "text": "the",
+    "start": 117.4,
+    "end": 117.62
+  },
+  {
+    "position": 257,
+    "text": "little",
+    "start": 117.62,
+    "end": 117.88
+  },
+  {
+    "position": 258,
+    "text": "waiting",
+    "start": 117.88,
+    "end": 118.26
+  },
+  {
+    "position": 259,
+    "text": "room.",
+    "start": 118.26,
+    "end": 118.6
+  },
+  {
+    "position": 260,
+    "text": "He",
+    "start": 119.32,
+    "end": 119.44
+  },
+  {
+    "position": 261,
+    "text": "says",
+    "start": 119.44,
+    "end": 119.76
+  },
+  {
+    "position": 262,
+    "text": "you",
+    "start": 119.76,
+    "end": 120.1
+  },
+  {
+    "position": 263,
+    "text": "are",
+    "start": 120.1,
+    "end": 120.34
+  },
+  {
+    "position": 264,
+    "text": "too!",
+    "start": 120.34,
+    "end": 120.84
+  },
+  {
+    "position": 265,
+    "text": "Because",
+    "start": 121.64,
+    "end": 121.84
+  },
+  {
+    "position": 266,
+    "text": "he",
+    "start": 121.84,
+    "end": 122.02
+  },
+  {
+    "position": 267,
+    "text": "can",
+    "start": 122.02,
+    "end": 122.14
+  },
+  {
+    "position": 268,
+    "text": "hear",
+    "start": 122.14,
+    "end": 122.4
+  },
+  {
+    "position": 269,
+    "text": "you!",
+    "start": 122.4,
+    "end": 122.72
+  },
+  {
+    "position": 270,
+    "text": "The",
+    "start": 123.44,
+    "end": 123.64
+  },
+  {
+    "position": 271,
+    "text": "dentist",
+    "start": 123.64,
+    "end": 124.02
+  },
+  {
+    "position": 272,
+    "text": "kept",
+    "start": 124.02,
+    "end": 124.5
+  },
+  {
+    "position": 273,
+    "text": "examining",
+    "start": 124.5,
+    "end": 125.34
+  },
+  {
+    "position": 274,
+    "text": "the",
+    "start": 125.34,
+    "end": 125.6
+  },
+  {
+    "position": 275,
+    "text": "tooth.",
+    "start": 125.6,
+    "end": 125.82
+  },
+  {
+    "position": 276,
+    "text": "Only",
+    "start": 126.72,
+    "end": 127.1
+  },
+  {
+    "position": 277,
+    "text": "one",
+    "start": 127.1,
+    "end": 127.36
+  },
+  {
+    "position": 278,
+    "text": "he",
+    "start": 127.36,
+    "end": 127.52
+  },
+  {
+    "position": 279,
+    "text": "had",
+    "start": 127.52,
+    "end": 127.66
+  },
+  {
+    "position": 280,
+    "text": "put",
+    "start": 127.66,
+    "end": 127.92
+  },
+  {
+    "position": 281,
+    "text": "it",
+    "start": 127.92,
+    "end": 128.1
+  },
+  {
+    "position": 282,
+    "text": "on",
+    "start": 128.1,
+    "end": 128.32
+  },
+  {
+    "position": 283,
+    "text": "the",
+    "start": 128.32,
+    "end": 128.46
+  },
+  {
+    "position": 284,
+    "text": "table",
+    "start": 128.46,
+    "end": 128.88
+  },
+  {
+    "position": 285,
+    "text": "was",
+    "start": 128.88,
+    "end": 129.18
+  },
+  {
+    "position": 286,
+    "text": "the",
+    "start": 129.18,
+    "end": 129.36
+  },
+  {
+    "position": 287,
+    "text": "finished",
+    "start": 129.36,
+    "end": 129.66
+  },
+  {
+    "position": 288,
+    "text": "work,",
+    "start": 129.66,
+    "end": 130.08
+  },
+  {
+    "position": 289,
+    "text": "did",
+    "start": 130.18,
+    "end": 130.26
+  },
+  {
+    "position": 290,
+    "text": "he",
+    "start": 130.26,
+    "end": 130.38
+  },
+  {
+    "position": 291,
+    "text": "say?",
+    "start": 130.38,
+    "end": 130.62
+  },
+  {
+    "position": 292,
+    "text": "So",
+    "start": 132.22,
+    "end": 132.54
+  },
+  {
+    "position": 293,
+    "text": "much",
+    "start": 132.54,
+    "end": 132.78
+  },
+  {
+    "position": 294,
+    "text": "better.",
+    "start": 132.78,
+    "end": 133.06
+  },
+  {
+    "position": 295,
+    "text": "He",
+    "start": 133.66,
+    "end": 133.92
+  },
+  {
+    "position": 296,
+    "text": "operated",
+    "start": 133.92,
+    "end": 134.76
+  },
+  {
+    "position": 297,
+    "text": "the",
+    "start": 134.76,
+    "end": 134.98
+  },
+  {
+    "position": 298,
+    "text": "drill",
+    "start": 134.98,
+    "end": 135.18
+  },
+  {
+    "position": 299,
+    "text": "again.",
+    "start": 135.18,
+    "end": 135.54
+  },
+  {
+    "position": 300,
+    "text": "He",
+    "start": 135.95,
+    "end": 136.28
+  },
+  {
+    "position": 301,
+    "text": "took",
+    "start": 136.28,
+    "end": 136.5
+  },
+  {
+    "position": 302,
+    "text": "several",
+    "start": 136.5,
+    "end": 136.94
+  },
+  {
+    "position": 303,
+    "text": "pieces",
+    "start": 136.94,
+    "end": 137.78
+  },
+  {
+    "position": 304,
+    "text": "of",
+    "start": 137.78,
+    "end": 138.52
+  },
+  {
+    "position": 305,
+    "text": "a",
+    "start": 138.52,
+    "end": 138.74
+  },
+  {
+    "position": 306,
+    "text": "bridge",
+    "start": 138.74,
+    "end": 139.22
+  },
+  {
+    "position": 307,
+    "text": "out",
+    "start": 139.22,
+    "end": 140.1
+  },
+  {
+    "position": 308,
+    "text": "of",
+    "start": 140.1,
+    "end": 140.3
+  },
+  {
+    "position": 309,
+    "text": "a",
+    "start": 140.3,
+    "end": 140.52
+  },
+  {
+    "position": 310,
+    "text": "cardboard",
+    "start": 140.52,
+    "end": 141.02
+  },
+  {
+    "position": 311,
+    "text": "box",
+    "start": 141.02,
+    "end": 141.88
+  },
+  {
+    "position": 312,
+    "text": "where",
+    "start": 141.88,
+    "end": 142.2
+  },
+  {
+    "position": 313,
+    "text": "he",
+    "start": 142.2,
+    "end": 142.34
+  },
+  {
+    "position": 314,
+    "text": "kept",
+    "start": 142.34,
+    "end": 142.54
+  },
+  {
+    "position": 315,
+    "text": "the",
+    "start": 142.54,
+    "end": 142.84
+  },
+  {
+    "position": 316,
+    "text": "things",
+    "start": 142.84,
+    "end": 143.28
+  },
+  {
+    "position": 317,
+    "text": "he",
+    "start": 143.28,
+    "end": 143.44
+  },
+  {
+    "position": 318,
+    "text": "still",
+    "start": 143.44,
+    "end": 143.7
+  },
+  {
+    "position": 319,
+    "text": "had",
+    "start": 143.7,
+    "end": 143.92
+  },
+  {
+    "position": 320,
+    "text": "to",
+    "start": 143.92,
+    "end": 144.08
+  },
+  {
+    "position": 321,
+    "text": "do",
+    "start": 144.08,
+    "end": 144.38
+  },
+  {
+    "position": 322,
+    "text": "and",
+    "start": 144.38,
+    "end": 145.12
+  },
+  {
+    "position": 323,
+    "text": "began",
+    "start": 145.12,
+    "end": 145.48
+  },
+  {
+    "position": 324,
+    "text": "to",
+    "start": 145.48,
+    "end": 145.82
+  },
+  {
+    "position": 325,
+    "text": "polish",
+    "start": 145.82,
+    "end": 146.24
+  },
+  {
+    "position": 326,
+    "text": "the",
+    "start": 146.24,
+    "end": 146.7
+  },
+  {
+    "position": 327,
+    "text": "gold.",
+    "start": 146.7,
+    "end": 147.16
+  },
+  {
+    "position": 328,
+    "text": "Bap",
+    "start": 147.82,
+    "end": 148.06
+  },
+  {
+    "position": 329,
+    "text": "-bap!",
+    "start": 148.06,
+    "end": 148.26
+  },
+  {
+    "position": 330,
+    "text": "What?",
+    "start": 149.08,
+    "end": 149.5
+  },
+  {
+    "position": 331,
+    "text": "He",
+    "start": 150.6,
+    "end": 150.84
+  },
+  {
+    "position": 332,
+    "text": "still",
+    "start": 150.84,
+    "end": 151.06
+  },
+  {
+    "position": 333,
+    "text": "hadn't",
+    "start": 151.06,
+    "end": 151.48
+  },
+  {
+    "position": 334,
+    "text": "changed",
+    "start": 151.48,
+    "end": 151.82
+  },
+  {
+    "position": 335,
+    "text": "his",
+    "start": 151.82,
+    "end": 152.08
+  },
+  {
+    "position": 336,
+    "text": "expression.",
+    "start": 152.08,
+    "end": 152.6
+  },
+  {
+    "position": 337,
+    "text": "He",
+    "start": 153.56,
+    "end": 153.74
+  },
+  {
+    "position": 338,
+    "text": "says",
+    "start": 153.74,
+    "end": 153.98
+  },
+  {
+    "position": 339,
+    "text": "if",
+    "start": 153.98,
+    "end": 154.22
+  },
+  {
+    "position": 340,
+    "text": "he",
+    "start": 154.22,
+    "end": 154.32
+  },
+  {
+    "position": 341,
+    "text": "don't",
+    "start": 154.32,
+    "end": 154.62
+  },
+  {
+    "position": 342,
+    "text": "take",
+    "start": 154.62,
+    "end": 154.76
+  },
+  {
+    "position": 343,
+    "text": "out",
+    "start": 154.76,
+    "end": 154.96
+  },
+  {
+    "position": 344,
+    "text": "his",
+    "start": 154.96,
+    "end": 155.14
+  },
+  {
+    "position": 345,
+    "text": "tooth,",
+    "start": 155.14,
+    "end": 155.4
+  },
+  {
+    "position": 346,
+    "text": "he'll",
+    "start": 155.88,
+    "end": 156.1
+  },
+  {
+    "position": 347,
+    "text": "shoot",
+    "start": 156.1,
+    "end": 156.38
+  },
+  {
+    "position": 348,
+    "text": "you!",
+    "start": 156.38,
+    "end": 156.66
+  },
+  {
+    "position": 349,
+    "text": "Without",
+    "start": 157.34,
+    "end": 157.76
+  },
+  {
+    "position": 350,
+    "text": "hurrying,",
+    "start": 157.76,
+    "end": 158.58
+  },
+  {
+    "position": 351,
+    "text": "with",
+    "start": 159.02,
+    "end": 159.18
+  },
+  {
+    "position": 352,
+    "text": "an",
+    "start": 159.18,
+    "end": 159.32
+  },
+  {
+    "position": 353,
+    "text": "extremely",
+    "start": 159.32,
+    "end": 160.22
+  },
+  {
+    "position": 354,
+    "text": "tranquil",
+    "start": 160.22,
+    "end": 161.24
+  },
+  {
+    "position": 355,
+    "text": "movement,",
+    "start": 161.24,
+    "end": 162.04
+  },
+  {
+    "position": 356,
+    "text": "he",
+    "start": 162.84,
+    "end": 162.92
+  },
+  {
+    "position": 357,
+    "text": "stopped",
+    "start": 162.92,
+    "end": 163.5
+  },
+  {
+    "position": 358,
+    "text": "peddling",
+    "start": 163.5,
+    "end": 164.18
+  },
+  {
+    "position": 359,
+    "text": "the",
+    "start": 164.18,
+    "end": 164.4
+  },
+  {
+    "position": 360,
+    "text": "drill.",
+    "start": 164.4,
+    "end": 164.66
+  },
+  {
+    "position": 361,
+    "text": "He",
+    "start": 164.66,
+    "end": 165.2
+  },
+  {
+    "position": 362,
+    "text": "pushed",
+    "start": 165.2,
+    "end": 165.2
+  },
+  {
+    "position": 363,
+    "text": "it",
+    "start": 165.2,
+    "end": 165.44
+  },
+  {
+    "position": 364,
+    "text": "away",
+    "start": 165.44,
+    "end": 165.64
+  },
+  {
+    "position": 365,
+    "text": "from",
+    "start": 165.64,
+    "end": 165.9
+  },
+  {
+    "position": 366,
+    "text": "the",
+    "start": 165.9,
+    "end": 166.06
+  },
+  {
+    "position": 367,
+    "text": "chair",
+    "start": 166.06,
+    "end": 166.32
+  },
+  {
+    "position": 368,
+    "text": "and",
+    "start": 166.32,
+    "end": 167.2
+  },
+  {
+    "position": 369,
+    "text": "pulled",
+    "start": 167.2,
+    "end": 167.58
+  },
+  {
+    "position": 370,
+    "text": "the",
+    "start": 167.58,
+    "end": 168.0
+  },
+  {
+    "position": 371,
+    "text": "lower",
+    "start": 168.0,
+    "end": 169.0
+  },
+  {
+    "position": 372,
+    "text": "drawer",
+    "start": 169.0,
+    "end": 170.0
+  },
+  {
+    "position": 373,
+    "text": "of",
+    "start": 170.0,
+    "end": 170.56
+  },
+  {
+    "position": 374,
+    "text": "the",
+    "start": 170.56,
+    "end": 170.72
+  },
+  {
+    "position": 375,
+    "text": "table",
+    "start": 170.72,
+    "end": 171.1
+  },
+  {
+    "position": 376,
+    "text": "all",
+    "start": 171.1,
+    "end": 171.66
+  },
+  {
+    "position": 377,
+    "text": "the",
+    "start": 171.66,
+    "end": 172.0
+  },
+  {
+    "position": 378,
+    "text": "way",
+    "start": 172.0,
+    "end": 172.22
+  },
+  {
+    "position": 379,
+    "text": "out.",
+    "start": 172.22,
+    "end": 172.7
+  },
+  {
+    "position": 380,
+    "text": "There",
+    "start": 173.4,
+    "end": 173.7
+  },
+  {
+    "position": 381,
+    "text": "was",
+    "start": 173.7,
+    "end": 173.9
+  },
+  {
+    "position": 382,
+    "text": "a",
+    "start": 173.9,
+    "end": 174.02
+  },
+  {
+    "position": 383,
+    "text": "revolver.",
+    "start": 174.02,
+    "end": 174.58
+  },
+  {
+    "position": 384,
+    "text": "Okay.",
+    "start": 175.44,
+    "end": 176.12
+  },
+  {
+    "position": 385,
+    "text": "He",
+    "start": 176.8,
+    "end": 177.34
+  },
+  {
+    "position": 386,
+    "text": "said.",
+    "start": 177.34,
+    "end": 177.5
+  },
+  {
+    "position": 387,
+    "text": "Tell",
+    "start": 178.86,
+    "end": 179.08
+  },
+  {
+    "position": 388,
+    "text": "him",
+    "start": 179.08,
+    "end": 179.22
+  },
+  {
+    "position": 389,
+    "text": "to",
+    "start": 179.22,
+    "end": 179.34
+  },
+  {
+    "position": 390,
+    "text": "come",
+    "start": 179.34,
+    "end": 179.5
+  },
+  {
+    "position": 391,
+    "text": "and",
+    "start": 179.5,
+    "end": 179.68
+  },
+  {
+    "position": 392,
+    "text": "shoot",
+    "start": 179.68,
+    "end": 179.86
+  },
+  {
+    "position": 393,
+    "text": "me.",
+    "start": 179.86,
+    "end": 180.1
+  },
+  {
+    "position": 394,
+    "text": "He",
+    "start": 181.3,
+    "end": 181.44
+  },
+  {
+    "position": 395,
+    "text": "rolled",
+    "start": 181.44,
+    "end": 181.82
+  },
+  {
+    "position": 396,
+    "text": "the",
+    "start": 181.82,
+    "end": 182.06
+  },
+  {
+    "position": 397,
+    "text": "chair",
+    "start": 182.06,
+    "end": 182.46
+  },
+  {
+    "position": 398,
+    "text": "over",
+    "start": 182.46,
+    "end": 183.32
+  },
+  {
+    "position": 399,
+    "text": "opposite",
+    "start": 183.32,
+    "end": 184.14
+  },
+  {
+    "position": 400,
+    "text": "the",
+    "start": 184.14,
+    "end": 184.4
+  },
+  {
+    "position": 401,
+    "text": "door,",
+    "start": 184.4,
+    "end": 184.74
+  },
+  {
+    "position": 402,
+    "text": "his",
+    "start": 185.38,
+    "end": 185.48
+  },
+  {
+    "position": 403,
+    "text": "hand",
+    "start": 185.48,
+    "end": 185.9
+  },
+  {
+    "position": 404,
+    "text": "resting",
+    "start": 185.9,
+    "end": 186.4
+  },
+  {
+    "position": 405,
+    "text": "on",
+    "start": 186.4,
+    "end": 186.78
+  },
+  {
+    "position": 406,
+    "text": "the",
+    "start": 186.78,
+    "end": 186.98
+  },
+  {
+    "position": 407,
+    "text": "edge",
+    "start": 186.98,
+    "end": 187.44
+  },
+  {
+    "position": 408,
+    "text": "of",
+    "start": 187.44,
+    "end": 187.86
+  },
+  {
+    "position": 409,
+    "text": "the",
+    "start": 187.86,
+    "end": 188.24
+  },
+  {
+    "position": 410,
+    "text": "drawer.",
+    "start": 188.24,
+    "end": 188.72
+  },
+  {
+    "position": 411,
+    "text": "The",
+    "start": 189.66,
+    "end": 189.82
+  },
+  {
+    "position": 412,
+    "text": "mayor",
+    "start": 189.82,
+    "end": 190.36
+  },
+  {
+    "position": 413,
+    "text": "appeared",
+    "start": 190.36,
+    "end": 191.16
+  },
+  {
+    "position": 414,
+    "text": "at",
+    "start": 191.16,
+    "end": 192.04
+  },
+  {
+    "position": 415,
+    "text": "the",
+    "start": 192.04,
+    "end": 192.28
+  },
+  {
+    "position": 416,
+    "text": "door.",
+    "start": 192.28,
+    "end": 192.54
+  },
+  {
+    "position": 417,
+    "text": "He",
+    "start": 193.06,
+    "end": 193.44
+  },
+  {
+    "position": 418,
+    "text": "had",
+    "start": 193.44,
+    "end": 193.52
+  },
+  {
+    "position": 419,
+    "text": "shaved",
+    "start": 193.52,
+    "end": 193.84
+  },
+  {
+    "position": 420,
+    "text": "the",
+    "start": 193.84,
+    "end": 194.22
+  },
+  {
+    "position": 421,
+    "text": "left",
+    "start": 194.22,
+    "end": 194.44
+  },
+  {
+    "position": 422,
+    "text": "side",
+    "start": 194.44,
+    "end": 194.82
+  },
+  {
+    "position": 423,
+    "text": "of",
+    "start": 194.82,
+    "end": 195.0
+  },
+  {
+    "position": 424,
+    "text": "his",
+    "start": 195.0,
+    "end": 195.14
+  },
+  {
+    "position": 425,
+    "text": "face,",
+    "start": 195.14,
+    "end": 195.52
+  },
+  {
+    "position": 426,
+    "text": "but",
+    "start": 196.02,
+    "end": 196.2
+  },
+  {
+    "position": 427,
+    "text": "the",
+    "start": 196.2,
+    "end": 196.34
+  },
+  {
+    "position": 428,
+    "text": "other",
+    "start": 196.34,
+    "end": 196.48
+  },
+  {
+    "position": 429,
+    "text": "side,",
+    "start": 196.48,
+    "end": 196.96
+  },
+  {
+    "position": 430,
+    "text": "swollen",
+    "start": 197.4,
+    "end": 198.3
+  },
+  {
+    "position": 431,
+    "text": "and",
+    "start": 198.3,
+    "end": 198.8
+  },
+  {
+    "position": 432,
+    "text": "in",
+    "start": 198.8,
+    "end": 198.98
+  },
+  {
+    "position": 433,
+    "text": "pain,",
+    "start": 198.98,
+    "end": 199.26
+  },
+  {
+    "position": 434,
+    "text": "had",
+    "start": 200.1,
+    "end": 200.2
+  },
+  {
+    "position": 435,
+    "text": "a",
+    "start": 200.2,
+    "end": 200.3
+  },
+  {
+    "position": 436,
+    "text": "five",
+    "start": 200.3,
+    "end": 200.86
+  },
+  {
+    "position": 437,
+    "text": "-day",
+    "start": 200.86,
+    "end": 201.28
+  },
+  {
+    "position": 438,
+    "text": "old",
+    "start": 201.28,
+    "end": 202.1
+  },
+  {
+    "position": 439,
+    "text": "beard.",
+    "start": 202.1,
+    "end": 202.56
+  },
+  {
+    "position": 440,
+    "text": "The",
+    "start": 203.58,
+    "end": 203.66
+  },
+  {
+    "position": 441,
+    "text": "dentist",
+    "start": 203.66,
+    "end": 203.96
+  },
+  {
+    "position": 442,
+    "text": "saw",
+    "start": 203.96,
+    "end": 204.38
+  },
+  {
+    "position": 443,
+    "text": "many",
+    "start": 204.38,
+    "end": 204.92
+  },
+  {
+    "position": 444,
+    "text": "nights",
+    "start": 204.92,
+    "end": 205.38
+  },
+  {
+    "position": 445,
+    "text": "of",
+    "start": 205.38,
+    "end": 205.66
+  },
+  {
+    "position": 446,
+    "text": "desperation",
+    "start": 205.66,
+    "end": 206.52
+  },
+  {
+    "position": 447,
+    "text": "as",
+    "start": 206.52,
+    "end": 207.18
+  },
+  {
+    "position": 448,
+    "text": "dull",
+    "start": 207.18,
+    "end": 207.92
+  },
+  {
+    "position": 449,
+    "text": "eyes.",
+    "start": 207.92,
+    "end": 209.02
+  },
+  {
+    "position": 450,
+    "text": "He",
+    "start": 209.94,
+    "end": 210.16
+  },
+  {
+    "position": 451,
+    "text": "closed",
+    "start": 210.16,
+    "end": 210.46
+  },
+  {
+    "position": 452,
+    "text": "the",
+    "start": 210.46,
+    "end": 210.66
+  },
+  {
+    "position": 453,
+    "text": "drawer",
+    "start": 210.66,
+    "end": 210.94
+  },
+  {
+    "position": 454,
+    "text": "with",
+    "start": 210.94,
+    "end": 211.18
+  },
+  {
+    "position": 455,
+    "text": "his",
+    "start": 211.18,
+    "end": 211.38
+  },
+  {
+    "position": 456,
+    "text": "fingertips",
+    "start": 211.38,
+    "end": 211.72
+  },
+  {
+    "position": 457,
+    "text": "and",
+    "start": 211.72,
+    "end": 212.16
+  },
+  {
+    "position": 458,
+    "text": "sat",
+    "start": 212.16,
+    "end": 212.32
+  },
+  {
+    "position": 459,
+    "text": "softly.",
+    "start": 212.32,
+    "end": 212.78
+  },
+  {
+    "position": 460,
+    "text": "Sit",
+    "start": 214.1,
+    "end": 214.36
+  },
+  {
+    "position": 461,
+    "text": "down.",
+    "start": 214.36,
+    "end": 214.58
+  },
+  {
+    "position": 462,
+    "text": "Good",
+    "start": 215.28,
+    "end": 216.02
+  },
+  {
+    "position": 463,
+    "text": "morning!",
+    "start": 216.02,
+    "end": 216.44
+  },
+  {
+    "position": 464,
+    "text": "Said",
+    "start": 217.6,
+    "end": 218.08
+  },
+  {
+    "position": 465,
+    "text": "the",
+    "start": 218.08,
+    "end": 218.2
+  },
+  {
+    "position": 466,
+    "text": "mayor.",
+    "start": 218.2,
+    "end": 218.38
+  },
+  {
+    "position": 467,
+    "text": "Morning.",
+    "start": 219.5,
+    "end": 219.88
+  },
+  {
+    "position": 468,
+    "text": "Said",
+    "start": 220.62,
+    "end": 220.78
+  },
+  {
+    "position": 469,
+    "text": "the",
+    "start": 220.78,
+    "end": 220.9
+  },
+  {
+    "position": 470,
+    "text": "dentist.",
+    "start": 220.9,
+    "end": 221.18
+  },
+  {
+    "position": 471,
+    "text": "While",
+    "start": 222.06,
+    "end": 222.4
+  },
+  {
+    "position": 472,
+    "text": "the",
+    "start": 222.4,
+    "end": 222.58
+  },
+  {
+    "position": 473,
+    "text": "instruments",
+    "start": 222.58,
+    "end": 222.92
+  },
+  {
+    "position": 474,
+    "text": "were",
+    "start": 222.92,
+    "end": 223.26
+  },
+  {
+    "position": 475,
+    "text": "boiling,",
+    "start": 223.26,
+    "end": 223.66
+  },
+  {
+    "position": 476,
+    "text": "the",
+    "start": 224.28,
+    "end": 224.34
+  },
+  {
+    "position": 477,
+    "text": "mayor",
+    "start": 224.34,
+    "end": 224.74
+  },
+  {
+    "position": 478,
+    "text": "leaned",
+    "start": 224.74,
+    "end": 225.2
+  },
+  {
+    "position": 479,
+    "text": "his",
+    "start": 225.2,
+    "end": 225.62
+  },
+  {
+    "position": 480,
+    "text": "skull",
+    "start": 225.62,
+    "end": 225.96
+  },
+  {
+    "position": 481,
+    "text": "on",
+    "start": 225.96,
+    "end": 226.44
+  },
+  {
+    "position": 482,
+    "text": "the",
+    "start": 226.44,
+    "end": 226.76
+  },
+  {
+    "position": 483,
+    "text": "headrest",
+    "start": 226.76,
+    "end": 227.3
+  },
+  {
+    "position": 484,
+    "text": "of",
+    "start": 227.3,
+    "end": 227.96
+  },
+  {
+    "position": 485,
+    "text": "the",
+    "start": 227.96,
+    "end": 228.2
+  },
+  {
+    "position": 486,
+    "text": "chair",
+    "start": 228.2,
+    "end": 228.44
+  },
+  {
+    "position": 487,
+    "text": "and",
+    "start": 228.44,
+    "end": 228.66
+  },
+  {
+    "position": 488,
+    "text": "felt",
+    "start": 228.66,
+    "end": 228.92
+  },
+  {
+    "position": 489,
+    "text": "better.",
+    "start": 228.92,
+    "end": 229.38
+  },
+  {
+    "position": 490,
+    "text": "His",
+    "start": 230.04,
+    "end": 230.22
+  },
+  {
+    "position": 491,
+    "text": "breath",
+    "start": 230.22,
+    "end": 230.48
+  },
+  {
+    "position": 492,
+    "text": "was",
+    "start": 230.48,
+    "end": 231.18
+  },
+  {
+    "position": 493,
+    "text": "icy.",
+    "start": 231.18,
+    "end": 231.66
+  },
+  {
+    "position": 494,
+    "text": "It",
+    "start": 232.56,
+    "end": 232.7
+  },
+  {
+    "position": 495,
+    "text": "was",
+    "start": 232.7,
+    "end": 232.84
+  },
+  {
+    "position": 496,
+    "text": "a",
+    "start": 232.84,
+    "end": 232.96
+  },
+  {
+    "position": 497,
+    "text": "poor",
+    "start": 232.96,
+    "end": 233.18
+  },
+  {
+    "position": 498,
+    "text": "office,",
+    "start": 233.18,
+    "end": 233.62
+  },
+  {
+    "position": 499,
+    "text": "an",
+    "start": 234.22,
+    "end": 234.3
+  },
+  {
+    "position": 500,
+    "text": "old",
+    "start": 234.3,
+    "end": 234.58
+  },
+  {
+    "position": 501,
+    "text": "wooden",
+    "start": 234.58,
+    "end": 234.84
+  },
+  {
+    "position": 502,
+    "text": "chair,",
+    "start": 234.84,
+    "end": 235.3
+  },
+  {
+    "position": 503,
+    "text": "the",
+    "start": 235.96,
+    "end": 236.06
+  },
+  {
+    "position": 504,
+    "text": "pedal",
+    "start": 236.06,
+    "end": 236.38
+  },
+  {
+    "position": 505,
+    "text": "drill,",
+    "start": 236.38,
+    "end": 236.74
+  },
+  {
+    "position": 506,
+    "text": "a",
+    "start": 237.64,
+    "end": 237.76
+  },
+  {
+    "position": 507,
+    "text": "glass",
+    "start": 237.76,
+    "end": 238.1
+  },
+  {
+    "position": 508,
+    "text": "case",
+    "start": 238.1,
+    "end": 238.54
+  },
+  {
+    "position": 509,
+    "text": "with",
+    "start": 238.54,
+    "end": 238.84
+  },
+  {
+    "position": 510,
+    "text": "ceramic",
+    "start": 238.84,
+    "end": 239.24
+  },
+  {
+    "position": 511,
+    "text": "bottles.",
+    "start": 239.24,
+    "end": 239.74
+  },
+  {
+    "position": 512,
+    "text": "Opposite",
+    "start": 240.44,
+    "end": 241.06
+  },
+  {
+    "position": 513,
+    "text": "the",
+    "start": 241.06,
+    "end": 241.22
+  },
+  {
+    "position": 514,
+    "text": "chair",
+    "start": 241.22,
+    "end": 241.5
+  },
+  {
+    "position": 515,
+    "text": "was",
+    "start": 241.5,
+    "end": 241.7
+  },
+  {
+    "position": 516,
+    "text": "a",
+    "start": 241.7,
+    "end": 241.82
+  },
+  {
+    "position": 517,
+    "text": "window",
+    "start": 241.82,
+    "end": 242.08
+  },
+  {
+    "position": 518,
+    "text": "with",
+    "start": 242.08,
+    "end": 242.32
+  },
+  {
+    "position": 519,
+    "text": "a",
+    "start": 242.32,
+    "end": 242.44
+  },
+  {
+    "position": 520,
+    "text": "shoulder",
+    "start": 242.44,
+    "end": 242.78
+  },
+  {
+    "position": 521,
+    "text": "-high",
+    "start": 242.78,
+    "end": 243.12
+  },
+  {
+    "position": 522,
+    "text": "cloth",
+    "start": 243.12,
+    "end": 243.44
+  },
+  {
+    "position": 523,
+    "text": "curtain.",
+    "start": 243.44,
+    "end": 244.0
+  },
+  {
+    "position": 524,
+    "text": "When",
+    "start": 244.0,
+    "end": 244.84
+  },
+  {
+    "position": 525,
+    "text": "he",
+    "start": 244.84,
+    "end": 244.98
+  },
+  {
+    "position": 526,
+    "text": "felt",
+    "start": 244.98,
+    "end": 245.32
+  },
+  {
+    "position": 527,
+    "text": "the",
+    "start": 245.32,
+    "end": 245.54
+  },
+  {
+    "position": 528,
+    "text": "dentist",
+    "start": 245.54,
+    "end": 245.82
+  },
+  {
+    "position": 529,
+    "text": "approach,",
+    "start": 245.82,
+    "end": 246.32
+  },
+  {
+    "position": 530,
+    "text": "the",
+    "start": 247.0,
+    "end": 247.06
+  },
+  {
+    "position": 531,
+    "text": "mayor",
+    "start": 247.06,
+    "end": 247.42
+  },
+  {
+    "position": 532,
+    "text": "braced",
+    "start": 247.42,
+    "end": 248.52
+  },
+  {
+    "position": 533,
+    "text": "his",
+    "start": 248.52,
+    "end": 248.82
+  },
+  {
+    "position": 534,
+    "text": "heels",
+    "start": 248.82,
+    "end": 249.26
+  },
+  {
+    "position": 535,
+    "text": "and",
+    "start": 249.26,
+    "end": 250.06
+  },
+  {
+    "position": 536,
+    "text": "opened",
+    "start": 250.06,
+    "end": 250.96
+  },
+  {
+    "position": 537,
+    "text": "his",
+    "start": 250.96,
+    "end": 251.44
+  },
+  {
+    "position": 538,
+    "text": "mouth.",
+    "start": 251.44,
+    "end": 251.8
+  },
+  {
+    "position": 539,
+    "text": "Aurelio",
+    "start": 252.84,
+    "end": 253.18
+  },
+  {
+    "position": 540,
+    "text": "Escovire",
+    "start": 253.18,
+    "end": 253.92
+  },
+  {
+    "position": 541,
+    "text": "turned",
+    "start": 253.92,
+    "end": 254.28
+  },
+  {
+    "position": 542,
+    "text": "his",
+    "start": 254.28,
+    "end": 254.52
+  },
+  {
+    "position": 543,
+    "text": "head",
+    "start": 254.52,
+    "end": 254.78
+  },
+  {
+    "position": 544,
+    "text": "toward",
+    "start": 254.78,
+    "end": 255.6
+  },
+  {
+    "position": 545,
+    "text": "the",
+    "start": 255.6,
+    "end": 255.82
+  },
+  {
+    "position": 546,
+    "text": "light.",
+    "start": 255.82,
+    "end": 256.12
+  },
+  {
+    "position": 547,
+    "text": "After",
+    "start": 256.82,
+    "end": 257.1
+  },
+  {
+    "position": 548,
+    "text": "inspecting",
+    "start": 257.1,
+    "end": 258.1
+  },
+  {
+    "position": 549,
+    "text": "the",
+    "start": 258.1,
+    "end": 258.36
+  },
+  {
+    "position": 550,
+    "text": "infected",
+    "start": 258.36,
+    "end": 259.02
+  },
+  {
+    "position": 551,
+    "text": "tooth,",
+    "start": 259.02,
+    "end": 259.5
+  },
+  {
+    "position": 552,
+    "text": "he",
+    "start": 260.24,
+    "end": 260.28
+  },
+  {
+    "position": 553,
+    "text": "closed",
+    "start": 260.28,
+    "end": 260.58
+  },
+  {
+    "position": 554,
+    "text": "the",
+    "start": 260.58,
+    "end": 260.82
+  },
+  {
+    "position": 555,
+    "text": "mayor's",
+    "start": 260.82,
+    "end": 261.28
+  },
+  {
+    "position": 556,
+    "text": "jaw",
+    "start": 261.28,
+    "end": 261.48
+  },
+  {
+    "position": 557,
+    "text": "with",
+    "start": 261.48,
+    "end": 261.8
+  },
+  {
+    "position": 558,
+    "text": "a",
+    "start": 261.8,
+    "end": 261.98
+  },
+  {
+    "position": 559,
+    "text": "cautious",
+    "start": 261.98,
+    "end": 262.58
+  },
+  {
+    "position": 560,
+    "text": "pressure",
+    "start": 262.58,
+    "end": 263.44
+  },
+  {
+    "position": 561,
+    "text": "of",
+    "start": 263.44,
+    "end": 263.98
+  },
+  {
+    "position": 562,
+    "text": "his",
+    "start": 263.98,
+    "end": 264.26
+  },
+  {
+    "position": 563,
+    "text": "fingers.",
+    "start": 264.26,
+    "end": 264.84
+  },
+  {
+    "position": 564,
+    "text": "It",
+    "start": 265.82,
+    "end": 266.08
+  },
+  {
+    "position": 565,
+    "text": "has",
+    "start": 266.08,
+    "end": 266.3
+  },
+  {
+    "position": 566,
+    "text": "to",
+    "start": 266.3,
+    "end": 266.54
+  },
+  {
+    "position": 567,
+    "text": "be",
+    "start": 266.54,
+    "end": 266.7
+  },
+  {
+    "position": 568,
+    "text": "with",
+    "start": 266.7,
+    "end": 266.92
+  },
+  {
+    "position": 569,
+    "text": "how",
+    "start": 266.92,
+    "end": 267.06
+  },
+  {
+    "position": 570,
+    "text": "anesthesia,",
+    "start": 267.06,
+    "end": 267.82
+  },
+  {
+    "position": 571,
+    "text": "he",
+    "start": 268.3,
+    "end": 268.68
+  },
+  {
+    "position": 572,
+    "text": "said.",
+    "start": 268.68,
+    "end": 268.92
+  },
+  {
+    "position": 573,
+    "text": "Why?",
+    "start": 269.64,
+    "end": 270.08
+  },
+  {
+    "position": 574,
+    "text": "Because",
+    "start": 271.28,
+    "end": 272.0
+  },
+  {
+    "position": 575,
+    "text": "you",
+    "start": 272.0,
+    "end": 272.54
+  },
+  {
+    "position": 576,
+    "text": "have",
+    "start": 272.54,
+    "end": 272.74
+  },
+  {
+    "position": 577,
+    "text": "an",
+    "start": 272.74,
+    "end": 272.92
+  },
+  {
+    "position": 578,
+    "text": "abscess.",
+    "start": 272.92,
+    "end": 273.5
+  },
+  {
+    "position": 579,
+    "text": "The",
+    "start": 274.6,
+    "end": 274.74
+  },
+  {
+    "position": 580,
+    "text": "mayor",
+    "start": 274.74,
+    "end": 274.96
+  },
+  {
+    "position": 581,
+    "text": "looked",
+    "start": 274.96,
+    "end": 275.36
+  },
+  {
+    "position": 582,
+    "text": "him",
+    "start": 275.36,
+    "end": 275.9
+  },
+  {
+    "position": 583,
+    "text": "in",
+    "start": 275.9,
+    "end": 276.14
+  },
+  {
+    "position": 584,
+    "text": "the",
+    "start": 276.14,
+    "end": 276.36
+  },
+  {
+    "position": 585,
+    "text": "eye.",
+    "start": 276.36,
+    "end": 276.68
+  },
+  {
+    "position": 586,
+    "text": "All",
+    "start": 277.66,
+    "end": 277.86
+  },
+  {
+    "position": 587,
+    "text": "right.",
+    "start": 277.86,
+    "end": 278.1
+  },
+  {
+    "position": 588,
+    "text": "He",
+    "start": 278.72,
+    "end": 278.94
+  },
+  {
+    "position": 589,
+    "text": "said",
+    "start": 278.94,
+    "end": 279.18
+  },
+  {
+    "position": 590,
+    "text": "and",
+    "start": 279.18,
+    "end": 279.8
+  },
+  {
+    "position": 591,
+    "text": "tried",
+    "start": 279.8,
+    "end": 280.14
+  },
+  {
+    "position": 592,
+    "text": "to",
+    "start": 280.14,
+    "end": 280.38
+  },
+  {
+    "position": 593,
+    "text": "smile.",
+    "start": 280.38,
+    "end": 280.78
+  },
+  {
+    "position": 594,
+    "text": "The",
+    "start": 281.76,
+    "end": 281.88
+  },
+  {
+    "position": 595,
+    "text": "dentist",
+    "start": 281.88,
+    "end": 282.28
+  },
+  {
+    "position": 596,
+    "text": "did",
+    "start": 282.28,
+    "end": 284.2
+  },
+  {
+    "position": 597,
+    "text": "not",
+    "start": 284.2,
+    "end": 284.52
+  },
+  {
+    "position": 598,
+    "text": "return",
+    "start": 284.52,
+    "end": 285.02
+  },
+  {
+    "position": 599,
+    "text": "the",
+    "start": 285.02,
+    "end": 285.28
+  },
+  {
+    "position": 600,
+    "text": "smile.",
+    "start": 285.28,
+    "end": 285.64
+  },
+  {
+    "position": 601,
+    "text": "He",
+    "start": 286.14,
+    "end": 286.26
+  },
+  {
+    "position": 602,
+    "text": "brought",
+    "start": 286.26,
+    "end": 286.48
+  },
+  {
+    "position": 603,
+    "text": "the",
+    "start": 286.48,
+    "end": 286.74
+  },
+  {
+    "position": 604,
+    "text": "basin",
+    "start": 286.74,
+    "end": 287.34
+  },
+  {
+    "position": 605,
+    "text": "of",
+    "start": 287.34,
+    "end": 287.78
+  },
+  {
+    "position": 606,
+    "text": "sterilized",
+    "start": 287.78,
+    "end": 288.94
+  },
+  {
+    "position": 607,
+    "text": "instruments",
+    "start": 288.94,
+    "end": 289.32
+  },
+  {
+    "position": 608,
+    "text": "to",
+    "start": 289.32,
+    "end": 289.58
+  },
+  {
+    "position": 609,
+    "text": "the",
+    "start": 289.58,
+    "end": 289.7
+  },
+  {
+    "position": 610,
+    "text": "work",
+    "start": 289.7,
+    "end": 289.88
+  },
+  {
+    "position": 611,
+    "text": "table",
+    "start": 289.88,
+    "end": 290.24
+  },
+  {
+    "position": 612,
+    "text": "and",
+    "start": 290.24,
+    "end": 290.94
+  },
+  {
+    "position": 613,
+    "text": "took",
+    "start": 290.94,
+    "end": 291.68
+  },
+  {
+    "position": 614,
+    "text": "them",
+    "start": 291.68,
+    "end": 292.12
+  },
+  {
+    "position": 615,
+    "text": "out",
+    "start": 292.12,
+    "end": 292.52
+  },
+  {
+    "position": 616,
+    "text": "of",
+    "start": 292.52,
+    "end": 292.64
+  },
+  {
+    "position": 617,
+    "text": "the",
+    "start": 292.64,
+    "end": 292.8
+  },
+  {
+    "position": 618,
+    "text": "water",
+    "start": 292.8,
+    "end": 293.22
+  },
+  {
+    "position": 619,
+    "text": "with",
+    "start": 293.22,
+    "end": 293.52
+  },
+  {
+    "position": 620,
+    "text": "a",
+    "start": 293.52,
+    "end": 293.7
+  },
+  {
+    "position": 621,
+    "text": "pair",
+    "start": 293.7,
+    "end": 294.0
+  },
+  {
+    "position": 622,
+    "text": "of",
+    "start": 294.0,
+    "end": 294.38
+  },
+  {
+    "position": 623,
+    "text": "cold",
+    "start": 294.38,
+    "end": 294.8
+  },
+  {
+    "position": 624,
+    "text": "tweezers",
+    "start": 294.8,
+    "end": 295.94
+  },
+  {
+    "position": 625,
+    "text": "still",
+    "start": 295.94,
+    "end": 296.7
+  },
+  {
+    "position": 626,
+    "text": "without",
+    "start": 296.7,
+    "end": 297.6
+  },
+  {
+    "position": 627,
+    "text": "hurry.",
+    "start": 297.6,
+    "end": 298.5
+  },
+  {
+    "position": 628,
+    "text": "Then",
+    "start": 299.52,
+    "end": 299.64
+  },
+  {
+    "position": 629,
+    "text": "he",
+    "start": 299.64,
+    "end": 299.76
+  },
+  {
+    "position": 630,
+    "text": "pushed",
+    "start": 299.76,
+    "end": 300.04
+  },
+  {
+    "position": 631,
+    "text": "the",
+    "start": 300.04,
+    "end": 300.42
+  },
+  {
+    "position": 632,
+    "text": "spittoon",
+    "start": 300.42,
+    "end": 301.18
+  },
+  {
+    "position": 633,
+    "text": "with",
+    "start": 301.18,
+    "end": 301.58
+  },
+  {
+    "position": 634,
+    "text": "the",
+    "start": 301.58,
+    "end": 301.74
+  },
+  {
+    "position": 635,
+    "text": "tip",
+    "start": 301.74,
+    "end": 301.9
+  },
+  {
+    "position": 636,
+    "text": "of",
+    "start": 301.9,
+    "end": 302.14
+  },
+  {
+    "position": 637,
+    "text": "his",
+    "start": 302.14,
+    "end": 302.36
+  },
+  {
+    "position": 638,
+    "text": "shoe",
+    "start": 302.36,
+    "end": 302.62
+  },
+  {
+    "position": 639,
+    "text": "and",
+    "start": 302.62,
+    "end": 303.3
+  },
+  {
+    "position": 640,
+    "text": "went",
+    "start": 303.3,
+    "end": 303.54
+  },
+  {
+    "position": 641,
+    "text": "to",
+    "start": 303.54,
+    "end": 303.82
+  },
+  {
+    "position": 642,
+    "text": "wash",
+    "start": 303.82,
+    "end": 304.02
+  },
+  {
+    "position": 643,
+    "text": "his",
+    "start": 304.02,
+    "end": 304.4
+  },
+  {
+    "position": 644,
+    "text": "hands",
+    "start": 304.4,
+    "end": 304.82
+  },
+  {
+    "position": 645,
+    "text": "in",
+    "start": 304.82,
+    "end": 305.22
+  },
+  {
+    "position": 646,
+    "text": "the",
+    "start": 305.22,
+    "end": 305.36
+  },
+  {
+    "position": 647,
+    "text": "wash",
+    "start": 305.36,
+    "end": 305.68
+  },
+  {
+    "position": 648,
+    "text": "basin.",
+    "start": 305.68,
+    "end": 306.2
+  },
+  {
+    "position": 649,
+    "text": "He",
+    "start": 307.0,
+    "end": 307.26
+  },
+  {
+    "position": 650,
+    "text": "did",
+    "start": 307.26,
+    "end": 307.38
+  },
+  {
+    "position": 651,
+    "text": "all",
+    "start": 307.38,
+    "end": 307.72
+  },
+  {
+    "position": 652,
+    "text": "this",
+    "start": 307.72,
+    "end": 308.08
+  },
+  {
+    "position": 653,
+    "text": "without",
+    "start": 308.08,
+    "end": 308.46
+  },
+  {
+    "position": 654,
+    "text": "looking",
+    "start": 308.46,
+    "end": 308.9
+  },
+  {
+    "position": 655,
+    "text": "at",
+    "start": 308.9,
+    "end": 309.1
+  },
+  {
+    "position": 656,
+    "text": "the",
+    "start": 309.1,
+    "end": 309.3
+  },
+  {
+    "position": 657,
+    "text": "mayor.",
+    "start": 309.3,
+    "end": 309.52
+  },
+  {
+    "position": 658,
+    "text": "But",
+    "start": 310.2,
+    "end": 310.38
+  },
+  {
+    "position": 659,
+    "text": "the",
+    "start": 310.38,
+    "end": 310.52
+  },
+  {
+    "position": 660,
+    "text": "mayor",
+    "start": 310.52,
+    "end": 310.82
+  },
+  {
+    "position": 661,
+    "text": "didn't",
+    "start": 310.82,
+    "end": 312.02
+  },
+  {
+    "position": 662,
+    "text": "take",
+    "start": 312.02,
+    "end": 312.22
+  },
+  {
+    "position": 663,
+    "text": "his",
+    "start": 312.22,
+    "end": 312.5
+  },
+  {
+    "position": 664,
+    "text": "eyes",
+    "start": 312.5,
+    "end": 312.76
+  },
+  {
+    "position": 665,
+    "text": "off",
+    "start": 312.76,
+    "end": 313.22
+  },
+  {
+    "position": 666,
+    "text": "him.",
+    "start": 313.22,
+    "end": 313.52
+  },
+  {
+    "position": 667,
+    "text": "It",
+    "start": 314.46,
+    "end": 314.74
+  },
+  {
+    "position": 668,
+    "text": "was",
+    "start": 314.74,
+    "end": 314.88
+  },
+  {
+    "position": 669,
+    "text": "a",
+    "start": 314.88,
+    "end": 315.02
+  },
+  {
+    "position": 670,
+    "text": "lower",
+    "start": 315.02,
+    "end": 315.38
+  },
+  {
+    "position": 671,
+    "text": "wisdom",
+    "start": 315.38,
+    "end": 315.82
+  },
+  {
+    "position": 672,
+    "text": "tooth.",
+    "start": 315.82,
+    "end": 316.16
+  },
+  {
+    "position": 673,
+    "text": "The",
+    "start": 316.88,
+    "end": 317.02
+  },
+  {
+    "position": 674,
+    "text": "dentist",
+    "start": 317.02,
+    "end": 317.32
+  },
+  {
+    "position": 675,
+    "text": "spread",
+    "start": 317.32,
+    "end": 317.78
+  },
+  {
+    "position": 676,
+    "text": "his",
+    "start": 317.78,
+    "end": 318.0
+  },
+  {
+    "position": 677,
+    "text": "feet",
+    "start": 318.0,
+    "end": 318.2
+  },
+  {
+    "position": 678,
+    "text": "and",
+    "start": 318.2,
+    "end": 318.6
+  },
+  {
+    "position": 679,
+    "text": "grasped",
+    "start": 318.6,
+    "end": 319.46
+  },
+  {
+    "position": 680,
+    "text": "the",
+    "start": 319.46,
+    "end": 319.64
+  },
+  {
+    "position": 681,
+    "text": "tooth",
+    "start": 319.64,
+    "end": 319.96
+  },
+  {
+    "position": 682,
+    "text": "with",
+    "start": 319.96,
+    "end": 320.22
+  },
+  {
+    "position": 683,
+    "text": "the",
+    "start": 320.22,
+    "end": 320.44
+  },
+  {
+    "position": 684,
+    "text": "hot",
+    "start": 320.44,
+    "end": 320.7
+  },
+  {
+    "position": 685,
+    "text": "forceps.",
+    "start": 320.7,
+    "end": 321.48
+  },
+  {
+    "position": 686,
+    "text": "The",
+    "start": 322.09,
+    "end": 322.48
+  },
+  {
+    "position": 687,
+    "text": "mayor",
+    "start": 322.48,
+    "end": 322.8
+  },
+  {
+    "position": 688,
+    "text": "seized",
+    "start": 322.8,
+    "end": 323.2
+  },
+  {
+    "position": 689,
+    "text": "the",
+    "start": 323.2,
+    "end": 323.64
+  },
+  {
+    "position": 690,
+    "text": "arms",
+    "start": 323.64,
+    "end": 324.08
+  },
+  {
+    "position": 691,
+    "text": "of",
+    "start": 324.08,
+    "end": 324.32
+  },
+  {
+    "position": 692,
+    "text": "the",
+    "start": 324.32,
+    "end": 324.48
+  },
+  {
+    "position": 693,
+    "text": "chair,",
+    "start": 324.48,
+    "end": 324.94
+  },
+  {
+    "position": 694,
+    "text": "braced",
+    "start": 325.92,
+    "end": 326.42
+  },
+  {
+    "position": 695,
+    "text": "his",
+    "start": 326.42,
+    "end": 326.68
+  },
+  {
+    "position": 696,
+    "text": "feet",
+    "start": 326.68,
+    "end": 326.96
+  },
+  {
+    "position": 697,
+    "text": "with",
+    "start": 326.96,
+    "end": 327.24
+  },
+  {
+    "position": 698,
+    "text": "all",
+    "start": 327.24,
+    "end": 327.42
+  },
+  {
+    "position": 699,
+    "text": "his",
+    "start": 327.42,
+    "end": 327.58
+  },
+  {
+    "position": 700,
+    "text": "strength",
+    "start": 327.58,
+    "end": 327.96
+  },
+  {
+    "position": 701,
+    "text": "and",
+    "start": 327.96,
+    "end": 328.7
+  },
+  {
+    "position": 702,
+    "text": "felt",
+    "start": 328.7,
+    "end": 329.14
+  },
+  {
+    "position": 703,
+    "text": "an",
+    "start": 329.14,
+    "end": 329.64
+  },
+  {
+    "position": 704,
+    "text": "icy",
+    "start": 329.64,
+    "end": 330.32
+  },
+  {
+    "position": 705,
+    "text": "void",
+    "start": 330.32,
+    "end": 331.04
+  },
+  {
+    "position": 706,
+    "text": "in",
+    "start": 331.04,
+    "end": 331.36
+  },
+  {
+    "position": 707,
+    "text": "his",
+    "start": 331.36,
+    "end": 331.54
+  },
+  {
+    "position": 708,
+    "text": "kidneys.",
+    "start": 331.54,
+    "end": 331.88
+  },
+  {
+    "position": 709,
+    "text": "But",
+    "start": 332.52,
+    "end": 333.04
+  },
+  {
+    "position": 710,
+    "text": "didn't",
+    "start": 333.04,
+    "end": 333.32
+  },
+  {
+    "position": 711,
+    "text": "make",
+    "start": 333.32,
+    "end": 333.52
+  },
+  {
+    "position": 712,
+    "text": "a",
+    "start": 333.52,
+    "end": 333.64
+  },
+  {
+    "position": 713,
+    "text": "sound.",
+    "start": 333.64,
+    "end": 334.1
+  },
+  {
+    "position": 714,
+    "text": "The",
+    "start": 334.82,
+    "end": 334.92
+  },
+  {
+    "position": 715,
+    "text": "dentist",
+    "start": 334.92,
+    "end": 335.24
+  },
+  {
+    "position": 716,
+    "text": "moved",
+    "start": 335.24,
+    "end": 335.72
+  },
+  {
+    "position": 717,
+    "text": "only",
+    "start": 335.72,
+    "end": 336.34
+  },
+  {
+    "position": 718,
+    "text": "his",
+    "start": 336.34,
+    "end": 336.64
+  },
+  {
+    "position": 719,
+    "text": "wrist",
+    "start": 336.64,
+    "end": 337.08
+  },
+  {
+    "position": 720,
+    "text": "without",
+    "start": 337.08,
+    "end": 338.06
+  },
+  {
+    "position": 721,
+    "text": "rancor,",
+    "start": 338.06,
+    "end": 338.86
+  },
+  {
+    "position": 722,
+    "text": "rather",
+    "start": 339.22,
+    "end": 339.6
+  },
+  {
+    "position": 723,
+    "text": "with",
+    "start": 339.6,
+    "end": 339.88
+  },
+  {
+    "position": 724,
+    "text": "a",
+    "start": 339.88,
+    "end": 340.06
+  },
+  {
+    "position": 725,
+    "text": "bitter",
+    "start": 340.06,
+    "end": 340.26
+  },
+  {
+    "position": 726,
+    "text": "tenderness,",
+    "start": 340.26,
+    "end": 340.86
+  },
+  {
+    "position": 727,
+    "text": "he",
+    "start": 341.08,
+    "end": 341.14
+  },
+  {
+    "position": 728,
+    "text": "said,",
+    "start": 341.14,
+    "end": 341.46
+  },
+  {
+    "position": 729,
+    "text": "now",
+    "start": 342.36,
+    "end": 342.78
+  },
+  {
+    "position": 730,
+    "text": "you'll",
+    "start": 342.78,
+    "end": 343.16
+  },
+  {
+    "position": 731,
+    "text": "pay",
+    "start": 343.16,
+    "end": 343.54
+  },
+  {
+    "position": 732,
+    "text": "for",
+    "start": 343.54,
+    "end": 344.32
+  },
+  {
+    "position": 733,
+    "text": "our",
+    "start": 344.32,
+    "end": 344.54
+  },
+  {
+    "position": 734,
+    "text": "twenty",
+    "start": 344.54,
+    "end": 345.14
+  },
+  {
+    "position": 735,
+    "text": "dead",
+    "start": 345.14,
+    "end": 345.56
+  },
+  {
+    "position": 736,
+    "text": "men.",
+    "start": 345.56,
+    "end": 346.0
+  },
+  {
+    "position": 737,
+    "text": "The",
+    "start": 346.46,
+    "end": 346.82
+  },
+  {
+    "position": 738,
+    "text": "mayor",
+    "start": 346.82,
+    "end": 347.26
+  },
+  {
+    "position": 739,
+    "text": "felt",
+    "start": 347.26,
+    "end": 347.86
+  },
+  {
+    "position": 740,
+    "text": "the",
+    "start": 347.86,
+    "end": 348.42
+  },
+  {
+    "position": 741,
+    "text": "crunch",
+    "start": 348.42,
+    "end": 348.84
+  },
+  {
+    "position": 742,
+    "text": "of",
+    "start": 348.84,
+    "end": 349.38
+  },
+  {
+    "position": 743,
+    "text": "bones",
+    "start": 349.38,
+    "end": 349.84
+  },
+  {
+    "position": 744,
+    "text": "in",
+    "start": 349.84,
+    "end": 350.16
+  },
+  {
+    "position": 745,
+    "text": "his",
+    "start": 350.16,
+    "end": 350.36
+  },
+  {
+    "position": 746,
+    "text": "jaw",
+    "start": 350.36,
+    "end": 350.68
+  },
+  {
+    "position": 747,
+    "text": "and",
+    "start": 350.68,
+    "end": 350.98
+  },
+  {
+    "position": 748,
+    "text": "his",
+    "start": 350.98,
+    "end": 351.14
+  },
+  {
+    "position": 749,
+    "text": "eyes",
+    "start": 351.14,
+    "end": 351.68
+  },
+  {
+    "position": 750,
+    "text": "filled",
+    "start": 351.68,
+    "end": 352.5
+  },
+  {
+    "position": 751,
+    "text": "with",
+    "start": 352.5,
+    "end": 352.86
+  },
+  {
+    "position": 752,
+    "text": "tears.",
+    "start": 352.86,
+    "end": 353.46
+  },
+  {
+    "position": 753,
+    "text": "But",
+    "start": 354.26,
+    "end": 354.42
+  },
+  {
+    "position": 754,
+    "text": "he",
+    "start": 354.42,
+    "end": 354.48
+  },
+  {
+    "position": 755,
+    "text": "didn't",
+    "start": 354.48,
+    "end": 354.72
+  },
+  {
+    "position": 756,
+    "text": "breathe",
+    "start": 354.72,
+    "end": 355.08
+  },
+  {
+    "position": 757,
+    "text": "until",
+    "start": 355.08,
+    "end": 355.46
+  },
+  {
+    "position": 758,
+    "text": "he",
+    "start": 355.46,
+    "end": 355.62
+  },
+  {
+    "position": 759,
+    "text": "felt",
+    "start": 355.62,
+    "end": 355.9
+  },
+  {
+    "position": 760,
+    "text": "the",
+    "start": 355.9,
+    "end": 356.08
+  },
+  {
+    "position": 761,
+    "text": "tooth",
+    "start": 356.08,
+    "end": 356.36
+  },
+  {
+    "position": 762,
+    "text": "come",
+    "start": 356.36,
+    "end": 356.76
+  },
+  {
+    "position": 763,
+    "text": "out.",
+    "start": 356.76,
+    "end": 357.18
+  },
+  {
+    "position": 764,
+    "text": "Then",
+    "start": 357.82,
+    "end": 357.96
+  },
+  {
+    "position": 765,
+    "text": "he",
+    "start": 357.96,
+    "end": 358.06
+  },
+  {
+    "position": 766,
+    "text": "sought",
+    "start": 358.06,
+    "end": 358.32
+  },
+  {
+    "position": 767,
+    "text": "through",
+    "start": 358.32,
+    "end": 358.74
+  },
+  {
+    "position": 768,
+    "text": "his",
+    "start": 358.74,
+    "end": 358.92
+  },
+  {
+    "position": 769,
+    "text": "tears.",
+    "start": 358.92,
+    "end": 359.3
+  },
+  {
+    "position": 770,
+    "text": "It",
+    "start": 360.18,
+    "end": 360.28
+  },
+  {
+    "position": 771,
+    "text": "seemed",
+    "start": 360.28,
+    "end": 360.5
+  },
+  {
+    "position": 772,
+    "text": "so",
+    "start": 360.5,
+    "end": 360.8
+  },
+  {
+    "position": 773,
+    "text": "foreign",
+    "start": 360.8,
+    "end": 361.26
+  },
+  {
+    "position": 774,
+    "text": "to",
+    "start": 361.26,
+    "end": 361.46
+  },
+  {
+    "position": 775,
+    "text": "his",
+    "start": 361.46,
+    "end": 361.62
+  },
+  {
+    "position": 776,
+    "text": "pain",
+    "start": 361.62,
+    "end": 361.86
+  },
+  {
+    "position": 777,
+    "text": "that",
+    "start": 361.86,
+    "end": 362.08
+  },
+  {
+    "position": 778,
+    "text": "he",
+    "start": 362.08,
+    "end": 362.2
+  },
+  {
+    "position": 779,
+    "text": "failed",
+    "start": 362.2,
+    "end": 362.6
+  },
+  {
+    "position": 780,
+    "text": "to",
+    "start": 362.6,
+    "end": 362.82
+  },
+  {
+    "position": 781,
+    "text": "understand",
+    "start": 362.82,
+    "end": 363.5
+  },
+  {
+    "position": 782,
+    "text": "his",
+    "start": 363.5,
+    "end": 364.4
+  },
+  {
+    "position": 783,
+    "text": "torture",
+    "start": 364.4,
+    "end": 365.02
+  },
+  {
+    "position": 784,
+    "text": "of",
+    "start": 365.02,
+    "end": 365.36
+  },
+  {
+    "position": 785,
+    "text": "the",
+    "start": 365.36,
+    "end": 365.5
+  },
+  {
+    "position": 786,
+    "text": "five",
+    "start": 365.5,
+    "end": 366.04
+  },
+  {
+    "position": 787,
+    "text": "previous",
+    "start": 366.04,
+    "end": 366.96
+  },
+  {
+    "position": 788,
+    "text": "nights.",
+    "start": 366.96,
+    "end": 367.32
+  },
+  {
+    "position": 789,
+    "text": "Bent",
+    "start": 368.3,
+    "end": 368.58
+  },
+  {
+    "position": 790,
+    "text": "over",
+    "start": 368.58,
+    "end": 368.8
+  },
+  {
+    "position": 791,
+    "text": "the",
+    "start": 368.8,
+    "end": 369.08
+  },
+  {
+    "position": 792,
+    "text": "spittoon,",
+    "start": 369.08,
+    "end": 369.76
+  },
+  {
+    "position": 793,
+    "text": "sweating,",
+    "start": 370.4,
+    "end": 370.64
+  },
+  {
+    "position": 794,
+    "text": "panting.",
+    "start": 371.14,
+    "end": 371.58
+  },
+  {
+    "position": 795,
+    "text": "He",
+    "start": 371.58,
+    "end": 372.08
+  },
+  {
+    "position": 796,
+    "text": "unbuttoned",
+    "start": 372.08,
+    "end": 372.7
+  },
+  {
+    "position": 797,
+    "text": "his",
+    "start": 372.7,
+    "end": 372.86
+  },
+  {
+    "position": 798,
+    "text": "tunic",
+    "start": 372.86,
+    "end": 373.34
+  },
+  {
+    "position": 799,
+    "text": "and",
+    "start": 373.34,
+    "end": 373.9
+  },
+  {
+    "position": 800,
+    "text": "reached",
+    "start": 373.9,
+    "end": 374.18
+  },
+  {
+    "position": 801,
+    "text": "for",
+    "start": 374.18,
+    "end": 374.48
+  },
+  {
+    "position": 802,
+    "text": "the",
+    "start": 374.48,
+    "end": 374.68
+  },
+  {
+    "position": 803,
+    "text": "handkerchief",
+    "start": 374.68,
+    "end": 375.32
+  },
+  {
+    "position": 804,
+    "text": "in",
+    "start": 375.32,
+    "end": 376.1
+  },
+  {
+    "position": 805,
+    "text": "his",
+    "start": 376.1,
+    "end": 376.3
+  },
+  {
+    "position": 806,
+    "text": "pants",
+    "start": 376.3,
+    "end": 376.66
+  },
+  {
+    "position": 807,
+    "text": "pocket.",
+    "start": 376.66,
+    "end": 377.22
+  },
+  {
+    "position": 808,
+    "text": "The",
+    "start": 378.04,
+    "end": 378.12
+  },
+  {
+    "position": 809,
+    "text": "dentist",
+    "start": 378.12,
+    "end": 378.4
+  },
+  {
+    "position": 810,
+    "text": "gave",
+    "start": 378.4,
+    "end": 378.74
+  },
+  {
+    "position": 811,
+    "text": "him",
+    "start": 378.74,
+    "end": 378.96
+  },
+  {
+    "position": 812,
+    "text": "a",
+    "start": 378.96,
+    "end": 379.06
+  },
+  {
+    "position": 813,
+    "text": "clean",
+    "start": 379.06,
+    "end": 379.3
+  },
+  {
+    "position": 814,
+    "text": "cloth.",
+    "start": 379.3,
+    "end": 379.64
+  },
+  {
+    "position": 815,
+    "text": "Dry",
+    "start": 380.86,
+    "end": 381.22
+  },
+  {
+    "position": 816,
+    "text": "your",
+    "start": 381.22,
+    "end": 381.4
+  },
+  {
+    "position": 817,
+    "text": "tears.",
+    "start": 381.4,
+    "end": 381.8
+  },
+  {
+    "position": 818,
+    "text": "He",
+    "start": 382.36,
+    "end": 382.46
+  },
+  {
+    "position": 819,
+    "text": "said.",
+    "start": 382.46,
+    "end": 382.74
+  },
+  {
+    "position": 820,
+    "text": "The",
+    "start": 383.44,
+    "end": 383.62
+  },
+  {
+    "position": 821,
+    "text": "mayor",
+    "start": 383.62,
+    "end": 383.84
+  },
+  {
+    "position": 822,
+    "text": "did.",
+    "start": 383.84,
+    "end": 384.06
+  },
+  {
+    "position": 823,
+    "text": "He",
+    "start": 384.7,
+    "end": 384.84
+  },
+  {
+    "position": 824,
+    "text": "was",
+    "start": 384.84,
+    "end": 385.08
+  },
+  {
+    "position": 825,
+    "text": "trembling.",
+    "start": 385.08,
+    "end": 386.06
+  },
+  {
+    "position": 826,
+    "text": "While",
+    "start": 386.84,
+    "end": 387.06
+  },
+  {
+    "position": 827,
+    "text": "the",
+    "start": 387.06,
+    "end": 387.18
+  },
+  {
+    "position": 828,
+    "text": "dentist",
+    "start": 387.18,
+    "end": 387.48
+  },
+  {
+    "position": 829,
+    "text": "washed",
+    "start": 387.48,
+    "end": 387.98
+  },
+  {
+    "position": 830,
+    "text": "his",
+    "start": 387.98,
+    "end": 388.24
+  },
+  {
+    "position": 831,
+    "text": "hands,",
+    "start": 388.24,
+    "end": 388.56
+  },
+  {
+    "position": 832,
+    "text": "he",
+    "start": 388.78,
+    "end": 388.8
+  },
+  {
+    "position": 833,
+    "text": "saw",
+    "start": 388.8,
+    "end": 389.12
+  },
+  {
+    "position": 834,
+    "text": "the",
+    "start": 389.12,
+    "end": 389.4
+  },
+  {
+    "position": 835,
+    "text": "crumbling",
+    "start": 389.4,
+    "end": 390.08
+  },
+  {
+    "position": 836,
+    "text": "ceiling",
+    "start": 390.08,
+    "end": 390.74
+  },
+  {
+    "position": 837,
+    "text": "and",
+    "start": 390.74,
+    "end": 391.14
+  },
+  {
+    "position": 838,
+    "text": "dusty",
+    "start": 391.14,
+    "end": 391.62
+  },
+  {
+    "position": 839,
+    "text": "spider",
+    "start": 391.62,
+    "end": 392.1
+  },
+  {
+    "position": 840,
+    "text": "web",
+    "start": 392.1,
+    "end": 392.52
+  },
+  {
+    "position": 841,
+    "text": "with",
+    "start": 392.52,
+    "end": 393.06
+  },
+  {
+    "position": 842,
+    "text": "spider's",
+    "start": 393.06,
+    "end": 393.78
+  },
+  {
+    "position": 843,
+    "text": "eggs",
+    "start": 393.78,
+    "end": 394.0
+  },
+  {
+    "position": 844,
+    "text": "and",
+    "start": 394.0,
+    "end": 394.5
+  },
+  {
+    "position": 845,
+    "text": "dead",
+    "start": 394.5,
+    "end": 394.72
+  },
+  {
+    "position": 846,
+    "text": "insects.",
+    "start": 394.72,
+    "end": 395.22
+  },
+  {
+    "position": 847,
+    "text": "The",
+    "start": 396.16,
+    "end": 396.28
+  },
+  {
+    "position": 848,
+    "text": "dentist",
+    "start": 396.28,
+    "end": 396.64
+  },
+  {
+    "position": 849,
+    "text": "returned,",
+    "start": 396.64,
+    "end": 397.62
+  },
+  {
+    "position": 850,
+    "text": "drying",
+    "start": 398.54,
+    "end": 398.96
+  },
+  {
+    "position": 851,
+    "text": "his",
+    "start": 398.96,
+    "end": 399.18
+  },
+  {
+    "position": 852,
+    "text": "hands.",
+    "start": 399.18,
+    "end": 399.72
+  },
+  {
+    "position": 853,
+    "text": "Go",
+    "start": 400.66,
+    "end": 401.26
+  },
+  {
+    "position": 854,
+    "text": "to",
+    "start": 401.26,
+    "end": 401.4
+  },
+  {
+    "position": 855,
+    "text": "bed,",
+    "start": 401.4,
+    "end": 401.58
+  },
+  {
+    "position": 856,
+    "text": "he",
+    "start": 402.3,
+    "end": 402.46
+  },
+  {
+    "position": 857,
+    "text": "said,",
+    "start": 402.46,
+    "end": 402.68
+  },
+  {
+    "position": 858,
+    "text": "and",
+    "start": 403.14,
+    "end": 403.6
+  },
+  {
+    "position": 859,
+    "text": "gargle",
+    "start": 403.6,
+    "end": 404.0
+  },
+  {
+    "position": 860,
+    "text": "with",
+    "start": 404.0,
+    "end": 404.22
+  },
+  {
+    "position": 861,
+    "text": "saltwater.",
+    "start": 404.22,
+    "end": 404.84
+  },
+  {
+    "position": 862,
+    "text": "The",
+    "start": 405.68,
+    "end": 405.76
+  },
+  {
+    "position": 863,
+    "text": "mayor",
+    "start": 405.76,
+    "end": 406.0
+  },
+  {
+    "position": 864,
+    "text": "stood",
+    "start": 406.0,
+    "end": 406.28
+  },
+  {
+    "position": 865,
+    "text": "up,",
+    "start": 406.28,
+    "end": 406.48
+  },
+  {
+    "position": 866,
+    "text": "said",
+    "start": 407.28,
+    "end": 407.58
+  },
+  {
+    "position": 867,
+    "text": "goodbye",
+    "start": 407.58,
+    "end": 408.04
+  },
+  {
+    "position": 868,
+    "text": "with",
+    "start": 408.04,
+    "end": 408.36
+  },
+  {
+    "position": 869,
+    "text": "a",
+    "start": 408.36,
+    "end": 408.62
+  },
+  {
+    "position": 870,
+    "text": "casual",
+    "start": 408.62,
+    "end": 409.46
+  },
+  {
+    "position": 871,
+    "text": "military",
+    "start": 409.46,
+    "end": 410.1
+  },
+  {
+    "position": 872,
+    "text": "salute",
+    "start": 410.1,
+    "end": 410.7
+  },
+  {
+    "position": 873,
+    "text": "and",
+    "start": 410.7,
+    "end": 411.56
+  },
+  {
+    "position": 874,
+    "text": "walked",
+    "start": 411.56,
+    "end": 411.84
+  },
+  {
+    "position": 875,
+    "text": "toward",
+    "start": 411.84,
+    "end": 412.4
+  },
+  {
+    "position": 876,
+    "text": "the",
+    "start": 412.4,
+    "end": 413.2
+  },
+  {
+    "position": 877,
+    "text": "door,",
+    "start": 413.2,
+    "end": 413.56
+  },
+  {
+    "position": 878,
+    "text": "stretching",
+    "start": 414.04,
+    "end": 414.26
+  },
+  {
+    "position": 879,
+    "text": "his",
+    "start": 414.26,
+    "end": 414.46
+  },
+  {
+    "position": 880,
+    "text": "legs",
+    "start": 414.46,
+    "end": 414.72
+  },
+  {
+    "position": 881,
+    "text": "without",
+    "start": 414.72,
+    "end": 415.54
+  },
+  {
+    "position": 882,
+    "text": "buttoning",
+    "start": 415.54,
+    "end": 416.08
+  },
+  {
+    "position": 883,
+    "text": "up",
+    "start": 416.08,
+    "end": 416.24
+  },
+  {
+    "position": 884,
+    "text": "his",
+    "start": 416.24,
+    "end": 416.46
+  },
+  {
+    "position": 885,
+    "text": "tunic.",
+    "start": 416.46,
+    "end": 416.92
+  },
+  {
+    "position": 886,
+    "text": "Send",
+    "start": 417.9,
+    "end": 418.26
+  },
+  {
+    "position": 887,
+    "text": "the",
+    "start": 418.26,
+    "end": 418.5
+  },
+  {
+    "position": 888,
+    "text": "bill,",
+    "start": 418.5,
+    "end": 418.76
+  },
+  {
+    "position": 889,
+    "text": "he",
+    "start": 419.16,
+    "end": 419.36
+  },
+  {
+    "position": 890,
+    "text": "said,",
+    "start": 419.36,
+    "end": 419.64
+  },
+  {
+    "position": 891,
+    "text": "to",
+    "start": 420.06,
+    "end": 420.34
+  },
+  {
+    "position": 892,
+    "text": "you",
+    "start": 420.34,
+    "end": 420.58
+  },
+  {
+    "position": 893,
+    "text": "or",
+    "start": 420.58,
+    "end": 421.56
+  },
+  {
+    "position": 894,
+    "text": "the",
+    "start": 421.56,
+    "end": 421.72
+  },
+  {
+    "position": 895,
+    "text": "town.",
+    "start": 421.72,
+    "end": 421.98
+  },
+  {
+    "position": 896,
+    "text": "The",
+    "start": 422.94,
+    "end": 423.02
+  },
+  {
+    "position": 897,
+    "text": "mayor",
+    "start": 423.02,
+    "end": 423.28
+  },
+  {
+    "position": 898,
+    "text": "didn't",
+    "start": 423.28,
+    "end": 423.58
+  },
+  {
+    "position": 899,
+    "text": "look",
+    "start": 423.58,
+    "end": 423.78
+  },
+  {
+    "position": 900,
+    "text": "at",
+    "start": 423.78,
+    "end": 423.94
+  },
+  {
+    "position": 901,
+    "text": "him.",
+    "start": 423.94,
+    "end": 424.18
+  },
+  {
+    "position": 902,
+    "text": "He",
+    "start": 424.56,
+    "end": 424.72
+  },
+  {
+    "position": 903,
+    "text": "closed",
+    "start": 424.72,
+    "end": 425.0
+  },
+  {
+    "position": 904,
+    "text": "the",
+    "start": 425.0,
+    "end": 425.16
+  },
+  {
+    "position": 905,
+    "text": "door",
+    "start": 425.16,
+    "end": 425.32
+  },
+  {
+    "position": 906,
+    "text": "and",
+    "start": 425.32,
+    "end": 425.46
+  },
+  {
+    "position": 907,
+    "text": "said",
+    "start": 425.46,
+    "end": 425.76
+  },
+  {
+    "position": 908,
+    "text": "to",
+    "start": 425.76,
+    "end": 426.28
+  },
+  {
+    "position": 909,
+    "text": "the",
+    "start": 426.28,
+    "end": 426.44
+  },
+  {
+    "position": 910,
+    "text": "screen,",
+    "start": 426.44,
+    "end": 426.82
+  },
+  {
+    "position": 911,
+    "text": "it's",
+    "start": 427.6,
+    "end": 427.84
+  },
+  {
+    "position": 912,
+    "text": "the",
+    "start": 427.84,
+    "end": 427.94
+  },
+  {
+    "position": 913,
+    "text": "same",
+    "start": 427.94,
+    "end": 428.38
+  },
+  {
+    "position": 914,
+    "text": "damn",
+    "start": 428.38,
+    "end": 428.7
+  },
+  {
+    "position": 915,
+    "text": "thing.",
+    "start": 428.7,
+    "end": 429.34
+  }
+]
