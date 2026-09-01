@@ -75,6 +75,12 @@ Models: `tiny` (fastest, least accurate), `base` (good for clear narration), `sm
 **Cost:** Free (runs locally).
 **Time:** 30-60 seconds with `base` model.
 
+**Python setup (one-time):** The project has a venv at `.venv/` with Whisper installed. Run the script with:
+```bash
+cd ~/Desktop/WebDev/interactive-reader
+.venv/bin/python scripts/generate-timestamps.py --audio public/audio/stories/{slug}.mp3 --slug {slug} --model base
+```
+
 ### Generate Práctica Coral IPA
 
 Generates the IPA transcription for a story's Práctica Coral sentence and saves it to the pronunciation_drills table. Needed for the dictation step to show IPA.
