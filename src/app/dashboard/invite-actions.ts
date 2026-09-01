@@ -4,6 +4,10 @@ import { revalidatePath } from "next/cache";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { authConfirmRedirectTo } from "@/lib/auth";
 import { getAppOrigin, requireTeacher } from "@/lib/auth-server";
+import {
+  inviteOtpErrorMessage,
+  wasRemovedFromClassroom,
+} from "@/lib/invite-student";
 
 export type InviteStudentResult =
   | { ok: true; message: string }
@@ -43,6 +47,18 @@ async function updateDisplayName(
   });
 }
 
+async function sendInviteOtp(
+  email: string,
+  redirectTo: string
+): Promise<string | null> {
+  const admin = createAdminClient();
+  const { error } = await admin.auth.signInWithOtp({
+    email,
+    options: { emailRedirectTo: redirectTo },
+  });
+  return error?.message ?? null;
+}
+
 export async function inviteStudent(
   _prev: InviteStudentResult | null,
   formData: FormData
@@ -56,6 +72,45 @@ export async function inviteStudent(
       error: "Algo salió mal. Inténtalo de nuevo en un momento.",
     };
   }
+}
+
+async function inviteExistingStudent(params: {
+  userId: string;
+  email: string;
+  displayName: string;
+  redirectTo: string;
+  subscriptionStatus: string | null | undefined;
+  role: string | null | undefined;
+}): Promise<InviteStudentResult> {
+  const removed = wasRemovedFromClassroom(params.subscriptionStatus);
+  const otpError = await sendInviteOtp(params.email, params.redirectTo);
+
+  if (otpError) {
+    return { ok: false, error: inviteOtpErrorMessage(otpError) };
+  }
+
+  await setClassroomProfile(params.userId, params.email);
+  await updateDisplayName(params.userId, params.displayName);
+  revalidatePath("/dashboard");
+
+  if (removed) {
+    return {
+      ok: true,
+      message: `Listo. ${params.displayName} vuelve al grupo. Les mandé un código.`,
+    };
+  }
+
+  if (params.role === "student-classroom") {
+    return {
+      ok: true,
+      message: `Listo. Le volví a mandar el código a ${params.displayName}.`,
+    };
+  }
+
+  return {
+    ok: true,
+    message: `Listo. ${params.displayName} ahora es estudiante de clase. Les mandé un código.`,
+  };
 }
 
 async function inviteStudentInner(
@@ -87,7 +142,7 @@ async function inviteStudentInner(
 
   const { data: existingProfile } = await admin
     .from("profiles")
-    .select("id, role")
+    .select("id, role, subscription_status")
     .eq("email", email)
     .maybeSingle();
 
@@ -99,30 +154,14 @@ async function inviteStudentInner(
   }
 
   if (existingProfile) {
-    await setClassroomProfile(existingProfile.id, email);
-    await updateDisplayName(existingProfile.id, displayName);
-
-    const { error: otpError } = await admin.auth.signInWithOtp({
+    return inviteExistingStudent({
+      userId: existingProfile.id,
       email,
-      options: { emailRedirectTo: redirectTo },
+      displayName,
+      redirectTo,
+      subscriptionStatus: existingProfile.subscription_status,
+      role: existingProfile.role,
     });
-
-    revalidatePath("/dashboard");
-
-    if (otpError) {
-      return {
-        ok: true,
-        message: `${displayName} ya está en el grupo. Si no les llega el email, que entren por /login.`,
-      };
-    }
-
-    return {
-      ok: true,
-      message:
-        existingProfile.role === "student-classroom"
-          ? `Listo. Le volví a mandar el link a ${displayName}.`
-          : `Listo. ${displayName} ahora es estudiante de clase. Les mandé un link.`,
-    };
   }
 
   const { data: created, error: createError } =
@@ -145,7 +184,7 @@ async function inviteStudentInner(
 
     const { data: racedProfile } = await admin
       .from("profiles")
-      .select("id")
+      .select("id, role, subscription_status")
       .eq("email", email)
       .maybeSingle();
 
@@ -157,37 +196,25 @@ async function inviteStudentInner(
       };
     }
 
-    await setClassroomProfile(racedProfile.id, email);
-    await updateDisplayName(racedProfile.id, displayName);
-    await admin.auth.signInWithOtp({
+    return inviteExistingStudent({
+      userId: racedProfile.id,
       email,
-      options: { emailRedirectTo: redirectTo },
+      displayName,
+      redirectTo,
+      subscriptionStatus: racedProfile.subscription_status,
+      role: racedProfile.role,
     });
-    revalidatePath("/dashboard");
-    return {
-      ok: true,
-      message: `Listo. ${displayName} ya tenía cuenta. Les mandé un link.`,
-    };
+  }
+
+  const otpError = await sendInviteOtp(email, redirectTo);
+  if (otpError) {
+    return { ok: false, error: inviteOtpErrorMessage(otpError) };
   }
 
   await setClassroomProfile(created.user.id, email);
-
-  const { error: otpError } = await admin.auth.signInWithOtp({
-    email,
-    options: { emailRedirectTo: redirectTo },
-  });
-
   revalidatePath("/dashboard");
-
-  if (otpError) {
-    return {
-      ok: true,
-      message: `${displayName} ya está en el grupo. Si no les llega el email, que entren por /login.`,
-    };
-  }
-
   return {
     ok: true,
-    message: `Listo. Le mandé un link a ${displayName}. Cuando lo abra, ya está adentro.`,
+    message: `Listo. Le mandé un código a ${displayName}. Cuando lo abra, ya está adentro.`,
   };
 }
