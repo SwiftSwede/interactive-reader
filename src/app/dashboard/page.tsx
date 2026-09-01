@@ -9,6 +9,7 @@ import {
 import BackLink from "@/components/BackLink";
 import { signOut } from "./actions";
 import InviteStudentForm from "./InviteStudentForm";
+import RemoveStudentButton from "@/components/RemoveStudentButton";
 
 export const metadata = {
   title: "Tu sesión - Profe Kyle",
@@ -86,7 +87,8 @@ export default async function DashboardPage() {
               </h2>
               <p className="mb-3 text-sm text-gray-600">
                 Solo quienes siguen pagando. Si pausaron en ThriveCart, no salen
-                aquí. Para PayPal o becas, invítalos abajo.
+                aquí. Para PayPal o becas, invítalos abajo. Quitar es para esos
+                invitados. Si pagan en Stripe, páusalos en ThriveCart.
               </p>
               {classroomStudents.length === 0 ? (
                 <p className="text-sm text-gray-500">
@@ -103,6 +105,7 @@ export default async function DashboardPage() {
                         {student.displayName ?? "Sin nombre"}
                       </p>
                       <p className="mt-0.5 text-gray-500">{student.email}</p>
+                      <RemoveStudentButton studentId={student.id} />
                     </li>
                   ))}
                 </ul>

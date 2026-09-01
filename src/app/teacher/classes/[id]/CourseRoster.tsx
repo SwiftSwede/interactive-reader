@@ -6,6 +6,7 @@ import LocalDateTime from "@/components/LocalDateTime";
 import type { RosterStudent } from "@/lib/teacher";
 import type { CourseLevel } from "@/types";
 import MoveStudentButton from "./MoveStudentButton";
+import RemoveStudentButton from "@/components/RemoveStudentButton";
 
 type SortKey = "name" | "attendance" | "activity";
 
@@ -104,6 +105,7 @@ export default function CourseRoster({
               studentId={student.studentId}
               fromLevel={courseLevel}
             />
+            <RemoveStudentButton studentId={student.studentId} />
           </li>
         ))}
       </ul>

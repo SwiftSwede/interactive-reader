@@ -1,6 +1,6 @@
 import type Stripe from "stripe";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { isTeacherEmail } from "@/lib/auth";
+import { authConfirmRedirectTo, isTeacherEmail } from "@/lib/auth";
 import {
   courseLevelForPriceId,
   getBillingAppOrigin,
@@ -214,7 +214,7 @@ async function ensureClassroomUser(params: {
 
 async function sendClassroomMagicLink(email: string): Promise<void> {
   const admin = createAdminClient();
-  const redirectTo = `${getBillingAppOrigin()}/auth/callback?next=/dashboard`;
+  const redirectTo = authConfirmRedirectTo(getBillingAppOrigin(), "/dashboard");
   const { error } = await admin.auth.signInWithOtp({
     email,
     options: { emailRedirectTo: redirectTo },

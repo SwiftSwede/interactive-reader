@@ -21,7 +21,7 @@ async function main() {
     process.exit(1);
   }
 
-  const redirectTo = "https://learn.profekyle.com/auth/callback?next=/dashboard";
+  const redirectTo = "https://learn.profekyle.com/auth/confirm?next=/dashboard";
   const admin = createAdminClient();
   const { data, error } = await admin.auth.admin.generateLink({
     type: "magiclink",
@@ -47,11 +47,13 @@ async function main() {
   console.log("nested redirect_to:", nestedRedirect ?? "(none)");
 
   const target = nestedRedirect ?? actionLink;
-  if (target.includes("learn.profekyle.com/auth/callback")) {
-    console.log("ok: magic link points at production callback");
+  if (target.includes("learn.profekyle.com/auth/confirm")) {
+    console.log("ok: magic link points at production confirm page");
+  } else if (target.includes("learn.profekyle.com/auth/callback")) {
+    console.log("ok: magic link still points at /auth/callback (legacy PKCE)");
   } else if (target.includes("localhost")) {
     console.error(
-      "fail: magic link still points at localhost. Set Supabase Site URL to https://learn.profekyle.com and add https://learn.profekyle.com/auth/callback to Redirect URLs."
+      "fail: magic link still points at localhost. Set Supabase Site URL to https://learn.profekyle.com and add https://learn.profekyle.com/auth/confirm to Redirect URLs."
     );
     process.exit(1);
   } else {

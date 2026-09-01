@@ -221,3 +221,54 @@ export async function enrollMatchingStudentsInCourse(params: {
 
   return enrolled;
 }
+
+export type RemoveClassroomStudentResult =
+  | { ok: true }
+  | { ok: false; reason: "not-found" | "teacher" | "stripe" | "error" };
+
+/**
+ * Drops a classroom student from live class lists without deleting their
+ * reading history. Stripe-paid students stay on the roster: pause them in
+ * ThriveCart instead, or the webhook will put them back.
+ */
+export async function removeClassroomStudent(
+  studentId: string
+): Promise<RemoveClassroomStudentResult> {
+  const admin = createAdminClient();
+  const { data: profile, error: loadError } = await admin
+    .from("profiles")
+    .select("id, role, stripe_customer_id")
+    .eq("id", studentId)
+    .maybeSingle();
+
+  if (loadError) {
+    console.error("removeClassroomStudent load failed:", loadError);
+    return { ok: false, reason: "error" };
+  }
+  if (!profile) return { ok: false, reason: "not-found" };
+  if (profile.role === "teacher") return { ok: false, reason: "teacher" };
+  if (profile.stripe_customer_id) return { ok: false, reason: "stripe" };
+
+  const { error: enrollError } = await admin
+    .from("course_enrollments")
+    .delete()
+    .eq("student_id", studentId);
+
+  if (enrollError) {
+    console.error("removeClassroomStudent unenroll failed:", enrollError);
+    return { ok: false, reason: "error" };
+  }
+
+  const { error: updateError } = await admin
+    .from("profiles")
+    .update({ subscription_status: "cancelled" })
+    .eq("id", studentId)
+    .eq("role", "student-classroom");
+
+  if (updateError) {
+    console.error("removeClassroomStudent profile failed:", updateError);
+    return { ok: false, reason: "error" };
+  }
+
+  return { ok: true };
+}

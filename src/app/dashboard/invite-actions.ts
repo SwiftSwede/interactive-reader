@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { authConfirmRedirectTo } from "@/lib/auth";
 import { getAppOrigin, requireTeacher } from "@/lib/auth-server";
 
 export type InviteStudentResult =
@@ -79,9 +80,9 @@ async function inviteStudentInner(
   }
 
   // Invite emails from inviteUserByEmail skip PKCE and break /auth/callback.
-  // Create the user, set classroom role, then send the same magic link as /login.
+  // Create the user, set classroom role, then send the same OTP email as /login.
   const origin = await getAppOrigin();
-  const redirectTo = `${origin}/auth/callback?next=/dashboard`;
+  const redirectTo = authConfirmRedirectTo(origin, "/dashboard");
   const admin = createAdminClient();
 
   const { data: existingProfile } = await admin

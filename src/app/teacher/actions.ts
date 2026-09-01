@@ -7,6 +7,7 @@ import {
   enrollMatchingStudentsInCourse,
   moveStudentToClassroomLevel,
   otherCourseLevel,
+  removeClassroomStudent as removeClassroomStudentRecord,
 } from "@/lib/classroom-placement";
 import type { CourseLevel } from "@/types";
 
@@ -149,4 +150,38 @@ export async function moveStudentToOtherGroup(
       error: "No pude moverlo. Inténtalo de nuevo.",
     };
   }
+}
+
+export type RemoveStudentResult =
+  | { ok: true }
+  | { ok: false; error: string };
+
+export async function removeClassroomStudent(
+  formData: FormData
+): Promise<RemoveStudentResult> {
+  await requireTeacher("/teacher");
+  const studentId = String(formData.get("studentId") ?? "").trim();
+
+  if (!studentId) {
+    return { ok: false, error: "No encontré a ese estudiante." };
+  }
+
+  const result = await removeClassroomStudentRecord(studentId);
+  if (!result.ok) {
+    if (result.reason === "stripe") {
+      return {
+        ok: false,
+        error:
+          "Este paga en Stripe. Para sacarlo, páusalo en ThriveCart. Si lo quito aquí, el pago lo vuelve a meter.",
+      };
+    }
+    if (result.reason === "not-found" || result.reason === "teacher") {
+      return { ok: false, error: "No encontré a ese estudiante." };
+    }
+    return { ok: false, error: "No pude sacarlo. Inténtalo de nuevo." };
+  }
+
+  revalidatePath("/teacher", "layout");
+  revalidatePath("/dashboard");
+  return { ok: true };
 }

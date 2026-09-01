@@ -1,8 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useActionState, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
-import { safeNextPath } from "@/lib/auth";
+import { AUTH_NEXT_COOKIE, authConfirmRedirectTo, safeNextPath } from "@/lib/auth";
+import { verifyEmailOtp, type VerifyOtpResult } from "./actions";
+
+const fieldClass =
+  "w-full rounded-lg border border-gray-200 bg-white px-3 py-3 text-base text-gray-800 focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-400";
+
+const otpInitial: VerifyOtpResult | null = null;
 
 export default function LoginForm({ nextPath }: { nextPath: string }) {
   const [email, setEmail] = useState("");
@@ -10,15 +16,22 @@ export default function LoginForm({ nextPath }: { nextPath: string }) {
     "idle"
   );
   const [errorMessage, setErrorMessage] = useState("");
+  const [otpState, otpAction, otpPending] = useActionState(
+    verifyEmailOtp,
+    otpInitial
+  );
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
     setErrorMessage("");
 
     try {
+      const next = safeNextPath(nextPath);
+      document.cookie = `${AUTH_NEXT_COOKIE}=${encodeURIComponent(next)}; Path=/; Max-Age=3600; SameSite=Lax`;
+
       const supabase = createClient();
-      const redirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(safeNextPath(nextPath))}`;
+      const redirectTo = authConfirmRedirectTo(window.location.origin, next);
       const { error } = await supabase.auth.signInWithOtp({
         email: email.trim(),
         options: {
@@ -28,8 +41,14 @@ export default function LoginForm({ nextPath }: { nextPath: string }) {
 
       if (error) {
         setStatus("error");
+        const rateLimited =
+          error.status === 429 ||
+          error.message.toLowerCase().includes("rate") ||
+          error.message.toLowerCase().includes("seconds");
         setErrorMessage(
-          "No pude mandar el link. Revisa el email e inténtalo de nuevo."
+          rateLimited
+            ? "Espera un minuto y pide otro código. El anterior a veces todavía sirve."
+            : "No pude mandar el código. Revisa el email e inténtalo de nuevo."
         );
         return;
       }
@@ -43,19 +62,62 @@ export default function LoginForm({ nextPath }: { nextPath: string }) {
 
   if (status === "sent") {
     return (
-      <div className="rounded-xl border border-gray-100 bg-gray-50 p-5">
-        <p className="font-medium text-gray-900">Revisa tu email</p>
-        <p className="mt-2 text-sm text-gray-600">
-          Te mandé un link a <span className="font-medium">{email}</span>.
-          Haz clic y ya estás adentro. Si no lo ves, mira en spam. A veces
-          tarda un minuto.
-        </p>
-      </div>
+      <form action={otpAction} className="space-y-4">
+        <input type="hidden" name="email" value={email.trim().toLowerCase()} />
+        <input type="hidden" name="next" value={safeNextPath(nextPath)} />
+        <div className="rounded-xl border border-gray-100 bg-gray-50 p-5">
+          <p className="font-medium text-gray-900">Revisa tu email</p>
+          <p className="mt-2 text-sm text-gray-600">
+            Te mandé un código de 6 números a{" "}
+            <span className="font-medium">{email}</span>. Escríbelo aquí. No
+            hace falta abrir el link en otro navegador. Si no lo ves, mira en
+            spam.
+          </p>
+        </div>
+        <label className="block">
+          <span className="mb-1.5 block text-sm font-medium text-gray-700">
+            Código
+          </span>
+          <input
+            type="text"
+            name="token"
+            inputMode="numeric"
+            autoComplete="one-time-code"
+            maxLength={8}
+            required
+            autoFocus
+            className={`${fieldClass} tracking-[0.3em]`}
+            placeholder="000000"
+          />
+        </label>
+        {(otpState && !otpState.ok) || errorMessage ? (
+          <p className="text-sm text-red-600">
+            {otpState && !otpState.ok ? otpState.error : errorMessage}
+          </p>
+        ) : null}
+        <button
+          type="submit"
+          disabled={otpPending}
+          className="w-full rounded-lg bg-gray-900 px-4 py-3 text-sm font-medium text-white disabled:opacity-60"
+        >
+          {otpPending ? "Entrando..." : "Entrar"}
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            setStatus("idle");
+            setErrorMessage("");
+          }}
+          className="w-full min-h-11 text-sm text-gray-500 underline-offset-2 hover:text-gray-800 hover:underline"
+        >
+          Usar otro email
+        </button>
+      </form>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSend} className="space-y-4">
       <label className="block">
         <span className="mb-1.5 block text-sm font-medium text-gray-700">
           Tu email
@@ -68,7 +130,7 @@ export default function LoginForm({ nextPath }: { nextPath: string }) {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full rounded-lg border border-gray-200 px-3 py-3 text-base text-gray-800 focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-400"
+          className={fieldClass}
           placeholder="tu@email.com"
         />
       </label>
@@ -82,7 +144,7 @@ export default function LoginForm({ nextPath }: { nextPath: string }) {
         disabled={status === "sending"}
         className="w-full rounded-lg bg-gray-900 px-4 py-3 text-sm font-medium text-white disabled:opacity-60"
       >
-        {status === "sending" ? "Mandando..." : "Mándame el link"}
+        {status === "sending" ? "Mandando..." : "Mándame el código"}
       </button>
     </form>
   );
