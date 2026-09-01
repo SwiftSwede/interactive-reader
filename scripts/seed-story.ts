@@ -467,49 +467,75 @@ async function main() {
     .eq("slug", slug)
     .maybeSingle();
 
+  let storyId: string;
+
   if (existing) {
-    console.log("Story already exists. Deleting old records...");
+    // Story row exists — update it in place (can't delete if a course_session
+    // references it via FK). Delete and re-insert child rows.
+    console.log("Story already exists. Updating row and re-inserting child records...");
     await supabase.from("pronunciation_drills").delete().eq("story_id", existing.id);
     await supabase.from("personal_questions").delete().eq("story_id", existing.id);
     await supabase.from("comprehension_questions").delete().eq("story_id", existing.id);
     await supabase.from("words").delete().eq("story_id", existing.id);
     await supabase.from("expressions").delete().eq("story_id", existing.id);
-    await supabase.from("stories").delete().eq("id", existing.id);
-    console.log("Old records deleted.");
+
+    const wordCount = parsed.bodyText.split(/\s+/).length;
+    const { error: updateError } = await supabase
+      .from("stories")
+      .update({
+        title: parsed.title,
+        level,
+        cefr: parsed.cefr,
+        kind: "story",
+        body_text: parsed.bodyText,
+        body_html: "",
+        word_count: wordCount,
+        is_free: isFree,
+      })
+      .eq("id", existing.id);
+
+    if (updateError) {
+      console.error("Error updating story:", updateError);
+      process.exit(1);
+    }
+
+    storyId = existing.id;
+    console.log(`Story updated with ID: ${storyId}`);
+  } else {
+    // Insert new story
+    console.log("Inserting story...");
+    const wordCount = parsed.bodyText.split(/\s+/).length;
+    const { data: story, error: storyError } = await supabase
+      .from("stories")
+      .insert({
+        title: parsed.title,
+        slug,
+        level,
+        cefr: parsed.cefr,
+        kind: "story",
+        body_text: parsed.bodyText,
+        body_html: "",
+        word_count: wordCount,
+        is_free: isFree,
+      })
+      .select()
+      .single();
+
+    if (storyError) {
+      console.error("Error inserting story:", storyError);
+      process.exit(1);
+    }
+
+    storyId = story.id;
+    console.log(`Story inserted with ID: ${storyId}`);
   }
-
-  // Insert story
-  console.log("Inserting story...");
-  const wordCount = parsed.bodyText.split(/\s+/).length;
-  const { data: story, error: storyError } = await supabase
-    .from("stories")
-    .insert({
-      title: parsed.title,
-      slug,
-      level,
-      cefr: parsed.cefr,
-      kind: "story",
-      body_text: parsed.bodyText,
-      body_html: "",
-      word_count: wordCount,
-      is_free: isFree,
-    })
-    .select()
-    .single();
-
-  if (storyError) {
-    console.error("Error inserting story:", storyError);
-    process.exit(1);
-  }
-
-  console.log(`Story inserted with ID: ${story.id}`);
 
   // Insert comprehension questions
   console.log("Inserting comprehension questions...");
   for (let i = 0; i < parsed.comprehensionQuestions.length; i++) {
     const q = parsed.comprehensionQuestions[i];
     const { error } = await supabase.from("comprehension_questions").insert({
-      story_id: story.id,
+      story_id: storyId,
       position: i,
       question: q.question,
       answer: q.answer,
@@ -523,7 +549,7 @@ async function main() {
   console.log("Inserting personal questions...");
   for (let i = 0; i < parsed.personalQuestions.length; i++) {
     const { error } = await supabase.from("personal_questions").insert({
-      story_id: story.id,
+      story_id: storyId,
       position: i,
       question: parsed.personalQuestions[i],
     });
@@ -534,7 +560,7 @@ async function main() {
   // Insert pronunciation drill
   console.log("Inserting pronunciation drill...");
   const { error: drillError } = await supabase.from("pronunciation_drills").insert({
-    story_id: story.id,
+    story_id: storyId,
     symbol_legend: parsed.pronunciationDrill.symbolLegend || null,
     focus_type: parsed.pronunciationDrill.focusType,
     focus_content: parsed.pronunciationDrill.focusContent || null,
