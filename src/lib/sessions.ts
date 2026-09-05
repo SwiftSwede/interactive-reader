@@ -13,6 +13,13 @@ import {
 import { classroomStudentCanAccessSession } from "@/lib/classroom-access";
 import { seedClassroomLevelIfEmpty } from "@/lib/classroom-placement";
 import type { CourseLevel, CourseSession } from "@/types";
+import {
+  getSessionPhase,
+  isWithinSessionWindow,
+  type SessionPhase,
+} from "@/lib/session-phase";
+
+export { getSessionPhase, isWithinSessionWindow, type SessionPhase };
 
 function revalidateTeacherViews() {
   after(() => {
@@ -81,17 +88,6 @@ export function mapSession(row: SessionRow): CourseSession {
     videoRate: row.video_rate ?? 1,
     createdAt: row.created_at,
   };
-}
-
-export function isWithinSessionWindow(
-  session: Pick<CourseSession, "sessionStartTime" | "sessionEndTime">,
-  now = new Date()
-): boolean {
-  const t = now.getTime();
-  return (
-    t >= new Date(session.sessionStartTime).getTime() &&
-    t <= new Date(session.sessionEndTime).getTime()
-  );
 }
 
 export function areAnswersUnlocked(

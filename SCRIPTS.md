@@ -195,14 +195,14 @@ Prints where a production magic link would send the user. Does not print the ful
 npx tsx scripts/check-auth-redirect.ts
 ```
 
-Students log in with a 6-digit code on `/login`. Magic links should not use the PKCE `/auth/callback?code=` flow: Gmail and Samsung/Chrome handoffs burn that code. After deploy, do this once in the Supabase dashboard:
+Students log in with an 8-digit code on `/login`. Magic links should not use the PKCE `/auth/callback?code=` flow: Gmail and Samsung/Chrome handoffs burn that code. After deploy, do this once in the Supabase dashboard:
 
 1. Authentication → URL Configuration → Redirect URLs: add `https://learn.profekyle.com/auth/confirm**` (keep `/auth/callback` too).
 2. Authentication → Emails → Magic Link template, replace the button URL with:
 
 ```html
 <h2>Entra a Profe Kyle</h2>
-<p>Escribe este código en la app. Quédate en la misma pantalla. No hace falta abrir otro navegador:</p>
+<p>Escribe este código de 8 números en la app. Quédate en la misma pantalla. No hace falta abrir otro navegador:</p>
 <p style="font-size:28px;letter-spacing:4px;"><strong>{{ .Token }}</strong></p>
 <p>O, si el link se abre en este mismo teléfono, toca Entrar:</p>
 <p><a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=email">Entrar</a></p>

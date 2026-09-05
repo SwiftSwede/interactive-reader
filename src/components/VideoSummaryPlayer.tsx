@@ -9,6 +9,8 @@ import { youtubeEmbedId } from "@/components/MusicBlanks";
 import VideoSummaryFreeWrite from "@/components/VideoSummaryFreeWrite";
 import VideoSummaryTranslationStep from "@/components/VideoSummaryTranslationStep";
 import ClassroomYoutubePlayer from "@/components/ClassroomYoutubePlayer";
+import { getSessionPhase } from "@/lib/session-phase";
+import { remainingMs } from "@/lib/writing";
 import type {
   VideoSummaryFreeWrite as FreeWrite,
   VideoSummaryParagraph,
@@ -17,6 +19,7 @@ import type {
 
 type TeacherWrite = {
   id: string;
+  displayName: string;
   submissionText: string;
   wordCount: number;
 };
@@ -37,14 +40,14 @@ export default function VideoSummaryPlayer({
   bodyText,
   sessionId,
   isTeacher,
+  sessionStartTime,
+  sessionEndTime,
   timerStartedAt: initialTimer,
-  answersRevealed: initialRevealed,
-  allowReveal,
+  courseId,
   paragraphs,
   notes,
   freeWrite,
   teacherFreeWrites,
-  readerMode,
 }: {
   storyId: string;
   title: string;
@@ -53,45 +56,71 @@ export default function VideoSummaryPlayer({
   bodyText: string;
   sessionId: string;
   isTeacher: boolean;
+  sessionStartTime: string | null;
+  sessionEndTime: string | null;
   timerStartedAt: string | null;
-  answersRevealed: boolean;
-  allowReveal: boolean;
+  courseId: string | null;
   paragraphs: VideoSummaryParagraph[];
   notes: VideoSummaryTeachingNote[];
   freeWrite: FreeWrite | null;
   teacherFreeWrites: TeacherWrite[];
-  readerMode: "classroom-live" | "classroom-review" | "open";
 }) {
-  const [step, setStep] = useState<StepId>(() =>
-    readerMode === "classroom-review" || initialRevealed
+  const [now, setNow] = useState(() => Date.now());
+  const [step, setStep] = useState<StepId>(() => {
+    if (!sessionStartTime || !sessionEndTime) return "video";
+    return getSessionPhase({ sessionStartTime, sessionEndTime }) === "after"
       ? "translate"
-      : "video"
-  );
+      : "video";
+  });
   const [timerStartedAt, setTimerStartedAt] = useState(initialTimer);
-  const [answersRevealed, setAnswersRevealed] = useState(initialRevealed);
-  const [showWrites, setShowWrites] = useState(false);
   const youtubeId = youtubeEmbedId(youtubeUrl);
-  const translationOpen = isTeacher || allowReveal || answersRevealed;
   const englishCheatSheet = bodyText
     .split("\n\n")
     .map((part) => part.trim())
     .filter(Boolean);
-  const reviewMode = readerMode !== "classroom-live";
+
+  const phase =
+    sessionStartTime && sessionEndTime
+      ? getSessionPhase(
+          {
+            sessionStartTime,
+            sessionEndTime,
+          },
+          new Date(now)
+        )
+      : "after";
+  const live = phase === "live";
+  const writingDone = Boolean(
+    timerStartedAt && remainingMs(timerStartedAt, freeWriteMinutes, now) <= 0
+  );
+  const canOpenWrite = isTeacher || phase !== "before";
+  const canOpenTranslate =
+    isTeacher || phase === "after" || (live && writingDone);
 
   const safeIndex = STEPS.findIndex((row) => row.id === step);
   const activeIndex = safeIndex < 0 ? 0 : safeIndex;
 
   useEffect(() => {
+    const id = window.setInterval(() => setNow(Date.now()), 1000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    if (isTeacher) return;
+    if (phase === "before" && step !== "video") {
+      setStep("video");
+      return;
+    }
+    if (step === "write" && !canOpenWrite) setStep("video");
+    if (step === "translate" && !canOpenTranslate) {
+      setStep(canOpenWrite ? "write" : "video");
+    }
+  }, [isTeacher, phase, step, canOpenWrite, canOpenTranslate]);
+
+  useEffect(() => {
     const supabase = createClient();
-    const apply = (row: {
-      timer_started_at?: string | null;
-      answers_revealed?: boolean;
-    }) => {
+    const apply = (row: { timer_started_at?: string | null }) => {
       if (row.timer_started_at) setTimerStartedAt(row.timer_started_at);
-      if (row.answers_revealed) {
-        setAnswersRevealed(true);
-        setStep("translate");
-      }
     };
     const channel = supabase
       .channel(`video-summary-session-${sessionId}`)
@@ -109,7 +138,7 @@ export default function VideoSummaryPlayer({
     const poll = window.setInterval(async () => {
       const { data } = await supabase
         .from("course_sessions")
-        .select("timer_started_at, answers_revealed")
+        .select("timer_started_at")
         .eq("id", sessionId)
         .maybeSingle();
       if (data) apply(data);
@@ -121,7 +150,8 @@ export default function VideoSummaryPlayer({
   }, [sessionId]);
 
   function goTo(id: StepId) {
-    if (id === "translate" && !translationOpen) return;
+    if (id === "write" && !canOpenWrite) return;
+    if (id === "translate" && !canOpenTranslate) return;
     setStep(id);
   }
 
@@ -147,39 +177,45 @@ export default function VideoSummaryPlayer({
           </div>
         </header>
         <nav className="step-progress mx-auto max-w-2xl px-2" aria-label="Pasos">
-          {STEPS.map((item, index) => (
-            <div key={item.id} className="contents">
-              {index > 0 && (
-                <div
-                  className={`step-progress-line${
-                    index <= activeIndex ? " step-progress-line-filled" : ""
-                  }`}
-                  aria-hidden="true"
-                />
-              )}
-              <button
-                type="button"
-                className="step-progress-hit"
-                aria-label={item.label}
-                aria-current={index === activeIndex ? "step" : undefined}
-                onClick={() => goTo(item.id)}
-              >
-                <span
-                  className={`step-progress-dot${
-                    index < activeIndex
-                      ? " step-progress-dot-done"
-                      : index === activeIndex
-                        ? " step-progress-dot-active"
-                        : ""
-                  }`}
+          {STEPS.map((item, index) => {
+            const locked =
+              (item.id === "write" && !canOpenWrite) ||
+              (item.id === "translate" && !canOpenTranslate);
+            return (
+              <div key={item.id} className="contents">
+                {index > 0 && (
+                  <div
+                    className={`step-progress-line${
+                      index <= activeIndex ? " step-progress-line-filled" : ""
+                    }`}
+                    aria-hidden="true"
+                  />
+                )}
+                <button
+                  type="button"
+                  className="step-progress-hit"
+                  aria-label={item.label}
+                  aria-current={index === activeIndex ? "step" : undefined}
+                  aria-disabled={locked}
+                  onClick={() => goTo(item.id)}
                 >
-                  {index < activeIndex && (
-                    <Check size={10} strokeWidth={3} aria-hidden="true" />
-                  )}
-                </span>
-              </button>
-            </div>
-          ))}
+                  <span
+                    className={`step-progress-dot${
+                      index < activeIndex
+                        ? " step-progress-dot-done"
+                        : index === activeIndex
+                          ? " step-progress-dot-active"
+                          : ""
+                    }`}
+                  >
+                    {index < activeIndex && (
+                      <Check size={10} strokeWidth={3} aria-hidden="true" />
+                    )}
+                  </span>
+                </button>
+              </div>
+            );
+          })}
         </nav>
       </div>
 
@@ -191,7 +227,7 @@ export default function VideoSummaryPlayer({
               title={title}
               sessionId={sessionId}
               isTeacher={isTeacher}
-              live={readerMode === "classroom-live"}
+              live={live}
             />
           </div>
         ) : null}
@@ -202,85 +238,54 @@ export default function VideoSummaryPlayer({
                 Falta el video. Avísale al Profe Kyle.
               </p>
             )}
-            <p className="text-label-md text-text-secondary">
-              Toma notas de lo que ves
-            </p>
-            <button
-              type="button"
-              onClick={() => setStep("write")}
-              className="mt-6 h-12 w-full rounded-card bg-accent text-label-md font-medium text-white"
-            >
-              Empezar resumen
-            </button>
+            {!isTeacher && (
+              <p className="text-label-md text-text-secondary">
+                Toma notas de lo que ves
+              </p>
+            )}
+            {canOpenWrite ? (
+              <button
+                type="button"
+                onClick={() => setStep("write")}
+                className="mt-6 h-12 w-full rounded-card bg-accent text-label-md font-medium text-white"
+              >
+                Empezar resumen
+              </button>
+            ) : (
+              <p className="mt-6 rounded-card bg-accent-softer px-3 py-3 text-body-main text-text-secondary">
+                El resumen se abre cuando empiece la clase.
+              </p>
+            )}
           </>
         )}
 
-        {step === "write" && (
+        {step === "write" && canOpenWrite && (
           <VideoSummaryFreeWrite
             sessionId={sessionId}
             storyId={storyId}
             minutes={freeWriteMinutes}
             timerStartedAt={timerStartedAt}
             isTeacher={isTeacher}
+            live={live}
+            classEnded={phase === "after"}
+            courseId={courseId}
+            onTimerStarted={setTimerStartedAt}
             initialText={freeWrite?.submissionText ?? ""}
             alreadySubmitted={Boolean(freeWrite?.submittedAt)}
+            initialTeacherWrites={teacherFreeWrites}
           />
         )}
 
-        {step === "translate" && translationOpen && (
-          <>
-            {isTeacher && (
-              <div className="mb-4">
-                <button
-                  type="button"
-                  onClick={() => setShowWrites((value) => !value)}
-                  className="min-h-11 text-label-md text-text-accent"
-                >
-                  {showWrites
-                    ? "Ocultar resúmenes"
-                    : "Ver resúmenes de estudiantes"}
-                </button>
-                {showWrites && (
-                  <ul className="mt-2 space-y-3">
-                    {teacherFreeWrites.length === 0 ? (
-                      <li className="text-label-md text-text-muted">
-                        Todavía nadie ha entregado.
-                      </li>
-                    ) : (
-                      teacherFreeWrites.map((row) => (
-                        <li
-                          key={row.id}
-                          className="rounded-card border border-paper-line bg-white px-3 py-3 text-body-main"
-                        >
-                          <p className="text-label-sm text-text-muted">
-                            {row.wordCount} palabras
-                          </p>
-                          <p className="mt-1 whitespace-pre-wrap">
-                            {row.submissionText || "(vacío)"}
-                          </p>
-                        </li>
-                      ))
-                    )}
-                  </ul>
-                )}
-              </div>
-            )}
-            <VideoSummaryTranslationStep
-              storyId={storyId}
-              sessionId={sessionId}
-              isTeacher={isTeacher}
-              reviewMode={reviewMode}
-              paragraphs={paragraphs}
-              englishCheatSheet={englishCheatSheet}
-              notes={notes}
-            />
-          </>
-        )}
-
-        {step === "translate" && !translationOpen && (
-          <p className="rounded-card bg-accent-softer px-3 py-3 text-body-main text-text-secondary">
-            Esperando al profe.
-          </p>
+        {step === "translate" && canOpenTranslate && (
+          <VideoSummaryTranslationStep
+            storyId={storyId}
+            sessionId={sessionId}
+            isTeacher={isTeacher}
+            live={live}
+            paragraphs={paragraphs}
+            englishCheatSheet={englishCheatSheet}
+            notes={notes}
+          />
         )}
       </article>
     </main>

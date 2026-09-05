@@ -677,6 +677,7 @@ export type WritingCorrectionRow = {
 export type VideoSummaryFreeWriteRow = {
   id: string;
   userId: string | null;
+  displayName: string;
   submissionText: string;
   wordCount: number;
   elapsedSeconds: number;
@@ -687,15 +688,42 @@ export async function loadVideoSummaryFreeWrites(
   supabase: Awaited<ReturnType<typeof createClient>>,
   sessionId: string
 ): Promise<VideoSummaryFreeWriteRow[]> {
-  const { data, error } = await supabase
-    .from("video_summary_free_writes")
-    .select(
-      "id, user_id, submission_text, word_count, elapsed_seconds, submitted_at"
-    )
-    .eq("course_session_id", sessionId)
-    .order("submitted_at", { ascending: true });
+  const [{ data, error }, { data: session }] = await Promise.all([
+    supabase
+      .from("video_summary_free_writes")
+      .select(
+        "id, user_id, submission_text, word_count, elapsed_seconds, submitted_at"
+      )
+      .eq("course_session_id", sessionId)
+      .order("submitted_at", { ascending: true }),
+    supabase
+      .from("course_sessions")
+      .select("course_id")
+      .eq("id", sessionId)
+      .maybeSingle(),
+  ]);
 
   if (error || !data) return [];
+
+  const userIds = [
+    ...new Set(
+      data
+        .map((row) => (row as { user_id: string | null }).user_id)
+        .filter((id): id is string => Boolean(id))
+    ),
+  ];
+  const names = new Map<string, string>();
+  if (session?.course_id && userIds.length > 0) {
+    const { data: enrollments } = await supabase
+      .from("course_enrollments")
+      .select("student_id, display_name")
+      .eq("course_id", session.course_id)
+      .in("student_id", userIds);
+    for (const row of enrollments ?? []) {
+      const name = (row.display_name as string | null)?.trim();
+      names.set(row.student_id as string, name || "Sin nombre");
+    }
+  }
 
   return (
     data as {
@@ -709,6 +737,7 @@ export async function loadVideoSummaryFreeWrites(
   ).map((row) => ({
     id: row.id,
     userId: row.user_id,
+    displayName: names.get(row.user_id ?? "") ?? "Sin nombre",
     submissionText: row.submission_text,
     wordCount: row.word_count ?? 0,
     elapsedSeconds: row.elapsed_seconds ?? 0,

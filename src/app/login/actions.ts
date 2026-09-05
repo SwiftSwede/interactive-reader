@@ -65,10 +65,10 @@ export async function verifyEmailOtp(
     return { ok: false, error: "Ese email no se ve bien. Revísalo." };
   }
 
-  if (!/^\d{6,8}$/.test(token)) {
+  if (!/^\d{8}$/.test(token)) {
     return {
       ok: false,
-      error: "El código son 6 números. Cópialos del email y pégalos aquí.",
+      error: "El código son 8 números. Cópialos del email y pégalos aquí.",
     };
   }
 
@@ -91,7 +91,7 @@ export async function verifyEmailOtp(
     return {
       ok: false,
       error:
-        "Ese código no sirvió. Revisa los 6 números, o pide uno nuevo en un minuto.",
+        "Ese código no sirvió. Revisa los 8 números, o pide uno nuevo en un minuto.",
     };
   }
 

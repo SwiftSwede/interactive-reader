@@ -45,7 +45,7 @@ The page has these sections, displayed in step-based flow (same pattern as Story
 - Large text area. Student types their summary of the video.
 - "Entregar" button (or auto-submit at zero — same as pre-int writing class behavior).
 - On submit: save to `video_summary_free_writes` with `elapsed_seconds` and `word_count`.
-- After submit: "Esperando al profe" message. Teacher triggers the transition to Step 3 (same "Iniciar" pattern as writing class, or auto-advance after all students have submitted — your call, but keep it simple: teacher clicks "Continuar" to advance everyone).
+- After submit: "Entregado. Sigue a Traducción." Students open Step 3 themselves when the 5-minute timer hits zero. Entregar is disabled until then. No teacher Continuar button.
 
 ### Step 3: "Traducción" — Bilingual translation display
 This is the core of the class. Display all paragraphs from `video_summary_paragraphs`, ordered by `position`:
@@ -54,7 +54,7 @@ For each paragraph:
 - **Spanish text** (from `video_summary_paragraphs.spanish_text`) — rendered as readable text. Words are NOT interactive tooltips (this is not the story reader). Just plain text, but selectable for teacher flagging (see below).
 - **English translation area** below the Spanish text:
   - **Teacher view:** A `<textarea>` where Kyle types the English translation live. On every keystroke, update `video_summary_paragraphs.english_translation` via Supabase Realtime. Set `translation_started_at` on first keystroke, `translation_completed_at` when Kyle clicks "Listo" on that paragraph.
-  - **Student view:** A read-only display that shows `english_translation` as it appears via Realtime sync. Empty state: "El profe está traduciendo..." with a subtle pulse animation. As teacher types, the text appears character by character.
+  - **Student view:** A read-only display that shows `english_translation` as it appears via Realtime sync. If empty, show nothing. As teacher types, the text appears character by character.
 
 - **Teacher reference panel** (collapsible, teacher-only): Shows the original English summary (`story.body_text`) for the current paragraph. This is Kyle's cheat sheet — he can glance at it while facilitating the translation. Students never see this. Use the existing `englishParagraphs[position]` from `story.body_text` split by `\n\n`.
 

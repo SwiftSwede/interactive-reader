@@ -142,12 +142,21 @@ export default async function SessionDetailPage({
         {isWriting || isVideo ? (
           session.timerStartedAt ? (
             <p className="flex items-center text-sm text-gray-500">
-              Tiempo iniciado.
+              Tiempo de escritura iniciado.
+            </p>
+          ) : Date.now() < new Date(session.start).getTime() ? (
+            <p className="flex items-center text-sm text-gray-500">
+              La escritura se inicia cuando empiece la clase.
+            </p>
+          ) : Date.now() > new Date(session.end).getTime() ? (
+            <p className="flex items-center text-sm text-gray-500">
+              La clase ya terminó.
             </p>
           ) : (
             <StartWritingTimerButton
               courseId={course.id}
               sessionId={session.id}
+              label={isVideo ? "Iniciar tarea de escribir" : "Iniciar"}
             />
           )
         ) : isExam ? (
@@ -174,18 +183,10 @@ export default async function SessionDetailPage({
       </div>
 
       {isVideo && (
-        <div className="mt-2">
-          {unlocked ? (
-            <p className="text-sm text-gray-500">Traducción abierta.</p>
-          ) : (
-            <UnlockAnswersButton
-              courseId={course.id}
-              sessionId={session.id}
-              label="Continuar"
-              pendingLabel="Abriendo..."
-            />
-          )}
-        </div>
+        <p className="mt-2 text-sm text-gray-500">
+          Los estudiantes entran a Traducción cuando termina el tiempo de
+          escribir. No hace falta otro botón.
+        </p>
       )}
 
       {isWriting && session.writingPrompt && (

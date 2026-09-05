@@ -72,6 +72,7 @@ Self-host both fonts using `next/font` with `font-display: swap` to prevent flas
 | `headline-lg` | Lora | 24px | 700 | 32px | Story title, one per screen |
 | `headline-md` | Lora | 18px | 600 | 24px | Section headings, step titles |
 | `story-body` | Lora | 18px | 400 | 32px | Story text (generous size + line height for learner comprehension) |
+| `story-english` | Roboto Flex | 18px | 400 | 32px | English under Spanish in Traducción. Same size as story-body, sans so the two languages do not blend. |
 | `body-main` | Lora | 16px | 400 | 28px | General body text, callouts |
 | `nav-ui` | Roboto Flex | 16px | 500 | 24px | Navigation labels, button text |
 | `label-md` | Roboto Flex | 14px | 600 | 20px | Section labels, button labels |
@@ -337,6 +338,8 @@ Use **Lucide React** for all icons. Consistent thin stroke, uniform weight.
 | Volume / sound | `Volume2` | Audio-related elements |
 | Microphone | `Mic` | Pronunciation recording |
 | Info / explanation | `Info` | Micro-explanation callouts |
+| Fullscreen | `Maximize2` | Classroom YouTube: student live view |
+| Exit fullscreen | `Minimize2` | Classroom YouTube: student live view |
 
 ## Visual Hierarchy Rules
 
@@ -695,10 +698,10 @@ Classroom only. `Story.kind = "video_summary"`. Session type is `video_summary` 
 - Subheader: progress dots (3 dots, same widget as stories). No "Paso N de 3" text. Stories do not show that label; the dots are the global step chrome.
 
 **Content zone:**
-- Step 1 El Video: 16:9 `ClassroomYoutubePlayer` (rounded 16px, paper-line border). During `classroom-live`: teacher has YouTube controls; students see overlay "Toca el video para oír." After the first tap the overlay stays invisible and blocks student taps. After the 90-min window (`classroom-review`) and with no session (`open`): normal YouTube controls, no overlay. Label "Toma notas de lo que ves." Primary "Empezar resumen".
-- Step 2 Tu Resumen: 5-minute timer (same pattern as writing). Large textarea (min-height 300px). Entregar. Auto-submit at zero. Then "Esperando al profe."
-- Step 3 Traducción: Spanish paragraphs as plain Lora text (no word tooltips). Teacher textarea with terracotta 2px border. Listo uses moss (`--success`). Students see live English via Realtime. Empty: "El profe está traduciendo..." Teacher-only collapsible English original.
-- Teaching notes: yellow highlight (`teaching-note-mark`, same yellow as karaoke). Tap/hover shows the note. Teacher selects text, then a 44px popup (note + type).
+- Step 1 El Video: 16:9 `ClassroomYoutubePlayer` (rounded 16px, paper-line border). Before class starts, students may watch with normal controls. During `classroom-live`: teacher has YouTube controls; student video follows muted (play, pause, skip). Overlay "Toca el video para oír" until the first tap, then audio unmutes. After the first tap the overlay stays invisible and blocks student taps. Students get a 48px Lucide `Maximize2` control (bottom right) for fullscreen; they still cannot pause or scrub. After the 90-min window (`classroom-review`): normal YouTube controls, no overlay. Students see "Toma notas de lo que ves." Teachers do not. Primary "Empezar resumen" only after class starts. Before class, students cannot open step 2 or step 3.
+- Step 2 Tu Resumen: 5-minute timer. Teacher starts it from the lesson (step 2) or the session page: "Iniciar tarea de escribir". Large textarea (min-height 300px). Entregar stays disabled until the timer hits zero. Auto-submit at zero. Then "Entregado. Sigue a Traducción." After the timer hits zero, teacher sees "Ver resúmenes de estudiantes."
+- Step 3 Traducción: opens for students when the writing timer hits zero. No teacher Continuar / Empezar traducción button. Spanish paragraphs as Lora `story-body` (no word tooltips). English as Roboto Flex `story-english` (same size, sans). Teacher textarea uses `story-english` with terracotta 2px border, including before class for prep. Listo (moss `--success`) only during the live window. Students see live English via Realtime. If a paragraph has no English yet, show nothing. Never show "El profe está traduciendo..." Teacher-only collapsible English original.
+- Teaching notes: yellow highlight (`teaching-note-mark`, same yellow as karaoke). The mark stays inline and does not expand the line. Tap opens a small lightbox (`teaching-note-modal`, 24px radius, dimmed backdrop) with the note. Teacher selects text during live class; the compose form is the same lightbox. Teacher lightbox includes Borrar. Notes belong to this class session only. On the teacher English textarea, matching highlights also appear under the box so the mark is visible while typing.
 
 Keep the YouTube player in review mode (solo controls). Students never see other students' free writes.
 

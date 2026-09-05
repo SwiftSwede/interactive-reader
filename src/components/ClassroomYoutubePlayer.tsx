@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Maximize2, Minimize2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { publishYoutubeSync } from "@/app/lesson/[slug]/youtube-sync-actions";
 import {
@@ -21,6 +22,7 @@ type YtPlayer = {
   getPlayerState: () => number;
   getPlaybackRate: () => number;
   setPlaybackRate: (rate: number) => void;
+  getIframe: () => HTMLIFrameElement;
 };
 
 type YtNamespace = {
@@ -44,6 +46,14 @@ type YtNamespace = {
     PAUSED: number;
     BUFFERING: number;
   };
+};
+
+type BroadcastChannel = {
+  send: (args: {
+    type: "broadcast";
+    event: string;
+    payload: YoutubeLeaderState;
+  }) => Promise<string>;
 };
 
 declare global {
@@ -79,6 +89,15 @@ function loadYoutubeApi(): Promise<YtNamespace> {
   });
 }
 
+function readLeaderState(player: YtPlayer): YoutubeLeaderState {
+  const playerState = player.getPlayerState();
+  return {
+    playing: playerState === PLAYING,
+    seconds: player.getCurrentTime(),
+    rate: player.getPlaybackRate(),
+  };
+}
+
 export default function ClassroomYoutubePlayer({
   videoId,
   title,
@@ -93,6 +112,7 @@ export default function ClassroomYoutubePlayer({
   live: boolean;
 }) {
   const mountRef = useRef<HTMLDivElement>(null);
+  const frameRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<YtPlayer | null>(null);
   const leaderRef = useRef<YoutubeLeaderState>({
     playing: false,
@@ -103,6 +123,7 @@ export default function ClassroomYoutubePlayer({
   const liveRef = useRef(live);
   const teacherRef = useRef(isTeacher);
   const armedRef = useRef(false);
+  const channelRef = useRef<BroadcastChannel | null>(null);
   liveRef.current = live;
   teacherRef.current = isTeacher;
   const showControls = !live || isTeacher;
@@ -117,6 +138,7 @@ export default function ClassroomYoutubePlayer({
     }
   });
   armedRef.current = !studentLock || armed;
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const applyToPlayer = useCallback((state: YoutubeLeaderState) => {
     const player = playerRef.current;
@@ -131,10 +153,9 @@ export default function ClassroomYoutubePlayer({
         player.setPlaybackRate(state.rate);
       }
       const playerState = player.getPlayerState();
-      if (state.playing && playerState !== PLAYING) {
-        player.playVideo();
-      }
-      if (!state.playing && playerState === PLAYING) {
+      if (state.playing) {
+        if (playerState !== PLAYING) player.playVideo();
+      } else if (playerState !== PAUSED && playerState !== ENDED) {
         player.pauseVideo();
       }
     } finally {
@@ -148,6 +169,11 @@ export default function ClassroomYoutubePlayer({
     (state: YoutubeLeaderState) => {
       leaderRef.current = state;
       if (!sessionId || !teacherRef.current || !liveRef.current) return;
+      void channelRef.current?.send({
+        type: "broadcast",
+        event: YOUTUBE_TICK_EVENT,
+        payload: state,
+      });
       void publishYoutubeSync({
         sessionId,
         playing: state.playing,
@@ -172,15 +198,32 @@ export default function ClassroomYoutubePlayer({
         height: "100%",
         playerVars: {
           autoplay: 0,
+          mute: studentLock ? 1 : 0,
           controls: showControls ? 1 : 0,
           disablekb: showControls ? 0 : 1,
-          fs: showControls ? 1 : 0,
+          fs: 1,
           modestbranding: 1,
           rel: 0,
           playsinline: 1,
           origin: window.location.origin,
         },
         events: {
+          onReady: () => {
+            const current = playerRef.current;
+            if (!current) return;
+            try {
+              const iframe = current.getIframe();
+              iframe.setAttribute("allowfullscreen", "true");
+              iframe.setAttribute(
+                "allow",
+                "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+              );
+            } catch {
+              /* iframe not ready */
+            }
+            if (studentLock && !armedRef.current) current.mute();
+            if (studentLock) applyToPlayer(leaderRef.current);
+          },
           onStateChange: (event) => {
             if (!teacherRef.current || !liveRef.current) return;
             if (applyingRef.current) return;
@@ -193,21 +236,13 @@ export default function ClassroomYoutubePlayer({
             }
             const current = playerRef.current;
             if (!current) return;
-            publish({
-              playing: event.data === PLAYING,
-              seconds: current.getCurrentTime(),
-              rate: current.getPlaybackRate(),
-            });
+            publish(readLeaderState(current));
           },
-          onPlaybackRateChange: (event) => {
+          onPlaybackRateChange: () => {
             if (!teacherRef.current || !liveRef.current) return;
             const current = playerRef.current;
             if (!current) return;
-            publish({
-              playing: current.getPlayerState() === PLAYING,
-              seconds: current.getCurrentTime(),
-              rate: event.data,
-            });
+            publish(readLeaderState(current));
           },
         },
       });
@@ -223,7 +258,7 @@ export default function ClassroomYoutubePlayer({
         /* YouTube may already have removed the node */
       }
     };
-  }, [videoId, showControls, publish]);
+  }, [videoId, showControls, studentLock, publish, applyToPlayer]);
 
   useEffect(() => {
     if (!live || !sessionId) return;
@@ -236,7 +271,6 @@ export default function ClassroomYoutubePlayer({
         rate: Number(state.rate) || 1,
       };
       if (teacherRef.current) return;
-      if (!armedRef.current) return;
       applyToPlayer(leaderRef.current);
     }
 
@@ -288,17 +322,13 @@ export default function ClassroomYoutubePlayer({
         }
       )
       .subscribe();
+    channelRef.current = channel;
 
     const tick = teacherRef.current
       ? window.setInterval(() => {
           const current = playerRef.current;
           if (!current) return;
-          if (current.getPlayerState() !== PLAYING) return;
-          const state: YoutubeLeaderState = {
-            playing: true,
-            seconds: current.getCurrentTime(),
-            rate: current.getPlaybackRate(),
-          };
+          const state = readLeaderState(current);
           leaderRef.current = state;
           void channel.send({
             type: "broadcast",
@@ -309,6 +339,7 @@ export default function ClassroomYoutubePlayer({
       : null;
 
     return () => {
+      channelRef.current = null;
       if (tick) window.clearInterval(tick);
       void supabase.removeChannel(channel);
     };
@@ -319,14 +350,8 @@ export default function ClassroomYoutubePlayer({
     const leader = leaderRef.current;
     if (!player) return;
     try {
-      player.mute();
-      player.playVideo();
-      player.seekTo(leader.seconds, true);
-      player.setPlaybackRate(leader.rate);
-      if (!leader.playing) {
-        player.pauseVideo();
-      }
       player.unMute();
+      applyToPlayer(leader);
     } catch {
       /* first gesture still counts for later play() */
     }
@@ -340,20 +365,58 @@ export default function ClassroomYoutubePlayer({
     }
   }
 
+  useEffect(() => {
+    function syncFullscreen() {
+      const node = frameRef.current;
+      const active =
+        document.fullscreenElement ??
+        (document as Document & { webkitFullscreenElement?: Element })
+          .webkitFullscreenElement;
+      setIsFullscreen(Boolean(node && active === node));
+    }
+    document.addEventListener("fullscreenchange", syncFullscreen);
+    document.addEventListener("webkitfullscreenchange", syncFullscreen);
+    return () => {
+      document.removeEventListener("fullscreenchange", syncFullscreen);
+      document.removeEventListener("webkitfullscreenchange", syncFullscreen);
+    };
+  }, []);
+
+  async function toggleFullscreen() {
+    const node = frameRef.current as
+      | (HTMLDivElement & { webkitRequestFullscreen?: () => void })
+      | null;
+    if (!node) return;
+    const doc = document as Document & {
+      webkitFullscreenElement?: Element;
+      webkitExitFullscreen?: () => void;
+    };
+    const active = document.fullscreenElement ?? doc.webkitFullscreenElement;
+    try {
+      if (active) {
+        if (document.exitFullscreen) await document.exitFullscreen();
+        else doc.webkitExitFullscreen?.();
+        return;
+      }
+      if (node.requestFullscreen) await node.requestFullscreen();
+      else node.webkitRequestFullscreen?.();
+    } catch {
+      /* iOS may ignore element fullscreen; YouTube iframe still has allowfullscreen */
+    }
+  }
+
   return (
     <div className="overflow-hidden rounded-card border border-paper-line bg-text-primary">
-        <div className="relative aspect-video w-full [&_iframe]:absolute [&_iframe]:inset-0 [&_iframe]:h-full [&_iframe]:w-full">
-        <div
-          ref={mountRef}
-          className="absolute inset-0 h-full w-full"
-        />
+      <div
+        ref={frameRef}
+        className="classroom-youtube-frame relative aspect-video w-full [&_iframe]:absolute [&_iframe]:inset-0 [&_iframe]:h-full [&_iframe]:w-full"
+      >
+        <div ref={mountRef} className="absolute inset-0 h-full w-full" />
         {studentLock ? (
           <button
             type="button"
             className={`absolute inset-0 z-10 ${
-              armed
-                ? "cursor-default bg-transparent"
-                : "bg-text-primary/60"
+              armed ? "cursor-default bg-transparent" : "bg-text-primary/60"
             }`}
             onClick={
               armed
@@ -370,6 +433,25 @@ export default function ClassroomYoutubePlayer({
               <span className="flex h-full items-center justify-center px-4 text-center text-label-md font-medium text-white">
                 Toca el video para oír.
               </span>
+            )}
+          </button>
+        ) : null}
+        {studentLock ? (
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              void toggleFullscreen();
+            }}
+            className="absolute right-3 bottom-3 z-20 flex h-12 w-12 items-center justify-center rounded-card bg-text-primary/70 text-white"
+            aria-label={
+              isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"
+            }
+          >
+            {isFullscreen ? (
+              <Minimize2 size={22} strokeWidth={2} aria-hidden="true" />
+            ) : (
+              <Maximize2 size={22} strokeWidth={2} aria-hidden="true" />
             )}
           </button>
         ) : null}

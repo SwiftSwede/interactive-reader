@@ -68,7 +68,7 @@ export default function LoginForm({ nextPath }: { nextPath: string }) {
         <div className="rounded-xl border border-gray-100 bg-gray-50 p-5">
           <p className="font-medium text-gray-900">Revisa tu email</p>
           <p className="mt-2 text-sm text-gray-600">
-            Te mandé un código de 6 números a{" "}
+            Te mandé un código de 8 números a{" "}
             <span className="font-medium">{email}</span>. Escríbelo aquí. No
             hace falta abrir el link en otro navegador. Si no lo ves, mira en
             spam.
@@ -87,7 +87,7 @@ export default function LoginForm({ nextPath }: { nextPath: string }) {
             required
             autoFocus
             className={`${fieldClass} tracking-[0.3em]`}
-            placeholder="000000"
+            placeholder="00000000"
           />
         </label>
         {(otpState && !otpState.ok) || errorMessage ? (

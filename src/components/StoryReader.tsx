@@ -75,7 +75,10 @@ export default async function StoryReader({
   trackLookups = false,
   readerMode = "open",
   isTeacher = false,
+  sessionStartTime = null,
+  sessionEndTime = null,
   timerStartedAt = null,
+  courseId = null,
   answersRevealed = false,
 }: {
   data: LoadedStory;
@@ -87,7 +90,10 @@ export default async function StoryReader({
   trackLookups?: boolean;
   readerMode?: "classroom-live" | "classroom-review" | "open";
   isTeacher?: boolean;
+  sessionStartTime?: string | null;
+  sessionEndTime?: string | null;
   timerStartedAt?: string | null;
+  courseId?: string | null;
   answersRevealed?: boolean;
 }) {
   const { story, pronunciationDrill } = data;
@@ -118,14 +124,14 @@ export default async function StoryReader({
         bodyText={story.body_text}
         sessionId={sessionId}
         isTeacher={isTeacher}
+        sessionStartTime={sessionStartTime}
+        sessionEndTime={sessionEndTime}
         timerStartedAt={timerStartedAt}
-        answersRevealed={answersRevealed}
-        allowReveal={allowReveal}
+        courseId={courseId}
         paragraphs={paragraphs}
         notes={notes}
         freeWrite={freeWrite}
         teacherFreeWrites={teacherFreeWrites}
-        readerMode={readerMode}
       />
     );
   }

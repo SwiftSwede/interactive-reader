@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Check } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import {
   saveVideoSummaryTranslation,
@@ -8,6 +9,7 @@ import {
 } from "@/app/lesson/[slug]/video-summary-actions";
 import {
   HighlightedText,
+  TeachingNoteLightbox,
   TeachingNotePopup,
 } from "@/components/VideoSummaryTeachingNote";
 import type {
@@ -19,7 +21,7 @@ export default function VideoSummaryTranslationStep({
   storyId,
   sessionId,
   isTeacher,
-  reviewMode,
+  live,
   paragraphs: initialParagraphs,
   englishCheatSheet,
   notes: initialNotes,
@@ -27,7 +29,7 @@ export default function VideoSummaryTranslationStep({
   storyId: string;
   sessionId: string;
   isTeacher: boolean;
-  reviewMode: boolean;
+  live: boolean;
   paragraphs: VideoSummaryParagraph[];
   englishCheatSheet: string[];
   notes: VideoSummaryTeachingNote[];
@@ -46,11 +48,30 @@ export default function VideoSummaryTranslationStep({
     position: number;
     selectedText: string;
   } | null>(null);
+  const [viewNote, setViewNote] = useState<VideoSummaryTeachingNote | null>(
+    null
+  );
   const started = useRef<Set<string>>(new Set());
   const saveTimer = useRef<number | null>(null);
+  const [markingId, setMarkingId] = useState<string | null>(null);
+
+  async function handleListo(paragraphId: string) {
+    if (markingId) return;
+    setMarkingId(paragraphId);
+    const result = await markParagraphReady(paragraphId);
+    setMarkingId(null);
+    if (!result.ok) return;
+    setParagraphs((current) =>
+      current.map((item) =>
+        item.id === paragraphId
+          ? { ...item, translationCompletedAt: new Date().toISOString() }
+          : item
+      )
+    );
+  }
 
   useEffect(() => {
-    if (isTeacher && !reviewMode) return;
+    if (isTeacher) return;
     const supabase = createClient();
     const apply = (row: {
       id?: string;
@@ -127,23 +148,60 @@ export default function VideoSummaryTranslationStep({
           );
         }
       )
+      .on(
+        "postgres_changes",
+        {
+          event: "DELETE",
+          schema: "public",
+          table: "video_summary_teaching_notes",
+          filter: `course_session_id=eq.${sessionId}`,
+        },
+        (payload) => {
+          const id = (payload.old as { id?: string } | null)?.id;
+          if (!id) return;
+          setNotes((current) => current.filter((item) => item.id !== id));
+        }
+      )
       .subscribe();
 
     const poll = window.setInterval(async () => {
-      const { data } = await supabase
-        .from("video_summary_paragraphs")
-        .select(
-          "id, english_translation, translation_started_at, translation_completed_at"
-        )
-        .eq("story_id", storyId);
+      const [{ data }, { data: noteRows, error: noteError }] = await Promise.all([
+        supabase
+          .from("video_summary_paragraphs")
+          .select(
+            "id, english_translation, translation_started_at, translation_completed_at"
+          )
+          .eq("story_id", storyId),
+        supabase
+          .from("video_summary_teaching_notes")
+          .select(
+            "id, story_id, course_session_id, paragraph_position, selected_text, note, note_type, created_by, created_at"
+          )
+          .eq("course_session_id", sessionId),
+      ]);
       for (const row of data ?? []) apply(row);
+      if (!noteError && noteRows) {
+        setNotes(
+          noteRows.map((row) => ({
+            id: row.id as string,
+            storyId: row.story_id as string,
+            courseSessionId: row.course_session_id as string,
+            paragraphPosition: row.paragraph_position as number,
+            selectedText: row.selected_text as string,
+            note: row.note as string,
+            noteType: row.note_type as VideoSummaryTeachingNote["noteType"],
+            createdBy: row.created_by as string,
+            createdAt: row.created_at as string,
+          }))
+        );
+      }
     }, 3000);
 
     return () => {
       window.clearInterval(poll);
       void supabase.removeChannel(channel);
     };
-  }, [isTeacher, reviewMode, storyId, sessionId]);
+  }, [isTeacher, storyId, sessionId]);
 
   function scheduleSave(paragraphId: string, english: string) {
     if (saveTimer.current) window.clearTimeout(saveTimer.current);
@@ -158,10 +216,15 @@ export default function VideoSummaryTranslationStep({
     }, 800);
   }
 
-  function captureSelection(position: number) {
-    if (!isTeacher || reviewMode) return;
-    const selected = window.getSelection()?.toString().trim() ?? "";
+  function captureSelection(position: number, fromField?: string) {
+    if (!isTeacher || !live) return;
+    const selected = (
+      fromField ??
+      window.getSelection()?.toString() ??
+      ""
+    ).trim();
     if (!selected || selected.length > 200) return;
+    setViewNote(null);
     setPopup({ position, selectedText: selected });
   }
 
@@ -197,7 +260,11 @@ export default function VideoSummaryTranslationStep({
           (note) => note.paragraphPosition === paragraph.position
         );
         const english = paragraph.englishTranslation;
-        const showTeacherInput = isTeacher && !reviewMode;
+        const englishDraft = drafts[paragraph.id] ?? "";
+        const englishNoteMarks = paragraphNotes.filter((note) =>
+          englishDraft.includes(note.selectedText)
+        );
+        const showTeacherInput = isTeacher;
         return (
           <article
             key={paragraph.id}
@@ -211,6 +278,7 @@ export default function VideoSummaryTranslationStep({
               notes={paragraphNotes}
               className="mt-2 font-heading text-story-body text-text-primary"
               onSelect={() => captureSelection(paragraph.position)}
+              onOpenNote={setViewNote}
             />
             {showTeacherInput ? (
               <>
@@ -231,46 +299,83 @@ export default function VideoSummaryTranslationStep({
                     }));
                     scheduleSave(paragraph.id, value);
                   }}
-                  onMouseUp={() => captureSelection(paragraph.position)}
+                  onMouseUp={(event) => {
+                    const field = event.currentTarget;
+                    captureSelection(
+                      paragraph.position,
+                      field.value.slice(field.selectionStart, field.selectionEnd)
+                    );
+                  }}
                   rows={5}
-                  className="mt-1 w-full rounded-card border-2 border-accent bg-white px-3 py-2 font-heading text-body-main text-text-primary focus:outline-none"
+                  className="mt-1 w-full rounded-card border-2 border-accent bg-white px-3 py-2 text-story-english text-text-primary focus:outline-none"
                 />
-                <button
-                  type="button"
-                  onClick={() => void markParagraphReady(paragraph.id)}
-                  className="mt-3 h-11 rounded-card bg-success px-4 text-label-md font-medium text-white"
-                >
-                  Listo
-                </button>
+                {englishNoteMarks.length > 0 ? (
+                  <HighlightedText
+                    text={englishDraft}
+                    notes={englishNoteMarks}
+                    className="mt-3 text-story-english text-text-primary"
+                    onSelect={() => captureSelection(paragraph.position)}
+                    onOpenNote={setViewNote}
+                  />
+                ) : null}
+                {live && (
+                  <button
+                    type="button"
+                    onClick={() => void handleListo(paragraph.id)}
+                    disabled={
+                      Boolean(paragraph.translationCompletedAt) ||
+                      markingId === paragraph.id
+                    }
+                    className="mt-3 inline-flex h-11 items-center gap-2 rounded-card bg-success px-4 text-label-md font-medium text-white disabled:opacity-80"
+                  >
+                    {paragraph.translationCompletedAt ? (
+                      <>
+                        <Check size={18} aria-hidden />
+                        Listo
+                      </>
+                    ) : (
+                      "Listo"
+                    )}
+                  </button>
+                )}
               </>
             ) : english ? (
-              <HighlightedText
-                text={english}
-                notes={paragraphNotes}
-                className="mt-3 font-heading text-story-body text-text-primary"
-                onSelect={() => captureSelection(paragraph.position)}
-              />
-            ) : (
-              <p className="teacher-typing-pulse mt-3 text-label-md text-text-muted">
-                El profe está traduciendo...
-              </p>
-            )}
-
-            {popup?.position === paragraph.position && (
-              <TeachingNotePopup
-                sessionId={sessionId}
-                storyId={storyId}
-                paragraphPosition={paragraph.position}
-                selectedText={popup.selectedText}
-                onClose={() => setPopup(null)}
-                onSaved={(note) =>
-                  setNotes((current) => [...current, note])
-                }
-              />
-            )}
+              <>
+                <p className="mt-4 text-label-sm text-text-muted">Inglés</p>
+                <HighlightedText
+                  text={english}
+                  notes={paragraphNotes}
+                  className="mt-1 text-story-english text-text-primary"
+                  onSelect={() => captureSelection(paragraph.position)}
+                  onOpenNote={setViewNote}
+                />
+              </>
+            ) : null}
           </article>
         );
       })}
+
+      {popup ? (
+        <TeachingNotePopup
+          sessionId={sessionId}
+          storyId={storyId}
+          paragraphPosition={popup.position}
+          selectedText={popup.selectedText}
+          onClose={() => setPopup(null)}
+          onSaved={(note) => setNotes((current) => [...current, note])}
+        />
+      ) : null}
+      {viewNote ? (
+        <TeachingNoteLightbox
+          note={viewNote}
+          isTeacher={isTeacher}
+          onClose={() => setViewNote(null)}
+          onDeleted={(noteId) => {
+            setNotes((current) => current.filter((item) => item.id !== noteId));
+            setViewNote(null);
+          }}
+        />
+      ) : null}
     </div>
   );
 }

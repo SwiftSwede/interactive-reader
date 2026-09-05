@@ -35,7 +35,7 @@ export default async function LoginPage({
       <section className="mx-auto max-w-md px-4 py-10">
         <h1 className="text-2xl font-bold text-gray-900">Entra con tu email</h1>
         <p className="mt-2 mb-6 text-sm text-gray-600">
-          Te mando un código de 6 números. Lo escribes aquí y ya estás adentro.
+          Te mando un código de 8 números. Lo escribes aquí y ya estás adentro.
           Sin contraseña. No hace falta cambiar de navegador.
         </p>
 

@@ -151,6 +151,12 @@ These rules apply to all backend code, API routes, database access, and authenti
 - If the app is ever sold to other teachers, each teacher's data must be fully isolated. A teacher from School A cannot see students or data from School B. This is enforced at the database level via RLS, not just in the UI.
 - Consider GDPR/LatAm data protection implications: students should be able to request deletion of their data. Build a "delete my data" path early (even if it's a manual process Kyle handles for now).
 
+## Architecture Decision Records (ADRs)
+- Before making architectural decisions, read `docs/adr/` for context on why the codebase is structured the way it is.
+- ADRs document the WHY, not the WHAT. The code shows what was built. ADRs explain the reasoning, alternatives considered, and constraints at the time.
+- When you make a significant architectural decision (new table, new auth pattern, new data flow), add a new ADR file: `docs/adr/NNN-short-name.md` (next number in sequence).
+- ADR format: # Title, ## Context, ## Decision, ## Consequences. Keep it to one page.
+
 ## Code Quality and Architecture
 - Follow web app design best practices at all times.
 - Structure the codebase to be future-proof, well-organized, flexible, and easy to extend.
@@ -160,17 +166,236 @@ These rules apply to all backend code, API routes, database access, and authenti
 - Name variables and functions descriptively. Code should be self-documenting.
 - Do not hardcode values that should be configurable (story IDs, API URLs, audio paths). Use constants, env vars, or config files.
 - Think ahead: every component you build should be designed so that adding the next feature (the next slice in the PRD) does not require rewriting what you already built. If a component is tightly coupled to one specific story or one specific use case, refactor it to be generic.
-- Separation of concerns: data fetching, business logic, and presentation should be in separate layers.
+
+### Service Layer Architecture
+- `src/lib/services/` — reusable business logic. Each service exports functions with explicit inputs and typed returns. No React, no direct Supabase client — accept the client as a parameter or use a factory function. This is where query logic lives.
+- `src/app/api/` — thin route handlers that call services and return responses. No business logic here. Validate input (Zod), call service, return result.
+- `src/components/` — presentation only. Fetch data via API routes or TanStack Query hooks. No direct Supabase queries in components.
+- When two features need the same data operation (e.g., "get student's comprehension responses"), extract it to a service function in `src/lib/services/`. Do not duplicate query logic across components or API routes.
+- Services return typed objects, not raw Supabase responses. Map the database row to a domain type at the service boundary.
+
+### General Code Standards
 - Follow Next.js App Router conventions. Server components by default, client components only when interactivity is needed (and marked with "use client").
-- Keep the file structure organized: components in `src/components/`, API routes in `src/app/api/`, types in `src/types/`, utilities in `src/lib/`.
+- Keep the file structure organized: components in `src/components/`, API routes in `src/app/api/`, types in `src/types/`, services in `src/lib/services/`, utilities in `src/lib/`.
 - Terminal scripts go in `scripts/`. When you create or materially change one, update `SCRIPTS.md` in the same task (see `.cursor/rules/scripts.mdc`).
+
+## React Performance Rules
+These rules are non-negotiable for page load speed and interaction responsiveness. The reading experience depends on fast first paint and smooth transitions. Apply these to every server component and data-fetching hook.
+
+### Eliminate Waterfalls
+- Never `await` independent calls sequentially. If a page needs story content + comprehension questions + personal questions, fetch them in parallel:
+  ```typescript
+  // BAD — three round trips, each waits for the previous
+  const story = await getStory(slug)
+  const compQuestions = await getComprehensionQuestions(story.id)
+  const persQuestions = await getPersonalQuestions(story.id)
+
+  // GOOD — one round trip, all three in parallel
+  const [story, compQuestions, persQuestions] = await Promise.all([
+    getStory(slug),
+    getComprehensionQuestions(storyId),
+    getPersonalQuestions(storyId),
+  ])
+  ```
+- For partial dependencies, kick off all promises immediately, await only when each result is needed:
+  ```typescript
+  const storyP = getStory(slug)
+  const compP = getComprehensionQuestions(storyId) // can start before story resolves if storyId is known
+  const story = await storyP
+  if (!story) notFound()
+  const compQuestions = await compP
+  ```
+- Check sync conditions before awaiting remote data. If a route param is missing or a flag is off, return early before hitting Supabase.
+
+### Server Component Composition
+- Split sibling server components into separate children so React runs them in parallel. A parent that `await`s three things and passes them to children runs them sequentially. A parent that renders three children, each with their own `async` fetch, runs them in parallel.
+  ```typescript
+  // BAD — sequential awaits in one component
+  export default async function LessonPage({ params }) {
+    const story = await getStory(params.slug)
+    const audio = await getAudio(story.id)
+    const questions = await getQuestions(story.id)
+    return <LessonView story={story} audio={audio} questions={questions} />
+  }
+
+  // GOOD — parallel through composition, each child fetches its own data
+  export default async function LessonPage({ params }) {
+    return (
+      <>
+        <StoryContent slug={params.slug} />
+        <AudioPlayer storyId={params.slug} />
+        <QuestionList storyId={params.slug} />
+      </>
+    )
+  }
+  ```
+
+### Suspense Boundaries
+- Push `<Suspense>` boundaries close to the data, not at the page root. The story header should paint immediately. Comprehension questions and audio can stream in after.
+  ```typescript
+  // Page renders header immediately, questions stream in
+  export default async function LessonPage({ params }) {
+    return (
+      <div>
+        <StoryHeader slug={params.slug} />
+        <Suspense fallback={<QuestionSkeleton />}>
+          <QuestionList storyId={params.slug} />
+        </Suspense>
+      </div>
+    )
+  }
+  ```
+- Reserve space with skeleton loaders or `min-height` to prevent layout shift when streamed content arrives.
+
+### Client-Side Data Fetching (TanStack Query)
+- Use `staleTime` to avoid redundant refetches on mount. Story content that doesn't change between sessions does not need `staleTime: 0`.
+- Parallelize independent queries with multiple `useQuery` calls, not chained `.then()` blocks.
+- Use `placeholderData` or `keepPreviousData` for paginated lists to prevent flash of empty state during refetch.
+
+## Error Architecture
+All server-side code (API routes, services, server components) must use a structured error hierarchy. No raw `throw new Error("message")` in service functions or API routes. Structured errors make it possible for API route handlers to return correct HTTP status codes without guessing.
+
+### Typed Error Hierarchy
+- Define error classes in `src/lib/errors.ts`. Every error carries a `code` (machine-readable) and `statusCode` (HTTP):
+  ```typescript
+  export class AppError extends Error {
+    constructor(
+      message: string,
+      public readonly code: string,
+      public readonly statusCode: number = 500,
+      public readonly details?: unknown,
+    ) {
+      super(message)
+      this.name = this.constructor.name
+      Object.setPrototypeOf(this, new.target.prototype)
+    }
+  }
+
+  export class NotFoundError extends AppError {
+    constructor(resource: string, id: string) {
+      super(`${resource} not found: ${id}`, 'NOT_FOUND', 404)
+    }
+  }
+
+  export class ValidationError extends AppError {
+    constructor(message: string, details: { field: string; message: string }[]) {
+      super(message, 'VALIDATION_ERROR', 422, details)
+    }
+  }
+
+  export class UnauthorizedError extends AppError {
+    constructor(reason = 'Authentication required') {
+      super(reason, 'UNAUTHORIZED', 401)
+    }
+  }
+  ```
+
+### Service Layer Error Handling
+- Services throw typed errors. API routes catch them and map to HTTP responses:
+  ```typescript
+  // src/lib/services/stories.ts
+  export async function getStory(slug: string): Promise<Story> {
+    const { data, error } = await supabase.from('stories').select('*').eq('slug', slug).single()
+    if (error) throw new NotFoundError('Story', slug)
+    return mapToDomain(data)
+  }
+
+  // src/app/api/stories/[slug]/route.ts
+  try {
+    const story = await storyService.getStory(slug)
+    return Response.json(story)
+  } catch (e) {
+    if (e instanceof NotFoundError) return Response.json({ error: e.message }, { status: 404 })
+    if (e instanceof UnauthorizedError) return Response.json({ error: e.message }, { status: 401 })
+    console.error('Unexpected error in GET /api/stories/[slug]:', e)
+    return Response.json({ error: 'Algo salio mal.' }, { status: 500 })
+  }
+  ```
+
+### Never Swallow Errors Silently
+- Every `catch` block must do one of three things: handle the error (recover with fallback), re-throw it (let the caller decide), or log it with context. Never write an empty `catch {}` or `catch (e) { /* ignore */ }`.
+- Log unexpected errors with enough context to debug: the operation that failed, the input that caused it, and the error message. Never log secrets or student data.
+- Client-side catch blocks in TanStack Query `onError` callbacks must show the user a friendly message in Kyle's voice (per UX States rule) AND log the technical error to the console for debugging.
+
+### Result Pattern for Expected Failures
+- For operations where failure is a normal outcome (not an exceptional one), use the Result type instead of try/catch:
+  ```typescript
+  type Result<T, E = AppError> =
+    | { ok: true; value: T }
+    | { ok: false; error: E }
+
+  // Use when: audio loading, optional Supabase lookups, parsing user-generated content
+  // Don't use when: auth failures, database connection errors — those should throw
+  ```
+
+## Testing Discipline
+The app currently has minimal test coverage. Build coverage incrementally: test new code as it's written, and add tests for existing service functions when touching them. Do not write tests for the sake of coverage numbers — test the things that would break in production if they were wrong.
+
+### When to Write Tests
+- **Service functions in `src/lib/services/`:** Every new service function gets a test. When modifying an existing service function, add or update its test in the same task. Tests live in `src/lib/services/*.test.ts` next to the function.
+- **API route handlers:** Test the response shape and status codes, not the service logic (that's already tested). Mock the service layer.
+- **Utility functions in `src/lib/`:** Pure functions with edge cases (IPA conversion, slug generation, diff comparison) get unit tests.
+- **What NOT to unit test:** React components (use E2E instead), Supabase queries directly (the service layer abstracts them), or Third-party SDKs (Stripe, Supabase, Azure).
+
+### Test Runner
+- The project uses Node.js native test runner via `tsx --test`. Run tests with `npm test`.
+- Test files use the `.test.ts` extension and live next to the file they test (e.g., `src/lib/services/stories.ts` → `src/lib/services/stories.test.ts`).
+- No test framework dependency to install. Use `node:test` and `node:assert/strict`:
+  ```typescript
+  import { test, describe } from 'node:test'
+  import assert from 'node:assert/strict'
+  import { getStory } from './stories'
+
+  describe('getStory', () => {
+    test('returns a story when the slug exists', async () => {
+      const story = await getStory('the-soccer-jersey')
+      assert.equal(story.slug, 'the-soccer-jersey')
+    })
+
+    test('throws NotFoundError when the slug does not exist', async () => {
+      await assert.rejects(() => getStory('nonexistent'), (e: Error) => {
+        assert.equal(e.name, 'NotFoundError')
+        return true
+      })
+    })
+  })
+  ```
+
+### Build Verification (updated)
+- Before any git push that touches `src/`, run `npx tsc --noEmit` AND `npm test`.
+- If tests fail, fix them before committing. Never push with skipped or failing tests.
+- If a test is genuinely flaky (timing-dependent, network-dependent), mark it with `test.skip` and add a comment explaining why. Do not delete it.
+
+### E2E Tests (Playwright)
+- Critical user flows that must have E2E coverage before the app is production-ready:
+  1. Browse stories from the Inicio tab → open a story → read it → answer a comprehension question
+  2. Play audio for a story → audio controls work → progress bar advances
+  3. Auth flow: magic link login → protected page access → logout
+  4. Writing class: open a writing prompt → type a response → submit
+  5. Group exam: one writer submits, members see live updates
+- E2E tests live in `tests/e2e/`. Use the Page Object Model pattern. See `tests/e2e/README.md` for setup instructions.
+- E2E tests run against `http://localhost:3004` (per the local dev rules). Never run E2E tests against production.
 
 ## Build discipline
 - Build one vertical slice at a time (see PRD Section 7 for the slice list)
 - Each slice must be fully working and verified on a real device before the next begins
-- Git commit AND push to GitHub after every working slice
 - Do not skip ahead to later phases
 - If something breaks, revert to the last working commit and fix from there
+
+### Build verification before push (mandatory)
+- Before any git push that touches `src/`, run `npx tsc --noEmit` (minimum) or `npx next build` (full), AND `npm test` (see Testing Discipline section).
+- If the build fails, fix the missing dependency or type error BEFORE committing. Never push a broken build.
+- Vercel auto-deploys every push to main. A broken build means Vercel serves the last successful deployment, which can be hours or days stale while the broken commit sits on main. This has happened before and caused audio 404s and stale UI.
+- If the live site looks stale or serves old file paths, check `npx next build` locally. A build failure means Vercel is serving the last known good deployment, not the latest commit.
+
+### Decisions review after large changes
+- After any large feature (10+ files changed, schema migration, or 100+ lines changed), ask yourself: "While working on this, which important decisions or choices did I make that I am not confident about? Think deeply. Only list decisions I am unsure about, not decisions where we already have the best solution. Answer in short, plain English."
+- Review the surfaced decisions before committing. This catches spec holes, missing constraint updates, and implicit architectural choices before they become blocking bugs.
+- Example: When adding a new `Story.kind` value, this review would surface "I added the kind to the enum but I'm not sure if the CHECK constraint needs updating" — catching the #1 most common schema migration error before it blocks a seed script.
+
+### Git commit and push
+- Git commit AND push to GitHub after every working slice, but ONLY after build verification passes.
+- Commit message: include the slice name and what works (e.g., "Add Slice 54: Video Summary Translation page component").
 
 ## Existing code assets
 - PronunciationPro2 at ~/Desktop/webdev/PronunciationPro2/ contains a working Azure Speech pronunciation assessment pipeline with LatAm-specific coaching rules. The server code (TypeScript/Express) and client (React) are reference implementations for Phase 3. Do not rebuild this from scratch when we reach Phase 3.

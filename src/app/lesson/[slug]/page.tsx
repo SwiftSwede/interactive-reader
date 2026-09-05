@@ -129,9 +129,16 @@ export default async function LessonSlugPage({
       trackLookups={trackLookups}
       readerMode={readerMode}
       isTeacher={isTeacher}
+      sessionStartTime={
+        access.kind === "ok" ? access.session.sessionStartTime : null
+      }
+      sessionEndTime={
+        access.kind === "ok" ? access.session.sessionEndTime : null
+      }
       timerStartedAt={
         access.kind === "ok" ? access.session.timerStartedAt : null
       }
+      courseId={access.kind === "ok" ? access.session.courseId : null}
       answersRevealed={
         access.kind === "ok" ? access.session.answersRevealed : false
       }
