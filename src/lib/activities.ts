@@ -5,7 +5,9 @@ export type SessionType =
   | "writing"
   | "exam"
   | "video_summary"
-  | "presentation";
+  | "presentation"
+  | "conversation"
+  | "pronunciation";
 
 export function isSessionType(
   value: string | null | undefined
@@ -15,8 +17,14 @@ export function isSessionType(
     value === "writing" ||
     value === "exam" ||
     value === "video_summary" ||
-    value === "presentation"
+    value === "presentation" ||
+    value === "conversation" ||
+    value === "pronunciation"
   );
+}
+
+export function isLiveOnlySessionType(type: SessionType): boolean {
+  return type === "conversation" || type === "pronunciation";
 }
 
 export function sessionTypeLabel(type: SessionType): string {
@@ -24,6 +32,8 @@ export function sessionTypeLabel(type: SessionType): string {
   if (type === "exam") return "Examen";
   if (type === "video_summary") return "Traducción";
   if (type === "presentation") return "Presentación";
+  if (type === "conversation") return "Conversación";
+  if (type === "pronunciation") return "Pronunciación";
   return "Historia";
 }
 
@@ -48,7 +58,8 @@ export function studentSessionPath(input: {
   sessionType: SessionType;
   token: string;
   storySlug?: string | null;
-}): string {
+}): string | null {
+  if (isLiveOnlySessionType(input.sessionType)) return null;
   if (input.sessionType === "writing") {
     return `/writing?session=${encodeURIComponent(input.token)}`;
   }
@@ -58,8 +69,6 @@ export function studentSessionPath(input: {
   if (input.sessionType === "presentation") {
     return `/presentation?session=${encodeURIComponent(input.token)}`;
   }
-  if (!input.storySlug) {
-    return `/writing?session=${encodeURIComponent(input.token)}`;
-  }
+  if (!input.storySlug) return null;
   return lessonPath(input.storySlug, input.token);
 }

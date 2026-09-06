@@ -134,7 +134,7 @@ Depth is conveyed through **tonal layering** and **low-contrast outlines**, not 
 
 ### Core Principle: One Layout, Not Two
 
-The app is a mobile app that breathes on desktop. There is no separate desktop layout. The same mobile layout is centered on wider screens with a constrained content width. Think Instagram Web or WhatsApp Web, not a traditional multi-column website.
+The app is a mobile app that breathes on desktop. There is no separate desktop layout. The same mobile layout is centered on wider screens with a constrained content width. Think Instagram Web or WhatsApp Web, not a traditional multi-column website. **One scoped exception:** the teacher dashboard (`/teacher/*`) is desktop-first 3-column — see the "Teacher Dashboard" section. That exception never applies to student-facing routes.
 
 This is deliberate:
 - The audience is mobile-first. Desktop users are teachers reviewing or the occasional student on a laptop.
@@ -191,12 +191,41 @@ On screens wider than 1024px, the layout does NOT change structurally. The same 
 - Same 75vh max height. Same drag handle.
 - Alternatively on desktop: could appear as a centered modal (24px radius, elevated). Either pattern is acceptable. Pick the bottom sheet for consistency with mobile.
 
-### What NOT to do on desktop
-- No sidebar navigation. The 3-tab bar is the navigation. Do not add a left sidebar on desktop.
+### What NOT to do on desktop (student app)
+- No sidebar navigation in the student app. The 3-tab bar is the navigation. Do not add a left sidebar on desktop. **Exception:** the teacher dashboard (`/teacher/*`) has its own persistent left sidebar — see "Teacher Dashboard" below. The teacher exception NEVER applies to student-facing routes.
 - No multi-column dashboard. The dashboard is a single column.
 - No full-width header content. Header content is constrained to 672px.
 - No split-view lessons. No secondary panel showing the story text alongside the questions. The bottom sheet is the cross-reference mechanism on all screen sizes.
 - No wider story text column. 672px is the max for readability. Do not let stories stretch wider on desktop.
+
+## Teacher Dashboard (`/teacher/*`)
+
+**Deliberate exception to "One Layout, Not Two."** The student app is mobile-first single-column. The teacher dashboard is desktop-first 3-column. Kyle uses it at his desktop, often mid-Zoom. The two rules never mix: teacher layout patterns must not leak into student routes, and student single-column rules must not be applied to `/teacher/*`.
+
+### Shell (all `/teacher/*` pages)
+
+Three columns, full viewport height, no bottom tab bar (the student 3-tab bar does NOT render on teacher routes):
+
+- **Left rail — fixed 240px.** Persistent nav, identical on every teacher page. White surface, 1px `--paper-line` border on the right edge. Items top to bottom: *Este mes* (default, `/teacher`), *Grupos* (all courses incl. archived), *Estudiantes* (global roster/search), *Analíticas* (palabras más consultadas), *Contenido* (disabled, "próximamente", until the content editor ships). Active item: `--surface-hover` background, terracotta left edge (3px) or terracotta text. Lucide icons (`home`, `users`, `search`, `bar-chart-3`, `book-open`). Rail bottom: teacher name/email + "Ver app como estudiante" link. UI language: Spanish.
+- **Center — fluid, min-width 0.** The main view for the current route. Horizontal padding 24px. Content max-width 960px (NOT 672px — tables, grids, and multi-card rows benefit from width; the 672px rule is a story-readability rule and stories never render here).
+- **Right context panel — 360px, collapsible.** Details for the item selected in the center column (e.g., selected class → attendance grid, recording URL, session time, "Ver como estudiante"). White surface, 1px `--paper-line` border on the left edge. On screens < 1280px the right panel collapses into a slide-over sheet triggered from the center selection. The shell degrades to 2 columns (rail + center) below 1024px; the rail collapses to an icon-only 64px strip. Mobile (< 600px): rail becomes a top bar with a menu button opening a full-screen nav sheet. Teacher pages are usable but not optimized below 1024px.
+
+### Visual language
+
+Same Paper Light theme, same tokens, same type scale as the student app (Lora headlines, Roboto Flex UI labels). Same tonal elevation: white cards on cream paper, 1px `--paper-line` borders, no shadows except sticky elements. Buttons: rounded-rectangle 16px (the pill shape stays reserved for lesson step nav). Touch targets 44px still apply — Kyle clicks fast mid-class.
+
+### Key screens
+
+- **Este mes (default):** current calendar month. One card per group (course): group name, level label, day/time pattern, theme if set, readiness summary ("3/8 clases listas"), next class with countdown. Clicking a group expands/drills into its 8-class strip. If no course exists for the current month: empty state "Próximo mes en preparación" with a "Nuevo mes" button (generator ships in a later slice; until then the button routes to the existing create-course form).
+- **8-class strip:** the month's 8 sessions as a vertical list, one row per class: class number, type label (Historia, Pronunciación, Video, Conversación, Diálogo, Música, Escritura, Examen), date/time, content status (assigned / sin contenido), recording status (URL attached / empty). Selecting a row populates the right context panel.
+- **Grupos:** all courses, current first, archived below under "Meses anteriores". Each row shows theme when set. Archived months are fully browsable read-only, EXCEPT the theme field and recording URLs stay editable (recordings are pasted day-after-class; themes are often named late).
+- **Estudiantes:** searchable global roster across groups. Student card: name, email, current group, attendance history, writing submissions with WPM trend, "cambiar de nivel" action (existing roster-move behavior).
+- **Analíticas:** palabras más consultadas only — per month, per level, aggregated across the month's stories. No other metrics in this phase (attendance rates, engagement scores etc. are future "institute administrator" territory, deliberately excluded).
+
+### Attendance (interaction rules)
+
+- Binary: asistió / no asistió. Plus an "auto" marker on rows pre-filled from session-link clicks. Manual override on ALL class types, including app-tracked ones.
+- Right-panel checkbox grid: student display names, tap toggles. Auto-save on every tap — no submit button, no unsaved state. This happens mid-Zoom; any friction is a bug.
 
 ## Component Patterns
 
@@ -441,7 +470,7 @@ Pages: Inicio (dashboard), Lecciones (lesson list), Herramientas (tools), Perfil
 **Header (browsing mode):**
 - Height: 56px, sticky, `--paper-header` background with backdrop blur
 - Left: "Profe Kyle" (small, `--text-secondary`, `label-sm`)
-- Right: News icon (Lucide `Newspaper`, 20px, `--text-muted`) and Profile icon (Lucide `User`, 20px, `--text-muted`), 8px gap between them, 44x44px touch targets
+- Right: Profile icon only (Lucide `User`, 20px, `--text-muted`, 44x44px touch target, links to `/profile`). The News icon is omitted until Noticias ships. No dead icon.
 - These are the only header elements in browsing mode. No search bar, no title. The tab content below provides the page title.
 
 **No sticky audio player in browsing mode.** The tab bar owns the bottom of the screen.
@@ -472,6 +501,7 @@ Pages: story lessons, writing lessons, exams, movie talk, music, future lesson t
 - Each lesson type brings its own widget for this zone. The main header above and the content below stay the same.
 
 **Lesson content:**
+- Recording banner (after-phase only): when the session window is closed AND `recording_youtube_url` is set, a white card (`--paper-line` border, 16px radius) sits below the lesson header/subheader and above the steps/tasks. Terracotta play icon + "Ver la grabación de la clase" + "(YouTube)" in `--text-muted`. Opens the URL in a new tab. Hidden during the live window even if a URL was pasted early.
 - One step at a time for stories (story text, comprehension, personal, dictation, choral, pronunciation)
 - Full activity for writing (prompt, text input, timer, submit)
 - Task-based for exams (fill-in, restructuring, translation)
@@ -515,7 +545,7 @@ Pages: story lessons, writing lessons, exams, movie talk, music, future lesson t
 
 ```
 ┌─────────────────────────┐
-│ Profe Kyle    📰  👤     │  Header (sticky, 56px)
+│ Profe Kyle         👤     │  Header (sticky, 56px)
 ├─────────────────────────┤
 │                          │
 │  [Page content]          │  Dashboard / lesson list / tools
@@ -530,50 +560,64 @@ Pages: story lessons, writing lessons, exams, movie talk, music, future lesson t
 ## Page Layouts
 
 ### Inicio (Dashboard)
-The learner's home base. Shows progress, assigned lessons, and recent practice.
+The learner's home base. Shows today's class, progress, the month's 8-class stack, and recent practice.
 
 **Section order (top to bottom):**
-1. Greeting: "Hola, [name]" (`headline-lg`, Lora, 24px, 700, `--text-primary`). One focal point. This is the only Primary-weight element on the page.
-2. Progress card: white surface, `--paper-line` border, 24px radius, 16px padding. Shows "Historias completadas: 3 de 8" (`label-md`, `--text-secondary`) and a thin progress bar (4px, `--accent` fill, `--paper-line` track). One card, one number, one bar. No KPI grid.
-3. "Esta semana" section heading (`headline-md`, Lora, 18px, 600). 24px gap above, 16px gap below.
-4. Assigned lesson list: each item is a row card (white surface, `--paper-line` border, 16px radius, 12px padding). Row contains:
-   - Lesson type icon (Lucide, 20px): BookOpen (story), PenLine (writing), FileText (exam)
-   - Lesson name (16px, Lora, 600, `--text-primary`)
-   - Level label (12px, Roboto Flex, `--text-muted`)
-   - Status dot + text: green dot (`--success`) + "Completado" / blue dot (`--accent`) + "En progreso" / muted dot + "Sin empezar" (12px, `--text-secondary`)
-   - Right side: ChevronRight icon (`--text-muted`) only if the row is navigational
+1. Greeting: "Hola, [name]" (`headline-lg`, Lora, 24px, 700, `--text-primary`). Fall back to "Hola" if the name is missing. In the normal state this is the only Primary-weight text on the page.
+2. Class-day card (only when the active course has a session whose `session_date` is today on the student's phone). No empty slot on other days.
+   - **Before T-10min (joinAt):** small white card: "La clase es HOY" / "Empieza en 3h 22m" (`headline-md`, tabular-nums) / "{typeLabel} · {courseName}".
+   - **joinAt to session end:** JOIN HERO. Full-width terracotta primary card with a large white "ENTRAR A LA CLASE ▶" button. This becomes the page's focal point (greeting stays, the hero wins by color and size). Type label + course name below. For live-only types (Conversación, Pronunciación) render an info card instead, no button: "{typeLabel} · Entra por Zoom — el link está en el chat de Zoom."
+   - **After session end, same day, no recording URL:** small moss-green card: "✓ Clase terminada · La grabación se subirá a YouTube pronto".
+   - One client component ticks locally. No server polling.
+3. Progress card: white surface, `--paper-line` border, 24px radius, 16px padding. Course display name (`label-md`), "Clases completadas: {n} de {total}" (`label-md`, `--text-secondary`), 4px progress bar (`--accent` fill, `--paper-line` track). Entire card links to `/progress`. `{total}` includes placeholders and live-only rows. Live-only types do not count toward `{n}` until teacher attendance ships. No upsell card for classroom students. Classroom Inicio shows the **current calendar month** at the student's Zoom level, not a prior month (a newly enrolled empty month still wins over last month's sessions). Older months on Lecciones are newest first; sessions inside those older months are newest first. Consumer "last opened course" is not stored yet.
+4. "Este mes" section heading (`headline-md`, Lora, 18px, 600). 24px gap above, 16px gap below. The course is a monthly 8-session arc, not a week.
+5. Assigned lesson list: each item is a row card (white surface, `--paper-line` border, 16px radius, 12px padding). Row contains:
+   - Lesson type icon (Lucide, 20px): BookOpen (story), PenLine (writing), FileText (exam), Languages (video_summary), MonitorPlay (presentation), MessagesSquare (conversation), Mic (pronunciation)
+   - Lesson name (16px, Lora, 600, `--text-primary`). Placeholders and live-only rows use the type label as the title.
+   - Status line (12px, one line, ellipsis). Lifecycle:
+     - placeholder (content FK null): 🔒 Lock, "Próximamente · {date}", not tappable, no chevron
+     - upcoming: ○ hollow dot `--text-secondary`, "Sin empezar · {date}", chevron, tappable
+     - live: ● filled `--accent` with a subtle pulse (`prefers-reduced-motion` respected), "EN VIVO · entra ahora", chevron
+     - after-pending (window closed, no recording URL): ✓ `--success`, "Completada · {date}", plus muted "La grabación llega pronto"
+     - after-recorded: ✓ `--success`, "Grabación disponible", chevron
+   - Live-only overrides (never 🔒, never tappable, no chevron): upcoming "{typeLabel} · En vivo por Zoom · {date}"; live "EN VIVO · por Zoom"; after "Clase terminada · {date}"
+   - Right side: ChevronRight (`--text-muted`) only if the row is navigational
    - Rows separated by 8px gap
-5. "Practica reciente" section heading (`headline-md`). 32px gap above, 16px gap below.
-6. Recent practice summary: plain text, no cards. "Dictado: 2 intentos. Pronunciacion: 1 sesion. Palabras guardadas: 47." (`body-main`, `--text-secondary`). Quiet, one line.
-7. Upsell card (only for non-paying learners): `--accent-softer` background, 16px radius, centered text. "Quieres mas historias? Desbloquea todas por $47" (`label-md`) with "Pronto" (`label-sm`, `--text-muted`) below. 32px gap above.
+6. "Práctica reciente" section heading (`headline-md`). 32px gap above, 16px gap below. Omit the whole section when every count is zero.
+7. Recent practice summary: unordered list, no cards. Each row is `body-main` `--text-secondary` with a bold label (`font-semibold` `--text-primary`): Dictado, Palabras, Pronunciación. Same list pattern on `/progress`.
 8. Bottom padding: 56px + safe area (tab bar space).
+
+Empty: enrolled with zero sessions: BookOpen 48px `--text-muted` + "Tu profe todavía no ha publicado las clases de este mes." No-course: same icon + "Aún no estás en un grupo. Tu profe te enviará un enlace."
 
 ### Lecciones (Lesson List)
 All assigned lessons, filterable by type.
 
 **Section order:**
 1. Page title: "Lecciones" (`headline-lg`, 24px, 700). Focal point.
-2. Filter chips: "Todos" / "Historias" / "Escritura" / "Examenes" (pill-shaped, 8px gap between them, `label-sm`). Active chip: `--accent` background, white text. Inactive: transparent, `--paper-line` border, `--text-secondary` text.
-3. Lesson list: same row card structure as the dashboard assigned lessons, but showing all lessons (not just this week's). Grouped by month or course cycle if there are many. Use "load more" button at the bottom if the list is long. No infinite scroll.
+2. Filter chips: "Todos" / "Historias" / "Escritura" / "Exámenes" / "Traducción" / "Presentación" (pill-shaped, 8px gap between them, `label-sm`). Active chip: `--accent` background, white text. Inactive: transparent, `--paper-line` border, `--text-secondary` text. No "En vivo" chip. Live-only rows still appear under Todos.
+3. Lesson list: same row card structure as the dashboard assigned lessons, showing all sessions (current course first, then older courses). Group heading per course month ("AGOSTO · NIÑERA", `label-sm` uppercase `--text-muted`) only when the student has more than one course. Use "Cargar más" after 12 rows. No infinite scroll.
 4. Empty state: if no lessons assigned, show Lucide `BookOpen` icon (48px, `--text-muted`), message "Aun no tienes clases asignadas. Tu profe te enviara un enlace." (`body-main`, `--text-secondary`), centered.
 5. Bottom padding: 56px + safe area.
 
 ### Herramientas (Tools)
-Supplementary learning tools. Currently: sounds library. Room to grow.
+Supplementary learning tools. The sounds library ships in a later slice. This slice keeps the tab so the tab bar never has to be retrofitted.
 
-**Section order:**
+**Section order (current):**
 1. Page title: "Herramientas" (`headline-lg`, 24px, 700). Focal point.
-2. Sounds section heading: "Sonidos" (`headline-md`, 18px, 600). 16px gap below.
-3. Short explanation callout: `--accent-softer` background, 16px radius, 12px padding. "Cada sonido que no existe en espanol necesita practica. Toca un sonido para ver el video del Profe Kyle explicandolo." (`body-main`, `--text-secondary`). Dismissible with X icon (Info icon on the left).
-4. Sound grid: 2 columns on mobile. Each card:
+2. Centered empty state: Lucide `LayoutGrid` (48px, `--text-muted`), "Próximamente: la biblioteca de sonidos del Profe Kyle."
+3. Bottom padding: 56px + safe area.
+
+**Later (sounds grid, not this slice):**
+1. Sounds section heading: "Sonidos" (`headline-md`, 18px, 600). 16px gap below.
+2. Short explanation callout: `--accent-softer` background, 16px radius, 12px padding. "Cada sonido que no existe en espanol necesita practica. Toca un sonido para ver el video del Profe Kyle explicandolo." (`body-main`, `--text-secondary`). Dismissible with X icon (Info icon on the left).
+3. Sound grid: 2 columns on mobile. Each card:
    - IPA symbol (24px, monospace, `--accent`, centered)
    - Sound name (14px, Roboto Flex, 600, `--text-secondary`, centered)
    - Example words (12px, Roboto Flex, `--text-muted`, centered)
    - White surface, `--paper-line` border, 16px radius, 12px padding
    - Tappable: opens video modal
-5. Video modal: centered, white, 24px radius, 1px `--paper-line` border (no shadow). Contains: X close button (top right), IPA symbol title, sound name, description, 16:9 video player area (dark `--text-primary` background, play button overlay), example words.
-6. Future tools plug in below the sounds section. No architecture change needed.
-7. Bottom padding: 56px + safe area.
+4. Video modal: centered, white, 24px radius, 1px `--paper-line` border (no shadow). Contains: X close button (top right), IPA symbol title, sound name, description, 16:9 video player area (dark `--text-primary` background, play button overlay), example words.
+5. Future tools plug in below the sounds section. No architecture change needed.
 
 ### Perfil (Profile/Settings)
 Account management. Accessed via profile icon in header, not a tab. Drill-down page.
@@ -581,7 +625,7 @@ Account management. Accessed via profile icon in header, not a tab. Drill-down p
 **Section order:**
 1. Page title: "Perfil" (`headline-lg`, 24px, 700). Focal point.
 2. Account info card: white surface, `--paper-line` border, 24px radius, 16px padding. Shows:
-   - Display name (18px, Lora, 600) — read-only for students (teacher sets it)
+   - Display name (18px, Lora, 600). Students can edit it (invite nicknames are sometimes a weird internet handle). Saving updates every enrollment row for that student plus auth `user_metadata`.
    - Email (14px, Roboto Flex, `--text-secondary`)
    - Subscription status: "Activa" (`--success`) or "Expirada" (`--error`) with colored dot
 3. Logout button: secondary style (outlined), full width, 16px radius. Lucide `LogOut` icon + "Cerrar sesion" label.

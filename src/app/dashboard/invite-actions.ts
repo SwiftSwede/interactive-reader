@@ -88,6 +88,7 @@ async function inviteExistingStudent(params: {
   await setClassroomProfile(params.userId, params.email);
   await updateDisplayName(params.userId, params.displayName);
   revalidatePath("/dashboard");
+  revalidatePath("/teacher");
 
   if (otpError) {
     if (removed) {
@@ -219,6 +220,7 @@ async function inviteStudentInner(
 
   await setClassroomProfile(created.user.id, email);
   revalidatePath("/dashboard");
+  revalidatePath("/teacher");
   return {
     ok: true,
     message: `Listo. Le mandé un código a ${displayName}. Cuando lo abra, ya está adentro.`,

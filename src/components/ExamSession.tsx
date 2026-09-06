@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import BackLink from "@/components/BackLink";
+import RecordingBanner from "@/components/lesson/RecordingBanner";
 import { createClient } from "@/lib/supabase/client";
 import { flattenFillSlots, formatCountdown, remainingMs } from "@/lib/exam";
 import { saveExamAnswers, submitExamAnswers } from "@/app/exam/actions";
@@ -27,6 +28,7 @@ export default function ExamSession({
   initialStatus,
   startedAt,
   reviewRevealedAt,
+  recordingYoutubeUrl = null,
 }: {
   sessionId: string;
   prompt: GroupExamPrompt;
@@ -40,6 +42,7 @@ export default function ExamSession({
   initialStatus: "in_progress" | "submitted" | null;
   startedAt: string | null;
   reviewRevealedAt: string | null;
+  recordingYoutubeUrl?: string | null;
 }) {
   const [task, setTask] = useState(1);
   const [task1, setTask1] = useState<Task1Answer[]>(initialTask1);
@@ -193,6 +196,9 @@ export default function ExamSession({
       </header>
 
       <section className="mx-auto max-w-2xl px-4 py-6">
+        {recordingYoutubeUrl ? (
+          <RecordingBanner youtubeUrl={recordingYoutubeUrl} />
+        ) : null}
         {!group && !isTeacher && (
           <p className="rounded-card bg-accent-softer px-3 py-3 text-body-main text-text-secondary">
             El Profe Kyle todavía te está poniendo en un grupo. Espera un

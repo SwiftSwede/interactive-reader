@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { resolveWritingSessionAccess } from "@/lib/sessions";
+import { sessionRecordingUrl } from "@/lib/session-phase";
 import { getProfile } from "@/lib/auth-server";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
 import WritingSession from "@/components/WritingSession";
@@ -168,6 +169,7 @@ export default async function WritingPage({
       notes={access.session.notes}
       timerStartedAt={access.session.timerStartedAt}
       isTeacher={isTeacher}
+      recordingYoutubeUrl={sessionRecordingUrl(access.session)}
       submission={
         submission
           ? {

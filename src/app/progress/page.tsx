@@ -88,25 +88,38 @@ export default async function ProgressPage() {
           <h2 className="text-headline-md text-text-primary">
             Práctica reciente
           </h2>
-          <p className="mt-3 text-body-main text-text-secondary">
-            {progress.dictationTrend.length === 0
-              ? "Dictado: todavía no hay intentos."
-              : `Dictado: ${progress.dictationTrend.length} ${
-                  progress.dictationTrend.length === 1 ? "intento" : "intentos"
-                }${
-                  latestDictation
-                    ? `, el último alrededor de ${formatPercent(latestDictation.accuracy)}`
-                    : ""
-                }.`}{" "}
-            {progress.pronunciationHistory.length === 0
-              ? "Pronunciación: todavía no grabaste."
-              : `Pronunciación: ${progress.pronunciationHistory.length} ${
-                  progress.pronunciationHistory.length === 1
-                    ? "sesión"
-                    : "sesiones"
-                }.`}{" "}
-            Palabras que tocaste: {progress.wordsLookedUp}.
-          </p>
+          <ul className="mt-3 list-disc space-y-2 pl-5 text-body-main text-text-secondary">
+            <li>
+              <span className="font-semibold text-text-primary">Dictado:</span>{" "}
+              {progress.dictationTrend.length === 0
+                ? "todavía no hay intentos."
+                : `${progress.dictationTrend.length} ${
+                    progress.dictationTrend.length === 1 ? "intento" : "intentos"
+                  }${
+                    latestDictation
+                      ? `, el último alrededor de ${formatPercent(latestDictation.accuracy)}`
+                      : ""
+                  }.`}
+            </li>
+            <li>
+              <span className="font-semibold text-text-primary">
+                Pronunciación:
+              </span>{" "}
+              {progress.pronunciationHistory.length === 0
+                ? "todavía no grabaste."
+                : `${progress.pronunciationHistory.length} ${
+                    progress.pronunciationHistory.length === 1
+                      ? "sesión"
+                      : "sesiones"
+                  }.`}
+            </li>
+            <li>
+              <span className="font-semibold text-text-primary">
+                Palabras que tocaste:
+              </span>{" "}
+              {progress.wordsLookedUp}.
+            </li>
+          </ul>
           {dictationMoved ? (
             <p className="mt-2 text-label-sm text-text-muted">
               Del primero al último dictado, {dictationMoved}.

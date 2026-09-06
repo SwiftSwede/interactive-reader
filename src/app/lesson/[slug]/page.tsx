@@ -4,6 +4,7 @@ import {
   resolveSessionAccess,
   isWithinSessionWindow,
 } from "@/lib/sessions";
+import { sessionRecordingUrl } from "@/lib/session-phase";
 import { loadOwnComprehensionResponses } from "@/lib/comprehension";
 import { loadOwnPersonalResponses } from "@/lib/personal-responses";
 import { getProfile } from "@/lib/auth-server";
@@ -141,6 +142,9 @@ export default async function LessonSlugPage({
       courseId={access.kind === "ok" ? access.session.courseId : null}
       answersRevealed={
         access.kind === "ok" ? access.session.answersRevealed : false
+      }
+      recordingYoutubeUrl={
+        access.kind === "ok" ? sessionRecordingUrl(access.session) : null
       }
     />
   );

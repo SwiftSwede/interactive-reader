@@ -12,6 +12,7 @@ import {
 } from "@/lib/writing";
 import { saveWritingDraft, submitWriting } from "@/app/writing/actions";
 import WritingCorrectionView from "@/components/WritingCorrectionView";
+import RecordingBanner from "@/components/lesson/RecordingBanner";
 import type { CourseLevel } from "@/types";
 
 type Prompt = {
@@ -33,6 +34,7 @@ export default function WritingSession({
   isTeacher,
   submission,
   correction,
+  recordingYoutubeUrl = null,
 }: {
   sessionId: string;
   prompt: Prompt;
@@ -50,6 +52,7 @@ export default function WritingSession({
     notes: InlineNote[] | null;
     goodVocabulary: number[] | null;
   } | null;
+  recordingYoutubeUrl?: string | null;
 }) {
   const [timerStartedAt, setTimerStartedAt] = useState(initialTimerStartedAt);
   const [text, setText] = useState(submission?.text ?? "");
@@ -211,6 +214,9 @@ export default function WritingSession({
       </header>
 
       <section className="mx-auto max-w-md px-4 py-8 md:max-w-2xl">
+        {recordingYoutubeUrl ? (
+          <RecordingBanner youtubeUrl={recordingYoutubeUrl} />
+        ) : null}
         <h1 className="text-2xl font-bold text-gray-900">{prompt.title}</h1>
         {notes && <p className="mt-2 text-sm text-gray-600">{notes}</p>}
         <p className="mt-4 whitespace-pre-wrap text-base text-gray-800">

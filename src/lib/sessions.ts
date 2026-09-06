@@ -21,6 +21,14 @@ import {
 
 export { getSessionPhase, isWithinSessionWindow, type SessionPhase };
 
+function sessionHref(input: {
+  sessionType: SessionType;
+  token: string;
+  storySlug?: string | null;
+}): string {
+  return studentSessionPath(input) ?? "/dashboard";
+}
+
 function revalidateTeacherViews() {
   after(() => {
     revalidatePath("/teacher", "layout");
@@ -36,6 +44,7 @@ type SessionRow = {
   exam_prompt_id?: string | null;
   presentation_prompt_id?: string | null;
   presentation_step?: string | null;
+  recording_youtube_url?: string | null;
   session_date: string;
   session_start_time: string;
   session_end_time: string;
@@ -82,6 +91,7 @@ export function mapSession(row: SessionRow): CourseSession {
     examPromptId: row.exam_prompt_id ?? null,
     presentationPromptId: row.presentation_prompt_id ?? null,
     presentationStep: row.presentation_step ?? null,
+    recordingYoutubeUrl: row.recording_youtube_url ?? null,
     sessionDate: row.session_date,
     sessionStartTime: row.session_start_time,
     sessionEndTime: row.session_end_time,
@@ -326,7 +336,7 @@ export async function resolveSessionAccess(
   sessionToken: string | undefined
 ): Promise<SessionAccess> {
   const loginNext = sessionToken
-    ? studentSessionPath({
+    ? sessionHref({
         sessionType: "story",
         token: sessionToken,
         storySlug: slug,
@@ -337,7 +347,7 @@ export async function resolveSessionAccess(
 
   if (access.session.sessionType === "writing") {
     redirect(
-      studentSessionPath({
+      sessionHref({
         sessionType: "writing",
         token: access.session.sessionLinkToken,
       })
@@ -346,7 +356,7 @@ export async function resolveSessionAccess(
 
   if (access.session.sessionType === "exam") {
     redirect(
-      studentSessionPath({
+      sessionHref({
         sessionType: "exam",
         token: access.session.sessionLinkToken,
       })
@@ -355,7 +365,7 @@ export async function resolveSessionAccess(
 
   if (access.session.sessionType === "presentation") {
     redirect(
-      studentSessionPath({
+      sessionHref({
         sessionType: "presentation",
         token: access.session.sessionLinkToken,
       })
@@ -369,7 +379,7 @@ export async function resolveSessionAccess(
 
   if (storySlug !== slug) {
     redirect(
-      studentSessionPath({
+      sessionHref({
         sessionType: access.session.sessionType,
         token: access.session.sessionLinkToken,
         storySlug,
@@ -398,7 +408,7 @@ export async function resolveWritingSessionAccess(
       : null;
     if (!storySlug) return { kind: "invalid" };
     redirect(
-      studentSessionPath({
+      sessionHref({
         sessionType: access.session.sessionType,
         token: access.session.sessionLinkToken,
         storySlug,
@@ -408,7 +418,7 @@ export async function resolveWritingSessionAccess(
 
   if (access.session.sessionType === "exam") {
     redirect(
-      studentSessionPath({
+      sessionHref({
         sessionType: "exam",
         token: access.session.sessionLinkToken,
       })
@@ -417,7 +427,7 @@ export async function resolveWritingSessionAccess(
 
   if (access.session.sessionType === "presentation") {
     redirect(
-      studentSessionPath({
+      sessionHref({
         sessionType: "presentation",
         token: access.session.sessionLinkToken,
       })
@@ -438,7 +448,7 @@ export async function resolveExamSessionAccess(
 
   if (access.session.sessionType === "writing") {
     redirect(
-      studentSessionPath({
+      sessionHref({
         sessionType: "writing",
         token: access.session.sessionLinkToken,
       })
@@ -454,7 +464,7 @@ export async function resolveExamSessionAccess(
       : null;
     if (!storySlug) return { kind: "invalid" };
     redirect(
-      studentSessionPath({
+      sessionHref({
         sessionType: access.session.sessionType,
         token: access.session.sessionLinkToken,
         storySlug,
@@ -464,7 +474,7 @@ export async function resolveExamSessionAccess(
 
   if (access.session.sessionType === "presentation") {
     redirect(
-      studentSessionPath({
+      sessionHref({
         sessionType: "presentation",
         token: access.session.sessionLinkToken,
       })
@@ -485,7 +495,7 @@ export async function resolvePresentationSessionAccess(
 
   if (access.session.sessionType === "writing") {
     redirect(
-      studentSessionPath({
+      sessionHref({
         sessionType: "writing",
         token: access.session.sessionLinkToken,
       })
@@ -494,7 +504,7 @@ export async function resolvePresentationSessionAccess(
 
   if (access.session.sessionType === "exam") {
     redirect(
-      studentSessionPath({
+      sessionHref({
         sessionType: "exam",
         token: access.session.sessionLinkToken,
       })
@@ -510,7 +520,7 @@ export async function resolvePresentationSessionAccess(
       : null;
     if (!storySlug) return { kind: "invalid" };
     redirect(
-      studentSessionPath({
+      sessionHref({
         sessionType: access.session.sessionType,
         token: access.session.sessionLinkToken,
         storySlug,

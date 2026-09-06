@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Check } from "lucide-react";
 import BackLink from "@/components/BackLink";
+import RecordingBanner from "@/components/lesson/RecordingBanner";
 import { createClient } from "@/lib/supabase/client";
 import { youtubeEmbedId } from "@/components/MusicBlanks";
 import VideoSummaryFreeWrite from "@/components/VideoSummaryFreeWrite";
@@ -48,6 +49,7 @@ export default function VideoSummaryPlayer({
   notes,
   freeWrite,
   teacherFreeWrites,
+  recordingYoutubeUrl = null,
 }: {
   storyId: string;
   title: string;
@@ -64,6 +66,7 @@ export default function VideoSummaryPlayer({
   notes: VideoSummaryTeachingNote[];
   freeWrite: FreeWrite | null;
   teacherFreeWrites: TeacherWrite[];
+  recordingYoutubeUrl?: string | null;
 }) {
   const [now, setNow] = useState(() => Date.now());
   const [step, setStep] = useState<StepId>(() => {
@@ -220,6 +223,9 @@ export default function VideoSummaryPlayer({
       </div>
 
       <article className="mx-auto max-w-2xl px-4 py-6">
+        {recordingYoutubeUrl ? (
+          <RecordingBanner youtubeUrl={recordingYoutubeUrl} />
+        ) : null}
         {youtubeId ? (
           <div className={step === "video" ? "mb-4" : "hidden"}>
             <ClassroomYoutubePlayer

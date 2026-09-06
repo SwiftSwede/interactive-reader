@@ -182,6 +182,6 @@ export async function removeClassroomStudent(
   }
 
   revalidatePath("/teacher", "layout");
-  revalidatePath("/dashboard");
+  revalidatePath("/teacher");
   return { ok: true };
 }

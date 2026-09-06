@@ -26,7 +26,7 @@ export default function TeacherLayout({
               Cursos
             </Link>
             <Link
-              href="/dashboard"
+              href="/teacher#invitaciones"
               className="text-sm text-gray-500 underline-offset-2 hover:text-gray-800 hover:underline"
             >
               Invitaciones

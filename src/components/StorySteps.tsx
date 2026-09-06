@@ -19,6 +19,7 @@ import PronunciationPractice from "./PronunciationPractice";
 import MicroExplanation from "./MicroExplanation";
 import StoryTextSheet from "./StoryTextSheet";
 import BackLink from "./BackLink";
+import RecordingBanner from "@/components/lesson/RecordingBanner";
 import MusicBlanks, { youtubeEmbedId } from "./MusicBlanks";
 import ClassroomYoutubePlayer from "./ClassroomYoutubePlayer";
 import type { LyricBlank } from "@/types";
@@ -66,6 +67,7 @@ export default function StorySteps({
   coralExplanation,
   choralCompleted,
   isTeacher = false,
+  recordingYoutubeUrl = null,
 }: {
   data: LoadedStory;
   timestamps: WordTimestamp[];
@@ -84,6 +86,7 @@ export default function StorySteps({
   coralExplanation: string | null;
   choralCompleted: boolean;
   isTeacher?: boolean;
+  recordingYoutubeUrl?: string | null;
 }) {
   const {
     story,
@@ -256,6 +259,9 @@ export default function StorySteps({
         </div>
 
         <article className="max-w-2xl mx-auto px-4 py-6">
+          {recordingYoutubeUrl ? (
+            <RecordingBanner youtubeUrl={recordingYoutubeUrl} />
+          ) : null}
           <div key={active.id} className="step-panel">
             {!isStory && (
               <button

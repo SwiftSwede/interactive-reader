@@ -80,6 +80,7 @@ export default async function StoryReader({
   timerStartedAt = null,
   courseId = null,
   answersRevealed = false,
+  recordingYoutubeUrl = null,
 }: {
   data: LoadedStory;
   allowReveal?: boolean;
@@ -95,6 +96,7 @@ export default async function StoryReader({
   timerStartedAt?: string | null;
   courseId?: string | null;
   answersRevealed?: boolean;
+  recordingYoutubeUrl?: string | null;
 }) {
   const { story, pronunciationDrill } = data;
 
@@ -132,6 +134,7 @@ export default async function StoryReader({
         notes={notes}
         freeWrite={freeWrite}
         teacherFreeWrites={teacherFreeWrites}
+        recordingYoutubeUrl={recordingYoutubeUrl}
       />
     );
   }
@@ -189,6 +192,7 @@ export default async function StoryReader({
         coralExplanation={coralExplanation}
         choralCompleted={choralCompleted}
         isTeacher={isTeacher}
+        recordingYoutubeUrl={recordingYoutubeUrl}
       />
     </SoundVideoProvider>
   );

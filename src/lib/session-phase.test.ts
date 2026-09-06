@@ -1,0 +1,106 @@
+import assert from "node:assert/strict";
+import { describe, test } from "node:test";
+import {
+  getClassDayPhase,
+  getSessionJoinTime,
+  getSessionLifecycle,
+  getSessionPhase,
+  JOIN_LEAD_MINUTES,
+  sessionRecordingUrl,
+} from "./session-phase";
+
+const start = "2026-09-06T19:00:00.000Z";
+const end = "2026-09-06T20:30:00.000Z";
+const session = { sessionStartTime: start, sessionEndTime: end };
+
+describe("getSessionPhase", () => {
+  test("is unchanged: live starts at sessionStartTime, not joinAt", () => {
+    const justBefore = new Date("2026-09-06T18:59:00.000Z");
+    assert.equal(getSessionPhase(session, justBefore), "before");
+    assert.equal(getSessionPhase(session, new Date(start)), "live");
+    assert.equal(getSessionPhase(session, new Date("2026-09-06T20:31:00.000Z")), "after");
+  });
+});
+
+describe("getSessionJoinTime", () => {
+  test("is 10 minutes before start", () => {
+    const join = getSessionJoinTime(session);
+    assert.equal(JOIN_LEAD_MINUTES, 10);
+    assert.equal(join.toISOString(), "2026-09-06T18:50:00.000Z");
+  });
+});
+
+describe("getSessionLifecycle", () => {
+  test("placeholder when content is missing", () => {
+    assert.equal(
+      getSessionLifecycle(session, false, new Date("2026-09-06T19:00:00.000Z")),
+      "placeholder"
+    );
+  });
+
+  test("upcoming before joinAt, live from joinAt, after after end", () => {
+    assert.equal(
+      getSessionLifecycle(session, true, new Date("2026-09-06T18:49:00.000Z")),
+      "upcoming"
+    );
+    assert.equal(
+      getSessionLifecycle(session, true, new Date("2026-09-06T18:50:00.000Z")),
+      "live"
+    );
+    assert.equal(
+      getSessionLifecycle(session, true, new Date("2026-09-06T20:30:00.000Z")),
+      "live"
+    );
+    assert.equal(
+      getSessionLifecycle(session, true, new Date("2026-09-06T20:30:01.000Z")),
+      "after"
+    );
+  });
+});
+
+describe("sessionRecordingUrl", () => {
+  test("is hidden during the live window even if a URL exists", () => {
+    assert.equal(
+      sessionRecordingUrl(
+        {
+          sessionStartTime: start,
+          sessionEndTime: end,
+          recordingYoutubeUrl: "https://youtu.be/abc",
+        },
+        new Date(start)
+      ),
+      null
+    );
+  });
+
+  test("returns the URL after the window closes", () => {
+    assert.equal(
+      sessionRecordingUrl(
+        {
+          sessionStartTime: start,
+          sessionEndTime: end,
+          recordingYoutubeUrl: "https://youtu.be/abc",
+        },
+        new Date("2026-09-06T20:31:00.000Z")
+      ),
+      "https://youtu.be/abc"
+    );
+  });
+});
+
+describe("getClassDayPhase", () => {
+  test("countdown, join, then done-pending", () => {
+    assert.equal(
+      getClassDayPhase(session, new Date("2026-09-06T18:49:00.000Z")),
+      "countdown"
+    );
+    assert.equal(
+      getClassDayPhase(session, new Date("2026-09-06T18:50:00.000Z")),
+      "join"
+    );
+    assert.equal(
+      getClassDayPhase(session, new Date("2026-09-06T20:30:01.000Z")),
+      "done-pending"
+    );
+  });
+});

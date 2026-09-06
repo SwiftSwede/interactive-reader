@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { resolveExamSessionAccess } from "@/lib/sessions";
+import { sessionRecordingUrl } from "@/lib/session-phase";
 import { getProfile } from "@/lib/auth-server";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
 import ExamSession from "@/components/ExamSession";
@@ -164,6 +165,7 @@ export default async function ExamPage({
       }
       isWriter={Boolean(user && group && group.writer_id === user.id)}
       isTeacher={isTeacher}
+      recordingYoutubeUrl={sessionRecordingUrl(access.session)}
       allowReveal={access.allowReveal}
       initialTask1={task1}
       initialTask2={task2}

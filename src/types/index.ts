@@ -157,7 +157,9 @@ export type SessionType =
   | "writing"
   | "exam"
   | "video_summary"
-  | "presentation";
+  | "presentation"
+  | "conversation"
+  | "pronunciation";
 export type WritingSubmissionStatus = "draft" | "submitted" | "corrected";
 export type ExamTask2Type = "paragraph_restructuring" | "sentence_correction";
 export type GroupExamSubmissionStatus = "in_progress" | "submitted";
@@ -209,6 +211,7 @@ export interface CourseSession {
   examPromptId: string | null;
   presentationPromptId: string | null;
   presentationStep: string | null;
+  recordingYoutubeUrl: string | null;
   sessionDate: string;
   sessionStartTime: string;
   sessionEndTime: string;

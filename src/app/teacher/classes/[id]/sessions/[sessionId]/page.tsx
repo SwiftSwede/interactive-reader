@@ -141,7 +141,7 @@ export default async function SessionDetailPage({
       )}
 
       <div className="mt-4 grid grid-cols-2 gap-2">
-        <CopySessionLink href={copyHref} />
+        {copyHref ? <CopySessionLink href={copyHref} /> : <span />}
         {isWriting || isVideo ? (
           session.timerStartedAt ? (
             <p className="flex items-center text-sm text-gray-500">
@@ -185,7 +185,7 @@ export default async function SessionDetailPage({
         )}
       </div>
 
-      {isPresentation && (
+      {isPresentation && copyHref ? (
         <p className="mt-4">
           <Link
             href={copyHref}
@@ -194,7 +194,7 @@ export default async function SessionDetailPage({
             Abrir la presentación
           </Link>
         </p>
-      )}
+      ) : null}
 
       {isVideo && (
         <p className="mt-2 text-sm text-gray-500">

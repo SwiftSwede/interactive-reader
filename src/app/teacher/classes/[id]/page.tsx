@@ -145,6 +145,11 @@ export default async function CourseClassPage({
                 answersRevealed: session.answersRevealed,
                 sessionEndTime: session.end,
               });
+              const studentHref = studentSessionPath({
+                sessionType: session.sessionType,
+                token: session.token,
+                storySlug: session.story?.slug,
+              });
               return (
                 <li key={session.id} className="px-3 py-3">
                   <Link
@@ -182,13 +187,11 @@ export default async function CourseClassPage({
                     )
                   ) : null}
                   <div className="mt-2 grid grid-cols-2 items-stretch gap-2">
-                    <CopySessionLink
-                      href={studentSessionPath({
-                        sessionType: session.sessionType,
-                        token: session.token,
-                        storySlug: session.story?.slug,
-                      })}
-                    />
+                    {studentHref ? (
+                      <CopySessionLink href={studentHref} />
+                    ) : (
+                      <span />
+                    )}
                     <DeleteSessionButton
                       courseId={course.id}
                       sessionId={session.id}

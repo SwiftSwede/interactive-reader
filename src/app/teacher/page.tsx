@@ -1,9 +1,11 @@
 import Link from "next/link";
-import { requireTeacher } from "@/lib/auth-server";
+import { requireTeacher, getClassroomStudents } from "@/lib/auth-server";
 import { createClient } from "@/lib/supabase/server";
 import type { CourseLevel } from "@/types";
 import CreateCourseForm from "./CreateCourseForm";
 import LocalDateTime from "@/components/LocalDateTime";
+import InviteStudentForm from "@/app/dashboard/InviteStudentForm";
+import RemoveStudentButton from "@/components/RemoveStudentButton";
 import {
   countActiveStudentsByCourse,
   courseLevelLabel,
@@ -39,9 +41,10 @@ export default async function TeacherPage() {
   const courses = (data ?? []) as CourseRow[];
   const courseIds = courses.map((course) => course.id);
 
-  const [studentCountByCourse, sessions] = await Promise.all([
+  const [studentCountByCourse, sessions, classroomStudents] = await Promise.all([
     countActiveStudentsByCourse(supabase, courseIds),
     loadSessionsForCourses(supabase, courseIds),
+    getClassroomStudents(),
   ]);
 
   const sessionsByCourse = new Map<string, TeacherSession[]>();
@@ -106,6 +109,45 @@ export default async function TeacherPage() {
                 </li>
               );
             })}
+          </ul>
+        )}
+      </div>
+
+      <div id="invitaciones" className="mt-10">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+          Invitar estudiante
+        </h2>
+        <p className="mb-3 text-sm text-gray-600">
+          Aquí invitas a tus estudiantes de clase. Sin Stripe todavía: tú los
+          das de alta. Los cursos y el link de Zoom vienen después.
+        </p>
+        <InviteStudentForm />
+      </div>
+
+      <div className="mt-10">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+          Estudiantes de clase
+        </h2>
+        <p className="mb-3 text-sm text-gray-600">
+          Solo quienes siguen pagando. Si pausaron en ThriveCart, no salen
+          aquí. Para PayPal o becas, invítalos abajo. Quitar es para esos
+          invitados. Si pagan en Stripe, páusalos en ThriveCart.
+        </p>
+        {classroomStudents.length === 0 ? (
+          <p className="text-sm text-gray-500">
+            Todavía no hay nadie. Invita al primero.
+          </p>
+        ) : (
+          <ul className="divide-y divide-gray-100 rounded-lg border border-gray-100">
+            {classroomStudents.map((student) => (
+              <li key={student.id} className="px-3 py-3 text-sm text-gray-800">
+                <p className="font-medium">
+                  {student.displayName ?? "Sin nombre"}
+                </p>
+                <p className="mt-0.5 text-gray-500">{student.email}</p>
+                <RemoveStudentButton studentId={student.id} />
+              </li>
+            ))}
           </ul>
         )}
       </div>
