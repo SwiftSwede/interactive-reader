@@ -62,6 +62,16 @@ Seeds the stub sample lessons for dialogue, Movie Talk, and music lesson types. 
 npx tsx scripts/seed-phase5-samples.ts
 ```
 
+### Seed the Paris presentation
+
+Inserts (or updates) the intermediate Class 3 Format A presentation "Paris" into `presentation_prompts`. Run after `supabase/schema-phase5-presentation.sql`.
+
+```bash
+npx tsx scripts/seed-presentation.ts
+```
+
+**Cost / time / status:** Free. A few seconds. Idempotent by title.
+
 ### Generate word timestamps for karaoke (Whisper)
 
 Uses OpenAI Whisper to transcribe the story audio and generate word-level timing data for the karaoke highlight feature.
@@ -139,6 +149,12 @@ Applies `schema-phase4a.sql` then `schema-phase4b.sql` via the Supabase SQL API.
 ```bash
 npx tsx scripts/apply-phase4-schema.ts
 ```
+
+### Apply presentation schema (slice 56a)
+
+Creates `presentation_prompts`, `presentation_responses`, and `presentation_vocab_notes`, adds `presentation_prompt_id` and `presentation_step` to `course_sessions`, and updates session_type / activity / content_tags CHECK constraints. Apply in the Supabase SQL Editor, or via the MCP migration, then seed Paris.
+
+The SQL file is `supabase/schema-phase5-presentation.sql`.
 
 ### Seed classroom_level from Stripe
 

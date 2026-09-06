@@ -106,6 +106,7 @@ export async function createSession(
       story_id: null,
       writing_prompt_id: prompt.id,
       exam_prompt_id: null,
+      presentation_prompt_id: null,
       session_date: sessionDate,
       session_start_time: start.toISOString(),
       session_end_time: end.toISOString(),
@@ -181,6 +182,7 @@ export async function createSession(
       story_id: null,
       writing_prompt_id: null,
       exam_prompt_id: prompt.id,
+      presentation_prompt_id: null,
       session_date: sessionDate,
       session_start_time: start.toISOString(),
       session_end_time: end.toISOString(),
@@ -189,6 +191,63 @@ export async function createSession(
 
     if (error) {
       console.error("create exam session failed:", error);
+      return {
+        ok: false,
+        error: "No pude crear la clase. Inténtalo de nuevo.",
+      };
+    }
+
+    revalidatePath(`/teacher/classes/${courseId}`);
+    revalidatePath("/teacher");
+    return { ok: true, message: `Listo. ${prompt.title} ya tiene clase.` };
+  }
+
+  if (sessionType === "presentation") {
+    if (course.level !== "intermediate") {
+      return {
+        ok: false,
+        error: "La presentación es para el grupo intermedio.",
+      };
+    }
+    const presentationPromptId = String(
+      formData.get("presentationPromptId") ?? ""
+    ).trim();
+    if (!presentationPromptId) {
+      return { ok: false, error: "Elige una presentación." };
+    }
+
+    const { data: prompt } = await supabase
+      .from("presentation_prompts")
+      .select("id, title, warmup_question")
+      .eq("id", presentationPromptId)
+      .maybeSingle();
+
+    if (!prompt) {
+      return { ok: false, error: "No encontré esa presentación." };
+    }
+
+    const warmup =
+      typeof prompt.warmup_question === "string"
+        ? prompt.warmup_question.trim()
+        : "";
+    const presentationStep = warmup ? "warmup" : "1:vocab";
+
+    const { error } = await supabase.from("course_sessions").insert({
+      course_id: courseId,
+      session_type: "presentation",
+      story_id: null,
+      writing_prompt_id: null,
+      exam_prompt_id: null,
+      presentation_prompt_id: prompt.id,
+      presentation_step: presentationStep,
+      session_date: sessionDate,
+      session_start_time: start.toISOString(),
+      session_end_time: end.toISOString(),
+      notes,
+    });
+
+    if (error) {
+      console.error("create presentation session failed:", error);
       return {
         ok: false,
         error: "No pude crear la clase. Inténtalo de nuevo.",
@@ -240,6 +299,7 @@ export async function createSession(
       story_id: storyId,
       writing_prompt_id: null,
       exam_prompt_id: null,
+      presentation_prompt_id: null,
       session_date: sessionDate,
       session_start_time: start.toISOString(),
       session_end_time: end.toISOString(),
@@ -272,6 +332,7 @@ export async function createSession(
     story_id: storyId,
     writing_prompt_id: null,
     exam_prompt_id: null,
+    presentation_prompt_id: null,
     session_date: sessionDate,
     session_start_time: start.toISOString(),
     session_end_time: end.toISOString(),

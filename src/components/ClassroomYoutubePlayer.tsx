@@ -104,12 +104,14 @@ export default function ClassroomYoutubePlayer({
   sessionId,
   isTeacher,
   live,
+  startSeconds = 0,
 }: {
   videoId: string;
   title: string;
   sessionId?: string;
   isTeacher: boolean;
   live: boolean;
+  startSeconds?: number;
 }) {
   const mountRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
@@ -205,6 +207,7 @@ export default function ClassroomYoutubePlayer({
           modestbranding: 1,
           rel: 0,
           playsinline: 1,
+          start: Math.max(0, Math.floor(startSeconds)),
           origin: window.location.origin,
         },
         events: {
@@ -258,7 +261,7 @@ export default function ClassroomYoutubePlayer({
         /* YouTube may already have removed the node */
       }
     };
-  }, [videoId, showControls, studentLock, publish, applyToPlayer]);
+  }, [videoId, showControls, studentLock, publish, applyToPlayer, startSeconds]);
 
   useEffect(() => {
     if (!live || !sessionId) return;

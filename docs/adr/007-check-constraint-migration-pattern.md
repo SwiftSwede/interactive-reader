@@ -28,5 +28,6 @@ This pattern is documented in:
   - `schema-phase4a.sql`: `('story', 'dialogue', 'movie_talk')`
   - `schema-phase5-song.sql`: added `'song'`
   - `schema-phase5-video-summary.sql`: added `'video_summary'`
+  - `schema-phase5-presentation.sql`: added `session_type = 'presentation'` and `content_tags.content_type = 'presentation_prompt'`
 - The "decisions review" question (added to `.cursorrules`) is designed to surface this: after adding a new kind, the agent should report "I added the kind to the enum but I'm not sure if the CHECK constraint needs updating."
 - Migration files use `IF NOT EXISTS` and `DROP CONSTRAINT IF EXISTS` for idempotency, so re-running them is safe.

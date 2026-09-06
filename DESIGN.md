@@ -464,6 +464,7 @@ Pages: story lessons, writing lessons, exams, movie talk, music, future lesson t
 - Sits directly below the main header, also sticky
 - Contains lesson-specific navigation:
   - **Stories and Traducción:** Progress dots (dot - line - dot). Active dot is larger. Dots are tappable (44px hit area). No "Paso N de N" text. The dots are the step chrome.
+  - **Presentación:** Warmup has no dots. Inside a segment, `"Video 1 de 3"` plus 4 dots. Teacher-only pills during live class.
   - **Writing:** Timer display (countdown, `headline-md`, tabular-nums). No dots.
   - **Exams:** Task navigation ("Tarea 1 de 3", `label-md`). No dots.
   - **Movie talk:** Scene markers (timeline with scene thumbnails or timestamps). No dots.
@@ -723,3 +724,27 @@ Same as the story lesson page. Lesson type label "Diálogo". First step "El diá
 
 ### Movie Talk Lesson Page (detailed)
 Same as the story lesson page. Lesson type label "Movie Talk". First step "El video". If `youtube_url` is set, `ClassroomYoutubePlayer` uses the same live lock / review solo rules as music. `***` lines in the body are scene breaks (muted "Escena N" divider). Role reading uses the dialogue name styling when lines are `Name:`.
+
+### Presentation Lesson Page (detailed)
+Classroom only. `session_type = "presentation"`. Catalog lives in `presentation_prompts`. Route: `/presentation?session=`.
+
+**Header zone:**
+- Main header: back button, "Profe Kyle", lesson type "Presentación", presentation title
+- Subheader: warmup has no part row and no dots. Inside a segment, a part switcher (`Part 1 | Part 2 | Part 3`, or `Video 1` if untitled) in `label-md` above the 4 progress dots (Vocabulario, Preguntas, Video, Respuestas). Same dot widget as stories. No "Paso N de N" text.
+- Current part uses `text-text-primary`. Other parts are muted during live class for students (visible, not tappable). Teacher, post-class review, and later consumer self-study can tap a part. A tap keeps the same inner step (Video stays Video).
+
+**Before class (students):** title plus warmup text if present. Message that class has not started. Vocab, questions, and video stay closed. Teacher is not locked and can walk the full lesson to prep.
+
+**Content zone:**
+- Warmup: English discussion prompt in a white card (`story-body` Lora). No input. Teacher-only "Empezar".
+- Vocabulario: vertical list of cards (white, `--paper-line` border, 16px radius, 16px padding). English in Lora (`story-body`). Spanish in Roboto Flex (`label-md`, `--text-secondary`). Catalog example sentence in italic muted text. Session example note underneath when present. Teacher can edit Spanish (catalog) and add/edit a session-only example note from a small lightbox (`teaching-note-modal`).
+- Preguntas: numbered list of information questions. No inputs. Students see what to listen for.
+- Video: 16:9 `ClassroomYoutubePlayer` (rounded 16px, paper-line border). Same live lock / review solo rules as Traducción. Overlay "Toca el video para oír" until the first tap.
+- Respuestas: same question cards as story comprehension (textarea + "Ver respuesta"). Reveal gated during live class.
+- Done: centered message "Eso es todo. Vuelve a este link después de clase para repasar."
+
+**Bottom navigation:**
+- During live class, only the teacher sees Atrás / Siguiente pills. Students follow the teacher's step. Students still see the part row so they know how many videos are coming.
+- After the 90-min window, students get the same pills and can tap parts to jump. Consumer self-study uses that same free nav.
+
+Keep YouTube in review mode with normal controls. No pronunciation. No group work.

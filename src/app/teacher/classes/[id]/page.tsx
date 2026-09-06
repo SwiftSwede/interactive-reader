@@ -46,6 +46,20 @@ export default async function CourseClassPage({
     .order("title");
 
   const stories = (storyRows ?? []) as StoryOption[];
+
+  const { data: presentationRows } =
+    course.level === "intermediate"
+      ? await supabase
+          .from("presentation_prompts")
+          .select("id, title")
+          .eq("level", "intermediate")
+          .order("title")
+      : { data: [] };
+
+  const presentationPrompts = (presentationRows ?? []) as {
+    id: string;
+    title: string;
+  }[];
   const sessions = await loadCourseSessions(supabase, course.id);
   const { students: roster, displayNames } = await loadCourseRoster(
     supabase,
@@ -113,6 +127,7 @@ export default async function CourseClassPage({
           courseId={course.id}
           courseLevel={course.level as CourseLevel}
           stories={stories}
+          presentationPrompts={presentationPrompts}
         />
       </div>
 

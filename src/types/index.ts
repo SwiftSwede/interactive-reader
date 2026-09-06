@@ -152,7 +152,12 @@ export interface ChoralPracticeCompletion {
 export type UserRole = "student-classroom" | "student-consumer" | "teacher";
 export type SubscriptionStatus = "active" | "cancelled" | "paused" | "none";
 export type CourseLevel = "pre-intermediate" | "intermediate";
-export type SessionType = "story" | "writing" | "exam" | "video_summary";
+export type SessionType =
+  | "story"
+  | "writing"
+  | "exam"
+  | "video_summary"
+  | "presentation";
 export type WritingSubmissionStatus = "draft" | "submitted" | "corrected";
 export type ExamTask2Type = "paragraph_restructuring" | "sentence_correction";
 export type GroupExamSubmissionStatus = "in_progress" | "submitted";
@@ -202,6 +207,8 @@ export interface CourseSession {
   storyId: string | null;
   writingPromptId: string | null;
   examPromptId: string | null;
+  presentationPromptId: string | null;
+  presentationStep: string | null;
   sessionDate: string;
   sessionStartTime: string;
   sessionEndTime: string;
@@ -291,6 +298,59 @@ export interface ExamTranslationItem {
   spanish: string;
   acceptedEnglish: string[];
   acceptableVariations: string[];
+}
+
+export type PresentationVocabItem = {
+  english: string;
+  spanish: string;
+  exampleSentence: string | null;
+};
+
+export type PresentationQuestion = {
+  id: number;
+  question: string;
+  answer: string;
+};
+
+export type PresentationSegment = {
+  id: number;
+  youtubeUrl: string;
+  title: string | null;
+  vocabulary: PresentationVocabItem[];
+  comprehensionQuestions: PresentationQuestion[];
+};
+
+export interface PresentationPrompt {
+  id: string;
+  title: string;
+  level: CourseLevel;
+  theme: string | null;
+  warmupQuestion: string | null;
+  segments: PresentationSegment[];
+  createdAt: string;
+}
+
+export interface PresentationResponse {
+  id: string;
+  presentationPromptId: string;
+  userId: string;
+  courseSessionId: string | null;
+  segmentId: number;
+  questionId: number;
+  responseText: string;
+  revealedAnswer: boolean;
+  revealedAt: string | null;
+  submittedAt: string;
+}
+
+export interface PresentationVocabNote {
+  id: string;
+  courseSessionId: string;
+  segmentId: number;
+  vocabEnglish: string;
+  noteText: string;
+  createdBy: string;
+  createdAt: string;
 }
 
 export interface GroupExamPrompt {
@@ -470,7 +530,11 @@ export interface UserHighlight {
 export type TagType = "grammar" | "vocabulary" | "phonetic";
 
 /** The catalog item that carries a tag. Phase 4 only writes "story". */
-export type ContentType = "story" | "writing_prompt" | "exam_prompt";
+export type ContentType =
+  | "story"
+  | "writing_prompt"
+  | "exam_prompt"
+  | "presentation_prompt";
 
 export type CoverageLevel = "introduced" | "reinforced" | "mastered";
 

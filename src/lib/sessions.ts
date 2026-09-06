@@ -34,6 +34,8 @@ type SessionRow = {
   story_id: string | null;
   writing_prompt_id?: string | null;
   exam_prompt_id?: string | null;
+  presentation_prompt_id?: string | null;
+  presentation_step?: string | null;
   session_date: string;
   session_start_time: string;
   session_end_time: string;
@@ -67,7 +69,9 @@ export function mapSession(row: SessionRow): CourseSession {
       ? "writing"
       : row.exam_prompt_id
         ? "exam"
-        : "story";
+        : row.presentation_prompt_id
+          ? "presentation"
+          : "story";
 
   return {
     id: row.id,
@@ -76,6 +80,8 @@ export function mapSession(row: SessionRow): CourseSession {
     storyId: row.story_id,
     writingPromptId: row.writing_prompt_id ?? null,
     examPromptId: row.exam_prompt_id ?? null,
+    presentationPromptId: row.presentation_prompt_id ?? null,
+    presentationStep: row.presentation_step ?? null,
     sessionDate: row.session_date,
     sessionStartTime: row.session_start_time,
     sessionEndTime: row.session_end_time,
@@ -103,7 +109,11 @@ export function areAnswersUnlocked(
 async function persistAnswersRevealedIfEnded(
   session: CourseSession
 ): Promise<void> {
-  if (session.sessionType !== "story" && session.sessionType !== "video_summary")
+  if (
+    session.sessionType !== "story" &&
+    session.sessionType !== "video_summary" &&
+    session.sessionType !== "presentation"
+  )
     return;
   if (session.answersRevealed) return;
   if (!areAnswersUnlocked(session)) return;
@@ -343,6 +353,15 @@ export async function resolveSessionAccess(
     );
   }
 
+  if (access.session.sessionType === "presentation") {
+    redirect(
+      studentSessionPath({
+        sessionType: "presentation",
+        token: access.session.sessionLinkToken,
+      })
+    );
+  }
+
   if (!access.session.storyId) return { kind: "invalid" };
 
   const storySlug = await getStorySlug(access.session.storyId);
@@ -396,6 +415,15 @@ export async function resolveWritingSessionAccess(
     );
   }
 
+  if (access.session.sessionType === "presentation") {
+    redirect(
+      studentSessionPath({
+        sessionType: "presentation",
+        token: access.session.sessionLinkToken,
+      })
+    );
+  }
+
   return access;
 }
 
@@ -412,6 +440,62 @@ export async function resolveExamSessionAccess(
     redirect(
       studentSessionPath({
         sessionType: "writing",
+        token: access.session.sessionLinkToken,
+      })
+    );
+  }
+
+  if (
+    access.session.sessionType === "story" ||
+    access.session.sessionType === "video_summary"
+  ) {
+    const storySlug = access.session.storyId
+      ? await getStorySlug(access.session.storyId)
+      : null;
+    if (!storySlug) return { kind: "invalid" };
+    redirect(
+      studentSessionPath({
+        sessionType: access.session.sessionType,
+        token: access.session.sessionLinkToken,
+        storySlug,
+      })
+    );
+  }
+
+  if (access.session.sessionType === "presentation") {
+    redirect(
+      studentSessionPath({
+        sessionType: "presentation",
+        token: access.session.sessionLinkToken,
+      })
+    );
+  }
+
+  return access;
+}
+
+export async function resolvePresentationSessionAccess(
+  sessionToken: string | undefined
+): Promise<SessionAccess> {
+  if (!sessionToken?.trim()) return { kind: "invalid" };
+
+  const loginNext = `/presentation?session=${sessionToken.trim()}`;
+  const access = await loadSessionAccess(sessionToken, loginNext);
+  if (access.kind !== "ok") return access;
+
+  if (access.session.sessionType === "writing") {
+    redirect(
+      studentSessionPath({
+        sessionType: "writing",
+        token: access.session.sessionLinkToken,
+      })
+    );
+  }
+
+  if (access.session.sessionType === "exam") {
+    redirect(
+      studentSessionPath({
+        sessionType: "exam",
         token: access.session.sessionLinkToken,
       })
     );

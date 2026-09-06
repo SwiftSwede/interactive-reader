@@ -32,6 +32,7 @@ export type TeacherSession = {
   storyId: string | null;
   writingPromptId: string | null;
   examPromptId: string | null;
+  presentationPromptId: string | null;
   start: string;
   end: string;
   answersRevealed: boolean;
@@ -41,12 +42,18 @@ export type TeacherSession = {
   story: StoryRef | null;
   writingPrompt: WritingPromptRef | null;
   examPrompt: ExamPromptRef | null;
+  presentationPrompt: PresentationPromptRef | null;
 };
 
 export type ExamPromptRef = {
   title: string;
   level: CourseLevel;
   timeLimitMinutes: number;
+};
+
+export type PresentationPromptRef = {
+  title: string;
+  level: CourseLevel;
 };
 
 export type RosterStudent = {
@@ -72,6 +79,10 @@ export type CurrentSession = {
 type StoryJoin = StoryRef | StoryRef[] | null;
 type PromptJoin = WritingPromptRefRow | WritingPromptRefRow[] | null;
 type ExamPromptJoin = ExamPromptRefRow | ExamPromptRefRow[] | null;
+type PresentationPromptJoin =
+  | PresentationPromptRefRow
+  | PresentationPromptRefRow[]
+  | null;
 
 type WritingPromptRefRow = {
   title: string;
@@ -84,6 +95,11 @@ type ExamPromptRefRow = {
   title: string;
   level: CourseLevel;
   time_limit_minutes: number;
+};
+
+type PresentationPromptRefRow = {
+  title: string;
+  level: CourseLevel;
 };
 
 function storyFromJoin(stories: StoryJoin): StoryRef | null {
@@ -120,12 +136,33 @@ function examPromptFromJoin(prompts: ExamPromptJoin): ExamPromptRef | null {
   };
 }
 
+function presentationPromptFromJoin(
+  prompts: PresentationPromptJoin
+): PresentationPromptRef | null {
+  const row = !prompts
+    ? null
+    : Array.isArray(prompts)
+      ? (prompts[0] ?? null)
+      : prompts;
+  if (!row) return null;
+  return {
+    title: row.title,
+    level: row.level,
+  };
+}
+
 export function sessionTitle(session: TeacherSession): string {
   if (session.sessionType === "writing") {
     return session.writingPrompt?.title || "Escritura";
   }
   if (session.sessionType === "exam") {
     return session.examPrompt?.title || "Examen";
+  }
+  if (session.sessionType === "presentation") {
+    return session.presentationPrompt?.title || "Presentación";
+  }
+  if (session.sessionType === "video_summary") {
+    return session.story?.title ?? "Traducción";
   }
   return session.story?.title ?? "Historia";
 }
@@ -251,6 +288,7 @@ type SessionRow = {
   story_id: string | null;
   writing_prompt_id?: string | null;
   exam_prompt_id?: string | null;
+  presentation_prompt_id?: string | null;
   session_start_time: string;
   session_end_time: string;
   answers_revealed: boolean;
@@ -260,6 +298,7 @@ type SessionRow = {
   stories: StoryJoin;
   writing_prompts?: PromptJoin;
   exam_prompts?: ExamPromptJoin;
+  presentation_prompts?: PresentationPromptJoin;
 };
 
 export function mapSessionRow(row: SessionRow): TeacherSession {
@@ -269,7 +308,9 @@ export function mapSessionRow(row: SessionRow): TeacherSession {
       ? "writing"
       : row.exam_prompt_id
         ? "exam"
-        : "story";
+        : row.presentation_prompt_id
+          ? "presentation"
+          : "story";
 
   return {
     id: row.id,
@@ -278,6 +319,7 @@ export function mapSessionRow(row: SessionRow): TeacherSession {
     storyId: row.story_id,
     writingPromptId: row.writing_prompt_id ?? null,
     examPromptId: row.exam_prompt_id ?? null,
+    presentationPromptId: row.presentation_prompt_id ?? null,
     start: row.session_start_time,
     end: row.session_end_time,
     answersRevealed: row.answers_revealed,
@@ -287,11 +329,14 @@ export function mapSessionRow(row: SessionRow): TeacherSession {
     story: storyFromJoin(row.stories),
     writingPrompt: promptFromJoin(row.writing_prompts ?? null),
     examPrompt: examPromptFromJoin(row.exam_prompts ?? null),
+    presentationPrompt: presentationPromptFromJoin(
+      row.presentation_prompts ?? null
+    ),
   };
 }
 
 export const SESSION_SELECT =
-  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, timer_started_at, session_start_time, session_end_time, answers_revealed, notes, session_link_token, stories ( title, slug ), writing_prompts ( title, prompt_text, writing_time_minutes, level ), exam_prompts ( title, level, time_limit_minutes )";
+  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, presentation_prompt_id, timer_started_at, session_start_time, session_end_time, answers_revealed, notes, session_link_token, stories ( title, slug ), writing_prompts ( title, prompt_text, writing_time_minutes, level ), exam_prompts ( title, level, time_limit_minutes ), presentation_prompts ( title, level )";
 
 const SESSION_SELECT_LEGACY =
   "id, course_id, story_id, session_start_time, session_end_time, answers_revealed, notes, session_link_token, stories ( title, slug )";

@@ -1,5 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { EvidenceStatus, StoryLevel } from "@/types";
+import type { ContentType, EvidenceStatus, StoryLevel } from "@/types";
 import { loadTagIndex } from "./content-tags";
 import {
   recommendNextActivity,
@@ -28,7 +28,7 @@ export type PronunciationHistoryItem = {
 export type SuggestedActivity = {
   href: string;
   title: string;
-  contentType: "story" | "writing_prompt" | "exam_prompt";
+  contentType: ContentType;
 };
 
 export type TopicSummary = {

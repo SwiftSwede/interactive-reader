@@ -1,6 +1,11 @@
 import type { CourseLevel, ExamTask2Type } from "@/types";
 
-export type SessionType = "story" | "writing" | "exam" | "video_summary";
+export type SessionType =
+  | "story"
+  | "writing"
+  | "exam"
+  | "video_summary"
+  | "presentation";
 
 export function isSessionType(
   value: string | null | undefined
@@ -9,7 +14,8 @@ export function isSessionType(
     value === "story" ||
     value === "writing" ||
     value === "exam" ||
-    value === "video_summary"
+    value === "video_summary" ||
+    value === "presentation"
   );
 }
 
@@ -17,6 +23,7 @@ export function sessionTypeLabel(type: SessionType): string {
   if (type === "writing") return "Escritura";
   if (type === "exam") return "Examen";
   if (type === "video_summary") return "Traducción";
+  if (type === "presentation") return "Presentación";
   return "Historia";
 }
 
@@ -47,6 +54,9 @@ export function studentSessionPath(input: {
   }
   if (input.sessionType === "exam") {
     return `/exam?session=${encodeURIComponent(input.token)}`;
+  }
+  if (input.sessionType === "presentation") {
+    return `/presentation?session=${encodeURIComponent(input.token)}`;
   }
   if (!input.storySlug) {
     return `/writing?session=${encodeURIComponent(input.token)}`;

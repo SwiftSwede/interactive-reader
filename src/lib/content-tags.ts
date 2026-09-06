@@ -24,6 +24,7 @@ export const CONTENT_TYPES: readonly ContentType[] = [
   "story",
   "writing_prompt",
   "exam_prompt",
+  "presentation_prompt",
 ];
 
 const TAG_TABLES: Record<TagType, string> = {
@@ -37,6 +38,7 @@ const CONTENT_TABLES: Record<ContentType, string> = {
   story: "stories",
   writing_prompt: "writing_prompts",
   exam_prompt: "exam_prompts",
+  presentation_prompt: "presentation_prompts",
 };
 
 export function tagTableFor(tagType: TagType): string {

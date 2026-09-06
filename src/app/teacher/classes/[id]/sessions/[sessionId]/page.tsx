@@ -29,7 +29,7 @@ export const metadata = {
 function openedLabel(
   opened: boolean,
   attended: boolean,
-  kind: "story" | "writing" | "exam" | "video_summary"
+  kind: "story" | "writing" | "exam" | "video_summary" | "presentation"
 ) {
   const noun =
     kind === "writing"
@@ -38,7 +38,9 @@ function openedLabel(
         ? "el examen"
         : kind === "video_summary"
           ? "la traducción"
-          : "la historia";
+          : kind === "presentation"
+            ? "la presentación"
+            : "la historia";
   if (!opened) return `Todavía no abre ${noun}.`;
   if (attended) return `Abrió ${noun}. Llegó a tiempo.`;
   return `Abrió ${noun}. Fuera de la ventana de clase.`;
@@ -68,6 +70,7 @@ export default async function SessionDetailPage({
   const isWriting = session.sessionType === "writing";
   const isExam = session.sessionType === "exam";
   const isVideo = session.sessionType === "video_summary";
+  const isPresentation = session.sessionType === "presentation";
   const [students, lookedUpWords, submissions, examGroups, examSubs, freeWrites] =
     await Promise.all([
       loadSessionStudentStatus(
@@ -76,7 +79,7 @@ export default async function SessionDetailPage({
         session.id,
         session.storyId
       ),
-      isWriting || isExam || isVideo
+      isWriting || isExam || isVideo || isPresentation
         ? Promise.resolve([])
         : loadLookedUpWords(supabase, session.id),
       isWriting
@@ -182,6 +185,17 @@ export default async function SessionDetailPage({
         )}
       </div>
 
+      {isPresentation && (
+        <p className="mt-4">
+          <Link
+            href={copyHref}
+            className="inline-flex h-11 items-center rounded-lg bg-gray-900 px-4 text-sm font-medium text-white"
+          >
+            Abrir la presentación
+          </Link>
+        </p>
+      )}
+
       {isVideo && (
         <p className="mt-2 text-sm text-gray-500">
           Los estudiantes entran a Traducción cuando termina el tiempo de
@@ -248,7 +262,7 @@ export default async function SessionDetailPage({
         </div>
       )}
 
-      {!isWriting && !isExam && !isVideo && (
+      {!isWriting && !isExam && !isVideo && !isPresentation && (
         <div className="mt-10">
           <h2 className="mb-3 text-lg font-semibold text-gray-900">
             Palabras más consultadas
@@ -364,7 +378,9 @@ export default async function SessionDetailPage({
                           ? "writing"
                           : isVideo
                             ? "video_summary"
-                            : "story"
+                            : isPresentation
+                              ? "presentation"
+                              : "story"
                     )}
                   </p>
                   {student.openedAt && (
@@ -400,7 +416,7 @@ export default async function SessionDetailPage({
                         </p>
                       )}
                     </div>
-                  ) : isExam ? null : student.answers.length === 0 ? (
+                  ) : isExam || isPresentation ? null : student.answers.length === 0 ? (
                     <p className="mt-2 text-sm text-gray-400">
                       Todavía no escribió respuestas.
                     </p>
