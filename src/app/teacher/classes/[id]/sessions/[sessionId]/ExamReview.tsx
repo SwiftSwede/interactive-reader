@@ -135,7 +135,7 @@ export default function ExamReview({
   const item = items[index];
   if (!item) {
     return (
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-text-muted">
         Este examen todavía no tiene preguntas para revisar.
       </p>
     );
@@ -143,21 +143,21 @@ export default function ExamReview({
 
   return (
     <div className="space-y-4">
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-text-muted">
         Tarea {item.task} · {index + 1} de {items.length}
       </p>
-      <p className="text-base font-medium text-gray-900">{item.prompt}</p>
-      <p className="rounded-lg bg-gray-50 px-3 py-3 text-sm text-gray-800">
+      <p className="text-base font-medium text-text-primary">{item.prompt}</p>
+      <p className="rounded-card bg-surface-hover px-3 py-3 text-sm text-text-primary">
         Respuesta: {item.correct}
       </p>
       <ul className="space-y-2">
         {item.answers.map((answer) => (
           <li
             key={answer.group}
-            className="rounded-lg border border-gray-100 px-3 py-2"
+            className="rounded-card border border-paper-line px-3 py-2"
           >
-            <p className="text-xs font-medium text-gray-500">{answer.group}</p>
-            <p className="mt-0.5 text-sm text-gray-800">
+            <p className="text-xs font-medium text-text-muted">{answer.group}</p>
+            <p className="mt-0.5 text-sm text-text-primary">
               {answer.text.trim() || "(vacío)"}
             </p>
           </li>
@@ -168,7 +168,7 @@ export default function ExamReview({
           type="button"
           disabled={index === 0}
           onClick={() => setIndex((value) => Math.max(0, value - 1))}
-          className="h-11 flex-1 rounded-lg border border-gray-200 text-sm font-medium text-gray-800 disabled:opacity-40"
+          className="h-11 flex-1 rounded-card border border-paper-line text-sm font-medium text-text-primary disabled:opacity-40"
         >
           Anterior
         </button>
@@ -178,7 +178,7 @@ export default function ExamReview({
           onClick={() =>
             setIndex((value) => Math.min(items.length - 1, value + 1))
           }
-          className="h-11 flex-1 rounded-lg bg-gray-900 text-sm font-medium text-white disabled:opacity-40"
+          className="h-11 flex-1 rounded-card bg-accent text-sm font-medium text-white disabled:opacity-40"
         >
           Siguiente
         </button>

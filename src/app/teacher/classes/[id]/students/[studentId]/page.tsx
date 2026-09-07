@@ -70,22 +70,22 @@ export default async function StudentDetailPage({
   });
 
   return (
-    <section className="mx-auto max-w-md px-4 py-10 md:max-w-2xl">
-      <p className="text-sm text-gray-500">
+    <section>
+      <p className="text-sm text-text-muted">
         <Link
           href={`/teacher/classes/${course.id}`}
-          className="underline-offset-2 hover:text-gray-800 hover:underline"
+          className="underline-offset-2 hover:text-text-primary hover:underline"
         >
           {course.name}
         </Link>
       </p>
-      <h1 className="mt-2 text-2xl font-bold text-gray-900">{displayName}</h1>
-      <p className="mt-1 text-sm text-gray-600">
+      <h1 className="mt-2 text-headline-lg text-text-primary">{displayName}</h1>
+      <p className="mt-1 text-sm text-text-secondary">
         Lo que hizo en cada clase. Sin juicios, solo lo que se ve.
       </p>
 
       {focusedFirst.length === 0 ? (
-        <p className="mt-8 text-sm text-gray-500">
+        <p className="mt-8 text-sm text-text-muted">
           Todavía no hay clases en este curso.
         </p>
       ) : (
@@ -97,18 +97,18 @@ export default async function StudentDetailPage({
               <li
                 key={session.id}
                 id={`session-${session.id}`}
-                className={`rounded-lg border px-3 py-3 ${
-                  focused ? "border-indigo-200 bg-indigo-50/40" : "border-gray-100"
+                className={`rounded-card border px-3 py-3 ${
+                  focused ? "border-accent-soft bg-accent-softer" : "border-paper-line"
                 }`}
               >
                 <Link
                   href={`/teacher/classes/${course.id}/sessions/${session.id}`}
-                  className="font-medium text-gray-900 hover:underline"
+                  className="font-medium text-text-primary hover:underline"
                 >
                   {sessionTitle(session)}
                 </Link>
                 <LocalDateTime iso={session.start} />
-                <p className="mt-2 text-sm text-gray-600">
+                <p className="mt-2 text-sm text-text-secondary">
                   {status?.opened
                     ? status.attended
                       ? `Abrió ${isWriting ? "la escritura" : "la historia"}. Llegó a tiempo.`
@@ -121,19 +121,19 @@ export default async function StudentDetailPage({
 
                 {isWriting ? (
                   <>
-                    <h3 className="mt-4 text-sm font-semibold text-gray-800">
+                    <h3 className="mt-4 text-sm font-semibold text-text-primary">
                       Escritura
                     </h3>
                     {!writing || !writing.submissionText.trim() ? (
-                      <p className="mt-1 text-sm text-gray-400">
+                      <p className="mt-1 text-sm text-text-muted">
                         Todavía no escribió.
                       </p>
                     ) : (
                       <div className="mt-2">
-                        <p className="whitespace-pre-wrap text-sm text-gray-800">
+                        <p className="whitespace-pre-wrap text-sm text-text-primary">
                           {writing.submissionText}
                         </p>
-                        <p className="mt-2 text-xs text-gray-500">
+                        <p className="mt-2 text-xs text-text-muted">
                           {writing.wordCount} palabras
                           {writing.wpm ? ` · ${writing.wpm} ppm` : ""}
                           {writing.status === "corrected"
@@ -145,7 +145,7 @@ export default async function StudentDetailPage({
                         {writing.id && (
                           <Link
                             href={`/teacher/classes/${course.id}/sessions/${session.id}/submissions/${writing.id}`}
-                            className="mt-2 inline-block text-sm text-indigo-600 underline-offset-2 hover:underline"
+                            className="mt-2 inline-block text-sm text-text-accent underline-offset-2 hover:underline"
                           >
                             Corregir
                           </Link>
@@ -155,21 +155,21 @@ export default async function StudentDetailPage({
                   </>
                 ) : (
                   <>
-                    <h3 className="mt-4 text-sm font-semibold text-gray-800">
+                    <h3 className="mt-4 text-sm font-semibold text-text-primary">
                       Comprensión
                     </h3>
                     {!status || status.answers.length === 0 ? (
-                      <p className="mt-1 text-sm text-gray-400">
+                      <p className="mt-1 text-sm text-text-muted">
                         Todavía no escribió respuestas.
                       </p>
                     ) : (
                       <ul className="mt-2 space-y-2">
                         {status.answers.map((answer) => (
                           <li key={answer.questionId}>
-                            <p className="text-xs font-medium text-gray-500">
+                            <p className="text-xs font-medium text-text-muted">
                               {answer.position}. {answer.question}
                             </p>
-                            <p className="mt-0.5 text-sm text-gray-800">
+                            <p className="mt-0.5 text-sm text-text-primary">
                               {answer.responseText.trim() || "(vacío)"}
                             </p>
                             <LocalDateTime iso={answer.submittedAt} />
@@ -178,11 +178,11 @@ export default async function StudentDetailPage({
                       </ul>
                     )}
 
-                    <h3 className="mt-4 text-sm font-semibold text-gray-800">
+                    <h3 className="mt-4 text-sm font-semibold text-text-primary">
                       Palabras que tocó
                     </h3>
                     {lookups.length === 0 ? (
-                      <p className="mt-1 text-sm text-gray-400">
+                      <p className="mt-1 text-sm text-text-muted">
                         No tocó ninguna palabra, o todavía no lo estamos
                         guardando.
                       </p>
@@ -193,7 +193,7 @@ export default async function StudentDetailPage({
                             key={`${lookup.text}-${lookup.lookedUpAt}`}
                             className="flex flex-wrap items-baseline gap-2"
                           >
-                            <span className="rounded-full bg-gray-100 px-2.5 py-1 text-sm text-gray-800">
+                            <span className="rounded-small bg-surface-hover px-2.5 py-1 text-sm text-text-primary">
                               {lookup.text}
                             </span>
                             <LocalDateTime iso={lookup.lookedUpAt} />

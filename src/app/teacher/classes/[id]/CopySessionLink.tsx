@@ -22,7 +22,7 @@ export default function CopySessionLink({ href }: { href: string }) {
     <button
       type="button"
       onClick={handleCopy}
-      className="flex h-11 w-full items-center justify-center whitespace-nowrap rounded-lg border border-gray-200 px-3 text-sm font-medium text-gray-800"
+      className="flex h-11 w-full items-center justify-center whitespace-nowrap rounded-card border border-paper-line px-3 text-sm font-medium text-text-primary"
     >
       {copied ? "Copiado" : "Copiar link"}
     </button>

@@ -49,8 +49,12 @@ export default function CourseRoster({
 
   if (students.length === 0) {
     return (
-      <p className="text-sm text-gray-500">
-        Todavía no hay estudiantes en este curso. Invítalos desde Invitaciones.
+      <p className="text-label-sm text-text-muted">
+        Todavía no hay estudiantes en este curso. Invítalos desde{" "}
+        <Link href="/teacher/students" className="text-text-accent hover:underline">
+          Estudiantes
+        </Link>
+        .
       </p>
     );
   }
@@ -76,29 +80,32 @@ export default function CourseRoster({
           />
         </div>
       )}
-      <ul className="divide-y divide-gray-100 rounded-lg border border-gray-100">
+      <ul className="grid grid-cols-1 items-start gap-3 min-[600px]:grid-cols-2 lg:grid-cols-3">
         {sorted.map((student) => (
-          <li key={student.studentId} className="px-3 py-3">
+          <li
+            key={student.studentId}
+            className="rounded-sheet border border-paper-line bg-surface p-4"
+          >
             <Link
               href={`/teacher/classes/${courseId}/students/${student.studentId}`}
-              className="block hover:bg-gray-50 md:flex md:items-baseline md:justify-between md:gap-4"
+              className="block rounded-card hover:bg-surface-hover"
             >
-              <p className="font-medium text-gray-900">{student.displayName}</p>
-              <div className="mt-0.5 md:mt-0 md:text-right">
-                <p className="text-sm text-gray-600">
-                  Asistencia: {student.attendedCount}/{student.sessionCount}
+              <p className="text-label-md text-text-primary">
+                {student.displayName}
+              </p>
+              <p className="mt-1 text-label-sm text-text-secondary">
+                Asistencia: {student.attendedCount}/{student.sessionCount}
+              </p>
+              {student.lastActivityAt ? (
+                <div className="mt-0.5 text-label-sm text-text-muted">
+                  Última actividad:
+                  <LocalDateTime iso={student.lastActivityAt} />
+                </div>
+              ) : (
+                <p className="mt-0.5 text-label-sm text-text-muted">
+                  Todavía no entra a una clase.
                 </p>
-                {student.lastActivityAt ? (
-                  <div className="text-sm text-gray-500">
-                    Última actividad:
-                    <LocalDateTime iso={student.lastActivityAt} />
-                  </div>
-                ) : (
-                  <p className="mt-0.5 text-sm text-gray-400">
-                    Todavía no entra a una clase.
-                  </p>
-                )}
-              </div>
+              )}
             </Link>
             <MoveStudentButton
               courseId={courseId}
@@ -126,10 +133,10 @@ function SortChip({
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-full px-3 py-1.5 text-sm ${
+      className={`min-h-11 rounded-small px-3 text-label-sm ${
         active
-          ? "bg-gray-900 text-white"
-          : "border border-gray-200 text-gray-700"
+          ? "bg-accent text-white"
+          : "border border-paper-line text-text-secondary"
       }`}
     >
       {label}

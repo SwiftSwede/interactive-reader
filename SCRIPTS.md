@@ -62,6 +62,23 @@ Seeds the stub sample lessons for dialogue, Movie Talk, and music lesson types. 
 npx tsx scripts/seed-phase5-samples.ts
 ```
 
+### Seed a Music class song (Class 6)
+
+Inserts (or updates by slug) a real song lesson: `Story.kind = "song"` with clean lyrics in `body_text`, `lyric_blanks` (numbered, deck-convention IDs), and `youtube_url`. No word annotations, no comprehension/personal questions (the Music class has none — those steps auto-hide). Artist bio waits for the Slice 57 build (no DB column yet).
+
+```bash
+npx tsx scripts/seed-music.ts            # seed all songs in the SONGS array
+npx tsx scripts/seed-music.ts --slug summer-of-69
+```
+
+To add a song: append an entry to `SONGS` in `scripts/seed-music.ts` (lyrics from the current Music deck on Google Drive, blanks with Kyle's numbering where repeated words reuse the same ID). Then annotate:
+
+```bash
+npx tsx scripts/annotate-story.ts --slug <slug>   # ~$0.01-0.02, 5-12 min
+```
+
+**Cost / time / status:** Free. A few seconds per song. Idempotent by slug. First real song: Summer of '69 (pre-intermediate, September 2026).
+
 ### Seed the Paris presentation
 
 Inserts (or updates) the intermediate Class 3 Format A presentation "Paris" into `presentation_prompts`. Run after `supabase/schema-phase5-presentation.sql`.

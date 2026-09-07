@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { requireTeacher } from "@/lib/auth-server";
 import { createClient } from "@/lib/supabase/server";
 import {
@@ -62,6 +63,7 @@ export async function createCourse(
   });
 
   revalidatePath("/teacher");
+  revalidatePath("/teacher/groups");
   if (enrolled === 0) {
     return { ok: true, message: `Listo. ${name} ya está en tu lista.` };
   }
@@ -75,6 +77,39 @@ export async function createCourse(
     ok: true,
     message: `Listo. ${name} ya está en tu lista, con ${enrolled} estudiantes.`,
   };
+}
+
+export type DeleteCourseResult = { ok: false; error: string };
+
+export async function deleteCourse(
+  formData: FormData
+): Promise<DeleteCourseResult> {
+  const teacher = await requireTeacher("/teacher");
+  const courseId = String(formData.get("courseId") ?? "").trim();
+
+  if (!courseId) {
+    return { ok: false, error: "No encontré ese grupo." };
+  }
+
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("courses")
+    .delete()
+    .eq("id", courseId)
+    .eq("teacher_id", teacher.id)
+    .select("id")
+    .maybeSingle();
+
+  if (error || !data) {
+    console.error("deleteCourse failed:", error);
+    return {
+      ok: false,
+      error: "No pude borrar ese grupo. Inténtalo de nuevo.",
+    };
+  }
+
+  revalidatePath("/teacher", "layout");
+  redirect("/teacher");
 }
 
 export type MoveStudentResult =

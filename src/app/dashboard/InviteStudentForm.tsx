@@ -5,6 +5,9 @@ import { inviteStudent, type InviteStudentResult } from "./invite-actions";
 
 const initialState: InviteStudentResult | null = null;
 
+const fieldClass =
+  "w-full rounded-card border border-paper-line bg-surface px-3 py-3 text-body-main text-text-primary placeholder:text-text-muted focus:border-2 focus:border-accent focus:outline-none";
+
 export default function InviteStudentForm() {
   const [state, formAction, isPending] = useActionState(
     inviteStudent,
@@ -14,7 +17,7 @@ export default function InviteStudentForm() {
   return (
     <form action={formAction} className="space-y-4">
       <label className="block">
-        <span className="mb-1.5 block text-sm font-medium text-gray-700">
+        <span className="mb-1.5 block text-label-md text-text-secondary">
           Email del estudiante
         </span>
         <input
@@ -23,13 +26,13 @@ export default function InviteStudentForm() {
           autoComplete="email"
           inputMode="email"
           required
-          className="w-full rounded-lg border border-gray-200 px-3 py-3 text-base text-gray-800 focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-400"
+          className={fieldClass}
           placeholder="sofia@email.com"
         />
       </label>
 
       <label className="block">
-        <span className="mb-1.5 block text-sm font-medium text-gray-700">
+        <span className="mb-1.5 block text-label-md text-text-secondary">
           Cómo los llamas
         </span>
         <input
@@ -37,23 +40,23 @@ export default function InviteStudentForm() {
           name="displayName"
           required
           maxLength={80}
-          className="w-full rounded-lg border border-gray-200 px-3 py-3 text-base text-gray-800 focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-400"
+          className={fieldClass}
           placeholder="Sofia G."
         />
       </label>
 
       {state && !state.ok && (
-        <p className="text-sm text-red-600">{state.error}</p>
+        <p className="text-label-sm text-error">{state.error}</p>
       )}
 
       {state && state.ok && (
-        <p className="text-sm text-gray-700">{state.message}</p>
+        <p className="text-label-sm text-text-secondary">{state.message}</p>
       )}
 
       <button
         type="submit"
         disabled={isPending}
-        className="w-full rounded-lg bg-gray-900 px-4 py-3 text-sm font-medium text-white disabled:opacity-60"
+        className="flex min-h-11 w-full items-center justify-center rounded-card bg-accent px-5 py-3 text-label-md font-medium text-white hover:bg-accent-hover disabled:opacity-60"
       >
         {isPending ? "Invitando..." : "Invitar"}
       </button>

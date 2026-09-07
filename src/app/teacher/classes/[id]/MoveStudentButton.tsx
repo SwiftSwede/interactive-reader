@@ -32,7 +32,7 @@ export default function MoveStudentButton({
           setError("");
           setConfirming(true);
         }}
-        className="mt-2 flex h-11 w-full items-center justify-center rounded-lg border border-gray-200 px-3 text-sm font-medium text-gray-800"
+        className="mt-2 flex h-11 w-full items-center justify-center rounded-card border border-paper-line px-3 text-sm font-medium text-text-primary"
       >
         Mover a {toLabel}
       </button>
@@ -41,7 +41,7 @@ export default function MoveStudentButton({
 
   return (
     <div className="mt-2">
-      <p className="mb-2 text-sm text-gray-600">
+      <p className="mb-2 text-sm text-text-secondary">
         Van a {toLabel} desde ahora. Siguen pagando igual. Los cursos nuevos
         también.
       </p>
@@ -61,7 +61,7 @@ export default function MoveStudentButton({
         <button
           type="submit"
           disabled={pending}
-          className="flex h-11 w-full items-center justify-center rounded-lg bg-gray-900 px-3 text-sm font-medium text-white disabled:opacity-60"
+          className="flex h-11 w-full items-center justify-center rounded-card bg-accent px-3 text-sm font-medium text-white disabled:opacity-60"
         >
           {pending ? "Moviendo..." : `Sí, a ${toLabel}`}
         </button>
@@ -70,11 +70,11 @@ export default function MoveStudentButton({
         type="button"
         disabled={pending}
         onClick={() => setConfirming(false)}
-        className="mt-2 w-full text-sm text-gray-500 underline-offset-2 hover:text-gray-800 hover:underline disabled:opacity-60"
+        className="mt-2 w-full text-sm text-text-muted underline-offset-2 hover:text-text-primary hover:underline disabled:opacity-60"
       >
         No, déjalo
       </button>
-      {error ? <p className="mt-2 text-sm text-red-600">{error}</p> : null}
+      {error ? <p className="mt-2 text-sm text-error">{error}</p> : null}
     </div>
   );
 }

@@ -17,7 +17,7 @@ export default function LocalDateTime({ iso }: { iso: string }) {
   }, [iso]);
 
   return (
-    <time dateTime={iso} className="mt-0.5 block text-sm text-gray-500">
+    <time dateTime={iso} className="mt-0.5 block text-label-sm text-text-muted">
       {label || "…"}
     </time>
   );

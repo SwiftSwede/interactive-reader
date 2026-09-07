@@ -206,20 +206,20 @@ On screens wider than 1024px, the layout does NOT change structurally. The same 
 
 Three columns, full viewport height, no bottom tab bar (the student 3-tab bar does NOT render on teacher routes):
 
-- **Left rail — fixed 240px.** Persistent nav, identical on every teacher page. White surface, 1px `--paper-line` border on the right edge. Items top to bottom: *Este mes* (default, `/teacher`), *Grupos* (all courses incl. archived), *Estudiantes* (global roster/search), *Analíticas* (palabras más consultadas), *Contenido* (disabled, "próximamente", until the content editor ships). Active item: `--surface-hover` background, terracotta left edge (3px) or terracotta text. Lucide icons (`home`, `users`, `search`, `bar-chart-3`, `book-open`). Rail bottom: teacher name/email + "Ver app como estudiante" link. UI language: Spanish.
+- **Left rail — fixed 240px.** Persistent nav, identical on every teacher page. White surface, 1px `--paper-line` border on the right edge. Items top to bottom: *Este mes* (default, `/teacher`), *Grupos* (all courses incl. archived), *Estudiantes* (global roster/search), *Analíticas* (palabras más consultadas), *Contenido* (disabled, "próximamente", until the content editor ships). Rail items are square on the left (flush to the rail) and `rounded-card` on the right. Active item: `--surface-hover` background plus a 3px terracotta left border on that square edge, never a separate unclipped bar against the curve. Lucide icons (`home`, `users`, `search`, `bar-chart-3`, `book-open`). Rail bottom: teacher name/email + "Ver app como estudiante" link. UI language: Spanish.
 - **Center — fluid, min-width 0.** The main view for the current route. Horizontal padding 24px. Content max-width 960px (NOT 672px — tables, grids, and multi-card rows benefit from width; the 672px rule is a story-readability rule and stories never render here).
 - **Right context panel — 360px, collapsible.** Details for the item selected in the center column (e.g., selected class → attendance grid, recording URL, session time, "Ver como estudiante"). White surface, 1px `--paper-line` border on the left edge. On screens < 1280px the right panel collapses into a slide-over sheet triggered from the center selection. The shell degrades to 2 columns (rail + center) below 1024px; the rail collapses to an icon-only 64px strip. Mobile (< 600px): rail becomes a top bar with a menu button opening a full-screen nav sheet. Teacher pages are usable but not optimized below 1024px.
 
 ### Visual language
 
-Same Paper Light theme, same tokens, same type scale as the student app (Lora headlines, Roboto Flex UI labels). Same tonal elevation: white cards on cream paper, 1px `--paper-line` borders, no shadows except sticky elements. Buttons: rounded-rectangle 16px (the pill shape stays reserved for lesson step nav). Touch targets 44px still apply — Kyle clicks fast mid-class.
+Same Paper Light theme, same tokens, same type scale as the student app (Lora headlines, Roboto Flex UI labels). Same tonal elevation: white cards on cream paper, 1px `--paper-line` borders, no shadows except sticky elements. Buttons: rounded-rectangle 16px (the pill shape stays reserved for lesson step nav). Touch targets 44px still apply — Kyle clicks fast mid-class. Teacher create/delete confirms (Nuevo mes, Nueva clase, Borrar mes) are centered `<dialog>` lightboxes (`rounded-sheet`, dimmed backdrop), not inline cards that push the page down.
 
 ### Key screens
 
 - **Este mes (default):** current calendar month. One card per group (course): group name, level label, day/time pattern, theme if set, readiness summary ("3/8 clases listas"), next class with countdown. Clicking a group expands/drills into its 8-class strip. If no course exists for the current month: empty state "Próximo mes en preparación" with a "Nuevo mes" button (generator ships in a later slice; until then the button routes to the existing create-course form).
 - **8-class strip:** the month's 8 sessions as a vertical list, one row per class: class number, type label (Historia, Pronunciación, Video, Conversación, Diálogo, Música, Escritura, Examen), date/time, content status (assigned / sin contenido), recording status (URL attached / empty). Selecting a row populates the right context panel.
-- **Grupos:** all courses, current first, archived below under "Meses anteriores". Each row shows theme when set. Archived months are fully browsable read-only, EXCEPT the theme field and recording URLs stay editable (recordings are pasted day-after-class; themes are often named late).
-- **Estudiantes:** searchable global roster across groups. Student card: name, email, current group, attendance history, writing submissions with WPM trend, "cambiar de nivel" action (existing roster-move behavior).
+- **Grupos:** all courses, current first, archived below under "Meses anteriores". Each row shows theme when set. Archived months are fully browsable read-only, EXCEPT the theme field and recording URLs stay editable (recordings are pasted day-after-class; themes are often named late). Inside a group, Estudiantes is a card grid (1 col mobile, 2 tablet, 3 desktop). Not a full-width stacked list. Four columns is too tight for names plus "Mover a Pre-intermedio". The global Estudiantes tab stays a searchable list.
+- **Estudiantes:** invite form first, then searchable global roster across groups. Student card: name, email, current group, attendance history, writing submissions with WPM trend, "cambiar de nivel" action (existing roster-move behavior).
 - **Analíticas:** palabras más consultadas only — per month, per level, aggregated across the month's stories. No other metrics in this phase (attendance rates, engagement scores etc. are future "institute administrator" territory, deliberately excluded).
 
 ### Attendance (interaction rules)
@@ -251,6 +251,8 @@ Three button variants plus the step navigation pill.
 **Text / Icon (ghost):**
 - Background: transparent
 - Text: `--text-accent`
+- Radius: `md` (16px), same as primary/secondary. Hover fill is never a sharp rectangle.
+- Padding: icon-only is a 44×44 hit area with the icon centered. Text ghosts use 12px horizontal padding (`px-3`) so the hover fill is not flush to the glyphs.
 - Min size: 44x44px touch target
 - Hover: subtle background (`--accent-soft`)
 - Active: background shift to `--surface-hover`

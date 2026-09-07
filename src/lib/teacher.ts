@@ -3,6 +3,8 @@ import { requireTeacher } from "@/lib/auth-server";
 import { isActiveClassroomSubscription } from "@/lib/classroom-access";
 import { createClient } from "@/lib/supabase/server";
 import { isSessionType, type SessionType } from "@/lib/activities";
+import { hasSessionContent } from "@/lib/dashboard";
+import { sessionsInMonth } from "./teacher-month";
 import type { CourseLevel, SubscriptionStatus } from "@/types";
 
 export type OwnedCourse = {
@@ -33,6 +35,7 @@ export type TeacherSession = {
   writingPromptId: string | null;
   examPromptId: string | null;
   presentationPromptId: string | null;
+  sessionDate: string;
   start: string;
   end: string;
   answersRevealed: boolean;
@@ -267,6 +270,40 @@ export function currentSessionKindLabel(kind: CurrentSessionKind): string {
   return "Última";
 }
 
+export {
+  courseMonthKey,
+  currentYearMonth,
+  formatDayTimePattern,
+  isCourseInMonth,
+  monthLabelFromYearMonth,
+  sessionsInMonth,
+  yearMonthFromIso,
+} from "./teacher-month";
+
+export function readySessionCount(
+  sessions: Array<{
+    sessionType: SessionType;
+    storyId: string | null;
+    writingPromptId: string | null;
+    examPromptId: string | null;
+    presentationPromptId: string | null;
+  }>
+): number {
+  return sessions.filter((session) => hasSessionContent(session)).length;
+}
+
+export function readinessLabel(
+  sessions: Array<{
+    sessionType: SessionType;
+    storyId: string | null;
+    writingPromptId: string | null;
+    examPromptId: string | null;
+    presentationPromptId: string | null;
+  }>
+): string {
+  return `${readySessionCount(sessions)}/8 clases listas`;
+}
+
 export async function getOwnedCourse(courseId: string): Promise<{
   course: OwnedCourse;
   supabase: Awaited<ReturnType<typeof createClient>>;
@@ -280,7 +317,7 @@ export async function getOwnedCourse(courseId: string): Promise<{
     .eq("teacher_id", teacher.id)
     .maybeSingle();
 
-  if (!data || data.archived) {
+  if (!data) {
     redirect("/teacher");
   }
 
@@ -297,6 +334,7 @@ type SessionRow = {
   presentation_prompt_id?: string | null;
   session_start_time: string;
   session_end_time: string;
+  session_date?: string | null;
   answers_revealed: boolean;
   notes: string | null;
   session_link_token: string;
@@ -326,6 +364,10 @@ export function mapSessionRow(row: SessionRow): TeacherSession {
     writingPromptId: row.writing_prompt_id ?? null,
     examPromptId: row.exam_prompt_id ?? null,
     presentationPromptId: row.presentation_prompt_id ?? null,
+    sessionDate:
+      row.session_date && /^\d{4}-\d{2}-\d{2}/.test(row.session_date)
+        ? row.session_date.slice(0, 10)
+        : row.session_start_time.slice(0, 10),
     start: row.session_start_time,
     end: row.session_end_time,
     answersRevealed: row.answers_revealed,
@@ -342,10 +384,10 @@ export function mapSessionRow(row: SessionRow): TeacherSession {
 }
 
 export const SESSION_SELECT =
-  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, presentation_prompt_id, timer_started_at, session_start_time, session_end_time, answers_revealed, notes, session_link_token, stories ( title, slug ), writing_prompts ( title, prompt_text, writing_time_minutes, level ), exam_prompts ( title, level, time_limit_minutes ), presentation_prompts ( title, level )";
+  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, presentation_prompt_id, timer_started_at, session_date, session_start_time, session_end_time, answers_revealed, notes, session_link_token, stories ( title, slug ), writing_prompts ( title, prompt_text, writing_time_minutes, level ), exam_prompts ( title, level, time_limit_minutes ), presentation_prompts ( title, level )";
 
 const SESSION_SELECT_LEGACY =
-  "id, course_id, story_id, session_start_time, session_end_time, answers_revealed, notes, session_link_token, stories ( title, slug )";
+  "id, course_id, story_id, session_date, session_start_time, session_end_time, answers_revealed, notes, session_link_token, stories ( title, slug )";
 
 export async function loadSessionsForCourses(
   supabase: Awaited<ReturnType<typeof createClient>>,
@@ -378,6 +420,127 @@ export async function loadCourseSessions(
   courseId: string
 ): Promise<TeacherSession[]> {
   return loadSessionsForCourses(supabase, [courseId]);
+}
+
+export type TeacherCourseRow = {
+  id: string;
+  name: string;
+  level: CourseLevel;
+  created_at: string;
+  archived: boolean;
+};
+
+export async function loadTeacherCourses(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  teacherId: string
+): Promise<TeacherCourseRow[]> {
+  const { data, error } = await supabase
+    .from("courses")
+    .select("id, name, level, created_at, archived")
+    .eq("teacher_id", teacherId)
+    .order("created_at", { ascending: false });
+
+  if (error || !data) {
+    if (error) console.error("loadTeacherCourses failed:", error);
+    return [];
+  }
+
+  return data as TeacherCourseRow[];
+}
+
+export type StudentCurrentGroup = {
+  courseId: string;
+  groupName: string;
+};
+
+export async function mapStudentsToCurrentGroup(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  studentIds: string[],
+  yearMonth: string
+): Promise<Map<string, StudentCurrentGroup>> {
+  const result = new Map<string, StudentCurrentGroup>();
+  const uniqueIds = [...new Set(studentIds)];
+  if (uniqueIds.length === 0) return result;
+
+  const { data, error } = await supabase
+    .from("course_enrollments")
+    .select(
+      "student_id, course_id, enrolled_at, courses ( id, name, archived )"
+    )
+    .in("student_id", uniqueIds);
+
+  if (error || !data) {
+    if (error) console.error("mapStudentsToCurrentGroup failed:", error);
+    return result;
+  }
+
+  type CourseJoin = { id: string; name: string; archived: boolean };
+  type EnrollmentRow = {
+    student_id: string;
+    course_id: string;
+    enrolled_at: string;
+    courses: CourseJoin | CourseJoin[] | null;
+  };
+
+  const byStudent = new Map<
+    string,
+    Array<{
+      courseId: string;
+      groupName: string;
+      archived: boolean;
+      enrolledAt: string;
+    }>
+  >();
+
+  for (const row of data as EnrollmentRow[]) {
+    const course = Array.isArray(row.courses) ? row.courses[0] : row.courses;
+    if (!course) continue;
+    const list = byStudent.get(row.student_id) ?? [];
+    list.push({
+      courseId: row.course_id,
+      groupName: course.name,
+      archived: course.archived,
+      enrolledAt: row.enrolled_at,
+    });
+    byStudent.set(row.student_id, list);
+  }
+
+  const courseIds = [
+    ...new Set(
+      [...byStudent.values()].flatMap((rows) => rows.map((row) => row.courseId))
+    ),
+  ];
+  const sessions = await loadSessionsForCourses(supabase, courseIds);
+  const sessionsByCourse = new Map<string, TeacherSession[]>();
+  for (const session of sessions) {
+    const list = sessionsByCourse.get(session.courseId) ?? [];
+    list.push(session);
+    sessionsByCourse.set(session.courseId, list);
+  }
+
+  for (const [studentId, enrollments] of byStudent) {
+    const unarchived = enrollments.filter((row) => !row.archived);
+    const pool = unarchived.length > 0 ? unarchived : enrollments;
+    const thisMonth = pool.filter(
+      (row) =>
+        sessionsInMonth(sessionsByCourse.get(row.courseId) ?? [], yearMonth)
+          .length > 0
+    );
+    const candidates = thisMonth.length > 0 ? thisMonth : pool;
+    candidates.sort(
+      (a, b) =>
+        new Date(b.enrolledAt).getTime() - new Date(a.enrolledAt).getTime()
+    );
+    const chosen = candidates[0];
+    if (chosen) {
+      result.set(studentId, {
+        courseId: chosen.courseId,
+        groupName: chosen.groupName,
+      });
+    }
+  }
+
+  return result;
 }
 
 export async function loadCourseRoster(

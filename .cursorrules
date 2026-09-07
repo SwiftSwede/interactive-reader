@@ -6,8 +6,8 @@ It contains the full architecture, data structure, feature build order (53 slice
 Follow it as your north star. Do not make decisions that contradict the PRD without asking.
 
 ## Current Phase
-**COMPLETE:** Phase 1, 1.5, 2a–4, plus Phase 5 classroom lesson types (exam 49a–49e, dialogue 45, Movie Talk 46, music 47, video summary 54, presentation 56a) and Slice 57 (student dashboard shell: Inicio, Lecciones, Herramientas, Perfil). Consumer paid tier, beginner UI, reverse translation, and print (slices 40–44, 50–53) are not built.
-**Next feature build:** Slice 56b (presentation prompt editor), then remaining Phase 5 consumer slices, when asked.
+**COMPLETE:** Phase 1, 1.5, 2a–4, plus Phase 5 classroom lesson types (exam 49a–49e, dialogue 45, Movie Talk 46, music 47, video summary 54, presentation 56a), Slice 57 (student dashboard shell: Inicio, Lecciones, Herramientas, Perfil), and Slice 58 (teacher dashboard shell: Este mes, Grupos, Estudiantes, Analíticas). Consumer paid tier, beginner UI, reverse translation, and print (slices 40–44, 50–53) are not built.
+**Next feature build:** Slice 59 (attendance + recordings), then Slice 56b (presentation prompt editor), then remaining Phase 5 consumer slices, when asked.
 
 **Session types supported:** `story` (Phase 2a), `writing` (Phase 2c), `exam` (Phase 5, slices 49a–49e), `video_summary` (Phase 5, slice 54), `presentation` (Phase 5, slice 56a), `conversation` and `pronunciation` (Phase 5, slice 57: live-only Zoom classes, no lesson page). Dialogue, Movie Talk, and music are `Story.kind` displays on story sessions (`dialogue` | `movie_talk` | `song`). Video summary is `Story.kind = "video_summary"` plus `session_type = "video_summary"`. Teacher chrome for that type is **Traducción**, not Video. Presentation is `session_type = "presentation"` plus `presentation_prompt_id`. Teacher chrome: **Presentación**.
 

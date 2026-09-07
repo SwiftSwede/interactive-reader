@@ -123,36 +123,36 @@ export default async function SessionDetailPage({
   });
 
   return (
-    <section className="mx-auto max-w-md px-4 py-10 md:max-w-2xl">
-      <p className="text-sm text-gray-500">
+    <section>
+      <p className="text-sm text-text-muted">
         <Link
           href={`/teacher/classes/${course.id}`}
-          className="underline-offset-2 hover:text-gray-800 hover:underline"
+          className="underline-offset-2 hover:text-text-primary hover:underline"
         >
           {course.name}
         </Link>
       </p>
-      <h1 className="mt-2 text-2xl font-bold text-gray-900">
+      <h1 className="mt-2 text-headline-lg text-text-primary">
         {sessionTitle(session)}
       </h1>
       <LocalDateTime iso={session.start} />
       {session.notes && (
-        <p className="mt-2 text-sm text-gray-600">{session.notes}</p>
+        <p className="mt-2 text-sm text-text-secondary">{session.notes}</p>
       )}
 
       <div className="mt-4 grid grid-cols-2 gap-2">
         {copyHref ? <CopySessionLink href={copyHref} /> : <span />}
         {isWriting || isVideo ? (
           session.timerStartedAt ? (
-            <p className="flex items-center text-sm text-gray-500">
+            <p className="flex items-center text-sm text-text-muted">
               Tiempo de escritura iniciado.
             </p>
           ) : Date.now() < new Date(session.start).getTime() ? (
-            <p className="flex items-center text-sm text-gray-500">
+            <p className="flex items-center text-sm text-text-muted">
               La escritura se inicia cuando empiece la clase.
             </p>
           ) : Date.now() > new Date(session.end).getTime() ? (
-            <p className="flex items-center text-sm text-gray-500">
+            <p className="flex items-center text-sm text-text-muted">
               La clase ya terminó.
             </p>
           ) : (
@@ -164,7 +164,7 @@ export default async function SessionDetailPage({
           )
         ) : isExam ? (
           unlocked ? (
-            <p className="flex items-center text-sm text-gray-500">
+            <p className="flex items-center text-sm text-text-muted">
               Revisión abierta.
             </p>
           ) : (
@@ -174,7 +174,7 @@ export default async function SessionDetailPage({
             />
           )
         ) : unlocked ? (
-          <p className="flex items-center text-sm text-gray-500">
+          <p className="flex items-center text-sm text-text-muted">
             Respuestas desbloqueadas.
           </p>
         ) : (
@@ -189,7 +189,7 @@ export default async function SessionDetailPage({
         <p className="mt-4">
           <Link
             href={copyHref}
-            className="inline-flex h-11 items-center rounded-lg bg-gray-900 px-4 text-sm font-medium text-white"
+            className="inline-flex h-11 items-center rounded-card bg-accent px-4 text-sm font-medium text-white"
           >
             Abrir la presentación
           </Link>
@@ -197,19 +197,19 @@ export default async function SessionDetailPage({
       ) : null}
 
       {isVideo && (
-        <p className="mt-2 text-sm text-gray-500">
+        <p className="mt-2 text-sm text-text-muted">
           Los estudiantes entran a Traducción cuando termina el tiempo de
           escribir. No hace falta otro botón.
         </p>
       )}
 
       {isWriting && session.writingPrompt && (
-        <div className="mt-8 rounded-lg border border-gray-100 px-3 py-3">
-          <p className="text-xs font-medium text-gray-500">Pregunta</p>
-          <p className="mt-1 whitespace-pre-wrap text-sm text-gray-800">
+        <div className="mt-8 rounded-card border border-paper-line px-3 py-3">
+          <p className="text-xs font-medium text-text-muted">Pregunta</p>
+          <p className="mt-1 whitespace-pre-wrap text-sm text-text-primary">
             {session.writingPrompt.promptText}
           </p>
-          <p className="mt-2 text-xs text-gray-500">
+          <p className="mt-2 text-xs text-text-muted">
             {session.writingPrompt.writingTimeMinutes} minutos
           </p>
         </div>
@@ -231,7 +231,7 @@ export default async function SessionDetailPage({
 
       {isExam && unlocked && examPrompt && (
         <div className="mt-10">
-          <h2 className="mb-3 text-lg font-semibold text-gray-900">
+          <h2 className="mb-3 text-headline-md text-text-primary">
             Revisión
           </h2>
           <ExamReview
@@ -264,27 +264,27 @@ export default async function SessionDetailPage({
 
       {!isWriting && !isExam && !isVideo && !isPresentation && (
         <div className="mt-10">
-          <h2 className="mb-3 text-lg font-semibold text-gray-900">
+          <h2 className="mb-3 text-headline-md text-text-primary">
             Palabras más consultadas
           </h2>
           {lookedUpWords === null ? (
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-text-muted">
               Todavía no estamos guardando las palabras. Eso llega con el
               siguiente paso.
             </p>
           ) : lookedUpWords.length === 0 ? (
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-text-muted">
               Todavía nadie ha tocado una palabra.
             </p>
           ) : (
-            <ol className="divide-y divide-gray-100 rounded-lg border border-gray-100">
+            <ol className="divide-y divide-paper-line rounded-card border border-paper-line">
               {lookedUpWords.map((word) => (
                 <li
                   key={word.text}
                   className="flex items-baseline justify-between gap-3 px-3 py-2"
                 >
-                  <span className="font-medium text-gray-900">{word.text}</span>
-                  <span className="text-sm text-gray-500">
+                  <span className="font-medium text-text-primary">{word.text}</span>
+                  <span className="text-sm text-text-muted">
                     {word.studentCount === 1
                       ? "1 estudiante"
                       : `${word.studentCount} estudiantes`}
@@ -298,11 +298,11 @@ export default async function SessionDetailPage({
 
       {isVideo && (
         <div className="mt-10">
-          <h2 className="mb-3 text-lg font-semibold text-gray-900">
+          <h2 className="mb-3 text-headline-md text-text-primary">
             Resúmenes de estudiantes
           </h2>
           {freeWrites.length === 0 ? (
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-text-muted">
               Todavía nadie ha entregado su resumen.
             </p>
           ) : (
@@ -314,17 +314,17 @@ export default async function SessionDetailPage({
                 return (
                   <li
                     key={row.id}
-                    className="rounded-lg border border-gray-100 px-3 py-3"
+                    className="rounded-card border border-paper-line px-3 py-3"
                   >
-                    <p className="text-sm font-medium text-gray-900">{name}</p>
-                    <p className="mt-1 text-xs text-gray-500">
+                    <p className="text-sm font-medium text-text-primary">{name}</p>
+                    <p className="mt-1 text-xs text-text-muted">
                       {row.wordCount} palabras
                       {row.elapsedSeconds
                         ? ` · ${Math.round(row.elapsedSeconds / 60)} min`
                         : ""}
                       {row.submittedAt ? " · Entregado" : " · Borrador"}
                     </p>
-                    <p className="mt-2 whitespace-pre-wrap text-sm text-gray-800">
+                    <p className="mt-2 whitespace-pre-wrap text-sm text-text-primary">
                       {row.submissionText || "(vacío)"}
                     </p>
                   </li>
@@ -336,11 +336,11 @@ export default async function SessionDetailPage({
       )}
 
       <div className="mt-10">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-headline-md text-text-primary">
           Estudiantes
         </h2>
         {students.length === 0 ? (
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-text-muted">
             Todavía no hay estudiantes en este curso.
           </p>
         ) : (
@@ -356,7 +356,7 @@ export default async function SessionDetailPage({
               return (
                 <li
                   key={student.studentId}
-                  className="rounded-lg border border-gray-100 px-3 py-3"
+                  className="rounded-card border border-paper-line px-3 py-3"
                 >
                   <Link
                     href={
@@ -364,11 +364,11 @@ export default async function SessionDetailPage({
                         ? `/teacher/classes/${course.id}/sessions/${session.id}/submissions/${submission.id}`
                         : `/teacher/classes/${course.id}/students/${student.studentId}?session=${session.id}`
                     }
-                    className="font-medium text-gray-900 hover:underline"
+                    className="font-medium text-text-primary hover:underline"
                   >
                     {student.displayName}
                   </Link>
-                  <p className="mt-1 text-sm text-gray-600">
+                  <p className="mt-1 text-sm text-text-secondary">
                     {openedLabel(
                       student.opened,
                       student.attended,
@@ -387,7 +387,7 @@ export default async function SessionDetailPage({
                     <LocalDateTime iso={student.openedAt} />
                   )}
                   {isExam && (
-                    <p className="mt-2 text-sm text-gray-700">
+                    <p className="mt-2 text-sm text-text-secondary">
                       {examGroup
                         ? `${examGroup.groupLabel}${
                             examGroup.writerId === student.studentId
@@ -404,10 +404,10 @@ export default async function SessionDetailPage({
                     </p>
                   )}
                   {isWriting ? (
-                    <div className="mt-2 text-sm text-gray-700">
+                    <div className="mt-2 text-sm text-text-secondary">
                       <p>{submissionStatusLabel(submission?.status)}</p>
                       {submission && (
-                        <p className="mt-0.5 text-sm text-gray-500">
+                        <p className="mt-0.5 text-sm text-text-muted">
                           {submission.wordCount} palabras
                           {session.writingPrompt?.level === "pre-intermediate" &&
                           submission.wpm
@@ -417,17 +417,17 @@ export default async function SessionDetailPage({
                       )}
                     </div>
                   ) : isExam || isPresentation ? null : student.answers.length === 0 ? (
-                    <p className="mt-2 text-sm text-gray-400">
+                    <p className="mt-2 text-sm text-text-muted">
                       Todavía no escribió respuestas.
                     </p>
                   ) : (
                     <ul className="mt-3 space-y-2">
                       {student.answers.map((answer) => (
                         <li key={answer.questionId}>
-                          <p className="text-xs font-medium text-gray-500">
+                          <p className="text-xs font-medium text-text-muted">
                             {answer.position}. {answer.question}
                           </p>
-                          <p className="mt-0.5 text-sm text-gray-800">
+                          <p className="mt-0.5 text-sm text-text-primary">
                             {answer.responseText.trim() || "(vacío)"}
                           </p>
                         </li>

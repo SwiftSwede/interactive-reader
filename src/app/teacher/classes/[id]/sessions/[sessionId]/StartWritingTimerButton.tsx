@@ -33,12 +33,12 @@ export default function StartWritingTimerButton({
         <button
           type="submit"
           disabled={pending}
-          className="flex min-h-11 w-full items-center justify-center rounded-lg bg-indigo-600 px-3 py-2 text-sm font-medium text-white disabled:opacity-60"
+          className="flex min-h-11 w-full items-center justify-center rounded-card bg-accent px-3 py-2 text-sm font-medium text-white disabled:opacity-60"
         >
           {pending ? "Iniciando..." : label}
         </button>
       </form>
-      {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
+      {error && <p className="mt-2 text-sm text-error">{error}</p>}
     </div>
   );
 }

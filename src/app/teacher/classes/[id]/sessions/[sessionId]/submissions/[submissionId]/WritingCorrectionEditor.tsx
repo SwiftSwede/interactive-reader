@@ -102,18 +102,18 @@ export default function WritingCorrectionEditor({
       />
 
       <div>
-        <p className="text-sm font-medium text-gray-800">Texto original</p>
-        <p className="mt-1 text-xs text-gray-500">
+        <p className="text-sm font-medium text-text-primary">Texto original</p>
+        <p className="mt-1 text-xs text-text-muted">
           Toca una palabra para marcar vocabulario o dejar una nota.
         </p>
         <div className="mt-2 flex gap-2">
           <button
             type="button"
             onClick={() => setTool("vocab")}
-            className={`h-9 rounded-lg border px-3 text-sm ${
+            className={`h-9 rounded-card border px-3 text-sm ${
               tool === "vocab"
                 ? "border-sky-700 bg-sky-700 text-white"
-                : "border-gray-200 text-gray-800"
+                : "border-paper-line text-text-primary"
             }`}
           >
             Vocabulario
@@ -121,16 +121,16 @@ export default function WritingCorrectionEditor({
           <button
             type="button"
             onClick={() => setTool("note")}
-            className={`h-9 rounded-lg border px-3 text-sm ${
+            className={`h-9 rounded-card border px-3 text-sm ${
               tool === "note"
-                ? "border-indigo-600 bg-indigo-600 text-white"
-                : "border-gray-200 text-gray-800"
+                ? "border-accent bg-accent text-white"
+                : "border-paper-line text-text-primary"
             }`}
           >
             Nota
           </button>
         </div>
-        <p className="mt-3 flex flex-wrap gap-x-1 gap-y-2 text-base leading-relaxed text-gray-800">
+        <p className="mt-3 flex flex-wrap gap-x-1 gap-y-2 text-base leading-relaxed text-text-primary">
           {words.map((word, index) => {
             const hasNote = notes.some((note) => note.word_index === index);
             const isGood = goodSet.has(index);
@@ -141,7 +141,7 @@ export default function WritingCorrectionEditor({
                 onClick={() => handleWordClick(index)}
                 className={`rounded-sm px-0.5 ${
                   isGood ? "bg-sky-100 text-sky-800" : ""
-                } ${hasNote ? "underline decoration-indigo-400 decoration-dotted" : ""}`}
+                } ${hasNote ? "underline decoration-accent decoration-dotted" : ""}`}
               >
                 {word}
               </button>
@@ -149,21 +149,21 @@ export default function WritingCorrectionEditor({
           })}
         </p>
         {noteIndex !== null && (
-          <div className="mt-3 rounded-lg border border-indigo-100 bg-indigo-50 px-3 py-3">
-            <p className="text-xs font-medium text-indigo-500">
+          <div className="mt-3 rounded-card border border-paper-line bg-accent-softer px-3 py-3">
+            <p className="text-xs font-medium text-text-accent">
               Nota en &quot;{words[noteIndex]}&quot;
             </p>
             <input
               value={noteDraft}
               onChange={(e) => setNoteDraft(e.target.value)}
-              className="mt-2 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-800"
+              className="mt-2 w-full rounded-card border border-paper-line px-3 py-2 text-sm text-text-primary"
               placeholder="Corta, en español"
             />
             <div className="mt-2 flex gap-2">
               <button
                 type="button"
                 onClick={saveNote}
-                className="rounded-lg bg-indigo-600 px-3 py-1.5 text-sm text-white"
+                className="rounded-card bg-accent px-3 py-1.5 text-sm text-white"
               >
                 Guardar nota
               </button>
@@ -173,7 +173,7 @@ export default function WritingCorrectionEditor({
                   setNoteIndex(null);
                   setNoteDraft("");
                 }}
-                className="rounded-lg px-3 py-1.5 text-sm text-gray-600"
+                className="rounded-card px-3 py-1.5 text-sm text-text-secondary"
               >
                 Cancelar
               </button>
@@ -183,7 +183,7 @@ export default function WritingCorrectionEditor({
       </div>
 
       <label className="block">
-        <span className="text-sm font-medium text-gray-800">
+        <span className="text-sm font-medium text-text-primary">
           Texto corregido
         </span>
         <textarea
@@ -193,30 +193,30 @@ export default function WritingCorrectionEditor({
             setSaved(false);
           }}
           rows={12}
-          className="mt-2 w-full resize-y rounded-lg border border-gray-200 px-3 py-3 text-base leading-relaxed text-gray-800 focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-400"
+          className="mt-2 w-full resize-y rounded-card border border-paper-line px-3 py-3 text-base leading-relaxed text-text-primary focus:border-2 focus:border-accent focus:outline-none"
         />
       </label>
 
-      <p className="text-xs text-gray-400">
+      <p className="text-xs text-text-muted">
         rojo = sobra, verde = falta, azul = buen vocabulario
       </p>
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-sm text-error">{error}</p>}
 
       <button
         type="submit"
         disabled={pending}
-        className="w-full rounded-lg bg-gray-900 px-4 py-3 text-sm font-medium text-white disabled:opacity-60"
+        className="w-full rounded-card bg-accent px-4 py-3 text-sm font-medium text-white disabled:opacity-60"
       >
         {pending ? "Guardando..." : "Guardar corrección"}
       </button>
 
       {saved && (
-        <p className="text-sm text-gray-700">
+        <p className="text-sm text-text-secondary">
           Listo. El estudiante lo ve en el mismo link de Zoom.{" "}
           <Link
             href={studentLink}
-            className="text-indigo-600 underline-offset-2 hover:underline"
+            className="text-text-accent underline-offset-2 hover:underline"
           >
             Abrir ese link
           </Link>
@@ -224,7 +224,7 @@ export default function WritingCorrectionEditor({
       )}
 
       <div>
-        <p className="mb-2 text-sm font-medium text-gray-800">
+        <p className="mb-2 text-sm font-medium text-text-primary">
           Así lo ve el estudiante
         </p>
         <WritingCorrectionView

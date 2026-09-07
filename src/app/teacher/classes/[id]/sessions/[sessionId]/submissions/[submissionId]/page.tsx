@@ -43,17 +43,17 @@ export default async function WritingSubmissionPage({
     "Sin nombre";
 
   return (
-    <section className="mx-auto max-w-md px-4 py-10 md:max-w-2xl">
-      <p className="text-sm text-gray-500">
+    <section>
+      <p className="text-sm text-text-muted">
         <Link
           href={`/teacher/classes/${course.id}/sessions/${session.id}`}
-          className="underline-offset-2 hover:text-gray-800 hover:underline"
+          className="underline-offset-2 hover:text-text-primary hover:underline"
         >
           {session.writingPrompt?.title || "Escritura"}
         </Link>
       </p>
-      <h1 className="mt-2 text-2xl font-bold text-gray-900">{studentName}</h1>
-      <p className="mt-1 text-sm text-gray-500">
+      <h1 className="mt-2 text-headline-lg text-text-primary">{studentName}</h1>
+      <p className="mt-1 text-sm text-text-muted">
         {submission.wordCount} palabras
         {session.writingPrompt?.level === "pre-intermediate" && submission.wpm
           ? ` · ${submission.wpm} ppm`
