@@ -77,7 +77,7 @@ const PRESENTATIONS: PresentationSeed[] = [
         youtube_url: "https://www.youtube.com/watch?v=B2zhLYz4pYo",
         title: "Video 1",
         vocabulary: [
-          vocab("Forefront", "dar una paliza (golpes o palabras)"),
+          vocab("Forefront", "a la vanguardia"),
           vocab("Remarkable", "notable"),
           vocab("Chronicle", "narrar"),
           vocab("Lush", "exuberante"),
