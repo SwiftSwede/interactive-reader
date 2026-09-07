@@ -79,15 +79,35 @@ npx tsx scripts/annotate-story.ts --slug <slug>   # ~$0.01-0.02, 5-12 min
 
 **Cost / time / status:** Free. A few seconds per song. Idempotent by slug. First real song: Summer of '69 (pre-intermediate, September 2026).
 
-### Seed the Paris presentation
+### Seed a Video Summary Translation lesson (Pre-Int Class 3)
 
-Inserts (or updates) the intermediate Class 3 Format A presentation "Paris" into `presentation_prompts`. Run after `supabase/schema-phase5-presentation.sql`.
+Inserts (or updates by slug) a video summary lesson: `Story.kind = "video_summary"` with the English summary in `body_text` (teacher-only answer key), the English-structured Spanish summary in `spanish_summary`, and the Spanish paragraphs in `video_summary_paragraphs` (translations start empty — Kyle fills them live in class).
 
 ```bash
-npx tsx scripts/seed-presentation.ts
+npx tsx scripts/seed-video-summary.ts                  # seed all lessons
+npx tsx scripts/seed-video-summary.ts --slug <slug>    # seed one lesson
 ```
 
-**Cost / time / status:** Free. A few seconds. Idempotent by title.
+To add a lesson: append an entry to `LESSONS` in `scripts/seed-video-summary.ts` (YouTube URL, English summary, English-structured Spanish summary — same number of paragraphs in both). No annotation, no IPA, no questions — those steps don't apply.
+
+⚠️ Re-seeding a lesson whose paragraphs already contain live teacher translations (i.e. after the class happened) requires `--force` — it deletes the paragraphs and wipes the class record.
+
+**Cost / time / status:** Free. A few seconds. Idempotent by slug. Seeded: Shaun the Sheep "Cabbage Football", Mr. Bean "Late for the Dentist", Shaun the Sheep "Babysitting Timmy" (September 2026).
+
+### Seed a presentation class (intermediate Class 3 Format A)
+
+Inserts (or updates) an intermediate presentation lesson into `presentation_prompts`. Schema: `supabase/schema-phase5-presentation.sql`.
+
+```bash
+npx tsx scripts/seed-presentation.ts                  # seed all lessons
+npx tsx scripts/seed-presentation.ts --slug gabo      # seed one lesson
+```
+
+To add a lesson: append an entry to `PRESENTATIONS` in `scripts/seed-presentation.ts` (title, theme, warmup question, segments array). Source: Kyle's "2. Presentation: \<Title\>" Google Slides deck on Drive — download with the google-workspace skill (`drive download <id> --export-mime text/plain`), then transcribe each video/part block into a segment: YouTube URL (use `&t=300s` for a mid-video start point), vocabulary (English=Spanish, optional example sentence), comprehension questions **with answers**. No annotation, no IPA, no pronunciation — those steps don't apply to this lesson type.
+
+⚠️ Re-seeding a lesson that already has student responses (i.e. after the class happened) requires `--force` — content would be overwritten while students' answers reference the old segment/question ids. Without `--force` the guard refuses and the class data is safe.
+
+**Cost / time / status:** Free. A few seconds. Idempotent by title+level (upserts in place — never deletes the row). Seeded: Paris (May 2026), Gabo / Gabriel García Márquez (September 2026).
 
 ### Generate word timestamps for karaoke (Whisper)
 
@@ -172,6 +192,12 @@ npx tsx scripts/apply-phase4-schema.ts
 Creates `presentation_prompts`, `presentation_responses`, and `presentation_vocab_notes`, adds `presentation_prompt_id` and `presentation_step` to `course_sessions`, and updates session_type / activity / content_tags CHECK constraints. Apply in the Supabase SQL Editor, or via the MCP migration, then seed Paris.
 
 The SQL file is `supabase/schema-phase5-presentation.sql`.
+
+### Apply Zoom room URL (slice 58b)
+
+Adds nullable `courses.zoom_url` (one Zoom room per group/month). Apply in the Supabase SQL Editor, or it is already applied via MCP on the live project.
+
+The SQL file is `supabase/schema-slice-58b-zoom-url.sql`.
 
 ### Seed classroom_level from Stripe
 
