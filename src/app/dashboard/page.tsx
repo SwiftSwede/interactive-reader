@@ -112,6 +112,7 @@ export default async function DashboardPage() {
                     lifecycle={lesson.lifecycle}
                     completed={lesson.completed}
                     hasRecording={lesson.hasRecording}
+                    recordingYoutubeUrl={lesson.recordingYoutubeUrl}
                     sessionDate={lesson.sessionDate}
                     href={lesson.href}
                     liveOnly={lesson.liveOnly}

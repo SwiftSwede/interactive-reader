@@ -7,6 +7,7 @@ import {
   isNearUtcToday,
   pickActiveCourseId,
   pickTodaySession,
+  liveOnlyRecordingHref,
   toDashboardLesson,
   type CourseCandidate,
   type DashboardLesson,
@@ -110,7 +111,58 @@ describe("toDashboardLesson", () => {
     assert.equal(lesson.liveOnly, true);
     assert.equal(lesson.lifecycle, "live");
     assert.equal(lesson.href, null);
-    assert.equal(lesson.completed, false);
+    assert.equal(lesson.completed, true);
+  });
+
+  test("live-only after class keeps href null and exposes the recording url", () => {
+    const lesson = toDashboardLesson({
+      sessionId: "s1",
+      sessionType: "pronunciation",
+      storyId: null,
+      writingPromptId: null,
+      examPromptId: null,
+      presentationPromptId: null,
+      title: null,
+      storySlug: null,
+      token: "tok",
+      recordingYoutubeUrl: "https://youtu.be/abc",
+      completed: true,
+      now: new Date("2026-09-07T12:00:00.000Z"),
+      ...times,
+    });
+    assert.equal(lesson.liveOnly, true);
+    assert.equal(lesson.lifecycle, "after");
+    assert.equal(lesson.href, null);
+    assert.equal(lesson.hasRecording, true);
+    assert.equal(lesson.recordingYoutubeUrl, "https://youtu.be/abc");
+    assert.equal(lesson.completed, true);
+  });
+
+  test("live-only recording link is after-class only", () => {
+    assert.equal(
+      liveOnlyRecordingHref({
+        liveOnly: true,
+        lifecycle: "after",
+        recordingYoutubeUrl: "https://youtu.be/abc",
+      }),
+      "https://youtu.be/abc"
+    );
+    assert.equal(
+      liveOnlyRecordingHref({
+        liveOnly: true,
+        lifecycle: "live",
+        recordingYoutubeUrl: "https://youtu.be/abc",
+      }),
+      null
+    );
+    assert.equal(
+      liveOnlyRecordingHref({
+        liveOnly: false,
+        lifecycle: "after",
+        recordingYoutubeUrl: "https://youtu.be/abc",
+      }),
+      null
+    );
   });
 
   test("hasRecording follows the youtube url", () => {
@@ -158,6 +210,7 @@ describe("pickTodaySession", () => {
         lifecycle: "upcoming",
         completed: false,
         hasRecording: false,
+        recordingYoutubeUrl: null,
         sessionDate: "2026-09-05",
         sessionStartTime: "2026-09-05T19:00:00.000Z",
         sessionEndTime: "2026-09-05T20:30:00.000Z",
@@ -171,6 +224,7 @@ describe("pickTodaySession", () => {
         lifecycle: "upcoming",
         completed: false,
         hasRecording: false,
+        recordingYoutubeUrl: null,
         sessionDate: "2026-09-06",
         sessionStartTime: "2026-09-06T19:00:00.000Z",
         sessionEndTime: "2026-09-06T20:30:00.000Z",

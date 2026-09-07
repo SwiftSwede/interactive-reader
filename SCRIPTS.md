@@ -199,6 +199,12 @@ Adds nullable `courses.zoom_url` (one Zoom room per group/month). Apply in the S
 
 The SQL file is `supabase/schema-slice-58b-zoom-url.sql`.
 
+### Apply attendance override (slice 59)
+
+Makes `session_attendance.first_opened_at` nullable and adds teacher INSERT/UPDATE RLS so Kyle can mark asistió / no asistió. Apply in the Supabase SQL Editor, or via the MCP migration.
+
+The SQL file is `supabase/schema-slice-59-attendance.sql`.
+
 ### Seed classroom_level from Stripe
 
 Sets `profiles.classroom_level` from the live Stripe price when the field is empty. Does not overwrite a teacher move. Run once after adding the classroom_level column.

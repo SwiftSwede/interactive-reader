@@ -1,11 +1,10 @@
 import Link from "next/link";
-import { areAnswersUnlocked } from "@/lib/sessions";
+import { ChevronRight } from "lucide-react";
 import CopySessionLink from "@/app/teacher/classes/[id]/CopySessionLink";
 import DeleteSessionButton from "@/app/teacher/classes/[id]/DeleteSessionButton";
 import UnlockAnswersButton from "@/app/teacher/classes/[id]/UnlockAnswersButton";
 import LocalDateTime from "@/components/LocalDateTime";
-import { sessionTitle, type TeacherSession } from "@/lib/teacher";
-import { studentSessionPath } from "@/lib/activities";
+import { studentSessionPath, type SessionType } from "@/lib/activities";
 
 function attendanceLabel(names: string[]): string {
   if (names.length === 0) return "Nadie ha entrado todavía.";
@@ -14,36 +13,77 @@ function attendanceLabel(names: string[]): string {
 
 export default function TeacherSessionRow({
   courseId,
-  session,
+  classNumber,
+  sessionId,
+  sessionType,
+  title,
+  typeLabel,
+  start,
+  notes,
+  token,
+  storySlug,
+  contentStatus,
+  recordingStatus,
   attendedNames,
+  unlocked,
+  selected,
+  onSelect,
 }: {
   courseId: string;
-  session: TeacherSession;
+  classNumber: number;
+  sessionId: string;
+  sessionType: SessionType;
+  title: string;
+  typeLabel: string;
+  start: string;
+  notes: string | null;
+  token: string;
+  storySlug: string | null;
+  contentStatus: string;
+  recordingStatus: string;
   attendedNames: string[];
+  unlocked: boolean;
+  selected: boolean;
+  onSelect: () => void;
 }) {
-  const unlocked = areAnswersUnlocked({
-    answersRevealed: session.answersRevealed,
-    sessionEndTime: session.end,
-  });
   const studentHref = studentSessionPath({
-    sessionType: session.sessionType,
-    token: session.token,
-    storySlug: session.story?.slug,
+    sessionType,
+    token,
+    storySlug,
   });
 
   return (
-    <li className="px-4 py-4">
-      <Link
-        href={`/teacher/classes/${courseId}/sessions/${session.id}`}
-        className="block"
+    <li
+      className={`relative px-4 py-4 ${
+        selected ? "bg-surface-hover" : ""
+      }`}
+    >
+      {selected ? (
+        <span
+          className="absolute top-0 bottom-0 left-0 w-[3px] bg-accent"
+          aria-hidden="true"
+        />
+      ) : null}
+      <button
+        type="button"
+        onClick={onSelect}
+        className="w-full pr-12 text-left"
       >
-        <p className="text-label-md text-text-primary hover:underline">
-          {sessionTitle(session)}
+        <p className="text-label-sm text-text-muted">
+          Clase {classNumber} · {typeLabel} · {contentStatus} · {recordingStatus}
         </p>
-        <LocalDateTime iso={session.start} />
+        <p className="mt-1 text-label-md text-text-primary">{title}</p>
+        <LocalDateTime iso={start} />
+      </button>
+      <Link
+        href={`/teacher/classes/${courseId}/sessions/${sessionId}`}
+        aria-label={`Abrir ${title}`}
+        className="absolute top-4 right-3 inline-flex h-11 w-11 items-center justify-center rounded-card text-text-muted hover:bg-accent-soft hover:text-text-accent"
+      >
+        <ChevronRight className="h-5 w-5" aria-hidden="true" />
       </Link>
-      {session.notes ? (
-        <p className="mt-1 text-label-sm text-text-secondary">{session.notes}</p>
+      {notes ? (
+        <p className="mt-1 text-label-sm text-text-secondary">{notes}</p>
       ) : null}
       <p className="mt-1 text-label-sm text-text-secondary">
         {attendanceLabel(attendedNames)}
@@ -53,20 +93,20 @@ export default function TeacherSessionRow({
           {attendedNames.join(", ")}
         </p>
       ) : null}
-      {session.sessionType === "story" ? (
+      {sessionType === "story" ? (
         unlocked ? (
           <p className="mt-2 text-label-sm text-text-muted">
             Respuestas desbloqueadas.
           </p>
         ) : (
           <div className="mt-2">
-            <UnlockAnswersButton courseId={courseId} sessionId={session.id} />
+            <UnlockAnswersButton courseId={courseId} sessionId={sessionId} />
           </div>
         )
       ) : null}
       <div className="mt-2 grid grid-cols-2 items-stretch gap-2">
         {studentHref ? <CopySessionLink href={studentHref} /> : <span />}
-        <DeleteSessionButton courseId={courseId} sessionId={session.id} />
+        <DeleteSessionButton courseId={courseId} sessionId={sessionId} />
       </div>
     </li>
   );

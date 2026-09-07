@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS public.session_attendance (
   course_session_id UUID NOT NULL REFERENCES public.course_sessions(id) ON DELETE CASCADE,
   student_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
   attended BOOLEAN NOT NULL DEFAULT FALSE,
-  first_opened_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  first_opened_at TIMESTAMPTZ DEFAULT now(),
   UNIQUE (course_session_id, student_id)
 );
 
@@ -315,6 +315,33 @@ CREATE POLICY "Students can update own attendance"
   ON public.session_attendance FOR UPDATE
   USING (student_id = auth.uid())
   WITH CHECK (student_id = auth.uid());
+
+CREATE POLICY "Teachers can insert attendance on own courses"
+  ON public.session_attendance FOR INSERT
+  WITH CHECK (
+    EXISTS (
+      SELECT 1 FROM public.course_sessions cs
+      WHERE cs.id = course_session_id
+        AND public.teacher_owns_course(cs.course_id)
+    )
+  );
+
+CREATE POLICY "Teachers can update attendance on own courses"
+  ON public.session_attendance FOR UPDATE
+  USING (
+    EXISTS (
+      SELECT 1 FROM public.course_sessions cs
+      WHERE cs.id = course_session_id
+        AND public.teacher_owns_course(cs.course_id)
+    )
+  )
+  WITH CHECK (
+    EXISTS (
+      SELECT 1 FROM public.course_sessions cs
+      WHERE cs.id = course_session_id
+        AND public.teacher_owns_course(cs.course_id)
+    )
+  );
 
 -- Comprehension responses
 CREATE POLICY "Teachers can read responses on own courses"

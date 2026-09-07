@@ -7,6 +7,8 @@ import {
   monthLabelFromYearMonth,
   readinessLabel,
   readySessionCount,
+  sessionContentStatus,
+  sessionRecordingStatus,
   sessionsInMonth,
   yearMonthFromIso,
 } from "./teacher";
@@ -130,6 +132,31 @@ describe("readinessLabel", () => {
       { sessionType: "story" as const, storyId: "s1", ...emptyRefs },
     ];
     assert.equal(readinessLabel(sessions), "1/8 clases listas");
+  });
+});
+
+describe("sessionContentStatus", () => {
+  test("labels live-only as ready", () => {
+    assert.equal(
+      sessionContentStatus({
+        sessionType: "conversation",
+        storyId: null,
+        writingPromptId: null,
+        examPromptId: null,
+        presentationPromptId: null,
+      }),
+      "Contenido listo"
+    );
+  });
+});
+
+describe("sessionRecordingStatus", () => {
+  test("labels empty and set urls", () => {
+    assert.equal(sessionRecordingStatus(null), "Sin grabación");
+    assert.equal(
+      sessionRecordingStatus("https://youtu.be/abc"),
+      "Grabación"
+    );
   });
 });
 

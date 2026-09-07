@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { areAnswersUnlocked } from "@/lib/sessions";
-import { studentSessionPath } from "@/lib/activities";
+import { isLiveOnlySessionType, studentSessionPath } from "@/lib/activities";
 import UnlockAnswersButton from "../../UnlockAnswersButton";
 import CopySessionLink from "../../CopySessionLink";
 import LocalDateTime from "@/components/LocalDateTime";
+import SessionRecordingForm from "@/components/teacher/SessionRecordingForm";
+import AttendanceToggle from "@/components/teacher/AttendanceToggle";
+import { isAutoMarked } from "@/lib/attendance";
 import StartWritingTimerButton from "./StartWritingTimerButton";
 import StartExamReviewButton from "./StartExamReviewButton";
 import ExamGroupForm from "./ExamGroupForm";
@@ -71,6 +74,7 @@ export default async function SessionDetailPage({
   const isExam = session.sessionType === "exam";
   const isVideo = session.sessionType === "video_summary";
   const isPresentation = session.sessionType === "presentation";
+  const isLiveOnly = isLiveOnlySessionType(session.sessionType);
   const [students, lookedUpWords, submissions, examGroups, examSubs, freeWrites] =
     await Promise.all([
       loadSessionStudentStatus(
@@ -183,6 +187,14 @@ export default async function SessionDetailPage({
             sessionId={session.id}
           />
         )}
+      </div>
+
+      <div className="mt-6">
+        <SessionRecordingForm
+          courseId={course.id}
+          sessionId={session.id}
+          recordingUrl={session.recordingYoutubeUrl}
+        />
       </div>
 
       {isPresentation && copyHref ? (
@@ -358,31 +370,48 @@ export default async function SessionDetailPage({
                   key={student.studentId}
                   className="rounded-card border border-paper-line px-3 py-3"
                 >
+                  <AttendanceToggle
+                    courseId={course.id}
+                    sessionId={session.id}
+                    studentId={student.studentId}
+                    attended={student.attended}
+                    autoMarked={
+                      !isLiveOnly &&
+                      isAutoMarked(
+                        student.openedAt,
+                        session.start,
+                        session.end
+                      )
+                    }
+                    name={student.displayName}
+                  />
                   <Link
                     href={
                       isWriting && submission
                         ? `/teacher/classes/${course.id}/sessions/${session.id}/submissions/${submission.id}`
                         : `/teacher/classes/${course.id}/students/${student.studentId}?session=${session.id}`
                     }
-                    className="font-medium text-text-primary hover:underline"
+                    className="mt-2 inline-block text-label-sm text-text-accent underline-offset-2 hover:underline"
                   >
-                    {student.displayName}
+                    Ver ficha
                   </Link>
-                  <p className="mt-1 text-sm text-text-secondary">
-                    {openedLabel(
-                      student.opened,
-                      student.attended,
-                      isExam
-                        ? "exam"
-                        : isWriting
-                          ? "writing"
-                          : isVideo
-                            ? "video_summary"
-                            : isPresentation
-                              ? "presentation"
-                              : "story"
-                    )}
-                  </p>
+                  {!isLiveOnly ? (
+                    <p className="mt-1 text-sm text-text-secondary">
+                      {openedLabel(
+                        student.opened,
+                        student.attended,
+                        isExam
+                          ? "exam"
+                          : isWriting
+                            ? "writing"
+                            : isVideo
+                              ? "video_summary"
+                              : isPresentation
+                                ? "presentation"
+                                : "story"
+                      )}
+                    </p>
+                  ) : null}
                   {student.openedAt && (
                     <LocalDateTime iso={student.openedAt} />
                   )}

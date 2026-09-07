@@ -1,20 +1,30 @@
 import type { CourseLevel } from "@/types";
 import CourseRoster from "./CourseRoster";
-import TeacherSessionRow from "@/components/teacher/TeacherSessionRow";
+import ClassStrip, {
+  type ClassStripItem,
+} from "@/components/teacher/ClassStrip";
 import DeleteCourseButton from "./DeleteCourseButton";
 import CourseWorkspace from "@/components/teacher/CourseWorkspace";
 import NewClassButton from "@/components/teacher/NewClassButton";
 import ZoomUrlForm from "./ZoomUrlForm";
 import ClassDayCard from "@/components/dashboard/ClassDayCard";
 import { TEACHER_APP_LABEL } from "@/components/dashboard/JoinCard";
-import { isLiveOnlySessionType, sessionTypeLabel } from "@/lib/activities";
+import {
+  isLiveOnlySessionType,
+  sessionTypeLabel,
+} from "@/lib/activities";
 import { isLocalCalendarDate } from "@/lib/dashboard";
 import { getClassDayPhase } from "@/lib/session-phase";
+import { areAnswersUnlocked } from "@/lib/sessions";
 import {
   courseLevelLabel,
   getOwnedCourse,
   loadCourseRoster,
   loadCourseSessions,
+  sessionContentStatus,
+  sessionRecordingStatus,
+  sessionTitle,
+  type AttendanceMark,
 } from "@/lib/teacher";
 
 export const metadata = {
@@ -71,27 +81,76 @@ export default async function CourseClassPage({
     sessionIds.length > 0
       ? await supabase
           .from("session_attendance")
-          .select("course_session_id, student_id, attended")
+          .select("course_session_id, student_id, attended, first_opened_at")
           .in("course_session_id", sessionIds)
-          .eq("attended", true)
       : { data: [] };
 
   const nameByStudentId = new Map(Object.entries(displayNames));
 
-  const attendedNamesBySession = new Map<string, string[]>();
-  for (const row of (attendanceRows ?? []) as {
+  type AttendanceRow = {
     course_session_id: string;
     student_id: string;
     attended: boolean;
-  }[]) {
-    const names = attendedNamesBySession.get(row.course_session_id) ?? [];
-    names.push(nameByStudentId.get(row.student_id) ?? "Sin nombre");
-    attendedNamesBySession.set(row.course_session_id, names);
+    first_opened_at: string | null;
+  };
+
+  const attendanceBySession = new Map<
+    string,
+    Map<string, { attended: boolean; firstOpenedAt: string | null }>
+  >();
+  const attendedNamesBySession = new Map<string, string[]>();
+  for (const row of (attendanceRows ?? []) as AttendanceRow[]) {
+    const byStudent =
+      attendanceBySession.get(row.course_session_id) ?? new Map();
+    byStudent.set(row.student_id, {
+      attended: row.attended === true,
+      firstOpenedAt: row.first_opened_at ?? null,
+    });
+    attendanceBySession.set(row.course_session_id, byStudent);
+
+    if (row.attended) {
+      const names = attendedNamesBySession.get(row.course_session_id) ?? [];
+      names.push(nameByStudentId.get(row.student_id) ?? "Sin nombre");
+      attendedNamesBySession.set(row.course_session_id, names);
+    }
   }
 
   for (const names of attendedNamesBySession.values()) {
     names.sort((a, b) => a.localeCompare(b, "es"));
   }
+
+  const stripSessions: ClassStripItem[] = orderedSessions.map((session) => {
+    const byStudent = attendanceBySession.get(session.id);
+    const students: AttendanceMark[] = roster.map((student) => {
+      const mark = byStudent?.get(student.studentId);
+      return {
+        studentId: student.studentId,
+        displayName: student.displayName,
+        attended: mark?.attended === true,
+        firstOpenedAt: mark?.firstOpenedAt ?? null,
+      };
+    });
+    return {
+      id: session.id,
+      sessionType: session.sessionType,
+      title: sessionTitle(session),
+      typeLabel: sessionTypeLabel(session.sessionType),
+      start: session.start,
+      end: session.end,
+      notes: session.notes,
+      token: session.token,
+      storySlug: session.story?.slug ?? null,
+      contentStatus: sessionContentStatus(session),
+      recordingStatus: sessionRecordingStatus(session.recordingYoutubeUrl),
+      recordingYoutubeUrl: session.recordingYoutubeUrl,
+      attendedNames: attendedNamesBySession.get(session.id) ?? [],
+      unlocked: areAnswersUnlocked({
+        answersRevealed: session.answersRevealed,
+        sessionEndTime: session.end,
+      }),
+      students,
+    };
+  });
 
   const todaySession =
     orderedSessions.find((session) =>
@@ -157,16 +216,7 @@ export default async function CourseClassPage({
                 Todavía no hay clases. Crea la primera.
               </p>
             ) : (
-              <ul className="overflow-hidden divide-y divide-paper-line rounded-sheet border border-paper-line bg-surface">
-                {orderedSessions.map((session) => (
-                  <TeacherSessionRow
-                    key={session.id}
-                    courseId={course.id}
-                    session={session}
-                    attendedNames={attendedNamesBySession.get(session.id) ?? []}
-                  />
-                ))}
-              </ul>
+              <ClassStrip courseId={course.id} sessions={stripSessions} />
             )}
           </>
         }

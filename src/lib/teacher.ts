@@ -43,6 +43,7 @@ export type TeacherSession = {
   notes: string | null;
   token: string;
   timerStartedAt: string | null;
+  recordingYoutubeUrl: string | null;
   story: StoryRef | null;
   writingPrompt: WritingPromptRef | null;
   examPrompt: ExamPromptRef | null;
@@ -180,6 +181,31 @@ export function sessionTitle(session: TeacherSession): string {
 export function courseLevelLabel(level: CourseLevel): string {
   return level === "pre-intermediate" ? "Pre-intermedio" : "Intermedio";
 }
+
+export { isAutoMarked } from "./attendance";
+
+export function sessionContentStatus(session: {
+  sessionType: SessionType;
+  storyId: string | null;
+  writingPromptId: string | null;
+  examPromptId: string | null;
+  presentationPromptId: string | null;
+}): "Contenido listo" | "Sin contenido" {
+  return hasSessionContent(session) ? "Contenido listo" : "Sin contenido";
+}
+
+export function sessionRecordingStatus(
+  url: string | null | undefined
+): "Grabación" | "Sin grabación" {
+  return url ? "Grabación" : "Sin grabación";
+}
+
+export type AttendanceMark = {
+  studentId: string;
+  displayName: string;
+  attended: boolean;
+  firstOpenedAt: string | null;
+};
 
 export function studentCountLabel(count: number): string {
   if (count === 0) return "Sin estudiantes";
@@ -344,6 +370,7 @@ type SessionRow = {
   notes: string | null;
   session_link_token: string;
   timer_started_at?: string | null;
+  recording_youtube_url?: string | null;
   stories: StoryJoin;
   writing_prompts?: PromptJoin;
   exam_prompts?: ExamPromptJoin;
@@ -379,6 +406,7 @@ export function mapSessionRow(row: SessionRow): TeacherSession {
     notes: row.notes,
     token: row.session_link_token,
     timerStartedAt: row.timer_started_at ?? null,
+    recordingYoutubeUrl: row.recording_youtube_url ?? null,
     story: storyFromJoin(row.stories),
     writingPrompt: promptFromJoin(row.writing_prompts ?? null),
     examPrompt: examPromptFromJoin(row.exam_prompts ?? null),
@@ -389,7 +417,7 @@ export function mapSessionRow(row: SessionRow): TeacherSession {
 }
 
 export const SESSION_SELECT =
-  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, presentation_prompt_id, timer_started_at, session_date, session_start_time, session_end_time, answers_revealed, notes, session_link_token, stories ( title, slug ), writing_prompts ( title, prompt_text, writing_time_minutes, level ), exam_prompts ( title, level, time_limit_minutes ), presentation_prompts ( title, level )";
+  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, presentation_prompt_id, timer_started_at, session_date, session_start_time, session_end_time, answers_revealed, notes, session_link_token, recording_youtube_url, stories ( title, slug ), writing_prompts ( title, prompt_text, writing_time_minutes, level ), exam_prompts ( title, level, time_limit_minutes ), presentation_prompts ( title, level )";
 
 const SESSION_SELECT_LEGACY =
   "id, course_id, story_id, session_date, session_start_time, session_end_time, answers_revealed, notes, session_link_token, stories ( title, slug )";
@@ -610,7 +638,7 @@ export async function loadCourseRoster(
     course_session_id: string;
     student_id: string;
     attended: boolean;
-    first_opened_at: string;
+    first_opened_at: string | null;
   };
   type Response = { user_id: string; submitted_at: string };
   type Lookup = { user_id: string; looked_up_at: string };
@@ -734,7 +762,7 @@ export async function loadSessionStudentStatus(
   type Attendance = {
     student_id: string;
     attended: boolean;
-    first_opened_at: string;
+    first_opened_at: string | null;
   };
   type Question = { id: string; position: number; question: string };
   type Response = {
@@ -787,7 +815,7 @@ export async function loadSessionStudentStatus(
       return {
         studentId: row.student_id,
         displayName: row.display_name.trim() || "Sin nombre",
-        opened: Boolean(attendance),
+        opened: Boolean(attendance?.first_opened_at),
         attended: attendance?.attended === true,
         openedAt: attendance?.first_opened_at ?? null,
         answers,
@@ -1118,6 +1146,98 @@ export async function loadExamSubmissions(
     submittedAt: row.submitted_at,
     reviewRevealedAt: row.review_revealed_at,
   }));
+}
+
+export async function setSessionAttendance(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  input: {
+    courseId: string;
+    sessionId: string;
+    studentId: string;
+    attended: boolean;
+  }
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  const { data: session } = await supabase
+    .from("course_sessions")
+    .select("id")
+    .eq("id", input.sessionId)
+    .eq("course_id", input.courseId)
+    .maybeSingle();
+
+  if (!session) {
+    return { ok: false, error: "No encontré esa clase." };
+  }
+
+  const { data: enrollment } = await supabase
+    .from("course_enrollments")
+    .select("student_id")
+    .eq("course_id", input.courseId)
+    .eq("student_id", input.studentId)
+    .maybeSingle();
+
+  if (!enrollment) {
+    return { ok: false, error: "Ese estudiante no está en este grupo." };
+  }
+
+  const { data: existing, error: existingError } = await supabase
+    .from("session_attendance")
+    .select("id, first_opened_at")
+    .eq("course_session_id", input.sessionId)
+    .eq("student_id", input.studentId)
+    .maybeSingle();
+
+  if (existingError) {
+    console.error("setSessionAttendance lookup failed:", existingError);
+    return { ok: false, error: "No pude guardar la asistencia. Inténtalo de nuevo." };
+  }
+
+  if (existing) {
+    const { error } = await supabase
+      .from("session_attendance")
+      .update({ attended: input.attended })
+      .eq("id", existing.id);
+    if (error) {
+      console.error("setSessionAttendance update failed:", error);
+      return { ok: false, error: "No pude guardar la asistencia. Inténtalo de nuevo." };
+    }
+    return { ok: true };
+  }
+
+  const { error } = await supabase.from("session_attendance").insert({
+    course_session_id: input.sessionId,
+    student_id: input.studentId,
+    attended: input.attended,
+    first_opened_at: null,
+  });
+
+  if (error) {
+    console.error("setSessionAttendance insert failed:", error);
+    return { ok: false, error: "No pude guardar la asistencia. Inténtalo de nuevo." };
+  }
+  return { ok: true };
+}
+
+export async function setSessionRecordingUrl(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  input: {
+    courseId: string;
+    sessionId: string;
+    url: string | null;
+  }
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  const { data, error } = await supabase
+    .from("course_sessions")
+    .update({ recording_youtube_url: input.url })
+    .eq("id", input.sessionId)
+    .eq("course_id", input.courseId)
+    .select("id")
+    .maybeSingle();
+
+  if (error || !data) {
+    console.error("setSessionRecordingUrl failed:", error);
+    return { ok: false, error: "No pude guardar el link. Inténtalo de nuevo." };
+  }
+  return { ok: true };
 }
 
 

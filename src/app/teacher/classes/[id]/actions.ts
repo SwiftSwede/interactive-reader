@@ -1,5 +1,6 @@
 "use server";
 
+import { z } from "zod";
 import { revalidatePath } from "next/cache";
 import { requireTeacher } from "@/lib/auth-server";
 import { createClient } from "@/lib/supabase/server";
@@ -7,6 +8,14 @@ import { isSessionType, defaultWritingMinutes, defaultExamTask2Type } from "@/li
 import { promptTitleFromText, wordDiff } from "@/lib/writing";
 import { parseExamForm, nextGroupLabel } from "@/lib/exam";
 import type { CourseLevel, ExamTask2Type } from "@/types";
+import {
+  setSessionAttendance,
+  setSessionRecordingUrl,
+} from "@/lib/teacher";
+import {
+  parseSessionYoutubeUrl,
+  YOUTUBE_URL_MAX_LENGTH,
+} from "@/lib/youtube-url";
 
 export type CreateSessionResult =
   | { ok: true; message: string }
@@ -800,5 +809,114 @@ export async function startExamReview(
   revalidatePath(`/teacher/classes/${courseId}/sessions/${sessionId}`);
   revalidatePath("/teacher");
   return { ok: true };
+}
+
+export type ToggleAttendanceResult =
+  | { ok: true }
+  | { ok: false; error: string };
+
+const attendanceSchema = z.object({
+  courseId: z.string().uuid(),
+  sessionId: z.string().uuid(),
+  studentId: z.string().uuid(),
+  attended: z.boolean(),
+});
+
+export async function toggleSessionAttendance(
+  input: unknown
+): Promise<ToggleAttendanceResult> {
+  const teacher = await requireTeacher("/teacher");
+  const parsed = attendanceSchema.safeParse(input);
+  if (!parsed.success) {
+    return { ok: false, error: "No encontré a ese estudiante." };
+  }
+
+  const supabase = await createClient();
+  const { data: course } = await supabase
+    .from("courses")
+    .select("id")
+    .eq("id", parsed.data.courseId)
+    .eq("teacher_id", teacher.id)
+    .maybeSingle();
+
+  if (!course) {
+    return { ok: false, error: "Ese curso no es tuyo." };
+  }
+
+  const result = await setSessionAttendance(supabase, parsed.data);
+  if (!result.ok) return result;
+
+  revalidatePath(`/teacher/classes/${parsed.data.courseId}`);
+  revalidatePath(
+    `/teacher/classes/${parsed.data.courseId}/sessions/${parsed.data.sessionId}`
+  );
+  revalidatePath("/dashboard");
+  revalidatePath("/lessons");
+  return { ok: true };
+}
+
+export type UpdateRecordingUrlResult =
+  | { ok: true; message: string; recordingUrl: string | null }
+  | { ok: false; error: string };
+
+const recordingFormSchema = z.object({
+  courseId: z.string().uuid(),
+  sessionId: z.string().uuid(),
+  recordingUrl: z.string().max(YOUTUBE_URL_MAX_LENGTH),
+});
+
+export async function updateSessionRecordingUrl(
+  _prev: UpdateRecordingUrlResult | null,
+  formData: FormData
+): Promise<UpdateRecordingUrlResult> {
+  const teacher = await requireTeacher("/teacher");
+  const parsed = recordingFormSchema.safeParse({
+    courseId: String(formData.get("courseId") ?? ""),
+    sessionId: String(formData.get("sessionId") ?? ""),
+    recordingUrl: String(formData.get("recordingUrl") ?? ""),
+  });
+
+  if (!parsed.success) {
+    return { ok: false, error: "No encontré esa clase." };
+  }
+
+  const youtube = parseSessionYoutubeUrl(parsed.data.recordingUrl);
+  if (!youtube.ok) {
+    return { ok: false, error: youtube.error };
+  }
+
+  const supabase = await createClient();
+  const { data: course } = await supabase
+    .from("courses")
+    .select("id")
+    .eq("id", parsed.data.courseId)
+    .eq("teacher_id", teacher.id)
+    .maybeSingle();
+
+  if (!course) {
+    return { ok: false, error: "Ese curso no es tuyo." };
+  }
+
+  const result = await setSessionRecordingUrl(supabase, {
+    courseId: parsed.data.courseId,
+    sessionId: parsed.data.sessionId,
+    url: youtube.value,
+  });
+  if (!result.ok) return result;
+
+  revalidatePath(`/teacher/classes/${parsed.data.courseId}`);
+  revalidatePath(
+    `/teacher/classes/${parsed.data.courseId}/sessions/${parsed.data.sessionId}`
+  );
+  revalidatePath("/dashboard");
+  revalidatePath("/lessons");
+  return {
+    ok: true,
+    recordingUrl: youtube.value,
+    message:
+      youtube.value == null
+        ? "Listo. Quité la grabación."
+        : "Listo. La grabación ya está.",
+  };
 }
 

@@ -140,25 +140,64 @@ async function persistAnswersRevealedIfEnded(
   }
 }
 
+export type LinkClickAttendancePatch =
+  | { kind: "insert"; attended: boolean }
+  | {
+      kind: "update";
+      attended: boolean;
+      firstOpenedAt: string | null;
+    }
+  | { kind: "none" };
+
+export function linkClickAttendancePatch(input: {
+  existing: { attended: boolean; firstOpenedAt: string | null } | null;
+  inWindow: boolean;
+  nowIso: string;
+}): LinkClickAttendancePatch {
+  if (!input.existing) {
+    return { kind: "insert", attended: input.inWindow };
+  }
+  if (!input.inWindow) return { kind: "none" };
+
+  const attended = input.existing.attended || true;
+  const firstOpenedAt = input.existing.firstOpenedAt ?? input.nowIso;
+  const attendedChanged = attended !== input.existing.attended;
+  const openedChanged = firstOpenedAt !== input.existing.firstOpenedAt;
+  if (!attendedChanged && !openedChanged) return { kind: "none" };
+  return { kind: "update", attended, firstOpenedAt };
+}
+
 async function recordSessionAttendance(
   session: CourseSession,
   studentId: string
 ): Promise<void> {
   const supabase = await createClient();
   const inWindow = isWithinSessionWindow(session);
+  const nowIso = new Date().toISOString();
 
   const { data: existing } = await supabase
     .from("session_attendance")
-    .select("id, attended")
+    .select("id, attended, first_opened_at")
     .eq("course_session_id", session.id)
     .eq("student_id", studentId)
     .maybeSingle();
 
-  if (!existing) {
+  const patch = linkClickAttendancePatch({
+    existing: existing
+      ? {
+          attended: existing.attended === true,
+          firstOpenedAt: existing.first_opened_at ?? null,
+        }
+      : null,
+    inWindow,
+    nowIso,
+  });
+
+  if (patch.kind === "insert") {
     const { error } = await supabase.from("session_attendance").insert({
       course_session_id: session.id,
       student_id: studentId,
-      attended: inWindow,
+      attended: patch.attended,
     });
 
     if (error && error.code !== "23505") {
@@ -169,13 +208,21 @@ async function recordSessionAttendance(
     if (error?.code === "23505" && inWindow) {
       const { error: updateError } = await supabase
         .from("session_attendance")
-        .update({ attended: true })
+        .update({ attended: true, first_opened_at: nowIso })
         .eq("course_session_id", session.id)
         .eq("student_id", studentId)
-        .eq("attended", false);
+        .is("first_opened_at", null);
       if (updateError) {
-        console.error("recordSessionAttendance update failed:", updateError);
-        return;
+        const { error: attendedError } = await supabase
+          .from("session_attendance")
+          .update({ attended: true })
+          .eq("course_session_id", session.id)
+          .eq("student_id", studentId)
+          .eq("attended", false);
+        if (attendedError) {
+          console.error("recordSessionAttendance update failed:", attendedError);
+          return;
+        }
       }
     }
 
@@ -183,18 +230,21 @@ async function recordSessionAttendance(
     return;
   }
 
-  if (inWindow && !existing.attended) {
-    const { error } = await supabase
-      .from("session_attendance")
-      .update({ attended: true })
-      .eq("id", existing.id);
+  if (patch.kind === "none" || !existing) return;
 
-    if (error) {
-      console.error("recordSessionAttendance update failed:", error);
-      return;
-    }
-    revalidateTeacherViews();
+  const { error } = await supabase
+    .from("session_attendance")
+    .update({
+      attended: patch.attended,
+      first_opened_at: patch.firstOpenedAt,
+    })
+    .eq("id", existing.id);
+
+  if (error) {
+    console.error("recordSessionAttendance update failed:", error);
+    return;
   }
+  revalidateTeacherViews();
 }
 
 async function getSessionByToken(token: string): Promise<CourseSession | null> {

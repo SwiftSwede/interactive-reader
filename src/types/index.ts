@@ -463,7 +463,7 @@ export interface SessionAttendance {
   courseSessionId: string;
   studentId: string;
   attended: boolean;
-  firstOpenedAt: string;
+  firstOpenedAt: string | null;
 }
 
 export interface ComprehensionResponse {

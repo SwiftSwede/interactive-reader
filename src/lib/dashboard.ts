@@ -19,6 +19,7 @@ export type DashboardLesson = {
   lifecycle: SessionLifecycle;
   completed: boolean;
   hasRecording: boolean;
+  recordingYoutubeUrl: string | null;
   sessionDate: string;
   sessionStartTime: string;
   sessionEndTime: string;
@@ -203,6 +204,21 @@ function joinSlug(value: TitleJoin): string | null {
   return typeof row?.slug === "string" ? row.slug : null;
 }
 
+export function liveOnlyRecordingHref(input: {
+  liveOnly: boolean;
+  lifecycle: SessionLifecycle;
+  recordingYoutubeUrl?: string | null;
+}): string | null {
+  if (
+    !input.liveOnly ||
+    input.lifecycle !== "after" ||
+    !input.recordingYoutubeUrl
+  ) {
+    return null;
+  }
+  return input.recordingYoutubeUrl;
+}
+
 export function toDashboardLesson(input: {
   sessionId: string;
   sessionType: SessionType;
@@ -250,8 +266,9 @@ export function toDashboardLesson(input: {
     sessionType: input.sessionType,
     title: contentReady && !liveOnly ? input.title : null,
     lifecycle,
-    completed: liveOnly ? false : input.completed,
+    completed: input.completed,
     hasRecording: Boolean(input.recordingYoutubeUrl),
+    recordingYoutubeUrl: input.recordingYoutubeUrl,
     sessionDate: input.sessionDate,
     sessionStartTime: input.sessionStartTime,
     sessionEndTime: input.sessionEndTime,
@@ -373,6 +390,7 @@ export async function loadDashboard(
       progressRows,
       freeWriteRows,
       presentationRows,
+      attendanceRows,
     ] = await Promise.all([
       enrollmentPromise,
       loadStudentProgress(supabase, userId, classroomLevel),
@@ -403,6 +421,13 @@ export async function loadDashboard(
             .from("presentation_responses")
             .select("course_session_id")
             .eq("user_id", userId)
+      ),
+      safeSelect<{ course_session_id: string }>("session_attendance", () =>
+        supabase
+          .from("session_attendance")
+          .select("course_session_id")
+          .eq("student_id", userId)
+          .eq("attended", true)
       ),
     ]);
 
@@ -497,6 +522,9 @@ export async function loadDashboard(
         .map((row) => row.course_session_id)
         .filter((id): id is string => Boolean(id))
     );
+    const attendedSessions = new Set(
+      attendanceRows.map((row) => row.course_session_id)
+    );
 
     function isCompleted(row: SessionRow, type: SessionType): boolean {
       if (type === "story") {
@@ -511,6 +539,9 @@ export async function loadDashboard(
       if (type === "video_summary") return completedVideoSessions.has(row.id);
       if (type === "presentation") {
         return completedPresentationSessions.has(row.id);
+      }
+      if (type === "conversation" || type === "pronunciation") {
+        return attendedSessions.has(row.id);
       }
       return false;
     }

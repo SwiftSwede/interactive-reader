@@ -111,6 +111,7 @@ export default function LessonsList({
                 lifecycle={row.lesson.lifecycle}
                 completed={row.lesson.completed}
                 hasRecording={row.lesson.hasRecording}
+                recordingYoutubeUrl={row.lesson.recordingYoutubeUrl}
                 sessionDate={row.lesson.sessionDate}
                 href={row.lesson.href}
                 liveOnly={row.lesson.liveOnly}

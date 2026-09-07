@@ -12,7 +12,7 @@ import {
   PenLine,
 } from "lucide-react";
 import { sessionTypeLabel, type SessionType } from "@/lib/activities";
-import { formatSessionDay } from "@/lib/dashboard";
+import { formatSessionDay, liveOnlyRecordingHref } from "@/lib/dashboard";
 import type { SessionLifecycle } from "@/lib/session-phase";
 
 type LessonCardProps = {
@@ -21,6 +21,7 @@ type LessonCardProps = {
   lifecycle: SessionLifecycle;
   completed: boolean;
   hasRecording: boolean;
+  recordingYoutubeUrl?: string | null;
   sessionDate: string;
   href: string | null;
   liveOnly: boolean;
@@ -125,6 +126,7 @@ export default function LessonCard(props: LessonCardProps) {
   const heading = props.title ?? typeLabel;
   const status = statusCopy(props);
   const tappable = Boolean(props.href);
+  const recordingHref = liveOnlyRecordingHref(props);
   const className =
     "flex items-center gap-3 rounded-card border border-paper-line bg-surface p-3 text-left";
 
@@ -141,6 +143,16 @@ export default function LessonCard(props: LessonCardProps) {
         </p>
         {status.extra ? (
           <p className="truncate text-[12px] text-text-muted">{status.extra}</p>
+        ) : null}
+        {recordingHref ? (
+          <a
+            href={recordingHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-1 inline-flex min-h-11 items-center text-[12px] text-text-accent underline-offset-2 hover:underline"
+          >
+            Ver la grabación
+          </a>
         ) : null}
       </div>
       {tappable ? (
