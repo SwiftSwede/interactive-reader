@@ -192,6 +192,7 @@ export interface Course {
   teacherId: string;
   createdAt: string;
   archived: boolean;
+  zoomUrl: string | null;
 }
 
 export interface CourseEnrollment {

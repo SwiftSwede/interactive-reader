@@ -7,25 +7,32 @@ import {
   getSessionJoinTime,
   type ClassDayPhase,
 } from "@/lib/session-phase";
+import JoinCard, { STUDENT_APP_LABEL } from "./JoinCard";
 
 export default function ClassDayCard({
   sessionStartTime,
   sessionEndTime,
   sessionDate,
   href,
+  zoomHref,
+  appLabel = STUDENT_APP_LABEL,
   typeLabel,
   courseName,
   liveOnly,
   initialPhase,
+  className = "mt-6",
 }: {
   sessionStartTime: string;
   sessionEndTime: string;
   sessionDate: string;
   href: string | null;
+  zoomHref?: string | null;
+  appLabel?: string;
   typeLabel: string;
   courseName: string;
   liveOnly: boolean;
   initialPhase: ClassDayPhase;
+  className?: string;
 }) {
   const [now, setNow] = useState<number | null>(null);
 
@@ -54,7 +61,7 @@ export default function ClassDayCard({
 
   if (phase === "done-pending") {
     return (
-      <section className="mt-6 rounded-card bg-success-bg px-4 py-3">
+      <section className={`rounded-card bg-success-bg px-4 py-3 ${className}`}>
         <p className="text-label-md text-success">
           ✓ Clase terminada · La grabación se subirá a YouTube pronto
         </p>
@@ -63,42 +70,23 @@ export default function ClassDayCard({
   }
 
   if (phase === "join") {
-    if (liveOnly) {
-      return (
-        <section className="mt-6 rounded-card border border-paper-line bg-surface px-4 py-4">
-          <p className="text-headline-md text-text-primary">
-            {typeLabel} · Entra por Zoom
-          </p>
-          <p className="mt-1 text-body-main text-text-secondary">
-            El link está en el chat de Zoom.
-          </p>
-        </section>
-      );
-    }
-
     return (
-      <section className="mt-6 rounded-card bg-accent px-4 py-5">
-        {href ? (
-          <a
-            href={href}
-            className="flex min-h-12 items-center justify-center rounded-card bg-white px-4 text-center text-label-md font-semibold text-accent hover:bg-accent-softer"
-          >
-            ENTRAR A LA CLASE ▶
-          </a>
-        ) : (
-          <p className="text-center text-label-md font-semibold text-white">
-            ENTRAR A LA CLASE
-          </p>
-        )}
-        <p className="mt-3 text-center text-label-md text-white">
-          {typeLabel} · {courseName}
-        </p>
-      </section>
+      <JoinCard
+        appHref={liveOnly ? null : href}
+        zoomHref={zoomHref ?? null}
+        appLabel={appLabel}
+        liveOnly={liveOnly}
+        typeLabel={typeLabel}
+        courseName={courseName}
+        className={className}
+      />
     );
   }
 
   return (
-    <section className="mt-6 rounded-card border border-paper-line bg-surface px-4 py-4">
+    <section
+      className={`rounded-card border border-paper-line bg-surface px-4 py-4 ${className}`}
+    >
       <p className="text-label-md text-text-secondary">La clase es HOY</p>
       <p className="mt-1 text-headline-md tabular-nums text-text-primary">
         Empieza en {formatCountdownLabel(remaining)}

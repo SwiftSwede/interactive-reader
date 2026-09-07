@@ -46,6 +46,7 @@ export default async function DashboardPage() {
             sessionEndTime={today.sessionEndTime}
             sessionDate={today.sessionDate}
             href={today.href}
+            zoomHref={data.zoomUrl}
             typeLabel={sessionTypeLabel(today.sessionType)}
             courseName={data.courseDisplayName}
             liveOnly={today.liveOnly}

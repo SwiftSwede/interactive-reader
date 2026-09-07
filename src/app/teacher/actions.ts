@@ -10,13 +10,24 @@ import {
   otherCourseLevel,
   removeClassroomStudent as removeClassroomStudentRecord,
 } from "@/lib/classroom-placement";
+import { z } from "zod";
 import type { CourseLevel } from "@/types";
+import {
+  parseCourseZoomUrl,
+  ZOOM_URL_INVALID_MESSAGE,
+  ZOOM_URL_MAX_LENGTH,
+} from "@/lib/zoom-url";
 
 export type CreateCourseResult =
   | { ok: true; message: string }
   | { ok: false; error: string };
 
 const LEVELS: CourseLevel[] = ["pre-intermediate", "intermediate"];
+
+const zoomUrlFormSchema = z.object({
+  courseId: z.string().uuid(),
+  zoomUrl: z.string().max(ZOOM_URL_MAX_LENGTH),
+});
 
 function courseLevelLabel(level: CourseLevel): string {
   return level === "pre-intermediate" ? "Pre-intermedio" : "Intermedio";
@@ -185,6 +196,66 @@ export async function moveStudentToOtherGroup(
       error: "No pude moverlo. Inténtalo de nuevo.",
     };
   }
+}
+
+export type UpdateZoomUrlResult =
+  | { ok: true; message: string }
+  | { ok: false; error: string };
+
+export async function updateCourseZoomUrl(
+  _prev: UpdateZoomUrlResult | null,
+  formData: FormData
+): Promise<UpdateZoomUrlResult> {
+  const teacher = await requireTeacher("/teacher");
+  const parsed = zoomUrlFormSchema.safeParse({
+    courseId: String(formData.get("courseId") ?? ""),
+    zoomUrl: String(formData.get("zoomUrl") ?? ""),
+  });
+
+  if (!parsed.success) {
+    const courseIssue = parsed.error.issues.some(
+      (issue) => issue.path[0] === "courseId"
+    );
+    return {
+      ok: false,
+      error: courseIssue
+        ? "No encontré ese grupo."
+        : ZOOM_URL_INVALID_MESSAGE,
+    };
+  }
+
+  const zoom = parseCourseZoomUrl(parsed.data.zoomUrl);
+  if (!zoom.ok) {
+    return { ok: false, error: zoom.error };
+  }
+
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("courses")
+    .update({ zoom_url: zoom.value })
+    .eq("id", parsed.data.courseId)
+    .eq("teacher_id", teacher.id)
+    .select("id")
+    .maybeSingle();
+
+  if (error || !data) {
+    console.error("updateCourseZoomUrl failed:", error);
+    return {
+      ok: false,
+      error: "No pude guardar el link. Inténtalo de nuevo.",
+    };
+  }
+
+  revalidatePath("/teacher", "layout");
+  revalidatePath(`/teacher/classes/${parsed.data.courseId}`);
+  revalidatePath("/dashboard");
+  return {
+    ok: true,
+    message:
+      zoom.value == null
+        ? "Listo. Quité el link de Zoom."
+        : "Listo. El link de Zoom ya está.",
+  };
 }
 
 export type RemoveStudentResult =

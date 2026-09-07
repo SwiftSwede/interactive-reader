@@ -13,6 +13,7 @@ export type OwnedCourse = {
   level: CourseLevel;
   teacher_id: string;
   archived: boolean;
+  zoom_url: string | null;
 };
 
 export type StoryRef = {
@@ -312,7 +313,7 @@ export async function getOwnedCourse(courseId: string): Promise<{
   const supabase = await createClient();
   const { data } = await supabase
     .from("courses")
-    .select("id, name, level, teacher_id, archived")
+    .select("id, name, level, teacher_id, archived, zoom_url")
     .eq("id", courseId)
     .eq("teacher_id", teacher.id)
     .maybeSingle();
@@ -321,7 +322,11 @@ export async function getOwnedCourse(courseId: string): Promise<{
     redirect("/teacher");
   }
 
-  return { course: data as OwnedCourse, supabase };
+  const course = data as OwnedCourse;
+  return {
+    course: { ...course, zoom_url: course.zoom_url ?? null },
+    supabase,
+  };
 }
 
 type SessionRow = {
@@ -428,6 +433,7 @@ export type TeacherCourseRow = {
   level: CourseLevel;
   created_at: string;
   archived: boolean;
+  zoom_url: string | null;
 };
 
 export async function loadTeacherCourses(
@@ -436,7 +442,7 @@ export async function loadTeacherCourses(
 ): Promise<TeacherCourseRow[]> {
   const { data, error } = await supabase
     .from("courses")
-    .select("id, name, level, created_at, archived")
+    .select("id, name, level, created_at, archived, zoom_url")
     .eq("teacher_id", teacherId)
     .order("created_at", { ascending: false });
 
@@ -445,7 +451,10 @@ export async function loadTeacherCourses(
     return [];
   }
 
-  return data as TeacherCourseRow[];
+  return (data as TeacherCourseRow[]).map((row) => ({
+    ...row,
+    zoom_url: row.zoom_url ?? null,
+  }));
 }
 
 export type StudentCurrentGroup = {

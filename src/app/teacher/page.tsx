@@ -1,12 +1,18 @@
 import { CalendarDays } from "lucide-react";
 import { requireTeacher } from "@/lib/auth-server";
 import { createClient } from "@/lib/supabase/server";
-import { hasSessionContent } from "@/lib/dashboard";
-import { sessionTypeLabel } from "@/lib/activities";
+import { hasSessionContent, isLocalCalendarDate } from "@/lib/dashboard";
+import {
+  isLiveOnlySessionType,
+  sessionTypeLabel,
+} from "@/lib/activities";
 import NewMonthButton from "@/components/teacher/NewMonthButton";
 import ThisMonthBoard, {
   type ThisMonthGroup,
 } from "@/components/teacher/ThisMonthBoard";
+import ClassDayCard from "@/components/dashboard/ClassDayCard";
+import { TEACHER_APP_LABEL } from "@/components/dashboard/JoinCard";
+import { getClassDayPhase } from "@/lib/session-phase";
 import {
   countActiveStudentsByCourse,
   courseLevelLabel,
@@ -60,6 +66,13 @@ export default async function TeacherHomePage() {
         yearMonth
       );
       const current = pickCurrentSession(monthSessions);
+      const todaySession =
+        monthSessions.find((session) =>
+          isLocalCalendarDate(session.sessionDate)
+        ) ?? null;
+      const liveOnly = todaySession
+        ? isLiveOnlySessionType(todaySession.sessionType)
+        : false;
       return {
         id: course.id,
         name: course.name,
@@ -76,6 +89,19 @@ export default async function TeacherHomePage() {
               start: current.session.start,
               typeLabel: sessionTypeLabel(current.session.sessionType),
               ready: hasSessionContent(current.session),
+            }
+          : null,
+        today: todaySession
+          ? {
+              sessionStartTime: todaySession.start,
+              sessionEndTime: todaySession.end,
+              sessionDate: todaySession.sessionDate,
+              typeLabel: sessionTypeLabel(todaySession.sessionType),
+              liveOnly,
+              appHref: liveOnly
+                ? null
+                : `/teacher/classes/${course.id}/sessions/${todaySession.id}`,
+              zoomHref: course.zoom_url,
             }
           : null,
       };
@@ -111,7 +137,29 @@ export default async function TeacherHomePage() {
           </div>
         </div>
       ) : (
-        <ThisMonthBoard groups={groups} />
+        <>
+          {groups
+            .filter((group) => group.today)
+            .map((group) => (
+              <ClassDayCard
+                key={group.id}
+                sessionStartTime={group.today!.sessionStartTime}
+                sessionEndTime={group.today!.sessionEndTime}
+                sessionDate={group.today!.sessionDate}
+                href={group.today!.appHref}
+                zoomHref={group.today!.zoomHref}
+                appLabel={TEACHER_APP_LABEL}
+                typeLabel={group.today!.typeLabel}
+                courseName={group.name}
+                liveOnly={group.today!.liveOnly}
+                initialPhase={getClassDayPhase({
+                  sessionStartTime: group.today!.sessionStartTime,
+                  sessionEndTime: group.today!.sessionEndTime,
+                })}
+              />
+            ))}
+          <ThisMonthBoard groups={groups} />
+        </>
       )}
     </section>
   );

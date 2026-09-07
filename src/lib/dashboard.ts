@@ -33,6 +33,7 @@ export type DashboardData = {
   olderCourses: { displayName: string; lessons: DashboardLesson[] }[];
   totals: { completed: number; total: number };
   todaySession: DashboardLesson | null;
+  zoomUrl: string | null;
   practice: {
     dictationAttempts: number;
     wordsLookedUp: number;
@@ -351,6 +352,7 @@ export async function loadDashboard(
     olderCourses: [],
     totals: { completed: 0, total: 0 },
     todaySession: null,
+    zoomUrl: null,
     practice: {
       dictationAttempts: 0,
       wordsLookedUp: 0,
@@ -361,7 +363,7 @@ export async function loadDashboard(
   try {
     const enrollmentPromise = supabase
       .from("course_enrollments")
-      .select("course_id, display_name, enrolled_at, courses ( id, name, level, archived )")
+      .select("course_id, display_name, enrolled_at, courses ( id, name, level, archived, zoom_url )")
       .eq("student_id", userId);
 
     const [
@@ -413,6 +415,7 @@ export async function loadDashboard(
       name: string;
       level: CourseLevel;
       archived: boolean;
+      zoom_url?: string | null;
     };
     type EnrollmentRow = {
       course_id: string;
@@ -577,6 +580,7 @@ export async function loadDashboard(
       olderCourses: older,
       totals: { completed: completedCount, total: lessons.length },
       todaySession: pickTodaySession(lessons),
+      zoomUrl: active?.enrollment.course.zoom_url ?? null,
       practice: {
         dictationAttempts: progress.dictationTrend.length,
         wordsLookedUp: progress.wordsLookedUp,

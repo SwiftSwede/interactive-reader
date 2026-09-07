@@ -4,6 +4,12 @@ import TeacherSessionRow from "@/components/teacher/TeacherSessionRow";
 import DeleteCourseButton from "./DeleteCourseButton";
 import CourseWorkspace from "@/components/teacher/CourseWorkspace";
 import NewClassButton from "@/components/teacher/NewClassButton";
+import ZoomUrlForm from "./ZoomUrlForm";
+import ClassDayCard from "@/components/dashboard/ClassDayCard";
+import { TEACHER_APP_LABEL } from "@/components/dashboard/JoinCard";
+import { isLiveOnlySessionType, sessionTypeLabel } from "@/lib/activities";
+import { isLocalCalendarDate } from "@/lib/dashboard";
+import { getClassDayPhase } from "@/lib/session-phase";
 import {
   courseLevelLabel,
   getOwnedCourse,
@@ -87,6 +93,14 @@ export default async function CourseClassPage({
     names.sort((a, b) => a.localeCompare(b, "es"));
   }
 
+  const todaySession =
+    orderedSessions.find((session) =>
+      isLocalCalendarDate(session.sessionDate)
+    ) ?? null;
+  const todayLiveOnly = todaySession
+    ? isLiveOnlySessionType(todaySession.sessionType)
+    : false;
+
   return (
     <section>
       <div className="flex flex-wrap items-start justify-between gap-4">
@@ -102,6 +116,30 @@ export default async function CourseClassPage({
         </div>
         <DeleteCourseButton courseId={course.id} courseName={course.name} />
       </div>
+
+      {todaySession ? (
+        <ClassDayCard
+          sessionStartTime={todaySession.start}
+          sessionEndTime={todaySession.end}
+          sessionDate={todaySession.sessionDate}
+          href={
+            todayLiveOnly
+              ? null
+              : `/teacher/classes/${course.id}/sessions/${todaySession.id}`
+          }
+          zoomHref={course.zoom_url}
+          appLabel={TEACHER_APP_LABEL}
+          typeLabel={sessionTypeLabel(todaySession.sessionType)}
+          courseName={course.name}
+          liveOnly={todayLiveOnly}
+          initialPhase={getClassDayPhase({
+            sessionStartTime: todaySession.start,
+            sessionEndTime: todaySession.end,
+          })}
+        />
+      ) : null}
+
+      <ZoomUrlForm courseId={course.id} zoomUrl={course.zoom_url} />
 
       <CourseWorkspace
         classes={

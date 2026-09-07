@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import LocalDateTime from "@/components/LocalDateTime";
+import ClassDayCard from "@/components/dashboard/ClassDayCard";
+import { TEACHER_APP_LABEL } from "@/components/dashboard/JoinCard";
+import { getClassDayPhase } from "@/lib/session-phase";
 import DayTimePattern from "./DayTimePattern";
 import { useTeacherPanel } from "./TeacherPanelContext";
 
@@ -21,6 +24,15 @@ export type ThisMonthGroup = {
     typeLabel: string;
     ready: boolean;
   } | null;
+  today: {
+    sessionStartTime: string;
+    sessionEndTime: string;
+    sessionDate: string;
+    typeLabel: string;
+    liveOnly: boolean;
+    appHref: string | null;
+    zoomHref: string | null;
+  } | null;
 };
 
 function NextClassPanel({ group }: { group: ThisMonthGroup }) {
@@ -30,6 +42,24 @@ function NextClassPanel({ group }: { group: ThisMonthGroup }) {
       <h2 className="mt-1 text-headline-md text-text-primary">
         {group.next ? `${group.next.kindLabel} clase` : "Próxima clase"}
       </h2>
+      {group.today ? (
+        <ClassDayCard
+          sessionStartTime={group.today.sessionStartTime}
+          sessionEndTime={group.today.sessionEndTime}
+          sessionDate={group.today.sessionDate}
+          href={group.today.appHref}
+          zoomHref={group.today.zoomHref}
+          appLabel={TEACHER_APP_LABEL}
+          typeLabel={group.today.typeLabel}
+          courseName={group.name}
+          liveOnly={group.today.liveOnly}
+          initialPhase={getClassDayPhase({
+            sessionStartTime: group.today.sessionStartTime,
+            sessionEndTime: group.today.sessionEndTime,
+          })}
+          className="mt-4"
+        />
+      ) : null}
       {group.next ? (
         <>
           <p className="mt-4 text-label-md text-text-secondary">
