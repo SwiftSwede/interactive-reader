@@ -199,7 +199,7 @@ export async function moveStudentToOtherGroup(
 }
 
 export type UpdateZoomUrlResult =
-  | { ok: true; message: string }
+  | { ok: true; message: string; zoomUrl: string | null }
   | { ok: false; error: string };
 
 export async function updateCourseZoomUrl(
@@ -251,6 +251,7 @@ export async function updateCourseZoomUrl(
   revalidatePath("/dashboard");
   return {
     ok: true,
+    zoomUrl: zoom.value,
     message:
       zoom.value == null
         ? "Listo. Quité el link de Zoom."

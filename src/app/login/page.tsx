@@ -25,22 +25,22 @@ export default async function LoginPage({
   }
 
   return (
-    <main className="min-h-screen bg-white">
-      <header className="border-b border-gray-100 px-4 py-4">
-        <div className="mx-auto max-w-md">
-          <p className="text-sm text-gray-500">Profe Kyle</p>
+    <main className="min-h-screen bg-paper">
+      <header className="sticky top-0 z-20 h-14 border-b border-paper-line bg-paper-header backdrop-blur-sm">
+        <div className="mx-auto flex h-full max-w-2xl items-center px-4">
+          <p className="text-label-sm text-text-secondary">Profe Kyle</p>
         </div>
       </header>
 
-      <section className="mx-auto max-w-md px-4 py-10">
-        <h1 className="text-2xl font-bold text-gray-900">Entra con tu email</h1>
-        <p className="mt-2 mb-6 text-sm text-gray-600">
+      <section className="mx-auto max-w-2xl px-4 pt-6 pb-16">
+        <h1 className="text-headline-lg text-text-primary">Entra con tu email</h1>
+        <p className="mt-2 mb-6 text-body-main text-text-secondary">
           Te mando un código de 8 números. Lo escribes aquí y ya estás adentro.
           Sin contraseña. No hace falta cambiar de navegador.
         </p>
 
         {params.error && (
-          <p className="mb-4 text-sm text-red-600">
+          <p className="mb-4 rounded-card bg-error-bg px-3 py-3 text-label-md text-error">
             Ese link ya no sirve. Pide un código nuevo y escríbelo en esta
             pantalla. Si Gmail abre otro navegador, ignora el link y usa el
             código.

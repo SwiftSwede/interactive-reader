@@ -218,7 +218,7 @@ Same Paper Light theme, same tokens, same type scale as the student app (Lora he
 
 - **Este mes (default):** current calendar month. One card per group (course): group name, level label, day/time pattern, theme if set, readiness summary ("3/8 clases listas"), next class with countdown. If a group has a session whose `session_date` is today, a class-day card (same countdown / join / done phases as student Inicio) shows **Abrir la clase** (teacher session URL) and **Entrar a Zoom** when `zoom_url` is set. Same card in the right panel when that group is selected, and on the group page. Clicking a group expands/drills into its 8-class strip. If no course exists for the current month: empty state "Próximo mes en preparación" with a "Nuevo mes" button (generator ships in a later slice; until then the button routes to the existing create-course form).
 - **8-class strip:** the month's 8 sessions as a vertical list, one row per class: class number, type label (Historia, Pronunciación, Video, Conversación, Diálogo, Música, Escritura, Examen), date/time, content status (assigned / sin contenido), recording status (URL attached / empty). Selecting a row populates the right context panel.
-- **Grupos:** all courses, current first, archived below under "Meses anteriores". Each row shows theme when set. Archived months are fully browsable read-only, EXCEPT the theme field and recording URLs stay editable (recordings are pasted day-after-class; themes are often named late). Inside a group, Estudiantes is a card grid (1 col mobile, 2 tablet, 3 desktop). Not a full-width stacked list. Four columns is too tight for names plus "Mover a Pre-intermedio". The global Estudiantes tab stays a searchable list.
+- **Grupos:** all courses, current first, archived below under "Meses anteriores". Each row shows theme when set. Archived months are fully browsable read-only, EXCEPT the theme field and recording URLs stay editable (recordings are pasted day-after-class; themes are often named late). Inside a group, the monthly Zoom field is an input until saved, then a terracotta text hyperlink (underline on hover) with an X to clear it and paste another. It must not look like an input or a ghost button. Estudiantes is a card grid (1 col mobile, 2 tablet, 3 desktop). Not a full-width stacked list. Four columns is too tight for names plus "Mover a Pre-intermedio". The global Estudiantes tab stays a searchable list.
 - **Estudiantes:** invite form first, then searchable global roster across groups. Student card: name, email, current group, attendance history, writing submissions with WPM trend, "cambiar de nivel" action (existing roster-move behavior).
 - **Analíticas:** palabras más consultadas only — per month, per level, aggregated across the month's stories. No other metrics in this phase (attendance rates, engagement scores etc. are future "institute administrator" territory, deliberately excluded).
 
@@ -560,6 +560,16 @@ Pages: story lessons, writing lessons, exams, movie talk, music, future lesson t
 ```
 
 ## Page Layouts
+
+### Login (`/login`)
+Email + 8-digit code. Same Paper Light chrome as browsing mode so the jump into Inicio is not a theme change. No tab bar (the student is not signed in yet).
+
+**Section order:**
+1. Sticky header (56px, `--paper-header`, backdrop blur): left "Profe Kyle" (`label-sm`, `--text-secondary`). No Profile icon.
+2. Page title: "Entra con tu email" (`headline-lg`). Focal point.
+3. Short copy (`body-main`, `--text-secondary`): code, no password, stay in this browser.
+4. Form: email or code input (`--surface`, 16px radius, 1px `--paper-line`, focus 2px `--accent`). Primary terracotta button (48px, 16px radius): "Mándame el código" then "Entrar". After send: warm callout (`--accent-softer`) "Revisa tu email" plus ghost "Usar otro email".
+5. Content `max-w-2xl`, `px-4`. No bottom tab bar.
 
 ### Inicio (Dashboard)
 The learner's home base. Shows today's class, progress, the month's 8-class stack, and recent practice.
