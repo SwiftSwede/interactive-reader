@@ -2,11 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { formatCountdownLabel, isLocalCalendarDate } from "@/lib/dashboard";
-import {
-  getClassDayPhase,
-  getSessionJoinTime,
-  type ClassDayPhase,
-} from "@/lib/session-phase";
+import { getClassDayPhase, type ClassDayPhase } from "@/lib/session-phase";
 import JoinCard, { STUDENT_APP_LABEL } from "./JoinCard";
 
 export default function ClassDayCard({
@@ -56,8 +52,10 @@ export default function ClassDayCard({
     return null;
   }
 
-  const joinTime = getSessionJoinTime({ sessionStartTime }).getTime();
-  const remaining = Math.max(0, joinTime - (now ?? Date.now()));
+  const remaining = Math.max(
+    0,
+    new Date(sessionStartTime).getTime() - (now ?? Date.now())
+  );
 
   if (phase === "done-pending") {
     return (
