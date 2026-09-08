@@ -8,7 +8,12 @@ export function documentTitle(page?: string | null): string {
 }
 
 async function titleFromTable(
-  table: "stories" | "writing_prompts" | "exam_prompts" | "presentation_prompts",
+  table:
+    | "stories"
+    | "writing_prompts"
+    | "exam_prompts"
+    | "presentation_prompts"
+    | "conversation_prompts",
   id: string | null | undefined
 ): Promise<string | null> {
   if (!id) return null;
@@ -69,19 +74,36 @@ export async function presentationSessionTitle(
   );
 }
 
+export async function conversationSessionTitle(
+  sessionToken: string | undefined
+): Promise<string | null> {
+  return sessionPromptTitle(
+    sessionToken,
+    "conversation_prompt_id",
+    "conversation_prompts"
+  );
+}
+
 async function sessionPromptTitle(
   sessionToken: string | undefined,
   promptIdColumn:
     | "writing_prompt_id"
     | "exam_prompt_id"
-    | "presentation_prompt_id",
-  table: "writing_prompts" | "exam_prompts" | "presentation_prompts"
+    | "presentation_prompt_id"
+    | "conversation_prompt_id",
+  table:
+    | "writing_prompts"
+    | "exam_prompts"
+    | "presentation_prompts"
+    | "conversation_prompts"
 ): Promise<string | null> {
   if (!sessionToken) return null;
   const supabase = createAdminClient();
   const { data } = await supabase
     .from("course_sessions")
-    .select("writing_prompt_id, exam_prompt_id, presentation_prompt_id")
+    .select(
+      "writing_prompt_id, exam_prompt_id, presentation_prompt_id, conversation_prompt_id"
+    )
     .eq("session_link_token", sessionToken)
     .maybeSingle();
   const promptId = data?.[promptIdColumn];

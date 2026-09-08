@@ -16,16 +16,24 @@ type PresentationOption = {
   title: string;
 };
 
+type ConversationCopyOption = {
+  id: string;
+  title: string;
+  questions: string[];
+};
+
 export default function NewClassButton({
   courseId,
   courseLevel,
   stories,
   presentationPrompts,
+  conversationCopyPrompts,
 }: {
   courseId: string;
   courseLevel: CourseLevel;
   stories: StoryOption[];
   presentationPrompts: PresentationOption[];
+  conversationCopyPrompts: ConversationCopyOption[];
 }) {
   const [open, setOpen] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -81,6 +89,7 @@ export default function NewClassButton({
               courseLevel={courseLevel}
               stories={stories}
               presentationPrompts={presentationPrompts}
+              conversationCopyPrompts={conversationCopyPrompts}
               onCreated={() => setOpen(false)}
             />
           ) : null}

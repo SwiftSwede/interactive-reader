@@ -268,6 +268,75 @@ export async function createSession(
     return { ok: true, message: `Listo. ${prompt.title} ya tiene clase.` };
   }
 
+  if (sessionType === "conversation") {
+    const title = String(formData.get("conversationTitle") ?? "").trim();
+    const theme = String(formData.get("conversationTheme") ?? "").trim() || null;
+    const questions = formData
+      .getAll("conversationQuestion")
+      .map((value) => String(value).trim())
+      .filter(Boolean);
+
+    if (!title) {
+      return { ok: false, error: "Ponle un título a la conversación." };
+    }
+    if (questions.length < 3 || questions.length > 6) {
+      return { ok: false, error: "Pon entre 3 y 6 preguntas." };
+    }
+    if (questions.some((question) => question.length > 500)) {
+      return { ok: false, error: "Alguna pregunta se pasó de 500 letras." };
+    }
+
+    const { data: prompt, error: promptError } = await supabase
+      .from("conversation_prompts")
+      .insert({
+        title,
+        level: course.level,
+        theme,
+        questions: questions.map((question, index) => ({
+          id: index + 1,
+          question,
+        })),
+        created_by: teacher.id,
+      })
+      .select("id, title")
+      .maybeSingle();
+
+    if (promptError || !prompt) {
+      console.error("create conversation prompt failed:", promptError);
+      return {
+        ok: false,
+        error: "No pude guardar las preguntas. Inténtalo de nuevo.",
+      };
+    }
+
+    const { error } = await supabase.from("course_sessions").insert({
+      course_id: courseId,
+      session_type: "conversation",
+      story_id: null,
+      writing_prompt_id: null,
+      exam_prompt_id: null,
+      presentation_prompt_id: null,
+      conversation_prompt_id: prompt.id,
+      conversation_plan: "standard",
+      session_date: sessionDate,
+      session_start_time: start.toISOString(),
+      session_end_time: end.toISOString(),
+      notes,
+    });
+
+    if (error) {
+      console.error("create conversation session failed:", error);
+      return {
+        ok: false,
+        error: "No pude crear la clase. Inténtalo de nuevo.",
+      };
+    }
+
+    revalidatePath(`/teacher/classes/${courseId}`);
+    revalidatePath("/teacher");
+    return { ok: true, message: `Listo. ${prompt.title} ya tiene clase.` };
+  }
+
   const storyId = String(formData.get("storyId") ?? "").trim();
 
   if (!storyId) {

@@ -1,3 +1,4 @@
+import { parseConversationQuestions } from "@/lib/conversation";
 import type { CourseLevel } from "@/types";
 import CourseRoster from "./CourseRoster";
 import ClassStrip, {
@@ -12,6 +13,7 @@ import { TEACHER_APP_LABEL } from "@/components/dashboard/JoinCard";
 import {
   isLiveOnlySessionType,
   sessionTypeLabel,
+  teacherJoinAppHref,
 } from "@/lib/activities";
 import { getClassDayPhase } from "@/lib/session-phase";
 import { areAnswersUnlocked } from "@/lib/sessions";
@@ -66,6 +68,31 @@ export default async function CourseClassPage({
     id: string;
     title: string;
   }[];
+
+  const { data: conversationCopyRows } =
+    course.level === "pre-intermediate"
+      ? await supabase
+          .from("conversation_prompts")
+          .select("id, title, questions")
+          .eq("level", "pre-intermediate")
+          .order("title")
+      : { data: [] };
+
+  const conversationCopyPrompts = (
+    (conversationCopyRows ?? []) as {
+      id: string;
+      title: string;
+      questions: unknown;
+    }[]
+  )
+    .map((row) => ({
+      id: row.id,
+      title: row.title,
+      questions: parseConversationQuestions(row.questions).map(
+        (question) => question.question
+      ),
+    }))
+    .filter((row) => row.questions.length > 0);
   const sessions = await loadCourseSessions(supabase, course.id);
   const orderedSessions = [...sessions].sort(
     (a, b) => new Date(a.start).getTime() - new Date(b.start).getTime()
@@ -182,11 +209,13 @@ export default async function CourseClassPage({
           sessionEndTime={todaySession.end}
           classEndedAt={todaySession.classEndedAt}
           sessionDate={todaySession.sessionDate}
-          href={
-            todayLiveOnly
-              ? null
-              : `/teacher/classes/${course.id}/sessions/${todaySession.id}`
-          }
+          href={teacherJoinAppHref({
+            sessionType: todaySession.sessionType,
+            token: todaySession.token,
+            courseId: course.id,
+            sessionId: todaySession.id,
+            conversationPromptId: todaySession.conversationPromptId,
+          })}
           zoomHref={course.zoom_url}
           appLabel={TEACHER_APP_LABEL}
           typeLabel={sessionTypeLabel(todaySession.sessionType)}
@@ -211,6 +240,7 @@ export default async function CourseClassPage({
                 courseLevel={course.level as CourseLevel}
                 stories={stories}
                 presentationPrompts={presentationPrompts}
+                conversationCopyPrompts={conversationCopyPrompts}
               />
             </div>
             {orderedSessions.length === 0 ? (

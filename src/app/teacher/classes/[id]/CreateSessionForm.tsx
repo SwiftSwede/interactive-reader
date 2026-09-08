@@ -7,6 +7,7 @@ import {
   defaultExamTask2Type,
   type SessionType,
 } from "@/lib/activities";
+import { appendNumberedQuestions } from "@/lib/conversation";
 import type { CourseLevel } from "@/types";
 
 const initialState: CreateSessionResult | null = null;
@@ -26,6 +27,12 @@ type PresentationOption = {
   title: string;
 };
 
+type ConversationCopyOption = {
+  id: string;
+  title: string;
+  questions: string[];
+};
+
 const fieldClass =
   "w-full rounded-card border border-paper-line bg-surface px-3 py-3 text-base text-text-primary focus:border-2 focus:border-accent focus:outline-none";
 
@@ -34,12 +41,14 @@ export default function CreateSessionForm({
   courseLevel,
   stories,
   presentationPrompts,
+  conversationCopyPrompts,
   onCreated,
 }: {
   courseId: string;
   courseLevel: CourseLevel;
   stories: StoryOption[];
   presentationPrompts: PresentationOption[];
+  conversationCopyPrompts: ConversationCopyOption[];
   onCreated?: () => void;
 }) {
   const [state, formAction, isPending] = useActionState(
@@ -47,6 +56,14 @@ export default function CreateSessionForm({
     initialState
   );
   const [sessionType, setSessionType] = useState<SessionType>("story");
+  const [promptText, setPromptText] = useState("");
+  const [copyPromptId, setCopyPromptId] = useState("");
+  const [conversationQuestions, setConversationQuestions] = useState([
+    "",
+    "",
+    "",
+    "",
+  ]);
 
   useEffect(() => {
     if (state?.ok) onCreated?.();
@@ -140,6 +157,17 @@ export default function CreateSessionForm({
               Presentación
             </button>
           ) : null}
+          <button
+            type="button"
+            onClick={() => setSessionType("conversation")}
+            className={`h-11 rounded-card border text-sm font-medium ${
+              sessionType === "conversation"
+                ? "border-accent bg-accent text-white"
+                : "border-paper-line text-text-primary"
+            }`}
+          >
+            Conversación
+          </button>
         </div>
       </fieldset>
 
@@ -180,10 +208,48 @@ export default function CreateSessionForm({
               name="promptText"
               required
               rows={4}
+              value={promptText}
+              onChange={(event) => setPromptText(event.target.value)}
               className="w-full resize-y rounded-card border border-paper-line px-3 py-3 text-base text-text-primary focus:border-2 focus:border-accent focus:outline-none"
               placeholder="What would you do if..."
             />
           </label>
+          {courseLevel === "pre-intermediate" &&
+          conversationCopyPrompts.length > 0 ? (
+            <div className="rounded-card border border-paper-line bg-surface p-3">
+              <p className="mb-2 text-sm font-medium text-text-secondary">
+                Copiar preguntas de Clase 4
+              </p>
+              <select
+                value={copyPromptId}
+                onChange={(event) => setCopyPromptId(event.target.value)}
+                className={fieldClass}
+              >
+                <option value="">Elige un set</option>
+                {conversationCopyPrompts.map((prompt) => (
+                  <option key={prompt.id} value={prompt.id}>
+                    {prompt.title}
+                  </option>
+                ))}
+              </select>
+              <button
+                type="button"
+                disabled={!copyPromptId}
+                onClick={() => {
+                  const prompt = conversationCopyPrompts.find(
+                    (row) => row.id === copyPromptId
+                  );
+                  if (!prompt) return;
+                  setPromptText(
+                    appendNumberedQuestions(promptText, prompt.questions)
+                  );
+                }}
+                className="mt-2 h-11 w-full rounded-card border border-paper-line text-sm font-medium disabled:opacity-60"
+              >
+                Copiar preguntas
+              </button>
+            </div>
+          ) : null}
           <label className="block">
             <span className="mb-1.5 block text-sm font-medium text-text-secondary">
               Tiempo
@@ -364,6 +430,79 @@ export default function CreateSessionForm({
             </select>
           </label>
         )
+      ) : sessionType === "conversation" ? (
+        <>
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-medium text-text-secondary">
+              Título
+            </span>
+            <input
+              name="conversationTitle"
+              required
+              maxLength={120}
+              className={fieldClass}
+              placeholder="Gabo"
+            />
+          </label>
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-medium text-text-secondary">
+              Tema (opcional)
+            </span>
+            <input
+              name="conversationTheme"
+              maxLength={200}
+              className={fieldClass}
+              placeholder="Gabriel García Márquez"
+            />
+          </label>
+          <div>
+            <p className="mb-1.5 text-sm font-medium text-text-secondary">
+              Preguntas (3 a 6)
+            </p>
+            <div className="space-y-2">
+              {conversationQuestions.map((question, index) => (
+                <input
+                  key={index}
+                  name="conversationQuestion"
+                  value={question}
+                  required={index < 3}
+                  maxLength={500}
+                  onChange={(event) => {
+                    const next = [...conversationQuestions];
+                    next[index] = event.target.value;
+                    setConversationQuestions(next);
+                  }}
+                  className={fieldClass}
+                  placeholder={`Pregunta ${index + 1}`}
+                />
+              ))}
+            </div>
+            <div className="mt-2 flex gap-2">
+              {conversationQuestions.length < 6 ? (
+                <button
+                  type="button"
+                  onClick={() =>
+                    setConversationQuestions([...conversationQuestions, ""])
+                  }
+                  className="h-11 flex-1 rounded-card border border-paper-line text-sm"
+                >
+                  Agregar
+                </button>
+              ) : null}
+              {conversationQuestions.length > 3 ? (
+                <button
+                  type="button"
+                  onClick={() =>
+                    setConversationQuestions(conversationQuestions.slice(0, -1))
+                  }
+                  className="h-11 flex-1 rounded-card border border-paper-line text-sm"
+                >
+                  Quitar
+                </button>
+              ) : null}
+            </div>
+          </div>
+        </>
       ) : videoOptions.length === 0 ? (
         <p className="text-sm text-text-muted">
           Todavía no hay una traducción de este nivel.
@@ -467,7 +606,9 @@ export default function CreateSessionForm({
           isPending ||
           (sessionType === "story" && storyOptions.length === 0) ||
           (sessionType === "video_summary" && videoOptions.length === 0) ||
-          (sessionType === "presentation" && presentationPrompts.length === 0)
+          (sessionType === "presentation" && presentationPrompts.length === 0) ||
+          (sessionType === "conversation" &&
+            conversationQuestions.filter((row) => row.trim()).length < 3)
         }
         className="w-full rounded-card bg-accent px-4 py-3 text-sm font-medium text-white disabled:opacity-60"
       >

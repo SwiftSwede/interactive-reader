@@ -5,13 +5,15 @@ import {
   isSessionType,
   sessionTypeLabel,
   studentSessionPath,
+  teacherJoinAppHref,
 } from "./activities";
 
 describe("session types", () => {
   test("accepts conversation and pronunciation", () => {
     assert.equal(isSessionType("conversation"), true);
     assert.equal(isSessionType("pronunciation"), true);
-    assert.equal(isLiveOnlySessionType("conversation"), true);
+    assert.equal(isLiveOnlySessionType("conversation"), false);
+    assert.equal(isLiveOnlySessionType("pronunciation"), true);
     assert.equal(isLiveOnlySessionType("story"), false);
   });
 
@@ -20,18 +22,50 @@ describe("session types", () => {
     assert.equal(sessionTypeLabel("pronunciation"), "Pronunciación");
   });
 
-  test("studentSessionPath is null for live-only types", () => {
+  test("studentSessionPath is null for pronunciation only", () => {
     assert.equal(
       studentSessionPath({
         sessionType: "conversation",
         token: "tok",
       }),
-      null
+      "/conversation?session=tok"
     );
     assert.equal(
       studentSessionPath({
         sessionType: "pronunciation",
         token: "tok",
+      }),
+      null
+    );
+  });
+
+  test("teacher Abrir la clase opens the conversation lesson", () => {
+    assert.equal(
+      teacherJoinAppHref({
+        sessionType: "conversation",
+        token: "tok",
+        courseId: "c1",
+        sessionId: "s1",
+        conversationPromptId: "p1",
+      }),
+      "/conversation?session=tok"
+    );
+    assert.equal(
+      teacherJoinAppHref({
+        sessionType: "conversation",
+        token: "tok",
+        courseId: "c1",
+        sessionId: "s1",
+        conversationPromptId: null,
+      }),
+      "/teacher/classes/c1/sessions/s1"
+    );
+    assert.equal(
+      teacherJoinAppHref({
+        sessionType: "pronunciation",
+        token: "tok",
+        courseId: "c1",
+        sessionId: "s1",
       }),
       null
     );

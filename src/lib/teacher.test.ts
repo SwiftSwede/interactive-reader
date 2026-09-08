@@ -116,11 +116,12 @@ describe("readinessLabel", () => {
     writingPromptId: null as string | null,
     examPromptId: null as string | null,
     presentationPromptId: null as string | null,
+    conversationPromptId: null as string | null,
   };
 
-  test("counts live-only types as ready", () => {
+  test("counts pronunciation as ready without a catalog row", () => {
     const sessions = [
-      { sessionType: "conversation" as const, storyId: null, ...emptyRefs },
+      { sessionType: "pronunciation" as const, storyId: null, ...emptyRefs },
       { sessionType: "story" as const, storyId: null, ...emptyRefs },
     ];
     assert.equal(readySessionCount(sessions), 1);
@@ -136,7 +137,7 @@ describe("readinessLabel", () => {
 });
 
 describe("sessionContentStatus", () => {
-  test("labels live-only as ready", () => {
+  test("labels conversation without a prompt as empty", () => {
     assert.equal(
       sessionContentStatus({
         sessionType: "conversation",
@@ -144,6 +145,21 @@ describe("sessionContentStatus", () => {
         writingPromptId: null,
         examPromptId: null,
         presentationPromptId: null,
+        conversationPromptId: null,
+      }),
+      "Sin contenido"
+    );
+  });
+
+  test("labels conversation with a prompt as ready", () => {
+    assert.equal(
+      sessionContentStatus({
+        sessionType: "conversation",
+        storyId: null,
+        writingPromptId: null,
+        examPromptId: null,
+        presentationPromptId: null,
+        conversationPromptId: "p1",
       }),
       "Contenido listo"
     );

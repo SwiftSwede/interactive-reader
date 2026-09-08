@@ -20,7 +20,21 @@ const times = {
 };
 
 describe("hasSessionContent", () => {
-  test("live-only types are treated as ready, not placeholders", () => {
+  test("pronunciation is ready without a catalog row", () => {
+    assert.equal(
+      hasSessionContent({
+        sessionType: "pronunciation",
+        storyId: null,
+        writingPromptId: null,
+        examPromptId: null,
+        presentationPromptId: null,
+        conversationPromptId: null,
+      }),
+      true
+    );
+  });
+
+  test("conversation is ready only with a prompt", () => {
     assert.equal(
       hasSessionContent({
         sessionType: "conversation",
@@ -28,6 +42,18 @@ describe("hasSessionContent", () => {
         writingPromptId: null,
         examPromptId: null,
         presentationPromptId: null,
+        conversationPromptId: null,
+      }),
+      false
+    );
+    assert.equal(
+      hasSessionContent({
+        sessionType: "conversation",
+        storyId: null,
+        writingPromptId: null,
+        examPromptId: null,
+        presentationPromptId: null,
+        conversationPromptId: "p1",
       }),
       true
     );
@@ -41,6 +67,7 @@ describe("hasSessionContent", () => {
         writingPromptId: null,
         examPromptId: null,
         presentationPromptId: null,
+        conversationPromptId: null,
       }),
       false
     );
@@ -55,8 +82,9 @@ describe("toDashboardLesson", () => {
       storyId: null,
       writingPromptId: null,
       examPromptId: null,
-      presentationPromptId: null,
-      title: "The Jersey",
+        presentationPromptId: null,
+        conversationPromptId: null,
+        title: "The Jersey",
       storySlug: "the-jersey",
       token: "tok",
       recordingYoutubeUrl: null,
@@ -77,8 +105,9 @@ describe("toDashboardLesson", () => {
       storyId: "story-1",
       writingPromptId: null,
       examPromptId: null,
-      presentationPromptId: null,
-      title: "The Jersey",
+        presentationPromptId: null,
+        conversationPromptId: null,
+        title: "The Jersey",
       storySlug: "the-jersey",
       token: "tok",
       recordingYoutubeUrl: null,
@@ -92,7 +121,7 @@ describe("toDashboardLesson", () => {
     assert.equal(lesson.title, "The Jersey");
   });
 
-  test("live-only is never tappable, even during the live window", () => {
+  test("conversation with a prompt is tappable during class", () => {
     const lesson = toDashboardLesson({
       sessionId: "s1",
       sessionType: "conversation",
@@ -100,7 +129,8 @@ describe("toDashboardLesson", () => {
       writingPromptId: null,
       examPromptId: null,
       presentationPromptId: null,
-      title: null,
+      conversationPromptId: "p1",
+      title: "Gabo",
       storySlug: null,
       token: "tok",
       recordingYoutubeUrl: null,
@@ -108,9 +138,10 @@ describe("toDashboardLesson", () => {
       now: new Date("2026-09-06T19:00:00.000Z"),
       ...times,
     });
-    assert.equal(lesson.liveOnly, true);
+    assert.equal(lesson.liveOnly, false);
     assert.equal(lesson.lifecycle, "live");
-    assert.equal(lesson.href, null);
+    assert.equal(lesson.href, "/conversation?session=tok");
+    assert.equal(lesson.title, "Gabo");
     assert.equal(lesson.completed, true);
   });
 

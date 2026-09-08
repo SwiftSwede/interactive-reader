@@ -24,7 +24,7 @@ export function isSessionType(
 }
 
 export function isLiveOnlySessionType(type: SessionType): boolean {
-  return type === "conversation" || type === "pronunciation";
+  return type === "pronunciation";
 }
 
 export function sessionTypeLabel(type: SessionType): string {
@@ -69,6 +69,26 @@ export function studentSessionPath(input: {
   if (input.sessionType === "presentation") {
     return `/presentation?session=${encodeURIComponent(input.token)}`;
   }
+  if (input.sessionType === "conversation") {
+    return `/conversation?session=${encodeURIComponent(input.token)}`;
+  }
   if (!input.storySlug) return null;
   return lessonPath(input.storySlug, input.token);
+}
+
+export function teacherJoinAppHref(input: {
+  sessionType: SessionType;
+  token: string;
+  courseId: string;
+  sessionId: string;
+  conversationPromptId?: string | null;
+}): string | null {
+  if (isLiveOnlySessionType(input.sessionType)) return null;
+  if (input.sessionType === "conversation") {
+    if (!input.conversationPromptId) {
+      return `/teacher/classes/${input.courseId}/sessions/${input.sessionId}`;
+    }
+    return `/conversation?session=${encodeURIComponent(input.token)}`;
+  }
+  return `/teacher/classes/${input.courseId}/sessions/${input.sessionId}`;
 }

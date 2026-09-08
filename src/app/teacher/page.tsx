@@ -5,6 +5,7 @@ import { hasSessionContent } from "@/lib/dashboard";
 import {
   isLiveOnlySessionType,
   sessionTypeLabel,
+  teacherJoinAppHref,
 } from "@/lib/activities";
 import NewMonthButton from "@/components/teacher/NewMonthButton";
 import ThisMonthBoard, {
@@ -97,9 +98,13 @@ export default async function TeacherHomePage() {
               sessionDate: todaySession.sessionDate,
               typeLabel: sessionTypeLabel(todaySession.sessionType),
               liveOnly,
-              appHref: liveOnly
-                ? null
-                : `/teacher/classes/${course.id}/sessions/${todaySession.id}`,
+              appHref: teacherJoinAppHref({
+                sessionType: todaySession.sessionType,
+                token: todaySession.token,
+                courseId: course.id,
+                sessionId: todaySession.id,
+                conversationPromptId: todaySession.conversationPromptId,
+              }),
               zoomHref: course.zoom_url,
             }
           : null,

@@ -8,6 +8,7 @@ import { TEACHER_APP_LABEL } from "@/components/dashboard/JoinCard";
 import {
   isLiveOnlySessionType,
   sessionTypeLabel,
+  teacherJoinAppHref,
 } from "@/lib/activities";
 import { getClassDayPhase } from "@/lib/session-phase";
 import {
@@ -62,9 +63,13 @@ export default async function TeacherGroupsPage() {
         classEndedAt: todaySession.classEndedAt,
         sessionDate: todaySession.sessionDate,
         typeLabel: sessionTypeLabel(todaySession.sessionType),
-        appHref: liveOnly
-          ? null
-          : `/teacher/classes/${course.id}/sessions/${todaySession.id}`,
+        appHref: teacherJoinAppHref({
+          sessionType: todaySession.sessionType,
+          token: todaySession.token,
+          courseId: course.id,
+          sessionId: todaySession.id,
+          conversationPromptId: todaySession.conversationPromptId,
+        }),
         zoomHref: course.zoom_url,
       },
     ];

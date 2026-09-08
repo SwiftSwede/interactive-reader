@@ -37,6 +37,7 @@ export type TeacherSession = {
   writingPromptId: string | null;
   examPromptId: string | null;
   presentationPromptId: string | null;
+  conversationPromptId: string | null;
   sessionDate: string;
   start: string;
   end: string;
@@ -50,6 +51,7 @@ export type TeacherSession = {
   writingPrompt: WritingPromptRef | null;
   examPrompt: ExamPromptRef | null;
   presentationPrompt: PresentationPromptRef | null;
+  conversationPrompt: ConversationPromptRef | null;
 };
 
 export type ExamPromptRef = {
@@ -59,6 +61,11 @@ export type ExamPromptRef = {
 };
 
 export type PresentationPromptRef = {
+  title: string;
+  level: CourseLevel;
+};
+
+export type ConversationPromptRef = {
   title: string;
   level: CourseLevel;
 };
@@ -90,6 +97,10 @@ type PresentationPromptJoin =
   | PresentationPromptRefRow
   | PresentationPromptRefRow[]
   | null;
+type ConversationPromptJoin =
+  | ConversationPromptRefRow
+  | ConversationPromptRefRow[]
+  | null;
 
 type WritingPromptRefRow = {
   title: string;
@@ -105,6 +116,11 @@ type ExamPromptRefRow = {
 };
 
 type PresentationPromptRefRow = {
+  title: string;
+  level: CourseLevel;
+};
+
+type ConversationPromptRefRow = {
   title: string;
   level: CourseLevel;
 };
@@ -158,6 +174,21 @@ function presentationPromptFromJoin(
   };
 }
 
+function conversationPromptFromJoin(
+  prompts: ConversationPromptJoin
+): ConversationPromptRef | null {
+  const row = !prompts
+    ? null
+    : Array.isArray(prompts)
+      ? (prompts[0] ?? null)
+      : prompts;
+  if (!row) return null;
+  return {
+    title: row.title,
+    level: row.level,
+  };
+}
+
 export function sessionTitle(session: TeacherSession): string {
   if (session.sessionType === "writing") {
     return session.writingPrompt?.title || "Escritura";
@@ -168,11 +199,11 @@ export function sessionTitle(session: TeacherSession): string {
   if (session.sessionType === "presentation") {
     return session.presentationPrompt?.title || "Presentación";
   }
+  if (session.sessionType === "conversation") {
+    return session.conversationPrompt?.title || "Conversación";
+  }
   if (session.sessionType === "video_summary") {
     return session.story?.title ?? "Traducción";
-  }
-  if (session.sessionType === "conversation") {
-    return "Conversación";
   }
   if (session.sessionType === "pronunciation") {
     return "Pronunciación";
@@ -192,6 +223,7 @@ export function sessionContentStatus(session: {
   writingPromptId: string | null;
   examPromptId: string | null;
   presentationPromptId: string | null;
+  conversationPromptId: string | null;
 }): "Contenido listo" | "Sin contenido" {
   return hasSessionContent(session) ? "Contenido listo" : "Sin contenido";
 }
@@ -339,6 +371,7 @@ export function readySessionCount(
     writingPromptId: string | null;
     examPromptId: string | null;
     presentationPromptId: string | null;
+    conversationPromptId: string | null;
   }>
 ): number {
   return sessions.filter((session) => hasSessionContent(session)).length;
@@ -351,6 +384,7 @@ export function readinessLabel(
     writingPromptId: string | null;
     examPromptId: string | null;
     presentationPromptId: string | null;
+    conversationPromptId: string | null;
   }>
 ): string {
   return `${readySessionCount(sessions)}/8 clases listas`;
@@ -388,6 +422,7 @@ type SessionRow = {
   writing_prompt_id?: string | null;
   exam_prompt_id?: string | null;
   presentation_prompt_id?: string | null;
+  conversation_prompt_id?: string | null;
   session_start_time: string;
   session_end_time: string;
   class_ended_at?: string | null;
@@ -401,6 +436,7 @@ type SessionRow = {
   writing_prompts?: PromptJoin;
   exam_prompts?: ExamPromptJoin;
   presentation_prompts?: PresentationPromptJoin;
+  conversation_prompts?: ConversationPromptJoin;
 };
 
 export function mapSessionRow(row: SessionRow): TeacherSession {
@@ -412,7 +448,9 @@ export function mapSessionRow(row: SessionRow): TeacherSession {
         ? "exam"
         : row.presentation_prompt_id
           ? "presentation"
-          : "story";
+          : row.conversation_prompt_id
+            ? "conversation"
+            : "story";
 
   return {
     id: row.id,
@@ -422,6 +460,7 @@ export function mapSessionRow(row: SessionRow): TeacherSession {
     writingPromptId: row.writing_prompt_id ?? null,
     examPromptId: row.exam_prompt_id ?? null,
     presentationPromptId: row.presentation_prompt_id ?? null,
+    conversationPromptId: row.conversation_prompt_id ?? null,
     sessionDate:
       row.session_date && /^\d{4}-\d{2}-\d{2}/.test(row.session_date)
         ? row.session_date.slice(0, 10)
@@ -440,11 +479,14 @@ export function mapSessionRow(row: SessionRow): TeacherSession {
     presentationPrompt: presentationPromptFromJoin(
       row.presentation_prompts ?? null
     ),
+    conversationPrompt: conversationPromptFromJoin(
+      row.conversation_prompts ?? null
+    ),
   };
 }
 
 export const SESSION_SELECT =
-  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, presentation_prompt_id, timer_started_at, session_date, session_start_time, session_end_time, class_ended_at, answers_revealed, notes, session_link_token, recording_youtube_url, stories ( title, slug ), writing_prompts ( title, prompt_text, writing_time_minutes, level ), exam_prompts ( title, level, time_limit_minutes ), presentation_prompts ( title, level )";
+  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, presentation_prompt_id, conversation_prompt_id, timer_started_at, session_date, session_start_time, session_end_time, class_ended_at, answers_revealed, notes, session_link_token, recording_youtube_url, stories ( title, slug ), writing_prompts ( title, prompt_text, writing_time_minutes, level ), exam_prompts ( title, level, time_limit_minutes ), presentation_prompts ( title, level ), conversation_prompts ( title, level )";
 
 const SESSION_SELECT_LEGACY =
   "id, course_id, story_id, session_date, session_start_time, session_end_time, class_ended_at, answers_revealed, notes, session_link_token, stories ( title, slug )";

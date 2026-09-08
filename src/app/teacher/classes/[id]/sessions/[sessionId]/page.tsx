@@ -34,7 +34,13 @@ export const metadata = {
 function openedLabel(
   opened: boolean,
   attended: boolean,
-  kind: "story" | "writing" | "exam" | "video_summary" | "presentation"
+  kind:
+    | "story"
+    | "writing"
+    | "exam"
+    | "video_summary"
+    | "presentation"
+    | "conversation"
 ) {
   const noun =
     kind === "writing"
@@ -45,7 +51,9 @@ function openedLabel(
           ? "la traducción"
           : kind === "presentation"
             ? "la presentación"
-            : "la historia";
+            : kind === "conversation"
+              ? "la conversación"
+              : "la historia";
   if (!opened) return `Todavía no abre ${noun}.`;
   if (attended) return `Abrió ${noun}. Llegó a tiempo.`;
   return `Abrió ${noun}. Fuera de la ventana de clase.`;
@@ -76,6 +84,7 @@ export default async function SessionDetailPage({
   const isExam = session.sessionType === "exam";
   const isVideo = session.sessionType === "video_summary";
   const isPresentation = session.sessionType === "presentation";
+  const isConversation = session.sessionType === "conversation";
   const isLiveOnly = isLiveOnlySessionType(session.sessionType);
   const [students, lookedUpWords, submissions, examGroups, examSubs, freeWrites] =
     await Promise.all([
@@ -85,7 +94,7 @@ export default async function SessionDetailPage({
         session.id,
         session.storyId
       ),
-      isWriting || isExam || isVideo || isPresentation
+      isWriting || isExam || isVideo || isPresentation || isConversation
         ? Promise.resolve([])
         : loadLookedUpWords(supabase, session.id),
       isWriting
@@ -193,6 +202,8 @@ export default async function SessionDetailPage({
               sessionId={session.id}
             />
           )
+        ) : isConversation || isPresentation ? (
+          <span />
         ) : unlocked ? (
           <p className="flex items-center text-sm text-text-muted">
             Respuestas desbloqueadas.
@@ -220,6 +231,17 @@ export default async function SessionDetailPage({
             className="inline-flex h-11 items-center rounded-card bg-accent px-4 text-sm font-medium text-white"
           >
             Abrir la presentación
+          </Link>
+        </p>
+      ) : null}
+
+      {isConversation && copyHref ? (
+        <p className="mt-4">
+          <Link
+            href={copyHref}
+            className="inline-flex h-11 items-center rounded-card bg-accent px-4 text-sm font-medium text-white"
+          >
+            Abrir la clase
           </Link>
         </p>
       ) : null}
@@ -290,7 +312,7 @@ export default async function SessionDetailPage({
         </div>
       )}
 
-      {!isWriting && !isExam && !isVideo && !isPresentation && (
+      {!isWriting && !isExam && !isVideo && !isPresentation && !isConversation && (
         <div className="mt-10">
           <h2 className="mb-3 text-headline-md text-text-primary">
             Palabras más consultadas
@@ -425,7 +447,9 @@ export default async function SessionDetailPage({
                               ? "video_summary"
                               : isPresentation
                                 ? "presentation"
-                                : "story"
+                                : isConversation
+                                  ? "conversation"
+                                  : "story"
                       )}
                     </p>
                   ) : null}

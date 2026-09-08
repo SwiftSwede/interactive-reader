@@ -163,6 +163,8 @@ export type SessionType =
 export type WritingSubmissionStatus = "draft" | "submitted" | "corrected";
 export type ExamTask2Type = "paragraph_restructuring" | "sentence_correction";
 export type GroupExamSubmissionStatus = "in_progress" | "submitted";
+export type ConversationPlan = "standard" | "compact" | "open";
+export type ConversationRoundState = "idle" | "running" | "stopped";
 
 export interface Profile {
   id: string;
@@ -212,6 +214,11 @@ export interface CourseSession {
   examPromptId: string | null;
   presentationPromptId: string | null;
   presentationStep: string | null;
+  conversationPromptId: string | null;
+  roundCurrent: number;
+  roundState: ConversationRoundState;
+  roundStartedAt: string | null;
+  conversationPlan: ConversationPlan;
   recordingYoutubeUrl: string | null;
   sessionDate: string;
   sessionStartTime: string;
@@ -324,6 +331,21 @@ export type PresentationSegment = {
   vocabulary: PresentationVocabItem[];
   comprehensionQuestions: PresentationQuestion[];
 };
+
+export interface ConversationQuestion {
+  id: number;
+  question: string;
+}
+
+export interface ConversationPrompt {
+  id: string;
+  title: string;
+  level: CourseLevel;
+  theme: string | null;
+  questions: ConversationQuestion[];
+  createdBy: string;
+  createdAt: string;
+}
 
 export interface PresentationPrompt {
   id: string;

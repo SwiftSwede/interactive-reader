@@ -80,3 +80,13 @@ A self-service content editor so the teacher can fix typos, translations, questi
 - [ ] Exam editor: paste malformed pipe text → save blocked with parse error; valid text → parsed preview matches stored format.
 - [ ] body_text edit on a story shows the karaoke warning when word count changes.
 - [ ] `npx tsc --noEmit` passes before commit; `npx next build` passes before push.
+
+## Addendum (Slice 61)
+
+Slice 55 is not built yet. When it is, include conversation prompts in the editor:
+
+- Index: list `conversation_prompts` (title, level, theme, question count). Kind chip: Conversación.
+- Edit page `/teacher/content/conversation/[id]`: `title`, `theme` (optional), questions list `{id, question}` (3-6 items, add/delete/reorder; ids stay stable on reorder).
+- Schema: `supabase/schema-phase5-conversation.sql`. Seed shape: `scripts/seed-conversation.ts`.
+- Conversation sessions are composed in Nueva clase (insert prompt + session). The editor only edits existing catalog rows. Do not add `/teacher/conversations/new`.
+

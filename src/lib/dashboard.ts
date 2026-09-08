@@ -49,6 +49,7 @@ type ContentRefs = {
   writingPromptId: string | null;
   examPromptId: string | null;
   presentationPromptId: string | null;
+  conversationPromptId: string | null;
 };
 
 export function hasSessionContent(session: ContentRefs): boolean {
@@ -57,6 +58,9 @@ export function hasSessionContent(session: ContentRefs): boolean {
   if (session.sessionType === "exam") return Boolean(session.examPromptId);
   if (session.sessionType === "presentation") {
     return Boolean(session.presentationPromptId);
+  }
+  if (session.sessionType === "conversation") {
+    return Boolean(session.conversationPromptId);
   }
   return Boolean(session.storyId);
 }
@@ -227,6 +231,7 @@ export function toDashboardLesson(input: {
   writingPromptId: string | null;
   examPromptId: string | null;
   presentationPromptId: string | null;
+  conversationPromptId?: string | null;
   title: string | null;
   storySlug: string | null;
   token: string;
@@ -245,6 +250,7 @@ export function toDashboardLesson(input: {
     writingPromptId: input.writingPromptId,
     examPromptId: input.examPromptId,
     presentationPromptId: input.presentationPromptId,
+    conversationPromptId: input.conversationPromptId ?? null,
   });
   const lifecycle = getSessionLifecycle(
     {
@@ -289,6 +295,7 @@ type SessionRow = {
   writing_prompt_id?: string | null;
   exam_prompt_id?: string | null;
   presentation_prompt_id?: string | null;
+  conversation_prompt_id?: string | null;
   session_date: string;
   session_start_time: string;
   session_end_time: string;
@@ -299,6 +306,7 @@ type SessionRow = {
   writing_prompts?: TitleJoin;
   exam_prompts?: TitleJoin;
   presentation_prompts?: TitleJoin;
+  conversation_prompts?: TitleJoin;
 };
 
 async function safeSelect<T>(
@@ -319,7 +327,7 @@ async function safeSelect<T>(
 }
 
 const SESSION_SELECT_FULL =
-  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, presentation_prompt_id, session_date, session_start_time, session_end_time, class_ended_at, session_link_token, recording_youtube_url, stories ( title, slug ), writing_prompts ( title ), exam_prompts ( title ), presentation_prompts ( title )";
+  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, presentation_prompt_id, conversation_prompt_id, session_date, session_start_time, session_end_time, class_ended_at, session_link_token, recording_youtube_url, stories ( title, slug ), writing_prompts ( title ), exam_prompts ( title ), presentation_prompts ( title ), conversation_prompts ( title )";
 
 const SESSION_SELECT_NO_PRESENTATION =
   "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, session_date, session_start_time, session_end_time, class_ended_at, session_link_token, recording_youtube_url, stories ( title, slug ), writing_prompts ( title ), exam_prompts ( title )";
@@ -358,6 +366,9 @@ function contentTitle(row: SessionRow, type: SessionType): string | null {
   if (type === "writing") return joinTitle(row.writing_prompts ?? null);
   if (type === "exam") return joinTitle(row.exam_prompts ?? null);
   if (type === "presentation") return joinTitle(row.presentation_prompts ?? null);
+  if (type === "conversation") {
+    return joinTitle(row.conversation_prompts ?? null);
+  }
   return joinTitle(row.stories ?? null);
 }
 
@@ -563,6 +574,7 @@ export async function loadDashboard(
         writingPromptId: row.writing_prompt_id ?? null,
         examPromptId: row.exam_prompt_id ?? null,
         presentationPromptId: row.presentation_prompt_id ?? null,
+        conversationPromptId: row.conversation_prompt_id ?? null,
         title: contentTitle(row, sessionType),
         storySlug: joinSlug(row.stories ?? null),
         token: row.session_link_token,

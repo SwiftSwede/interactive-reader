@@ -12,7 +12,16 @@ import {
 } from "@/lib/activities";
 import { classroomStudentCanAccessSession } from "@/lib/classroom-access";
 import { seedClassroomLevelIfEmpty } from "@/lib/classroom-placement";
-import type { CourseLevel, CourseSession } from "@/types";
+import {
+  isConversationPlan,
+  isConversationRoundState,
+} from "@/lib/conversation";
+import type {
+  ConversationPlan,
+  ConversationRoundState,
+  CourseLevel,
+  CourseSession,
+} from "@/types";
 import {
   getSessionPhase,
   isWithinSessionWindow,
@@ -35,6 +44,16 @@ function revalidateTeacherViews() {
   });
 }
 
+function redirectIfConversation(session: CourseSession) {
+  if (session.sessionType !== "conversation") return;
+  redirect(
+    sessionHref({
+      sessionType: "conversation",
+      token: session.sessionLinkToken,
+    })
+  );
+}
+
 type SessionRow = {
   id: string;
   course_id: string;
@@ -44,6 +63,11 @@ type SessionRow = {
   exam_prompt_id?: string | null;
   presentation_prompt_id?: string | null;
   presentation_step?: string | null;
+  conversation_prompt_id?: string | null;
+  round_current?: number | null;
+  round_state?: string | null;
+  round_started_at?: string | null;
+  conversation_plan?: string | null;
   recording_youtube_url?: string | null;
   session_date: string;
   session_start_time: string;
@@ -81,7 +105,20 @@ export function mapSession(row: SessionRow): CourseSession {
         ? "exam"
         : row.presentation_prompt_id
           ? "presentation"
-          : "story";
+          : row.conversation_prompt_id
+            ? "conversation"
+            : "story";
+
+  const roundState: ConversationRoundState = isConversationRoundState(
+    row.round_state
+  )
+    ? row.round_state
+    : "idle";
+  const conversationPlan: ConversationPlan = isConversationPlan(
+    row.conversation_plan
+  )
+    ? row.conversation_plan
+    : "standard";
 
   return {
     id: row.id,
@@ -92,6 +129,11 @@ export function mapSession(row: SessionRow): CourseSession {
     examPromptId: row.exam_prompt_id ?? null,
     presentationPromptId: row.presentation_prompt_id ?? null,
     presentationStep: row.presentation_step ?? null,
+    conversationPromptId: row.conversation_prompt_id ?? null,
+    roundCurrent: row.round_current ?? 0,
+    roundState,
+    roundStartedAt: row.round_started_at ?? null,
+    conversationPlan,
     recordingYoutubeUrl: row.recording_youtube_url ?? null,
     sessionDate: row.session_date,
     sessionStartTime: row.session_start_time,
@@ -426,6 +468,8 @@ export async function resolveSessionAccess(
     );
   }
 
+  redirectIfConversation(access.session);
+
   if (!access.session.storyId) return { kind: "invalid" };
 
   const storySlug = await getStorySlug(access.session.storyId);
@@ -488,6 +532,8 @@ export async function resolveWritingSessionAccess(
     );
   }
 
+  redirectIfConversation(access.session);
+
   return access;
 }
 
@@ -535,6 +581,8 @@ export async function resolveExamSessionAccess(
     );
   }
 
+  redirectIfConversation(access.session);
+
   return access;
 }
 
@@ -560,6 +608,64 @@ export async function resolvePresentationSessionAccess(
     redirect(
       sessionHref({
         sessionType: "exam",
+        token: access.session.sessionLinkToken,
+      })
+    );
+  }
+
+  if (
+    access.session.sessionType === "story" ||
+    access.session.sessionType === "video_summary"
+  ) {
+    const storySlug = access.session.storyId
+      ? await getStorySlug(access.session.storyId)
+      : null;
+    if (!storySlug) return { kind: "invalid" };
+    redirect(
+      sessionHref({
+        sessionType: access.session.sessionType,
+        token: access.session.sessionLinkToken,
+        storySlug,
+      })
+    );
+  }
+
+  redirectIfConversation(access.session);
+
+  return access;
+}
+
+export async function resolveConversationSessionAccess(
+  sessionToken: string | undefined
+): Promise<SessionAccess> {
+  if (!sessionToken?.trim()) return { kind: "invalid" };
+
+  const loginNext = `/conversation?session=${sessionToken.trim()}`;
+  const access = await loadSessionAccess(sessionToken, loginNext);
+  if (access.kind !== "ok") return access;
+
+  if (access.session.sessionType === "writing") {
+    redirect(
+      sessionHref({
+        sessionType: "writing",
+        token: access.session.sessionLinkToken,
+      })
+    );
+  }
+
+  if (access.session.sessionType === "exam") {
+    redirect(
+      sessionHref({
+        sessionType: "exam",
+        token: access.session.sessionLinkToken,
+      })
+    );
+  }
+
+  if (access.session.sessionType === "presentation") {
+    redirect(
+      sessionHref({
+        sessionType: "presentation",
         token: access.session.sessionLinkToken,
       })
     );

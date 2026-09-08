@@ -109,6 +109,19 @@ To add a lesson: append an entry to `PRESENTATIONS` in `scripts/seed-presentatio
 
 **Cost / time / status:** Free. A few seconds. Idempotent by title+level (upserts in place — never deletes the row). Seeded: Paris (May 2026), Gabo / Gabriel García Márquez (September 2026).
 
+### Seed a conversation class (Class 4, both levels)
+
+Inserts (or updates) example question sets into `conversation_prompts`. Schema: `supabase/schema-phase5-conversation.sql`. These are examples to replace later.
+
+```bash
+npx tsx scripts/seed-conversation.ts                 # seed all example sets
+npx tsx scripts/seed-conversation.ts --title Gabo    # seed matching title(s)
+```
+
+To add a set: append an entry to `CONVERSATIONS` in `scripts/seed-conversation.ts` (title, level `pre-intermediate` or `intermediate`, optional theme, 3-6 spoken questions). No answers, no roles. Upserts by title+level and never deletes the row.
+
+**Cost / time / status:** Free. A few seconds. Idempotent by title+level. Seeded: Gabo (pre-intermediate and intermediate example sets).
+
 ### Generate word timestamps for karaoke (Whisper)
 
 Uses OpenAI Whisper to transcribe the story audio and generate word-level timing data for the karaoke highlight feature.
