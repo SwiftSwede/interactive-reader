@@ -281,22 +281,29 @@ export default function ComprehensionQuestions({
               {/* Reveal button or answer */}
               {isRevealed ? (
                 <div className="mt-3 rounded-card bg-surface-hover px-3 py-3">
-                  <p className="text-label-sm text-text-muted mb-1">
-                    Respuesta:
-                  </p>
-                  {studentAnswer.trim() && (
-                    <p className="text-body-main text-text-secondary mb-2">
-                      <span className="text-text-muted">Tu respuesta: </span>
-                      {studentAnswer}
-                    </p>
-                  )}
-                  {q.answer && (
-                    <p className="text-body-main text-text-primary">
-                      {q.answer}
+                  {q.answer ? (
+                    <>
+                      <p className="text-label-sm text-text-muted mb-1">
+                        Respuesta:
+                      </p>
+                      <p className="text-body-main text-text-primary">
+                        {q.answer}
+                      </p>
+                      {studentAnswer.trim() ? (
+                        <p className="text-body-main text-text-secondary mt-2">
+                          <span className="text-text-muted">Tu respuesta: </span>
+                          {studentAnswer}
+                        </p>
+                      ) : null}
+                    </>
+                  ) : (
+                    <p className="text-body-main text-text-secondary">
+                      Todavia no hay una respuesta modelo. Compara lo que
+                      escribiste con el cuento.
                     </p>
                   )}
                 </div>
-              ) : canReveal ? (
+              ) : canReveal && q.answer ? (
                 <button
                   onClick={() => handleReveal(q.position, q.id)}
                   disabled={!studentAnswer.trim()}

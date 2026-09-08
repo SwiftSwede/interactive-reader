@@ -534,6 +534,11 @@ async function main() {
   console.log("Inserting comprehension questions...");
   for (let i = 0; i < parsed.comprehensionQuestions.length; i++) {
     const q = parsed.comprehensionQuestions[i];
+    if (!q.answer) {
+      console.warn(
+        `Warning: comprehension question ${i} has no answer. "Ver respuesta" will only show the student's text.`
+      );
+    }
     const { error } = await supabase.from("comprehension_questions").insert({
       story_id: storyId,
       position: i,
