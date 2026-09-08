@@ -12,7 +12,9 @@ import {
 } from "@/lib/writing";
 import { saveWritingDraft, submitWriting } from "@/app/writing/actions";
 import WritingCorrectionView from "@/components/WritingCorrectionView";
+import EndClassButton from "@/components/EndClassButton";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
+import { getSessionPhase } from "@/lib/session-phase";
 import type { CourseLevel } from "@/types";
 
 type Prompt = {
@@ -35,6 +37,9 @@ export default function WritingSession({
   submission,
   correction,
   recordingYoutubeUrl = null,
+  classEndedAt: initialEndedAt = null,
+  sessionStartTime = null,
+  sessionEndTime = null,
 }: {
   sessionId: string;
   prompt: Prompt;
@@ -53,8 +58,12 @@ export default function WritingSession({
     goodVocabulary: number[] | null;
   } | null;
   recordingYoutubeUrl?: string | null;
+  classEndedAt?: string | null;
+  sessionStartTime?: string | null;
+  sessionEndTime?: string | null;
 }) {
   const [timerStartedAt, setTimerStartedAt] = useState(initialTimerStartedAt);
+  const [classEndedAt, setClassEndedAt] = useState(initialEndedAt);
   const [text, setText] = useState(submission?.text ?? "");
   const [status, setStatus] = useState(submission?.status ?? "draft");
   const [now, setNow] = useState(() => Date.now());
@@ -62,6 +71,16 @@ export default function WritingSession({
   const [error, setError] = useState("");
   const autoSubmitted = useRef(false);
   const textRef = useRef(submission?.text ?? "");
+  const live =
+    Boolean(sessionStartTime && sessionEndTime) &&
+    getSessionPhase(
+      {
+        sessionStartTime: sessionStartTime as string,
+        sessionEndTime: sessionEndTime as string,
+        classEndedAt,
+      },
+      new Date(now)
+    ) === "live";
 
   const isPreInt = prompt.level === "pre-intermediate";
   const remaining = timerStartedAt
@@ -153,9 +172,12 @@ export default function WritingSession({
           filter: `id=eq.${sessionId}`,
         },
         (payload) => {
-          const next = (payload.new as { timer_started_at?: string | null })
-            .timer_started_at;
-          if (next) setTimerStartedAt(next);
+          const row = payload.new as {
+            timer_started_at?: string | null;
+            class_ended_at?: string | null;
+          };
+          if (row.timer_started_at) setTimerStartedAt(row.timer_started_at);
+          if (row.class_ended_at) setClassEndedAt(row.class_ended_at);
         }
       )
       .subscribe();
@@ -163,11 +185,14 @@ export default function WritingSession({
     const poll = window.setInterval(async () => {
       const { data } = await supabase
         .from("course_sessions")
-        .select("timer_started_at")
+        .select("timer_started_at, class_ended_at")
         .eq("id", sessionId)
         .maybeSingle();
       if (data?.timer_started_at) {
         setTimerStartedAt(data.timer_started_at);
+      }
+      if (data?.class_ended_at) {
+        setClassEndedAt(data.class_ended_at);
       }
     }, 3000);
 
@@ -329,6 +354,13 @@ export default function WritingSession({
             {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
           </>
         )}
+        {isTeacher && live ? (
+          <EndClassButton
+            sessionId={sessionId}
+            classEndedAt={classEndedAt}
+            onEnded={setClassEndedAt}
+          />
+        ) : null}
       </section>
     </main>
   );

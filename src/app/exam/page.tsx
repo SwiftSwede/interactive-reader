@@ -166,6 +166,9 @@ export default async function ExamPage({
       isWriter={Boolean(user && group && group.writer_id === user.id)}
       isTeacher={isTeacher}
       recordingYoutubeUrl={sessionRecordingUrl(access.session)}
+      classEndedAt={access.session.classEndedAt}
+      sessionStartTime={access.session.sessionStartTime}
+      sessionEndTime={access.session.sessionEndTime}
       allowReveal={access.allowReveal}
       initialTask1={task1}
       initialTask2={task2}

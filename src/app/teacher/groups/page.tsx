@@ -59,6 +59,7 @@ export default async function TeacherGroupsPage() {
         liveOnly,
         sessionStartTime: todaySession.start,
         sessionEndTime: todaySession.end,
+        classEndedAt: todaySession.classEndedAt,
         sessionDate: todaySession.sessionDate,
         typeLabel: sessionTypeLabel(todaySession.sessionType),
         appHref: liveOnly
@@ -134,6 +135,7 @@ export default async function TeacherGroupsPage() {
               key={card.courseId}
               sessionStartTime={card.sessionStartTime}
               sessionEndTime={card.sessionEndTime}
+              classEndedAt={card.classEndedAt}
               sessionDate={card.sessionDate}
               href={card.appHref}
               zoomHref={card.zoomHref}
@@ -144,6 +146,7 @@ export default async function TeacherGroupsPage() {
               initialPhase={getClassDayPhase({
                 sessionStartTime: card.sessionStartTime,
                 sessionEndTime: card.sessionEndTime,
+                classEndedAt: card.classEndedAt,
               })}
             />
           ))}

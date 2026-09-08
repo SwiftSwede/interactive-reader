@@ -13,6 +13,7 @@ export default function SessionContextPanel({
   typeLabel,
   start,
   end,
+  classEndedAt = null,
   recordingYoutubeUrl,
   liveOnly,
   students,
@@ -23,6 +24,7 @@ export default function SessionContextPanel({
   typeLabel: string;
   start: string;
   end: string;
+  classEndedAt?: string | null;
   recordingYoutubeUrl: string | null;
   liveOnly: boolean;
   students: AttendanceMark[];
@@ -59,7 +61,7 @@ export default function SessionContextPanel({
                 attended={student.attended}
                 autoMarked={
                   !liveOnly &&
-                  isAutoMarked(student.firstOpenedAt, start, end)
+                  isAutoMarked(student.firstOpenedAt, start, end, classEndedAt)
                 }
                 name={student.displayName}
               />

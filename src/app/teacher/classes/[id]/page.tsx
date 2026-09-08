@@ -137,6 +137,7 @@ export default async function CourseClassPage({
       typeLabel: sessionTypeLabel(session.sessionType),
       start: session.start,
       end: session.end,
+      classEndedAt: session.classEndedAt,
       notes: session.notes,
       token: session.token,
       storySlug: session.story?.slug ?? null,
@@ -146,7 +147,9 @@ export default async function CourseClassPage({
       attendedNames: attendedNamesBySession.get(session.id) ?? [],
       unlocked: areAnswersUnlocked({
         answersRevealed: session.answersRevealed,
+        sessionStartTime: session.start,
         sessionEndTime: session.end,
+        classEndedAt: session.classEndedAt,
       }),
       students,
     };
@@ -177,6 +180,7 @@ export default async function CourseClassPage({
         <ClassDayCard
           sessionStartTime={todaySession.start}
           sessionEndTime={todaySession.end}
+          classEndedAt={todaySession.classEndedAt}
           sessionDate={todaySession.sessionDate}
           href={
             todayLiveOnly
@@ -191,6 +195,7 @@ export default async function CourseClassPage({
           initialPhase={getClassDayPhase({
             sessionStartTime: todaySession.start,
             sessionEndTime: todaySession.end,
+            classEndedAt: todaySession.classEndedAt,
           })}
         />
       ) : null}

@@ -19,8 +19,15 @@ describe("isAutoMarked", () => {
 
   test("false when first opened after the window", () => {
     assert.equal(
-      isAutoMarked("2026-09-07T21:00:00.000Z", start, end),
+      isAutoMarked("2026-09-07T21:00:00.000Z", start, end, end),
       false
+    );
+  });
+
+  test("true during overtime until the teacher ends class", () => {
+    assert.equal(
+      isAutoMarked("2026-09-07T21:00:00.000Z", start, end),
+      true
     );
   });
 });

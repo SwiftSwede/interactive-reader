@@ -216,6 +216,7 @@ export interface CourseSession {
   sessionDate: string;
   sessionStartTime: string;
   sessionEndTime: string;
+  classEndedAt: string | null;
   answersRevealed: boolean;
   notes: string | null;
   sessionLinkToken: string;
@@ -409,6 +410,8 @@ export type VideoSummaryNoteType =
   | "pronunciation"
   | "cultural";
 
+export type VideoSummaryNoteSide = "spanish" | "english";
+
 export interface VideoSummaryParagraph {
   id: string;
   storyId: string;
@@ -439,6 +442,7 @@ export interface VideoSummaryTeachingNote {
   selectedText: string;
   note: string;
   noteType: VideoSummaryNoteType;
+  textSide: VideoSummaryNoteSide;
   createdBy: string;
   createdAt: string;
 }

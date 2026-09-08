@@ -24,6 +24,9 @@ import MusicBlanks, { youtubeEmbedId } from "./MusicBlanks";
 import ClassroomYoutubePlayer from "./ClassroomYoutubePlayer";
 import type { LyricBlank } from "@/types";
 import { PlaybackRateProvider } from "./PlaybackRateContext";
+import EndClassButton from "@/components/EndClassButton";
+import { getSessionPhase } from "@/lib/session-phase";
+import { createClient } from "@/lib/supabase/client";
 import { recordStoryOpened } from "@/app/lesson/[slug]/actions";
 import type { LoadedStory } from "@/lib/stories";
 import type { SavedPersonalResponse } from "@/lib/personal-responses";
@@ -68,6 +71,9 @@ export default function StorySteps({
   choralCompleted,
   isTeacher = false,
   recordingYoutubeUrl = null,
+  sessionStartTime = null,
+  sessionEndTime = null,
+  classEndedAt: initialEndedAt = null,
 }: {
   data: LoadedStory;
   timestamps: WordTimestamp[];
@@ -87,6 +93,9 @@ export default function StorySteps({
   choralCompleted: boolean;
   isTeacher?: boolean;
   recordingYoutubeUrl?: string | null;
+  sessionStartTime?: string | null;
+  sessionEndTime?: string | null;
+  classEndedAt?: string | null;
 }) {
   const {
     story,
@@ -141,6 +150,8 @@ export default function StorySteps({
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [sheetOpen, setSheetOpen] = useState(false);
+  const [classEndedAt, setClassEndedAt] = useState(initialEndedAt);
+  const [now, setNow] = useState(() => Date.now());
 
   const safeIndex = Math.min(activeIndex, steps.length - 1);
   const active = steps[safeIndex];
@@ -157,6 +168,58 @@ export default function StorySteps({
   useEffect(() => {
     void recordStoryOpened({ storyId: story.id });
   }, [story.id]);
+
+  useEffect(() => {
+    const id = window.setInterval(() => setNow(Date.now()), 15000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    if (!sessionId || readerMode === "open") return;
+    const supabase = createClient();
+    const apply = (row: { class_ended_at?: string | null }) => {
+      if (row.class_ended_at) setClassEndedAt(row.class_ended_at);
+    };
+    const channel = supabase
+      .channel(`story-session-${sessionId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "UPDATE",
+          schema: "public",
+          table: "course_sessions",
+          filter: `id=eq.${sessionId}`,
+        },
+        (payload) => apply(payload.new as never)
+      )
+      .subscribe();
+    const poll = window.setInterval(async () => {
+      const { data } = await supabase
+        .from("course_sessions")
+        .select("class_ended_at")
+        .eq("id", sessionId)
+        .maybeSingle();
+      if (data) apply(data);
+    }, 3000);
+    return () => {
+      window.clearInterval(poll);
+      void supabase.removeChannel(channel);
+    };
+  }, [sessionId, readerMode]);
+
+  const live =
+    readerMode !== "open" &&
+    Boolean(sessionStartTime) &&
+    Boolean(sessionEndTime) &&
+    getSessionPhase(
+      {
+        sessionStartTime: sessionStartTime as string,
+        sessionEndTime: sessionEndTime as string,
+        classEndedAt,
+      },
+      new Date(now)
+    ) === "live";
+  const youtubeLive = live && Boolean(sessionId);
 
   const goTo = (index: number) => {
     setSheetOpen(false);
@@ -292,9 +355,7 @@ export default function StorySteps({
                         title={story.title}
                         sessionId={sessionId}
                         isTeacher={isTeacher}
-                        live={
-                          readerMode === "classroom-live" && Boolean(sessionId)
-                        }
+                        live={youtubeLive}
                       />
                     </div>
                   )}
@@ -424,6 +485,13 @@ export default function StorySteps({
               </p>
             )}
           </nav>
+          {isTeacher && sessionId && live && !next ? (
+            <EndClassButton
+              sessionId={sessionId}
+              classEndedAt={classEndedAt}
+              onEnded={setClassEndedAt}
+            />
+          ) : null}
         </article>
 
         <StoryTextSheet

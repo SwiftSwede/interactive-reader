@@ -257,7 +257,7 @@ async function studentResponseContext(sessionId: string) {
   const { data: session } = await supabase
     .from("course_sessions")
     .select(
-      "id, session_type, presentation_prompt_id, answers_revealed, session_end_time"
+      "id, session_type, presentation_prompt_id, answers_revealed, session_start_time, session_end_time, class_ended_at"
     )
     .eq("id", sessionId)
     .maybeSingle();
@@ -277,7 +277,9 @@ async function studentResponseContext(sessionId: string) {
     promptId: session.presentation_prompt_id as string,
     allowReveal: areAnswersUnlocked({
       answersRevealed: Boolean(session.answers_revealed),
+      sessionStartTime: String(session.session_start_time),
       sessionEndTime: String(session.session_end_time),
+      classEndedAt: (session.class_ended_at as string | null) ?? null,
     }),
   };
 }

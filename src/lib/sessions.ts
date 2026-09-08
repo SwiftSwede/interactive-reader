@@ -48,6 +48,7 @@ type SessionRow = {
   session_date: string;
   session_start_time: string;
   session_end_time: string;
+  class_ended_at?: string | null;
   answers_revealed: boolean;
   notes: string | null;
   session_link_token: string;
@@ -95,6 +96,7 @@ export function mapSession(row: SessionRow): CourseSession {
     sessionDate: row.session_date,
     sessionStartTime: row.session_start_time,
     sessionEndTime: row.session_end_time,
+    classEndedAt: row.class_ended_at ?? null,
     answersRevealed: row.answers_revealed,
     notes: row.notes,
     sessionLinkToken: row.session_link_token,
@@ -107,13 +109,15 @@ export function mapSession(row: SessionRow): CourseSession {
 }
 
 export function areAnswersUnlocked(
-  session: Pick<CourseSession, "answersRevealed" | "sessionEndTime">,
+  session: Pick<
+    CourseSession,
+    "answersRevealed" | "sessionStartTime" | "sessionEndTime"
+  > & {
+    classEndedAt?: string | null;
+  },
   now = new Date()
 ): boolean {
-  return (
-    session.answersRevealed ||
-    now.getTime() >= new Date(session.sessionEndTime).getTime()
-  );
+  return session.answersRevealed || getSessionPhase(session, now) === "after";
 }
 
 async function persistAnswersRevealedIfEnded(

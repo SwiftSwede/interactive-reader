@@ -183,6 +183,7 @@ const noteSchema = z.object({
   selectedText: z.string().min(1).max(200),
   note: z.string().min(1).max(500),
   noteType: z.enum(["vocabulary", "grammar", "pronunciation", "cultural"]),
+  textSide: z.enum(["spanish", "english"]),
 });
 
 export async function addVideoSummaryNote(
@@ -208,6 +209,7 @@ export async function addVideoSummaryNote(
       selected_text: parsed.data.selectedText,
       note: parsed.data.note,
       note_type: parsed.data.noteType,
+      text_side: parsed.data.textSide,
       created_by: auth.user.id,
     })
     .select("id")

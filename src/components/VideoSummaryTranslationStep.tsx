@@ -12,7 +12,9 @@ import {
   TeachingNoteLightbox,
   TeachingNotePopup,
 } from "@/components/VideoSummaryTeachingNote";
+import { notesOnSide } from "@/lib/video-summary-notes";
 import type {
+  VideoSummaryNoteSide,
   VideoSummaryParagraph,
   VideoSummaryTeachingNote,
 } from "@/types";
@@ -47,6 +49,7 @@ export default function VideoSummaryTranslationStep({
   const [popup, setPopup] = useState<{
     position: number;
     selectedText: string;
+    textSide: VideoSummaryNoteSide;
   } | null>(null);
   const [viewNote, setViewNote] = useState<VideoSummaryTeachingNote | null>(
     null
@@ -125,6 +128,7 @@ export default function VideoSummaryTranslationStep({
             selected_text: string;
             note: string;
             note_type: VideoSummaryTeachingNote["noteType"];
+            text_side?: string;
             created_by: string;
             created_at: string;
           };
@@ -141,6 +145,7 @@ export default function VideoSummaryTranslationStep({
                     selectedText: row.selected_text,
                     note: row.note,
                     noteType: row.note_type,
+                    textSide: row.text_side === "english" ? "english" : "spanish",
                     createdBy: row.created_by,
                     createdAt: row.created_at,
                   },
@@ -175,7 +180,7 @@ export default function VideoSummaryTranslationStep({
         supabase
           .from("video_summary_teaching_notes")
           .select(
-            "id, story_id, course_session_id, paragraph_position, selected_text, note, note_type, created_by, created_at"
+            "id, story_id, course_session_id, paragraph_position, selected_text, note, note_type, text_side, created_by, created_at"
           )
           .eq("course_session_id", sessionId),
       ]);
@@ -190,6 +195,7 @@ export default function VideoSummaryTranslationStep({
             selectedText: row.selected_text as string,
             note: row.note as string,
             noteType: row.note_type as VideoSummaryTeachingNote["noteType"],
+            textSide: row.text_side === "english" ? "english" : "spanish",
             createdBy: row.created_by as string,
             createdAt: row.created_at as string,
           }))
@@ -216,7 +222,11 @@ export default function VideoSummaryTranslationStep({
     }, 800);
   }
 
-  function captureSelection(position: number, fromField?: string) {
+  function captureSelection(
+    position: number,
+    textSide: VideoSummaryNoteSide,
+    fromField?: string
+  ) {
     if (!isTeacher || !live) return;
     const selected = (
       fromField ??
@@ -225,12 +235,14 @@ export default function VideoSummaryTranslationStep({
     ).trim();
     if (!selected || selected.length > 200) return;
     setViewNote(null);
-    setPopup({ position, selectedText: selected });
+    setPopup({ position, selectedText: selected, textSide });
   }
+
+  const showOriginal = isTeacher || !live;
 
   return (
     <div className="space-y-8">
-      {isTeacher && (
+      {showOriginal && (
         <div>
           <button
             type="button"
@@ -241,7 +253,11 @@ export default function VideoSummaryTranslationStep({
           </button>
           {cheatOpen && (
             <div className="mt-2 rounded-card border border-paper-line bg-accent-softer px-3 py-3">
-              <p className="text-label-sm text-text-muted">Solo tú ves esto.</p>
+              <p className="text-label-sm text-text-muted">
+                {isTeacher
+                  ? "Solo tú ves esto durante la clase."
+                  : "Así lo había escrito el Profe Kyle. Abajo está lo que tradujeron juntos."}
+              </p>
               {englishCheatSheet.map((paragraph, index) => (
                 <p
                   key={index}
@@ -259,11 +275,9 @@ export default function VideoSummaryTranslationStep({
         const paragraphNotes = notes.filter(
           (note) => note.paragraphPosition === paragraph.position
         );
+        const spanishNotes = notesOnSide(paragraphNotes, "spanish");
+        const englishNotes = notesOnSide(paragraphNotes, "english");
         const english = paragraph.englishTranslation;
-        const englishDraft = drafts[paragraph.id] ?? "";
-        const englishNoteMarks = paragraphNotes.filter((note) =>
-          englishDraft.includes(note.selectedText)
-        );
         const showTeacherInput = isTeacher;
         return (
           <article
@@ -275,9 +289,9 @@ export default function VideoSummaryTranslationStep({
             </p>
             <HighlightedText
               text={paragraph.spanishText}
-              notes={paragraphNotes}
+              notes={spanishNotes}
               className="mt-2 font-heading text-story-body text-text-primary"
-              onSelect={() => captureSelection(paragraph.position)}
+              onSelect={() => captureSelection(paragraph.position, "spanish")}
               onOpenNote={setViewNote}
             />
             {showTeacherInput ? (
@@ -303,20 +317,27 @@ export default function VideoSummaryTranslationStep({
                     const field = event.currentTarget;
                     captureSelection(
                       paragraph.position,
+                      "english",
                       field.value.slice(field.selectionStart, field.selectionEnd)
                     );
                   }}
                   rows={5}
                   className="mt-1 w-full rounded-card border-2 border-accent bg-white px-3 py-2 text-story-english text-text-primary focus:outline-none"
                 />
-                {englishNoteMarks.length > 0 ? (
-                  <HighlightedText
-                    text={englishDraft}
-                    notes={englishNoteMarks}
-                    className="mt-3 text-story-english text-text-primary"
-                    onSelect={() => captureSelection(paragraph.position)}
-                    onOpenNote={setViewNote}
-                  />
+                {englishNotes.length > 0 ? (
+                  <p className="mt-3 text-label-sm text-text-muted">
+                    Notas:{" "}
+                    {englishNotes.map((note) => (
+                      <button
+                        key={note.id}
+                        type="button"
+                        className="teaching-note-mark mr-1"
+                        onClick={() => setViewNote(note)}
+                      >
+                        {note.selectedText}
+                      </button>
+                    ))}
+                  </p>
                 ) : null}
                 {live && (
                   <button
@@ -344,9 +365,9 @@ export default function VideoSummaryTranslationStep({
                 <p className="mt-4 text-label-sm text-text-muted">Inglés</p>
                 <HighlightedText
                   text={english}
-                  notes={paragraphNotes}
+                  notes={englishNotes}
                   className="mt-1 text-story-english text-text-primary"
-                  onSelect={() => captureSelection(paragraph.position)}
+                  onSelect={() => captureSelection(paragraph.position, "english")}
                   onOpenNote={setViewNote}
                 />
               </>
@@ -361,6 +382,7 @@ export default function VideoSummaryTranslationStep({
           storyId={storyId}
           paragraphPosition={popup.position}
           selectedText={popup.selectedText}
+          textSide={popup.textSide}
           onClose={() => setPopup(null)}
           onSaved={(note) => setNotes((current) => [...current, note])}
         />

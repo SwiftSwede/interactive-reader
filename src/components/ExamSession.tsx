@@ -2,10 +2,12 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import BackLink from "@/components/BackLink";
+import EndClassButton from "@/components/EndClassButton";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
 import { createClient } from "@/lib/supabase/client";
 import { flattenFillSlots, formatCountdown, remainingMs } from "@/lib/exam";
 import { saveExamAnswers, submitExamAnswers } from "@/app/exam/actions";
+import { getSessionPhase } from "@/lib/session-phase";
 import type {
   ExamTask2CorrectionAnswer,
   ExamTask2LetterAnswer,
@@ -29,6 +31,9 @@ export default function ExamSession({
   startedAt,
   reviewRevealedAt,
   recordingYoutubeUrl = null,
+  classEndedAt: initialEndedAt = null,
+  sessionStartTime = null,
+  sessionEndTime = null,
 }: {
   sessionId: string;
   prompt: GroupExamPrompt;
@@ -43,6 +48,9 @@ export default function ExamSession({
   startedAt: string | null;
   reviewRevealedAt: string | null;
   recordingYoutubeUrl?: string | null;
+  classEndedAt?: string | null;
+  sessionStartTime?: string | null;
+  sessionEndTime?: string | null;
 }) {
   const [task, setTask] = useState(1);
   const [task1, setTask1] = useState<Task1Answer[]>(initialTask1);
@@ -53,8 +61,19 @@ export default function ExamSession({
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
   const [now, setNow] = useState(() => Date.now());
+  const [classEndedAt, setClassEndedAt] = useState(initialEndedAt);
+  const live =
+    Boolean(sessionStartTime && sessionEndTime) &&
+    getSessionPhase(
+      {
+        sessionStartTime: sessionStartTime as string,
+        sessionEndTime: sessionEndTime as string,
+        classEndedAt,
+      },
+      new Date(now)
+    ) === "live";
   const start = startedAt ?? new Date().toISOString();
-  const showKeys = allowReveal || Boolean(reviewRevealedAt);
+  const showKeys = allowReveal || Boolean(reviewRevealedAt) || Boolean(classEndedAt);
   const readOnly =
     isTeacher || !isWriter || status === "submitted" || !group;
 
@@ -94,6 +113,38 @@ export default function ExamSession({
     const id = window.setInterval(() => setNow(Date.now()), 1000);
     return () => window.clearInterval(id);
   }, []);
+
+  useEffect(() => {
+    const supabase = createClient();
+    const apply = (row: { class_ended_at?: string | null }) => {
+      if (row.class_ended_at) setClassEndedAt(row.class_ended_at);
+    };
+    const channel = supabase
+      .channel(`exam-session-${sessionId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "UPDATE",
+          schema: "public",
+          table: "course_sessions",
+          filter: `id=eq.${sessionId}`,
+        },
+        (payload) => apply(payload.new as never)
+      )
+      .subscribe();
+    const poll = window.setInterval(async () => {
+      const { data } = await supabase
+        .from("course_sessions")
+        .select("class_ended_at")
+        .eq("id", sessionId)
+        .maybeSingle();
+      if (data) apply(data);
+    }, 3000);
+    return () => {
+      window.clearInterval(poll);
+      void supabase.removeChannel(channel);
+    };
+  }, [sessionId]);
 
   useEffect(() => {
     if (isWriter || isTeacher || !group) return;
@@ -529,6 +580,13 @@ export default function ExamSession({
             Entregar
           </button>
         )}
+        {isTeacher && live ? (
+          <EndClassButton
+            sessionId={sessionId}
+            classEndedAt={classEndedAt}
+            onEnded={setClassEndedAt}
+          />
+        ) : null}
       </section>
     </main>
   );

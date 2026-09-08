@@ -178,6 +178,7 @@ export default async function PresentationPage({
       isTeacher={isTeacher}
       sessionStartTime={access.session.sessionStartTime}
       sessionEndTime={access.session.sessionEndTime}
+      classEndedAt={access.session.classEndedAt}
       allowReveal={access.allowReveal}
       saveResponses={access.saveResponses}
       initialStep={access.session.presentationStep}

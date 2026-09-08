@@ -2,10 +2,12 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import type {
+  VideoSummaryNoteSide,
   VideoSummaryNoteType,
   VideoSummaryTeachingNote,
 } from "@/types";
 import { addVideoSummaryNote, deleteVideoSummaryNote } from "@/app/lesson/[slug]/video-summary-actions";
+import { markFirstMatch } from "@/lib/video-summary-notes";
 
 const NOTE_TYPES: { id: VideoSummaryNoteType; label: string }[] = [
   { id: "vocabulary", label: "Vocabulario" },
@@ -18,12 +20,7 @@ export function noteTypeLabel(noteType: VideoSummaryNoteType): string {
   return NOTE_TYPES.find((row) => row.id === noteType)?.label ?? "Nota";
 }
 
-export function markFirstMatch(text: string, needle: string): string[] {
-  if (!needle) return [text];
-  const index = text.indexOf(needle);
-  if (index < 0) return [text];
-  return [text.slice(0, index), needle, text.slice(index + needle.length)];
-}
+export { markFirstMatch };
 
 export function HighlightedText({
   text,
@@ -195,6 +192,7 @@ export function TeachingNotePopup({
   storyId,
   paragraphPosition,
   selectedText,
+  textSide,
   onClose,
   onSaved,
 }: {
@@ -202,6 +200,7 @@ export function TeachingNotePopup({
   storyId: string;
   paragraphPosition: number;
   selectedText: string;
+  textSide: VideoSummaryNoteSide;
   onClose: () => void;
   onSaved: (note: VideoSummaryTeachingNote) => void;
 }) {
@@ -278,6 +277,7 @@ export function TeachingNotePopup({
                 selectedText,
                 note,
                 noteType,
+                textSide,
               });
               setPending(false);
               if (!result.ok) {
@@ -292,6 +292,7 @@ export function TeachingNotePopup({
                 selectedText,
                 note,
                 noteType,
+                textSide,
                 createdBy: "",
                 createdAt: new Date().toISOString(),
               });

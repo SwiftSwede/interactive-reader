@@ -27,6 +27,7 @@ export type ThisMonthGroup = {
   today: {
     sessionStartTime: string;
     sessionEndTime: string;
+    classEndedAt: string | null;
     sessionDate: string;
     typeLabel: string;
     liveOnly: boolean;
@@ -46,6 +47,7 @@ function NextClassPanel({ group }: { group: ThisMonthGroup }) {
         <ClassDayCard
           sessionStartTime={group.today.sessionStartTime}
           sessionEndTime={group.today.sessionEndTime}
+          classEndedAt={group.today.classEndedAt}
           sessionDate={group.today.sessionDate}
           href={group.today.appHref}
           zoomHref={group.today.zoomHref}
@@ -56,6 +58,7 @@ function NextClassPanel({ group }: { group: ThisMonthGroup }) {
           initialPhase={getClassDayPhase({
             sessionStartTime: group.today.sessionStartTime,
             sessionEndTime: group.today.sessionEndTime,
+            classEndedAt: group.today.classEndedAt,
           })}
           className="mt-4"
         />

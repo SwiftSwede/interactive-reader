@@ -34,6 +34,7 @@ export type ClassStripItem = {
   typeLabel: string;
   start: string;
   end: string;
+  classEndedAt: string | null;
   notes: string | null;
   token: string;
   storySlug: string | null;
@@ -73,6 +74,7 @@ export default function ClassStrip({
           typeLabel={selected.typeLabel}
           start={selected.start}
           end={selected.end}
+          classEndedAt={selected.classEndedAt}
           liveOnly={isLiveOnlySessionType(selected.sessionType)}
           recordingYoutubeUrl={selected.recordingYoutubeUrl}
           students={selected.students}

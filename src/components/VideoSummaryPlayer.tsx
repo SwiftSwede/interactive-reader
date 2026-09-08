@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Check } from "lucide-react";
 import BackLink from "@/components/BackLink";
+import ClassroomYoutubePlayer from "@/components/ClassroomYoutubePlayer";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
 import { createClient } from "@/lib/supabase/client";
 import { youtubeEmbedId } from "@/components/MusicBlanks";
 import VideoSummaryFreeWrite from "@/components/VideoSummaryFreeWrite";
 import VideoSummaryTranslationStep from "@/components/VideoSummaryTranslationStep";
-import ClassroomYoutubePlayer from "@/components/ClassroomYoutubePlayer";
+import EndClassButton from "@/components/EndClassButton";
 import { getSessionPhase } from "@/lib/session-phase";
 import { remainingMs } from "@/lib/writing";
 import type {
@@ -44,6 +45,7 @@ export default function VideoSummaryPlayer({
   sessionStartTime,
   sessionEndTime,
   timerStartedAt: initialTimer,
+  classEndedAt: initialEndedAt = null,
   courseId,
   paragraphs,
   notes,
@@ -61,6 +63,7 @@ export default function VideoSummaryPlayer({
   sessionStartTime: string | null;
   sessionEndTime: string | null;
   timerStartedAt: string | null;
+  classEndedAt?: string | null;
   courseId: string | null;
   paragraphs: VideoSummaryParagraph[];
   notes: VideoSummaryTeachingNote[];
@@ -71,11 +74,16 @@ export default function VideoSummaryPlayer({
   const [now, setNow] = useState(() => Date.now());
   const [step, setStep] = useState<StepId>(() => {
     if (!sessionStartTime || !sessionEndTime) return "video";
-    return getSessionPhase({ sessionStartTime, sessionEndTime }) === "after"
+    return getSessionPhase({
+      sessionStartTime,
+      sessionEndTime,
+      classEndedAt: initialEndedAt,
+    }) === "after"
       ? "translate"
       : "video";
   });
   const [timerStartedAt, setTimerStartedAt] = useState(initialTimer);
+  const [classEndedAt, setClassEndedAt] = useState(initialEndedAt);
   const youtubeId = youtubeEmbedId(youtubeUrl);
   const englishCheatSheet = bodyText
     .split("\n\n")
@@ -88,6 +96,7 @@ export default function VideoSummaryPlayer({
           {
             sessionStartTime,
             sessionEndTime,
+            classEndedAt,
           },
           new Date(now)
         )
@@ -122,8 +131,12 @@ export default function VideoSummaryPlayer({
 
   useEffect(() => {
     const supabase = createClient();
-    const apply = (row: { timer_started_at?: string | null }) => {
+    const apply = (row: {
+      timer_started_at?: string | null;
+      class_ended_at?: string | null;
+    }) => {
       if (row.timer_started_at) setTimerStartedAt(row.timer_started_at);
+      if (row.class_ended_at) setClassEndedAt(row.class_ended_at);
     };
     const channel = supabase
       .channel(`video-summary-session-${sessionId}`)
@@ -141,7 +154,7 @@ export default function VideoSummaryPlayer({
     const poll = window.setInterval(async () => {
       const { data } = await supabase
         .from("course_sessions")
-        .select("timer_started_at")
+        .select("timer_started_at, class_ended_at")
         .eq("id", sessionId)
         .maybeSingle();
       if (data) apply(data);
@@ -283,15 +296,24 @@ export default function VideoSummaryPlayer({
         )}
 
         {step === "translate" && canOpenTranslate && (
-          <VideoSummaryTranslationStep
-            storyId={storyId}
-            sessionId={sessionId}
-            isTeacher={isTeacher}
-            live={live}
-            paragraphs={paragraphs}
-            englishCheatSheet={englishCheatSheet}
-            notes={notes}
-          />
+          <>
+            <VideoSummaryTranslationStep
+              storyId={storyId}
+              sessionId={sessionId}
+              isTeacher={isTeacher}
+              live={live}
+              paragraphs={paragraphs}
+              englishCheatSheet={englishCheatSheet}
+              notes={notes}
+            />
+            {isTeacher && live ? (
+              <EndClassButton
+                sessionId={sessionId}
+                classEndedAt={classEndedAt}
+                onEnded={setClassEndedAt}
+              />
+            ) : null}
+          </>
         )}
       </article>
     </main>

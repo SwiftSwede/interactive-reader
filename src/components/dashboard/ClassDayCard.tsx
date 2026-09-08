@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { formatCountdownLabel } from "@/lib/dashboard";
 import {
-  JOIN_LEAD_MINUTES,
+  getClassDayPhase,
   type ClassDayPhase,
 } from "@/lib/session-phase";
 import JoinCard, { STUDENT_APP_LABEL } from "./JoinCard";
@@ -11,6 +11,7 @@ import JoinCard, { STUDENT_APP_LABEL } from "./JoinCard";
 export default function ClassDayCard({
   sessionStartTime,
   sessionEndTime,
+  classEndedAt = null,
   href,
   zoomHref,
   appLabel = STUDENT_APP_LABEL,
@@ -22,6 +23,7 @@ export default function ClassDayCard({
 }: {
   sessionStartTime: string;
   sessionEndTime: string;
+  classEndedAt?: string | null;
   sessionDate: string;
   href: string | null;
   zoomHref?: string | null;
@@ -43,18 +45,15 @@ export default function ClassDayCard({
 
   const clock = now ?? Date.now();
   const startMs = new Date(sessionStartTime).getTime();
-  const endMs = new Date(sessionEndTime).getTime();
   const remaining = Math.max(0, startMs - clock);
-  const joinLeadMs = JOIN_LEAD_MINUTES * 60 * 1000;
 
   const phase: ClassDayPhase =
     now == null
       ? initialPhase
-      : clock > endMs
-        ? "done-pending"
-        : remaining <= joinLeadMs
-          ? "join"
-          : "countdown";
+      : getClassDayPhase(
+          { sessionStartTime, sessionEndTime, classEndedAt },
+          new Date(clock)
+        );
 
   if (phase === "done-pending") {
     return (

@@ -78,6 +78,7 @@ export default async function StoryReader({
   sessionStartTime = null,
   sessionEndTime = null,
   timerStartedAt = null,
+  classEndedAt = null,
   courseId = null,
   answersRevealed = false,
   recordingYoutubeUrl = null,
@@ -94,6 +95,7 @@ export default async function StoryReader({
   sessionStartTime?: string | null;
   sessionEndTime?: string | null;
   timerStartedAt?: string | null;
+  classEndedAt?: string | null;
   courseId?: string | null;
   answersRevealed?: boolean;
   recordingYoutubeUrl?: string | null;
@@ -129,6 +131,7 @@ export default async function StoryReader({
         sessionStartTime={sessionStartTime}
         sessionEndTime={sessionEndTime}
         timerStartedAt={timerStartedAt}
+        classEndedAt={classEndedAt}
         courseId={courseId}
         paragraphs={paragraphs}
         notes={notes}
@@ -193,6 +196,9 @@ export default async function StoryReader({
         choralCompleted={choralCompleted}
         isTeacher={isTeacher}
         recordingYoutubeUrl={recordingYoutubeUrl}
+        sessionStartTime={sessionStartTime}
+        sessionEndTime={sessionEndTime}
+        classEndedAt={classEndedAt}
       />
     </SoundVideoProvider>
   );

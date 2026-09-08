@@ -8,6 +8,8 @@ import LocalDateTime from "@/components/LocalDateTime";
 import SessionRecordingForm from "@/components/teacher/SessionRecordingForm";
 import AttendanceToggle from "@/components/teacher/AttendanceToggle";
 import { isAutoMarked } from "@/lib/attendance";
+import EndClassButton from "@/components/EndClassButton";
+import { getSessionPhase } from "@/lib/session-phase";
 import StartWritingTimerButton from "./StartWritingTimerButton";
 import StartExamReviewButton from "./StartExamReviewButton";
 import ExamGroupForm from "./ExamGroupForm";
@@ -117,8 +119,16 @@ export default async function SessionDetailPage({
 
   const unlocked = areAnswersUnlocked({
     answersRevealed: session.answersRevealed,
+    sessionStartTime: session.start,
     sessionEndTime: session.end,
+    classEndedAt: session.classEndedAt,
   });
+  const classLive =
+    getSessionPhase({
+      sessionStartTime: session.start,
+      sessionEndTime: session.end,
+      classEndedAt: session.classEndedAt,
+    }) === "live";
 
   const copyHref = studentSessionPath({
     sessionType: session.sessionType,
@@ -143,6 +153,12 @@ export default async function SessionDetailPage({
       {session.notes && (
         <p className="mt-2 text-sm text-text-secondary">{session.notes}</p>
       )}
+      {classLive ? (
+        <EndClassButton
+          sessionId={session.id}
+          classEndedAt={session.classEndedAt}
+        />
+      ) : null}
 
       <div className="mt-4 grid grid-cols-2 gap-2">
         {copyHref ? <CopySessionLink href={copyHref} /> : <span />}
@@ -155,7 +171,7 @@ export default async function SessionDetailPage({
             <p className="flex items-center text-sm text-text-muted">
               La escritura se inicia cuando empiece la clase.
             </p>
-          ) : Date.now() > new Date(session.end).getTime() ? (
+          ) : Date.now() > new Date(session.end).getTime() && !classLive ? (
             <p className="flex items-center text-sm text-text-muted">
               La clase ya terminó.
             </p>
@@ -380,7 +396,8 @@ export default async function SessionDetailPage({
                       isAutoMarked(
                         student.openedAt,
                         session.start,
-                        session.end
+                        session.end,
+                        session.classEndedAt
                       )
                     }
                     name={student.displayName}

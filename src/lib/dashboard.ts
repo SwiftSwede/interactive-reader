@@ -23,6 +23,7 @@ export type DashboardLesson = {
   sessionDate: string;
   sessionStartTime: string;
   sessionEndTime: string;
+  classEndedAt?: string | null;
   href: string | null;
   liveOnly: boolean;
 };
@@ -233,6 +234,7 @@ export function toDashboardLesson(input: {
   sessionDate: string;
   sessionStartTime: string;
   sessionEndTime: string;
+  classEndedAt?: string | null;
   completed: boolean;
   now?: Date;
 }): DashboardLesson {
@@ -248,6 +250,7 @@ export function toDashboardLesson(input: {
     {
       sessionStartTime: input.sessionStartTime,
       sessionEndTime: input.sessionEndTime,
+      classEndedAt: input.classEndedAt,
     },
     contentReady,
     input.now
@@ -272,6 +275,7 @@ export function toDashboardLesson(input: {
     sessionDate: input.sessionDate,
     sessionStartTime: input.sessionStartTime,
     sessionEndTime: input.sessionEndTime,
+    classEndedAt: input.classEndedAt ?? null,
     href,
     liveOnly,
   };
@@ -288,6 +292,7 @@ type SessionRow = {
   session_date: string;
   session_start_time: string;
   session_end_time: string;
+  class_ended_at?: string | null;
   session_link_token: string;
   recording_youtube_url?: string | null;
   stories?: TitleJoin;
@@ -314,13 +319,13 @@ async function safeSelect<T>(
 }
 
 const SESSION_SELECT_FULL =
-  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, presentation_prompt_id, session_date, session_start_time, session_end_time, session_link_token, recording_youtube_url, stories ( title, slug ), writing_prompts ( title ), exam_prompts ( title ), presentation_prompts ( title )";
+  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, presentation_prompt_id, session_date, session_start_time, session_end_time, class_ended_at, session_link_token, recording_youtube_url, stories ( title, slug ), writing_prompts ( title ), exam_prompts ( title ), presentation_prompts ( title )";
 
 const SESSION_SELECT_NO_PRESENTATION =
-  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, session_date, session_start_time, session_end_time, session_link_token, recording_youtube_url, stories ( title, slug ), writing_prompts ( title ), exam_prompts ( title )";
+  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, session_date, session_start_time, session_end_time, class_ended_at, session_link_token, recording_youtube_url, stories ( title, slug ), writing_prompts ( title ), exam_prompts ( title )";
 
 const SESSION_SELECT_LEGACY =
-  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, session_date, session_start_time, session_end_time, session_link_token, stories ( title, slug ), writing_prompts ( title ), exam_prompts ( title )";
+  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, session_date, session_start_time, session_end_time, class_ended_at, session_link_token, stories ( title, slug ), writing_prompts ( title ), exam_prompts ( title )";
 
 async function loadSessionRows(
   supabase: SupabaseClient,
@@ -565,6 +570,7 @@ export async function loadDashboard(
         sessionDate: row.session_date,
         sessionStartTime: row.session_start_time,
         sessionEndTime: row.session_end_time,
+        classEndedAt: row.class_ended_at ?? null,
         completed: isCompleted(row, sessionType),
       });
       const list = lessonsByCourse.get(row.course_id) ?? [];

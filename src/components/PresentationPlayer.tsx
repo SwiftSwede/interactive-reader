@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Check, ChevronLeft, ChevronRight, Pencil } from "lucide-react";
 import BackLink from "@/components/BackLink";
+import EndClassButton from "@/components/EndClassButton";
 import ClassroomYoutubePlayer from "@/components/ClassroomYoutubePlayer";
 import { youtubeEmbedId } from "@/components/MusicBlanks";
 import { youtubeStartSeconds } from "@/lib/youtube-sync";
@@ -42,6 +43,7 @@ export default function PresentationPlayer({
   isTeacher,
   sessionStartTime,
   sessionEndTime,
+  classEndedAt: initialEndedAt = null,
   allowReveal,
   saveResponses,
   initialStep,
@@ -53,6 +55,7 @@ export default function PresentationPlayer({
   isTeacher: boolean;
   sessionStartTime: string;
   sessionEndTime: string;
+  classEndedAt?: string | null;
   allowReveal: boolean;
   saveResponses: boolean;
   initialStep: string | null;
@@ -65,9 +68,10 @@ export default function PresentationPlayer({
   const [step, setStep] = useState<PresentationStep>(() =>
     parsePresentationStep(initialStep, initialPrompt)
   );
+  const [classEndedAt, setClassEndedAt] = useState(initialEndedAt);
 
   const phase = getSessionPhase(
-    { sessionStartTime, sessionEndTime },
+    { sessionStartTime, sessionEndTime, classEndedAt },
     new Date(now)
   );
   const studentLocked = !isTeacher && phase === "before";
@@ -94,7 +98,11 @@ export default function PresentationPlayer({
           filter: `id=eq.${sessionId}`,
         },
         (payload) => {
-          const row = payload.new as { presentation_step?: string | null };
+          const row = payload.new as {
+            presentation_step?: string | null;
+            class_ended_at?: string | null;
+          };
+          if (row.class_ended_at) setClassEndedAt(row.class_ended_at);
           if (!followTeacher) return;
           setStep(parsePresentationStep(row.presentation_step, prompt));
         }
@@ -438,6 +446,13 @@ export default function PresentationPlayer({
             El Profe Kyle está guiando la clase.
           </p>
         )}
+        {isTeacher && liveVideo && !next ? (
+          <EndClassButton
+            sessionId={sessionId}
+            classEndedAt={classEndedAt}
+            onEnded={setClassEndedAt}
+          />
+        ) : null}
       </article>
     </main>
   );

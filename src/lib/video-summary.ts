@@ -1,6 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type {
   VideoSummaryFreeWrite,
+  VideoSummaryNoteSide,
   VideoSummaryNoteType,
   VideoSummaryParagraph,
   VideoSummaryTeachingNote,
@@ -53,7 +54,7 @@ export async function loadVideoSummaryNotes(
   const { data, error } = await supabase
     .from("video_summary_teaching_notes")
     .select(
-      "id, story_id, course_session_id, paragraph_position, selected_text, note, note_type, created_by, created_at"
+      "id, story_id, course_session_id, paragraph_position, selected_text, note, note_type, text_side, created_by, created_at"
     )
     .eq("course_session_id", sessionId)
     .order("created_at", { ascending: true });
@@ -68,6 +69,7 @@ export async function loadVideoSummaryNotes(
       selected_text: string;
       note: string;
       note_type: string;
+      text_side?: string | null;
       created_by: string;
       created_at: string;
     }[]
@@ -79,6 +81,7 @@ export async function loadVideoSummaryNotes(
     selectedText: row.selected_text,
     note: row.note,
     noteType: (row.note_type as VideoSummaryNoteType) || "vocabulary",
+    textSide: (row.text_side === "english" ? "english" : "spanish") as VideoSummaryNoteSide,
     createdBy: row.created_by,
     createdAt: row.created_at,
   }));

@@ -93,6 +93,7 @@ export default async function TeacherHomePage() {
           ? {
               sessionStartTime: todaySession.start,
               sessionEndTime: todaySession.end,
+              classEndedAt: todaySession.classEndedAt,
               sessionDate: todaySession.sessionDate,
               typeLabel: sessionTypeLabel(todaySession.sessionType),
               liveOnly,

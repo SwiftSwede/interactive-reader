@@ -3,19 +3,34 @@ import type { CourseSession } from "@/types";
 export type SessionPhase = "before" | "live" | "after";
 
 export const JOIN_LEAD_MINUTES = 10;
+export const CLASS_OVERTIME_MS = 4 * 60 * 60 * 1000;
+
+export type SessionClock = Pick<
+  CourseSession,
+  "sessionStartTime" | "sessionEndTime"
+> & {
+  classEndedAt?: string | null;
+};
+
+export function teachingEndMs(session: SessionClock): number {
+  if (session.classEndedAt) {
+    return new Date(session.classEndedAt).getTime();
+  }
+  return new Date(session.sessionEndTime).getTime() + CLASS_OVERTIME_MS;
+}
 
 export function getSessionPhase(
-  session: Pick<CourseSession, "sessionStartTime" | "sessionEndTime">,
+  session: SessionClock,
   now = new Date()
 ): SessionPhase {
   const t = now.getTime();
   if (t < new Date(session.sessionStartTime).getTime()) return "before";
-  if (t > new Date(session.sessionEndTime).getTime()) return "after";
+  if (t > teachingEndMs(session)) return "after";
   return "live";
 }
 
 export function isWithinSessionWindow(
-  session: Pick<CourseSession, "sessionStartTime" | "sessionEndTime">,
+  session: SessionClock,
   now = new Date()
 ): boolean {
   return getSessionPhase(session, now) === "live";
@@ -35,21 +50,21 @@ export type SessionLifecycle = "placeholder" | "upcoming" | "live" | "after";
 export type ClassDayPhase = "countdown" | "join" | "done-pending";
 
 export function getSessionLifecycle(
-  session: Pick<CourseSession, "sessionStartTime" | "sessionEndTime">,
+  session: SessionClock,
   hasContent: boolean,
   now = new Date()
 ): SessionLifecycle {
   if (!hasContent) return "placeholder";
   const t = now.getTime();
   const joinAt = getSessionJoinTime(session).getTime();
-  const end = new Date(session.sessionEndTime).getTime();
+  const end = teachingEndMs(session);
   if (t < joinAt) return "upcoming";
   if (t <= end) return "live";
   return "after";
 }
 
 export function sessionRecordingUrl(
-  session: Pick<CourseSession, "sessionStartTime" | "sessionEndTime"> & {
+  session: SessionClock & {
     recordingYoutubeUrl?: string | null;
   },
   now = new Date()
@@ -60,12 +75,12 @@ export function sessionRecordingUrl(
 }
 
 export function getClassDayPhase(
-  session: Pick<CourseSession, "sessionStartTime" | "sessionEndTime">,
+  session: SessionClock,
   now = new Date()
 ): ClassDayPhase {
   const t = now.getTime();
   const joinAt = getSessionJoinTime(session).getTime();
-  const end = new Date(session.sessionEndTime).getTime();
+  const end = teachingEndMs(session);
   if (t < joinAt) return "countdown";
   if (t <= end) return "join";
   return "done-pending";
@@ -89,16 +104,15 @@ function matchesLocalOrUtcDate(sessionDate: string, now: Date): boolean {
 }
 
 export function isClassDayCardSession(
-  session: Pick<
-    CourseSession,
-    "sessionDate" | "sessionStartTime" | "sessionEndTime"
-  >,
+  session: Pick<CourseSession, "sessionDate" | "sessionStartTime" | "sessionEndTime"> & {
+    classEndedAt?: string | null;
+  },
   now = new Date()
 ): boolean {
   const t = now.getTime();
   const start = new Date(session.sessionStartTime).getTime();
   const joinAt = getSessionJoinTime(session).getTime();
-  const end = new Date(session.sessionEndTime).getTime();
+  const end = teachingEndMs(session);
 
   if (t >= joinAt && t <= end) return true;
   if (t < joinAt && start - t >= 0 && start - t <= COUNTDOWN_LEAD_MS) {
@@ -112,7 +126,9 @@ export function pickClassDaySession<
   T extends Pick<
     CourseSession,
     "sessionDate" | "sessionStartTime" | "sessionEndTime"
-  >,
+  > & {
+    classEndedAt?: string | null;
+  },
 >(sessions: T[], now = new Date()): T | null {
   const candidates = sessions.filter((session) =>
     isClassDayCardSession(session, now)
@@ -121,7 +137,7 @@ export function pickClassDaySession<
   const t = now.getTime();
   const joinLive = candidates.find((session) => {
     const joinAt = getSessionJoinTime(session).getTime();
-    const end = new Date(session.sessionEndTime).getTime();
+    const end = teachingEndMs(session);
     return t >= joinAt && t <= end;
   });
   if (joinLive) return joinLive;

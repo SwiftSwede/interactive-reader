@@ -406,7 +406,7 @@ The app currently has minimal test coverage. Build coverage incrementally: test 
 - Same reader, different overlay: Classroom and consumer students use identical components. Context determines active features.
 - Magic link auth: no passwords. Email -> magic link -> click -> in.
 - Stripe webhook auto-creates user accounts from payment email.
-- 90-min class window: reveal gated during class, auto-unlocks at 90 min, manual override available.
+- 90-min class window: scheduled start and end stay on the session. Teaching mode continues if class runs long until the teacher taps Terminar clase (or four hours after the scheduled end). Reveal stays gated until then. Manual "Desbloquear ahora" still exists.
 - Choral practice + dictation: consumer only. Classroom students do choral practice live with Kyle on Zoom.
 - Personal questions: oral in class ("Discutir en clase" label), text input + AI in review mode.
 - No due dates: Kyle's methodology: learn IN class, not outside.

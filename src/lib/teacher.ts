@@ -4,7 +4,7 @@ import { isActiveClassroomSubscription } from "@/lib/classroom-access";
 import { createClient } from "@/lib/supabase/server";
 import { isSessionType, type SessionType } from "@/lib/activities";
 import { hasSessionContent } from "@/lib/dashboard";
-import { pickClassDaySession } from "@/lib/session-phase";
+import { getSessionPhase, pickClassDaySession } from "@/lib/session-phase";
 import { sessionsInMonth } from "./teacher-month";
 import type { CourseLevel, SubscriptionStatus } from "@/types";
 
@@ -40,6 +40,7 @@ export type TeacherSession = {
   sessionDate: string;
   start: string;
   end: string;
+  classEndedAt: string | null;
   answersRevealed: boolean;
   notes: string | null;
   token: string;
@@ -274,6 +275,7 @@ export function pickTodayTeacherSession(
       sessionDate: session.sessionDate,
       sessionStartTime: session.start,
       sessionEndTime: session.end,
+      classEndedAt: session.classEndedAt,
     })),
     now
   )?.session ?? null;
@@ -287,9 +289,16 @@ export function pickCurrentSession(
   const t = now.getTime();
 
   const live = sessions.find((session) => {
-    const start = new Date(session.start).getTime();
-    const end = new Date(session.end).getTime();
-    return t >= start && t <= end;
+    return (
+      getSessionPhase(
+        {
+          sessionStartTime: session.start,
+          sessionEndTime: session.end,
+          classEndedAt: session.classEndedAt,
+        },
+        now
+      ) === "live"
+    );
   });
   if (live) return { kind: "live", session: live };
 
@@ -381,6 +390,7 @@ type SessionRow = {
   presentation_prompt_id?: string | null;
   session_start_time: string;
   session_end_time: string;
+  class_ended_at?: string | null;
   session_date?: string | null;
   answers_revealed: boolean;
   notes: string | null;
@@ -418,6 +428,7 @@ export function mapSessionRow(row: SessionRow): TeacherSession {
         : row.session_start_time.slice(0, 10),
     start: row.session_start_time,
     end: row.session_end_time,
+    classEndedAt: row.class_ended_at ?? null,
     answersRevealed: row.answers_revealed,
     notes: row.notes,
     token: row.session_link_token,
@@ -433,10 +444,10 @@ export function mapSessionRow(row: SessionRow): TeacherSession {
 }
 
 export const SESSION_SELECT =
-  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, presentation_prompt_id, timer_started_at, session_date, session_start_time, session_end_time, answers_revealed, notes, session_link_token, recording_youtube_url, stories ( title, slug ), writing_prompts ( title, prompt_text, writing_time_minutes, level ), exam_prompts ( title, level, time_limit_minutes ), presentation_prompts ( title, level )";
+  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, presentation_prompt_id, timer_started_at, session_date, session_start_time, session_end_time, class_ended_at, answers_revealed, notes, session_link_token, recording_youtube_url, stories ( title, slug ), writing_prompts ( title, prompt_text, writing_time_minutes, level ), exam_prompts ( title, level, time_limit_minutes ), presentation_prompts ( title, level )";
 
 const SESSION_SELECT_LEGACY =
-  "id, course_id, story_id, session_date, session_start_time, session_end_time, answers_revealed, notes, session_link_token, stories ( title, slug )";
+  "id, course_id, story_id, session_date, session_start_time, session_end_time, class_ended_at, answers_revealed, notes, session_link_token, stories ( title, slug )";
 
 export async function loadSessionsForCourses(
   supabase: Awaited<ReturnType<typeof createClient>>,

@@ -44,6 +44,7 @@ export default async function DashboardPage() {
           <ClassDayCard
             sessionStartTime={today.sessionStartTime}
             sessionEndTime={today.sessionEndTime}
+            classEndedAt={today.classEndedAt}
             sessionDate={today.sessionDate}
             href={today.href}
             zoomHref={data.zoomUrl}
@@ -53,6 +54,7 @@ export default async function DashboardPage() {
             initialPhase={getClassDayPhase({
               sessionStartTime: today.sessionStartTime,
               sessionEndTime: today.sessionEndTime,
+              classEndedAt: today.classEndedAt,
             })}
           />
         ) : null}

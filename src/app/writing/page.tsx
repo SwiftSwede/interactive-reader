@@ -168,6 +168,9 @@ export default async function WritingPage({
       }}
       notes={access.session.notes}
       timerStartedAt={access.session.timerStartedAt}
+      classEndedAt={access.session.classEndedAt}
+      sessionStartTime={access.session.sessionStartTime}
+      sessionEndTime={access.session.sessionEndTime}
       isTeacher={isTeacher}
       recordingYoutubeUrl={sessionRecordingUrl(access.session)}
       submission={

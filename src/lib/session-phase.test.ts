@@ -19,7 +19,27 @@ describe("getSessionPhase", () => {
     const justBefore = new Date("2026-09-06T18:59:00.000Z");
     assert.equal(getSessionPhase(session, justBefore), "before");
     assert.equal(getSessionPhase(session, new Date(start)), "live");
-    assert.equal(getSessionPhase(session, new Date("2026-09-06T20:31:00.000Z")), "after");
+  });
+
+  test("stays live after the scheduled end until the teacher ends class", () => {
+    assert.equal(
+      getSessionPhase(session, new Date("2026-09-06T20:31:00.000Z")),
+      "live"
+    );
+    assert.equal(
+      getSessionPhase(
+        { ...session, classEndedAt: "2026-09-06T20:40:00.000Z" },
+        new Date("2026-09-06T20:41:00.000Z")
+      ),
+      "after"
+    );
+  });
+
+  test("ends on its own four hours after the scheduled end", () => {
+    assert.equal(
+      getSessionPhase(session, new Date("2026-09-07T00:31:00.000Z")),
+      "after"
+    );
   });
 });
 
@@ -54,6 +74,14 @@ describe("getSessionLifecycle", () => {
     );
     assert.equal(
       getSessionLifecycle(session, true, new Date("2026-09-06T20:30:01.000Z")),
+      "live"
+    );
+    assert.equal(
+      getSessionLifecycle(
+        { ...session, classEndedAt: end },
+        true,
+        new Date("2026-09-06T20:30:01.000Z")
+      ),
       "after"
     );
   });
@@ -74,12 +102,13 @@ describe("sessionRecordingUrl", () => {
     );
   });
 
-  test("returns the URL after the window closes", () => {
+  test("returns the URL after the teacher ends class", () => {
     assert.equal(
       sessionRecordingUrl(
         {
           sessionStartTime: start,
           sessionEndTime: end,
+          classEndedAt: end,
           recordingYoutubeUrl: "https://youtu.be/abc",
         },
         new Date("2026-09-06T20:31:00.000Z")
@@ -101,6 +130,13 @@ describe("getClassDayPhase", () => {
     );
     assert.equal(
       getClassDayPhase(session, new Date("2026-09-06T20:30:01.000Z")),
+      "join"
+    );
+    assert.equal(
+      getClassDayPhase(
+        { ...session, classEndedAt: end },
+        new Date("2026-09-06T20:30:01.000Z")
+      ),
       "done-pending"
     );
   });

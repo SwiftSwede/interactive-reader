@@ -139,6 +139,9 @@ export default async function LessonSlugPage({
       timerStartedAt={
         access.kind === "ok" ? access.session.timerStartedAt : null
       }
+      classEndedAt={
+        access.kind === "ok" ? access.session.classEndedAt : null
+      }
       courseId={access.kind === "ok" ? access.session.courseId : null}
       answersRevealed={
         access.kind === "ok" ? access.session.answersRevealed : false
