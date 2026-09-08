@@ -14,7 +14,7 @@ Review mode (original English for students, dictation, recordings) starts at `cl
 
 ## Consequences
 
-- Dashboard EN VIVO and join cards follow teaching mode, not the calendar 90 minutes.
+- Dashboard EN VIVO on the lesson list follows teaching mode. Join cards (Inicio, Este mes, Grupos) swap at the scheduled end, or earlier if Kyle already tapped Terminar clase. Overtime is lesson-page teaching mode only.
 - Attendance from a session-link click still counts while teaching mode is on (including overtime).
 - Terminar clase also sets `answers_revealed`.
 - The scheduled 90-minute times remain useful for planning and for the overtime cap.

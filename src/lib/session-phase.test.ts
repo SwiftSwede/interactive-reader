@@ -129,13 +129,17 @@ describe("getClassDayPhase", () => {
       "join"
     );
     assert.equal(
-      getClassDayPhase(session, new Date("2026-09-06T20:30:01.000Z")),
+      getClassDayPhase(session, new Date("2026-09-06T20:30:00.000Z")),
       "join"
     );
     assert.equal(
+      getClassDayPhase(session, new Date("2026-09-06T20:30:01.000Z")),
+      "done-pending"
+    );
+    assert.equal(
       getClassDayPhase(
-        { ...session, classEndedAt: end },
-        new Date("2026-09-06T20:30:01.000Z")
+        { ...session, classEndedAt: "2026-09-06T20:10:00.000Z" },
+        new Date("2026-09-06T20:10:01.000Z")
       ),
       "done-pending"
     );

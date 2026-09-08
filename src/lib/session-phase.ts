@@ -19,6 +19,15 @@ export function teachingEndMs(session: SessionClock): number {
   return new Date(session.sessionEndTime).getTime() + CLASS_OVERTIME_MS;
 }
 
+/** Dashboard join card: scheduled 90 minutes, or earlier if Kyle already ended class. */
+export function classDayEndMs(session: SessionClock): number {
+  const scheduled = new Date(session.sessionEndTime).getTime();
+  if (session.classEndedAt) {
+    return Math.min(scheduled, new Date(session.classEndedAt).getTime());
+  }
+  return scheduled;
+}
+
 export function getSessionPhase(
   session: SessionClock,
   now = new Date()
@@ -80,7 +89,7 @@ export function getClassDayPhase(
 ): ClassDayPhase {
   const t = now.getTime();
   const joinAt = getSessionJoinTime(session).getTime();
-  const end = teachingEndMs(session);
+  const end = classDayEndMs(session);
   if (t < joinAt) return "countdown";
   if (t <= end) return "join";
   return "done-pending";
@@ -112,7 +121,7 @@ export function isClassDayCardSession(
   const t = now.getTime();
   const start = new Date(session.sessionStartTime).getTime();
   const joinAt = getSessionJoinTime(session).getTime();
-  const end = teachingEndMs(session);
+  const end = classDayEndMs(session);
 
   if (t >= joinAt && t <= end) return true;
   if (t < joinAt && start - t >= 0 && start - t <= COUNTDOWN_LEAD_MS) {
@@ -137,7 +146,7 @@ export function pickClassDaySession<
   const t = now.getTime();
   const joinLive = candidates.find((session) => {
     const joinAt = getSessionJoinTime(session).getTime();
-    const end = teachingEndMs(session);
+    const end = classDayEndMs(session);
     return t >= joinAt && t <= end;
   });
   if (joinLive) return joinLive;
