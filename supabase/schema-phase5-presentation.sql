@@ -142,6 +142,7 @@ ALTER TABLE public.content_tags
 -- ── Realtime ───────────────────────────────────────────────
 
 ALTER TABLE public.presentation_prompts REPLICA IDENTITY FULL;
+ALTER TABLE public.presentation_responses REPLICA IDENTITY FULL;
 ALTER TABLE public.presentation_vocab_notes REPLICA IDENTITY FULL;
 
 DO $$
@@ -154,6 +155,13 @@ END $$;
 DO $$
 BEGIN
   ALTER PUBLICATION supabase_realtime ADD TABLE public.presentation_vocab_notes;
+EXCEPTION
+  WHEN duplicate_object THEN NULL;
+END $$;
+
+DO $$
+BEGIN
+  ALTER PUBLICATION supabase_realtime ADD TABLE public.presentation_responses;
 EXCEPTION
   WHEN duplicate_object THEN NULL;
 END $$;
@@ -200,6 +208,21 @@ CREATE POLICY "Teachers can read presentation responses on own courses"
       SELECT 1 FROM public.course_sessions cs
       WHERE cs.id = course_session_id
         AND public.teacher_owns_course(cs.course_id)
+    )
+  );
+
+DROP POLICY IF EXISTS "Students can read teacher presentation answers"
+  ON public.presentation_responses;
+CREATE POLICY "Students can read teacher presentation answers"
+  ON public.presentation_responses FOR SELECT
+  USING (
+    EXISTS (
+      SELECT 1
+      FROM public.course_sessions cs
+      JOIN public.courses c ON c.id = cs.course_id
+      WHERE cs.id = course_session_id
+        AND public.is_enrolled_in_course(cs.course_id)
+        AND c.teacher_id = presentation_responses.user_id
     )
   );
 

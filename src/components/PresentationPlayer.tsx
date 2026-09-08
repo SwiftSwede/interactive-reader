@@ -11,16 +11,28 @@ import { createClient } from "@/lib/supabase/client";
 import { getSessionPhase } from "@/lib/session-phase";
 import {
   adjacentPresentationStep,
+  classAnswerForQuestion,
+  classAnswerFromResponse,
   encodePresentationStep,
+  mapPresentationResponseRow,
   parsePresentationSegments,
   parsePresentationStep,
+  presentationAnswerChannelName,
+  presentationStepChannelName,
   presentationStepLabel,
+  PRESENTATION_ANSWER_EVENT,
+  PRESENTATION_STEP_EVENT,
+  remotePresentationStep,
   segmentCycleIndex,
+  upsertClassAnswer,
   vocabNoteKey,
+  type PresentationClassAnswer,
+  type PresentationResponseRow,
   type PresentationStep,
 } from "@/lib/presentation";
 import {
   revealPresentationAnswer,
+  savePresentationClassAnswer,
   savePresentationResponse,
   setPresentationStep,
   updatePresentationSpanish,
@@ -48,6 +60,8 @@ export default function PresentationPlayer({
   saveResponses,
   initialStep,
   savedResponses,
+  classAnswers: initialClassAnswers = [],
+  teacherUserId = null,
   vocabNotes: initialNotes,
 }: {
   prompt: PresentationPrompt;
@@ -60,11 +74,14 @@ export default function PresentationPlayer({
   saveResponses: boolean;
   initialStep: string | null;
   savedResponses: PresentationResponse[];
+  classAnswers?: PresentationClassAnswer[];
+  teacherUserId?: string | null;
   vocabNotes: PresentationVocabNote[];
 }) {
   const [now, setNow] = useState(() => Date.now());
   const [prompt, setPrompt] = useState(initialPrompt);
   const [notes, setNotes] = useState(initialNotes);
+  const [classAnswers, setClassAnswers] = useState(initialClassAnswers);
   const [step, setStep] = useState<PresentationStep>(() =>
     parsePresentationStep(initialStep, initialPrompt)
   );
@@ -77,18 +94,44 @@ export default function PresentationPlayer({
   const studentLocked = !isTeacher && phase === "before";
   const followTeacher = !isTeacher && phase === "live";
   const showNav = isTeacher || phase === "after";
-  const writeStep = isTeacher && phase === "live";
+  const writeStep = isTeacher && phase !== "after";
   const liveVideo = phase === "live";
+
+  const followTeacherRef = useRef(followTeacher);
+  const promptRef = useRef(prompt);
+  const writeStepRef = useRef(writeStep);
+  const stepChannelRef = useRef<ReturnType<
+    ReturnType<typeof createClient>["channel"]
+  > | null>(null);
+  const answerChannelRef = useRef<ReturnType<
+    ReturnType<typeof createClient>["channel"]
+  > | null>(null);
+  followTeacherRef.current = followTeacher;
+  promptRef.current = prompt;
+  writeStepRef.current = writeStep;
 
   useEffect(() => {
     const id = window.setInterval(() => setNow(Date.now()), 15000);
     return () => window.clearInterval(id);
   }, []);
 
+  const applyRemoteStep = useCallback((value: unknown) => {
+    if (!followTeacherRef.current) return;
+    const next = remotePresentationStep(value, promptRef.current);
+    if (!next) return;
+    setStep(next);
+  }, []);
+
   useEffect(() => {
     const supabase = createClient();
-    const sessionChannel = supabase
-      .channel(`presentation-session-${sessionId}`)
+    const channel = supabase
+      .channel(presentationStepChannelName(sessionId), {
+        config: { broadcast: { self: false } },
+      })
+      .on("broadcast", { event: PRESENTATION_STEP_EVENT }, (message) => {
+        const payload = message.payload as { step?: unknown };
+        applyRemoteStep(payload.step);
+      })
       .on(
         "postgres_changes",
         {
@@ -103,11 +146,39 @@ export default function PresentationPlayer({
             class_ended_at?: string | null;
           };
           if (row.class_ended_at) setClassEndedAt(row.class_ended_at);
-          if (!followTeacher) return;
-          setStep(parsePresentationStep(row.presentation_step, prompt));
+          applyRemoteStep(row.presentation_step);
         }
       )
       .subscribe();
+    stepChannelRef.current = channel;
+
+    function pullStep() {
+      if (!followTeacherRef.current) return;
+      void supabase
+        .from("course_sessions")
+        .select("presentation_step")
+        .eq("id", sessionId)
+        .maybeSingle()
+        .then(({ data }) => {
+          if (!data) return;
+          applyRemoteStep(
+            (data as { presentation_step?: string | null }).presentation_step
+          );
+        });
+    }
+
+    pullStep();
+    const poll = window.setInterval(pullStep, 2000);
+
+    return () => {
+      stepChannelRef.current = null;
+      window.clearInterval(poll);
+      void supabase.removeChannel(channel);
+    };
+  }, [sessionId, applyRemoteStep]);
+
+  useEffect(() => {
+    const supabase = createClient();
 
     const promptChannel = supabase
       .channel(`presentation-prompt-${prompt.id}`)
@@ -189,23 +260,129 @@ export default function PresentationPlayer({
       .subscribe();
 
     return () => {
-      void supabase.removeChannel(sessionChannel);
       void supabase.removeChannel(promptChannel);
       void supabase.removeChannel(notesChannel);
     };
-  }, [sessionId, prompt, followTeacher]);
+  }, [sessionId, prompt.id]);
+
+  const applyClassAnswer = useCallback((next: PresentationClassAnswer) => {
+    setClassAnswers((prev) => upsertClassAnswer(prev, next));
+  }, []);
+
+  useEffect(() => {
+    const supabase = createClient();
+    const channel = supabase
+      .channel(presentationAnswerChannelName(sessionId), {
+        config: { broadcast: { self: false } },
+      })
+      .on("broadcast", { event: PRESENTATION_ANSWER_EVENT }, (message) => {
+        const payload = message.payload as PresentationClassAnswer;
+        if (
+          typeof payload?.segmentId !== "number" ||
+          typeof payload?.questionId !== "number"
+        ) {
+          return;
+        }
+        applyClassAnswer({
+          segmentId: payload.segmentId,
+          questionId: payload.questionId,
+          text: typeof payload.text === "string" ? payload.text : "",
+          ready: Boolean(payload.ready),
+        });
+      })
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "presentation_responses",
+          filter: `course_session_id=eq.${sessionId}`,
+        },
+        (payload) => {
+          const row = payload.new as {
+            user_id?: string;
+            segment_id?: number;
+            question_id?: number;
+            response_text?: string | null;
+            revealed_answer?: boolean;
+          } | null;
+          if (!row?.user_id || !teacherUserId || row.user_id !== teacherUserId) {
+            return;
+          }
+          const segmentId = Number(row.segment_id);
+          const questionId = Number(row.question_id);
+          if (!Number.isInteger(segmentId) || !Number.isInteger(questionId)) {
+            return;
+          }
+          applyClassAnswer({
+            segmentId,
+            questionId,
+            text: row.response_text ?? "",
+            ready: Boolean(row.revealed_answer),
+          });
+        }
+      )
+      .subscribe();
+    answerChannelRef.current = channel;
+
+    function pullClassAnswers() {
+      if (!teacherUserId) return;
+      void supabase
+        .from("presentation_responses")
+        .select(
+          "id, presentation_prompt_id, user_id, course_session_id, segment_id, question_id, response_text, revealed_answer, revealed_at, submitted_at"
+        )
+        .eq("course_session_id", sessionId)
+        .eq("user_id", teacherUserId)
+        .then(({ data }) => {
+          if (!data) return;
+          setClassAnswers(
+            (data as PresentationResponseRow[]).map((row) =>
+              classAnswerFromResponse(mapPresentationResponseRow(row))
+            )
+          );
+        });
+    }
+
+    if (!isTeacher) {
+      pullClassAnswers();
+    }
+    const poll = isTeacher
+      ? null
+      : window.setInterval(pullClassAnswers, 2000);
+
+    return () => {
+      answerChannelRef.current = null;
+      if (poll) window.clearInterval(poll);
+      void supabase.removeChannel(channel);
+    };
+  }, [sessionId, teacherUserId, isTeacher, applyClassAnswer]);
+
+  const publishClassAnswer = useCallback((next: PresentationClassAnswer) => {
+    applyClassAnswer(next);
+    void answerChannelRef.current?.send({
+      type: "broadcast",
+      event: PRESENTATION_ANSWER_EVENT,
+      payload: next,
+    });
+  }, [applyClassAnswer]);
 
   const goTo = useCallback(
     (next: PresentationStep) => {
       setStep(next);
-      if (writeStep) {
-        void setPresentationStep({
-          sessionId,
-          step: encodePresentationStep(next),
-        });
-      }
+      if (!writeStepRef.current) return;
+      const encoded = encodePresentationStep(next);
+      void stepChannelRef.current?.send({
+        type: "broadcast",
+        event: PRESENTATION_STEP_EVENT,
+        payload: { step: encoded },
+      });
+      void setPresentationStep({
+        sessionId,
+        step: encoded,
+      });
     },
-    [sessionId, writeStep]
+    [sessionId]
   );
 
   const prev = adjacentPresentationStep(step, prompt, -1);
@@ -219,25 +396,6 @@ export default function PresentationPlayer({
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [step]);
-
-  useEffect(() => {
-    if (!followTeacher) return;
-    const supabase = createClient();
-    void supabase
-      .from("course_sessions")
-      .select("presentation_step")
-      .eq("id", sessionId)
-      .maybeSingle()
-      .then(({ data }) => {
-        if (!data) return;
-        setStep(
-          parsePresentationStep(
-            (data as { presentation_step?: string | null }).presentation_step,
-            prompt
-          )
-        );
-      });
-  }, [followTeacher, sessionId, prompt]);
 
   if (studentLocked) {
     return (
@@ -402,9 +560,13 @@ export default function PresentationPlayer({
             <AnswersStep
               segment={segment}
               sessionId={sessionId}
+              isTeacher={isTeacher}
+              reviewMode={phase === "after"}
               allowReveal={allowReveal}
               saveResponses={saveResponses}
               savedResponses={savedResponses}
+              classAnswers={classAnswers}
+              publishClassAnswer={publishClassAnswer}
               unlockAt={sessionEndTime}
             />
           ) : null}
@@ -721,24 +883,37 @@ function VideoStep({
 function AnswersStep({
   segment,
   sessionId,
+  isTeacher,
+  reviewMode,
   allowReveal,
   saveResponses,
   savedResponses,
+  classAnswers,
+  publishClassAnswer,
   unlockAt,
 }: {
   segment: PresentationSegment;
   sessionId: string;
+  isTeacher: boolean;
+  reviewMode: boolean;
   allowReveal: boolean;
   saveResponses: boolean;
   savedResponses: PresentationResponse[];
+  classAnswers: PresentationClassAnswer[];
+  publishClassAnswer: (next: PresentationClassAnswer) => void;
   unlockAt: string;
 }) {
   const [canReveal, setCanReveal] = useState(allowReveal);
+  const [error, setError] = useState("");
   const [answers, setAnswers] = useState<Record<number, string>>(() => {
     const next: Record<number, string> = {};
     for (const row of savedResponses) {
       if (row.segmentId !== segment.id) continue;
       next[row.questionId] = row.responseText;
+    }
+    for (const row of classAnswers) {
+      if (row.segmentId !== segment.id || !row.text) continue;
+      if (isTeacher) next[row.questionId] = row.text;
     }
     return next;
   });
@@ -750,6 +925,34 @@ function AnswersStep({
     }
     return next;
   });
+  const [readyIds, setReadyIds] = useState<Set<number>>(() => {
+    const next = new Set<number>();
+    for (const row of classAnswers) {
+      if (row.segmentId !== segment.id || !row.ready) continue;
+      next.add(row.questionId);
+    }
+    return next;
+  });
+
+  useEffect(() => {
+    setReadyIds((prev) => {
+      const next = new Set(prev);
+      for (const row of classAnswers) {
+        if (row.segmentId !== segment.id || !row.ready) continue;
+        next.add(row.questionId);
+      }
+      return next;
+    });
+    if (isTeacher) return;
+    setAnswers((prev) => {
+      const next = { ...prev };
+      for (const row of classAnswers) {
+        if (row.segmentId !== segment.id || !row.text) continue;
+        next[row.questionId] = row.text;
+      }
+      return next;
+    });
+  }, [classAnswers, isTeacher, segment.id]);
 
   useEffect(() => {
     if (allowReveal) {
@@ -774,7 +977,7 @@ function AnswersStep({
     };
   }, []);
 
-  function scheduleSave(questionId: number, text: string) {
+  function scheduleStudentSave(questionId: number, text: string) {
     if (!saveResponses) return;
     if (saveTimers.current[questionId]) {
       window.clearTimeout(saveTimers.current[questionId]);
@@ -789,17 +992,50 @@ function AnswersStep({
     }, SAVE_DEBOUNCE_MS);
   }
 
+  function scheduleClassSave(questionId: number, text: string, ready: boolean) {
+    if (saveTimers.current[questionId]) {
+      window.clearTimeout(saveTimers.current[questionId]);
+    }
+    saveTimers.current[questionId] = window.setTimeout(() => {
+      const next = {
+        segmentId: segment.id,
+        questionId,
+        text,
+        ready,
+      };
+      if (ready) publishClassAnswer(next);
+      void savePresentationClassAnswer({
+        sessionId,
+        segmentId: segment.id,
+        questionId,
+        responseText: text,
+        ready,
+      });
+    }, SAVE_DEBOUNCE_MS);
+  }
+
+  const liveFollow = !isTeacher && !reviewMode;
+
   return (
     <section>
       <h2 className="text-headline-md text-text-primary">Respuestas</h2>
       <p className="mt-1 mb-4 text-label-md text-text-secondary">
-        {canReveal
-          ? "Escribe tu respuesta y luego verifica si acertaste."
-          : "Escribe tu respuesta. El Profe Kyle te dice cuándo puedes verificar."}
+        {isTeacher
+          ? "Escribe la respuesta y toca Listo. Sale en el teléfono de ellos."
+          : liveFollow
+            ? "El Profe Kyle escribe la respuesta. Tú la ves aquí."
+            : canReveal
+              ? "Escribe tu respuesta y luego verifica si acertaste."
+              : "Escribe tu respuesta. El Profe Kyle te dice cuándo puedes verificar."}
       </p>
+      {error ? <p className="mb-3 text-sm text-error">{error}</p> : null}
       <div className="space-y-4">
         {segment.comprehensionQuestions.map((question, index) => {
           const isRevealed = revealed.has(question.id);
+          const isReady = readyIds.has(question.id);
+          const liveText =
+            classAnswerForQuestion(classAnswers, segment.id, question.id)?.text ??
+            "";
           return (
             <div
               key={question.id}
@@ -808,28 +1044,114 @@ function AnswersStep({
               <p className="mb-3 font-heading text-story-body text-text-primary">
                 {index + 1}. {question.question}
               </p>
-              <textarea
-                className="w-full resize-none rounded-card border border-paper-line bg-surface px-3 py-3 text-body-main text-text-primary placeholder:text-text-muted focus:border-2 focus:border-accent focus:outline-none"
-                placeholder="Escribe tu respuesta en ingles..."
-                rows={2}
-                value={answers[question.id] ?? ""}
-                disabled={isRevealed}
-                onChange={(event) => {
-                  const value = event.target.value;
-                  setAnswers((prev) => ({ ...prev, [question.id]: value }));
-                  scheduleSave(question.id, value);
-                }}
-                onBlur={(event) => {
-                  if (!saveResponses) return;
-                  void savePresentationResponse({
-                    sessionId,
-                    segmentId: segment.id,
-                    questionId: question.id,
-                    responseText: event.currentTarget.value,
-                  });
-                }}
-              />
-              {question.answer && canReveal && !isRevealed ? (
+              {liveFollow ? (
+                isReady && liveText ? (
+                  <p className="rounded-card bg-surface-hover px-3 py-2 text-body-main text-text-primary">
+                    {liveText}
+                  </p>
+                ) : (
+                  <p className="text-label-md text-text-muted">
+                    El Profe Kyle la escribe en un momento.
+                  </p>
+                )
+              ) : (
+                <textarea
+                  className="w-full resize-none rounded-card border border-paper-line bg-surface px-3 py-3 text-body-main text-text-primary placeholder:text-text-muted focus:border-2 focus:border-accent focus:outline-none"
+                  placeholder="Escribe tu respuesta en ingles..."
+                  rows={2}
+                  value={answers[question.id] ?? ""}
+                  disabled={!isTeacher && isRevealed}
+                  onChange={(event) => {
+                    const value = event.target.value;
+                    setAnswers((prev) => ({ ...prev, [question.id]: value }));
+                    if (isTeacher) {
+                      scheduleClassSave(
+                        question.id,
+                        value,
+                        readyIds.has(question.id)
+                      );
+                    } else {
+                      scheduleStudentSave(question.id, value);
+                    }
+                  }}
+                  onBlur={(event) => {
+                    const value = event.currentTarget.value;
+                    if (isTeacher) {
+                      const ready = readyIds.has(question.id);
+                      const next = {
+                        segmentId: segment.id,
+                        questionId: question.id,
+                        text: value,
+                        ready,
+                      };
+                      if (ready) publishClassAnswer(next);
+                      void savePresentationClassAnswer({
+                        sessionId,
+                        segmentId: segment.id,
+                        questionId: question.id,
+                        responseText: value,
+                        ready,
+                      });
+                      return;
+                    }
+                    if (!saveResponses) return;
+                    void savePresentationResponse({
+                      sessionId,
+                      segmentId: segment.id,
+                      questionId: question.id,
+                      responseText: value,
+                    });
+                  }}
+                />
+              )}
+              {isTeacher ? (
+                isReady ? (
+                  <span
+                    className="mt-3 inline-flex h-11 min-w-11 items-center justify-center rounded-card bg-success text-white"
+                    aria-label="Listo"
+                  >
+                    <Check size={18} aria-hidden="true" />
+                  </span>
+                ) : (
+                  <button
+                    type="button"
+                    className="mt-3 h-11 rounded-card bg-accent px-4 text-label-md text-white"
+                    onClick={() => {
+                      const text =
+                        (answers[question.id] ?? "").trim() || question.answer;
+                      setError("");
+                      setAnswers((prev) => ({ ...prev, [question.id]: text }));
+                      setReadyIds((prev) => new Set(prev).add(question.id));
+                      const next = {
+                        segmentId: segment.id,
+                        questionId: question.id,
+                        text,
+                        ready: true,
+                      };
+                      publishClassAnswer(next);
+                      void savePresentationClassAnswer({
+                        sessionId,
+                        segmentId: segment.id,
+                        questionId: question.id,
+                        responseText: text,
+                        ready: true,
+                      }).then((result) => {
+                        if (!result.ok) {
+                          setError(result.error);
+                          setReadyIds((prev) => {
+                            const copy = new Set(prev);
+                            copy.delete(question.id);
+                            return copy;
+                          });
+                        }
+                      });
+                    }}
+                  >
+                    Listo
+                  </button>
+                )
+              ) : null}
+              {!isTeacher && reviewMode && question.answer && canReveal && !isRevealed ? (
                 <button
                   type="button"
                   className="mt-3 h-11 rounded-card bg-accent px-4 text-label-md text-white"
@@ -847,7 +1169,7 @@ function AnswersStep({
                   Ver respuesta
                 </button>
               ) : null}
-              {isRevealed ? (
+              {!isTeacher && reviewMode && isRevealed ? (
                 <p className="mt-3 rounded-card bg-surface-hover px-3 py-2 text-body-main text-text-primary">
                   {question.answer}
                 </p>

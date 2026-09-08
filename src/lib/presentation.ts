@@ -1,6 +1,7 @@
 import type {
   PresentationPrompt,
   PresentationQuestion,
+  PresentationResponse,
   PresentationSegment,
   PresentationVocabItem,
 } from "@/types";
@@ -104,10 +105,25 @@ export function mapPresentationPromptRow(
   };
 }
 
+export const PRESENTATION_STEP_EVENT = "step";
+
+export function presentationStepChannelName(sessionId: string): string {
+  return `presentation-step-${sessionId}`;
+}
+
 export function encodePresentationStep(step: PresentationStep): string {
   if (step.kind === "warmup") return "warmup";
   if (step.kind === "done") return "done";
   return `${step.segmentId}:${step.kind}`;
+}
+
+/** Apply a remote step only when the payload actually carries one. */
+export function remotePresentationStep(
+  value: unknown,
+  prompt: Pick<PresentationPrompt, "warmupQuestion" | "segments">
+): PresentationStep | null {
+  if (typeof value !== "string" || !value.trim()) return null;
+  return parsePresentationStep(value, prompt);
 }
 
 export function parsePresentationStep(
@@ -232,4 +248,86 @@ export function serializePresentationSegments(
       answer: item.answer,
     })),
   }));
+}
+
+export const PRESENTATION_ANSWER_EVENT = "answer";
+
+export function presentationAnswerChannelName(sessionId: string): string {
+  return `presentation-answers-${sessionId}`;
+}
+
+export type PresentationClassAnswer = {
+  segmentId: number;
+  questionId: number;
+  text: string;
+  ready: boolean;
+};
+
+export type PresentationResponseRow = {
+  id: string;
+  presentation_prompt_id: string;
+  user_id: string;
+  course_session_id: string | null;
+  segment_id: number;
+  question_id: number;
+  response_text: string | null;
+  revealed_answer: boolean;
+  revealed_at: string | null;
+  submitted_at: string;
+};
+
+export function mapPresentationResponseRow(
+  row: PresentationResponseRow
+): PresentationResponse {
+  return {
+    id: row.id,
+    presentationPromptId: row.presentation_prompt_id,
+    userId: row.user_id,
+    courseSessionId: row.course_session_id,
+    segmentId: row.segment_id,
+    questionId: row.question_id,
+    responseText: row.response_text ?? "",
+    revealedAnswer: row.revealed_answer,
+    revealedAt: row.revealed_at,
+    submittedAt: row.submitted_at,
+  };
+}
+
+export function classAnswerFromResponse(
+  row: Pick<
+    PresentationResponse,
+    "segmentId" | "questionId" | "responseText" | "revealedAnswer"
+  >
+): PresentationClassAnswer {
+  return {
+    segmentId: row.segmentId,
+    questionId: row.questionId,
+    text: row.responseText,
+    ready: row.revealedAnswer,
+  };
+}
+
+export function classAnswerForQuestion(
+  answers: PresentationClassAnswer[],
+  segmentId: number,
+  questionId: number
+): PresentationClassAnswer | null {
+  return (
+    answers.find(
+      (item) => item.segmentId === segmentId && item.questionId === questionId
+    ) ?? null
+  );
+}
+
+export function upsertClassAnswer(
+  answers: PresentationClassAnswer[],
+  next: PresentationClassAnswer
+): PresentationClassAnswer[] {
+  return [
+    ...answers.filter(
+      (item) =>
+        !(item.segmentId === next.segmentId && item.questionId === next.questionId)
+    ),
+    next,
+  ];
 }

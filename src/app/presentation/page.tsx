@@ -6,10 +6,13 @@ import { documentTitle, presentationSessionTitle } from "@/lib/page-title";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
 import PresentationPlayer from "@/components/PresentationPlayer";
 import {
+  classAnswerFromResponse,
   mapPresentationPromptRow,
+  mapPresentationResponseRow,
   type PresentationPromptRow,
+  type PresentationResponseRow,
 } from "@/lib/presentation";
-import type { PresentationResponse, PresentationVocabNote } from "@/types";
+import type { PresentationVocabNote } from "@/types";
 
 export async function generateMetadata({
   searchParams,
@@ -86,8 +89,10 @@ export default async function PresentationPage({
   } = await supabase.auth.getUser();
   const profile = user ? await getProfile(user.id) : null;
   const isTeacher = profile?.role === "teacher";
+  const responseSelect =
+    "id, presentation_prompt_id, user_id, course_session_id, segment_id, question_id, response_text, revealed_answer, revealed_at, submitted_at";
 
-  const [promptResult, responseResult, noteResult] = await Promise.all([
+  const [promptResult, noteResult, courseResult] = await Promise.all([
     supabase
       .from("presentation_prompts")
       .select(
@@ -95,21 +100,39 @@ export default async function PresentationPage({
       )
       .eq("id", promptId)
       .maybeSingle(),
-    user && !isTeacher
-      ? supabase
-          .from("presentation_responses")
-          .select(
-            "id, presentation_prompt_id, user_id, course_session_id, segment_id, question_id, response_text, revealed_answer, revealed_at, submitted_at"
-          )
-          .eq("course_session_id", access.session.id)
-          .eq("user_id", user.id)
-      : Promise.resolve({ data: [] }),
     supabase
       .from("presentation_vocab_notes")
       .select(
         "id, course_session_id, segment_id, vocab_english, note_text, created_by, created_at"
       )
       .eq("course_session_id", access.session.id),
+    supabase
+      .from("courses")
+      .select("teacher_id")
+      .eq("id", access.session.courseId)
+      .maybeSingle(),
+  ]);
+
+  const teacherUserId =
+    typeof courseResult.data?.teacher_id === "string"
+      ? courseResult.data.teacher_id
+      : null;
+
+  const [responseResult, classResult] = await Promise.all([
+    user && !isTeacher
+      ? supabase
+          .from("presentation_responses")
+          .select(responseSelect)
+          .eq("course_session_id", access.session.id)
+          .eq("user_id", user.id)
+      : Promise.resolve({ data: [] }),
+    teacherUserId
+      ? supabase
+          .from("presentation_responses")
+          .select(responseSelect)
+          .eq("course_session_id", access.session.id)
+          .eq("user_id", teacherUserId)
+      : Promise.resolve({ data: [] }),
   ]);
 
   if (!promptResult.data) {
@@ -133,31 +156,13 @@ export default async function PresentationPage({
     );
   }
 
-  const savedResponses: PresentationResponse[] = (
-    (responseResult.data ?? []) as {
-      id: string;
-      presentation_prompt_id: string;
-      user_id: string;
-      course_session_id: string | null;
-      segment_id: number;
-      question_id: number;
-      response_text: string | null;
-      revealed_answer: boolean;
-      revealed_at: string | null;
-      submitted_at: string;
-    }[]
-  ).map((row) => ({
-    id: row.id,
-    presentationPromptId: row.presentation_prompt_id,
-    userId: row.user_id,
-    courseSessionId: row.course_session_id,
-    segmentId: row.segment_id,
-    questionId: row.question_id,
-    responseText: row.response_text ?? "",
-    revealedAnswer: row.revealed_answer,
-    revealedAt: row.revealed_at,
-    submittedAt: row.submitted_at,
-  }));
+  const savedResponses = ((responseResult.data ?? []) as PresentationResponseRow[]).map(
+    mapPresentationResponseRow
+  );
+
+  const classAnswers = ((classResult.data ?? []) as PresentationResponseRow[]).map(
+    (row) => classAnswerFromResponse(mapPresentationResponseRow(row))
+  );
 
   const vocabNotes: PresentationVocabNote[] = (
     (noteResult.data ?? []) as {
@@ -191,6 +196,8 @@ export default async function PresentationPage({
       saveResponses={access.saveResponses}
       initialStep={access.session.presentationStep}
       savedResponses={savedResponses}
+      classAnswers={classAnswers}
+      teacherUserId={teacherUserId}
       vocabNotes={vocabNotes}
     />
   );

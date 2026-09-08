@@ -798,11 +798,13 @@ Classroom only. `session_type = "presentation"`. Catalog lives in `presentation_
 - Vocabulario: vertical list of cards (white, `--paper-line` border, 16px radius, 16px padding). English in Lora (`story-body`). Spanish in Roboto Flex (`label-md`, `--text-secondary`). Catalog example sentence in italic muted text. Session example note underneath when present. Teacher can edit Spanish (catalog) and add/edit a session-only example note from a small lightbox (`teaching-note-modal`).
 - Preguntas: numbered list of information questions. No inputs. Students see what to listen for.
 - Video: 16:9 `ClassroomYoutubePlayer` (rounded 16px, paper-line border). Same live lock / review solo rules as Traducción. Overlay "Toca el video para oír" until the first tap.
-- Respuestas: same question cards as story comprehension (textarea + "Ver respuesta"). Reveal gated during live class.
+- Respuestas, live teacher: textarea plus Listo (`rounded-card`, 16px). After Listo, the button becomes a moss Check (44px). The typed text is the class answer.
+- Respuestas, live student: no input. Waiting copy until the teacher taps Listo, then the answer appears in a `--surface-hover` box.
+- Respuestas, after class: student textarea + "Ver respuesta" (catalog answer). Same cards as story comprehension.
 - Done: centered message "Eso es todo. Vuelve a este link después de clase para repasar."
 
 **Bottom navigation:**
-- During live class, only the teacher sees Atrás / Siguiente pills. Students follow the teacher's step. Students still see the part row so they know how many videos are coming.
+- During live class, only the teacher sees Atrás / Siguiente pills. Students follow the teacher's step on their phones (broadcast plus a short poll, same idea as the YouTube lock). They still see the part row so they know how many videos are coming.
 - After the 90-min window, students get the same pills and can tap parts to jump. Consumer self-study uses that same free nav.
 
 Keep YouTube in review mode with normal controls. No pronunciation. No group work.

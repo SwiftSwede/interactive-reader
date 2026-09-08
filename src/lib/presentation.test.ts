@@ -2,13 +2,16 @@ import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import {
   adjacentPresentationStep,
+  classAnswerForQuestion,
   defaultPresentationStep,
   encodePresentationStep,
   mapPresentationPromptRow,
   parsePresentationStep,
   presentationStepList,
+  remotePresentationStep,
   segmentCycleIndex,
   stripPresentationText,
+  upsertClassAnswer,
 } from "./presentation";
 import { youtubeStartSeconds } from "./youtube-sync";
 
@@ -87,12 +90,47 @@ describe("presentation steps", () => {
     assert.equal(encodePresentationStep(step), "warmup");
   });
 
+  it("ignores incomplete remote payloads so video ticks cannot reset the step", () => {
+    assert.equal(remotePresentationStep(undefined, prompt), null);
+    assert.equal(remotePresentationStep(null, prompt), null);
+    assert.equal(remotePresentationStep("", prompt), null);
+    assert.equal(
+      encodePresentationStep(remotePresentationStep("2:vocab", prompt)!),
+      "2:vocab"
+    );
+  });
+
   it("maps cycle indexes", () => {
     assert.equal(segmentCycleIndex({ kind: "video", segmentId: 1 }), 2);
   });
 
   it("strips html from input", () => {
     assert.equal(stripPresentationText("<b>37</b> meters"), "37 meters");
+  });
+
+  it("upserts a class answer per question without dropping the others", () => {
+    const first = upsertClassAnswer([], {
+      segmentId: 1,
+      questionId: 1,
+      text: "Driving",
+      ready: false,
+    });
+    const both = upsertClassAnswer(first, {
+      segmentId: 1,
+      questionId: 2,
+      text: "Magical realism",
+      ready: true,
+    });
+    const updated = upsertClassAnswer(both, {
+      segmentId: 1,
+      questionId: 1,
+      text: "Driving to Acapulco",
+      ready: true,
+    });
+    assert.equal(classAnswerForQuestion(updated, 1, 1)?.text, "Driving to Acapulco");
+    assert.equal(classAnswerForQuestion(updated, 1, 1)?.ready, true);
+    assert.equal(classAnswerForQuestion(updated, 1, 2)?.ready, true);
+    assert.equal(classAnswerForQuestion(updated, 2, 1), null);
   });
 });
 

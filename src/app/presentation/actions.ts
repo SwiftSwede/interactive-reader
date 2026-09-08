@@ -245,6 +245,55 @@ export async function upsertPresentationVocabNote(input: {
   return { ok: true };
 }
 
+export async function savePresentationClassAnswer(input: {
+  sessionId: string;
+  segmentId: number;
+  questionId: number;
+  responseText: string;
+  ready: boolean;
+}): Promise<PresentationActionResult> {
+  const sessionId = uuidSchema.safeParse(input.sessionId);
+  const segmentId = idSchema.safeParse(input.segmentId);
+  const questionId = idSchema.safeParse(input.questionId);
+  const responseText = textSchema.safeParse(
+    stripPresentationText(input.responseText)
+  );
+  if (
+    !sessionId.success ||
+    !segmentId.success ||
+    !questionId.success ||
+    !responseText.success
+  ) {
+    return { ok: false, error: "Esa respuesta no se pudo guardar." };
+  }
+
+  const ctx = await teacherSessionContext(sessionId.data);
+  if (!ctx.ok) return ctx;
+
+  const now = new Date().toISOString();
+  const { error } = await ctx.supabase.from("presentation_responses").upsert(
+    {
+      presentation_prompt_id: ctx.promptId,
+      user_id: ctx.userId,
+      course_session_id: sessionId.data,
+      segment_id: segmentId.data,
+      question_id: questionId.data,
+      response_text: responseText.data,
+      revealed_answer: input.ready,
+      revealed_at: input.ready ? now : null,
+      submitted_at: now,
+    },
+    { onConflict: "course_session_id,user_id,segment_id,question_id" }
+  );
+
+  if (error) {
+    console.error("savePresentationClassAnswer failed:", error);
+    return { ok: false, error: "No pude guardar la respuesta." };
+  }
+
+  return { ok: true };
+}
+
 async function studentResponseContext(sessionId: string) {
   const supabase = await createClient();
   const {
