@@ -124,6 +124,53 @@ export function nextRoundCurrent(
   return roundCurrent + 1;
 }
 
+export const CONVERSATION_ROUND_EVENT = "round";
+
+export function conversationChannelName(sessionId: string): string {
+  return `conversation-session-${sessionId}`;
+}
+
+export type ConversationRoundSync = {
+  conversationPlan: ConversationPlan;
+  roundCurrent: number;
+  roundState: ConversationRoundState;
+  roundStartedAt: string | null;
+  classEndedAt?: string | null;
+};
+
+export function parseConversationRoundSync(
+  value: unknown
+): ConversationRoundSync | null {
+  if (!value || typeof value !== "object") return null;
+  const row = value as Record<string, unknown>;
+  const plan = row.conversationPlan ?? row.conversation_plan;
+  const current = Number(row.roundCurrent ?? row.round_current);
+  const state = row.roundState ?? row.round_state;
+  const started = row.roundStartedAt ?? row.round_started_at;
+  const hasEnded = "classEndedAt" in row || "class_ended_at" in row;
+  const ended = row.classEndedAt ?? row.class_ended_at;
+
+  if (
+    !isConversationPlan(plan) ||
+    !Number.isFinite(current) ||
+    !isConversationRoundState(state)
+  ) {
+    return null;
+  }
+  if (started != null && typeof started !== "string") return null;
+  if (hasEnded && ended != null && typeof ended !== "string") return null;
+
+  return {
+    conversationPlan: plan,
+    roundCurrent: current,
+    roundState: state,
+    roundStartedAt: typeof started === "string" ? started : null,
+    ...(hasEnded
+      ? { classEndedAt: typeof ended === "string" ? ended : null }
+      : {}),
+  };
+}
+
 export function conversationPlanLabels(
   level: CourseLevel
 ): { plan: ConversationPlan; label: string }[] {

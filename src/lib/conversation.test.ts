@@ -2,11 +2,13 @@ import assert from "node:assert/strict";
 import { describe, test } from "node:test";
 import {
   appendNumberedQuestions,
+  conversationChannelName,
   formatRoundClock,
   isRoundsComplete,
   nextRoundCurrent,
   numberedQuestionList,
   parseConversationQuestions,
+  parseConversationRoundSync,
   roundLengthSeconds,
   roundTotal,
   secondsLeft,
@@ -77,6 +79,52 @@ describe("round advancement", () => {
     assert.equal(isRoundsComplete(4, "compact"), true);
     assert.equal(isRoundsComplete(7, "standard"), true);
     assert.equal(isRoundsComplete(1, "open"), false);
+  });
+});
+
+describe("round sync payload", () => {
+  test("accepts snake_case session rows and camelCase broadcasts", () => {
+    assert.deepEqual(
+      parseConversationRoundSync({
+        conversation_plan: "standard",
+        round_current: "1",
+        round_state: "running",
+        round_started_at: "2026-09-08T19:00:00.000Z",
+        class_ended_at: null,
+      }),
+      {
+        conversationPlan: "standard",
+        roundCurrent: 1,
+        roundState: "running",
+        roundStartedAt: "2026-09-08T19:00:00.000Z",
+        classEndedAt: null,
+      }
+    );
+    assert.deepEqual(
+      parseConversationRoundSync({
+        conversationPlan: "compact",
+        roundCurrent: 3,
+        roundState: "stopped",
+        roundStartedAt: null,
+      }),
+      {
+        conversationPlan: "compact",
+        roundCurrent: 3,
+        roundState: "stopped",
+        roundStartedAt: null,
+      }
+    );
+  });
+
+  test("rejects incomplete payloads and names the session channel", () => {
+    assert.equal(
+      parseConversationRoundSync({ round_current: 1, round_state: "running" }),
+      null
+    );
+    assert.equal(
+      conversationChannelName("sess-1"),
+      "conversation-session-sess-1"
+    );
   });
 });
 

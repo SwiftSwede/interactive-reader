@@ -1,16 +1,17 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import BackLink from "@/components/BackLink";
 import EndClassButton from "@/components/EndClassButton";
 import { createClient } from "@/lib/supabase/client";
 import { getSessionPhase } from "@/lib/session-phase";
 import {
+  CONVERSATION_ROUND_EVENT,
+  conversationChannelName,
   conversationPlanLabels,
   formatRoundClock,
-  isConversationPlan,
-  isConversationRoundState,
   isRoundsComplete,
+  parseConversationRoundSync,
   roundLengthSeconds,
   roundTotal,
   secondsLeft,
@@ -22,7 +23,6 @@ import {
   resumeConversationRound,
   setConversationPlan,
   type ConversationActionResult,
-  type ConversationRoundSnapshot,
 } from "@/app/teacher/conversation-actions";
 import type {
   ConversationPlan,
@@ -67,11 +67,31 @@ export default function ConversationStudent({
   const [frozenLeft, setFrozenLeft] = useState<number | null>(null);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
+  const channelRef = useRef<ReturnType<
+    ReturnType<typeof createClient>["channel"]
+  > | null>(null);
+
+  const applySync = useCallback((value: unknown) => {
+    const next = parseConversationRoundSync(value);
+    if (!next) return;
+    setPlan(next.conversationPlan);
+    setCurrent(next.roundCurrent);
+    setState(next.roundState);
+    setStartedAt(next.roundStartedAt);
+    if (next.classEndedAt !== undefined) {
+      setEndedAt(next.classEndedAt);
+    }
+  }, []);
 
   useEffect(() => {
     const supabase = createClient();
     const channel = supabase
-      .channel(`conversation-session-${sessionId}`)
+      .channel(conversationChannelName(sessionId), {
+        config: { broadcast: { self: false } },
+      })
+      .on("broadcast", { event: CONVERSATION_ROUND_EVENT }, (message) => {
+        applySync(message.payload);
+      })
       .on(
         "postgres_changes",
         {
@@ -80,36 +100,37 @@ export default function ConversationStudent({
           table: "course_sessions",
           filter: `id=eq.${sessionId}`,
         },
-        (payload) => {
-          const row = payload.new as {
-            conversation_plan?: string | null;
-            round_current?: number | string | null;
-            round_state?: string | null;
-            round_started_at?: string | null;
-            class_ended_at?: string | null;
-          };
-          if (isConversationPlan(row.conversation_plan)) {
-            setPlan(row.conversation_plan);
-          }
-          const nextCurrent = Number(row.round_current);
-          if (Number.isFinite(nextCurrent)) {
-            setCurrent(nextCurrent);
-          }
-          if (isConversationRoundState(row.round_state)) {
-            setState(row.round_state);
-          }
-          setStartedAt(row.round_started_at ?? null);
-          if (row.class_ended_at !== undefined) {
-            setEndedAt(row.class_ended_at ?? null);
-          }
-        }
+        (payload) => applySync(payload.new)
       )
       .subscribe();
+    channelRef.current = channel;
+
+    function pullRound() {
+      void supabase
+        .from("course_sessions")
+        .select(
+          "conversation_plan, round_current, round_state, round_started_at, class_ended_at"
+        )
+        .eq("id", sessionId)
+        .maybeSingle()
+        .then(({ data }) => {
+          if (data) applySync(data);
+        });
+    }
+
+    if (!isTeacher) {
+      pullRound();
+    }
+    const poll = isTeacher
+      ? null
+      : window.setInterval(pullRound, 2000);
 
     return () => {
+      channelRef.current = null;
+      if (poll) window.clearInterval(poll);
       void supabase.removeChannel(channel);
     };
-  }, [sessionId]);
+  }, [sessionId, applySync, isTeacher]);
 
   const length = roundLengthSeconds(plan, courseLevel);
   const total = roundTotal(plan);
@@ -164,13 +185,6 @@ export default function ConversationStudent({
   const canPauseReset = isTeacher && showRounds && !waiting && !done;
   const nextLabel = current === total && !waiting ? "Terminar" : "Siguiente";
 
-  function applySnapshot(snap: ConversationRoundSnapshot) {
-    setPlan(snap.conversationPlan);
-    setCurrent(snap.roundCurrent);
-    setState(snap.roundState);
-    setStartedAt(snap.roundStartedAt);
-  }
-
   async function runAction(action: () => Promise<ConversationActionResult>) {
     setPending(true);
     setError("");
@@ -180,7 +194,12 @@ export default function ConversationStudent({
       setError(result.error);
       return;
     }
-    applySnapshot(result);
+    applySync(result);
+    void channelRef.current?.send({
+      type: "broadcast",
+      event: CONVERSATION_ROUND_EVENT,
+      payload: result,
+    });
   }
 
   return (
