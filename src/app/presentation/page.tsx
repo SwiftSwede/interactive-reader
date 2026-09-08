@@ -1,6 +1,8 @@
+import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import { resolvePresentationSessionAccess } from "@/lib/sessions";
 import { getProfile } from "@/lib/auth-server";
+import { documentTitle, presentationSessionTitle } from "@/lib/page-title";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
 import PresentationPlayer from "@/components/PresentationPlayer";
 import {
@@ -9,9 +11,15 @@ import {
 } from "@/lib/presentation";
 import type { PresentationResponse, PresentationVocabNote } from "@/types";
 
-export const metadata = {
-  title: "Presentación - Profe Kyle",
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ session?: string }>;
+}): Promise<Metadata> {
+  const { session } = await searchParams;
+  const title = await presentationSessionTitle(session);
+  return { title: documentTitle(title ?? "Presentación") };
+}
 
 export default async function PresentationPage({
   searchParams,

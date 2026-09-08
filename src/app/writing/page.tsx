@@ -1,15 +1,23 @@
+import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import { resolveWritingSessionAccess } from "@/lib/sessions";
 import { sessionRecordingUrl } from "@/lib/session-phase";
 import { getProfile } from "@/lib/auth-server";
+import { documentTitle, writingSessionTitle } from "@/lib/page-title";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
 import WritingSession from "@/components/WritingSession";
 import type { CourseLevel } from "@/types";
 import type { DiffSegment, InlineNote } from "@/lib/writing";
 
-export const metadata = {
-  title: "Escritura - Profe Kyle",
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ session?: string }>;
+}): Promise<Metadata> {
+  const { session } = await searchParams;
+  const title = await writingSessionTitle(session);
+  return { title: documentTitle(title ?? "Escritura") };
+}
 
 type PromptRow = {
   id: string;

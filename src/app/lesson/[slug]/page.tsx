@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import { getStoryBySlug } from "@/lib/stories";
 import {
@@ -8,8 +9,19 @@ import { sessionRecordingUrl } from "@/lib/session-phase";
 import { loadOwnComprehensionResponses } from "@/lib/comprehension";
 import { loadOwnPersonalResponses } from "@/lib/personal-responses";
 import { getProfile } from "@/lib/auth-server";
+import { documentTitle, storyTitleBySlug } from "@/lib/page-title";
 import StoryReader from "@/components/StoryReader";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const title = await storyTitleBySlug(slug);
+  return { title: documentTitle(title ?? "Lección") };
+}
 
 export default async function LessonSlugPage({
   params,

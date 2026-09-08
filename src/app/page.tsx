@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { supabase } from "@/lib/supabase";
 import { getFreeStory } from "@/lib/stories";
+import { documentTitle, freeStoryTitle } from "@/lib/page-title";
 import StoryReader from "@/components/StoryReader";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const title = await freeStoryTitle();
+  return { title: documentTitle(title) };
+}
 
 export default async function HomePage() {
   const data = supabase ? await getFreeStory(supabase) : null;

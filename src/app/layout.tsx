@@ -19,8 +19,9 @@ const robotoFlex = Roboto_Flex({
 });
 
 export const metadata: Metadata = {
-  title: "The Soccer Jersey - Profe Kyle",
-  description: "Read and listen to an interactive English story. Tap any word for instant Spanish translation and pronunciation.",
+  title: "Profe Kyle",
+  description:
+    "Lee y escucha inglés con Profe Kyle. Toca cualquier palabra para ver la traducción y la pronunciación.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
