@@ -1,14 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { formatCountdownLabel, isLocalCalendarDate } from "@/lib/dashboard";
-import { getClassDayPhase, type ClassDayPhase } from "@/lib/session-phase";
+import { formatCountdownLabel } from "@/lib/dashboard";
+import {
+  JOIN_LEAD_MINUTES,
+  type ClassDayPhase,
+} from "@/lib/session-phase";
 import JoinCard, { STUDENT_APP_LABEL } from "./JoinCard";
 
 export default function ClassDayCard({
   sessionStartTime,
   sessionEndTime,
-  sessionDate,
   href,
   zoomHref,
   appLabel = STUDENT_APP_LABEL,
@@ -32,30 +34,27 @@ export default function ClassDayCard({
 }) {
   const [now, setNow] = useState<number | null>(null);
 
+  useEffect(() => {
+    const tick = () => setNow(Date.now());
+    tick();
+    const id = window.setInterval(tick, 1000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  const clock = now ?? Date.now();
+  const startMs = new Date(sessionStartTime).getTime();
+  const endMs = new Date(sessionEndTime).getTime();
+  const remaining = Math.max(0, startMs - clock);
+  const joinLeadMs = JOIN_LEAD_MINUTES * 60 * 1000;
+
   const phase: ClassDayPhase =
     now == null
       ? initialPhase
-      : getClassDayPhase({ sessionStartTime, sessionEndTime }, new Date(now));
-
-  useEffect(() => {
-    setNow(Date.now());
-  }, []);
-
-  useEffect(() => {
-    if (now == null) return;
-    if (phase === "done-pending") return;
-    const id = window.setInterval(() => setNow(Date.now()), 1000);
-    return () => window.clearInterval(id);
-  }, [now, phase]);
-
-  if (now != null && !isLocalCalendarDate(sessionDate, new Date(now))) {
-    return null;
-  }
-
-  const remaining = Math.max(
-    0,
-    new Date(sessionStartTime).getTime() - (now ?? Date.now())
-  );
+      : clock > endMs
+        ? "done-pending"
+        : remaining <= joinLeadMs
+          ? "join"
+          : "countdown";
 
   if (phase === "done-pending") {
     return (

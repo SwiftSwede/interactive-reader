@@ -1,7 +1,7 @@
 import { CalendarDays } from "lucide-react";
 import { requireTeacher } from "@/lib/auth-server";
 import { createClient } from "@/lib/supabase/server";
-import { hasSessionContent, isLocalCalendarDate } from "@/lib/dashboard";
+import { hasSessionContent } from "@/lib/dashboard";
 import {
   isLiveOnlySessionType,
   sessionTypeLabel,
@@ -22,6 +22,7 @@ import {
   loadSessionsForCourses,
   loadTeacherCourses,
   pickCurrentSession,
+  pickTodayTeacherSession,
   readinessLabel,
   sessionTitle,
   sessionsInMonth,
@@ -66,10 +67,7 @@ export default async function TeacherHomePage() {
         yearMonth
       );
       const current = pickCurrentSession(monthSessions);
-      const todaySession =
-        monthSessions.find((session) =>
-          isLocalCalendarDate(session.sessionDate)
-        ) ?? null;
+      const todaySession = pickTodayTeacherSession(monthSessions);
       const liveOnly = todaySession
         ? isLiveOnlySessionType(todaySession.sessionType)
         : false;

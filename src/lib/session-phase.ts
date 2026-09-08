@@ -70,3 +70,64 @@ export function getClassDayPhase(
   if (t <= end) return "join";
   return "done-pending";
 }
+
+const COUNTDOWN_LEAD_MS = 18 * 60 * 60 * 1000;
+const DONE_PENDING_MS = 12 * 60 * 60 * 1000;
+
+function localCalendarDate(now: Date): string {
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function matchesLocalOrUtcDate(sessionDate: string, now: Date): boolean {
+  return (
+    sessionDate === localCalendarDate(now) ||
+    sessionDate === now.toISOString().slice(0, 10)
+  );
+}
+
+export function isClassDayCardSession(
+  session: Pick<
+    CourseSession,
+    "sessionDate" | "sessionStartTime" | "sessionEndTime"
+  >,
+  now = new Date()
+): boolean {
+  const t = now.getTime();
+  const start = new Date(session.sessionStartTime).getTime();
+  const joinAt = getSessionJoinTime(session).getTime();
+  const end = new Date(session.sessionEndTime).getTime();
+
+  if (t >= joinAt && t <= end) return true;
+  if (t < joinAt && start - t >= 0 && start - t <= COUNTDOWN_LEAD_MS) {
+    return true;
+  }
+  if (t > end && t - end <= DONE_PENDING_MS) return true;
+  return matchesLocalOrUtcDate(session.sessionDate, now) && t <= end + DONE_PENDING_MS;
+}
+
+export function pickClassDaySession<
+  T extends Pick<
+    CourseSession,
+    "sessionDate" | "sessionStartTime" | "sessionEndTime"
+  >,
+>(sessions: T[], now = new Date()): T | null {
+  const candidates = sessions.filter((session) =>
+    isClassDayCardSession(session, now)
+  );
+  if (candidates.length === 0) return null;
+  const t = now.getTime();
+  const joinLive = candidates.find((session) => {
+    const joinAt = getSessionJoinTime(session).getTime();
+    const end = new Date(session.sessionEndTime).getTime();
+    return t >= joinAt && t <= end;
+  });
+  if (joinLive) return joinLive;
+  return [...candidates].sort((a, b) => {
+    const da = Math.abs(new Date(a.sessionStartTime).getTime() - t);
+    const db = Math.abs(new Date(b.sessionStartTime).getTime() - t);
+    return da - db;
+  })[0];
+}

@@ -13,7 +13,6 @@ import {
   isLiveOnlySessionType,
   sessionTypeLabel,
 } from "@/lib/activities";
-import { isLocalCalendarDate } from "@/lib/dashboard";
 import { getClassDayPhase } from "@/lib/session-phase";
 import { areAnswersUnlocked } from "@/lib/sessions";
 import {
@@ -21,6 +20,7 @@ import {
   getOwnedCourse,
   loadCourseRoster,
   loadCourseSessions,
+  pickTodayTeacherSession,
   sessionContentStatus,
   sessionRecordingStatus,
   sessionTitle,
@@ -152,10 +152,7 @@ export default async function CourseClassPage({
     };
   });
 
-  const todaySession =
-    orderedSessions.find((session) =>
-      isLocalCalendarDate(session.sessionDate)
-    ) ?? null;
+  const todaySession = pickTodayTeacherSession(orderedSessions);
   const todayLiveOnly = todaySession
     ? isLiveOnlySessionType(todaySession.sessionType)
     : false;

@@ -3,6 +3,13 @@ import { requireTeacher } from "@/lib/auth-server";
 import { createClient } from "@/lib/supabase/server";
 import NewMonthButton from "@/components/teacher/NewMonthButton";
 import LocalDateTime from "@/components/LocalDateTime";
+import ClassDayCard from "@/components/dashboard/ClassDayCard";
+import { TEACHER_APP_LABEL } from "@/components/dashboard/JoinCard";
+import {
+  isLiveOnlySessionType,
+  sessionTypeLabel,
+} from "@/lib/activities";
+import { getClassDayPhase } from "@/lib/session-phase";
 import {
   countActiveStudentsByCourse,
   courseLevelLabel,
@@ -11,6 +18,7 @@ import {
   loadTeacherCourses,
   monthLabelFromYearMonth,
   pickCurrentSession,
+  pickTodayTeacherSession,
   studentCountLabel,
 } from "@/lib/teacher";
 
@@ -38,6 +46,28 @@ export default async function TeacherGroupsPage() {
 
   const current = courses.filter((course) => !course.archived);
   const archived = courses.filter((course) => course.archived);
+  const todayCards = courses.flatMap((course) => {
+    const todaySession = pickTodayTeacherSession(
+      sessionsByCourse.get(course.id) ?? []
+    );
+    if (!todaySession) return [];
+    const liveOnly = isLiveOnlySessionType(todaySession.sessionType);
+    return [
+      {
+        courseId: course.id,
+        name: course.name,
+        liveOnly,
+        sessionStartTime: todaySession.start,
+        sessionEndTime: todaySession.end,
+        sessionDate: todaySession.sessionDate,
+        typeLabel: sessionTypeLabel(todaySession.sessionType),
+        appHref: liveOnly
+          ? null
+          : `/teacher/classes/${course.id}/sessions/${todaySession.id}`,
+        zoomHref: course.zoom_url,
+      },
+    ];
+  });
 
   function CourseList({
     rows,
@@ -99,6 +129,24 @@ export default async function TeacherGroupsPage() {
         </p>
       ) : (
         <>
+          {todayCards.map((card) => (
+            <ClassDayCard
+              key={card.courseId}
+              sessionStartTime={card.sessionStartTime}
+              sessionEndTime={card.sessionEndTime}
+              sessionDate={card.sessionDate}
+              href={card.appHref}
+              zoomHref={card.zoomHref}
+              appLabel={TEACHER_APP_LABEL}
+              typeLabel={card.typeLabel}
+              courseName={card.name}
+              liveOnly={card.liveOnly}
+              initialPhase={getClassDayPhase({
+                sessionStartTime: card.sessionStartTime,
+                sessionEndTime: card.sessionEndTime,
+              })}
+            />
+          ))}
           <div className="mt-8">
             <CourseList rows={current} />
           </div>

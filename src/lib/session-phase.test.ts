@@ -5,6 +5,7 @@ import {
   getSessionJoinTime,
   getSessionLifecycle,
   getSessionPhase,
+  isClassDayCardSession,
   JOIN_LEAD_MINUTES,
   sessionRecordingUrl,
 } from "./session-phase";
@@ -101,6 +102,40 @@ describe("getClassDayPhase", () => {
     assert.equal(
       getClassDayPhase(session, new Date("2026-09-06T20:30:01.000Z")),
       "done-pending"
+    );
+  });
+});
+
+describe("isClassDayCardSession", () => {
+  const evening = {
+    sessionDate: "2026-09-07",
+    sessionStartTime: "2026-09-08T01:00:00.000Z",
+    sessionEndTime: "2026-09-08T02:30:00.000Z",
+  };
+
+  test("shows the join card 3 minutes before an evening class even when UTC already rolled to the next day", () => {
+    const threeMinutesBefore = new Date("2026-09-08T00:57:00.000Z");
+    assert.equal(isClassDayCardSession(evening, threeMinutesBefore), true);
+    assert.equal(
+      isClassDayCardSession(
+        { ...evening, sessionDate: "2026-09-08" },
+        threeMinutesBefore
+      ),
+      true
+    );
+  });
+
+  test("shows countdown earlier the same local evening", () => {
+    assert.equal(
+      isClassDayCardSession(evening, new Date("2026-09-07T20:00:00.000Z")),
+      true
+    );
+  });
+
+  test("does not show a class two days away", () => {
+    assert.equal(
+      isClassDayCardSession(evening, new Date("2026-09-06T12:00:00.000Z")),
+      false
     );
   });
 });

@@ -4,6 +4,7 @@ import { isActiveClassroomSubscription } from "@/lib/classroom-access";
 import { createClient } from "@/lib/supabase/server";
 import { isSessionType, type SessionType } from "@/lib/activities";
 import { hasSessionContent } from "@/lib/dashboard";
+import { pickClassDaySession } from "@/lib/session-phase";
 import { sessionsInMonth } from "./teacher-month";
 import type { CourseLevel, SubscriptionStatus } from "@/types";
 
@@ -261,6 +262,21 @@ export async function countActiveStudentsByCourse(
   }
 
   return counts;
+}
+
+export function pickTodayTeacherSession(
+  sessions: TeacherSession[],
+  now = new Date()
+): TeacherSession | null {
+  return pickClassDaySession(
+    sessions.map((session) => ({
+      session,
+      sessionDate: session.sessionDate,
+      sessionStartTime: session.start,
+      sessionEndTime: session.end,
+    })),
+    now
+  )?.session ?? null;
 }
 
 export function pickCurrentSession(
