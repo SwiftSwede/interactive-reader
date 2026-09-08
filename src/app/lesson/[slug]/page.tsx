@@ -12,6 +12,12 @@ import { getProfile } from "@/lib/auth-server";
 import { documentTitle, storyTitleBySlug } from "@/lib/page-title";
 import StoryReader from "@/components/StoryReader";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
+import {
+  loadOwnWordFlagRequests,
+  loadSessionWordFlagRequests,
+  loadWordFlags,
+} from "@/lib/word-flags";
+import type { WordFlagging } from "@/types";
 
 export async function generateMetadata({
   params,
@@ -96,22 +102,13 @@ export default async function LessonSlugPage({
     access.kind === "ok" && !access.allowReveal
       ? access.session.sessionEndTime
       : undefined;
-  const isVideo = data.story.kind === "video_summary";
+  const kind = data.story.kind ?? "story";
+  const isVideo = kind === "video_summary";
   const sessionId =
     access.kind === "ok" && (access.saveResponses || isVideo)
       ? access.session.id
       : undefined;
-  const savedResponses = !isVideo
-    ? await loadOwnComprehensionResponses(
-        data.comprehensionQuestions.map((question) => question.id),
-        sessionId
-      )
-    : undefined;
-  const savedPersonalResponses = !isVideo
-    ? await loadOwnPersonalResponses(
-        data.personalQuestions.map((question) => question.id)
-      )
-    : undefined;
+  const flagSessionId = access.kind === "ok" ? access.session.id : null;
 
   let readerMode: "classroom-live" | "classroom-review" | "open" = "open";
   if (access.kind === "ok" && (access.saveResponses || isVideo)) {
@@ -123,13 +120,56 @@ export default async function LessonSlugPage({
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  let trackLookups = false;
-  let isTeacher = false;
-  if (user) {
-    const profile = await getProfile(user.id);
-    isTeacher = profile?.role === "teacher";
-    trackLookups = profile != null && profile.role !== "teacher";
-  }
+  const profile = user ? await getProfile(user.id) : null;
+  const isTeacher = profile?.role === "teacher";
+  const trackLookups = profile != null && profile.role !== "teacher";
+
+  const skipFlags = isVideo;
+  const [
+    savedResponses,
+    savedPersonalResponses,
+    flags,
+    teacherRequests,
+    ownRequests,
+  ] = await Promise.all([
+    !isVideo
+      ? loadOwnComprehensionResponses(
+          data.comprehensionQuestions.map((question) => question.id),
+          sessionId
+        )
+      : Promise.resolve(undefined),
+    !isVideo
+      ? loadOwnPersonalResponses(
+          data.personalQuestions.map((question) => question.id)
+        )
+      : Promise.resolve(undefined),
+    !skipFlags && isTeacher
+      ? loadWordFlags(supabase, data.story.id)
+      : Promise.resolve([]),
+    !skipFlags && isTeacher && flagSessionId
+      ? loadSessionWordFlagRequests(supabase, flagSessionId)
+      : Promise.resolve([]),
+    !skipFlags &&
+      kind !== "song" &&
+      !isTeacher &&
+      user &&
+      flagSessionId &&
+      readerMode === "classroom-live"
+      ? loadOwnWordFlagRequests(supabase, flagSessionId, user.id)
+      : Promise.resolve([]),
+  ]);
+
+  const flagging: WordFlagging | undefined = skipFlags
+    ? undefined
+    : {
+        enabled: isTeacher && kind !== "song",
+        flags,
+        requests: isTeacher ? teacherRequests : ownRequests,
+        isTeacher,
+        sessionId: flagSessionId,
+        storyId: data.story.id,
+        readerMode,
+      };
 
   return (
     <StoryReader
@@ -142,6 +182,7 @@ export default async function LessonSlugPage({
       trackLookups={trackLookups}
       readerMode={readerMode}
       isTeacher={isTeacher}
+      flagging={flagging}
       sessionStartTime={
         access.kind === "ok" ? access.session.sessionStartTime : null
       }

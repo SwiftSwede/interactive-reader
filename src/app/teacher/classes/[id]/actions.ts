@@ -345,7 +345,13 @@ export async function createSession(
       error:
         sessionType === "video_summary"
           ? "Elige una traducción."
-          : "Elige una historia.",
+          : sessionType === "dialogue"
+            ? "Elige un diálogo."
+            : sessionType === "movie_talk"
+              ? "Elige un Movie Talk."
+              : sessionType === "song"
+                ? "Elige una canción."
+                : "Elige una historia.",
     };
   }
 
@@ -378,6 +384,7 @@ export async function createSession(
       writing_prompt_id: null,
       exam_prompt_id: null,
       presentation_prompt_id: null,
+      conversation_prompt_id: null,
       session_date: sessionDate,
       session_start_time: start.toISOString(),
       session_end_time: end.toISOString(),
@@ -397,10 +404,75 @@ export async function createSession(
     return { ok: true, message: `Listo. ${story.title} ya tiene clase.` };
   }
 
+  if (
+    sessionType === "dialogue" ||
+    sessionType === "movie_talk" ||
+    sessionType === "song"
+  ) {
+    if (story.kind !== sessionType) {
+      return {
+        ok: false,
+        error:
+          sessionType === "dialogue"
+            ? "Ese no es un diálogo. Elige el tipo Diálogo."
+            : sessionType === "movie_talk"
+              ? "Ese no es un Movie Talk. Elige el tipo Movie Talk."
+              : "Esa no es una canción. Elige el tipo Música.",
+      };
+    }
+
+    const { error } = await supabase.from("course_sessions").insert({
+      course_id: courseId,
+      session_type: sessionType,
+      story_id: storyId,
+      writing_prompt_id: null,
+      exam_prompt_id: null,
+      presentation_prompt_id: null,
+      conversation_prompt_id: null,
+      session_date: sessionDate,
+      session_start_time: start.toISOString(),
+      session_end_time: end.toISOString(),
+      notes,
+    });
+
+    if (error) {
+      console.error("create catalog session failed:", error);
+      return {
+        ok: false,
+        error: "No pude crear la clase. Inténtalo de nuevo.",
+      };
+    }
+
+    revalidatePath(`/teacher/classes/${courseId}`);
+    revalidatePath("/teacher");
+    return { ok: true, message: `Listo. ${story.title} ya tiene clase.` };
+  }
+
   if (story.kind === "video_summary") {
     return {
       ok: false,
       error: "Esa es una traducción. Elige el tipo Traducción.",
+    };
+  }
+
+  if (story.kind === "dialogue") {
+    return {
+      ok: false,
+      error: "Ese es un diálogo. Elige el tipo Diálogo.",
+    };
+  }
+
+  if (story.kind === "movie_talk") {
+    return {
+      ok: false,
+      error: "Ese es un Movie Talk. Elige el tipo Movie Talk.",
+    };
+  }
+
+  if (story.kind === "song") {
+    return {
+      ok: false,
+      error: "Esa es una canción. Elige el tipo Música.",
     };
   }
 

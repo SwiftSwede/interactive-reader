@@ -72,6 +72,22 @@ describe("hasSessionContent", () => {
       false
     );
   });
+
+  test("dialogue, movie talk, and song are ready with a story_id", () => {
+    for (const sessionType of ["dialogue", "movie_talk", "song"] as const) {
+      assert.equal(
+        hasSessionContent({
+          sessionType,
+          storyId: "s1",
+          writingPromptId: null,
+          examPromptId: null,
+          presentationPromptId: null,
+          conversationPromptId: null,
+        }),
+        true
+      );
+    }
+  });
 });
 
 describe("toDashboardLesson", () => {

@@ -4,7 +4,11 @@ import CopySessionLink from "@/app/teacher/classes/[id]/CopySessionLink";
 import DeleteSessionButton from "@/app/teacher/classes/[id]/DeleteSessionButton";
 import UnlockAnswersButton from "@/app/teacher/classes/[id]/UnlockAnswersButton";
 import LocalDateTime from "@/components/LocalDateTime";
-import { studentSessionPath, type SessionType } from "@/lib/activities";
+import {
+  isStoryBackedSessionType,
+  studentSessionPath,
+  type SessionType,
+} from "@/lib/activities";
 
 function attendanceLabel(names: string[]): string {
   if (names.length === 0) return "Nadie ha entrado todavía.";
@@ -93,7 +97,7 @@ export default function TeacherSessionRow({
           {attendedNames.join(", ")}
         </p>
       ) : null}
-      {sessionType === "story" ? (
+      {isStoryBackedSessionType(sessionType) ? (
         unlocked ? (
           <p className="mt-2 text-label-sm text-text-muted">
             Respuestas desbloqueadas.

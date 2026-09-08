@@ -70,8 +70,17 @@ export default function CreateSessionForm({
   }, [state?.ok, onCreated]);
   const defaultMinutes = defaultWritingMinutes(courseLevel);
   const defaultTask2 = defaultExamTask2Type(courseLevel);
-  const storyOptions = stories.filter((row) => row.kind !== "video_summary");
+  const storyOptions = stories.filter(
+    (row) =>
+      row.kind !== "video_summary" &&
+      row.kind !== "dialogue" &&
+      row.kind !== "movie_talk" &&
+      row.kind !== "song"
+  );
   const videoOptions = stories.filter((row) => row.kind === "video_summary");
+  const dialogueOptions = stories.filter((row) => row.kind === "dialogue");
+  const movieTalkOptions = stories.filter((row) => row.kind === "movie_talk");
+  const songOptions = stories.filter((row) => row.kind === "song");
 
   return (
     <form
@@ -110,6 +119,39 @@ export default function CreateSessionForm({
             }`}
           >
             Historia
+          </button>
+          <button
+            type="button"
+            onClick={() => setSessionType("dialogue")}
+            className={`h-11 rounded-card border text-sm font-medium ${
+              sessionType === "dialogue"
+                ? "border-accent bg-accent text-white"
+                : "border-paper-line text-text-primary"
+            }`}
+          >
+            Diálogo
+          </button>
+          <button
+            type="button"
+            onClick={() => setSessionType("movie_talk")}
+            className={`h-11 rounded-card border text-sm font-medium ${
+              sessionType === "movie_talk"
+                ? "border-accent bg-accent text-white"
+                : "border-paper-line text-text-primary"
+            }`}
+          >
+            Movie Talk
+          </button>
+          <button
+            type="button"
+            onClick={() => setSessionType("song")}
+            className={`h-11 rounded-card border text-sm font-medium ${
+              sessionType === "song"
+                ? "border-accent bg-accent text-white"
+                : "border-paper-line text-text-primary"
+            }`}
+          >
+            Música
           </button>
           <button
             type="button"
@@ -503,6 +545,87 @@ export default function CreateSessionForm({
             </div>
           </div>
         </>
+      ) : sessionType === "dialogue" ? (
+        dialogueOptions.length === 0 ? (
+          <p className="text-sm text-text-muted">
+            Todavía no hay diálogos de este nivel.
+          </p>
+        ) : (
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-medium text-text-secondary">
+              Diálogo
+            </span>
+            <select
+              name="storyId"
+              required
+              defaultValue=""
+              className={fieldClass}
+            >
+              <option value="" disabled>
+                Elige un diálogo
+              </option>
+              {dialogueOptions.map((story) => (
+                <option key={story.id} value={story.id}>
+                  {story.title}
+                </option>
+              ))}
+            </select>
+          </label>
+        )
+      ) : sessionType === "movie_talk" ? (
+        movieTalkOptions.length === 0 ? (
+          <p className="text-sm text-text-muted">
+            Todavía no hay un Movie Talk de este nivel.
+          </p>
+        ) : (
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-medium text-text-secondary">
+              Movie Talk
+            </span>
+            <select
+              name="storyId"
+              required
+              defaultValue=""
+              className={fieldClass}
+            >
+              <option value="" disabled>
+                Elige un Movie Talk
+              </option>
+              {movieTalkOptions.map((story) => (
+                <option key={story.id} value={story.id}>
+                  {story.title}
+                </option>
+              ))}
+            </select>
+          </label>
+        )
+      ) : sessionType === "song" ? (
+        songOptions.length === 0 ? (
+          <p className="text-sm text-text-muted">
+            Todavía no hay canciones de este nivel.
+          </p>
+        ) : (
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-medium text-text-secondary">
+              Canción
+            </span>
+            <select
+              name="storyId"
+              required
+              defaultValue=""
+              className={fieldClass}
+            >
+              <option value="" disabled>
+                Elige una canción
+              </option>
+              {songOptions.map((story) => (
+                <option key={story.id} value={story.id}>
+                  {story.title}
+                </option>
+              ))}
+            </select>
+          </label>
+        )
       ) : videoOptions.length === 0 ? (
         <p className="text-sm text-text-muted">
           Todavía no hay una traducción de este nivel.
@@ -605,6 +728,9 @@ export default function CreateSessionForm({
         disabled={
           isPending ||
           (sessionType === "story" && storyOptions.length === 0) ||
+          (sessionType === "dialogue" && dialogueOptions.length === 0) ||
+          (sessionType === "movie_talk" && movieTalkOptions.length === 0) ||
+          (sessionType === "song" && songOptions.length === 0) ||
           (sessionType === "video_summary" && videoOptions.length === 0) ||
           (sessionType === "presentation" && presentationPrompts.length === 0) ||
           (sessionType === "conversation" &&

@@ -159,7 +159,37 @@ export type SessionType =
   | "video_summary"
   | "presentation"
   | "conversation"
-  | "pronunciation";
+  | "pronunciation"
+  | "dialogue"
+  | "movie_talk"
+  | "song";
+
+export type WordFlagType = "bold" | "underline";
+
+export interface WordFlag {
+  id: string;
+  storyId: string;
+  flagType: WordFlagType;
+  flagText: string;
+  occurrenceIndex: number;
+}
+
+export interface WordFlagRequest {
+  id: string;
+  flagText: string;
+  occurrenceIndex: number;
+}
+
+export type WordFlagging = {
+  enabled: boolean;
+  flags: WordFlag[];
+  requests: WordFlagRequest[];
+  isTeacher: boolean;
+  sessionId: string | null;
+  storyId: string;
+  readerMode: "classroom-live" | "classroom-review" | "open";
+};
+
 export type WritingSubmissionStatus = "draft" | "submitted" | "corrected";
 export type ExamTask2Type = "paragraph_restructuring" | "sentence_correction";
 export type GroupExamSubmissionStatus = "in_progress" | "submitted";

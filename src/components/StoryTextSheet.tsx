@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import InteractiveStory, { type WordTimestamp } from "./InteractiveStory";
 import type { WordData, ExpressionData } from "./WordTooltip";
+import type { WordFlagging } from "@/types";
 
 type StoryTextSheetProps = {
   open: boolean;
@@ -17,6 +18,8 @@ type StoryTextSheetProps = {
   storyId?: string;
   sessionId?: string;
   trackLookups?: boolean;
+  kind?: "story" | "dialogue" | "movie_talk" | "song";
+  flagging?: WordFlagging;
 };
 
 const FOCUSABLE =
@@ -33,6 +36,8 @@ export default function StoryTextSheet({
   storyId,
   sessionId,
   trackLookups,
+  kind,
+  flagging,
 }: StoryTextSheetProps) {
   const panelRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -144,6 +149,8 @@ export default function StoryTextSheet({
             sessionId={sessionId}
             trackLookups={trackLookups}
             hideAudio
+            kind={kind}
+            flagging={flagging}
           />
         </div>
       </div>

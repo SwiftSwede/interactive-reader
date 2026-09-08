@@ -48,7 +48,10 @@ export default async function StudentDetailPage({
           session.id,
           session.storyId
         ),
-        session.sessionType === "story"
+        session.sessionType === "story" ||
+        session.sessionType === "dialogue" ||
+        session.sessionType === "movie_talk" ||
+        session.sessionType === "song"
           ? loadStudentLookups(supabase, session.id, studentId)
           : Promise.resolve([]),
         session.sessionType === "writing"

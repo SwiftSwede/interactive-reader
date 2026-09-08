@@ -6,6 +6,7 @@ import { createClient } from "@/lib/supabase/server";
 import { promoteTeacherIfNeeded, getProfile } from "@/lib/auth-server";
 import { safeNextPath } from "@/lib/auth";
 import {
+  isLessonPathSessionType,
   isSessionType,
   studentSessionPath,
   type SessionType,
@@ -166,8 +167,7 @@ async function persistAnswersRevealedIfEnded(
   session: CourseSession
 ): Promise<void> {
   if (
-    session.sessionType !== "story" &&
-    session.sessionType !== "video_summary" &&
+    !isLessonPathSessionType(session.sessionType) &&
     session.sessionType !== "presentation"
   )
     return;
@@ -498,8 +498,7 @@ export async function resolveWritingSessionAccess(
   if (access.kind !== "ok") return access;
 
   if (
-    access.session.sessionType === "story" ||
-    access.session.sessionType === "video_summary"
+    isLessonPathSessionType(access.session.sessionType)
   ) {
     const storySlug = access.session.storyId
       ? await getStorySlug(access.session.storyId)
@@ -556,8 +555,7 @@ export async function resolveExamSessionAccess(
   }
 
   if (
-    access.session.sessionType === "story" ||
-    access.session.sessionType === "video_summary"
+    isLessonPathSessionType(access.session.sessionType)
   ) {
     const storySlug = access.session.storyId
       ? await getStorySlug(access.session.storyId)
@@ -614,8 +612,7 @@ export async function resolvePresentationSessionAccess(
   }
 
   if (
-    access.session.sessionType === "story" ||
-    access.session.sessionType === "video_summary"
+    isLessonPathSessionType(access.session.sessionType)
   ) {
     const storySlug = access.session.storyId
       ? await getStorySlug(access.session.storyId)
@@ -672,8 +669,7 @@ export async function resolveConversationSessionAccess(
   }
 
   if (
-    access.session.sessionType === "story" ||
-    access.session.sessionType === "video_summary"
+    isLessonPathSessionType(access.session.sessionType)
   ) {
     const storySlug = access.session.storyId
       ? await getStorySlug(access.session.storyId)

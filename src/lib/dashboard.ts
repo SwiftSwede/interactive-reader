@@ -543,7 +543,7 @@ export async function loadDashboard(
     );
 
     function isCompleted(row: SessionRow, type: SessionType): boolean {
-      if (type === "story") {
+      if (type === "story" || type === "dialogue" || type === "movie_talk" || type === "song") {
         return row.story_id ? completedStories.has(row.story_id) : false;
       }
       if (type === "writing") {

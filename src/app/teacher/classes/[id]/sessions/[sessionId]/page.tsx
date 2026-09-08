@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { areAnswersUnlocked } from "@/lib/sessions";
-import { isLiveOnlySessionType, studentSessionPath } from "@/lib/activities";
+import { isLiveOnlySessionType, studentSessionPath, type SessionType } from "@/lib/activities";
 import UnlockAnswersButton from "../../UnlockAnswersButton";
 import CopySessionLink from "../../CopySessionLink";
 import LocalDateTime from "@/components/LocalDateTime";
@@ -34,13 +34,7 @@ export const metadata = {
 function openedLabel(
   opened: boolean,
   attended: boolean,
-  kind:
-    | "story"
-    | "writing"
-    | "exam"
-    | "video_summary"
-    | "presentation"
-    | "conversation"
+  kind: SessionType
 ) {
   const noun =
     kind === "writing"
@@ -53,7 +47,13 @@ function openedLabel(
             ? "la presentación"
             : kind === "conversation"
               ? "la conversación"
-              : "la historia";
+              : kind === "dialogue"
+                ? "el diálogo"
+                : kind === "movie_talk"
+                  ? "el Movie Talk"
+                  : kind === "song"
+                    ? "la canción"
+                    : "la historia";
   if (!opened) return `Todavía no abre ${noun}.`;
   if (attended) return `Abrió ${noun}. Llegó a tiempo.`;
   return `Abrió ${noun}. Fuera de la ventana de clase.`;
@@ -439,17 +439,7 @@ export default async function SessionDetailPage({
                       {openedLabel(
                         student.opened,
                         student.attended,
-                        isExam
-                          ? "exam"
-                          : isWriting
-                            ? "writing"
-                            : isVideo
-                              ? "video_summary"
-                              : isPresentation
-                                ? "presentation"
-                                : isConversation
-                                  ? "conversation"
-                                  : "story"
+                        session.sessionType
                       )}
                     </p>
                   ) : null}

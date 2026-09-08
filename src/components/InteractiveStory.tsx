@@ -7,6 +7,20 @@ import WordTooltip, {
 } from "./WordTooltip";
 import StoryAudioPlayer from "./StoryAudioPlayer";
 import { recordWordLookup } from "@/app/lesson/[slug]/actions";
+import {
+  convertRequestsToFlag,
+  requestWordFlag,
+  setWordFlag,
+} from "@/app/lesson/[slug]/word-flag-actions";
+import { createClient } from "@/lib/supabase/client";
+import {
+  flagAnchorKey,
+  nextOccurrenceIndex,
+  requestCountByAnchor,
+  shouldUnmarkAll,
+  wordFlagClassName,
+} from "@/lib/word-flags";
+import type { WordFlag, WordFlagging, WordFlagRequest, WordFlagType } from "@/types";
 
 // ── Types ──────────────────────────────────────────────────
 
@@ -28,6 +42,7 @@ type InteractiveStoryProps = {
   trackLookups?: boolean;
   hideAudio?: boolean;
   kind?: "story" | "dialogue" | "movie_talk" | "song";
+  flagging?: WordFlagging;
 };
 
 // ── Component ──────────────────────────────────────────────
@@ -43,6 +58,7 @@ export default function InteractiveStory({
   trackLookups = false,
   hideAudio = false,
   kind = "story",
+  flagging,
 }: InteractiveStoryProps) {
   const [seenPositions, setSeenPositions] = useState<Set<number>>(new Set());
   const [activePosition, setActivePosition] = useState<number | null>(null);
@@ -51,7 +67,15 @@ export default function InteractiveStory({
   );
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [flags, setFlags] = useState<WordFlag[]>(flagging?.flags ?? []);
+  const [requests, setRequests] = useState<WordFlagRequest[]>(
+    flagging?.requests ?? []
+  );
   const containerRef = useRef<HTMLDivElement>(null);
+  const flagsRef = useRef(flags);
+  flagsRef.current = flags;
+  const requestsRef = useRef(requests);
+  requestsRef.current = requests;
 
   // Refs for direct-DOM karaoke highlight (bypasses React render cycle).
   // Driving the highlight through React state (setAudioCurrentTime 60x/sec)
@@ -88,6 +112,299 @@ export default function InteractiveStory({
     }
     return map;
   }, [words]);
+
+  useEffect(() => {
+    setFlags(flagging?.flags ?? []);
+  }, [flagging?.flags]);
+
+  useEffect(() => {
+    setRequests(flagging?.requests ?? []);
+  }, [flagging?.requests]);
+
+  const flagTypeMap = useMemo(() => {
+    const map = new Map<string, WordFlagType[]>();
+    for (const flag of flags) {
+      const key = flagAnchorKey(flag.flagText, flag.occurrenceIndex);
+      const list = map.get(key) ?? [];
+      if (!list.includes(flag.flagType)) list.push(flag.flagType);
+      map.set(key, list);
+    }
+    return map;
+  }, [flags]);
+
+  const requestCounts = useMemo(
+    () => requestCountByAnchor(requests),
+    [requests]
+  );
+
+  const showTeacherFlags = Boolean(flagging?.enabled);
+  const showStudentRequest = Boolean(
+    flagging &&
+      !flagging.isTeacher &&
+      flagging.sessionId &&
+      flagging.readerMode === "classroom-live" &&
+      kind !== "song"
+  );
+
+  const applyFlag = useCallback(
+    (
+      flagText: string,
+      occurrenceIndex: number,
+      flagType: WordFlagType,
+      on: boolean
+    ) => {
+      setFlags((current) => {
+        const exists = current.some(
+          (row) =>
+            row.flagText === flagText &&
+            row.occurrenceIndex === occurrenceIndex &&
+            row.flagType === flagType
+        );
+        if (on) {
+          if (exists) return current;
+          return [
+            ...current,
+            {
+              id: `local-${flagType}-${flagText}-${occurrenceIndex}`,
+              storyId: flagging?.storyId ?? "",
+              flagType,
+              flagText,
+              occurrenceIndex,
+            },
+          ];
+        }
+        return current.filter(
+          (row) =>
+            !(
+              row.flagText === flagText &&
+              row.occurrenceIndex === occurrenceIndex &&
+              row.flagType === flagType
+            )
+        );
+      });
+      if (on) {
+        setRequests((current) =>
+          current.filter(
+            (row) =>
+              !(
+                row.flagText === flagText &&
+                row.occurrenceIndex === occurrenceIndex
+              )
+          )
+        );
+      }
+    },
+    [flagging?.storyId]
+  );
+
+  const handleToggleFlag = useCallback(
+    (
+      flagText: string,
+      occurrenceIndex: number,
+      flagType: WordFlagType,
+      on: boolean
+    ) => {
+      if (!flagging?.enabled) return;
+      applyFlag(flagText, occurrenceIndex, flagType, on);
+      void setWordFlag({
+        storyId: flagging.storyId,
+        flagText,
+        occurrenceIndex,
+        flagType,
+        on,
+        sessionId: flagging.sessionId,
+      });
+    },
+    [applyFlag, flagging?.enabled, flagging?.sessionId, flagging?.storyId]
+  );
+
+  const handleRequestWord = useCallback(
+    (flagText: string, occurrenceIndex: number) => {
+      if (!flagging || flagging.isTeacher || !flagging.sessionId) return;
+      const key = flagAnchorKey(flagText, occurrenceIndex);
+      if ((requestCountByAnchor(requestsRef.current).get(key) ?? 0) > 0) {
+        return;
+      }
+      setRequests((current) => [
+        ...current,
+        {
+          id: `local-request-${flagText}-${occurrenceIndex}`,
+          flagText,
+          occurrenceIndex,
+        },
+      ]);
+      void requestWordFlag({
+        storyId: flagging.storyId,
+        sessionId: flagging.sessionId,
+        flagText,
+        occurrenceIndex,
+      });
+    },
+    [flagging]
+  );
+
+  const handleConvertRequests = useCallback(
+    (flagText: string, occurrenceIndex: number) => {
+      if (!flagging?.isTeacher || !flagging.sessionId) return;
+      applyFlag(flagText, occurrenceIndex, "bold", true);
+      void convertRequestsToFlag({
+        storyId: flagging.storyId,
+        sessionId: flagging.sessionId,
+        flagText,
+        occurrenceIndex,
+      });
+    },
+    [applyFlag, flagging]
+  );
+
+  useEffect(() => {
+    if (!flagging?.isTeacher || !flagging.sessionId) return;
+
+    const supabase = createClient();
+    const channel = supabase
+      .channel(`word-flag-requests-${flagging.sessionId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "word_flag_requests",
+          filter: `course_session_id=eq.${flagging.sessionId}`,
+        },
+        (payload) => {
+          const row = payload.new as {
+            id?: string;
+            flag_text?: string;
+            occurrence_index?: number;
+          };
+          if (!row.id || row.flag_text == null || row.occurrence_index == null) {
+            return;
+          }
+          const id = row.id;
+          const flagText = row.flag_text;
+          const occurrenceIndex = row.occurrence_index;
+          setRequests((current) =>
+            current.some((item) => item.id === id)
+              ? current
+              : [
+                  ...current,
+                  {
+                    id,
+                    flagText,
+                    occurrenceIndex,
+                  },
+                ]
+          );
+        }
+      )
+      .on(
+        "postgres_changes",
+        {
+          event: "DELETE",
+          schema: "public",
+          table: "word_flag_requests",
+          filter: `course_session_id=eq.${flagging.sessionId}`,
+        },
+        (payload) => {
+          const old = payload.old as {
+            id?: string;
+            flag_text?: string;
+            occurrence_index?: number;
+          } | null;
+          if (old?.id) {
+            setRequests((current) =>
+              current.filter((item) => item.id !== old.id)
+            );
+            return;
+          }
+          if (old?.flag_text != null && old.occurrence_index != null) {
+            setRequests((current) =>
+              current.filter(
+                (item) =>
+                  !(
+                    item.flagText === old.flag_text &&
+                    item.occurrenceIndex === old.occurrence_index
+                  )
+              )
+            );
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      void supabase.removeChannel(channel);
+    };
+  }, [flagging?.isTeacher, flagging?.sessionId]);
+
+  useEffect(() => {
+    if (!flagging?.enabled) return;
+
+    const isTypingTarget = (el: EventTarget | null) => {
+      if (!(el instanceof HTMLElement)) return false;
+      if (el.isContentEditable) return true;
+      const tag = el.tagName;
+      return tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT";
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.shiftKey || event.altKey) return;
+      if (!(event.metaKey || event.ctrlKey)) return;
+      const key = event.key.toLowerCase();
+      if (key !== "b" && key !== "u") return;
+      if (isTypingTarget(document.activeElement)) return;
+
+      const container = containerRef.current;
+      if (!container) return;
+
+      const selection = window.getSelection();
+      if (!selection || selection.rangeCount === 0 || selection.isCollapsed) {
+        return;
+      }
+      const range = selection.getRangeAt(0);
+      const ancestor = range.commonAncestorContainer;
+      const ancestorEl =
+        ancestor.nodeType === Node.ELEMENT_NODE
+          ? (ancestor as Element)
+          : ancestor.parentElement;
+      if (!ancestorEl || !container.contains(ancestorEl)) return;
+
+      const spans = Array.from(
+        container.querySelectorAll<HTMLElement>("[data-word-text]")
+      ).filter((span) => {
+        try {
+          return range.intersectsNode(span);
+        } catch {
+          return false;
+        }
+      });
+      if (spans.length === 0) return;
+
+      event.preventDefault();
+      const type: WordFlagType = key === "b" ? "bold" : "underline";
+      const selected = spans.map((span) => {
+        const flagText = span.dataset.wordText ?? "";
+        const occurrenceIndex = Number(span.dataset.wordOccurrence);
+        const types = flagsRef.current
+          .filter(
+            (row) =>
+              row.flagText === flagText &&
+              row.occurrenceIndex === occurrenceIndex
+          )
+          .map((row) => row.flagType);
+        return { flagText, occurrenceIndex, types };
+      });
+      const unmark = shouldUnmarkAll(selected, type);
+      for (const row of selected) {
+        handleToggleFlag(row.flagText, row.occurrenceIndex, type, !unmark);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown, true);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown, true);
+    };
+  }, [flagging?.enabled, handleToggleFlag]);
 
   // ── Karaoke: direct DOM manipulation ───────────────────
   // Finds the word span elements once, then on each RAF tick
@@ -232,6 +549,7 @@ export default function InteractiveStory({
         return (
           node.closest(".word-span") != null ||
           node.closest(".word-tooltip") != null ||
+          node.closest(".word-flag-badge") != null ||
           node.closest(".sound-video-modal") != null ||
           node.tagName === "DIALOG"
         );
@@ -262,6 +580,7 @@ export default function InteractiveStory({
   }, []);
 
   let wordPosition = 0;
+  const occurrenceCounts = new Map<string, number>();
   const audioDuration = timestamps.length > 0
     ? timestamps[timestamps.length - 1].end
     : 0;
@@ -302,10 +621,40 @@ export default function InteractiveStory({
             <p key={paraIdx} className="text-story-body text-text-primary">
               {tokens.map((token, tokenIdx) => {
                 const currentPos = wordPosition++;
+                const occurrenceIndex = nextOccurrenceIndex(
+                  occurrenceCounts,
+                  token
+                );
                 const word = words[currentPos];
+                const flagKey = flagAnchorKey(token, occurrenceIndex);
+                const types = flagTypeMap.get(flagKey) ?? [];
+                const isBold = types.includes("bold");
+                const isUnderline = types.includes("underline");
+                const requestCount = flagging?.isTeacher
+                  ? (requestCounts.get(flagKey) ?? 0)
+                  : 0;
+                const ownRequested =
+                  !flagging?.isTeacher &&
+                  (requestCounts.get(flagKey) ?? 0) > 0;
+                const trailing = tokenIdx < tokens.length - 1 ? " " : "";
 
                 if (!word) {
-                  return <span key={tokenIdx}>{token} </span>;
+                  return (
+                    <span key={tokenIdx}>
+                      <span
+                        data-word-text={token}
+                        data-word-occurrence={String(occurrenceIndex)}
+                        className={wordFlagClassName({
+                          bold: isBold,
+                          underline: isUnderline,
+                          requestedOwn: ownRequested,
+                        })}
+                      >
+                        {token}
+                      </span>
+                      {trailing}
+                    </span>
+                  );
                 }
 
                 // Normalize curly quotes for matching
@@ -321,7 +670,22 @@ export default function InteractiveStory({
                   .replace(/\u201D/g, '"');
 
                 if (tokenNorm !== wordNorm) {
-                  return <span key={tokenIdx}>{token} </span>;
+                  return (
+                    <span key={tokenIdx}>
+                      <span
+                        data-word-text={token}
+                        data-word-occurrence={String(occurrenceIndex)}
+                        className={wordFlagClassName({
+                          bold: isBold,
+                          underline: isUnderline,
+                          requestedOwn: ownRequested,
+                        })}
+                      >
+                        {token}
+                      </span>
+                      {trailing}
+                    </span>
+                  );
                 }
 
                 // Find expression for this word (if any)
@@ -359,8 +723,19 @@ export default function InteractiveStory({
                       }
                       onFirstInteraction={() => setHasInteracted(true)}
                       onLookup={handleLookup}
+                      flagText={token}
+                      occurrenceIndex={occurrenceIndex}
+                      isBold={isBold}
+                      isUnderline={isUnderline}
+                      requestCount={requestCount}
+                      ownRequested={ownRequested}
+                      showTeacherFlags={showTeacherFlags}
+                      showStudentRequest={showStudentRequest}
+                      onToggleFlag={handleToggleFlag}
+                      onRequestWord={handleRequestWord}
+                      onConvertRequests={handleConvertRequests}
                     />
-                    {tokenIdx < tokens.length - 1 ? " " : ""}
+                    {trailing}
                   </span>
                 );
               })}

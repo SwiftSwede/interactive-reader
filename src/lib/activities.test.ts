@@ -3,6 +3,7 @@ import { describe, test } from "node:test";
 import {
   isLiveOnlySessionType,
   isSessionType,
+  isStoryBackedSessionType,
   sessionTypeLabel,
   studentSessionPath,
   teacherJoinAppHref,
@@ -75,6 +76,51 @@ describe("session types", () => {
     assert.equal(
       studentSessionPath({
         sessionType: "story",
+        token: "tok",
+      }),
+      null
+    );
+  });
+
+  test("accepts dialogue, movie talk, and song", () => {
+    assert.equal(isSessionType("dialogue"), true);
+    assert.equal(isSessionType("movie_talk"), true);
+    assert.equal(isSessionType("song"), true);
+    assert.equal(isLiveOnlySessionType("dialogue"), false);
+    assert.equal(isLiveOnlySessionType("movie_talk"), false);
+    assert.equal(isLiveOnlySessionType("song"), false);
+    assert.equal(isStoryBackedSessionType("dialogue"), true);
+    assert.equal(isStoryBackedSessionType("video_summary"), false);
+    assert.equal(sessionTypeLabel("dialogue"), "Diálogo");
+    assert.equal(sessionTypeLabel("movie_talk"), "Movie Talk");
+    assert.equal(sessionTypeLabel("song"), "Música");
+    assert.equal(
+      studentSessionPath({
+        sessionType: "dialogue",
+        token: "tok",
+        storySlug: "the-coffee-line",
+      }),
+      "/lesson/the-coffee-line?session=tok"
+    );
+    assert.equal(
+      studentSessionPath({
+        sessionType: "movie_talk",
+        token: "tok",
+        storySlug: "the-bus-stop",
+      }),
+      "/lesson/the-bus-stop?session=tok"
+    );
+    assert.equal(
+      studentSessionPath({
+        sessionType: "song",
+        token: "tok",
+        storySlug: "summer-of-69",
+      }),
+      "/lesson/summer-of-69?session=tok"
+    );
+    assert.equal(
+      studentSessionPath({
+        sessionType: "dialogue",
         token: "tok",
       }),
       null

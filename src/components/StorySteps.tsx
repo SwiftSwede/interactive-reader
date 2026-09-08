@@ -30,7 +30,7 @@ import { createClient } from "@/lib/supabase/client";
 import { recordStoryOpened } from "@/app/lesson/[slug]/actions";
 import type { LoadedStory } from "@/lib/stories";
 import type { SavedPersonalResponse } from "@/lib/personal-responses";
-import type { PronunciationWordNote } from "@/types";
+import type { PronunciationWordNote, WordFlagging } from "@/types";
 
 type StepId =
   | "story"
@@ -74,6 +74,7 @@ export default function StorySteps({
   sessionStartTime = null,
   sessionEndTime = null,
   classEndedAt: initialEndedAt = null,
+  flagging,
 }: {
   data: LoadedStory;
   timestamps: WordTimestamp[];
@@ -96,6 +97,7 @@ export default function StorySteps({
   sessionStartTime?: string | null;
   sessionEndTime?: string | null;
   classEndedAt?: string | null;
+  flagging?: WordFlagging;
 }) {
   const {
     story,
@@ -251,6 +253,7 @@ export default function StorySteps({
       | "dialogue"
       | "movie_talk"
       | "song",
+    flagging,
   };
 
   if (story.kind === "video_summary") {

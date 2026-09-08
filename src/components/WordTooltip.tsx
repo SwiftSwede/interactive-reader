@@ -2,6 +2,8 @@
 
 import { useRef, useState, useEffect, useCallback, memo } from "react";
 import IpaText from "./IpaText";
+import { wordFlagClassName } from "@/lib/word-flags";
+import type { WordFlagType } from "@/types";
 
 // ── Types ──────────────────────────────────────────────────
 
@@ -42,6 +44,22 @@ type WordTooltipProps = {
   hintClass?: string;
   onFirstInteraction?: () => void;
   onLookup?: (word: WordData) => void;
+  flagText?: string;
+  occurrenceIndex?: number;
+  isBold?: boolean;
+  isUnderline?: boolean;
+  requestCount?: number;
+  ownRequested?: boolean;
+  showTeacherFlags?: boolean;
+  showStudentRequest?: boolean;
+  onToggleFlag?: (
+    flagText: string,
+    occurrenceIndex: number,
+    flagType: WordFlagType,
+    on: boolean
+  ) => void;
+  onRequestWord?: (flagText: string, occurrenceIndex: number) => void;
+  onConvertRequests?: (flagText: string, occurrenceIndex: number) => void;
 };
 
 function WordTooltip({
@@ -54,6 +72,17 @@ function WordTooltip({
   hintClass,
   onFirstInteraction,
   onLookup,
+  flagText,
+  occurrenceIndex = 0,
+  isBold = false,
+  isUnderline = false,
+  requestCount = 0,
+  ownRequested = false,
+  showTeacherFlags = false,
+  showStudentRequest = false,
+  onToggleFlag,
+  onRequestWord,
+  onConvertRequests,
 }: WordTooltipProps) {
   const spanRef = useRef<HTMLSpanElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -70,6 +99,26 @@ function WordTooltip({
     ? expression.spanish_translation
     : word.spanish_translation;
   const displayPhonetic = word.phonetic_transcription;
+  const anchorText = flagText ?? word.text;
+  const flagClasses = wordFlagClassName({
+    bold: isBold,
+    underline: isUnderline,
+    requestedOwn: ownRequested,
+  });
+
+  const handleToggle = (type: WordFlagType, on: boolean) => {
+    onToggleFlag?.(anchorText, occurrenceIndex, type, on);
+  };
+
+  const handleRequest = () => {
+    if (ownRequested) return;
+    onRequestWord?.(anchorText, occurrenceIndex);
+  };
+
+  const handleConvert = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onConvertRequests?.(anchorText, occurrenceIndex);
+  };
 
   // Position the tooltip relative to the word span
   const positionTooltip = useCallback(() => {
@@ -162,14 +211,32 @@ function WordTooltip({
 
   return (
     <>
-      <span
-        ref={spanRef}
-        className={`word-span ${isHighlighted ? "word-seen" : ""} ${
-          tooltip.visible ? "word-active" : ""
-        } ${isExpressionActive ? "word-expr-active" : ""} ${hintClass || ""}`.trim()}
-        onClick={handleClick}
-      >
-        {word.text}
+      <span className="word-flag-wrap">
+        <span
+          ref={spanRef}
+          className={`word-span ${isHighlighted ? "word-seen" : ""} ${
+            tooltip.visible ? "word-active" : ""
+          } ${isExpressionActive ? "word-expr-active" : ""} ${hintClass || ""} ${flagClasses}`.trim()}
+          data-word-text={anchorText}
+          data-word-occurrence={String(occurrenceIndex)}
+          onClick={handleClick}
+        >
+          {word.text}
+        </span>
+        {showTeacherFlags && requestCount > 0 && onConvertRequests ? (
+          <button
+            type="button"
+            className="word-flag-badge"
+            aria-label={
+              requestCount === 1
+                ? "1 no entendió. Marcar en negrita"
+                : `${requestCount} no entendieron. Marcar en negrita`
+            }
+            onClick={handleConvert}
+          >
+            <span className="word-flag-badge-count">{requestCount}</span>
+          </button>
+        ) : null}
       </span>
 
       {tooltip.visible && (
@@ -211,6 +278,46 @@ function WordTooltip({
             {word.part_of_speech && (
               <span className="word-tooltip-pos">{word.part_of_speech}</span>
             )}
+            {isPinned && showTeacherFlags && onToggleFlag ? (
+              <div className="word-tooltip-actions">
+                <button
+                  type="button"
+                  className={`word-tooltip-action${isUnderline ? " word-tooltip-action-on" : ""}`}
+                  aria-pressed={isUnderline}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleToggle("underline", !isUnderline);
+                  }}
+                >
+                  Subrayar
+                </button>
+                <button
+                  type="button"
+                  className={`word-tooltip-action${isBold ? " word-tooltip-action-on" : ""}`}
+                  aria-pressed={isBold}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleToggle("bold", !isBold);
+                  }}
+                >
+                  Negrita
+                </button>
+              </div>
+            ) : null}
+            {isPinned && showStudentRequest && !ownRequested && onRequestWord ? (
+              <div className="word-tooltip-actions">
+                <button
+                  type="button"
+                  className="word-tooltip-action"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleRequest();
+                  }}
+                >
+                  No entendí
+                </button>
+              </div>
+            ) : null}
           </div>
         </div>
       )}

@@ -7,7 +7,10 @@ export type SessionType =
   | "video_summary"
   | "presentation"
   | "conversation"
-  | "pronunciation";
+  | "pronunciation"
+  | "dialogue"
+  | "movie_talk"
+  | "song";
 
 export function isSessionType(
   value: string | null | undefined
@@ -19,12 +22,30 @@ export function isSessionType(
     value === "video_summary" ||
     value === "presentation" ||
     value === "conversation" ||
-    value === "pronunciation"
+    value === "pronunciation" ||
+    value === "dialogue" ||
+    value === "movie_talk" ||
+    value === "song"
   );
 }
 
 export function isLiveOnlySessionType(type: SessionType): boolean {
   return type === "pronunciation";
+}
+
+/** Story-row catalog types that reuse /lesson/[slug] (not video_summary). */
+export function isStoryBackedSessionType(type: SessionType): boolean {
+  return (
+    type === "story" ||
+    type === "dialogue" ||
+    type === "movie_talk" ||
+    type === "song"
+  );
+}
+
+/** Session types whose student URL is /lesson/[slug]. */
+export function isLessonPathSessionType(type: SessionType): boolean {
+  return isStoryBackedSessionType(type) || type === "video_summary";
 }
 
 export function sessionTypeLabel(type: SessionType): string {
@@ -34,6 +55,9 @@ export function sessionTypeLabel(type: SessionType): string {
   if (type === "presentation") return "Presentación";
   if (type === "conversation") return "Conversación";
   if (type === "pronunciation") return "Pronunciación";
+  if (type === "dialogue") return "Diálogo";
+  if (type === "movie_talk") return "Movie Talk";
+  if (type === "song") return "Música";
   return "Historia";
 }
 

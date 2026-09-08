@@ -205,6 +205,15 @@ export function sessionTitle(session: TeacherSession): string {
   if (session.sessionType === "video_summary") {
     return session.story?.title ?? "Traducción";
   }
+  if (session.sessionType === "dialogue") {
+    return session.story?.title ?? "Diálogo";
+  }
+  if (session.sessionType === "movie_talk") {
+    return session.story?.title ?? "Movie Talk";
+  }
+  if (session.sessionType === "song") {
+    return session.story?.title ?? "Música";
+  }
   if (session.sessionType === "pronunciation") {
     return "Pronunciación";
   }
