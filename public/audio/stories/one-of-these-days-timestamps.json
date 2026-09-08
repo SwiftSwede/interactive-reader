@@ -37,9 +37,9 @@
   },
   {
     "position": 6,
-    "text": "Escobar,",
+    "text": "Escovar,",
     "start": 5.44,
-    "end": 6.22
+    "end": 5.44
   },
   {
     "position": 7,
@@ -97,7 +97,7 @@
   },
   {
     "position": 16,
-    "text": "riser",
+    "text": "riser,",
     "start": 10.3,
     "end": 10.94
   },
@@ -223,7 +223,7 @@
   },
   {
     "position": 37,
-    "text": "case,",
+    "text": "case",
     "start": 20.66,
     "end": 21.22
   },
@@ -313,7 +313,7 @@
   },
   {
     "position": 52,
-    "text": "order",
+    "text": "order,",
     "start": 26.3,
     "end": 26.9
   },
@@ -391,15 +391,15 @@
   },
   {
     "position": 65,
-    "text": "clothes",
-    "start": 33.94,
-    "end": 34.44
+    "text": "closed",
+    "start": 33.42,
+    "end": 33.42
   },
   {
     "position": 66,
-    "text": "that",
-    "start": 34.44,
-    "end": 34.78
+    "text": "at",
+    "start": 33.42,
+    "end": 33.42
   },
   {
     "position": 67,
@@ -415,9 +415,9 @@
   },
   {
     "position": 69,
-    "text": "was",
+    "text": "with",
     "start": 35.16,
-    "end": 35.56
+    "end": 35.16
   },
   {
     "position": 70,
@@ -691,7 +691,7 @@
   },
   {
     "position": 115,
-    "text": "chair,",
+    "text": "chair",
     "start": 56.8,
     "end": 57.24
   },
@@ -907,7 +907,7 @@
   },
   {
     "position": 151,
-    "text": "eight,",
+    "text": "eight",
     "start": 72.18,
     "end": 72.42
   },
@@ -1081,4417 +1081,4381 @@
   },
   {
     "position": 180,
-    "text": "rich",
+    "text": "ridgepole",
     "start": 82.74,
-    "end": 83.0
+    "end": 82.74
   },
   {
     "position": 181,
-    "text": "pole",
-    "start": 83.0,
-    "end": 83.3
-  },
-  {
-    "position": 182,
     "text": "of",
     "start": 83.3,
     "end": 83.72
   },
   {
-    "position": 183,
+    "position": 182,
     "text": "the",
     "start": 83.72,
     "end": 83.86
   },
   {
-    "position": 184,
+    "position": 183,
     "text": "house",
     "start": 83.86,
     "end": 84.06
   },
   {
-    "position": 185,
+    "position": 184,
     "text": "next",
     "start": 84.06,
     "end": 84.38
   },
   {
-    "position": 186,
+    "position": 185,
     "text": "door.",
     "start": 84.38,
     "end": 84.8
   },
   {
-    "position": 187,
+    "position": 186,
     "text": "He",
     "start": 85.14,
     "end": 85.46
   },
   {
-    "position": 188,
+    "position": 187,
     "text": "went",
     "start": 85.46,
     "end": 85.66
   },
   {
-    "position": 189,
+    "position": 188,
     "text": "on",
     "start": 85.66,
     "end": 85.96
   },
   {
-    "position": 190,
+    "position": 189,
     "text": "working",
     "start": 85.96,
     "end": 86.32
   },
   {
-    "position": 191,
+    "position": 190,
     "text": "with",
     "start": 86.32,
     "end": 86.72
   },
   {
-    "position": 192,
+    "position": 191,
     "text": "the",
     "start": 86.72,
     "end": 86.94
   },
   {
-    "position": 193,
+    "position": 192,
     "text": "idea",
     "start": 86.94,
     "end": 87.26
   },
   {
-    "position": 194,
+    "position": 193,
     "text": "that",
     "start": 87.26,
     "end": 87.58
   },
   {
-    "position": 195,
+    "position": 194,
     "text": "before",
     "start": 87.58,
     "end": 88.0
   },
   {
-    "position": 196,
-    "text": "lunch,",
+    "position": 195,
+    "text": "lunch",
     "start": 88.0,
     "end": 88.42
   },
   {
-    "position": 197,
+    "position": 196,
     "text": "it",
     "start": 88.92,
     "end": 89.28
   },
   {
-    "position": 198,
+    "position": 197,
     "text": "would",
     "start": 89.28,
     "end": 89.44
   },
   {
-    "position": 199,
+    "position": 198,
     "text": "rain",
     "start": 89.44,
     "end": 89.68
   },
   {
-    "position": 200,
+    "position": 199,
     "text": "again.",
     "start": 89.68,
     "end": 90.1
   },
   {
-    "position": 201,
+    "position": 200,
     "text": "The",
     "start": 91.02,
     "end": 91.22
   },
   {
-    "position": 202,
+    "position": 201,
     "text": "shrill",
     "start": 91.22,
     "end": 91.84
   },
   {
-    "position": 203,
+    "position": 202,
     "text": "voice",
     "start": 91.84,
     "end": 92.22
   },
   {
-    "position": 204,
+    "position": 203,
     "text": "of",
     "start": 92.22,
     "end": 92.56
   },
   {
-    "position": 205,
+    "position": 204,
     "text": "his",
     "start": 92.56,
     "end": 92.72
   },
   {
-    "position": 206,
+    "position": 205,
     "text": "eleven",
     "start": 92.72,
     "end": 93.14
   },
   {
-    "position": 207,
-    "text": "-year",
+    "position": 206,
+    "text": "year-old",
     "start": 93.14,
-    "end": 93.4
+    "end": 93.14
   },
   {
-    "position": 208,
-    "text": "-old",
-    "start": 93.4,
-    "end": 93.58
-  },
-  {
-    "position": 209,
+    "position": 207,
     "text": "son",
     "start": 93.58,
     "end": 94.02
   },
   {
-    "position": 210,
+    "position": 208,
     "text": "interrupted",
     "start": 94.02,
     "end": 94.68
   },
   {
-    "position": 211,
+    "position": 209,
     "text": "his",
     "start": 94.68,
     "end": 94.94
   },
   {
-    "position": 212,
+    "position": 210,
     "text": "concentration.",
     "start": 94.94,
     "end": 95.58
   },
   {
-    "position": 213,
-    "text": "Bap",
-    "start": 96.4,
-    "end": 96.6
+    "position": 211,
+    "text": "\"Papa.\"",
+    "start": 95.58,
+    "end": 95.58
   },
   {
-    "position": 214,
-    "text": "-bap!",
-    "start": 96.6,
-    "end": 96.76
-  },
-  {
-    "position": 215,
-    "text": "What?",
+    "position": 212,
+    "text": "\"What?\"",
     "start": 97.82,
     "end": 98.46
   },
   {
-    "position": 216,
-    "text": "The",
+    "position": 213,
+    "text": "\"The",
     "start": 99.92,
     "end": 100.24
   },
   {
-    "position": 217,
-    "text": "bear",
+    "position": 214,
+    "text": "Mayor",
     "start": 100.24,
-    "end": 100.5
+    "end": 100.24
   },
   {
-    "position": 218,
+    "position": 215,
     "text": "wants",
     "start": 100.5,
     "end": 100.74
   },
   {
-    "position": 219,
+    "position": 216,
     "text": "to",
     "start": 100.74,
     "end": 100.98
   },
   {
-    "position": 220,
+    "position": 217,
     "text": "know",
     "start": 100.98,
     "end": 101.28
   },
   {
-    "position": 221,
+    "position": 218,
     "text": "if",
     "start": 101.28,
     "end": 101.52
   },
   {
-    "position": 222,
-    "text": "you",
+    "position": 219,
+    "text": "you'll",
     "start": 101.52,
-    "end": 101.6
+    "end": 101.52
   },
   {
-    "position": 223,
+    "position": 220,
     "text": "pull",
     "start": 101.6,
     "end": 101.9
   },
   {
-    "position": 224,
+    "position": 221,
     "text": "his",
     "start": 101.9,
     "end": 102.08
   },
   {
-    "position": 225,
-    "text": "tooth!",
+    "position": 222,
+    "text": "tooth.\"",
     "start": 102.08,
     "end": 102.42
   },
   {
-    "position": 226,
-    "text": "Tell",
+    "position": 223,
+    "text": "\"Tell",
     "start": 103.88,
     "end": 104.52
   },
   {
-    "position": 227,
+    "position": 224,
     "text": "him",
     "start": 104.52,
     "end": 104.68
   },
   {
-    "position": 228,
+    "position": 225,
     "text": "I'm",
     "start": 104.68,
     "end": 104.8
   },
   {
-    "position": 229,
+    "position": 226,
     "text": "not",
     "start": 104.8,
     "end": 104.92
   },
   {
-    "position": 230,
-    "text": "here.",
+    "position": 227,
+    "text": "here.\"",
     "start": 104.92,
     "end": 105.28
   },
   {
-    "position": 231,
+    "position": 228,
     "text": "He",
     "start": 105.92,
     "end": 106.0
   },
   {
-    "position": 232,
+    "position": 229,
     "text": "was",
     "start": 106.0,
     "end": 106.12
   },
   {
-    "position": 233,
+    "position": 230,
     "text": "polishing",
     "start": 106.12,
     "end": 106.7
   },
   {
-    "position": 234,
+    "position": 231,
     "text": "a",
     "start": 106.7,
     "end": 106.92
   },
   {
-    "position": 235,
+    "position": 232,
     "text": "gold",
     "start": 106.92,
     "end": 107.18
   },
   {
-    "position": 236,
+    "position": 233,
     "text": "tooth.",
     "start": 107.18,
     "end": 107.5
   },
   {
-    "position": 237,
+    "position": 234,
     "text": "He",
     "start": 108.28,
     "end": 108.6
   },
   {
-    "position": 238,
+    "position": 235,
     "text": "held",
     "start": 108.6,
     "end": 108.94
   },
   {
-    "position": 239,
+    "position": 236,
     "text": "it",
     "start": 108.94,
     "end": 109.12
   },
   {
-    "position": 240,
+    "position": 237,
     "text": "at",
     "start": 109.12,
     "end": 109.4
   },
   {
-    "position": 241,
+    "position": 238,
     "text": "arm's",
     "start": 109.4,
     "end": 110.42
   },
   {
-    "position": 242,
-    "text": "length",
+    "position": 239,
+    "text": "length,",
     "start": 110.42,
     "end": 110.76
   },
   {
-    "position": 243,
+    "position": 240,
     "text": "and",
     "start": 110.76,
     "end": 111.22
   },
   {
-    "position": 244,
+    "position": 241,
     "text": "examined",
     "start": 111.22,
     "end": 111.8
   },
   {
-    "position": 245,
+    "position": 242,
     "text": "it",
     "start": 111.8,
     "end": 112.06
   },
   {
-    "position": 246,
+    "position": 243,
     "text": "with",
     "start": 112.06,
     "end": 112.26
   },
   {
-    "position": 247,
+    "position": 244,
     "text": "his",
     "start": 112.26,
     "end": 112.46
   },
   {
-    "position": 248,
+    "position": 245,
     "text": "eyes",
     "start": 112.46,
     "end": 112.92
   },
   {
-    "position": 249,
+    "position": 246,
     "text": "half",
     "start": 112.92,
     "end": 113.38
   },
   {
-    "position": 250,
+    "position": 247,
     "text": "closed.",
     "start": 113.38,
     "end": 114.1
   },
   {
-    "position": 251,
+    "position": 248,
     "text": "His",
     "start": 114.74,
     "end": 115.08
   },
   {
-    "position": 252,
+    "position": 249,
     "text": "son",
     "start": 115.08,
     "end": 115.6
   },
   {
-    "position": 253,
+    "position": 250,
     "text": "shouted",
     "start": 115.6,
     "end": 116.6
   },
   {
-    "position": 254,
+    "position": 251,
     "text": "again",
     "start": 116.6,
     "end": 117.04
   },
   {
-    "position": 255,
+    "position": 252,
     "text": "from",
     "start": 117.04,
     "end": 117.4
   },
   {
-    "position": 256,
+    "position": 253,
     "text": "the",
     "start": 117.4,
     "end": 117.62
   },
   {
-    "position": 257,
+    "position": 254,
     "text": "little",
     "start": 117.62,
     "end": 117.88
   },
   {
-    "position": 258,
+    "position": 255,
     "text": "waiting",
     "start": 117.88,
     "end": 118.26
   },
   {
-    "position": 259,
+    "position": 256,
     "text": "room.",
     "start": 118.26,
     "end": 118.6
   },
   {
-    "position": 260,
-    "text": "He",
+    "position": 257,
+    "text": "\"He",
     "start": 119.32,
     "end": 119.44
   },
   {
-    "position": 261,
+    "position": 258,
     "text": "says",
     "start": 119.44,
     "end": 119.76
   },
   {
-    "position": 262,
+    "position": 259,
     "text": "you",
     "start": 119.76,
     "end": 120.1
   },
   {
-    "position": 263,
-    "text": "are",
+    "position": 260,
+    "text": "are,",
     "start": 120.1,
     "end": 120.34
   },
   {
-    "position": 264,
-    "text": "too!",
+    "position": 261,
+    "text": "too,",
     "start": 120.34,
     "end": 120.84
   },
   {
-    "position": 265,
-    "text": "Because",
+    "position": 262,
+    "text": "because",
     "start": 121.64,
     "end": 121.84
   },
   {
-    "position": 266,
+    "position": 263,
     "text": "he",
     "start": 121.84,
     "end": 122.02
   },
   {
-    "position": 267,
+    "position": 264,
     "text": "can",
     "start": 122.02,
     "end": 122.14
   },
   {
-    "position": 268,
+    "position": 265,
     "text": "hear",
     "start": 122.14,
     "end": 122.4
   },
   {
-    "position": 269,
-    "text": "you!",
+    "position": 266,
+    "text": "you.\"",
     "start": 122.4,
     "end": 122.72
   },
   {
-    "position": 270,
+    "position": 267,
     "text": "The",
     "start": 123.44,
     "end": 123.64
   },
   {
-    "position": 271,
+    "position": 268,
     "text": "dentist",
     "start": 123.64,
     "end": 124.02
   },
   {
-    "position": 272,
+    "position": 269,
     "text": "kept",
     "start": 124.02,
     "end": 124.5
   },
   {
-    "position": 273,
+    "position": 270,
     "text": "examining",
     "start": 124.5,
     "end": 125.34
   },
   {
-    "position": 274,
+    "position": 271,
     "text": "the",
     "start": 125.34,
     "end": 125.6
   },
   {
-    "position": 275,
+    "position": 272,
     "text": "tooth.",
     "start": 125.6,
     "end": 125.82
   },
   {
-    "position": 276,
+    "position": 273,
     "text": "Only",
     "start": 126.72,
     "end": 127.1
   },
   {
-    "position": 277,
-    "text": "one",
+    "position": 274,
+    "text": "when",
     "start": 127.1,
-    "end": 127.36
+    "end": 127.1
   },
   {
-    "position": 278,
+    "position": 275,
     "text": "he",
     "start": 127.36,
     "end": 127.52
   },
   {
-    "position": 279,
+    "position": 276,
     "text": "had",
     "start": 127.52,
     "end": 127.66
   },
   {
-    "position": 280,
+    "position": 277,
     "text": "put",
     "start": 127.66,
     "end": 127.92
   },
   {
-    "position": 281,
+    "position": 278,
     "text": "it",
     "start": 127.92,
     "end": 128.1
   },
   {
-    "position": 282,
+    "position": 279,
     "text": "on",
     "start": 128.1,
     "end": 128.32
   },
   {
-    "position": 283,
+    "position": 280,
     "text": "the",
     "start": 128.32,
     "end": 128.46
   },
   {
-    "position": 284,
+    "position": 281,
     "text": "table",
     "start": 128.46,
     "end": 128.88
   },
   {
-    "position": 285,
-    "text": "was",
+    "position": 282,
+    "text": "with",
     "start": 128.88,
-    "end": 129.18
+    "end": 128.88
   },
   {
-    "position": 286,
+    "position": 283,
     "text": "the",
     "start": 129.18,
     "end": 129.36
   },
   {
-    "position": 287,
+    "position": 284,
     "text": "finished",
     "start": 129.36,
     "end": 129.66
   },
   {
-    "position": 288,
-    "text": "work,",
+    "position": 285,
+    "text": "work",
     "start": 129.66,
     "end": 130.08
   },
   {
-    "position": 289,
+    "position": 286,
     "text": "did",
     "start": 130.18,
     "end": 130.26
   },
   {
-    "position": 290,
+    "position": 287,
     "text": "he",
     "start": 130.26,
     "end": 130.38
   },
   {
-    "position": 291,
-    "text": "say?",
+    "position": 288,
+    "text": "say:",
     "start": 130.38,
     "end": 130.62
   },
   {
-    "position": 292,
-    "text": "So",
+    "position": 289,
+    "text": "\"So",
     "start": 132.22,
     "end": 132.54
   },
   {
-    "position": 293,
+    "position": 290,
     "text": "much",
     "start": 132.54,
     "end": 132.78
   },
   {
-    "position": 294,
-    "text": "better.",
+    "position": 291,
+    "text": "the",
+    "start": 132.78,
+    "end": 132.78
+  },
+  {
+    "position": 292,
+    "text": "better.\"",
     "start": 132.78,
     "end": 133.06
   },
   {
-    "position": 295,
+    "position": 293,
     "text": "He",
     "start": 133.66,
     "end": 133.92
   },
   {
-    "position": 296,
+    "position": 294,
     "text": "operated",
     "start": 133.92,
     "end": 134.76
   },
   {
-    "position": 297,
+    "position": 295,
     "text": "the",
     "start": 134.76,
     "end": 134.98
   },
   {
-    "position": 298,
+    "position": 296,
     "text": "drill",
     "start": 134.98,
     "end": 135.18
   },
   {
-    "position": 299,
+    "position": 297,
     "text": "again.",
     "start": 135.18,
     "end": 135.54
   },
   {
-    "position": 300,
+    "position": 298,
     "text": "He",
     "start": 135.95,
     "end": 136.28
   },
   {
-    "position": 301,
+    "position": 299,
     "text": "took",
     "start": 136.28,
     "end": 136.5
   },
   {
-    "position": 302,
+    "position": 300,
     "text": "several",
     "start": 136.5,
     "end": 136.94
   },
   {
-    "position": 303,
+    "position": 301,
     "text": "pieces",
     "start": 136.94,
     "end": 137.78
   },
   {
-    "position": 304,
+    "position": 302,
     "text": "of",
     "start": 137.78,
     "end": 138.52
   },
   {
-    "position": 305,
+    "position": 303,
     "text": "a",
     "start": 138.52,
     "end": 138.74
   },
   {
-    "position": 306,
+    "position": 304,
     "text": "bridge",
     "start": 138.74,
     "end": 139.22
   },
   {
-    "position": 307,
+    "position": 305,
     "text": "out",
     "start": 139.22,
     "end": 140.1
   },
   {
-    "position": 308,
+    "position": 306,
     "text": "of",
     "start": 140.1,
     "end": 140.3
   },
   {
-    "position": 309,
+    "position": 307,
     "text": "a",
     "start": 140.3,
     "end": 140.52
   },
   {
-    "position": 310,
+    "position": 308,
     "text": "cardboard",
     "start": 140.52,
     "end": 141.02
   },
   {
-    "position": 311,
+    "position": 309,
     "text": "box",
     "start": 141.02,
     "end": 141.88
   },
   {
-    "position": 312,
+    "position": 310,
     "text": "where",
     "start": 141.88,
     "end": 142.2
   },
   {
-    "position": 313,
+    "position": 311,
     "text": "he",
     "start": 142.2,
     "end": 142.34
   },
   {
-    "position": 314,
+    "position": 312,
     "text": "kept",
     "start": 142.34,
     "end": 142.54
   },
   {
-    "position": 315,
+    "position": 313,
     "text": "the",
     "start": 142.54,
     "end": 142.84
   },
   {
-    "position": 316,
+    "position": 314,
     "text": "things",
     "start": 142.84,
     "end": 143.28
   },
   {
-    "position": 317,
+    "position": 315,
     "text": "he",
     "start": 143.28,
     "end": 143.44
   },
   {
-    "position": 318,
+    "position": 316,
     "text": "still",
     "start": 143.44,
     "end": 143.7
   },
   {
-    "position": 319,
+    "position": 317,
     "text": "had",
     "start": 143.7,
     "end": 143.92
   },
   {
-    "position": 320,
+    "position": 318,
     "text": "to",
     "start": 143.92,
     "end": 144.08
   },
   {
-    "position": 321,
+    "position": 319,
     "text": "do",
     "start": 144.08,
     "end": 144.38
   },
   {
-    "position": 322,
+    "position": 320,
     "text": "and",
     "start": 144.38,
     "end": 145.12
   },
   {
-    "position": 323,
+    "position": 321,
     "text": "began",
     "start": 145.12,
     "end": 145.48
   },
   {
-    "position": 324,
+    "position": 322,
     "text": "to",
     "start": 145.48,
     "end": 145.82
   },
   {
-    "position": 325,
+    "position": 323,
     "text": "polish",
     "start": 145.82,
     "end": 146.24
   },
   {
-    "position": 326,
+    "position": 324,
     "text": "the",
     "start": 146.24,
     "end": 146.7
   },
   {
-    "position": 327,
+    "position": 325,
     "text": "gold.",
     "start": 146.7,
     "end": 147.16
   },
   {
-    "position": 328,
-    "text": "Bap",
-    "start": 147.82,
-    "end": 148.06
+    "position": 326,
+    "text": "\"Papa.\"",
+    "start": 147.16,
+    "end": 147.16
   },
   {
-    "position": 329,
-    "text": "-bap!",
-    "start": 148.06,
-    "end": 148.26
-  },
-  {
-    "position": 330,
-    "text": "What?",
+    "position": 327,
+    "text": "\"What?\"",
     "start": 149.08,
     "end": 149.5
   },
   {
-    "position": 331,
+    "position": 328,
     "text": "He",
     "start": 150.6,
     "end": 150.84
   },
   {
-    "position": 332,
+    "position": 329,
     "text": "still",
     "start": 150.84,
     "end": 151.06
   },
   {
-    "position": 333,
+    "position": 330,
     "text": "hadn't",
     "start": 151.06,
     "end": 151.48
   },
   {
-    "position": 334,
+    "position": 331,
     "text": "changed",
     "start": 151.48,
     "end": 151.82
   },
   {
-    "position": 335,
+    "position": 332,
     "text": "his",
     "start": 151.82,
     "end": 152.08
   },
   {
-    "position": 336,
+    "position": 333,
     "text": "expression.",
     "start": 152.08,
     "end": 152.6
   },
   {
-    "position": 337,
-    "text": "He",
+    "position": 334,
+    "text": "\"He",
     "start": 153.56,
     "end": 153.74
   },
   {
-    "position": 338,
+    "position": 335,
     "text": "says",
     "start": 153.74,
     "end": 153.98
   },
   {
-    "position": 339,
+    "position": 336,
     "text": "if",
     "start": 153.98,
     "end": 154.22
   },
   {
-    "position": 340,
-    "text": "he",
+    "position": 337,
+    "text": "you",
     "start": 154.22,
-    "end": 154.32
+    "end": 154.22
   },
   {
-    "position": 341,
+    "position": 338,
     "text": "don't",
     "start": 154.32,
     "end": 154.62
   },
   {
-    "position": 342,
+    "position": 339,
     "text": "take",
     "start": 154.62,
     "end": 154.76
   },
   {
-    "position": 343,
+    "position": 340,
     "text": "out",
     "start": 154.76,
     "end": 154.96
   },
   {
-    "position": 344,
+    "position": 341,
     "text": "his",
     "start": 154.96,
     "end": 155.14
   },
   {
-    "position": 345,
+    "position": 342,
     "text": "tooth,",
     "start": 155.14,
     "end": 155.4
   },
   {
-    "position": 346,
+    "position": 343,
     "text": "he'll",
     "start": 155.88,
     "end": 156.1
   },
   {
-    "position": 347,
+    "position": 344,
     "text": "shoot",
     "start": 156.1,
     "end": 156.38
   },
   {
-    "position": 348,
-    "text": "you!",
+    "position": 345,
+    "text": "you.\"",
     "start": 156.38,
     "end": 156.66
   },
   {
-    "position": 349,
+    "position": 346,
     "text": "Without",
     "start": 157.34,
     "end": 157.76
   },
   {
-    "position": 350,
+    "position": 347,
     "text": "hurrying,",
     "start": 157.76,
     "end": 158.58
   },
   {
-    "position": 351,
+    "position": 348,
     "text": "with",
     "start": 159.02,
     "end": 159.18
   },
   {
-    "position": 352,
+    "position": 349,
     "text": "an",
     "start": 159.18,
     "end": 159.32
   },
   {
-    "position": 353,
+    "position": 350,
     "text": "extremely",
     "start": 159.32,
     "end": 160.22
   },
   {
-    "position": 354,
+    "position": 351,
     "text": "tranquil",
     "start": 160.22,
     "end": 161.24
   },
   {
-    "position": 355,
+    "position": 352,
     "text": "movement,",
     "start": 161.24,
     "end": 162.04
   },
   {
-    "position": 356,
+    "position": 353,
     "text": "he",
     "start": 162.84,
     "end": 162.92
   },
   {
-    "position": 357,
+    "position": 354,
     "text": "stopped",
     "start": 162.92,
     "end": 163.5
   },
   {
-    "position": 358,
-    "text": "peddling",
+    "position": 355,
+    "text": "pedaling",
     "start": 163.5,
-    "end": 164.18
+    "end": 163.5
   },
   {
-    "position": 359,
+    "position": 356,
     "text": "the",
     "start": 164.18,
     "end": 164.4
   },
   {
-    "position": 360,
-    "text": "drill.",
+    "position": 357,
+    "text": "drill,",
     "start": 164.4,
     "end": 164.66
   },
   {
-    "position": 361,
-    "text": "He",
-    "start": 164.66,
-    "end": 165.2
-  },
-  {
-    "position": 362,
+    "position": 358,
     "text": "pushed",
     "start": 165.2,
     "end": 165.2
   },
   {
-    "position": 363,
+    "position": 359,
     "text": "it",
     "start": 165.2,
     "end": 165.44
   },
   {
-    "position": 364,
+    "position": 360,
     "text": "away",
     "start": 165.44,
     "end": 165.64
   },
   {
-    "position": 365,
+    "position": 361,
     "text": "from",
     "start": 165.64,
     "end": 165.9
   },
   {
-    "position": 366,
+    "position": 362,
     "text": "the",
     "start": 165.9,
     "end": 166.06
   },
   {
-    "position": 367,
-    "text": "chair",
+    "position": 363,
+    "text": "chair,",
     "start": 166.06,
     "end": 166.32
   },
   {
-    "position": 368,
+    "position": 364,
     "text": "and",
     "start": 166.32,
     "end": 167.2
   },
   {
-    "position": 369,
+    "position": 365,
     "text": "pulled",
     "start": 167.2,
     "end": 167.58
   },
   {
-    "position": 370,
+    "position": 366,
     "text": "the",
     "start": 167.58,
     "end": 168.0
   },
   {
-    "position": 371,
+    "position": 367,
     "text": "lower",
     "start": 168.0,
     "end": 169.0
   },
   {
-    "position": 372,
+    "position": 368,
     "text": "drawer",
     "start": 169.0,
     "end": 170.0
   },
   {
-    "position": 373,
+    "position": 369,
     "text": "of",
     "start": 170.0,
     "end": 170.56
   },
   {
-    "position": 374,
+    "position": 370,
     "text": "the",
     "start": 170.56,
     "end": 170.72
   },
   {
-    "position": 375,
+    "position": 371,
     "text": "table",
     "start": 170.72,
     "end": 171.1
   },
   {
-    "position": 376,
+    "position": 372,
     "text": "all",
     "start": 171.1,
     "end": 171.66
   },
   {
-    "position": 377,
+    "position": 373,
     "text": "the",
     "start": 171.66,
     "end": 172.0
   },
   {
-    "position": 378,
+    "position": 374,
     "text": "way",
     "start": 172.0,
     "end": 172.22
   },
   {
-    "position": 379,
+    "position": 375,
     "text": "out.",
     "start": 172.22,
     "end": 172.7
   },
   {
-    "position": 380,
+    "position": 376,
     "text": "There",
     "start": 173.4,
     "end": 173.7
   },
   {
-    "position": 381,
+    "position": 377,
     "text": "was",
     "start": 173.7,
     "end": 173.9
   },
   {
-    "position": 382,
+    "position": 378,
     "text": "a",
     "start": 173.9,
     "end": 174.02
   },
   {
-    "position": 383,
+    "position": 379,
     "text": "revolver.",
     "start": 174.02,
     "end": 174.58
   },
   {
-    "position": 384,
-    "text": "Okay.",
-    "start": 175.44,
-    "end": 176.12
+    "position": 380,
+    "text": "\"O.K.,\"",
+    "start": 174.58,
+    "end": 174.58
   },
   {
-    "position": 385,
-    "text": "He",
+    "position": 381,
+    "text": "he",
     "start": 176.8,
     "end": 177.34
   },
   {
-    "position": 386,
+    "position": 382,
     "text": "said.",
     "start": 177.34,
     "end": 177.5
   },
   {
-    "position": 387,
-    "text": "Tell",
+    "position": 383,
+    "text": "\"Tell",
     "start": 178.86,
     "end": 179.08
   },
   {
-    "position": 388,
+    "position": 384,
     "text": "him",
     "start": 179.08,
     "end": 179.22
   },
   {
-    "position": 389,
+    "position": 385,
     "text": "to",
     "start": 179.22,
     "end": 179.34
   },
   {
-    "position": 390,
+    "position": 386,
     "text": "come",
     "start": 179.34,
     "end": 179.5
   },
   {
-    "position": 391,
+    "position": 387,
     "text": "and",
     "start": 179.5,
     "end": 179.68
   },
   {
-    "position": 392,
+    "position": 388,
     "text": "shoot",
     "start": 179.68,
     "end": 179.86
   },
   {
-    "position": 393,
-    "text": "me.",
+    "position": 389,
+    "text": "me.\"",
     "start": 179.86,
     "end": 180.1
   },
   {
-    "position": 394,
+    "position": 390,
     "text": "He",
     "start": 181.3,
     "end": 181.44
   },
   {
-    "position": 395,
+    "position": 391,
     "text": "rolled",
     "start": 181.44,
     "end": 181.82
   },
   {
-    "position": 396,
+    "position": 392,
     "text": "the",
     "start": 181.82,
     "end": 182.06
   },
   {
-    "position": 397,
+    "position": 393,
     "text": "chair",
     "start": 182.06,
     "end": 182.46
   },
   {
-    "position": 398,
+    "position": 394,
     "text": "over",
     "start": 182.46,
     "end": 183.32
   },
   {
-    "position": 399,
+    "position": 395,
     "text": "opposite",
     "start": 183.32,
     "end": 184.14
   },
   {
-    "position": 400,
+    "position": 396,
     "text": "the",
     "start": 184.14,
     "end": 184.4
   },
   {
-    "position": 401,
+    "position": 397,
     "text": "door,",
     "start": 184.4,
     "end": 184.74
   },
   {
-    "position": 402,
+    "position": 398,
     "text": "his",
     "start": 185.38,
     "end": 185.48
   },
   {
-    "position": 403,
+    "position": 399,
     "text": "hand",
     "start": 185.48,
     "end": 185.9
   },
   {
-    "position": 404,
+    "position": 400,
     "text": "resting",
     "start": 185.9,
     "end": 186.4
   },
   {
-    "position": 405,
+    "position": 401,
     "text": "on",
     "start": 186.4,
     "end": 186.78
   },
   {
-    "position": 406,
+    "position": 402,
     "text": "the",
     "start": 186.78,
     "end": 186.98
   },
   {
-    "position": 407,
+    "position": 403,
     "text": "edge",
     "start": 186.98,
     "end": 187.44
   },
   {
-    "position": 408,
+    "position": 404,
     "text": "of",
     "start": 187.44,
     "end": 187.86
   },
   {
-    "position": 409,
+    "position": 405,
     "text": "the",
     "start": 187.86,
     "end": 188.24
   },
   {
-    "position": 410,
+    "position": 406,
     "text": "drawer.",
     "start": 188.24,
     "end": 188.72
   },
   {
-    "position": 411,
+    "position": 407,
     "text": "The",
     "start": 189.66,
     "end": 189.82
   },
   {
-    "position": 412,
-    "text": "mayor",
+    "position": 408,
+    "text": "Mayor",
     "start": 189.82,
     "end": 190.36
   },
   {
-    "position": 413,
+    "position": 409,
     "text": "appeared",
     "start": 190.36,
     "end": 191.16
   },
   {
-    "position": 414,
+    "position": 410,
     "text": "at",
     "start": 191.16,
     "end": 192.04
   },
   {
-    "position": 415,
+    "position": 411,
     "text": "the",
     "start": 192.04,
     "end": 192.28
   },
   {
-    "position": 416,
+    "position": 412,
     "text": "door.",
     "start": 192.28,
     "end": 192.54
   },
   {
-    "position": 417,
+    "position": 413,
     "text": "He",
     "start": 193.06,
     "end": 193.44
   },
   {
-    "position": 418,
+    "position": 414,
     "text": "had",
     "start": 193.44,
     "end": 193.52
   },
   {
-    "position": 419,
+    "position": 415,
     "text": "shaved",
     "start": 193.52,
     "end": 193.84
   },
   {
-    "position": 420,
+    "position": 416,
     "text": "the",
     "start": 193.84,
     "end": 194.22
   },
   {
-    "position": 421,
+    "position": 417,
     "text": "left",
     "start": 194.22,
     "end": 194.44
   },
   {
-    "position": 422,
+    "position": 418,
     "text": "side",
     "start": 194.44,
     "end": 194.82
   },
   {
-    "position": 423,
+    "position": 419,
     "text": "of",
     "start": 194.82,
     "end": 195.0
   },
   {
-    "position": 424,
+    "position": 420,
     "text": "his",
     "start": 195.0,
     "end": 195.14
   },
   {
-    "position": 425,
+    "position": 421,
     "text": "face,",
     "start": 195.14,
     "end": 195.52
   },
   {
-    "position": 426,
+    "position": 422,
     "text": "but",
     "start": 196.02,
     "end": 196.2
   },
   {
-    "position": 427,
+    "position": 423,
     "text": "the",
     "start": 196.2,
     "end": 196.34
   },
   {
-    "position": 428,
+    "position": 424,
     "text": "other",
     "start": 196.34,
     "end": 196.48
   },
   {
-    "position": 429,
+    "position": 425,
     "text": "side,",
     "start": 196.48,
     "end": 196.96
   },
   {
-    "position": 430,
+    "position": 426,
     "text": "swollen",
     "start": 197.4,
     "end": 198.3
   },
   {
-    "position": 431,
+    "position": 427,
     "text": "and",
     "start": 198.3,
     "end": 198.8
   },
   {
-    "position": 432,
+    "position": 428,
     "text": "in",
     "start": 198.8,
     "end": 198.98
   },
   {
-    "position": 433,
+    "position": 429,
     "text": "pain,",
     "start": 198.98,
     "end": 199.26
   },
   {
-    "position": 434,
+    "position": 430,
     "text": "had",
     "start": 200.1,
     "end": 200.2
   },
   {
-    "position": 435,
+    "position": 431,
     "text": "a",
     "start": 200.2,
     "end": 200.3
   },
   {
-    "position": 436,
-    "text": "five",
+    "position": 432,
+    "text": "five-day-old",
     "start": 200.3,
-    "end": 200.86
+    "end": 200.3
   },
   {
-    "position": 437,
-    "text": "-day",
-    "start": 200.86,
-    "end": 201.28
-  },
-  {
-    "position": 438,
-    "text": "old",
-    "start": 201.28,
-    "end": 202.1
-  },
-  {
-    "position": 439,
+    "position": 433,
     "text": "beard.",
     "start": 202.1,
     "end": 202.56
   },
   {
-    "position": 440,
+    "position": 434,
     "text": "The",
     "start": 203.58,
     "end": 203.66
   },
   {
-    "position": 441,
+    "position": 435,
     "text": "dentist",
     "start": 203.66,
     "end": 203.96
   },
   {
-    "position": 442,
+    "position": 436,
     "text": "saw",
     "start": 203.96,
     "end": 204.38
   },
   {
-    "position": 443,
+    "position": 437,
     "text": "many",
     "start": 204.38,
     "end": 204.92
   },
   {
-    "position": 444,
+    "position": 438,
     "text": "nights",
     "start": 204.92,
     "end": 205.38
   },
   {
-    "position": 445,
+    "position": 439,
     "text": "of",
     "start": 205.38,
     "end": 205.66
   },
   {
-    "position": 446,
+    "position": 440,
     "text": "desperation",
     "start": 205.66,
     "end": 206.52
   },
   {
-    "position": 447,
-    "text": "as",
+    "position": 441,
+    "text": "in",
     "start": 206.52,
-    "end": 207.18
+    "end": 206.52
   },
   {
-    "position": 448,
+    "position": 442,
+    "text": "his",
+    "start": 206.52,
+    "end": 206.52
+  },
+  {
+    "position": 443,
     "text": "dull",
     "start": 207.18,
     "end": 207.92
   },
   {
-    "position": 449,
+    "position": 444,
     "text": "eyes.",
     "start": 207.92,
     "end": 209.02
   },
   {
-    "position": 450,
+    "position": 445,
     "text": "He",
     "start": 209.94,
     "end": 210.16
   },
   {
-    "position": 451,
+    "position": 446,
     "text": "closed",
     "start": 210.16,
     "end": 210.46
   },
   {
-    "position": 452,
+    "position": 447,
     "text": "the",
     "start": 210.46,
     "end": 210.66
   },
   {
-    "position": 453,
+    "position": 448,
     "text": "drawer",
     "start": 210.66,
     "end": 210.94
   },
   {
-    "position": 454,
+    "position": 449,
     "text": "with",
     "start": 210.94,
     "end": 211.18
   },
   {
-    "position": 455,
+    "position": 450,
     "text": "his",
     "start": 211.18,
     "end": 211.38
   },
   {
-    "position": 456,
+    "position": 451,
     "text": "fingertips",
     "start": 211.38,
     "end": 211.72
   },
   {
-    "position": 457,
+    "position": 452,
     "text": "and",
     "start": 211.72,
     "end": 212.16
   },
   {
-    "position": 458,
-    "text": "sat",
+    "position": 453,
+    "text": "said",
     "start": 212.16,
-    "end": 212.32
+    "end": 212.16
   },
   {
-    "position": 459,
-    "text": "softly.",
+    "position": 454,
+    "text": "softly:",
     "start": 212.32,
     "end": 212.78
   },
   {
-    "position": 460,
-    "text": "Sit",
+    "position": 455,
+    "text": "\"Sit",
     "start": 214.1,
     "end": 214.36
   },
   {
-    "position": 461,
-    "text": "down.",
+    "position": 456,
+    "text": "down.\"",
     "start": 214.36,
     "end": 214.58
   },
   {
-    "position": 462,
-    "text": "Good",
+    "position": 457,
+    "text": "\"Good",
     "start": 215.28,
     "end": 216.02
   },
   {
-    "position": 463,
-    "text": "morning!",
+    "position": 458,
+    "text": "morning,\"",
     "start": 216.02,
     "end": 216.44
   },
   {
-    "position": 464,
-    "text": "Said",
+    "position": 459,
+    "text": "said",
     "start": 217.6,
     "end": 218.08
   },
   {
-    "position": 465,
+    "position": 460,
     "text": "the",
     "start": 218.08,
     "end": 218.2
   },
   {
-    "position": 466,
-    "text": "mayor.",
+    "position": 461,
+    "text": "Mayor.",
     "start": 218.2,
     "end": 218.38
   },
   {
-    "position": 467,
-    "text": "Morning.",
+    "position": 462,
+    "text": "\"Morning,\"",
     "start": 219.5,
     "end": 219.88
   },
   {
-    "position": 468,
-    "text": "Said",
+    "position": 463,
+    "text": "said",
     "start": 220.62,
     "end": 220.78
   },
   {
-    "position": 469,
+    "position": 464,
     "text": "the",
     "start": 220.78,
     "end": 220.9
   },
   {
-    "position": 470,
+    "position": 465,
     "text": "dentist.",
     "start": 220.9,
     "end": 221.18
   },
   {
-    "position": 471,
+    "position": 466,
     "text": "While",
     "start": 222.06,
     "end": 222.4
   },
   {
-    "position": 472,
+    "position": 467,
     "text": "the",
     "start": 222.4,
     "end": 222.58
   },
   {
-    "position": 473,
+    "position": 468,
     "text": "instruments",
     "start": 222.58,
     "end": 222.92
   },
   {
-    "position": 474,
+    "position": 469,
     "text": "were",
     "start": 222.92,
     "end": 223.26
   },
   {
-    "position": 475,
+    "position": 470,
     "text": "boiling,",
     "start": 223.26,
     "end": 223.66
   },
   {
-    "position": 476,
+    "position": 471,
     "text": "the",
     "start": 224.28,
     "end": 224.34
   },
   {
-    "position": 477,
-    "text": "mayor",
+    "position": 472,
+    "text": "Mayor",
     "start": 224.34,
     "end": 224.74
   },
   {
-    "position": 478,
+    "position": 473,
     "text": "leaned",
     "start": 224.74,
     "end": 225.2
   },
   {
-    "position": 479,
+    "position": 474,
     "text": "his",
     "start": 225.2,
     "end": 225.62
   },
   {
-    "position": 480,
+    "position": 475,
     "text": "skull",
     "start": 225.62,
     "end": 225.96
   },
   {
-    "position": 481,
+    "position": 476,
     "text": "on",
     "start": 225.96,
     "end": 226.44
   },
   {
-    "position": 482,
+    "position": 477,
     "text": "the",
     "start": 226.44,
     "end": 226.76
   },
   {
-    "position": 483,
+    "position": 478,
     "text": "headrest",
     "start": 226.76,
     "end": 227.3
   },
   {
-    "position": 484,
+    "position": 479,
     "text": "of",
     "start": 227.3,
     "end": 227.96
   },
   {
-    "position": 485,
+    "position": 480,
     "text": "the",
     "start": 227.96,
     "end": 228.2
   },
   {
-    "position": 486,
+    "position": 481,
     "text": "chair",
     "start": 228.2,
     "end": 228.44
   },
   {
-    "position": 487,
+    "position": 482,
     "text": "and",
     "start": 228.44,
     "end": 228.66
   },
   {
-    "position": 488,
+    "position": 483,
     "text": "felt",
     "start": 228.66,
     "end": 228.92
   },
   {
-    "position": 489,
+    "position": 484,
     "text": "better.",
     "start": 228.92,
     "end": 229.38
   },
   {
-    "position": 490,
+    "position": 485,
     "text": "His",
     "start": 230.04,
     "end": 230.22
   },
   {
-    "position": 491,
+    "position": 486,
     "text": "breath",
     "start": 230.22,
     "end": 230.48
   },
   {
-    "position": 492,
+    "position": 487,
     "text": "was",
     "start": 230.48,
     "end": 231.18
   },
   {
-    "position": 493,
+    "position": 488,
     "text": "icy.",
     "start": 231.18,
     "end": 231.66
   },
   {
-    "position": 494,
+    "position": 489,
     "text": "It",
     "start": 232.56,
     "end": 232.7
   },
   {
-    "position": 495,
+    "position": 490,
     "text": "was",
     "start": 232.7,
     "end": 232.84
   },
   {
-    "position": 496,
+    "position": 491,
     "text": "a",
     "start": 232.84,
     "end": 232.96
   },
   {
-    "position": 497,
+    "position": 492,
     "text": "poor",
     "start": 232.96,
     "end": 233.18
   },
   {
-    "position": 498,
-    "text": "office,",
+    "position": 493,
+    "text": "office:",
     "start": 233.18,
     "end": 233.62
   },
   {
-    "position": 499,
+    "position": 494,
     "text": "an",
     "start": 234.22,
     "end": 234.3
   },
   {
-    "position": 500,
+    "position": 495,
     "text": "old",
     "start": 234.3,
     "end": 234.58
   },
   {
-    "position": 501,
+    "position": 496,
     "text": "wooden",
     "start": 234.58,
     "end": 234.84
   },
   {
-    "position": 502,
+    "position": 497,
     "text": "chair,",
     "start": 234.84,
     "end": 235.3
   },
   {
-    "position": 503,
+    "position": 498,
     "text": "the",
     "start": 235.96,
     "end": 236.06
   },
   {
-    "position": 504,
+    "position": 499,
     "text": "pedal",
     "start": 236.06,
     "end": 236.38
   },
   {
-    "position": 505,
+    "position": 500,
     "text": "drill,",
     "start": 236.38,
     "end": 236.74
   },
   {
-    "position": 506,
+    "position": 501,
     "text": "a",
     "start": 237.64,
     "end": 237.76
   },
   {
-    "position": 507,
+    "position": 502,
     "text": "glass",
     "start": 237.76,
     "end": 238.1
   },
   {
-    "position": 508,
+    "position": 503,
     "text": "case",
     "start": 238.1,
     "end": 238.54
   },
   {
-    "position": 509,
+    "position": 504,
     "text": "with",
     "start": 238.54,
     "end": 238.84
   },
   {
-    "position": 510,
+    "position": 505,
     "text": "ceramic",
     "start": 238.84,
     "end": 239.24
   },
   {
-    "position": 511,
+    "position": 506,
     "text": "bottles.",
     "start": 239.24,
     "end": 239.74
   },
   {
-    "position": 512,
+    "position": 507,
     "text": "Opposite",
     "start": 240.44,
     "end": 241.06
   },
   {
-    "position": 513,
+    "position": 508,
     "text": "the",
     "start": 241.06,
     "end": 241.22
   },
   {
-    "position": 514,
+    "position": 509,
     "text": "chair",
     "start": 241.22,
     "end": 241.5
   },
   {
-    "position": 515,
+    "position": 510,
     "text": "was",
     "start": 241.5,
     "end": 241.7
   },
   {
-    "position": 516,
+    "position": 511,
     "text": "a",
     "start": 241.7,
     "end": 241.82
   },
   {
-    "position": 517,
+    "position": 512,
     "text": "window",
     "start": 241.82,
     "end": 242.08
   },
   {
-    "position": 518,
+    "position": 513,
     "text": "with",
     "start": 242.08,
     "end": 242.32
   },
   {
-    "position": 519,
+    "position": 514,
     "text": "a",
     "start": 242.32,
     "end": 242.44
   },
   {
-    "position": 520,
-    "text": "shoulder",
+    "position": 515,
+    "text": "shoulder-high",
     "start": 242.44,
-    "end": 242.78
+    "end": 242.44
   },
   {
-    "position": 521,
-    "text": "-high",
-    "start": 242.78,
-    "end": 243.12
-  },
-  {
-    "position": 522,
+    "position": 516,
     "text": "cloth",
     "start": 243.12,
     "end": 243.44
   },
   {
-    "position": 523,
+    "position": 517,
     "text": "curtain.",
     "start": 243.44,
     "end": 244.0
   },
   {
-    "position": 524,
+    "position": 518,
     "text": "When",
     "start": 244.0,
     "end": 244.84
   },
   {
-    "position": 525,
+    "position": 519,
     "text": "he",
     "start": 244.84,
     "end": 244.98
   },
   {
-    "position": 526,
+    "position": 520,
     "text": "felt",
     "start": 244.98,
     "end": 245.32
   },
   {
-    "position": 527,
+    "position": 521,
     "text": "the",
     "start": 245.32,
     "end": 245.54
   },
   {
-    "position": 528,
+    "position": 522,
     "text": "dentist",
     "start": 245.54,
     "end": 245.82
   },
   {
-    "position": 529,
+    "position": 523,
     "text": "approach,",
     "start": 245.82,
     "end": 246.32
   },
   {
-    "position": 530,
+    "position": 524,
     "text": "the",
     "start": 247.0,
     "end": 247.06
   },
   {
-    "position": 531,
-    "text": "mayor",
+    "position": 525,
+    "text": "Mayor",
     "start": 247.06,
     "end": 247.42
   },
   {
-    "position": 532,
+    "position": 526,
     "text": "braced",
     "start": 247.42,
     "end": 248.52
   },
   {
-    "position": 533,
+    "position": 527,
     "text": "his",
     "start": 248.52,
     "end": 248.82
   },
   {
-    "position": 534,
+    "position": 528,
     "text": "heels",
     "start": 248.82,
     "end": 249.26
   },
   {
-    "position": 535,
+    "position": 529,
     "text": "and",
     "start": 249.26,
     "end": 250.06
   },
   {
-    "position": 536,
+    "position": 530,
     "text": "opened",
     "start": 250.06,
     "end": 250.96
   },
   {
-    "position": 537,
+    "position": 531,
     "text": "his",
     "start": 250.96,
     "end": 251.44
   },
   {
-    "position": 538,
+    "position": 532,
     "text": "mouth.",
     "start": 251.44,
     "end": 251.8
   },
   {
-    "position": 539,
+    "position": 533,
     "text": "Aurelio",
     "start": 252.84,
     "end": 253.18
   },
   {
-    "position": 540,
-    "text": "Escovire",
+    "position": 534,
+    "text": "Escovar",
     "start": 253.18,
-    "end": 253.92
+    "end": 253.18
   },
   {
-    "position": 541,
+    "position": 535,
     "text": "turned",
     "start": 253.92,
     "end": 254.28
   },
   {
-    "position": 542,
+    "position": 536,
     "text": "his",
     "start": 254.28,
     "end": 254.52
   },
   {
-    "position": 543,
+    "position": 537,
     "text": "head",
     "start": 254.52,
     "end": 254.78
   },
   {
-    "position": 544,
+    "position": 538,
     "text": "toward",
     "start": 254.78,
     "end": 255.6
   },
   {
-    "position": 545,
+    "position": 539,
     "text": "the",
     "start": 255.6,
     "end": 255.82
   },
   {
-    "position": 546,
+    "position": 540,
     "text": "light.",
     "start": 255.82,
     "end": 256.12
   },
   {
-    "position": 547,
+    "position": 541,
     "text": "After",
     "start": 256.82,
     "end": 257.1
   },
   {
-    "position": 548,
+    "position": 542,
     "text": "inspecting",
     "start": 257.1,
     "end": 258.1
   },
   {
-    "position": 549,
+    "position": 543,
     "text": "the",
     "start": 258.1,
     "end": 258.36
   },
   {
-    "position": 550,
+    "position": 544,
     "text": "infected",
     "start": 258.36,
     "end": 259.02
   },
   {
-    "position": 551,
+    "position": 545,
     "text": "tooth,",
     "start": 259.02,
     "end": 259.5
   },
   {
-    "position": 552,
+    "position": 546,
     "text": "he",
     "start": 260.24,
     "end": 260.28
   },
   {
-    "position": 553,
+    "position": 547,
     "text": "closed",
     "start": 260.28,
     "end": 260.58
   },
   {
-    "position": 554,
+    "position": 548,
     "text": "the",
     "start": 260.58,
     "end": 260.82
   },
   {
-    "position": 555,
-    "text": "mayor's",
+    "position": 549,
+    "text": "Mayor's",
     "start": 260.82,
     "end": 261.28
   },
   {
-    "position": 556,
+    "position": 550,
     "text": "jaw",
     "start": 261.28,
     "end": 261.48
   },
   {
-    "position": 557,
+    "position": 551,
     "text": "with",
     "start": 261.48,
     "end": 261.8
   },
   {
-    "position": 558,
+    "position": 552,
     "text": "a",
     "start": 261.8,
     "end": 261.98
   },
   {
-    "position": 559,
+    "position": 553,
     "text": "cautious",
     "start": 261.98,
     "end": 262.58
   },
   {
-    "position": 560,
+    "position": 554,
     "text": "pressure",
     "start": 262.58,
     "end": 263.44
   },
   {
-    "position": 561,
+    "position": 555,
     "text": "of",
     "start": 263.44,
     "end": 263.98
   },
   {
-    "position": 562,
+    "position": 556,
     "text": "his",
     "start": 263.98,
     "end": 264.26
   },
   {
-    "position": 563,
+    "position": 557,
     "text": "fingers.",
     "start": 264.26,
     "end": 264.84
   },
   {
-    "position": 564,
-    "text": "It",
+    "position": 558,
+    "text": "\"It",
     "start": 265.82,
     "end": 266.08
   },
   {
-    "position": 565,
+    "position": 559,
     "text": "has",
     "start": 266.08,
     "end": 266.3
   },
   {
-    "position": 566,
+    "position": 560,
     "text": "to",
     "start": 266.3,
     "end": 266.54
   },
   {
-    "position": 567,
+    "position": 561,
     "text": "be",
     "start": 266.54,
     "end": 266.7
   },
   {
-    "position": 568,
-    "text": "with",
+    "position": 562,
+    "text": "without",
     "start": 266.7,
-    "end": 266.92
+    "end": 266.7
   },
   {
-    "position": 569,
-    "text": "how",
-    "start": 266.92,
-    "end": 267.06
-  },
-  {
-    "position": 570,
-    "text": "anesthesia,",
+    "position": 563,
+    "text": "anesthesia,\"",
     "start": 267.06,
     "end": 267.82
   },
   {
-    "position": 571,
+    "position": 564,
     "text": "he",
     "start": 268.3,
     "end": 268.68
   },
   {
-    "position": 572,
+    "position": 565,
     "text": "said.",
     "start": 268.68,
     "end": 268.92
   },
   {
-    "position": 573,
-    "text": "Why?",
+    "position": 566,
+    "text": "\"Why?\"",
     "start": 269.64,
     "end": 270.08
   },
   {
-    "position": 574,
-    "text": "Because",
+    "position": 567,
+    "text": "\"Because",
     "start": 271.28,
     "end": 272.0
   },
   {
-    "position": 575,
+    "position": 568,
     "text": "you",
     "start": 272.0,
     "end": 272.54
   },
   {
-    "position": 576,
+    "position": 569,
     "text": "have",
     "start": 272.54,
     "end": 272.74
   },
   {
-    "position": 577,
+    "position": 570,
     "text": "an",
     "start": 272.74,
     "end": 272.92
   },
   {
-    "position": 578,
-    "text": "abscess.",
+    "position": 571,
+    "text": "abscess.\"",
     "start": 272.92,
     "end": 273.5
   },
   {
-    "position": 579,
+    "position": 572,
     "text": "The",
     "start": 274.6,
     "end": 274.74
   },
   {
-    "position": 580,
-    "text": "mayor",
+    "position": 573,
+    "text": "Mayor",
     "start": 274.74,
     "end": 274.96
   },
   {
-    "position": 581,
+    "position": 574,
     "text": "looked",
     "start": 274.96,
     "end": 275.36
   },
   {
-    "position": 582,
+    "position": 575,
     "text": "him",
     "start": 275.36,
     "end": 275.9
   },
   {
-    "position": 583,
+    "position": 576,
     "text": "in",
     "start": 275.9,
     "end": 276.14
   },
   {
-    "position": 584,
+    "position": 577,
     "text": "the",
     "start": 276.14,
     "end": 276.36
   },
   {
-    "position": 585,
+    "position": 578,
     "text": "eye.",
     "start": 276.36,
     "end": 276.68
   },
   {
-    "position": 586,
-    "text": "All",
+    "position": 579,
+    "text": "\"All",
     "start": 277.66,
     "end": 277.86
   },
   {
-    "position": 587,
-    "text": "right.",
+    "position": 580,
+    "text": "right,\"",
     "start": 277.86,
     "end": 278.1
   },
   {
-    "position": 588,
-    "text": "He",
+    "position": 581,
+    "text": "he",
     "start": 278.72,
     "end": 278.94
   },
   {
-    "position": 589,
-    "text": "said",
+    "position": 582,
+    "text": "said,",
     "start": 278.94,
     "end": 279.18
   },
   {
-    "position": 590,
+    "position": 583,
     "text": "and",
     "start": 279.18,
     "end": 279.8
   },
   {
-    "position": 591,
+    "position": 584,
     "text": "tried",
     "start": 279.8,
     "end": 280.14
   },
   {
-    "position": 592,
+    "position": 585,
     "text": "to",
     "start": 280.14,
     "end": 280.38
   },
   {
-    "position": 593,
+    "position": 586,
     "text": "smile.",
     "start": 280.38,
     "end": 280.78
   },
   {
-    "position": 594,
+    "position": 587,
     "text": "The",
     "start": 281.76,
     "end": 281.88
   },
   {
-    "position": 595,
+    "position": 588,
     "text": "dentist",
     "start": 281.88,
     "end": 282.28
   },
   {
-    "position": 596,
+    "position": 589,
     "text": "did",
     "start": 282.28,
     "end": 284.2
   },
   {
-    "position": 597,
+    "position": 590,
     "text": "not",
     "start": 284.2,
     "end": 284.52
   },
   {
-    "position": 598,
+    "position": 591,
     "text": "return",
     "start": 284.52,
     "end": 285.02
   },
   {
-    "position": 599,
+    "position": 592,
     "text": "the",
     "start": 285.02,
     "end": 285.28
   },
   {
-    "position": 600,
+    "position": 593,
     "text": "smile.",
     "start": 285.28,
     "end": 285.64
   },
   {
-    "position": 601,
+    "position": 594,
     "text": "He",
     "start": 286.14,
     "end": 286.26
   },
   {
-    "position": 602,
+    "position": 595,
     "text": "brought",
     "start": 286.26,
     "end": 286.48
   },
   {
-    "position": 603,
+    "position": 596,
     "text": "the",
     "start": 286.48,
     "end": 286.74
   },
   {
-    "position": 604,
+    "position": 597,
     "text": "basin",
     "start": 286.74,
     "end": 287.34
   },
   {
-    "position": 605,
+    "position": 598,
     "text": "of",
     "start": 287.34,
     "end": 287.78
   },
   {
-    "position": 606,
+    "position": 599,
     "text": "sterilized",
     "start": 287.78,
     "end": 288.94
   },
   {
-    "position": 607,
+    "position": 600,
     "text": "instruments",
     "start": 288.94,
     "end": 289.32
   },
   {
-    "position": 608,
+    "position": 601,
     "text": "to",
     "start": 289.32,
     "end": 289.58
   },
   {
-    "position": 609,
+    "position": 602,
     "text": "the",
     "start": 289.58,
     "end": 289.7
   },
   {
-    "position": 610,
-    "text": "work",
+    "position": 603,
+    "text": "worktable",
     "start": 289.7,
-    "end": 289.88
+    "end": 289.7
   },
   {
-    "position": 611,
-    "text": "table",
-    "start": 289.88,
-    "end": 290.24
-  },
-  {
-    "position": 612,
+    "position": 604,
     "text": "and",
     "start": 290.24,
     "end": 290.94
   },
   {
-    "position": 613,
+    "position": 605,
     "text": "took",
     "start": 290.94,
     "end": 291.68
   },
   {
-    "position": 614,
+    "position": 606,
     "text": "them",
     "start": 291.68,
     "end": 292.12
   },
   {
-    "position": 615,
+    "position": 607,
     "text": "out",
     "start": 292.12,
     "end": 292.52
   },
   {
-    "position": 616,
+    "position": 608,
     "text": "of",
     "start": 292.52,
     "end": 292.64
   },
   {
-    "position": 617,
+    "position": 609,
     "text": "the",
     "start": 292.64,
     "end": 292.8
   },
   {
-    "position": 618,
+    "position": 610,
     "text": "water",
     "start": 292.8,
     "end": 293.22
   },
   {
-    "position": 619,
+    "position": 611,
     "text": "with",
     "start": 293.22,
     "end": 293.52
   },
   {
-    "position": 620,
+    "position": 612,
     "text": "a",
     "start": 293.52,
     "end": 293.7
   },
   {
-    "position": 621,
+    "position": 613,
     "text": "pair",
     "start": 293.7,
     "end": 294.0
   },
   {
-    "position": 622,
+    "position": 614,
     "text": "of",
     "start": 294.0,
     "end": 294.38
   },
   {
-    "position": 623,
+    "position": 615,
     "text": "cold",
     "start": 294.38,
     "end": 294.8
   },
   {
-    "position": 624,
-    "text": "tweezers",
+    "position": 616,
+    "text": "tweezers,",
     "start": 294.8,
     "end": 295.94
   },
   {
-    "position": 625,
+    "position": 617,
     "text": "still",
     "start": 295.94,
     "end": 296.7
   },
   {
-    "position": 626,
+    "position": 618,
     "text": "without",
     "start": 296.7,
     "end": 297.6
   },
   {
-    "position": 627,
-    "text": "hurry.",
+    "position": 619,
+    "text": "hurrying.",
     "start": 297.6,
-    "end": 298.5
+    "end": 297.6
   },
   {
-    "position": 628,
+    "position": 620,
     "text": "Then",
     "start": 299.52,
     "end": 299.64
   },
   {
-    "position": 629,
+    "position": 621,
     "text": "he",
     "start": 299.64,
     "end": 299.76
   },
   {
-    "position": 630,
+    "position": 622,
     "text": "pushed",
     "start": 299.76,
     "end": 300.04
   },
   {
-    "position": 631,
+    "position": 623,
     "text": "the",
     "start": 300.04,
     "end": 300.42
   },
   {
-    "position": 632,
+    "position": 624,
     "text": "spittoon",
     "start": 300.42,
     "end": 301.18
   },
   {
-    "position": 633,
+    "position": 625,
     "text": "with",
     "start": 301.18,
     "end": 301.58
   },
   {
-    "position": 634,
+    "position": 626,
     "text": "the",
     "start": 301.58,
     "end": 301.74
   },
   {
-    "position": 635,
+    "position": 627,
     "text": "tip",
     "start": 301.74,
     "end": 301.9
   },
   {
-    "position": 636,
+    "position": 628,
     "text": "of",
     "start": 301.9,
     "end": 302.14
   },
   {
-    "position": 637,
+    "position": 629,
     "text": "his",
     "start": 302.14,
     "end": 302.36
   },
   {
-    "position": 638,
-    "text": "shoe",
+    "position": 630,
+    "text": "shoe,",
     "start": 302.36,
     "end": 302.62
   },
   {
-    "position": 639,
+    "position": 631,
     "text": "and",
     "start": 302.62,
     "end": 303.3
   },
   {
-    "position": 640,
+    "position": 632,
     "text": "went",
     "start": 303.3,
     "end": 303.54
   },
   {
-    "position": 641,
+    "position": 633,
     "text": "to",
     "start": 303.54,
     "end": 303.82
   },
   {
-    "position": 642,
+    "position": 634,
     "text": "wash",
     "start": 303.82,
     "end": 304.02
   },
   {
-    "position": 643,
+    "position": 635,
     "text": "his",
     "start": 304.02,
     "end": 304.4
   },
   {
-    "position": 644,
+    "position": 636,
     "text": "hands",
     "start": 304.4,
     "end": 304.82
   },
   {
-    "position": 645,
+    "position": 637,
     "text": "in",
     "start": 304.82,
     "end": 305.22
   },
   {
-    "position": 646,
+    "position": 638,
     "text": "the",
     "start": 305.22,
     "end": 305.36
   },
   {
-    "position": 647,
-    "text": "wash",
+    "position": 639,
+    "text": "washbasin.",
     "start": 305.36,
-    "end": 305.68
+    "end": 305.36
   },
   {
-    "position": 648,
-    "text": "basin.",
-    "start": 305.68,
-    "end": 306.2
-  },
-  {
-    "position": 649,
+    "position": 640,
     "text": "He",
     "start": 307.0,
     "end": 307.26
   },
   {
-    "position": 650,
+    "position": 641,
     "text": "did",
     "start": 307.26,
     "end": 307.38
   },
   {
-    "position": 651,
+    "position": 642,
     "text": "all",
     "start": 307.38,
     "end": 307.72
   },
   {
-    "position": 652,
+    "position": 643,
     "text": "this",
     "start": 307.72,
     "end": 308.08
   },
   {
-    "position": 653,
+    "position": 644,
     "text": "without",
     "start": 308.08,
     "end": 308.46
   },
   {
-    "position": 654,
+    "position": 645,
     "text": "looking",
     "start": 308.46,
     "end": 308.9
   },
   {
-    "position": 655,
+    "position": 646,
     "text": "at",
     "start": 308.9,
     "end": 309.1
   },
   {
-    "position": 656,
+    "position": 647,
     "text": "the",
     "start": 309.1,
     "end": 309.3
   },
   {
-    "position": 657,
-    "text": "mayor.",
+    "position": 648,
+    "text": "Mayor.",
     "start": 309.3,
     "end": 309.52
   },
   {
-    "position": 658,
+    "position": 649,
     "text": "But",
     "start": 310.2,
     "end": 310.38
   },
   {
-    "position": 659,
+    "position": 650,
     "text": "the",
     "start": 310.38,
     "end": 310.52
   },
   {
-    "position": 660,
-    "text": "mayor",
+    "position": 651,
+    "text": "Mayor",
     "start": 310.52,
     "end": 310.82
   },
   {
-    "position": 661,
+    "position": 652,
     "text": "didn't",
     "start": 310.82,
     "end": 312.02
   },
   {
-    "position": 662,
+    "position": 653,
     "text": "take",
     "start": 312.02,
     "end": 312.22
   },
   {
-    "position": 663,
+    "position": 654,
     "text": "his",
     "start": 312.22,
     "end": 312.5
   },
   {
-    "position": 664,
+    "position": 655,
     "text": "eyes",
     "start": 312.5,
     "end": 312.76
   },
   {
-    "position": 665,
+    "position": 656,
     "text": "off",
     "start": 312.76,
     "end": 313.22
   },
   {
-    "position": 666,
+    "position": 657,
     "text": "him.",
     "start": 313.22,
     "end": 313.52
   },
   {
-    "position": 667,
+    "position": 658,
     "text": "It",
     "start": 314.46,
     "end": 314.74
   },
   {
-    "position": 668,
+    "position": 659,
     "text": "was",
     "start": 314.74,
     "end": 314.88
   },
   {
-    "position": 669,
+    "position": 660,
     "text": "a",
     "start": 314.88,
     "end": 315.02
   },
   {
-    "position": 670,
+    "position": 661,
     "text": "lower",
     "start": 315.02,
     "end": 315.38
   },
   {
-    "position": 671,
+    "position": 662,
     "text": "wisdom",
     "start": 315.38,
     "end": 315.82
   },
   {
-    "position": 672,
+    "position": 663,
     "text": "tooth.",
     "start": 315.82,
     "end": 316.16
   },
   {
-    "position": 673,
+    "position": 664,
     "text": "The",
     "start": 316.88,
     "end": 317.02
   },
   {
-    "position": 674,
+    "position": 665,
     "text": "dentist",
     "start": 317.02,
     "end": 317.32
   },
   {
-    "position": 675,
+    "position": 666,
     "text": "spread",
     "start": 317.32,
     "end": 317.78
   },
   {
-    "position": 676,
+    "position": 667,
     "text": "his",
     "start": 317.78,
     "end": 318.0
   },
   {
-    "position": 677,
+    "position": 668,
     "text": "feet",
     "start": 318.0,
     "end": 318.2
   },
   {
-    "position": 678,
+    "position": 669,
     "text": "and",
     "start": 318.2,
     "end": 318.6
   },
   {
-    "position": 679,
+    "position": 670,
     "text": "grasped",
     "start": 318.6,
     "end": 319.46
   },
   {
-    "position": 680,
+    "position": 671,
     "text": "the",
     "start": 319.46,
     "end": 319.64
   },
   {
-    "position": 681,
+    "position": 672,
     "text": "tooth",
     "start": 319.64,
     "end": 319.96
   },
   {
-    "position": 682,
+    "position": 673,
     "text": "with",
     "start": 319.96,
     "end": 320.22
   },
   {
-    "position": 683,
+    "position": 674,
     "text": "the",
     "start": 320.22,
     "end": 320.44
   },
   {
-    "position": 684,
+    "position": 675,
     "text": "hot",
     "start": 320.44,
     "end": 320.7
   },
   {
-    "position": 685,
+    "position": 676,
     "text": "forceps.",
     "start": 320.7,
     "end": 321.48
   },
   {
-    "position": 686,
+    "position": 677,
     "text": "The",
     "start": 322.09,
     "end": 322.48
   },
   {
-    "position": 687,
-    "text": "mayor",
+    "position": 678,
+    "text": "Mayor",
     "start": 322.48,
     "end": 322.8
   },
   {
-    "position": 688,
+    "position": 679,
     "text": "seized",
     "start": 322.8,
     "end": 323.2
   },
   {
-    "position": 689,
+    "position": 680,
     "text": "the",
     "start": 323.2,
     "end": 323.64
   },
   {
-    "position": 690,
+    "position": 681,
     "text": "arms",
     "start": 323.64,
     "end": 324.08
   },
   {
-    "position": 691,
+    "position": 682,
     "text": "of",
     "start": 324.08,
     "end": 324.32
   },
   {
-    "position": 692,
+    "position": 683,
     "text": "the",
     "start": 324.32,
     "end": 324.48
   },
   {
-    "position": 693,
+    "position": 684,
     "text": "chair,",
     "start": 324.48,
     "end": 324.94
   },
   {
-    "position": 694,
+    "position": 685,
     "text": "braced",
     "start": 325.92,
     "end": 326.42
   },
   {
-    "position": 695,
+    "position": 686,
     "text": "his",
     "start": 326.42,
     "end": 326.68
   },
   {
-    "position": 696,
+    "position": 687,
     "text": "feet",
     "start": 326.68,
     "end": 326.96
   },
   {
-    "position": 697,
+    "position": 688,
     "text": "with",
     "start": 326.96,
     "end": 327.24
   },
   {
-    "position": 698,
+    "position": 689,
     "text": "all",
     "start": 327.24,
     "end": 327.42
   },
   {
-    "position": 699,
+    "position": 690,
     "text": "his",
     "start": 327.42,
     "end": 327.58
   },
   {
-    "position": 700,
-    "text": "strength",
+    "position": 691,
+    "text": "strength,",
     "start": 327.58,
     "end": 327.96
   },
   {
-    "position": 701,
+    "position": 692,
     "text": "and",
     "start": 327.96,
     "end": 328.7
   },
   {
-    "position": 702,
+    "position": 693,
     "text": "felt",
     "start": 328.7,
     "end": 329.14
   },
   {
-    "position": 703,
+    "position": 694,
     "text": "an",
     "start": 329.14,
     "end": 329.64
   },
   {
-    "position": 704,
+    "position": 695,
     "text": "icy",
     "start": 329.64,
     "end": 330.32
   },
   {
-    "position": 705,
+    "position": 696,
     "text": "void",
     "start": 330.32,
     "end": 331.04
   },
   {
-    "position": 706,
+    "position": 697,
     "text": "in",
     "start": 331.04,
     "end": 331.36
   },
   {
-    "position": 707,
+    "position": 698,
     "text": "his",
     "start": 331.36,
     "end": 331.54
   },
   {
-    "position": 708,
-    "text": "kidneys.",
+    "position": 699,
+    "text": "kidneys,",
     "start": 331.54,
     "end": 331.88
   },
   {
-    "position": 709,
-    "text": "But",
+    "position": 700,
+    "text": "but",
     "start": 332.52,
     "end": 333.04
   },
   {
-    "position": 710,
+    "position": 701,
     "text": "didn't",
     "start": 333.04,
     "end": 333.32
   },
   {
-    "position": 711,
+    "position": 702,
     "text": "make",
     "start": 333.32,
     "end": 333.52
   },
   {
-    "position": 712,
+    "position": 703,
     "text": "a",
     "start": 333.52,
     "end": 333.64
   },
   {
-    "position": 713,
+    "position": 704,
     "text": "sound.",
     "start": 333.64,
     "end": 334.1
   },
   {
-    "position": 714,
+    "position": 705,
     "text": "The",
     "start": 334.82,
     "end": 334.92
   },
   {
-    "position": 715,
+    "position": 706,
     "text": "dentist",
     "start": 334.92,
     "end": 335.24
   },
   {
-    "position": 716,
+    "position": 707,
     "text": "moved",
     "start": 335.24,
     "end": 335.72
   },
   {
-    "position": 717,
+    "position": 708,
     "text": "only",
     "start": 335.72,
     "end": 336.34
   },
   {
-    "position": 718,
+    "position": 709,
     "text": "his",
     "start": 336.34,
     "end": 336.64
   },
   {
-    "position": 719,
-    "text": "wrist",
+    "position": 710,
+    "text": "wrist.",
     "start": 336.64,
     "end": 337.08
   },
   {
-    "position": 720,
-    "text": "without",
+    "position": 711,
+    "text": "Without",
     "start": 337.08,
     "end": 338.06
   },
   {
-    "position": 721,
+    "position": 712,
     "text": "rancor,",
     "start": 338.06,
     "end": 338.86
   },
   {
-    "position": 722,
+    "position": 713,
     "text": "rather",
     "start": 339.22,
     "end": 339.6
   },
   {
-    "position": 723,
+    "position": 714,
     "text": "with",
     "start": 339.6,
     "end": 339.88
   },
   {
-    "position": 724,
+    "position": 715,
     "text": "a",
     "start": 339.88,
     "end": 340.06
   },
   {
-    "position": 725,
+    "position": 716,
     "text": "bitter",
     "start": 340.06,
     "end": 340.26
   },
   {
-    "position": 726,
+    "position": 717,
     "text": "tenderness,",
     "start": 340.26,
     "end": 340.86
   },
   {
-    "position": 727,
+    "position": 718,
     "text": "he",
     "start": 341.08,
     "end": 341.14
   },
   {
-    "position": 728,
-    "text": "said,",
+    "position": 719,
+    "text": "said:",
     "start": 341.14,
     "end": 341.46
   },
   {
-    "position": 729,
-    "text": "now",
+    "position": 720,
+    "text": "\"Now",
     "start": 342.36,
     "end": 342.78
   },
   {
-    "position": 730,
+    "position": 721,
     "text": "you'll",
     "start": 342.78,
     "end": 343.16
   },
   {
-    "position": 731,
+    "position": 722,
     "text": "pay",
     "start": 343.16,
     "end": 343.54
   },
   {
-    "position": 732,
+    "position": 723,
     "text": "for",
     "start": 343.54,
     "end": 344.32
   },
   {
-    "position": 733,
+    "position": 724,
     "text": "our",
     "start": 344.32,
     "end": 344.54
   },
   {
-    "position": 734,
+    "position": 725,
     "text": "twenty",
     "start": 344.54,
     "end": 345.14
   },
   {
-    "position": 735,
+    "position": 726,
     "text": "dead",
     "start": 345.14,
     "end": 345.56
   },
   {
-    "position": 736,
-    "text": "men.",
+    "position": 727,
+    "text": "men.\"",
     "start": 345.56,
     "end": 346.0
   },
   {
-    "position": 737,
+    "position": 728,
     "text": "The",
     "start": 346.46,
     "end": 346.82
   },
   {
-    "position": 738,
-    "text": "mayor",
+    "position": 729,
+    "text": "Mayor",
     "start": 346.82,
     "end": 347.26
   },
   {
-    "position": 739,
+    "position": 730,
     "text": "felt",
     "start": 347.26,
     "end": 347.86
   },
   {
-    "position": 740,
+    "position": 731,
     "text": "the",
     "start": 347.86,
     "end": 348.42
   },
   {
-    "position": 741,
+    "position": 732,
     "text": "crunch",
     "start": 348.42,
     "end": 348.84
   },
   {
-    "position": 742,
+    "position": 733,
     "text": "of",
     "start": 348.84,
     "end": 349.38
   },
   {
-    "position": 743,
+    "position": 734,
     "text": "bones",
     "start": 349.38,
     "end": 349.84
   },
   {
-    "position": 744,
+    "position": 735,
     "text": "in",
     "start": 349.84,
     "end": 350.16
   },
   {
-    "position": 745,
+    "position": 736,
     "text": "his",
     "start": 350.16,
     "end": 350.36
   },
   {
-    "position": 746,
-    "text": "jaw",
+    "position": 737,
+    "text": "jaw,",
     "start": 350.36,
     "end": 350.68
   },
   {
-    "position": 747,
+    "position": 738,
     "text": "and",
     "start": 350.68,
     "end": 350.98
   },
   {
-    "position": 748,
+    "position": 739,
     "text": "his",
     "start": 350.98,
     "end": 351.14
   },
   {
-    "position": 749,
+    "position": 740,
     "text": "eyes",
     "start": 351.14,
     "end": 351.68
   },
   {
-    "position": 750,
+    "position": 741,
     "text": "filled",
     "start": 351.68,
     "end": 352.5
   },
   {
-    "position": 751,
+    "position": 742,
     "text": "with",
     "start": 352.5,
     "end": 352.86
   },
   {
-    "position": 752,
+    "position": 743,
     "text": "tears.",
     "start": 352.86,
     "end": 353.46
   },
   {
-    "position": 753,
+    "position": 744,
     "text": "But",
     "start": 354.26,
     "end": 354.42
   },
   {
-    "position": 754,
+    "position": 745,
     "text": "he",
     "start": 354.42,
     "end": 354.48
   },
   {
-    "position": 755,
+    "position": 746,
     "text": "didn't",
     "start": 354.48,
     "end": 354.72
   },
   {
-    "position": 756,
+    "position": 747,
     "text": "breathe",
     "start": 354.72,
     "end": 355.08
   },
   {
-    "position": 757,
+    "position": 748,
     "text": "until",
     "start": 355.08,
     "end": 355.46
   },
   {
-    "position": 758,
+    "position": 749,
     "text": "he",
     "start": 355.46,
     "end": 355.62
   },
   {
-    "position": 759,
+    "position": 750,
     "text": "felt",
     "start": 355.62,
     "end": 355.9
   },
   {
-    "position": 760,
+    "position": 751,
     "text": "the",
     "start": 355.9,
     "end": 356.08
   },
   {
-    "position": 761,
+    "position": 752,
     "text": "tooth",
     "start": 356.08,
     "end": 356.36
   },
   {
-    "position": 762,
+    "position": 753,
     "text": "come",
     "start": 356.36,
     "end": 356.76
   },
   {
-    "position": 763,
+    "position": 754,
     "text": "out.",
     "start": 356.76,
     "end": 357.18
   },
   {
-    "position": 764,
+    "position": 755,
     "text": "Then",
     "start": 357.82,
     "end": 357.96
   },
   {
-    "position": 765,
+    "position": 756,
     "text": "he",
     "start": 357.96,
     "end": 358.06
   },
   {
-    "position": 766,
-    "text": "sought",
+    "position": 757,
+    "text": "saw",
     "start": 358.06,
-    "end": 358.32
+    "end": 358.06
   },
   {
-    "position": 767,
+    "position": 758,
+    "text": "it",
+    "start": 358.06,
+    "end": 358.06
+  },
+  {
+    "position": 759,
     "text": "through",
     "start": 358.32,
     "end": 358.74
   },
   {
-    "position": 768,
+    "position": 760,
     "text": "his",
     "start": 358.74,
     "end": 358.92
   },
   {
-    "position": 769,
+    "position": 761,
     "text": "tears.",
     "start": 358.92,
     "end": 359.3
   },
   {
-    "position": 770,
+    "position": 762,
     "text": "It",
     "start": 360.18,
     "end": 360.28
   },
   {
-    "position": 771,
+    "position": 763,
     "text": "seemed",
     "start": 360.28,
     "end": 360.5
   },
   {
-    "position": 772,
+    "position": 764,
     "text": "so",
     "start": 360.5,
     "end": 360.8
   },
   {
-    "position": 773,
+    "position": 765,
     "text": "foreign",
     "start": 360.8,
     "end": 361.26
   },
   {
-    "position": 774,
+    "position": 766,
     "text": "to",
     "start": 361.26,
     "end": 361.46
   },
   {
-    "position": 775,
+    "position": 767,
     "text": "his",
     "start": 361.46,
     "end": 361.62
   },
   {
-    "position": 776,
+    "position": 768,
     "text": "pain",
     "start": 361.62,
     "end": 361.86
   },
   {
-    "position": 777,
+    "position": 769,
     "text": "that",
     "start": 361.86,
     "end": 362.08
   },
   {
-    "position": 778,
+    "position": 770,
     "text": "he",
     "start": 362.08,
     "end": 362.2
   },
   {
-    "position": 779,
+    "position": 771,
     "text": "failed",
     "start": 362.2,
     "end": 362.6
   },
   {
-    "position": 780,
+    "position": 772,
     "text": "to",
     "start": 362.6,
     "end": 362.82
   },
   {
-    "position": 781,
+    "position": 773,
     "text": "understand",
     "start": 362.82,
     "end": 363.5
   },
   {
-    "position": 782,
+    "position": 774,
     "text": "his",
     "start": 363.5,
     "end": 364.4
   },
   {
-    "position": 783,
+    "position": 775,
     "text": "torture",
     "start": 364.4,
     "end": 365.02
   },
   {
-    "position": 784,
+    "position": 776,
     "text": "of",
     "start": 365.02,
     "end": 365.36
   },
   {
-    "position": 785,
+    "position": 777,
     "text": "the",
     "start": 365.36,
     "end": 365.5
   },
   {
-    "position": 786,
+    "position": 778,
     "text": "five",
     "start": 365.5,
     "end": 366.04
   },
   {
-    "position": 787,
+    "position": 779,
     "text": "previous",
     "start": 366.04,
     "end": 366.96
   },
   {
-    "position": 788,
+    "position": 780,
     "text": "nights.",
     "start": 366.96,
     "end": 367.32
   },
   {
-    "position": 789,
+    "position": 781,
     "text": "Bent",
     "start": 368.3,
     "end": 368.58
   },
   {
-    "position": 790,
+    "position": 782,
     "text": "over",
     "start": 368.58,
     "end": 368.8
   },
   {
-    "position": 791,
+    "position": 783,
     "text": "the",
     "start": 368.8,
     "end": 369.08
   },
   {
-    "position": 792,
+    "position": 784,
     "text": "spittoon,",
     "start": 369.08,
     "end": 369.76
   },
   {
-    "position": 793,
+    "position": 785,
     "text": "sweating,",
     "start": 370.4,
     "end": 370.64
   },
   {
-    "position": 794,
-    "text": "panting.",
+    "position": 786,
+    "text": "panting,",
     "start": 371.14,
     "end": 371.58
   },
   {
-    "position": 795,
-    "text": "He",
+    "position": 787,
+    "text": "he",
     "start": 371.58,
     "end": 372.08
   },
   {
-    "position": 796,
+    "position": 788,
     "text": "unbuttoned",
     "start": 372.08,
     "end": 372.7
   },
   {
-    "position": 797,
+    "position": 789,
     "text": "his",
     "start": 372.7,
     "end": 372.86
   },
   {
-    "position": 798,
+    "position": 790,
     "text": "tunic",
     "start": 372.86,
     "end": 373.34
   },
   {
-    "position": 799,
+    "position": 791,
     "text": "and",
     "start": 373.34,
     "end": 373.9
   },
   {
-    "position": 800,
+    "position": 792,
     "text": "reached",
     "start": 373.9,
     "end": 374.18
   },
   {
-    "position": 801,
+    "position": 793,
     "text": "for",
     "start": 374.18,
     "end": 374.48
   },
   {
-    "position": 802,
+    "position": 794,
     "text": "the",
     "start": 374.48,
     "end": 374.68
   },
   {
-    "position": 803,
+    "position": 795,
     "text": "handkerchief",
     "start": 374.68,
     "end": 375.32
   },
   {
-    "position": 804,
+    "position": 796,
     "text": "in",
     "start": 375.32,
     "end": 376.1
   },
   {
-    "position": 805,
+    "position": 797,
     "text": "his",
     "start": 376.1,
     "end": 376.3
   },
   {
-    "position": 806,
+    "position": 798,
     "text": "pants",
     "start": 376.3,
     "end": 376.66
   },
   {
-    "position": 807,
+    "position": 799,
     "text": "pocket.",
     "start": 376.66,
     "end": 377.22
   },
   {
-    "position": 808,
+    "position": 800,
     "text": "The",
     "start": 378.04,
     "end": 378.12
   },
   {
-    "position": 809,
+    "position": 801,
     "text": "dentist",
     "start": 378.12,
     "end": 378.4
   },
   {
-    "position": 810,
+    "position": 802,
     "text": "gave",
     "start": 378.4,
     "end": 378.74
   },
   {
-    "position": 811,
+    "position": 803,
     "text": "him",
     "start": 378.74,
     "end": 378.96
   },
   {
-    "position": 812,
+    "position": 804,
     "text": "a",
     "start": 378.96,
     "end": 379.06
   },
   {
-    "position": 813,
+    "position": 805,
     "text": "clean",
     "start": 379.06,
     "end": 379.3
   },
   {
-    "position": 814,
+    "position": 806,
     "text": "cloth.",
     "start": 379.3,
     "end": 379.64
   },
   {
-    "position": 815,
-    "text": "Dry",
+    "position": 807,
+    "text": "\"Dry",
     "start": 380.86,
     "end": 381.22
   },
   {
-    "position": 816,
+    "position": 808,
     "text": "your",
     "start": 381.22,
     "end": 381.4
   },
   {
-    "position": 817,
-    "text": "tears.",
+    "position": 809,
+    "text": "tears,\"",
     "start": 381.4,
     "end": 381.8
   },
   {
-    "position": 818,
-    "text": "He",
+    "position": 810,
+    "text": "he",
     "start": 382.36,
     "end": 382.46
   },
   {
-    "position": 819,
+    "position": 811,
     "text": "said.",
     "start": 382.46,
     "end": 382.74
   },
   {
-    "position": 820,
+    "position": 812,
     "text": "The",
     "start": 383.44,
     "end": 383.62
   },
   {
-    "position": 821,
-    "text": "mayor",
+    "position": 813,
+    "text": "Mayor",
     "start": 383.62,
     "end": 383.84
   },
   {
-    "position": 822,
+    "position": 814,
     "text": "did.",
     "start": 383.84,
     "end": 384.06
   },
   {
-    "position": 823,
+    "position": 815,
     "text": "He",
     "start": 384.7,
     "end": 384.84
   },
   {
-    "position": 824,
+    "position": 816,
     "text": "was",
     "start": 384.84,
     "end": 385.08
   },
   {
-    "position": 825,
+    "position": 817,
     "text": "trembling.",
     "start": 385.08,
     "end": 386.06
   },
   {
-    "position": 826,
+    "position": 818,
     "text": "While",
     "start": 386.84,
     "end": 387.06
   },
   {
-    "position": 827,
+    "position": 819,
     "text": "the",
     "start": 387.06,
     "end": 387.18
   },
   {
-    "position": 828,
+    "position": 820,
     "text": "dentist",
     "start": 387.18,
     "end": 387.48
   },
   {
-    "position": 829,
+    "position": 821,
     "text": "washed",
     "start": 387.48,
     "end": 387.98
   },
   {
-    "position": 830,
+    "position": 822,
     "text": "his",
     "start": 387.98,
     "end": 388.24
   },
   {
-    "position": 831,
+    "position": 823,
     "text": "hands,",
     "start": 388.24,
     "end": 388.56
   },
   {
-    "position": 832,
+    "position": 824,
     "text": "he",
     "start": 388.78,
     "end": 388.8
   },
   {
-    "position": 833,
+    "position": 825,
     "text": "saw",
     "start": 388.8,
     "end": 389.12
   },
   {
-    "position": 834,
+    "position": 826,
     "text": "the",
     "start": 389.12,
     "end": 389.4
   },
   {
-    "position": 835,
+    "position": 827,
     "text": "crumbling",
     "start": 389.4,
     "end": 390.08
   },
   {
-    "position": 836,
+    "position": 828,
     "text": "ceiling",
     "start": 390.08,
     "end": 390.74
   },
   {
-    "position": 837,
+    "position": 829,
     "text": "and",
     "start": 390.74,
     "end": 391.14
   },
   {
-    "position": 838,
+    "position": 830,
+    "text": "a",
+    "start": 391.14,
+    "end": 391.14
+  },
+  {
+    "position": 831,
     "text": "dusty",
     "start": 391.14,
     "end": 391.62
   },
   {
-    "position": 839,
+    "position": 832,
     "text": "spider",
     "start": 391.62,
     "end": 392.1
   },
   {
-    "position": 840,
+    "position": 833,
     "text": "web",
     "start": 392.1,
     "end": 392.52
   },
   {
-    "position": 841,
+    "position": 834,
     "text": "with",
     "start": 392.52,
     "end": 393.06
   },
   {
-    "position": 842,
+    "position": 835,
     "text": "spider's",
     "start": 393.06,
     "end": 393.78
   },
   {
-    "position": 843,
+    "position": 836,
     "text": "eggs",
     "start": 393.78,
     "end": 394.0
   },
   {
-    "position": 844,
+    "position": 837,
     "text": "and",
     "start": 394.0,
     "end": 394.5
   },
   {
-    "position": 845,
+    "position": 838,
     "text": "dead",
     "start": 394.5,
     "end": 394.72
   },
   {
-    "position": 846,
+    "position": 839,
     "text": "insects.",
     "start": 394.72,
     "end": 395.22
   },
   {
-    "position": 847,
+    "position": 840,
     "text": "The",
     "start": 396.16,
     "end": 396.28
   },
   {
-    "position": 848,
+    "position": 841,
     "text": "dentist",
     "start": 396.28,
     "end": 396.64
   },
   {
-    "position": 849,
+    "position": 842,
     "text": "returned,",
     "start": 396.64,
     "end": 397.62
   },
   {
-    "position": 850,
+    "position": 843,
     "text": "drying",
     "start": 398.54,
     "end": 398.96
   },
   {
-    "position": 851,
+    "position": 844,
     "text": "his",
     "start": 398.96,
     "end": 399.18
   },
   {
-    "position": 852,
+    "position": 845,
     "text": "hands.",
     "start": 399.18,
     "end": 399.72
   },
   {
-    "position": 853,
-    "text": "Go",
+    "position": 846,
+    "text": "\"Go",
     "start": 400.66,
     "end": 401.26
   },
   {
-    "position": 854,
+    "position": 847,
     "text": "to",
     "start": 401.26,
     "end": 401.4
   },
   {
-    "position": 855,
-    "text": "bed,",
+    "position": 848,
+    "text": "bed,\"",
     "start": 401.4,
     "end": 401.58
   },
   {
-    "position": 856,
+    "position": 849,
     "text": "he",
     "start": 402.3,
     "end": 402.46
   },
   {
-    "position": 857,
+    "position": 850,
     "text": "said,",
     "start": 402.46,
     "end": 402.68
   },
   {
-    "position": 858,
-    "text": "and",
+    "position": 851,
+    "text": "\"and",
     "start": 403.14,
     "end": 403.6
   },
   {
-    "position": 859,
+    "position": 852,
     "text": "gargle",
     "start": 403.6,
     "end": 404.0
   },
   {
-    "position": 860,
+    "position": 853,
     "text": "with",
     "start": 404.0,
     "end": 404.22
   },
   {
-    "position": 861,
-    "text": "saltwater.",
+    "position": 854,
+    "text": "salt",
     "start": 404.22,
-    "end": 404.84
+    "end": 404.22
   },
   {
-    "position": 862,
+    "position": 855,
+    "text": "water.\"",
+    "start": 404.22,
+    "end": 404.22
+  },
+  {
+    "position": 856,
     "text": "The",
     "start": 405.68,
     "end": 405.76
   },
   {
-    "position": 863,
-    "text": "mayor",
+    "position": 857,
+    "text": "Mayor",
     "start": 405.76,
     "end": 406.0
   },
   {
-    "position": 864,
+    "position": 858,
     "text": "stood",
     "start": 406.0,
     "end": 406.28
   },
   {
-    "position": 865,
+    "position": 859,
     "text": "up,",
     "start": 406.28,
     "end": 406.48
   },
   {
-    "position": 866,
+    "position": 860,
     "text": "said",
     "start": 407.28,
     "end": 407.58
   },
   {
-    "position": 867,
+    "position": 861,
     "text": "goodbye",
     "start": 407.58,
     "end": 408.04
   },
   {
-    "position": 868,
+    "position": 862,
     "text": "with",
     "start": 408.04,
     "end": 408.36
   },
   {
-    "position": 869,
+    "position": 863,
     "text": "a",
     "start": 408.36,
     "end": 408.62
   },
   {
-    "position": 870,
+    "position": 864,
     "text": "casual",
     "start": 408.62,
     "end": 409.46
   },
   {
-    "position": 871,
+    "position": 865,
     "text": "military",
     "start": 409.46,
     "end": 410.1
   },
   {
-    "position": 872,
-    "text": "salute",
+    "position": 866,
+    "text": "salute,",
     "start": 410.1,
     "end": 410.7
   },
   {
-    "position": 873,
+    "position": 867,
     "text": "and",
     "start": 410.7,
     "end": 411.56
   },
   {
-    "position": 874,
+    "position": 868,
     "text": "walked",
     "start": 411.56,
     "end": 411.84
   },
   {
-    "position": 875,
+    "position": 869,
     "text": "toward",
     "start": 411.84,
     "end": 412.4
   },
   {
-    "position": 876,
+    "position": 870,
     "text": "the",
     "start": 412.4,
     "end": 413.2
   },
   {
-    "position": 877,
+    "position": 871,
     "text": "door,",
     "start": 413.2,
     "end": 413.56
   },
   {
-    "position": 878,
+    "position": 872,
     "text": "stretching",
     "start": 414.04,
     "end": 414.26
   },
   {
-    "position": 879,
+    "position": 873,
     "text": "his",
     "start": 414.26,
     "end": 414.46
   },
   {
-    "position": 880,
-    "text": "legs",
+    "position": 874,
+    "text": "legs,",
     "start": 414.46,
     "end": 414.72
   },
   {
-    "position": 881,
+    "position": 875,
     "text": "without",
     "start": 414.72,
     "end": 415.54
   },
   {
-    "position": 882,
+    "position": 876,
     "text": "buttoning",
     "start": 415.54,
     "end": 416.08
   },
   {
-    "position": 883,
+    "position": 877,
     "text": "up",
     "start": 416.08,
     "end": 416.24
   },
   {
-    "position": 884,
+    "position": 878,
     "text": "his",
     "start": 416.24,
     "end": 416.46
   },
   {
-    "position": 885,
+    "position": 879,
     "text": "tunic.",
     "start": 416.46,
     "end": 416.92
   },
   {
-    "position": 886,
-    "text": "Send",
+    "position": 880,
+    "text": "\"Send",
     "start": 417.9,
     "end": 418.26
   },
   {
-    "position": 887,
+    "position": 881,
     "text": "the",
     "start": 418.26,
     "end": 418.5
   },
   {
-    "position": 888,
-    "text": "bill,",
+    "position": 882,
+    "text": "bill,\"",
     "start": 418.5,
     "end": 418.76
   },
   {
-    "position": 889,
+    "position": 883,
     "text": "he",
     "start": 419.16,
     "end": 419.36
   },
   {
-    "position": 890,
-    "text": "said,",
+    "position": 884,
+    "text": "said.",
     "start": 419.36,
     "end": 419.64
   },
   {
-    "position": 891,
-    "text": "to",
+    "position": 885,
+    "text": "\"To",
     "start": 420.06,
     "end": 420.34
   },
   {
-    "position": 892,
+    "position": 886,
     "text": "you",
     "start": 420.34,
     "end": 420.58
   },
   {
-    "position": 893,
+    "position": 887,
     "text": "or",
     "start": 420.58,
     "end": 421.56
   },
   {
-    "position": 894,
+    "position": 888,
     "text": "the",
     "start": 421.56,
     "end": 421.72
   },
   {
-    "position": 895,
-    "text": "town.",
+    "position": 889,
+    "text": "town?\"",
     "start": 421.72,
     "end": 421.98
   },
   {
-    "position": 896,
+    "position": 890,
     "text": "The",
     "start": 422.94,
     "end": 423.02
   },
   {
-    "position": 897,
-    "text": "mayor",
+    "position": 891,
+    "text": "Mayor",
     "start": 423.02,
     "end": 423.28
   },
   {
-    "position": 898,
+    "position": 892,
     "text": "didn't",
     "start": 423.28,
     "end": 423.58
   },
   {
-    "position": 899,
+    "position": 893,
     "text": "look",
     "start": 423.58,
     "end": 423.78
   },
   {
-    "position": 900,
+    "position": 894,
     "text": "at",
     "start": 423.78,
     "end": 423.94
   },
   {
-    "position": 901,
+    "position": 895,
     "text": "him.",
     "start": 423.94,
     "end": 424.18
   },
   {
-    "position": 902,
+    "position": 896,
     "text": "He",
     "start": 424.56,
     "end": 424.72
   },
   {
-    "position": 903,
+    "position": 897,
     "text": "closed",
     "start": 424.72,
     "end": 425.0
   },
   {
-    "position": 904,
+    "position": 898,
     "text": "the",
     "start": 425.0,
     "end": 425.16
   },
   {
-    "position": 905,
+    "position": 899,
     "text": "door",
     "start": 425.16,
     "end": 425.32
   },
   {
-    "position": 906,
+    "position": 900,
     "text": "and",
     "start": 425.32,
     "end": 425.46
   },
   {
-    "position": 907,
+    "position": 901,
     "text": "said",
     "start": 425.46,
     "end": 425.76
   },
   {
-    "position": 908,
-    "text": "to",
+    "position": 902,
+    "text": "through",
     "start": 425.76,
-    "end": 426.28
+    "end": 425.76
   },
   {
-    "position": 909,
+    "position": 903,
     "text": "the",
     "start": 426.28,
     "end": 426.44
   },
   {
-    "position": 910,
-    "text": "screen,",
+    "position": 904,
+    "text": "screen:",
     "start": 426.44,
     "end": 426.82
   },
   {
-    "position": 911,
-    "text": "it's",
+    "position": 905,
+    "text": "\"It's",
     "start": 427.6,
     "end": 427.84
   },
   {
-    "position": 912,
+    "position": 906,
     "text": "the",
     "start": 427.84,
     "end": 427.94
   },
   {
-    "position": 913,
+    "position": 907,
     "text": "same",
     "start": 427.94,
     "end": 428.38
   },
   {
-    "position": 914,
+    "position": 908,
     "text": "damn",
     "start": 428.38,
     "end": 428.7
   },
   {
-    "position": 915,
-    "text": "thing.",
+    "position": 909,
+    "text": "thing.\"",
     "start": 428.7,
     "end": 429.34
   }

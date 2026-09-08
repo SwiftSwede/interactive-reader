@@ -141,6 +141,42 @@ cd ~/Desktop/WebDev/interactive-reader
 .venv/bin/python scripts/generate-timestamps.py --audio public/audio/stories/{slug}.mp3 --slug {slug} --model base
 ```
 
+### Align timestamps to story positions (REQUIRED after Whisper, prevents karaoke desync)
+
+`generate-timestamps.py` numbers words in **Whisper's heard order**, but the karaoke highlights the Nth rendered `.word-span`, which follows **story word positions**. Any drift between the two (Kyle saying "even more late", an annotation LLM normalizing "'em" to "them") accumulates and desyncs the highlight — on Flustered and Driving this compounded to a +234-word jump at the 4-minute mark (2026-09-08).
+
+ALWAYS run this after generate-timestamps.py. It aligns Whisper timing onto story positions, cross-checks the words table against `body_text` (fails loudly on mismatch — fix words first, e.g. re-run annotate-story.ts), enforces monotonic starts, and writes a `.bak` alongside.
+
+```bash
+python3 scripts/align-story-timestamps.py --slug {slug}             # write
+python3 scripts/align-story-timestamps.py --slug {slug} --dry-run  # report only
+```
+
+**Cost / time:** Free, a few seconds. Stdlib Python only (no venv needed).
+
+### Verify karaoke sync (diagnosis + render simulation)
+
+Two diagnosis scripts (stdlib Python, free):
+
+```bash
+python3 scripts/karaoke-sync-diagnosis.py [slugs...]         # offset profile: where sync drifts, by how much
+python3 scripts/karaoke-render-simulation.py [slugs...]     # replicates the component's render + binary search;
+                                                             # reports excluded spans, paragraph jumps, error at sampled times
+```
+
+Expected healthy output: `DOM spans == tokens`, `excluded: 0`, `err 0` at every sample. Any `excluded > 0` means the words table diverged from body_text; any nonzero `err` means timestamps need re-alignment.
+
+### Dedupe expressions after annotation (per-chunk duplication)
+
+annotate-story.ts chunks per paragraph, and separate chunks can each claim the same multi-word expression, inserting duplicate `expressions` rows. Run this after every annotation:
+
+```bash
+npx tsx scripts/dedupe-expressions.ts --slug {slug} --dry-run  # report
+npx tsx scripts/dedupe-expressions.ts --slug {slug}           # repoint words to keeper, delete duplicates
+```
+
+**Cost / time:** Free, a few seconds.
+
 ### Generate Práctica Coral IPA
 
 Generates the IPA transcription for a story's Práctica Coral sentence and saves it to the pronunciation_drills table. Needed for the dictation step to show IPA.
