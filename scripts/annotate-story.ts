@@ -351,7 +351,11 @@ async function main() {
 
   if (existingWords && existingWords.length > 0) {
     console.log("Words already exist for this story. Deleting old words and expressions...");
-    await supabase.from("words").delete().eq("story_id", story.id);
+    await supabase
+      .from("words")
+      .delete()
+      .eq("story_id", story.id)
+      .eq("source", "body");
     await supabase.from("expressions").delete().eq("story_id", story.id);
     console.log("Old data deleted.");
   }

@@ -17,6 +17,7 @@ import {
   loadSessionWordFlagRequests,
   loadWordFlags,
 } from "@/lib/word-flags";
+import { loadOwnSongLyricAttempts } from "@/lib/services/songAttempts";
 import type { WordFlagging } from "@/types";
 
 export async function generateMetadata({
@@ -104,18 +105,7 @@ export default async function LessonSlugPage({
       : undefined;
   const kind = data.story.kind ?? "story";
   const isVideo = kind === "video_summary";
-  const sessionId =
-    access.kind === "ok" && (access.saveResponses || isVideo)
-      ? access.session.id
-      : undefined;
-  const flagSessionId = access.kind === "ok" ? access.session.id : null;
-
-  let readerMode: "classroom-live" | "classroom-review" | "open" = "open";
-  if (access.kind === "ok" && (access.saveResponses || isVideo)) {
-    readerMode = isWithinSessionWindow(access.session)
-      ? "classroom-live"
-      : "classroom-review";
-  }
+  const isSong = kind === "song";
 
   const {
     data: { user },
@@ -124,6 +114,19 @@ export default async function LessonSlugPage({
   const isTeacher = profile?.role === "teacher";
   const trackLookups = profile != null && profile.role !== "teacher";
 
+  const sessionId =
+    access.kind === "ok" && (access.saveResponses || isVideo || isSong)
+      ? access.session.id
+      : undefined;
+  const flagSessionId = access.kind === "ok" ? access.session.id : null;
+
+  let readerMode: "classroom-live" | "classroom-review" | "open" = "open";
+  if (access.kind === "ok" && (access.saveResponses || isVideo || isSong)) {
+    readerMode = isWithinSessionWindow(access.session)
+      ? "classroom-live"
+      : "classroom-review";
+  }
+
   const skipFlags = isVideo;
   const [
     savedResponses,
@@ -131,6 +134,7 @@ export default async function LessonSlugPage({
     flags,
     teacherRequests,
     ownRequests,
+    savedAttempts,
   ] = await Promise.all([
     !isVideo
       ? loadOwnComprehensionResponses(
@@ -156,6 +160,13 @@ export default async function LessonSlugPage({
       flagSessionId &&
       readerMode === "classroom-live"
       ? loadOwnWordFlagRequests(supabase, flagSessionId, user.id)
+      : Promise.resolve([]),
+    isSong &&
+      readerMode === "classroom-live" &&
+      user &&
+      sessionId &&
+      !isTeacher
+      ? loadOwnSongLyricAttempts(supabase, sessionId, user.id)
       : Promise.resolve([]),
   ]);
 
@@ -201,6 +212,16 @@ export default async function LessonSlugPage({
       }
       recordingYoutubeUrl={
         access.kind === "ok" ? sessionRecordingUrl(access.session) : null
+      }
+      savedAttempts={savedAttempts}
+      lessonStepCurrent={
+        access.kind === "ok" ? access.session.lessonStepCurrent : null
+      }
+      lessonStepLocked={
+        access.kind === "ok" ? access.session.lessonStepLocked : false
+      }
+      songClassAnswers={
+        access.kind === "ok" ? access.session.songClassAnswers : {}
       }
     />
   );

@@ -33,6 +33,24 @@ function clockToSeconds(raw: string): number | null {
   return null;
 }
 
+export function youtubeEmbedId(url: string | null | undefined): string | null {
+  if (!url) return null;
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname.includes("youtu.be")) {
+      return parsed.pathname.replace("/", "") || null;
+    }
+    const v = parsed.searchParams.get("v");
+    if (v) return v;
+    const parts = parsed.pathname.split("/");
+    const embed = parts.indexOf("embed");
+    if (embed >= 0 && parts[embed + 1]) return parts[embed + 1];
+  } catch {
+    return null;
+  }
+  return null;
+}
+
 export function youtubeStartSeconds(url: string | null | undefined): number {
   if (!url) return 0;
   try {

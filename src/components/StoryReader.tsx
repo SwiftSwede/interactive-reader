@@ -8,6 +8,7 @@ import type { SavedComprehensionResponse } from "@/components/ComprehensionQuest
 import type { SavedPersonalResponse } from "@/lib/personal-responses";
 import type { WordTimestamp } from "@/components/InteractiveStory";
 import type { WordFlagging } from "@/types";
+import type { SavedSongAttempt } from "@/lib/services/songAttempts";
 import {
   loadOwnFreeWrite,
   loadVideoSummaryNotes,
@@ -84,6 +85,10 @@ export default async function StoryReader({
   answersRevealed = false,
   recordingYoutubeUrl = null,
   flagging,
+  savedAttempts = [],
+  lessonStepCurrent = null,
+  lessonStepLocked = false,
+  songClassAnswers = {},
 }: {
   data: LoadedStory;
   allowReveal?: boolean;
@@ -102,6 +107,10 @@ export default async function StoryReader({
   answersRevealed?: boolean;
   recordingYoutubeUrl?: string | null;
   flagging?: WordFlagging;
+  savedAttempts?: SavedSongAttempt[];
+  lessonStepCurrent?: string | null;
+  lessonStepLocked?: boolean;
+  songClassAnswers?: Record<number, string>;
 }) {
   const { story, pronunciationDrill } = data;
 
@@ -203,6 +212,11 @@ export default async function StoryReader({
         sessionEndTime={sessionEndTime}
         classEndedAt={classEndedAt}
         flagging={flagging}
+        savedAttempts={savedAttempts}
+        lessonStepCurrent={lessonStepCurrent}
+        lessonStepLocked={lessonStepLocked}
+        answersRevealed={answersRevealed}
+        songClassAnswers={songClassAnswers}
       />
     </SoundVideoProvider>
   );

@@ -99,6 +99,97 @@ body {
   letter-spacing: 0.01em;
 }
 
+.lyric-blank-slot {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 8px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.lyric-blank-num {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  border-radius: 9999px;
+  background: var(--accent);
+  font-family: var(--font-roboto-flex), system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--surface);
+  text-align: center;
+}
+
+.lyric-blank-grow {
+  display: inline-grid;
+  vertical-align: baseline;
+}
+
+.lyric-blank-grow > * {
+  grid-area: 1 / 1;
+}
+
+.lyric-blank-sizer {
+  visibility: hidden;
+  white-space: pre;
+  font: inherit;
+  line-height: 32px;
+  pointer-events: none;
+}
+
+.lyric-blank {
+  display: inline-block;
+  box-sizing: content-box;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid var(--paper-line);
+  border-radius: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 32px;
+  height: 32px;
+  color: inherit;
+  text-align: left;
+  vertical-align: baseline;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.lyric-blank:focus {
+  outline: none;
+  border-bottom-width: 2px;
+  border-bottom-color: var(--accent);
+}
+
+.lyric-blank-ok {
+  border-bottom-color: var(--success);
+}
+
+.lyric-blank-bad {
+  border-bottom-color: var(--error);
+  text-decoration: line-through;
+}
+
+.lyric-blank-mark {
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.lyric-blank-answer {
+  margin-left: 8px;
+  margin-right: 4px;
+}
+
 .text-story-english {
   font-family: var(--font-roboto-flex), system-ui, sans-serif;
   font-size: 18px;
@@ -669,6 +760,55 @@ body {
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--text-secondary);
+}
+
+.step-nav-paced {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+}
+
+.step-nav-paced .step-nav-btn:not(.step-nav-btn-next) {
+  justify-self: start;
+}
+
+.step-nav-paced .step-nav-btn-next,
+.step-nav-paced .step-nav-done {
+  justify-self: end;
+  margin-left: 0;
+}
+
+.step-nav-paced .step-nav-lock {
+  justify-self: center;
+}
+
+.step-nav-lock {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: var(--radius-card);
+  background: transparent;
+  color: var(--text-accent);
+  font-family: var(--font-roboto-flex), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.step-nav-lock:hover {
+  background: var(--accent-softer);
+}
+
+.step-nav-lock:active {
+  background: var(--accent-soft);
+}
+
+.step-nav-lock:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* Ghost button (DESIGN.md): transparent, accent text, 44px target. */

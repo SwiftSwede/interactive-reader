@@ -417,6 +417,7 @@ The app currently has minimal test coverage. Build coverage incrementally: test 
 ## Key decisions (resolved 2026-08-21)
 - Teacher-first build strategy: Phase 2 = full teacher dashboard. Consumer paid tier = Phase 5.
 - Same reader, different overlay: Classroom and consumer students use identical components. Context determines active features.
+- Lesson types transfer to the consumer tier by default (PRD Guiding Principle #18): build for the live class first, but the review-mode flow must also work teacher-less. Classroom-only designs (e.g., group exam single-writer) are recorded PRD exceptions, never accidents.
 - Magic link auth: no passwords. Email -> magic link -> click -> in.
 - Stripe webhook auto-creates user accounts from payment email.
 - 90-min class window: scheduled start and end stay on the session. Teaching mode continues if class runs long until the teacher taps Terminar clase (or four hours after the scheduled end). Reveal stays gated until then. Manual "Desbloquear ahora" still exists.

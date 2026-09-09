@@ -21,6 +21,10 @@ export type StoryRow = {
   is_free: boolean;
   youtube_url?: string | null;
   lyric_blanks?: unknown;
+  artist_bio?: string | null;
+  song_meaning?: string | null;
+  lyrics_ipa?: unknown;
+  line_timestamps?: unknown;
   spanish_summary?: string | null;
   free_write_minutes?: number | null;
   created_at: string;
@@ -88,6 +92,7 @@ type WordRow = {
   audio_url: string;
   expression_id: string | null;
   is_transparent: boolean;
+  source?: string | null;
 };
 
 type ExpressionRow = {
@@ -102,6 +107,7 @@ type ExpressionRow = {
 export type LoadedStory = {
   story: StoryRow;
   words: WordData[];
+  bioWords: WordData[];
   expressions: ExpressionData[];
   comprehensionQuestions: CompQuestionRow[];
   personalQuestions: PersonalQuestionRow[];
@@ -128,6 +134,20 @@ async function loadStoryRelated(
 
   const wordRows = [...(wordsPage1 || []), ...(wordsPage2 || [])] as WordRow[];
 
+  const mapWord = (w: WordRow): WordData => ({
+    id: w.id,
+    position: w.position,
+    text: w.text,
+    spanish_translation: w.spanish_translation,
+    phonetic_transcription: w.phonetic_transcription,
+    part_of_speech: w.part_of_speech,
+    is_transparent: w.is_transparent,
+    expression_id: w.expression_id,
+    audio_url: w.audio_url,
+  });
+  const bodyWords = wordRows.filter((w) => (w.source ?? "body") === "body");
+  const bioWords = wordRows.filter((w) => w.source === "bio");
+
   const { data: expressions } = await supabase
     .from("expressions")
     .select("*")
@@ -153,17 +173,8 @@ async function loadStoryRelated(
 
   return {
     story: storyRow,
-    words: wordRows.map((w) => ({
-      id: w.id,
-      position: w.position,
-      text: w.text,
-      spanish_translation: w.spanish_translation,
-      phonetic_transcription: w.phonetic_transcription,
-      part_of_speech: w.part_of_speech,
-      is_transparent: w.is_transparent,
-      expression_id: w.expression_id,
-      audio_url: w.audio_url,
-    })),
+    words: bodyWords.map(mapWord),
+    bioWords: bioWords.map(mapWord),
     expressions: (expressions || []).map((e) => ({
       id: (e as ExpressionRow).id,
       text: (e as ExpressionRow).text,

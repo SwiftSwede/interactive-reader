@@ -1,15 +1,17 @@
 // Seed Music class songs (Story.kind = "song") with lyric blanks + YouTube URL.
+// Optional Slice 63 fields: artist_bio, song_meaning, lyrics_ipa, line_timestamps.
 //
-//   npx tsx scripts/seed-music.ts            # seeds all unseeded songs in SONGS
+//   npx tsx scripts/seed-music.ts            # seeds all songs in SONGS
 //   npx tsx scripts/seed-music.ts --slug summer-of-69
+//   npx tsx scripts/seed-music.ts --slug summer-of-69 --force
 //
-// After seeding, annotate with:
+// After seeding, annotate lyrics with:
 //   npx tsx scripts/annotate-story.ts --slug <slug>
 //
-// Word annotations (translations + IPA) are NOT inserted here — annotate-story.ts
-// handles those via LLM. Comprehension/personal questions are intentionally NOT
-// seeded: the Music class has no question steps (blanks → ghosting → karaoke).
-// The artist bio waits for the Slice 57 build (no stories column for it yet).
+// Word annotations (translations + IPA) are NOT inserted here. annotate-story.ts
+// only rewrites words.source = 'body'. Bio words are a later pipeline.
+// Comprehension/personal questions are intentionally NOT seeded.
+// --force still refuses if song_lyric_attempts exist for this story.
 
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
@@ -24,12 +26,20 @@ type Song = {
   body: string; // clean lyrics, stanza breaks as blank lines
   youtubeUrl: string;
   lyricBlanks: Array<{ id: number; prompt: string; answer: string }>;
+  artistBio?: string;
+  songMeaning?: string;
+  lyricsIpa?: Array<{ line_index: number; ipa_text: string }>;
+  lineTimestamps?: Array<{
+    line_index: number;
+    start_seconds: number;
+    end_seconds: number;
+  }>;
 };
 
 // Blank conventions (from music-class-methodology wiki page):
 // - ids match Kyle's deck numbering, in order of first appearance
 // - repeated words reuse the same id (one prompt/answer entry per unique blank)
-// - answers are lowercase-insensitive-checked by MusicBlanks.tsx
+// - answers: trim, lowercase, collapse whitespace; keep apostrophes
 const SONGS: Song[] = [
   {
     slug: "summer-of-69",
@@ -114,6 +124,29 @@ It was the summer, the summer, the summer of '69, yeah.`,
         answer: "gone",
       },
     ],
+    artistBio: `Bryan Adams is a Canadian singer who got famous in the 80s. Summer of '69 came out in 1985, but it isn't really a history lesson about 1969. Adams has said the title is also a joke. The song is nostalgia: a guy looking back at being young, playing guitar, and thinking those were the best days.
+
+I use this one a lot with pre-intermediate groups because the story is simple and the verbs are the ones we actually need: got, bought, played, quit, met, held. You don't need to know Bryan Adams. You need to hear how English sounds when somebody remembers.`,
+    songMeaning: `The song is a memory. A kid buys a cheap guitar, starts a band with school friends, the band falls apart, then he meets a girl on a porch and thinks this is it.
+
+The trick is the title. People hear 1969 and think history. Adams has said it is also a wink. For class, I treat it as looking back: you think the past was better, and you say you'd always wanna be there.
+
+Listen for the past verbs and for "those were the best days of my life." That's the whole feeling.`,
+    lyricsIpa: [
+      { line_index: 0, ipa_text: "aɪ ɡɑt maɪ fɝst ɹil sɪks stɹɪŋ" },
+      { line_index: 1, ipa_text: "bɑt ɪt æt ðə faɪv ən daɪm" },
+      { line_index: 2, ipa_text: "pleɪd ɪt tɪl maɪ fɪŋɡɚz blɛd" },
+      { line_index: 3, ipa_text: "wʌz ðə sʌmɚ əv sɪksti naɪn" },
+      { line_index: 4, ipa_text: "mi ən sʌm ɡaɪz frəm skul" },
+      { line_index: 5, ipa_text: "hæd ə bænd ən wi tɹaɪd ɹil hɑɹd" },
+      { line_index: 6, ipa_text: "dʒɪmi kwɪt dʒoʊdi ɡɑt mæɹid" },
+      { line_index: 7, ipa_text: "aɪ ʃʊdəv noʊn wid nɛvɚ ɡɛt fɑɹ" },
+      { line_index: 8, ipa_text: "oʊ wɛn aɪ lʊk bæk naʊ" },
+      { line_index: 9, ipa_text: "ðæt sʌmɚ simd tə læst fɚɛvɚ" },
+      { line_index: 10, ipa_text: "ən ɪf aɪ hæd ðə tʃɑɪs" },
+      { line_index: 11, ipa_text: "jæ aɪd ɑlweɪz wɑnə bi ðɛɹ" },
+      { line_index: 12, ipa_text: "ðoʊz wɚ ðə bɛst deɪz əv maɪ laɪf" },
+    ],
   },
 ];
 
@@ -126,8 +159,40 @@ function tokensOf(body: string): number {
 
 async function seedSong(
   admin: ReturnType<typeof createAdminClient>,
-  song: Song
+  song: Song,
+  force: boolean
 ) {
+  const { data: existing } = await admin
+    .from("stories")
+    .select("id")
+    .eq("slug", song.slug)
+    .maybeSingle();
+
+  if (existing?.id) {
+    const { count, error: countError } = await admin
+      .from("song_lyric_attempts")
+      .select("id", { count: "exact", head: true })
+      .eq("story_id", existing.id);
+
+    if (countError) {
+      throw new Error(
+        `${song.slug}: no pude revisar song_lyric_attempts (${countError.message})`
+      );
+    }
+    if ((count ?? 0) > 0) {
+      throw new Error(
+        `${song.slug}: ya hay respuestas de clase en song_lyric_attempts. ` +
+          `Ni --force las borra. Cambia el slug o limpia esos intentos a mano.`
+      );
+    }
+    if (!force) {
+      console.log(
+        `${song.slug} already exists. Upserting in place (lyrics, bio, meaning, IPA). ` +
+          `Pass --force if you meant to overwrite on purpose.`
+      );
+    }
+  }
+
   const { data: story, error } = await admin
     .from("stories")
     .upsert(
@@ -143,6 +208,10 @@ async function seedSong(
         is_free: false,
         youtube_url: song.youtubeUrl,
         lyric_blanks: song.lyricBlanks,
+        artist_bio: song.artistBio ?? null,
+        song_meaning: song.songMeaning ?? null,
+        lyrics_ipa: song.lyricsIpa ?? null,
+        line_timestamps: song.lineTimestamps ?? null,
       },
       { onConflict: "slug" }
     )
@@ -156,7 +225,11 @@ async function seedSong(
   console.log(
     `Seeded ${song.slug} — ${song.title} (${song.artist}), ${tokensOf(
       song.body
-    )} words, ${song.lyricBlanks.length} blanks`
+    )} words, ${song.lyricBlanks.length} blanks` +
+      `${song.artistBio ? ", bio" : ""}` +
+      `${song.songMeaning ? ", meaning" : ""}` +
+      `${song.lyricsIpa ? `, ${song.lyricsIpa.length} IPA lines` : ""}` +
+      `${song.lineTimestamps ? ", timestamps" : ", no timestamps"}`
   );
   console.log(
     `Next: npx tsx scripts/annotate-story.ts --slug ${song.slug}  (~$0.01-0.02, 5-12 min)`
@@ -167,6 +240,7 @@ async function main() {
   const admin = createAdminClient();
   const slugArgIdx = process.argv.indexOf("--slug");
   const slugArg = slugArgIdx >= 0 ? process.argv[slugArgIdx + 1] : null;
+  const force = process.argv.includes("--force");
 
   const songs = slugArg
     ? SONGS.filter((s) => s.slug === slugArg)
@@ -178,7 +252,7 @@ async function main() {
   }
 
   for (const song of songs) {
-    await seedSong(admin, song);
+    await seedSong(admin, song, force);
   }
 }
 

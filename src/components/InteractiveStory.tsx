@@ -493,8 +493,12 @@ export default function InteractiveStory({
     };
   }, [isAudioPlaying, karaokeTick, getWordSpans]);
 
-  // Split body text into paragraphs, then tokenize each paragraph
-  const paragraphs = bodyText.split("\n").filter((p) => p.trim());
+  // Split body text into paragraphs, then tokenize each paragraph.
+  // Songs keep blank lines so stanzas match Completa la canción.
+  const lyricLayout = kind === "song";
+  const paragraphs = lyricLayout
+    ? bodyText.split("\n")
+    : bodyText.split("\n").filter((p) => p.trim());
 
   const handleActivate = useCallback((word: WordData) => {
     setActivePosition(word.position);
@@ -596,8 +600,11 @@ export default function InteractiveStory({
         />
       )}
 
-      <div className="space-y-4">
+      <div className={lyricLayout ? undefined : "space-y-4"}>
         {paragraphs.map((paragraph, paraIdx) => {
+          if (lyricLayout && !paragraph.trim()) {
+            return <div key={paraIdx} className="h-8" />;
+          }
           const tokens = paragraph.split(/\s+/).filter((t) => t);
           const sceneBreak =
             kind === "movie_talk" && /^\*+\s*$/.test(paragraph.trim());
@@ -618,7 +625,10 @@ export default function InteractiveStory({
               : null;
 
           return (
-            <p key={paraIdx} className="text-story-body text-text-primary">
+            <p
+              key={paraIdx}
+              className={`text-story-body text-text-primary${lyricLayout ? " mb-0" : ""}`}
+            >
               {tokens.map((token, tokenIdx) => {
                 const currentPos = wordPosition++;
                 const occurrenceIndex = nextOccurrenceIndex(

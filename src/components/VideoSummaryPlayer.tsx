@@ -7,7 +7,7 @@ import BackLink from "@/components/BackLink";
 import ClassroomYoutubePlayer from "@/components/ClassroomYoutubePlayer";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
 import { createClient } from "@/lib/supabase/client";
-import { youtubeEmbedId } from "@/components/MusicBlanks";
+import { youtubeEmbedId } from "@/lib/youtube-sync";
 import VideoSummaryFreeWrite from "@/components/VideoSummaryFreeWrite";
 import VideoSummaryTranslationStep from "@/components/VideoSummaryTranslationStep";
 import EndClassButton from "@/components/EndClassButton";

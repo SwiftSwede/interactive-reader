@@ -31,6 +31,10 @@ export interface Story {
   isFree: boolean; // true for the one free demo story
   youtubeUrl: string | null;
   lyricBlanks: LyricBlank[];
+  artistBio: string | null;
+  songMeaning: string | null;
+  lyricsIpa: unknown;
+  lineTimestamps: unknown;
   spanishSummary: string | null;
   freeWriteMinutes: number;
   createdAt: string;
@@ -41,6 +45,18 @@ export interface LyricBlank {
   id: number;
   prompt: string;
   answer: string;
+}
+
+export interface SongLyricAttempt {
+  id: string;
+  courseSessionId: string;
+  userId: string;
+  storyId: string;
+  blankId: number;
+  typedText: string | null;
+  isCorrect: boolean | null;
+  submittedAt: string | null;
+  updatedAt: string;
 }
 
 // ── Word ───────────────────────────────────────────────────
@@ -57,6 +73,7 @@ export interface Word {
   audioUrl: string; // path to MP3, /audio/words/[id].mp3
   expressionId: string | null; // if part of a multi-word expression
   isTransparent: boolean; // word doesn't need translation (cognates, etc.)
+  source: "body" | "bio";
 }
 
 // ── Expression (multi-word units) ──────────────────────────
@@ -244,6 +261,8 @@ export interface CourseSession {
   examPromptId: string | null;
   presentationPromptId: string | null;
   presentationStep: string | null;
+  lessonStepCurrent: string | null;
+  lessonStepLocked: boolean;
   conversationPromptId: string | null;
   roundCurrent: number;
   roundState: ConversationRoundState;
@@ -255,6 +274,7 @@ export interface CourseSession {
   sessionEndTime: string;
   classEndedAt: string | null;
   answersRevealed: boolean;
+  songClassAnswers: Record<number, string>;
   notes: string | null;
   sessionLinkToken: string;
   timerStartedAt: string | null;

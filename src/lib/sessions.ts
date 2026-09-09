@@ -17,6 +17,7 @@ import {
   isConversationPlan,
   isConversationRoundState,
 } from "@/lib/conversation";
+import { parseSongClassAnswers } from "@/lib/music";
 import type {
   ConversationPlan,
   ConversationRoundState,
@@ -64,6 +65,8 @@ type SessionRow = {
   exam_prompt_id?: string | null;
   presentation_prompt_id?: string | null;
   presentation_step?: string | null;
+  lesson_step_current?: string | null;
+  lesson_step_locked?: boolean | null;
   conversation_prompt_id?: string | null;
   round_current?: number | null;
   round_state?: string | null;
@@ -75,6 +78,7 @@ type SessionRow = {
   session_end_time: string;
   class_ended_at?: string | null;
   answers_revealed: boolean;
+  song_class_answers?: unknown;
   notes: string | null;
   session_link_token: string;
   timer_started_at?: string | null;
@@ -130,6 +134,8 @@ export function mapSession(row: SessionRow): CourseSession {
     examPromptId: row.exam_prompt_id ?? null,
     presentationPromptId: row.presentation_prompt_id ?? null,
     presentationStep: row.presentation_step ?? null,
+    lessonStepCurrent: row.lesson_step_current ?? null,
+    lessonStepLocked: row.lesson_step_locked ?? false,
     conversationPromptId: row.conversation_prompt_id ?? null,
     roundCurrent: row.round_current ?? 0,
     roundState,
@@ -141,6 +147,7 @@ export function mapSession(row: SessionRow): CourseSession {
     sessionEndTime: row.session_end_time,
     classEndedAt: row.class_ended_at ?? null,
     answersRevealed: row.answers_revealed,
+    songClassAnswers: parseSongClassAnswers(row.song_class_answers),
     notes: row.notes,
     sessionLinkToken: row.session_link_token,
     timerStartedAt: row.timer_started_at ?? null,

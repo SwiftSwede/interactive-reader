@@ -26,6 +26,8 @@ import {
   loadWritingSubmissions,
   sessionTitle,
 } from "@/lib/teacher";
+import { parseLyricBlanks } from "@/lib/music";
+import { getSongBlankAnalytics } from "@/lib/services/songAttempts";
 
 export const metadata = {
   title: "Clase - Profe Kyle",
@@ -85,6 +87,7 @@ export default async function SessionDetailPage({
   const isVideo = session.sessionType === "video_summary";
   const isPresentation = session.sessionType === "presentation";
   const isConversation = session.sessionType === "conversation";
+  const isSong = session.sessionType === "song";
   const isLiveOnly = isLiveOnlySessionType(session.sessionType);
   const [students, lookedUpWords, submissions, examGroups, examSubs, freeWrites] =
     await Promise.all([
@@ -124,6 +127,21 @@ export default async function SessionDetailPage({
       .eq("id", session.examPromptId)
       .maybeSingle();
     if (data) examPrompt = mapExamPromptRow(data as ExamPromptRow);
+  }
+
+  let songAnalytics: Awaited<ReturnType<typeof getSongBlankAnalytics>> | null =
+    null;
+  if (isSong && session.storyId) {
+    const { data: songRow } = await supabase
+      .from("stories")
+      .select("lyric_blanks")
+      .eq("id", session.storyId)
+      .maybeSingle();
+    songAnalytics = await getSongBlankAnalytics(
+      supabase,
+      session.id,
+      parseLyricBlanks(songRow?.lyric_blanks)
+    );
   }
 
   const unlocked = areAnswersUnlocked({
@@ -246,6 +264,17 @@ export default async function SessionDetailPage({
         </p>
       ) : null}
 
+      {isSong && copyHref ? (
+        <p className="mt-4">
+          <Link
+            href={copyHref}
+            className="inline-flex h-11 items-center rounded-card bg-accent px-4 text-sm font-medium text-white"
+          >
+            Abrir la canción
+          </Link>
+        </p>
+      ) : null}
+
       {isVideo && (
         <p className="mt-2 text-sm text-text-muted">
           Los estudiantes entran a Traducción cuando termina el tiempo de
@@ -311,6 +340,70 @@ export default async function SessionDetailPage({
           />
         </div>
       )}
+
+      {isSong && songAnalytics ? (
+        <div className="mt-10">
+          <h2 className="mb-3 text-headline-md text-text-primary">
+            Huecos de la canción
+          </h2>
+          {songAnalytics.students.length === 0 ? (
+            <p className="text-sm text-text-muted">
+              Todavía nadie ha entregado la hoja.
+            </p>
+          ) : (
+            <ul className="space-y-2">
+              {songAnalytics.blanks.map((blank) => {
+                const miss =
+                  blank.submitted === 0
+                    ? 0
+                    : Math.round(
+                        ((blank.submitted - blank.correct) / blank.submitted) *
+                          100
+                      );
+                return (
+                  <li
+                    key={blank.blankId}
+                    className="rounded-card border border-paper-line bg-white px-3 py-3"
+                  >
+                    <p className="text-label-md text-text-primary">
+                      {blank.blankId}. {blank.prompt}
+                    </p>
+                    <p className="mt-1 text-label-sm text-text-muted">
+                      Era: {blank.answer}. {blank.correct}/{blank.submitted} bien
+                      {blank.submitted > 0 ? ` (${miss}% se equivocó)` : ""}.
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+          <h3 className="mt-8 mb-3 text-headline-md text-text-primary">
+            Por estudiante
+          </h3>
+          {songAnalytics.students.length === 0 ? (
+            <p className="text-sm text-text-muted">
+              Cuando entreguen, ves sus puntajes aquí.
+            </p>
+          ) : (
+            <ul className="space-y-2">
+              {songAnalytics.students.map((row) => (
+                <li
+                  key={row.userId}
+                  className="rounded-card border border-paper-line bg-white px-3 py-3"
+                >
+                  <p className="text-label-md text-text-primary">
+                    {row.displayName}
+                  </p>
+                  <p className="mt-1 text-label-sm text-text-muted">
+                    {row.correct}/{row.total} correctas.
+                  </p>
+                  <LocalDateTime iso={row.submittedAt} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ) : null}
 
       {!isWriting && !isExam && !isVideo && !isPresentation && !isConversation && (
         <div className="mt-10">

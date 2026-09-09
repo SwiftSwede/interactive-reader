@@ -20,9 +20,9 @@ import MicroExplanation from "./MicroExplanation";
 import StoryTextSheet from "./StoryTextSheet";
 import BackLink from "./BackLink";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
-import MusicBlanks, { youtubeEmbedId } from "./MusicBlanks";
+import MusicLessonSteps from "./music/MusicLessonSteps";
+import { youtubeEmbedId } from "@/lib/youtube-sync";
 import ClassroomYoutubePlayer from "./ClassroomYoutubePlayer";
-import type { LyricBlank } from "@/types";
 import { PlaybackRateProvider } from "./PlaybackRateContext";
 import EndClassButton from "@/components/EndClassButton";
 import { getSessionPhase } from "@/lib/session-phase";
@@ -53,6 +53,114 @@ type Step = {
 // hidden and karaoke is disabled.
 
 export default function StorySteps({
+  data,
+  timestamps,
+  allowReveal = true,
+  unlockAt,
+  sessionId,
+  savedResponses,
+  savedPersonalResponses,
+  trackLookups = false,
+  readerMode = "open",
+  showPractice,
+  storyAudioUrl,
+  coralAudio,
+  coralIpa,
+  wordNotes,
+  coralExplanation,
+  choralCompleted,
+  isTeacher = false,
+  recordingYoutubeUrl = null,
+  sessionStartTime = null,
+  sessionEndTime = null,
+  classEndedAt: initialEndedAt = null,
+  flagging,
+  savedAttempts = [],
+  lessonStepCurrent = null,
+  lessonStepLocked = false,
+  answersRevealed = false,
+  songClassAnswers = {},
+}: {
+  data: LoadedStory;
+  timestamps: WordTimestamp[];
+  allowReveal?: boolean;
+  unlockAt?: string;
+  sessionId?: string;
+  savedResponses?: SavedComprehensionResponse[];
+  savedPersonalResponses?: SavedPersonalResponse[];
+  trackLookups?: boolean;
+  readerMode?: "classroom-live" | "classroom-review" | "open";
+  showPractice: boolean;
+  storyAudioUrl: string | null;
+  coralAudio: string;
+  coralIpa: string;
+  wordNotes: PronunciationWordNote[];
+  coralExplanation: string | null;
+  choralCompleted: boolean;
+  isTeacher?: boolean;
+  recordingYoutubeUrl?: string | null;
+  sessionStartTime?: string | null;
+  sessionEndTime?: string | null;
+  classEndedAt?: string | null;
+  flagging?: WordFlagging;
+  savedAttempts?: import("@/lib/services/songAttempts").SavedSongAttempt[];
+  lessonStepCurrent?: string | null;
+  lessonStepLocked?: boolean;
+  answersRevealed?: boolean;
+  songClassAnswers?: Record<number, string>;
+}) {
+  if (data.story.kind === "song") {
+    return (
+      <MusicLessonSteps
+        data={data}
+        allowReveal={allowReveal}
+        sessionId={sessionId}
+        trackLookups={trackLookups}
+        readerMode={readerMode}
+        isTeacher={isTeacher}
+        recordingYoutubeUrl={recordingYoutubeUrl}
+        sessionStartTime={sessionStartTime}
+        sessionEndTime={sessionEndTime}
+        classEndedAt={initialEndedAt}
+        flagging={flagging}
+        savedAttempts={savedAttempts}
+        lessonStepCurrent={lessonStepCurrent}
+        lessonStepLocked={lessonStepLocked}
+        answersRevealed={answersRevealed}
+        songClassAnswers={songClassAnswers}
+      />
+    );
+  }
+
+  return (
+    <ClassicStorySteps
+      data={data}
+      timestamps={timestamps}
+      allowReveal={allowReveal}
+      unlockAt={unlockAt}
+      sessionId={sessionId}
+      savedResponses={savedResponses}
+      savedPersonalResponses={savedPersonalResponses}
+      trackLookups={trackLookups}
+      readerMode={readerMode}
+      showPractice={showPractice}
+      storyAudioUrl={storyAudioUrl}
+      coralAudio={coralAudio}
+      coralIpa={coralIpa}
+      wordNotes={wordNotes}
+      coralExplanation={coralExplanation}
+      choralCompleted={choralCompleted}
+      isTeacher={isTeacher}
+      recordingYoutubeUrl={recordingYoutubeUrl}
+      sessionStartTime={sessionStartTime}
+      sessionEndTime={sessionEndTime}
+      classEndedAt={initialEndedAt}
+      flagging={flagging}
+    />
+  );
+}
+
+function ClassicStorySteps({
   data,
   timestamps,
   allowReveal = true,
@@ -229,14 +337,6 @@ export default function StorySteps({
   };
 
   const youtubeId = youtubeEmbedId(story.youtube_url);
-  const lyricBlanks: LyricBlank[] = Array.isArray(story.lyric_blanks)
-    ? (story.lyric_blanks as LyricBlank[]).filter(
-        (row) =>
-          row &&
-          typeof row.prompt === "string" &&
-          typeof row.answer === "string"
-      )
-    : [];
 
   const storyProps = {
     bodyText: story.body_text,
@@ -350,7 +450,7 @@ export default function StorySteps({
                     Escenas: toca el texto. Los cortes *** marcan cada clip.
                   </p>
                 )}
-                {(story.kind === "song" || story.kind === "movie_talk") &&
+                {story.kind === "movie_talk" &&
                   youtubeId && (
                     <div className="mb-6">
                       <ClassroomYoutubePlayer
@@ -362,9 +462,6 @@ export default function StorySteps({
                       />
                     </div>
                   )}
-                {story.kind === "song" && (
-                  <MusicBlanks blanks={lyricBlanks} />
-                )}
                 <MicroExplanation
                   dismissKey="story"
                   text="Leer en ingles es la base de todo. Tu cerebro necesita ver las palabras en contexto para aprenderlas de verdad. Toca cualquier palabra para ver su traduccion y pronunciacion."

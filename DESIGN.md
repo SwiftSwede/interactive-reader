@@ -765,17 +765,22 @@ Classroom only. `Story.kind = "video_summary"`. Session type is `video_summary` 
 Keep the YouTube player in review mode (solo controls). Students never see other students' free writes.
 
 ### Music Lesson Page (detailed)
-Same Lesson mode shell as stories. `Story.kind = "song"`. Session type stays `story`.
+Same Lesson mode shell as stories. `Story.kind = "song"`. Session type is `song`. Five steps (hide a step when its data is null; La letra always present): El artista → Primera escucha → Completa la canción → La letra → Truquitos y karaoke. No **Ver el texto**. No "The End". Primera escucha is the music video (first listen with no lyrics on screen).
 
 **Header zone:**
 - Main header: back button, "Profe Kyle", lesson type "Música", song name
-- Subheader: lyric tracker is the existing story progress dots if the song has practice steps. During the lyric step, no extra widget beyond the YouTube player in content.
+- Same progress dots as other lessons. Teacher live: dots are local peek and do not write the session.
 
-**Content zone (lyric step):**
-- 16:9 `ClassroomYoutubePlayer` (rounded 16px, paper-line border). Same live lock / review solo rules as Traducción.
-- Fill-in-the-blank listening (8-10 items in class; same card style as comprehension). "Comprobar" reveals answers. No score.
-- Interactive lyrics: same word-span tooltips as stories. Truquitos live as expressions/tooltips on connected speech, not a second phonetic system.
-- Karaoke uses the existing sticky audio player when story audio is present.
+**Bottom navigation:**
+- Same Atrás / Siguiente pills as other lessons. Teacher live: those pills write `lesson_step_current` and snap student phones (presentation pattern). Students may walk back. Forward past the teacher stays disabled while locked.
+- Teacher live: **Abrir todas** / **Bloquear pasos** in the middle of that row (ghost, not a pill).
+
+**Content zone:**
+- El artista: bio paragraphs with the same Spanish/IPA word tooltips as lyrics when `words.source = 'bio'` exists; plain paragraphs otherwise.
+- Primera escucha: 16:9 `ClassroomYoutubePlayer` (rounded 16px, paper-line border). Same live lock / review solo rules as Traducción. One Kyle-voice line: "Escucha sin leer la letra. ¿Cuánto entiendes? No importa si no entiendes todo."
+- Completa la canción: compact player under the title and instructions, then lyrics. Lyric block is centered; lines are `text-align: left`. Lyrics use `text-story-body` (Lora 18px / 32px). Blanks are underlines in the line (same size as the lyrics, caret on focus), not tall input boxes. Empty blanks are 3 characters wide and grow with the typed word. After Entregar, the underline hugs that word. Each blank is numbered in a 20px terracotta (`--accent`) circle with white centered `label-sm` text. Wrong answers: student word, then the correct word in moss `label-sm`, then the X. Live class: Entregar only, no marks; teacher typing in a blank replaces that blank on student phones (student submissions stay saved). Review and self-study: one Entregar tap shows marks immediately.
+- La letra: lyric cluster centered on the page; title and lines share a left edge (`text-align: left`, stanza gaps). Word tooltips via `InteractiveStory`. Meaning block "Qué significa la canción" when `song_meaning` is set.
+- Truquitos y karaoke: same lyric cluster (title left-aligned with the lines, stanza gaps). Line-swap toggle (starts off). Karaoke highlight from `line_timestamps` vs embed playhead; degrades without timestamps. Seek-back in review/consumer only.
 
 ### Dialogue Lesson Page (detailed)
 Same as the story lesson page. Lesson type label "Diálogo". First step "El diálogo". Speaker names (`Name:`) render in terracotta `label-md` before the line. Same tooltips and practice steps.

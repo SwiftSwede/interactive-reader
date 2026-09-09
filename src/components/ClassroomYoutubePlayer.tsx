@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useImperativeHandle, useRef, useState, forwardRef } from "react";
 import { Maximize2, Minimize2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { publishYoutubeSync } from "@/app/lesson/[slug]/youtube-sync-actions";
@@ -67,6 +67,10 @@ const PLAYING = 1;
 const PAUSED = 2;
 const ENDED = 0;
 
+export type YoutubePlayerHandle = {
+  seekTo: (seconds: number) => void;
+};
+
 function armedKey(sessionId: string): string {
   return `youtube-armed-${sessionId}`;
 }
@@ -98,21 +102,31 @@ function readLeaderState(player: YtPlayer): YoutubeLeaderState {
   };
 }
 
-export default function ClassroomYoutubePlayer({
-  videoId,
-  title,
-  sessionId,
-  isTeacher,
-  live,
-  startSeconds = 0,
-}: {
-  videoId: string;
-  title: string;
-  sessionId?: string;
-  isTeacher: boolean;
-  live: boolean;
-  startSeconds?: number;
-}) {
+export default forwardRef<
+  YoutubePlayerHandle,
+  {
+    videoId: string;
+    title: string;
+    sessionId?: string;
+    isTeacher: boolean;
+    live: boolean;
+    startSeconds?: number;
+    compact?: boolean;
+    onTimeUpdate?: (seconds: number) => void;
+  }
+>(function ClassroomYoutubePlayer(
+  {
+    videoId,
+    title,
+    sessionId,
+    isTeacher,
+    live,
+    startSeconds = 0,
+    compact = false,
+    onTimeUpdate,
+  },
+  ref
+) {
   const mountRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<YtPlayer | null>(null);
@@ -141,6 +155,14 @@ export default function ClassroomYoutubePlayer({
   });
   armedRef.current = !studentLock || armed;
   const [isFullscreen, setIsFullscreen] = useState(false);
+
+  useImperativeHandle(ref, () => ({
+    seekTo(seconds: number) {
+      const player = playerRef.current;
+      if (!player) return;
+      player.seekTo(Math.max(0, seconds), true);
+    },
+  }));
 
   const applyToPlayer = useCallback((state: YoutubeLeaderState) => {
     const player = playerRef.current;
@@ -408,11 +430,27 @@ export default function ClassroomYoutubePlayer({
     }
   }
 
+  useEffect(() => {
+    if (!onTimeUpdate) return;
+    const id = window.setInterval(() => {
+      const player = playerRef.current;
+      if (!player) return;
+      try {
+        onTimeUpdate(player.getCurrentTime());
+      } catch {
+        /* player not ready */
+      }
+    }, 250);
+    return () => window.clearInterval(id);
+  }, [onTimeUpdate]);
+
   return (
     <div className="overflow-hidden rounded-card border border-paper-line bg-text-primary">
       <div
         ref={frameRef}
-        className="classroom-youtube-frame relative aspect-video w-full [&_iframe]:absolute [&_iframe]:inset-0 [&_iframe]:h-full [&_iframe]:w-full"
+        className={`classroom-youtube-frame relative w-full [&_iframe]:absolute [&_iframe]:inset-0 [&_iframe]:h-full [&_iframe]:w-full ${
+          compact ? "h-28" : "aspect-video"
+        }`}
       >
         <div ref={mountRef} className="absolute inset-0 h-full w-full" />
         {studentLock ? (
@@ -439,7 +477,7 @@ export default function ClassroomYoutubePlayer({
             )}
           </button>
         ) : null}
-        {studentLock ? (
+        {studentLock && !compact ? (
           <button
             type="button"
             onClick={(event) => {
@@ -462,4 +500,4 @@ export default function ClassroomYoutubePlayer({
       <span className="sr-only">{title}</span>
     </div>
   );
-}
+});
