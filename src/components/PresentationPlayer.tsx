@@ -1,12 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Check, ChevronLeft, ChevronRight, Pencil } from "lucide-react";
+import { Check, ChevronLeft, ChevronRight, Pencil, Plus } from "lucide-react";
 import BackLink from "@/components/BackLink";
 import EndClassButton from "@/components/EndClassButton";
 import ClassroomYoutubePlayer from "@/components/ClassroomYoutubePlayer";
-import { youtubeEmbedId } from "@/components/MusicBlanks";
-import { youtubeStartSeconds } from "@/lib/youtube-sync";
+import { youtubeEmbedId, youtubeStartSeconds } from "@/lib/youtube-sync";
 import { createClient } from "@/lib/supabase/client";
 import { getSessionPhase } from "@/lib/session-phase";
 import {
@@ -31,6 +30,8 @@ import {
   type PresentationStep,
 } from "@/lib/presentation";
 import {
+  addPresentationVocab,
+  removePresentationVocab,
   revealPresentationAnswer,
   savePresentationClassAnswer,
   savePresentationResponse,
@@ -669,6 +670,7 @@ function VocabStep({
           segmentId={segment.id}
         />
       ))}
+      {isTeacher ? <AddVocabCard sessionId={sessionId} segmentId={segment.id} /> : null}
     </section>
   );
 }
@@ -811,10 +813,152 @@ function VocabCard({
                 Guardar
               </button>
             </div>
+            <button
+              type="button"
+              disabled={pending}
+              className="mt-2 h-11 w-full rounded-card border border-paper-line text-label-md text-error disabled:opacity-60"
+              onClick={async () => {
+                setPending(true);
+                setError("");
+                const result = await removePresentationVocab({
+                  sessionId,
+                  segmentId,
+                  english: item.english,
+                });
+                setPending(false);
+                if (!result.ok) {
+                  setError(result.error ?? "Algo salio mal.");
+                  return;
+                }
+                setOpen(false);
+              }}
+            >
+              Quitar de la lista
+            </button>
           </div>
         </div>
       ) : null}
     </div>
+  );
+}
+
+function AddVocabCard({
+  sessionId,
+  segmentId,
+}: {
+  sessionId: string;
+  segmentId: number;
+}) {
+  const [open, setOpen] = useState(false);
+  const [english, setEnglish] = useState("");
+  const [spanish, setSpanish] = useState("");
+  const [example, setExample] = useState("");
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState("");
+
+  function close() {
+    setOpen(false);
+    setEnglish("");
+    setSpanish("");
+    setExample("");
+    setError("");
+  }
+
+  return (
+    <>
+      <button
+        type="button"
+        className="flex h-12 w-full items-center justify-center gap-2 rounded-card border border-paper-line bg-surface text-label-md text-text-accent hover:bg-accent-soft active:bg-surface-hover"
+        onClick={() => setOpen(true)}
+      >
+        <Plus size={18} aria-hidden="true" />
+        Agregar palabra
+      </button>
+      {open ? (
+        <div
+          className="fixed inset-0 z-30 flex items-center justify-center bg-black/40 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Agregar palabra"
+          onClick={(event) => {
+            if (event.target === event.currentTarget) close();
+          }}
+        >
+          <div className="h-fit w-full max-w-md overflow-hidden rounded-sheet border border-paper-line bg-surface p-4">
+            <p className="font-heading text-story-body text-text-primary">
+              Nueva palabra
+            </p>
+            <label className="mt-3 block">
+              <span className="mb-1 block text-label-sm text-text-secondary">
+                Inglés
+              </span>
+              <input
+                value={english}
+                onChange={(event) => setEnglish(event.target.value)}
+                className="w-full rounded-card border border-paper-line bg-surface px-3 py-3 text-body-main text-text-primary focus:border-2 focus:border-accent focus:outline-none"
+              />
+            </label>
+            <label className="mt-3 block">
+              <span className="mb-1 block text-label-sm text-text-secondary">
+                Español
+              </span>
+              <input
+                value={spanish}
+                onChange={(event) => setSpanish(event.target.value)}
+                className="w-full rounded-card border border-paper-line bg-surface px-3 py-3 text-body-main text-text-primary focus:border-2 focus:border-accent focus:outline-none"
+              />
+            </label>
+            <label className="mt-3 block">
+              <span className="mb-1 block text-label-sm text-text-secondary">
+                Ejemplo
+              </span>
+              <textarea
+                value={example}
+                onChange={(event) => setExample(event.target.value)}
+                rows={2}
+                className="w-full resize-none rounded-card border border-paper-line bg-surface px-3 py-3 text-body-main text-text-primary focus:border-2 focus:border-accent focus:outline-none"
+              />
+            </label>
+            {error ? (
+              <p className="mt-2 text-sm text-error">{error}</p>
+            ) : null}
+            <div className="mt-4 flex gap-2">
+              <button
+                type="button"
+                className="h-11 flex-1 rounded-card border border-paper-line text-label-md text-text-secondary"
+                onClick={close}
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                disabled={pending}
+                className="h-11 flex-1 rounded-card bg-accent text-label-md text-white disabled:opacity-60"
+                onClick={async () => {
+                  setPending(true);
+                  setError("");
+                  const result = await addPresentationVocab({
+                    sessionId,
+                    segmentId,
+                    english,
+                    spanish,
+                    exampleSentence: example,
+                  });
+                  setPending(false);
+                  if (!result.ok) {
+                    setError(result.error ?? "Algo salio mal.");
+                    return;
+                  }
+                  close();
+                }}
+              >
+                Guardar
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 }
 

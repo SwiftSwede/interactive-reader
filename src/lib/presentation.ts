@@ -230,6 +230,35 @@ export function stripPresentationText(value: string): string {
   return value.replace(/<[^>]*>/g, "").trim();
 }
 
+export function vocabEnglishMatches(a: string, b: string): boolean {
+  return a.localeCompare(b, "en", { sensitivity: "base" }) === 0;
+}
+
+export function sortPresentationVocab(
+  items: PresentationVocabItem[]
+): PresentationVocabItem[] {
+  return [...items].sort((a, b) =>
+    a.english.localeCompare(b.english, "en", { sensitivity: "base" })
+  );
+}
+
+export function addPresentationVocabItem(
+  items: PresentationVocabItem[],
+  next: PresentationVocabItem
+): PresentationVocabItem[] | null {
+  if (items.some((item) => vocabEnglishMatches(item.english, next.english))) {
+    return null;
+  }
+  return sortPresentationVocab([...items, next]);
+}
+
+export function removePresentationVocabItem(
+  items: PresentationVocabItem[],
+  english: string
+): PresentationVocabItem[] {
+  return items.filter((item) => !vocabEnglishMatches(item.english, english));
+}
+
 export function serializePresentationSegments(
   segments: PresentationSegment[]
 ): unknown[] {

@@ -9,9 +9,10 @@
 //
 // To add a lesson: append an entry to PRESENTATIONS below with the title,
 // theme, warmup question (optional) and the segments array. Each segment is
-// one YouTube viewing block: URL (use &t=300s for a mid-video start point),
-// title, vocabulary (English=Spanish, optional example sentence) and
-// comprehension questions with answers.
+// one YouTube viewing block: URL (`&t=` is when THAT part starts; a title
+// like "Part 1 (5:00)" means part 1 ends at 5:00, so Part 1 has no t= and
+// Part 2 gets t=300s), title, vocabulary (English=Spanish, optional example
+// sentence) and comprehension questions with answers.
 //
 // Source material: Kyle's "2. Presentation: <Title>" Google Slides decks on
 // Drive. Extract with: google_api.py drive download <id> --export-mime
@@ -121,7 +122,7 @@ const PRESENTATIONS: PresentationSeed[] = [
       },
       {
         id: 2,
-        youtube_url: "https://www.youtube.com/watch?v=n2S2Neswudw&t=300s",
+        youtube_url: "https://www.youtube.com/watch?v=n2S2Neswudw",
         title: "Video 2 - Part 1 (5:00)",
         vocabulary: [
           vocab("Outlive", "sobrevivir"),
@@ -165,7 +166,7 @@ const PRESENTATIONS: PresentationSeed[] = [
       },
       {
         id: 3,
-        youtube_url: "https://www.youtube.com/watch?v=n2S2Neswudw&t=960s",
+        youtube_url: "https://www.youtube.com/watch?v=n2S2Neswudw&t=300s",
         title: "Video 2 - Part 2 (16:00)",
         vocabulary: [
           vocab("Enable", "habilitar"),
@@ -221,7 +222,7 @@ const PRESENTATIONS: PresentationSeed[] = [
       },
       {
         id: 4,
-        youtube_url: "https://www.youtube.com/watch?v=n2S2Neswudw",
+        youtube_url: "https://www.youtube.com/watch?v=n2S2Neswudw&t=960s",
         title: "Video 2 - Part 3",
         vocabulary: [
           vocab("Shipwreck", "naufragio"),

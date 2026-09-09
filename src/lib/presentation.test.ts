@@ -1,6 +1,7 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import {
+  addPresentationVocabItem,
   adjacentPresentationStep,
   classAnswerForQuestion,
   defaultPresentationStep,
@@ -9,6 +10,7 @@ import {
   parsePresentationStep,
   presentationStepList,
   remotePresentationStep,
+  removePresentationVocabItem,
   segmentCycleIndex,
   stripPresentationText,
   upsertClassAnswer,
@@ -67,6 +69,40 @@ describe("presentation steps", () => {
     assert.deepEqual(
       prompt.segments[0].vocabulary.map((item) => item.english),
       ["Barred from", "Cramped", "Neat"]
+    );
+  });
+
+  it("inserts a new vocab item in A to Z order", () => {
+    const next = addPresentationVocabItem(prompt.segments[0].vocabulary, {
+      english: "Appoint",
+      spanish: "nombrar",
+      exampleSentence: null,
+    });
+    assert.deepEqual(
+      next?.map((item) => item.english),
+      ["Appoint", "Barred from", "Cramped", "Neat"]
+    );
+  });
+
+  it("refuses a duplicate English word", () => {
+    assert.equal(
+      addPresentationVocabItem(prompt.segments[0].vocabulary, {
+        english: "neat",
+        spanish: "ordenado",
+        exampleSentence: null,
+      }),
+      null
+    );
+  });
+
+  it("removes a vocab item by English", () => {
+    const next = removePresentationVocabItem(
+      prompt.segments[0].vocabulary,
+      "Cramped"
+    );
+    assert.deepEqual(
+      next.map((item) => item.english),
+      ["Barred from", "Neat"]
     );
   });
 
@@ -146,6 +182,13 @@ describe("youtubeStartSeconds", () => {
     assert.equal(
       youtubeStartSeconds("https://www.youtube.com/watch?v=abc&t=6m57s"),
       417
+    );
+  });
+
+  it("starts at zero when the URL has no t=", () => {
+    assert.equal(
+      youtubeStartSeconds("https://www.youtube.com/watch?v=n2S2Neswudw"),
+      0
     );
   });
 });

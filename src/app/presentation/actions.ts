@@ -5,10 +5,12 @@ import { createClient } from "@/lib/supabase/server";
 import { getProfile } from "@/lib/auth-server";
 import { areAnswersUnlocked } from "@/lib/sessions";
 import {
+  addPresentationVocabItem,
   decodePresentationStep,
   encodePresentationStep,
   mapPresentationPromptRow,
   parsePresentationStep,
+  removePresentationVocabItem,
   serializePresentationSegments,
   stripPresentationText,
   type PresentationPromptRow,
@@ -185,6 +187,141 @@ export async function updatePresentationSpanish(input: {
   if (error) {
     console.error("updatePresentationSpanish failed:", error);
     return { ok: false, error: "No pude guardar la traducción." };
+  }
+
+  return { ok: true };
+}
+
+export async function addPresentationVocab(input: {
+  sessionId: string;
+  segmentId: number;
+  english: string;
+  spanish: string;
+  exampleSentence: string;
+}): Promise<PresentationActionResult> {
+  const sessionId = uuidSchema.safeParse(input.sessionId);
+  const segmentId = idSchema.safeParse(input.segmentId);
+  const english = englishSchema.safeParse(stripPresentationText(input.english));
+  const spanish = spanishSchema.safeParse(stripPresentationText(input.spanish));
+  const example = stripPresentationText(input.exampleSentence);
+  if (
+    !sessionId.success ||
+    !segmentId.success ||
+    !english.success ||
+    !spanish.success ||
+    example.length > 400
+  ) {
+    return { ok: false, error: "Esa palabra no se pudo guardar." };
+  }
+
+  const ctx = await teacherSessionContext(sessionId.data);
+  if (!ctx.ok) return ctx;
+
+  const { data: promptRow } = await ctx.supabase
+    .from("presentation_prompts")
+    .select(
+      "id, title, level, theme, warmup_question, segments, created_at"
+    )
+    .eq("id", ctx.promptId)
+    .maybeSingle();
+
+  if (!promptRow) {
+    return { ok: false, error: "No encontré esa presentación." };
+  }
+
+  const prompt = mapPresentationPromptRow(promptRow as PresentationPromptRow);
+  let found = false;
+  let duplicate = false;
+  const nextSegments = prompt.segments.map((segment) => {
+    if (segment.id !== segmentId.data) return segment;
+    found = true;
+    const vocabulary = addPresentationVocabItem(segment.vocabulary, {
+      english: english.data,
+      spanish: spanish.data,
+      exampleSentence: example || null,
+    });
+    if (!vocabulary) {
+      duplicate = true;
+      return segment;
+    }
+    return { ...segment, vocabulary };
+  });
+
+  if (!found) {
+    return { ok: false, error: "Esa parte no existe." };
+  }
+  if (duplicate) {
+    return { ok: false, error: "Esa palabra ya está en la lista." };
+  }
+
+  const { error } = await ctx.supabase
+    .from("presentation_prompts")
+    .update({ segments: serializePresentationSegments(nextSegments) })
+    .eq("id", ctx.promptId);
+
+  if (error) {
+    console.error("addPresentationVocab failed:", error);
+    return { ok: false, error: "No pude agregar la palabra." };
+  }
+
+  return { ok: true };
+}
+
+export async function removePresentationVocab(input: {
+  sessionId: string;
+  segmentId: number;
+  english: string;
+}): Promise<PresentationActionResult> {
+  const sessionId = uuidSchema.safeParse(input.sessionId);
+  const segmentId = idSchema.safeParse(input.segmentId);
+  const english = englishSchema.safeParse(stripPresentationText(input.english));
+  if (!sessionId.success || !segmentId.success || !english.success) {
+    return { ok: false, error: "No pude quitar esa palabra." };
+  }
+
+  const ctx = await teacherSessionContext(sessionId.data);
+  if (!ctx.ok) return ctx;
+
+  const { data: promptRow } = await ctx.supabase
+    .from("presentation_prompts")
+    .select(
+      "id, title, level, theme, warmup_question, segments, created_at"
+    )
+    .eq("id", ctx.promptId)
+    .maybeSingle();
+
+  if (!promptRow) {
+    return { ok: false, error: "No encontré esa presentación." };
+  }
+
+  const prompt = mapPresentationPromptRow(promptRow as PresentationPromptRow);
+  const nextSegments = prompt.segments.map((segment) => {
+    if (segment.id !== segmentId.data) return segment;
+    return {
+      ...segment,
+      vocabulary: removePresentationVocabItem(segment.vocabulary, english.data),
+    };
+  });
+
+  const { error } = await ctx.supabase
+    .from("presentation_prompts")
+    .update({ segments: serializePresentationSegments(nextSegments) })
+    .eq("id", ctx.promptId);
+
+  if (error) {
+    console.error("removePresentationVocab failed:", error);
+    return { ok: false, error: "No pude quitar la palabra." };
+  }
+
+  const { error: noteError } = await ctx.supabase
+    .from("presentation_vocab_notes")
+    .delete()
+    .eq("course_session_id", sessionId.data)
+    .eq("segment_id", segmentId.data)
+    .eq("vocab_english", english.data);
+
+  if (noteError) {
+    console.error("removePresentationVocab note cleanup failed:", noteError);
   }
 
   return { ok: true };

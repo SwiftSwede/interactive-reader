@@ -795,7 +795,7 @@ Classroom only. `session_type = "presentation"`. Catalog lives in `presentation_
 
 **Content zone:**
 - Warmup: English discussion prompt in a white card (`story-body` Lora). No input. Teacher-only "Empezar".
-- Vocabulario: vertical list of cards (white, `--paper-line` border, 16px radius, 16px padding). English in Lora (`story-body`). Spanish in Roboto Flex (`label-md`, `--text-secondary`). Catalog example sentence in italic muted text. Session example note underneath when present. Teacher can edit Spanish (catalog) and add/edit a session-only example note from a small lightbox (`teaching-note-modal`).
+- Vocabulario: vertical list of cards (white, `--paper-line` border, 16px radius, 16px padding). English in Lora (`story-body`). Spanish in Roboto Flex (`label-md`, `--text-secondary`). Catalog example sentence in italic muted text. Session example note underneath when present. Teacher can edit Spanish (catalog) and add/edit a session-only example note from a small lightbox (`teaching-note-modal`). Teacher can add a word (Agregar palabra) or remove one (Quitar de la lista). New words land in A-Z order. Adds and removes write the catalog and show up on student phones.
 - Preguntas: numbered list of information questions. No inputs. Students see what to listen for.
 - Video: 16:9 `ClassroomYoutubePlayer` (rounded 16px, paper-line border). Same live lock / review solo rules as Traducción. Overlay "Toca el video para oír" until the first tap.
 - Respuestas, live teacher: textarea plus Listo (`rounded-card`, 16px). After Listo, the button becomes a moss Check (44px). The typed text is the class answer.

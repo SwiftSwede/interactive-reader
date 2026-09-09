@@ -64,11 +64,12 @@ npx tsx scripts/seed-phase5-samples.ts
 
 ### Seed a Music class song (Class 6)
 
-Inserts (or updates by slug) a real song lesson: `Story.kind = "song"` with clean lyrics in `body_text`, `lyric_blanks` (numbered, deck-convention IDs), and `youtube_url`. No word annotations, no comprehension/personal questions (the Music class has none — those steps auto-hide). Artist bio waits for the Slice 57 build (no DB column yet).
+Inserts (or updates by slug) a real song lesson: `Story.kind = "song"` with clean lyrics in `body_text`, `lyric_blanks` (numbered, deck-convention IDs), and `youtube_url`. Optional Slice 63 fields: `artist_bio`, `song_meaning`, `lyrics_ipa`, `line_timestamps`. No word annotations, no comprehension/personal questions (those steps auto-hide). `annotate-story.ts` only rewrites `words.source = 'body'` so lyric re-annotation cannot wipe bios. `--force` still refuses when `song_lyric_attempts` exist.
 
 ```bash
 npx tsx scripts/seed-music.ts            # seed all songs in the SONGS array
 npx tsx scripts/seed-music.ts --slug summer-of-69
+npx tsx scripts/seed-music.ts --slug summer-of-69 --force
 ```
 
 To add a song: append an entry to `SONGS` in `scripts/seed-music.ts` (lyrics from the current Music deck on Google Drive, blanks with Kyle's numbering where repeated words reuse the same ID). Then annotate:
@@ -77,7 +78,7 @@ To add a song: append an entry to `SONGS` in `scripts/seed-music.ts` (lyrics fro
 npx tsx scripts/annotate-story.ts --slug <slug>   # ~$0.01-0.02, 5-12 min
 ```
 
-**Cost / time / status:** Free. A few seconds per song. Idempotent by slug. First real song: Summer of '69 (pre-intermediate, September 2026).
+**Cost / time / status:** Free. A few seconds per song. Idempotent by slug. First real song: Summer of '69 (pre-intermediate, September 2026) with Kyle-voice bio + meaning and draft IPA. No line timestamps (karaoke degrades until studio-aligned data exists).
 
 ### Seed a Video Summary Translation lesson (Pre-Int Class 3)
 
@@ -103,7 +104,7 @@ npx tsx scripts/seed-presentation.ts                  # seed all lessons
 npx tsx scripts/seed-presentation.ts --slug gabo      # seed one lesson
 ```
 
-To add a lesson: append an entry to `PRESENTATIONS` in `scripts/seed-presentation.ts` (title, theme, warmup question, segments array). Source: Kyle's "2. Presentation: \<Title\>" Google Slides deck on Drive — download with the google-workspace skill (`drive download <id> --export-mime text/plain`), then transcribe each video/part block into a segment: YouTube URL (use `&t=300s` for a mid-video start point), vocabulary (English=Spanish, optional example sentence), comprehension questions **with answers**. No annotation, no IPA, no pronunciation — those steps don't apply to this lesson type.
+To add a lesson: append an entry to `PRESENTATIONS` in `scripts/seed-presentation.ts` (title, theme, warmup question, segments array). Source: Kyle's "2. Presentation: \<Title\>" Google Slides deck on Drive — download with the google-workspace skill (`drive download <id> --export-mime text/plain`), then transcribe each video/part block into a segment: YouTube URL (`&t=` is when THAT part starts; a title like "Part 1 (5:00)" means part 1 ends at 5:00, so Part 1 has no `t=` and Part 2 gets `&t=300s`), vocabulary (English=Spanish, optional example sentence), comprehension questions **with answers**. No annotation, no IPA, no pronunciation — those steps don't apply to this lesson type.
 
 ⚠️ Re-seeding a lesson that already has student responses (i.e. after the class happened) requires `--force` — content would be overwritten while students' answers reference the old segment/question ids. Without `--force` the guard refuses and the class data is safe.
 
