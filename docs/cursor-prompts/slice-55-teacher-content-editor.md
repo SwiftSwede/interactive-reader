@@ -97,14 +97,14 @@ When building Slice 55, the song editor (`/teacher/content/story/[slug]` for `ki
 - `artist_bio` (textarea, plain text — annotations are managed by the annotate script with `--source bio`, not the editor)
 - `song_meaning` (textarea — teacher-authored; a hint label reminds: "Escrito por ti, no por IA")
 - `lyrics_ipa` (per-line editable list: line_index + ipa_text; a **"Generar borrador IPA"** button calls a server action that runs the existing IPA-drafting prompt server-side via OpenRouter and fills the textareas as an editable draft — Kyle reviews/corrects, then saves)
-- `line_timestamps` (raw JSON textarea is acceptable in v1 — Kyle rarely edits these; Whisper output is pasted by seed script)
+- `line_timestamps` (raw JSON textarea is acceptable in v1: paste tap-align output from `scripts/tap-align-lyrics.html`. Kyle rarely edits these by hand.)
 - Guards: editing `lyrics_ipa` never warns (no student data references line indexes); editing `lyric_blanks` on a song with existing `song_lyric_attempts` shows a warning (blank ids are referenced by attempts — adding is safe, deleting/re-numbering desyncs scores)
 
 **Teacher AI toolbox (also Slice 55 scope, all lesson types):** on the content index (or per-editor), a paste-box + two one-click server-side actions reusing the existing Hermes-side logic, ported to Next.js server actions calling OpenRouter:
 
 1. **"Traducir y anotar"** — runs the annotate-story pipeline server-side (~$0.01-0.02 per run; Kyle supplies the OpenRouter key via env). Status shown while running; results write straight to the DB exactly as the script would.
 2. **"Generar borrador IPA"** (described above; also available for Práctica Coral IPA on stories)
-3. Timestamps button is DEFERRED (local Whisper cannot run on Vercel serverless; the OpenAI Whisper API at ~$0.006/min is the port path — decide separately). Do not stub it in; omit it.
+3. Timestamps helper, if ever added, wraps the same tap-align approach or stays a JSON paste field. **Never** a Whisper button on Vercel. Do not stub a Whisper path in.
 
 Cost discipline: every AI action shows its estimated cost before running, and a confirmation step prevents accidental double-runs.
 

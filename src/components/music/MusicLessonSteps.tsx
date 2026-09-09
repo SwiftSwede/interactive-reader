@@ -266,6 +266,8 @@ export default function MusicLessonSteps({
     };
   }, []);
 
+  // Music ignores &t=/start= on youtube_url on purpose. Karaoke JSON is on the
+  // video clock from 0:00 (tap-align). Do not pass youtubeStartSeconds here.
   const youtubeId = youtubeEmbedId(story.youtube_url);
   const lyricBlanks = parseLyricBlanks(story.lyric_blanks);
   const persistBlanks = readerMode === "classroom-live" && Boolean(sessionId) && !isTeacher;

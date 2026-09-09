@@ -167,6 +167,27 @@ python3 scripts/karaoke-render-simulation.py [slugs...]     # replicates the com
 
 Expected healthy output: `DOM spans == tokens`, `excluded: 0`, `err 0` at every sample. Any `excluded > 0` means the words table diverged from body_text; any nonzero `err` means timestamps need re-alignment.
 
+### Align song lyrics to the YouTube video (karaoke de canciones)
+
+Songs cannot reuse the Whisper story pipeline: the class plays the official YouTube embed (copyright — we never host song audio), so line timestamps must live against the VIDEO's clock, not Kyle's MP3. The tap-align tool records line timings while the official video plays — no MP3, no Whisper, no API cost.
+
+```bash
+open scripts/tap-align-lyrics.command      # or double-click the .command file
+```
+
+**Workflow:** paste the song's `youtube_url` + `body_text` (with the empty stanza lines) → play the video → tap the big button (or Space) as each line starts → **Generar JSON** → paste into `stories.line_timestamps` in the Supabase Table Editor.
+
+- Line numbering matches the app exactly (non-empty lines, 0-based — same as `indexedLyricLines()`), so it also lines up with `lyrics_ipa`.
+- Skipped or fumbled a line? Click that line in the list and continue from there (clears from that point). Undo with the button or U.
+- Reaction compensation (-0.25 s default) is adjustable mid-run and only affects new taps.
+- Partial export is fine — untapped lines simply don't highlight.
+- Sessions auto-save per video; the reopen screen offers to continue.
+- **Rules:** official music-video URLs only (live versions desync). Any offset gets baked into the stored JSON — there is no offset column and there must not be one.
+- **Before class (1 min):** open the lesson page, play verse 1 + chorus, confirm the highlight follows. Eyes, not JSON.
+- **Fallback (Hermes only, not a repo script):** if a song is too dense to tap, Whisper line-align on a Kyle-owned studio MP3 can draft the same `{line_index, start_seconds, end_seconds}` JSON. It must still match the official video clock (any MP3/video drift bakes into that JSON). Do not add a Whisper song script to this repo or a Whisper button on Vercel.
+
+**Cost / time:** Free. ~5 minutes per song.
+
 ### Dedupe expressions after annotation (per-chunk duplication)
 
 annotate-story.ts chunks per paragraph, and separate chunks can each claim the same multi-word expression, inserting duplicate `expressions` rows. Run this after every annotation:

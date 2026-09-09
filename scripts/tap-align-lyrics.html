@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alineador de letras — Profe Kyle</title>
+<style>
+  :root{
+    --paper:#faf6f0; --ink:#2b2320; --accent:#6f4627; --accent-soft:#f0e4d8;
+    --moss:#506354; --line:#e4d9cc; --card:#fffdf9; --danger:#a33b2e;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+       line-height:1.5;padding:24px 16px 90px}
+  .wrap{max-width:900px;margin:0 auto}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:#7a6a5c;margin:0 0 20px;font-size:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;
+        padding:16px 18px;margin:0 0 18px}
+  .card h2{font-size:16px;margin:0 0 10px}
+  label{display:block;font-size:13px;font-weight:600;margin:0 0 6px;color:#5c4c3f}
+  input[type=text],textarea{width:100%;border:1px solid var(--line);border-radius:10px;
+        padding:10px 12px;font-size:14px;background:#fff;font-family:inherit;color:var(--ink)}
+  textarea{min-height:150px;resize:vertical}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  button{font:inherit;font-weight:600;border:none;border-radius:16px;cursor:pointer;color:var(--ink)}
+  .btn{background:var(--accent);color:#fff;padding:10px 18px}
+  .btn:hover{filter:brightness(1.08)}
+  .btn-ghost{background:transparent;border:1px solid var(--line);padding:9px 14px}
+  .btn-small{padding:5px 10px;font-size:13px;border-radius:12px}
+  .tap{width:100%;min-height:110px;border-radius:16px;background:var(--accent);
+       color:#fff;font-size:17px;display:flex;flex-direction:column;gap:4px;
+       align-items:center;justify-content:center;padding:14px;text-align:center}
+  .tap:hover{filter:brightness(1.08)}
+  .tap .preview{font-style:italic;font-weight:400;font-size:15px;opacity:.92;max-width:95%;
+       overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .muted{color:#7a6a5c;font-size:13px}
+  #flash{min-height:22px;font-size:13.5px;color:var(--danger);margin:6px 0 0;font-weight:600}
+  .lines{list-style:none;margin:0;padding:0}
+  .lines li{display:flex;gap:10px;align-items:baseline;padding:6px 8px;border-radius:8px}
+  .lines li.can-rewind{cursor:pointer}
+  .lines li.can-rewind:hover{background:#f3ebe0}
+  .lines li.now{background:var(--accent-soft);box-shadow:inset 3px 0 0 var(--accent)}
+  .idx{font-variant-numeric:tabular-nums;font-size:12px;font-weight:700;color:#9a8875;
+       min-width:30px;text-align:right}
+  .txt{flex:1;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .t{font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--moss);font-weight:600;white-space:nowrap}
+  .steps{display:flex;gap:6px;align-items:center}
+  .steps button{background:transparent;border:1px solid var(--line);padding:4px 12px;
+       border-radius:10px;font-size:15px}
+  .steps .val{font-variant-numeric:tabular-nums;font-weight:700;min-width:64px;text-align:center}
+  #jsonout{width:100%;min-height:160px;font-family:ui-monospace,Menlo,monospace;font-size:12px;
+       border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff;white-space:pre}
+  .warn{color:var(--danger);font-size:13px;font-weight:600}
+  .ok{color:var(--moss);font-weight:600;font-size:13.5px}
+  .video-frame{position:relative;padding-top:56.25%;border:1px solid var(--line);
+       border-radius:12px;overflow:hidden;background:#000}
+  .video-frame iframe,.video-frame #ytplayer{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .demo-panel{border:1px dashed var(--line);border-radius:12px;padding:14px;text-align:center}
+  .clock{font-variant-numeric:tabular-nums;font-weight:700;color:var(--moss)}
+  footer{max-width:900px;margin:26px auto 0;font-size:13px;color:#7a6a5c}
+  footer li{margin-bottom:6px}
+  .hidden{display:none}
+  .status{font-size:13px;color:#7a6a5c;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Alineador de letras</h1>
+  <p class="sub">Karaoke de canciones — toca cada línea mientras suena el video oficial y exporta el JSON para <code>stories.line_timestamps</code>. El reloj es el mismo que verá la clase: <b>tiempo del video de YouTube, desde 0:00</b>.</p>
+  <div id="flash"></div>
+
+  <div class="card" id="setupCard">
+    <h2>1 · Cargar la canción</h2>
+    <label for="url">URL oficial de YouTube (el MISMO que está en <code>stories.youtube_url</code>; ignora cualquier <code>&amp;t=</code>)</label>
+    <input type="text" id="url" placeholder="https://www.youtube.com/watch?v=…">
+    <label for="lyrics" style="margin-top:12px">Letra completa — pega <code>body_text</code> tal cual está en la base de datos (con las líneas vacías entre estrofas)</label>
+    <textarea id="lyrics" placeholder="Pega aquí la letra…"></textarea>
+    <div class="row" style="margin-top:10px">
+      <input type="checkbox" id="demo" style="width:auto">
+      <label for="demo" style="margin:0;font-weight:400;font-size:13.5px">Modo práctica (reloj simulado, sin video — para probar sin internet)</label>
+    </div>
+    <div class="row" style="margin-top:14px">
+      <button class="btn" id="loadBtn" onclick="load();this.blur()">Cargar</button>
+      <span class="muted">La numeración de líneas es automática: líneas no vacías, desde 0 — igual que la app.</span>
+    </div>
+    <div id="resumeBox" class="hidden" style="margin-top:14px"></div>
+  </div>
+
+  <div class="card hidden" id="playerCard">
+    <h2>2 · El video (el reloj)</h2>
+    <div class="video-frame" id="realFrame"><div id="ytplayer"></div></div>
+    <div class="demo-panel hidden" id="demoBar">
+      <button class="btn" id="demoBtn" onclick="demoToggle();this.blur()">▶ Play</button>
+      <button class="btn-ghost" onclick="demoReset();this.blur()">Reiniciar reloj</button>
+      <div class="status">Reloj simulado — avanza 1x mientras esté en play. Sirve para practicar el flujo.</div>
+    </div>
+    <div class="status"><span id="clockLabel"></span> · Tiempo actual: <span class="clock" id="clockdisp">0:00.0</span></div>
+  </div>
+
+  <div class="card hidden" id="tapCard">
+    <h2>3 · Toca con la música</h2>
+    <div class="row" style="justify-content:space-between;margin-bottom:10px">
+      <span>Progreso: <b id="progress">0/0</b> líneas</span>
+      <span class="steps">
+        <span class="muted">Compensación de reacción</span>
+        <button onclick="bumpComp(-0.05);this.blur()">−</button>
+        <span class="val" id="compVal">−0.25 s</span>
+        <button onclick="bumpComp(0.05);this.blur()">+</button>
+      </span>
+    </div>
+    <button class="tap" id="tapBtn" onclick="tap();this.blur()">
+      <span id="tapLabel">TOCA CUANDO EMPIECE LA LÍNEA ▶</span>
+      <span class="preview" id="tapPreview"></span>
+    </button>
+    <div class="status" id="tapStatus"></div>
+    <div class="row" style="margin-top:10px">
+      <button class="btn-ghost" onclick="undo();this.blur()">↩ Deshacer (U)</button>
+      <span class="muted">Espacio = tocar · U = deshacer · saltaste una línea → haz clic en ella y sigue desde ahí (borra desde esa línea en adelante).</span>
+    </div>
+  </div>
+
+  <div class="card hidden" id="linesCard">
+    <h2>Líneas</h2>
+    <ul class="lines" id="linesList"></ul>
+    <p class="muted" style="margin:10px 0 0">Los tiempos ya incluyen la compensación. Coros repetidos = líneas distintas: toca cada uno cuando llegue.</p>
+  </div>
+
+  <div class="card hidden" id="exportCard">
+    <h2>4 · Exportar</h2>
+    <button class="btn" id="exportBtn" onclick="doExport();this.blur()">Generar JSON</button>
+    <span class="muted" style="margin-left:10px">Puedes exportar parcial — las líneas sin tocar simplemente no se resaltan.</span>
+    <p id="missingWarn" class="warn"></p>
+    <textarea id="jsonout" class="hidden" readonly></textarea>
+    <div class="row hidden" id="exportActions" style="margin-top:10px">
+      <button class="btn" onclick="copyJson();this.blur()">Copiar</button>
+      <button class="btn-ghost" onclick="download();this.blur()">Descargar .json</button>
+      <button class="btn-ghost" onclick="clearSession();this.blur()">Borrar sesión guardada</button>
+    </div>
+    <p class="ok" id="copiedMsg"></p>
+    <p class="muted" style="margin-top:10px"><b>Después:</b> Supabase → Table Editor → <code>stories</code> → tu canción → celda <code>line_timestamps</code> → pegar → Save.
+    <b>Antes de clase (1 minuto):</b> abre la página de la lección, dale play y mira que la primera estrofa y el coro se resalten bien. Tus ojos, no el JSON.</p>
+  </div>
+
+  <footer>
+    <b>Checklist del profe:</b>
+    <ul>
+      <li>Usa el MISMO URL oficial que está en <code>stories.youtube_url</code> (video musical oficial, no versiones en vivo — desincronizan).</li>
+      <li>No importa si el video tiene intro hablada o logo: la clase también empieza desde 0:00, así que el reloj coincide por construcción.</li>
+      <li>Se acabó el video o te perdiste: pausa, rebobina, haz clic en la línea donde te quedaste y sigue. Nunca se toca en pausa.</li>
+      <li>Cambiar la compensación a mitad de camino solo afecta los taps nuevos, no los ya hechos.</li>
+      <li>La sesión se guarda sola por video — puedes cerrar y continuar luego.</li>
+    </ul>
+  </footer>
+</div>
+
+<script>
+"use strict";
+
+// ---- estado ----
+const S = {
+  videoId:null, demo:false, lines:[], taps:[], pointer:0, comp:0.25,
+  yt:null, ytReady:false, ytState:-1,
+  demoBase:0, demoT0:0, demoRunning:false,
+};
+
+const el = id => document.getElementById(id);
+function flash(msg){ el("flash").textContent = msg || ""; }
+function fmt(t){
+  const m = Math.floor(t/60), s = Math.floor(t%60), d = Math.floor((t%1)*10);
+  return m + ":" + String(s).padStart(2,"0") + "." + d;
+}
+function r2(n){ return Math.round(n*100)/100; }
+
+// ---- numeración de líneas: EXACTAMENTE la de la app ----
+// src/lib/music.ts → indexedLyricLines(): split("\n").filter(l => l.trim().length > 0), 0-based
+function indexedLyricLines(bodyText){
+  return bodyText.split("\n").filter(l => l.trim().length > 0);
+}
+
+function parseVideoId(u){
+  if(!u) return null;
+  const m = u.match(/(?:youtube\.com\/(?:watch\?[^#]*v=|shorts\/|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
+  return m ? m[1] : null;
+}
+
+// ---- reloj ----
+function clockTime(){
+  if(S.demo) return S.demoBase + (S.demoRunning ? (performance.now()-S.demoT0)/1000 : 0);
+  if(!S.ytReady || !S.yt || !S.yt.getCurrentTime) return null;
+  return S.yt.getCurrentTime();
+}
+function clockDuration(){
+  if(S.demo) return null;
+  try{ if(S.ytReady && S.yt.getDuration){ const d = S.yt.getDuration(); return d>0 ? d : null; } }
+  catch(e){}
+  return null;
+}
+function clockPlaying(){
+  if(S.demo) return S.demoRunning;
+  return S.ytState === 1;
+}
+
+// ---- cargar ----
+function load(){
+  S.demo = el("demo").checked;
+  if(!S.demo){
+    S.videoId = parseVideoId(el("url").value.trim());
+    if(!S.videoId){ flash("No reconozco ese URL de YouTube (watch?v=… o youtu.be/…). O marca Modo práctica."); return; }
+  } else { S.videoId = null; }
+
+  // Sesión guardada de este video: puede rellenar la letra (y el URL) solos
+  let saved = null;
+  try{
+    const r = localStorage.getItem(sessionKey());
+    if(r) saved = JSON.parse(r);
+  }catch(e){}
+  if(!el("lyrics").value.trim() && saved && typeof saved.body === "string" && saved.body.trim()){
+    el("lyrics").value = saved.body;
+    if(!S.demo && !el("url").value.trim() && typeof saved.url === "string" && parseVideoId(saved.url)){
+      el("url").value = saved.url;
+    }
+  }
+
+  const raw = el("lyrics").value;
+  S.lines = indexedLyricLines(raw);
+  if(!S.lines.length){ flash("Pega la letra primero."); return; }
+  S.taps = new Array(S.lines.length).fill(null);
+  S.pointer = 0;
+  const restored = applySession(saved);
+
+  el("setupCard").classList.add("hidden");
+  el("playerCard").classList.remove("hidden");
+  el("tapCard").classList.remove("hidden");
+  el("linesCard").classList.remove("hidden");
+  el("exportCard").classList.remove("hidden");
+  el("realFrame").classList.toggle("hidden", S.demo);
+  el("demoBar").classList.toggle("hidden", !S.demo);
+  el("clockLabel").textContent = S.demo ? "Reloj: práctica (simulado)" : "Reloj: video oficial de YouTube";
+  if(S.demo){ S.demoBase = 0; S.demoRunning = false; updateDemoBtn(); }
+  else loadYouTube(S.videoId);
+  renderLines(); updateTapUI(); flash(restored);
+}
+
+// ---- YouTube IFrame API ----
+let ytApiTimer = null;
+function loadYouTube(id){
+  window.onYouTubeIframeAPIReady = function(){ makePlayer(id); };
+  if(window.YT && window.YT.Player){ makePlayer(id); return; }
+  if(!document.getElementById("ytapi")){
+    const s = document.createElement("script");
+    s.id = "ytapi"; s.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(s);
+  }
+  clearTimeout(ytApiTimer);
+  ytApiTimer = setTimeout(function(){
+    if(!S.ytReady) flash("El video no cargó (¿sin internet o bloqueado?). Marca Modo práctica para probar, o ábrelo en Chrome.");
+  }, 8000);
+}
+function makePlayer(id){
+  S.yt = new YT.Player("ytplayer", {
+    videoId: id,
+    playerVars: { rel:0, playsinline:1 },
+    events: {
+      onReady: function(){ S.ytReady = true; clearTimeout(ytApiTimer); updateTapUI(); },
+      onStateChange: function(e){ S.ytState = e.data; updateTapUI(); },
+      onError: function(){ flash("YouTube no dejó reproducir ese video. Revisa el URL o usa otro navegador."); },
+    },
+  });
+}
+
+// ---- modo práctica ----
+function demoToggle(){
+  if(S.demoRunning){ S.demoBase += (performance.now()-S.demoT0)/1000; S.demoRunning = false; }
+  else { S.demoT0 = performance.now(); S.demoRunning = true; }
+  updateDemoBtn(); updateTapUI();
+}
+function demoReset(){ S.demoBase = 0; S.demoRunning = false; updateDemoBtn(); updateTapUI(); }
+function updateDemoBtn(){ el("demoBtn").textContent = S.demoRunning ? "⏸ Pausa" : "▶ Play"; }
+
+// ---- taps ----
+function previousTap(){
+  for(let i = S.pointer-1; i >= 0; i--){ if(S.taps[i] != null) return S.taps[i]; }
+  return null;
+}
+function tap(){
+  if(!S.lines.length) return;
+  if(S.pointer >= S.lines.length){ flash("Ya tapaste todas las líneas. Genera el JSON, o deshaz."); return; }
+  const t = clockTime();
+  if(t == null || !isFinite(t)){ flash("El reloj no está listo aún — espera el video."); return; }
+  if(!clockPlaying()){ flash("En pausa no se toca — dale play primero."); return; }
+  const adj = Math.max(0, t - S.comp);
+  const prev = previousTap();
+  if(prev != null && adj <= prev){ flash("Ese momento no va después de la línea anterior. Si te saltaste una, haz clic en esa línea y sigue desde ahí."); return; }
+  S.taps[S.pointer] = adj; S.pointer++;
+  flash(""); saveSession(); renderLines(); updateTapUI();
+}
+function undo(){
+  if(S.pointer <= 0) return;
+  S.pointer--; S.taps[S.pointer] = null;
+  flash("Deshecho — vuelve a tocar esa línea."); saveSession(); renderLines(); updateTapUI();
+}
+function rewindTo(i){
+  if(!(i >= 0 && i < S.pointer)) return;
+  S.pointer = i;
+  for(let k = i; k < S.taps.length; k++) S.taps[k] = null;
+  flash("Sigues desde la línea " + i + " (borrado desde ahí). Rebobina el video y toca.");
+  saveSession(); renderLines(); updateTapUI();
+}
+function bumpComp(d){
+  S.comp = r2(Math.min(0.5, Math.max(0, S.comp + d)));
+  el("compVal").textContent = "−" + S.comp.toFixed(2).replace(/0$/,"") + " s";
+}
+
+// ---- sesión (localStorage, por video) ----
+function sessionKey(){ return "tapalign:" + (S.videoId || "demo"); }
+function saveSession(){
+  try{
+    localStorage.setItem(sessionKey(), JSON.stringify({
+      body: el("lyrics").value, taps: S.taps, comp: S.comp, url: el("url").value,
+    }));
+  }catch(e){}
+}
+function applySession(d){
+  if(!d) return "";
+  try{
+    if(Array.isArray(d.taps) && d.taps.length === S.lines.length){
+      S.taps = d.taps.slice();
+      const firstNull = S.taps.indexOf(null);
+      S.pointer = firstNull === -1 ? S.taps.length : firstNull;
+      if(typeof d.comp === "number"){ S.comp = d.comp; bumpComp(0); }
+      return "Sesión restaurada: " + S.taps.filter(t => t != null).length + " líneas ya tapadas.";
+    }
+  }catch(e){}
+  return "";
+}
+function clearSession(){
+  try{ localStorage.removeItem(sessionKey()); }catch(e){}
+  flash("Sesión guardada borrada.");
+  renderResume();
+}
+
+// ---- sesiones guardadas: continuar donde quedaste ----
+function listSessions(){
+  const out = [];
+  try{
+    for(let i = 0; i < localStorage.length; i++){
+      const k = localStorage.key(i);
+      if(!k || k.indexOf("tapalign:") !== 0) continue;
+      const id = k.slice("tapalign:".length);
+      if(!id) continue;
+      let d = null;
+      try{ d = JSON.parse(localStorage.getItem(k)); }catch(e){}
+      if(!d || !Array.isArray(d.taps)) continue;
+      out.push({
+        id,
+        demo: id === "demo",
+        url: typeof d.url === "string" ? d.url : "",
+        done: d.taps.filter(t => t != null).length,
+        total: d.taps.length,
+      });
+    }
+  }catch(e){}
+  return out;
+}
+function renderResume(){
+  const box = el("resumeBox");
+  if(!box) return;
+  const list = listSessions();
+  if(!list.length){ box.classList.add("hidden"); box.textContent = ""; return; }
+  box.classList.remove("hidden");
+  box.textContent = "";
+  const h = document.createElement("p");
+  h.className = "muted"; h.style.margin = "0 0 8px";
+  h.textContent = "Sesiones en progreso (guardadas en este navegador):";
+  box.appendChild(h);
+  list.forEach(s => {
+    const b = document.createElement("button");
+    b.className = "btn-ghost btn-small";
+    b.style.margin = "0 6px 6px 0";
+    const name = s.demo ? "modo práctica" : (s.url || s.id);
+    b.textContent = "Continuar: " + name + " · " + s.done + "/" + s.total + " líneas";
+    b.onclick = function(){ resumeSession(s); };
+    box.appendChild(b);
+  });
+}
+function resumeSession(s){
+  el("demo").checked = s.demo;
+  if(!s.demo) el("url").value = s.url || s.id;
+  else el("url").value = "";
+  load();
+}
+
+// ---- render ----
+function renderLines(){
+  const ul = el("linesList");
+  ul.textContent = "";
+  S.lines.forEach((text, i) => {
+    const li = document.createElement("li");
+    li.id = "li-" + i;
+    if(i === S.pointer) li.classList.add("now");
+    if(i < S.pointer){ li.classList.add("can-rewind"); li.title = "Volver a esta línea (borra desde aquí)"; li.onclick = () => rewindTo(i); }
+    const idx = document.createElement("span"); idx.className = "idx"; idx.textContent = i;
+    const txt = document.createElement("span"); txt.className = "txt"; txt.textContent = text;
+    li.appendChild(idx); li.appendChild(txt);
+    if(S.taps[i] != null){
+      const t = document.createElement("span"); t.className = "t"; t.textContent = fmt(S.taps[i]);
+      li.appendChild(t);
+    }
+    ul.appendChild(li);
+  });
+  const now = el("li-" + S.pointer);
+  if(now && now.scrollIntoView) now.scrollIntoView({ block: "nearest" });
+}
+function updateTapUI(){
+  el("progress").textContent = S.pointer + "/" + S.lines.length;
+  if(S.pointer >= S.lines.length){
+    el("tapLabel").textContent = "✔ TODAS LAS LÍNEAS TAPADAS — GENERA EL JSON";
+    el("tapPreview").textContent = "";
+    el("tapStatus").textContent = "";
+  } else {
+    el("tapLabel").textContent = "TOCA CUANDO EMPIECE LA LÍNEA ▶";
+    el("tapPreview").textContent = S.lines[S.pointer];
+    if(!S.demo && !S.ytReady) el("tapStatus").textContent = "Esperando el video…";
+    else if(!clockPlaying()) el("tapStatus").textContent = "En pausa — dale play en el video.";
+    else el("tapStatus").textContent = "Listo.";
+  }
+  el("exportBtn").disabled = S.taps.every(t => t == null);
+}
+
+// ---- export ----
+function slug(){
+  const v = (el("url").value.trim() || "lyrics").toLowerCase();
+  return v.replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60) || "lyrics";
+}
+function doExport(){
+  const have = [];
+  S.taps.forEach((t, i) => { if(t != null) have.push({ i, t }); });
+  if(!have.length){ flash("Todavía no hay taps."); return; }
+  const dur = clockDuration();
+  const out = have.map((x, k) => {
+    const next = have[k+1];
+    const end = next ? next.t : (dur != null ? Math.min(dur, x.t + 30) : x.t + 8);
+    return { line_index: x.i, start_seconds: r2(x.t), end_seconds: r2(end) };
+  });
+  const missing = [];
+  S.taps.forEach((t, i) => { if(t == null) missing.push(i); });
+  el("missingWarn").textContent = missing.length
+    ? "Faltan " + missing.length + " líneas (" + missing.slice(0,10).join(", ") + (missing.length>10 ? "…" : "") + ") — se exportan igual; simplemente no se resaltan."
+    : "";
+  el("jsonout").value = JSON.stringify(out, null, 1);
+  el("jsonout").classList.remove("hidden");
+  el("exportActions").classList.remove("hidden");
+  el("copiedMsg").textContent = "";
+  flash("");
+}
+async function copyJson(){
+  const txt = el("jsonout").value;
+  try{ await navigator.clipboard.writeText(txt); }
+  catch(e){ el("jsonout").select(); document.execCommand("copy"); }
+  el("copiedMsg").textContent = "Copiado ✔";
+}
+function download(){
+  const blob = new Blob([el("jsonout").value], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = slug() + "-line-timestamps.json";
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+// ---- teclado ----
+document.addEventListener("keydown", function(e){
+  const tag = (e.target.tagName || "").toLowerCase();
+  if(tag === "input" || tag === "textarea") return;
+  if(e.metaKey || e.ctrlKey || e.altKey) return;
+  if(e.code === "Space"){ e.preventDefault(); if(!e.repeat) tap(); }
+  else if(e.key === "u" || e.key === "U"){ e.preventDefault(); undo(); }
+});
+
+// ---- reloj visible ----
+setInterval(function(){
+  if(el("playerCard").classList.contains("hidden")) return;
+  const t = clockTime();
+  el("clockdisp").textContent = (t != null && isFinite(t)) ? fmt(t) : "—";
+}, 200);
+
+// ---- init ----
+renderResume();
+
+// ---- debug (pruebas automatizadas) ----
+window.__tapAlign = {
+  get state(){ return { pointer:S.pointer, taps:S.taps.slice(), lines:S.lines.slice(), videoId:S.videoId, demo:S.demo, comp:S.comp }; },
+  tap: tap, undo: undo, rewindTo: rewindTo, exportJSON: doExport,
+};
+</script>
+</body>
+</html>

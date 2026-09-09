@@ -25,6 +25,7 @@ Ratified with Kyle during the Slice 63 plan session (2026-09-08). These override
 - First bottom **Siguiente** advances from the step Kyle is looking at (after auto-init, that is bio / first visible).
 - **2026-09-09:** Kyle dropped the extra header pacing bar after teaching with it. Match presentation: bottom pills move the class, dots stay local peek, Abrir todas in the middle of that row.
 - **2026-09-09 (blanks):** One Entregar tap in review/self-study shows marks. Live students only hand in. No Ver respuestas. Wrong answer shows the correct word to the right, between the typed word and the X. Teacher typing in a blank replaces that blank on student phones in Realtime (`song_class_answers`); student `song_lyric_attempts` stay saved.
+- **2026-09-09 (karaoke timestamps):** Primary generator is Hermes-side tap-align (`scripts/tap-align-lyrics.html`): Kyle taps each lyric line while the official YouTube video plays and pastes `{line_index, start_seconds, end_seconds}` into `stories.line_timestamps`. No `karaoke_offset_seconds` column; any correction bakes into the JSON. Whisper-on-studio-MP3 is a documented fallback for songs too dense to tap, not Cursor work. The music embed ignores `&t=` / `start=` on `youtube_url` (videoId only); that is intentional.
 
 ## What to build
 
@@ -152,7 +153,7 @@ RLS on `song_lyric_attempts` (mirror the ComprehensionResponse policy shapes):
 - **Hosted or ripped song audio** — YouTube embeds only, forever (copyright). No yt-dlp, no audio extraction.
 - **Review/consumer attempt persistence** — fresh passes in review/consumer mode are local state only in v1; the in-class submitted attempt stays the single scored record.
 - **Teacher AI toolbox** (paste-box, Traducir y anotar, Generar borrador IPA) — Slice 55 scope per its addendum.
-- **Line-timestamp generation** — Whisper runs Hermes-side against an MP3 Kyle supplies; the app only renders `line_timestamps` when present. Do not build generation UI or scripts.
+- **Line-timestamp generation in the app** — Do not build a generator, API route, or Whisper button. The tap-align tool already lives in `scripts/tap-align-lyrics.html`. The app only renders `line_timestamps` when present. Whisper-on-MP3 stays a Hermes-only fallback; never add `karaoke_offset_seconds`.
 - **Word tooltips in the blanks worksheet** — paper-worksheet parity; the listening exercise must not become a reading exercise.
 - **Word flags on song lyrics** — ADR 009 explicitly excludes songs.
 - **Live student progress dashboard during the blanks segment** — Kyle runs playback and the answer check himself; he asked for no live visibility.
