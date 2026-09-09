@@ -355,7 +355,7 @@ export default function ConversationStudent({
         <ol className="space-y-4">
           {prompt.questions.map((question, index) => (
             <li key={question.id} className="flex gap-3">
-              <span className="mt-1 w-6 shrink-0 text-label-md text-text-muted">
+              <span className="w-6 shrink-0 font-heading text-story-body text-text-primary">
                 {index + 1}.
               </span>
               <p className="font-heading text-story-body text-text-primary">
