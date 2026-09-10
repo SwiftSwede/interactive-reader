@@ -356,3 +356,39 @@ export function blankIdsOnLine(
 export function seekBackSeconds(startSeconds: number): number {
   return Math.max(0, startSeconds - 3);
 }
+
+/** Inset so we recenter before the highlight tucks under the sticky player. */
+export const KARAOKE_WELL_INSET = 8;
+
+export function karaokeVisibleWell(
+  headerBottom: number,
+  stickyTop: number | null,
+  viewportHeight: number,
+  inset = KARAOKE_WELL_INSET,
+): { top: number; bottom: number } {
+  const top = Math.max(0, headerBottom) + inset;
+  const rawBottom = stickyTop == null ? viewportHeight : stickyTop;
+  const bottom = Math.max(top + 1, rawBottom - inset);
+  return { top, bottom };
+}
+
+export function karaokeLineNeedsRecenter(
+  lineTop: number,
+  lineBottom: number,
+  wellTop: number,
+  wellBottom: number,
+): boolean {
+  if (lineBottom < wellTop || lineTop > wellBottom) return false;
+  return lineTop < wellTop || lineBottom > wellBottom;
+}
+
+export function karaokeRecenterDelta(
+  lineTop: number,
+  lineBottom: number,
+  wellTop: number,
+  wellBottom: number,
+): number {
+  const wellCenter = (wellTop + wellBottom) / 2;
+  const lineCenter = (lineTop + lineBottom) / 2;
+  return lineCenter - wellCenter;
+}

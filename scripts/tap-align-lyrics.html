@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Alineador de letras — Profe Kyle</title>
 <style>
   :root{
@@ -69,6 +70,7 @@
 <div class="wrap">
   <h1>Alineador de letras</h1>
   <p class="sub">Karaoke de canciones — toca cada línea mientras suena el video oficial y exporta el JSON para <code>stories.line_timestamps</code>. El reloj es el mismo que verá la clase: <b>tiempo del video de YouTube, desde 0:00</b>.</p>
+  <div id="fileOriginWarn" class="card warn hidden">YouTube Error 153: no abras este archivo directo. Doble clic en <code>tap-align-lyrics.command</code> para abrirlo en <code>http://localhost:8765</code>. No uses 127.0.0.1: YouTube lo marca como Video unavailable.</div>
   <div id="flash"></div>
 
   <div class="card" id="setupCard">
@@ -167,6 +169,10 @@ const S = {
 
 const el = id => document.getElementById(id);
 function flash(msg){ el("flash").textContent = msg || ""; }
+if(location.protocol === "file:"){
+  const warn = el("fileOriginWarn");
+  if(warn) warn.classList.remove("hidden");
+}
 function fmt(t){
   const m = Math.floor(t/60), s = Math.floor(t%60), d = Math.floor((t%1)*10);
   return m + ":" + String(s).padStart(2,"0") + "." + d;
@@ -259,13 +265,55 @@ function loadYouTube(id){
   }, 8000);
 }
 function makePlayer(id){
+  if(location.protocol === "file:"){
+    flash("YouTube Error 153: ábrelo con tap-align-lyrics.command (http://localhost:8765), no como archivo.");
+    return;
+  }
+  if(location.hostname === "127.0.0.1"){
+    flash("YouTube marca 127.0.0.1 como Video unavailable. Abre http://localhost:8765/tap-align-lyrics.html");
+    location.replace("http://localhost:" + (location.port || "8765") + location.pathname + location.search);
+    return;
+  }
+  try { if(S.yt && S.yt.destroy) S.yt.destroy(); } catch (e) { /* first load */ }
+  S.yt = null;
+  S.ytReady = false;
+  el("realFrame").innerHTML = '<div id="ytplayer"></div>';
   S.yt = new YT.Player("ytplayer", {
     videoId: id,
-    playerVars: { rel:0, playsinline:1 },
+    width: "100%",
+    height: "100%",
+    playerVars: {
+      autoplay: 0,
+      modestbranding: 1,
+      rel: 0,
+      playsinline: 1,
+      origin: location.origin,
+    },
     events: {
-      onReady: function(){ S.ytReady = true; clearTimeout(ytApiTimer); updateTapUI(); },
+      onReady: function(){
+        S.ytReady = true;
+        clearTimeout(ytApiTimer);
+        try {
+          const iframe = S.yt.getIframe();
+          iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+          iframe.setAttribute("allowfullscreen", "true");
+          iframe.setAttribute(
+            "allow",
+            "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+          );
+        } catch (e) { /* iframe not ready */ }
+        updateTapUI();
+      },
       onStateChange: function(e){ S.ytState = e.data; updateTapUI(); },
-      onError: function(){ flash("YouTube no dejó reproducir ese video. Revisa el URL o usa otro navegador."); },
+      onError: function(e){
+        if(e && e.data === 153){
+          flash("YouTube Error 153: recarga http://localhost:8765/tap-align-lyrics.html (no abras el .html como archivo).");
+        } else if(e && (e.data === 101 || e.data === 150)){
+          flash("YouTube no deja incrustar este video. Usa el mismo URL oficial que está en stories.youtube_url.");
+        } else {
+          flash("YouTube no dejó reproducir ese video (código " + (e && e.data) + "). Revisa el URL.");
+        }
+      },
     },
   });
 }

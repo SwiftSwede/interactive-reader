@@ -175,6 +175,8 @@ Songs cannot reuse the Whisper story pipeline: the class plays the official YouT
 open scripts/tap-align-lyrics.command      # or double-click the .command file
 ```
 
+That starts a tiny local server and opens `http://localhost:8765/tap-align-lyrics.html`. Do **not** open the `.html` file directly (YouTube Error 153). Do **not** use `http://127.0.0.1:8765` in the address bar: YouTube shows "Video unavailable" on that host even though the same video plays on `localhost`.
+
 **Workflow:** paste the song's `youtube_url` + `body_text` (with the empty stanza lines) → play the video → tap the big button (or Space) as each line starts → **Generar JSON** → paste into `stories.line_timestamps` in the Supabase Table Editor.
 
 - Line numbering matches the app exactly (non-empty lines, 0-based — same as `indexedLyricLines()`), so it also lines up with `lyrics_ipa`.

@@ -402,7 +402,6 @@ export default function MusicLessonSteps({
                 bodyText={story.body_text}
                 lyricsIpa={story.lyrics_ipa}
                 lineTimestamps={story.line_timestamps}
-                lyricBlanks={lyricBlanks}
                 videoId={youtubeId}
                 title={story.title}
                 sessionId={sessionId}

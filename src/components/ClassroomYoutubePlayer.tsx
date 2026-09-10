@@ -19,6 +19,7 @@ type YtPlayer = {
   pauseVideo: () => void;
   seekTo: (seconds: number, allowSeekAhead: boolean) => void;
   getCurrentTime: () => number;
+  getDuration: () => number;
   getPlayerState: () => number;
   getPlaybackRate: () => number;
   setPlaybackRate: (rate: number) => void;
@@ -69,6 +70,10 @@ const ENDED = 0;
 
 export type YoutubePlayerHandle = {
   seekTo: (seconds: number) => void;
+  play: () => void;
+  pause: () => void;
+  getDuration: () => number;
+  setPlaybackRate: (rate: number) => void;
 };
 
 function armedKey(sessionId: string): string {
@@ -113,6 +118,7 @@ export default forwardRef<
     startSeconds?: number;
     compact?: boolean;
     onTimeUpdate?: (seconds: number) => void;
+    onPlayStateChange?: (playing: boolean) => void;
   }
 >(function ClassroomYoutubePlayer(
   {
@@ -124,6 +130,7 @@ export default forwardRef<
     startSeconds = 0,
     compact = false,
     onTimeUpdate,
+    onPlayStateChange,
   },
   ref
 ) {
@@ -154,6 +161,8 @@ export default forwardRef<
     }
   });
   armedRef.current = !studentLock || armed;
+  const onPlayStateChangeRef = useRef(onPlayStateChange);
+  onPlayStateChangeRef.current = onPlayStateChange;
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   useImperativeHandle(ref, () => ({
@@ -161,6 +170,26 @@ export default forwardRef<
       const player = playerRef.current;
       if (!player) return;
       player.seekTo(Math.max(0, seconds), true);
+    },
+    play() {
+      playerRef.current?.playVideo();
+    },
+    pause() {
+      playerRef.current?.pauseVideo();
+    },
+    getDuration() {
+      try {
+        return playerRef.current?.getDuration() ?? 0;
+      } catch {
+        return 0;
+      }
+    },
+    setPlaybackRate(rate: number) {
+      try {
+        playerRef.current?.setPlaybackRate(rate);
+      } catch {
+        /* player not ready */
+      }
     },
   }));
 
@@ -250,6 +279,13 @@ export default forwardRef<
             if (studentLock) applyToPlayer(leaderRef.current);
           },
           onStateChange: (event) => {
+            if (
+              event.data === PLAYING ||
+              event.data === PAUSED ||
+              event.data === ENDED
+            ) {
+              onPlayStateChangeRef.current?.(event.data === PLAYING);
+            }
             if (!teacherRef.current || !liveRef.current) return;
             if (applyingRef.current) return;
             if (

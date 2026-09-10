@@ -10,6 +10,9 @@ import {
   placeLyricBlanks,
   scoreBlank,
   seekBackSeconds,
+  karaokeLineNeedsRecenter,
+  karaokeRecenterDelta,
+  karaokeVisibleWell,
 } from "./music";
 
 const SUMMER_BODY = `I got my first real six-string
@@ -236,6 +239,27 @@ describe("seekBackSeconds", () => {
   test("clamps at zero", () => {
     assert.equal(seekBackSeconds(1), 0);
     assert.equal(seekBackSeconds(12), 9);
+  });
+});
+
+describe("karaoke viewport well", () => {
+  test("uses the sticky bar as the floor, not the window bottom", () => {
+    const well = karaokeVisibleWell(56, 700, 800, 8);
+    assert.equal(well.top, 64);
+    assert.equal(well.bottom, 692);
+  });
+
+  test("does not chase a line the reader scrolled away from", () => {
+    assert.equal(karaokeLineNeedsRecenter(800, 832, 64, 692), false);
+    assert.equal(karaokeLineNeedsRecenter(0, 32, 64, 692), false);
+  });
+
+  test("recenters when the line would tuck under the sticky player", () => {
+    assert.equal(karaokeLineNeedsRecenter(680, 712, 64, 692), true);
+  });
+
+  test("centers the line in the well, not the raw viewport", () => {
+    assert.equal(karaokeRecenterDelta(680, 712, 64, 692), 318);
   });
 });
 
