@@ -122,6 +122,17 @@ export default function CreateSessionForm({
           </button>
           <button
             type="button"
+            onClick={() => setSessionType("pronunciation")}
+            className={`h-11 rounded-card border text-sm font-medium ${
+              sessionType === "pronunciation"
+                ? "border-accent bg-accent text-white"
+                : "border-paper-line text-text-primary"
+            }`}
+          >
+            Pronunciación
+          </button>
+          <button
+            type="button"
             onClick={() => setSessionType("dialogue")}
             className={`h-11 rounded-card border text-sm font-medium ${
               sessionType === "dialogue"
@@ -626,6 +637,11 @@ export default function CreateSessionForm({
             </select>
           </label>
         )
+      ) : sessionType === "pronunciation" ? (
+        <p className="text-sm text-text-secondary">
+          Esta clase es por Zoom. Dictado, coral y pronunciación ya están en
+          la historia de la Clase 1.
+        </p>
       ) : videoOptions.length === 0 ? (
         <p className="text-sm text-text-muted">
           Todavía no hay una traducción de este nivel.

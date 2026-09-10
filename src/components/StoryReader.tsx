@@ -17,6 +17,12 @@ import {
 import { loadVideoSummaryFreeWrites } from "@/lib/teacher";
 import { existsSync, readFileSync } from "fs";
 import { join } from "path";
+import { sessionRecordingUrl } from "@/lib/session-phase";
+import {
+  canShowStoryPractice,
+  isStoryPracticeGated,
+  loadPronunciationSession,
+} from "@/lib/story-practice";
 
 function loadWordTimestamps(slug: string): WordTimestamp[] {
   // Per-story timestamp file: public/audio/stories/{slug}-timestamps.json
@@ -154,27 +160,53 @@ export default async function StoryReader({
     );
   }
 
-  const soundVideos = await getSoundVideos(supabase);
+  const userPromise = supabase.auth.getUser();
+  const soundVideosPromise = getSoundVideos(supabase);
+  const {
+    data: { user },
+  } = await userPromise;
+
+  const [soundVideos, pronunciationSession] = await Promise.all([
+    soundVideosPromise,
+    loadPronunciationSession(supabase, {
+      storyId: story.id,
+      storyKind: story.kind,
+      courseId,
+      storySessionStart: sessionStartTime,
+      userId: user?.id ?? null,
+    }),
+  ]);
 
   let choralCompleted = false;
-  if (readerMode !== "classroom-live") {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-    if (user) {
-      const { data: completion, error: completionError } = await supabase
-        .from("choral_practice_completions")
-        .select("id")
-        .eq("user_id", user.id)
-        .eq("story_id", story.id)
-        .maybeSingle();
-      if (!completionError) {
-        choralCompleted = Boolean(completion);
-      }
+  if (readerMode !== "classroom-live" && user) {
+    const { data: completion, error: completionError } = await supabase
+      .from("choral_practice_completions")
+      .select("id")
+      .eq("user_id", user.id)
+      .eq("story_id", story.id)
+      .maybeSingle();
+    if (!completionError) {
+      choralCompleted = Boolean(completion);
     }
   }
 
-  const showPractice = readerMode !== "classroom-live";
+  const pronunciationStartsAt = pronunciationSession?.sessionStartTime ?? null;
+  const practiceRecordingYoutubeUrl = pronunciationSession?.sessionEndTime
+    ? sessionRecordingUrl({
+        sessionStartTime: pronunciationSession.sessionStartTime,
+        sessionEndTime: pronunciationSession.sessionEndTime,
+        classEndedAt: pronunciationSession.classEndedAt,
+        recordingYoutubeUrl: pronunciationSession.recordingYoutubeUrl,
+      })
+    : null;
+  const practiceInput = {
+    isTeacher,
+    storyKind: story.kind,
+    readerMode,
+    pronunciationStartsAt,
+  };
+  const showPractice = canShowStoryPractice(practiceInput);
+  const practiceLockedHint = isStoryPracticeGated(practiceInput);
   const storyAudioUrl = resolveStoryAudioUrl(story.slug);
   const coralAudio = resolveCoralAudioUrl(
     story.slug,
@@ -217,6 +249,8 @@ export default async function StoryReader({
         lessonStepLocked={lessonStepLocked}
         answersRevealed={answersRevealed}
         songClassAnswers={songClassAnswers}
+        practiceLockedHint={practiceLockedHint}
+        practiceRecordingYoutubeUrl={practiceRecordingYoutubeUrl}
       />
     </SoundVideoProvider>
   );

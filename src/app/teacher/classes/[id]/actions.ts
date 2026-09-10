@@ -337,6 +337,34 @@ export async function createSession(
     return { ok: true, message: `Listo. ${prompt.title} ya tiene clase.` };
   }
 
+  if (sessionType === "pronunciation") {
+    const { error } = await supabase.from("course_sessions").insert({
+      course_id: courseId,
+      session_type: "pronunciation",
+      story_id: null,
+      writing_prompt_id: null,
+      exam_prompt_id: null,
+      presentation_prompt_id: null,
+      conversation_prompt_id: null,
+      session_date: sessionDate,
+      session_start_time: start.toISOString(),
+      session_end_time: end.toISOString(),
+      notes,
+    });
+
+    if (error) {
+      console.error("create pronunciation session failed:", error);
+      return {
+        ok: false,
+        error: "No pude crear la clase. Inténtalo de nuevo.",
+      };
+    }
+
+    revalidatePath(`/teacher/classes/${courseId}`);
+    revalidatePath("/teacher");
+    return { ok: true, message: "Listo. Pronunciación ya tiene clase." };
+  }
+
   const storyId = String(formData.get("storyId") ?? "").trim();
 
   if (!storyId) {

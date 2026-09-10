@@ -20,6 +20,7 @@ import MicroExplanation from "./MicroExplanation";
 import StoryTextSheet from "./StoryTextSheet";
 import BackLink from "./BackLink";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
+import { storyStepRecordingUrl } from "@/lib/story-practice";
 import MusicLessonSteps from "./music/MusicLessonSteps";
 import { youtubeEmbedId } from "@/lib/youtube-sync";
 import ClassroomYoutubePlayer from "./ClassroomYoutubePlayer";
@@ -80,6 +81,8 @@ export default function StorySteps({
   lessonStepLocked = false,
   answersRevealed = false,
   songClassAnswers = {},
+  practiceLockedHint = false,
+  practiceRecordingYoutubeUrl = null,
 }: {
   data: LoadedStory;
   timestamps: WordTimestamp[];
@@ -108,6 +111,8 @@ export default function StorySteps({
   lessonStepLocked?: boolean;
   answersRevealed?: boolean;
   songClassAnswers?: Record<number, string>;
+  practiceLockedHint?: boolean;
+  practiceRecordingYoutubeUrl?: string | null;
 }) {
   if (data.story.kind === "song") {
     return (
@@ -156,6 +161,8 @@ export default function StorySteps({
       sessionEndTime={sessionEndTime}
       classEndedAt={initialEndedAt}
       flagging={flagging}
+      practiceLockedHint={practiceLockedHint}
+      practiceRecordingYoutubeUrl={practiceRecordingYoutubeUrl}
     />
   );
 }
@@ -183,6 +190,8 @@ function ClassicStorySteps({
   sessionEndTime = null,
   classEndedAt: initialEndedAt = null,
   flagging,
+  practiceLockedHint = false,
+  practiceRecordingYoutubeUrl = null,
 }: {
   data: LoadedStory;
   timestamps: WordTimestamp[];
@@ -206,6 +215,8 @@ function ClassicStorySteps({
   sessionEndTime?: string | null;
   classEndedAt?: string | null;
   flagging?: WordFlagging;
+  practiceLockedHint?: boolean;
+  practiceRecordingYoutubeUrl?: string | null;
 }) {
   const {
     story,
@@ -268,6 +279,11 @@ function ClassicStorySteps({
   const prev = safeIndex > 0 ? steps[safeIndex - 1] : null;
   const next = safeIndex < steps.length - 1 ? steps[safeIndex + 1] : null;
   const isStory = active.id === "story";
+  const bannerUrl = storyStepRecordingUrl({
+    stepId: active.id,
+    storyRecordingUrl: recordingYoutubeUrl,
+    practiceRecordingUrl: practiceRecordingYoutubeUrl,
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -425,9 +441,7 @@ function ClassicStorySteps({
         </div>
 
         <article className="max-w-2xl mx-auto px-4 py-6">
-          {recordingYoutubeUrl ? (
-            <RecordingBanner youtubeUrl={recordingYoutubeUrl} />
-          ) : null}
+          {bannerUrl ? <RecordingBanner youtubeUrl={bannerUrl} /> : null}
           <div key={active.id} className="step-panel">
             {!isStory && (
               <button
@@ -552,6 +566,12 @@ function ClassicStorySteps({
               />
             </div>
           )}
+
+          {practiceLockedHint ? (
+            <p className="mt-6 text-body-main text-text-muted">
+              Dictado, coral y pronunciación se abren el día de Pronunciación.
+            </p>
+          ) : null}
 
           <nav className="step-nav" aria-label="Navegación de pasos">
             {prev && (
