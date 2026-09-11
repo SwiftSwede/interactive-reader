@@ -80,32 +80,32 @@ export default function CourseRoster({
           />
         </div>
       )}
-      <ul className="grid grid-cols-1 items-start gap-3 min-[600px]:grid-cols-2 lg:grid-cols-3">
+      <ul className="grid auto-rows-fr grid-cols-1 gap-3 min-[600px]:grid-cols-2 lg:grid-cols-3">
         {sorted.map((student) => (
           <li
             key={student.studentId}
-            className="rounded-sheet border border-paper-line bg-surface p-4"
+            className="flex h-full flex-col rounded-sheet border border-paper-line bg-surface p-4"
           >
             <Link
               href={`/teacher/classes/${courseId}/students/${student.studentId}`}
-              className="block rounded-card hover:bg-surface-hover"
+              className="block min-h-0 flex-1 rounded-card hover:bg-surface-hover"
             >
-              <p className="text-label-md text-text-primary">
+              <p className="line-clamp-2 min-h-10 text-label-md text-text-primary">
                 {student.displayName}
               </p>
               <p className="mt-1 text-label-sm text-text-secondary">
                 Asistencia: {student.attendedCount}/{student.sessionCount}
               </p>
-              {student.lastActivityAt ? (
-                <div className="mt-0.5 text-label-sm text-text-muted">
-                  Última actividad:
-                  <LocalDateTime iso={student.lastActivityAt} />
-                </div>
-              ) : (
-                <p className="mt-0.5 text-label-sm text-text-muted">
-                  Todavía no entra a una clase.
-                </p>
-              )}
+              <div className="mt-0.5 min-h-8 text-label-sm text-text-muted [&_time]:mt-0">
+                {student.lastActivityAt ? (
+                  <>
+                    Última actividad:
+                    <LocalDateTime iso={student.lastActivityAt} />
+                  </>
+                ) : (
+                  <p>Todavía no entra a una clase.</p>
+                )}
+              </div>
             </Link>
             <MoveStudentButton
               courseId={courseId}
