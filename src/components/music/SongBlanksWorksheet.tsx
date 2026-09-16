@@ -6,8 +6,10 @@ import ClassroomYoutubePlayer from "@/components/ClassroomYoutubePlayer";
 import type { LyricBlank } from "@/types";
 import {
   allLyricBlanksFilled,
+  applyBlankSlotEdit,
   placeLyricBlanks,
   scoreBlank,
+  splitBlankTyped,
   type PlacedLyricLine,
 } from "@/lib/music";
 import {
@@ -303,30 +305,71 @@ function LyricLine({
         const ok = correctById[segment.blankId] === true;
         const answer = answerById[segment.blankId] ?? segment.answer;
         const showMarks = revealed && !showingClass;
+        const wordCount = Math.max(1, segment.wordCount);
+        const parts = splitBlankTyped(typed, wordCount);
         return (
-          <span key={`b-${segment.blankId}-${index}`} className="lyric-blank-slot">
+          <span
+            key={`b-${segment.blankId}-${index}`}
+            className="lyric-blank-slot"
+          >
             <span className="lyric-blank-num">{segment.blankId}</span>
-            <span className="lyric-blank-grow">
-              <span className="lyric-blank-sizer" aria-hidden="true">
-                {blankSizerText(typed, showMarks || showingClass)}
-              </span>
-              <input
-                value={typed}
-                size={1}
-                onChange={(event) =>
-                  onChange(segment.blankId, event.target.value)
-                }
-                onBlur={(event) => onBlur(segment.blankId, event.target.value)}
-                readOnly={locked}
-                aria-label={
-                  showingClass
-                    ? `Respuesta del Profe Kyle, hueco ${segment.blankId}`
-                    : `Hueco ${segment.blankId}`
-                }
-                className={`lyric-blank${
-                  showMarks ? (ok ? " lyric-blank-ok" : " lyric-blank-bad") : ""
-                }`}
-              />
+            <span className="lyric-blank-words">
+              {parts.map((part, slot) => (
+                <span key={slot} className="lyric-blank-grow">
+                  <span className="lyric-blank-sizer" aria-hidden="true">
+                    {blankSizerText(part, showMarks || showingClass)}
+                  </span>
+                  <input
+                    id={`lyric-blank-${line.lineIndex}-${segment.blankId}-${slot}`}
+                    value={part}
+                    size={1}
+                    onChange={(event) => {
+                      const next = applyBlankSlotEdit(
+                        typed,
+                        wordCount,
+                        slot,
+                        event.target.value
+                      );
+                      onChange(segment.blankId, next.typed);
+                      if (next.focusSlot === slot || locked) return;
+                      const focusId = `lyric-blank-${line.lineIndex}-${segment.blankId}-${next.focusSlot}`;
+                      requestAnimationFrame(() => {
+                        document.getElementById(focusId)?.focus();
+                      });
+                    }}
+                    onKeyDown={(event) => {
+                      if (event.key !== "Backspace") return;
+                      if (event.currentTarget.value !== "") return;
+                      if (slot === 0) return;
+                      event.preventDefault();
+                      const focusId = `lyric-blank-${line.lineIndex}-${segment.blankId}-${slot - 1}`;
+                      document.getElementById(focusId)?.focus();
+                    }}
+                    onBlur={(event) => {
+                      const next = applyBlankSlotEdit(
+                        typed,
+                        wordCount,
+                        slot,
+                        event.target.value
+                      );
+                      onBlur(segment.blankId, next.typed);
+                    }}
+                    readOnly={locked}
+                    aria-label={
+                      showingClass
+                        ? wordCount > 1
+                          ? `Respuesta del Profe Kyle, hueco ${segment.blankId}, palabra ${slot + 1} de ${wordCount}`
+                          : `Respuesta del Profe Kyle, hueco ${segment.blankId}`
+                        : wordCount > 1
+                          ? `Hueco ${segment.blankId}, palabra ${slot + 1} de ${wordCount}`
+                          : `Hueco ${segment.blankId}`
+                    }
+                    className={`lyric-blank${
+                      showMarks ? (ok ? " lyric-blank-ok" : " lyric-blank-bad") : ""
+                    }`}
+                  />
+                </span>
+              ))}
             </span>
             {showMarks && !ok ? (
               <span className="lyric-blank-answer text-label-sm text-success">

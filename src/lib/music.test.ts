@@ -3,13 +3,17 @@ import { describe, test } from "node:test";
 import {
   adjacentMusicStep,
   allLyricBlanksFilled,
+  applyBlankSlotEdit,
+  blankAnswerWords,
   decodeMusicStep,
+  joinBlankParts,
   musicStepList,
   normalizeBlankAnswer,
   parseSongClassAnswers,
   placeLyricBlanks,
   scoreBlank,
   seekBackSeconds,
+  splitBlankTyped,
   karaokeLineNeedsRecenter,
   karaokeRecenterDelta,
   karaokeVisibleWell,
@@ -223,7 +227,7 @@ describe("placeLyricBlanks", () => {
     );
   });
 
-  test("multi-word answers become one wider blank", () => {
+  test("multi-word answers stay one blank id with a word count", () => {
     const body = "I like the way you do that\nHello";
     const lines = placeLyricBlanks(body, [
       { id: 6, prompt: "I like ___ ___ ___ __ that", answer: "the way you do" },
@@ -232,6 +236,49 @@ describe("placeLyricBlanks", () => {
     const blanks = (first?.segments ?? []).filter((seg) => seg.kind === "blank");
     assert.equal(blanks.length, 1);
     assert.equal(blanks[0]?.kind === "blank" ? blanks[0].blankId : null, 6);
+    assert.equal(blanks[0]?.kind === "blank" ? blanks[0].wordCount : null, 4);
+  });
+});
+
+describe("multi-word blank slots", () => {
+  test("counts words in the answer", () => {
+    assert.deepEqual(blankAnswerWords("pulled up"), ["pulled", "up"]);
+    assert.deepEqual(blankAnswerWords("hide"), ["hide"]);
+  });
+
+  test("splits a joined answer across word slots", () => {
+    assert.deepEqual(splitBlankTyped("pulled up", 2), ["pulled", "up"]);
+    assert.deepEqual(splitBlankTyped("pulled", 2), ["pulled", ""]);
+    assert.deepEqual(splitBlankTyped("", 2), ["", ""]);
+    assert.deepEqual(splitBlankTyped("the way you do extra", 4), [
+      "the",
+      "way",
+      "you",
+      "do extra",
+    ]);
+  });
+
+  test("joins slot parts as one blank answer", () => {
+    assert.equal(joinBlankParts(["pulled", "up"]), "pulled up");
+    assert.equal(joinBlankParts(["pulled", ""]), "pulled");
+  });
+
+  test("a trailing space in an early slot moves focus to the next", () => {
+    const next = applyBlankSlotEdit("", 2, 0, "pulled ");
+    assert.equal(next.typed, "pulled");
+    assert.equal(next.focusSlot, 1);
+  });
+
+  test("pasting two words into the first slot fills both", () => {
+    const next = applyBlankSlotEdit("", 2, 0, "pulled up");
+    assert.equal(next.typed, "pulled up");
+    assert.equal(next.focusSlot, 1);
+  });
+
+  test("editing one slot keeps the other word", () => {
+    const next = applyBlankSlotEdit("pulled up", 2, 1, "in");
+    assert.equal(next.typed, "pulled in");
+    assert.equal(next.focusSlot, 1);
   });
 });
 

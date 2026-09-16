@@ -29,7 +29,7 @@ export type LyricLineTimestamp = {
 
 export type LyricSegment =
   | { kind: "text"; text: string }
-  | { kind: "blank"; blankId: number; answer: string };
+  | { kind: "blank"; blankId: number; answer: string; wordCount: number };
 
 export type PlacedLyricLine = {
   /** 0-based among non-empty lyric lines. Null on stanza breaks. */
@@ -248,6 +248,69 @@ function tokenize(line: string): string[] {
   return line.split(/\s+/).filter(Boolean);
 }
 
+/** Words in a lyric-blank answer. "pull up" is two slots, one blank id. */
+export function blankAnswerWords(answer: string): string[] {
+  return tokenize(answer.trim());
+}
+
+export function splitBlankTyped(typed: string, wordCount: number): string[] {
+  const count = Math.max(1, wordCount);
+  const words =
+    typed.trim() === "" ? [] : typed.trim().split(/\s+/).filter(Boolean);
+  return Array.from({ length: count }, (_, index) => {
+    if (index < count - 1) return words[index] ?? "";
+    return words.slice(count - 1).join(" ");
+  });
+}
+
+export function joinBlankParts(parts: string[]): string {
+  return parts
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .join(" ");
+}
+
+export function applyBlankSlotEdit(
+  currentTyped: string,
+  wordCount: number,
+  slotIndex: number,
+  slotValue: string
+): { typed: string; focusSlot: number } {
+  const count = Math.max(1, wordCount);
+  const slot = Math.min(Math.max(0, slotIndex), count - 1);
+  const parts = splitBlankTyped(currentTyped, count);
+
+  if (slot < count - 1 && /\s/.test(slotValue)) {
+    const tokens = slotValue.trim().split(/\s+/).filter(Boolean);
+    const endedWithSpace = /\s$/.test(slotValue);
+    if (tokens.length === 0) {
+      parts[slot] = "";
+      return {
+        typed: joinBlankParts(parts),
+        focusSlot: endedWithSpace ? slot + 1 : slot,
+      };
+    }
+    let cursor = slot;
+    for (const token of tokens) {
+      if (cursor < count - 1) {
+        parts[cursor] = token;
+        cursor += 1;
+      } else {
+        const last = parts[count - 1] ?? "";
+        parts[count - 1] = last ? `${last} ${token}` : token;
+        cursor = count - 1;
+      }
+    }
+    const focusSlot = endedWithSpace
+      ? Math.min(count - 1, slot + tokens.length)
+      : Math.min(count - 1, slot + tokens.length - 1);
+    return { typed: joinBlankParts(parts), focusSlot };
+  }
+
+  parts[slot] = slotValue.trim();
+  return { typed: joinBlankParts(parts), focusSlot: slot };
+}
+
 function stripTrailPunct(token: string): string {
   return token.replace(/[.,!?;:]+$/g, "");
 }
@@ -322,6 +385,7 @@ export function placeLyricBlanks(
           kind: "blank",
           blankId: blank.id,
           answer: blank.answer,
+          wordCount: Math.max(1, answerTokens.length),
         });
         i += Math.max(1, answerTokens.length);
         continue;

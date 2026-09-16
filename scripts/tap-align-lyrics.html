@@ -38,15 +38,26 @@
        overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .muted{color:#7a6a5c;font-size:13px}
   #flash{min-height:22px;font-size:13.5px;color:var(--danger);margin:6px 0 0;font-weight:600}
+  .tap-sticky{position:sticky;top:8px;z-index:5}
   .lines{list-style:none;margin:0;padding:0}
-  .lines li{display:flex;gap:10px;align-items:baseline;padding:6px 8px;border-radius:8px}
-  .lines li.can-rewind{cursor:pointer}
-  .lines li.can-rewind:hover{background:#f3ebe0}
+  .lines li{display:flex;gap:10px;align-items:center;padding:6px 8px;border-radius:8px}
   .lines li.now{background:var(--accent-soft);box-shadow:inset 3px 0 0 var(--accent)}
   .idx{font-variant-numeric:tabular-nums;font-size:12px;font-weight:700;color:#9a8875;
        min-width:30px;text-align:right}
-  .txt{flex:1;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .t{font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--moss);font-weight:600;white-space:nowrap}
+  .txt{flex:1;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+  .t-edit{display:flex;align-items:center;gap:4px;flex-shrink:0}
+  .t-edit input{width:88px;border:1px solid var(--line);border-radius:8px;padding:4px 6px;
+       font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--moss);font-weight:600;
+       text-align:center;background:#fff;font-family:inherit}
+  .t-edit input:focus{outline:none;border-color:var(--accent);border-width:2px;padding:3px 5px}
+  .nudge{background:transparent;border:1px solid var(--line);padding:0;width:44px;height:44px;
+       border-radius:8px;font-size:18px;line-height:1;color:var(--ink);touch-action:manipulation;
+       -webkit-tap-highlight-color:transparent;user-select:none}
+  .nudge:hover{background:var(--accent-soft)}
+  .nudge:active{background:var(--accent-soft)}
+  .redo-from{background:transparent;border:1px solid var(--line);padding:4px 8px;
+       border-radius:8px;font-size:11px;font-weight:600;color:#7a6a5c;white-space:nowrap}
+  .redo-from:hover{background:#f3ebe0;color:var(--danger)}
   .steps{display:flex;gap:6px;align-items:center}
   .steps button{background:transparent;border:1px solid var(--line);padding:4px 12px;
        border-radius:10px;font-size:15px}
@@ -112,21 +123,21 @@
         <button onclick="bumpComp(0.05);this.blur()">+</button>
       </span>
     </div>
-    <button class="tap" id="tapBtn" onclick="tap();this.blur()">
+    <button class="tap tap-sticky" id="tapBtn" onclick="tap();this.blur()">
       <span id="tapLabel">TOCA CUANDO EMPIECE LA LÍNEA ▶</span>
       <span class="preview" id="tapPreview"></span>
     </button>
     <div class="status" id="tapStatus"></div>
     <div class="row" style="margin-top:10px">
       <button class="btn-ghost" onclick="undo();this.blur()">↩ Deshacer (U)</button>
-      <span class="muted">Espacio = tocar · U = deshacer · saltaste una línea → haz clic en ella y sigue desde ahí (borra desde esa línea en adelante).</span>
+      <span class="muted">Espacio = tocar · U = deshacer. El botón no mueve la página. Para corregir un tiempo, usa − / + o escribe en la línea. Rehacer desde una línea es un botón aparte (y se puede deshacer).</span>
     </div>
   </div>
 
   <div class="card hidden" id="linesCard">
     <h2>Líneas</h2>
     <ul class="lines" id="linesList"></ul>
-    <p class="muted" style="margin:10px 0 0">Los tiempos ya incluyen la compensación. Coros repetidos = líneas distintas: toca cada uno cuando llegue.</p>
+    <p class="muted" style="margin:10px 0 0">Los tiempos ya incluyen la compensación. − / + mueve 1 ms. Coros repetidos = líneas distintas: toca cada uno cuando llegue.</p>
   </div>
 
   <div class="card hidden" id="exportCard">
@@ -150,7 +161,7 @@
     <ul>
       <li>Usa el MISMO URL oficial que está en <code>stories.youtube_url</code> (video musical oficial, no versiones en vivo — desincronizan).</li>
       <li>No importa si el video tiene intro hablada o logo: la clase también empieza desde 0:00, así que el reloj coincide por construcción.</li>
-      <li>Se acabó el video o te perdiste: pausa, rebobina, haz clic en la línea donde te quedaste y sigue. Nunca se toca en pausa.</li>
+      <li>Se acabó el video o te perdiste: pausa, rebobina, y usa <b>desde aquí</b> en esa línea (confirma; U deshace). Nunca se toca en pausa. Clic en una línea ya tapada no borra nada: edita el tiempo ahí mismo.</li>
       <li>Cambiar la compensación a mitad de camino solo afecta los taps nuevos, no los ya hechos.</li>
       <li>La sesión se guarda sola por video — puedes cerrar y continuar luego.</li>
     </ul>
@@ -165,6 +176,7 @@ const S = {
   videoId:null, demo:false, lines:[], taps:[], pointer:0, comp:0.25,
   yt:null, ytReady:false, ytState:-1,
   demoBase:0, demoT0:0, demoRunning:false,
+  history:[],
 };
 
 const el = id => document.getElementById(id);
@@ -173,11 +185,42 @@ if(location.protocol === "file:"){
   const warn = el("fileOriginWarn");
   if(warn) warn.classList.remove("hidden");
 }
+function r2(n){ return Math.round(n*100)/100; }
+function r3(n){ return Math.round(n*1000)/1000; }
 function fmt(t){
+  const totalMs = Math.max(0, Math.round(Number(t) * 1000));
+  const m = Math.floor(totalMs / 60000);
+  const s = Math.floor((totalMs % 60000) / 1000);
+  const ms = totalMs % 1000;
+  return m + ":" + String(s).padStart(2,"0") + "." + String(ms).padStart(3,"0");
+}
+function fmtClock(t){
   const m = Math.floor(t/60), s = Math.floor(t%60), d = Math.floor((t%1)*10);
   return m + ":" + String(s).padStart(2,"0") + "." + d;
 }
-function r2(n){ return Math.round(n*100)/100; }
+const NUDGE_SEC = 0.001;
+function parseTime(s){
+  s = String(s == null ? "" : s).trim().replace(",", ".");
+  const m = s.match(/^(\d+):(\d{1,2})(?:\.(\d+))?$/);
+  if(m){
+    const frac = m[3] != null ? Number("0." + m[3]) : 0;
+    return Number(m[1]) * 60 + Number(m[2]) + frac;
+  }
+  const n = Number(s);
+  return isFinite(n) && n >= 0 ? n : null;
+}
+function neighborTap(i, dir){
+  if(dir < 0){
+    for(let k = i - 1; k >= 0; k--){ if(S.taps[k] != null) return S.taps[k]; }
+  } else {
+    for(let k = i + 1; k < S.taps.length; k++){ if(S.taps[k] != null) return S.taps[k]; }
+  }
+  return null;
+}
+function snapshot(){
+  S.history.push({ taps: S.taps.slice(), pointer: S.pointer });
+  if(S.history.length > 80) S.history.shift();
+}
 
 // ---- numeración de líneas: EXACTAMENTE la de la app ----
 // src/lib/music.ts → indexedLyricLines(): split("\n").filter(l => l.trim().length > 0), 0-based
@@ -234,6 +277,7 @@ function load(){
   if(!S.lines.length){ flash("Pega la letra primero."); return; }
   S.taps = new Array(S.lines.length).fill(null);
   S.pointer = 0;
+  S.history = [];
   const restored = applySession(saved);
 
   el("setupCard").classList.add("hidden");
@@ -340,20 +384,73 @@ function tap(){
   if(!clockPlaying()){ flash("En pausa no se toca — dale play primero."); return; }
   const adj = Math.max(0, t - S.comp);
   const prev = previousTap();
-  if(prev != null && adj <= prev){ flash("Ese momento no va después de la línea anterior. Si te saltaste una, haz clic en esa línea y sigue desde ahí."); return; }
+  if(prev != null && adj <= prev){ flash("Ese momento no va después de la línea anterior. Si te saltaste una, usa \"desde aquí\" en esa línea (se puede deshacer)."); return; }
+  snapshot();
   S.taps[S.pointer] = adj; S.pointer++;
   flash(""); saveSession(); renderLines(); updateTapUI();
 }
 function undo(){
-  if(S.pointer <= 0) return;
-  S.pointer--; S.taps[S.pointer] = null;
-  flash("Deshecho — vuelve a tocar esa línea."); saveSession(); renderLines(); updateTapUI();
+  if(!S.history.length){ flash("Nada que deshacer."); return; }
+  const prev = S.history.pop();
+  S.taps = prev.taps;
+  S.pointer = prev.pointer;
+  flash("Deshecho."); saveSession(); renderLines(); updateTapUI();
 }
-function rewindTo(i){
-  if(!(i >= 0 && i < S.pointer)) return;
+function applyTapTime(i, next, opts){
+  if(!(i >= 0 && i < S.taps.length) || S.taps[i] == null) return false;
+  if(next == null || !isFinite(next) || next < 0){ flash("El tiempo no puede ser negativo."); return false; }
+  next = r3(next);
+  if(next === r3(S.taps[i])) return true;
+  const before = neighborTap(i, -1);
+  const after = neighborTap(i, 1);
+  if(before != null && next <= before){ flash("Ese tiempo queda en o antes de la línea anterior."); return false; }
+  if(after != null && next >= after){ flash("Ese tiempo queda en o después de la línea siguiente."); return false; }
+  snapshot();
+  S.taps[i] = next;
+  flash(""); saveSession();
+  const input = document.getElementById("t-in-" + i);
+  if(input) input.value = fmt(next);
+  else renderLines();
+  updateTapUI();
+  if(opts && opts.focus && input) input.focus();
+  return true;
+}
+function nudgeTap(i, delta){
+  if(S.taps[i] == null) return;
+  applyTapTime(i, S.taps[i] + delta);
+}
+function bindNudge(btn, i, delta){
+  let lock = false;
+  function go(e){
+    e.preventDefault();
+    e.stopPropagation();
+    if(lock) return;
+    lock = true;
+    nudgeTap(i, delta);
+    setTimeout(function(){ lock = false; }, 200);
+  }
+  btn.addEventListener("pointerdown", go);
+  btn.addEventListener("click", go);
+}
+function commitTimeInput(i, input){
+  const parsed = parseTime(input.value);
+  if(parsed == null){
+    flash("No reconozco ese tiempo. Prueba 1:23.450");
+    input.value = fmt(S.taps[i]);
+    return;
+  }
+  if(!applyTapTime(i, parsed, { focus: true })) input.value = fmt(S.taps[i]);
+}
+function rewindTo(i, confirmed){
+  if(!(i >= 0 && i < S.lines.length)) return;
+  if(!confirmed){
+    const ok = window.confirm("¿Borrar los taps desde la línea " + i + " en adelante? U deshace este paso.");
+    if(!ok) return;
+  }
+  snapshot();
   S.pointer = i;
   for(let k = i; k < S.taps.length; k++) S.taps[k] = null;
-  flash("Sigues desde la línea " + i + " (borrado desde ahí). Rebobina el video y toca.");
+  flash("Sigues desde la línea " + i + " (borrado desde ahí). Rebobina el video y toca. U deshace.");
   saveSession(); renderLines(); updateTapUI();
 }
 function bumpComp(d){
@@ -448,18 +545,38 @@ function renderLines(){
     const li = document.createElement("li");
     li.id = "li-" + i;
     if(i === S.pointer) li.classList.add("now");
-    if(i < S.pointer){ li.classList.add("can-rewind"); li.title = "Volver a esta línea (borra desde aquí)"; li.onclick = () => rewindTo(i); }
     const idx = document.createElement("span"); idx.className = "idx"; idx.textContent = i;
     const txt = document.createElement("span"); txt.className = "txt"; txt.textContent = text;
     li.appendChild(idx); li.appendChild(txt);
     if(S.taps[i] != null){
-      const t = document.createElement("span"); t.className = "t"; t.textContent = fmt(S.taps[i]);
-      li.appendChild(t);
+      const edit = document.createElement("div");
+      edit.className = "t-edit";
+      const minus = document.createElement("button");
+      minus.type = "button"; minus.className = "nudge"; minus.textContent = "−";
+      minus.setAttribute("aria-label", "1 ms antes");
+      bindNudge(minus, i, -NUDGE_SEC);
+      const input = document.createElement("input");
+      input.type = "text"; input.id = "t-in-" + i; input.value = fmt(S.taps[i]);
+      input.inputMode = "decimal";
+      input.setAttribute("aria-label", "Tiempo de la línea " + i);
+      input.addEventListener("keydown", function(e){
+        if(e.key === "Enter"){ e.preventDefault(); commitTimeInput(i, input); input.blur(); }
+        if(e.key === "Escape"){ input.value = fmt(S.taps[i]); input.blur(); }
+      });
+      input.addEventListener("blur", function(){ commitTimeInput(i, input); });
+      const plus = document.createElement("button");
+      plus.type = "button"; plus.className = "nudge"; plus.textContent = "+";
+      plus.setAttribute("aria-label", "1 ms después");
+      bindNudge(plus, i, NUDGE_SEC);
+      const redo = document.createElement("button");
+      redo.type = "button"; redo.className = "redo-from"; redo.textContent = "desde aquí";
+      redo.title = "Borrar los taps desde esta línea (se puede deshacer)";
+      redo.onclick = function(e){ e.stopPropagation(); rewindTo(i); this.blur(); };
+      edit.appendChild(minus); edit.appendChild(input); edit.appendChild(plus); edit.appendChild(redo);
+      li.appendChild(edit);
     }
     ul.appendChild(li);
   });
-  const now = el("li-" + S.pointer);
-  if(now && now.scrollIntoView) now.scrollIntoView({ block: "nearest" });
 }
 function updateTapUI(){
   el("progress").textContent = S.pointer + "/" + S.lines.length;
@@ -490,7 +607,7 @@ function doExport(){
   const out = have.map((x, k) => {
     const next = have[k+1];
     const end = next ? next.t : (dur != null ? Math.min(dur, x.t + 30) : x.t + 8);
-    return { line_index: x.i, start_seconds: r2(x.t), end_seconds: r2(end) };
+    return { line_index: x.i, start_seconds: r3(x.t), end_seconds: r3(end) };
   });
   const missing = [];
   S.taps.forEach((t, i) => { if(t == null) missing.push(i); });
@@ -531,7 +648,7 @@ document.addEventListener("keydown", function(e){
 setInterval(function(){
   if(el("playerCard").classList.contains("hidden")) return;
   const t = clockTime();
-  el("clockdisp").textContent = (t != null && isFinite(t)) ? fmt(t) : "—";
+  el("clockdisp").textContent = (t != null && isFinite(t)) ? fmtClock(t) : "—";
 }, 200);
 
 // ---- init ----
@@ -540,7 +657,7 @@ renderResume();
 // ---- debug (pruebas automatizadas) ----
 window.__tapAlign = {
   get state(){ return { pointer:S.pointer, taps:S.taps.slice(), lines:S.lines.slice(), videoId:S.videoId, demo:S.demo, comp:S.comp }; },
-  tap: tap, undo: undo, rewindTo: rewindTo, exportJSON: doExport,
+  tap: tap, undo: undo, rewindTo: rewindTo, nudgeTap: nudgeTap, applyTapTime: applyTapTime, exportJSON: doExport,
 };
 </script>
 </body>

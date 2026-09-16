@@ -208,9 +208,10 @@ body {
 .lyric-blank-slot {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
   margin: 0 8px;
   vertical-align: middle;
-  white-space: nowrap;
+  gap: 0;
 }
 
 .lyric-blank-num {
@@ -229,6 +230,13 @@ body {
   line-height: 1;
   color: var(--surface);
   text-align: center;
+}
+
+.lyric-blank-words {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
 }
 
 .lyric-blank-grow {
