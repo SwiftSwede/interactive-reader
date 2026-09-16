@@ -268,11 +268,7 @@ Oh, now the white is red`,
     artistBio: `Death from Above 1979 is a Canadian rock duo from Toronto, formed in 2001 by Jesse F. Keeler and Sebastien Grainger. Keeler plays bass and synthesizer, while Grainger plays drums and sings. Their music combines punk, hard rock, and dance music, creating a loud and energetic sound without a traditional guitar player. Their debut album, You’re a Woman, I’m a Machine, was released in 2004 and became their best-known early work and a cult classic.
 
 The band originally called themselves Death From Above, but in 2004 they added “1979” to their name after a legal dispute with DFA Records, the New York label associated with James Murphy and LCD Soundsystem. The duo broke up in 2006 but reunited in 2011 and continued making music. They briefly returned to the name Death From Above in 2017, but brought “1979” back in 2020. Their later albums include The Physical World (2014), Outrage! Is Now (2017), and Is 4 Lovers (2021).`,
-    songMeaning: `This song is dark. On the surface it sounds like a love song, but listen closely: it's a story about a pregnant teenager, a car race, and a crash.
-
-Frankie is a heart-breaker. She takes off racing, he runs after her down the yellow line, and the white (her dress, the headlights, the lines on the road) turns red. "We crossed the line" works two ways: the literal line on the road, and the moral line of a young couple crossing the line of no return.
-
-For class, listen for the sound of the words more than the grammar. The song is built on short, punchy phrases: pulled up, took off, put her foot down. That's how people actually tell stories in English. The last verse is almost rap: racin', fadin', outta love, outta time. Notice how the -ing endings disappear. That's not bad pronunciation. That's the song.`,
+    songMeaning: `This is a bit of a sad love story, sung by Sebastian, with what appears to be a teenage pregnancy. A young man in love with a 16-year-old girl decides to run away with his sweetheart. While they are running away, for whatever reason, the young girl decides to abandon her young lover. As she's abandoning him, she gets involved in a tragic car accident, which the young man is never able to forget.`,
     lyricsIpa: [
       { line_index: 0, ipa_text: "fɹæŋki wəz ə hɑɹt bɹeɪkɚ" },
       { line_index: 1, ipa_text: "aɪ dɪdənt noʊ ɪt æt ðə stɑɹt" },
