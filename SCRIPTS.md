@@ -78,7 +78,22 @@ To add a song: append an entry to `SONGS` in `scripts/seed-music.ts` (lyrics fro
 npx tsx scripts/annotate-story.ts --slug <slug>   # ~$0.01-0.02, 5-12 min
 ```
 
-**Cost / time / status:** Free. A few seconds per song. Idempotent by slug. First real song: Summer of '69 (pre-intermediate, September 2026) with Kyle-voice bio + meaning and draft IPA. No line timestamps (karaoke degrades until studio-aligned data exists).
+**Cost / time / status:** Free. A few seconds per song. Idempotent by slug. First real song: Summer of '69 (pre-intermediate, September 2026) with Kyle-voice bio + meaning and draft IPA. No line timestamps (karaoke degrades until studio-aligned data exists). **White Is Red (Death from Above 1979, pre-intermediate, September 2026) seeded + annotated 2026-09-16:** 341 words, 12 blank entries (ids 3 and 5 have two entries each — the repeated words appear in two different lines), 58 IPA lines, bio + meaning. Before seeding any new song, run the placement check below.
+
+### Check song blank placement + IPA alignment (run BEFORE seeding)
+
+Runs the real `placeLyricBlanks` + `indexedLyricLines` against the SONGS entry. Catches silent placement failures (wrong prompt encoding, repeated-id lines needing separate entries per line, out-of-range or duplicate IPA indexes) before anything hits the database. Prints every placement plus a lyrics‖IPA side-by-side for eyeball review.
+
+```bash
+npx tsx scripts/check-song-placement.ts --slug white-is-red   # one song
+npx tsx scripts/check-song-placement.ts                       # all songs
+```
+
+**Encoding rules the check enforces (learned on White Is Red, the first song with repeated blanks):**
+- A repeated word in two DIFFERENT lines = TWO entries with the same id, one prompt per line (the app shares one typed value per id across placements).
+- A blank must replace whole whitespace tokens — the deck's `heart-(1)____` partial-token style cannot be encoded; blank the full word (`heartbreaker`).
+- Blank answers keep apostrophes; matching is case/whitespace-insensitive.
+- `line_index` counts NON-EMPTY lines only (stanza breaks skipped) — the IPA array must align to that numbering.
 
 ### Seed a Video Summary Translation lesson (Pre-Int Class 3)
 
@@ -180,7 +195,9 @@ That starts a tiny local server and opens `http://localhost:8765/tap-align-lyric
 **Workflow:** paste the song's `youtube_url` + `body_text` (with the empty stanza lines) → play the video → tap the big button (or Space) as each line starts → **Generar JSON** → paste into `stories.line_timestamps` in the Supabase Table Editor.
 
 - Line numbering matches the app exactly (non-empty lines, 0-based — same as `indexedLyricLines()`), so it also lines up with `lyrics_ipa`.
-- Skipped or fumbled a line? Click that line in the list and continue from there (clears from that point). Undo with the button or U.
+- The tap button does not auto-scroll the page. Stay on the button (or Space) and keep tapping.
+- To nudge a time, use − / + on that line (1 ms per tap) or type a new `m:ss.mmm`. Clicking a timestamped line does **not** wipe later taps.
+- Fumbled a stretch? Use **desde aquí** on that line (asks first, then clears from that point). Undo with the button or U, including that wipe.
 - Reaction compensation (-0.25 s default) is adjustable mid-run and only affects new taps.
 - Partial export is fine — untapped lines simply don't highlight.
 - Sessions auto-save per video; the reopen screen offers to continue.

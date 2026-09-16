@@ -13,6 +13,9 @@
 // Comprehension/personal questions are intentionally NOT seeded.
 // --force still refuses if song_lyric_attempts exist for this story.
 
+// Exported for verification scripts (e.g. check-white-is-red.ts). Direct-run is
+// guarded below so importing this module never seeds the database.
+
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
 
@@ -40,7 +43,7 @@ type Song = {
 // - ids match Kyle's deck numbering, in order of first appearance
 // - repeated words reuse the same id (one prompt/answer entry per unique blank)
 // - answers: trim, lowercase, collapse whitespace; keep apostrophes
-const SONGS: Song[] = [
+export const SONGS: Song[] = [
   {
     slug: "summer-of-69",
     title: "Summer of '69",
@@ -146,6 +149,169 @@ Listen for the past verbs and for "those were the best days of my life." That's 
       { line_index: 10, ipa_text: "ən ɪf aɪ hæd ðə tʃɑɪs" },
       { line_index: 11, ipa_text: "jæ aɪd ɑlweɪz wɑnə bi ðɛɹ" },
       { line_index: 12, ipa_text: "ðoʊz wɚ ðə bɛst deɪz əv maɪ laɪf" },
+    ],
+  },
+  {
+    slug: "white-is-red",
+    title: "White Is Red",
+    artist: "Death from Above 1979",
+    level: "pre-intermediate",
+    youtubeUrl: "https://www.youtube.com/watch?v=n0JEG_wf0pQ",
+    body: `Frankie was a heartbreaker
+I didn't know it at the start
+She was only sixteen
+when she went and broke my heart
+
+And she pulled up in her dad's car wearin' white
+She said she knew a place where we could hide
+She didn't have her license, but she told me I could drive
+So I drove all night
+
+"Why don't you leave me?" she asked that night
+I said, "I'll stay
+I know the kid is mine
+I'd never leave you
+it isn't right
+Let's stay together
+until the end of time"
+
+Oh, now the white is red
+Can't get it outta my head
+Oh, now the white is red
+
+"I heard that there's a place where we can go
+Across the state there's no one that we know
+Or maybe rent a place where we can stay
+Where what we have would go a longer way"
+
+Then Frankie turned to me
+she looked me in the eye
+She said that I looked tired
+she told me she could drive
+I pulled up to the station
+walked through the neon lights
+Then she put her foot down, down, down, down
+
+Why did you leave me alone that night?
+You took off racing
+the kid is mine
+You left me standing
+out on the yellow line
+The taillight's fading
+into the night
+
+We crossed the line
+We crossed the line
+We crossed the line
+We crossed the line
+
+Oh, now the white is red
+Can't get it outta my head
+Oh, now the white is red
+
+I don't know why she left, took off racin'
+I ran down, yellow line, red lights fadin'
+She went left, double line, outta love, outta time
+I covered eyes; I know she crossed the line
+
+She crossed the line
+She crossed the line
+She crossed the line
+She crossed the line
+She crossed the line
+She crossed the line
+She crossed the line
+She crossed the line
+
+Oh, now the white is red
+Can't get it outta my head
+Oh, now the white is red`,
+    lyricBlanks: [
+      { id: 1, prompt: "Frankie was a _______", answer: "heartbreaker" },
+      { id: 2, prompt: "She was only ____", answer: "sixteen" },
+      { id: 3, prompt: "And she ____ __ in her dad's car wearin' white", answer: "pulled up" },
+      { id: 3, prompt: "I ____ __ to the station", answer: "pulled up" },
+      { id: 4, prompt: "She said she knew a place where we could ____", answer: "hide" },
+      { id: 5, prompt: "I said, \"I'll ____", answer: "stay" },
+      { id: 5, prompt: "Or maybe rent a place where we can ____", answer: "stay" },
+      { id: 6, prompt: "it isn't _____", answer: "right" },
+      { id: 7, prompt: "Across the _____ there's no one that we know", answer: "state" },
+      { id: 8, prompt: "Then she put her ____ down, down, down, down", answer: "foot" },
+      { id: 9, prompt: "You took off ______", answer: "racing" },
+      { id: 10, prompt: "The taillight's ______", answer: "fading" },
+    ],
+    // Note: id 3 and id 5 have TWO entries each (same id, different prompts) because
+    // the repeated word appears in two DIFFERENT lines. placeLyricBlanks matches one
+    // prompt per line; the app shares one typed value per id across placements.
+    // Id 1 blanks the full word "heartbreaker": placement matches whole tokens only,
+    // so the deck's "heart-(1)____" partial style can't be encoded.
+    artistBio: `Death from Above 1979 is a Canadian rock duo from Toronto: two guys, bass and drums, no guitar player. Jesse F. Keeler plays bass and synthesizer, and Sebastien Grainger plays drums and sings. Their sound mixes punk, hard rock and dance music, and it is LOUD. Their first album, You're a Woman, I'm a Machine, came out in 2004 and became a cult classic.
+
+I love teaching this one because the story is a mini novel in three minutes, like a Bruce Springsteen song with distortion. Frankie wears white, drives her dad's car, races the yellow line, and you slowly realize the white turning red is a crash, not a metaphor. Also: they had to add "1979" to their name after a legal fight with a New York label. Same story as your English: sometimes the problem isn't the band, it's the name on the paper.`,
+    songMeaning: `This song is dark. On the surface it sounds like a love song, but listen closely: it's a story about a pregnant teenager, a car race, and a crash.
+
+Frankie is a heart-breaker. She takes off racing, he runs after her down the yellow line, and the white (her dress, the headlights, the lines on the road) turns red. "We crossed the line" works two ways: the literal line on the road, and the moral line of a young couple crossing the line of no return.
+
+For class, listen for the sound of the words more than the grammar. The song is built on short, punchy phrases: pulled up, took off, put her foot down. That's how people actually tell stories in English. The last verse is almost rap: racin', fadin', outta love, outta time. Notice how the -ing endings disappear. That's not bad pronunciation. That's the song.`,
+    lyricsIpa: [
+      { line_index: 0, ipa_text: "fɹæŋki wəz ə hɑɹt bɹeɪkɚ" },
+      { line_index: 1, ipa_text: "aɪ dɪdənt noʊ ɪt æt ðə stɑɹt" },
+      { line_index: 2, ipa_text: "ʃi wəz oʊnli sɪkstin" },
+      { line_index: 3, ipa_text: "wɛn ʃi wɛnt ən bɹoʊk maɪ hɑɹt" },
+      { line_index: 4, ipa_text: "ən ʃi pʊld ʌp ɪn hɚ dædz kɑɹ wɛɹɪn waɪt" },
+      { line_index: 5, ipa_text: "ʃi sɛd ʃi nu ə pleɪs wɛɹ wi kʊd haɪd" },
+      { line_index: 6, ipa_text: "ʃi dɪdənt hæv hɚ laɪsəns, bət ʃi toʊld mi aɪ kʊd dɹaɪv" },
+      { line_index: 7, ipa_text: "soʊ aɪ dɹoʊv ɑl naɪt" },
+      { line_index: 8, ipa_text: "waɪ doʊnt ju liv mi, ʃi æskt ðæt naɪt" },
+      { line_index: 9, ipa_text: "aɪ sɛd, aɪl steɪ" },
+      { line_index: 10, ipa_text: "aɪ noʊ ðə kɪd ɪz maɪn" },
+      { line_index: 11, ipa_text: "aɪd nɛvɚ lɛf ju" },
+      { line_index: 12, ipa_text: "ɪt ɪzənt ɹaɪt" },
+      { line_index: 13, ipa_text: "lɛts steɪ təɡɛðɚ" },
+      { line_index: 14, ipa_text: "ʌntɪl ði ɛnd əv taɪm" },
+      { line_index: 15, ipa_text: "oʊ, naʊ ðə waɪt ɪz ɹɛd" },
+      { line_index: 16, ipa_text: "kænt ɡɛt ɪt aʊtə maɪ hɛd" },
+      { line_index: 17, ipa_text: "oʊ, naʊ ðə waɪt ɪz ɹɛd" },
+      { line_index: 18, ipa_text: "aɪ hɜɹd ðæt ðɛɹz ə pleɪs wɛɹ wi kæn ɡoʊ" },
+      { line_index: 19, ipa_text: "əkɹɔs ðə steɪt ðɛɹz noʊ wʌn ðæt wi noʊ" },
+      { line_index: 20, ipa_text: "ɔɹ meɪbi ɹɛnt ə pleɪs wɛɹ wi kæn steɪ" },
+      { line_index: 21, ipa_text: "wɛɹ wʌt wi hæv wʊd ɡoʊ ə lɔŋɡɚ weɪ" },
+      { line_index: 22, ipa_text: "ðɛn fɹæŋki tɜɹnd tə mi" },
+      { line_index: 23, ipa_text: "ʃi lʊkt mi ɪn ði aɪ" },
+      { line_index: 24, ipa_text: "ʃi sɛd ðæt aɪ lʊkt taɪɹd" },
+      { line_index: 25, ipa_text: "ʃi toʊld mi ʃi kʊd dɹaɪv" },
+      { line_index: 26, ipa_text: "aɪ pʊld ʌp tə ðə steɪʃən" },
+      { line_index: 27, ipa_text: "wɔkt θɹu ðə nioʊn laɪts" },
+      { line_index: 28, ipa_text: "ðɛn ʃi pʊt hɚ fʊt daʊn, daʊn, daʊn, daʊn" },
+      { line_index: 29, ipa_text: "waɪ dɪd ju liv mi əloʊn ðæt naɪt" },
+      { line_index: 30, ipa_text: "ju tʊk ɑf ɹeɪsɪŋ" },
+      { line_index: 31, ipa_text: "ðə kɪd ɪz maɪn" },
+      { line_index: 32, ipa_text: "ju lɛf mi stændɪŋ" },
+      { line_index: 33, ipa_text: "aʊt ɑn ðə jɛloʊ laɪn" },
+      { line_index: 34, ipa_text: "ðə teɪlaɪts feɪdɪŋ" },
+      { line_index: 35, ipa_text: "ɪntə ðə naɪt" },
+      { line_index: 36, ipa_text: "wi kɹɔst ðə laɪn" },
+      { line_index: 37, ipa_text: "wi kɹɔst ðə laɪn" },
+      { line_index: 38, ipa_text: "wi kɹɔst ðə laɪn" },
+      { line_index: 39, ipa_text: "wi kɹɔst ðə laɪn" },
+      { line_index: 40, ipa_text: "oʊ, naʊ ðə waɪt ɪz ɹɛd" },
+      { line_index: 41, ipa_text: "kænt ɡɛt ɪt aʊtə maɪ hɛd" },
+      { line_index: 42, ipa_text: "oʊ, naʊ ðə waɪt ɪz ɹɛd" },
+      { line_index: 43, ipa_text: "aɪ doʊnt noʊ waɪ ʃi lɛft, tʊk ɑf ɹeɪsɪn" },
+      { line_index: 44, ipa_text: "aɪ ɹæn daʊn, jɛloʊ laɪn, ɹɛd laɪts feɪdɪn" },
+      { line_index: 45, ipa_text: "ʃi wɛnt lɛft, dʌbəl laɪn, aʊtə lʌv, aʊtə taɪm" },
+      { line_index: 46, ipa_text: "aɪ kʌvɚd aɪz; aɪ noʊ ʃi kɹɔst ðə laɪn" },
+      { line_index: 47, ipa_text: "ʃi kɹɔst ðə laɪn" },
+      { line_index: 48, ipa_text: "ʃi kɹɔst ðə laɪn" },
+      { line_index: 49, ipa_text: "ʃi kɹɔst ðə laɪn" },
+      { line_index: 50, ipa_text: "ʃi kɹɔst ðə laɪn" },
+      { line_index: 51, ipa_text: "ʃi kɹɔst ðə laɪn" },
+      { line_index: 52, ipa_text: "ʃi kɹɔst ðə laɪn" },
+      { line_index: 53, ipa_text: "ʃi kɹɔst ðə laɪn" },
+      { line_index: 54, ipa_text: "ʃi kɹɔst ðə laɪn" },
+      { line_index: 55, ipa_text: "oʊ, naʊ ðə waɪt ɪz ɹɛd" },
+      { line_index: 56, ipa_text: "kænt ɡɛt ɪt aʊtə maɪ hɛd" },
+      { line_index: 57, ipa_text: "oʊ, naʊ ðə waɪt ɪz ɹɛd" },
     ],
   },
 ];
@@ -256,7 +422,12 @@ async function main() {
   }
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+// Direct-run guard: only seed when invoked as the main script
+// (npx tsx scripts/seed-music.ts). Importing SONGS from another script
+// must never touch the database.
+if (process.argv[1]?.includes("seed-music")) {
+  main().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+}
