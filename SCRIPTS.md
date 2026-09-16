@@ -95,7 +95,7 @@ npx tsx scripts/check-song-placement.ts                       # all songs
 - Blank answers keep apostrophes; matching is case/whitespace-insensitive.
 - `line_index` counts NON-EMPTY lines only (stanza breaks skipped) — the IPA array must align to that numbering.
 
-**VERBATIM-CONTENT RULE (bios + meanings):** `artist_bio` and `song_meaning` are PASTED VERBATIM from Kyle's deck. Never rewrite, summarize, compress, or "improve" them — not even to sound more like Kyle. If the deck has no bio or meaning text, leave the field null and tell Kyle; do not draft one. (Correction 2026-09-16: both songs' bios were originally seeded as AI rewrites of Kyle's deck text — Kyle caught it. Both now carry his exact deck text.)
+**VERBATIM-CONTENT RULE (bios + meanings):** `artist_bio` is PASTED VERBATIM from Kyle's deck. Never rewrite, summarize, compress, or "improve" it — not even to sound more like Kyle. `song_meaning` is ALWAYS ASKED FOR FIRST: when building a music lesson, ask Kyle for his interpretation of the song and paste his text verbatim. Never AI-draft a meaning, even a good one. If the deck has no bio/meaning text and Kyle hasn't provided one, leave the field null and flag it; do not draft one. (Correction 2026-09-16: both songs' bios were originally seeded as AI rewrites of Kyle's deck text — Kyle caught it. Both now carry his exact deck text.)
 
 ### Seed a Video Summary Translation lesson (Pre-Int Class 3)
 

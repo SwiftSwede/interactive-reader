@@ -44,9 +44,11 @@ type Song = {
 // - repeated words reuse the same id (one prompt/answer entry per unique blank;
 //   a word repeated in TWO different lines gets TWO entries with the same id)
 // - answers: trim, lowercase, collapse whitespace; keep apostrophes
-// - artistBio / songMeaning: PASTE KYLE'S DECK TEXT VERBATIM. NEVER rewrite,
-//   summarize, or "improve" the bio or meaning. The deck is the authored source;
-//   "Kyle's voice" applies to UI micro-copy only, not to his content.
+// - artistBio: PASTE KYLE'S DECK TEXT VERBATIM. NEVER rewrite, summarize, or
+//   "improve" it. The deck is the authored source.
+// - songMeaning: ALWAYS ASK KYLE for his interpretation FIRST, then paste his
+//   text VERBATIM (ratified 2026-09-16). NEVER AI-draft a meaning, even a good
+//   one. "Kyle's voice" applies to UI micro-copy only, not to his content.
 export const SONGS: Song[] = [
   {
     slug: "summer-of-69",
@@ -218,8 +220,8 @@ Oh, now the white is red
 Can't get it outta my head
 Oh, now the white is red
 
-I don't know why she left, took off racin'
-I ran down, yellow line, red lights fadin'
+I don't know why she left, took off racing
+I ran down, yellow line, red lights fading
 She went left, double line, outta love, outta time
 I covered eyes; I know she crossed the line
 
@@ -247,13 +249,22 @@ Oh, now the white is red`,
       { id: 7, prompt: "Across the _____ there's no one that we know", answer: "state" },
       { id: 8, prompt: "Then she put her ____ down, down, down, down", answer: "foot" },
       { id: 9, prompt: "You took off ______", answer: "racing" },
-      { id: 10, prompt: "The taillight's ______", answer: "fading" },
+      { id: 9, prompt: "I don't know why she left, took off ______", answer: "racing" },
+      { id: 10, prompt: "You left me  ______", answer: "standing" },
+      { id: 11, prompt: "The taillight's ______", answer: "fading" },
+      { id: 11, prompt: "I ran down, yellow line, red lights ______", answer: "fading" },
     ],
-    // Note: id 3 and id 5 have TWO entries each (same id, different prompts) because
-    // the repeated word appears in two DIFFERENT lines. placeLyricBlanks matches one
-    // prompt per line; the app shares one typed value per id across placements.
+    // Synced 2026-09-16 with Kyle's Supabase edit (10 = standing, his renumbering;
+    // the old seed had 10 = fading, now 11). Ids 3, 5, 9, 11 have TWO entries each:
+    // same id, different prompts, because the repeated word appears in two
+    // DIFFERENT lines; one typed value per id fills both spots.
     // Id 1 blanks the full word "heartbreaker": placement matches whole tokens only,
     // so the deck's "heart-(1)____" partial style can't be encoded.
+    // PLACEMENT RULE: an entry renders only where prompt+answer reconstruct the
+    // lyric line exactly. The final verse SINGS "racin'/fadin'" but the answers are
+    // the clean forms, so those two body lines carry the CLEAN spelling and the sung
+    // reduction lives in the IPA overlay. A shared id cannot span two differently-
+    // spelled sung forms with one answer.
     artistBio: `Death from Above 1979 is a Canadian rock duo from Toronto, formed in 2001 by Jesse F. Keeler and Sebastien Grainger. Keeler plays bass and synthesizer, while Grainger plays drums and sings. Their music combines punk, hard rock, and dance music, creating a loud and energetic sound without a traditional guitar player. Their debut album, You’re a Woman, I’m a Machine, was released in 2004 and became their best-known early work and a cult classic.
 
 The band originally called themselves Death From Above, but in 2004 they added “1979” to their name after a legal dispute with DFA Records, the New York label associated with James Murphy and LCD Soundsystem. The duo broke up in 2006 but reunited in 2011 and continued making music. They briefly returned to the name Death From Above in 2017, but brought “1979” back in 2020. Their later albums include The Physical World (2014), Outrage! Is Now (2017), and Is 4 Lovers (2021).`,
