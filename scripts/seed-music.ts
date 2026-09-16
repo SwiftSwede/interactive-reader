@@ -41,8 +41,12 @@ type Song = {
 
 // Blank conventions (from music-class-methodology wiki page):
 // - ids match Kyle's deck numbering, in order of first appearance
-// - repeated words reuse the same id (one prompt/answer entry per unique blank)
+// - repeated words reuse the same id (one prompt/answer entry per unique blank;
+//   a word repeated in TWO different lines gets TWO entries with the same id)
 // - answers: trim, lowercase, collapse whitespace; keep apostrophes
+// - artistBio / songMeaning: PASTE KYLE'S DECK TEXT VERBATIM. NEVER rewrite,
+//   summarize, or "improve" the bio or meaning. The deck is the authored source;
+//   "Kyle's voice" applies to UI micro-copy only, not to his content.
 export const SONGS: Song[] = [
   {
     slug: "summer-of-69",
@@ -114,6 +118,11 @@ It was the summer, the summer, the summer of '69, yeah.`,
         answer: "last",
       },
       {
+        id: 4,
+        prompt: "I guess nothin' can ____ forever, forever, no",
+        answer: "last",
+      },
+      {
         id: 5,
         prompt: "Ain't no use in _________'",
         answer: "complainin'",
@@ -127,9 +136,9 @@ It was the summer, the summer, the summer of '69, yeah.`,
         answer: "gone",
       },
     ],
-    artistBio: `Bryan Adams is a Canadian singer who got famous in the 80s. Summer of '69 came out in 1985, but it isn't really a history lesson about 1969. Adams has said the title is also a joke. The song is nostalgia: a guy looking back at being young, playing guitar, and thinking those were the best days.
+    artistBio: `Bryan Adams is a Canadian singer, songwriter, and guitarist known for his rock songs and powerful ballads. He was born on November 5, 1959, in Kingston, Ontario, and grew up in Canada and Europe because of his father’s work. Adams began his music career as a teenager and became internationally famous in the 1980s with songs such as “Run to You,” “Summer of ’69,” and “Heaven.” His 1984 album Reckless was a major success and made him one of Canada’s best-known rock musicians.
 
-I use this one a lot with pre-intermediate groups because the story is simple and the verbs are the ones we actually need: got, bought, played, quit, met, held. You don't need to know Bryan Adams. You need to hear how English sounds when somebody remembers.`,
+Adams continued his success in the 1990s with songs like “Everything I Do (I Do It for You),” which was written for the film Robin Hood: Prince of Thieves and became one of the biggest songs of the decade. He has won multiple Juno Awards and Grammy Awards and has also written music for films and Broadway productions. Outside music, Adams is an active photographer whose work has appeared in major magazines and exhibitions. He has also supported animal welfare and environmental causes.`,
     songMeaning: `The song is a memory. A kid buys a cheap guitar, starts a band with school friends, the band falls apart, then he meets a girl on a porch and thinks this is it.
 
 The trick is the title. People hear 1969 and think history. Adams has said it is also a wink. For class, I treat it as looking back: you think the past was better, and you say you'd always wanna be there.
@@ -245,9 +254,9 @@ Oh, now the white is red`,
     // prompt per line; the app shares one typed value per id across placements.
     // Id 1 blanks the full word "heartbreaker": placement matches whole tokens only,
     // so the deck's "heart-(1)____" partial style can't be encoded.
-    artistBio: `Death from Above 1979 is a Canadian rock duo from Toronto: two guys, bass and drums, no guitar player. Jesse F. Keeler plays bass and synthesizer, and Sebastien Grainger plays drums and sings. Their sound mixes punk, hard rock and dance music, and it is LOUD. Their first album, You're a Woman, I'm a Machine, came out in 2004 and became a cult classic.
+    artistBio: `Death from Above 1979 is a Canadian rock duo from Toronto, formed in 2001 by Jesse F. Keeler and Sebastien Grainger. Keeler plays bass and synthesizer, while Grainger plays drums and sings. Their music combines punk, hard rock, and dance music, creating a loud and energetic sound without a traditional guitar player. Their debut album, You’re a Woman, I’m a Machine, was released in 2004 and became their best-known early work and a cult classic.
 
-I love teaching this one because the story is a mini novel in three minutes, like a Bruce Springsteen song with distortion. Frankie wears white, drives her dad's car, races the yellow line, and you slowly realize the white turning red is a crash, not a metaphor. Also: they had to add "1979" to their name after a legal fight with a New York label. Same story as your English: sometimes the problem isn't the band, it's the name on the paper.`,
+The band originally called themselves Death From Above, but in 2004 they added “1979” to their name after a legal dispute with DFA Records, the New York label associated with James Murphy and LCD Soundsystem. The duo broke up in 2006 but reunited in 2011 and continued making music. They briefly returned to the name Death From Above in 2017, but brought “1979” back in 2020. Their later albums include The Physical World (2014), Outrage! Is Now (2017), and Is 4 Lovers (2021).`,
     songMeaning: `This song is dark. On the surface it sounds like a love song, but listen closely: it's a story about a pregnant teenager, a car race, and a crash.
 
 Frankie is a heart-breaker. She takes off racing, he runs after her down the yellow line, and the white (her dress, the headlights, the lines on the road) turns red. "We crossed the line" works two ways: the literal line on the road, and the moral line of a young couple crossing the line of no return.

@@ -95,6 +95,8 @@ npx tsx scripts/check-song-placement.ts                       # all songs
 - Blank answers keep apostrophes; matching is case/whitespace-insensitive.
 - `line_index` counts NON-EMPTY lines only (stanza breaks skipped) — the IPA array must align to that numbering.
 
+**VERBATIM-CONTENT RULE (bios + meanings):** `artist_bio` and `song_meaning` are PASTED VERBATIM from Kyle's deck. Never rewrite, summarize, compress, or "improve" them — not even to sound more like Kyle. If the deck has no bio or meaning text, leave the field null and tell Kyle; do not draft one. (Correction 2026-09-16: both songs' bios were originally seeded as AI rewrites of Kyle's deck text — Kyle caught it. Both now carry his exact deck text.)
+
 ### Seed a Video Summary Translation lesson (Pre-Int Class 3)
 
 Inserts (or updates by slug) a video summary lesson: `Story.kind = "video_summary"` with the English summary in `body_text` (teacher-only answer key), the English-structured Spanish summary in `spanish_summary`, and the Spanish paragraphs in `video_summary_paragraphs` (translations start empty — Kyle fills them live in class).
