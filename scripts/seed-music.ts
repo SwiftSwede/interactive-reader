@@ -339,6 +339,24 @@ function tokensOf(body: string): number {
     .flatMap((line) => line.split(/\s+/).filter(Boolean)).length;
 }
 
+// Canonical JSON string: object keys sorted (Postgres jsonb does not preserve
+// key order), arrays keep order, values compared deeply.
+function canon(value: unknown): string {
+  if (Array.isArray(value)) return "[" + value.map(canon).join(",") + "]";
+  if (value && typeof value === "object") {
+    const record = value as Record<string, unknown>;
+    return (
+      "{" +
+      Object.keys(record)
+        .sort()
+        .map((key) => JSON.stringify(key) + ":" + canon(record[key]))
+        .join(",") +
+      "}"
+    );
+  }
+  return JSON.stringify(value ?? null);
+}
+
 async function seedSong(
   admin: ReturnType<typeof createAdminClient>,
   song: Song,
@@ -346,7 +364,9 @@ async function seedSong(
 ) {
   const { data: existing } = await admin
     .from("stories")
-    .select("id")
+    .select(
+      "id, line_timestamps, body_text, lyric_blanks, artist_bio, song_meaning, youtube_url, lyrics_ipa"
+    )
     .eq("slug", song.slug)
     .maybeSingle();
 
@@ -365,6 +385,41 @@ async function seedSong(
       throw new Error(
         `${song.slug}: ya hay respuestas de clase en song_lyric_attempts. ` +
           `Ni --force las borra. Cambia el slug o limpia esos intentos a mano.`
+      );
+    }
+    // Visibility: when the DB row carries tap-aligned timestamps and this
+    // seed entry defines none, say so. The upsert itself omits the column
+    // (see the payload spread), so the data survives — this log proves it.
+    const existingStamps = Array.isArray(existing?.line_timestamps)
+      ? (existing.line_timestamps as unknown[]).length
+      : 0;
+    if (existingStamps > 0 && !song.lineTimestamps) {
+      console.log(
+        `${song.slug}: preserving ${existingStamps} existing line_timestamps (tap-align data — the seed never wipes them).`
+      );
+    }
+    // Diff visibility: these columns are seed-owned. If the DB row has drifted
+    // (e.g., Kyle edited in the Supabase Table Editor), say so BEFORE
+    // overwriting so the operator can sync the SONGS entry back instead of
+    // silently reverting his edits. Log-only; --force stays the conscious
+    // overwrite switch.
+    const diffs: string[] = [];
+    if (existing.body_text !== song.body) diffs.push("body_text");
+    if (canon(existing.lyric_blanks) !== canon(song.lyricBlanks))
+      diffs.push("lyric_blanks");
+    if ((existing.artist_bio ?? "") !== (song.artistBio ?? ""))
+      diffs.push("artist_bio");
+    if ((existing.song_meaning ?? "") !== (song.songMeaning ?? ""))
+      diffs.push("song_meaning");
+    if ((existing.youtube_url ?? "") !== song.youtubeUrl)
+      diffs.push("youtube_url");
+    if (canon(existing.lyrics_ipa) !== canon(song.lyricsIpa ?? null))
+      diffs.push("lyrics_ipa");
+    if (diffs.length > 0) {
+      console.log(
+        `${song.slug}: DB differs from the SONGS entry on ${diffs.join(", ")}. ` +
+          `If you edited these in Supabase, sync scripts/seed-music.ts first. ` +
+          `--force overwrites the DB on purpose.`
       );
     }
     if (!force) {
@@ -393,7 +448,14 @@ async function seedSong(
         artist_bio: song.artistBio ?? null,
         song_meaning: song.songMeaning ?? null,
         lyrics_ipa: song.lyricsIpa ?? null,
-        line_timestamps: song.lineTimestamps ?? null,
+        // line_timestamps is TAP-ALIGN-OWNED data (Kyle taps them in the tool,
+        // pastes into Supabase). The seed must NEVER overwrite them: include the
+        // column in the upsert only when the entry explicitly defines timestamps.
+        // (Regression fixed 2026-09-16: a bare `?? null` here wiped Kyle's
+        // tap-aligned karaoke JSON on every re-seed.)
+        ...(song.lineTimestamps
+          ? { line_timestamps: song.lineTimestamps }
+          : {}),
       },
       { onConflict: "slug" }
     )
