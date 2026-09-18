@@ -330,6 +330,149 @@ The band originally called themselves Death From Above, but in 2004 they added �
       { line_index: 57, ipa_text: "oʊ, naʊ ðə waɪt ɪz ɹɛd" },
     ],
   },
+  {
+    slug: "why-dont-you-get-a-job",
+    title: "Why Don't You Get a Job?",
+    artist: "The Offspring",
+    level: "intermediate",
+    youtubeUrl: "https://www.youtube.com/watch?v=LH-i8IvYIcg",
+    body: `My friend's got a girlfriend, man, he hates that bitch
+He tells me every day
+He says, "Man, I really gotta lose my chick
+In the worst kind of way"
+
+She sits on her ass, he works his hands to the bone
+To give her money every payday
+But she wants more dinero just to stay at home
+Well, my friend, you gotta say
+
+I won't pay, I won't pay ya, no way-ay-ay-ay
+Na-na, why don't you get a job?
+Say no way, say no way-ah, no way-ay-ay-ay
+Na-na, why don't you get a job?
+
+I guess all his money, well, it isn't enough
+To keep the bill collectors at bay
+I guess all his money, well, it isn't enough
+'Cause that girl's got expensive taste
+
+I won't pay, I won't pay ya, no way-ay-ay-ay
+Na-na, why don't you get a job?
+Say no way, say no way-ah, no way-ay-ay-ay
+Na-na, why don't you get a job?
+
+Well, I guess it ain't easy doing nothing at all, oh yeah
+But, hey man, free rides just don't come along every day
+
+My friend's got a boyfriend, man, she hates that dick
+She tells me every day
+He wants more dinero just to stay at home
+Well, my friend, you gotta say
+
+I won't pay, I won't pay ya, no way-ay-ay-ay
+Na-na, why don't you get a job?
+Say no way, say no way-ah, no way-ay-ay-ay
+Na-na, why don't you get a job?
+
+I won't give you no money, I always pay
+Na-na, why don't you get a job?
+Say no way, say no way-ah, no way-ay-ay-ay
+Na-na, why don't you get a job?`,
+    // Blanks transcribed from the deck's own numbering (1)-(8), Sept 2026 deck.
+    // - (4) "gotta" appears in TWO verses, but the two lines are IDENTICAL
+    //   ("Well, my friend, you gotta say" x2), so ONE entry places at both —
+    //   the checker's legitimate multi-line case (like Summer of '69 porch).
+    // - (3) is 3 words, (5) is 2 words: one entry, multi-slot.
+    // - Body carries CLEAN spellings (deck sings the same forms here — no
+    //   sung-vs-clean split like White Is Red's final verse).
+    // - Curly deck quotes/apostrophes straightened to match prompt matching
+    //   (normalizeForMatch does not fold ' vs ').
+    lyricBlanks: [
+      {
+        id: 1,
+        prompt: "My friend's got a girlfriend, man, he hates that _____",
+        answer: "bitch",
+      },
+      {
+        id: 2,
+        prompt: 'He says, "Man, I really gotta ____ my chick',
+        answer: "lose",
+      },
+      {
+        id: 3,
+        prompt: "She sits on her ass, he works his hands __ ___ ____",
+        answer: "to the bone",
+      },
+      {
+        id: 4,
+        prompt: "Well, my friend, you _____ say",
+        answer: "gotta",
+      },
+      {
+        id: 5,
+        prompt: "To keep the bill collectors __ ___",
+        answer: "at bay",
+      },
+      {
+        id: 6,
+        prompt: "'Cause that girl's got expensive _____",
+        answer: "taste",
+      },
+      {
+        id: 7,
+        prompt:
+          "But, hey man, free _____ just don't come along every day",
+        answer: "rides",
+      },
+      {
+        id: 8,
+        prompt: "My friend's got a boyfriend, man, she hates that ____",
+        answer: "dick",
+      },
+    ],
+    // VERBATIM from the deck bio slide. Never rewrite.
+    artistBio: `The Offspring is an American punk rock band formed in Garden Grove, California, in 1984 by guitarist Dexter Holland and bassist Greg K. The band became part of the Southern California punk scene and gained a larger audience with their third album, Smash, released in 1994. The album became one of the best-selling independent-label albums ever and included songs such as “Come Out and Play” and “Self Esteem.”
+
+The Offspring became one of the most successful punk bands of the 1990s, combining fast guitar-driven music with catchy melodies and humorous lyrics. They continued their success with albums such as Ixnay on the Hombre (1997) and Americana (1998), which featured hits including “Pretty Fly (For a White Guy)” and “The Kids Aren’t Alright.” The band has continued recording and touring, with Holland remaining its lead singer and a central member throughout its history.`,
+    // songMeaning intentionally ABSENT — ratification 2026-09-16: Kyle dictates
+    // his interpretation first; it gets pasted verbatim. Never AI-draft.
+    lyricsIpa: [
+      { line_index: 0, ipa_text: "maɪ fɹɛndz ɡɑt ə ɡɝlfɹɛnd, mæn, hi heɪts ðæt bɪtʃ" },
+      { line_index: 1, ipa_text: "hi tɛlz mi ɛvɹi deɪ" },
+      { line_index: 2, ipa_text: "hi sɛz, mæn, aɪ ɹiəli ɡɑtə luz maɪ tʃɪk" },
+      { line_index: 3, ipa_text: "ɪn ðə wɝst kaɪnd əv weɪ" },
+      { line_index: 4, ipa_text: "ʃi sɪts ɑn hɚ æs, hi wɝks ɪz hændz tə ðə boʊn" },
+      { line_index: 5, ipa_text: "tə ɡɪv hɚ mʌni ɛvɹi peɪdeɪ" },
+      { line_index: 6, ipa_text: "bət ʃi wɑnts mɔɹ dɪneɹoʊ dʒəst tə steɪ æt hoʊm" },
+      { line_index: 7, ipa_text: "wɛl, maɪ fɹɛnd, ju ɡɑtə seɪ" },
+      { line_index: 8, ipa_text: "aɪ woʊnt peɪ, aɪ woʊnt peɪ jə, noʊ weɪ eɪ eɪ eɪ" },
+      { line_index: 9, ipa_text: "næ næ, waɪ doʊnt ju ɡɛt ə dʒɑb" },
+      { line_index: 10, ipa_text: "seɪ noʊ weɪ, seɪ noʊ weɪ ɑ, noʊ weɪ eɪ eɪ eɪ" },
+      { line_index: 11, ipa_text: "næ næ, waɪ doʊnt ju ɡɛt ə dʒɑb" },
+      { line_index: 12, ipa_text: "aɪ ɡɛs ɔl ɪz mʌni, wɛl, ɪt ɪzənt ɪnʌf" },
+      { line_index: 13, ipa_text: "tə kip ðə bɪl kəlɛktɚz æt beɪ" },
+      { line_index: 14, ipa_text: "aɪ ɡɛs ɔl ɪz mʌni, wɛl, ɪt ɪzənt ɪnʌf" },
+      { line_index: 15, ipa_text: "kəz ðæt ɡɝlz ɡɑt ɪkspɛnsɪv teɪst" },
+      { line_index: 16, ipa_text: "aɪ woʊnt peɪ, aɪ woʊnt peɪ jə, noʊ weɪ eɪ eɪ eɪ" },
+      { line_index: 17, ipa_text: "næ næ, waɪ doʊnt ju ɡɛt ə dʒɑb" },
+      { line_index: 18, ipa_text: "seɪ noʊ weɪ, seɪ noʊ weɪ ɑ, noʊ weɪ eɪ eɪ eɪ" },
+      { line_index: 19, ipa_text: "næ næ, waɪ doʊnt ju ɡɛt ə dʒɑb" },
+      { line_index: 20, ipa_text: "wɛl, aɪ ɡɛs ɪt eɪnt izi duɪŋ nʌθɪŋ æt ɔl, oʊ jɛ" },
+      { line_index: 21, ipa_text: "bət, heɪ mæn, fɹi ɹaɪdz dʒəst doʊnt kʌm əlɔŋ ɛvɹi deɪ" },
+      { line_index: 22, ipa_text: "maɪ fɹɛndz ɡɑt ə bɔɪfɹɛnd, mæn, ʃi heɪts ðæt dɪk" },
+      { line_index: 23, ipa_text: "ʃi tɛlz mi ɛvɹi deɪ" },
+      { line_index: 24, ipa_text: "hi wɑnts mɔɹ dɪneɹoʊ dʒəst tə steɪ æt hoʊm" },
+      { line_index: 25, ipa_text: "wɛl, maɪ fɹɛnd, ju ɡɑtə seɪ" },
+      { line_index: 26, ipa_text: "aɪ woʊnt peɪ, aɪ woʊnt peɪ jə, noʊ weɪ eɪ eɪ eɪ" },
+      { line_index: 27, ipa_text: "næ næ, waɪ doʊnt ju ɡɛt ə dʒɑb" },
+      { line_index: 28, ipa_text: "seɪ noʊ weɪ, seɪ noʊ weɪ ɑ, noʊ weɪ eɪ eɪ eɪ" },
+      { line_index: 29, ipa_text: "næ næ, waɪ doʊnt ju ɡɛt ə dʒɑb" },
+      { line_index: 30, ipa_text: "aɪ woʊnt ɡɪv ju noʊ mʌni, aɪ ɔlweɪz peɪ" },
+      { line_index: 31, ipa_text: "næ næ, waɪ doʊnt ju ɡɛt ə dʒɑb" },
+      { line_index: 32, ipa_text: "seɪ noʊ weɪ, seɪ noʊ weɪ ɑ, noʊ weɪ eɪ eɪ eɪ" },
+      { line_index: 33, ipa_text: "næ næ, waɪ doʊnt ju ɡɛt ə dʒɑb" },
+    ],
+  },
 ];
 
 function tokensOf(body: string): number {
