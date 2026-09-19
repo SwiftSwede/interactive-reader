@@ -238,3 +238,7 @@ Follow the canonical seed pattern (`seed-presentation.ts`): typed `CONVERSATION_
 10. Test: create one prompt per level, assign sessions, open as student (Ronda 1 de 6 → countdown → questions), tap Siguiente ronda as teacher → student page advances in Realtime; timer hits 0 → "Tiempo"; Pausar freezes, Reanudar preserves remaining; round 7 → "Eso es todo"; student who never opens the link → class unaffected; pre-int writing form shows the copy button and copies numbered questions
 11. `npx next build` must pass before push (Vercel serves stale deploys on broken builds)
 12. Git commit: "Slice 61: Conversation class (4-4-4) with teacher-synced rounds"
+
+## Post-build addendum (2026-09-07, commit 949e7da)
+
+The spec above omitted one periphery feature: the after-class recording banner. Fixed post-build — `src/app/conversation/page.tsx` now passes `sessionRecordingUrl(access.session)` (from `@/lib/session-phase`) into `ConversationStudent`, which renders the shared `@/components/lesson/RecordingBanner` below the questions (same pattern as `ExamSession`). Recording shows only after class ends (`class_ended_at` set or the overtime cap). If building a future lesson type, sweep these periphery patterns (recording banner, attendance, reveal gating) against the exam page as the reference implementation — see the PRD Slice 61 row for the recorded note.
