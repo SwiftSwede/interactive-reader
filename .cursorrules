@@ -60,11 +60,11 @@ A slice is not done when the build passes. It is done when the truth documents a
 15. Group exam: level-differentiated Task 2. Intermediate = paragraph restructuring (scrambled 7-9 sentence paragraph, letter-coded reordering). Pre-intermediate = sentence correction (7 incorrect + 3 correct sentences, identify and fix errors). The `task2_type` field on GroupExamPrompt auto-selects based on level but can be teacher-overridden. Task 1 (fill-in-the-translation) and Task 3 (translation with conditionals 9-10) are the same for both levels.
 16. Group exam: one writer per group. Only the designated writer can submit answers. Other group members see a read-only view with live updates via Supabase Realtime. The ExamGroup entity tracks `writer_id` and `member_ids` for attribution. This is the only session type with group-based (not individual) submission.
 17. Read DESIGN.md before any UI work. It defines all color tokens, spacing, typography, components, navigation architecture, and page layouts. The app uses a Paper Light theme (warm off-white background, terracotta + moss palette). NOT dark mode. When creating or modifying any UI, read and follow DESIGN.md first.
-18. Never wipe teacher-owned data with seed scripts. `line_timestamps` is tap-align-owned: `seed-music.ts` MUST omit the column from its upsert when the song entry defines none (a bare `?? null` wiped Kyle's tap-aligned karaoke JSON on 2026-09-16). Student data guards stay (`--force` refuses when `song_lyric_attempts` exist). Every seed script must declare which columns it owns vs. never touches, log when the DB row differs from the seed payload before overwriting, and never write null over tool-generated or teacher-entered data.
+18. Never wipe teacher-owned data with seed scripts. Every seed script declares which columns it owns vs. never touches, never writes null over tool-generated or teacher-entered data, and `--force` refuses when student data exists. Full rule and the incident that created it: `docs/adr/012-seed-scripts-declare-column-ownership.md`.
 
 ## UI Design North Stars
 - Read and follow DESIGN.md at the project root BEFORE writing or modifying any UI. It is the source of truth for all colors, fonts, spacing, components, navigation, and page layouts. Do not contradict it.
-- The app uses a "Paper Light" theme (warm off-white #faf6f0 background, earthy terracotta + moss palette). NOT dark mode. The previous instruction to "build dark-first" is obsolete and wrong.
+- The app uses a "Paper Light" theme (warm off-white #faf6f0 background, earthy terracotta + moss palette). NOT dark mode.
 - One layout, not two. The app is a mobile app that breathes on desktop (centered, max-width 672px). No separate desktop layout. No sidebars, no multi-column dashboards, no split views. See DESIGN.md "Desktop Adaptations" section.
 - Mobile-first always. Test at 375px width. 500 million LatAm users already know bottom-tab and card-list patterns. When a student opens the app for the first time, they should know where to tap without instructions.
 - Calm, like reading a book. No gamification, no flashy animations, no emojis as icons. See DESIGN.md "Do's and Don'ts" section.
@@ -415,15 +415,5 @@ The app currently has minimal test coverage. Build coverage incrementally: test 
 - PronunciationPro2 at ~/Desktop/webdev/PronunciationPro2/ contains a working Azure Speech pronunciation assessment pipeline with LatAm-specific coaching rules. The server code (TypeScript/Express) and client (React) are reference implementations for Phase 3. Do not rebuild this from scratch when we reach Phase 3.
 - The project is at ~/Desktop/webdev/interactive-reader/. GitHub repo: github.com/SwiftSwede/interactive-reader (public). After every commit, push to origin/main.
 
-## Key decisions (resolved 2026-08-21)
-- Teacher-first build strategy: Phase 2 = full teacher dashboard. Consumer paid tier = Phase 5.
-- Same reader, different overlay: Classroom and consumer students use identical components. Context determines active features.
-- Lesson types transfer to the consumer tier by default (PRD Guiding Principle #18): build for the live class first, but the review-mode flow must also work teacher-less. Classroom-only designs (e.g., group exam single-writer) are recorded PRD exceptions, never accidents.
-- Magic link auth: no passwords. Email -> magic link -> click -> in.
-- Stripe webhook auto-creates user accounts from payment email.
-- 90-min class window: scheduled start and end stay on the session. Teaching mode continues if class runs long until the teacher taps Terminar clase (or four hours after the scheduled end). Reveal stays gated until then. Manual "Desbloquear ahora" still exists.
-- Choral practice + dictation: consumer only. Classroom students do choral practice live with Kyle on Zoom.
-- Personal questions: oral in class ("Discutir en clase" label), text input + AI in review mode.
-- No due dates: Kyle's methodology: learn IN class, not outside.
-- IPA everywhere in the app.
-- Group exam (Phase 5, spec complete): collaborative, not individual. One writer per group, real-time sync to members. No grades. Teacher reveals answers question by question in review mode. Level-differentiated Task 2 (intermediate: paragraph restructuring; pre-intermediate: sentence correction). See PRD slices 49a-49e and Language-Wiki/concepts/group-exam-methodology.md.
+## Key product decisions
+Resolved product-line decisions (classroom vs consumer split, choral/dictation placement, due dates, 90-min class window, group exam model) live in `docs/adr/011-classroom-vs-consumer-product-lines.md` — read it before designing lesson-type features. Standing rules that follow from them: magic link auth, no passwords (ADR 002); Stripe webhook auto-creates user accounts from payment email; IPA everywhere in the app.
