@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import { resolveConversationSessionAccess } from "@/lib/sessions";
+import { sessionRecordingUrl } from "@/lib/session-phase";
 import { getProfile } from "@/lib/auth-server";
 import { documentTitle, conversationSessionTitle } from "@/lib/page-title";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
@@ -140,6 +141,7 @@ export default async function ConversationPage({
       roundCurrent={access.session.roundCurrent}
       roundState={access.session.roundState}
       roundStartedAt={access.session.roundStartedAt}
+      recordingYoutubeUrl={sessionRecordingUrl(access.session)}
     />
   );
 }

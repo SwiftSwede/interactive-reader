@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import BackLink from "@/components/BackLink";
 import EndClassButton from "@/components/EndClassButton";
+import RecordingBanner from "@/components/lesson/RecordingBanner";
 import { createClient } from "@/lib/supabase/client";
 import { getSessionPhase } from "@/lib/session-phase";
 import {
@@ -44,6 +45,7 @@ export default function ConversationStudent({
   roundCurrent,
   roundState,
   roundStartedAt,
+  recordingYoutubeUrl,
 }: {
   prompt: ConversationPrompt;
   courseLevel: CourseLevel;
@@ -57,6 +59,7 @@ export default function ConversationStudent({
   roundCurrent: number;
   roundState: ConversationRoundState;
   roundStartedAt: string | null;
+  recordingYoutubeUrl: string | null;
 }) {
   const [plan, setPlan] = useState(conversationPlan);
   const [current, setCurrent] = useState(roundCurrent);
@@ -364,6 +367,12 @@ export default function ConversationStudent({
             </li>
           ))}
         </ol>
+
+        {recordingYoutubeUrl ? (
+          <div className="mt-6">
+            <RecordingBanner youtubeUrl={recordingYoutubeUrl} />
+          </div>
+        ) : null}
 
         {isTeacher ? (
           <EndClassButton
