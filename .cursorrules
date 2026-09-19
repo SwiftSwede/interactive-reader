@@ -399,8 +399,7 @@ The app currently has minimal test coverage. Build coverage incrementally: test 
 ### Build verification before push (mandatory)
 - Before any git push that touches `src/`, run `npx tsc --noEmit` (minimum) or `npx next build` (full), AND `npm test` (see Testing Discipline section).
 - If the build fails, fix the missing dependency or type error BEFORE committing. Never push a broken build.
-- Vercel auto-deploys every push to main. A broken build means Vercel serves the last successful deployment, which can be hours or days stale while the broken commit sits on main. This has happened before and caused audio 404s and stale UI.
-- If the live site looks stale or serves old file paths, check `npx next build` locally. A build failure means Vercel is serving the last known good deployment, not the latest commit.
+- Vercel auto-deploys every push to main. A broken build means Vercel serves the last successful deployment, which can be hours or days stale while the broken commit sits on main. - If the live site looks stale or serves old file paths, check `npx next build` locally. A build failure means Vercel is serving the last known good deployment, not the latest commit.
 
 ### Decisions review after large changes
 - After any large feature (10+ files changed, schema migration, or 100+ lines changed), ask yourself: "While working on this, which important decisions or choices did I make that I am not confident about? Think deeply. Only list decisions I am unsure about, not decisions where we already have the best solution. Answer in short, plain English."
