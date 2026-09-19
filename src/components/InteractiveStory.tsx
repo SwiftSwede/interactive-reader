@@ -624,12 +624,36 @@ export default function InteractiveStory({
               ? paragraph.match(/^([A-Za-zÁÉÍÓÚáéíóúñÑ.' -]+):/)?.[1]
               : null;
 
+          // Scene asides (stage directions) render outside the karaoke
+          // position chain — no word-spans, muted italic.
+          if (kind === "dialogue" && /^\[[^\]]*\]$/.test(paragraph.trim())) {
+            return (
+              <p key={paraIdx} className="text-label-sm italic text-text-muted">
+                {paragraph.trim()}
+              </p>
+            );
+          }
+
+          // Dialogue lines: strip "Name:" prefix from the karaoke token
+          // stream so word positions still match the words table.
+          const spokenTokens = dialogueName
+            ? paragraph
+                .replace(/^([A-Za-zÁÉÍÓÚáéíóúñÑ.' -]+):\s*/, "")
+                .split(/\s+/)
+                .filter((t) => t)
+            : tokens;
+
           return (
             <p
               key={paraIdx}
               className={`text-story-body text-text-primary${lyricLayout ? " mb-0" : ""}`}
             >
-              {tokens.map((token, tokenIdx) => {
+              {dialogueName && (
+                <span className="mr-1 font-heading text-label-md text-text-accent">
+                  {dialogueName}:
+                </span>
+              )}
+              {spokenTokens.map((token, tokenIdx) => {
                 const currentPos = wordPosition++;
                 const occurrenceIndex = nextOccurrenceIndex(
                   occurrenceCounts,
@@ -646,7 +670,7 @@ export default function InteractiveStory({
                 const ownRequested =
                   !flagging?.isTeacher &&
                   (requestCounts.get(flagKey) ?? 0) > 0;
-                const trailing = tokenIdx < tokens.length - 1 ? " " : "";
+                const trailing = tokenIdx < spokenTokens.length - 1 ? " " : "";
 
                 if (!word) {
                   return (
@@ -713,11 +737,7 @@ export default function InteractiveStory({
                 return (
                   <span
                     key={tokenIdx}
-                    className={
-                      dialogueName && tokenIdx === 0
-                        ? "font-heading text-label-md text-text-accent"
-                        : undefined
-                    }
+                    className={undefined}
                   >
                     <WordTooltip
                       word={word}

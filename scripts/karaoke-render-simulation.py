@@ -71,8 +71,9 @@ def simulate(slug, url, key):
         return
     timestamps = json.load(open(ts_path))
 
-    stories = sb_select(url, key, "stories", f"select=id,body_text&slug=eq.{slug}")
+    stories = sb_select(url, key, "stories", f"select=id,body_text,kind&slug=eq.{slug}")
     story_id, body_text = stories[0]["id"], stories[0]["body_text"]
+    kind = stories[0].get("kind") or "story"
     words = []
     offset = 0
     while True:
@@ -89,9 +90,15 @@ def simulate(slug, url, key):
 
     # ── replicate component tokenization ─────────────────────────
     paragraphs = [p for p in body_text.split("\n") if p.strip()]
+    # Dialogue display format: bracket asides are skipped entirely and
+    # "Name:" prefixes are stripped — mirroring InteractiveStory.tsx.
+    name_prefix = re.compile(r"^[A-Za-z\u00c1\u00c9\u00cd\u00d3\u00da\u00e1\u00e9\u00ed\u00f3\u00fa\u00f1\u00d1.' -]+:\s*")
     tokens = []  # (paragraph_idx, token)
     for pi, p in enumerate(paragraphs):
-        for t in re.split(r"\s+", p.strip()):
+        if kind == "dialogue" and re.match(r"^\[[^\]]*\]$", p.strip()):
+            continue  # scene aside — no word-spans
+        spoken = name_prefix.sub("", p.strip()) if kind == "dialogue" else p.strip()
+        for t in re.split(r"\s+", spoken):
             if t:
                 tokens.append((pi, t))
 
