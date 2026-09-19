@@ -73,9 +73,18 @@ def simulate(slug, url, key):
 
     stories = sb_select(url, key, "stories", f"select=id,body_text&slug=eq.{slug}")
     story_id, body_text = stories[0]["id"], stories[0]["body_text"]
-    words = sb_select(
-        url, key, "words", f"select=position,text&story_id=eq.{story_id}&order=position.asc"
-    )
+    words = []
+    offset = 0
+    while True:
+        page = sb_select(
+            url, key, "words",
+            f"select=position,text&story_id=eq.{story_id}"
+            f"&order=position.asc&limit=1000&offset={offset}",
+        )
+        words.extend(page)
+        if len(page) < 1000:
+            break
+        offset += 1000
     words_by_pos = {w["position"]: w["text"] for w in words}
 
     # ── replicate component tokenization ─────────────────────────

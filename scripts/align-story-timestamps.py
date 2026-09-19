@@ -83,10 +83,18 @@ def main():
     if not stories:
         sys.exit(f"ERROR: story {args.slug!r} not found")
     story_id, body_text = stories[0]["id"], stories[0]["body_text"]
-    words = sb_select(
-        url, key, "words",
-        f"select=position,text&story_id=eq.{story_id}&order=position.asc",
-    )
+    words = []
+    offset = 0
+    while True:
+        page = sb_select(
+            url, key, "words",
+            f"select=position,text&story_id=eq.{story_id}"
+            f"&order=position.asc&limit=1000&offset={offset}",
+        )
+        words.extend(page)
+        if len(page) < 1000:
+            break
+        offset += 1000
     if not words:
         sys.exit(f"ERROR: no words rows for {args.slug!r}")
 

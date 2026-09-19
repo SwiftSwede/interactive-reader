@@ -60,6 +60,7 @@ function parseArgs() {
   const isFree = has("--free");
   const levelOverride = get("--level");
   const skipAnswers = has("--no-answers");
+  const kind = get("--kind") || "story";
 
   // Derive slug from file if not provided
   if (!slug && file) {
@@ -107,12 +108,12 @@ function parseArgs() {
     process.exit(1);
   }
 
-  return { slug, file, isFree, levelOverride, skipAnswers };
+  return { slug, file, isFree, levelOverride, skipAnswers, kind };
 }
 
 // ── Parse the story markdown ───────────────────────────────
 
-function parseStoryMarkdown(markdown: string) {
+function parseStoryMarkdown(markdown: string, kind: string) {
   const lines = markdown.split("\n");
 
   // Extract frontmatter
@@ -142,6 +143,19 @@ function parseStoryMarkdown(markdown: string) {
 
   let bodyText = bodyLines.join("\n").trim();
 
+  // Dialogue bodies: strip speaker prefixes and stage-direction lines so the
+  // karaoke text contains only spoken words. Prefixes become bare lines
+  // ("Gordon-" alone on a line) and stage directions are dropped entirely.
+  if (kind === "dialogue" || kind === "movie_talk") {
+    bodyText = bodyLines
+      .filter((l) => !/^\[[^\]]*\]$/.test(l.trim())) // drop pure stage directions
+      .map((l) => l.replace(/^(Gordon|Pedro|Brenda|Sofia|Kyle|Deng Xiao Pi|Carey|Travis|Bertha|Cristina|Jorgito)\s*-\s*/, "").trim())
+      .filter((l) => l.trim())
+      .join("\n");
+    // Inline stage directions like "[exits humming]" are also unspoken
+    bodyText = bodyText.replace(/\[[^\]]*\]/g, "").replace(/[ \t]+/g, " ").trim();
+  }
+
   // Find comprehension questions
   // Handle both "Comprehension Questions" and "Comprehension questions"
   const compHeaderIdx = lines.findIndex((l) => {
@@ -158,15 +172,17 @@ function parseStoryMarkdown(markdown: string) {
     const endIdx2 = persHeaderIdx >= 0 ? persHeaderIdx : lines.length;
     const compLines = lines.slice(compHeaderIdx + 1, endIdx2).filter((l) => l.trim());
     for (const line of compLines) {
-      const match = line.match(/^(.+?\?)\s+(.+)$/);
+      // Strip leading list numbers ("1. ", "1.", "1)") before matching
+      const cleaned = line.trim().replace(/^\d+[.)]\s*/, "");
+      const match = cleaned.match(/^(.+?\?)\s+(.+)$/);
       if (match) {
         comprehensionQuestions.push({
           question: match[1].trim(),
           answer: match[2].trim(),
         });
-      } else if (line.includes("?")) {
+      } else if (cleaned.includes("?")) {
         comprehensionQuestions.push({
-          question: line.trim(),
+          question: cleaned.trim(),
           answer: null,
         });
       }
@@ -184,7 +200,8 @@ function parseStoryMarkdown(markdown: string) {
     const endIdx3 = pronHeaderIdx >= 0 ? pronHeaderIdx : lines.length;
     const persLines = lines.slice(persHeaderIdx + 1, endIdx3).filter((l) => l.trim());
     for (const line of persLines) {
-      if (line.trim()) personalQuestions.push(line.trim());
+      const cleaned = line.trim().replace(/^\d+[.)]\s*/, "");
+      if (cleaned) personalQuestions.push(cleaned);
     }
   }
 
@@ -401,14 +418,14 @@ Return a JSON array of ${questions.length} answer strings:`;
 // ── Main ───────────────────────────────────────────────────
 
 async function main() {
-  const { slug, file, isFree, levelOverride, skipAnswers } = parseArgs();
+  const { slug, file, isFree, levelOverride, skipAnswers, kind } = parseArgs();
 
   console.log("Reading story file...");
   console.log(`  File: ${file}`);
   const markdown = readFileSync(file, "utf-8");
 
   console.log("Parsing story markdown...");
-  const parsed = parseStoryMarkdown(markdown);
+  const parsed = parseStoryMarkdown(markdown, kind);
 
   const level = levelOverride || parsed.level;
 
@@ -486,7 +503,7 @@ async function main() {
         title: parsed.title,
         level,
         cefr: parsed.cefr,
-        kind: "story",
+        kind: kind,
         body_text: parsed.bodyText,
         body_html: "",
         word_count: wordCount,
@@ -512,7 +529,7 @@ async function main() {
         slug,
         level,
         cefr: parsed.cefr,
-        kind: "story",
+        kind: kind,
         body_text: parsed.bodyText,
         body_html: "",
         word_count: wordCount,
@@ -562,20 +579,24 @@ async function main() {
   }
   console.log(`${parsed.personalQuestions.length} personal questions inserted.`);
 
-  // Insert pronunciation drill
-  console.log("Inserting pronunciation drill...");
-  const { error: drillError } = await supabase.from("pronunciation_drills").insert({
-    story_id: storyId,
-    symbol_legend: parsed.pronunciationDrill.symbolLegend || null,
-    focus_type: parsed.pronunciationDrill.focusType,
-    focus_content: parsed.pronunciationDrill.focusContent || null,
-    practica_coral_standard: parsed.pronunciationDrill.practicaCoralStandard || null,
-    practica_coral_phonetic: parsed.pronunciationDrill.practicaCoralPhonetic || null,
-    coral_explanation: parsed.pronunciationDrill.coralExplanation || null,
-    word_notes: parsed.pronunciationDrill.coralWordNotes || [],
-  });
-  if (drillError) console.error("Error inserting pronunciation drill:", drillError);
-  console.log("Pronunciation drill inserted.");
+  // Insert pronunciation drill — stories only; dialogues have no drill block
+  if (kind !== "dialogue" && kind !== "movie_talk" && kind !== "song" && kind !== "video_summary") {
+    console.log("Inserting pronunciation drill...");
+    const { error: drillError } = await supabase.from("pronunciation_drills").insert({
+      story_id: storyId,
+      symbol_legend: parsed.pronunciationDrill.symbolLegend || null,
+      focus_type: parsed.pronunciationDrill.focusType,
+      focus_content: parsed.pronunciationDrill.focusContent || null,
+      practica_coral_standard: parsed.pronunciationDrill.practicaCoralStandard || null,
+      practica_coral_phonetic: parsed.pronunciationDrill.practicaCoralPhonetic || null,
+      coral_explanation: parsed.pronunciationDrill.coralExplanation || null,
+      word_notes: parsed.pronunciationDrill.coralWordNotes || [],
+    });
+    if (drillError) console.error("Error inserting pronunciation drill:", drillError);
+    console.log("Pronunciation drill inserted.");
+  } else {
+    console.log(`Pronunciation drill skipped (${kind} has no drill block).`);
+  }
 
   console.log("");
   console.log(`Done! "${parsed.title}" is now in the database.`);

@@ -1,0 +1,17 @@
+{
+  "BRENDA": {
+    "voice_id": "ijPfQ0iIweXMBVzCAg91",
+    "from": "BRENDA-D-2 (audition round 4)",
+    "settings": {"stability": 0.50, "similarity_boost": 0.80}
+  },
+  "PEDRO": {
+    "voice_id": "XYYuPnmwhF0f9JLg8bih",
+    "from": "PEDRO-G-3 (audition round 5)",
+    "settings": {"stability": 0.55, "similarity_boost": 0.80}
+  },
+  "GORDON": {
+    "voice_id": "lfQC9ypxd3IKzDBe9bgJ",
+    "from": "GORDON-F-1 (audition round 5)",
+    "settings": {"stability": 0.30, "similarity_boost": 0.80}
+  }
+}

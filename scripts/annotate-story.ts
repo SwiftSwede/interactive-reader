@@ -163,7 +163,7 @@ async function annotateChunkWithLLM(chunkText: string, chunkIndex: number): Prom
           },
         ],
         temperature: 0.3,
-        max_tokens: 16000,
+        max_tokens: 64000,
       }),
     }
   );
@@ -193,25 +193,61 @@ async function annotateChunkWithLLM(chunkText: string, chunkIndex: number): Prom
     console.log(`  Chunk ${chunkIndex}: ${parsed.words.length} words, ${parsed.expressions?.length || 0} expressions.`);
     return parsed;
   } catch (err) {
+    // THROW (don't exit) so annotateWithLLM's retry ladder can split the chunk
     console.error(`Chunk ${chunkIndex}: failed to parse LLM response as JSON`);
-    console.error("First 500 chars:", jsonStr.substring(0, 500));
     console.error("Parse error:", err);
-    process.exit(1);
+    throw err;
   }
 }
 
 async function annotateWithLLM(storyText: string): Promise<LLMResponse> {
-  // Split story into paragraphs and process each separately
-  const paragraphs = storyText.split("\n").filter((p) => p.trim());
-  console.log(`Splitting story into ${paragraphs.length} paragraphs for processing...`);
+  // Split story into paragraphs and merge small ones into chunks so that
+  // line-per-paragraph content (e.g. dialogues) doesn't burn one LLM call
+  // per line. ~2500 chars ≈ 250 words ≈ 40K chars of annotation JSON —
+  // safely inside the model's output limit.
+  const MIN_CHUNK = 2500;
+  const rawParas = storyText.split("\n").filter((p) => p.trim());
+  const paragraphs: string[] = [];
+  let buf = "";
+  for (const p of rawParas) {
+    if ((buf + "\n" + p).length <= MIN_CHUNK) {
+      buf = buf ? buf + "\n" + p : p;
+    } else {
+      if (buf) paragraphs.push(buf);
+      buf = p;
+    }
+  }
+  if (buf) paragraphs.push(buf);
+  console.log(`Splitting story into ${paragraphs.length} chunk(s) for processing...`);
 
   const allWords: LLMWord[] = [];
   const allExpressions: LLMExpression[] = [];
   let exprCounter = 0;
 
+  // Recursive bisect annotator: annotate a chunk; on parse failure, split in
+  // half and annotate each side. Guarantees forward progress down to ~2 lines.
+  async function annotateChunk(text: string, depth: number, tag: string): Promise<LLMResponse> {
+    try {
+      return await annotateChunkWithLLM(text, tag);
+    } catch (err) {
+      const lines = text.split("\n").filter((l) => l.trim());
+      if (lines.length < 2) {
+        console.error(`  ${tag}: single line still failing — dropping it`);
+        return { words: [], expressions: [] };
+      }
+      const half = Math.ceil(lines.length / 2);
+      console.log(`  ${tag}: bisecting (${lines.length} lines -> ${half}+${lines.length - half})`);
+      const a = await annotateChunk(lines.slice(0, half).join("\n"), depth + 1, tag + "a");
+      const b = await annotateChunk(lines.slice(half).join("\n"), depth + 1, tag + "b");
+      return {
+        words: [...a.words, ...b.words],
+        expressions: [...(a.expressions ?? []), ...(b.expressions ?? [])],
+      };
+    }
+  }
+
   for (let i = 0; i < paragraphs.length; i++) {
-    const para = paragraphs[i];
-    const chunkResult = await annotateChunkWithLLM(para, i);
+    const chunkResult = await annotateChunk(paragraphs[i], 0, `chunk ${i}`);
 
     // Renumber expression IDs to avoid collisions between chunks
     if (chunkResult.expressions) {

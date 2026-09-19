@@ -1,0 +1,131 @@
+{
+  "story_title": "Superstitious Minds",
+  "profiler": {
+    "word_count": 1302,
+    "unique_word_count": 476,
+    "evp_coverage_pct": 88.4,
+    "level_distribution": {
+      "A1": 286,
+      "A2": 71,
+      "B1": 36,
+      "B2": 25,
+      "C1": 2,
+      "C2": 1
+    },
+    "cumulative_pct": {
+      "A1": 60.1,
+      "A2": 75.0,
+      "B1": 82.6,
+      "B2": 87.8,
+      "C1": 88.2,
+      "C2": 88.4
+    },
+    "cognate_count": 76,
+    "cognate_pct": 16.0,
+    "false_friend_count": 3,
+    "off_list_count": 55,
+    "off_list_pct": 11.6,
+    "vocab_difficulty_raw": 1.55,
+    "vocab_difficulty_adjusted": 1.78,
+    "estimated_cefr": "B1+"
+  },
+  "rubric": {
+    "story_title": "Superstitious Minds",
+    "content_type": "dialogue",
+    "dimensions": {
+      "idiom_density": {
+        "score": 4,
+        "items_found": [
+          "cold feet",
+          "get our feet wet",
+          "put us out on the streets",
+          "old wives' tale",
+          "grain of salt",
+          "goes off without a hitch",
+          "shooting fish in a barrel",
+          "talk some sense into me",
+          "up to snuff",
+          "knock on wood",
+          "bottom line",
+          "fill you in",
+          "rain or shine",
+          "on the spot",
+          "catch up",
+          "evil eye",
+          "lowdown",
+          "my mind's made up",
+          "get out of this one"
+        ],
+        "count": 19
+      },
+      "grammatical_complexity": {
+        "score": 3,
+        "tenses_found": [
+          "present simple",
+          "past simple",
+          "present continuous",
+          "first conditional",
+          "passive voice",
+          "wish/subjunctive (wish they were)",
+          "relative clauses",
+          "modals"
+        ],
+        "notes": "A mix of simple conversational tenses with occasional complex structures like first conditionals, passives, and a 'wish' clause. Complex structures appear as a noticeable minority."
+      },
+      "cultural_reference_load": {
+        "score": 1,
+        "references_found": [
+          "Polanco, Santa Fé, Condesa, Cuernavaca, Basílica (Mexican geography)",
+          "Tuesday the 13th (Mexican superstition)",
+          "Day of the Virgin of Guadalupe",
+          "Mal de ojo (Evil eye)",
+          "Dinero llama dinero",
+          "Tamales, comal",
+          "MBA, Harvard business grad",
+          "Friday the 13th"
+        ],
+        "notes": "The text is heavily rooted in Mexican culture and superstitions, which a Latin American learner would recognize perfectly. US references (Harvard, MBA, Friday the 13th) are globally known."
+      },
+      "sentence_structure": {
+        "score": 2,
+        "avg_sentence_length": 12,
+        "notes": "Dialogue format with short, snappy sentences. Mostly subject-verb-object with occasional compound sentences and basic subordinate clauses."
+      },
+      "false_friend_assessment": {
+        "modifier": -1,
+        "items": [
+          {
+            "word": "collar",
+            "context": "Two white-collar types",
+            "is_trap_active": false,
+            "reason": "Used as part of the compound adjective 'white-collar', a recognized business term, not as a standalone noun meaning necklace."
+          },
+          {
+            "word": "location",
+            "context": "I found the perfect location for our first Mexican café",
+            "is_trap_active": false,
+            "reason": "'Locación' exists in Spanish with the same meaning, though 'ubicación' is more common. No confusion likely."
+          },
+          {
+            "word": "success",
+            "context": "If this second launch isn’t a success",
+            "is_trap_active": false,
+            "reason": "While 'suceso' in Spanish means 'event', the context of a launch 'not being a success' clearly points to the meaning of 'éxito'."
+          }
+        ]
+      }
+    },
+    "overall_difficulty": 2.28,
+    "estimated_cefr": "A2/B1",
+    "profiler_data": {
+      "vocab_difficulty_adjusted": "1.78",
+      "evp_coverage_pct": "88.4",
+      "cognate_pct": "16.0",
+      "off_list_pct": "11.6"
+    }
+  },
+  "final": {
+    "overall_difficulty": 2.28,
+    "estimated_cefr": "A2/B1"
+  }
+}
