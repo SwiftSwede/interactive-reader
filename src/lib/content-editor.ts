@@ -156,6 +156,47 @@ export function filterContentItems(
   });
 }
 
+export type ContentSort = "recent" | "title" | "kind" | "level";
+
+const LEVEL_SORT_RANK: Record<string, number> = {
+  beginner: 0,
+  "pre-intermediate": 1,
+  intermediate: 2,
+};
+
+function compareTitle(a: ContentIndexItem, b: ContentIndexItem): number {
+  const byTitle = a.title.localeCompare(b.title, "es", { sensitivity: "base" });
+  if (byTitle !== 0) return byTitle;
+  return a.key.localeCompare(b.key);
+}
+
+export function sortContentItems(
+  items: ContentIndexItem[],
+  sort: ContentSort
+): ContentIndexItem[] {
+  return [...items].sort((a, b) => {
+    if (sort === "title") return compareTitle(a, b);
+    if (sort === "kind") {
+      const byKind = contentKindLabel(a.kind).localeCompare(
+        contentKindLabel(b.kind),
+        "es",
+        { sensitivity: "base" }
+      );
+      if (byKind !== 0) return byKind;
+      return compareTitle(a, b);
+    }
+    if (sort === "level") {
+      const byLevel =
+        (LEVEL_SORT_RANK[a.level] ?? 99) - (LEVEL_SORT_RANK[b.level] ?? 99);
+      if (byLevel !== 0) return byLevel;
+      return compareTitle(a, b);
+    }
+    const byDate = b.sortAt.localeCompare(a.sortAt);
+    if (byDate !== 0) return byDate;
+    return compareTitle(a, b);
+  });
+}
+
 function isUuid(value: string): boolean {
   return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
     value

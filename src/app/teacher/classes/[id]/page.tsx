@@ -1,4 +1,10 @@
 import { parseConversationQuestions } from "@/lib/conversation";
+import { examItemCounts } from "@/lib/exam";
+import {
+  isCopyableConversation,
+  isCopyableExam,
+  isCopyableWriting,
+} from "@/lib/catalog-crud";
 import type { CourseLevel } from "@/types";
 import CourseRoster from "./CourseRoster";
 import ClassStrip, {
@@ -47,39 +53,78 @@ export default async function CourseClassPage({
   const { id } = await params;
   const { course, supabase } = await getOwnedCourse(id);
 
-  const { data: storyRows } = await supabase
-    .from("stories")
-    .select("id, title, kind")
-    .eq("level", course.level)
-    .order("title");
-
-  const stories = (storyRows ?? []) as StoryOption[];
-
-  const { data: presentationRows } =
+  const [
+    { data: storyRows },
+    { data: writingRows },
+    { data: examRows },
+    { data: conversationRows },
+    { data: presentationRows },
+  ] = await Promise.all([
+    supabase
+      .from("stories")
+      .select("id, title, kind")
+      .eq("level", course.level)
+      .order("title"),
+    supabase
+      .from("writing_prompts")
+      .select("id, title, prompt_text")
+      .eq("level", course.level)
+      .order("title"),
+    supabase
+      .from("exam_prompts")
+      .select(
+        "id, title, vocabulary_list, fill_in_translation, paragraph_restructuring, sentence_correction, translation_sentences"
+      )
+      .eq("level", course.level)
+      .order("title"),
+    supabase
+      .from("conversation_prompts")
+      .select("id, title, questions")
+      .eq("level", course.level)
+      .order("title"),
     course.level === "intermediate"
-      ? await supabase
+      ? supabase
           .from("presentation_prompts")
           .select("id, title")
           .eq("level", "intermediate")
           .order("title")
-      : { data: [] };
+      : Promise.resolve({ data: [] as { id: string; title: string }[] }),
+  ]);
 
-  const presentationPrompts = (presentationRows ?? []) as {
+  const stories = (storyRows ?? []) as StoryOption[];
+
+  const writingPrompts = ((writingRows ?? []) as {
     id: string;
     title: string;
-  }[];
+    prompt_text: string;
+  }[])
+    .filter((row) => isCopyableWriting(row.prompt_text ?? ""))
+    .map((row) => ({ id: row.id, title: row.title }));
 
-  const { data: conversationCopyRows } =
-    course.level === "pre-intermediate"
-      ? await supabase
-          .from("conversation_prompts")
-          .select("id, title, questions")
-          .eq("level", "pre-intermediate")
-          .order("title")
-      : { data: [] };
+  const examPrompts = ((examRows ?? []) as {
+    id: string;
+    title: string;
+    vocabulary_list: unknown;
+    fill_in_translation: unknown;
+    paragraph_restructuring: unknown;
+    sentence_correction: unknown;
+    translation_sentences: unknown;
+  }[])
+    .filter((row) =>
+      isCopyableExam(
+        examItemCounts({
+          vocabularyList: (row.vocabulary_list as never) ?? [],
+          fillInTranslation: (row.fill_in_translation as never) ?? [],
+          paragraphRestructuring: (row.paragraph_restructuring as never) ?? null,
+          sentenceCorrection: (row.sentence_correction as never) ?? null,
+          translationSentences: (row.translation_sentences as never) ?? [],
+        })
+      )
+    )
+    .map((row) => ({ id: row.id, title: row.title }));
 
-  const conversationCopyPrompts = (
-    (conversationCopyRows ?? []) as {
+  const conversationPrompts = (
+    (conversationRows ?? []) as {
       id: string;
       title: string;
       questions: unknown;
@@ -88,11 +133,34 @@ export default async function CourseClassPage({
     .map((row) => ({
       id: row.id,
       title: row.title,
-      questions: parseConversationQuestions(row.questions).map(
-        (question) => question.question
-      ),
+      questions: parseConversationQuestions(row.questions),
     }))
-    .filter((row) => row.questions.length > 0);
+    .filter((row) => isCopyableConversation(row.questions.length))
+    .map((row) => ({ id: row.id, title: row.title }));
+
+  const presentationPrompts = (presentationRows ?? []) as {
+    id: string;
+    title: string;
+  }[];
+
+  const conversationCopyPrompts =
+    course.level === "pre-intermediate"
+      ? (
+          (conversationRows ?? []) as {
+            id: string;
+            title: string;
+            questions: unknown;
+          }[]
+        )
+          .map((row) => ({
+            id: row.id,
+            title: row.title,
+            questions: parseConversationQuestions(row.questions).map(
+              (question) => question.question
+            ),
+          }))
+          .filter((row) => row.questions.length > 0)
+      : [];
   const sessions = await loadCourseSessions(supabase, course.id);
   const orderedSessions = [...sessions].sort(
     (a, b) => new Date(a.start).getTime() - new Date(b.start).getTime()
@@ -241,6 +309,9 @@ export default async function CourseClassPage({
                 stories={stories}
                 presentationPrompts={presentationPrompts}
                 conversationCopyPrompts={conversationCopyPrompts}
+                writingPrompts={writingPrompts}
+                examPrompts={examPrompts}
+                conversationPrompts={conversationPrompts}
               />
             </div>
             {orderedSessions.length === 0 ? (

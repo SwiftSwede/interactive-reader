@@ -100,6 +100,24 @@ Base unit: 4px. Use these values only. No arbitrary values.
 | `4xl` | 48px |
 | `5xl` | 64px |
 
+### Grouping (proximity)
+
+Space is how the layout says what belongs together. Titles are not required when two control groups are already obvious (kind vs level, date vs time). The gap has to say it.
+
+Pick three steps on the scale, each one clearly larger than the last. Do not use the same gap for "inside this group" and "the next block on the page."
+
+| Relationship | Default step | Meaning |
+|---|---|---|
+| Inside a group | `xs` 8px (sometimes `sm` 12px) | Sibling chips, buttons, or fields of the same control |
+| Between sibling groups | `lg` 20px or `xl` 24px | Related, but not the same row (kind filters then level filters) |
+| Before the next section | `2xl` 32px or `3xl` 40px | A new block (filters then the list, heading then a card stack) |
+
+**Do:** keep in-group tighter than between-group, and between-group tighter than the section break. If you enlarge the middle gap, enlarge the section break too, so the ladder still reads.
+
+**Don't:** stack two unlabeled chip rows with only `sm` (12px) between them. That looks like one wrapping set. Don't skip to `2xl` between sibling groups if the following section also uses `2xl`. Don't invent a fourth gap size off the scale.
+
+Page layouts below may pin exact values. When they do, those win. When they don't, use this ladder.
+
 ## Sizing
 
 ### Touch Targets
@@ -221,6 +239,7 @@ Same Paper Light theme, same tokens, same type scale as the student app (Lora he
 - **Grupos:** all courses, current first, archived below under "Meses anteriores". If a group has class today, the same class-day card as Este mes sits above the list. Each row shows theme when set. Archived months are fully browsable read-only, EXCEPT the theme field, recording URLs, and attendance stay editable (recordings are pasted day-after-class; attendance is often fixed late; themes are often named late). Inside a group, the monthly Zoom field is an input until saved, then a terracotta text hyperlink (underline on hover) with an X to clear it and paste another. It must not look like an input or a ghost button. Estudiantes is a card grid (1 col mobile, 2 tablet, 3 desktop). Not a full-width stacked list. Four columns is too tight for names plus "Mover a Pre-intermedio". The global Estudiantes tab stays a searchable list.
 - **Estudiantes:** invite form first, then searchable global roster across groups. Student card: name, email, current group, attendance history, writing submissions with WPM trend, "cambiar de nivel" action (existing roster-move behavior).
 - **Analíticas:** palabras más consultadas only — per month, per level, aggregated across the month's stories. No other metrics in this phase (attendance rates, engagement scores etc. are future "institute administrator" territory, deliberately excluded).
+- **Contenido (`/teacher/content`):** catalog list with kind/level filters. No labels on the chip rows. Gaps follow Grouping (proximity): 8px inside a row, 20px between kind and level, 40px before the list block. Sort lives on the right, 12px above the list (Ordenar: Recientes, Nombre, Tipo, Nivel). Not a column-header table. Create buttons for writing, exam, presentation, conversation (minimal form, then the Slice 55 editor). Stories are not created here (import pipeline). Trash on each row for catalog admins (`CATALOG_ADMIN_EMAILS`): blocked if any `course_sessions` row still references it, including archived months; confirm lists non-zero children. The delete cell is a full-height strip (no inset rounded chip). Title hover is `--surface-hover`; delete hover fills that strip with `--accent` and a white icon (`--surface`). Nueva clase for writing/exam/conversation: Nueva lección (compose) or Usar una anterior (copy, then assign). Presentation still picks the existing row.
 
 ### Attendance (interaction rules)
 
@@ -276,6 +295,9 @@ Three button variants plus the step navigation pill.
 - Focus: border thickens to 2px, color shifts to `--accent` (terracotta)
 - Placeholder: `--text-muted`
 - Font: `body-main` (Lora, 16px)
+
+### Selects
+Same chrome as text inputs. Hide the native disclosure arrow. Draw a 16px chevron (`--text-secondary`) as the caret. Place it `--select-caret-inset` (`md`, 16px) from the right edge, never flush to the rounded border. Extra right padding is inset + caret + 8px so the value never runs under the arrow. Change `--select-caret-inset` in `globals.css` when the caret needs to move; do not tweak one `<select>` in isolation.
 
 ### Cards
 - Background: `--surface` (white)

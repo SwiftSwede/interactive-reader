@@ -29,6 +29,8 @@
   --error-bg: #ffdad6;
   --warning: #644c23;
   --warning-bg: #f5e6c4;
+  --select-caret-size: 16px;
+  --select-caret-inset: 16px;
 }
 
 @theme inline {
@@ -73,6 +75,20 @@ body {
   background: var(--paper);
   color: var(--text-primary);
   font-family: var(--font-lora), Georgia, serif;
+}
+
+/* Native <select> arrows sit flush to the border. Custom caret uses
+   --select-caret-inset (16px) from the right edge. */
+select:not([multiple]) {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2351443c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--select-caret-inset) center;
+  background-size: var(--select-caret-size) var(--select-caret-size);
+  padding-right: calc(
+    var(--select-caret-inset) + var(--select-caret-size) + 8px
+  ) !important;
 }
 
 /* ── Text styles (from DESIGN.md) ─────────────────────── */

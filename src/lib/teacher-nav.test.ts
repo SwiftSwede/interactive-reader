@@ -53,5 +53,9 @@ describe("parentTeacherPath", () => {
       parentTeacherPath("/teacher/content/exam/abc"),
       "/teacher/content"
     );
+    assert.equal(
+      parentTeacherPath("/teacher/content/writing/new"),
+      "/teacher/content"
+    );
   });
 });

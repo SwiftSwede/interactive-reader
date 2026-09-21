@@ -5,6 +5,11 @@ import { revalidatePath } from "next/cache";
 import { requireTeacher } from "@/lib/auth-server";
 import { createClient } from "@/lib/supabase/server";
 import { isSessionType, defaultWritingMinutes, defaultExamTask2Type } from "@/lib/activities";
+import {
+  copyConversationPrompt,
+  copyExamPrompt,
+  copyWritingPrompt,
+} from "@/lib/catalog-crud";
 import { wordDiff } from "@/lib/writing";
 import { parseExamForm, nextGroupLabel } from "@/lib/exam";
 import type { CourseLevel, ExamTask2Type } from "@/types";
@@ -64,6 +69,44 @@ export async function createSession(
   const end = new Date(start.getTime() + SESSION_MINUTES * 60 * 1000);
 
   if (sessionType === "writing") {
+    const catalogSource = String(formData.get("catalogSource") ?? "new");
+    if (catalogSource === "copy") {
+      const copied = await copyWritingPrompt(
+        supabase,
+        String(formData.get("copyPromptId") ?? ""),
+        teacher.id,
+        course.level as CourseLevel
+      );
+      if (!copied.ok) return copied;
+      const { error } = await supabase.from("course_sessions").insert({
+        course_id: courseId,
+        session_type: "writing",
+        story_id: null,
+        writing_prompt_id: copied.value.id,
+        exam_prompt_id: null,
+        presentation_prompt_id: null,
+        session_date: sessionDate,
+        session_start_time: start.toISOString(),
+        session_end_time: end.toISOString(),
+        notes,
+      });
+      if (error) {
+        console.error("create writing session failed:", error);
+        return {
+          ok: false,
+          error: "No pude crear la clase. Inténtalo de nuevo.",
+        };
+      }
+      revalidatePath(`/teacher/classes/${courseId}`);
+      revalidatePath("/teacher");
+      revalidatePath("/teacher/content");
+      revalidatePath("/teacher", "layout");
+      return {
+        ok: true,
+        message: `Listo. ${copied.value.title} ya tiene clase.`,
+      };
+    }
+
     const title = String(formData.get("writingTitle") ?? "").trim();
     const promptText = String(formData.get("promptText") ?? "").trim();
     if (!title) {
@@ -143,6 +186,44 @@ export async function createSession(
   }
 
   if (sessionType === "exam") {
+    const catalogSource = String(formData.get("catalogSource") ?? "new");
+    if (catalogSource === "copy") {
+      const copied = await copyExamPrompt(
+        supabase,
+        String(formData.get("copyPromptId") ?? ""),
+        teacher.id,
+        course.level as CourseLevel
+      );
+      if (!copied.ok) return copied;
+      const { error } = await supabase.from("course_sessions").insert({
+        course_id: courseId,
+        session_type: "exam",
+        story_id: null,
+        writing_prompt_id: null,
+        exam_prompt_id: copied.value.id,
+        presentation_prompt_id: null,
+        session_date: sessionDate,
+        session_start_time: start.toISOString(),
+        session_end_time: end.toISOString(),
+        notes,
+      });
+      if (error) {
+        console.error("create exam session failed:", error);
+        return {
+          ok: false,
+          error: "No pude crear la clase. Inténtalo de nuevo.",
+        };
+      }
+      revalidatePath(`/teacher/classes/${courseId}`);
+      revalidatePath("/teacher");
+      revalidatePath("/teacher/content");
+      revalidatePath("/teacher", "layout");
+      return {
+        ok: true,
+        message: `Listo. ${copied.value.title} ya tiene clase.`,
+      };
+    }
+
     const task2Raw = String(formData.get("examTask2Type") ?? "").trim();
     const task2Type: ExamTask2Type =
       task2Raw === "paragraph_restructuring" ||
@@ -276,6 +357,46 @@ export async function createSession(
   }
 
   if (sessionType === "conversation") {
+    const catalogSource = String(formData.get("catalogSource") ?? "new");
+    if (catalogSource === "copy") {
+      const copied = await copyConversationPrompt(
+        supabase,
+        String(formData.get("copyPromptId") ?? ""),
+        teacher.id,
+        course.level as CourseLevel
+      );
+      if (!copied.ok) return copied;
+      const { error } = await supabase.from("course_sessions").insert({
+        course_id: courseId,
+        session_type: "conversation",
+        story_id: null,
+        writing_prompt_id: null,
+        exam_prompt_id: null,
+        presentation_prompt_id: null,
+        conversation_prompt_id: copied.value.id,
+        conversation_plan: "standard",
+        session_date: sessionDate,
+        session_start_time: start.toISOString(),
+        session_end_time: end.toISOString(),
+        notes,
+      });
+      if (error) {
+        console.error("create conversation session failed:", error);
+        return {
+          ok: false,
+          error: "No pude crear la clase. Inténtalo de nuevo.",
+        };
+      }
+      revalidatePath(`/teacher/classes/${courseId}`);
+      revalidatePath("/teacher");
+      revalidatePath("/teacher/content");
+      revalidatePath("/teacher", "layout");
+      return {
+        ok: true,
+        message: `Listo. ${copied.value.title} ya tiene clase.`,
+      };
+    }
+
     const title = String(formData.get("conversationTitle") ?? "").trim();
     const theme = String(formData.get("conversationTheme") ?? "").trim() || null;
     const questions = formData

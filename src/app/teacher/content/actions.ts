@@ -1,7 +1,18 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { requireTeacher } from "@/lib/auth-server";
+import {
+  createConversationPrompt,
+  createExamPrompt,
+  createPresentationPrompt,
+  createWritingPrompt,
+  deleteCatalogContent,
+  isCatalogAdminEmail,
+  previewCatalogDelete,
+  type CatalogKind,
+} from "@/lib/catalog-crud";
 import { createAdminClient } from "@/lib/supabase/admin";
 import {
   saveComprehensionQuestions,
@@ -32,6 +43,24 @@ import type {
 async function teacherAdmin() {
   await requireTeacher("/teacher");
   return createAdminClient();
+}
+
+function revalidateCatalog() {
+  revalidatePath("/teacher/content");
+  revalidatePath("/teacher", "layout");
+}
+
+export type CatalogMutateResult = { ok: false; error: string };
+
+async function requireCatalogAdmin() {
+  const teacher = await requireTeacher("/teacher");
+  if (!isCatalogAdminEmail(teacher.email)) {
+    return {
+      ok: false as const,
+      error: "No tienes permiso para borrar contenido.",
+    };
+  }
+  return { ok: true as const, teacher, admin: createAdminClient() };
 }
 
 function revalidateStory(slug: string) {
@@ -184,4 +213,87 @@ export async function saveConversationAction(
   return result;
 }
 
-export type { LyricBlank };
+export async function previewCatalogDeleteAction(
+  kind: CatalogKind,
+  id: string
+) {
+  const gate = await requireCatalogAdmin();
+  if (!gate.ok) return gate;
+  return previewCatalogDelete(gate.admin, kind, id);
+}
+
+export async function deleteCatalogAction(
+  kind: CatalogKind,
+  id: string
+): Promise<CatalogMutateResult | { ok: true }> {
+  const gate = await requireCatalogAdmin();
+  if (!gate.ok) return gate;
+  const result = await deleteCatalogContent(gate.admin, kind, id);
+  if (!result.ok) return result;
+  revalidateCatalog();
+  if (kind === "story") revalidatePath("/lesson");
+  return { ok: true };
+}
+
+export async function createWritingAction(
+  _prev: CatalogMutateResult | null,
+  formData: FormData
+): Promise<CatalogMutateResult> {
+  const teacher = await requireTeacher("/teacher");
+  const result = await createWritingPrompt(createAdminClient(), {
+    title: String(formData.get("title") ?? ""),
+    level: String(formData.get("level") ?? ""),
+    createdBy: teacher.id,
+  });
+  if (!result.ok) return result;
+  revalidateCatalog();
+  redirect(`/teacher/content/writing/${result.value.id}`);
+}
+
+export async function createExamAction(
+  _prev: CatalogMutateResult | null,
+  formData: FormData
+): Promise<CatalogMutateResult> {
+  const teacher = await requireTeacher("/teacher");
+  const result = await createExamPrompt(createAdminClient(), {
+    title: String(formData.get("title") ?? ""),
+    level: String(formData.get("level") ?? ""),
+    createdBy: teacher.id,
+  });
+  if (!result.ok) return result;
+  revalidateCatalog();
+  redirect(`/teacher/content/exam/${result.value.id}`);
+}
+
+export async function createPresentationAction(
+  _prev: CatalogMutateResult | null,
+  formData: FormData
+): Promise<CatalogMutateResult> {
+  const teacher = await requireTeacher("/teacher");
+  const result = await createPresentationPrompt(createAdminClient(), {
+    title: String(formData.get("title") ?? ""),
+    theme: String(formData.get("theme") ?? "").trim() || null,
+    createdBy: teacher.id,
+  });
+  if (!result.ok) return result;
+  revalidateCatalog();
+  redirect(`/teacher/content/presentation/${result.value.id}`);
+}
+
+export async function createConversationAction(
+  _prev: CatalogMutateResult | null,
+  formData: FormData
+): Promise<CatalogMutateResult> {
+  const teacher = await requireTeacher("/teacher");
+  const result = await createConversationPrompt(createAdminClient(), {
+    title: String(formData.get("title") ?? ""),
+    level: String(formData.get("level") ?? ""),
+    theme: String(formData.get("theme") ?? "").trim() || null,
+    createdBy: teacher.id,
+  });
+  if (!result.ok) return result;
+  revalidateCatalog();
+  redirect(`/teacher/content/conversation/${result.value.id}`);
+}
+
+export type { LyricBlank, CatalogKind };

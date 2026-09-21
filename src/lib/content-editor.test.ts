@@ -3,6 +3,7 @@ import { describe, test } from "node:test";
 import {
   contentKindLabel,
   filterContentItems,
+  sortContentItems,
   mintLyricBlank,
   movieTalkTranscriptMatchesScenes,
   nextStableId,
@@ -94,6 +95,63 @@ describe("filterContentItems", () => {
     assert.equal(filterContentItems(items, "song", "all").length, 1);
     assert.equal(filterContentItems(items, "all", "pre-intermediate").length, 1);
     assert.equal(filterContentItems(items, "all", "all").length, 2);
+  });
+});
+
+describe("sortContentItems", () => {
+  const items: ContentIndexItem[] = [
+    {
+      key: "t",
+      kind: "video_summary",
+      title: "Zebra",
+      level: "intermediate",
+      href: "/t",
+      sortAt: "3",
+    },
+    {
+      key: "c",
+      kind: "song",
+      title: "Canción alta",
+      level: "beginner",
+      href: "/c",
+      sortAt: "1",
+    },
+    {
+      key: "h",
+      kind: "story",
+      title: "Alpha",
+      level: "pre-intermediate",
+      href: "/h",
+      sortAt: "2",
+    },
+  ];
+
+  test("sorts by Spanish title", () => {
+    assert.deepEqual(
+      sortContentItems(items, "title").map((item) => item.title),
+      ["Alpha", "Canción alta", "Zebra"]
+    );
+  });
+
+  test("sorts kinds by Spanish label, Canción first and Traducción last", () => {
+    assert.deepEqual(
+      sortContentItems(items, "kind").map((item) => item.kind),
+      ["song", "story", "video_summary"]
+    );
+  });
+
+  test("sorts levels beginner then pre-intermediate then intermediate", () => {
+    assert.deepEqual(
+      sortContentItems(items, "level").map((item) => item.level),
+      ["beginner", "pre-intermediate", "intermediate"]
+    );
+  });
+
+  test("recent keeps newest first", () => {
+    assert.deepEqual(
+      sortContentItems(items, "recent").map((item) => item.key),
+      ["t", "h", "c"]
+    );
   });
 });
 

@@ -33,6 +33,11 @@ type ConversationCopyOption = {
   questions: string[];
 };
 
+type CatalogPromptOption = {
+  id: string;
+  title: string;
+};
+
 const fieldClass =
   "w-full rounded-card border border-paper-line bg-surface px-3 py-3 text-base text-text-primary focus:border-2 focus:border-accent focus:outline-none";
 
@@ -42,6 +47,9 @@ export default function CreateSessionForm({
   stories,
   presentationPrompts,
   conversationCopyPrompts,
+  writingPrompts,
+  examPrompts,
+  conversationPrompts,
   onCreated,
 }: {
   courseId: string;
@@ -49,6 +57,9 @@ export default function CreateSessionForm({
   stories: StoryOption[];
   presentationPrompts: PresentationOption[];
   conversationCopyPrompts: ConversationCopyOption[];
+  writingPrompts: CatalogPromptOption[];
+  examPrompts: CatalogPromptOption[];
+  conversationPrompts: CatalogPromptOption[];
   onCreated?: () => void;
 }) {
   const [state, formAction, isPending] = useActionState(
@@ -58,6 +69,8 @@ export default function CreateSessionForm({
   const [sessionType, setSessionType] = useState<SessionType>("story");
   const [promptText, setPromptText] = useState("");
   const [copyPromptId, setCopyPromptId] = useState("");
+  const [promptMode, setPromptMode] = useState<"new" | "copy">("new");
+  const [previousPromptId, setPreviousPromptId] = useState("");
   const [conversationQuestions, setConversationQuestions] = useState([
     "",
     "",
@@ -68,6 +81,10 @@ export default function CreateSessionForm({
   useEffect(() => {
     if (state?.ok) onCreated?.();
   }, [state?.ok, onCreated]);
+  useEffect(() => {
+    setPromptMode("new");
+    setPreviousPromptId("");
+  }, [sessionType]);
   const defaultMinutes = defaultWritingMinutes(courseLevel);
   const defaultTask2 = defaultExamTask2Type(courseLevel);
   const storyOptions = stories.filter(
@@ -81,6 +98,12 @@ export default function CreateSessionForm({
   const dialogueOptions = stories.filter((row) => row.kind === "dialogue");
   const movieTalkOptions = stories.filter((row) => row.kind === "movie_talk");
   const songOptions = stories.filter((row) => row.kind === "song");
+  const previousPrompts =
+    sessionType === "writing"
+      ? writingPrompts
+      : sessionType === "exam"
+        ? examPrompts
+        : conversationPrompts;
 
   return (
     <form
@@ -224,6 +247,43 @@ export default function CreateSessionForm({
         </div>
       </fieldset>
 
+      {sessionType === "writing" ||
+      sessionType === "exam" ||
+      sessionType === "conversation" ? (
+        <>
+          <input type="hidden" name="catalogSource" value={promptMode} />
+          <fieldset>
+            <legend className="mb-1.5 block text-sm font-medium text-text-secondary">
+              Contenido
+            </legend>
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                onClick={() => setPromptMode("new")}
+                className={`h-11 rounded-card border text-sm font-medium ${
+                  promptMode === "new"
+                    ? "border-accent bg-accent text-white"
+                    : "border-paper-line text-text-primary"
+                }`}
+              >
+                Nueva lección
+              </button>
+              <button
+                type="button"
+                onClick={() => setPromptMode("copy")}
+                className={`h-11 rounded-card border text-sm font-medium ${
+                  promptMode === "copy"
+                    ? "border-accent bg-accent text-white"
+                    : "border-paper-line text-text-primary"
+                }`}
+              >
+                Usar una anterior
+              </button>
+            </div>
+          </fieldset>
+        </>
+      ) : null}
+
       {sessionType === "story" ? (
         storyOptions.length === 0 ? (
           <p className="text-sm text-text-muted">
@@ -252,6 +312,35 @@ export default function CreateSessionForm({
           </label>
         )
       ) : sessionType === "writing" ? (
+        promptMode === "copy" ? (
+          previousPrompts.length === 0 ? (
+            <p className="text-sm text-text-muted">
+              Todavía no hay una escritura de este nivel. Créala en Contenido.
+            </p>
+          ) : (
+            <label className="block">
+              <span className="mb-1.5 block text-sm font-medium text-text-secondary">
+                Escritura anterior
+              </span>
+              <select
+                name="copyPromptId"
+                required
+                value={previousPromptId}
+                onChange={(event) => setPreviousPromptId(event.target.value)}
+                className={fieldClass}
+              >
+                <option value="" disabled>
+                  Elige una escritura
+                </option>
+                {previousPrompts.map((prompt) => (
+                  <option key={prompt.id} value={prompt.id}>
+                    {prompt.title}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )
+        ) : (
         <>
           <label className="block">
             <span className="mb-1.5 block text-sm font-medium text-text-secondary">
@@ -366,7 +455,37 @@ export default function CreateSessionForm({
             </>
           )}
         </>
+        )
       ) : sessionType === "exam" ? (
+        promptMode === "copy" ? (
+          previousPrompts.length === 0 ? (
+            <p className="text-sm text-text-muted">
+              Todavía no hay un examen de este nivel. Créalo en Contenido.
+            </p>
+          ) : (
+            <label className="block">
+              <span className="mb-1.5 block text-sm font-medium text-text-secondary">
+                Examen anterior
+              </span>
+              <select
+                name="copyPromptId"
+                required
+                value={previousPromptId}
+                onChange={(event) => setPreviousPromptId(event.target.value)}
+                className={fieldClass}
+              >
+                <option value="" disabled>
+                  Elige un examen
+                </option>
+                {previousPrompts.map((prompt) => (
+                  <option key={prompt.id} value={prompt.id}>
+                    {prompt.title}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )
+        ) : (
         <>
           <label className="block">
             <span className="mb-1.5 block text-sm font-medium text-text-secondary">
@@ -468,6 +587,7 @@ export default function CreateSessionForm({
           </label>
           <input type="hidden" name="examTimeMinutes" value="35" />
         </>
+        )
       ) : sessionType === "presentation" ? (
         presentationPrompts.length === 0 ? (
           <p className="text-sm text-text-muted">
@@ -496,6 +616,36 @@ export default function CreateSessionForm({
           </label>
         )
       ) : sessionType === "conversation" ? (
+        promptMode === "copy" ? (
+          previousPrompts.length === 0 ? (
+            <p className="text-sm text-text-muted">
+              Todavía no hay una conversación de este nivel. Créala en
+              Contenido.
+            </p>
+          ) : (
+            <label className="block">
+              <span className="mb-1.5 block text-sm font-medium text-text-secondary">
+                Conversación anterior
+              </span>
+              <select
+                name="copyPromptId"
+                required
+                value={previousPromptId}
+                onChange={(event) => setPreviousPromptId(event.target.value)}
+                className={fieldClass}
+              >
+                <option value="" disabled>
+                  Elige una conversación
+                </option>
+                {previousPrompts.map((prompt) => (
+                  <option key={prompt.id} value={prompt.id}>
+                    {prompt.title}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )
+        ) : (
         <>
           <label className="block">
             <span className="mb-1.5 block text-sm font-medium text-text-secondary">
@@ -568,6 +718,7 @@ export default function CreateSessionForm({
             </div>
           </div>
         </>
+        )
       ) : sessionType === "dialogue" ? (
         dialogueOptions.length === 0 ? (
           <p className="text-sm text-text-muted">
@@ -761,7 +912,17 @@ export default function CreateSessionForm({
           (sessionType === "song" && songOptions.length === 0) ||
           (sessionType === "video_summary" && videoOptions.length === 0) ||
           (sessionType === "presentation" && presentationPrompts.length === 0) ||
+          (sessionType === "writing" &&
+            promptMode === "copy" &&
+            (writingPrompts.length === 0 || !previousPromptId)) ||
+          (sessionType === "exam" &&
+            promptMode === "copy" &&
+            (examPrompts.length === 0 || !previousPromptId)) ||
           (sessionType === "conversation" &&
+            promptMode === "copy" &&
+            (conversationPrompts.length === 0 || !previousPromptId)) ||
+          (sessionType === "conversation" &&
+            promptMode === "new" &&
             conversationQuestions.filter((row) => row.trim()).length < 3)
         }
         className="w-full rounded-card bg-accent px-4 py-3 text-sm font-medium text-white disabled:opacity-60"

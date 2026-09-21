@@ -93,6 +93,11 @@ export const ENV_MANIFEST: EnvVarSpec[] = [
     severity: "feature",
     feature: "Teacher access",
   },
+  {
+    name: "CATALOG_ADMIN_EMAILS",
+    severity: "feature",
+    feature: "Teacher catalog delete",
+  },
 ];
 
 export type EnvCheckResult = {
