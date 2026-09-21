@@ -58,6 +58,7 @@ type FlagRow = {
   flag_type: string;
   flag_text: string;
   occurrence_index: number;
+  note?: string | null;
 };
 
 type RequestRow = {
@@ -74,6 +75,7 @@ function mapFlag(row: FlagRow): WordFlag | null {
     flagType: row.flag_type,
     flagText: row.flag_text,
     occurrenceIndex: row.occurrence_index,
+    note: row.note ?? null,
   };
 }
 
@@ -91,7 +93,7 @@ export async function loadWordFlags(
 ): Promise<WordFlag[]> {
   const { data, error } = await supabase
     .from("word_flags")
-    .select("id, story_id, flag_type, flag_text, occurrence_index")
+    .select("id, story_id, flag_type, flag_text, occurrence_index, note")
     .eq("story_id", storyId);
 
   if (error || !data) return [];

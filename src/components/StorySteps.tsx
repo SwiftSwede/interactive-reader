@@ -22,8 +22,7 @@ import BackLink from "./BackLink";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
 import { storyStepRecordingUrl } from "@/lib/story-practice";
 import MusicLessonSteps from "./music/MusicLessonSteps";
-import { youtubeEmbedId } from "@/lib/youtube-sync";
-import ClassroomYoutubePlayer from "./ClassroomYoutubePlayer";
+import MovieTalkLessonSteps from "./movietalk/MovieTalkLessonSteps";
 import { PlaybackRateProvider } from "./PlaybackRateContext";
 import EndClassButton from "@/components/EndClassButton";
 import { getSessionPhase } from "@/lib/session-phase";
@@ -81,6 +80,7 @@ export default function StorySteps({
   lessonStepLocked = false,
   answersRevealed = false,
   songClassAnswers = {},
+  movieTalkClassAnswers = {},
   practiceLockedHint = false,
   practiceRecordingYoutubeUrl = null,
 }: {
@@ -111,9 +111,31 @@ export default function StorySteps({
   lessonStepLocked?: boolean;
   answersRevealed?: boolean;
   songClassAnswers?: Record<number, string>;
+  movieTalkClassAnswers?: Record<number, string>;
   practiceLockedHint?: boolean;
   practiceRecordingYoutubeUrl?: string | null;
 }) {
+  if (data.story.kind === "movie_talk") {
+    return (
+      <MovieTalkLessonSteps
+        data={data}
+        sessionId={sessionId}
+        trackLookups={trackLookups}
+        readerMode={readerMode}
+        isTeacher={isTeacher}
+        recordingYoutubeUrl={recordingYoutubeUrl}
+        sessionStartTime={sessionStartTime}
+        sessionEndTime={sessionEndTime}
+        classEndedAt={initialEndedAt}
+        flagging={flagging}
+        lessonStepCurrent={lessonStepCurrent}
+        lessonStepLocked={lessonStepLocked}
+        movieTalkClassAnswers={movieTalkClassAnswers}
+        savedResponses={savedResponses}
+      />
+    );
+  }
+
   if (data.story.kind === "song") {
     return (
       <MusicLessonSteps
@@ -230,19 +252,15 @@ function ClassicStorySteps({
   const storyStepLabel =
     story.kind === "dialogue"
       ? "El diálogo"
-      : story.kind === "movie_talk"
-        ? "El video"
-        : story.kind === "song"
-          ? "La canción"
-          : "El cuento";
+      : story.kind === "song"
+        ? "La canción"
+        : "El cuento";
   const kindLabel =
     story.kind === "dialogue"
       ? "Diálogo"
-      : story.kind === "movie_talk"
-        ? "Movie Talk"
-        : story.kind === "song"
-          ? "Música"
-          : "Historia";
+      : story.kind === "song"
+        ? "Música"
+        : "Historia";
 
   const steps = useMemo<Step[]>(() => {
     const list: Step[] = [{ id: "story", label: storyStepLabel }];
@@ -345,14 +363,11 @@ function ClassicStorySteps({
       },
       new Date(now)
     ) === "live";
-  const youtubeLive = live && Boolean(sessionId);
 
   const goTo = (index: number) => {
     setSheetOpen(false);
     setActiveIndex(index);
   };
-
-  const youtubeId = youtubeEmbedId(story.youtube_url);
 
   const storyProps = {
     bodyText: story.body_text,
@@ -459,23 +474,6 @@ function ClassicStorySteps({
                 <h2 className="text-headline-lg text-text-primary mb-2">
                   {story.title}
                 </h2>
-                {story.kind === "movie_talk" && (
-                  <p className="mb-4 text-label-md text-text-secondary">
-                    Escenas: toca el texto. Los cortes *** marcan cada clip.
-                  </p>
-                )}
-                {story.kind === "movie_talk" &&
-                  youtubeId && (
-                    <div className="mb-6">
-                      <ClassroomYoutubePlayer
-                        videoId={youtubeId}
-                        title={story.title}
-                        sessionId={sessionId}
-                        isTeacher={isTeacher}
-                        live={youtubeLive}
-                      />
-                    </div>
-                  )}
                 <MicroExplanation
                   dismissKey="story"
                   text="Leer en ingles es la base de todo. Tu cerebro necesita ver las palabras en contexto para aprenderlas de verdad. Toca cualquier palabra para ver su traduccion y pronunciacion."

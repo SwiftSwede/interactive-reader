@@ -10,8 +10,16 @@ import { recordWordLookup } from "@/app/lesson/[slug]/actions";
 import {
   convertRequestsToFlag,
   requestWordFlag,
+  saveWordFlagNote,
   setWordFlag,
 } from "@/app/lesson/[slug]/word-flag-actions";
+import NoteLightbox from "@/components/NoteLightbox";
+import {
+  isMovieTalkSceneBreak,
+  isMovieTalkStageDirection,
+  MOVIE_TALK_SPEAKER_RE,
+  speakerOfLine,
+} from "@/lib/movietalk";
 import { createClient } from "@/lib/supabase/client";
 import {
   flagAnchorKey,
@@ -43,6 +51,8 @@ type InteractiveStoryProps = {
   hideAudio?: boolean;
   kind?: "story" | "dialogue" | "movie_talk" | "song";
   flagging?: WordFlagging;
+  visibleSceneIndex?: number;
+  highlightSpeaker?: string | null;
 };
 
 // ── Component ──────────────────────────────────────────────
@@ -59,6 +69,8 @@ export default function InteractiveStory({
   hideAudio = false,
   kind = "story",
   flagging,
+  visibleSceneIndex,
+  highlightSpeaker = null,
 }: InteractiveStoryProps) {
   const [seenPositions, setSeenPositions] = useState<Set<number>>(new Set());
   const [activePosition, setActivePosition] = useState<number | null>(null);
@@ -71,6 +83,7 @@ export default function InteractiveStory({
   const [requests, setRequests] = useState<WordFlagRequest[]>(
     flagging?.requests ?? []
   );
+  const [openNote, setOpenNote] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const flagsRef = useRef(flags);
   flagsRef.current = flags;
@@ -132,6 +145,17 @@ export default function InteractiveStory({
     return map;
   }, [flags]);
 
+  const noteByAnchor = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const flag of flags) {
+      const note = flag.note?.trim();
+      if (!note) continue;
+      const key = flagAnchorKey(flag.flagText, flag.occurrenceIndex);
+      if (!map.has(key)) map.set(key, note);
+    }
+    return map;
+  }, [flags]);
+
   const requestCounts = useMemo(
     () => requestCountByAnchor(requests),
     [requests]
@@ -170,6 +194,7 @@ export default function InteractiveStory({
               flagType,
               flagText,
               occurrenceIndex,
+              note: null,
             },
           ];
         }
@@ -257,6 +282,32 @@ export default function InteractiveStory({
     [applyFlag, flagging]
   );
 
+  const handleSaveNote = useCallback(
+    (flagText: string, occurrenceIndex: number, note: string) => {
+      if (!flagging?.enabled) return;
+      const key = flagAnchorKey(flagText, occurrenceIndex);
+      const types = flagTypeMap.get(key) ?? [];
+      if (types.length === 0) return;
+      setFlags((current) =>
+        current.map((row) =>
+          row.flagText === flagText && row.occurrenceIndex === occurrenceIndex
+            ? { ...row, note }
+            : row
+        )
+      );
+      for (const flagType of types) {
+        void saveWordFlagNote({
+          storyId: flagging.storyId,
+          flagText,
+          occurrenceIndex,
+          flagType,
+          note,
+        });
+      }
+    },
+    [flagging?.enabled, flagging?.storyId, flagTypeMap]
+  );
+
   useEffect(() => {
     if (!flagging?.isTeacher || !flagging.sessionId) return;
 
@@ -336,6 +387,43 @@ export default function InteractiveStory({
       void supabase.removeChannel(channel);
     };
   }, [flagging?.isTeacher, flagging?.sessionId]);
+
+  useEffect(() => {
+    if (
+      !flagging ||
+      flagging.isTeacher ||
+      flagging.readerMode !== "classroom-live" ||
+      (kind !== "story" && kind !== "dialogue" && kind !== "movie_talk")
+    ) {
+      return;
+    }
+    const supabase = createClient();
+    const poll = window.setInterval(async () => {
+      const { data } = await supabase
+        .from("word_flags")
+        .select("id, story_id, flag_type, flag_text, occurrence_index, note")
+        .eq("story_id", flagging.storyId);
+      if (!data) return;
+      setFlags(
+        data.flatMap((row) => {
+          if (row.flag_type !== "bold" && row.flag_type !== "underline") {
+            return [];
+          }
+          return [
+            {
+              id: row.id,
+              storyId: row.story_id,
+              flagType: row.flag_type,
+              flagText: row.flag_text,
+              occurrenceIndex: row.occurrence_index,
+              note: row.note ?? null,
+            },
+          ];
+        })
+      );
+    }, 3000);
+    return () => window.clearInterval(poll);
+  }, [flagging, kind]);
 
   useEffect(() => {
     if (!flagging?.enabled) return;
@@ -584,6 +672,7 @@ export default function InteractiveStory({
   }, []);
 
   let wordPosition = 0;
+  let currentScene = 0;
   const occurrenceCounts = new Map<string, number>();
   const audioDuration = timestamps.length > 0
     ? timestamps[timestamps.length - 1].end
@@ -607,26 +696,40 @@ export default function InteractiveStory({
           }
           const tokens = paragraph.split(/\s+/).filter((t) => t);
           const sceneBreak =
-            kind === "movie_talk" && /^\*+\s*$/.test(paragraph.trim());
+            kind === "movie_talk" && isMovieTalkSceneBreak(paragraph);
           if (sceneBreak) {
-            return (
-              <p
-                key={paraIdx}
-                className="border-t border-paper-line pt-4 text-center text-label-sm text-text-muted"
-              >
-                Escena {paragraphs.slice(0, paraIdx).filter((line) => /^\*+\s*$/.test(line.trim())).length + 1}
-              </p>
-            );
+            const divider =
+              visibleSceneIndex == null ? (
+                <p
+                  key={paraIdx}
+                  className="border-t border-paper-line pt-4 text-center text-label-sm text-text-muted"
+                >
+                  Escena{" "}
+                  {paragraphs
+                    .slice(0, paraIdx)
+                    .filter((line) => isMovieTalkSceneBreak(line)).length + 1}
+                </p>
+              ) : null;
+            currentScene += 1;
+            return divider;
           }
 
+          const movieTalkName =
+            kind === "movie_talk" ? speakerOfLine(paragraph) : null;
           const dialogueName =
             kind === "dialogue"
               ? paragraph.match(/^([A-Za-zÁÉÍÓÚáéíóúñÑ.' -]+):/)?.[1]
               : null;
+          const speakerName = movieTalkName ?? dialogueName;
+          const speakerJoin = movieTalkName ? "-" : dialogueName ? ":" : "";
+          const inView =
+            visibleSceneIndex == null || currentScene === visibleSceneIndex;
 
-          // Scene asides (stage directions) render outside the karaoke
-          // position chain — no word-spans, muted italic.
-          if (kind === "dialogue" && /^\[[^\]]*\]$/.test(paragraph.trim())) {
+          if (
+            (kind === "dialogue" || kind === "movie_talk") &&
+            isMovieTalkStageDirection(paragraph)
+          ) {
+            if (!inView) return null;
             return (
               <p key={paraIdx} className="text-label-sm italic text-text-muted">
                 {paragraph.trim()}
@@ -634,23 +737,47 @@ export default function InteractiveStory({
             );
           }
 
-          // Dialogue lines: strip "Name:" prefix from the karaoke token
-          // stream so word positions still match the words table.
-          const spokenTokens = dialogueName
+          const spokenTokens = speakerName
             ? paragraph
-                .replace(/^([A-Za-zÁÉÍÓÚáéíóúñÑ.' -]+):\s*/, "")
+                .replace(
+                  movieTalkName
+                    ? new RegExp(MOVIE_TALK_SPEAKER_RE.source + "\\s*")
+                    : /^([A-Za-zÁÉÍÓÚáéíóúñÑ.' -]+):\s*/,
+                  ""
+                )
                 .split(/\s+/)
                 .filter((t) => t)
             : tokens;
 
+          if (!inView) {
+            for (const token of spokenTokens) {
+              wordPosition++;
+              nextOccurrenceIndex(occurrenceCounts, token);
+            }
+            return null;
+          }
+
+          const highlighted =
+            Boolean(highlightSpeaker) && speakerName === highlightSpeaker;
+
           return (
             <p
               key={paraIdx}
-              className={`text-story-body text-text-primary${lyricLayout ? " mb-0" : ""}`}
+              data-speaker={speakerName ?? undefined}
+              className={`text-story-body text-text-primary${lyricLayout ? " mb-0" : ""}${
+                kind === "movie_talk" ? " movie-talk-line" : ""
+              }${highlighted ? " movie-talk-line-on" : ""}`}
             >
-              {dialogueName && (
-                <span className="mr-1 font-heading text-label-md text-text-accent">
-                  {dialogueName}:
+              {speakerName && (
+                <span
+                  className={`mr-1 font-heading text-label-md${
+                    kind === "movie_talk"
+                      ? ` movie-talk-speaker${highlighted ? " movie-talk-speaker-on" : ""}`
+                      : " text-text-accent"
+                  }`}
+                >
+                  {speakerName}
+                  {speakerJoin}
                 </span>
               )}
               {spokenTokens.map((token, tokenIdx) => {
@@ -664,6 +791,7 @@ export default function InteractiveStory({
                 const types = flagTypeMap.get(flagKey) ?? [];
                 const isBold = types.includes("bold");
                 const isUnderline = types.includes("underline");
+                const flagNote = noteByAnchor.get(flagKey) ?? null;
                 const requestCount = flagging?.isTeacher
                   ? (requestCounts.get(flagKey) ?? 0)
                   : 0;
@@ -671,18 +799,41 @@ export default function InteractiveStory({
                   !flagging?.isTeacher &&
                   (requestCounts.get(flagKey) ?? 0) > 0;
                 const trailing = tokenIdx < spokenTokens.length - 1 ? " " : "";
+                const flagClass = `${wordFlagClassName({
+                  bold: isBold,
+                  underline: isUnderline,
+                  requestedOwn: ownRequested,
+                })}${flagNote ? " word-flag-has-note" : ""}`.trim();
 
-                if (!word) {
+                const unannotated = !word || (() => {
+                  const tokenNorm = token
+                    .replace(/\u2018/g, "'")
+                    .replace(/\u2019/g, "'")
+                    .replace(/\u201C/g, '"')
+                    .replace(/\u201D/g, '"');
+                  const wordNorm = word.text
+                    .replace(/\u2018/g, "'")
+                    .replace(/\u2019/g, "'")
+                    .replace(/\u201C/g, '"')
+                    .replace(/\u201D/g, '"');
+                  return tokenNorm !== wordNorm;
+                })();
+
+                if (unannotated) {
                   return (
                     <span key={tokenIdx}>
                       <span
                         data-word-text={token}
                         data-word-occurrence={String(occurrenceIndex)}
-                        className={wordFlagClassName({
-                          bold: isBold,
-                          underline: isUnderline,
-                          requestedOwn: ownRequested,
-                        })}
+                        className={flagClass}
+                        onClick={
+                          flagNote && !showTeacherFlags
+                            ? (e) => {
+                                e.stopPropagation();
+                                setOpenNote(flagNote);
+                              }
+                            : undefined
+                        }
                       >
                         {token}
                       </span>
@@ -691,38 +842,6 @@ export default function InteractiveStory({
                   );
                 }
 
-                // Normalize curly quotes for matching
-                const tokenNorm = token
-                  .replace(/\u2018/g, "'")
-                  .replace(/\u2019/g, "'")
-                  .replace(/\u201C/g, '"')
-                  .replace(/\u201D/g, '"');
-                const wordNorm = word.text
-                  .replace(/\u2018/g, "'")
-                  .replace(/\u2019/g, "'")
-                  .replace(/\u201C/g, '"')
-                  .replace(/\u201D/g, '"');
-
-                if (tokenNorm !== wordNorm) {
-                  return (
-                    <span key={tokenIdx}>
-                      <span
-                        data-word-text={token}
-                        data-word-occurrence={String(occurrenceIndex)}
-                        className={wordFlagClassName({
-                          bold: isBold,
-                          underline: isUnderline,
-                          requestedOwn: ownRequested,
-                        })}
-                      >
-                        {token}
-                      </span>
-                      {trailing}
-                    </span>
-                  );
-                }
-
-                // Find expression for this word (if any)
                 const expression = word.expression_id
                   ? expressionMap.get(word.expression_id) || null
                   : null;
@@ -735,10 +854,7 @@ export default function InteractiveStory({
                   activePosition !== word.position;
 
                 return (
-                  <span
-                    key={tokenIdx}
-                    className={undefined}
-                  >
+                  <span key={tokenIdx}>
                     <WordTooltip
                       word={word}
                       expression={expression}
@@ -764,6 +880,13 @@ export default function InteractiveStory({
                       onToggleFlag={handleToggleFlag}
                       onRequestWord={handleRequestWord}
                       onConvertRequests={handleConvertRequests}
+                      flagNote={flagNote}
+                      onOpenNote={
+                        flagNote ? () => setOpenNote(flagNote) : undefined
+                      }
+                      onSaveNote={(note) =>
+                        handleSaveNote(token, occurrenceIndex, note)
+                      }
                     />
                     {trailing}
                   </span>
@@ -773,6 +896,9 @@ export default function InteractiveStory({
           );
         })}
       </div>
+      {openNote ? (
+        <NoteLightbox note={openNote} onClose={() => setOpenNote(null)} />
+      ) : null}
     </div>
   );
 }

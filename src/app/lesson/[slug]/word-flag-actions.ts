@@ -209,3 +209,44 @@ export async function convertRequestsToFlag(input: {
   await deleteSessionRequests(teacher.supabase, parsed.data);
   return { ok: true };
 }
+
+export async function saveWordFlagNote(input: {
+  storyId: string;
+  flagText: string;
+  occurrenceIndex: number;
+  flagType: "bold" | "underline";
+  note: string;
+}): Promise<WordFlagActionResult> {
+  const parsed = z
+    .object({
+      storyId: uuidSchema,
+      flagText: flagTextSchema,
+      occurrenceIndex: occurrenceSchema,
+      flagType: flagTypeSchema,
+      note: z.string().max(1000),
+    })
+    .safeParse(input);
+  if (!parsed.success) {
+    return { ok: false, error: "No pude guardar esa nota." };
+  }
+
+  const teacher = await teacherClient();
+  if (!teacher.ok) return teacher;
+
+  const note = parsed.data.note.trim() || null;
+  const { error } = await teacher.supabase.from("word_flags").upsert(
+    {
+      story_id: parsed.data.storyId,
+      flag_type: parsed.data.flagType,
+      flag_text: parsed.data.flagText,
+      occurrence_index: parsed.data.occurrenceIndex,
+      note,
+    },
+    { onConflict: "story_id,flag_text,occurrence_index,flag_type" }
+  );
+  if (error) {
+    console.error("saveWordFlagNote failed:", error);
+    return { ok: false, error: "No pude guardar esa nota. Inténtalo de nuevo." };
+  }
+  return { ok: true };
+}

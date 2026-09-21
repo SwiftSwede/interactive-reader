@@ -116,6 +116,7 @@ export default forwardRef<
     isTeacher: boolean;
     live: boolean;
     startSeconds?: number;
+    endSeconds?: number;
     compact?: boolean;
     onTimeUpdate?: (seconds: number) => void;
     onPlayStateChange?: (playing: boolean) => void;
@@ -128,6 +129,7 @@ export default forwardRef<
     isTeacher,
     live,
     startSeconds = 0,
+    endSeconds,
     compact = false,
     onTimeUpdate,
     onPlayStateChange,
@@ -259,6 +261,9 @@ export default forwardRef<
           rel: 0,
           playsinline: 1,
           start: Math.max(0, Math.floor(startSeconds)),
+          ...(endSeconds != null && endSeconds > 0
+            ? { end: Math.floor(endSeconds) }
+            : {}),
           origin: window.location.origin,
         },
         events: {
@@ -319,7 +324,7 @@ export default forwardRef<
         /* YouTube may already have removed the node */
       }
     };
-  }, [videoId, showControls, studentLock, publish, applyToPlayer, startSeconds]);
+  }, [videoId, showControls, studentLock, publish, applyToPlayer, startSeconds, endSeconds]);
 
   useEffect(() => {
     if (!live || !sessionId) return;
@@ -465,6 +470,25 @@ export default forwardRef<
       /* iOS may ignore element fullscreen; YouTube iframe still has allowfullscreen */
     }
   }
+
+  useEffect(() => {
+    if (endSeconds == null || endSeconds <= 0) return;
+    const id = window.setInterval(() => {
+      const player = playerRef.current;
+      if (!player) return;
+      try {
+        if (
+          player.getPlayerState() === PLAYING &&
+          player.getCurrentTime() >= endSeconds
+        ) {
+          player.pauseVideo();
+        }
+      } catch {
+        /* player not ready */
+      }
+    }, 250);
+    return () => window.clearInterval(id);
+  }, [endSeconds, videoId]);
 
   useEffect(() => {
     if (!onTimeUpdate) return;

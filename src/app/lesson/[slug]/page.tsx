@@ -106,6 +106,8 @@ export default async function LessonSlugPage({
   const kind = data.story.kind ?? "story";
   const isVideo = kind === "video_summary";
   const isSong = kind === "song";
+  const isMovieTalk = kind === "movie_talk";
+  const classroomPaced = isVideo || isSong || isMovieTalk;
 
   const {
     data: { user },
@@ -115,19 +117,26 @@ export default async function LessonSlugPage({
   const trackLookups = profile != null && profile.role !== "teacher";
 
   const sessionId =
-    access.kind === "ok" && (access.saveResponses || isVideo || isSong)
+    access.kind === "ok" && (access.saveResponses || classroomPaced)
       ? access.session.id
       : undefined;
   const flagSessionId = access.kind === "ok" ? access.session.id : null;
 
   let readerMode: "classroom-live" | "classroom-review" | "open" = "open";
-  if (access.kind === "ok" && (access.saveResponses || isVideo || isSong)) {
+  if (access.kind === "ok" && (access.saveResponses || classroomPaced)) {
     readerMode = isWithinSessionWindow(access.session)
       ? "classroom-live"
       : "classroom-review";
   }
 
   const skipFlags = isVideo;
+  const classroomTextKind =
+    kind === "story" || kind === "dialogue" || kind === "movie_talk";
+  const loadStudentFlags =
+    !skipFlags &&
+    !isTeacher &&
+    classroomTextKind &&
+    (readerMode === "classroom-live" || readerMode === "classroom-review");
   const [
     savedResponses,
     savedPersonalResponses,
@@ -147,7 +156,7 @@ export default async function LessonSlugPage({
           data.personalQuestions.map((question) => question.id)
         )
       : Promise.resolve(undefined),
-    !skipFlags && isTeacher
+    !skipFlags && (isTeacher || loadStudentFlags)
       ? loadWordFlags(supabase, data.story.id)
       : Promise.resolve([]),
     !skipFlags && isTeacher && flagSessionId
@@ -222,6 +231,9 @@ export default async function LessonSlugPage({
       }
       songClassAnswers={
         access.kind === "ok" ? access.session.songClassAnswers : {}
+      }
+      movieTalkClassAnswers={
+        access.kind === "ok" ? access.session.movieTalkClassAnswers : {}
       }
     />
   );

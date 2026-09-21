@@ -16,6 +16,7 @@ config({ path: ".env.local", override: true });
 import { createClient } from "@supabase/supabase-js";
 import { WebSocket } from "ws";
 import { KYLE_IPA_ALPHA_RULE } from "../src/lib/ipa-conventions";
+import { movieTalkSpokenText } from "../src/lib/movietalk";
 
 // ── Config ─────────────────────────────────────────────────
 
@@ -377,6 +378,16 @@ async function main() {
 
   console.log(`Story: ${story.title}`);
   console.log(`Body length: ${story.body_text.length} chars`);
+  const kind = typeof story.kind === "string" ? story.kind : "story";
+  const textForLlm =
+    kind === "movie_talk"
+      ? movieTalkSpokenText(story.body_text)
+      : story.body_text;
+  if (kind === "movie_talk") {
+    console.log(
+      "Movie Talk: skipping speaker names, *** dividers, and stage directions in the annotation stream."
+    );
+  }
 
   // Check if words already exist for this story
   const { data: existingWords } = await supabase
@@ -397,7 +408,7 @@ async function main() {
   }
 
   // Run the LLM annotation
-  const annotation = await annotateWithLLM(story.body_text);
+  const annotation = await annotateWithLLM(textForLlm);
 
   console.log("");
   console.log(`LLM returned ${annotation.words.length} words and ${annotation.expressions?.length || 0} expressions.`);

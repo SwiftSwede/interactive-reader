@@ -95,6 +95,7 @@ export default async function StoryReader({
   lessonStepCurrent = null,
   lessonStepLocked = false,
   songClassAnswers = {},
+  movieTalkClassAnswers = {},
 }: {
   data: LoadedStory;
   allowReveal?: boolean;
@@ -117,6 +118,7 @@ export default async function StoryReader({
   lessonStepCurrent?: string | null;
   lessonStepLocked?: boolean;
   songClassAnswers?: Record<number, string>;
+  movieTalkClassAnswers?: Record<number, string>;
 }) {
   const { story, pronunciationDrill } = data;
 
@@ -249,6 +251,7 @@ export default async function StoryReader({
         lessonStepLocked={lessonStepLocked}
         answersRevealed={answersRevealed}
         songClassAnswers={songClassAnswers}
+        movieTalkClassAnswers={movieTalkClassAnswers}
         practiceLockedHint={practiceLockedHint}
         practiceRecordingYoutubeUrl={practiceRecordingYoutubeUrl}
       />

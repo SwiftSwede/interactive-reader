@@ -108,3 +108,15 @@ When building Slice 55, the song editor (`/teacher/content/story/[slug]` for `ki
 
 Cost discipline: every AI action shows its estimated cost before running, and a confirmation step prevents accidental double-runs.
 
+## Addendum (Slice 64 — movie talk editor)
+
+When building Slice 55, the movie talk editor (`/teacher/content/story/[slug]` for `kind = "movie_talk"`) covers:
+
+- `synopsis` and `warmup_question`
+- scenes CRUD (`youtube_url`, `start_seconds`, `end_seconds`, question ranges)
+- per-question answer editing (including review of seed-time AI drafts)
+- transcript editing (`body_text` with `***` validation: scene count must match `movie_talk_scenes` rows)
+- word-flag note editing
+- Desync guard: refuse re-seed / scene-structure changes when `comprehension_responses` exist for the story's questions in a live session (`--force` opt-in), same convention as other seeds
+
+

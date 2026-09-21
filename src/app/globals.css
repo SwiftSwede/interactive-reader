@@ -383,9 +383,31 @@ body {
   text-decoration-thickness: 2px;
 }
 
-.word-requested-own {
-  background-color: var(--accent-softer);
-  border-radius: 2px;
+.word-flag-has-note {
+  box-shadow: inset 0 -2px 0 0 var(--accent);
+}
+
+.movie-talk-line {
+  margin-left: -8px;
+  margin-right: -8px;
+  padding: 4px 8px;
+  border-radius: var(--radius-small);
+}
+
+.movie-talk-line-on {
+  background-color: var(--accent-soft);
+}
+
+.movie-talk-speaker {
+  display: inline-block;
+  padding: 0 6px;
+  border-radius: var(--radius-small);
+  color: var(--text-accent);
+}
+
+.movie-talk-speaker-on {
+  background-color: var(--accent);
+  color: var(--surface);
 }
 
 .word-flag-wrap {
@@ -1384,6 +1406,48 @@ body.sticky-audio-active {
   }
 }
 
+/* ── Sticky character band (Movie Talk diálogo) ─────────── */
+
+.character-band {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.character-band-row {
+  display: flex;
+  justify-content: safe center;
+  gap: 8px;
+  width: 100%;
+  min-width: min-content;
+}
+
+body.sticky-character-band-active {
+  padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px) + 16px);
+}
+
+.sticky-character-band {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  animation: sticky-audio-in 0.18s ease;
+}
+
+.sticky-character-band-bar {
+  pointer-events: auto;
+  width: 100%;
+  padding: 8px 16px;
+  background: var(--paper-header);
+  border-top: 1px solid var(--paper-line);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(8px);
+}
+
 /* ── IPA sounds + sound video modal (Phase 2.5) ──────────── */
 
 .ipa-text {
@@ -1542,6 +1606,7 @@ body.sticky-audio-active {
 @media (prefers-reduced-motion: reduce) {
   .word-tooltip,
   .sticky-audio-player,
+  .sticky-character-band,
   .step-panel,
   .story-text-sheet-panel {
     animation: none;
@@ -1572,6 +1637,23 @@ body.sticky-audio-active {
     border-radius: var(--radius-sheet);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     overflow: hidden;
+  }
+
+  body.sticky-character-band-active {
+    padding-bottom: calc(80px + 32px);
+  }
+
+  .sticky-character-band {
+    bottom: 16px;
+    padding-bottom: 0;
+  }
+
+  .sticky-character-band-bar {
+    width: 672px;
+    max-width: calc(100vw - 32px);
+    border: 1px solid var(--paper-line);
+    border-radius: var(--radius-sheet);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   }
 }
 

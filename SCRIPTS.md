@@ -80,6 +80,25 @@ npx tsx scripts/annotate-story.ts --slug <slug>   # ~$0.01-0.02, 5-12 min
 
 **Cost / time / status:** Free. A few seconds per song. Idempotent by slug. First real song: Summer of '69 (pre-intermediate, September 2026) with Kyle-voice bio + meaning and draft IPA. No line timestamps (karaoke degrades until studio-aligned data exists). **White Is Red (Death from Above 1979, pre-intermediate, September 2026) seeded + annotated 2026-09-16:** 341 words, 12 blank entries (ids 3 and 5 have two entries each — the repeated words appear in two different lines), 58 IPA lines, bio + meaning. Before seeding any new song, run the placement check below.
 
+### Seed a Movie Talk class (intermediate Class 3 Format B)
+
+Inserts (or updates by slug) a Movie Talk lesson: `Story.kind = "movie_talk"` with the full transcript in `body_text` (`***` scene breaks, `Name-Dialogue` lines), `synopsis`, optional `warmup_question`, per-scene YouTube clips in `movie_talk_scenes`, and comprehension questions. Story-level `youtube_url` is always null. `--force` still refuses when `comprehension_responses` exist for this story's questions on a live session.
+
+```bash
+npx tsx scripts/seed-movietalk.ts            # seed all lessons in MOVIE_TALKS
+npx tsx scripts/seed-movietalk.ts --slug the-holdovers
+npx tsx scripts/seed-movietalk.ts --slug the-holdovers --force
+```
+
+Then annotate the transcript (speaker names, `***`, and stage directions are skipped):
+
+```bash
+npx tsx scripts/annotate-story.ts --slug the-holdovers
+```
+
+**Cost / time / status:** Free to seed. Annotate ~$0.01-0.02. First real lesson: The Holdovers (intermediate, 3 scenes, 10 questions).
+
+
 ### Check song blank placement + IPA alignment (run BEFORE seeding)
 
 Runs the real `placeLyricBlanks` + `indexedLyricLines` against the SONGS entry. Catches silent placement failures (wrong prompt encoding, repeated-id lines needing separate entries per line, out-of-range or duplicate IPA indexes) before anything hits the database. Prints every placement plus a lyrics‖IPA side-by-side for eyeball review.

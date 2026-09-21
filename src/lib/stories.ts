@@ -26,9 +26,22 @@ export type StoryRow = {
   lyrics_ipa?: unknown;
   line_timestamps?: unknown;
   spanish_summary?: string | null;
+  synopsis?: string | null;
+  warmup_question?: string | null;
   free_write_minutes?: number | null;
   created_at: string;
   updated_at: string;
+};
+
+export type MovieTalkSceneRow = {
+  id: string;
+  story_id: string;
+  scene_number: number;
+  youtube_url: string | null;
+  start_seconds: number | null;
+  end_seconds: number | null;
+  question_start_position: number | null;
+  question_end_position: number | null;
 };
 
 export type CompQuestionRow = {
@@ -112,6 +125,7 @@ export type LoadedStory = {
   comprehensionQuestions: CompQuestionRow[];
   personalQuestions: PersonalQuestionRow[];
   pronunciationDrill: PronunciationDrillRow | null;
+  movieTalkScenes: MovieTalkSceneRow[];
 };
 
 async function loadStoryRelated(
@@ -171,6 +185,17 @@ async function loadStoryRelated(
     .eq("story_id", storyRow.id)
     .maybeSingle();
 
+  const { data: sceneRows } =
+    storyRow.kind === "movie_talk"
+      ? await supabase
+          .from("movie_talk_scenes")
+          .select(
+            "id, story_id, scene_number, youtube_url, start_seconds, end_seconds, question_start_position, question_end_position"
+          )
+          .eq("story_id", storyRow.id)
+          .order("scene_number", { ascending: true })
+      : { data: [] as MovieTalkSceneRow[] };
+
   return {
     story: storyRow,
     words: bodyWords.map(mapWord),
@@ -183,7 +208,8 @@ async function loadStoryRelated(
     })),
     comprehensionQuestions: (compQuestions || []) as CompQuestionRow[],
     personalQuestions: (personalQuestions || []) as PersonalQuestionRow[],
-        pronunciationDrill: drill
+    movieTalkScenes: (sceneRows || []) as MovieTalkSceneRow[],
+    pronunciationDrill: drill
       ? {
           ...(drill as PronunciationDrillRow),
           practica_coral_standard: stripStressMarks(

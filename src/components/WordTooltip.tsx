@@ -60,6 +60,9 @@ type WordTooltipProps = {
   ) => void;
   onRequestWord?: (flagText: string, occurrenceIndex: number) => void;
   onConvertRequests?: (flagText: string, occurrenceIndex: number) => void;
+  flagNote?: string | null;
+  onOpenNote?: () => void;
+  onSaveNote?: (note: string) => void;
 };
 
 function WordTooltip({
@@ -83,6 +86,9 @@ function WordTooltip({
   onToggleFlag,
   onRequestWord,
   onConvertRequests,
+  flagNote = null,
+  onOpenNote,
+  onSaveNote,
 }: WordTooltipProps) {
   const spanRef = useRef<HTMLSpanElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -93,6 +99,11 @@ function WordTooltip({
   });
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPinned, setIsPinned] = useState(false);
+  const [noteDraft, setNoteDraft] = useState(flagNote ?? "");
+
+  useEffect(() => {
+    setNoteDraft(flagNote ?? "");
+  }, [flagNote]);
 
   // Determine what to show in the tooltip
   const displayTranslation = expression
@@ -100,11 +111,11 @@ function WordTooltip({
     : word.spanish_translation;
   const displayPhonetic = word.phonetic_transcription;
   const anchorText = flagText ?? word.text;
-  const flagClasses = wordFlagClassName({
+  const flagClasses = `${wordFlagClassName({
     bold: isBold,
     underline: isUnderline,
     requestedOwn: ownRequested,
-  });
+  })}${flagNote ? " word-flag-has-note" : ""}`.trim();
 
   const handleToggle = (type: WordFlagType, on: boolean) => {
     onToggleFlag?.(anchorText, occurrenceIndex, type, on);
@@ -183,6 +194,10 @@ function WordTooltip({
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (onFirstInteraction) onFirstInteraction();
+    if (!showTeacherFlags && flagNote && onOpenNote) {
+      onOpenNote();
+      return;
+    }
     setIsPinned(true);
     showTooltip();
     onPin(word);
@@ -303,6 +318,21 @@ function WordTooltip({
                   Negrita
                 </button>
               </div>
+            ) : null}
+            {isPinned && showTeacherFlags && onSaveNote && (isBold || isUnderline) ? (
+              <label className="mt-2 block">
+                <span className="mb-1 block text-label-sm text-text-secondary">
+                  Nota
+                </span>
+                <textarea
+                  className="min-h-20 w-full rounded-card border border-paper-line bg-surface p-2 text-label-md text-text-primary focus:border-accent focus:outline-none"
+                  value={noteDraft}
+                  maxLength={1000}
+                  onChange={(e) => setNoteDraft(e.target.value)}
+                  onBlur={() => onSaveNote(noteDraft)}
+                  onClick={(e) => e.stopPropagation()}
+                />
+              </label>
             ) : null}
             {isPinned && showStudentRequest && !ownRequested && onRequestWord ? (
               <div className="word-tooltip-actions">

@@ -36,9 +36,22 @@ export interface Story {
   lyricsIpa: unknown;
   lineTimestamps: unknown;
   spanishSummary: string | null;
+  synopsis: string | null;
+  warmupQuestion: string | null;
   freeWriteMinutes: number;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface MovieTalkScene {
+  id: string;
+  storyId: string;
+  sceneNumber: number;
+  youtubeUrl: string | null;
+  startSeconds: number | null;
+  endSeconds: number | null;
+  questionStartPosition: number | null;
+  questionEndPosition: number | null;
 }
 
 export interface LyricBlank {
@@ -189,6 +202,7 @@ export interface WordFlag {
   flagType: WordFlagType;
   flagText: string;
   occurrenceIndex: number;
+  note?: string | null;
 }
 
 export interface WordFlagRequest {
@@ -275,6 +289,7 @@ export interface CourseSession {
   classEndedAt: string | null;
   answersRevealed: boolean;
   songClassAnswers: Record<number, string>;
+  movieTalkClassAnswers: Record<number, string>;
   notes: string | null;
   sessionLinkToken: string;
   timerStartedAt: string | null;

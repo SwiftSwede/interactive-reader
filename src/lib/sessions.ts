@@ -18,6 +18,7 @@ import {
   isConversationRoundState,
 } from "@/lib/conversation";
 import { parseSongClassAnswers } from "@/lib/music";
+import { parseMovieTalkClassAnswers } from "@/lib/movietalk";
 import type {
   ConversationPlan,
   ConversationRoundState,
@@ -79,6 +80,7 @@ type SessionRow = {
   class_ended_at?: string | null;
   answers_revealed: boolean;
   song_class_answers?: unknown;
+  movie_talk_class_answers?: unknown;
   notes: string | null;
   session_link_token: string;
   timer_started_at?: string | null;
@@ -148,6 +150,9 @@ export function mapSession(row: SessionRow): CourseSession {
     classEndedAt: row.class_ended_at ?? null,
     answersRevealed: row.answers_revealed,
     songClassAnswers: parseSongClassAnswers(row.song_class_answers),
+    movieTalkClassAnswers: parseMovieTalkClassAnswers(
+      row.movie_talk_class_answers
+    ),
     notes: row.notes,
     sessionLinkToken: row.session_link_token,
     timerStartedAt: row.timer_started_at ?? null,

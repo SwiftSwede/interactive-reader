@@ -1,5 +1,22 @@
 # Slice 64 — Movie Talk Class (Class 3 Format B): Full Build
 
+## Plan review decisions
+
+Kyle, 2026-09-21:
+
+- **Holdovers scenes:** merge office + classroom into scene 1 (Q 1–3, clip `l5b_MD-Rd-E`). Scene 2 = chapel / phone / briefing (Q 4–6, `7wOotNsE2ZI`). Scene 3 = cookies / gym / hospital (Q 7–10, `RlSYOmy9XGs`).
+- **Flag notes audience:** enrolled classroom students on `story`, `dialogue`, and `movie_talk` (live + review). Teachers write notes. Consumer / open readers stay flag-blind.
+
+Live-code wins vs this prompt's original file list:
+
+- ADR file is `docs/adr/014-word-flag-notes.md`, not 011 (011 is classroom vs consumer).
+- Migration filename is after `supabase/migrations/20260921035119_baseline_existing_schema.sql` (e.g. `20260921180000_slice64_movietalk.sql`), not `20260910100000`.
+- Song/music routing lives in `src/components/StorySteps.tsx` (early return), not an early return in `page.tsx`. Movie Talk matches that.
+- Teacher answers follow song JSONB debounce (`movie_talk_class_answers` keyed by question position). No presentation Listo button.
+- Do not build the Slice 55 editor in this slice. Append the addendum only.
+- Drop personal questions from the Movie Talk player and from the seed rewrite (no personal step in the spec).
+- Students poll `word_flags` every ~3s while `classroom-live` so ⌘U + a note appear without refresh. ADR 009 still has no Realtime fan-out.
+
 You are building the Movie Talk lesson type, the last Sistema de 8 classroom type. The PRD is already updated (Slice 64 row, MovieTalkScene entity, Story fields, CourseSession fields, Kyle's Rules #17/#18) and the methodology wiki page `Language-Wiki/concepts/movietalk-class-methodology.md` → "App Build Decisions" is the decision source of truth. Do not invent schema or design decisions; everything is specced here and in the PRD. When this prompt and the PRD disagree, the PRD wins; flag the disagreement in your plan review.
 
 ## Context — read these first
