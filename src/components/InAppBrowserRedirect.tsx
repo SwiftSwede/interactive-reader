@@ -60,7 +60,7 @@ export default function InAppBrowserRedirect() {
         left: 0,
         right: 0,
         zIndex: 9999,
-        background: "#4f46e5",
+        background: "var(--accent)",
         color: "white",
         padding: "12px 16px",
         fontSize: "14px",
@@ -77,7 +77,7 @@ export default function InAppBrowserRedirect() {
         href={typeof window !== "undefined" ? window.location.href : "/"}
         style={{
           background: "white",
-          color: "#4f46e5",
+          color: "var(--accent)",
           borderRadius: "6px",
           padding: "4px 12px",
           fontWeight: 600,
