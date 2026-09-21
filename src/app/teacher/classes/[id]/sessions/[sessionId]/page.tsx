@@ -11,6 +11,7 @@ import { isAutoMarked } from "@/lib/attendance";
 import EndClassButton from "@/components/EndClassButton";
 import { getSessionPhase } from "@/lib/session-phase";
 import StartWritingTimerButton from "./StartWritingTimerButton";
+import WritingTitleForm from "./WritingTitleForm";
 import StartExamReviewButton from "./StartExamReviewButton";
 import ExamGroupForm from "./ExamGroupForm";
 import ExamReview from "./ExamReview";
@@ -291,6 +292,11 @@ export default async function SessionDetailPage({
           <p className="mt-2 text-xs text-text-muted">
             {session.writingPrompt.writingTimeMinutes} minutos
           </p>
+          <WritingTitleForm
+            courseId={course.id}
+            sessionId={session.id}
+            title={session.writingPrompt.title}
+          />
         </div>
       )}
 

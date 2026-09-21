@@ -255,6 +255,18 @@ export default function CreateSessionForm({
         <>
           <label className="block">
             <span className="mb-1.5 block text-sm font-medium text-text-secondary">
+              Título
+            </span>
+            <input
+              name="writingTitle"
+              required
+              maxLength={120}
+              className={fieldClass}
+              placeholder="If I were..."
+            />
+          </label>
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-medium text-text-secondary">
               Pregunta
             </span>
             <textarea

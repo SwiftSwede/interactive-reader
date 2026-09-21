@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache";
 import { requireTeacher } from "@/lib/auth-server";
 import { createClient } from "@/lib/supabase/server";
 import { isSessionType, defaultWritingMinutes, defaultExamTask2Type } from "@/lib/activities";
-import { promptTitleFromText, wordDiff } from "@/lib/writing";
+import { wordDiff } from "@/lib/writing";
 import { parseExamForm, nextGroupLabel } from "@/lib/exam";
 import type { CourseLevel, ExamTask2Type } from "@/types";
 import {
@@ -64,7 +64,14 @@ export async function createSession(
   const end = new Date(start.getTime() + SESSION_MINUTES * 60 * 1000);
 
   if (sessionType === "writing") {
+    const title = String(formData.get("writingTitle") ?? "").trim();
     const promptText = String(formData.get("promptText") ?? "").trim();
+    if (!title) {
+      return { ok: false, error: "Ponle un título a la escritura." };
+    }
+    if (title.length > 120) {
+      return { ok: false, error: "El título se pasó de 120 letras." };
+    }
     if (!promptText) {
       return { ok: false, error: "Escribe la pregunta de escritura." };
     }
@@ -89,7 +96,7 @@ export async function createSession(
     const { data: prompt, error: promptError } = await supabase
       .from("writing_prompts")
       .insert({
-        title: promptTitleFromText(promptText),
+        title,
         prompt_text: promptText,
         writing_time_minutes: minutes,
         level: course.level,
@@ -630,6 +637,72 @@ export async function unlockAnswers(
     return {
       ok: false,
       error: "No pude desbloquear las respuestas. Inténtalo de nuevo.",
+    };
+  }
+
+  revalidatePath(`/teacher/classes/${courseId}`);
+  revalidatePath(`/teacher/classes/${courseId}/sessions/${sessionId}`);
+  revalidatePath("/teacher");
+  return { ok: true };
+}
+
+export type UpdateWritingTitleResult =
+  | { ok: true }
+  | { ok: false; error: string };
+
+export async function updateWritingPromptTitle(
+  formData: FormData
+): Promise<UpdateWritingTitleResult> {
+  const teacher = await requireTeacher("/teacher");
+  const courseId = String(formData.get("courseId") ?? "").trim();
+  const sessionId = String(formData.get("sessionId") ?? "").trim();
+  const title = String(formData.get("writingTitle") ?? "").trim();
+
+  if (!courseId || !sessionId) {
+    return { ok: false, error: "No encontré esa clase." };
+  }
+  if (!title) {
+    return { ok: false, error: "Ponle un título a la escritura." };
+  }
+  if (title.length > 120) {
+    return { ok: false, error: "El título se pasó de 120 letras." };
+  }
+
+  const supabase = await createClient();
+
+  const { data: course } = await supabase
+    .from("courses")
+    .select("id")
+    .eq("id", courseId)
+    .eq("teacher_id", teacher.id)
+    .maybeSingle();
+
+  if (!course) {
+    return { ok: false, error: "Ese curso no es tuyo." };
+  }
+
+  const { data: session } = await supabase
+    .from("course_sessions")
+    .select("id, writing_prompt_id")
+    .eq("id", sessionId)
+    .eq("course_id", courseId)
+    .eq("session_type", "writing")
+    .maybeSingle();
+
+  if (!session?.writing_prompt_id) {
+    return { ok: false, error: "Esta clase no tiene pregunta de escritura." };
+  }
+
+  const { error } = await supabase
+    .from("writing_prompts")
+    .update({ title })
+    .eq("id", session.writing_prompt_id);
+
+  if (error) {
+    console.error("update writing title failed:", error);
+    return {
+      ok: false,
+      error: "No pude guardar el título. Inténtalo de nuevo.",
     };
   }
 
