@@ -14,6 +14,7 @@ import { saveWritingDraft, submitWriting } from "@/app/writing/actions";
 import WritingCorrectionView from "@/components/WritingCorrectionView";
 import EndClassButton from "@/components/EndClassButton";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
+import BackLink from "@/components/BackLink";
 import { getSessionPhase } from "@/lib/session-phase";
 import type { CourseLevel } from "@/types";
 
@@ -216,86 +217,97 @@ export default function WritingSession({
   }, [isTeacher, timerStartedAt, status, locked, sessionId, prompt.id]);
 
   return (
-    <main className="min-h-screen bg-white">
-      <header className="border-b border-gray-100 px-4 py-4">
-        <div className="mx-auto flex max-w-md items-center justify-between gap-3 md:max-w-2xl">
-          <p className="text-sm text-gray-500">Profe Kyle</p>
-          {timerStartedAt && status === "draft" && (
+    <main className="min-h-screen bg-paper">
+      <header className="sticky top-0 z-10 border-b border-paper-line bg-paper-header px-4 py-3">
+        <div className="mx-auto flex max-w-2xl items-center gap-2">
+          <BackLink href="/dashboard" showLabel />
+          <div className="min-w-0">
+            <p className="text-label-sm text-text-muted">Profe Kyle</p>
+            <p className="text-label-sm text-text-muted">Escritura</p>
+            <h1 className="truncate font-heading text-headline-md text-text-primary">
+              {prompt.title}
+            </h1>
+          </div>
+          {timerStartedAt && status === "draft" ? (
             <p
-              className={`text-sm font-medium tabular-nums ${
+              className={`ml-auto text-headline-md tabular-nums ${
                 timedOut
-                  ? "text-red-600"
+                  ? "text-error"
                   : showFiveMinute
-                    ? "text-amber-600"
-                    : "text-gray-800"
+                    ? "text-warning"
+                    : "text-text-primary"
               }`}
             >
               {timedOut && !isPreInt
                 ? "Tiempo. Puedes seguir."
                 : formatCountdown(remaining ?? 0)}
             </p>
-          )}
+          ) : null}
         </div>
       </header>
 
-      <section className="mx-auto max-w-md px-4 py-8 md:max-w-2xl">
+      <section className="mx-auto max-w-2xl px-4 py-6">
         {recordingYoutubeUrl ? (
           <RecordingBanner youtubeUrl={recordingYoutubeUrl} />
         ) : null}
-        <h1 className="text-2xl font-bold text-gray-900">{prompt.title}</h1>
-        {notes && <p className="mt-2 text-sm text-gray-600">{notes}</p>}
-        <p className="mt-4 whitespace-pre-wrap text-base text-gray-800">
-          {prompt.promptText}
-        </p>
+        {notes ? (
+          <p className="mb-4 text-body-main text-text-secondary">{notes}</p>
+        ) : null}
 
-        {prompt.structureLesson && (
-          <div className="mt-6">
-            <h2 className="text-sm font-semibold text-gray-800">Estructura</h2>
-            <p className="mt-1 whitespace-pre-wrap text-sm text-gray-600">
+        <div className="rounded-card border border-paper-line bg-white px-4 py-4">
+          <p className="whitespace-pre-wrap font-heading text-headline-md text-text-primary">
+            {prompt.promptText}
+          </p>
+        </div>
+
+        {prompt.structureLesson ? (
+          <div className="mt-4 rounded-card border border-paper-line bg-white px-4 py-4">
+            <h2 className="text-label-md text-text-primary">Estructura</h2>
+            <p className="mt-1 whitespace-pre-wrap text-body-main text-text-secondary">
               {prompt.structureLesson}
             </p>
           </div>
-        )}
-        {prompt.rubricText && (
-          <div className="mt-4">
-            <h2 className="text-sm font-semibold text-gray-800">
+        ) : null}
+        {prompt.rubricText ? (
+          <div className="mt-4 rounded-card border border-paper-line bg-white px-4 py-4">
+            <h2 className="text-label-md text-text-primary">
               Lo que voy a mirar
             </h2>
-            <p className="mt-1 whitespace-pre-wrap text-sm text-gray-600">
+            <p className="mt-1 whitespace-pre-wrap text-body-main text-text-secondary">
               {prompt.rubricText}
             </p>
           </div>
-        )}
-        {prompt.exampleParagraph && (
-          <div className="mt-4">
-            <h2 className="text-sm font-semibold text-gray-800">Ejemplo</h2>
-            <p className="mt-1 whitespace-pre-wrap text-sm text-gray-600">
+        ) : null}
+        {prompt.exampleParagraph ? (
+          <div className="mt-4 rounded-card border border-paper-line bg-white px-4 py-4">
+            <h2 className="text-label-md text-text-primary">Ejemplo</h2>
+            <p className="mt-1 whitespace-pre-wrap text-body-main text-text-secondary">
               {prompt.exampleParagraph}
             </p>
           </div>
-        )}
+        ) : null}
 
-        {isTeacher && (
-          <p className="mt-6 rounded-lg bg-gray-50 px-3 py-3 text-sm text-gray-600">
+        {isTeacher ? (
+          <p className="mt-4 rounded-card bg-accent-softer px-3 py-3 text-body-main text-text-secondary">
             Así lo ven tus estudiantes. Inicia el tiempo desde la página de la
             clase.
           </p>
-        )}
+        ) : null}
 
-        {!isTeacher && !timerStartedAt && status === "draft" && (
-          <p className="mt-6 rounded-lg bg-amber-50 px-3 py-3 text-sm text-amber-800">
+        {!isTeacher && !timerStartedAt && status === "draft" ? (
+          <p className="mt-4 rounded-card bg-accent-softer px-3 py-3 text-body-main text-text-secondary">
             Espera a que el Profe Kyle inicie el tiempo.
           </p>
-        )}
+        ) : null}
 
-        {showFiveMinute && status === "draft" && !timedOut && (
-          <p className="mt-4 text-sm font-medium text-amber-700">
+        {showFiveMinute && status === "draft" && !timedOut ? (
+          <p className="mt-4 rounded-card bg-warning-bg px-3 py-3 text-label-md text-warning">
             Quedan 5 minutos.
           </p>
-        )}
+        ) : null}
 
         {status === "corrected" && correction ? (
-          <div className="mt-8">
+          <div className="mt-6">
             <WritingCorrectionView
               diff={correction.diff}
               notes={correction.notes}
@@ -315,7 +327,7 @@ export default function WritingSession({
                 }}
                 disabled={locked}
                 rows={12}
-                className="w-full resize-y rounded-lg border border-gray-200 px-3 py-3 text-base leading-relaxed text-gray-800 focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-400 disabled:bg-gray-50 disabled:text-gray-600"
+                className="min-h-[300px] w-full resize-y rounded-card border border-paper-line bg-white px-3 py-3 text-body-main text-text-primary placeholder:text-text-muted focus:border-2 focus:border-accent focus:outline-none disabled:bg-surface-hover disabled:text-text-muted"
                 placeholder={
                   timerStartedAt
                     ? "Write here. Don't stop."
@@ -324,34 +336,33 @@ export default function WritingSession({
               />
             </label>
 
-            <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-sm text-gray-500">
-              <p>
-                {wordCount} {wordCount === 1 ? "palabra" : "palabras"}
-                {isPreInt && liveWpm != null ? ` · ${liveWpm} ppm` : ""}
-                {isPreInt &&
-                status !== "draft" &&
-                submission?.wpm != null
-                  ? ` · ${submission.wpm} ppm`
-                  : ""}
-              </p>
-              {!isTeacher && status === "draft" && timerStartedAt && (
-                <button
-                  type="button"
-                  disabled={saving}
-                  onClick={() => void handleSubmit(false)}
-                  className="rounded-lg bg-gray-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-60"
-                >
-                  {saving ? "Entregando..." : "Entregar"}
-                </button>
-              )}
-            </div>
+            <p className="mt-1 text-right text-[12px] text-text-muted">
+              {wordCount} {wordCount === 1 ? "palabra" : "palabras"}
+              {isPreInt && liveWpm != null ? ` · ${liveWpm} ppm` : ""}
+              {isPreInt && status !== "draft" && submission?.wpm != null
+                ? ` · ${submission.wpm} ppm`
+                : ""}
+            </p>
 
-            {status === "submitted" && (
-              <p className="mt-4 text-sm text-gray-600">
+            {!isTeacher && status === "draft" && timerStartedAt ? (
+              <button
+                type="button"
+                disabled={saving}
+                onClick={() => void handleSubmit(false)}
+                className="mt-4 h-12 w-full rounded-card bg-accent text-label-md font-medium text-white disabled:opacity-60"
+              >
+                {saving ? "Entregando..." : "Entregar"}
+              </button>
+            ) : null}
+
+            {status === "submitted" ? (
+              <p className="mt-4 rounded-card bg-success-bg px-3 py-3 text-body-main text-success">
                 Ya lo entregaste. Cuando Kyle lo corrija, lo vas a ver aquí.
               </p>
-            )}
-            {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
+            ) : null}
+            {error ? (
+              <p className="mt-2 text-label-md text-error">{error}</p>
+            ) : null}
           </>
         )}
         {isTeacher && live ? (

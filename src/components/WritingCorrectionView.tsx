@@ -1,6 +1,12 @@
 import type { ReactNode } from "react";
 import type { DiffSegment, InlineNote } from "@/lib/writing";
 
+const MARK = {
+  added: "rounded-[2px] font-semibold text-success bg-success-bg",
+  deleted: "rounded-[2px] line-through text-error bg-error-bg",
+  good: "rounded-[2px] text-text-accent bg-accent-soft",
+} as const;
+
 export default function WritingCorrectionView({
   diff,
   notes,
@@ -36,21 +42,23 @@ export default function WritingCorrectionView({
       const isGood = index !== null && good.has(index);
       const note = index !== null ? noteByIndex.get(index) : undefined;
 
-      let className = "rounded-sm px-0.5";
-      if (segment.type === "added") {
-        className += " bg-emerald-100 font-semibold text-emerald-700";
-      } else if (segment.type === "deleted") {
-        className += " bg-red-100 text-red-600 line-through";
-      }
-      if (isGood) {
-        className += " bg-sky-100 text-sky-800";
-      }
+      const className = [
+        "px-0.5",
+        segment.type === "added"
+          ? MARK.added
+          : segment.type === "deleted"
+            ? MARK.deleted
+            : "",
+        isGood ? MARK.good : "",
+      ]
+        .filter(Boolean)
+        .join(" ");
 
       parts.push(
         <span key={`${i}-${j}`} className={className}>
           {token}
           {note ? (
-            <span className="ml-1 align-super text-[10px] font-medium text-indigo-500 no-underline">
+            <span className="ml-1 align-super text-[10px] font-medium text-text-accent no-underline">
               ({note})
             </span>
           ) : null}
@@ -60,15 +68,21 @@ export default function WritingCorrectionView({
   });
 
   return (
-    <div className="rounded-lg border border-indigo-100 bg-indigo-50 px-3 py-3">
-      <p className="mb-2 text-xs font-medium text-indigo-400">
+    <div className="rounded-card border border-paper-line bg-accent-softer px-3 py-3">
+      <p className="mb-2 text-label-sm text-text-accent">
         Correccion de Profe Kyle:
       </p>
-      <p className="text-sm leading-relaxed text-gray-800">{parts}</p>
-      <div className="mt-3 flex flex-wrap gap-3 text-xs text-gray-400">
-        <span className="text-emerald-700">verde = falta</span>
-        <span className="text-red-600">rojo = sobra</span>
-        <span className="text-sky-700">azul = buen vocabulario</span>
+      <p className="text-body-main leading-relaxed text-text-primary">{parts}</p>
+      <div className="mt-3 flex flex-wrap gap-2 text-label-sm">
+        <span className={`${MARK.added} inline-block px-1.5 py-0.5`}>
+          falta
+        </span>
+        <span className={`${MARK.deleted} inline-block px-1.5 py-0.5`}>
+          sobra
+        </span>
+        <span className={`${MARK.good} inline-block px-1.5 py-0.5`}>
+          buen vocabulario
+        </span>
       </div>
     </div>
   );
