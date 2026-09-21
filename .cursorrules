@@ -182,11 +182,11 @@ These rules apply to all backend code, API routes, database access, and authenti
 - Think ahead: every component you build should be designed so that adding the next feature (the next slice in the PRD) does not require rewriting what you already built. If a component is tightly coupled to one specific story or one specific use case, refactor it to be generic.
 
 ### Service Layer Architecture
-- `src/lib/services/` — reusable business logic. Each service exports functions with explicit inputs and typed returns. No React, no direct Supabase client — accept the client as a parameter or use a factory function. This is where query logic lives.
-- `src/app/api/` — thin route handlers that call services and return responses. No business logic here. Validate input (Zod), call service, return result.
-- `src/components/` — presentation only. Fetch data via API routes or TanStack Query hooks. No direct Supabase queries in components.
-- When two features need the same data operation (e.g., "get student's comprehension responses"), extract it to a service function in `src/lib/services/`. Do not duplicate query logic across components or API routes.
-- Services return typed objects, not raw Supabase responses. Map the database row to a domain type at the service boundary.
+- Business logic lives in `src/lib/` — one file per domain (e.g. `dashboard.ts`, `music.ts`, `sessions.ts`), each with a co-located `.test.ts`. This is where query logic lives. Domain modules export functions with explicit inputs and typed returns. Map the database row to a domain type at the module boundary.
+- `src/lib/services/` is reserved for genuinely reusable cross-domain services (currently `songAttempts.ts` and `checkAnswerRateLimit.ts`). New files there only when the logic serves multiple domains. These export functions with explicit inputs and typed returns. No React. Accept the client as a parameter or use a factory function.
+- `src/app/api/` — thin route handlers that call lib/service functions and return responses. No business logic here. Validate input (Zod), call service, return result.
+- `src/components/` — presentation only. Fetch data via API routes or TanStack Query hooks. No `.from()` queries; auth/realtime client usage is the allowed exception.
+- When two features need the same data operation (e.g., "get student's comprehension responses"), extract it to a domain module in `src/lib/` (or `src/lib/services/` if it is genuinely cross-domain). Do not duplicate query logic across components or API routes.
 
 ### General Code Standards
 - Follow Next.js App Router conventions. Server components by default, client components only when interactivity is needed (and marked with "use client").
