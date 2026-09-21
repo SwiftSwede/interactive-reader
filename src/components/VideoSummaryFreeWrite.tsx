@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { countWords, formatCountdown, remainingMs } from "@/lib/writing";
+import LessonTimer from "@/components/lesson/LessonTimer";
 import {
   saveVideoSummaryDraft,
   submitVideoSummary,
@@ -134,9 +135,10 @@ export default function VideoSummaryFreeWrite({
   return (
     <div>
       {timerStartedAt && !submitted && (
-        <p className="mb-3 text-right text-headline-md tabular-nums text-text-primary">
-          {formatCountdown(remaining ?? 0)}
-        </p>
+        <LessonTimer
+          value={formatCountdown(remaining ?? 0)}
+          sticky={(remaining ?? 0) > 0}
+        />
       )}
 
       {isTeacher && (

@@ -1448,6 +1448,54 @@ body.sticky-character-band-active {
   backdrop-filter: blur(8px);
 }
 
+/* ── Sticky lesson timer (writing, exam, traducción) ── */
+
+.sticky-lesson-timer {
+  position: fixed;
+  top: var(--lesson-sticky-header-height, 72px);
+  left: 0;
+  right: 0;
+  z-index: 15;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  animation: sticky-timer-in 0.2s ease;
+}
+
+.sticky-lesson-timer-inner {
+  width: 100%;
+  max-width: 42rem;
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 16px 0;
+}
+
+.sticky-lesson-timer-chip {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-card);
+  background: var(--paper-header);
+  font-family: var(--font-lora), Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(8px);
+}
+
+@keyframes sticky-timer-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* ── IPA sounds + sound video modal (Phase 2.5) ──────────── */
 
 .ipa-text {
@@ -1607,6 +1655,7 @@ body.sticky-character-band-active {
   .word-tooltip,
   .sticky-audio-player,
   .sticky-character-band,
+  .sticky-lesson-timer,
   .step-panel,
   .story-text-sheet-panel {
     animation: none;

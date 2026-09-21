@@ -1,6 +1,6 @@
 # Fix 3 of 5 — Audit: split src/lib/teacher.ts god-file
 
-**Source:** Milestone code audit 2026-09-19, finding HIGH-3. **Do this LAST — after fixes 1, 2, 4, 5 are committed. It is the only one that touches many files.**
+**Source:** Milestone code audit 2026-09-19, finding HIGH-3. **Note: Kyle explicitly reordered the queue on 2026-09-20 — execute this now.** Fixes 4 and 5 touch `.cursorrules` and `InAppBrowserRedirect.tsx` respectively; neither overlaps any file this refactor moves. Push of Fix 2 precedes this work, so rollback point `9683c35` is on origin.
 
 ## Problem
 `src/lib/teacher.ts` is 37KB with 53 exported functions — attendance, groups, students, analytics, and session logic all in one file. Every other domain got its own module (`dashboard.ts` 21KB, `music.ts` 14KB, `presentation.ts` 10KB). This is where the next feature gets bolted on wrongly, and it's the hardest file in the repo to review.

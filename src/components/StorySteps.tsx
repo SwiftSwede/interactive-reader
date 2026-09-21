@@ -18,8 +18,9 @@ import ChoralPractice from "./ChoralPractice";
 import PronunciationPractice from "./PronunciationPractice";
 import MicroExplanation from "./MicroExplanation";
 import StoryTextSheet from "./StoryTextSheet";
-import BackLink from "./BackLink";
+import LessonHeader from "@/components/lesson/LessonHeader";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
+import { lessonHeaderWordCount } from "@/lib/lesson-header";
 import { storyStepRecordingUrl } from "@/lib/story-practice";
 import MusicLessonSteps from "./music/MusicLessonSteps";
 import MovieTalkLessonSteps from "./movietalk/MovieTalkLessonSteps";
@@ -394,30 +395,17 @@ function ClassicStorySteps({
   return (
     <PlaybackRateProvider>
       <main className="story-page min-h-screen">
-        <div className="story-page-header border-b border-paper-line sticky top-0 backdrop-blur-sm z-20">
-          <header className="px-4 pt-2 pb-2">
-            <div className="max-w-2xl mx-auto">
-              <div className="flex items-center gap-2">
-                <BackLink href="/dashboard" showLabel />
-                <p className="min-w-0 flex-1 text-label-sm text-text-muted">
-                  Profe Kyle
-                </p>
-                <Link
-                  href="/progress"
-                  className="inline-flex h-11 items-center text-label-md text-text-secondary hover:text-text-accent"
-                >
-                  Tu progreso
-                </Link>
-              </div>
-              <p className="text-label-sm text-text-muted mt-1">{kindLabel}</p>
-              <h1 className="text-headline-md text-text-primary">
-                {story.title}
-              </h1>
-              <p className="text-label-sm text-text-muted mt-0.5">
-                {story.level} - {story.cefr} - {story.word_count} palabras
-              </p>
-            </div>
-          </header>
+        <div
+          className="story-page-header border-b border-paper-line sticky top-0 backdrop-blur-sm z-20"
+          data-lesson-sticky
+        >
+          <LessonHeader
+            typeLabel={kindLabel}
+            title={story.title}
+            level={story.level}
+            wordCount={lessonHeaderWordCount(story.kind, story.word_count)}
+            isTeacher={isTeacher}
+          />
           <nav className="step-progress max-w-2xl mx-auto px-2" aria-label="Pasos">
             {steps.map((step, index) => (
               <div key={step.id} className="contents">

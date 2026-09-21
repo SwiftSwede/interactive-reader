@@ -23,7 +23,7 @@ const NAV: NavItem[] = [
   { href: "/teacher/groups", label: "Grupos", icon: Users },
   { href: "/teacher/students", label: "Estudiantes", icon: Search },
   { href: "/teacher/analytics", label: "Analíticas", icon: BarChart3 },
-  { href: null, label: "Contenido", icon: BookOpen },
+  { href: "/teacher/content", label: "Contenido", icon: BookOpen },
 ];
 
 export default function TeacherNav({

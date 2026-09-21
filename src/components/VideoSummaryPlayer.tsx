@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { Check } from "lucide-react";
-import BackLink from "@/components/BackLink";
+import LessonHeader from "@/components/lesson/LessonHeader";
 import ClassroomYoutubePlayer from "@/components/ClassroomYoutubePlayer";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
 import { createClient } from "@/lib/supabase/client";
@@ -37,6 +36,7 @@ const STEPS: { id: StepId; label: string }[] = [
 export default function VideoSummaryPlayer({
   storyId,
   title,
+  level,
   youtubeUrl,
   freeWriteMinutes,
   bodyText,
@@ -55,6 +55,7 @@ export default function VideoSummaryPlayer({
 }: {
   storyId: string;
   title: string;
+  level: string;
   youtubeUrl: string | null;
   freeWriteMinutes: number;
   bodyText: string;
@@ -173,25 +174,16 @@ export default function VideoSummaryPlayer({
 
   return (
     <main className="story-page min-h-screen">
-      <div className="story-page-header sticky top-0 z-20 border-b border-paper-line backdrop-blur-sm">
-        <header className="px-4 pt-2 pb-2">
-          <div className="mx-auto max-w-2xl">
-            <div className="flex items-center gap-2">
-              <BackLink href="/dashboard" showLabel />
-              <p className="min-w-0 flex-1 text-label-sm text-text-muted">
-                Profe Kyle
-              </p>
-              <Link
-                href="/progress"
-                className="inline-flex h-11 items-center text-label-md text-text-secondary hover:text-text-accent"
-              >
-                Tu progreso
-              </Link>
-            </div>
-            <p className="mt-1 text-label-sm text-text-muted">Traducción</p>
-            <h1 className="text-headline-md text-text-primary">{title}</h1>
-          </div>
-        </header>
+      <div
+        className="story-page-header sticky top-0 z-20 border-b border-paper-line backdrop-blur-sm"
+        data-lesson-sticky
+      >
+        <LessonHeader
+          typeLabel="Traducción"
+          title={title}
+          level={level}
+          isTeacher={isTeacher}
+        />
         <nav className="step-progress mx-auto max-w-2xl px-2" aria-label="Pasos">
           {STEPS.map((item, index) => {
             const locked =

@@ -7,6 +7,7 @@ import {
   defaultPresentationStep,
   encodePresentationStep,
   mapPresentationPromptRow,
+  parsePresentationSegments,
   parsePresentationStep,
   presentationStepList,
   remotePresentationStep,
@@ -63,6 +64,27 @@ describe("presentation steps", () => {
       prompt.segments[1].vocabulary[0].exampleSentence?.includes("arepa"),
       true
     );
+  });
+
+  it("keeps segment array order instead of sorting by id", () => {
+    const reversed = parsePresentationSegments([
+      {
+        id: 2,
+        youtube_url: "https://www.youtube.com/watch?v=TfI9nEKdGfg",
+        title: "Later id first",
+        vocabulary: [{ english: "Hello", spanish: "hola" }],
+        comprehension_questions: [{ id: 1, question: "Q", answer: "A" }],
+      },
+      {
+        id: 1,
+        youtube_url: "https://www.youtube.com/watch?v=WoOEWvhj_0M",
+        title: "Earlier id second",
+        vocabulary: [{ english: "Bye", spanish: "adios" }],
+        comprehension_questions: [{ id: 1, question: "Q2", answer: "A2" }],
+      },
+    ]);
+    assert.equal(reversed[0].id, 2);
+    assert.equal(reversed[1].id, 1);
   });
 
   it("sorts vocabulary A to Z by English", () => {

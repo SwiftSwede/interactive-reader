@@ -140,6 +140,104 @@ export function parseSentenceCorrection(raw: string): ExamCorrectionItem[] {
   return items;
 }
 
+export function serializeVocabList(items: ExamVocabItem[]): string {
+  return items
+    .map((item) => `${item.english} | ${item.spanish}`)
+    .join("\n");
+}
+
+export function serializeFillInTranslation(
+  sentences: ExamFillSentence[]
+): string {
+  return sentences
+    .map((row) => {
+      let text = row.sentence;
+      for (const slot of row.slots) {
+        const token = `(${slot.spanishWord})`;
+        const at = text.indexOf(token);
+        if (at < 0) continue;
+        const vars = slot.acceptableVariations.length
+          ? `|${slot.acceptableVariations.join(",")}`
+          : "";
+        const replacement = `{${slot.spanishWord}|${slot.expectedEnglish}${vars}}`;
+        text =
+          text.slice(0, at) + replacement + text.slice(at + token.length);
+      }
+      return text;
+    })
+    .join("\n");
+}
+
+export function serializeParagraphRestructuring(
+  items: ExamParagraphItem[]
+): string {
+  return items
+    .map((item) => `${item.correctPosition} | ${item.sentence}`)
+    .join("\n");
+}
+
+export function serializeSentenceCorrection(
+  items: ExamCorrectionItem[]
+): string {
+  return items
+    .map((item) =>
+      item.isCorrect
+        ? `ok | ${item.sentence}`
+        : `fix | ${item.sentence} | ${item.correctedVersion ?? ""}`
+    )
+    .join("\n");
+}
+
+export function serializeTranslationSentences(
+  items: ExamTranslationItem[]
+): string {
+  return items
+    .map((item) => {
+      const english = [
+        ...(item.acceptedEnglish[0] ? [item.acceptedEnglish[0]] : []),
+        ...item.acceptableVariations,
+      ];
+      return [item.spanish, ...english].join(" | ");
+    })
+    .join("\n");
+}
+
+export type ExamItemCounts = {
+  vocab: number;
+  fillSlots: number;
+  task2: number;
+  task3: number;
+};
+
+export function examItemCounts(input: {
+  vocabularyList: ExamVocabItem[];
+  fillInTranslation: ExamFillSentence[];
+  paragraphRestructuring: ExamParagraphItem[] | null;
+  sentenceCorrection: ExamCorrectionItem[] | null;
+  translationSentences: ExamTranslationItem[];
+}): ExamItemCounts {
+  return {
+    vocab: input.vocabularyList.length,
+    fillSlots: flattenFillSlots(input.fillInTranslation).length,
+    task2:
+      (input.paragraphRestructuring?.length ?? 0) +
+      (input.sentenceCorrection?.length ?? 0),
+    task3: input.translationSentences.length,
+  };
+}
+
+export function examCountsDropped(
+  stored: ExamItemCounts,
+  next: ExamItemCounts
+): boolean {
+  return (
+    next.vocab < stored.vocab ||
+    next.fillSlots < stored.fillSlots ||
+    next.task2 < stored.task2 ||
+    next.task3 < stored.task3
+  );
+}
+
 export function parseTranslationSentences(raw: string): ExamTranslationItem[] {
   const items: ExamTranslationItem[] = [];
   for (const line of raw.split("\n")) {

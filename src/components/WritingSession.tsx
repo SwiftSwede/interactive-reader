@@ -14,7 +14,8 @@ import { saveWritingDraft, submitWriting } from "@/app/writing/actions";
 import WritingCorrectionView from "@/components/WritingCorrectionView";
 import EndClassButton from "@/components/EndClassButton";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
-import BackLink from "@/components/BackLink";
+import LessonHeader from "@/components/lesson/LessonHeader";
+import LessonTimer from "@/components/lesson/LessonTimer";
 import { getSessionPhase } from "@/lib/session-phase";
 import type { CourseLevel } from "@/types";
 
@@ -218,37 +219,32 @@ export default function WritingSession({
 
   return (
     <main className="min-h-screen bg-paper">
-      <header className="sticky top-0 z-10 border-b border-paper-line bg-paper-header px-4 py-3">
-        <div className="mx-auto flex max-w-2xl items-center gap-2">
-          <BackLink href="/dashboard" showLabel />
-          <div className="min-w-0">
-            <p className="text-label-sm text-text-muted">Profe Kyle</p>
-            <p className="text-label-sm text-text-muted">Escritura</p>
-            <h1 className="truncate font-heading text-headline-md text-text-primary">
-              {prompt.title}
-            </h1>
-          </div>
-          {timerStartedAt && status === "draft" ? (
-            <p
-              className={`ml-auto text-headline-md tabular-nums ${
-                timedOut
-                  ? "text-error"
-                  : showFiveMinute
-                    ? "text-warning"
-                    : "text-text-primary"
-              }`}
-            >
-              {timedOut && !isPreInt
-                ? "Tiempo. Puedes seguir."
-                : formatCountdown(remaining ?? 0)}
-            </p>
-          ) : null}
-        </div>
-      </header>
+      <div
+        className="story-page-header sticky top-0 z-20 border-b border-paper-line backdrop-blur-sm"
+        data-lesson-sticky
+      >
+        <LessonHeader
+          typeLabel="Escritura"
+          title={prompt.title}
+          level={prompt.level}
+          isTeacher={isTeacher}
+        />
+      </div>
 
       <section className="mx-auto max-w-2xl px-4 py-6">
         {recordingYoutubeUrl ? (
           <RecordingBanner youtubeUrl={recordingYoutubeUrl} />
+        ) : null}
+        {timerStartedAt && status === "draft" && remaining !== null && remaining > 0 ? (
+          <LessonTimer
+            value={formatCountdown(remaining)}
+            tone={showFiveMinute ? "warning" : "default"}
+          />
+        ) : null}
+        {timerStartedAt && status === "draft" && timedOut && !isPreInt ? (
+          <p className="mb-3 text-right font-heading text-headline-md text-error">
+            Tiempo. Puedes seguir.
+          </p>
         ) : null}
         {notes ? (
           <p className="mb-4 text-body-main text-text-secondary">{notes}</p>

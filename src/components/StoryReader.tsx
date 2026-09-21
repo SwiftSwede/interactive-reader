@@ -143,6 +143,7 @@ export default async function StoryReader({
       <VideoSummaryPlayer
         storyId={story.id}
         title={story.title}
+        level={story.level}
         youtubeUrl={story.youtube_url ?? null}
         freeWriteMinutes={story.free_write_minutes ?? 5}
         bodyText={story.body_text}

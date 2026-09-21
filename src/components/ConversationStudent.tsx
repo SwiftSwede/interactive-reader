@@ -1,9 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import BackLink from "@/components/BackLink";
 import EndClassButton from "@/components/EndClassButton";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
+import LessonHeader from "@/components/lesson/LessonHeader";
+import LessonTimer from "@/components/lesson/LessonTimer";
 import { createClient } from "@/lib/supabase/client";
 import { getSessionPhase } from "@/lib/session-phase";
 import {
@@ -35,7 +36,6 @@ import type {
 export default function ConversationStudent({
   prompt,
   courseLevel,
-  courseId,
   sessionId,
   isTeacher,
   sessionStartTime,
@@ -207,28 +207,22 @@ export default function ConversationStudent({
 
   return (
     <main className="story-page min-h-screen">
-      <header className="px-4 pb-2 pt-2">
-        <div className="mx-auto max-w-2xl">
-          <div className="flex items-center gap-2">
-            <BackLink
-              href={isTeacher ? `/teacher/classes/${courseId}` : "/dashboard"}
-              showLabel
-            />
-            <p className="min-w-0 flex-1 text-label-sm text-text-muted">
-              Profe Kyle
-            </p>
-          </div>
-          <p className="mt-1 text-label-sm text-text-muted">Conversación</p>
-          <h1 className="text-headline-md text-text-primary">{prompt.title}</h1>
-          {prompt.theme ? (
-            <p className="mt-1 text-label-sm text-text-secondary">
-              {prompt.theme}
-            </p>
-          ) : null}
-        </div>
-      </header>
+      <div
+        className="story-page-header sticky top-0 z-20 border-b border-paper-line backdrop-blur-sm"
+        data-lesson-sticky
+      >
+        <LessonHeader
+          typeLabel="Conversación"
+          title={prompt.title}
+          level={courseLevel}
+          isTeacher={isTeacher}
+        />
+      </div>
 
       <article className="mx-auto max-w-2xl px-4 py-6">
+        {prompt.theme ? (
+          <p className="mb-4 text-label-sm text-text-secondary">{prompt.theme}</p>
+        ) : null}
         {isTeacher && !afterClass && current === 0 ? (
           <fieldset className="mb-6">
             <legend className="mb-2 text-label-md font-medium text-text-secondary">

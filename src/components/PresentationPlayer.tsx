@@ -2,8 +2,8 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Check, ChevronLeft, ChevronRight, Pencil, Plus } from "lucide-react";
-import BackLink from "@/components/BackLink";
 import EndClassButton from "@/components/EndClassButton";
+import LessonHeader from "@/components/lesson/LessonHeader";
 import ClassroomYoutubePlayer from "@/components/ClassroomYoutubePlayer";
 import { youtubeEmbedId, youtubeStartSeconds } from "@/lib/youtube-sync";
 import { createClient } from "@/lib/supabase/client";
@@ -401,7 +401,17 @@ export default function PresentationPlayer({
   if (studentLocked) {
     return (
       <main className="story-page min-h-screen">
-        <PresentationHeader title={prompt.title} />
+        <div
+          className="story-page-header sticky top-0 z-20 border-b border-paper-line backdrop-blur-sm"
+          data-lesson-sticky
+        >
+          <LessonHeader
+            typeLabel="Presentación"
+            title={prompt.title}
+            level={prompt.level}
+            isTeacher={isTeacher}
+          />
+        </div>
         <article className="mx-auto max-w-2xl px-4 py-6">
           <div className="rounded-card border border-paper-line bg-surface p-4">
             <p className="font-heading text-story-body text-text-primary">
@@ -424,8 +434,16 @@ export default function PresentationPlayer({
 
   return (
     <main className="story-page min-h-screen">
-      <div className="story-page-header sticky top-0 z-20 border-b border-paper-line backdrop-blur-sm">
-        <PresentationHeader title={prompt.title} />
+      <div
+        className="story-page-header sticky top-0 z-20 border-b border-paper-line backdrop-blur-sm"
+        data-lesson-sticky
+      >
+        <LessonHeader
+          typeLabel="Presentación"
+          title={prompt.title}
+          level={prompt.level}
+          isTeacher={isTeacher}
+        />
         {step.kind !== "warmup" && step.kind !== "done" && segment ? (
           <div className="mx-auto max-w-2xl px-2 pb-2">
             <nav
@@ -618,23 +636,6 @@ export default function PresentationPlayer({
         ) : null}
       </article>
     </main>
-  );
-}
-
-function PresentationHeader({ title }: { title: string }) {
-  return (
-    <header className="px-4 pb-2 pt-2">
-      <div className="mx-auto max-w-2xl">
-        <div className="flex items-center gap-2">
-          <BackLink href="/dashboard" showLabel />
-          <p className="min-w-0 flex-1 text-label-sm text-text-muted">
-            Profe Kyle
-          </p>
-        </div>
-        <p className="mt-1 text-label-sm text-text-muted">Presentación</p>
-        <h1 className="text-headline-md text-text-primary">{title}</h1>
-      </div>
-    </header>
   );
 }
 

@@ -1,9 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import BackLink from "@/components/BackLink";
 import EndClassButton from "@/components/EndClassButton";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
+import LessonHeader from "@/components/lesson/LessonHeader";
+import LessonTimer from "@/components/lesson/LessonTimer";
 import { createClient } from "@/lib/supabase/client";
 import { flattenFillSlots, formatCountdown, remainingMs } from "@/lib/exam";
 import { saveExamAnswers, submitExamAnswers } from "@/app/exam/actions";
@@ -224,32 +225,32 @@ export default function ExamSession({
 
   return (
     <main className="min-h-screen bg-paper">
-      <header className="sticky top-0 z-10 border-b border-paper-line bg-paper-header px-4 py-3">
-        <div className="mx-auto flex max-w-2xl items-center gap-2">
-          <BackLink href="/dashboard" showLabel />
-          <div className="min-w-0">
-            <p className="text-label-sm text-text-muted">Profe Kyle</p>
-            <p className="text-label-sm text-text-muted">Examen</p>
-            <h1 className="truncate font-heading text-headline-md text-text-primary">
-              {prompt.title}
-            </h1>
-          </div>
-          <p className="ml-auto text-headline-md tabular-nums text-text-primary">
-            {formatCountdown(remaining)}
-          </p>
-        </div>
-        <p className="mx-auto mt-2 max-w-2xl text-label-md text-text-secondary">
+      <div
+        className="story-page-header sticky top-0 z-20 border-b border-paper-line backdrop-blur-sm"
+        data-lesson-sticky
+      >
+        <LessonHeader
+          typeLabel="Examen"
+          title={prompt.title}
+          level={prompt.level}
+          isTeacher={isTeacher}
+        />
+        <p className="mx-auto max-w-2xl px-4 pb-2 text-label-md text-text-secondary">
           Tarea {task} de 3
           {group ? ` · ${group.label}` : ""}
           {isWriter ? " · tú escribes" : group ? " · solo lectura" : ""}
           {saving ? " · guardando" : ""}
         </p>
-      </header>
+      </div>
 
       <section className="mx-auto max-w-2xl px-4 py-6">
         {recordingYoutubeUrl ? (
           <RecordingBanner youtubeUrl={recordingYoutubeUrl} />
         ) : null}
+        <LessonTimer
+          value={formatCountdown(remaining)}
+          sticky={remaining > 0}
+        />
         {!group && !isTeacher && (
           <p className="rounded-card bg-accent-softer px-3 py-3 text-body-main text-text-secondary">
             El Profe Kyle todavía te está poniendo en un grupo. Espera un

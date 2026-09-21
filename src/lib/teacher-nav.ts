@@ -22,6 +22,9 @@ export function parentTeacherPath(pathname: string): string | null {
   if (parts.length >= 5 && (parts[3] === "sessions" || parts[3] === "students")) {
     return `/${parts.slice(0, 3).join("/")}`;
   }
+  if (parts[1] === "content") {
+    return "/teacher/content";
+  }
   if (parts[1] === "classes") {
     return "/teacher/groups";
   }

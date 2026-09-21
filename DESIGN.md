@@ -164,7 +164,7 @@ On screens wider than 1024px, the layout does NOT change structurally. The same 
 **Header (desktop):**
 - Same 56px height, same layout, same content.
 - Constrained to the 672px content width. The header does not stretch full-width on desktop. It matches the content column below it.
-- The paper-header background fills the full width behind it (so the top of the screen isn't a different color), but the actual header content (logo, icons, back button, lesson name) is constrained to 672px centered.
+- The paper-header background fills the full width behind it (so the top of the screen isn't a different color), but the actual header content (wordmark, icons, lesson type, lesson name) is constrained to 672px centered.
 
 **Sticky audio player (desktop):**
 - Centered pill, 480px max-width, rounded corners (24px), 16px margin from bottom and sides. Same as mobile content but visually distinct as a floating element.
@@ -206,7 +206,7 @@ On screens wider than 1024px, the layout does NOT change structurally. The same 
 
 Three columns, full viewport height, no bottom tab bar (the student 3-tab bar does NOT render on teacher routes):
 
-- **Left rail — fixed 240px.** Persistent nav, identical on every teacher page. White surface, 1px `--paper-line` border on the right edge. Items top to bottom: *Este mes* (default, `/teacher`), *Grupos* (all courses incl. archived), *Estudiantes* (global roster/search), *Analíticas* (palabras más consultadas), *Contenido* (disabled, "próximamente", until the content editor ships). Rail items are square on the left (flush to the rail) and `rounded-card` on the right. Active item: `--surface-hover` background plus a 3px terracotta left border on that square edge, never a separate unclipped bar against the curve. Lucide icons (`home`, `users`, `search`, `bar-chart-3`, `book-open`). Rail bottom: teacher name/email + "Ver app como estudiante" link. UI language: Spanish.
+- **Left rail — fixed 240px.** Persistent nav, identical on every teacher page. White surface, 1px `--paper-line` border on the right edge. Items top to bottom: *Este mes* (default, `/teacher`), *Grupos* (all courses incl. archived), *Estudiantes* (global roster/search), *Analíticas* (palabras más consultadas), *Contenido* (`/teacher/content`, catalog editor). Rail items are square on the left (flush to the rail) and `rounded-card` on the right. Active item: `--surface-hover` background plus a 3px terracotta left border on that square edge, never a separate unclipped bar against the curve. Lucide icons (`home`, `users`, `search`, `bar-chart-3`, `book-open`). Rail bottom: teacher name/email + "Ver app como estudiante" link. UI language: Spanish.
 - **Center — fluid, min-width 0.** The main view for the current route. Horizontal padding 24px. Content max-width 960px (NOT 672px — tables, grids, and multi-card rows benefit from width; the 672px rule is a story-readability rule and stories never render here).
 - **Right context panel — 360px, collapsible.** Details for the item selected in the center column (e.g., selected class → attendance grid, recording URL, session time, "Ver como estudiante"). White surface, 1px `--paper-line` border on the left edge. On screens < 1280px the right panel collapses into a slide-over sheet triggered from the center selection. The shell degrades to 2 columns (rail + center) below 1024px; the rail collapses to an icon-only 64px strip. Mobile (< 600px): rail becomes a top bar with a menu button opening a full-screen nav sheet. Teacher pages are usable but not optimized below 1024px.
 
@@ -487,22 +487,25 @@ Pages: story lessons, writing lessons, exams, movie talk, music, future lesson t
 - Tab bar is hidden. Sticky audio player (if the lesson has audio) uses the bottom of the screen.
 
 **Main header (lesson mode):**
-- Height: 56px, sticky, `--paper-header` background with backdrop blur
-- Left: Back button "← Volver" (ghost button style, `--text-secondary`, `label-md`, 44px touch target, ChevronLeft icon)
-- Center or left: "Profe Kyle" (small, `--text-muted`, `label-sm`)
-- Below the header row: lesson type label (e.g., "Historia", "Escritura", "Examen") in `label-sm` (`--text-muted`), and lesson name (e.g., "The Soccer Jersey") in `headline-md` (Lora, 18px, 600, `--text-primary`)
-- The back button exits the lesson entirely. It returns to wherever the learner came from (dashboard, Lecciones tab, or closes the page if arrived via direct link).
+- Sticky, `--paper-header` background with backdrop blur. Two identity lines, shared by every lesson type (`LessonHeader`).
+- Line 1: lesson type left (`label-sm`, `--text-muted`, e.g. "Historia", "Escritura", "Movie Talk"). Right: **Progreso** (`/progress`) and **Inicio** (`/dashboard`) for students (`label-md`, `--text-secondary`, 44px touch). Teacher: **Inicio** only, to `/teacher`. No Volver. No "Profe Kyle" wordmark (brand stays on browsing, login, and document titles).
+- Line 2: lesson name left (`headline-md`, Lora, truncates) and CEFR right on the same line (`label-sm`, `--text-muted`). CEFR is derived from `level`: beginner A1/A2, pre-intermediate A2/B1, intermediate B1/B2. Stories and dialogues also append ` · {n} palabras`. Other types show CEFR only.
+- Do not put timers, task labels, or step dots in this identity block.
 
 **Subheader (lesson mode):**
 - Sits directly below the main header, also sticky
 - Contains lesson-specific navigation:
   - **Stories and Traducción:** Progress dots (dot - line - dot). Active dot is larger. Dots are tappable (44px hit area). No "Paso N de N" text. The dots are the step chrome.
   - **Presentación:** Warmup has no dots. Inside a segment, `"Video 1 de 3"` plus 4 dots. Teacher-only pills during live class.
-  - **Writing:** Timer display (countdown, `headline-md`, tabular-nums). No dots.
-  - **Exams:** Task navigation ("Tarea 1 de 3", `label-md`). No dots.
-  - **Movie talk:** Scene markers (timeline with scene thumbnails or timestamps). No dots.
-  - **Music:** Lyric tracker or song structure markers. No dots.
+  - **Writing:** No subheader row. Timer lives in the body (see sticky lesson timer).
+  - **Exams:** Task navigation ("Tarea 1 de 3", `label-md`). No dots. Timer lives in the body.
+  - **Movie talk:** Scene markers via the step dots. Character band is body chrome, not header chrome.
+  - **Music:** Same progress dots as stories.
 - Each lesson type brings its own widget for this zone. The main header above and the content below stay the same.
+
+**Sticky lesson timer:**
+- Writing, exam, and Traducción free-write show the countdown in the body, top-right (`headline-md`, tabular-nums), same as Traducción already did.
+- When that inline clock scrolls under the sticky header, a compact chip (`LessonTimer`) docks top-right just under the header. Paper-header background, 1px `--paper-line`, 16px radius, 44px min height. Clone only while the clock is running. Scroll back and the chip goes away. Not a full-width bottom bar (those are for audio and the character band).
 
 **Lesson content:**
 - Recording banner (after-phase only): when the session window is closed AND `recording_youtube_url` is set, a white card (`--paper-line` border, 16px radius) sits below the lesson header/subheader and above the steps/tasks. Terracotta play icon + "Ver la grabación de la clase" + "(YouTube)" in `--text-muted`. Opens the URL in a new tab. Hidden during the live window even if a URL was pasted early.
@@ -522,15 +525,14 @@ Pages: story lessons, writing lessons, exams, movie talk, music, future lesson t
 **Sticky audio player (lesson mode):**
 - Appears at the bottom of the screen when audio is playing
 - Tab bar is hidden, so no conflict
-- When learner taps back to exit lesson: audio stops, tab bar reappears
+- When the learner leaves via Inicio: audio stops, tab bar reappears
 
 ### Visual diagram (lesson mode)
 
 ```
 ┌─────────────────────────┐
-│ ← Volver   Profe Kyle    │  Main header (sticky, 56px)
-│ Historia                 │  Lesson type label
-│ The Soccer Jersey        │  Lesson name
+│ Historia   Progreso Inicio │  Identity line 1 (sticky)
+│ The Soccer Jersey  A2/B1 · 842 palabras │  Identity line 2
 ├─────────────────────────┤
 │  •—•—●—•—•—•            │  Subheader (sticky): progress dots
 ├─────────────────────────┤
@@ -662,8 +664,8 @@ Blog/updates. Accessed via news icon in header, not a tab. Drill-down page.
 ### Story Lesson Page (detailed)
 The step-based flow for story lessons. This is the most complex page layout.
 
-**Header zone (sticky, 56px + subheader):**
-- Main header: back button, "Profe Kyle", lesson type "Historia", lesson name "The Soccer Jersey"
+**Header zone (sticky identity + subheader):**
+- Main header: lesson type "Historia", lesson name "The Soccer Jersey", CEFR + word count, Progreso / Inicio (teacher: Inicio only)
 - Subheader: progress dots (6 dots for 6 steps: El cuento, Comprension, Personal, Dictado, Coral, Pronunciacion)
 
 **Content zone (scrolls, one step at a time):**
@@ -724,8 +726,8 @@ Step 6 - Pronunciación (Pronunciation Assessment):
 No step flow. Single activity with a timer.
 
 **Header zone:**
-- Main header: back button, "Profe Kyle", lesson type "Escritura", lesson name (prompt title)
-- Subheader: timer display (countdown, `headline-md`, tabular-nums, `--text-primary`). Pre-intermediate: 10 min. Intermediate: 20 min.
+- Main header: lesson type "Escritura", prompt title, CEFR, Progreso / Inicio (teacher: Inicio only)
+- No timer in the header. Countdown sits top-right in the body. When it scrolls away, a compact chip docks under the header.
 
 **Content zone:**
 - Prompt question (18px, Lora, 600, `--text-primary`) in a white card
@@ -740,8 +742,9 @@ No step flow. Single activity with a timer.
 Task-based, collaborative (group of 2-3 students).
 
 **Header zone:**
-- Main header: back button, "Profe Kyle", lesson type "Examen", exam name
+- Main header: lesson type "Examen", exam name, CEFR, Progreso / Inicio (teacher: Inicio only)
 - Subheader: "Tarea 1 de 3" (`label-md`, `--text-secondary`)
+- Countdown sits top-right in the body. Sticky chip when it scrolls away.
 
 **Content zone:**
 - Task 1: Fill-in translation. Story with Spanish words in parentheses. Input fields for each slot. Vocabulary list at top (collapsible).
@@ -753,7 +756,7 @@ Task-based, collaborative (group of 2-3 students).
 Classroom only. `Story.kind = "video_summary"`. Session type is `video_summary` (uses `story_id`). Three steps with the same progress dots as stories.
 
 **Header zone:**
-- Main header: back button, "Profe Kyle", lesson type "Traducción", lesson name
+- Main header: lesson type "Traducción", lesson name, CEFR, Progreso / Inicio (teacher: Inicio only)
 - Subheader: progress dots (3 dots, same widget as stories). No "Paso N de 3" text. Stories do not show that label; the dots are the global step chrome.
 
 **Content zone:**
@@ -768,7 +771,7 @@ Keep the YouTube player in review mode (solo controls). Students never see other
 Same Lesson mode shell as stories. `Story.kind = "song"`. Session type is `song`. Five steps (hide a step when its data is null; La letra always present): El artista → Primera escucha → Completa la canción → La letra → Truquitos y karaoke. No **Ver el texto**. No "The End". Primera escucha is the music video (first listen with no lyrics on screen).
 
 **Header zone:**
-- Main header: back button, "Profe Kyle", lesson type "Música", song name
+- Main header: lesson type "Música", song name, CEFR, Progreso / Inicio (teacher: Inicio only)
 - Same progress dots as other lessons. Teacher live: dots are local peek and do not write the session.
 
 **Bottom navigation:**
@@ -786,13 +789,13 @@ Same Lesson mode shell as stories. `Story.kind = "song"`. Session type is `song`
 Same as the story lesson page. Lesson type label "Diálogo". First step "El diálogo". Speaker names (`Name:`) render in terracotta `label-md` before the line. Same tooltips and practice steps.
 
 ### Movie Talk Lesson Page (detailed)
-Same as the story lesson page. Lesson type label "Movie Talk". First step "El video". If `youtube_url` is set, `ClassroomYoutubePlayer` uses the same live lock / review solo rules as music. `***` lines in the body are scene breaks (muted "Escena N" divider). Role reading uses the dialogue name styling when lines are `Name:`.
+Same as the story lesson page. Lesson type label "Movie Talk". CEFR from `level` (no word count). First step "El video". If `youtube_url` is set, `ClassroomYoutubePlayer` uses the same live lock / review solo rules as music. `***` lines in the body are scene breaks (muted "Escena N" divider). Role reading uses the dialogue name styling when lines are `Name:`.
 
 ### Presentation Lesson Page (detailed)
 Classroom only. `session_type = "presentation"`. Catalog lives in `presentation_prompts`. Route: `/presentation?session=`.
 
 **Header zone:**
-- Main header: back button, "Profe Kyle", lesson type "Presentación", presentation title
+- Main header: lesson type "Presentación", presentation title, CEFR, Progreso / Inicio (teacher: Inicio only)
 - Subheader: warmup has no part row and no dots. Inside a segment, a part switcher (`Part 1 | Part 2 | Part 3`, or `Video 1` if untitled) in `label-md` above the 4 progress dots (Vocabulario, Preguntas, Video, Respuestas). Same dot widget as stories. No "Paso N de N" text.
 - Current part uses `text-text-primary`. Other parts are muted during live class for students (visible, not tappable). Teacher, post-class review, and later consumer self-study can tap a part. A tap keeps the same inner step (Video stays Video).
 

@@ -201,6 +201,18 @@ export function parseLyricsIpa(raw: unknown): LyricIpaLine[] {
   return lines;
 }
 
+export function serializeLyricsIpa(lines: LyricIpaLine[]): {
+  line_index: number;
+  ipa_text: string;
+}[] {
+  return lines
+    .filter((line) => line.ipaText.trim())
+    .map((line) => ({
+      line_index: line.lineIndex,
+      ipa_text: line.ipaText,
+    }));
+}
+
 export function parseLineTimestamps(raw: unknown): LyricLineTimestamp[] {
   if (!Array.isArray(raw)) return [];
   const lines: LyricLineTimestamp[] = [];

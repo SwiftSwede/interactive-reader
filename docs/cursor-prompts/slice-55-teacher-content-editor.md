@@ -119,4 +119,14 @@ When building Slice 55, the movie talk editor (`/teacher/content/story/[slug]` f
 - word-flag note editing
 - Desync guard: refuse re-seed / scene-structure changes when `comprehension_responses` exist for the story's questions in a live session (`--force` opt-in), same convention as other seeds
 
+## Plan review decisions (2026-09-21)
+
+Kyle ratified these before the build:
+
+1. **No AI toolbox in this slice.** Annotate-story and IPA draft stay terminal scripts. Song IPA and timestamps are editable as text/JSON in Contenido.
+2. **Edit existing catalog rows only.** No "Nuevo cuento / Nuevo Movie Talk." Writing, exam, and conversation rows created in Nueva clase are still editable here. A later slice can add blank catalog creation.
+3. **Movie Talk scene add/delete/reorder is in scope.** Transcript `***` count must match scene count. Warn (do not block) when comprehension responses exist. Word-flag notes stay in the live lesson tooltip.
+4. **Do not add catalog UPDATE RLS in this slice.** Server actions call `requireTeacher()` then write with the admin client.
+5. **Edit surface is `/teacher/content`**, not the live class page.
+
 

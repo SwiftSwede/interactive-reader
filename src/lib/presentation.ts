@@ -50,7 +50,7 @@ export function parsePresentationSegments(
       comprehensionQuestions: parseQuestions(row.comprehension_questions),
     });
   }
-  return segments.sort((a, b) => a.id - b.id);
+  return segments;
 }
 
 function parseVocab(raw: unknown): PresentationVocabItem[] {

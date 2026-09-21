@@ -41,5 +41,17 @@ describe("parentTeacherPath", () => {
   test("top-level teacher pages have no back link", () => {
     assert.equal(parentTeacherPath("/teacher"), null);
     assert.equal(parentTeacherPath("/teacher/groups"), null);
+    assert.equal(parentTeacherPath("/teacher/content"), null);
+  });
+
+  test("content editor pages go back to Contenido", () => {
+    assert.equal(
+      parentTeacherPath("/teacher/content/story/the-soccer-jersey"),
+      "/teacher/content"
+    );
+    assert.equal(
+      parentTeacherPath("/teacher/content/exam/abc"),
+      "/teacher/content"
+    );
   });
 });
