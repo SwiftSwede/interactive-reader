@@ -250,6 +250,32 @@ export default function WritingSession({
           <p className="mb-4 text-body-main text-text-secondary">{notes}</p>
         ) : null}
 
+        {isPreInt ? (
+          <div className="mb-4 space-y-3 rounded-card border border-paper-line bg-accent-softer px-4 py-4">
+            <h2 className="text-label-md text-text-primary">Cómo escribir</h2>
+            <p className="text-label-md font-normal text-text-secondary">
+              Vas a escribir sobre el tema. Las preguntas de abajo no son un
+              cuestionario. Son ideas para arrancar.
+            </p>
+            <p className="text-label-md font-normal text-text-secondary">
+              Elige una o dos. Escribe como si le explicaras tu opinión a
+              alguien, con detalle, sin parar. Si contestas todas como una
+              encuesta, terminas en dos minutos y no practicas ordenar ideas
+              para hablar.
+            </p>
+            <p className="text-label-md font-normal text-text-secondary">
+              Tienes {prompt.writingTimeMinutes} minutos. Si se te olvida una
+              palabra, usa Google Translate. No uses una IA: si la máquina
+              escribe por ti, tú no mejoras.
+            </p>
+            <p className="text-label-md font-normal text-text-secondary">
+              Cuando se acabe el tiempo, entrega. Después lo vemos en grupo:
+              qué hiciste bien y qué puedes mejorar para hablar con más
+              fluidez.
+            </p>
+          </div>
+        ) : null}
+
         <div className="rounded-card border border-paper-line bg-white px-4 py-4">
           <p className="whitespace-pre-wrap font-heading text-headline-md text-text-primary">
             {prompt.promptText}
