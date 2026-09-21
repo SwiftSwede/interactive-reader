@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 import { buildCorrectionSegments } from "@/lib/personal-correction";
+import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
+import { consumeCheckAnswerRequest } from "@/lib/services/checkAnswerRateLimit";
 
 // ── API Route: /api/check-answer ───────────────────────────
 // Receives a personal question and the student's English answer.
@@ -11,10 +15,10 @@ import { buildCorrectionSegments } from "@/lib/personal-correction";
 //
 // Environment variable OPENROUTER_API_KEY is server-side only.
 
-type CheckAnswerRequest = {
-  question: string;
-  answer: string;
-};
+const CheckAnswerSchema = z.object({
+  question: z.string().min(1),
+  answer: z.string().max(500).refine((answer) => answer.trim().length >= 2),
+});
 
 const SYSTEM_PROMPT = `You are Profe Kyle, a Canadian English teacher who has lived in Latin America and speaks Spanish. You're correcting a Spanish-speaking Latin American adult learner's English answer to a personal question.
 
@@ -85,32 +89,44 @@ Output:
 Return ONLY the JSON object. No other text.`;
 
 export async function POST(request: NextRequest) {
-  let body: CheckAnswerRequest;
+  let userId: string;
+  try {
+    const supabase = await createClient();
+    const { data: { user }, error } = await supabase.auth.getUser();
+    if (error || !user) {
+      return NextResponse.json(
+        { error: "Necesitas iniciar sesión." },
+        { status: 401 }
+      );
+    }
+    userId = user.id;
+  } catch {
+    console.error("Check answer authentication failed");
+    return NextResponse.json(
+      { error: "No se pudo procesar tu respuesta. Intenta de nuevo." },
+      { status: 500 }
+    );
+  }
+
+  let body: unknown;
 
   try {
     body = await request.json();
   } catch {
     return NextResponse.json(
-      { error: "Invalid request body" },
+      { error: "No pude leer tu respuesta. Intenta de nuevo." },
       { status: 400 }
     );
   }
 
-  const { question, answer } = body;
-
-  if (!question || typeof question !== "string") {
+  const parsedBody = CheckAnswerSchema.safeParse(body);
+  if (!parsedBody.success) {
     return NextResponse.json(
-      { error: "Question is required" },
+      { error: "Revisa la pregunta y tu respuesta. Usa entre 2 y 500 caracteres para tu respuesta." },
       { status: 400 }
     );
   }
-
-  if (!answer || typeof answer !== "string" || answer.trim().length < 2) {
-    return NextResponse.json(
-      { error: "Answer is too short. Write at least a few words." },
-      { status: 400 }
-    );
-  }
+  const { question, answer } = parsedBody.data;
 
   const apiKey = process.env.OPENROUTER_API_KEY;
 
@@ -122,6 +138,14 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    const allowed = await consumeCheckAnswerRequest(createAdminClient(), userId);
+    if (!allowed) {
+      return NextResponse.json(
+        { error: "Has intentado muchas veces. Intenta de nuevo más tarde." },
+        { status: 429 }
+      );
+    }
+
     const response = await fetch(
       "https://openrouter.ai/api/v1/chat/completions",
       {
