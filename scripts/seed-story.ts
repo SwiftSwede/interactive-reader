@@ -136,8 +136,15 @@ function parseStoryMarkdown(markdown: string, kind: string) {
 
   let bodyLines: string[] = [];
   if (bodyStart >= 0 && endIdx >= 0) {
+    const headingText = (lines[bodyStart] || "").replace(/^#\s*/, "").trim();
+    const norm = (s: string) => s.toLowerCase().replace(/[-_]/g, " ").trim();
     bodyLines = lines.slice(bodyStart + 1, endIdx).filter((l) => {
-      return l.trim().toLowerCase() !== frontmatter.title.trim().toLowerCase();
+      const t = norm(l);
+      return (
+        t !== norm(frontmatter.title) &&
+        t !== norm(headingText) &&
+        t !== norm(headingText.replace(/^pre-\s*/i, ""))
+      );
     });
   }
 
@@ -149,7 +156,7 @@ function parseStoryMarkdown(markdown: string, kind: string) {
   if (kind === "dialogue" || kind === "movie_talk") {
     bodyText = bodyLines
       .filter((l) => !/^\[[^\]]*\]$/.test(l.trim())) // drop pure stage directions
-      .map((l) => l.replace(/^(Gordon|Pedro|Brenda|Sofia|Kyle|Deng Xiao Pi|Carey|Travis|Bertha|Cristina|Jorgito)\s*-\s*/, "").trim())
+      .map((l) => l.replace(/^[A-ZÁÉÍÓÚÑ][A-Za-zÁÉÍÓÚáéíóúñÑ.' ]*\s*-\s*/, "").trim())
       .filter((l) => l.trim())
       .join("\n");
     // Inline stage directions like "[exits humming]" are also unspoken

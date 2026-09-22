@@ -21,8 +21,11 @@ import urllib.request
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VAULT = os.path.expanduser(
-    "~/Documents/Obsidian Vault/Language-Wiki/raw/stories/int dialogues")
-VAULT_FILES = {"superstitious-minds": "Superstitious-Minds.md"}
+    "~/Documents/Obsidian Vault/Language-Wiki/raw/stories")
+VAULT_FILES = {
+    "superstitious-minds": ("int dialogues", "Superstitious-Minds.md"),
+    "angry-driving": ("pre-int dialogues", "Pre-Angry-Driving.md"),
+}
 
 
 def load_env():
@@ -54,7 +57,8 @@ def sb_req(url, key, path, method="GET", body=None):
 def vault_display_lines(slug):
     """Vault Name-Dialogue format -> display lines."""
     out = []
-    with open(os.path.join(VAULT, VAULT_FILES[slug])) as f:
+    subdir, fname = VAULT_FILES[slug]
+    with open(os.path.join(VAULT, subdir, fname)) as f:
         started = False
         for raw in f:
             s = raw.strip()
@@ -67,7 +71,7 @@ def vault_display_lines(slug):
                 break
             if s == slug.replace("-", " ").title():
                 continue
-            m = re.match(r"^(Gordon|Pedro|Brenda)\s*-\s*(.+)$", s)
+            m = re.match(r"^(Gordon|Pedro|Brenda|Beto|Rebecca|Mother)\s*-\s*(.+)$", s)
             if m:
                 name, rest = m.group(1), m.group(2).strip()
                 # extract ALL inline stage directions (leading or trailing)

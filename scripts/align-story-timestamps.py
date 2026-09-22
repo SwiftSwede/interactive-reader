@@ -79,10 +79,14 @@ def main():
         sys.exit(f"ERROR: {ts_path} not found")
     timestamps = json.load(open(ts_path))
 
-    stories = sb_select(url, key, "stories", f"select=id,body_text&slug=eq.{args.slug}")
+    stories = sb_select(url, key, "stories", f"select=id,body_text,kind&slug=eq.{args.slug}")
     if not stories:
         sys.exit(f"ERROR: story {args.slug!r} not found")
-    story_id, body_text = stories[0]["id"], stories[0]["body_text"]
+    story_id, body_text, kind = (
+        stories[0]["id"],
+        stories[0]["body_text"],
+        stories[0].get("kind", "story"),
+    )
     words = []
     offset = 0
     while True:
@@ -99,7 +103,23 @@ def main():
         sys.exit(f"ERROR: no words rows for {args.slug!r}")
 
     story_texts = [w["text"] for w in words]
-    body_tokens = [t for t in body_text.split() if t.strip()]
+
+    # Tokenize body_text the way InteractiveStory.tsx does for dialogues:
+    # skip [stage-direction] paragraphs entirely, strip "Name:" prefixes.
+    body_tokens = []
+    if kind == "dialogue":
+        name_prefix = re.compile(
+            r"^[A-Za-z\u00c1\u00c9\u00cd\u00d3\u00da\u00e1\u00e9\u00ed\u00f3\u00fa\u00f1\u00d1.' -]+:\s*"
+        )
+        for para in body_text.split("\n"):
+            if not para.strip():
+                continue
+            if re.match(r"^\[[^\]]*\]$", para.strip()):
+                continue  # stage aside — renders without word spans
+            spoken = name_prefix.sub("", para.strip())
+            body_tokens.extend(t for t in spoken.split() if t)
+    else:
+        body_tokens = [t for t in body_text.split() if t.strip()]
 
     # ── Step 5 first (cheap): words table must mirror body_text tokens ──
     # Use the same quote normalization as InteractiveStory.tsx's render check
