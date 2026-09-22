@@ -5,6 +5,8 @@ import BackLink from "@/components/BackLink";
 import { createClient } from "@/lib/supabase/server";
 import { getProfile } from "@/lib/auth-server";
 import { loadStudentProgress } from "@/lib/progress";
+import { readTeacherStudentPreview } from "@/lib/student-preview-server";
+import StudentPreviewBanner from "@/components/shell/StudentPreviewBanner";
 
 export const metadata = {
   title: "Tu progreso - Profe Kyle",
@@ -25,10 +27,11 @@ export default async function ProgressPage() {
   }
 
   const profile = await getProfile(user.id);
+  const previewLevel = await readTeacherStudentPreview(profile?.role);
   const progress = await loadStudentProgress(
     supabase,
     user.id,
-    profile?.classroomLevel ?? null
+    previewLevel ?? profile?.classroomLevel ?? null
   );
 
   const latestDictation = progress.dictationTrend.at(-1);
@@ -45,6 +48,11 @@ export default async function ProgressPage() {
 
   return (
     <main className="min-h-screen bg-paper">
+      {previewLevel ? (
+        <div className="sticky top-0 z-20">
+          <StudentPreviewBanner level={previewLevel} />
+        </div>
+      ) : null}
       <header className="border-b border-paper-line bg-paper-header px-4 py-3">
         <div className="mx-auto flex max-w-md items-center gap-1">
           <BackLink href="/dashboard" showLabel />

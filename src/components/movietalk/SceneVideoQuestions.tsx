@@ -19,6 +19,7 @@ export default function SceneVideoQuestions({
   live,
   classAnswers,
   savedResponses,
+  saveResponses = true,
   onClassAnswer,
   onClassBlur,
 }: {
@@ -30,6 +31,7 @@ export default function SceneVideoQuestions({
   live: boolean;
   classAnswers: Record<number, string>;
   savedResponses?: SavedComprehensionResponse[];
+  saveResponses?: boolean;
   onClassAnswer: (position: number, typed: string) => void;
   onClassBlur: () => void;
 }) {
@@ -79,7 +81,7 @@ export default function SceneVideoQuestions({
     writeDraft(draftKey("comprehension", questionId), {
       responseText: text,
     });
-    if (!sessionId || isTeacher) return;
+    if (!sessionId || isTeacher || !saveResponses) return;
     void saveComprehensionResponse({
       questionId,
       responseText: text.slice(0, 500),
@@ -134,12 +136,13 @@ export default function SceneVideoQuestions({
               {!isTeacher ? (
                 <textarea
                   id={`mt-q-${question.id}`}
-                  className="min-h-24 w-full rounded-card border border-paper-line bg-surface p-3 text-body-main text-text-primary focus:border-accent focus:outline-none"
+                  className="min-h-24 w-full rounded-card border border-paper-line bg-surface p-3 text-body-main text-text-primary focus:border-accent focus:outline-none disabled:bg-surface-hover"
                   value={answers[question.id] ?? ""}
                   onChange={(e) => onStudentChange(question.id, e.target.value)}
                   onBlur={() => persist(question.id, answers[question.id] ?? "")}
                   maxLength={500}
                   placeholder="Tu respuesta (opcional)"
+                  disabled={!saveResponses}
                 />
               ) : null}
               {isTeacher ? (

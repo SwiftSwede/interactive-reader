@@ -40,6 +40,7 @@ import {
   upsertPresentationVocabNote,
 } from "@/app/presentation/actions";
 import type {
+  CourseLevel,
   PresentationPrompt,
   PresentationResponse,
   PresentationSegment,
@@ -54,6 +55,7 @@ export default function PresentationPlayer({
   prompt: initialPrompt,
   sessionId,
   isTeacher,
+  previewLevel = null,
   sessionStartTime,
   sessionEndTime,
   classEndedAt: initialEndedAt = null,
@@ -68,6 +70,7 @@ export default function PresentationPlayer({
   prompt: PresentationPrompt;
   sessionId: string;
   isTeacher: boolean;
+  previewLevel?: CourseLevel | null;
   sessionStartTime: string;
   sessionEndTime: string;
   classEndedAt?: string | null;
@@ -410,6 +413,7 @@ export default function PresentationPlayer({
             title={prompt.title}
             level={prompt.level}
             isTeacher={isTeacher}
+            previewLevel={previewLevel}
           />
         </div>
         <article className="mx-auto max-w-2xl px-4 py-6">
@@ -443,6 +447,7 @@ export default function PresentationPlayer({
           title={prompt.title}
           level={prompt.level}
           isTeacher={isTeacher}
+          previewLevel={previewLevel}
         />
         {step.kind !== "warmup" && step.kind !== "done" && segment ? (
           <div className="mx-auto max-w-2xl px-2 pb-2">

@@ -18,10 +18,12 @@ export default function ChoralPractice({
   audioUrl,
   storyId,
   alreadyCompleted = false,
+  saveResponses = true,
 }: {
   audioUrl: string;
   storyId: string;
   alreadyCompleted?: boolean;
+  saveResponses?: boolean;
 }) {
   const [plays, setPlays] = useState(0);
   const [rounds, setRounds] = useState(alreadyCompleted ? TOTAL_ROUNDS : 0);
@@ -86,6 +88,8 @@ export default function ChoralPractice({
     } catch {
       // ignore
     }
+
+    if (!saveResponses) return;
 
     try {
       const response = await fetch("/api/choral-complete", {

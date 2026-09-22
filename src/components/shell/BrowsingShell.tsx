@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { BookOpen, Home, LayoutGrid, User } from "lucide-react";
+import StudentPreviewBanner from "@/components/shell/StudentPreviewBanner";
+import type { CourseLevel } from "@/types";
 
 export type BrowsingTab = "inicio" | "lecciones" | "herramientas";
 
@@ -22,24 +24,29 @@ const TABS: {
 export default function BrowsingShell({
   children,
   activeTab,
+  previewLevel = null,
 }: {
   children: React.ReactNode;
   activeTab: BrowsingTab | null;
+  previewLevel?: CourseLevel | null;
 }) {
   return (
     <div className="min-h-screen bg-paper">
-      <header className="sticky top-0 z-20 h-14 border-b border-paper-line bg-paper-header backdrop-blur-sm">
-        <div className="mx-auto flex h-full max-w-2xl items-center justify-between px-4">
-          <p className="text-label-sm text-text-secondary">Profe Kyle</p>
-          <Link
-            href="/profile"
-            aria-label="Perfil"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-card text-text-muted hover:bg-accent-soft hover:text-text-accent active:bg-surface-hover"
-          >
-            <User className="h-5 w-5" aria-hidden="true" />
-          </Link>
-        </div>
-      </header>
+      <div className="sticky top-0 z-20">
+        {previewLevel ? <StudentPreviewBanner level={previewLevel} /> : null}
+        <header className="h-14 border-b border-paper-line bg-paper-header backdrop-blur-sm">
+          <div className="mx-auto flex h-full max-w-2xl items-center justify-between px-4">
+            <p className="text-label-sm text-text-secondary">Profe Kyle</p>
+            <Link
+              href="/profile"
+              aria-label="Perfil"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-card text-text-muted hover:bg-accent-soft hover:text-text-accent active:bg-surface-hover"
+            >
+              <User className="h-5 w-5" aria-hidden="true" />
+            </Link>
+          </div>
+        </header>
+      </div>
 
       <div
         className="mx-auto max-w-2xl px-4"

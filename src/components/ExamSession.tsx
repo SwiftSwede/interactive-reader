@@ -24,6 +24,7 @@ export default function ExamSession({
   group,
   isWriter,
   isTeacher,
+  previewLevel = null,
   allowReveal,
   initialTask1,
   initialTask2,
@@ -41,6 +42,7 @@ export default function ExamSession({
   group: { id: string; label: string } | null;
   isWriter: boolean;
   isTeacher: boolean;
+  previewLevel?: import("@/types").CourseLevel | null;
   allowReveal: boolean;
   initialTask1: Task1Answer[];
   initialTask2: ExamTask2LetterAnswer[] | ExamTask2CorrectionAnswer[];
@@ -234,6 +236,7 @@ export default function ExamSession({
           title={prompt.title}
           level={prompt.level}
           isTeacher={isTeacher}
+          previewLevel={previewLevel}
         />
         <p className="mx-auto max-w-2xl px-4 pb-2 text-label-md text-text-secondary">
           Tarea {task} de 3

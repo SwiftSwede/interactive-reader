@@ -3,6 +3,8 @@ import { createClient } from "@/lib/supabase/server";
 import { resolvePresentationSessionAccess } from "@/lib/sessions";
 import { getProfile } from "@/lib/auth-server";
 import { documentTitle, presentationSessionTitle } from "@/lib/page-title";
+import { isTeacherView } from "@/lib/student-preview";
+import { readTeacherStudentPreview } from "@/lib/student-preview-server";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
 import PresentationPlayer from "@/components/PresentationPlayer";
 import {
@@ -88,7 +90,8 @@ export default async function PresentationPage({
     data: { user },
   } = await supabase.auth.getUser();
   const profile = user ? await getProfile(user.id) : null;
-  const isTeacher = profile?.role === "teacher";
+  const previewLevel = await readTeacherStudentPreview(profile?.role);
+  const isTeacher = isTeacherView(profile?.role, previewLevel);
   const responseSelect =
     "id, presentation_prompt_id, user_id, course_session_id, segment_id, question_id, response_text, revealed_answer, revealed_at, submitted_at";
 
@@ -119,7 +122,7 @@ export default async function PresentationPage({
       : null;
 
   const [responseResult, classResult] = await Promise.all([
-    user && !isTeacher
+    user && access.saveResponses
       ? supabase
           .from("presentation_responses")
           .select(responseSelect)
@@ -189,6 +192,7 @@ export default async function PresentationPage({
       prompt={prompt}
       sessionId={access.session.id}
       isTeacher={isTeacher}
+      previewLevel={previewLevel}
       sessionStartTime={access.session.sessionStartTime}
       sessionEndTime={access.session.sessionEndTime}
       classEndedAt={access.session.classEndedAt}

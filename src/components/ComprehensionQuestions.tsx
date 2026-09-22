@@ -29,6 +29,7 @@ type ComprehensionQuestionsProps = {
   sessionId?: string;
   savedResponses?: SavedComprehensionResponse[];
   microExplanation?: string;
+  saveResponses?: boolean;
 };
 
 const MAX_TIMEOUT_MS = 2_147_483_647;
@@ -72,6 +73,7 @@ export default function ComprehensionQuestions({
   sessionId,
   savedResponses,
   microExplanation,
+  saveResponses = true,
 }: ComprehensionQuestionsProps) {
   const initial = hydrateFromSaved(questions, savedResponses);
   const [revealed, setRevealed] = useState<Set<number>>(
@@ -155,6 +157,8 @@ export default function ComprehensionQuestions({
   ) => {
     const already = persistedRef.current.has(questionId);
     if (!text.trim() && !revealedAnswer && !already) return;
+
+    if (!saveResponses) return;
 
     writeDraft(draftKey("comprehension", questionId), {
       responseText: text,
@@ -275,7 +279,7 @@ export default function ComprehensionQuestions({
                 onKeyDown={(e) =>
                   handleKeyDown(e, q.position, q.id, !!q.answer)
                 }
-                disabled={isRevealed}
+                disabled={isRevealed || !saveResponses}
               />
 
               {/* Reveal button or answer */}

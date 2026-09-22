@@ -41,12 +41,14 @@ export default function PronunciationPractice({
   referenceText,
   kyleIpa,
   storyId,
+  saveResponses = true,
 }: {
   referenceText: string;
   kyleIpa?: string;
   /** Lets the server file the attempt against this story. Optional: anonymous
    * free-story practice stays in-session. */
   storyId?: string;
+  saveResponses?: boolean;
 }) {
   const [isRecording, setIsRecording] = useState(false);
   const [elapsedMs, setElapsedMs] = useState(0);
@@ -115,6 +117,7 @@ export default function PronunciationPractice({
   };
 
   const startRecording = async () => {
+    if (!saveResponses) return;
     setError(null);
     setPermissionDenied(false);
     setAudioBlob(null);
@@ -198,7 +201,7 @@ export default function PronunciationPractice({
   };
 
   const handleAssess = async () => {
-    if (!audioBlob || isRecording || isSubmitting) return;
+    if (!audioBlob || isRecording || isSubmitting || !saveResponses) return;
     setIsSubmitting(true);
     setError(null);
     setResult(null);
@@ -258,7 +261,7 @@ export default function PronunciationPractice({
               <button
                 type="button"
                 onClick={() => void startRecording()}
-                disabled={isSubmitting}
+                disabled={isSubmitting || !saveResponses}
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-card bg-accent text-white text-label-md hover:bg-accent-hover transition-colors min-h-11 disabled:bg-surface-hover disabled:text-text-muted disabled:cursor-not-allowed"
               >
                 <Mic size={16} aria-hidden="true" />
@@ -295,13 +298,13 @@ export default function PronunciationPractice({
             </div>
           )}
 
-          {audioBlob && !isRecording && (
-            <button
-              type="button"
-              onClick={() => void handleAssess()}
-              disabled={isSubmitting}
-              className="px-5 py-3 rounded-card bg-accent text-white text-label-md hover:bg-accent-hover transition-colors min-h-11 disabled:bg-surface-hover disabled:text-text-muted disabled:cursor-not-allowed"
-            >
+            {audioBlob && !isRecording && (
+              <button
+                type="button"
+                onClick={() => void handleAssess()}
+                disabled={isSubmitting || !saveResponses}
+                className="px-5 py-3 rounded-card bg-accent text-white text-label-md hover:bg-accent-hover transition-colors min-h-11 disabled:bg-surface-hover disabled:text-text-muted disabled:cursor-not-allowed"
+              >
               {isSubmitting ? "Revisando..." : "Revisar pronunciacion"}
             </button>
           )}

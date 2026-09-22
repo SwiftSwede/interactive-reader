@@ -3,7 +3,7 @@ import { BookOpen } from "lucide-react";
 import BrowsingShell from "@/components/shell/BrowsingShell";
 import ClassDayCard from "@/components/dashboard/ClassDayCard";
 import LessonCard from "@/components/dashboard/LessonCard";
-import { requireBrowsingStudent } from "@/lib/browsing-auth";
+import { requireBrowsingStudent, browsingClassroomLevel } from "@/lib/browsing-auth";
 import { loadDashboard } from "@/lib/dashboard";
 import { sessionTypeLabel } from "@/lib/activities";
 import { getClassDayPhase } from "@/lib/session-phase";
@@ -13,13 +13,14 @@ export const metadata = {
 };
 
 export default async function DashboardPage() {
-  const { supabase, user, profile, displayName } =
+  const { supabase, user, profile, displayName, preview } =
     await requireBrowsingStudent("/dashboard");
   const data = await loadDashboard(
     supabase,
     user.id,
-    profile?.classroomLevel ?? null,
-    displayName
+    browsingClassroomLevel(profile, preview),
+    displayName,
+    preview ? { previewAsLevel: preview.level } : undefined
   );
 
   const greeting = data.displayName ? `Hola, ${data.displayName}` : "Hola";
@@ -36,7 +37,7 @@ export default async function DashboardPage() {
       : Math.min(100, Math.round((data.totals.completed / data.totals.total) * 100));
 
   return (
-    <BrowsingShell activeTab="inicio">
+    <BrowsingShell activeTab="inicio" previewLevel={preview?.level ?? null}>
       <section className="pt-6">
         <h1 className="text-headline-lg text-text-primary">{greeting}</h1>
 

@@ -7,10 +7,13 @@ export const metadata = {
 };
 
 export default async function ToolsPage() {
-  await requireBrowsingStudent("/tools");
+  const { preview } = await requireBrowsingStudent("/tools");
 
   return (
-    <BrowsingShell activeTab="herramientas">
+    <BrowsingShell
+      activeTab="herramientas"
+      previewLevel={preview?.level ?? null}
+    >
       <section className="pt-6">
         <h1 className="text-headline-lg text-text-primary">Herramientas</h1>
         <div className="mt-16 flex flex-col items-center px-4 text-center">

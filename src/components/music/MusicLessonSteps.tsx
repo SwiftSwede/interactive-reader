@@ -32,7 +32,7 @@ import {
 import { youtubeEmbedId } from "@/lib/youtube-sync";
 import type { LoadedStory } from "@/lib/stories";
 import type { SavedSongAttempt } from "@/lib/services/songAttempts";
-import type { WordFlagging } from "@/types";
+import type { CourseLevel, WordFlagging } from "@/types";
 
 export default function MusicLessonSteps({
   data,
@@ -41,6 +41,8 @@ export default function MusicLessonSteps({
   trackLookups = false,
   readerMode = "open",
   isTeacher = false,
+  previewLevel = null,
+  saveResponses = true,
   recordingYoutubeUrl = null,
   sessionStartTime = null,
   sessionEndTime = null,
@@ -58,6 +60,8 @@ export default function MusicLessonSteps({
   trackLookups?: boolean;
   readerMode?: "classroom-live" | "classroom-review" | "open";
   isTeacher?: boolean;
+  previewLevel?: CourseLevel | null;
+  saveResponses?: boolean;
   recordingYoutubeUrl?: string | null;
   sessionStartTime?: string | null;
   sessionEndTime?: string | null;
@@ -270,7 +274,11 @@ export default function MusicLessonSteps({
   // video clock from 0:00 (tap-align). Do not pass youtubeStartSeconds here.
   const youtubeId = youtubeEmbedId(story.youtube_url);
   const lyricBlanks = parseLyricBlanks(story.lyric_blanks);
-  const persistBlanks = readerMode === "classroom-live" && Boolean(sessionId) && !isTeacher;
+  const persistBlanks =
+    readerMode === "classroom-live" &&
+    Boolean(sessionId) &&
+    !isTeacher &&
+    saveResponses;
   const teacherPacing = isTeacher && live && Boolean(sessionId);
   const onStepButton = teacherPacing ? goWithClass : goTo;
 
@@ -286,6 +294,7 @@ export default function MusicLessonSteps({
             title={story.title}
             level={story.level}
             isTeacher={isTeacher}
+            previewLevel={previewLevel}
           />
           <nav className="step-progress max-w-2xl mx-auto px-2" aria-label="Pasos">
             {steps.map((step, index) => {

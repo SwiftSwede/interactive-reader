@@ -18,6 +18,7 @@ import {
 } from "@/lib/pronunciation/rateLimit";
 import type { PronunciationAssessmentResponse } from "@/lib/pronunciation/types";
 import { azureReferenceText } from "@/lib/pronunciation/referenceText";
+import { getProfile } from "@/lib/auth-server";
 import { getTagsForStory, loadTagIndex } from "@/lib/content-tags";
 import {
   focusTagIdsForWeakSounds,
@@ -267,17 +268,20 @@ export async function POST(request: Request) {
       // and the recommender have something to work with. Anonymous stays
       // in-session. The audio is never stored, and nothing here is a score.
       if (user) {
-        await persistPronunciationAttempt(supabase, {
-          userId: user.id,
-          storyId: parsed.data.storyId ?? null,
-          referenceText: assessment.referenceText,
-          overall: assessment.overall,
-          weakSounds: topIssues
-            .map((issue) => issue.focusIpa)
-            .filter(
-              (ipa): ipa is string => typeof ipa === "string" && ipa !== ""
-            ),
-        });
+        const profile = await getProfile(user.id);
+        if (profile?.role !== "teacher") {
+          await persistPronunciationAttempt(supabase, {
+            userId: user.id,
+            storyId: parsed.data.storyId ?? null,
+            referenceText: assessment.referenceText,
+            overall: assessment.overall,
+            weakSounds: topIssues
+              .map((issue) => issue.focusIpa)
+              .filter(
+                (ipa): ipa is string => typeof ipa === "string" && ipa !== ""
+              ),
+          });
+        }
       }
 
       return NextResponse.json(body);

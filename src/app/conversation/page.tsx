@@ -4,6 +4,8 @@ import { resolveConversationSessionAccess } from "@/lib/sessions";
 import { sessionRecordingUrl } from "@/lib/session-phase";
 import { getProfile } from "@/lib/auth-server";
 import { documentTitle, conversationSessionTitle } from "@/lib/page-title";
+import { isTeacherView } from "@/lib/student-preview";
+import { readTeacherStudentPreview } from "@/lib/student-preview-server";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
 import ConversationStudent from "@/components/ConversationStudent";
 import {
@@ -86,7 +88,8 @@ export default async function ConversationPage({
     data: { user },
   } = await supabase.auth.getUser();
   const profile = user ? await getProfile(user.id) : null;
-  const isTeacher = profile?.role === "teacher";
+  const previewLevel = await readTeacherStudentPreview(profile?.role);
+  const isTeacher = isTeacherView(profile?.role, previewLevel);
 
   const [promptResult, courseResult] = await Promise.all([
     supabase
@@ -134,6 +137,7 @@ export default async function ConversationPage({
       courseId={access.session.courseId}
       sessionId={access.session.id}
       isTeacher={isTeacher}
+      previewLevel={previewLevel}
       sessionStartTime={access.session.sessionStartTime}
       sessionEndTime={access.session.sessionEndTime}
       classEndedAt={access.session.classEndedAt}

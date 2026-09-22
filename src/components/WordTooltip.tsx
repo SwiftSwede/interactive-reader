@@ -52,6 +52,7 @@ type WordTooltipProps = {
   ownRequested?: boolean;
   showTeacherFlags?: boolean;
   showStudentRequest?: boolean;
+  studentRequestDisabled?: boolean;
   onToggleFlag?: (
     flagText: string,
     occurrenceIndex: number,
@@ -83,6 +84,7 @@ function WordTooltip({
   ownRequested = false,
   showTeacherFlags = false,
   showStudentRequest = false,
+  studentRequestDisabled = false,
   onToggleFlag,
   onRequestWord,
   onConvertRequests,
@@ -339,8 +341,10 @@ function WordTooltip({
                 <button
                   type="button"
                   className="word-tooltip-action"
+                  disabled={studentRequestDisabled}
                   onClick={(e) => {
                     e.stopPropagation();
+                    if (studentRequestDisabled) return;
                     handleRequest();
                   }}
                 >

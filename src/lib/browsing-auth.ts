@@ -1,6 +1,10 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getProfile, promoteTeacherIfNeeded } from "@/lib/auth-server";
+import { readTeacherStudentPreview } from "@/lib/student-preview-server";
+import type { CourseLevel, Profile } from "@/types";
+
+export type BrowsingPreview = { level: CourseLevel };
 
 export async function requireBrowsingStudent(nextPath: string) {
   const supabase = await createClient();
@@ -14,7 +18,8 @@ export async function requireBrowsingStudent(nextPath: string) {
 
   await promoteTeacherIfNeeded(user.id, user.email);
   const profile = await getProfile(user.id);
-  if (profile?.role === "teacher") {
+  const previewLevel = await readTeacherStudentPreview(profile?.role);
+  if (profile?.role === "teacher" && !previewLevel) {
     redirect("/teacher");
   }
 
@@ -22,5 +27,16 @@ export async function requireBrowsingStudent(nextPath: string) {
   const displayName =
     typeof rawName === "string" && rawName.trim() ? rawName.trim() : null;
 
-  return { supabase, user, profile, displayName };
+  const preview: BrowsingPreview | null = previewLevel
+    ? { level: previewLevel }
+    : null;
+
+  return { supabase, user, profile, displayName, preview };
+}
+
+export function browsingClassroomLevel(
+  profile: Profile | null,
+  preview: BrowsingPreview | null
+): CourseLevel | null {
+  return preview?.level ?? profile?.classroomLevel ?? null;
 }

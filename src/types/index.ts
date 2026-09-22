@@ -220,6 +220,7 @@ export type WordFlagging = {
   sessionId: string | null;
   storyId: string;
   readerMode: "classroom-live" | "classroom-review" | "open";
+  saveResponses?: boolean;
 };
 
 export type WritingSubmissionStatus = "draft" | "submitted" | "corrected";

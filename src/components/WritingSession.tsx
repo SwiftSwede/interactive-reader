@@ -53,6 +53,8 @@ export default function WritingSession({
   notes,
   timerStartedAt: initialTimerStartedAt,
   isTeacher,
+  previewLevel = null,
+  saveResponses = true,
   submission,
   correction,
   recordingYoutubeUrl = null,
@@ -67,6 +69,8 @@ export default function WritingSession({
   notes: string | null;
   timerStartedAt: string | null;
   isTeacher: boolean;
+  previewLevel?: CourseLevel | null;
+  saveResponses?: boolean;
   submission: {
     text: string;
     status: "draft" | "submitted" | "corrected";
@@ -141,6 +145,7 @@ export default function WritingSession({
   const timedOut = remaining !== null && remaining <= 0;
   const inputLocked =
     isTeacher ||
+    !saveResponses ||
     status === "corrected" ||
     (status === "submitted" && hasWritingText(text)) ||
     !clock ||
@@ -197,7 +202,7 @@ export default function WritingSession({
 
   const handleSubmit = useCallback(
     async (fromTimer = false) => {
-      if (isTeacher || status !== "draft") return;
+      if (isTeacher || !saveResponses || status !== "draft") return;
       const startedAt = clock ?? personalStartedAt ?? sessionTimerStartedAt;
       if (!startedAt && !hasWritingText(textRef.current)) return;
       if (autoSubmitted.current && fromTimer) return;
@@ -221,6 +226,7 @@ export default function WritingSession({
     },
     [
       isTeacher,
+      saveResponses,
       status,
       clock,
       personalStartedAt,
@@ -232,7 +238,7 @@ export default function WritingSession({
   );
 
   async function handleStartMakeup() {
-    if (isTeacher || starting) return;
+    if (isTeacher || starting || !saveResponses) return;
     setStarting(true);
     setError("");
     const result = await startAfterClassWriting({
@@ -407,6 +413,7 @@ export default function WritingSession({
           title={prompt.title}
           level={prompt.level}
           isTeacher={isTeacher}
+          previewLevel={previewLevel}
         />
         <nav className="step-progress mx-auto max-w-2xl px-2" aria-label="Pasos">
           {steps.map((step, index) => {
@@ -567,7 +574,7 @@ export default function WritingSession({
               </p>
               <button
                 type="button"
-                disabled={starting}
+                disabled={starting || !saveResponses}
                 onClick={() => void handleStartMakeup()}
                 className="mt-3 h-12 w-full rounded-card bg-accent text-label-md font-medium text-white disabled:opacity-60"
               >

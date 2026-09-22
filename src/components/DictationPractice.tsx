@@ -19,6 +19,7 @@ type DictationPracticeProps = {
   /** Omitted for anonymous free-story practice, which stays in-session. */
   storyId?: string;
   sessionId?: string;
+  saveResponses?: boolean;
 };
 
 export default function DictationPractice({
@@ -31,6 +32,7 @@ export default function DictationPractice({
   microExplanation,
   storyId,
   sessionId,
+  saveResponses = true,
 }: DictationPracticeProps) {
   const [phase, setPhase] = useState<"listening" | "revealed">("listening");
   const [userText, setUserText] = useState("");
@@ -57,7 +59,7 @@ export default function DictationPractice({
     // action is a no-op for anonymous users.
     setPhase("revealed");
 
-    if (!storyId) return;
+    if (!storyId || !saveResponses) return;
     void recordDictationAttempt({
       storyId,
       responseText: userText,
@@ -99,13 +101,14 @@ export default function DictationPractice({
             value={userText}
             onChange={(e) => setUserText(e.target.value)}
             placeholder="Escribe lo que oyes..."
-            className="w-full border border-paper-line bg-surface rounded-card p-3 text-body-main text-text-primary placeholder:text-text-muted focus:outline-none focus:border-2 focus:border-accent min-h-[80px]"
+            disabled={!saveResponses}
+            className="w-full border border-paper-line bg-surface rounded-card p-3 text-body-main text-text-primary placeholder:text-text-muted focus:outline-none focus:border-2 focus:border-accent min-h-[80px] disabled:bg-surface-hover disabled:text-text-muted"
             rows={3}
           />
 
           <button
             onClick={handleSubmit}
-            disabled={!userText.trim()}
+            disabled={!userText.trim() || !saveResponses}
             type="button"
             className="px-5 py-3 rounded-card bg-accent text-white text-label-md disabled:bg-surface-hover disabled:text-text-muted disabled:cursor-not-allowed hover:bg-accent-hover transition-colors min-h-11"
           >

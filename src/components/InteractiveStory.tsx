@@ -246,6 +246,7 @@ export default function InteractiveStory({
   const handleRequestWord = useCallback(
     (flagText: string, occurrenceIndex: number) => {
       if (!flagging || flagging.isTeacher || !flagging.sessionId) return;
+      if (flagging.saveResponses === false) return;
       const key = flagAnchorKey(flagText, occurrenceIndex);
       if ((requestCountByAnchor(requestsRef.current).get(key) ?? 0) > 0) {
         return;
@@ -877,6 +878,7 @@ export default function InteractiveStory({
                       ownRequested={ownRequested}
                       showTeacherFlags={showTeacherFlags}
                       showStudentRequest={showStudentRequest}
+                      studentRequestDisabled={flagging?.saveResponses === false}
                       onToggleFlag={handleToggleFlag}
                       onRequestWord={handleRequestWord}
                       onConvertRequests={handleConvertRequests}

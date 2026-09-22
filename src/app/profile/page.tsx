@@ -3,7 +3,7 @@ import BackLink from "@/components/BackLink";
 import EditDisplayNameForm from "@/components/dashboard/EditDisplayNameForm";
 import BrowsingShell from "@/components/shell/BrowsingShell";
 import { signOut } from "@/app/dashboard/actions";
-import { requireBrowsingStudent } from "@/lib/browsing-auth";
+import { requireBrowsingStudent, browsingClassroomLevel } from "@/lib/browsing-auth";
 import { loadDashboard } from "@/lib/dashboard";
 
 export const metadata = {
@@ -11,20 +11,21 @@ export const metadata = {
 };
 
 export default async function ProfilePage() {
-  const { supabase, user, profile, displayName } =
+  const { supabase, user, profile, displayName, preview } =
     await requireBrowsingStudent("/profile");
   const data = await loadDashboard(
     supabase,
     user.id,
-    profile?.classroomLevel ?? null,
-    displayName
+    browsingClassroomLevel(profile, preview),
+    displayName,
+    preview ? { previewAsLevel: preview.level } : undefined
   );
 
   const name = data.displayName ?? "Sin nombre";
   const active = profile?.subscriptionStatus === "active";
 
   return (
-    <BrowsingShell activeTab={null}>
+    <BrowsingShell activeTab={null} previewLevel={preview?.level ?? null}>
       <section className="pt-4">
         <div className="-ml-2 mb-2">
           <BackLink href="/dashboard" showLabel />
@@ -47,7 +48,7 @@ export default async function ProfilePage() {
               {active ? "Activa" : "Expirada"}
             </span>
           </p>
-          <EditDisplayNameForm currentName={name} />
+          {preview ? null : <EditDisplayNameForm currentName={name} />}
         </article>
 
         <form action={signOut} className="mt-6">

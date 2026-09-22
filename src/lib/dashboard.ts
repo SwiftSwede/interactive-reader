@@ -389,7 +389,8 @@ export async function loadDashboard(
   supabase: SupabaseClient,
   userId: string,
   classroomLevel: CourseLevel | null,
-  displayNameFallback: string | null = null
+  displayNameFallback: string | null = null,
+  options?: { previewAsLevel?: CourseLevel }
 ): Promise<DashboardData> {
   const empty: DashboardData = {
     displayName: displayNameFallback,
@@ -408,13 +409,27 @@ export async function loadDashboard(
   };
 
   try {
-    const enrollmentPromise = supabase
-      .from("course_enrollments")
-      .select("course_id, display_name, enrolled_at, courses ( id, name, level, archived, zoom_url, theme )")
-      .eq("student_id", userId);
+    const enrollmentPromise = options?.previewAsLevel
+      ? Promise.resolve({ data: [] as never[], error: null })
+      : supabase
+          .from("course_enrollments")
+          .select(
+            "course_id, display_name, enrolled_at, courses ( id, name, level, archived, zoom_url, theme )"
+          )
+          .eq("student_id", userId);
+
+    const previewCoursesPromise = options?.previewAsLevel
+      ? supabase
+          .from("courses")
+          .select("id, name, level, archived, zoom_url, theme, created_at")
+          .eq("teacher_id", userId)
+          .eq("level", options.previewAsLevel)
+          .eq("archived", false)
+      : Promise.resolve({ data: [] as never[], error: null });
 
     const [
       enrollmentResult,
+      previewCoursesResult,
       progress,
       writingRows,
       progressRows,
@@ -423,6 +438,7 @@ export async function loadDashboard(
       attendanceRows,
     ] = await Promise.all([
       enrollmentPromise,
+      previewCoursesPromise,
       loadStudentProgress(supabase, userId, classroomLevel),
       safeSelect<{ writing_prompt_id: string }>("writing_submissions", () =>
         supabase
@@ -464,6 +480,12 @@ export async function loadDashboard(
     if (enrollmentResult.error) {
       console.error("loadDashboard enrollments:", enrollmentResult.error.message);
     }
+    if (previewCoursesResult.error) {
+      console.error(
+        "loadDashboard preview courses:",
+        previewCoursesResult.error.message
+      );
+    }
 
     type CourseJoin = {
       id: string;
@@ -480,18 +502,31 @@ export async function loadDashboard(
       courses: CourseJoin | CourseJoin[] | null;
     };
 
-    const enrollments = ((enrollmentResult.data ?? []) as EnrollmentRow[])
-      .map((row) => {
-        const course = Array.isArray(row.courses) ? row.courses[0] : row.courses;
-        if (!course) return null;
-        return {
-          courseId: row.course_id,
-          displayName: row.display_name?.trim() || null,
-          enrolledAt: row.enrolled_at,
+    const enrollments = options?.previewAsLevel
+      ? (
+          (previewCoursesResult.data ?? []) as (CourseJoin & {
+            created_at?: string;
+          })[]
+        ).map((course) => ({
+          courseId: course.id,
+          displayName: displayNameFallback,
+          enrolledAt: course.created_at ?? "",
           course,
-        };
-      })
-      .filter((row): row is NonNullable<typeof row> => row != null);
+        }))
+      : ((enrollmentResult.data ?? []) as EnrollmentRow[])
+          .map((row) => {
+            const course = Array.isArray(row.courses)
+              ? row.courses[0]
+              : row.courses;
+            if (!course) return null;
+            return {
+              courseId: row.course_id,
+              displayName: row.display_name?.trim() || null,
+              enrolledAt: row.enrolled_at,
+              course,
+            };
+          })
+          .filter((row): row is NonNullable<typeof row> => row != null);
 
     const courseIds = enrollments.map((row) => row.courseId);
     const sessionRows = await loadSessionRows(supabase, courseIds);

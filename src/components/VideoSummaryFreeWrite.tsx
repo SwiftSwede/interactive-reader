@@ -24,6 +24,7 @@ export default function VideoSummaryFreeWrite({
   initialText,
   alreadySubmitted,
   initialTeacherWrites,
+  saveResponses = true,
 }: {
   sessionId: string;
   storyId: string;
@@ -37,6 +38,7 @@ export default function VideoSummaryFreeWrite({
   initialText: string;
   alreadySubmitted: boolean;
   initialTeacherWrites: VideoSummaryTeacherWrite[];
+  saveResponses?: boolean;
 }) {
   const [text, setText] = useState(initialText);
   const [submitted, setSubmitted] = useState(alreadySubmitted);
@@ -53,11 +55,12 @@ export default function VideoSummaryFreeWrite({
     ? remainingMs(timerStartedAt, minutes, now)
     : null;
   const timedOut = remaining !== null && remaining <= 0;
-  const locked = isTeacher || submitted || !timerStartedAt || timedOut;
+  const locked =
+    isTeacher || submitted || !timerStartedAt || timedOut || !saveResponses;
 
   const handleSubmit = useCallback(
     async (fromTimer = false) => {
-      if (isTeacher || submitted || !timerStartedAt) return;
+      if (isTeacher || submitted || !timerStartedAt || !saveResponses) return;
       if (autoSubmitted.current && fromTimer) return;
       if (fromTimer) autoSubmitted.current = true;
       setSaving(true);
@@ -76,7 +79,7 @@ export default function VideoSummaryFreeWrite({
       }
       setSubmitted(true);
     },
-    [isTeacher, submitted, timerStartedAt, sessionId, storyId]
+    [isTeacher, submitted, timerStartedAt, sessionId, storyId, saveResponses]
   );
 
   useEffect(() => {

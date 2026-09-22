@@ -10,6 +10,8 @@ import { loadOwnComprehensionResponses } from "@/lib/comprehension";
 import { loadOwnPersonalResponses } from "@/lib/personal-responses";
 import { getProfile } from "@/lib/auth-server";
 import { documentTitle, storyTitleBySlug } from "@/lib/page-title";
+import { isTeacherView } from "@/lib/student-preview";
+import { readTeacherStudentPreview } from "@/lib/student-preview-server";
 import StoryReader from "@/components/StoryReader";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
 import {
@@ -113,17 +115,28 @@ export default async function LessonSlugPage({
     data: { user },
   } = await supabase.auth.getUser();
   const profile = user ? await getProfile(user.id) : null;
-  const isTeacher = profile?.role === "teacher";
+  const previewLevel = await readTeacherStudentPreview(profile?.role);
+  const isTeacher = isTeacherView(profile?.role, previewLevel);
+  const previewActive = previewLevel != null;
   const trackLookups = profile != null && profile.role !== "teacher";
+  const saveResponses = previewActive
+    ? false
+    : access.kind === "ok"
+      ? access.saveResponses
+      : true;
 
   const sessionId =
-    access.kind === "ok" && (access.saveResponses || classroomPaced)
+    access.kind === "ok" &&
+    (saveResponses || classroomPaced || previewActive)
       ? access.session.id
       : undefined;
   const flagSessionId = access.kind === "ok" ? access.session.id : null;
 
   let readerMode: "classroom-live" | "classroom-review" | "open" = "open";
-  if (access.kind === "ok" && (access.saveResponses || classroomPaced)) {
+  if (
+    access.kind === "ok" &&
+    (saveResponses || classroomPaced || previewActive)
+  ) {
     readerMode = isWithinSessionWindow(access.session)
       ? "classroom-live"
       : "classroom-review";
@@ -145,13 +158,13 @@ export default async function LessonSlugPage({
     ownRequests,
     savedAttempts,
   ] = await Promise.all([
-    !isVideo
+    !isVideo && saveResponses
       ? loadOwnComprehensionResponses(
           data.comprehensionQuestions.map((question) => question.id),
           sessionId
         )
       : Promise.resolve(undefined),
-    !isVideo
+    !isVideo && saveResponses
       ? loadOwnPersonalResponses(
           data.personalQuestions.map((question) => question.id)
         )
@@ -164,7 +177,7 @@ export default async function LessonSlugPage({
       : Promise.resolve([]),
     !skipFlags &&
       kind !== "song" &&
-      !isTeacher &&
+      saveResponses &&
       user &&
       flagSessionId &&
       readerMode === "classroom-live"
@@ -174,7 +187,7 @@ export default async function LessonSlugPage({
       readerMode === "classroom-live" &&
       user &&
       sessionId &&
-      !isTeacher
+      saveResponses
       ? loadOwnSongLyricAttempts(supabase, sessionId, user.id)
       : Promise.resolve([]),
   ]);
@@ -189,6 +202,7 @@ export default async function LessonSlugPage({
         sessionId: flagSessionId,
         storyId: data.story.id,
         readerMode,
+        saveResponses,
       };
 
   return (
@@ -202,6 +216,8 @@ export default async function LessonSlugPage({
       trackLookups={trackLookups}
       readerMode={readerMode}
       isTeacher={isTeacher}
+      previewLevel={previewLevel}
+      saveResponses={saveResponses}
       flagging={flagging}
       sessionStartTime={
         access.kind === "ok" ? access.session.sessionStartTime : null

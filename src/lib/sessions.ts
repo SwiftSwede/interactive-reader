@@ -19,6 +19,7 @@ import {
 } from "@/lib/conversation";
 import { parseSongClassAnswers } from "@/lib/music";
 import { parseMovieTalkClassAnswers } from "@/lib/movietalk";
+import { readTeacherStudentPreview } from "@/lib/student-preview-server";
 import type {
   ConversationPlan,
   ConversationRoundState,
@@ -408,6 +409,15 @@ export async function loadSessionAccess(
 
   const profile = await getProfile(user.id);
   if (profile?.role === "teacher") {
+    const previewLevel = await readTeacherStudentPreview(profile.role);
+    if (previewLevel) {
+      return {
+        kind: "ok",
+        session,
+        allowReveal: areAnswersUnlocked(session),
+        saveResponses: false,
+      };
+    }
     await persistAnswersRevealedIfEnded(session);
     return { kind: "ok", session, allowReveal: true, saveResponses: false };
   }

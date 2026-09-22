@@ -4,6 +4,8 @@ import { resolveExamSessionAccess } from "@/lib/sessions";
 import { sessionRecordingUrl } from "@/lib/session-phase";
 import { getProfile } from "@/lib/auth-server";
 import { documentTitle, examSessionTitle } from "@/lib/page-title";
+import { isTeacherView } from "@/lib/student-preview";
+import { readTeacherStudentPreview } from "@/lib/student-preview-server";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
 import ExamSession from "@/components/ExamSession";
 import { mapExamPromptRow, type ExamPromptRow } from "@/lib/exam";
@@ -106,7 +108,8 @@ export default async function ExamPage({
     data: { user },
   } = await supabase.auth.getUser();
   const profile = user ? await getProfile(user.id) : null;
-  const isTeacher = profile?.role === "teacher";
+  const previewLevel = await readTeacherStudentPreview(profile?.role);
+  const isTeacher = isTeacherView(profile?.role, previewLevel);
 
   let group: {
     id: string;
@@ -115,7 +118,7 @@ export default async function ExamPage({
     member_ids: string[];
   } | null = null;
 
-  if (user && !isTeacher) {
+  if (user && access.saveResponses) {
     const { data: groups } = await supabase
       .from("exam_groups")
       .select("id, group_label, writer_id, member_ids")
@@ -173,6 +176,7 @@ export default async function ExamPage({
       }
       isWriter={Boolean(user && group && group.writer_id === user.id)}
       isTeacher={isTeacher}
+      previewLevel={previewLevel}
       recordingYoutubeUrl={sessionRecordingUrl(access.session)}
       classEndedAt={access.session.classEndedAt}
       sessionStartTime={access.session.sessionStartTime}

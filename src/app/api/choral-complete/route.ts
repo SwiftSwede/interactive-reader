@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
+import { getProfile } from "@/lib/auth-server";
 
 const BodySchema = z.object({
   storyId: z.string().uuid(),
@@ -19,6 +20,11 @@ export async function POST(request: Request) {
         { error: "Entra con tu email para guardar la practica." },
         { status: 401 }
       );
+    }
+
+    const profile = await getProfile(user.id);
+    if (!profile || profile.role === "teacher") {
+      return NextResponse.json({ ok: true });
     }
 
     let json: unknown;

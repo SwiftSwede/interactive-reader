@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { LogOut, Menu, X } from "lucide-react";
+import { Eye, LogOut, Menu, X } from "lucide-react";
 import { signOut } from "@/app/dashboard/actions";
 import TeacherBackLink from "@/app/teacher/TeacherBackLink";
 import TeacherNav from "./TeacherNav";
@@ -36,6 +36,19 @@ function RailFooter({
       <p className="mt-0.5 truncate px-3 text-label-sm text-text-muted min-[600px]:max-lg:sr-only">
         {teacherEmail}
       </p>
+      <Link
+        href="/teacher/preview"
+        className="mt-2 inline-flex min-h-11 w-full items-center rounded-card px-3 text-label-sm text-text-accent hover:bg-accent-soft hover:text-text-accent-dark active:bg-surface-hover min-[600px]:max-lg:justify-center min-[600px]:max-lg:px-0"
+        aria-label="Ver app como estudiante"
+      >
+        <Eye
+          className="hidden h-5 w-5 min-[600px]:max-lg:inline"
+          aria-hidden="true"
+        />
+        <span className="min-[600px]:max-lg:sr-only">
+          Ver app como estudiante
+        </span>
+      </Link>
       <form action={signOut} className="mt-2">
         <button
           type="submit"

@@ -38,6 +38,7 @@ export default function ConversationStudent({
   courseLevel,
   sessionId,
   isTeacher,
+  previewLevel = null,
   sessionStartTime,
   sessionEndTime,
   classEndedAt,
@@ -52,6 +53,7 @@ export default function ConversationStudent({
   courseId: string;
   sessionId: string;
   isTeacher: boolean;
+  previewLevel?: CourseLevel | null;
   sessionStartTime: string;
   sessionEndTime: string;
   classEndedAt: string | null;
@@ -216,6 +218,7 @@ export default function ConversationStudent({
           title={prompt.title}
           level={courseLevel}
           isTeacher={isTeacher}
+          previewLevel={previewLevel}
         />
       </div>
 

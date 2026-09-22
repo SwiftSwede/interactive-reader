@@ -1,7 +1,7 @@
 import { BookOpen } from "lucide-react";
 import BrowsingShell from "@/components/shell/BrowsingShell";
 import LessonsList from "@/components/dashboard/LessonsList";
-import { requireBrowsingStudent } from "@/lib/browsing-auth";
+import { requireBrowsingStudent, browsingClassroomLevel } from "@/lib/browsing-auth";
 import { loadDashboard } from "@/lib/dashboard";
 
 export const metadata = {
@@ -9,13 +9,14 @@ export const metadata = {
 };
 
 export default async function LessonsPage() {
-  const { supabase, user, profile, displayName } =
+  const { supabase, user, profile, displayName, preview } =
     await requireBrowsingStudent("/lessons");
   const data = await loadDashboard(
     supabase,
     user.id,
-    profile?.classroomLevel ?? null,
-    displayName
+    browsingClassroomLevel(profile, preview),
+    displayName,
+    preview ? { previewAsLevel: preview.level } : undefined
   );
 
   const groups = [
@@ -35,7 +36,7 @@ export default async function LessonsPage() {
   const empty = groups.length === 0;
 
   return (
-    <BrowsingShell activeTab="lecciones">
+    <BrowsingShell activeTab="lecciones" previewLevel={preview?.level ?? null}>
       <section className="pt-6">
         <h1 className="text-headline-lg text-text-primary">Lecciones</h1>
         {empty ? (

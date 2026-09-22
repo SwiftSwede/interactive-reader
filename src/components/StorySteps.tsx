@@ -31,7 +31,7 @@ import { createClient } from "@/lib/supabase/client";
 import { recordStoryOpened } from "@/app/lesson/[slug]/actions";
 import type { LoadedStory } from "@/lib/stories";
 import type { SavedPersonalResponse } from "@/lib/personal-responses";
-import type { PronunciationWordNote, WordFlagging } from "@/types";
+import type { CourseLevel, PronunciationWordNote, WordFlagging } from "@/types";
 
 type StepId =
   | "story"
@@ -71,6 +71,8 @@ export default function StorySteps({
   coralExplanation,
   choralCompleted,
   isTeacher = false,
+  previewLevel = null,
+  saveResponses = true,
   recordingYoutubeUrl = null,
   sessionStartTime = null,
   sessionEndTime = null,
@@ -102,6 +104,8 @@ export default function StorySteps({
   coralExplanation: string | null;
   choralCompleted: boolean;
   isTeacher?: boolean;
+  previewLevel?: CourseLevel | null;
+  saveResponses?: boolean;
   recordingYoutubeUrl?: string | null;
   sessionStartTime?: string | null;
   sessionEndTime?: string | null;
@@ -124,6 +128,8 @@ export default function StorySteps({
         trackLookups={trackLookups}
         readerMode={readerMode}
         isTeacher={isTeacher}
+        previewLevel={previewLevel}
+        saveResponses={saveResponses}
         recordingYoutubeUrl={recordingYoutubeUrl}
         sessionStartTime={sessionStartTime}
         sessionEndTime={sessionEndTime}
@@ -146,6 +152,8 @@ export default function StorySteps({
         trackLookups={trackLookups}
         readerMode={readerMode}
         isTeacher={isTeacher}
+        previewLevel={previewLevel}
+        saveResponses={saveResponses}
         recordingYoutubeUrl={recordingYoutubeUrl}
         sessionStartTime={sessionStartTime}
         sessionEndTime={sessionEndTime}
@@ -179,6 +187,8 @@ export default function StorySteps({
       coralExplanation={coralExplanation}
       choralCompleted={choralCompleted}
       isTeacher={isTeacher}
+      previewLevel={previewLevel}
+      saveResponses={saveResponses}
       recordingYoutubeUrl={recordingYoutubeUrl}
       sessionStartTime={sessionStartTime}
       sessionEndTime={sessionEndTime}
@@ -208,6 +218,8 @@ function ClassicStorySteps({
   coralExplanation,
   choralCompleted,
   isTeacher = false,
+  previewLevel = null,
+  saveResponses = true,
   recordingYoutubeUrl = null,
   sessionStartTime = null,
   sessionEndTime = null,
@@ -233,6 +245,8 @@ function ClassicStorySteps({
   coralExplanation: string | null;
   choralCompleted: boolean;
   isTeacher?: boolean;
+  previewLevel?: CourseLevel | null;
+  saveResponses?: boolean;
   recordingYoutubeUrl?: string | null;
   sessionStartTime?: string | null;
   sessionEndTime?: string | null;
@@ -405,6 +419,7 @@ function ClassicStorySteps({
             level={story.level}
             wordCount={lessonHeaderWordCount(story.kind, story.word_count)}
             isTeacher={isTeacher}
+            previewLevel={previewLevel}
           />
           <nav className="step-progress max-w-2xl mx-auto px-2" aria-label="Pasos">
             {steps.map((step, index) => (
@@ -485,6 +500,7 @@ function ClassicStorySteps({
                 explanation={coralExplanation || undefined}
                 storyId={story.id}
                 sessionId={sessionId}
+                saveResponses={saveResponses}
                 microExplanation="Sabias que la mayoria de los errores de escucha no son por falta de vocabulario, sino porque las palabras suenan diferente cuando se hablan rapido? Este ejercicio te muestra exactamente donde tu oido te falla."
               />
             )}
@@ -494,6 +510,7 @@ function ClassicStorySteps({
                 audioUrl={coralAudio}
                 storyId={story.id}
                 alreadyCompleted={choralCompleted}
+                saveResponses={saveResponses}
               />
             )}
 
@@ -502,6 +519,7 @@ function ClassicStorySteps({
                 referenceText={pronunciationDrill.practica_coral_standard}
                 kyleIpa={coralIpa}
                 storyId={story.id}
+                saveResponses={saveResponses}
               />
             )}
 
@@ -524,6 +542,7 @@ function ClassicStorySteps({
                 unlockAt={unlockAt}
                 sessionId={sessionId}
                 savedResponses={savedResponses}
+                saveResponses={saveResponses}
                 microExplanation="Contesta antes de ver la respuesta. Si la lees primero, tu cerebro no trabaja. El esfuerzo de intentar es donde ocurre el aprendizaje. Escribir tu respuesta te ayuda a fijar el vocabulario en la memoria."
               />
             </div>
@@ -544,6 +563,7 @@ function ClassicStorySteps({
                 mode={readerMode === "classroom-live" ? "classroom-live" : "write"}
                 sessionId={sessionId}
                 savedResponses={savedPersonalResponses}
+                saveResponses={saveResponses}
                 microExplanation={
                   readerMode === "classroom-live"
                     ? undefined

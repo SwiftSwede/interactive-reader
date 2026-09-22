@@ -19,6 +19,7 @@ type PersonalQuestionsProps = {
   microExplanation?: string;
   sessionId?: string;
   savedResponses?: SavedPersonalResponse[];
+  saveResponses?: boolean;
 };
 
 type FeedbackState = {
@@ -88,6 +89,7 @@ export default function PersonalQuestions({
   microExplanation,
   sessionId,
   savedResponses,
+  saveResponses = true,
 }: PersonalQuestionsProps) {
   const initial = hydrateFromSaved(questions, savedResponses);
   const [answers, setAnswers] = useState<Record<number, string>>(
@@ -158,6 +160,7 @@ export default function PersonalQuestions({
     const answer = answers[position]?.trim();
 
     if (!answer || answer.length < 2) return;
+    if (!saveResponses) return;
 
     setFeedbackStates((prev) => ({
       ...prev,
@@ -314,7 +317,9 @@ export default function PersonalQuestions({
                 onChange={(e) =>
                   handleAnswerChange(q.position, q.id, e.target.value)
                 }
-                disabled={state?.loading === true || maxedOut}
+                disabled={
+                  state?.loading === true || maxedOut || !saveResponses
+                }
               />
 
               {usedAttempts > 0 && (
@@ -328,7 +333,11 @@ export default function PersonalQuestions({
               {!state?.corrections && !maxedOut && (
                 <button
                   onClick={() => handleCheck(q.position, q.question, q.id)}
-                  disabled={!answer.trim() || state?.loading === true}
+                  disabled={
+                    !answer.trim() ||
+                    state?.loading === true ||
+                    !saveResponses
+                  }
                   className={`mt-2 min-h-11 text-label-md px-5 py-3 rounded-card transition-colors ${
                     answer.trim() && state?.loading !== true
                       ? "bg-accent text-white hover:bg-accent-hover"

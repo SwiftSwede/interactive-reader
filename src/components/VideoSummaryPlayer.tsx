@@ -13,6 +13,7 @@ import EndClassButton from "@/components/EndClassButton";
 import { getSessionPhase } from "@/lib/session-phase";
 import { remainingMs } from "@/lib/writing";
 import type {
+  CourseLevel,
   VideoSummaryFreeWrite as FreeWrite,
   VideoSummaryParagraph,
   VideoSummaryTeachingNote,
@@ -42,6 +43,8 @@ export default function VideoSummaryPlayer({
   bodyText,
   sessionId,
   isTeacher,
+  previewLevel = null,
+  saveResponses = true,
   sessionStartTime,
   sessionEndTime,
   timerStartedAt: initialTimer,
@@ -61,6 +64,8 @@ export default function VideoSummaryPlayer({
   bodyText: string;
   sessionId: string;
   isTeacher: boolean;
+  previewLevel?: CourseLevel | null;
+  saveResponses?: boolean;
   sessionStartTime: string | null;
   sessionEndTime: string | null;
   timerStartedAt: string | null;
@@ -183,6 +188,7 @@ export default function VideoSummaryPlayer({
           title={title}
           level={level}
           isTeacher={isTeacher}
+          previewLevel={previewLevel}
         />
         <nav className="step-progress mx-auto max-w-2xl px-2" aria-label="Pasos">
           {STEPS.map((item, index) => {
@@ -284,6 +290,7 @@ export default function VideoSummaryPlayer({
             initialText={freeWrite?.submissionText ?? ""}
             alreadySubmitted={Boolean(freeWrite?.submittedAt)}
             initialTeacherWrites={teacherFreeWrites}
+            saveResponses={saveResponses}
           />
         )}
 

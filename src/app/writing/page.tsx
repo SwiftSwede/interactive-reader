@@ -4,6 +4,8 @@ import { resolveWritingSessionAccess } from "@/lib/sessions";
 import { sessionRecordingUrl } from "@/lib/session-phase";
 import { getProfile } from "@/lib/auth-server";
 import { documentTitle, writingSessionTitle } from "@/lib/page-title";
+import { isTeacherView } from "@/lib/student-preview";
+import { readTeacherStudentPreview } from "@/lib/student-preview-server";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
 import WritingSession from "@/components/WritingSession";
 import type { CourseLevel } from "@/types";
@@ -133,12 +135,13 @@ export default async function WritingPage({
     data: { user },
   } = await supabase.auth.getUser();
   const profile = user ? await getProfile(user.id) : null;
-  const isTeacher = profile?.role === "teacher";
+  const previewLevel = await readTeacherStudentPreview(profile?.role);
+  const isTeacher = isTeacherView(profile?.role, previewLevel);
 
   let submission: SubmissionRow | null = null;
   let correction: CorrectionRow | null = null;
 
-  if (user && !isTeacher) {
+  if (user && access.saveResponses) {
     const { data: submissionRow } = await supabase
       .from("writing_submissions")
       .select(
@@ -180,6 +183,8 @@ export default async function WritingPage({
       sessionStartTime={access.session.sessionStartTime}
       sessionEndTime={access.session.sessionEndTime}
       isTeacher={isTeacher}
+      previewLevel={previewLevel}
+      saveResponses={access.saveResponses}
       recordingYoutubeUrl={sessionRecordingUrl(access.session)}
       submission={
         submission
