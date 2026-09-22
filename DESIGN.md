@@ -757,8 +757,8 @@ No step flow. Single activity with a timer.
 - Text input area (full width, white, `--paper-line` border, 16px radius, min-height 300px)
 - Live word count (12px, Roboto Flex, `--text-muted`, right-aligned)
 - Pre-intermediate only: WPM display (12px, `--text-muted`)
-- Submit button (primary, 16px radius, full width). Always available.
-- Pre-intermediate: input locks at zero (auto-submit). Intermediate: input stays open after zero (visual alert only).
+- Submit button (primary, 16px radius, full width) while the sprint is running, and after zero if they already have text.
+- Both levels lock at zero during live class (pre-intermediate auto-submits). After class, empty students get Empezar and their own 10/20-min countdown.
 
 ### Exam Lesson Page (detailed)
 Task-based, collaborative (group of 2-3 students).

@@ -188,6 +188,7 @@ export default async function WritingPage({
               status: submission.status,
               wordCount: submission.word_count,
               wpm: submission.wpm,
+              startedAt: submission.started_at,
             }
           : null
       }

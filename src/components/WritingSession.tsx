@@ -3,14 +3,21 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import {
+  activeWritingTimer,
+  canStartAfterClassWriting,
   countWords,
   formatCountdown,
+  hasWritingText,
   remainingMs,
   wordsPerMinute,
   type DiffSegment,
   type InlineNote,
 } from "@/lib/writing";
-import { saveWritingDraft, submitWriting } from "@/app/writing/actions";
+import {
+  saveWritingDraft,
+  startAfterClassWriting,
+  submitWriting,
+} from "@/app/writing/actions";
 import WritingCorrectionView from "@/components/WritingCorrectionView";
 import EndClassButton from "@/components/EndClassButton";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
@@ -53,6 +60,7 @@ export default function WritingSession({
     status: "draft" | "submitted" | "corrected";
     wordCount: number;
     wpm: number | null;
+    startedAt: string | null;
   } | null;
   correction: {
     diff: DiffSegment[];
@@ -64,46 +72,70 @@ export default function WritingSession({
   sessionStartTime?: string | null;
   sessionEndTime?: string | null;
 }) {
-  const [timerStartedAt, setTimerStartedAt] = useState(initialTimerStartedAt);
+  const [sessionTimerStartedAt, setSessionTimerStartedAt] = useState(
+    initialTimerStartedAt
+  );
+  const [personalStartedAt, setPersonalStartedAt] = useState(
+    submission?.startedAt ?? null
+  );
   const [classEndedAt, setClassEndedAt] = useState(initialEndedAt);
   const [text, setText] = useState(submission?.text ?? "");
   const [status, setStatus] = useState(submission?.status ?? "draft");
   const [now, setNow] = useState(() => Date.now());
   const [saving, setSaving] = useState(false);
+  const [starting, setStarting] = useState(false);
   const [error, setError] = useState("");
   const autoSubmitted = useRef(false);
   const textRef = useRef(submission?.text ?? "");
-  const live =
-    Boolean(sessionStartTime && sessionEndTime) &&
-    getSessionPhase(
-      {
-        sessionStartTime: sessionStartTime as string,
-        sessionEndTime: sessionEndTime as string,
-        classEndedAt,
-      },
-      new Date(now)
-    ) === "live";
+  const phase =
+    sessionStartTime && sessionEndTime
+      ? getSessionPhase(
+          {
+            sessionStartTime,
+            sessionEndTime,
+            classEndedAt,
+          },
+          new Date(now)
+        )
+      : "before";
+  const live = phase === "live";
 
   const isPreInt = prompt.level === "pre-intermediate";
-  const remaining = timerStartedAt
-    ? remainingMs(timerStartedAt, prompt.writingTimeMinutes, now)
+  const timerInput = {
+    phase,
+    sessionTimerStartedAt,
+    personalStartedAt,
+    status,
+    text,
+    minutes: prompt.writingTimeMinutes,
+    now,
+  };
+  const clock = activeWritingTimer(timerInput);
+  const canStartMakeup = canStartAfterClassWriting(timerInput);
+  const remaining = clock
+    ? remainingMs(clock, prompt.writingTimeMinutes, now)
     : null;
   const timedOut = remaining !== null && remaining <= 0;
   const locked =
-    status !== "draft" ||
     isTeacher ||
-    !timerStartedAt ||
-    (isPreInt && timedOut);
+    status === "corrected" ||
+    (status === "submitted" && hasWritingText(text)) ||
+    !clock ||
+    timedOut;
   const showFiveMinute =
     remaining !== null &&
     remaining > 0 &&
     remaining <= 5 * 60 * 1000 &&
     status === "draft";
+  const showEntregar =
+    !isTeacher &&
+    status === "draft" &&
+    (clock != null || hasWritingText(text));
 
   const wordCount = countWords(text);
   const elapsedSeconds =
-    timerStartedAt && status === "draft"
-      ? Math.max(1, Math.round((now - new Date(timerStartedAt).getTime()) / 1000))
+    clock && status === "draft"
+      ? Math.max(1, Math.round((now - new Date(clock).getTime()) / 1000))
       : null;
   const liveWpm =
     isPreInt && elapsedSeconds
@@ -112,7 +144,9 @@ export default function WritingSession({
 
   const handleSubmit = useCallback(
     async (fromTimer = false) => {
-      if (isTeacher || status !== "draft" || !timerStartedAt) return;
+      if (isTeacher || status !== "draft") return;
+      const startedAt = clock ?? personalStartedAt ?? sessionTimerStartedAt;
+      if (!startedAt && !hasWritingText(textRef.current)) return;
       if (autoSubmitted.current && fromTimer) return;
       if (fromTimer) autoSubmitted.current = true;
       setSaving(true);
@@ -121,7 +155,7 @@ export default function WritingSession({
         sessionId,
         promptId: prompt.id,
         text: textRef.current,
-        startedAt: timerStartedAt,
+        startedAt: startedAt ?? new Date().toISOString(),
         level: prompt.level,
       });
       setSaving(false);
@@ -132,35 +166,63 @@ export default function WritingSession({
       }
       setStatus("submitted");
     },
-    [isTeacher, status, timerStartedAt, sessionId, prompt.id, prompt.level]
+    [
+      isTeacher,
+      status,
+      clock,
+      personalStartedAt,
+      sessionTimerStartedAt,
+      sessionId,
+      prompt.id,
+      prompt.level,
+    ]
   );
 
+  async function handleStartMakeup() {
+    if (isTeacher || starting) return;
+    setStarting(true);
+    setError("");
+    const result = await startAfterClassWriting({
+      sessionId,
+      promptId: prompt.id,
+    });
+    setStarting(false);
+    if (!result.ok) {
+      setError(result.error);
+      return;
+    }
+    autoSubmitted.current = false;
+    setPersonalStartedAt(result.startedAt);
+    setStatus("draft");
+    setNow(Date.now());
+  }
+
   useEffect(() => {
-    if (!timerStartedAt) return;
+    if (isTeacher) return;
     const id = window.setInterval(() => {
       const t = Date.now();
       setNow(t);
       if (
         isPreInt &&
-        remainingMs(timerStartedAt, prompt.writingTimeMinutes, t) <= 0 &&
-        status === "draft" &&
-        !isTeacher
+        clock &&
+        remainingMs(clock, prompt.writingTimeMinutes, t) <= 0 &&
+        status === "draft"
       ) {
         void handleSubmit(true);
       }
     }, 250);
     return () => window.clearInterval(id);
   }, [
-    timerStartedAt,
-    isPreInt,
-    status,
     isTeacher,
+    isPreInt,
+    clock,
+    status,
     handleSubmit,
     prompt.writingTimeMinutes,
   ]);
 
   useEffect(() => {
-    if (isTeacher || timerStartedAt) return;
+    if (isTeacher) return;
 
     const supabase = createClient();
     const channel = supabase
@@ -178,7 +240,9 @@ export default function WritingSession({
             timer_started_at?: string | null;
             class_ended_at?: string | null;
           };
-          if (row.timer_started_at) setTimerStartedAt(row.timer_started_at);
+          if (row.timer_started_at) {
+            setSessionTimerStartedAt(row.timer_started_at);
+          }
           if (row.class_ended_at) setClassEndedAt(row.class_ended_at);
         }
       )
@@ -191,7 +255,7 @@ export default function WritingSession({
         .eq("id", sessionId)
         .maybeSingle();
       if (data?.timer_started_at) {
-        setTimerStartedAt(data.timer_started_at);
+        setSessionTimerStartedAt(data.timer_started_at);
       }
       if (data?.class_ended_at) {
         setClassEndedAt(data.class_ended_at);
@@ -202,20 +266,20 @@ export default function WritingSession({
       window.clearInterval(poll);
       void supabase.removeChannel(channel);
     };
-  }, [isTeacher, timerStartedAt, sessionId]);
+  }, [isTeacher, sessionId]);
 
   useEffect(() => {
-    if (isTeacher || !timerStartedAt || status !== "draft" || locked) return;
+    if (isTeacher || !clock || status !== "draft" || locked) return;
     const id = window.setInterval(() => {
       void saveWritingDraft({
         sessionId,
         promptId: prompt.id,
         text: textRef.current,
-        startedAt: timerStartedAt,
+        startedAt: clock,
       });
     }, 10000);
     return () => window.clearInterval(id);
-  }, [isTeacher, timerStartedAt, status, locked, sessionId, prompt.id]);
+  }, [isTeacher, clock, status, locked, sessionId, prompt.id]);
 
   return (
     <main className="min-h-screen bg-paper">
@@ -235,16 +299,11 @@ export default function WritingSession({
         {recordingYoutubeUrl ? (
           <RecordingBanner youtubeUrl={recordingYoutubeUrl} />
         ) : null}
-        {timerStartedAt && status === "draft" && remaining !== null && remaining > 0 ? (
+        {clock && status === "draft" && remaining !== null && remaining > 0 ? (
           <LessonTimer
             value={formatCountdown(remaining)}
             tone={showFiveMinute ? "warning" : "default"}
           />
-        ) : null}
-        {timerStartedAt && status === "draft" && timedOut && !isPreInt ? (
-          <p className="mb-3 text-right font-heading text-headline-md text-error">
-            Tiempo. Puedes seguir.
-          </p>
         ) : null}
         {notes ? (
           <p className="mb-4 text-body-main text-text-secondary">{notes}</p>
@@ -316,7 +375,28 @@ export default function WritingSession({
           </p>
         ) : null}
 
-        {!isTeacher && !timerStartedAt && status === "draft" ? (
+        {!isTeacher && canStartMakeup ? (
+          <div className="mt-4">
+            <p className="rounded-card bg-accent-softer px-3 py-3 text-body-main text-text-secondary">
+              Tienes {prompt.writingTimeMinutes} minutos cuando empieces. El
+              recuadro se abre entonces.
+            </p>
+            <button
+              type="button"
+              disabled={starting}
+              onClick={() => void handleStartMakeup()}
+              className="mt-3 h-12 w-full rounded-card bg-accent text-label-md font-medium text-white disabled:opacity-60"
+            >
+              {starting ? "Empezando..." : "Empezar"}
+            </button>
+          </div>
+        ) : null}
+
+        {!isTeacher &&
+        !canStartMakeup &&
+        !clock &&
+        status === "draft" &&
+        phase !== "after" ? (
           <p className="mt-4 rounded-card bg-accent-softer px-3 py-3 text-body-main text-text-secondary">
             Espera a que el Profe Kyle inicie el tiempo.
           </p>
@@ -351,9 +431,11 @@ export default function WritingSession({
                 rows={12}
                 className="min-h-[300px] w-full resize-y rounded-card border border-paper-line bg-white px-3 py-3 text-body-main text-text-primary placeholder:text-text-muted focus:border-2 focus:border-accent focus:outline-none disabled:bg-surface-hover disabled:text-text-muted"
                 placeholder={
-                  timerStartedAt
+                  clock && !timedOut
                     ? "Write here. Don't stop."
-                    : "El recuadro se abre cuando empiece el tiempo."
+                    : canStartMakeup
+                      ? "El recuadro se abre cuando empieces."
+                      : "El recuadro se abre cuando empiece el tiempo."
                 }
               />
             </label>
@@ -366,7 +448,7 @@ export default function WritingSession({
                 : ""}
             </p>
 
-            {!isTeacher && status === "draft" && timerStartedAt ? (
+            {showEntregar ? (
               <button
                 type="button"
                 disabled={saving}
@@ -377,7 +459,7 @@ export default function WritingSession({
               </button>
             ) : null}
 
-            {status === "submitted" ? (
+            {status === "submitted" && !canStartMakeup ? (
               <p className="mt-4 rounded-card bg-success-bg px-3 py-3 text-body-main text-success">
                 Ya lo entregaste. Cuando Kyle lo corrija, lo vas a ver aquí.
               </p>

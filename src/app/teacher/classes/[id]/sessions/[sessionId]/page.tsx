@@ -9,7 +9,7 @@ import SessionRecordingForm from "@/components/teacher/SessionRecordingForm";
 import AttendanceToggle from "@/components/teacher/AttendanceToggle";
 import { isAutoMarked } from "@/lib/attendance";
 import EndClassButton from "@/components/EndClassButton";
-import { getSessionPhase } from "@/lib/session-phase";
+import { getSessionPhase, teachingEndMs } from "@/lib/session-phase";
 import StartWritingTimerButton from "./StartWritingTimerButton";
 import WritingTitleForm from "./WritingTitleForm";
 import StartExamReviewButton from "./StartExamReviewButton";
@@ -29,6 +29,7 @@ import {
 } from "@/lib/teacher";
 import { parseLyricBlanks } from "@/lib/music";
 import { getSongBlankAnalytics } from "@/lib/services/songAttempts";
+import { isLateWritingSubmit } from "@/lib/writing";
 
 export const metadata = {
   title: "Clase - Profe Kyle",
@@ -62,9 +63,14 @@ function openedLabel(
   return `Abrió ${noun}. Fuera de la ventana de clase.`;
 }
 
-function submissionStatusLabel(status: string | undefined) {
+function submissionStatusLabel(
+  status: string | undefined,
+  late = false
+) {
   if (status === "corrected") return "Corregido";
-  if (status === "submitted") return "Entregado";
+  if (status === "submitted") {
+    return late ? "Entregado · después de clase" : "Entregado";
+  }
   if (status === "draft") return "Escribiendo";
   return "Sin texto";
 }
@@ -157,6 +163,11 @@ export default async function SessionDetailPage({
       sessionEndTime: session.end,
       classEndedAt: session.classEndedAt,
     }) === "live";
+  const teachingEndedAt = teachingEndMs({
+    sessionStartTime: session.start,
+    sessionEndTime: session.end,
+    classEndedAt: session.classEndedAt,
+  });
 
   const copyHref = studentSessionPath({
     sessionType: session.sessionType,
@@ -564,7 +575,18 @@ export default async function SessionDetailPage({
                   )}
                   {isWriting ? (
                     <div className="mt-2 text-sm text-text-secondary">
-                      <p>{submissionStatusLabel(submission?.status)}</p>
+                      <p>
+                        {submissionStatusLabel(
+                          submission?.status,
+                          Boolean(
+                            submission &&
+                              isLateWritingSubmit(
+                                submission.submittedAt,
+                                teachingEndedAt
+                              )
+                          )
+                        )}
+                      </p>
                       {submission && (
                         <p className="mt-0.5 text-sm text-text-muted">
                           {submission.wordCount} palabras
