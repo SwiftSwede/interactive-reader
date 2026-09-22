@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import CopySessionLink from "@/app/teacher/classes/[id]/CopySessionLink";
@@ -32,6 +33,7 @@ export default function TeacherSessionRow({
   unlocked,
   selected,
   onSelect,
+  contentAction,
 }: {
   courseId: string;
   classNumber: number;
@@ -49,6 +51,7 @@ export default function TeacherSessionRow({
   unlocked: boolean;
   selected: boolean;
   onSelect: () => void;
+  contentAction?: ReactNode;
 }) {
   const studentHref = studentSessionPath({
     sessionType,
@@ -73,7 +76,13 @@ export default function TeacherSessionRow({
         onClick={onSelect}
         className="w-full pr-12 text-left"
       >
-        <p className="text-label-sm text-text-muted">
+        <p
+          className={`text-label-sm ${
+            contentStatus === "Por elegir"
+              ? "text-text-accent"
+              : "text-text-muted"
+          }`}
+        >
           Clase {classNumber} · {typeLabel} · {contentStatus} · {recordingStatus}
         </p>
         <p className="mt-1 text-label-md text-text-primary">{title}</p>
@@ -108,6 +117,7 @@ export default function TeacherSessionRow({
           </div>
         )
       ) : null}
+      {contentAction ? <div className="mt-2">{contentAction}</div> : null}
       <div className="mt-2 grid grid-cols-2 items-stretch gap-2">
         {studentHref ? <CopySessionLink href={studentHref} /> : <span />}
         <DeleteSessionButton courseId={courseId} sessionId={sessionId} />

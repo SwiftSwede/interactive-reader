@@ -96,6 +96,11 @@ export default async function TeacherGroupsPage() {
                 className="block px-4 py-4 hover:bg-surface-hover active:bg-surface-hover"
               >
                 <p className="text-label-md text-text-primary">{course.name}</p>
+                {course.theme ? (
+                  <p className="mt-1 text-label-sm text-text-secondary">
+                    {course.theme}
+                  </p>
+                ) : null}
                 <p className="mt-1 text-label-sm text-text-secondary">
                   {courseLevelLabel(course.level)} · {month} ·{" "}
                   {studentCountLabel(studentCountByCourse.get(course.id) ?? 0)}
@@ -126,7 +131,20 @@ export default async function TeacherGroupsPage() {
             Todos los grupos. Los meses anteriores siguen aquí.
           </p>
         </div>
-        <NewMonthButton />
+          <NewMonthButton
+            courses={courses.map((course) => {
+              const list = sessionsByCourse.get(course.id) ?? [];
+              return {
+                id: course.id,
+                name: course.name,
+                level: course.level,
+                archived: course.archived,
+                createdAt: course.created_at,
+                sessionStarts: list.map((session) => session.start),
+                sessionDates: list.map((session) => session.sessionDate),
+              };
+            })}
+          />
       </div>
 
       {courses.length === 0 ? (

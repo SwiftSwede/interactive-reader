@@ -11,6 +11,7 @@ import ClassStrip, {
   type ClassStripItem,
 } from "@/components/teacher/ClassStrip";
 import DeleteCourseButton from "./DeleteCourseButton";
+import CourseThemeForm from "@/components/teacher/CourseThemeForm";
 import CourseWorkspace from "@/components/teacher/CourseWorkspace";
 import NewClassButton from "@/components/teacher/NewClassButton";
 import ZoomUrlForm from "./ZoomUrlForm";
@@ -214,6 +215,39 @@ export default async function CourseClassPage({
     names.sort((a, b) => a.localeCompare(b, "es"));
   }
 
+  const resolvedIds = orderedSessions
+    .filter(
+      (session) =>
+        session.sessionType === "video_summary" ||
+        session.sessionType === "presentation" ||
+        session.sessionType === "movie_talk"
+    )
+    .map((session) => session.id);
+  const busyIds = new Set<string>();
+  if (resolvedIds.length > 0) {
+    const [videoRows, presentationRows, movieTalkRows] = await Promise.all([
+      supabase
+        .from("video_summary_free_writes")
+        .select("course_session_id")
+        .in("course_session_id", resolvedIds),
+      supabase
+        .from("presentation_responses")
+        .select("course_session_id")
+        .in("course_session_id", resolvedIds),
+      supabase
+        .from("comprehension_responses")
+        .select("course_session_id")
+        .in("course_session_id", resolvedIds),
+    ]);
+    for (const row of [
+      ...(videoRows.data ?? []),
+      ...(presentationRows.data ?? []),
+      ...(movieTalkRows.data ?? []),
+    ] as Array<{ course_session_id: string | null }>) {
+      if (row.course_session_id) busyIds.add(row.course_session_id);
+    }
+  }
+
   const stripSessions: ClassStripItem[] = orderedSessions.map((session) => {
     const byStudent = attendanceBySession.get(session.id);
     const students: AttendanceMark[] = roster.map((student) => {
@@ -247,6 +281,15 @@ export default async function CourseClassPage({
         classEndedAt: session.classEndedAt,
       }),
       students,
+      canReopen:
+        (session.sessionType === "video_summary" ||
+          session.sessionType === "presentation" ||
+          session.sessionType === "movie_talk") &&
+        !busyIds.has(session.id),
+      needsContent:
+        sessionContentStatus(session) === "Sin contenido" &&
+        session.sessionType !== "pronunciation" &&
+        session.sessionType !== "flex",
     };
   });
 
@@ -260,6 +303,11 @@ export default async function CourseClassPage({
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <h1 className="text-headline-lg text-text-primary">{course.name}</h1>
+          {course.theme ? (
+            <p className="mt-1 text-label-md text-text-secondary">
+              {course.theme}
+            </p>
+          ) : null}
           <p className="mt-1 text-label-sm text-text-muted">
             {courseLevelLabel(course.level as CourseLevel)}
           </p>
@@ -297,6 +345,8 @@ export default async function CourseClassPage({
         />
       ) : null}
 
+      <CourseThemeForm courseId={course.id} theme={course.theme} />
+
       <ZoomUrlForm courseId={course.id} zoomUrl={course.zoom_url} />
 
       <CourseWorkspace
@@ -319,7 +369,17 @@ export default async function CourseClassPage({
                 Todavía no hay clases. Crea la primera.
               </p>
             ) : (
-              <ClassStrip courseId={course.id} sessions={stripSessions} />
+              <ClassStrip
+                courseId={course.id}
+                courseLevel={course.level as CourseLevel}
+                sessions={stripSessions}
+                stories={stories}
+                presentationPrompts={presentationPrompts}
+                conversationCopyPrompts={conversationCopyPrompts}
+                writingPrompts={writingPrompts}
+                examPrompts={examPrompts}
+                conversationPrompts={conversationPrompts}
+              />
             )}
           </>
         }

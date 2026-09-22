@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import { useTeacherPanel } from "./TeacherPanelContext";
 import SessionContextPanel from "./SessionContextPanel";
 import TeacherSessionRow from "./TeacherSessionRow";
+import SessionContentDialog from "./SessionContentDialog";
 import { isLiveOnlySessionType, type SessionType } from "@/lib/activities";
 import type { AttendanceMark } from "@/lib/teacher";
+import type { CourseLevel } from "@/types";
 
 const SELECTED_SESSION_PARAM = "clase";
 
@@ -44,14 +46,38 @@ export type ClassStripItem = {
   attendedNames: string[];
   unlocked: boolean;
   students: AttendanceMark[];
+  canReopen: boolean;
+  needsContent: boolean;
+};
+
+type CatalogOption = { id: string; title: string };
+type StoryOption = { id: string; title: string; kind?: string | null };
+type ConversationCopyOption = {
+  id: string;
+  title: string;
+  questions: string[];
 };
 
 export default function ClassStrip({
   courseId,
+  courseLevel,
   sessions,
+  stories,
+  presentationPrompts,
+  conversationCopyPrompts,
+  writingPrompts,
+  examPrompts,
+  conversationPrompts,
 }: {
   courseId: string;
+  courseLevel: CourseLevel;
   sessions: ClassStripItem[];
+  stories: StoryOption[];
+  presentationPrompts: CatalogOption[];
+  conversationCopyPrompts: ConversationCopyOption[];
+  writingPrompts: CatalogOption[];
+  examPrompts: CatalogOption[];
+  conversationPrompts: CatalogOption[];
 }) {
   const { setPanel } = useTeacherPanel();
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -104,6 +130,43 @@ export default function ClassStrip({
           attendedNames={session.attendedNames}
           unlocked={session.unlocked}
           selected={session.id === selectedId}
+          contentAction={
+            session.sessionType === "flex" || session.canReopen ? (
+              <SessionContentDialog
+                courseId={courseId}
+                courseLevel={courseLevel}
+                sessionId={session.id}
+                sessionType={session.sessionType}
+                mode="flex"
+                stories={stories}
+                presentationPrompts={presentationPrompts}
+                conversationCopyPrompts={conversationCopyPrompts}
+                writingPrompts={writingPrompts}
+                examPrompts={examPrompts}
+                conversationPrompts={conversationPrompts}
+                triggerLabel={
+                  session.sessionType === "flex"
+                    ? "Por elegir"
+                    : "Cambiar tipo"
+                }
+              />
+            ) : session.needsContent ? (
+              <SessionContentDialog
+                courseId={courseId}
+                courseLevel={courseLevel}
+                sessionId={session.id}
+                sessionType={session.sessionType}
+                mode="assign"
+                stories={stories}
+                presentationPrompts={presentationPrompts}
+                conversationCopyPrompts={conversationCopyPrompts}
+                writingPrompts={writingPrompts}
+                examPrompts={examPrompts}
+                conversationPrompts={conversationPrompts}
+                triggerLabel="Elegir contenido"
+              />
+            ) : null
+          }
           onSelect={() => {
             const next = selectedId === session.id ? null : session.id;
             setSelectedId(next);

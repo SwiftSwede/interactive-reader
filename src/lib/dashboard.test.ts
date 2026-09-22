@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";
 import {
+  courseMonthHeading,
   formatCountdownLabel,
   formatSessionDay,
   hasSessionContent,
@@ -63,6 +64,20 @@ describe("hasSessionContent", () => {
     assert.equal(
       hasSessionContent({
         sessionType: "story",
+        storyId: null,
+        writingPromptId: null,
+        examPromptId: null,
+        presentationPromptId: null,
+        conversationPromptId: null,
+      }),
+      false
+    );
+  });
+
+  test("flex is not ready", () => {
+    assert.equal(
+      hasSessionContent({
+        sessionType: "flex",
         storyId: null,
         writingPromptId: null,
         examPromptId: null,
@@ -212,6 +227,28 @@ describe("toDashboardLesson", () => {
     );
   });
 
+  test("flex is live-only with no href", () => {
+    const lesson = toDashboardLesson({
+      sessionId: "s1",
+      sessionType: "flex",
+      storyId: null,
+      writingPromptId: null,
+      examPromptId: null,
+      presentationPromptId: null,
+      conversationPromptId: null,
+      title: "Por elegir",
+      storySlug: null,
+      token: "tok",
+      recordingYoutubeUrl: null,
+      completed: false,
+      now: new Date("2026-09-01T12:00:00.000Z"),
+      ...times,
+    });
+    assert.equal(lesson.liveOnly, true);
+    assert.equal(lesson.href, null);
+    assert.equal(lesson.lifecycle, "upcoming");
+  });
+
   test("hasRecording follows the youtube url", () => {
     const lesson = toDashboardLesson({
       sessionId: "s1",
@@ -244,6 +281,17 @@ describe("format helpers", () => {
   test("countdown format switches at one hour", () => {
     assert.equal(formatCountdownLabel(3 * 3600 * 1000 + 22 * 60 * 1000), "3h 22m");
     assert.equal(formatCountdownLabel(22 * 60 * 1000 + 5 * 1000), "22m 05s");
+  });
+
+  test("courseMonthHeading appends theme only when set", () => {
+    assert.equal(
+      courseMonthHeading("2026-10-06", "Intermediate 2026 OCT", "Viajes"),
+      "OCTUBRE · INTERMEDIATE 2026 OCT · VIAJES"
+    );
+    assert.equal(
+      courseMonthHeading("2026-10-06", "Intermediate 2026 OCT"),
+      "OCTUBRE · INTERMEDIATE 2026 OCT"
+    );
   });
 });
 
@@ -340,6 +388,18 @@ describe("pickActiveCourseId", () => {
       "intermediate",
       now
     );
+    assert.equal(id, "sep");
+  });
+
+  test("prefers the current calendar month over a future unarchived course", () => {
+    const october: CourseCandidate = {
+      courseId: "oct",
+      level: "intermediate",
+      enrolledAt: "2026-09-20T00:00:00.000Z",
+      latestStart: Date.parse("2026-10-06T19:00:00.000Z"),
+      sessionDates: ["2026-10-01", "2026-10-06"],
+    };
+    const id = pickActiveCourseId([september, october], "intermediate", now);
     assert.equal(id, "sep");
   });
 });

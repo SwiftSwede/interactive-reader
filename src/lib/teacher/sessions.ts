@@ -13,6 +13,7 @@ export type OwnedCourse = {
   teacher_id: string;
   archived: boolean;
   zoom_url: string | null;
+  theme: string | null;
 };
 
 export type StoryRef = {
@@ -202,6 +203,9 @@ export function sessionTitle(session: TeacherSession): string {
   if (session.sessionType === "pronunciation") {
     return "Pronunciación";
   }
+  if (session.sessionType === "flex") {
+    return "Por elegir";
+  }
   return session.story?.title ?? "Historia";
 }
 
@@ -212,7 +216,8 @@ export function sessionContentStatus(session: {
   examPromptId: string | null;
   presentationPromptId: string | null;
   conversationPromptId: string | null;
-}): "Contenido listo" | "Sin contenido" {
+}): "Contenido listo" | "Sin contenido" | "Por elegir" {
+  if (session.sessionType === "flex") return "Por elegir";
   return hasSessionContent(session) ? "Contenido listo" : "Sin contenido";
 }
 
@@ -313,7 +318,7 @@ export async function getOwnedCourse(courseId: string): Promise<{
   const supabase = await createClient();
   const { data } = await supabase
     .from("courses")
-    .select("id, name, level, teacher_id, archived, zoom_url")
+    .select("id, name, level, teacher_id, archived, zoom_url, theme")
     .eq("id", courseId)
     .eq("teacher_id", teacher.id)
     .maybeSingle();
@@ -324,7 +329,11 @@ export async function getOwnedCourse(courseId: string): Promise<{
 
   const course = data as OwnedCourse;
   return {
-    course: { ...course, zoom_url: course.zoom_url ?? null },
+    course: {
+      ...course,
+      zoom_url: course.zoom_url ?? null,
+      theme: course.theme?.trim() ? course.theme : null,
+    },
     supabase,
   };
 }

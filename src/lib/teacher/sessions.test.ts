@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";
+import { MONTHLY_TEMPLATE } from "../monthly-template";
 import {
   readinessLabel,
   readySessionCount,
@@ -30,6 +31,17 @@ describe("readinessLabel", () => {
     ];
     assert.equal(readinessLabel(sessions), "1/8 clases listas");
   });
+
+  test("a generated empty month is 1/8 because only pronunciation is ready", () => {
+    const sessions = MONTHLY_TEMPLATE.map((sessionType) => ({
+      sessionType,
+      storyId: null,
+      ...emptyRefs,
+    }));
+    assert.equal(sessions.length, 8);
+    assert.equal(readySessionCount(sessions), 1);
+    assert.equal(readinessLabel(sessions), "1/8 clases listas");
+  });
 });
 
 describe("sessionContentStatus", () => {
@@ -57,6 +69,28 @@ describe("sessionContentStatus", () => {
         presentationPromptId: null,
         conversationPromptId: "p1",
       }),
+      "Contenido listo"
+    );
+  });
+
+  test("labels flex as Por elegir, empty story as sin contenido, pronunciation as ready", () => {
+    const empty = {
+      storyId: null,
+      writingPromptId: null,
+      examPromptId: null,
+      presentationPromptId: null,
+      conversationPromptId: null,
+    };
+    assert.equal(
+      sessionContentStatus({ sessionType: "flex", ...empty }),
+      "Por elegir"
+    );
+    assert.equal(
+      sessionContentStatus({ sessionType: "story", ...empty }),
+      "Sin contenido"
+    );
+    assert.equal(
+      sessionContentStatus({ sessionType: "pronunciation", ...empty }),
       "Contenido listo"
     );
   });

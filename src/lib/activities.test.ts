@@ -127,6 +127,25 @@ describe("session types", () => {
     );
   });
 
+  test("accepts flex as live-only without a lesson path", () => {
+    assert.equal(isSessionType("flex"), true);
+    assert.equal(isLiveOnlySessionType("flex"), true);
+    assert.equal(sessionTypeLabel("flex"), "Por elegir");
+    assert.equal(
+      studentSessionPath({ sessionType: "flex", token: "tok" }),
+      null
+    );
+    assert.equal(
+      teacherJoinAppHref({
+        sessionType: "flex",
+        token: "tok",
+        courseId: "c1",
+        sessionId: "s1",
+      }),
+      null
+    );
+  });
+
   test("studentSessionPath still builds writing and exam URLs", () => {
     assert.equal(
       studentSessionPath({ sessionType: "writing", token: "abc" }),

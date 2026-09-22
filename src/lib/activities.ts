@@ -10,7 +10,8 @@ export type SessionType =
   | "pronunciation"
   | "dialogue"
   | "movie_talk"
-  | "song";
+  | "song"
+  | "flex";
 
 export function isSessionType(
   value: string | null | undefined
@@ -25,12 +26,13 @@ export function isSessionType(
     value === "pronunciation" ||
     value === "dialogue" ||
     value === "movie_talk" ||
-    value === "song"
+    value === "song" ||
+    value === "flex"
   );
 }
 
 export function isLiveOnlySessionType(type: SessionType): boolean {
-  return type === "pronunciation";
+  return type === "pronunciation" || type === "flex";
 }
 
 /** Story-row catalog types that reuse /lesson/[slug] (not video_summary). */
@@ -58,6 +60,7 @@ export function sessionTypeLabel(type: SessionType): string {
   if (type === "dialogue") return "Diálogo";
   if (type === "movie_talk") return "Movie Talk";
   if (type === "song") return "Música";
+  if (type === "flex") return "Por elegir";
   return "Historia";
 }
 

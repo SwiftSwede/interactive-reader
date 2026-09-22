@@ -31,8 +31,13 @@ export type DashboardLesson = {
 export type DashboardData = {
   displayName: string | null;
   courseDisplayName: string | null;
+  courseTheme: string | null;
   lessons: DashboardLesson[];
-  olderCourses: { displayName: string; lessons: DashboardLesson[] }[];
+  olderCourses: {
+    displayName: string;
+    theme: string | null;
+    lessons: DashboardLesson[];
+  }[];
   totals: { completed: number; total: number };
   todaySession: DashboardLesson | null;
   zoomUrl: string | null;
@@ -53,6 +58,7 @@ type ContentRefs = {
 };
 
 export function hasSessionContent(session: ContentRefs): boolean {
+  if (session.sessionType === "flex") return false;
   if (isLiveOnlySessionType(session.sessionType)) return true;
   if (session.sessionType === "writing") return Boolean(session.writingPromptId);
   if (session.sessionType === "exam") return Boolean(session.examPromptId);
@@ -77,15 +83,22 @@ export function formatSessionDay(sessionDate: string): string {
 
 export function courseMonthHeading(
   sessionDate: string,
-  courseName: string
+  courseName: string,
+  theme?: string | null
 ): string {
   const [year, month] = sessionDate.split("-").map(Number);
-  if (!year || !month) return courseName.toUpperCase();
+  if (!year || !month) {
+    return theme
+      ? `${courseName.toUpperCase()} · ${theme.toUpperCase()}`
+      : courseName.toUpperCase();
+  }
   const date = new Date(Date.UTC(year, month - 1, 1));
   const monthLabel = date
     .toLocaleDateString("es", { month: "long", timeZone: "UTC" })
     .toUpperCase();
-  return `${monthLabel} · ${courseName.toUpperCase()}`;
+  const base = `${monthLabel} · ${courseName.toUpperCase()}`;
+  const trimmed = theme?.trim();
+  return trimmed ? `${base} · ${trimmed.toUpperCase()}` : base;
 }
 
 export function isLocalCalendarDate(
@@ -258,7 +271,7 @@ export function toDashboardLesson(input: {
       sessionEndTime: input.sessionEndTime,
       classEndedAt: input.classEndedAt,
     },
-    contentReady,
+    liveOnly || contentReady,
     input.now
   );
   const href =
@@ -381,6 +394,7 @@ export async function loadDashboard(
   const empty: DashboardData = {
     displayName: displayNameFallback,
     courseDisplayName: null,
+    courseTheme: null,
     lessons: [],
     olderCourses: [],
     totals: { completed: 0, total: 0 },
@@ -396,7 +410,7 @@ export async function loadDashboard(
   try {
     const enrollmentPromise = supabase
       .from("course_enrollments")
-      .select("course_id, display_name, enrolled_at, courses ( id, name, level, archived, zoom_url )")
+      .select("course_id, display_name, enrolled_at, courses ( id, name, level, archived, zoom_url, theme )")
       .eq("student_id", userId);
 
     const [
@@ -457,6 +471,7 @@ export async function loadDashboard(
       level: CourseLevel;
       archived: boolean;
       zoom_url?: string | null;
+      theme?: string | null;
     };
     type EnrollmentRow = {
       course_id: string;
@@ -468,7 +483,7 @@ export async function loadDashboard(
     const enrollments = ((enrollmentResult.data ?? []) as EnrollmentRow[])
       .map((row) => {
         const course = Array.isArray(row.courses) ? row.courses[0] : row.courses;
-        if (!course || course.archived) return null;
+        if (!course) return null;
         return {
           courseId: row.course_id,
           displayName: row.display_name?.trim() || null,
@@ -615,6 +630,7 @@ export async function loadDashboard(
       .sort((a, b) => b.latestStart - a.latestStart)
       .map((row) => ({
         displayName: row.enrollment.course.name,
+        theme: row.enrollment.course.theme?.trim() || null,
         lessons: [...row.lessons].sort(bySessionStartDesc),
       }));
 
@@ -625,6 +641,7 @@ export async function loadDashboard(
       displayName:
         active?.enrollment.displayName ?? displayNameFallback,
       courseDisplayName: active?.enrollment.course.name ?? null,
+      courseTheme: active?.enrollment.course.theme?.trim() || null,
       lessons,
       olderCourses: older,
       totals: { completed: completedCount, total: lessons.length },

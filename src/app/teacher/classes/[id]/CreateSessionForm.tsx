@@ -51,6 +51,8 @@ export default function CreateSessionForm({
   examPrompts,
   conversationPrompts,
   onCreated,
+  lockedType,
+  assignToSessionId,
 }: {
   courseId: string;
   courseLevel: CourseLevel;
@@ -61,12 +63,16 @@ export default function CreateSessionForm({
   examPrompts: CatalogPromptOption[];
   conversationPrompts: CatalogPromptOption[];
   onCreated?: () => void;
+  lockedType?: SessionType;
+  assignToSessionId?: string;
 }) {
   const [state, formAction, isPending] = useActionState(
     createSession,
     initialState
   );
-  const [sessionType, setSessionType] = useState<SessionType>("story");
+  const [sessionType, setSessionType] = useState<SessionType>(
+    lockedType ?? "story"
+  );
   const [promptText, setPromptText] = useState("");
   const [copyPromptId, setCopyPromptId] = useState("");
   const [promptMode, setPromptMode] = useState<"new" | "copy">("new");
@@ -126,8 +132,12 @@ export default function CreateSessionForm({
       <input type="hidden" name="courseId" value={courseId} />
       <input type="hidden" name="startIso" defaultValue="" />
       <input type="hidden" name="sessionType" value={sessionType} />
+      {assignToSessionId ? (
+        <input type="hidden" name="assignToSessionId" value={assignToSessionId} />
+      ) : null}
 
-      <fieldset>
+      {lockedType ? null : (
+        <fieldset>
         <legend className="mb-1.5 block text-sm font-medium text-text-secondary">
           Tipo de clase
         </legend>
@@ -246,6 +256,7 @@ export default function CreateSessionForm({
           </button>
         </div>
       </fieldset>
+      )}
 
       {sessionType === "writing" ||
       sessionType === "exam" ||
@@ -832,13 +843,16 @@ export default function CreateSessionForm({
         </label>
       )}
 
+      {assignToSessionId ? null : (
       <label className="block">
         <span className="mb-1.5 block text-sm font-medium text-text-secondary">
           Día
         </span>
         <input type="date" name="sessionDate" required className={fieldClass} />
       </label>
+      )}
 
+      {assignToSessionId ? null : (
       <div>
         <span className="mb-1.5 block text-sm font-medium text-text-secondary">
           Inicio (90 minutos)
@@ -880,7 +894,9 @@ export default function CreateSessionForm({
           La hora es la de tu teléfono, en intervalos de 15 minutos.
         </p>
       </div>
+      )}
 
+      {assignToSessionId ? null : (
       <label className="block">
         <span className="mb-1.5 block text-sm font-medium text-text-secondary">
           Notas (opcional)
@@ -893,6 +909,7 @@ export default function CreateSessionForm({
           placeholder="Lo que quieras recordar de esta clase"
         />
       </label>
+      )}
 
       {state && !state.ok && (
         <p className="text-sm text-error">{state.error}</p>
@@ -927,7 +944,7 @@ export default function CreateSessionForm({
         }
         className="w-full rounded-card bg-accent px-4 py-3 text-sm font-medium text-white disabled:opacity-60"
       >
-        {isPending ? "Creando..." : "Crear clase"}
+        {isPending ? "Guardando..." : assignToSessionId ? "Guardar" : "Crear clase"}
       </button>
     </form>
   );

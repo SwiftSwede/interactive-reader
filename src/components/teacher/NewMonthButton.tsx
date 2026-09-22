@@ -2,11 +2,15 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { X } from "lucide-react";
-import CreateCourseForm from "@/app/teacher/CreateCourseForm";
+import NewMonthWizard, {
+  type MonthSourceCourse,
+} from "./NewMonthWizard";
 
 export default function NewMonthButton({
+  courses,
   label = "Nuevo mes",
 }: {
+  courses: MonthSourceCourse[];
   label?: string;
 }) {
   const [open, setOpen] = useState(false);
@@ -31,7 +35,7 @@ export default function NewMonthButton({
       </button>
       <dialog
         ref={dialogRef}
-        className="m-auto w-full max-w-md rounded-sheet border border-paper-line bg-surface p-6 text-text-primary backdrop:bg-text-primary/20"
+        className="m-auto max-h-[90dvh] w-full max-w-lg overflow-y-auto rounded-sheet border border-paper-line bg-surface p-6 text-text-primary backdrop:bg-text-primary/20"
         aria-labelledby={titleId}
         onClose={() => setOpen(false)}
         onClick={(event) => {
@@ -54,10 +58,10 @@ export default function NewMonthButton({
           </button>
         </div>
         <p className="mt-2 text-body-main text-text-secondary">
-          Crea el grupo. Las 8 clases las armas después, como siempre.
+          Crea el grupo y las 8 clases del mes. El contenido lo eliges después.
         </p>
         <div className="mt-6">
-          <CreateCourseForm />
+          {open ? <NewMonthWizard courses={courses} /> : null}
         </div>
       </dialog>
     </>

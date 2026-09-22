@@ -3,6 +3,7 @@ import { describe, test } from "node:test";
 import {
   courseMonthKey,
   formatDayTimePattern,
+  isCourseInCurrentOrFutureMonth,
   isCourseInMonth,
   monthLabelFromYearMonth,
   sessionsInMonth,
@@ -118,6 +119,41 @@ describe("formatDayTimePattern", () => {
 
   test("returns empty string with no starts", () => {
     assert.equal(formatDayTimePattern([]), "");
+  });
+});
+
+describe("isCourseInCurrentOrFutureMonth", () => {
+  test("includes a future-month course so Este mes is not blank after early generate", () => {
+    assert.equal(
+      isCourseInCurrentOrFutureMonth(
+        [{ sessionDate: "2026-10-06" }],
+        "2026-09-22T00:00:00.000Z",
+        "2026-09"
+      ),
+      true
+    );
+  });
+
+  test("still matches the current month", () => {
+    assert.equal(
+      isCourseInCurrentOrFutureMonth(
+        [{ sessionDate: "2026-09-02" }],
+        "2026-09-01T00:00:00.000Z",
+        "2026-09"
+      ),
+      true
+    );
+  });
+
+  test("does not match a past month", () => {
+    assert.equal(
+      isCourseInCurrentOrFutureMonth(
+        [{ sessionDate: "2026-08-04" }],
+        "2026-08-01T00:00:00.000Z",
+        "2026-09"
+      ),
+      false
+    );
   });
 });
 

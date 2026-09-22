@@ -13,6 +13,7 @@ import { useTeacherPanel } from "./TeacherPanelContext";
 export type ThisMonthGroup = {
   id: string;
   name: string;
+  theme: string | null;
   levelLabel: string;
   studentLabel: string;
   sessionStarts: string[];
@@ -22,7 +23,7 @@ export type ThisMonthGroup = {
     title: string;
     start: string;
     typeLabel: string;
-    ready: boolean;
+    contentStatus: string;
   } | null;
   today: {
     sessionStartTime: string;
@@ -75,7 +76,7 @@ function NextClassPanel({ group }: { group: ThisMonthGroup }) {
             <LocalDateTime iso={group.next.start} />
           </div>
           <p className="mt-4 text-label-sm text-text-muted">
-            {group.next.ready ? "Contenido listo" : "Sin contenido"}
+            {group.next.contentStatus}
           </p>
         </>
       ) : (
@@ -130,6 +131,11 @@ export default function ThisMonthBoard({
                 <p className="text-headline-md text-text-primary">
                   {group.name}
                 </p>
+                {group.theme ? (
+                  <p className="mt-1 text-label-md text-text-secondary">
+                    {group.theme}
+                  </p>
+                ) : null}
                 <p className="mt-1 text-label-md text-text-secondary">
                   {group.levelLabel}
                   {group.sessionStarts.length > 0 ? (

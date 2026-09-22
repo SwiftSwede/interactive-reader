@@ -67,6 +67,11 @@ export default async function DashboardPage() {
             <p className="text-label-md text-text-primary">
               {data.courseDisplayName}
             </p>
+            {data.courseTheme ? (
+              <p className="mt-1 text-label-sm text-text-secondary">
+                {data.courseTheme}
+              </p>
+            ) : null}
             <p className="mt-1 text-label-md text-text-secondary">
               Clases completadas: {data.totals.completed} de {data.totals.total}
             </p>

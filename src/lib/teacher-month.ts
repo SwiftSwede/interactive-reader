@@ -56,6 +56,15 @@ function previousMonthIsOnlyStartSpillover(
   );
 }
 
+export function isCourseInCurrentOrFutureMonth(
+  sessions: Array<{ sessionDate: string }>,
+  createdAt: string,
+  yearMonth: string
+): boolean {
+  if (isCourseInMonth(sessions, createdAt, yearMonth)) return true;
+  return courseMonthKey(sessions, createdAt) > yearMonth;
+}
+
 export function isCourseInMonth(
   sessions: Array<{ sessionDate: string }>,
   createdAt: string,

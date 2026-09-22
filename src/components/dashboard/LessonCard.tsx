@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {
   BookOpen,
+  CalendarDays,
   Check,
   ChevronRight,
   FileText,
@@ -41,6 +42,7 @@ function TypeIcon({ type }: { type: SessionType }) {
     return <MessagesSquare className={className} aria-hidden="true" />;
   }
   if (type === "pronunciation") return <Mic className={className} aria-hidden="true" />;
+  if (type === "flex") return <CalendarDays className={className} aria-hidden="true" />;
   return <BookOpen className={className} aria-hidden="true" />;
 }
 
@@ -54,6 +56,12 @@ function statusCopy(props: LessonCardProps): { line: string; extra?: string } {
     }
     if (props.lifecycle === "after") {
       return { line: `Clase terminada · ${date}` };
+    }
+    if (props.sessionType === "flex") {
+      return {
+        line: `${typeLabel} · ${date}`,
+        extra: "El profe está preparando esta clase.",
+      };
     }
     return { line: `${typeLabel} · En vivo por Zoom · ${date}` };
   }

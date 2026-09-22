@@ -1,7 +1,6 @@
 import { CalendarDays } from "lucide-react";
 import { requireTeacher } from "@/lib/auth-server";
 import { createClient } from "@/lib/supabase/server";
-import { hasSessionContent } from "@/lib/dashboard";
 import {
   isLiveOnlySessionType,
   sessionTypeLabel,
@@ -19,12 +18,13 @@ import {
   courseLevelLabel,
   currentSessionKindLabel,
   currentYearMonth,
-  isCourseInMonth,
+  isCourseInCurrentOrFutureMonth,
   loadSessionsForCourses,
   loadTeacherCourses,
   pickCurrentSession,
   pickTodayTeacherSession,
   readinessLabel,
+  sessionContentStatus,
   sessionTitle,
   sessionsInMonth,
   studentCountLabel,
@@ -40,11 +40,12 @@ export default async function TeacherHomePage() {
   const yearMonth = currentYearMonth();
   const courses = await loadTeacherCourses(supabase, teacher.id);
   const unarchived = courses.filter((course) => !course.archived);
-  const courseIds = unarchived.map((course) => course.id);
+  const allCourseIds = courses.map((course) => course.id);
+  const unarchivedIds = unarchived.map((course) => course.id);
 
   const [studentCountByCourse, sessions] = await Promise.all([
-    countActiveStudentsByCourse(supabase, courseIds),
-    loadSessionsForCourses(supabase, courseIds),
+    countActiveStudentsByCourse(supabase, unarchivedIds),
+    loadSessionsForCourses(supabase, allCourseIds),
   ]);
 
   const sessionsByCourse = new Map<string, typeof sessions>();
@@ -56,7 +57,7 @@ export default async function TeacherHomePage() {
 
   const groups: ThisMonthGroup[] = unarchived
     .filter((course) =>
-      isCourseInMonth(
+      isCourseInCurrentOrFutureMonth(
         sessionsByCourse.get(course.id) ?? [],
         course.created_at,
         yearMonth
@@ -67,27 +68,33 @@ export default async function TeacherHomePage() {
         sessionsByCourse.get(course.id) ?? [],
         yearMonth
       );
-      const current = pickCurrentSession(monthSessions);
-      const todaySession = pickTodayTeacherSession(monthSessions);
+      const upcoming = (sessionsByCourse.get(course.id) ?? []).filter(
+        (session) => session.sessionDate >= `${yearMonth}-01`
+      );
+      const boardSessions =
+        monthSessions.length > 0 ? monthSessions : upcoming;
+      const current = pickCurrentSession(boardSessions);
+      const todaySession = pickTodayTeacherSession(boardSessions);
       const liveOnly = todaySession
         ? isLiveOnlySessionType(todaySession.sessionType)
         : false;
       return {
         id: course.id,
         name: course.name,
+        theme: course.theme,
         levelLabel: courseLevelLabel(course.level),
         studentLabel: studentCountLabel(
           studentCountByCourse.get(course.id) ?? 0
         ),
-        sessionStarts: monthSessions.map((session) => session.start),
-        readiness: readinessLabel(monthSessions),
+        sessionStarts: boardSessions.map((session) => session.start),
+        readiness: readinessLabel(boardSessions),
         next: current
           ? {
               kindLabel: currentSessionKindLabel(current.kind),
               title: sessionTitle(current.session),
               start: current.session.start,
               typeLabel: sessionTypeLabel(current.session.sessionType),
-              ready: hasSessionContent(current.session),
+              contentStatus: sessionContentStatus(current.session),
             }
           : null,
         today: todaySession
@@ -111,6 +118,19 @@ export default async function TeacherHomePage() {
       };
     });
 
+  const wizardCourses = courses.map((course) => {
+    const list = sessionsByCourse.get(course.id) ?? [];
+    return {
+      id: course.id,
+      name: course.name,
+      level: course.level,
+      archived: course.archived,
+      createdAt: course.created_at,
+      sessionStarts: list.map((session) => session.start),
+      sessionDates: list.map((session) => session.sessionDate),
+    };
+  });
+
   return (
     <section>
       <div className="flex flex-wrap items-start justify-between gap-4">
@@ -120,7 +140,7 @@ export default async function TeacherHomePage() {
             Los grupos de este mes. Toca una tarjeta para ver la próxima clase.
           </p>
         </div>
-        {groups.length > 0 ? <NewMonthButton /> : null}
+        {groups.length > 0 ? <NewMonthButton courses={wizardCourses} /> : null}
       </div>
 
       {groups.length === 0 ? (
@@ -133,11 +153,10 @@ export default async function TeacherHomePage() {
             Próximo mes en preparación
           </p>
           <p className="mt-2 max-w-md text-body-main text-text-secondary">
-            Cuando esté listo el grupo, créalo aquí. Las 8 clases las armas
-            después.
+            Cuando esté listo el grupo, créalo aquí. Las 8 clases salen solas.
           </p>
           <div className="mt-6">
-            <NewMonthButton />
+            <NewMonthButton courses={wizardCourses} />
           </div>
         </div>
       ) : (

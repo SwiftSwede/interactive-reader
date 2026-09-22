@@ -3,6 +3,7 @@ export {
   courseMonthKey,
   currentYearMonth,
   formatDayTimePattern,
+  isCourseInCurrentOrFutureMonth,
   isCourseInMonth,
   monthLabelFromYearMonth,
   sessionsInMonth,

@@ -27,7 +27,11 @@ export default function LessonsList({
   groups,
   showHeadings,
 }: {
-  groups: { displayName: string; lessons: DashboardLesson[] }[];
+  groups: {
+    displayName: string;
+    theme?: string | null;
+    lessons: DashboardLesson[];
+  }[];
   showHeadings: boolean;
 }) {
   const [filter, setFilter] = useState<FilterId>("todos");
@@ -49,6 +53,7 @@ export default function LessonsList({
   const flat = filteredGroups.flatMap((group) =>
     group.lessons.map((lesson) => ({
       groupName: group.displayName,
+      theme: group.theme ?? null,
       lesson,
     }))
   );
@@ -94,7 +99,8 @@ export default function LessonsList({
         {shown.map((row) => {
           const heading = courseMonthHeading(
             row.lesson.sessionDate,
-            row.groupName
+            row.groupName,
+            row.theme
           );
           const showHeading = showHeadings && heading !== lastHeading;
           lastHeading = heading;

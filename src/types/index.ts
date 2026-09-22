@@ -192,7 +192,8 @@ export type SessionType =
   | "pronunciation"
   | "dialogue"
   | "movie_talk"
-  | "song";
+  | "song"
+  | "flex";
 
 export type WordFlagType = "bold" | "underline";
 
@@ -256,6 +257,7 @@ export interface Course {
   createdAt: string;
   archived: boolean;
   zoomUrl: string | null;
+  theme: string | null;
 }
 
 export interface CourseEnrollment {

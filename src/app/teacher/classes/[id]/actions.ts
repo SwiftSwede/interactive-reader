@@ -28,6 +28,66 @@ export type CreateSessionResult =
 
 const SESSION_MINUTES = 90;
 
+type SessionContentWrite = {
+  session_type: string;
+  story_id: string | null;
+  writing_prompt_id: string | null;
+  exam_prompt_id: string | null;
+  presentation_prompt_id: string | null;
+  conversation_prompt_id?: string | null;
+};
+
+async function persistSession(input: {
+  supabase: Awaited<ReturnType<typeof createClient>>;
+  courseId: string;
+  assignToSessionId: string | null;
+  content: SessionContentWrite;
+  sessionDate: string;
+  startIso: string;
+  endIso: string;
+  notes: string | null;
+}): Promise<{ error: string | null }> {
+  if (input.assignToSessionId) {
+    const { data: existing } = await input.supabase
+      .from("course_sessions")
+      .select("id, session_type")
+      .eq("id", input.assignToSessionId)
+      .eq("course_id", input.courseId)
+      .maybeSingle();
+    if (!existing) return { error: "No encontré esa clase." };
+    if (existing.session_type !== input.content.session_type) {
+      return { error: "Esa clase no es de este tipo." };
+    }
+    const { error } = await input.supabase
+      .from("course_sessions")
+      .update({
+        story_id: input.content.story_id,
+        writing_prompt_id: input.content.writing_prompt_id,
+        exam_prompt_id: input.content.exam_prompt_id,
+        presentation_prompt_id: input.content.presentation_prompt_id,
+        conversation_prompt_id: input.content.conversation_prompt_id ?? null,
+      })
+      .eq("id", input.assignToSessionId)
+      .eq("course_id", input.courseId);
+    return { error: error ? "No pude guardar el contenido. Inténtalo de nuevo." : null };
+  }
+
+  const { error } = await input.supabase.from("course_sessions").insert({
+    course_id: input.courseId,
+    session_type: input.content.session_type,
+    story_id: input.content.story_id,
+    writing_prompt_id: input.content.writing_prompt_id,
+    exam_prompt_id: input.content.exam_prompt_id,
+    presentation_prompt_id: input.content.presentation_prompt_id,
+    conversation_prompt_id: input.content.conversation_prompt_id ?? null,
+    session_date: input.sessionDate,
+    session_start_time: input.startIso,
+    session_end_time: input.endIso,
+    notes: input.notes,
+  });
+  return { error: error ? "No pude crear la clase. Inténtalo de nuevo." : null };
+}
+
 export async function createSession(
   _prev: CreateSessionResult | null,
   formData: FormData
@@ -36,6 +96,8 @@ export async function createSession(
   const courseId = String(formData.get("courseId") ?? "").trim();
   const sessionTypeRaw = String(formData.get("sessionType") ?? "story").trim();
   const sessionType = isSessionType(sessionTypeRaw) ? sessionTypeRaw : "story";
+  const assignToSessionId =
+    String(formData.get("assignToSessionId") ?? "").trim() || null;
   const startIso = String(formData.get("startIso") ?? "").trim();
   const notes = String(formData.get("notes") ?? "").trim() || null;
 
@@ -44,7 +106,7 @@ export async function createSession(
   }
 
   const start = new Date(startIso);
-  if (!startIso || Number.isNaN(start.getTime())) {
+  if (!assignToSessionId && (!startIso || Number.isNaN(start.getTime()))) {
     return { ok: false, error: "Pon la hora de inicio de la clase." };
   }
 
@@ -64,9 +126,28 @@ export async function createSession(
   const localDate = String(formData.get("sessionDate") ?? "").trim();
   const sessionDate = /^\d{4}-\d{2}-\d{2}$/.test(localDate)
     ? localDate
-    : start.toISOString().slice(0, 10);
+    : Number.isNaN(start.getTime())
+      ? "1970-01-01"
+      : start.toISOString().slice(0, 10);
 
-  const end = new Date(start.getTime() + SESSION_MINUTES * 60 * 1000);
+  const end = Number.isNaN(start.getTime())
+    ? new Date()
+    : new Date(start.getTime() + SESSION_MINUTES * 60 * 1000);
+
+  async function saveContent(
+    content: SessionContentWrite
+  ): Promise<{ error: string | null }> {
+    return persistSession({
+      supabase,
+      courseId,
+      assignToSessionId,
+      content,
+      sessionDate,
+      startIso: Number.isNaN(start.getTime()) ? "" : start.toISOString(),
+      endIso: end.toISOString(),
+      notes,
+    });
+  }
 
   if (sessionType === "writing") {
     const catalogSource = String(formData.get("catalogSource") ?? "new");
@@ -78,24 +159,16 @@ export async function createSession(
         course.level as CourseLevel
       );
       if (!copied.ok) return copied;
-      const { error } = await supabase.from("course_sessions").insert({
-        course_id: courseId,
+      const saved = await saveContent({
         session_type: "writing",
         story_id: null,
         writing_prompt_id: copied.value.id,
         exam_prompt_id: null,
         presentation_prompt_id: null,
-        session_date: sessionDate,
-        session_start_time: start.toISOString(),
-        session_end_time: end.toISOString(),
-        notes,
       });
-      if (error) {
-        console.error("create writing session failed:", error);
-        return {
-          ok: false,
-          error: "No pude crear la clase. Inténtalo de nuevo.",
-        };
+      if (saved.error) {
+        console.error("create writing session failed:", saved.error);
+        return { ok: false, error: saved.error };
       }
       revalidatePath(`/teacher/classes/${courseId}`);
       revalidatePath("/teacher");
@@ -159,25 +232,17 @@ export async function createSession(
       };
     }
 
-    const { error } = await supabase.from("course_sessions").insert({
-      course_id: courseId,
+    const saved = await saveContent({
       session_type: "writing",
       story_id: null,
       writing_prompt_id: prompt.id,
       exam_prompt_id: null,
       presentation_prompt_id: null,
-      session_date: sessionDate,
-      session_start_time: start.toISOString(),
-      session_end_time: end.toISOString(),
-      notes,
     });
 
-    if (error) {
-      console.error("create writing session failed:", error);
-      return {
-        ok: false,
-        error: "No pude crear la clase. Inténtalo de nuevo.",
-      };
+    if (saved.error) {
+      console.error("create writing session failed:", saved.error);
+      return { ok: false, error: saved.error };
     }
 
     revalidatePath(`/teacher/classes/${courseId}`);
@@ -195,24 +260,16 @@ export async function createSession(
         course.level as CourseLevel
       );
       if (!copied.ok) return copied;
-      const { error } = await supabase.from("course_sessions").insert({
-        course_id: courseId,
+      const saved = await saveContent({
         session_type: "exam",
         story_id: null,
         writing_prompt_id: null,
         exam_prompt_id: copied.value.id,
         presentation_prompt_id: null,
-        session_date: sessionDate,
-        session_start_time: start.toISOString(),
-        session_end_time: end.toISOString(),
-        notes,
       });
-      if (error) {
-        console.error("create exam session failed:", error);
-        return {
-          ok: false,
-          error: "No pude crear la clase. Inténtalo de nuevo.",
-        };
+      if (saved.error) {
+        console.error("create exam session failed:", saved.error);
+        return { ok: false, error: saved.error };
       }
       revalidatePath(`/teacher/classes/${courseId}`);
       revalidatePath("/teacher");
@@ -273,25 +330,17 @@ export async function createSession(
       };
     }
 
-    const { error } = await supabase.from("course_sessions").insert({
-      course_id: courseId,
+    const saved = await saveContent({
       session_type: "exam",
       story_id: null,
       writing_prompt_id: null,
       exam_prompt_id: prompt.id,
       presentation_prompt_id: null,
-      session_date: sessionDate,
-      session_start_time: start.toISOString(),
-      session_end_time: end.toISOString(),
-      notes,
     });
 
-    if (error) {
-      console.error("create exam session failed:", error);
-      return {
-        ok: false,
-        error: "No pude crear la clase. Inténtalo de nuevo.",
-      };
+    if (saved.error) {
+      console.error("create exam session failed:", saved.error);
+      return { ok: false, error: saved.error };
     }
 
     revalidatePath(`/teacher/classes/${courseId}`);
@@ -366,26 +415,17 @@ export async function createSession(
         course.level as CourseLevel
       );
       if (!copied.ok) return copied;
-      const { error } = await supabase.from("course_sessions").insert({
-        course_id: courseId,
+      const saved = await saveContent({
         session_type: "conversation",
         story_id: null,
         writing_prompt_id: null,
         exam_prompt_id: null,
         presentation_prompt_id: null,
         conversation_prompt_id: copied.value.id,
-        conversation_plan: "standard",
-        session_date: sessionDate,
-        session_start_time: start.toISOString(),
-        session_end_time: end.toISOString(),
-        notes,
       });
-      if (error) {
-        console.error("create conversation session failed:", error);
-        return {
-          ok: false,
-          error: "No pude crear la clase. Inténtalo de nuevo.",
-        };
+      if (saved.error) {
+        console.error("create conversation session failed:", saved.error);
+        return { ok: false, error: saved.error };
       }
       revalidatePath(`/teacher/classes/${courseId}`);
       revalidatePath("/teacher");
@@ -437,27 +477,18 @@ export async function createSession(
       };
     }
 
-    const { error } = await supabase.from("course_sessions").insert({
-      course_id: courseId,
+    const saved = await saveContent({
       session_type: "conversation",
       story_id: null,
       writing_prompt_id: null,
       exam_prompt_id: null,
       presentation_prompt_id: null,
       conversation_prompt_id: prompt.id,
-      conversation_plan: "standard",
-      session_date: sessionDate,
-      session_start_time: start.toISOString(),
-      session_end_time: end.toISOString(),
-      notes,
     });
 
-    if (error) {
-      console.error("create conversation session failed:", error);
-      return {
-        ok: false,
-        error: "No pude crear la clase. Inténtalo de nuevo.",
-      };
+    if (saved.error) {
+      console.error("create conversation session failed:", saved.error);
+      return { ok: false, error: saved.error };
     }
 
     revalidatePath(`/teacher/classes/${courseId}`);
@@ -533,26 +564,18 @@ export async function createSession(
       return { ok: false, error: "Esa no es una traducción de clase." };
     }
 
-    const { error } = await supabase.from("course_sessions").insert({
-      course_id: courseId,
+    const saved = await saveContent({
       session_type: "video_summary",
       story_id: storyId,
       writing_prompt_id: null,
       exam_prompt_id: null,
       presentation_prompt_id: null,
       conversation_prompt_id: null,
-      session_date: sessionDate,
-      session_start_time: start.toISOString(),
-      session_end_time: end.toISOString(),
-      notes,
     });
 
-    if (error) {
-      console.error("create video summary session failed:", error);
-      return {
-        ok: false,
-        error: "No pude crear la clase. Inténtalo de nuevo.",
-      };
+    if (saved.error) {
+      console.error("create video summary session failed:", saved.error);
+      return { ok: false, error: saved.error };
     }
 
     revalidatePath(`/teacher/classes/${courseId}`);
@@ -577,26 +600,18 @@ export async function createSession(
       };
     }
 
-    const { error } = await supabase.from("course_sessions").insert({
-      course_id: courseId,
+    const saved = await saveContent({
       session_type: sessionType,
       story_id: storyId,
       writing_prompt_id: null,
       exam_prompt_id: null,
       presentation_prompt_id: null,
       conversation_prompt_id: null,
-      session_date: sessionDate,
-      session_start_time: start.toISOString(),
-      session_end_time: end.toISOString(),
-      notes,
     });
 
-    if (error) {
-      console.error("create catalog session failed:", error);
-      return {
-        ok: false,
-        error: "No pude crear la clase. Inténtalo de nuevo.",
-      };
+    if (saved.error) {
+      console.error("create catalog session failed:", saved.error);
+      return { ok: false, error: saved.error };
     }
 
     revalidatePath(`/teacher/classes/${courseId}`);
@@ -632,35 +647,17 @@ export async function createSession(
     };
   }
 
-  const { error } = await supabase.from("course_sessions").insert({
-    course_id: courseId,
+  const saved = await saveContent({
     session_type: "story",
     story_id: storyId,
     writing_prompt_id: null,
     exam_prompt_id: null,
     presentation_prompt_id: null,
-    session_date: sessionDate,
-    session_start_time: start.toISOString(),
-    session_end_time: end.toISOString(),
-    notes,
   });
 
-  if (error) {
-    const { error: legacyError } = await supabase.from("course_sessions").insert({
-      course_id: courseId,
-      story_id: storyId,
-      session_date: sessionDate,
-      session_start_time: start.toISOString(),
-      session_end_time: end.toISOString(),
-      notes,
-    });
-    if (legacyError) {
-      console.error("createSession failed:", error, legacyError);
-      return {
-        ok: false,
-        error: "No pude crear la clase. Inténtalo de nuevo.",
-      };
-    }
+  if (saved.error) {
+    console.error("createSession failed:", saved.error);
+    return { ok: false, error: saved.error };
   }
 
   revalidatePath(`/teacher/classes/${courseId}`);

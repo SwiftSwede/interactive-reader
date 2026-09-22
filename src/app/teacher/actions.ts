@@ -17,6 +17,10 @@ import {
   ZOOM_URL_INVALID_MESSAGE,
   ZOOM_URL_MAX_LENGTH,
 } from "@/lib/zoom-url";
+import {
+  generateMonth,
+  type GenerateOccurrence,
+} from "@/lib/teacher/generate-month";
 
 export type CreateCourseResult =
   | { ok: true; message: string }
@@ -87,6 +91,97 @@ export async function createCourse(
   return {
     ok: true,
     message: `Listo. ${name} ya está en tu lista, con ${enrolled} estudiantes.`,
+  };
+}
+
+export type GenerateMonthActionResult = { ok: false; error: string };
+
+const occurrenceSchema = z.object({
+  sessionDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  startIso: z.string().min(1),
+});
+
+export async function generateMonthAction(
+  _prev: GenerateMonthActionResult | null,
+  formData: FormData
+): Promise<GenerateMonthActionResult | null> {
+  const teacher = await requireTeacher("/teacher");
+  const name = String(formData.get("name") ?? "").trim();
+  const level = String(formData.get("level") ?? "").trim() as CourseLevel;
+  const yearMonth = String(formData.get("yearMonth") ?? "").trim();
+  const theme = String(formData.get("theme") ?? "").trim() || null;
+  let occurrences: GenerateOccurrence[] = [];
+  try {
+    const parsed = JSON.parse(String(formData.get("occurrences") ?? "[]"));
+    const rows = z.array(occurrenceSchema).safeParse(parsed);
+    if (!rows.success) {
+      return { ok: false, error: "Revisa los días y la hora." };
+    }
+    occurrences = rows.data;
+  } catch {
+    return { ok: false, error: "Revisa los días y la hora." };
+  }
+
+  const supabase = await createClient();
+  const result = await generateMonth(supabase, {
+    teacherId: teacher.id,
+    name,
+    level,
+    theme,
+    yearMonth,
+    occurrences,
+  });
+
+  if (!result.ok) return { ok: false, error: result.error };
+
+  revalidatePath("/teacher");
+  revalidatePath("/teacher/groups");
+  revalidatePath(`/teacher/classes/${result.courseId}`);
+  revalidatePath("/dashboard");
+  revalidatePath("/lessons");
+  redirect(`/teacher/classes/${result.courseId}`);
+}
+
+export type UpdateCourseThemeResult =
+  | { ok: true; theme: string | null; message: string }
+  | { ok: false; error: string };
+
+export async function updateCourseTheme(
+  _prev: UpdateCourseThemeResult | null,
+  formData: FormData
+): Promise<UpdateCourseThemeResult> {
+  const teacher = await requireTeacher("/teacher");
+  const courseId = String(formData.get("courseId") ?? "").trim();
+  const theme = String(formData.get("theme") ?? "").trim() || null;
+  if (!courseId) {
+    return { ok: false, error: "No encontré ese grupo." };
+  }
+  if (theme && theme.length > 80) {
+    return { ok: false, error: "El tema se pasó de 80 letras." };
+  }
+
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("courses")
+    .update({ theme })
+    .eq("id", courseId)
+    .eq("teacher_id", teacher.id)
+    .select("id")
+    .maybeSingle();
+
+  if (error || !data) {
+    console.error("updateCourseTheme failed:", error);
+    return { ok: false, error: "No pude guardar el tema. Inténtalo de nuevo." };
+  }
+
+  revalidatePath("/teacher");
+  revalidatePath("/teacher/groups");
+  revalidatePath(`/teacher/classes/${courseId}`);
+  revalidatePath("/lessons");
+  return {
+    ok: true,
+    theme,
+    message: theme ? "Tema guardado." : "Quité el tema.",
   };
 }
 

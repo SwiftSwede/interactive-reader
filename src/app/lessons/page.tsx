@@ -20,7 +20,13 @@ export default async function LessonsPage() {
 
   const groups = [
     ...(data.courseDisplayName
-      ? [{ displayName: data.courseDisplayName, lessons: data.lessons }]
+      ? [
+          {
+            displayName: data.courseDisplayName,
+            theme: data.courseTheme,
+            lessons: data.lessons,
+          },
+        ]
       : []),
     ...data.olderCourses,
   ].filter((group) => group.lessons.length > 0);
