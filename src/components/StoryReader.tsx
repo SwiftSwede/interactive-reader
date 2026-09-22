@@ -8,6 +8,7 @@ import type { SavedComprehensionResponse } from "@/components/ComprehensionQuest
 import type { SavedPersonalResponse } from "@/lib/personal-responses";
 import type { WordTimestamp } from "@/components/InteractiveStory";
 import type { CourseLevel, WordFlagging } from "@/types";
+import type { LessonViewToggle } from "@/lib/student-preview";
 import type { SavedSongAttempt } from "@/lib/services/songAttempts";
 import {
   loadOwnFreeWrite,
@@ -84,6 +85,7 @@ export default async function StoryReader({
   readerMode = "open",
   isTeacher = false,
   previewLevel = null,
+  viewToggle = null,
   saveResponses = true,
   sessionStartTime = null,
   sessionEndTime = null,
@@ -109,6 +111,7 @@ export default async function StoryReader({
   readerMode?: "classroom-live" | "classroom-review" | "open";
   isTeacher?: boolean;
   previewLevel?: CourseLevel | null;
+  viewToggle?: LessonViewToggle | null;
   saveResponses?: boolean;
   sessionStartTime?: string | null;
   sessionEndTime?: string | null;
@@ -154,6 +157,7 @@ export default async function StoryReader({
         sessionId={sessionId}
         isTeacher={isTeacher}
         previewLevel={previewLevel}
+        viewToggle={viewToggle}
         saveResponses={saveResponses}
         sessionStartTime={sessionStartTime}
         sessionEndTime={sessionEndTime}
@@ -249,6 +253,7 @@ export default async function StoryReader({
         choralCompleted={choralCompleted}
         isTeacher={isTeacher}
         previewLevel={previewLevel}
+        viewToggle={viewToggle}
         saveResponses={saveResponses}
         recordingYoutubeUrl={recordingYoutubeUrl}
         sessionStartTime={sessionStartTime}

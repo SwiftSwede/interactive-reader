@@ -32,6 +32,7 @@ import type {
   ConversationRoundState,
   CourseLevel,
 } from "@/types";
+import type { LessonViewToggle } from "@/lib/student-preview";
 
 export default function ConversationStudent({
   prompt,
@@ -39,6 +40,7 @@ export default function ConversationStudent({
   sessionId,
   isTeacher,
   previewLevel = null,
+  viewToggle = null,
   sessionStartTime,
   sessionEndTime,
   classEndedAt,
@@ -54,6 +56,7 @@ export default function ConversationStudent({
   sessionId: string;
   isTeacher: boolean;
   previewLevel?: CourseLevel | null;
+  viewToggle?: LessonViewToggle | null;
   sessionStartTime: string;
   sessionEndTime: string;
   classEndedAt: string | null;
@@ -219,6 +222,7 @@ export default function ConversationStudent({
           level={courseLevel}
           isTeacher={isTeacher}
           previewLevel={previewLevel}
+          viewToggle={viewToggle}
         />
       </div>
 

@@ -4,7 +4,7 @@ import { resolveConversationSessionAccess } from "@/lib/sessions";
 import { sessionRecordingUrl } from "@/lib/session-phase";
 import { getProfile } from "@/lib/auth-server";
 import { documentTitle, conversationSessionTitle } from "@/lib/page-title";
-import { isTeacherView } from "@/lib/student-preview";
+import { isTeacherView, lessonSessionNext, lessonViewToggle } from "@/lib/student-preview";
 import { readTeacherStudentPreview } from "@/lib/student-preview-server";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
 import ConversationStudent from "@/components/ConversationStudent";
@@ -129,6 +129,11 @@ export default async function ConversationPage({
     courseResult.data?.level === "pre-intermediate"
       ? "pre-intermediate"
       : "intermediate";
+  const viewToggle = lessonViewToggle({
+    role: profile?.role,
+    courseLevel,
+    nextPath: lessonSessionNext("/conversation", sessionToken),
+  });
 
   return (
     <ConversationStudent
@@ -138,6 +143,7 @@ export default async function ConversationPage({
       sessionId={access.session.id}
       isTeacher={isTeacher}
       previewLevel={previewLevel}
+      viewToggle={viewToggle}
       sessionStartTime={access.session.sessionStartTime}
       sessionEndTime={access.session.sessionEndTime}
       classEndedAt={access.session.classEndedAt}

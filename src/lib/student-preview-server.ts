@@ -1,3 +1,4 @@
+import type { SupabaseClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 import type { CourseLevel, UserRole } from "@/types";
 import {
@@ -16,5 +17,19 @@ export async function readTeacherStudentPreview(
   const store = await cookies();
   return parseStudentPreviewLevel(
     store.get(STUDENT_PREVIEW_COOKIE)?.value
+  );
+}
+
+export async function loadCourseLevel(
+  supabase: SupabaseClient,
+  courseId: string
+): Promise<CourseLevel | null> {
+  const { data } = await supabase
+    .from("courses")
+    .select("level")
+    .eq("id", courseId)
+    .maybeSingle();
+  return parseStudentPreviewLevel(
+    typeof data?.level === "string" ? data.level : null
   );
 }

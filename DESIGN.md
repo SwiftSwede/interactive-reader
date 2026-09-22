@@ -510,7 +510,7 @@ Pages: story lessons, writing lessons, exams, movie talk, music, future lesson t
 
 **Main header (lesson mode):**
 - Sticky, `--paper-header` background with backdrop blur. Two identity lines, shared by every lesson type (`LessonHeader`).
-- Line 1: lesson type left (`label-sm`, `--text-muted`, e.g. "Historia", "Escritura", "Movie Talk"). Right: **Progreso** (`/progress`) and **Inicio** (`/dashboard`) for students (`label-md`, `--text-secondary`, 44px touch). Teacher: **Inicio** only, to `/teacher`. No Volver. No "Profe Kyle" wordmark (brand stays on browsing, login, and document titles).
+- Line 1: lesson type left (`label-sm`, `--text-muted`, e.g. "Historia", "Escritura", "Movie Talk"). Right: **Progreso** (`/progress`) and **Inicio** (`/dashboard`) for students (`label-md`, `--text-secondary`, 44px touch). Teacher on a session-backed lesson: **Vista de estudiante** (becomes **Vista de profe** in preview) then **Inicio** to `/teacher`. Same header-link style, 44px touch. No Volver. No "Profe Kyle" wordmark (brand stays on browsing, login, and document titles).
 - Line 2: lesson name left (`headline-md`, Lora, truncates) and CEFR right on the same line (`label-sm`, `--text-muted`). CEFR is derived from `level`: beginner A1/A2, pre-intermediate A2/B1, intermediate B1/B2. Stories and dialogues also append ` · {n} palabras`. Other types show CEFR only.
 - Do not put timers, task labels, or step dots in this identity block.
 

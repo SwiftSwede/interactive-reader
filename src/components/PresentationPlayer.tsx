@@ -47,6 +47,7 @@ import type {
   PresentationVocabItem,
   PresentationVocabNote,
 } from "@/types";
+import type { LessonViewToggle } from "@/lib/student-preview";
 
 const CYCLE_LABELS = ["Vocabulario", "Preguntas", "Video", "Respuestas"];
 const SAVE_DEBOUNCE_MS = 600;
@@ -56,6 +57,7 @@ export default function PresentationPlayer({
   sessionId,
   isTeacher,
   previewLevel = null,
+  viewToggle = null,
   sessionStartTime,
   sessionEndTime,
   classEndedAt: initialEndedAt = null,
@@ -71,6 +73,7 @@ export default function PresentationPlayer({
   sessionId: string;
   isTeacher: boolean;
   previewLevel?: CourseLevel | null;
+  viewToggle?: LessonViewToggle | null;
   sessionStartTime: string;
   sessionEndTime: string;
   classEndedAt?: string | null;
@@ -414,6 +417,7 @@ export default function PresentationPlayer({
             level={prompt.level}
             isTeacher={isTeacher}
             previewLevel={previewLevel}
+            viewToggle={viewToggle}
           />
         </div>
         <article className="mx-auto max-w-2xl px-4 py-6">
@@ -448,6 +452,7 @@ export default function PresentationPlayer({
           level={prompt.level}
           isTeacher={isTeacher}
           previewLevel={previewLevel}
+          viewToggle={viewToggle}
         />
         {step.kind !== "warmup" && step.kind !== "done" && segment ? (
           <div className="mx-auto max-w-2xl px-2 pb-2">

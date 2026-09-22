@@ -33,6 +33,7 @@ import { youtubeEmbedId } from "@/lib/youtube-sync";
 import type { LoadedStory } from "@/lib/stories";
 import type { SavedSongAttempt } from "@/lib/services/songAttempts";
 import type { CourseLevel, WordFlagging } from "@/types";
+import type { LessonViewToggle } from "@/lib/student-preview";
 
 export default function MusicLessonSteps({
   data,
@@ -42,6 +43,7 @@ export default function MusicLessonSteps({
   readerMode = "open",
   isTeacher = false,
   previewLevel = null,
+  viewToggle = null,
   saveResponses = true,
   recordingYoutubeUrl = null,
   sessionStartTime = null,
@@ -61,6 +63,7 @@ export default function MusicLessonSteps({
   readerMode?: "classroom-live" | "classroom-review" | "open";
   isTeacher?: boolean;
   previewLevel?: CourseLevel | null;
+  viewToggle?: LessonViewToggle | null;
   saveResponses?: boolean;
   recordingYoutubeUrl?: string | null;
   sessionStartTime?: string | null;
@@ -295,6 +298,7 @@ export default function MusicLessonSteps({
             level={story.level}
             isTeacher={isTeacher}
             previewLevel={previewLevel}
+            viewToggle={viewToggle}
           />
           <nav className="step-progress max-w-2xl mx-auto px-2" aria-label="Pasos">
             {steps.map((step, index) => {

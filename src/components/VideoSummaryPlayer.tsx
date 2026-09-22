@@ -18,6 +18,7 @@ import type {
   VideoSummaryParagraph,
   VideoSummaryTeachingNote,
 } from "@/types";
+import type { LessonViewToggle } from "@/lib/student-preview";
 
 type TeacherWrite = {
   id: string;
@@ -44,6 +45,7 @@ export default function VideoSummaryPlayer({
   sessionId,
   isTeacher,
   previewLevel = null,
+  viewToggle = null,
   saveResponses = true,
   sessionStartTime,
   sessionEndTime,
@@ -65,6 +67,7 @@ export default function VideoSummaryPlayer({
   sessionId: string;
   isTeacher: boolean;
   previewLevel?: CourseLevel | null;
+  viewToggle?: LessonViewToggle | null;
   saveResponses?: boolean;
   sessionStartTime: string | null;
   sessionEndTime: string | null;
@@ -189,6 +192,7 @@ export default function VideoSummaryPlayer({
           level={level}
           isTeacher={isTeacher}
           previewLevel={previewLevel}
+          viewToggle={viewToggle}
         />
         <nav className="step-progress mx-auto max-w-2xl px-2" aria-label="Pasos">
           {STEPS.map((item, index) => {

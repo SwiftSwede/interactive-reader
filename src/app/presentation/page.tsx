@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { resolvePresentationSessionAccess } from "@/lib/sessions";
 import { getProfile } from "@/lib/auth-server";
 import { documentTitle, presentationSessionTitle } from "@/lib/page-title";
-import { isTeacherView } from "@/lib/student-preview";
+import { isTeacherView, lessonSessionNext, lessonViewToggle, parseStudentPreviewLevel } from "@/lib/student-preview";
 import { readTeacherStudentPreview } from "@/lib/student-preview-server";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
 import PresentationPlayer from "@/components/PresentationPlayer";
@@ -111,7 +111,7 @@ export default async function PresentationPage({
       .eq("course_session_id", access.session.id),
     supabase
       .from("courses")
-      .select("teacher_id")
+      .select("teacher_id, level")
       .eq("id", access.session.courseId)
       .maybeSingle(),
   ]);
@@ -120,6 +120,15 @@ export default async function PresentationPage({
     typeof courseResult.data?.teacher_id === "string"
       ? courseResult.data.teacher_id
       : null;
+  const viewToggle = lessonViewToggle({
+    role: profile?.role,
+    courseLevel: parseStudentPreviewLevel(
+      typeof courseResult.data?.level === "string"
+        ? courseResult.data.level
+        : null
+    ),
+    nextPath: lessonSessionNext("/presentation", sessionToken),
+  });
 
   const [responseResult, classResult] = await Promise.all([
     user && access.saveResponses
@@ -193,6 +202,7 @@ export default async function PresentationPage({
       sessionId={access.session.id}
       isTeacher={isTeacher}
       previewLevel={previewLevel}
+      viewToggle={viewToggle}
       sessionStartTime={access.session.sessionStartTime}
       sessionEndTime={access.session.sessionEndTime}
       classEndedAt={access.session.classEndedAt}

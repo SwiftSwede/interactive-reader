@@ -35,6 +35,7 @@ import LessonHeader from "@/components/lesson/LessonHeader";
 import LessonTimer from "@/components/lesson/LessonTimer";
 import { getSessionPhase } from "@/lib/session-phase";
 import type { CourseLevel } from "@/types";
+import type { LessonViewToggle } from "@/lib/student-preview";
 
 type Prompt = {
   id: string;
@@ -54,6 +55,7 @@ export default function WritingSession({
   timerStartedAt: initialTimerStartedAt,
   isTeacher,
   previewLevel = null,
+  viewToggle = null,
   saveResponses = true,
   submission,
   correction,
@@ -70,6 +72,7 @@ export default function WritingSession({
   timerStartedAt: string | null;
   isTeacher: boolean;
   previewLevel?: CourseLevel | null;
+  viewToggle?: LessonViewToggle | null;
   saveResponses?: boolean;
   submission: {
     text: string;
@@ -414,6 +417,7 @@ export default function WritingSession({
           level={prompt.level}
           isTeacher={isTeacher}
           previewLevel={previewLevel}
+          viewToggle={viewToggle}
         />
         <nav className="step-progress mx-auto max-w-2xl px-2" aria-label="Pasos">
           {steps.map((step, index) => {

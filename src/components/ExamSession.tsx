@@ -10,10 +10,12 @@ import { flattenFillSlots, formatCountdown, remainingMs } from "@/lib/exam";
 import { saveExamAnswers, submitExamAnswers } from "@/app/exam/actions";
 import { getSessionPhase } from "@/lib/session-phase";
 import type {
+  CourseLevel,
   ExamTask2CorrectionAnswer,
   ExamTask2LetterAnswer,
   GroupExamPrompt,
 } from "@/types";
+import type { LessonViewToggle } from "@/lib/student-preview";
 
 type Task1Answer = { slotIndex: number; answer: string };
 type Task3Answer = { sentenceNumber: number; englishTranslation: string };
@@ -25,6 +27,7 @@ export default function ExamSession({
   isWriter,
   isTeacher,
   previewLevel = null,
+  viewToggle = null,
   allowReveal,
   initialTask1,
   initialTask2,
@@ -42,7 +45,8 @@ export default function ExamSession({
   group: { id: string; label: string } | null;
   isWriter: boolean;
   isTeacher: boolean;
-  previewLevel?: import("@/types").CourseLevel | null;
+  previewLevel?: CourseLevel | null;
+  viewToggle?: LessonViewToggle | null;
   allowReveal: boolean;
   initialTask1: Task1Answer[];
   initialTask2: ExamTask2LetterAnswer[] | ExamTask2CorrectionAnswer[];
@@ -237,6 +241,7 @@ export default function ExamSession({
           level={prompt.level}
           isTeacher={isTeacher}
           previewLevel={previewLevel}
+          viewToggle={viewToggle}
         />
         <p className="mx-auto max-w-2xl px-4 pb-2 text-label-md text-text-secondary">
           Tarea {task} de 3

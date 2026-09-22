@@ -10,8 +10,11 @@ import { loadOwnComprehensionResponses } from "@/lib/comprehension";
 import { loadOwnPersonalResponses } from "@/lib/personal-responses";
 import { getProfile } from "@/lib/auth-server";
 import { documentTitle, storyTitleBySlug } from "@/lib/page-title";
-import { isTeacherView } from "@/lib/student-preview";
-import { readTeacherStudentPreview } from "@/lib/student-preview-server";
+import { isTeacherView, lessonSessionNext, lessonViewToggle } from "@/lib/student-preview";
+import {
+  loadCourseLevel,
+  readTeacherStudentPreview,
+} from "@/lib/student-preview-server";
 import StoryReader from "@/components/StoryReader";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
 import {
@@ -124,6 +127,15 @@ export default async function LessonSlugPage({
     : access.kind === "ok"
       ? access.saveResponses
       : true;
+  const courseLevel =
+    profile?.role === "teacher" && access.kind === "ok"
+      ? await loadCourseLevel(supabase, access.session.courseId)
+      : null;
+  const viewToggle = lessonViewToggle({
+    role: profile?.role,
+    courseLevel,
+    nextPath: lessonSessionNext(`/lesson/${slug}`, session),
+  });
 
   const sessionId =
     access.kind === "ok" &&
@@ -217,6 +229,7 @@ export default async function LessonSlugPage({
       readerMode={readerMode}
       isTeacher={isTeacher}
       previewLevel={previewLevel}
+      viewToggle={viewToggle}
       saveResponses={saveResponses}
       flagging={flagging}
       sessionStartTime={

@@ -4,8 +4,11 @@ import { resolveWritingSessionAccess } from "@/lib/sessions";
 import { sessionRecordingUrl } from "@/lib/session-phase";
 import { getProfile } from "@/lib/auth-server";
 import { documentTitle, writingSessionTitle } from "@/lib/page-title";
-import { isTeacherView } from "@/lib/student-preview";
-import { readTeacherStudentPreview } from "@/lib/student-preview-server";
+import { isTeacherView, lessonSessionNext, lessonViewToggle } from "@/lib/student-preview";
+import {
+  loadCourseLevel,
+  readTeacherStudentPreview,
+} from "@/lib/student-preview-server";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
 import WritingSession from "@/components/WritingSession";
 import type { CourseLevel } from "@/types";
@@ -137,6 +140,15 @@ export default async function WritingPage({
   const profile = user ? await getProfile(user.id) : null;
   const previewLevel = await readTeacherStudentPreview(profile?.role);
   const isTeacher = isTeacherView(profile?.role, previewLevel);
+  const courseLevel =
+    profile?.role === "teacher"
+      ? await loadCourseLevel(supabase, access.session.courseId)
+      : null;
+  const viewToggle = lessonViewToggle({
+    role: profile?.role,
+    courseLevel,
+    nextPath: lessonSessionNext("/writing", sessionToken),
+  });
 
   let submission: SubmissionRow | null = null;
   let correction: CorrectionRow | null = null;
@@ -184,6 +196,7 @@ export default async function WritingPage({
       sessionEndTime={access.session.sessionEndTime}
       isTeacher={isTeacher}
       previewLevel={previewLevel}
+      viewToggle={viewToggle}
       saveResponses={access.saveResponses}
       recordingYoutubeUrl={sessionRecordingUrl(access.session)}
       submission={

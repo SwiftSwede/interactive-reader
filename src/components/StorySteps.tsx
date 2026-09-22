@@ -32,6 +32,7 @@ import { recordStoryOpened } from "@/app/lesson/[slug]/actions";
 import type { LoadedStory } from "@/lib/stories";
 import type { SavedPersonalResponse } from "@/lib/personal-responses";
 import type { CourseLevel, PronunciationWordNote, WordFlagging } from "@/types";
+import type { LessonViewToggle } from "@/lib/student-preview";
 
 type StepId =
   | "story"
@@ -72,6 +73,7 @@ export default function StorySteps({
   choralCompleted,
   isTeacher = false,
   previewLevel = null,
+  viewToggle = null,
   saveResponses = true,
   recordingYoutubeUrl = null,
   sessionStartTime = null,
@@ -105,6 +107,7 @@ export default function StorySteps({
   choralCompleted: boolean;
   isTeacher?: boolean;
   previewLevel?: CourseLevel | null;
+  viewToggle?: LessonViewToggle | null;
   saveResponses?: boolean;
   recordingYoutubeUrl?: string | null;
   sessionStartTime?: string | null;
@@ -129,6 +132,7 @@ export default function StorySteps({
         readerMode={readerMode}
         isTeacher={isTeacher}
         previewLevel={previewLevel}
+        viewToggle={viewToggle}
         saveResponses={saveResponses}
         recordingYoutubeUrl={recordingYoutubeUrl}
         sessionStartTime={sessionStartTime}
@@ -153,6 +157,7 @@ export default function StorySteps({
         readerMode={readerMode}
         isTeacher={isTeacher}
         previewLevel={previewLevel}
+        viewToggle={viewToggle}
         saveResponses={saveResponses}
         recordingYoutubeUrl={recordingYoutubeUrl}
         sessionStartTime={sessionStartTime}
@@ -188,6 +193,7 @@ export default function StorySteps({
       choralCompleted={choralCompleted}
       isTeacher={isTeacher}
       previewLevel={previewLevel}
+      viewToggle={viewToggle}
       saveResponses={saveResponses}
       recordingYoutubeUrl={recordingYoutubeUrl}
       sessionStartTime={sessionStartTime}
@@ -219,6 +225,7 @@ function ClassicStorySteps({
   choralCompleted,
   isTeacher = false,
   previewLevel = null,
+  viewToggle = null,
   saveResponses = true,
   recordingYoutubeUrl = null,
   sessionStartTime = null,
@@ -246,6 +253,7 @@ function ClassicStorySteps({
   choralCompleted: boolean;
   isTeacher?: boolean;
   previewLevel?: CourseLevel | null;
+  viewToggle?: LessonViewToggle | null;
   saveResponses?: boolean;
   recordingYoutubeUrl?: string | null;
   sessionStartTime?: string | null;
@@ -420,6 +428,7 @@ function ClassicStorySteps({
             wordCount={lessonHeaderWordCount(story.kind, story.word_count)}
             isTeacher={isTeacher}
             previewLevel={previewLevel}
+            viewToggle={viewToggle}
           />
           <nav className="step-progress max-w-2xl mx-auto px-2" aria-label="Pasos">
             {steps.map((step, index) => (

@@ -4,9 +4,16 @@ import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
 import { formatLessonMeta } from "@/lib/lesson-header";
 import StudentPreviewBanner from "@/components/shell/StudentPreviewBanner";
+import {
+  enterLessonStudentPreview,
+  exitLessonStudentPreview,
+} from "@/app/teacher/preview/actions";
+import type { LessonViewToggle } from "@/lib/student-preview";
 import type { CourseLevel } from "@/types";
 
 const HEADER_VAR = "--lesson-sticky-header-height";
+const LINK_CLASS =
+  "inline-flex h-11 shrink-0 items-center text-label-md text-text-secondary hover:text-text-accent";
 
 export default function LessonHeader({
   typeLabel,
@@ -15,6 +22,7 @@ export default function LessonHeader({
   wordCount,
   isTeacher = false,
   previewLevel = null,
+  viewToggle = null,
 }: {
   typeLabel: string;
   title: string;
@@ -22,9 +30,11 @@ export default function LessonHeader({
   wordCount?: number | null;
   isTeacher?: boolean;
   previewLevel?: CourseLevel | null;
+  viewToggle?: LessonViewToggle | null;
 }) {
   const rootRef = useRef<HTMLElement>(null);
   const meta = formatLessonMeta(level, wordCount);
+  const inicioHref = viewToggle || isTeacher ? "/teacher" : "/dashboard";
 
   useLayoutEffect(() => {
     const node = rootRef.current;
@@ -56,18 +66,27 @@ export default function LessonHeader({
             <p className="min-w-0 flex-1 truncate text-label-sm text-text-muted">
               {typeLabel}
             </p>
-            {!isTeacher ? (
-              <Link
-                href="/progress"
-                className="inline-flex h-11 shrink-0 items-center text-label-md text-text-secondary hover:text-text-accent"
+            {viewToggle ? (
+              <form
+                action={
+                  previewLevel
+                    ? exitLessonStudentPreview
+                    : enterLessonStudentPreview
+                }
               >
+                <input type="hidden" name="level" value={viewToggle.level} />
+                <input type="hidden" name="next" value={viewToggle.next} />
+                <button type="submit" className={LINK_CLASS}>
+                  {previewLevel ? "Vista de profe" : "Vista de estudiante"}
+                </button>
+              </form>
+            ) : null}
+            {!isTeacher ? (
+              <Link href="/progress" className={LINK_CLASS}>
                 Progreso
               </Link>
             ) : null}
-            <Link
-              href={isTeacher ? "/teacher" : "/dashboard"}
-              className="inline-flex h-11 shrink-0 items-center text-label-md text-text-secondary hover:text-text-accent"
-            >
+            <Link href={inicioHref} className={LINK_CLASS}>
               Inicio
             </Link>
           </div>
