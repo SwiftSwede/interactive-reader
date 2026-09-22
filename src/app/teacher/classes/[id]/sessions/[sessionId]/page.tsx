@@ -287,6 +287,17 @@ export default async function SessionDetailPage({
         </p>
       ) : null}
 
+      {isWriting && copyHref ? (
+        <p className="mt-4">
+          <Link
+            href={copyHref}
+            className="inline-flex h-11 items-center rounded-card bg-accent px-4 text-sm font-medium text-white"
+          >
+            Abrir la escritura
+          </Link>
+        </p>
+      ) : null}
+
       {isVideo && (
         <p className="mt-2 text-sm text-text-muted">
           Los estudiantes entran a Traducción cuando termina el tiempo de

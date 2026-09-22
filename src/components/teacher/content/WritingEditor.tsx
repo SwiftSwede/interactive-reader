@@ -79,7 +79,7 @@ export default function WritingEditor({ prompt }: { prompt: WritingPrompt }) {
           }}
         />
       </EditorField>
-      <EditorField label="Rúbrica">
+      <EditorField label="Rúbrica TOEFL/IELTS">
         <textarea
           className={fieldClass}
           rows={6}
@@ -90,7 +90,7 @@ export default function WritingEditor({ prompt }: { prompt: WritingPrompt }) {
           }}
         />
       </EditorField>
-      <EditorField label="Párrafo de ejemplo">
+      <EditorField label="Ejemplo">
         <textarea
           className={fieldClass}
           rows={8}

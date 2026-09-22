@@ -1,5 +1,95 @@
 import { diffWords } from "diff";
 import type { SessionPhase } from "@/lib/session-phase";
+import type { CourseLevel } from "@/types";
+
+export const WRITING_STEP_IDS = [
+  "preguntas",
+  "ejemplo",
+  "escribir",
+  "revision",
+] as const;
+
+export type WritingStepId = (typeof WRITING_STEP_IDS)[number];
+
+export type WritingStep = {
+  id: WritingStepId;
+  label: string;
+};
+
+export type WritingStepFields = {
+  level: CourseLevel;
+  structureLesson?: string | null;
+  rubricText?: string | null;
+  exampleParagraph?: string | null;
+};
+
+export const WRITING_STEP_TITLES: Record<WritingStepId, string> = {
+  preguntas: "Questions",
+  ejemplo: "Example",
+  escribir: "Assignment",
+  revision: "Your Text",
+};
+
+const WRITING_STEP_LABELS: Record<WritingStepId, string> = {
+  preguntas: "Preguntas",
+  ejemplo: "Ejemplo",
+  escribir: "Tarea",
+  revision: "Tu texto",
+};
+
+function filledText(value: string | null | undefined): boolean {
+  return Boolean(value?.trim());
+}
+
+export function hasWritingExampleStep(fields: WritingStepFields): boolean {
+  if (filledText(fields.exampleParagraph)) return true;
+  if (fields.level !== "intermediate") return false;
+  return filledText(fields.structureLesson) || filledText(fields.rubricText);
+}
+
+export function writingStepList(fields: WritingStepFields): WritingStep[] {
+  const list: WritingStep[] = [
+    { id: "preguntas", label: WRITING_STEP_LABELS.preguntas },
+  ];
+  if (hasWritingExampleStep(fields)) {
+    list.push({ id: "ejemplo", label: WRITING_STEP_LABELS.ejemplo });
+  }
+  list.push(
+    { id: "escribir", label: WRITING_STEP_LABELS.escribir },
+    { id: "revision", label: WRITING_STEP_LABELS.revision }
+  );
+  return list;
+}
+
+export function encodeWritingStep(step: WritingStepId): string {
+  return step;
+}
+
+export function isWritingStepId(value: string): value is WritingStepId {
+  return (WRITING_STEP_IDS as readonly string[]).includes(value);
+}
+
+export function decodeWritingStep(
+  value: string | null | undefined,
+  fields: WritingStepFields
+): WritingStepId {
+  const steps = writingStepList(fields);
+  const fallback = steps[0]?.id ?? "preguntas";
+  if (!value) return fallback;
+  const trimmed = value.trim();
+  if (!isWritingStepId(trimmed)) return fallback;
+  if (!steps.some((step) => step.id === trimmed)) return fallback;
+  return trimmed;
+}
+
+export function writingStepIndex(
+  step: WritingStepId,
+  fields: WritingStepFields
+): number {
+  const steps = writingStepList(fields);
+  const index = steps.findIndex((row) => row.id === step);
+  return index < 0 ? 0 : index;
+}
 
 export type DiffSegment = {
   text: string;

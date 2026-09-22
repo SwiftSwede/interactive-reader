@@ -409,9 +409,9 @@ WritingPrompt (catalog content, reusable for live class and later self-study)
   ├── prompt_text (text — the question/prompt students respond to)
   ├── writing_time_minutes (integer — 20 for intermediate, 10 for pre-intermediate)
   ├── level (enum: "pre-intermediate" | "intermediate")
-  ├── structure_lesson (text, nullable — intermediate only)
-  ├── rubric_text (text, nullable — intermediate only, display-only, no numeric score)
-  ├── example_paragraph (text, nullable — intermediate only)
+  ├── structure_lesson (text, nullable — intermediate only, shown on the Ejemplo step above the sample)
+  ├── rubric_text (text, nullable — intermediate only, TOEFL/IELTS rubric, display-only, no numeric score)
+  ├── example_paragraph (text, nullable — both levels, shown on the Ejemplo step)
   ├── created_by (uuid, FK → User)
   └── created_at (timestamp)
 
@@ -1003,7 +1003,7 @@ Webhook endpoint: `POST /api/webhooks/stripe` on `https://learn.profekyle.com`. 
 | Slice | What works after | Verification |
 |---|---|---|
 | 22a. WritingPrompt creation (teacher) | Teacher creates a writing prompt as catalog content and assigns it to a session: question text, timer duration (20 or 10 min), level-specific content. CourseSession created with `session_type = "writing"`, `writing_prompt_id` set, `story_id` null. `timer_started_at` lives on the session. | Create a writing prompt in the teacher dashboard, verify it saves with correct level-specific fields |
-| 22b. Student writing page + timer | Student clicks session link → sees writing page: prompt at top, optional structure lesson/rubric/example (intermediate), text input, timer, submit button, live word count. Timer starts when teacher clicks "Iniciar" (Supabase Realtime sync to all connected students). During live class both levels lock at zero; pre-intermediate auto-submits. After class, empty students (missed class or never wrote) tap Empezar for their own 10/20-min sprint. Word count displayed live for both levels. WPM displayed for pre-intermediate only. 5-minute warning shown. | Open session link as student, write, verify timer counts down, verify word count updates, submit. After class, open as an empty student, tap Empezar, write, submit. |
+| 22b. Student writing page + timer | Student clicks session link → stepped writing page (Preguntas, optional Ejemplo, Escribir, Revisión) with teacher-paced lock (ADR 010). Ejemplo shows the sample; intermediate also shows structure then TOEFL/IELTS rubric above it. Escribir has instructions (pre-int), questions, timer, box. Iniciar on the teacher session page starts the clock and snaps live phones to Escribir. During live class both levels lock at zero; pre-intermediate auto-submits. After class, empty students tap Empezar for their own 10/20-min sprint. Revisión shows submitted text, then the color correction when Kyle saves it. | Open session link as student, walk Preguntas → Ejemplo → Escribir, write, verify timer, submit, open Revisión. After class, empty student taps Empezar. |
 | 22c. Teacher submission list + detail | Teacher dashboard shows all submissions for the session in a list. Each row: student name, word count, WPM (pre-intermediate), status (draft/submitted/corrected). Click a student → full text view. | Open teacher dashboard after students submit, verify list and detail view |
 | 22d. Teacher correction editor | Teacher edits student's text in a textarea (like editing a Google Doc). Save → system computes word-level diff between original and corrected version using `diff` npm package. Teacher can also: add inline notes (click a word/phrase, type a short note shown as a comment bubble), highlight good vocabulary (click to mark blue). Color legend shown: `rojo = sobra, verde = falta, azul = buen vocabulario`. No rubric score, no revision attempt. | Edit a submission, add an inline note, highlight good vocab, save, verify diff computes correctly |
 | 22e. Student correction view | Student revisits session link after correction → sees original text with corrections overlaid: red strikethrough for deletions, green highlight for additions, blue highlight for good vocabulary, inline teacher notes as small comment bubbles. Color legend at top. Reuses the inline correction rendering component from Slice 8b (same visual format, driven by teacher edits instead of AI). | Open session link after correction, verify diff display with colors, notes, and good-vocab highlights |
@@ -1123,12 +1123,12 @@ Webhook endpoint: `POST /api/webhooks/stripe` on `https://learn.profekyle.com`. 
 6. Pronunciation explanation + sound videos (Bunny Stream popups)
 
 **Writing session (separate session type, `session_type = "writing"`):**
-1. Student clicks session link → writing page (prompt, optional structure/rubric/example for intermediate, timer, text input)
-2. Teacher clicks "Iniciar" → timer starts on all connected students (Supabase Realtime)
-3. Student writes. Pre-intermediate: 10 min, auto-submit at zero, input locks. Intermediate: 20 min, timer is advisory (visual alert at zero, input stays open, Kyle allows continued writing)
+1. Student clicks session link → writing page with steps: Preguntas → Ejemplo (hidden if empty) → Escribir → Revisión. Live class is teacher-paced (`lesson_step_current` + lock). Students may walk back. Kyle opens the lesson with **Abrir la escritura** on the session page.
+2. Teacher clicks "Iniciar" on the session page → timer starts on all connected students (Supabase Realtime) and phones snap to Escribir.
+3. Student writes on Escribir. Both levels lock at zero. Pre-intermediate auto-submits. Intermediate can still tap Entregar if leftover text exists. Students may peek back at Preguntas/Ejemplo without stopping the clock.
 4. Student clicks "Entregar" (or auto-submit at zero for pre-intermediate). Word count and WPM (pre-intermediate only) saved.
 5. Teacher reviews all submissions in dashboard, corrects with inline diff (red strikethrough deletions, green additions, blue good-vocab highlights, inline notes). No rubric score, no revision attempt.
-6. Student revisits link → sees corrected text with visual diff and color legend
+6. Revisión shows the submitted text, then the color correction underneath when Kyle has saved it. After class, empty students can tap Empezar for a personal makeup sprint.
 
 **Exam session (separate session type, `session_type = "exam"`):**
 1. Teacher creates GroupExamPrompt (vocabulary list, Task 1 story, level-specific Task 2, Task 3 translation) and assigns to session

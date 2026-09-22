@@ -201,6 +201,8 @@ export default async function WritingPage({
             }
           : null
       }
+      lessonStepCurrent={access.session.lessonStepCurrent}
+      lessonStepLocked={access.session.lessonStepLocked}
     />
   );
 }

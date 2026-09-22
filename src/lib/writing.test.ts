@@ -3,9 +3,13 @@ import { describe, test } from "node:test";
 import {
   activeWritingTimer,
   canStartAfterClassWriting,
+  decodeWritingStep,
+  hasWritingExampleStep,
   hasWritingText,
   isLateWritingSubmit,
   remainingMs,
+  writingStepList,
+  type WritingStepFields,
   type WritingTimerInput,
 } from "./writing";
 
@@ -170,6 +174,72 @@ describe("isLateWritingSubmit", () => {
     assert.equal(isLateWritingSubmit(null, end), false);
     assert.equal(isLateWritingSubmit("2026-09-22T19:00:00.000Z", end), false);
     assert.equal(isLateWritingSubmit("2026-09-22T19:31:00.000Z", end), true);
+  });
+});
+
+describe("writingStepList", () => {
+  const preInt: WritingStepFields = {
+    level: "pre-intermediate",
+    structureLesson: null,
+    rubricText: null,
+    exampleParagraph: null,
+  };
+
+  test("skips Ejemplo when pre-int has no example", () => {
+    assert.deepEqual(
+      writingStepList(preInt).map((step) => step.id),
+      ["preguntas", "escribir", "revision"]
+    );
+    assert.equal(hasWritingExampleStep(preInt), false);
+  });
+
+  test("includes Ejemplo when pre-int has an example paragraph", () => {
+    assert.deepEqual(
+      writingStepList({
+        ...preInt,
+        exampleParagraph: "I think the city is too noisy.",
+      }).map((step) => step.id),
+      ["preguntas", "ejemplo", "escribir", "revision"]
+    );
+  });
+
+  test("includes Ejemplo for intermediate structure or rubric even without a paragraph", () => {
+    assert.equal(
+      hasWritingExampleStep({
+        level: "intermediate",
+        structureLesson: "Intro, thesis, supports",
+        rubricText: null,
+        exampleParagraph: null,
+      }),
+      true
+    );
+    assert.equal(
+      hasWritingExampleStep({
+        level: "intermediate",
+        structureLesson: null,
+        rubricText: "Task response, coherence",
+        exampleParagraph: null,
+      }),
+      true
+    );
+  });
+
+  test("skips Ejemplo when intermediate has no teaching material", () => {
+    assert.deepEqual(
+      writingStepList({
+        level: "intermediate",
+        structureLesson: "  ",
+        rubricText: null,
+        exampleParagraph: "",
+      }).map((step) => step.id),
+      ["preguntas", "escribir", "revision"]
+    );
+  });
+
+  test("decode falls back when Ejemplo was removed", () => {
+    assert.equal(decodeWritingStep("ejemplo", preInt), "preguntas");
+    assert.equal(decodeWritingStep("escribir", preInt), "escribir");
+    assert.equal(decodeWritingStep("nope", preInt), "preguntas");
   });
 });
 

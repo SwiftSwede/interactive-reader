@@ -205,9 +205,8 @@ export async function createSession(
     const rubricText = isIntermediate
       ? String(formData.get("rubricText") ?? "").trim() || null
       : null;
-    const exampleParagraph = isIntermediate
-      ? String(formData.get("exampleParagraph") ?? "").trim() || null
-      : null;
+    const exampleParagraph =
+      String(formData.get("exampleParagraph") ?? "").trim() || null;
 
     const { data: prompt, error: promptError } = await supabase
       .from("writing_prompts")
@@ -858,12 +857,36 @@ export async function startWritingTimer(
     return { ok: false, error: "Ese curso no es tuyo." };
   }
 
-  const { data, error } = await supabase
+  const { data: session } = await supabase
     .from("course_sessions")
-    .update({ timer_started_at: new Date().toISOString() })
+    .select("id, session_type, timer_started_at")
     .eq("id", sessionId)
     .eq("course_id", courseId)
     .in("session_type", ["writing", "video_summary"])
+    .maybeSingle();
+
+  if (!session) {
+    return { ok: false, error: "No encontré esa clase." };
+  }
+  if (session.timer_started_at) {
+    return { ok: true };
+  }
+
+  const patch: {
+    timer_started_at: string;
+    lesson_step_current?: string;
+    lesson_step_locked?: boolean;
+  } = { timer_started_at: new Date().toISOString() };
+  if (session.session_type === "writing") {
+    patch.lesson_step_current = "escribir";
+    patch.lesson_step_locked = true;
+  }
+
+  const { data, error } = await supabase
+    .from("course_sessions")
+    .update(patch)
+    .eq("id", sessionId)
+    .eq("course_id", courseId)
     .is("timer_started_at", null)
     .select("id")
     .maybeSingle();

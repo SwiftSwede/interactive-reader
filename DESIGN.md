@@ -745,20 +745,21 @@ Step 6 - Pronunciación (Pronunciation Assessment):
 - In classroom-review and open mode: all 6 steps shown
 
 ### Writing Lesson Page (detailed)
-No step flow. Single activity with a timer.
+Teacher-paced steps (same bottom pills as music). Skip Ejemplo when it would be empty.
 
 **Header zone:**
 - Main header: lesson type "Escritura", prompt title, CEFR, Progreso / Inicio (teacher: Inicio only)
-- No timer in the header. Countdown sits top-right in the body. When it scrolls away, a compact chip docks under the header.
+- Progress dots under the header (Preguntas, Ejemplo, Tarea, Tu texto)
+- No timer in the header. Countdown sits top-right in the body on every step while the sprint is running. When it scrolls away, a compact chip docks under the header.
 
 **Content zone:**
-- Prompt question (18px, Lora, 600, `--text-primary`) in a white card
-- Intermediate only: structure lesson / rubric / example paragraph in collapsible sections
-- Text input area (full width, white, `--paper-line` border, 16px radius, min-height 300px)
-- Live word count (12px, Roboto Flex, `--text-muted`, right-aligned)
-- Pre-intermediate only: WPM display (12px, `--text-muted`)
-- Submit button (primary, 16px radius, full width) while the sprint is running, and after zero if they already have text.
+- Each step opens with an English title (`headline-lg`): Questions, Example, Assignment, Your Text.
+- Questions: prompt question (18px, Lora, 600, `--text-primary`) in a white card
+- Example: intermediate shows Estructura, then Rúbrica TOEFL/IELTS, then the sample paragraph (each block only if filled). Pre-intermediate shows the example paragraph only.
+- Assignment: pre-intermediate "Cómo escribir" instructions, prompt card, text input (full width, white, `--paper-line` border, 16px radius, min-height 300px), live word count, WPM for pre-intermediate, Entregar while the sprint is running (and after zero if they already have text)
+- Your Text: plain submitted draft, then the color correction view underneath when Kyle has saved it. Empty: "Todavía no hay entrega."
 - Both levels lock at zero during live class (pre-intermediate auto-submits). After class, empty students get Empezar and their own 10/20-min countdown.
+- Bottom nav: Atrás / Siguiente pills (Spanish labels). Teacher live: Bloquear pasos / Abrir todas in the middle. Iniciar stays on the teacher session page and snaps phones to Assignment.
 
 ### Exam Lesson Page (detailed)
 Task-based, collaborative (group of 2-3 students).

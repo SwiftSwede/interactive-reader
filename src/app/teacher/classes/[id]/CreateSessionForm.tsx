@@ -428,7 +428,7 @@ export default function CreateSessionForm({
               <option value="20">20 minutos (intermedio)</option>
             </select>
           </label>
-          {courseLevel === "intermediate" && (
+          {courseLevel === "intermediate" ? (
             <>
               <label className="block">
                 <span className="mb-1.5 block text-sm font-medium text-text-secondary">
@@ -443,28 +443,28 @@ export default function CreateSessionForm({
               </label>
               <label className="block">
                 <span className="mb-1.5 block text-sm font-medium text-text-secondary">
-                  Rúbrica (opcional, sin puntaje)
+                  Rúbrica TOEFL/IELTS (opcional, sin puntaje)
                 </span>
                 <textarea
                   name="rubricText"
                   rows={3}
                   className="w-full resize-y rounded-card border border-paper-line px-3 py-2 text-sm text-text-primary focus:border-2 focus:border-accent focus:outline-none"
-                  placeholder="Lo que vas a comentar en clase"
-                />
-              </label>
-              <label className="block">
-                <span className="mb-1.5 block text-sm font-medium text-text-secondary">
-                  Ejemplo (opcional)
-                </span>
-                <textarea
-                  name="exampleParagraph"
-                  rows={4}
-                  className="w-full resize-y rounded-card border border-paper-line px-3 py-2 text-sm text-text-primary focus:border-2 focus:border-accent focus:outline-none"
-                  placeholder="Tu párrafo de ejemplo, misma pregunta"
+                  placeholder="Task response, coherence, vocabulary, grammar"
                 />
               </label>
             </>
-          )}
+          ) : null}
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-medium text-text-secondary">
+              Ejemplo (opcional)
+            </span>
+            <textarea
+              name="exampleParagraph"
+              rows={4}
+              className="w-full resize-y rounded-card border border-paper-line px-3 py-2 text-sm text-text-primary focus:border-2 focus:border-accent focus:outline-none"
+              placeholder="Tu párrafo de ejemplo, misma pregunta"
+            />
+          </label>
         </>
         )
       ) : sessionType === "exam" ? (
