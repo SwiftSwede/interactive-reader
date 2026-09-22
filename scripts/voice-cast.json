@@ -13,5 +13,24 @@
     "voice_id": "lfQC9ypxd3IKzDBe9bgJ",
     "from": "GORDON-F-1 (audition round 5)",
     "settings": {"stability": 0.30, "similarity_boost": 0.80}
+  },
+  "casts": {
+    "angry-driving": {
+      "BETO": {
+        "voice_id": "Njdb2UzB6kacpdGrhn2F",
+        "from": "BETO-A-1 (custom design, seed 60, eleven_ttv_v3) — hot-blooded loose cannon",
+        "settings": {"stability": 0.25, "similarity_boost": 0.80}
+      },
+      "REBECCA": {
+        "voice_id": "Z8P1enJCOUbJz7379JSZ",
+        "from": "REBECCA-D-1 (custom design, seed 92, eleven_multilingual_ttv_v2) — calm, warm, audible love",
+        "settings": {"stability": 0.45, "similarity_boost": 0.80}
+      },
+      "MOTHER": {
+        "voice_id": "H3nFFsDEwvm7gEff3H0h",
+        "from": "MOTHER-CLEAN-3 (custom design, seed 102, mtv_v2, plain-text preview) — Snape-brief + LA softness, clean",
+        "settings": {"stability": 0.65, "similarity_boost": 0.80}
+      }
+    }
   }
 }

@@ -34,13 +34,16 @@ import urllib.request
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ENV_PATH = os.path.join(REPO, ".env.local")
-VAULT = os.path.expanduser("~/Documents/Obsidian Vault/Language-Wiki/raw/stories/int dialogues")
+VAULT = os.path.expanduser("~/Documents/Obsidian Vault/Language-Wiki/raw/stories")
 CAST_PATH = os.path.join(REPO, "scripts", "voice-cast.json")
 API = "https://api.elevenlabs.io/v1"
 MODEL = "eleven_v3"
 OUT_FORMAT = "mp3_44100_128"
 
-SLUGS = {"superstitious-minds": "Superstitious-Minds.md"}
+SLUGS = {
+    "superstitious-minds": ("int dialogues", "Superstitious-Minds.md"),
+    "angry-driving": ("pre-int dialogues", "Pre-Angry-Driving.md"),
+}
 
 PAUSE_TURN = 0.15          # tiny ffmpeg pad only at speaker changes
 BREAK_IN_LINE = 0.40       # model-generated breath between sentences
@@ -63,13 +66,94 @@ VOICE_SETTINGS = {
     "GORDON": {"stability": 0.30, "similarity_boost": 0.80},  # most dynamic
     "PEDRO":  {"stability": 0.55, "similarity_boost": 0.80},  # serene
     "BRENDA": {"stability": 0.50, "similarity_boost": 0.80},  # controlled
+    "BETO":    {"stability": 0.25, "similarity_boost": 0.80},  # hot-tempered, volatile — loose cannon
+    "REBECCA": {"stability": 0.45, "similarity_boost": 0.80},  # calm with one eruption
+    "MOTHER":  {"stability": 0.50, "similarity_boost": 0.80},  # ice-cold authority
 }
 
 # AI director map. Per line:
 #   "mood": delivery direction (logged, informs tag choices)
 #   "tag":  audio tag on line opener
 #   "sent": optional per-sentence intensity tags {chunk_index: "[tag]"}
-DIRECTIONS = {
+ANGRY_DRIVING_DIRECTIONS = {
+    0:  {"mood": "road-rage ignition, barking at the whole freeway", "tag": "[angry]"},
+    1:  {"mood": "practiced calm, the patient spouse coach", "sent": {0: "[calm]", 1: "[gentle reasoning]"}},
+    2:  {"mood": "defiant, shameless justification"},
+    3:  {"mood": "dry, slightly amused, letting the logic land", "sent": {0: "[even]", 1: "[wry]"}},
+    4:  {"mood": "venting, wounded pride building", "sent": {0: "[bitter]", 1: "[rising grievance]"}},
+    5:  {"mood": "dismissive of his sensitivity, casual",
+         "sent": {0: "[matter-of-fact]", 1: "[air quoting the mother]"}},
+    6:  {"mood": "vindicated, pouncing", "tag": "[triumphant]"},
+    7:  {"mood": "the lawyerly correction, enjoying the distinction",
+         "sent": {0: "[firm correction]", 1: "[measured, logical]"}},
+    8:  {"mood": "genuinely asking, exasperated", "sent": {0: "[bewildered]"}},
+    9:  {"mood": "turning his own gun around, forensic calm"},
+    10: {"mood": "dodging, unconvincing", "tag": "[defensive]"},
+    11: {"mood": "closing the trap, savoring it"},
+    12: {"mood": "the absurd cultural defense, completely sincere",
+         "sent": {0: "[condescending]", 1: "[proud cultural authority]"}},
+    13: {"mood": "deadpan serve, one line", "tag": "[dry]"},
+    14: {"mood": "the wound under the jokes, honest for a beat, then the pivot to action",
+         "sent": {0: "[quiet hurt]", 1: "[imitating her voice]", 2: "[deciding, predator focus]"}},
+    15: {"mood": "terror — grabbing the dashboard", "tag": "[shocked]",
+         "sent": {0: "[erupts]", 1: "[scolding]"}},
+    16: {"mood": "unrepentant shrug of a line"},
+    17: {"mood": "prosecution, point by point", "sent": {0: "[flat contradiction]", 1: "[patient evidence]"}},
+    18: {"mood": "suspicious, redirected energy"},
+    19: {"mood": "mild shrug guess"},
+    20: {"mood": "conspiracy-mode rant, certain he's right",
+         "sent": {0: "[certain]", 1: "[building case]", 2: "[smug tech confidence]"}},
+    21: {"mood": "the calm blade — one question", "tag": "[quiet]"},
+    22: {"mood": "sinister little idea forming, drawn out"},
+    23: {"mood": "full-name alarm, seeing the future",
+         "sent": {0: "[sharp]", 1: "[ Absolute prohibition]"}},
+    24: {"mood": "salesman pitch, breezy"},
+    25: {"mood": "the ghost story — his own criminal record as cautionary tale",
+         "sent": {0: "[grave]", 1: "[recounting the ordeal]", 2: "[ominous]"}},
+    26: {"mood": "rebel bravado, tempting fate"},
+    27: {"mood": "spotting them, matter-of-fact dread"},
+    28: {"mood": "panic squeak", "tag": "[alarmed]"},
+    29: {"mood": "noticing his weird behavior, curiosity turning sharp"},
+    30: {"mood": "guilty overplay"},
+    31: {"mood": "narrowing in, interrogation mode", "sent": {0: "[pointed]"}},
+    32: {"mood": "failing to flip the script"},
+    33: {"mood": "incredulous discovery — his license is EXPIRED",
+         "sent": {0: "[disbelief]", 1: "[counting the months, furious]"}},
+    34: {"mood": "small voice, caught", "tag": "[sheepish]"},
+    35: {"mood": "full incredulous lecture",
+         "sent": {0: "[echoing in disbelief]", 1: "[scolding]"}},
+    36: {"mood": "dark humor — imagining his own humiliation"},
+    37: {"mood": "dry verdict"},
+    38: {"mood": "bargaining, dodging the license subject"},
+    39: {"mood": "honest regret, shrug"},
+    40: {"mood": "the stereotype slide, then teaching offer — enthusiastic", "tag": "[playful]"},
+    41: {"mood": "the trauma flashback, building to the punchline",
+         "sent": {0: "[remembering]", 1: "[reliving the disaster]"}},
+    42: {"mood": "weak rebuttal, grasping"},
+    43: {"mood": "practical shutdown, common sense", "sent": {0: "[logical]", 1: "[wry]"}},
+    44: {"mood": "hushed conspiratorial bargaining", "tag": "[whispering]"},
+    45: {"mood": "the voice of reason plus the ICE comparison, then the relief",
+         "sent": {0: "[reasonable]", 1: "[exasperated comparison]", 2: "[brightening]"}},
+    46: {"mood": "curious, calming down, detective mode"},
+    47: {"mood": "solving it, satisfied", "sent": {0: "[observing]"}},
+    48: {"mood": "slow-motion recognition", "tag": "[slowing]"},
+    49: {"mood": "horror dawning"},
+    50: {"mood": "disbelief, describing a marvel", "sent": {0: "[astounded]"}},
+    51: {"mood": "urgent, decided", "tag": "[urgent]"},
+    52: {"mood": "awe at the mother-in-law, then the bribery cultural note, delighted",
+         "sent": {0: "[impressed]", 1: "[cultural lecture, amused]", 2: "[satisfied]"}},
+    53: {"mood": "insistent, no negotiation"},
+    54: {"mood": "petty revenge fantasy, shameless", "sent": {0: "[scheming]", 1: "[savoring the pettiness]"}},
+    55: {"mood": "THE ERUPTION — full name, command voice", "tag": "[erupts]",
+         "sent": {0: "[furious command]"}},
+    56: {"mood": "instant obedience, hands up", "tag": "[cowed]"},
+    57: {"mood": "the toast — sweetly malicious, raising a glass to her",
+         "sent": {0: "[charming officers]", 1: "[wicked irony]"}},
+    58: {"mood": "ice-cold authority — Snape drawl: soft-spoken verdict, dramatic pauses carry the menace",
+         "sent": {0: "[cold, unhurried]", 1: "[quiet contempt]", 2: "[cruel precision]"}},
+}
+# Superstitious Minds map (the original DIRECTIONS body follows, lines 0-74).
+SUPERSTITIOUS_MINDS_DIRECTIONS = {
     0: {"mood": "startled, pointing at the floor"},
     1: {"mood": "calm confirmation, serene as ever"},
     2: {"mood": "anxious CEO spiral — mutter, build, ramble, deflate",
@@ -183,6 +267,15 @@ DIRECTIONS = {
     74: {"mood": "warm, avuncular approval"},
 }
 
+DIRECTIONS_BY_SLUG = {
+    "superstitious-minds": SUPERSTITIOUS_MINDS_DIRECTIONS,
+    "angry-driving": ANGRY_DRIVING_DIRECTIONS,
+}
+CAST_BY_SLUG = {
+    "superstitious-minds": None,  # top-level cast (BRENDA/PEDRO/GORDON)
+    "angry-driving": "angry-driving",
+}
+
 
 def load_api_key():
     with open(ENV_PATH) as f:
@@ -201,7 +294,7 @@ def parse_dialogue(path):
                 continue
             if s.startswith("[") and s.endswith("]"):
                 continue
-            m = re.match(r"^(Gordon|Pedro|Brenda)\s*-\s*(.+)$", s)
+            m = re.match(r"^(Gordon|Pedro|Brenda|Beto|Rebecca|Mother)\s*-\s*(.+)$", s)
             if m:
                 # strip inline stage directions like "[watches Brenda...] "
                 spoken = re.sub(r"\[[^\]]*\]\s*", "", m.group(2)).strip()
@@ -298,9 +391,17 @@ def main():
         i = sys.argv.index("--lines")
         only_lines = {int(x) for x in sys.argv[i + 1].split(",")}
 
+    directions = DIRECTIONS_BY_SLUG[slug]
     key = load_api_key()
-    cast = json.load(open(CAST_PATH))
-    src = os.path.join(VAULT, SLUGS[slug])
+    cast_key = CAST_BY_SLUG[slug]
+    if cast_key is None:
+        cast = json.load(open(CAST_PATH))
+    else:
+        cast = json.load(open(CAST_PATH)).get("casts", {}).get(cast_key)
+        if cast is None:
+            sys.exit(f"no cast defined for '{cast_key}' in {CAST_PATH}")
+    subdir, fname = SLUGS[slug]
+    src = os.path.join(VAULT, subdir, fname)
     lines = parse_dialogue(src)
     if sample:
         lines = lines[:8]
@@ -321,7 +422,7 @@ def main():
             print(f"Retaking lines: {sorted(todo)}")
         for li in todo:
             ch, text = lines[li]
-            d = DIRECTIONS.get(li, {})
+            d = directions.get(li, {})
             # retake mode for awkward-pause lines: no break tags, single flow
             if only_lines is not None:
                 spoken = build_line_text(text, d.get("tag"), {})
