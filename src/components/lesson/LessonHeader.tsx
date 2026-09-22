@@ -13,7 +13,7 @@ import type { CourseLevel } from "@/types";
 
 const HEADER_VAR = "--lesson-sticky-header-height";
 const LINK_CLASS =
-  "inline-flex h-11 shrink-0 items-center text-label-md text-text-secondary hover:text-text-accent";
+  "inline-flex h-11 shrink-0 cursor-pointer items-center text-label-md text-text-secondary hover:text-text-accent";
 
 export default function LessonHeader({
   typeLabel,
