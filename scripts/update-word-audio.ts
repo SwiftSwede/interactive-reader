@@ -1,7 +1,11 @@
-// Update audio_url field in Supabase for all word rows.
-// Reads the audio mapping JSON and updates each word row.
+// Update audio_url field in Supabase for all word rows of ONE story.
+// Reads the audio mapping JSON (written by generate-word-audio.py) and
+// updates each word row whose clean filename exists in the mapping.
 //
-// Run: npx tsx scripts/update-word-audio.ts
+// The MP3 library in public/audio/words/ is SHARED across stories (keyed by
+// word text), so run generate-word-audio.py first for the slug, then this.
+//
+// Run: npx tsx scripts/update-word-audio.ts --slug <story-slug>
 
 import { config } from "dotenv";
 config({ path: ".env.local" });
@@ -9,7 +13,7 @@ config({ path: ".env.local" });
 import { createClient } from "@supabase/supabase-js";
 import { WebSocket } from "ws";
 import { readFileSync } from "fs";
-import { join, dirname } from "path";
+import { join } from "path";
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const SUPABASE_KEY = process.env.SUPABASE_SECRET_KEY!;
@@ -35,19 +39,28 @@ function cleanForFilename(text: string): string {
 // ── Main ─────────────────────────────────────────────────
 
 async function main() {
-  // Load the audio mapping
-  const mappingPath = join(dirname(__dirname), "scripts", "audio-mapping.json");
-  // Actually it's in the scripts/ dir
-  const mappingFile = join(process.cwd(), "scripts", "audio-mapping.json");
-  const mapping: Record<string, string> = JSON.parse(readFileSync(mappingFile, "utf-8"));
+  // Parse --slug argument (required)
+  const args = process.argv.slice(2);
+  const slugIdx = args.indexOf("--slug");
+  if (slugIdx === -1 || !args[slugIdx + 1]) {
+    console.error("Usage: npx tsx scripts/update-word-audio.ts --slug <story-slug>");
+    process.exit(1);
+  }
+  const slug = args[slugIdx + 1];
 
+  // Load the audio mapping
+  const mappingFile = join(process.cwd(), "scripts", "audio-mapping.json");
+  const mapping: Record<string, string> = JSON.parse(
+    readFileSync(mappingFile, "utf-8")
+  );
   console.log(`Loaded ${Object.keys(mapping).length} audio mappings`);
 
-  // Get the free story
+  // Get the story by slug (NOT is_free — there can be multiple free stories)
   const { data: story, error: storyError } = await supabase
     .from("stories")
     .select("id, title")
-    .eq("is_free", true)
+    .eq("slug", slug)
+    .limit(1)
     .single();
 
   if (storyError || !story) {
@@ -58,21 +71,22 @@ async function main() {
   console.log(`Story: ${story.title}`);
 
   // Fetch all words (paginated)
-  const { data: page1 } = await supabase
-    .from("words")
-    .select("id, position, text")
-    .eq("story_id", story.id)
-    .order("position", { ascending: true })
-    .range(0, 999);
-
-  const { data: page2 } = await supabase
-    .from("words")
-    .select("id, position, text")
-    .eq("story_id", story.id)
-    .order("position", { ascending: true })
-    .range(1000, 1999);
-
-  const allWords = [...(page1 || []), ...(page2 || [])];
+  const allWords: { id: string; position: number; text: string; audio_url: string }[] = [];
+  for (let start = 0; ; start += 1000) {
+    const { data, error } = await supabase
+      .from("words")
+      .select("id, position, text, audio_url")
+      .eq("story_id", story.id)
+      .order("position", { ascending: true })
+      .range(start, start + 999);
+    if (error) {
+      console.error("Failed fetching words:", error);
+      process.exit(1);
+    }
+    if (!data || data.length === 0) break;
+    allWords.push(...data);
+    if (data.length < 1000) break;
+  }
   console.log(`Total words to update: ${allWords.length}`);
 
   let updated = 0;
@@ -89,6 +103,12 @@ async function main() {
       continue;
     }
 
+    // Skip rows that already point at the right file (idempotent re-runs)
+    if (word.audio_url === audioUrl) {
+      skipped++;
+      continue;
+    }
+
     const { error } = await supabase
       .from("words")
       .update({ audio_url: audioUrl })
@@ -101,13 +121,13 @@ async function main() {
       updated++;
     }
 
-    if ((updated + skipped + failed) % 100 === 0) {
+    if ((updated + skipped + failed) % 200 === 0) {
       console.log(`  Progress: ${updated + skipped + failed}/${allWords.length}`);
     }
   }
 
   console.log("");
-  console.log(`Done! Updated: ${updated}, Skipped: ${skipped}, Failed: ${failed}`);
+  console.log(`Done! Updated: ${updated}, Already correct/skipped: ${skipped}, Failed: ${failed}`);
 }
 
 main().catch((err) => {

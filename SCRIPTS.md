@@ -252,12 +252,32 @@ npx tsx scripts/generate-coral-ipa.ts --slug flustered-and-driving
 **Cost:** ~$0.001 (one short LLM call).
 **Time:** 3-5 seconds.
 
-### Update word audio URLs
+### Generate word audio for a story
 
-Updates the `audio_url` field in Supabase for word rows based on an audio mapping JSON file. Used after generating MP3s with Edge TTS.
+Generates a per-word MP3 (Edge TTS, free, voice `en-US-AriaNeural`, rate -10%) for every unique word in a story, then sets `words.audio_url` for all its rows.
+
+The MP3 library in `public/audio/words/` is **shared across all stories** (keyed by word text). A word MP3 created for one story is automatically reused by every other story — files are never generated twice. Run both commands per story:
 
 ```bash
-npx tsx scripts/update-word-audio.ts
+python3.11 scripts/generate-word-audio.py --slug <slug>   # generate missing MP3s + write audio-mapping.json
+npx tsx scripts/update-word-audio.ts --slug <slug>        # set words.audio_url from the mapping
+```
+
+**Notes:**
+- The generator only creates MP3s that don't exist on disk yet, so re-runs are safe and cheap. Later stories with overlapping vocabulary finish faster.
+- `audio_url` shows the speaker button in the word tooltip (translation + IPA render regardless).
+- Requires annotation to have run first (words must exist in the DB).
+- Verify afterward with `npx tsx scripts/probe-word-audio.ts` (read-only coverage table for every story).
+- `update-word-audio.ts` skips rows already pointing at the correct file (idempotent).
+
+**Cost:** $0 (Edge TTS). **Time:** ~1-2 min per 100 unique words.
+
+### Update word audio URLs
+
+Updates the `audio_url` field in Supabase for one story's word rows, based on `scripts/audio-mapping.json` (written by `generate-word-audio.py`). Takes `--slug` (required); the old "free story" auto-detect was removed — it would crash with PGRST116 now that several stories are free.
+
+```bash
+npx tsx scripts/update-word-audio.ts --slug flustered-and-driving
 ```
 
 ---
