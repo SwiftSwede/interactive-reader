@@ -248,6 +248,8 @@ export async function getFreeStory(
     .from("stories")
     .select("*")
     .eq("is_free", true)
+    .order("created_at", { ascending: true })
+    .limit(1)
     .single();
 
   if (error || !story) return null;
