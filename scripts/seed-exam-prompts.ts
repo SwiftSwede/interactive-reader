@@ -152,6 +152,69 @@ Acordamos una fecha para la reunión. | We agreed on a date for the meeting. | W
 Si mi jefe fuera menos mandón, no estaría tan estresado. | If my boss were less bossy, I wouldn't be so stressed out.
 Si hubiera escuchado a su madre, no se habría desviado del buen camino. | If he had listened to his mother, he wouldn't have gone down the wrong path.`,
   },
+  {
+    title: "Septiembre — Tráfico",
+    theme: "Driving",
+    level: "pre-intermediate",
+    timeLimitMinutes: 35,
+    vocabRaw: `Accelerate | acelerar
+Back out / reverse | retroceder
+Brake | frenar
+Bystander | transeúnte
+Cut in front | meterse delante
+Deadline | fecha límite
+Delay | demora
+Dent | abolladura
+Detour | desvío
+Double-check | verificar
+Freeway | autopista
+Go off | sonar
+Honk | tocar la bocina
+Park | estacionar
+Pull over | orillarse
+Rear-end | chocar por detrás
+Rush hour | hora pico
+Stall | apagarse
+Steer | dirigir
+Steering wheel | volante
+Ticket | multa
+Turnoff | salida`,
+    task1Raw: `I had until 5:00 p.m., the {fecha límite|deadline}, to pay an old parking fine at City Hall.
+I left during {la hora pico|rush hour} and entered the {autopista|freeway} with only forty minutes remaining.
+Before driving farther, I stopped at a gas station to {verificar|double-check} that I had my wallet, the notice, and the office address.
+My calendar alarm began to {sonar|go off}, and the navigation app announced a long {demora|delay} ahead.
+It sent me on a {desvío|detour}, but I missed the correct {salida|turnoff} and ended up ten minutes farther away.
+At the next traffic light, my old car began to {apagarse|stall}, and I restarted it just before the light changed.
+I tried to {acelerar|accelerate} calmly, but another driver suddenly tried to {meterse delante de mí|cut in front of me|cut in front}.
+I had to {frenar|brake} hard, and a distracted driver behind me {chocó por detrás|rear-ended} my car.
+A {transeúnte|bystander} who had seen everything called for help, while impatient drivers began to {tocar la bocina|honk}.
+The impact left only a small {abolladura|dent}, but I was shaking as I moved out of traffic.
+I decided to {orillarme|pull over} near a small coffee shop and exchange insurance information with the other driver.
+A police officer arrived and wrote the other driver a {multa|ticket} for following too closely.
+When I returned to my car, I gripped the {volante|steering wheel} and carefully {dirigí|steered} around the roadwork.
+Near City Hall, I found an open space, but I had to {retroceder|back out|reverse} when I noticed a delivery truck was blocking it.
+I finally managed to {estacionar|park} two blocks away and ran inside with four minutes left.`,
+    task2Raw: `fix | I need a car to move in the city. | I need a car to get around the city.
+fix | I can drive since 4 years ago. | I've been driving for 4 years.
+ok | How long have you been driving?
+fix | I feel secure when I drive a car. | I feel safe when I drive a car.
+fix | The first course I took was at my 18 years old. | The first course I took was when I was 18.
+fix | The hardest part of drive is switching gears. | The hardest part of driving is switching gears.
+ok | I have no clue how to drive a stick.
+fix | She drives since she was 17 years old. | She has been driving since she was 17 years old.
+ok | I was in a car accident a few years ago.
+fix | He crashed his car with a wall. | He crashed his car into a wall.`,
+    task3Raw: `Además de eso, él tiene mal aliento. | Besides that, he has bad breath. | On top of that, he has bad breath. | Apart from that, he has bad breath.
+¿Cuál es la mejor manera de moverse por la ciudad? | What's the best way to get around the city?
+Suspendí el examen de conducir dos veces antes de finalmente obtener mi licencia. | I failed my driving test twice before finally getting my license.
+No sé cómo cambiar las marchas en un carro manual. | I don't know how to change gears in a manual car.
+Tras el accidente, tuve que recuperar la confianza al volante. | After the accident, I had to regain my confidence behind the wheel.
+Conducir al trabajo todos los días es agotador. | Driving to work every day is exhausting.
+¿Estamos seguros aquí? | Are we safe here? | Are we secure here?
+Tengo 3 años manejando. | I've been driving for 3 years. | I've been driving for three years.
+Si pudiera comprar cualquier carro, sería un 1997 Toyota Corolla. | If I could buy any car, it would be a 1997 Toyota Corolla.
+No se habría estrellado contra el poste de luz si supiera conducir un carro con cambio manual. | He wouldn't have crashed into the light pole if he knew how to drive a manual car. | He wouldn't have crashed into the light pole if he knew how to drive a stick.`,
+  },
 ];
 
 async function main() {
