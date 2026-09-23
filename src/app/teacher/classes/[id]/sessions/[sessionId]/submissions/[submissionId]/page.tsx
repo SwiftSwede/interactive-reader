@@ -43,7 +43,7 @@ export default async function WritingSubmissionPage({
     "Sin nombre";
 
   return (
-    <section>
+    <section className="mx-auto max-w-2xl">
       <p className="text-sm text-text-muted">
         <Link
           href={`/teacher/classes/${course.id}/sessions/${session.id}`}
