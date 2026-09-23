@@ -31,6 +31,7 @@
   --warning-bg: #f5e6c4;
   --select-caret-size: 16px;
   --select-caret-inset: 16px;
+  --lesson-step-nav-height: 68px;
 }
 
 @theme inline {
@@ -844,12 +845,108 @@ select:not([multiple]) {
 }
 
 .step-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 35;
+  box-sizing: border-box;
   display: flex;
   align-items: stretch;
   justify-content: space-between;
   gap: 12px;
-  margin-top: 32px;
-  margin-bottom: 24px;
+  width: 100%;
+  margin: 0;
+  padding: 12px max(16px, calc((100% - 42rem) / 2))
+    calc(12px + env(safe-area-inset-bottom, 0px));
+  background: rgba(250, 246, 240, 0.78);
+  border-top: 1px solid var(--paper-line);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: transform 0.2s ease;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .step-nav {
+    background: var(--paper-header);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .step-nav {
+    background: var(--paper);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+body:has(.step-nav) {
+  padding-bottom: calc(
+    var(--lesson-step-nav-height) + env(safe-area-inset-bottom, 0px) + 16px
+  );
+}
+
+body:has(.step-nav).sticky-audio-active {
+  padding-bottom: calc(
+    var(--lesson-step-nav-height) + 64px + env(safe-area-inset-bottom, 0px) +
+      16px
+  );
+}
+
+body:has(.step-nav).sticky-character-band-active {
+  padding-bottom: calc(
+    var(--lesson-step-nav-height) + 72px + env(safe-area-inset-bottom, 0px) +
+      16px
+  );
+}
+
+body:has(.step-nav) .sticky-audio-player,
+body:has(.step-nav) .sticky-character-band {
+  bottom: calc(
+    var(--lesson-step-nav-height) + env(safe-area-inset-bottom, 0px)
+  );
+  padding-bottom: 0;
+}
+
+body:has(.step-nav):has(
+    :is(textarea, input[type="text"], input:not([type])):focus
+  ) {
+  padding-bottom: 16px;
+}
+
+body:has(.step-nav):has(
+    :is(textarea, input[type="text"], input:not([type])):focus
+  ).sticky-audio-active {
+  padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px) + 16px);
+}
+
+body:has(.step-nav):has(
+    :is(textarea, input[type="text"], input:not([type])):focus
+  ).sticky-character-band-active {
+  padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px) + 16px);
+}
+
+body:has(.step-nav):has(
+    :is(textarea, input[type="text"], input:not([type])):focus
+  )
+  .step-nav {
+  transform: translateY(100%);
+  pointer-events: none;
+}
+
+body:has(.step-nav):has(
+    :is(textarea, input[type="text"], input:not([type])):focus
+  )
+  .sticky-audio-player,
+body:has(.step-nav):has(
+    :is(textarea, input[type="text"], input:not([type])):focus
+  )
+  .sticky-character-band {
+  bottom: 0;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 /* Step nav buttons are the ONLY pills in the app (DESIGN.md). */
@@ -1011,7 +1108,7 @@ select:not([multiple]) {
 .story-text-sheet {
   position: fixed;
   inset: 0;
-  z-index: 30;
+  z-index: 45;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -1673,8 +1770,13 @@ body.sticky-character-band-active {
   .sticky-character-band,
   .sticky-lesson-timer,
   .step-panel,
+  .step-nav,
   .story-text-sheet-panel {
     animation: none;
+  }
+
+  .step-nav {
+    transition: none;
   }
 
   .step-progress-dot {
@@ -1719,6 +1821,64 @@ body.sticky-character-band-active {
     border: 1px solid var(--paper-line);
     border-radius: var(--radius-sheet);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  body:has(.step-nav) {
+    padding-bottom: calc(
+      var(--lesson-step-nav-height) + env(safe-area-inset-bottom, 0px) + 16px
+    );
+  }
+
+  body:has(.step-nav).sticky-audio-active {
+    padding-bottom: calc(
+      var(--lesson-step-nav-height) + env(safe-area-inset-bottom, 0px) + 72px +
+        32px
+    );
+  }
+
+  body:has(.step-nav).sticky-character-band-active {
+    padding-bottom: calc(
+      var(--lesson-step-nav-height) + env(safe-area-inset-bottom, 0px) + 80px +
+        32px
+    );
+  }
+
+  body:has(.step-nav) .sticky-audio-player,
+  body:has(.step-nav) .sticky-character-band {
+    bottom: calc(
+      var(--lesson-step-nav-height) + env(safe-area-inset-bottom, 0px) + 16px
+    );
+    padding-bottom: 0;
+  }
+
+  body:has(.step-nav):has(
+      :is(textarea, input[type="text"], input:not([type])):focus
+    ) {
+    padding-bottom: 16px;
+  }
+
+  body:has(.step-nav):has(
+      :is(textarea, input[type="text"], input:not([type])):focus
+    ).sticky-audio-active {
+    padding-bottom: calc(72px + 32px);
+  }
+
+  body:has(.step-nav):has(
+      :is(textarea, input[type="text"], input:not([type])):focus
+    ).sticky-character-band-active {
+    padding-bottom: calc(80px + 32px);
+  }
+
+  body:has(.step-nav):has(
+      :is(textarea, input[type="text"], input:not([type])):focus
+    )
+    .sticky-audio-player,
+  body:has(.step-nav):has(
+      :is(textarea, input[type="text"], input:not([type])):focus
+    )
+    .sticky-character-band {
+    bottom: 16px;
+    padding-bottom: 0;
   }
 }
 

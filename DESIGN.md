@@ -146,7 +146,7 @@ Depth is conveyed through **tonal layering** and **low-contrast outlines**, not 
 - **Level 0 (Base):** The paper background (`#faf6f0`).
 - **Level 1 (Cards):** White (`#ffffff`) surfaces for cards and input areas. No box-shadow. Edges defined by 1px `--paper-line` border.
 - **Interaction:** On press or active state, shift background to `--surface-hover` (`#f2ede4`). No shadow, no vertical displacement. Mimics paper being pressed.
-- **Sticky elements only** (sticky audio player, sticky header): may use a subtle shadow (`0 4px 12px rgba(0,0,0,0.06)`) to separate from scrolling content. This is the only exception to the no-shadow rule.
+- **Sticky elements only** (sticky audio player, sticky header, sticky step-nav glass bar): may use a subtle shadow (`0 4px 12px rgba(0,0,0,0.06)`) to separate from scrolling content. This is the only exception to the no-shadow rule.
 
 ## Layout
 
@@ -185,7 +185,7 @@ On screens wider than 1024px, the layout does NOT change structurally. The same 
 - The paper-header background fills the full width behind it (so the top of the screen isn't a different color), but the actual header content (wordmark, icons, lesson type, lesson name) is constrained to 672px centered.
 
 **Sticky audio player (desktop):**
-- Centered pill, 480px max-width, rounded corners (24px), 16px margin from bottom and sides. Same as mobile content but visually distinct as a floating element.
+- Centered pill, 480px max-width, rounded corners (24px), 16px margin from the glass step-nav (or from the screen bottom when the page has no `.step-nav`). Same as mobile content but visually distinct as a floating element.
 - Already specified in the audio player section.
 
 **Sounds grid (desktop):**
@@ -506,7 +506,7 @@ Pages: story lessons, writing lessons, exams, movie talk, music, future lesson t
 
 - **No bottom tab bar.** The lesson takes over the full screen.
 - **No News or Profile icons.** The learner is in a focused task. No distractions.
-- Tab bar is hidden. Sticky audio player (if the lesson has audio) uses the bottom of the screen.
+- Tab bar is hidden. The sticky glass step-nav owns the bottom of the viewport. Sticky audio (if the lesson has audio) and the Movie Talk character band sit **above** that bar.
 
 **Main header (lesson mode):**
 - Sticky, `--paper-header` background with backdrop blur. Two identity lines, shared by every lesson type (`LessonHeader`).
@@ -527,26 +527,29 @@ Pages: story lessons, writing lessons, exams, movie talk, music, future lesson t
 
 **Sticky lesson timer:**
 - Writing, exam, and Traducción free-write show the countdown in the body, top-right (`headline-md`, tabular-nums), same as Traducción already did.
-- When that inline clock scrolls under the sticky header, a compact chip (`LessonTimer`) docks top-right just under the header. Paper-header background, 1px `--paper-line`, 16px radius, 44px min height. Clone only while the clock is running. Scroll back and the chip goes away. Not a full-width bottom bar (those are for audio and the character band).
+- When that inline clock scrolls under the sticky header, a compact chip (`LessonTimer`) docks top-right just under the header. Paper-header background, 1px `--paper-line`, 16px radius, 44px min height. Clone only while the clock is running. Scroll back and the chip goes away. Not a full-width bottom bar (those are for the glass step-nav, audio, and the character band).
 
 **Lesson content:**
 - Recording banner (after-phase only): when the session window is closed AND `recording_youtube_url` is set, a white card (`--paper-line` border, 16px radius) sits below the lesson header/subheader and above the steps/tasks. Terracotta play icon + "Ver la grabación de la clase" + "(YouTube)" in `--text-muted`. Opens the URL in a new tab. Hidden during the live window even if a URL was pasted early.
 - One step at a time for stories (story text, comprehension, personal, dictation, choral, pronunciation)
 - Full activity for writing (prompt, text input, timer, submit)
 - Task-based for exams (fill-in, restructuring, translation)
-- Scrolls between the sticky subheader and the bottom navigation buttons
+- Scrolls between the sticky subheader and the glass step-nav. Long text is readable through the frost.
 - Max-width: 672px (`max-w-2xl`), centered
 
 **Bottom navigation (lesson mode):**
-- Step nav arrows at the bottom of the scroll content (not fixed)
-- Pill-shaped buttons (9999px radius): "← El cuento" (left, secondary style) and "Comprensión →" (right, primary style)
+- Fixed glass bar at the bottom of the viewport (not in the scroll). Same spot on every step.
+- Full-bleed Paper frost (`rgba(250, 246, 240, 0.78)` + `backdrop-filter: blur(16px)`), 1px `--paper-line` top border, subtle top shadow. Opaque `--paper` when `prefers-reduced-transparency`. Inner row max-width 672px, centered, 16px side padding, iPhone safe-area below the pills.
+- Pill-shaped buttons (9999px radius): "← El cuento" (left, secondary style) and "Comprensión →" (right, primary style). Teacher live: **Bloquear pasos / Abrir todas** in the middle of that row.
 - Left arrow hidden on first step. Right arrow hidden on last step.
 - Last step shows completion message instead of right arrow: "Listo! Has practicado todos los ejercicios." (`label-md`, `--text-secondary`, centered)
-- For lessons without steps (writing, exam): a single submit button (rounded rectangle, primary style) replaces the step nav arrows
+- Body padding keeps the last paragraph clear of the bar. Sticky audio and the character band stack above it (`body:has(.step-nav)`). The bar never jumps when those appear.
+- While a lesson `textarea` or text `input` is focused (writing Assignment, Movie Talk answers), the bar slides away so the keyboard is usable. Blur restores it.
+- Exam has no `.step-nav`. Writing uses the same glass bar as stories (Entregar stays in the Assignment step, not in the bar). Tab bar never shares a lesson page with this bar.
 
 **Sticky audio player (lesson mode):**
-- Appears at the bottom of the screen when audio is playing
-- Tab bar is hidden, so no conflict
+- Appears above the glass step-nav while audio is playing. On pages without `.step-nav`, it stays at the screen bottom.
+- Tab bar is hidden, so no conflict with browsing chrome
 - When the learner leaves via Inicio: audio stops, tab bar reappears
 
 ### Visual diagram (lesson mode)
@@ -559,13 +562,13 @@ Pages: story lessons, writing lessons, exams, movie talk, music, future lesson t
 │  •—•—●—•—•—•            │  Subheader (sticky): progress dots
 ├─────────────────────────┤
 │                          │
-│   [Step content]         │  Lesson content (scrolls)
+│   [Step content]         │  Lesson content (scrolls under the bar)
 │   One activity at a time │
 │                          │
-│                          │
-│  ← El cuento   Personal →│  Bottom nav (end of scroll)
 ├─────────────────────────┤
-│  [sticky audio player]   │  Only during audio playback
+│  [sticky audio player]   │  Only during audio; sits above the nav
+├─────────────────────────┤
+│  ← El cuento   Personal →│  Glass step-nav (fixed, viewport bottom)
 └─────────────────────────┘
 ```
 
@@ -759,7 +762,7 @@ Teacher-paced steps (same bottom pills as music). Skip Ejemplo when it would be 
 - Assignment: pre-intermediate "Cómo escribir" instructions, prompt card, text input (full width, white, `--paper-line` border, 16px radius, min-height 300px), live word count, WPM for pre-intermediate, Entregar while the sprint is running (and after zero if they already have text)
 - Your Text: plain submitted draft, then the color correction view underneath when Kyle has saved it. Empty: "Todavía no hay entrega."
 - Both levels lock at zero during live class (pre-intermediate auto-submits). After class, empty students get Empezar and their own 10/20-min countdown.
-- Bottom nav: Atrás / Siguiente pills (Spanish labels). Teacher live: Bloquear pasos / Abrir todas in the middle. Iniciar stays on the teacher session page and snaps phones to Assignment.
+- Bottom nav: shared glass bar at the viewport bottom. Atrás / Siguiente pills (Spanish labels). Teacher live: Bloquear pasos / Abrir todas in the middle. Iniciar stays on the teacher session page and snaps phones to Assignment. The bar hides while the writing box is focused.
 
 ### Exam Lesson Page (detailed)
 Task-based, collaborative (group of 2-3 students).
