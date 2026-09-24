@@ -11,7 +11,7 @@ Resolved 2026-08-21, recorded here from `.cursorrules` during the context-hygien
 - **Personal questions: oral in class** ("Discutir en clase" label), text input + AI in review mode.
 - **No due dates, ever.** Kyle's methodology: learning happens in class, not outside. No homework deadlines in any tier.
 - **90-min class window.** Scheduled start/end stay on the session; teaching mode continues until the teacher taps Terminar clase (or four hours past scheduled end — see ADR 008). Reveal stays gated until then; manual "Desbloquear ahora" remains as an escape hatch.
-- **Group exam is discussion-grouped, individually written.** Teacher forms 2-3 student groups for Zoom breakouts. Every grouped student writes their own answers. No designated writer, no live classmate-answer sync. Teacher types accepted answers and checks items one by one on `/exam?session=`. Score is practice math (correct/total), not a CEFR or official grade. Level-differentiated Task 2 (intermediate: Order; pre-intermediate: Correct). See PRD slices 49a–49e.
+- **Group exam is individually written.** Zoom discussion groups stay in Zoom, not in the app. Every student writes their own answers. No designated writer, no live classmate-answer sync. Teacher types accepted answers and checks items one by one on `/exam?session=`. Score is practice math (correct/total), not a CEFR or official grade. Level-differentiated Task 2 (intermediate: Order; pre-intermediate: Correct). See PRD slices 49a–49e.
 
 ## Consequences
 

@@ -66,7 +66,6 @@ const inputClass =
 export default function ExamSession({
   sessionId,
   prompt,
-  group,
   isTeacher,
   previewLevel = null,
   viewToggle = null,
@@ -93,7 +92,6 @@ export default function ExamSession({
 }: {
   sessionId: string;
   prompt: GroupExamPrompt;
-  group: { id: string; label: string } | null;
   isTeacher: boolean;
   previewLevel?: CourseLevel | null;
   viewToggle?: LessonViewToggle | null;
@@ -228,7 +226,7 @@ export default function ExamSession({
   const pensDown = live && Boolean(timerStartedAt) && remaining <= 0;
   const studentCanType =
     !isTeacher &&
-    ((live && Boolean(group) && Boolean(timerStartedAt) && remaining > 0) ||
+    ((live && Boolean(timerStartedAt) && remaining > 0) ||
       (afterClass &&
         !attended &&
         remaining > 0));
@@ -243,12 +241,12 @@ export default function ExamSession({
   const payload = useCallback(
     () => ({
       sessionId,
-      groupId: group?.id ?? null,
+      groupId: null,
       task1: task1Ref.current,
       task2: task2Ref.current,
       task3: task3Ref.current,
     }),
-    [sessionId, group?.id]
+    [sessionId]
   );
 
   const studentCanTypeRef = useRef(studentCanType);
@@ -367,12 +365,12 @@ export default function ExamSession({
       }
       return;
     }
-    if (isTeacher || frozen.current || !group) return;
+    if (isTeacher || frozen.current) return;
     frozen.current = true;
     void freezeExamAnswers(payload()).then((result) => {
       if (result.ok) setStatus("submitted");
     });
-  }, [pensDown, isTeacher, group, payload, status]);
+  }, [pensDown, isTeacher, payload, status]);
 
   useEffect(() => {
     const supabase = createClient();
@@ -706,13 +704,7 @@ export default function ExamSession({
           />
         ) : null}
 
-        {!group && !isTeacher && live && (
-          <p className="mb-4 rounded-card bg-accent-softer px-3 py-3 text-body-main text-text-secondary">
-            El Profe Kyle todavía te está poniendo en un grupo. Espera un
-            momento.
-          </p>
-        )}
-        {live && !timerStartedAt && !isTeacher && group ? (
+        {live && !timerStartedAt && !isTeacher ? (
           <p className="mb-4 rounded-card bg-accent-softer px-3 py-3 text-body-main text-text-secondary">
             Espera a que el Profe Kyle inicie el examen.
           </p>

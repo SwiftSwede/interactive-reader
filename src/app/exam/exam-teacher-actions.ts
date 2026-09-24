@@ -263,29 +263,3 @@ export async function publishExamScore(
 
   return { ok: true, answers, scorePublishedAt };
 }
-
-export async function listOpenedExamStudents(sessionId: string): Promise<
-  | { ok: true; studentIds: string[] }
-  | { ok: false; error: string }
-> {
-  const ctx = await teacherExamContext(sessionId);
-  if (!ctx.ok) return ctx;
-
-  const { data, error } = await ctx.supabase
-    .from("session_attendance")
-    .select("student_id, first_opened_at")
-    .eq("course_session_id", sessionId)
-    .not("first_opened_at", "is", null);
-
-  if (error) {
-    console.error("listOpenedExamStudents failed:", error);
-    return { ok: false, error: "No pude ver quién abrió el examen." };
-  }
-
-  return {
-    ok: true,
-    studentIds: ((data ?? []) as { student_id: string }[]).map(
-      (row) => row.student_id
-    ),
-  };
-}

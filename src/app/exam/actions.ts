@@ -89,27 +89,9 @@ export async function saveExamAnswers(
   const ctx = await studentExamContext(parsed.data.sessionId);
   if (!ctx.ok) return { ok: false, error: ctx.error };
 
-  const groupId = parsed.data.groupId ?? null;
-  if (liveClass(ctx.session) && !groupId) {
-    return { ok: false, error: "Todavía no estás en un grupo." };
-  }
-
-  if (groupId) {
-    const { data: group } = await ctx.supabase
-      .from("exam_groups")
-      .select("id, member_ids")
-      .eq("id", groupId)
-      .eq("course_session_id", parsed.data.sessionId)
-      .maybeSingle();
-    const members = (group?.member_ids ?? []) as string[];
-    if (!group || !members.includes(ctx.user.id)) {
-      return { ok: false, error: "No encontré tu grupo." };
-    }
-  }
-
   const payload = {
     exam_prompt_id: ctx.examPromptId,
-    exam_group_id: groupId,
+    exam_group_id: parsed.data.groupId ?? null,
     course_session_id: parsed.data.sessionId,
     user_id: ctx.user.id,
     task1_answers: parsed.data.task1,

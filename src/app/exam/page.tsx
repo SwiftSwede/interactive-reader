@@ -121,31 +121,15 @@ export default async function ExamPage({
     nextPath: lessonSessionNext("/exam", sessionToken),
   });
 
-  let group: { id: string; group_label: string; member_ids: string[] } | null =
-    null;
   let attended = false;
 
   if (user && access.saveResponses) {
-    const [{ data: groups }, { data: attendance }] = await Promise.all([
-      supabase
-        .from("exam_groups")
-        .select("id, group_label, member_ids")
-        .eq("course_session_id", access.session.id),
-      supabase
-        .from("session_attendance")
-        .select("attended")
-        .eq("course_session_id", access.session.id)
-        .eq("student_id", user.id)
-        .maybeSingle(),
-    ]);
-    group =
-      (
-        (groups ?? []) as {
-          id: string;
-          group_label: string;
-          member_ids: string[];
-        }[]
-      ).find((row) => row.member_ids.includes(user.id)) ?? null;
+    const { data: attendance } = await supabase
+      .from("session_attendance")
+      .select("attended")
+      .eq("course_session_id", access.session.id)
+      .eq("student_id", user.id)
+      .maybeSingle();
     attended = Boolean(attendance?.attended);
   }
 
@@ -189,7 +173,6 @@ export default async function ExamPage({
     <ExamSession
       sessionId={access.session.id}
       prompt={prompt}
-      group={group ? { id: group.id, label: group.group_label } : null}
       isTeacher={isTeacher}
       previewLevel={previewLevel}
       viewToggle={viewToggle}

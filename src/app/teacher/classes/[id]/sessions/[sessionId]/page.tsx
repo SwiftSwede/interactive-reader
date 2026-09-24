@@ -13,11 +13,9 @@ import { getSessionPhase, teachingEndMs } from "@/lib/session-phase";
 import StartWritingTimerButton from "./StartWritingTimerButton";
 import WritingTitleForm from "./WritingTitleForm";
 import ExamTimerStart from "@/components/exam/ExamTimerStart";
-import ExamGroupForm from "./ExamGroupForm";
 import {
   getOwnedCourse,
   loadCourseSessions,
-  loadExamGroups,
   loadExamSubmissions,
   loadLookedUpWords,
   loadSessionStudentStatus,
@@ -94,7 +92,7 @@ export default async function SessionDetailPage({
   const isConversation = session.sessionType === "conversation";
   const isSong = session.sessionType === "song";
   const isLiveOnly = isLiveOnlySessionType(session.sessionType);
-  const [students, lookedUpWords, submissions, examGroups, examSubs, freeWrites] =
+  const [students, lookedUpWords, submissions, examSubs, freeWrites] =
     await Promise.all([
       loadSessionStudentStatus(
         supabase,
@@ -108,7 +106,6 @@ export default async function SessionDetailPage({
       isWriting
         ? loadWritingSubmissions(supabase, session.id)
         : Promise.resolve([]),
-      isExam ? loadExamGroups(supabase, session.id) : Promise.resolve([]),
       isExam ? loadExamSubmissions(supabase, session.id) : Promise.resolve([]),
       isVideo
         ? loadVideoSummaryFreeWrites(supabase, session.id)
@@ -320,23 +317,6 @@ export default async function SessionDetailPage({
         </div>
       )}
 
-      {isExam && (
-        <div className="mt-8">
-          <ExamGroupForm
-            courseId={course.id}
-            sessionId={session.id}
-            students={students.map((student) => ({
-              studentId: student.studentId,
-              displayName: student.displayName,
-            }))}
-            groups={examGroups}
-            openedIds={students
-              .filter((student) => student.opened)
-              .map((student) => student.studentId)}
-          />
-        </div>
-      )}
-
       {isSong && songAnalytics ? (
         <div className="mt-10">
           <h2 className="mb-3 text-headline-md text-text-primary">
@@ -486,9 +466,6 @@ export default async function SessionDetailPage({
           <ul className="space-y-4">
             {students.map((student) => {
               const submission = submissionByStudent.get(student.studentId);
-              const examGroup = examGroups.find((group) =>
-                group.memberIds.includes(student.studentId)
-              );
               const examSub = examSubByUser.get(student.studentId);
               return (
                 <li
@@ -533,19 +510,13 @@ export default async function SessionDetailPage({
                   {student.openedAt && (
                     <LocalDateTime iso={student.openedAt} />
                   )}
-                  {isExam && (
+                  {isExam && examSub ? (
                     <p className="mt-2 text-sm text-text-secondary">
-                      {examGroup
-                        ? `${examGroup.groupLabel}${
-                            examSub?.status === "submitted"
-                              ? " · entregado"
-                              : examSub
-                                ? " · en progreso"
-                                : ""
-                          }`
-                        : "Sin grupo"}
+                      {examSub.status === "submitted"
+                        ? "Entregado"
+                        : "En progreso"}
                     </p>
-                  )}
+                  ) : null}
                   {isWriting ? (
                     <div className="mt-2 text-sm text-text-secondary">
                       <p>
