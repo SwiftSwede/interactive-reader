@@ -215,6 +215,67 @@ Tengo 3 años manejando. | I've been driving for 3 years. | I've been driving fo
 Si pudiera comprar cualquier carro, sería un 1997 Toyota Corolla. | If I could buy any car, it would be a 1997 Toyota Corolla.
 No se habría estrellado contra el poste de luz si supiera conducir un carro con cambio manual. | He wouldn't have crashed into the light pole if he knew how to drive a manual car. | He wouldn't have crashed into the light pole if he knew how to drive a stick.`,
   },
+  {
+    title: "Septiembre — Supersticiones",
+    theme: "Superstition",
+    level: "intermediate",
+    timeLimitMinutes: 35,
+    vocabRaw: `Above all | sobre todo
+Brace | prepararse
+Bring up | criar
+Childish | infantiles
+Concern | preocupación
+Curtail | recortar
+Dusty | polvoriento
+Enable | permitir
+Furthermore | además
+Insight | comprensión
+Jinx | gafar
+Lowdown | todos los detalles
+Outlook | perspectiva
+Pant | jadear
+Powerless | impotente
+Pull off | lograr
+Praise | elogios
+Remarkable | extraordinario
+Rewarding | gratificante
+Riveting | cautivadoras
+Swanky | elegante
+Trigger | provocar`,
+    task1Raw: `{Sobre todo|Above all}, my grandmother taught me to respect the stories that frightened me.
+She {me crió|brought me up|brought up|raised me} with warnings about birds at the window, yellow butterflies, and names that should never be spoken at night.
+When I was sixteen, I called those beliefs {infantiles|childish}, although I still avoided mocking them out loud.
+Years later, I attended a reading about Gabriel García Márquez at an {elegante|swanky} hotel in Cartagena.
+The event promised to give us {todos los detalles|the lowdown|lowdown} about the superstitions that influenced his fictional world.
+While I waited, I opened a {polvoriento|dusty} copy of One Hundred Years of Solitude that I had bought at a street stall.
+The organizer's main {preocupación|concern} was a storm that could interrupt the event.
+She asked us to {prepararnos para|brace for|brace ourselves for|brace} a brief power outage, but she explained that a generator would {permitir|enable} the reading to continue.
+{Además|Furthermore}, the speaker promised a question-and-answer session after the presentation.
+Her {comprensión|insight} of García Márquez's childhood made his strange scenes feel connected to real Colombian life.
+Her stories were so {cautivadoras|riveting|captivating} that I forgot about the dark clouds gathering outside.
+Then a frightened guest rushed in, {jadeando|panting}, because a yellow butterfly had flown through the open lobby window.
+I worried that the unusual visitor might {gafar|jinx} the evening, but the speaker smiled and welcomed it.
+That response changed my {perspectiva|outlook} on superstition: perhaps it could be a source of imagination instead of fear.
+A loud crack of thunder seemed to {provocar|trigger} nervous whispers around the room, and for a moment I felt completely {impotente|powerless}.
+The organizers decided to {recortar|curtail} the discussion, yet they still {lograron|pulled off} a beautiful candlelit reading.
+Afterward, the guests offered warm {elogios|praise} to the staff, and I realized why García Márquez remains such an {extraordinario|remarkable} writer.
+The evening was deeply {gratificante|rewarding}, because it taught me to see my grandmother's old warnings with new respect.`,
+    task2Raw: `C | For one, superstitions make everyday life more colorful.
+G | They may be silly but imagine how monotonous life would be without them.
+A | Nowadays, most people view old superstitions as childish and outdated.
+E | Secondly, superstitions, no matter how silly, can give us hope when we most need it.
+D | You're walking down a street and a friend walks under a ladder, suddenly you have something funny to talk about.
+F | Hockey players will tape their sticks the same way before every game as a way to get their minds thinking positive.
+B | And while they may not be backed by science, I believe superstitions should still be followed.`,
+    task3Raw: `Tengo la boca hinchada debido a una infección en una muela del juicio. | I have a swollen mouth due to an infection in a wisdom tooth.
+Me inclino hacia la izquierda políticamente. | I lean to the left politically.
+A pesar de las críticas, mantuvo una amistad de por vida con el dictador. | Despite the criticism, he maintained a lifelong friendship with the dictator.
+No me eches la mala suerte. | Don't jinx me. | Don't bring me bad luck.
+Me están entrando dudas sobre casarme con ella. | I'm starting to have doubts about marrying her. | I'm having second thoughts about marrying her.
+Necesitas familiarizarte con el terreno antes de comprometerte por completo con algo. | You need to familiarize yourself with the terrain before fully committing to something.
+Si tuvieras más suerte, no necesitarías pedirme plata por la quinta vez. | If you had more luck, you wouldn't need to ask me for money for the fifth time.
+Si un gato negro no me hubiera cruzado el camino, yo habría ganado el contrato. | If a black cat hadn't crossed my path, I would have won the contract.`,
+  },
 ];
 
 async function main() {
