@@ -219,7 +219,7 @@ No se habría estrellado contra el poste de luz si supiera conducir un carro con
     title: "Septiembre — Supersticiones",
     theme: "Superstition",
     level: "intermediate",
-    timeLimitMinutes: 35,
+    timeLimitMinutes: 45,
     vocabRaw: `Above all | sobre todo
 Brace | prepararse
 Bring up | criar
@@ -260,13 +260,13 @@ A loud crack of thunder seemed to {provocar|trigger} nervous whispers around the
 The organizers decided to {recortar|curtail} the discussion, yet they still {lograron|pulled off} a beautiful candlelit reading.
 Afterward, the guests offered warm {elogios|praise} to the staff, and I realized why García Márquez remains such an {extraordinario|remarkable} writer.
 The evening was deeply {gratificante|rewarding}, because it taught me to see my grandmother's old warnings with new respect.`,
-    task2Raw: `C | For one, superstitions make everyday life more colorful.
-G | They may be silly but imagine how monotonous life would be without them.
-A | Nowadays, most people view old superstitions as childish and outdated.
-E | Secondly, superstitions, no matter how silly, can give us hope when we most need it.
-D | You're walking down a street and a friend walks under a ladder, suddenly you have something funny to talk about.
-F | Hockey players will tape their sticks the same way before every game as a way to get their minds thinking positive.
-B | And while they may not be backed by science, I believe superstitions should still be followed.`,
+    task2Raw: `3 | For one, superstitions make everyday life more colorful.
+7 | They may be silly but imagine how monotonous life would be without them.
+1 | Nowadays, most people view old superstitions as childish and outdated.
+5 | Secondly, superstitions, no matter how silly, can give us hope when we most need it.
+4 | You're walking down a street and a friend walks under a ladder, suddenly you have something funny to talk about.
+6 | Hockey players will tape their sticks the same way before every game as a way to get their minds thinking positive.
+2 | And while they may not be backed by science, I believe superstitions should still be followed.`,
     task3Raw: `Tengo la boca hinchada debido a una infección en una muela del juicio. | I have a swollen mouth due to an infection in a wisdom tooth.
 Me inclino hacia la izquierda políticamente. | I lean to the left politically.
 A pesar de las críticas, mantuvo una amistad de por vida con el dictador. | Despite the criticism, he maintained a lifelong friendship with the dictator.
