@@ -11,10 +11,12 @@ export default function WritingCorrectionView({
   diff,
   notes,
   goodVocabulary,
+  showGoodVocabulary = true,
 }: {
   diff: DiffSegment[];
   notes: InlineNote[] | null;
   goodVocabulary: number[] | null;
+  showGoodVocabulary?: boolean;
 }) {
   const good = new Set(goodVocabulary ?? []);
   const noteByIndex = new Map(
@@ -80,9 +82,11 @@ export default function WritingCorrectionView({
         <span className={`${MARK.deleted} inline-block px-1.5 py-0.5`}>
           sobra
         </span>
-        <span className={`${MARK.good} inline-block px-1.5 py-0.5`}>
-          buen vocabulario
-        </span>
+        {showGoodVocabulary ? (
+          <span className={`${MARK.good} inline-block px-1.5 py-0.5`}>
+            buen vocabulario
+          </span>
+        ) : null}
       </div>
     </div>
   );

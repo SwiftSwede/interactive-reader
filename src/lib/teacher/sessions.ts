@@ -45,6 +45,8 @@ export type TeacherSession = {
   notes: string | null;
   token: string;
   timerStartedAt: string | null;
+  examTimerMode: "until_end_offset" | "from_start";
+  examTimerMinutes: number;
   recordingYoutubeUrl: string | null;
   story: StoryRef | null;
   writingPrompt: WritingPromptRef | null;
@@ -355,6 +357,8 @@ type SessionRow = {
   notes: string | null;
   session_link_token: string;
   timer_started_at?: string | null;
+  exam_timer_mode?: string | null;
+  exam_timer_minutes?: number | null;
   recording_youtube_url?: string | null;
   stories: StoryJoin;
   writing_prompts?: PromptJoin;
@@ -396,6 +400,12 @@ export function mapSessionRow(row: SessionRow): TeacherSession {
     notes: row.notes,
     token: row.session_link_token,
     timerStartedAt: row.timer_started_at ?? null,
+    examTimerMode:
+      row.exam_timer_mode === "from_start" ? "from_start" : "until_end_offset",
+    examTimerMinutes:
+      typeof row.exam_timer_minutes === "number" && row.exam_timer_minutes > 0
+        ? row.exam_timer_minutes
+        : 20,
     recordingYoutubeUrl: row.recording_youtube_url ?? null,
     story: storyFromJoin(row.stories),
     writingPrompt: promptFromJoin(row.writing_prompts ?? null),
@@ -410,7 +420,7 @@ export function mapSessionRow(row: SessionRow): TeacherSession {
 }
 
 export const SESSION_SELECT =
-  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, presentation_prompt_id, conversation_prompt_id, timer_started_at, session_date, session_start_time, session_end_time, class_ended_at, answers_revealed, notes, session_link_token, recording_youtube_url, stories ( title, slug ), writing_prompts ( title, prompt_text, writing_time_minutes, level ), exam_prompts ( title, level, time_limit_minutes ), presentation_prompts ( title, level ), conversation_prompts ( title, level )";
+  "id, course_id, session_type, story_id, writing_prompt_id, exam_prompt_id, presentation_prompt_id, conversation_prompt_id, timer_started_at, exam_timer_mode, exam_timer_minutes, session_date, session_start_time, session_end_time, class_ended_at, answers_revealed, notes, session_link_token, recording_youtube_url, stories ( title, slug ), writing_prompts ( title, prompt_text, writing_time_minutes, level ), exam_prompts ( title, level, time_limit_minutes ), presentation_prompts ( title, level ), conversation_prompts ( title, level )";
 
 const SESSION_SELECT_LEGACY =
   "id, course_id, story_id, session_date, session_start_time, session_end_time, class_ended_at, answers_revealed, notes, session_link_token, stories ( title, slug )";

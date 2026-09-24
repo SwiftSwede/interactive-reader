@@ -13,6 +13,7 @@ import type {
   WritingPrompt,
 } from "@/types";
 import {
+  defaultExamTaskCopy,
   examCountsDropped,
   examItemCounts,
   mapExamPromptRow,
@@ -985,6 +986,12 @@ export type ExamForEdit = {
   task1Raw: string;
   task2Raw: string;
   task3Raw: string;
+  task1Title: string;
+  task1Instructions: string;
+  task2Title: string;
+  task2Instructions: string;
+  task3Title: string;
+  task3Instructions: string;
   storedCounts: ExamItemCounts;
 };
 
@@ -1000,6 +1007,7 @@ export async function loadExamPromptForEdit(
   if (error || !data) return null;
   const row = data as ExamPromptRow;
   const mapped = mapExamPromptRow(row);
+  const copy = defaultExamTaskCopy(mapped.task2Type);
   const task2Raw =
     mapped.task2Type === "paragraph_restructuring"
       ? serializeParagraphRestructuring(mapped.paragraphRestructuring ?? [])
@@ -1015,6 +1023,12 @@ export async function loadExamPromptForEdit(
     task1Raw: serializeFillInTranslation(mapped.fillInTranslation),
     task2Raw,
     task3Raw: serializeTranslationSentences(mapped.translationSentences),
+    task1Title: mapped.task1Title ?? copy.task1Title,
+    task1Instructions: mapped.task1Instructions ?? copy.task1Instructions,
+    task2Title: mapped.task2Title ?? copy.task2Title,
+    task2Instructions: mapped.task2Instructions ?? copy.task2Instructions,
+    task3Title: mapped.task3Title ?? copy.task3Title,
+    task3Instructions: mapped.task3Instructions ?? copy.task3Instructions,
     storedCounts: examItemCounts(mapped),
   };
 }
@@ -1031,6 +1045,12 @@ export async function saveExamPrompt(
     task2Raw: string;
     task3Raw: string;
     timeLimitMinutes: number;
+    task1Title: string;
+    task1Instructions: string;
+    task2Title: string;
+    task2Instructions: string;
+    task3Title: string;
+    task3Instructions: string;
   }
 ): Promise<EditorSaveResult & { preview?: string }> {
   const loaded = await loadExamPromptForEdit(supabase, id);
@@ -1067,6 +1087,12 @@ export async function saveExamPrompt(
       sentence_correction: parsed.sentenceCorrection,
       translation_sentences: parsed.translationSentences,
       time_limit_minutes: parsed.timeLimitMinutes,
+      task1_title: fields.task1Title.trim() || null,
+      task1_instructions: fields.task1Instructions.trim() || null,
+      task2_title: fields.task2Title.trim() || null,
+      task2_instructions: fields.task2Instructions.trim() || null,
+      task3_title: fields.task3Title.trim() || null,
+      task3_instructions: fields.task3Instructions.trim() || null,
     })
     .eq("id", id);
   if (error) {

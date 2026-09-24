@@ -9,7 +9,7 @@ import { config } from "dotenv";
 config({ path: ".env.local", override: true });
 
 import { createAdminClient } from "../src/lib/supabase/admin";
-import { parseExamForm } from "../src/lib/exam";
+import { parseExamForm, defaultExamTaskCopy } from "../src/lib/exam";
 
 type ExamSeed = {
   title: string;
@@ -27,7 +27,7 @@ const EXAMS: ExamSeed[] = [
     title: "Agosto — Niñera",
     theme: "Babysitting",
     level: "pre-intermediate",
-    timeLimitMinutes: 35,
+    timeLimitMinutes: 45,
     vocabRaw: `Ashamed | avergonzado
 Beat up | dar una paliza
 Brat | mocoso
@@ -92,7 +92,7 @@ Yo habría sido un mejor adolescente si mi madre me hubiera abrazado más. | I w
     title: "Agosto — Jefes",
     theme: "Bosses",
     level: "intermediate",
-    timeLimitMinutes: 35,
+    timeLimitMinutes: 45,
     vocabRaw: `Approach | enfoque
 Barred | prohibidas
 Bond | vínculo
@@ -134,13 +134,13 @@ At a team meeting, she went on a long {perorata|rant} about responsibility and p
 At first, we hated her rules, but she was trying to {inculcar|instill} better habits in the team.
 She said everyone had to {estar a la altura de|live up to} the company's ethical standards, not just meet their deadlines.
 Three months later, the {resultado|outcome} of her changes was {sobresaliente|outstanding}: our reports were more accurate, and nobody was afraid to report a problem.`,
-    task2Raw: `C | Firstly, I'm incredibly lazy.
-F | One time I gave an annoying customer the middle finger because I knew my boss wouldn't do anything about it.
-A | If you've be fully employed for a meaningful length of time, you've probably had your share of both strict and laid-back bosses.
-E | Secondly, I cause trouble if there is no authority figure.
-D | If someone isn't breathing down my neck from the moment I walk in the door, I just stare at the ceiling.
-G | It's because of my unique personality that I can only be a functional coworker and employee with a draconian boss.
-B | Personally, I react best to a strict boss.`,
+    task2Raw: `3 | Firstly, I'm incredibly lazy.
+6 | One time I gave an annoying customer the middle finger because I knew my boss wouldn't do anything about it.
+1 | If you've be fully employed for a meaningful length of time, you've probably had your share of both strict and laid-back bosses.
+5 | Secondly, I cause trouble if there is no authority figure.
+4 | If someone isn't breathing down my neck from the moment I walk in the door, I just stare at the ceiling.
+7 | It's because of my unique personality that I can only be a functional coworker and employee with a draconian boss.
+2 | Personally, I react best to a strict boss.`,
     task3Raw: `Me enorgullezco de mi trabajo. | I am proud of my work. | I take pride in my work.
 Es posible que nos demande. | It's likely they'll sue us.
 Les recuerdo que les he hecho favores en el pasado cuando les pido que trabajen horas extras. | I remind them that I've done favors for them in the past when I ask them to work overtime.
@@ -156,7 +156,7 @@ Si hubiera escuchado a su madre, no se habría desviado del buen camino. | If he
     title: "Septiembre — Tráfico",
     theme: "Driving",
     level: "pre-intermediate",
-    timeLimitMinutes: 35,
+    timeLimitMinutes: 45,
     vocabRaw: `Accelerate | acelerar
 Back out / reverse | retroceder
 Brake | frenar
@@ -263,6 +263,7 @@ async function main() {
       .eq("level", seed.level)
       .maybeSingle();
 
+    const copy = defaultExamTaskCopy(task2Type);
     const payload = {
       title: parsed.title,
       level: seed.level,
@@ -274,6 +275,12 @@ async function main() {
       sentence_correction: parsed.sentenceCorrection,
       translation_sentences: parsed.translationSentences,
       time_limit_minutes: parsed.timeLimitMinutes,
+      task1_title: copy.task1Title,
+      task1_instructions: copy.task1Instructions,
+      task2_title: copy.task2Title,
+      task2_instructions: copy.task2Instructions,
+      task3_title: copy.task3Title,
+      task3_instructions: copy.task3Instructions,
       created_by: teacher.id,
     };
 

@@ -19,6 +19,11 @@ import {
 } from "@/lib/conversation";
 import { parseSongClassAnswers } from "@/lib/music";
 import { parseMovieTalkClassAnswers } from "@/lib/movietalk";
+import {
+  parseExamClassAnswers,
+  parseExamTimerMinutes,
+  parseExamTimerMode,
+} from "@/lib/exam";
 import { readTeacherStudentPreview } from "@/lib/student-preview-server";
 import type {
   ConversationPlan,
@@ -82,6 +87,10 @@ type SessionRow = {
   answers_revealed: boolean;
   song_class_answers?: unknown;
   movie_talk_class_answers?: unknown;
+  exam_class_answers?: unknown;
+  exam_timer_mode?: string | null;
+  exam_timer_minutes?: number | null;
+  exam_score_published_at?: string | null;
   notes: string | null;
   session_link_token: string;
   timer_started_at?: string | null;
@@ -154,6 +163,10 @@ export function mapSession(row: SessionRow): CourseSession {
     movieTalkClassAnswers: parseMovieTalkClassAnswers(
       row.movie_talk_class_answers
     ),
+    examClassAnswers: parseExamClassAnswers(row.exam_class_answers),
+    examTimerMode: parseExamTimerMode(row.exam_timer_mode),
+    examTimerMinutes: parseExamTimerMinutes(row.exam_timer_minutes),
+    examScorePublishedAt: row.exam_score_published_at ?? null,
     notes: row.notes,
     sessionLinkToken: row.session_link_token,
     timerStartedAt: row.timer_started_at ?? null,

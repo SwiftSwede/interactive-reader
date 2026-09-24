@@ -302,6 +302,11 @@ select:not([multiple]) {
   border-bottom-color: var(--accent);
 }
 
+.lyric-blank::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
 .lyric-blank-ok {
   border-bottom-color: var(--success);
 }

@@ -11,7 +11,7 @@ import {
   copyWritingPrompt,
 } from "@/lib/catalog-crud";
 import { wordDiff } from "@/lib/writing";
-import { parseExamForm, nextGroupLabel } from "@/lib/exam";
+import { defaultExamTaskCopy, parseExamForm, nextGroupLabel } from "@/lib/exam";
 import type { CourseLevel, ExamTask2Type } from "@/types";
 import {
   setSessionAttendance,
@@ -296,13 +296,14 @@ export async function createSession(
       task2Raw: String(formData.get("examTask2") ?? ""),
       task3Raw: String(formData.get("examTask3") ?? ""),
       timeLimitMinutes:
-        Number.isFinite(minutesRaw) && minutesRaw > 0 ? minutesRaw : 35,
+        Number.isFinite(minutesRaw) && minutesRaw > 0 ? minutesRaw : 45,
     });
 
     if (parsed.error) {
       return { ok: false, error: parsed.error };
     }
 
+    const copy = defaultExamTaskCopy(parsed.task2Type);
     const { data: prompt, error: promptError } = await supabase
       .from("exam_prompts")
       .insert({
@@ -316,6 +317,12 @@ export async function createSession(
         sentence_correction: parsed.sentenceCorrection,
         translation_sentences: parsed.translationSentences,
         time_limit_minutes: parsed.timeLimitMinutes,
+        task1_title: copy.task1Title,
+        task1_instructions: copy.task1Instructions,
+        task2_title: copy.task2Title,
+        task2_instructions: copy.task2Instructions,
+        task3_title: copy.task3Title,
+        task3_instructions: copy.task3Instructions,
         created_by: teacher.id,
       })
       .select("id, title")
@@ -862,7 +869,7 @@ export async function startWritingTimer(
     .select("id, session_type, timer_started_at")
     .eq("id", sessionId)
     .eq("course_id", courseId)
-    .in("session_type", ["writing", "video_summary"])
+    .in("session_type", ["writing", "video_summary", "exam"])
     .maybeSingle();
 
   if (!session) {
@@ -876,10 +883,22 @@ export async function startWritingTimer(
     timer_started_at: string;
     lesson_step_current?: string;
     lesson_step_locked?: boolean;
+    exam_timer_mode?: string;
+    exam_timer_minutes?: number;
   } = { timer_started_at: new Date().toISOString() };
   if (session.session_type === "writing") {
     patch.lesson_step_current = "escribir";
     patch.lesson_step_locked = true;
+  }
+  if (session.session_type === "exam") {
+    const modeRaw = String(formData.get("examTimerMode") ?? "").trim();
+    const minutesRaw = Number(formData.get("examTimerMinutes"));
+    patch.exam_timer_mode =
+      modeRaw === "from_start" ? "from_start" : "until_end_offset";
+    patch.exam_timer_minutes =
+      Number.isInteger(minutesRaw) && minutesRaw > 0 && minutesRaw <= 90
+        ? minutesRaw
+        : 20;
   }
 
   const { data, error } = await supabase
@@ -911,6 +930,57 @@ export async function startWritingTimer(
   revalidatePath(`/teacher/classes/${courseId}`);
   revalidatePath(`/teacher/classes/${courseId}/sessions/${sessionId}`);
   revalidatePath("/teacher");
+  return { ok: true };
+}
+
+export async function saveExamTimerSettings(
+  formData: FormData
+): Promise<StartTimerResult> {
+  const teacher = await requireTeacher("/teacher");
+  const courseId = String(formData.get("courseId") ?? "").trim();
+  const sessionId = String(formData.get("sessionId") ?? "").trim();
+  if (!courseId || !sessionId) {
+    return { ok: false, error: "No encontré esa clase." };
+  }
+
+  const modeRaw = String(formData.get("examTimerMode") ?? "").trim();
+  const minutesRaw = Number(formData.get("examTimerMinutes"));
+  const examTimerMode =
+    modeRaw === "from_start" ? "from_start" : "until_end_offset";
+  const examTimerMinutes =
+    Number.isInteger(minutesRaw) && minutesRaw > 0 && minutesRaw <= 90
+      ? minutesRaw
+      : 20;
+
+  const supabase = await createClient();
+  const { data: course } = await supabase
+    .from("courses")
+    .select("id")
+    .eq("id", courseId)
+    .eq("teacher_id", teacher.id)
+    .maybeSingle();
+  if (!course) {
+    return { ok: false, error: "Ese curso no es tuyo." };
+  }
+
+  const { data, error } = await supabase
+    .from("course_sessions")
+    .update({
+      exam_timer_mode: examTimerMode,
+      exam_timer_minutes: examTimerMinutes,
+    })
+    .eq("id", sessionId)
+    .eq("course_id", courseId)
+    .eq("session_type", "exam")
+    .is("timer_started_at", null)
+    .select("id")
+    .maybeSingle();
+
+  if (error || !data) {
+    return { ok: false, error: "El reloj ya está corriendo." };
+  }
+
+  revalidatePath(`/teacher/classes/${courseId}/sessions/${sessionId}`);
   return { ok: true };
 }
 
@@ -1045,7 +1115,6 @@ export async function createExamGroup(
   const teacher = await requireTeacher("/teacher");
   const courseId = String(formData.get("courseId") ?? "").trim();
   const sessionId = String(formData.get("sessionId") ?? "").trim();
-  const writerId = String(formData.get("writerId") ?? "").trim();
   const memberIds = formData
     .getAll("memberIds")
     .map((value) => String(value).trim())
@@ -1056,9 +1125,6 @@ export async function createExamGroup(
   }
   if (memberIds.length < 2 || memberIds.length > 3) {
     return { ok: false, error: "Cada grupo son 2 o 3 estudiantes." };
-  }
-  if (!writerId || !memberIds.includes(writerId)) {
-    return { ok: false, error: "El escritor tiene que estar en el grupo." };
   }
 
   const supabase = await createClient();
@@ -1078,6 +1144,29 @@ export async function createExamGroup(
     .maybeSingle();
   if (!session || session.session_type !== "exam") {
     return { ok: false, error: "Esa no es una clase de examen." };
+  }
+
+  const { data: openedRows } = await supabase
+    .from("session_attendance")
+    .select("student_id, first_opened_at")
+    .eq("course_session_id", sessionId)
+    .in("student_id", memberIds);
+
+  const opened = new Set(
+    (
+      (openedRows ?? []) as {
+        student_id: string;
+        first_opened_at: string | null;
+      }[]
+    )
+      .filter((row) => row.first_opened_at)
+      .map((row) => row.student_id)
+  );
+  if (memberIds.some((id) => !opened.has(id))) {
+    return {
+      ok: false,
+      error: "Solo puedes agrupar a quien ya abrió el examen.",
+    };
   }
 
   const { data: existing } = await supabase
@@ -1100,7 +1189,7 @@ export async function createExamGroup(
   const { error } = await supabase.from("exam_groups").insert({
     course_session_id: sessionId,
     group_label: label,
-    writer_id: writerId,
+    writer_id: null,
     member_ids: memberIds,
   });
 
@@ -1153,44 +1242,11 @@ export async function deleteExamGroup(
 export async function startExamReview(
   formData: FormData
 ): Promise<SaveExamGroupResult> {
-  const teacher = await requireTeacher("/teacher");
   const courseId = String(formData.get("courseId") ?? "").trim();
   const sessionId = String(formData.get("sessionId") ?? "").trim();
-
-  if (!courseId || !sessionId) {
-    return { ok: false, error: "No encontré esa clase." };
+  if (courseId && sessionId) {
+    revalidatePath(`/teacher/classes/${courseId}/sessions/${sessionId}`);
   }
-
-  const supabase = await createClient();
-  const { data: course } = await supabase
-    .from("courses")
-    .select("id")
-    .eq("id", courseId)
-    .eq("teacher_id", teacher.id)
-    .maybeSingle();
-  if (!course) return { ok: false, error: "Ese curso no es tuyo." };
-
-  const now = new Date().toISOString();
-  const { error: sessionError } = await supabase
-    .from("course_sessions")
-    .update({ answers_revealed: true })
-    .eq("id", sessionId)
-    .eq("course_id", courseId)
-    .eq("session_type", "exam");
-
-  if (sessionError) {
-    console.error("startExamReview session failed:", sessionError);
-    return { ok: false, error: "No pude iniciar la revisión." };
-  }
-
-  await supabase
-    .from("group_exam_submissions")
-    .update({ review_revealed_at: now })
-    .eq("course_session_id", sessionId)
-    .is("review_revealed_at", null);
-
-  revalidatePath(`/teacher/classes/${courseId}/sessions/${sessionId}`);
-  revalidatePath("/teacher");
   return { ok: true };
 }
 

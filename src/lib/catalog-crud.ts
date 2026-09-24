@@ -1,6 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { defaultExamTask2Type, defaultWritingMinutes } from "@/lib/activities";
-import { examItemCounts, type ExamItemCounts } from "@/lib/exam";
+import { defaultExamTaskCopy, examItemCounts, type ExamItemCounts } from "@/lib/exam";
 import { parseConversationQuestions } from "@/lib/conversation";
 import type { CourseLevel } from "@/types";
 
@@ -177,7 +177,7 @@ export function catalogCreateDefaults(
   level: CourseLevel
 ): {
   task2Type: ReturnType<typeof defaultExamTask2Type>;
-  timeLimitMinutes: 35;
+  timeLimitMinutes: 45;
   presentationLevel: "intermediate";
 };
 export function catalogCreateDefaults(
@@ -189,7 +189,7 @@ export function catalogCreateDefaults(
   }
   return {
     task2Type: defaultExamTask2Type(level),
-    timeLimitMinutes: 35 as const,
+    timeLimitMinutes: 45 as const,
     presentationLevel: "intermediate" as const,
   };
 }
@@ -518,6 +518,7 @@ export async function createExamPrompt(
     return fail("Elige Pre-intermedio o Intermedio.");
   }
   const task2Type = defaultExamTask2Type(input.level);
+  const copy = defaultExamTaskCopy(task2Type);
   const { data, error } = await supabase
     .from("exam_prompts")
     .insert({
@@ -531,7 +532,13 @@ export async function createExamPrompt(
         task2Type === "paragraph_restructuring" ? [] : null,
       sentence_correction: task2Type === "sentence_correction" ? [] : null,
       translation_sentences: [],
-      time_limit_minutes: 35,
+      time_limit_minutes: 45,
+      task1_title: copy.task1Title,
+      task1_instructions: copy.task1Instructions,
+      task2_title: copy.task2Title,
+      task2_instructions: copy.task2Instructions,
+      task3_title: copy.task3Title,
+      task3_instructions: copy.task3Instructions,
       created_by: input.createdBy,
     })
     .select("id")
@@ -652,7 +659,7 @@ export async function copyExamPrompt(
   const { data: source, error: loadError } = await supabase
     .from("exam_prompts")
     .select(
-      "title, level, theme, vocabulary_list, fill_in_translation, task2_type, paragraph_restructuring, sentence_correction, translation_sentences, time_limit_minutes"
+      "title, level, theme, vocabulary_list, fill_in_translation, task2_type, paragraph_restructuring, sentence_correction, translation_sentences, time_limit_minutes, task1_title, task1_instructions, task2_title, task2_instructions, task3_title, task3_instructions"
     )
     .eq("id", sourceId)
     .eq("level", level)
@@ -683,6 +690,12 @@ export async function copyExamPrompt(
       sentence_correction: source.sentence_correction,
       translation_sentences: source.translation_sentences,
       time_limit_minutes: source.time_limit_minutes,
+      task1_title: source.task1_title,
+      task1_instructions: source.task1_instructions,
+      task2_title: source.task2_title,
+      task2_instructions: source.task2_instructions,
+      task3_title: source.task3_title,
+      task3_instructions: source.task3_instructions,
       created_by: createdBy,
     })
     .select("id, title")

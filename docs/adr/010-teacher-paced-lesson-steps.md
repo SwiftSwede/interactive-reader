@@ -20,6 +20,8 @@ Lock starts when Kyle first opens the song lesson as teacher during live class, 
 
 New step-based lesson types MUST implement this lock. Music implements it in this slice. Presentation stays on its own field.
 
+**Exam exception (2026-09-23):** the live exam work period starts unlocked so students can jump between Parte 1-3 like a paper handout. Iniciar does not snap phones or lock skip-ahead. After the timer hits 0, the teacher may Bloquear pasos and the bottom pills snap the class to the task being checked. Puntaje stays gated until the score is published.
+
 ## Consequences
 
 - Live students cannot skip ahead while locked. Review and consumer modes stay free-navigate.

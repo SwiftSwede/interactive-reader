@@ -127,7 +127,7 @@ describe("catalogCreateDefaults", () => {
   test("exam task2 and time follow live CHECKs", () => {
     const pre = catalogCreateDefaults("exam", "pre-intermediate");
     assert.equal(pre.task2Type, "sentence_correction");
-    assert.equal(pre.timeLimitMinutes, 35);
+    assert.equal(pre.timeLimitMinutes, 45);
     const mid = catalogCreateDefaults("exam", "intermediate");
     assert.equal(mid.task2Type, "paragraph_restructuring");
     assert.equal(mid.presentationLevel, "intermediate");

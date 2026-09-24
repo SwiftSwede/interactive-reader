@@ -12,10 +12,8 @@ import EndClassButton from "@/components/EndClassButton";
 import { getSessionPhase, teachingEndMs } from "@/lib/session-phase";
 import StartWritingTimerButton from "./StartWritingTimerButton";
 import WritingTitleForm from "./WritingTitleForm";
-import StartExamReviewButton from "./StartExamReviewButton";
+import ExamTimerStart from "@/components/exam/ExamTimerStart";
 import ExamGroupForm from "./ExamGroupForm";
-import ExamReview from "./ExamReview";
-import { mapExamPromptRow, type ExamPromptRow } from "@/lib/exam";
 import {
   getOwnedCourse,
   loadCourseSessions,
@@ -120,21 +118,9 @@ export default async function SessionDetailPage({
   const submissionByStudent = new Map(
     submissions.map((row) => [row.userId, row])
   );
-  const examSubByGroup = new Map(
-    examSubs.map((row) => [row.examGroupId, row])
+  const examSubByUser = new Map(
+    examSubs.map((row) => [row.userId, row])
   );
-
-  let examPrompt = null;
-  if (isExam && session.examPromptId) {
-    const { data } = await supabase
-      .from("exam_prompts")
-      .select(
-        "id, title, level, theme, vocabulary_list, fill_in_translation, task2_type, paragraph_restructuring, sentence_correction, translation_sentences, time_limit_minutes, created_by, created_at"
-      )
-      .eq("id", session.examPromptId)
-      .maybeSingle();
-    if (data) examPrompt = mapExamPromptRow(data as ExamPromptRow);
-  }
 
   let songAnalytics: Awaited<ReturnType<typeof getSongBlankAnalytics>> | null =
     null;
@@ -222,14 +208,18 @@ export default async function SessionDetailPage({
             />
           )
         ) : isExam ? (
-          unlocked ? (
+          session.timerStartedAt ? (
             <p className="flex items-center text-sm text-text-muted">
-              Revisión abierta.
+              El examen ya está en marcha.
             </p>
           ) : (
-            <StartExamReviewButton
+            <ExamTimerStart
               courseId={course.id}
               sessionId={session.id}
+              sessionEndTime={session.end}
+              started={Boolean(session.timerStartedAt)}
+              initialMode={session.examTimerMode}
+              initialMinutes={session.examTimerMinutes}
             />
           )
         ) : isConversation || isPresentation ? (
@@ -287,6 +277,17 @@ export default async function SessionDetailPage({
         </p>
       ) : null}
 
+      {isExam && copyHref ? (
+        <p className="mt-4">
+          <Link
+            href={copyHref}
+            className="inline-flex h-11 items-center rounded-card bg-accent px-4 text-sm font-medium text-white"
+          >
+            Abrir el examen
+          </Link>
+        </p>
+      ) : null}
+
       {isWriting && copyHref ? (
         <p className="mt-4">
           <Link
@@ -332,39 +333,9 @@ export default async function SessionDetailPage({
               displayName: student.displayName,
             }))}
             groups={examGroups}
-          />
-        </div>
-      )}
-
-      {isExam && unlocked && examPrompt && (
-        <div className="mt-10">
-          <h2 className="mb-3 text-headline-md text-text-primary">
-            Revisión
-          </h2>
-          <ExamReview
-            prompt={examPrompt}
-            groups={examGroups.map((group) => {
-              const sub = examSubByGroup.get(group.id);
-              return {
-                id: group.id,
-                label: group.groupLabel,
-                task1: Array.isArray(sub?.task1Answers)
-                  ? (sub.task1Answers as Array<{
-                      slotIndex: number;
-                      answer: string;
-                    }>)
-                  : [],
-                task2: Array.isArray(sub?.task2Answers)
-                  ? (sub.task2Answers as never[])
-                  : [],
-                task3: Array.isArray(sub?.task3Answers)
-                  ? (sub.task3Answers as Array<{
-                      sentenceNumber: number;
-                      englishTranslation: string;
-                    }>)
-                  : [],
-              };
-            })}
+            openedIds={students
+              .filter((student) => student.opened)
+              .map((student) => student.studentId)}
           />
         </div>
       )}
@@ -521,9 +492,7 @@ export default async function SessionDetailPage({
               const examGroup = examGroups.find((group) =>
                 group.memberIds.includes(student.studentId)
               );
-              const examSub = examGroup
-                ? examSubByGroup.get(examGroup.id)
-                : undefined;
+              const examSub = examSubByUser.get(student.studentId);
               return (
                 <li
                   key={student.studentId}
@@ -571,10 +540,6 @@ export default async function SessionDetailPage({
                     <p className="mt-2 text-sm text-text-secondary">
                       {examGroup
                         ? `${examGroup.groupLabel}${
-                            examGroup.writerId === student.studentId
-                              ? " · escribe"
-                              : ""
-                          }${
                             examSub?.status === "submitted"
                               ? " · entregado"
                               : examSub

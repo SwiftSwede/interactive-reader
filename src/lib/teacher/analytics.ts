@@ -368,13 +368,14 @@ export async function loadWritingCorrection(
 export type ExamGroupRow = {
   id: string;
   groupLabel: string;
-  writerId: string;
+  writerId: string | null;
   memberIds: string[];
 };
 
 export type ExamSubmissionRow = {
   id: string;
-  examGroupId: string;
+  userId: string;
+  examGroupId: string | null;
   task1Answers: unknown;
   task2Answers: unknown;
   task3Answers: unknown;
@@ -399,7 +400,7 @@ export async function loadExamGroups(
     data as {
       id: string;
       group_label: string;
-      writer_id: string;
+      writer_id: string | null;
       member_ids: string[];
     }[]
   ).map((row) => ({
@@ -417,7 +418,7 @@ export async function loadExamSubmissions(
   const { data, error } = await supabase
     .from("group_exam_submissions")
     .select(
-      "id, exam_group_id, task1_answers, task2_answers, task3_answers, status, submitted_at, review_revealed_at"
+      "id, user_id, exam_group_id, task1_answers, task2_answers, task3_answers, status, submitted_at, review_revealed_at"
     )
     .eq("course_session_id", sessionId);
 
@@ -426,7 +427,8 @@ export async function loadExamSubmissions(
   return (
     data as {
       id: string;
-      exam_group_id: string;
+      user_id: string;
+      exam_group_id: string | null;
       task1_answers: unknown;
       task2_answers: unknown;
       task3_answers: unknown;
@@ -436,6 +438,7 @@ export async function loadExamSubmissions(
     }[]
   ).map((row) => ({
     id: row.id,
+    userId: row.user_id,
     examGroupId: row.exam_group_id,
     task1Answers: row.task1_answers,
     task2Answers: row.task2_answers,

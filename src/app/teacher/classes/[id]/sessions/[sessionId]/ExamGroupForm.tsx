@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createExamGroup, deleteExamGroup } from "../../actions";
+import { listOpenedExamStudents } from "@/app/exam/exam-teacher-actions";
 
 type Student = {
   studentId: string;
@@ -11,7 +12,7 @@ type Student = {
 type Group = {
   id: string;
   groupLabel: string;
-  writerId: string;
+  writerId: string | null;
   memberIds: string[];
 };
 
@@ -20,28 +21,43 @@ export default function ExamGroupForm({
   sessionId,
   students,
   groups,
+  openedIds,
 }: {
   courseId: string;
   sessionId: string;
   students: Student[];
   groups: Group[];
+  openedIds: string[];
 }) {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
   const [selected, setSelected] = useState<string[]>([]);
-  const [writerId, setWriterId] = useState("");
+  const [opened, setOpened] = useState<Set<string>>(
+    () => new Set(openedIds)
+  );
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      void listOpenedExamStudents(sessionId).then((result) => {
+        if (!result.ok) return;
+        setOpened(new Set(result.studentIds));
+      });
+    }, 3000);
+    return () => window.clearInterval(id);
+  }, [sessionId]);
 
   const taken = new Set(groups.flatMap((group) => group.memberIds));
-  const available = students.filter((student) => !taken.has(student.studentId));
-  const nameById = new Map(students.map((row) => [row.studentId, row.displayName]));
+  const available = students.filter(
+    (student) => opened.has(student.studentId) && !taken.has(student.studentId)
+  );
+  const nameById = new Map(
+    students.map((row) => [row.studentId, row.displayName])
+  );
 
   function toggle(id: string) {
     setSelected((current) => {
-      const next = current.includes(id)
-        ? current.filter((item) => item !== id)
-        : [...current, id].slice(0, 3);
-      if (!next.includes(writerId)) setWriterId(next[0] ?? "");
-      return next;
+      if (current.includes(id)) return current.filter((item) => item !== id);
+      return [...current, id].slice(0, 3);
     });
   }
 
@@ -49,7 +65,7 @@ export default function ExamGroupForm({
     <div className="space-y-4">
       <h2 className="text-headline-md text-text-primary">Grupos</h2>
       <p className="text-sm text-text-secondary">
-        2 o 3 estudiantes. Uno escribe. Los demás ven el examen en vivo.
+        2 o 3 estudiantes. Cada uno escribe su propio examen.
       </p>
 
       {groups.length > 0 && (
@@ -61,14 +77,13 @@ export default function ExamGroupForm({
             >
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="font-medium text-text-primary">{group.groupLabel}</p>
+                  <p className="font-medium text-text-primary">
+                    {group.groupLabel}
+                  </p>
                   <p className="mt-1 text-sm text-text-secondary">
                     {group.memberIds
                       .map((id) => nameById.get(id) ?? "Sin nombre")
                       .join(", ")}
-                  </p>
-                  <p className="mt-1 text-xs text-text-muted">
-                    Escribe: {nameById.get(group.writerId) ?? "Sin nombre"}
                   </p>
                 </div>
                 <form
@@ -94,9 +109,9 @@ export default function ExamGroupForm({
 
       {available.length === 0 ? (
         <p className="text-sm text-text-muted">
-          {students.length === 0
-            ? "Todavía no hay estudiantes en este curso."
-            : "Todos ya tienen grupo."}
+          {opened.size === 0
+            ? "Todavía nadie abrió el examen."
+            : "Todos los que abrieron el examen ya tienen grupo."}
         </p>
       ) : (
         <form
@@ -111,7 +126,6 @@ export default function ExamGroupForm({
               return;
             }
             setSelected([]);
-            setWriterId("");
           }}
         >
           <input type="hidden" name="courseId" value={courseId} />
@@ -128,7 +142,8 @@ export default function ExamGroupForm({
                     checked={selected.includes(student.studentId)}
                     onChange={() => toggle(student.studentId)}
                     disabled={
-                      !selected.includes(student.studentId) && selected.length >= 3
+                      !selected.includes(student.studentId) &&
+                      selected.length >= 3
                     }
                   />
                   {student.displayName}
@@ -136,26 +151,6 @@ export default function ExamGroupForm({
               </li>
             ))}
           </ul>
-          {selected.length >= 2 && (
-            <label className="block">
-              <span className="mb-1.5 block text-sm font-medium text-text-secondary">
-                Quién escribe
-              </span>
-              <select
-                name="writerId"
-                required
-                value={writerId}
-                onChange={(event) => setWriterId(event.target.value)}
-                className="w-full rounded-card border border-paper-line bg-white px-3 py-3 text-base text-text-primary"
-              >
-                {selected.map((id) => (
-                  <option key={id} value={id}>
-                    {nameById.get(id)}
-                  </option>
-                ))}
-              </select>
-            </label>
-          )}
           {error && <p className="text-sm text-error">{error}</p>}
           <button
             type="submit"

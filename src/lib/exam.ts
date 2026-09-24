@@ -1,14 +1,74 @@
 import type {
   CourseLevel,
+  ExamClassAnswerItem,
+  ExamClassAnswers,
   ExamCorrectionItem,
   ExamFillSentence,
   ExamFillSlot,
   ExamParagraphItem,
+  ExamTask1Answer,
+  ExamTask2CorrectionAnswer,
+  ExamTask2LetterAnswer,
   ExamTask2Type,
+  ExamTask3Answer,
+  ExamTimerMode,
   ExamTranslationItem,
   ExamVocabItem,
   GroupExamPrompt,
 } from "@/types";
+
+export const EXAM_MAKEUP_MINUTES = 45;
+export const EXAM_DEFAULT_TIMER_MINUTES = 20;
+
+export type ExamTaskCopy = {
+  task1Title: string;
+  task1Instructions: string;
+  task2Title: string;
+  task2Instructions: string;
+  task3Title: string;
+  task3Instructions: string;
+};
+
+export function defaultExamTaskCopy(task2Type: ExamTask2Type): ExamTaskCopy {
+  const order = task2Type === "paragraph_restructuring";
+  return {
+    task1Title: "Fill in the translation",
+    task1Instructions:
+      "Using the list of vocabulary from the past month, correctly match.",
+    task2Title: order ? "Order" : "Correct",
+    task2Instructions: order
+      ? "Order the following sentences numerically starting with 1."
+      : "7 of the following sentences have an error, 3 don't. Find and correct the incorrect sentences.",
+    task3Title: "Translate",
+    task3Instructions: "Translate from Spanish to English.",
+  };
+}
+
+export function resolveExamTaskCopy(
+  prompt: Pick<
+    GroupExamPrompt,
+    | "task2Type"
+    | "task1Title"
+    | "task1Instructions"
+    | "task2Title"
+    | "task2Instructions"
+    | "task3Title"
+    | "task3Instructions"
+  >
+): ExamTaskCopy {
+  const defaults = defaultExamTaskCopy(prompt.task2Type);
+  return {
+    task1Title: prompt.task1Title?.trim() || defaults.task1Title,
+    task1Instructions:
+      prompt.task1Instructions?.trim() || defaults.task1Instructions,
+    task2Title: prompt.task2Title?.trim() || defaults.task2Title,
+    task2Instructions:
+      prompt.task2Instructions?.trim() || defaults.task2Instructions,
+    task3Title: prompt.task3Title?.trim() || defaults.task3Title,
+    task3Instructions:
+      prompt.task3Instructions?.trim() || defaults.task3Instructions,
+  };
+}
 
 export function defaultTask2Type(level: CourseLevel): ExamTask2Type {
   return level === "intermediate"
@@ -100,9 +160,10 @@ export function parseParagraphRestructuring(raw: string): ExamParagraphItem[] {
     if (!trimmed) continue;
     const pipe = trimmed.indexOf("|");
     if (pipe < 0) continue;
-    const correctPosition = trimmed.slice(0, pipe).trim().toUpperCase();
+    const rawPosition = trimmed.slice(0, pipe).trim();
     const sentence = trimmed.slice(pipe + 1).trim();
-    if (!/^[A-H]$/.test(correctPosition) || !sentence) continue;
+    const correctPosition = parseOrderPosition(rawPosition);
+    if (!correctPosition || !sentence) continue;
     items.push({
       number: items.length + 1,
       sentence,
@@ -331,7 +392,7 @@ export function parseExamForm(input: {
     input.task2Type === "paragraph_restructuring" &&
     (paragraphRestructuring?.length ?? 0) < 3
   ) {
-    error = "Tarea 2: al menos 3 oraciones. Formato: A | The first sentence.";
+    error = "Tarea 2: al menos 3 oraciones. Formato: 3 | The first sentence.";
   } else if (
     input.task2Type === "sentence_correction" &&
     (sentenceCorrection?.length ?? 0) < 3
@@ -351,7 +412,7 @@ export function parseExamForm(input: {
     paragraphRestructuring,
     sentenceCorrection,
     translationSentences,
-    timeLimitMinutes: input.timeLimitMinutes || 35,
+    timeLimitMinutes: input.timeLimitMinutes || EXAM_MAKEUP_MINUTES,
     error,
   };
 }
@@ -368,6 +429,12 @@ export type ExamPromptRow = {
   sentence_correction: ExamCorrectionItem[] | null;
   translation_sentences: ExamTranslationItem[];
   time_limit_minutes: number;
+  task1_title?: string | null;
+  task1_instructions?: string | null;
+  task2_title?: string | null;
+  task2_instructions?: string | null;
+  task3_title?: string | null;
+  task3_instructions?: string | null;
   created_by: string;
   created_at: string;
 };
@@ -385,7 +452,388 @@ export function mapExamPromptRow(row: ExamPromptRow): GroupExamPrompt {
     sentenceCorrection: row.sentence_correction,
     translationSentences: row.translation_sentences ?? [],
     timeLimitMinutes: row.time_limit_minutes,
+    task1Title: row.task1_title ?? null,
+    task1Instructions: row.task1_instructions ?? null,
+    task2Title: row.task2_title ?? null,
+    task2Instructions: row.task2_instructions ?? null,
+    task3Title: row.task3_title ?? null,
+    task3Instructions: row.task3_instructions ?? null,
     createdBy: row.created_by,
     createdAt: row.created_at,
   };
+}
+
+export const EXAM_PROMPT_SELECT =
+  "id, title, level, theme, vocabulary_list, fill_in_translation, task2_type, paragraph_restructuring, sentence_correction, translation_sentences, time_limit_minutes, task1_title, task1_instructions, task2_title, task2_instructions, task3_title, task3_instructions, created_by, created_at";
+
+export type ExamStepId = "parte-1" | "parte-2" | "parte-3" | "puntaje";
+
+export type ExamStep = { id: ExamStepId; label: string };
+
+export const EXAM_STEPS: ExamStep[] = [
+  { id: "parte-1", label: "Parte 1" },
+  { id: "parte-2", label: "Parte 2" },
+  { id: "parte-3", label: "Parte 3" },
+  { id: "puntaje", label: "Puntaje" },
+];
+
+export function isExamStepId(value: string): value is ExamStepId {
+  return EXAM_STEPS.some((step) => step.id === value);
+}
+
+export function encodeExamStep(step: ExamStepId): string {
+  return step;
+}
+
+export function decodeExamStep(value: string | null): ExamStepId {
+  if (value && isExamStepId(value)) return value;
+  return "parte-1";
+}
+
+export function examStepIndex(id: ExamStepId): number {
+  return Math.max(
+    0,
+    EXAM_STEPS.findIndex((step) => step.id === id)
+  );
+}
+
+export function examRowLetter(index: number): string {
+  return String.fromCharCode(65 + index);
+}
+
+export function parseOrderPosition(raw: string): string | null {
+  const trimmed = raw.trim();
+  if (/^[1-9]$/.test(trimmed)) return trimmed;
+  const letter = trimmed.toUpperCase();
+  if (/^[A-I]$/.test(letter)) {
+    return String(letter.charCodeAt(0) - 64);
+  }
+  return null;
+}
+
+export function normalizeExamAnswer(text: string): string {
+  return text.trim().toLowerCase().replace(/\s+/g, " ");
+}
+
+export function examAnswerMatches(typed: string, accepted: string[]): boolean {
+  const normalized = normalizeExamAnswer(typed);
+  if (!normalized) return false;
+  return accepted.some(
+    (value) => normalizeExamAnswer(value) === normalized
+  );
+}
+
+export function parseExamTimerMode(raw: unknown): ExamTimerMode {
+  return raw === "from_start" ? "from_start" : "until_end_offset";
+}
+
+export function parseExamTimerMinutes(raw: unknown): number {
+  const n = Number(raw);
+  if (!Number.isInteger(n) || n < 1) return EXAM_DEFAULT_TIMER_MINUTES;
+  return Math.min(90, n);
+}
+
+export function examReviewDeadlineMs(input: {
+  mode: ExamTimerMode;
+  minutes: number;
+  timerStartedAt: string | null;
+  sessionEndTime: string | null;
+}): number | null {
+  if (!input.timerStartedAt) return null;
+  if (input.mode === "from_start") {
+    return (
+      new Date(input.timerStartedAt).getTime() + input.minutes * 60 * 1000
+    );
+  }
+  if (!input.sessionEndTime) return null;
+  return new Date(input.sessionEndTime).getTime() - input.minutes * 60 * 1000;
+}
+
+export function examRemainingMs(
+  input: {
+    mode: ExamTimerMode;
+    minutes: number;
+    timerStartedAt: string | null;
+    sessionEndTime: string | null;
+  },
+  now = Date.now()
+): number {
+  const deadline = examReviewDeadlineMs(input);
+  if (deadline == null) return 0;
+  return Math.max(0, deadline - now);
+}
+
+export function makeupRemainingMs(
+  startedAt: string | null,
+  minutes = EXAM_MAKEUP_MINUTES,
+  now = Date.now()
+): number {
+  if (!startedAt) return minutes * 60 * 1000;
+  return Math.max(0, remainingMs(startedAt, minutes, now));
+}
+
+export function examTimerFrozen(
+  input: {
+    mode: ExamTimerMode;
+    minutes: number;
+    timerStartedAt: string | null;
+    sessionEndTime: string | null;
+  },
+  now = Date.now()
+): boolean {
+  if (!input.timerStartedAt) return true;
+  return examRemainingMs(input, now) <= 0;
+}
+
+const CLASS_ANSWER_MAX = 500;
+
+export function parseExamClassAnswers(raw: unknown): ExamClassAnswers {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) return {};
+  const next: ExamClassAnswers = {};
+  for (const [key, value] of Object.entries(raw as Record<string, unknown>)) {
+    if (!isExamItemKey(key)) continue;
+    if (!value || typeof value !== "object" || Array.isArray(value)) continue;
+    const row = value as { accepted?: unknown; revealed?: unknown };
+    const accepted = Array.isArray(row.accepted)
+      ? row.accepted
+          .filter((item): item is string => typeof item === "string")
+          .map((item) => item.slice(0, CLASS_ANSWER_MAX))
+          .filter((item) => item.trim())
+      : [];
+    next[key] = {
+      accepted,
+      revealed: row.revealed === true,
+    };
+  }
+  return next;
+}
+
+export function emptyExamClassAnswer(): ExamClassAnswerItem {
+  return { accepted: [""], revealed: false };
+}
+
+export function examItemKeys(prompt: GroupExamPrompt): string[] {
+  const keys: string[] = [];
+  const slots = flattenFillSlots(prompt.fillInTranslation);
+  for (const slot of slots) keys.push(`t1-${slot.slotIndex}`);
+  if (prompt.task2Type === "paragraph_restructuring") {
+    for (const item of prompt.paragraphRestructuring ?? []) {
+      keys.push(`t2-${item.number}`);
+    }
+  } else {
+    for (const item of prompt.sentenceCorrection ?? []) {
+      keys.push(`t2-${item.number}`);
+    }
+  }
+  for (const item of prompt.translationSentences) {
+    keys.push(`t3-${item.number}`);
+  }
+  return keys;
+}
+
+export function isExamItemKey(value: string): boolean {
+  return /^t[123]-\d+$/.test(value);
+}
+
+export function examItemTask(key: string): 1 | 2 | 3 | null {
+  if (key.startsWith("t1-")) return 1;
+  if (key.startsWith("t2-")) return 2;
+  if (key.startsWith("t3-")) return 3;
+  return null;
+}
+
+export function catalogAcceptedForItem(
+  prompt: GroupExamPrompt,
+  key: string
+): string[] {
+  const slots = flattenFillSlots(prompt.fillInTranslation);
+  if (key.startsWith("t1-")) {
+    const index = Number(key.slice(3));
+    const slot = slots.find((row) => row.slotIndex === index)?.slot;
+    if (!slot) return [];
+    return [slot.expectedEnglish, ...slot.acceptableVariations].filter(Boolean);
+  }
+  if (key.startsWith("t2-")) {
+    const number = Number(key.slice(3));
+    if (prompt.task2Type === "paragraph_restructuring") {
+      const item = (prompt.paragraphRestructuring ?? []).find(
+        (row) => row.number === number
+      );
+      return item?.correctPosition ? [item.correctPosition] : [];
+    }
+    const item = (prompt.sentenceCorrection ?? []).find(
+      (row) => row.number === number
+    );
+    if (!item) return [];
+    if (item.isCorrect) return [item.sentence];
+    return item.correctedVersion ? [item.correctedVersion] : [];
+  }
+  if (key.startsWith("t3-")) {
+    const number = Number(key.slice(3));
+    const item = prompt.translationSentences.find(
+      (row) => row.number === number
+    );
+    if (!item) return [];
+    return [...item.acceptedEnglish, ...item.acceptableVariations].filter(
+      Boolean
+    );
+  }
+  return [];
+}
+
+export function assignedOrderPosition(
+  answers: ExamTask2LetterAnswer[],
+  sentenceNumber: number
+): string {
+  const row = answers.find((item) => item.sentenceNumber === sentenceNumber);
+  if (!row) return "";
+  const raw = (row as ExamTask2LetterAnswer & { assignedLetter?: string })
+    .assignedPosition;
+  if (raw) return raw;
+  const legacy = (row as { assignedLetter?: string }).assignedLetter ?? "";
+  return parseOrderPosition(legacy) ?? "";
+}
+
+export function studentAnswerForItem(input: {
+  prompt: GroupExamPrompt;
+  key: string;
+  task1: ExamTask1Answer[];
+  task2: ExamTask2LetterAnswer[] | ExamTask2CorrectionAnswer[];
+  task3: ExamTask3Answer[];
+}): string {
+  const { prompt, key } = input;
+  if (key.startsWith("t1-")) {
+    const index = Number(key.slice(3));
+    return (
+      input.task1.find((row) => row.slotIndex === index)?.answer ?? ""
+    );
+  }
+  if (key.startsWith("t2-")) {
+    const number = Number(key.slice(3));
+    if (prompt.task2Type === "paragraph_restructuring") {
+      return assignedOrderPosition(
+        input.task2 as ExamTask2LetterAnswer[],
+        number
+      );
+    }
+    const row = (input.task2 as ExamTask2CorrectionAnswer[]).find(
+      (item) => item.sentenceNumber === number
+    );
+    const item = (prompt.sentenceCorrection ?? []).find(
+      (sentence) => sentence.number === number
+    );
+    if (!row || !item) return "";
+    if (row.isCorrect) return item.sentence;
+    return row.correctedText ?? "";
+  }
+  if (key.startsWith("t3-")) {
+    const number = Number(key.slice(3));
+    return (
+      input.task3.find((row) => row.sentenceNumber === number)
+        ?.englishTranslation ?? ""
+    );
+  }
+  return "";
+}
+
+export function acceptedForItem(
+  prompt: GroupExamPrompt,
+  key: string,
+  classAnswers: ExamClassAnswers,
+  useCatalogFallback: boolean
+): string[] {
+  const typed = (classAnswers[key]?.accepted ?? []).filter((value) =>
+    value.trim()
+  );
+  if (typed.length > 0) return typed;
+  if (useCatalogFallback) return catalogAcceptedForItem(prompt, key);
+  return [];
+}
+
+export function itemIsRevealed(input: {
+  key: string;
+  live: boolean;
+  classEnded: boolean;
+  attended: boolean;
+  classAnswers: ExamClassAnswers;
+  taskSubmittedAt: {
+    1: string | null;
+    2: string | null;
+    3: string | null;
+  };
+}): boolean {
+  if (input.live) return input.classAnswers[input.key]?.revealed === true;
+  const task = examItemTask(input.key);
+  if (!task) return false;
+  if (input.classEnded && input.attended) return true;
+  return Boolean(input.taskSubmittedAt[task]);
+}
+
+export type ExamScore = {
+  correct: number;
+  total: number;
+  percent: number;
+};
+
+export function examScore(input: {
+  prompt: GroupExamPrompt;
+  task1: ExamTask1Answer[];
+  task2: ExamTask2LetterAnswer[] | ExamTask2CorrectionAnswer[];
+  task3: ExamTask3Answer[];
+  classAnswers: ExamClassAnswers;
+  useCatalogFallback: boolean;
+}): ExamScore {
+  const keys = examItemKeys(input.prompt);
+  let correct = 0;
+  for (const key of keys) {
+    const typed = studentAnswerForItem({
+      prompt: input.prompt,
+      key,
+      task1: input.task1,
+      task2: input.task2,
+      task3: input.task3,
+    });
+    const accepted = acceptedForItem(
+      input.prompt,
+      key,
+      input.classAnswers,
+      input.useCatalogFallback
+    );
+    if (examAnswerMatches(typed, accepted)) correct += 1;
+  }
+  const total = keys.length;
+  const percent = total === 0 ? 0 : Math.round((correct / total) * 100);
+  return { correct, total, percent };
+}
+
+export function allExamItemsChecked(
+  prompt: GroupExamPrompt,
+  classAnswers: ExamClassAnswers
+): boolean {
+  const keys = examItemKeys(prompt);
+  if (keys.length === 0) return false;
+  return keys.every((key) => classAnswers[key]?.revealed === true);
+}
+
+export function puntajeReachable(scorePublishedAt: string | null): boolean {
+  return Boolean(scorePublishedAt);
+}
+
+export function formatExamReviewTime(
+  deadlineMs: number | null,
+  timeZone?: string
+): string | null {
+  if (deadlineMs == null) return null;
+  try {
+    return new Date(deadlineMs).toLocaleTimeString("es-MX", {
+      hour: "numeric",
+      minute: "2-digit",
+      timeZone,
+    });
+  } catch {
+    return new Date(deadlineMs).toLocaleTimeString("es-MX", {
+      hour: "numeric",
+      minute: "2-digit",
+    });
+  }
 }

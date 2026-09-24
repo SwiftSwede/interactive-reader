@@ -59,7 +59,7 @@ Spanish-speaking Latin American adults learning English. Phone-first users. Skep
 15. **IPA everywhere.** The app uses IPA for all phonetic transcriptions (tooltips, dictation, choral practice, pronunciation explanations). Kyle's custom symbols (ö, ü, ä, etc.) are deprecated in the app. IPA is universally recognized, transfers to dictionaries and other courses, and Kyle's pronunciation videos already teach IPA. One system, not two. **Kyle's dialect:** use ɑ not ɔ for the open vowel in want/walk/thought-type words (`src/lib/ipa-conventions.ts`). R-colored ɔɹ (more, wore) stays separate.
 16. **Same reader, different overlay.** Classroom students and consumer students use the identical story reader and activity components. The difference is context: classroom students have answer reveals gated by the teacher, oral personal questions during class, and no dictation/choral practice during class. Consumer students get everything always. Context is determined by account role and session state.
 17. **Students keep their data.** When a classroom student's subscription ends, they lose access to new materials but retain access to everything from their active period: stories read, comprehension answers, vocabulary lookups, personal responses. Their study history is permanent.
-18. **Lesson types transfer to the consumer tier by default.** Every classroom lesson type is built for the live Zoom class first, but designed so the same content and components also run teacher-less in the future consumer tier: the post-class review mode is the consumer blueprint. A design decision that makes a lesson classroom-only (teacher live input, group-dependent interaction) must be recorded in this PRD as a deliberate exception — the group exam's single-writer collaboration is the known example. Ratified by Kyle 2026-09-08 during the Music class design brainstorm.
+18. **Lesson types transfer to the consumer tier by default.** Every classroom lesson type is built for the live Zoom class first, but designed so that the same content and components also run teacher-less in the future consumer tier: the post-class review mode is the consumer blueprint. A design decision that makes a lesson classroom-only (teacher live input, group-dependent interaction) must be recorded in this PRD as a deliberate exception. The group exam is discussion-grouped in class and individually written; makeup after class is the teacher-less path. Ratified by Kyle 2026-09-08 during the Music class design brainstorm; exam writer exception dropped 2026-09-23.
 
 ---
 
@@ -388,7 +388,11 @@ CourseSession (one class meeting, one catalog activity assigned)
   ├── session_end_time (timestamp — session_start_time + 90 min; scheduled end, not the teaching-mode cutoff)
   ├── class_ended_at (timestamp, nullable — teacher taps Terminar clase. Review mode starts then. If still null four hours after session_end_time, teaching mode ends on its own.)
   ├── answers_revealed (boolean, default false — story sessions only; auto-flips to true when class_ended_at is set, or at the overtime cap)
-  ├── timer_started_at (timestamp, nullable — writing sessions: set when teacher clicks "Iniciar", synced via Supabase Realtime. Lives on the session so the same prompt can be reused.)
+  ├── timer_started_at (timestamp, nullable — writing and exam: set when teacher clicks Iniciar, synced via Supabase Realtime. Lives on the session so the same prompt can be reused.)
+  ├── exam_timer_mode (text, default 'until_end_offset' — exam only: 'until_end_offset' countdown to session_end minus exam_timer_minutes; 'from_start' N minutes after Iniciar)
+  ├── exam_timer_minutes (integer, default 20 — exam N for the timer mode above)
+  ├── exam_class_answers (jsonb, default {} — live teacher accepted answers + revealed flags, keyed t1-0 / t2-1 / t3-9)
+  ├── exam_score_published_at (timestamptz, nullable — when the live exam score was published)
   ├── video_playing (boolean, default false — classroom YouTube: teacher is playing. Students follow while teaching mode is on.)
   ├── video_seconds (real, default 0 — classroom YouTube playhead in seconds)
   ├── video_rate (real, default 1 — classroom YouTube playback rate)
@@ -472,33 +476,36 @@ GroupExamPrompt (catalog content, reusable for live class — the virtual handou
   ├── vocabulary_list (jsonb — array of {id: int, english: string, spanish: string}. 20-22 items. The base-form English words students pick from for Task 1)
   ├── fill_in_translation (jsonb — array of {number: int, sentence: string, slots: [{spanish_word: string, expected_english: string, acceptable_variations: string[], morphological_note: string, nullable}]}. The numbered story for Task 1. Each sentence contains 1-3 Spanish words in parentheses. expected_english matches a vocabulary_list item. Morphological transformation is validated: tense, plural, etc.)
   ├── task2_type (enum: "paragraph_restructuring" | "sentence_correction" — determined by level: intermediate = paragraph_restructuring, pre-intermediate = sentence_correction. Can be overridden by teacher for edge cases)
-  ├── paragraph_restructuring (jsonb, nullable — intermediate Task 2. Array of {number: int, sentence: string, correct_position: string}. 7-9 scrambled sentences. correct_position is the letter A-H indicating where it belongs. Students write the letter in a blank before each numbered sentence)
+  ├── paragraph_restructuring (jsonb, nullable — intermediate Task 2. Array of {number: int, sentence: string, correct_position: string}. 6-9 scrambled sentences. correct_position is the paragraph slot "1".."N". UI labels rows A, B, C in list order. Students type the number in the blank.)
   ├── sentence_correction (jsonb, nullable — pre-intermediate Task 2. Array of {number: int, sentence: string, is_correct: boolean, corrected_version: string, nullable}. 10 sentences (7 incorrect + 3 correct), shuffled. If is_correct = true, corrected_version is null. If incorrect, corrected_version is the target English sentence)
   ├── translation_sentences (jsonb — Task 3. Array of {number: int, spanish: string, accepted_english: string[], acceptable_variations: string[]}. 10 Spanish sentences. Sentences 9-10 are conditionals (9 = 2nd conditional, 10 = 3rd conditional). accepted_english allows multiple valid translations)
-  ├── time_limit_minutes (integer, default 35 — advisory, not hard cutoff. Students don't need to finish)
+  ├── task1_title / task1_instructions / task2_title / task2_instructions / task3_title / task3_instructions (text, nullable — English titles and instructions shown on each task step)
+  ├── time_limit_minutes (integer, default 45 — makeup / self-study only. Live class uses the session timer, not this field)
   ├── created_by (uuid, FK → User — teacher's user id)
   └── created_at (timestamp)
 
-ExamGroup (one group of 2-3 students working on one exam instance together)
+ExamGroup (discussion groups of 2-3 for Zoom breakouts. No designated writer.)
   ├── id (uuid)
   ├── course_session_id (uuid, FK → CourseSession — the exam session)
   ├── group_label (string — teacher-assigned label, e.g. "Grupo A", "Grupo B")
-  ├── writer_id (uuid, FK → User — the designated student who submits answers for the group)
-  ├── member_ids (uuid[] — all students in this group, including the writer. For attribution)
+  ├── writer_id (uuid, nullable, unused — kept for old rows)
+  ├── member_ids (uuid[] — students in this group)
   └── created_at (timestamp)
 
-GroupExamSubmission (one group's answers, submitted by the designated writer)
+GroupExamSubmission (one student's answers)
   ├── id (uuid)
   ├── exam_prompt_id (uuid, FK → GroupExamPrompt)
-  ├── exam_group_id (uuid, FK → ExamGroup)
+  ├── exam_group_id (uuid, nullable, FK → ExamGroup — null for makeup students with no group)
   ├── course_session_id (uuid, FK → CourseSession)
+  ├── user_id (uuid, FK → User — the student who owns this row)
   ├── task1_answers (jsonb — array of {slot_index: int, answer: string}. One entry per Spanish word slot in the fill-in translation story)
-  ├── task2_answers (jsonb — intermediate: array of {sentence_number: int, assigned_letter: string}. Pre-intermediate: array of {sentence_number: int, is_correct: boolean, corrected_text: string, nullable})
+  ├── task2_answers (jsonb — intermediate: array of {sentence_number: int, assigned_position: string}. Pre-intermediate: array of {sentence_number: int, is_correct: boolean, corrected_text: string, nullable})
   ├── task3_answers (jsonb — array of {sentence_number: int, english_translation: string})
-  ├── started_at (timestamp — when the group first opened the exam)
-  ├── submitted_at (timestamp, nullable — when the writer clicked submit, or null if not submitted)
+  ├── started_at (timestamp — when this student first saved)
+  ├── submitted_at (timestamp, nullable — live freeze at timer 0, or makeup after all three Entregar)
+  ├── task1_submitted_at / task2_submitted_at / task3_submitted_at (timestamptz, nullable — makeup per-task Entregar)
   ├── status (enum: "in_progress" | "submitted")
-  ├── review_revealed_at (timestamp, nullable — when Kyle revealed correct answers for this group)
+  ├── review_revealed_at (timestamp, nullable — unused; live reveal is exam_class_answers)
   └── created_at (timestamp)
 
 PresentationPrompt (catalog content, reusable for live class — the virtual handout replacing Google Slides)
@@ -1069,10 +1076,10 @@ Webhook endpoint: `POST /api/webhooks/stripe` on `https://learn.profekyle.com`. 
 | 47. Music class interactive | Class 6 content. Story rows with `kind = "song"`: interactive lyrics (same word tooltips), fill-in-the-blank listening (`lyric_blanks`), embedded YouTube (`youtube_url`), karaoke via existing audio player. | Open a song, verify lyrics, blanks, and YouTube |
 | 48. Writing class interactive | ~~Pulled forward to Phase 2c (slices 22a-22e).~~ Built as Phase 2c with teacher corrections (not AI). See Phase 2c above. | N/A — built in Phase 2c |
 | 49a. Group exam prompt creation (teacher) | Teacher creates a GroupExamPrompt as catalog content and assigns it to a session: vocabulary list (20-22 words), fill-in-the-translation story (Task 1, both levels), Task 2 content (paragraph restructuring for intermediate OR sentence correction for pre-intermediate, auto-selected by level but teacher can override), translation sentences (Task 3, 10 Spanish sentences with accepted English translations, sentences 9-10 = conditionals). CourseSession created with `session_type = "exam"`, `exam_prompt_id` set, `story_id` and `writing_prompt_id` null. | Create an exam prompt in the teacher dashboard, verify it saves with correct level-specific Task 2 content |
-| 49b. Exam group formation (teacher) | Teacher creates ExamGroups within the session: assigns 2-3 students per group, designates one writer per group, labels groups (Grupo A, Grupo B, etc.). All group members see the same exam instance. Only the writer can submit answers. Non-writers see the exam in read-only mode (can discuss, but only writer types). | Create groups, assign writer, verify non-writers see read-only exam, verify writer can type |
-| 49c. Student group exam page | Students click session link → see group exam page: vocabulary list at top, Task 1 fill-in-the-translation story (inline inputs for each Spanish word slot), Task 2 (intermediate: drag-and-drop or letter-coded paragraph restructuring; pre-intermediate: sentence correction with correct/incorrect toggle + edit field), Task 3 translation (text input per sentence). Advisory timer (35 min, no hard cutoff). All inputs are writable only by the designated writer; others see answers live via Supabase Realtime as the writer types. Students can scroll between tasks; no requirement to finish all questions. | Open session link as writer, fill in answers, verify real-time sync to group members. Open as non-writer, verify read-only view with live updates |
-| 49d. Teacher exam review mode | After the 30-40 min work period (or when teacher clicks "Iniciar revisión"), teacher dashboard shows all groups' submissions side by side. Teacher reveals correct answers question by question (review mode): each question shows all groups' answers + the correct answer. Teacher can click through one question at a time (Zoom screen-share). Incorrect answers become teaching moments. No grades assigned. | Click "Iniciar revisión", verify all group submissions appear, reveal answers one by one, verify display works for screen-share |
-| 49e. Post-class review (student) | After the 90-min window (or when teacher unlocks), students revisit the session link and see: their group's answers alongside the correct answers, with Kyle's notes if any. This is the self-study review mode (same pattern as writing class correction view). Attributed to all group members. | Open session link after class, verify group answers + correct answers displayed |
+| 49b. Exam group formation (teacher) | Teacher creates ExamGroups of 2-3 students who have opened the exam (`first_opened_at`). No designated writer. Each grouped student writes their own answers. Live-updating picker. | Create groups from opened students only, verify late openers appear, verify ungrouped live students cannot type | **BUILT 2026-09-23.** Deviation: dropped writer; picker is opened-only. |
+| 49c. Student group exam page | Iniciar starts a shared countdown to review time (Realtime, no refresh). Header dots + bottom Atrás/Siguiente. Task 1 music-style blanks with Spanish in the empty slot. Intermediate Order: letters label rows, numbers go in the blank. Inputs freeze at 0. | Teacher taps Iniciar, student countdown and blanks unlock without reload; two students in one group type different answers | **BUILT 2026-09-23.** Deviation: individual submissions; hard freeze at 0; 45-min makeup timer. |
+| 49d. Teacher exam type-check | Teacher blank exam on `/exam?session=`: type accepted answers, Añadir otra, per-item check. Catalog peek teacher-only. Last check or Mostrar puntaje publishes percent. | Type + check one Task 1 blank, only that blank marks on student phones; add a variant and a red answer can turn green | **BUILT 2026-09-23.** Deviation: not a session-page dump of group keys. |
+| 49e. Post-class review (student) | Attended: full keys (teacher accepted, catalog fallback) + score. Absentee: 45-min makeup, Entregar per task then keys for that task, score after all three. | Terminar clase shows keys for an attended account; a not-attended account must Entregar Tarea 1 before those keys appear | **BUILT 2026-09-23.** |
 | 50. Reverse translation | 2-3 key sentences per story. Forward (L2→L1) in one session. Reverse (L1→L2) 24-48h later. Original text is the answer key. No AI. | Complete forward, return later, complete reverse, see comparison |
 | 51. Print PDF generation | Paged.js or WeasyPrint template. Same annotation data → print-ready PDF. | Generate PDF, verify formatting |
 | 52. Amazon KDP Mexico | Upload print-ready PDFs. Amazon handles printing and shipping in Mexico. | Upload, verify listing |
@@ -1133,14 +1140,12 @@ Webhook endpoint: `POST /api/webhooks/stripe` on `https://learn.profekyle.com`. 
 6. Revisión shows the submitted text, then the color correction underneath when Kyle has saved it. After class, empty students can tap Empezar for a personal makeup sprint.
 
 **Exam session (separate session type, `session_type = "exam"`):**
-1. Teacher creates GroupExamPrompt (vocabulary list, Task 1 story, level-specific Task 2, Task 3 translation) and assigns to session
-2. Teacher forms ExamGroups (2-3 students per group, one designated writer per group)
-3. Students click session link → group exam page. All group members see the same exam. Only the writer can type; others see answers live via Supabase Realtime (read-only view). Advisory timer (35 min, no hard cutoff — students don't need to finish)
-4. Task 1 (both levels): Fill-in-the-translation — numbered story with Spanish words in parentheses, students pick from vocabulary list, morphological transformation required (tense, plural)
-5. Task 2 (intermediate): Paragraph restructuring — scrambled 7-9 sentence paragraph, drag-and-drop or letter-coded reordering. Task 2 (pre-intermediate): Sentence correction — 10 sentences (7 incorrect + 3 correct), identify and correct errors
-6. Task 3 (both levels): Translation — 10 Spanish→English sentences. Sentences 9-10 are 2nd and 3rd conditionals
-7. Teacher clicks "Iniciar revisión" → review mode: all groups' answers displayed question by question alongside correct answers. Kyle reveals one question at a time for Zoom screen-share. No grades. Teaching moments on incorrect answers.
-8. After Terminar clase: students revisit link → see their group's answers + correct answers (self-study review, same pattern as writing correction view)
+1. Teacher creates GroupExamPrompt and assigns it to the session.
+2. Students open the exam link (that marks attendance). Teacher forms 2-3 student discussion groups from people who opened it. No designated writer.
+3. Teacher taps Iniciar. Shared countdown to review time starts on student phones via Realtime (default: session_end minus 20 minutes). Inputs unlock. Each student autosaves their own row.
+4. Task 1 (both levels): Fill in the translation. Music-style underlines, Spanish visible in the empty blank. Task 2 intermediate: Order (letters label scrambled sentences, numbers go in the blank). Task 2 pre-intermediate: Correct. Task 3: Translate. Header dots Parte 1-3 + Puntaje; bottom Atrás/Siguiente. Work period stays unlocked.
+5. Timer hits 0: pens down. Teacher types accepted answers on a blank exam, Añadir otra for variants, checks items one by one. Student phones mark that item green or red. Last check or Mostrar puntaje opens Puntaje (correct/total and percent).
+6. After Terminar clase: attendees see all keys (teacher list, catalog fallback) and the score. Absentees get a 45-minute makeup, Entregar per task, then keys for that task.
 
 **Video summary session (separate session type, `session_type = "video_summary"`):**
 1. Teacher creates a Story row with `kind = "video_summary"`: YouTube URL, English summary (`body_text`), edited Spanish translation (`spanish_summary`), paragraph splits stored in `VideoSummaryParagraph` rows. Assigns to session.
@@ -1299,8 +1304,8 @@ Whether the interactive reading experience (not a landing page, not a promise) g
 12. **No AI overclaiming.** The app must never claim an official test score, a CEFR level, a diagnosis, or objective pronunciation perfection. Azure and LLM output is practice guidance.
 13. **Do not infer what the learner "thought."** Store observable behavior, such as a missing chunk or transcript reveal. If the reason matters, ask the learner in simple language.
 14. **Keep the reader calm.** Dictation, reverse translation, and pronunciation practice begin after the story or from an explicit learner choice. They never pop up while somebody is reading.
-15. **Group exam: level-differentiated Task 2.** Intermediate = paragraph restructuring (scrambled 7-9 sentence paragraph, letter-coded reordering). Pre-intermediate = sentence correction (7 incorrect + 3 correct sentences, identify and fix errors). The `task2_type` field on GroupExamPrompt auto-selects based on level but can be teacher-overridden. Task 1 (fill-in-the-translation) and Task 3 (translation with conditionals 9-10) are the same for both levels.
-16. **Group exam: one writer per group.** Only the designated writer can submit answers. Other group members see a read-only view with live updates via Supabase Realtime. The ExamGroup entity tracks `writer_id` and `member_ids` for attribution. This is the only session type with group-based (not individual) submission.
+15. **Group exam: level-differentiated Task 2.** Intermediate = paragraph restructuring (scrambled 6-9 sentence paragraph, letters label the questions, numbers go in the blank). Pre-intermediate = sentence correction (7 incorrect + 3 correct sentences, identify and fix errors). The `task2_type` field on GroupExamPrompt auto-selects based on level but can be teacher-overridden. Task 1 (fill-in-the-translation) and Task 3 (translation with conditionals 9-10) are the same for both levels.
+16. **Group exam: discussion groups, individual answers.** Teacher still forms 2-3 student groups for Zoom breakouts. Every grouped student writes their own exam. No designated writer. Live check is the teacher typing accepted answers and tapping check per item. Score is practice math (correct/total), not a CEFR or official grade.
 17. **Teacher-paced steps in live classroom mode.** When a lesson has steps, students are locked to the teacher's current step during live class (`lesson_step_current` + `lesson_step_locked` on CourseSession, synced via Realtime; the presentation class's `presentation_step` is the precedent). The class-moving controls are the bottom step pills, same pattern as presentation. Progress dots are local peek for the teacher. Students cannot navigate ahead of the teacher; back-viewing unlocked steps is allowed. Review mode and consumer mode are free-navigate. New step-based lesson types MUST implement this, not just render steps. (Kyle, 2026-09-08, after noticing teacher/student view desync during live classes; 2026-09-09, music header bar dropped in favor of the presentation bottom-pill pattern.)
 18. **Hover-to-reveal is banned app-wide; flags + notes are the vocabulary surface.** Word information is tap-to-reveal only, mobile and desktop — no hover-triggered tooltips anywhere. Teacher word flags (ADR 009) carry an optional note (Slice 64): students tap a noted word and a centered lightbox shows the explanation. The note capability serves all text-centric kinds (story, dialogue, movie talk). No separate vocabulary slide/step in Movie Talk — the in-dialogue flags + notes ARE the vocabulary surface; Kyle teaches vocabulary in context. (Kyle, 2026-09-08.)
 

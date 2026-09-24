@@ -177,7 +177,7 @@ describe("exam serialize round-trip", () => {
   });
 
   test("paragraph, correction, translation", () => {
-    const para = "A | First\nB | Second";
+    const para = "3 | First\n1 | Second";
     assert.equal(
       serializeParagraphRestructuring(parseParagraphRestructuring(para)),
       para

@@ -168,6 +168,12 @@ export async function saveExamAction(
     task2Raw: string;
     task3Raw: string;
     timeLimitMinutes: number;
+    task1Title: string;
+    task1Instructions: string;
+    task2Title: string;
+    task2Instructions: string;
+    task3Title: string;
+    task3Instructions: string;
   }
 ): Promise<EditorSaveResult & { preview?: string }> {
   const admin = await teacherAdmin();

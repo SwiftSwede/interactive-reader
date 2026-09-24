@@ -226,6 +226,12 @@ export type WordFlagging = {
 export type WritingSubmissionStatus = "draft" | "submitted" | "corrected";
 export type ExamTask2Type = "paragraph_restructuring" | "sentence_correction";
 export type GroupExamSubmissionStatus = "in_progress" | "submitted";
+export type ExamTimerMode = "until_end_offset" | "from_start";
+export type ExamClassAnswerItem = {
+  accepted: string[];
+  revealed: boolean;
+};
+export type ExamClassAnswers = Record<string, ExamClassAnswerItem>;
 export type ConversationPlan = "standard" | "compact" | "open";
 export type ConversationRoundState = "idle" | "running" | "stopped";
 
@@ -293,6 +299,10 @@ export interface CourseSession {
   answersRevealed: boolean;
   songClassAnswers: Record<number, string>;
   movieTalkClassAnswers: Record<number, string>;
+  examClassAnswers: ExamClassAnswers;
+  examTimerMode: ExamTimerMode;
+  examTimerMinutes: number;
+  examScorePublishedAt: string | null;
   notes: string | null;
   sessionLinkToken: string;
   timerStartedAt: string | null;
@@ -460,6 +470,12 @@ export interface GroupExamPrompt {
   sentenceCorrection: ExamCorrectionItem[] | null;
   translationSentences: ExamTranslationItem[];
   timeLimitMinutes: number;
+  task1Title: string | null;
+  task1Instructions: string | null;
+  task2Title: string | null;
+  task2Instructions: string | null;
+  task3Title: string | null;
+  task3Instructions: string | null;
   createdBy: string;
   createdAt: string;
 }
@@ -468,7 +484,7 @@ export interface ExamGroup {
   id: string;
   courseSessionId: string;
   groupLabel: string;
-  writerId: string;
+  writerId: string | null;
   memberIds: string[];
   createdAt: string;
 }
@@ -480,7 +496,7 @@ export interface ExamTask1Answer {
 
 export interface ExamTask2LetterAnswer {
   sentenceNumber: number;
-  assignedLetter: string;
+  assignedPosition: string;
 }
 
 export interface ExamTask2CorrectionAnswer {
@@ -540,8 +556,9 @@ export interface VideoSummaryTeachingNote {
 export interface GroupExamSubmission {
   id: string;
   examPromptId: string;
-  examGroupId: string;
+  examGroupId: string | null;
   courseSessionId: string;
+  userId: string;
   task1Answers: ExamTask1Answer[];
   task2Answers: ExamTask2LetterAnswer[] | ExamTask2CorrectionAnswer[];
   task3Answers: ExamTask3Answer[];
@@ -549,6 +566,9 @@ export interface GroupExamSubmission {
   submittedAt: string | null;
   status: GroupExamSubmissionStatus;
   reviewRevealedAt: string | null;
+  task1SubmittedAt: string | null;
+  task2SubmittedAt: string | null;
+  task3SubmittedAt: string | null;
   createdAt: string;
 }
 

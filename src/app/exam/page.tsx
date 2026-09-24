@@ -11,7 +11,7 @@ import {
 } from "@/lib/student-preview-server";
 import StoryAccessMessage from "@/components/StoryAccessMessage";
 import ExamSession from "@/components/ExamSession";
-import { mapExamPromptRow, type ExamPromptRow } from "@/lib/exam";
+import { EXAM_PROMPT_SELECT, mapExamPromptRow, type ExamPromptRow } from "@/lib/exam";
 import type {
   ExamTask1Answer,
   ExamTask2CorrectionAnswer,
@@ -91,9 +91,7 @@ export default async function ExamPage({
   const supabase = await createClient();
   const { data: promptRow } = await supabase
     .from("exam_prompts")
-    .select(
-      "id, title, level, theme, vocabulary_list, fill_in_translation, task2_type, paragraph_restructuring, sentence_correction, translation_sentences, time_limit_minutes, created_by, created_at"
-    )
+    .select(EXAM_PROMPT_SELECT)
     .eq("id", promptId)
     .maybeSingle();
 
@@ -123,27 +121,32 @@ export default async function ExamPage({
     nextPath: lessonSessionNext("/exam", sessionToken),
   });
 
-  let group: {
-    id: string;
-    group_label: string;
-    writer_id: string;
-    member_ids: string[];
-  } | null = null;
+  let group: { id: string; group_label: string; member_ids: string[] } | null =
+    null;
+  let attended = false;
 
   if (user && access.saveResponses) {
-    const { data: groups } = await supabase
-      .from("exam_groups")
-      .select("id, group_label, writer_id, member_ids")
-      .eq("course_session_id", access.session.id);
+    const [{ data: groups }, { data: attendance }] = await Promise.all([
+      supabase
+        .from("exam_groups")
+        .select("id, group_label, member_ids")
+        .eq("course_session_id", access.session.id),
+      supabase
+        .from("session_attendance")
+        .select("attended")
+        .eq("course_session_id", access.session.id)
+        .eq("student_id", user.id)
+        .maybeSingle(),
+    ]);
     group =
       (
         (groups ?? []) as {
           id: string;
           group_label: string;
-          writer_id: string;
           member_ids: string[];
         }[]
       ).find((row) => row.member_ids.includes(user.id)) ?? null;
+    attended = Boolean(attendance?.attended);
   }
 
   let task1: ExamTask1Answer[] = [];
@@ -151,15 +154,18 @@ export default async function ExamPage({
   let task3: ExamTask3Answer[] = [];
   let status: "in_progress" | "submitted" | null = null;
   let startedAt: string | null = null;
-  let reviewRevealedAt: string | null = null;
+  let task1SubmittedAt: string | null = null;
+  let task2SubmittedAt: string | null = null;
+  let task3SubmittedAt: string | null = null;
 
-  if (group) {
+  if (user && access.saveResponses) {
     const { data: submission } = await supabase
       .from("group_exam_submissions")
       .select(
-        "task1_answers, task2_answers, task3_answers, status, started_at, review_revealed_at"
+        "task1_answers, task2_answers, task3_answers, status, started_at, task1_submitted_at, task2_submitted_at, task3_submitted_at"
       )
-      .eq("exam_group_id", group.id)
+      .eq("course_session_id", access.session.id)
+      .eq("user_id", user.id)
       .maybeSingle();
     if (submission) {
       task1 = Array.isArray(submission.task1_answers)
@@ -173,7 +179,9 @@ export default async function ExamPage({
         : [];
       status = submission.status as "in_progress" | "submitted";
       startedAt = submission.started_at;
-      reviewRevealedAt = submission.review_revealed_at;
+      task1SubmittedAt = submission.task1_submitted_at;
+      task2SubmittedAt = submission.task2_submitted_at;
+      task3SubmittedAt = submission.task3_submitted_at;
     }
   }
 
@@ -181,26 +189,30 @@ export default async function ExamPage({
     <ExamSession
       sessionId={access.session.id}
       prompt={prompt}
-      group={
-        group
-          ? { id: group.id, label: group.group_label }
-          : null
-      }
-      isWriter={Boolean(user && group && group.writer_id === user.id)}
+      group={group ? { id: group.id, label: group.group_label } : null}
       isTeacher={isTeacher}
       previewLevel={previewLevel}
       viewToggle={viewToggle}
+      attended={attended}
       recordingYoutubeUrl={sessionRecordingUrl(access.session)}
       classEndedAt={access.session.classEndedAt}
       sessionStartTime={access.session.sessionStartTime}
       sessionEndTime={access.session.sessionEndTime}
-      allowReveal={access.allowReveal}
+      timerStartedAt={access.session.timerStartedAt}
+      examTimerMode={access.session.examTimerMode}
+      examTimerMinutes={access.session.examTimerMinutes}
+      examClassAnswers={access.session.examClassAnswers}
+      examScorePublishedAt={access.session.examScorePublishedAt}
+      lessonStepCurrent={access.session.lessonStepCurrent}
+      lessonStepLocked={access.session.lessonStepLocked}
       initialTask1={task1}
       initialTask2={task2}
       initialTask3={task3}
       initialStatus={status}
       startedAt={startedAt}
-      reviewRevealedAt={reviewRevealedAt}
+      task1SubmittedAt={task1SubmittedAt}
+      task2SubmittedAt={task2SubmittedAt}
+      task3SubmittedAt={task3SubmittedAt}
     />
   );
 }

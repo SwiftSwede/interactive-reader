@@ -1,16 +1,62 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
+import type { GroupExamPrompt } from "@/types";
 import {
+  allExamItemsChecked,
+  assignedOrderPosition,
+  defaultExamTaskCopy,
   defaultTask2Type,
+  examAnswerMatches,
+  examItemKeys,
+  examRemainingMs,
+  examReviewDeadlineMs,
+  examScore,
+  examTimerFrozen,
   flattenFillSlots,
+  itemIsRevealed,
   nextGroupLabel,
+  parseExamClassAnswers,
   parseExamForm,
   parseFillInTranslation,
   parseParagraphRestructuring,
   parseSentenceCorrection,
   parseTranslationSentences,
   parseVocabList,
+  puntajeReachable,
 } from "./exam";
+
+const basePrompt: GroupExamPrompt = {
+  id: "prompt",
+  title: "Examen",
+  level: "pre-intermediate",
+  theme: null,
+  vocabularyList: [
+    { id: 1, english: "boy", spanish: "niño" },
+    { id: 2, english: "went", spanish: "fue" },
+    { id: 3, english: "home", spanish: "casa" },
+    { id: 4, english: "look after", spanish: "cuidar de" },
+  ],
+  fillInTranslation: parseFillInTranslation(
+    "The {niño|boy} {fue|went|gone} home."
+  ),
+  task2Type: "sentence_correction",
+  paragraphRestructuring: null,
+  sentenceCorrection: parseSentenceCorrection(
+    "ok | She is here.\nfix | She are here. | She is here."
+  ),
+  translationSentences: parseTranslationSentences(
+    "Hola. | Hello.\nAdios. | Goodbye."
+  ),
+  timeLimitMinutes: 45,
+  task1Title: null,
+  task1Instructions: null,
+  task2Title: null,
+  task2Instructions: null,
+  task3Title: null,
+  task3Instructions: null,
+  createdBy: "teacher",
+  createdAt: new Date().toISOString(),
+};
 
 describe("exam parsers", () => {
   it("parses vocab lines", () => {
@@ -31,10 +77,12 @@ describe("exam parsers", () => {
     assert.deepEqual(flat[1].slot.acceptableVariations, ["gone"]);
   });
 
-  it("parses paragraph restructuring letters", () => {
-    const items = parseParagraphRestructuring("C | Last\nA | First");
-    assert.equal(items[0].correctPosition, "C");
+  it("parses paragraph restructuring as numeric positions", () => {
+    const items = parseParagraphRestructuring("3 | Last\n1 | First");
+    assert.equal(items[0].correctPosition, "3");
     assert.equal(items[1].sentence, "First");
+    const legacy = parseParagraphRestructuring("C | Last");
+    assert.equal(legacy[0].correctPosition, "3");
   });
 
   it("parses sentence correction flags", () => {
@@ -63,6 +111,11 @@ describe("exam parsers", () => {
     assert.equal(defaultTask2Type("pre-intermediate"), "sentence_correction");
   });
 
+  it("uses Correct vs Order copy from task2 type", () => {
+    assert.equal(defaultExamTaskCopy("sentence_correction").task2Title, "Correct");
+    assert.equal(defaultExamTaskCopy("paragraph_restructuring").task2Title, "Order");
+  });
+
   it("rejects a thin exam form", () => {
     const parsed = parseExamForm({
       title: "Noviembre",
@@ -72,8 +125,240 @@ describe("exam parsers", () => {
       task2Type: "sentence_correction",
       task2Raw: "",
       task3Raw: "",
-      timeLimitMinutes: 35,
+      timeLimitMinutes: 45,
     });
     assert.ok(parsed.error);
+  });
+});
+
+describe("exam matching and score", () => {
+  it("matches any accepted variant after normalize", () => {
+    assert.equal(
+      examAnswerMatches("I'd travel", ["I'd travel", "I would travel"]),
+      true
+    );
+    assert.equal(
+      examAnswerMatches("I would travel", ["I'd travel", "I would travel"]),
+      true
+    );
+    assert.equal(examAnswerMatches("I will travel", ["I'd travel"]), false);
+    assert.equal(examAnswerMatches("  LOOK   AFTER ", ["look after"]), true);
+    assert.equal(examAnswerMatches("", ["look after"]), false);
+  });
+
+  it("scores fraction and whole percent", () => {
+    const keys = examItemKeys(basePrompt);
+    assert.equal(keys.length, 6);
+    const result = examScore({
+      prompt: basePrompt,
+      task1: [
+        { slotIndex: 0, answer: "boy" },
+        { slotIndex: 1, answer: "gone" },
+      ],
+      task2: [
+        { sentenceNumber: 1, isCorrect: true, correctedText: null },
+        {
+          sentenceNumber: 2,
+          isCorrect: false,
+          correctedText: "She is here.",
+        },
+      ],
+      task3: [
+        { sentenceNumber: 1, englishTranslation: "Hello." },
+        { sentenceNumber: 2, englishTranslation: "wrong" },
+      ],
+      classAnswers: {},
+      useCatalogFallback: true,
+    });
+    assert.equal(result.total, 6);
+    assert.equal(result.correct, 5);
+    assert.equal(result.percent, 83);
+  });
+
+  it("does not count blanks as correct", () => {
+    const result = examScore({
+      prompt: basePrompt,
+      task1: [],
+      task2: [],
+      task3: [],
+      classAnswers: {},
+      useCatalogFallback: true,
+    });
+    assert.equal(result.correct, 0);
+    assert.equal(result.percent, 0);
+  });
+});
+
+describe("exam timer", () => {
+  it("counts down to session_end minus N after Iniciar", () => {
+    const timerStartedAt = "2026-09-23T19:15:00.000Z";
+    const sessionEndTime = "2026-09-23T20:30:00.000Z";
+    const now = Date.parse("2026-09-23T19:20:00.000Z");
+    const remaining = examRemainingMs(
+      {
+        mode: "until_end_offset",
+        minutes: 20,
+        timerStartedAt,
+        sessionEndTime,
+      },
+      now
+    );
+    assert.equal(remaining, 50 * 60 * 1000);
+  });
+
+  it("freezes at 0 when Iniciar is after the review instant", () => {
+    const remaining = examRemainingMs(
+      {
+        mode: "until_end_offset",
+        minutes: 20,
+        timerStartedAt: "2026-09-23T20:15:00.000Z",
+        sessionEndTime: "2026-09-23T20:30:00.000Z",
+      },
+      Date.parse("2026-09-23T20:16:00.000Z")
+    );
+    assert.equal(remaining, 0);
+    assert.equal(
+      examTimerFrozen(
+        {
+          mode: "until_end_offset",
+          minutes: 20,
+          timerStartedAt: "2026-09-23T20:15:00.000Z",
+          sessionEndTime: "2026-09-23T20:30:00.000Z",
+        },
+        Date.parse("2026-09-23T20:16:00.000Z")
+      ),
+      true
+    );
+  });
+
+  it("does not run until Iniciar", () => {
+    assert.equal(
+      examReviewDeadlineMs({
+        mode: "until_end_offset",
+        minutes: 20,
+        timerStartedAt: null,
+        sessionEndTime: "2026-09-23T20:30:00.000Z",
+      }),
+      null
+    );
+    assert.equal(
+      examTimerFrozen({
+        mode: "until_end_offset",
+        minutes: 20,
+        timerStartedAt: null,
+        sessionEndTime: "2026-09-23T20:30:00.000Z",
+      }),
+      true
+    );
+  });
+
+  it("from_start counts N minutes after Iniciar", () => {
+    const remaining = examRemainingMs(
+      {
+        mode: "from_start",
+        minutes: 40,
+        timerStartedAt: "2026-09-23T19:00:00.000Z",
+        sessionEndTime: "2026-09-23T20:30:00.000Z",
+      },
+      Date.parse("2026-09-23T19:10:00.000Z")
+    );
+    assert.equal(remaining, 30 * 60 * 1000);
+  });
+});
+
+describe("exam reveal and puntaje", () => {
+  it("reveals live items only when checked", () => {
+    const classAnswers = parseExamClassAnswers({
+      "t1-0": { accepted: ["boy"], revealed: true },
+      "t1-1": { accepted: ["went"], revealed: false },
+    });
+    assert.equal(
+      itemIsRevealed({
+        key: "t1-0",
+        live: true,
+        classEnded: false,
+        attended: true,
+        classAnswers,
+        taskSubmittedAt: { 1: null, 2: null, 3: null },
+      }),
+      true
+    );
+    assert.equal(
+      itemIsRevealed({
+        key: "t1-1",
+        live: true,
+        classEnded: false,
+        attended: true,
+        classAnswers,
+        taskSubmittedAt: { 1: null, 2: null, 3: null },
+      }),
+      false
+    );
+  });
+
+  it("shows all keys after class for attendees", () => {
+    assert.equal(
+      itemIsRevealed({
+        key: "t3-1",
+        live: false,
+        classEnded: true,
+        attended: true,
+        classAnswers: {},
+        taskSubmittedAt: { 1: null, 2: null, 3: null },
+      }),
+      true
+    );
+  });
+
+  it("gates absentee keys per Entregar", () => {
+    assert.equal(
+      itemIsRevealed({
+        key: "t1-0",
+        live: false,
+        classEnded: true,
+        attended: false,
+        classAnswers: {},
+        taskSubmittedAt: { 1: "2026-09-23T21:00:00.000Z", 2: null, 3: null },
+      }),
+      true
+    );
+    assert.equal(
+      itemIsRevealed({
+        key: "t2-1",
+        live: false,
+        classEnded: true,
+        attended: false,
+        classAnswers: {},
+        taskSubmittedAt: { 1: "2026-09-23T21:00:00.000Z", 2: null, 3: null },
+      }),
+      false
+    );
+  });
+
+  it("gates Puntaje until publish", () => {
+    assert.equal(puntajeReachable(null), false);
+    assert.equal(puntajeReachable("2026-09-23T21:00:00.000Z"), true);
+    assert.equal(allExamItemsChecked(basePrompt, {}), false);
+    assert.equal(
+      allExamItemsChecked(basePrompt, {
+        "t1-0": { accepted: ["boy"], revealed: true },
+        "t1-1": { accepted: ["went"], revealed: true },
+        "t2-1": { accepted: ["She is here."], revealed: true },
+        "t2-2": { accepted: ["She is here."], revealed: true },
+        "t3-1": { accepted: ["Hello"], revealed: true },
+        "t3-2": { accepted: ["Goodbye"], revealed: true },
+      }),
+      true
+    );
+  });
+
+  it("reads numeric order answers", () => {
+    assert.equal(
+      assignedOrderPosition(
+        [{ sentenceNumber: 1, assignedPosition: "3" }],
+        1
+      ),
+      "3"
+    );
   });
 });

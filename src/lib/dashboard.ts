@@ -535,33 +535,17 @@ export async function loadDashboard(
       .filter((row) => row.session_type === "exam")
       .map((row) => row.id);
 
-    const examGroups = examSessionIds.length
+    const examSubmissions = examSessionIds.length
       ? await safeSelect<{
-          id: string;
-          course_session_id: string;
-          member_ids: string[] | null;
-        }>("exam_groups", () =>
-          supabase
-            .from("exam_groups")
-            .select("id, course_session_id, member_ids")
-            .in("course_session_id", examSessionIds)
-        )
-      : [];
-
-    const myGroupIds = examGroups
-      .filter((group) => (group.member_ids ?? []).includes(userId))
-      .map((group) => group.id);
-
-    const examSubmissions = myGroupIds.length
-      ? await safeSelect<{
-          exam_group_id: string;
+          user_id: string;
           course_session_id: string;
           status: string;
         }>("group_exam_submissions", () =>
           supabase
             .from("group_exam_submissions")
-            .select("exam_group_id, course_session_id, status")
-            .in("exam_group_id", myGroupIds)
+            .select("user_id, course_session_id, status")
+            .eq("user_id", userId)
+            .in("course_session_id", examSessionIds)
         )
       : [];
 

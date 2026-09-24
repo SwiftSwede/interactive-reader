@@ -765,18 +765,27 @@ Teacher-paced steps (same bottom pills as music). Skip Ejemplo when it would be 
 - Bottom nav: shared glass bar at the viewport bottom. Atrás / Siguiente pills (Spanish labels). Teacher live: Bloquear pasos / Abrir todas in the middle. Iniciar stays on the teacher session page and snaps phones to Assignment. The bar hides while the writing box is focused.
 
 ### Exam Lesson Page (detailed)
-Task-based, collaborative (group of 2-3 students).
+Same Lesson mode shell as writing / music. Discussion groups of 2-3, each student writes their own exam.
 
 **Header zone:**
 - Main header: lesson type "Examen", exam name, CEFR, Progreso / Inicio (teacher: Inicio only)
-- Subheader: "Tarea 1 de 3" (`label-md`, `--text-secondary`)
-- Countdown sits top-right in the body. Sticky chip when it scrolls away.
+- Subheader: progress dots (Parte 1, Parte 2, Parte 3, Puntaje). No "Tarea N de 3" text. Puntaje stays locked until the score is published (or after class for attendees / after three Entregar for absentees).
+- Countdown sits in the body and docks under the header. It does not run until Iniciar. Live class counts down to review time. Makeup counts 45 minutes.
+
+**Bottom navigation:**
+- Same Atrás / Siguiente pills as other lessons. Teacher live: Abrir todas / Bloquear pasos in the middle. Work period starts unlocked so students can jump between parts. Review may lock and snap. Do not hide the bar on exam input focus.
 
 **Content zone:**
-- Task 1: Fill-in translation. Story with Spanish words in parentheses. Input fields for each slot. Vocabulary list at top (collapsible).
-- Task 2: Paragraph restructuring (intermediate) or sentence correction (pre-intermediate). Scrambled sentences with letter input fields, or sentence list with correction textareas.
-- Task 3: Translation sentences. 10 Spanish sentences, textareas for English translations.
-- Submit button at the bottom (primary, full width). Only the designated group writer submits.
+- Each task: English title (`headline-lg`) then instructions (`label-md`, `--text-secondary`).
+- Task 1: Fill in the translation. Collapsible vocabulary list. Story in `text-story-body`. Music-style underlines (`.lyric-blank`, no terracotta numbers). Empty blank shows the Spanish. After check: same marks as music.
+- Task 2: Order (letters A, B, C label scrambled sentences; numbers 1..N in the blank) or Correct (correct/incorrect + edit).
+- Task 3: Translate. Textareas per Spanish sentence.
+- Teacher live: blank fields stored on `exam_class_answers`, Añadir otra, 44px check, collapsible catalog peek. Mostrar puntaje when every item is already checked.
+- Puntaje: `Tu puntaje`, fraction and whole percent. Spanish around the numbers. No letter grade, no CEFR.
+
+**After class:**
+- Attended: all keys, score, read-only.
+- Absentee: 45-minute timer, Entregar per task then keys for that task.
 
 ### Video Summary Lesson Page (detailed)
 Classroom only. `Story.kind = "video_summary"`. Session type is `video_summary` (uses `story_id`). Three steps with the same progress dots as stories.

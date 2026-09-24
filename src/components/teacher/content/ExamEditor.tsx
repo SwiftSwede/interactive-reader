@@ -21,6 +21,18 @@ export default function ExamEditor({ exam }: { exam: ExamForEdit }) {
   const [task1Raw, setTask1Raw] = useState(exam.task1Raw);
   const [task2Raw, setTask2Raw] = useState(exam.task2Raw);
   const [task3Raw, setTask3Raw] = useState(exam.task3Raw);
+  const [task1Title, setTask1Title] = useState(exam.task1Title);
+  const [task1Instructions, setTask1Instructions] = useState(
+    exam.task1Instructions
+  );
+  const [task2Title, setTask2Title] = useState(exam.task2Title);
+  const [task2Instructions, setTask2Instructions] = useState(
+    exam.task2Instructions
+  );
+  const [task3Title, setTask3Title] = useState(exam.task3Title);
+  const [task3Instructions, setTask3Instructions] = useState(
+    exam.task3Instructions
+  );
   const [pending, setPending] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
@@ -33,6 +45,12 @@ export default function ExamEditor({ exam }: { exam: ExamForEdit }) {
     task1Raw,
     task2Raw,
     task3Raw,
+    task1Title,
+    task1Instructions,
+    task2Title,
+    task2Instructions,
+    task3Title,
+    task3Instructions,
   });
   const [baseline, setBaseline] = useState(snapshot);
   const dirty = snapshot !== baseline;
@@ -54,7 +72,7 @@ export default function ExamEditor({ exam }: { exam: ExamForEdit }) {
 
   const task2Label =
     exam.task2Type === "paragraph_restructuring"
-      ? "Tarea 2: reordenar párrafo (letra | oración)"
+      ? "Tarea 2: reordenar párrafo (posición | oración, ej. 3 | Firstly...)"
       : "Tarea 2: corrección (ok | oración  o  fix | mal | bien)";
 
   return (
@@ -79,7 +97,7 @@ export default function ExamEditor({ exam }: { exam: ExamForEdit }) {
           }}
         />
       </EditorField>
-      <EditorField label="Minutos">
+      <EditorField label="Minutos de reposición">
         <input
           type="number"
           min={1}
@@ -88,6 +106,27 @@ export default function ExamEditor({ exam }: { exam: ExamForEdit }) {
           value={minutes}
           onChange={(event) => {
             setMinutes(Number(event.target.value));
+            setSaved(false);
+          }}
+        />
+      </EditorField>
+      <EditorField label="Tarea 1 título (inglés)">
+        <input
+          className={fieldClass}
+          value={task1Title}
+          onChange={(event) => {
+            setTask1Title(event.target.value);
+            setSaved(false);
+          }}
+        />
+      </EditorField>
+      <EditorField label="Tarea 1 instrucciones (inglés)">
+        <textarea
+          className={fieldClass}
+          rows={2}
+          value={task1Instructions}
+          onChange={(event) => {
+            setTask1Instructions(event.target.value);
             setSaved(false);
           }}
         />
@@ -120,6 +159,27 @@ export default function ExamEditor({ exam }: { exam: ExamForEdit }) {
           }}
         />
       </EditorField>
+      <EditorField label="Tarea 2 título (inglés)">
+        <input
+          className={fieldClass}
+          value={task2Title}
+          onChange={(event) => {
+            setTask2Title(event.target.value);
+            setSaved(false);
+          }}
+        />
+      </EditorField>
+      <EditorField label="Tarea 2 instrucciones (inglés)">
+        <textarea
+          className={fieldClass}
+          rows={2}
+          value={task2Instructions}
+          onChange={(event) => {
+            setTask2Instructions(event.target.value);
+            setSaved(false);
+          }}
+        />
+      </EditorField>
       <EditorField label={task2Label}>
         <textarea
           className={monoFieldClass}
@@ -127,6 +187,27 @@ export default function ExamEditor({ exam }: { exam: ExamForEdit }) {
           value={task2Raw}
           onChange={(event) => {
             setTask2Raw(event.target.value);
+            setSaved(false);
+          }}
+        />
+      </EditorField>
+      <EditorField label="Tarea 3 título (inglés)">
+        <input
+          className={fieldClass}
+          value={task3Title}
+          onChange={(event) => {
+            setTask3Title(event.target.value);
+            setSaved(false);
+          }}
+        />
+      </EditorField>
+      <EditorField label="Tarea 3 instrucciones (inglés)">
+        <textarea
+          className={fieldClass}
+          rows={2}
+          value={task3Instructions}
+          onChange={(event) => {
+            setTask3Instructions(event.target.value);
             setSaved(false);
           }}
         />
@@ -175,6 +256,12 @@ export default function ExamEditor({ exam }: { exam: ExamForEdit }) {
             task2Raw,
             task3Raw,
             timeLimitMinutes: minutes,
+            task1Title,
+            task1Instructions,
+            task2Title,
+            task2Instructions,
+            task3Title,
+            task3Instructions,
           });
           setPending(false);
           if (!result.ok) {
