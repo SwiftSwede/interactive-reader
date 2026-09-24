@@ -741,8 +741,7 @@ export default function ExamSession({
               <ul className="rounded-card border border-paper-line bg-white px-3 py-3 text-body-main">
                 {prompt.vocabularyList.map((item) => (
                   <li key={item.id} className="py-1">
-                    <span className="font-medium">{item.english}</span>
-                    <span className="text-text-muted"> · {item.spanish}</span>
+                    {item.english}
                   </li>
                 ))}
               </ul>
