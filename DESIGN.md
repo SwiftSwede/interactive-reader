@@ -777,7 +777,7 @@ Same Lesson mode shell as writing / music. Discussion groups of 2-3, each studen
 
 **Content zone:**
 - Each task: English title (`headline-lg`) then instructions (`label-md`, `--text-secondary`).
-- Task 1: Fill in the translation. Collapsible vocabulary list. Story in `text-story-body`. Music-style underlines (`.lyric-blank`, no terracotta numbers). Empty blank shows the Spanish. After check: same marks as music.
+- Task 1: Fill in the translation. Collapsible vocabulary list. Words the student has already typed (including regular -s / -ed / -ing) get a moss check and strikethrough. Tap a leftover word to mark irregulars the same way. Story in `text-story-body`. Music-style underlines (`.lyric-blank`, no terracotta numbers). Empty blank shows the Spanish. After check: same marks as music.
 - Task 2: Order (letters A, B, C label scrambled sentences; numbers 1..N in the blank) or Correct (correct/incorrect + edit).
 - Task 3: Translate. Textareas per Spanish sentence.
 - Teacher live: blank fields stored on `exam_class_answers`, Añadir otra, 44px check, collapsible catalog peek. Mostrar puntaje when every item is already checked.

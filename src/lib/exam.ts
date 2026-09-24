@@ -523,6 +523,104 @@ export function examAnswerMatches(typed: string, accepted: string[]): boolean {
   );
 }
 
+const VOWELS = new Set("aeiou");
+
+function isVowel(ch: string): boolean {
+  return VOWELS.has(ch.toLowerCase());
+}
+
+function examVocabToken(raw: string): string {
+  return raw.toLowerCase().replace(/[^a-z']/g, "");
+}
+
+function examVocabTokens(text: string): string[] {
+  return normalizeExamAnswer(text)
+    .split(" ")
+    .map(examVocabToken)
+    .filter(Boolean);
+}
+
+function isCvc(word: string): boolean {
+  if (word.length < 3) return false;
+  const a = word[word.length - 3];
+  const b = word[word.length - 2];
+  const c = word[word.length - 1];
+  return (
+    !isVowel(a) &&
+    isVowel(b) &&
+    !isVowel(c) &&
+    c !== "w" &&
+    c !== "x" &&
+    c !== "y"
+  );
+}
+
+/** Regular English endings only. Irregulars (go/went) do not match. */
+export function examVocabForms(english: string): Set<string> {
+  const w = examVocabToken(english);
+  const forms = new Set<string>();
+  if (!w) return forms;
+  forms.add(w);
+  if (w.endsWith("y") && w.length > 1 && !isVowel(w[w.length - 2] ?? "")) {
+    forms.add(`${w.slice(0, -1)}ies`);
+    forms.add(`${w.slice(0, -1)}ied`);
+    forms.add(`${w}ing`);
+  } else if (w.endsWith("e")) {
+    forms.add(`${w}s`);
+    forms.add(`${w}d`);
+    forms.add(`${w.slice(0, -1)}ing`);
+  } else {
+    forms.add(`${w}s`);
+    if (/s$|x$|z$|ch$|sh$/.test(w)) forms.add(`${w}es`);
+    forms.add(`${w}ed`);
+    forms.add(`${w}ing`);
+    if (isCvc(w)) {
+      const doubled = `${w}${w[w.length - 1]}`;
+      forms.add(`${doubled}ed`);
+      forms.add(`${doubled}ing`);
+    }
+  }
+  return forms;
+}
+
+function examVocabTokenMatches(typed: string, vocab: string): boolean {
+  if (!typed || !vocab) return false;
+  if (typed === vocab) return true;
+  if (examVocabForms(vocab).has(typed)) return true;
+  if (examVocabForms(typed).has(vocab)) return true;
+  return false;
+}
+
+export function isExamVocabUsed(
+  english: string,
+  typedAnswers: string[]
+): boolean {
+  const vocabTokens = examVocabTokens(english);
+  if (vocabTokens.length === 0) return false;
+  for (const answer of typedAnswers) {
+    const typedTokens = examVocabTokens(answer);
+    if (typedTokens.length < vocabTokens.length) continue;
+    for (let i = 0; i <= typedTokens.length - vocabTokens.length; i++) {
+      const matches = vocabTokens.every((vocab, offset) =>
+        examVocabTokenMatches(typedTokens[i + offset] ?? "", vocab)
+      );
+      if (matches) return true;
+    }
+  }
+  return false;
+}
+
+export function usedExamVocabIds(
+  vocabularyList: ExamVocabItem[],
+  typedAnswers: string[]
+): Set<number> {
+  const used = new Set<number>();
+  for (const item of vocabularyList) {
+    if (isExamVocabUsed(item.english, typedAnswers)) used.add(item.id);
+  }
+  return used;
+}
+
 export function parseExamTimerMode(raw: unknown): ExamTimerMode {
   return raw === "from_start" ? "from_start" : "until_end_offset";
 }

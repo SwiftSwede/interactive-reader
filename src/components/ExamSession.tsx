@@ -32,6 +32,7 @@ import {
   puntajeReachable,
   resolveExamTaskCopy,
   studentAnswerForItem,
+  usedExamVocabIds,
   EXAM_MAKEUP_MINUTES,
   EXAM_STEPS,
 } from "@/lib/exam";
@@ -125,6 +126,9 @@ export default function ExamSession({
   const [task3, setTask3] = useState<Task3Answer[]>(initialTask3);
   const [status, setStatus] = useState(initialStatus);
   const [vocabOpen, setVocabOpen] = useState(true);
+  const [tappedVocabIds, setTappedVocabIds] = useState<Set<number>>(
+    () => new Set()
+  );
   const [peekOpen, setPeekOpen] = useState(false);
   const [fixingKeys, setFixingKeys] = useState<Record<string, boolean>>({});
   const [error, setError] = useState("");
@@ -186,6 +190,31 @@ export default function ExamSession({
     () => flattenFillSlots(prompt.fillInTranslation),
     [prompt.fillInTranslation]
   );
+  const usedVocabIds = useMemo(() => {
+    if (isTeacher) return new Set<number>();
+    return usedExamVocabIds(
+      prompt.vocabularyList,
+      task1.map((row) => row.answer)
+    );
+  }, [isTeacher, prompt.vocabularyList, task1]);
+  const vocabTapKey = `pk-exam-vocab-tap:${sessionId}`;
+
+  useEffect(() => {
+    if (isTeacher) return;
+    try {
+      const raw = window.localStorage.getItem(vocabTapKey);
+      if (!raw) return;
+      const parsed = JSON.parse(raw) as unknown;
+      if (!Array.isArray(parsed)) return;
+      setTappedVocabIds(
+        new Set(
+          parsed.filter((id): id is number => Number.isInteger(id) && id > 0)
+        )
+      );
+    } catch {
+      setTappedVocabIds(new Set());
+    }
+  }, [isTeacher, vocabTapKey]);
   const orderItems = prompt.paragraphRestructuring ?? [];
   const scoreOpen = puntajeReachable(scorePublishedAt) || (afterClass && attended);
   const absenteeScoreOpen =
@@ -699,7 +728,12 @@ export default function ExamSession({
         ) : null}
         {clockRunning ? (
           <LessonTimer
-            value={formatCountdown(remaining)}
+            value={
+              pensDown
+                ? "Tiempo. Deja el lápiz. Vamos a revisar juntos."
+                : formatCountdown(remaining)
+            }
+            tone={pensDown ? "error" : "default"}
             sticky={remaining > 0}
           />
         ) : null}
@@ -707,11 +741,6 @@ export default function ExamSession({
         {live && !timerStartedAt && !isTeacher ? (
           <p className="mb-4 rounded-card bg-accent-softer px-3 py-3 text-body-main text-text-secondary">
             Espera a que el Profe Kyle inicie el examen.
-          </p>
-        ) : null}
-        {pensDown && !isTeacher ? (
-          <p className="mb-4 rounded-card bg-accent-softer px-3 py-3 text-body-main text-text-secondary">
-            Tiempo. Deja el lápiz. Vamos a revisar juntos.
           </p>
         ) : null}
         {active?.id === "parte-1" && (
@@ -731,11 +760,49 @@ export default function ExamSession({
             </button>
             {vocabOpen && (
               <ul className="rounded-card border border-paper-line bg-white px-3 py-3 text-body-main">
-                {prompt.vocabularyList.map((item) => (
-                  <li key={item.id} className="py-1">
-                    {item.english}
-                  </li>
-                ))}
+                {prompt.vocabularyList.map((item) => {
+                  const autoUsed = usedVocabIds.has(item.id);
+                  const used = autoUsed || tappedVocabIds.has(item.id);
+                  const canTap = !isTeacher && !autoUsed;
+                  return (
+                    <li key={item.id}>
+                      <button
+                        type="button"
+                        disabled={!canTap}
+                        aria-pressed={used}
+                        onClick={() => {
+                          if (!canTap) return;
+                          setTappedVocabIds((current) => {
+                            const next = new Set(current);
+                            if (next.has(item.id)) next.delete(item.id);
+                            else next.add(item.id);
+                            try {
+                              window.localStorage.setItem(
+                                vocabTapKey,
+                                JSON.stringify([...next])
+                              );
+                            } catch {
+                              /* ignore quota */
+                            }
+                            return next;
+                          });
+                        }}
+                        className={`flex min-h-11 w-full items-center gap-2 py-1 text-left ${
+                          used ? "text-text-muted line-through" : "text-text-primary"
+                        } ${canTap ? "hover:text-text-secondary" : ""}`}
+                      >
+                        <span>{item.english}</span>
+                        {used ? (
+                          <Check
+                            size={16}
+                            className="shrink-0 text-success"
+                            aria-hidden="true"
+                          />
+                        ) : null}
+                      </button>
+                    </li>
+                  );
+                })}
               </ul>
             )}
             {teacherLive ? (

@@ -78,7 +78,9 @@ export default function LessonTimer({
       <p
         ref={inlineRef}
         role="timer"
-        className={`mb-3 text-right font-heading text-headline-md tabular-nums ${color}`}
+        className={`mb-3 text-right font-heading text-headline-md ${
+          sticky ? "tabular-nums" : ""
+        } ${color}`}
         aria-hidden={showChip || undefined}
       >
         {value}

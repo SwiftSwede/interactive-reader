@@ -24,6 +24,7 @@ import {
   parseTranslationSentences,
   parseVocabList,
   puntajeReachable,
+  usedExamVocabIds,
 } from "./exam";
 
 const basePrompt: GroupExamPrompt = {
@@ -273,6 +274,25 @@ describe("exam timer", () => {
     assert.equal(applyExamWorkTimeDelta("until_end_offset", 20, -5), 25);
     assert.equal(applyExamWorkTimeDelta("from_start", 90, 5), 90);
     assert.equal(applyExamWorkTimeDelta("until_end_offset", 1, 5), 1);
+  });
+});
+
+describe("exam vocab used", () => {
+  it("marks exact words and regular endings", () => {
+    const used = usedExamVocabIds(basePrompt.vocabularyList, [
+      "boys",
+      "looked after",
+      "walked",
+    ]);
+    assert.equal(used.has(1), true);
+    assert.equal(used.has(4), true);
+    assert.equal(used.has(2), false);
+    assert.equal(used.has(3), false);
+  });
+
+  it("does not treat irregulars or similar short words as a match", () => {
+    assert.equal(usedExamVocabIds([{ id: 1, english: "go", spanish: "ir" }], ["went"]).has(1), false);
+    assert.equal(usedExamVocabIds([{ id: 1, english: "on", spanish: "en" }], ["one"]).has(1), false);
   });
 });
 
