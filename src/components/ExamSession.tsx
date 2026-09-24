@@ -1273,8 +1273,8 @@ export default function ExamSession({
                           aria-label={teacherLocked ? "Listo" : "Marcar"}
                           className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-card text-white transition-colors duration-200 ${
                             teacherLocked
-                              ? "bg-success"
-                              : "bg-accent hover:bg-accent-hover disabled:opacity-40"
+                              ? "bg-success hover:bg-success-bg hover:text-success"
+                              : "bg-accent hover:bg-accent-hover disabled:pointer-events-none disabled:opacity-40"
                           }`}
                         >
                           <Check size={20} aria-hidden="true" />
