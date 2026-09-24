@@ -533,6 +533,19 @@ export function parseExamTimerMinutes(raw: unknown): number {
   return Math.min(90, n);
 }
 
+/** Positive delta adds remaining work time. Clamped to 1-90. */
+export function applyExamWorkTimeDelta(
+  mode: ExamTimerMode,
+  minutes: number,
+  deltaWorkMinutes: number
+): number {
+  const next =
+    mode === "from_start"
+      ? minutes + deltaWorkMinutes
+      : minutes - deltaWorkMinutes;
+  return Math.min(90, Math.max(1, next));
+}
+
 export function examReviewDeadlineMs(input: {
   mode: ExamTimerMode;
   minutes: number;

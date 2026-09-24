@@ -358,12 +358,21 @@ export default function ExamSession({
   }, []);
 
   useEffect(() => {
-    if (!pensDown || isTeacher || frozen.current || !group) return;
+    if (!pensDown) {
+      if (frozen.current) {
+        frozen.current = false;
+        if (!isTeacher && status === "submitted") {
+          setStatus("in_progress");
+        }
+      }
+      return;
+    }
+    if (isTeacher || frozen.current || !group) return;
     frozen.current = true;
     void freezeExamAnswers(payload()).then((result) => {
       if (result.ok) setStatus("submitted");
     });
-  }, [pensDown, isTeacher, group, payload]);
+  }, [pensDown, isTeacher, group, payload, status]);
 
   useEffect(() => {
     const supabase = createClient();
@@ -377,7 +386,9 @@ export default function ExamSession({
       exam_timer_minutes?: number | null;
       exam_score_published_at?: string | null;
     }) => {
-      if (row.timer_started_at) setTimerStartedAt(row.timer_started_at);
+      if ("timer_started_at" in row) {
+        setTimerStartedAt(row.timer_started_at ?? null);
+      }
       if (row.class_ended_at) setClassEndedAt(row.class_ended_at);
       if ("lesson_step_current" in row) {
         setClassStep(row.lesson_step_current ?? null);

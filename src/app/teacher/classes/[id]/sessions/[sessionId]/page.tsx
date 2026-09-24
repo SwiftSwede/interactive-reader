@@ -208,20 +208,17 @@ export default async function SessionDetailPage({
             />
           )
         ) : isExam ? (
-          session.timerStartedAt ? (
-            <p className="flex items-center text-sm text-text-muted">
-              El examen ya está en marcha.
-            </p>
-          ) : (
+          <div className="col-span-2">
             <ExamTimerStart
               courseId={course.id}
               sessionId={session.id}
               sessionEndTime={session.end}
               started={Boolean(session.timerStartedAt)}
+              timerStartedAt={session.timerStartedAt}
               initialMode={session.examTimerMode}
               initialMinutes={session.examTimerMinutes}
             />
-          )
+          </div>
         ) : isConversation || isPresentation ? (
           <span />
         ) : unlocked ? (

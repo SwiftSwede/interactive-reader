@@ -2,15 +2,20 @@
 
 import { useEffect, useMemo, useState } from "react";
 import {
+  examRemainingMs,
   examReviewDeadlineMs,
   formatExamReviewTime,
   parseExamTimerMinutes,
   parseExamTimerMode,
 } from "@/lib/exam";
+import { formatCountdown } from "@/lib/writing";
 import type { ExamTimerMode } from "@/types";
 import {
+  adjustExamWorkTime,
+  restartExamTimer,
   saveExamTimerSettings,
   startWritingTimer,
+  stopExamTimer,
 } from "@/app/teacher/classes/[id]/actions";
 
 export default function ExamTimerStart({
@@ -18,6 +23,7 @@ export default function ExamTimerStart({
   sessionId,
   sessionEndTime,
   started,
+  timerStartedAt,
   initialMode,
   initialMinutes,
 }: {
@@ -25,6 +31,7 @@ export default function ExamTimerStart({
   sessionId: string;
   sessionEndTime: string;
   started: boolean;
+  timerStartedAt: string | null;
   initialMode: ExamTimerMode;
   initialMinutes: number;
 }) {
@@ -32,7 +39,21 @@ export default function ExamTimerStart({
   const [minutes, setMinutes] = useState(initialMinutes);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
-  const [now] = useState(() => Date.now());
+  const [now, setNow] = useState(() => Date.now());
+
+  useEffect(() => {
+    setMode(initialMode);
+  }, [initialMode]);
+
+  useEffect(() => {
+    setMinutes(initialMinutes);
+  }, [initialMinutes]);
+
+  useEffect(() => {
+    if (!started) return;
+    const id = window.setInterval(() => setNow(Date.now()), 1000);
+    return () => window.clearInterval(id);
+  }, [started]);
 
   const preview = useMemo(() => {
     const startedAt = new Date(now).toISOString();
@@ -44,6 +65,22 @@ export default function ExamTimerStart({
     });
     return formatExamReviewTime(deadline);
   }, [mode, minutes, now, sessionEndTime]);
+
+  const liveDeadline = examReviewDeadlineMs({
+    mode: initialMode,
+    minutes: initialMinutes,
+    timerStartedAt,
+    sessionEndTime,
+  });
+  const remaining = examRemainingMs(
+    {
+      mode: initialMode,
+      minutes: initialMinutes,
+      timerStartedAt,
+      sessionEndTime,
+    },
+    now
+  );
 
   useEffect(() => {
     if (started) return;
@@ -58,11 +95,72 @@ export default function ExamTimerStart({
     return () => window.clearTimeout(id);
   }, [courseId, sessionId, mode, minutes, started]);
 
+  const runAction = async (
+    action: (formData: FormData) => Promise<{ ok: true } | { ok: false; error: string }>,
+    extra?: Record<string, string>
+  ) => {
+    setPending(true);
+    setError("");
+    const formData = new FormData();
+    formData.set("courseId", courseId);
+    formData.set("sessionId", sessionId);
+    if (extra) {
+      for (const [key, value] of Object.entries(extra)) {
+        formData.set(key, value);
+      }
+    }
+    const result = await action(formData);
+    setPending(false);
+    if (!result.ok) {
+      setError(result.error);
+    }
+  };
+
   if (started) {
     return (
-      <p className="flex items-center text-sm text-text-muted">
-        El examen ya está en marcha.
-      </p>
+      <div className="space-y-3">
+        <p className="text-sm text-text-secondary">
+          Quedan {formatCountdown(remaining)}
+          {liveDeadline
+            ? `. Revisión a las ${formatExamReviewTime(liveDeadline)}`
+            : "."}
+        </p>
+        <div className="grid grid-cols-2 gap-2">
+          <button
+            type="button"
+            disabled={pending}
+            onClick={() => void runAction(adjustExamWorkTime, { delta: "5" })}
+            className="flex min-h-11 items-center justify-center rounded-card border border-paper-line bg-white px-3 py-2 text-sm font-medium text-text-primary disabled:opacity-60"
+          >
+            +5 min
+          </button>
+          <button
+            type="button"
+            disabled={pending}
+            onClick={() => void runAction(adjustExamWorkTime, { delta: "-5" })}
+            className="flex min-h-11 items-center justify-center rounded-card border border-paper-line bg-white px-3 py-2 text-sm font-medium text-text-primary disabled:opacity-60"
+          >
+            -5 min
+          </button>
+          <button
+            type="button"
+            disabled={pending}
+            onClick={() => void runAction(restartExamTimer)}
+            className="flex min-h-11 items-center justify-center rounded-card border border-paper-line bg-white px-3 py-2 text-sm font-medium text-text-primary disabled:opacity-60"
+          >
+            Reiniciar
+          </button>
+          <button
+            type="button"
+            disabled={pending}
+            onClick={() => void runAction(stopExamTimer)}
+            className="flex min-h-11 items-center justify-center rounded-card border border-paper-line bg-white px-3 py-2 text-sm font-medium text-text-primary disabled:opacity-60"
+          >
+            Parar
+          </button>
+        </div>
+        {error ? <p className="text-sm text-error">{error}</p> : null}
+      </div>
     );
   }
 

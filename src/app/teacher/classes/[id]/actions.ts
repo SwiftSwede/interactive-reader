@@ -11,7 +11,14 @@ import {
   copyWritingPrompt,
 } from "@/lib/catalog-crud";
 import { wordDiff } from "@/lib/writing";
-import { defaultExamTaskCopy, parseExamForm, nextGroupLabel } from "@/lib/exam";
+import {
+  applyExamWorkTimeDelta,
+  defaultExamTaskCopy,
+  nextGroupLabel,
+  parseExamForm,
+  parseExamTimerMinutes,
+  parseExamTimerMode,
+} from "@/lib/exam";
 import type { CourseLevel, ExamTask2Type } from "@/types";
 import {
   setSessionAttendance,
@@ -981,6 +988,152 @@ export async function saveExamTimerSettings(
   }
 
   revalidatePath(`/teacher/classes/${courseId}/sessions/${sessionId}`);
+  return { ok: true };
+}
+
+async function reopenExamDrafts(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  sessionId: string
+) {
+  const { error } = await supabase
+    .from("group_exam_submissions")
+    .update({ status: "in_progress", submitted_at: null })
+    .eq("course_session_id", sessionId)
+    .eq("status", "submitted");
+  if (error) {
+    console.error("reopenExamDrafts failed:", error);
+  }
+}
+
+export async function adjustExamWorkTime(
+  formData: FormData
+): Promise<StartTimerResult> {
+  const teacher = await requireTeacher("/teacher");
+  const courseId = String(formData.get("courseId") ?? "").trim();
+  const sessionId = String(formData.get("sessionId") ?? "").trim();
+  const delta = Number(formData.get("delta"));
+  if (!courseId || !sessionId || !Number.isInteger(delta) || delta === 0) {
+    return { ok: false, error: "No encontré esa clase." };
+  }
+
+  const supabase = await createClient();
+  const { data: course } = await supabase
+    .from("courses")
+    .select("id")
+    .eq("id", courseId)
+    .eq("teacher_id", teacher.id)
+    .maybeSingle();
+  if (!course) {
+    return { ok: false, error: "Ese curso no es tuyo." };
+  }
+
+  const { data: session } = await supabase
+    .from("course_sessions")
+    .select("exam_timer_mode, exam_timer_minutes, timer_started_at")
+    .eq("id", sessionId)
+    .eq("course_id", courseId)
+    .eq("session_type", "exam")
+    .maybeSingle();
+  if (!session?.timer_started_at) {
+    return { ok: false, error: "El reloj no está corriendo." };
+  }
+
+  const mode = parseExamTimerMode(session.exam_timer_mode);
+  const minutes = parseExamTimerMinutes(session.exam_timer_minutes);
+  const next = applyExamWorkTimeDelta(mode, minutes, delta);
+  if (next === minutes) {
+    return { ok: false, error: "Eso sale del rango de 1 a 90 minutos." };
+  }
+
+  const { error } = await supabase
+    .from("course_sessions")
+    .update({ exam_timer_minutes: next })
+    .eq("id", sessionId)
+    .eq("course_id", courseId)
+    .eq("session_type", "exam");
+  if (error) {
+    return { ok: false, error: "No pude ajustar el reloj. Inténtalo de nuevo." };
+  }
+
+  await reopenExamDrafts(supabase, sessionId);
+  revalidatePath(`/teacher/classes/${courseId}/sessions/${sessionId}`);
+  revalidatePath("/exam");
+  return { ok: true };
+}
+
+export async function restartExamTimer(
+  formData: FormData
+): Promise<StartTimerResult> {
+  const teacher = await requireTeacher("/teacher");
+  const courseId = String(formData.get("courseId") ?? "").trim();
+  const sessionId = String(formData.get("sessionId") ?? "").trim();
+  if (!courseId || !sessionId) {
+    return { ok: false, error: "No encontré esa clase." };
+  }
+
+  const supabase = await createClient();
+  const { data: course } = await supabase
+    .from("courses")
+    .select("id")
+    .eq("id", courseId)
+    .eq("teacher_id", teacher.id)
+    .maybeSingle();
+  if (!course) {
+    return { ok: false, error: "Ese curso no es tuyo." };
+  }
+
+  const { data, error } = await supabase
+    .from("course_sessions")
+    .update({ timer_started_at: new Date().toISOString() })
+    .eq("id", sessionId)
+    .eq("course_id", courseId)
+    .eq("session_type", "exam")
+    .not("timer_started_at", "is", null)
+    .select("id")
+    .maybeSingle();
+  if (error || !data) {
+    return { ok: false, error: "No pude reiniciar el reloj. Inténtalo de nuevo." };
+  }
+
+  await reopenExamDrafts(supabase, sessionId);
+  revalidatePath(`/teacher/classes/${courseId}/sessions/${sessionId}`);
+  revalidatePath("/exam");
+  return { ok: true };
+}
+
+export async function stopExamTimer(
+  formData: FormData
+): Promise<StartTimerResult> {
+  const teacher = await requireTeacher("/teacher");
+  const courseId = String(formData.get("courseId") ?? "").trim();
+  const sessionId = String(formData.get("sessionId") ?? "").trim();
+  if (!courseId || !sessionId) {
+    return { ok: false, error: "No encontré esa clase." };
+  }
+
+  const supabase = await createClient();
+  const { data: course } = await supabase
+    .from("courses")
+    .select("id")
+    .eq("id", courseId)
+    .eq("teacher_id", teacher.id)
+    .maybeSingle();
+  if (!course) {
+    return { ok: false, error: "Ese curso no es tuyo." };
+  }
+
+  const { error } = await supabase
+    .from("course_sessions")
+    .update({ timer_started_at: null })
+    .eq("id", sessionId)
+    .eq("course_id", courseId)
+    .eq("session_type", "exam");
+  if (error) {
+    return { ok: false, error: "No pude parar el reloj. Inténtalo de nuevo." };
+  }
+
+  revalidatePath(`/teacher/classes/${courseId}/sessions/${sessionId}`);
+  revalidatePath("/exam");
   return { ok: true };
 }
 

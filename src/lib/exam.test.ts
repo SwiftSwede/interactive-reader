@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import type { GroupExamPrompt } from "@/types";
 import {
   allExamItemsChecked,
+  applyExamWorkTimeDelta,
   assignedOrderPosition,
   defaultExamTaskCopy,
   defaultTask2Type,
@@ -263,6 +264,15 @@ describe("exam timer", () => {
       Date.parse("2026-09-23T19:10:00.000Z")
     );
     assert.equal(remaining, 30 * 60 * 1000);
+  });
+
+  it("add work time raises N on from_start and lowers N on until_end_offset", () => {
+    assert.equal(applyExamWorkTimeDelta("from_start", 40, 5), 45);
+    assert.equal(applyExamWorkTimeDelta("until_end_offset", 20, 5), 15);
+    assert.equal(applyExamWorkTimeDelta("from_start", 40, -5), 35);
+    assert.equal(applyExamWorkTimeDelta("until_end_offset", 20, -5), 25);
+    assert.equal(applyExamWorkTimeDelta("from_start", 90, 5), 90);
+    assert.equal(applyExamWorkTimeDelta("until_end_offset", 1, 5), 1);
   });
 });
 
