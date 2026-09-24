@@ -6,9 +6,9 @@ import { requireTeacher } from "@/lib/auth-server";
 import { createClient } from "@/lib/supabase/server";
 import { isSessionType, defaultWritingMinutes, defaultExamTask2Type } from "@/lib/activities";
 import {
-  copyConversationPrompt,
-  copyExamPrompt,
-  copyWritingPrompt,
+  attachConversationPrompt,
+  attachExamPrompt,
+  attachWritingPrompt,
 } from "@/lib/catalog-crud";
 import { wordDiff } from "@/lib/writing";
 import {
@@ -158,17 +158,16 @@ export async function createSession(
   if (sessionType === "writing") {
     const catalogSource = String(formData.get("catalogSource") ?? "new");
     if (catalogSource === "copy") {
-      const copied = await copyWritingPrompt(
+      const attached = await attachWritingPrompt(
         supabase,
         String(formData.get("copyPromptId") ?? ""),
-        teacher.id,
         course.level as CourseLevel
       );
-      if (!copied.ok) return copied;
+      if (!attached.ok) return attached;
       const saved = await saveContent({
         session_type: "writing",
         story_id: null,
-        writing_prompt_id: copied.value.id,
+        writing_prompt_id: attached.value.id,
         exam_prompt_id: null,
         presentation_prompt_id: null,
       });
@@ -182,7 +181,7 @@ export async function createSession(
       revalidatePath("/teacher", "layout");
       return {
         ok: true,
-        message: `Listo. ${copied.value.title} ya tiene clase.`,
+        message: `Listo. ${attached.value.title} ya tiene clase.`,
       };
     }
 
@@ -258,18 +257,17 @@ export async function createSession(
   if (sessionType === "exam") {
     const catalogSource = String(formData.get("catalogSource") ?? "new");
     if (catalogSource === "copy") {
-      const copied = await copyExamPrompt(
+      const attached = await attachExamPrompt(
         supabase,
         String(formData.get("copyPromptId") ?? ""),
-        teacher.id,
         course.level as CourseLevel
       );
-      if (!copied.ok) return copied;
+      if (!attached.ok) return attached;
       const saved = await saveContent({
         session_type: "exam",
         story_id: null,
         writing_prompt_id: null,
-        exam_prompt_id: copied.value.id,
+        exam_prompt_id: attached.value.id,
         presentation_prompt_id: null,
       });
       if (saved.error) {
@@ -282,7 +280,7 @@ export async function createSession(
       revalidatePath("/teacher", "layout");
       return {
         ok: true,
-        message: `Listo. ${copied.value.title} ya tiene clase.`,
+        message: `Listo. ${attached.value.title} ya tiene clase.`,
       };
     }
 
@@ -420,20 +418,19 @@ export async function createSession(
   if (sessionType === "conversation") {
     const catalogSource = String(formData.get("catalogSource") ?? "new");
     if (catalogSource === "copy") {
-      const copied = await copyConversationPrompt(
+      const attached = await attachConversationPrompt(
         supabase,
         String(formData.get("copyPromptId") ?? ""),
-        teacher.id,
         course.level as CourseLevel
       );
-      if (!copied.ok) return copied;
+      if (!attached.ok) return attached;
       const saved = await saveContent({
         session_type: "conversation",
         story_id: null,
         writing_prompt_id: null,
         exam_prompt_id: null,
         presentation_prompt_id: null,
-        conversation_prompt_id: copied.value.id,
+        conversation_prompt_id: attached.value.id,
       });
       if (saved.error) {
         console.error("create conversation session failed:", saved.error);
@@ -445,7 +442,7 @@ export async function createSession(
       revalidatePath("/teacher", "layout");
       return {
         ok: true,
-        message: `Listo. ${copied.value.title} ya tiene clase.`,
+        message: `Listo. ${attached.value.title} ya tiene clase.`,
       };
     }
 

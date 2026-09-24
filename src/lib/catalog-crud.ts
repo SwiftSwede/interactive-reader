@@ -607,18 +607,15 @@ export async function createConversationPrompt(
   return { ok: true, value: { id: data.id } };
 }
 
-export async function copyWritingPrompt(
+export async function attachWritingPrompt(
   supabase: SupabaseClient,
   sourceId: string,
-  createdBy: string,
   level: CourseLevel
 ): Promise<CatalogResult<{ id: string; title: string }>> {
   if (!isUuid(sourceId)) return fail("Elige una escritura.");
   const { data: source, error: loadError } = await supabase
     .from("writing_prompts")
-    .select(
-      "title, prompt_text, writing_time_minutes, level, structure_lesson, rubric_text, example_paragraph"
-    )
+    .select("id, title, prompt_text")
     .eq("id", sourceId)
     .eq("level", level)
     .maybeSingle();
@@ -628,38 +625,22 @@ export async function copyWritingPrompt(
   if (!isCopyableWriting(String(source.prompt_text ?? ""))) {
     return fail("Esa escritura todavía está vacía.");
   }
-  const { data, error } = await supabase
-    .from("writing_prompts")
-    .insert({
-      title: source.title,
-      prompt_text: source.prompt_text,
-      writing_time_minutes: source.writing_time_minutes,
-      level: source.level,
-      structure_lesson: source.structure_lesson,
-      rubric_text: source.rubric_text,
-      example_paragraph: source.example_paragraph,
-      created_by: createdBy,
-    })
-    .select("id, title")
-    .maybeSingle();
-  if (error || !data) {
-    console.error("copyWritingPrompt failed:", error);
-    return fail("No pude copiar la escritura. Inténtalo de nuevo.");
-  }
-  return { ok: true, value: { id: data.id, title: data.title } };
+  return {
+    ok: true,
+    value: { id: source.id, title: String(source.title ?? "") },
+  };
 }
 
-export async function copyExamPrompt(
+export async function attachExamPrompt(
   supabase: SupabaseClient,
   sourceId: string,
-  createdBy: string,
   level: CourseLevel
 ): Promise<CatalogResult<{ id: string; title: string }>> {
   if (!isUuid(sourceId)) return fail("Elige un examen.");
   const { data: source, error: loadError } = await supabase
     .from("exam_prompts")
     .select(
-      "title, level, theme, vocabulary_list, fill_in_translation, task2_type, paragraph_restructuring, sentence_correction, translation_sentences, time_limit_minutes, task1_title, task1_instructions, task2_title, task2_instructions, task3_title, task3_instructions"
+      "id, title, vocabulary_list, fill_in_translation, paragraph_restructuring, sentence_correction, translation_sentences"
     )
     .eq("id", sourceId)
     .eq("level", level)
@@ -677,46 +658,21 @@ export async function copyExamPrompt(
   if (!isCopyableExam(counts)) {
     return fail("Ese examen todavía está vacío.");
   }
-  const { data, error } = await supabase
-    .from("exam_prompts")
-    .insert({
-      title: source.title,
-      level: source.level,
-      theme: source.theme,
-      vocabulary_list: source.vocabulary_list,
-      fill_in_translation: source.fill_in_translation,
-      task2_type: source.task2_type,
-      paragraph_restructuring: source.paragraph_restructuring,
-      sentence_correction: source.sentence_correction,
-      translation_sentences: source.translation_sentences,
-      time_limit_minutes: source.time_limit_minutes,
-      task1_title: source.task1_title,
-      task1_instructions: source.task1_instructions,
-      task2_title: source.task2_title,
-      task2_instructions: source.task2_instructions,
-      task3_title: source.task3_title,
-      task3_instructions: source.task3_instructions,
-      created_by: createdBy,
-    })
-    .select("id, title")
-    .maybeSingle();
-  if (error || !data) {
-    console.error("copyExamPrompt failed:", error);
-    return fail("No pude copiar el examen. Inténtalo de nuevo.");
-  }
-  return { ok: true, value: { id: data.id, title: data.title } };
+  return {
+    ok: true,
+    value: { id: source.id, title: String(source.title ?? "") },
+  };
 }
 
-export async function copyConversationPrompt(
+export async function attachConversationPrompt(
   supabase: SupabaseClient,
   sourceId: string,
-  createdBy: string,
   level: CourseLevel
 ): Promise<CatalogResult<{ id: string; title: string }>> {
   if (!isUuid(sourceId)) return fail("Elige una conversación.");
   const { data: source, error: loadError } = await supabase
     .from("conversation_prompts")
-    .select("title, level, theme, questions")
+    .select("id, title, questions")
     .eq("id", sourceId)
     .eq("level", level)
     .maybeSingle();
@@ -727,20 +683,8 @@ export async function copyConversationPrompt(
   if (!isCopyableConversation(questions.length)) {
     return fail("Esa conversación todavía está vacía.");
   }
-  const { data, error } = await supabase
-    .from("conversation_prompts")
-    .insert({
-      title: source.title,
-      level: source.level,
-      theme: source.theme,
-      questions: source.questions,
-      created_by: createdBy,
-    })
-    .select("id, title")
-    .maybeSingle();
-  if (error || !data) {
-    console.error("copyConversationPrompt failed:", error);
-    return fail("No pude copiar la conversación. Inténtalo de nuevo.");
-  }
-  return { ok: true, value: { id: data.id, title: data.title } };
+  return {
+    ok: true,
+    value: { id: source.id, title: String(source.title ?? "") },
+  };
 }
