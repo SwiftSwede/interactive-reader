@@ -524,10 +524,10 @@ export default function CreateSessionForm({
               required
               rows={6}
               className="w-full resize-y rounded-card border border-paper-line px-3 py-2 font-mono text-sm text-text-primary focus:border-2 focus:border-accent focus:outline-none"
-              placeholder={"go | ir\nwent | fue"}
+              placeholder={"Deadline\nBrake\nGo off"}
             />
             <span className="mt-1 block text-xs text-text-muted">
-              Una por línea: english | spanish
+              english o english | spanish
             </span>
           </label>
           <label className="block">
@@ -539,10 +539,10 @@ export default function CreateSessionForm({
               required
               rows={6}
               className="w-full resize-y rounded-card border border-paper-line px-3 py-2 font-mono text-sm text-text-primary focus:border-2 focus:border-accent focus:outline-none"
-              placeholder="The {niño|boy} {fue|went} home."
+              placeholder="I had until 5:00 p.m., the (fecha límite), to pay."
             />
             <span className="mt-1 block text-xs text-text-muted">
-              Huecos: {"{español|english}"} o {"{español|english|var1,var2}"}
+              Oraciones con (español) en paréntesis
             </span>
           </label>
           <label className="block">
@@ -571,14 +571,14 @@ export default function CreateSessionForm({
               className="w-full resize-y rounded-card border border-paper-line px-3 py-2 font-mono text-sm text-text-primary focus:border-2 focus:border-accent focus:outline-none"
               placeholder={
                 defaultTask2 === "paragraph_restructuring"
-                  ? "A | First sentence of the paragraph.\nB | Second sentence."
-                  : "ok | She is here.\nfix | She are here. | She is here."
+                  ? "Nowadays, most people view old superstitions as childish.\nAnd while they may not be backed by science, I believe superstitions should still be followed."
+                  : "I need a car to move in the city.\nShe are here."
               }
             />
             <span className="mt-1 block text-xs text-text-muted">
               {defaultTask2 === "paragraph_restructuring"
-                ? "Letra correcta | oración (el orden de las líneas es el revuelto)."
-                : "ok | sentence   o   fix | mal | bien"}
+                ? "Oraciones en orden correcto, una por línea"
+                : "Una oración por línea. Marca ok/fix después en clase."}
             </span>
           </label>
           <label className="block">
@@ -590,10 +590,10 @@ export default function CreateSessionForm({
               required
               rows={8}
               className="w-full resize-y rounded-card border border-paper-line px-3 py-2 font-mono text-sm text-text-primary focus:border-2 focus:border-accent focus:outline-none"
-              placeholder="Si yo fuera rico, viajaria. | If I were rich, I would travel."
+              placeholder="Tengo la boca hinchada debido a una infección."
             />
             <span className="mt-1 block text-xs text-text-muted">
-              español | english | variación. Las 9 y 10 son condicionales.
+              Español, una por línea. Respuestas después de clase.
             </span>
           </label>
           <input type="hidden" name="examTimeMinutes" value="35" />

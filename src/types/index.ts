@@ -354,12 +354,12 @@ export interface WritingCorrection {
 export interface ExamVocabItem {
   id: number;
   english: string;
-  spanish: string;
+  spanish: string | null;
 }
 
 export interface ExamFillSlot {
   spanishWord: string;
-  expectedEnglish: string;
+  expectedEnglish: string | null;
   acceptableVariations: string[];
   morphologicalNote: string | null;
 }
@@ -379,7 +379,7 @@ export interface ExamParagraphItem {
 export interface ExamCorrectionItem {
   number: number;
   sentence: string;
-  isCorrect: boolean;
+  isCorrect: boolean | null;
   correctedVersion: string | null;
 }
 

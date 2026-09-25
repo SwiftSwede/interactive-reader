@@ -15,6 +15,7 @@ import {
 } from "@/lib/catalog-crud";
 import { createAdminClient } from "@/lib/supabase/admin";
 import {
+  copyExamClassAnswersToRaw,
   saveComprehensionQuestions,
   saveConversationPrompt,
   saveExamPrompt,
@@ -184,6 +185,22 @@ export async function saveExamAction(
     revalidatePath("/exam");
   }
   return result;
+}
+
+export async function copyExamClassAnswersAction(
+  promptId: string,
+  sessionId: string
+): Promise<
+  | { ok: true; task1Raw: string; task2Raw: string; task3Raw: string }
+  | { ok: false; error: string }
+> {
+  const teacher = await requireTeacher("/teacher");
+  return copyExamClassAnswersToRaw(
+    createAdminClient(),
+    promptId,
+    sessionId,
+    teacher.id
+  );
 }
 
 export async function savePresentationAction(

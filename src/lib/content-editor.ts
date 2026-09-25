@@ -13,10 +13,12 @@ import type {
   WritingPrompt,
 } from "@/types";
 import {
+  applyExamClassAnswersToPrompt,
   defaultExamTaskCopy,
   examCountsDropped,
   examItemCounts,
   mapExamPromptRow,
+  parseExamClassAnswers,
   parseExamForm,
   serializeFillInTranslation,
   serializeParagraphRestructuring,
@@ -995,6 +997,42 @@ export type ExamForEdit = {
   storedCounts: ExamItemCounts;
 };
 
+export type ExamClassSessionOption = {
+  id: string;
+  label: string;
+};
+
+function courseNameFromJoin(join: unknown): string | null {
+  if (!join) return null;
+  const row = Array.isArray(join) ? join[0] : join;
+  if (!row || typeof row !== "object") return null;
+  const name = (row as { name?: unknown }).name;
+  return typeof name === "string" && name.trim() ? name.trim() : null;
+}
+
+export async function listExamPromptSessions(
+  supabase: SupabaseClient,
+  promptId: string
+): Promise<ExamClassSessionOption[]> {
+  const { data, error } = await supabase
+    .from("course_sessions")
+    .select("id, session_date, session_start_time, courses ( name )")
+    .eq("exam_prompt_id", promptId)
+    .order("session_date", { ascending: false });
+  if (error) {
+    console.error("listExamPromptSessions failed:", error);
+    return [];
+  }
+  return (data ?? []).map((row) => {
+    const date = String(row.session_date ?? "").trim();
+    const group = courseNameFromJoin(row.courses);
+    return {
+      id: String(row.id),
+      label: group ? `${date} · ${group}` : date || String(row.id),
+    };
+  });
+}
+
 export async function loadExamPromptForEdit(
   supabase: SupabaseClient,
   id: string
@@ -1030,6 +1068,87 @@ export async function loadExamPromptForEdit(
     task3Title: mapped.task3Title ?? copy.task3Title,
     task3Instructions: mapped.task3Instructions ?? copy.task3Instructions,
     storedCounts: examItemCounts(mapped),
+  };
+}
+
+export async function copyExamClassAnswersToRaw(
+  supabase: SupabaseClient,
+  promptId: string,
+  sessionId: string,
+  teacherId: string
+): Promise<
+  | { ok: true; task1Raw: string; task2Raw: string; task3Raw: string }
+  | { ok: false; error: string }
+> {
+  const failCopy = (error: string) => ({ ok: false as const, error });
+  const loaded = await loadExamPromptForEdit(supabase, promptId);
+  if (!loaded) return failCopy("No encontré ese examen.");
+
+  const { data: session } = await supabase
+    .from("course_sessions")
+    .select("id, exam_prompt_id, exam_class_answers, course_id")
+    .eq("id", sessionId)
+    .maybeSingle();
+  if (!session || session.exam_prompt_id !== promptId) {
+    return failCopy("No encontré esa clase.");
+  }
+
+  const { data: course } = await supabase
+    .from("courses")
+    .select("id, teacher_id")
+    .eq("id", session.course_id)
+    .maybeSingle();
+  if (!course || course.teacher_id !== teacherId) {
+    return failCopy("Esa clase no es tuya.");
+  }
+
+  const parsed = parseExamForm({
+    title: loaded.title,
+    theme: loaded.theme ?? "",
+    vocabRaw: loaded.vocabRaw,
+    task1Raw: loaded.task1Raw,
+    task2Type: loaded.task2Type,
+    task2Raw: loaded.task2Raw,
+    task3Raw: loaded.task3Raw,
+    timeLimitMinutes: loaded.timeLimitMinutes,
+  });
+  if (parsed.error) return failCopy(parsed.error);
+
+  const mapped = applyExamClassAnswersToPrompt(
+    {
+      id: loaded.id,
+      title: parsed.title,
+      level: loaded.level,
+      theme: parsed.theme,
+      vocabularyList: parsed.vocabularyList,
+      fillInTranslation: parsed.fillInTranslation,
+      task2Type: parsed.task2Type,
+      paragraphRestructuring: parsed.paragraphRestructuring,
+      sentenceCorrection: parsed.sentenceCorrection,
+      translationSentences: parsed.translationSentences,
+      timeLimitMinutes: parsed.timeLimitMinutes,
+      task1Title: loaded.task1Title,
+      task1Instructions: loaded.task1Instructions,
+      task2Title: loaded.task2Title,
+      task2Instructions: loaded.task2Instructions,
+      task3Title: loaded.task3Title,
+      task3Instructions: loaded.task3Instructions,
+      createdBy: teacherId,
+      createdAt: new Date().toISOString(),
+    },
+    parseExamClassAnswers(session.exam_class_answers)
+  );
+
+  const task2Raw =
+    loaded.task2Type === "paragraph_restructuring"
+      ? serializeParagraphRestructuring(parsed.paragraphRestructuring ?? [])
+      : serializeSentenceCorrection(mapped.sentenceCorrection ?? []);
+
+  return {
+    ok: true,
+    task1Raw: serializeFillInTranslation(mapped.fillInTranslation),
+    task2Raw,
+    task3Raw: serializeTranslationSentences(mapped.translationSentences),
   };
 }
 

@@ -3,10 +3,13 @@ import assert from "node:assert/strict";
 import type { GroupExamPrompt } from "@/types";
 import {
   allExamItemsChecked,
+  applyExamClassAnswersToPrompt,
   applyExamWorkTimeDelta,
   assignedOrderPosition,
+  catalogAcceptedForItem,
   defaultExamTaskCopy,
   defaultTask2Type,
+  displayParagraphItems,
   examAnswerMatches,
   examItemKeys,
   examRemainingMs,
@@ -23,7 +26,13 @@ import {
   parseSentenceCorrection,
   parseTranslationSentences,
   parseVocabList,
+  paragraphItemsAreCanonicalOrder,
   puntajeReachable,
+  serializeFillInTranslation,
+  serializeParagraphRestructuring,
+  serializeSentenceCorrection,
+  serializeTranslationSentences,
+  serializeVocabList,
   usedExamVocabIds,
 } from "./exam";
 
@@ -131,6 +140,61 @@ describe("exam parsers", () => {
     });
     assert.ok(parsed.error);
   });
+
+  it("parses English-only vocab and Spanish-only translations", () => {
+    const vocab = parseVocabList("Deadline\nBrake | freno");
+    assert.equal(vocab[0]?.spanish, null);
+    assert.equal(vocab[1]?.spanish, "freno");
+    const trans = parseTranslationSentences(
+      "Tengo la boca hinchada.\nHola. | Hello."
+    );
+    assert.deepEqual(trans[0]?.acceptedEnglish, []);
+    assert.equal(trans[1]?.acceptedEnglish[0], "Hello.");
+  });
+
+  it("parses Task 1 parentheses when there are no braces", () => {
+    const sentences = parseFillInTranslation(
+      "I had until 5:00 p.m., the (fecha límite), to pay."
+    );
+    assert.equal(sentences[0]?.slots[0]?.spanishWord, "fecha límite");
+    assert.equal(sentences[0]?.slots[0]?.expectedEnglish, null);
+    const mixed = parseFillInTranslation(
+      "the {fecha límite|deadline} (ignore me)"
+    );
+    assert.equal(mixed[0]?.slots.length, 1);
+    assert.equal(mixed[0]?.slots[0]?.expectedEnglish, "deadline");
+    assert.match(mixed[0]?.sentence ?? "", /\(ignore me\)/);
+  });
+
+  it("parses bare Task 2 lines", () => {
+    const order = parseParagraphRestructuring("First sentence.\nSecond sentence.");
+    assert.equal(order[0]?.correctPosition, "1");
+    assert.equal(order[1]?.correctPosition, "2");
+    const bare = parseSentenceCorrection("I need a car to move in the city.");
+    assert.equal(bare[0]?.isCorrect, null);
+  });
+
+  it("serializes bare format when answers are missing", () => {
+    const vocabRaw = "Deadline\nBrake | freno";
+    assert.equal(serializeVocabList(parseVocabList(vocabRaw)), vocabRaw);
+    const task1 = "the (fecha límite) to pay";
+    assert.equal(
+      serializeFillInTranslation(parseFillInTranslation(task1)),
+      task1
+    );
+    const order = "First.\nSecond.\nThird.";
+    assert.equal(
+      serializeParagraphRestructuring(parseParagraphRestructuring(order)),
+      order
+    );
+    const fix = "I need a car.";
+    assert.equal(serializeSentenceCorrection(parseSentenceCorrection(fix)), fix);
+    const trans = "Tengo la boca hinchada.";
+    assert.equal(
+      serializeTranslationSentences(parseTranslationSentences(trans)),
+      trans
+    );
+  });
 });
 
 describe("exam matching and score", () => {
@@ -188,6 +252,75 @@ describe("exam matching and score", () => {
     });
     assert.equal(result.correct, 0);
     assert.equal(result.percent, 0);
+  });
+
+  it("skips items with no catalog answers", () => {
+    const prompt: GroupExamPrompt = {
+      ...basePrompt,
+      fillInTranslation: parseFillInTranslation("the (niño) ran."),
+      sentenceCorrection: parseSentenceCorrection("She are here."),
+      translationSentences: parseTranslationSentences("Hola."),
+    };
+    const result = examScore({
+      prompt,
+      task1: [{ slotIndex: 0, answer: "boy" }],
+      task2: [
+        { sentenceNumber: 1, isCorrect: true, correctedText: null },
+      ],
+      task3: [{ sentenceNumber: 1, englishTranslation: "Hello." }],
+      classAnswers: {},
+      useCatalogFallback: true,
+    });
+    assert.equal(result.total, 0);
+    assert.deepEqual(catalogAcceptedForItem(prompt, "t1-0"), []);
+  });
+});
+
+describe("exam paragraph display", () => {
+  it("shuffles canonical order with a stable seed", () => {
+    const items = parseParagraphRestructuring("One.\nTwo.\nThree.\nFour.");
+    assert.equal(paragraphItemsAreCanonicalOrder(items), true);
+    const first = displayParagraphItems(items, "prompt-seed");
+    const second = displayParagraphItems(items, "prompt-seed");
+    assert.deepEqual(
+      first.map((item) => item.number),
+      second.map((item) => item.number)
+    );
+    const original = items.map((item) => item.number).join(",");
+    const shuffled = ["prompt-seed", "other", "exam-1"].some(
+      (seed) =>
+        displayParagraphItems(items, seed)
+          .map((item) => item.number)
+          .join(",") !== original
+    );
+    assert.equal(shuffled, true);
+  });
+
+  it("does not shuffle numbered paste order", () => {
+    const items = parseParagraphRestructuring("3 | Last\n1 | First\n2 | Mid");
+    assert.equal(paragraphItemsAreCanonicalOrder(items), false);
+    const shown = displayParagraphItems(items, "prompt-seed");
+    assert.equal(shown[0]?.sentence, "Last");
+    assert.equal(shown[1]?.sentence, "First");
+  });
+
+  it("copies live class answers onto the prompt", () => {
+    const prompt: GroupExamPrompt = {
+      ...basePrompt,
+      fillInTranslation: parseFillInTranslation("the (niño) ran."),
+      sentenceCorrection: parseSentenceCorrection("She are here."),
+      translationSentences: parseTranslationSentences("Hola."),
+    };
+    const mapped = applyExamClassAnswersToPrompt(prompt, {
+      "t1-0": { accepted: ["boy", "kid"], revealed: true },
+      "t2-1": { accepted: ["She is here."], revealed: true },
+      "t3-1": { accepted: ["Hello.", "Hi."], revealed: true },
+    });
+    assert.equal(mapped.fillInTranslation[0]?.slots[0]?.expectedEnglish, "boy");
+    assert.equal(mapped.sentenceCorrection?.[0]?.isCorrect, false);
+    assert.equal(mapped.sentenceCorrection?.[0]?.correctedVersion, "She is here.");
+    assert.deepEqual(mapped.translationSentences[0]?.acceptedEnglish, ["Hello."]);
+    assert.deepEqual(mapped.translationSentences[0]?.acceptableVariations, ["Hi."]);
   });
 });
 

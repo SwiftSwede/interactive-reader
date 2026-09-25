@@ -93,15 +93,20 @@ function ExamBlank({
   accepted: string[];
   ok: boolean;
 }) {
-  const answer = accepted[0] || slot.slot.expectedEnglish;
-  const wordCount = Math.max(
-    1,
-    slot.slot.expectedEnglish.trim().split(/\s+/).filter(Boolean).length
-  );
+  const answer = accepted[0] || slot.slot.expectedEnglish || "";
+  const expectedWords = (slot.slot.expectedEnglish ?? "")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean).length;
+  const wordCount = Math.max(1, expectedWords);
   const parts = splitBlankTyped(typed, wordCount);
   const empty = typed.trim() === "";
   const spanish = slot.slot.spanishWord;
   const inputId = `exam-blank-${slot.slotIndex}`;
+  const canMark =
+    revealed &&
+    (accepted.some((value) => value.trim()) ||
+      Boolean(slot.slot.expectedEnglish?.trim()));
 
   return (
     <span className="lyric-blank-slot">
@@ -141,18 +146,18 @@ function ExamBlank({
               readOnly={readOnly}
               aria-label={spanish}
               className={`lyric-blank${
-                revealed ? (ok ? " lyric-blank-ok" : " lyric-blank-bad") : ""
+                canMark ? (ok ? " lyric-blank-ok" : " lyric-blank-bad") : ""
               }`}
             />
           </span>
         ))}
       </span>
-      {revealed && !ok ? (
+      {canMark && !ok ? (
         <span className="lyric-blank-answer text-label-sm text-success">
           {accepted.filter((value) => value.trim()).join(" / ") || answer}
         </span>
       ) : null}
-      {revealed ? (
+      {canMark ? (
         ok ? (
           <Check
             size={14}

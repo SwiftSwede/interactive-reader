@@ -64,7 +64,7 @@ export default function ExamReview({
         task: 1,
         prompt: `(${slot.slot.spanishWord})`,
         correct: [slot.slot.expectedEnglish, ...slot.slot.acceptableVariations]
-          .filter(Boolean)
+          .filter((value): value is string => Boolean(value))
           .join(" / "),
         answers: groups.map((group) => ({
           group: group.label,

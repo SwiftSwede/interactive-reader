@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { ExamForEdit } from "@/lib/content-editor";
+import type { ExamClassSessionOption, ExamForEdit } from "@/lib/content-editor";
 import {
   EditorField,
   EditorSection,
@@ -10,10 +10,31 @@ import {
   fieldClass,
   monoFieldClass,
 } from "@/components/teacher/content/editor-ui";
-import { saveExamAction } from "@/app/teacher/content/actions";
-import { parseExamForm as parseForm } from "@/lib/exam";
+import ExamAnswersSection from "@/components/teacher/content/ExamAnswersSection";
+import ExamLivePreview from "@/components/teacher/content/ExamLivePreview";
+import {
+  copyExamClassAnswersAction,
+  saveExamAction,
+} from "@/app/teacher/content/actions";
+import {
+  parseExamForm as parseForm,
+  serializeFillInTranslation,
+  serializeSentenceCorrection,
+  serializeTranslationSentences,
+} from "@/lib/exam";
+import type {
+  ExamCorrectionItem,
+  ExamFillSentence,
+  ExamTranslationItem,
+} from "@/types";
 
-export default function ExamEditor({ exam }: { exam: ExamForEdit }) {
+export default function ExamEditor({
+  exam,
+  sessions,
+}: {
+  exam: ExamForEdit;
+  sessions: ExamClassSessionOption[];
+}) {
   const [title, setTitle] = useState(exam.title);
   const [theme, setTheme] = useState(exam.theme ?? "");
   const [minutes, setMinutes] = useState(exam.timeLimitMinutes);
@@ -37,6 +58,8 @@ export default function ExamEditor({ exam }: { exam: ExamForEdit }) {
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
   const [preview, setPreview] = useState("");
+  const [copyPending, setCopyPending] = useState(false);
+  const [copyError, setCopyError] = useState("");
   const snapshot = JSON.stringify({
     title,
     theme,
@@ -72,8 +95,31 @@ export default function ExamEditor({ exam }: { exam: ExamForEdit }) {
 
   const task2Label =
     exam.task2Type === "paragraph_restructuring"
-      ? "Tarea 2: reordenar párrafo (posición | oración, ej. 3 | Firstly...)"
-      : "Tarea 2: corrección (ok | oración  o  fix | mal | bien)";
+      ? "Tarea 2: reordenar párrafo"
+      : "Tarea 2: corrección";
+  const task2Hint =
+    exam.task2Type === "paragraph_restructuring"
+      ? "Oraciones en orden correcto, una por línea"
+      : "Una oración por línea. Marca ok/fix después en clase.";
+
+  function markDirty() {
+    setSaved(false);
+  }
+
+  function onFillChange(sentences: ExamFillSentence[]) {
+    setTask1Raw(serializeFillInTranslation(sentences));
+    markDirty();
+  }
+
+  function onCorrectionsChange(items: ExamCorrectionItem[]) {
+    setTask2Raw(serializeSentenceCorrection(items));
+    markDirty();
+  }
+
+  function onTranslationsChange(items: ExamTranslationItem[]) {
+    setTask3Raw(serializeTranslationSentences(items));
+    markDirty();
+  }
 
   return (
     <EditorSection title="Examen">
@@ -133,7 +179,7 @@ export default function ExamEditor({ exam }: { exam: ExamForEdit }) {
       </EditorField>
       <EditorField
         label="Vocabulario"
-        hint="english | spanish, una por línea"
+        hint="english o english | spanish"
       >
         <textarea
           className={monoFieldClass}
@@ -147,7 +193,7 @@ export default function ExamEditor({ exam }: { exam: ExamForEdit }) {
       </EditorField>
       <EditorField
         label="Tarea 1: huecos"
-        hint="{español|english|variante}"
+        hint="Oraciones con (español) en paréntesis"
       >
         <textarea
           className={monoFieldClass}
@@ -180,7 +226,7 @@ export default function ExamEditor({ exam }: { exam: ExamForEdit }) {
           }}
         />
       </EditorField>
-      <EditorField label={task2Label}>
+      <EditorField label={task2Label} hint={task2Hint}>
         <textarea
           className={monoFieldClass}
           rows={8}
@@ -214,7 +260,7 @@ export default function ExamEditor({ exam }: { exam: ExamForEdit }) {
       </EditorField>
       <EditorField
         label="Tarea 3: traducción"
-        hint="español | english | variación"
+        hint="Español, una por línea. Respuestas después de clase."
       >
         <textarea
           className={monoFieldClass}
@@ -229,13 +275,31 @@ export default function ExamEditor({ exam }: { exam: ExamForEdit }) {
       {live.error ? (
         <WarningBanner>{live.error}</WarningBanner>
       ) : (
-        <p className="text-sm text-text-secondary">
-          Vista previa: {live.vocabularyList.length} palabras ·{" "}
-          {live.fillInTranslation[0]?.sentence ?? "sin Tarea 1"} · Tarea 2{" "}
-          {(live.paragraphRestructuring ?? live.sentenceCorrection ?? []).length}{" "}
-          · Tarea 3 {live.translationSentences.length}
-        </p>
+        <ExamLivePreview live={live} promptId={exam.id} />
       )}
+      <ExamAnswersSection
+        live={live}
+        sessions={sessions}
+        copyPending={copyPending}
+        copyError={copyError}
+        onFillChange={onFillChange}
+        onCorrectionsChange={onCorrectionsChange}
+        onTranslationsChange={onTranslationsChange}
+        onCopyFromClass={async (sessionId) => {
+          setCopyPending(true);
+          setCopyError("");
+          const result = await copyExamClassAnswersAction(exam.id, sessionId);
+          setCopyPending(false);
+          if (!result.ok) {
+            setCopyError(result.error);
+            return;
+          }
+          setTask1Raw(result.task1Raw);
+          setTask2Raw(result.task2Raw);
+          setTask3Raw(result.task3Raw);
+          markDirty();
+        }}
+      />
       {preview && !dirty ? (
         <p className="text-sm text-text-secondary">{preview}</p>
       ) : null}

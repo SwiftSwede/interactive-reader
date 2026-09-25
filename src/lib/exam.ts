@@ -81,11 +81,26 @@ export function parseVocabList(raw: string): ExamVocabItem[] {
   for (const line of raw.split("\n")) {
     const trimmed = line.trim();
     if (!trimmed) continue;
-    const [english, spanish] = trimmed.split("|").map((part) => part.trim());
+    const pipe = trimmed.indexOf("|");
+    if (pipe < 0) {
+      items.push({ id: items.length + 1, english: trimmed, spanish: null });
+      continue;
+    }
+    const english = trimmed.slice(0, pipe).trim();
+    const spanish = trimmed.slice(pipe + 1).trim();
     if (!english || !spanish) continue;
     items.push({ id: items.length + 1, english, spanish });
   }
   return items;
+}
+
+function emptyFillSlot(spanishWord: string): ExamFillSlot {
+  return {
+    spanishWord,
+    expectedEnglish: null,
+    acceptableVariations: [],
+    morphologicalNote: null,
+  };
 }
 
 function parseSlotToken(token: string): ExamFillSlot | null {
@@ -93,7 +108,7 @@ function parseSlotToken(token: string): ExamFillSlot | null {
   const [spanishWord, expectedEnglish, rest] = inner
     .split("|")
     .map((part) => part.trim());
-  if (!spanishWord || !expectedEnglish) return null;
+  if (!spanishWord) return null;
   const acceptableVariations = rest
     ? rest
         .split(",")
@@ -102,10 +117,22 @@ function parseSlotToken(token: string): ExamFillSlot | null {
     : [];
   return {
     spanishWord,
-    expectedEnglish,
+    expectedEnglish: expectedEnglish || null,
     acceptableVariations,
     morphologicalNote: null,
   };
+}
+
+function parseParenSlots(line: string): ExamFillSlot[] {
+  const slots: ExamFillSlot[] = [];
+  const parenPattern = /\(([^)]+)\)/g;
+  let match: RegExpExecArray | null;
+  while ((match = parenPattern.exec(line)) !== null) {
+    const spanishWord = match[1].trim();
+    if (!spanishWord) continue;
+    slots.push(emptyFillSlot(spanishWord));
+  }
+  return slots;
 }
 
 export function parseFillInTranslation(raw: string): ExamFillSentence[] {
@@ -113,17 +140,26 @@ export function parseFillInTranslation(raw: string): ExamFillSentence[] {
   for (const line of raw.split("\n")) {
     const trimmed = line.trim();
     if (!trimmed) continue;
-    const slots: ExamFillSlot[] = [];
     const slotPattern = /\{[^}]+\}/g;
-    let match: RegExpExecArray | null;
-    while ((match = slotPattern.exec(trimmed)) !== null) {
-      const slot = parseSlotToken(match[0]);
-      if (slot) slots.push(slot);
+    const hasBraces = slotPattern.test(trimmed);
+    slotPattern.lastIndex = 0;
+    const slots: ExamFillSlot[] = [];
+    if (hasBraces) {
+      let match: RegExpExecArray | null;
+      while ((match = slotPattern.exec(trimmed)) !== null) {
+        const slot = parseSlotToken(match[0]);
+        if (slot) slots.push(slot);
+      }
+    } else {
+      slots.push(...parseParenSlots(trimmed));
     }
-    const sentence = trimmed.replace(slotPattern, (token) => {
-      const slot = parseSlotToken(token);
-      return slot ? `(${slot.spanishWord})` : token;
-    });
+    slotPattern.lastIndex = 0;
+    const sentence = hasBraces
+      ? trimmed.replace(slotPattern, (token) => {
+          const slot = parseSlotToken(token);
+          return slot ? `(${slot.spanishWord})` : token;
+        })
+      : trimmed;
     sentences.push({
       number: sentences.length + 1,
       sentence,
@@ -159,7 +195,14 @@ export function parseParagraphRestructuring(raw: string): ExamParagraphItem[] {
     const trimmed = line.trim();
     if (!trimmed) continue;
     const pipe = trimmed.indexOf("|");
-    if (pipe < 0) continue;
+    if (pipe < 0) {
+      items.push({
+        number: items.length + 1,
+        sentence: trimmed,
+        correctPosition: String(items.length + 1),
+      });
+      continue;
+    }
     const rawPosition = trimmed.slice(0, pipe).trim();
     const sentence = trimmed.slice(pipe + 1).trim();
     const correctPosition = parseOrderPosition(rawPosition);
@@ -196,14 +239,24 @@ export function parseSentenceCorrection(raw: string): ExamCorrectionItem[] {
         isCorrect: false,
         correctedVersion: parts[2],
       });
+      continue;
     }
+    if (flag === "ok" || flag === "fix") continue;
+    items.push({
+      number: items.length + 1,
+      sentence: trimmed,
+      isCorrect: null,
+      correctedVersion: null,
+    });
   }
   return items;
 }
 
 export function serializeVocabList(items: ExamVocabItem[]): string {
   return items
-    .map((item) => `${item.english} | ${item.spanish}`)
+    .map((item) =>
+      item.spanish ? `${item.english} | ${item.spanish}` : item.english
+    )
     .join("\n");
 }
 
@@ -214,6 +267,7 @@ export function serializeFillInTranslation(
     .map((row) => {
       let text = row.sentence;
       for (const slot of row.slots) {
+        if (!slot.expectedEnglish) continue;
         const token = `(${slot.spanishWord})`;
         const at = text.indexOf(token);
         if (at < 0) continue;
@@ -232,6 +286,9 @@ export function serializeFillInTranslation(
 export function serializeParagraphRestructuring(
   items: ExamParagraphItem[]
 ): string {
+  if (paragraphItemsAreCanonicalOrder(items)) {
+    return items.map((item) => item.sentence).join("\n");
+  }
   return items
     .map((item) => `${item.correctPosition} | ${item.sentence}`)
     .join("\n");
@@ -241,11 +298,11 @@ export function serializeSentenceCorrection(
   items: ExamCorrectionItem[]
 ): string {
   return items
-    .map((item) =>
-      item.isCorrect
-        ? `ok | ${item.sentence}`
-        : `fix | ${item.sentence} | ${item.correctedVersion ?? ""}`
-    )
+    .map((item) => {
+      if (item.isCorrect === null) return item.sentence;
+      if (item.isCorrect) return `ok | ${item.sentence}`;
+      return `fix | ${item.sentence} | ${item.correctedVersion ?? ""}`;
+    })
     .join("\n");
 }
 
@@ -258,6 +315,7 @@ export function serializeTranslationSentences(
         ...(item.acceptedEnglish[0] ? [item.acceptedEnglish[0]] : []),
         ...item.acceptableVariations,
       ];
+      if (english.length === 0) return item.spanish;
       return [item.spanish, ...english].join(" | ");
     })
     .join("\n");
@@ -306,12 +364,12 @@ export function parseTranslationSentences(raw: string): ExamTranslationItem[] {
     if (!trimmed) continue;
     const parts = trimmed.split("|").map((part) => part.trim()).filter(Boolean);
     const spanish = parts[0];
+    if (!spanish) continue;
     const english = parts.slice(1);
-    if (!spanish || english.length === 0) continue;
     items.push({
       number: items.length + 1,
       spanish,
-      acceptedEnglish: [english[0]],
+      acceptedEnglish: english[0] ? [english[0]] : [],
       acceptableVariations: english.slice(1),
     });
   }
@@ -384,23 +442,22 @@ export function parseExamForm(input: {
   let error: string | null = null;
   if (!title) error = "Ponle un nombre al examen.";
   else if (vocabularyList.length < 4) {
-    error = "Necesito al menos 4 palabras en la lista (english | spanish).";
+    error = "Necesito al menos 4 palabras en la lista, una por línea.";
   } else if (flattenFillSlots(fillInTranslation).length < 1) {
     error =
-      "En Tarea 1 usa {español|english} para marcar cada hueco. Al menos uno.";
+      "En Tarea 1 usa (español) entre paréntesis para marcar cada hueco. Al menos uno.";
   } else if (
     input.task2Type === "paragraph_restructuring" &&
     (paragraphRestructuring?.length ?? 0) < 3
   ) {
-    error = "Tarea 2: al menos 3 oraciones. Formato: 3 | The first sentence.";
+    error = "Tarea 2: al menos 3 oraciones en orden correcto, una por línea.";
   } else if (
     input.task2Type === "sentence_correction" &&
     (sentenceCorrection?.length ?? 0) < 3
   ) {
-    error =
-      "Tarea 2: al menos 3 oraciones. ok | sentence  o  fix | wrong | corrected.";
+    error = "Tarea 2: al menos 3 oraciones, una por línea.";
   } else if (translationSentences.length < 3) {
-    error = "Tarea 3: al menos 3 oraciones. español | english | variation.";
+    error = "Tarea 3: al menos 3 oraciones en español, una por línea.";
   }
 
   return {
@@ -499,6 +556,53 @@ export function examStepIndex(id: ExamStepId): number {
 
 export function examRowLetter(index: number): string {
   return String.fromCharCode(65 + index);
+}
+
+export function paragraphItemsAreCanonicalOrder(
+  items: ExamParagraphItem[]
+): boolean {
+  return (
+    items.length > 0 &&
+    items.every((item, index) => item.correctPosition === String(index + 1))
+  );
+}
+
+function hashSeed(seed: string): number {
+  let hash = 2166136261;
+  for (let i = 0; i < seed.length; i += 1) {
+    hash ^= seed.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
+function mulberry32(seed: number): () => number {
+  let a = seed >>> 0;
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+export function displayParagraphItems(
+  items: ExamParagraphItem[],
+  seed: string
+): ExamParagraphItem[] {
+  if (!paragraphItemsAreCanonicalOrder(items)) return items;
+  const next = [...items];
+  const rand = mulberry32(hashSeed(seed));
+  for (let i = next.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(rand() * (i + 1));
+    const current = next[i];
+    const swap = next[j];
+    if (!current || !swap) continue;
+    next[i] = swap;
+    next[j] = current;
+  }
+  return next;
 }
 
 export function parseOrderPosition(raw: string): string | null {
@@ -762,7 +866,9 @@ export function catalogAcceptedForItem(
     const index = Number(key.slice(3));
     const slot = slots.find((row) => row.slotIndex === index)?.slot;
     if (!slot) return [];
-    return [slot.expectedEnglish, ...slot.acceptableVariations].filter(Boolean);
+    return [slot.expectedEnglish, ...slot.acceptableVariations].filter(
+      (value): value is string => Boolean(value)
+    );
   }
   if (key.startsWith("t2-")) {
     const number = Number(key.slice(3));
@@ -790,6 +896,59 @@ export function catalogAcceptedForItem(
     );
   }
   return [];
+}
+
+export function applyExamClassAnswersToPrompt(
+  prompt: GroupExamPrompt,
+  classAnswers: ExamClassAnswers
+): {
+  fillInTranslation: ExamFillSentence[];
+  sentenceCorrection: ExamCorrectionItem[] | null;
+  translationSentences: ExamTranslationItem[];
+} {
+  const fillInTranslation = prompt.fillInTranslation.map((sentence) => ({
+    ...sentence,
+    slots: sentence.slots.map((slot) => ({ ...slot })),
+  }));
+  for (const row of flattenFillSlots(fillInTranslation)) {
+    const accepted = (classAnswers[`t1-${row.slotIndex}`]?.accepted ?? [])
+      .map((value) => value.trim())
+      .filter(Boolean);
+    if (accepted.length === 0) continue;
+    row.slot.expectedEnglish = accepted[0] ?? null;
+    row.slot.acceptableVariations = accepted.slice(1);
+  }
+
+  const sentenceCorrection =
+    prompt.sentenceCorrection?.map((item) => {
+      const accepted = (classAnswers[`t2-${item.number}`]?.accepted ?? [])
+        .map((value) => value.trim())
+        .filter(Boolean);
+      const first = accepted[0];
+      if (!first) return { ...item };
+      if (examAnswerMatches(first, [item.sentence])) {
+        return { ...item, isCorrect: true as const, correctedVersion: null };
+      }
+      return {
+        ...item,
+        isCorrect: false as const,
+        correctedVersion: first,
+      };
+    }) ?? null;
+
+  const translationSentences = prompt.translationSentences.map((item) => {
+    const accepted = (classAnswers[`t3-${item.number}`]?.accepted ?? [])
+      .map((value) => value.trim())
+      .filter(Boolean);
+    if (accepted.length === 0) return { ...item };
+    return {
+      ...item,
+      acceptedEnglish: accepted[0] ? [accepted[0]] : [],
+      acceptableVariations: accepted.slice(1),
+    };
+  });
+
+  return { fillInTranslation, sentenceCorrection, translationSentences };
 }
 
 export function assignedOrderPosition(
@@ -896,6 +1055,7 @@ export function examScore(input: {
 }): ExamScore {
   const keys = examItemKeys(input.prompt);
   let correct = 0;
+  let total = 0;
   for (const key of keys) {
     const typed = studentAnswerForItem({
       prompt: input.prompt,
@@ -910,9 +1070,10 @@ export function examScore(input: {
       input.classAnswers,
       input.useCatalogFallback
     );
+    if (accepted.length === 0) continue;
+    total += 1;
     if (examAnswerMatches(typed, accepted)) correct += 1;
   }
-  const total = keys.length;
   const percent = total === 0 ? 0 : Math.round((correct / total) * 100);
   return { correct, total, percent };
 }

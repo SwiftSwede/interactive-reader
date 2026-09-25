@@ -467,3 +467,9 @@ Steps 1-4 are the minimum viable — they let Kyle paste his natural format, sav
 All parser changes are additive — they accept new formats AND the old pipe syntax. Existing exam prompts (Agosto Niñera, Agosto Jefes, Septiembre Tráfico, Septiembre Supersticiones) were seeded with pipe syntax and will continue to work unchanged.
 
 The serialize functions (Part C) detect whether answers exist and output the appropriate format: bare when no answers, pipe syntax when answers exist. This means old prompts with answers still show pipe syntax on reload, and new prompts without answers show bare format on reload.
+
+## Plan review decisions (2026-09-24)
+
+- Ship the full spec (parsers, serialize, student no-answer UX, identity-only Task 2 scramble, live preview, post-class Respuestas + copy from class).
+- Shuffle Task 2 intermediate only when stored positions already match 1, 2, 3…. Old numbered exams keep their stored display order. Teacher live sees the same shuffled list as students.
+- Do not overwrite PRD row 50 (reverse translation). This work is slice 49f.

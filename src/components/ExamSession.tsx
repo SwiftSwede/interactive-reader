@@ -16,6 +16,7 @@ import {
   allExamItemsChecked,
   assignedOrderPosition,
   decodeExamStep,
+  displayParagraphItems,
   emptyExamClassAnswer,
   examAnswerMatches,
   examRemainingMs,
@@ -215,7 +216,11 @@ export default function ExamSession({
       setTappedVocabIds(new Set());
     }
   }, [isTeacher, vocabTapKey]);
-  const orderItems = prompt.paragraphRestructuring ?? [];
+  const orderItems = useMemo(
+    () =>
+      displayParagraphItems(prompt.paragraphRestructuring ?? [], prompt.id),
+    [prompt.id, prompt.paragraphRestructuring]
+  );
   const scoreOpen = puntajeReachable(scorePublishedAt) || (afterClass && attended);
   const absenteeScoreOpen =
     afterClass &&
@@ -809,13 +814,15 @@ export default function ExamSession({
               <TeacherPeek
                 open={peekOpen}
                 onToggle={() => setPeekOpen((value) => !value)}
-                lines={slots.map(
-                  (slot) =>
-                    `${slot.sentenceNumber}. ${slot.slot.spanishWord}: ${[
-                      slot.slot.expectedEnglish,
-                      ...slot.slot.acceptableVariations,
-                    ].join(" / ")}`
-                )}
+                lines={slots.map((slot) => {
+                  const answers = [
+                    slot.slot.expectedEnglish,
+                    ...slot.slot.acceptableVariations,
+                  ].filter((value): value is string => Boolean(value));
+                  return `${slot.sentenceNumber}. ${slot.slot.spanishWord}: ${
+                    answers.join(" / ") || "Sin respuesta"
+                  }`;
+                })}
               />
             ) : null}
             <ExamFillBlanks
@@ -888,7 +895,10 @@ export default function ExamSession({
                         sentence.number
                       );
                   const revealed = itemRevealed(key);
-                  const ok = itemMatch(key);
+                  const accepted = itemAccepted(key);
+                  const canMark =
+                    revealed && accepted.some((value) => value.trim());
+                  const ok = canMark && itemMatch(key);
                   return (
                     <li
                       key={sentence.number}
@@ -936,7 +946,7 @@ export default function ExamSession({
                           {sentence.sentence}
                         </p>
                       </div>
-                      {revealed ? (
+                      {canMark ? (
                         <p
                           className={`mt-2 text-label-sm ${
                             ok ? "text-success" : "text-error"
@@ -944,7 +954,7 @@ export default function ExamSession({
                         >
                           {ok
                             ? "Correcto"
-                            : `Va en ${itemAccepted(key)[0] ?? sentence.correctPosition}`}
+                            : `Va en ${accepted[0] ?? sentence.correctPosition}`}
                         </p>
                       ) : null}
                       {teacherLive ? (
@@ -979,9 +989,11 @@ export default function ExamSession({
                   open={peekOpen}
                   onToggle={() => setPeekOpen((value) => !value)}
                   lines={(prompt.sentenceCorrection ?? []).map((item) =>
-                    item.isCorrect
-                      ? `${item.number}. Estaba bien.`
-                      : `${item.number}. ${item.correctedVersion}`
+                    item.isCorrect === null
+                      ? `${item.number}. Sin marcar`
+                      : item.isCorrect
+                        ? `${item.number}. Estaba bien.`
+                        : `${item.number}. ${item.correctedVersion ?? "Sin marcar"}`
                   )}
                 />
               ) : null}
@@ -993,7 +1005,10 @@ export default function ExamSession({
                   );
                   const markedCorrect = row?.isCorrect ?? false;
                   const revealed = itemRevealed(key);
-                  const ok = itemMatch(key);
+                  const accepted = itemAccepted(key);
+                  const canMark =
+                    revealed && accepted.some((value) => value.trim());
+                  const ok = canMark && itemMatch(key);
                   const readOnly = isTeacher ? false : taskReadOnly(2);
                   return (
                     <li
@@ -1142,11 +1157,11 @@ export default function ExamSession({
                           )}
                         </>
                       )}
-                      {!isTeacher && revealed ? (
+                      {!isTeacher && canMark ? (
                         <StudentCorrectionReveal
                           ok={ok}
                           original={sentence.sentence}
-                          accepted={itemAccepted(key)}
+                          accepted={accepted}
                         />
                       ) : null}
                     </li>
@@ -1171,13 +1186,13 @@ export default function ExamSession({
               <TeacherPeek
                 open={peekOpen}
                 onToggle={() => setPeekOpen((value) => !value)}
-                lines={prompt.translationSentences.map(
-                  (item) =>
-                    `${item.number}. ${[
-                      ...item.acceptedEnglish,
-                      ...item.acceptableVariations,
-                    ].join(" / ")}`
-                )}
+                lines={prompt.translationSentences.map((item) => {
+                  const answers = [
+                    ...item.acceptedEnglish,
+                    ...item.acceptableVariations,
+                  ].filter(Boolean);
+                  return `${item.number}. ${answers.join(" / ") || "Sin respuesta"}`;
+                })}
               />
             ) : null}
             <ol className="space-y-3">
@@ -1190,7 +1205,10 @@ export default function ExamSession({
                   : task3.find((row) => row.sentenceNumber === sentence.number)
                       ?.englishTranslation ?? "";
                 const revealed = itemRevealed(key);
-                const ok = itemMatch(key);
+                const accepted = itemAccepted(key);
+                const canMark =
+                  revealed && accepted.some((value) => value.trim());
+                const ok = canMark && itemMatch(key);
                 const fieldClass = `${inputClass} mt-2${
                   teacherLocked ? " border-success bg-success-bg" : ""
                 }`;
@@ -1244,13 +1262,13 @@ export default function ExamSession({
                           />
                         ))
                       : null}
-                    {revealed && !isTeacher ? (
+                    {canMark && !isTeacher ? (
                       <p
                         className={`mt-2 text-label-sm ${
                           ok ? "text-success" : "text-error"
                         }`}
                       >
-                        {ok ? "Correcto" : itemAccepted(key).join(" / ")}
+                        {ok ? "Correcto" : accepted.join(" / ")}
                       </p>
                     ) : null}
                     {teacherLive ? (

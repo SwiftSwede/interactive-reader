@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
 import { requireTeacher } from "@/lib/auth-server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { loadExamPromptForEdit } from "@/lib/content-editor";
+import {
+  listExamPromptSessions,
+  loadExamPromptForEdit,
+} from "@/lib/content-editor";
 import ExamEditor from "@/components/teacher/content/ExamEditor";
 
 export const metadata = {
@@ -15,14 +18,18 @@ export default async function EditExamPage({
 }) {
   const { id } = await params;
   await requireTeacher("/teacher");
-  const exam = await loadExamPromptForEdit(createAdminClient(), id);
+  const admin = createAdminClient();
+  const [exam, sessions] = await Promise.all([
+    loadExamPromptForEdit(admin, id),
+    listExamPromptSessions(admin, id),
+  ]);
   if (!exam) notFound();
 
   return (
     <section>
       <h1 className="text-headline-lg text-text-primary">{exam.title}</h1>
       <div className="mt-8">
-        <ExamEditor exam={exam} />
+        <ExamEditor exam={exam} sessions={sessions} />
       </div>
     </section>
   );
