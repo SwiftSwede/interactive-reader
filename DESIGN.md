@@ -1,8 +1,86 @@
+---
+# Machine-readable token summary. Human rules below remain the full spec; this front matter
+# is the fast path for agents. If any value changes, update BOTH this block and the tables below.
+title: Design System
+theme: Paper Light
+dark_mode: false
+reading_background: warm off-white, never pure white
+colors:
+  surfaces:
+    paper: "#faf6f0"            # main background everywhere
+    paper-line: "#d5c3b8"       # borders, dividers, 1px card outlines
+    surface: "#ffffff"          # cards, sheets, modals (lifted off paper)
+    surface-hover: "#f2ede4"    # pressed/active surfaces
+  text:
+    text-primary: "#2d2a26"     # story text, headings
+    text-secondary: "#51443c"   # labels, metadata
+    text-muted: "#83746b"       # timestamps, hints
+    text-accent: "#6f4627"      # links, interactive text (terracotta)
+    text-accent-dark: "#543013" # pressed accent
+  accents:
+    accent: "#6f4627"           # terracotta: primary buttons, active progress, audio fill
+    accent-hover: "#543013"
+    accent-soft: "#ffdcc5"      # tooltip/highlight backgrounds
+    accent-softer: "#fff8f3"
+    secondary-accent: "#506354" # moss: completion indicators only
+    secondary-accent-soft: "#d0e5d2"
+  feedback:
+    success: "#506354"          # moss (same family as secondary-accent)
+    success-bg: "#d0e5d2"
+    error: "#ba1a1a"            # clay red, never bright
+    error-bg: "#ffdad6"
+    warning: "#644c23"
+    warning-bg: "#f5e6c4"
+accent_roles:
+  accent: "primary actions, focus, active progress, links. NOT a status color, NOT a success color"
+  secondary-accent: "completion indicators, secondary highlights. NOT the primary action color"
+  success_error: "outcomes only. Never used for learner identity, never color-alone"
+typography:
+  families:
+    reading_and_headlines: Lora        # serif
+    ui_labels: Roboto Flex             # sans
+    ipa: system monospace stack only
+  type_scale:
+    headline-lg: { font: Lora, size: 24px, weight: 700, line: 32px }
+    headline-md: { font: Lora, size: 18px, weight: 600, line: 24px }
+    story-body: { font: Lora, size: 18px, weight: 400, line: 32px }
+    body-main: { font: Lora, size: 16px, weight: 400, line: 28px }
+    nav-ui: { font: Roboto Flex, size: 16px, weight: 500, line: 24px }
+    label-md: { font: Roboto Flex, size: 14px, weight: 600, line: 20px }
+    label-sm: { font: Roboto Flex, size: 12px, weight: 500, line: 16px }
+  loading: self-hosted next/font, font-display swap, specified weights only
+shape:
+  radius:
+    sm: 8px        # badges, tags, chips
+    md: 16px       # cards, buttons, inputs, audio player
+    lg: 24px       # modals, bottom sheets, large cards
+    full: 9999px   # step-nav pills and circular elements ONLY
+  elevation: tonal layering + 1px borders, no card shadows; subtle shadow on sticky elements only
+spacing:
+  base: 4px
+  scale: [4, 8, 12, 16, 20, 24, 32, 40, 48, 64]
+touch_targets:
+  minimum: 44px
+  comfortable: 48px # primary actions
+  exemption: inline word spans in story text
+layout:
+  model: one layout that breathes; mobile-first, 672px max content column on desktop
+  floor: 375px
+  breakpoint_tablet: 600px
+  breakpoint_desktop: 1024px
+  teacher_exception: /teacher/* is desktop-first 3-column; never applies to student routes
+components:
+  buttons: [primary, secondary, ghost, step-nav-pill]
+  icons: Lucide React only, never emojis
+  navigation: browsing mode (bottom tabs) vs lesson mode (full-screen, step nav); never coexist
+---
+
 # Design System
 
 > This is the source of truth for all visual decisions in the app.
 > Every component must use these tokens. Do not invent new colors, spacing, or sizing.
-> If a value is not defined here, add it here first, then use it.
+> If a value is not defined here, **do not invent it**: ask Kyle first. Approved additions and
+> changes are written here first, then used. Unapproved values in code are drift.
 
 ## Theme: Paper Light
 
@@ -287,6 +365,24 @@ Three button variants plus the step navigation pill.
 - Contains: chevron icon + step label (e.g., "Comprensión →")
 - Used ONLY for the bottom navigation arrows in the step flow
 
+**In-flight primary (`ActionButton`):**
+Server-hitting primaries stay the **same 44px control**. On tap: `disabled`, `aria-busy`, label becomes the in-flight verb. No spinner-only void. No second toast system. `prefers-reduced-motion`: no extra animation on the button.
+
+| Idle | In flight | Brief success (when the view stays) |
+|---|---|---|
+| Guardar | Guardando... | Guardado |
+| Entregar | Entregando... | Entregado |
+| Enviar / Mándame el código | Enviando... / Mandando... | (next view) |
+| Comprobar | Comprobando... | (inline result) |
+| Revisar pronunciación | Revisando... | (inline result) |
+| Entrar | Entrando... | (next view) |
+| Invitar | Invitando... | (inline message) |
+| Iniciar | Iniciando... | (next view) |
+| Borrar / Sí, borrar | Borrando... | (next view) |
+| No entendí | Guardando... | Listo |
+
+Failure: existing "Algo salió mal" plus retry. Skip pure client toggles (play/pause, step pills that only change local step).
+
 ### Inputs (textareas, text fields)
 - Background: `--surface` (white)
 - Border: 1px solid `--paper-line`
@@ -352,13 +448,25 @@ The audio player appears in two places: inline (top of story) and sticky (bottom
 - Works with touch (drag) and mouse (click/drag)
 
 ## Bottom Sheet (Ver el texto)
-- Slides up from bottom, animated 200ms ease-out
+- Slides up from bottom. Enter **and exit** are 200ms ease-out fade + slide (not a hard cut). Overlay fades with the panel.
 - Background: `--surface` (white)
 - Top radius: `lg` (24px)
 - No shadow (tonal layering: white sheet on paper background, 1px border at top)
 - Drag handle: 36px wide, 4px tall, `#d1d5db` (gray-300), centered, 8px top margin
 - Max height: 75vh (leaves a strip at top so learner knows questions are underneath)
 - Close: tap outside, swipe down, or X button
+- `prefers-reduced-motion`: jump to open/closed, no slide
+
+## Word help sheet
+Short paper sheet for a tapped word. Same family as Ver el texto, not 75vh.
+
+- Height hugs content, cap ~45vh
+- Sits **above** sticky audio (`z-index` 40) and `.step-nav` (`z-index` 35). Use `--lesson-step-nav-height` when padding the sheet bottom so the last control is not hidden.
+- Grabber, tap outside, swipe down, Escape, or X. Focus trap while open. One word at a time.
+- Motion: 200ms ease-out enter **and** exit. Overlay fades. Reduced motion: instant.
+- First-open contents: Spanish, IPA, play, POS, expression, No entendí, teacher flags. Do not auto-play audio.
+- Same component on story, dialogue, lyrics, bio, and taps inside Ver el texto.
+- Looked-up underline (`word-seen`) persists until the student taps that word again. Clearing the mark does not delete the teacher lookup row (`word_lookups.cleared_at`). Logged-out / teacher preview: no writes. If they just cleared the mark, the sheet may still be open; a quiet line says the mark is gone.
 
 ## Step Transitions
 - Fade + slight slide: 200ms ease-out
@@ -441,12 +549,16 @@ Every screen that fetches data or performs an action must handle all three state
 - Retry button (primary style) below the message
 - If the error is permanent (e.g., story not found), show the message without a retry button
 
+### In-flight actions
+Do not replace the page with a spinner void. The tapped primary stays put (see Buttons: In-flight primary). Logged-out paid lesson walls must not render `body_text`; copy is distinct from "No encontré esa lección".
+
 ## Do's and Don'ts
 
 ### Do
 - Use Lucide icons for all iconography. Consistent stroke weight and sizing.
 - Use the color tokens via the semantic names (`accent`, `paper`, `surface`, `text-primary`, etc.)
 - Reserve color for data, status, and interactive elements. Muted chrome looks expensive.
+- Accent roles are fixed: terracotta (`accent`) is for primary actions, focus, active progress, and links. It is never a status or success color. Moss (`secondary-accent`) is for completion indicators and secondary highlights, never the primary action color. Success/error colors mark outcomes only, never learner identity, and never appear without a non-color signal (icon or text).
 - Use one focal point per screen. Size, weight, and color establish hierarchy.
 - Truncate long strings with ellipsis after a reasonable length. Real data is messy.
 - Design empty states and loading states for every data-driven view.
@@ -605,14 +717,18 @@ The learner's home base. Shows today's class, progress, the month's 8-class stac
 
 **Section order (top to bottom):**
 1. Greeting: "Hola, [name]" (`headline-lg`, Lora, 24px, 700, `--text-primary`). Fall back to "Hola" if the name is missing. In the normal state this is the only Primary-weight text on the page.
-2. Class-day card (only when the active course has a session whose `session_date` is today on the student's phone). No empty slot on other days.
+2. Resume row **Seguir la lección** (one label for every type with an app page). Omit when empty. No percent, no audio timestamp, no live-only Zoom rows.
+   - **Class day, join window (T-10 through scheduled end):** terracotta join hero only. Do not show resume above or instead of it.
+   - **Class day, before join or after clase terminada:** class card first, resume under it.
+   - **Not class day:** resume under the greeting.
+3. Class-day card (only when the active course has a session whose `session_date` is today on the student's phone). No empty slot on other days.
    - **Before T-10min (joinAt):** small white card: "La clase es HOY" / "Empieza en 3h 22m" (`headline-md`, tabular-nums) / "{typeLabel} · {courseName}". The countdown is to `session_start_time`, not to joinAt. Join buttons still appear at T-10.
    - **joinAt to scheduled session end:** JOIN HERO. Full-width terracotta card. Teaching overtime (Terminar clase / 4h cap) does not keep this hero. After the 90 minutes it becomes the moss "Clase terminada" card even if the lesson page is still in teaching mode. Up to two actions: **Entrar a la clase** (student session URL) when the class has an app page, and **Entrar a Zoom** (`courses.zoom_url`) when a Zoom URL is set. Either can appear alone. Live-only types (Conversación, Pronunciación) never get an app button. If Zoom is unset, do not render a Zoom button. Live-only with no Zoom URL keeps the info card: "{typeLabel} · Entra por Zoom" / "El link está en el chat de Zoom." Type label + course name below. This becomes the page's focal point (greeting stays, the hero wins by color and size).
    - **After session end, same day, no recording URL:** small moss-green card: "✓ Clase terminada · La grabación se subirá a YouTube pronto".
    - One client component ticks locally. No server polling.
-3. Progress card: white surface, `--paper-line` border, 24px radius, 16px padding. Course display name (`label-md`), "Clases completadas: {n} de {total}" (`label-md`, `--text-secondary`), 4px progress bar (`--accent` fill, `--paper-line` track). Entire card links to `/progress`. `{total}` includes placeholders and live-only rows. Live-only types count toward `{n}` when the teacher marked that student present. No upsell card for classroom students. Classroom Inicio shows the **current calendar month** at the student's Zoom level, not a prior month (a newly enrolled empty month still wins over last month's sessions). Older months on Lecciones are newest first; sessions inside those older months are newest first. Consumer "last opened course" is not stored yet.
-4. "Este mes" section heading (`headline-md`, Lora, 18px, 600). 24px gap above, 16px gap below. The course is a monthly 8-session arc, not a week.
-5. Assigned lesson list: each item is a row card (white surface, `--paper-line` border, 16px radius, 12px padding). Row contains:
+4. Progress card: white surface, `--paper-line` border, 24px radius, 16px padding. Course display name (`label-md`), "Clases completadas: {n} de {total}" (`label-md`, `--text-secondary`), 4px progress bar (`--accent` fill, `--paper-line` track). Entire card links to `/progress`. `{total}` includes placeholders and live-only rows. Live-only types count toward `{n}` when the teacher marked that student present. No upsell card for classroom students. Classroom Inicio shows the **current calendar month** at the student's Zoom level, not a prior month (a newly enrolled empty month still wins over last month's sessions). Older months on Lecciones are newest first; sessions inside those older months are newest first. Consumer "last opened course" is not stored yet.
+5. "Este mes" section heading (`headline-md`, Lora, 18px, 600). 24px gap above, 16px gap below. The course is a monthly 8-session arc, not a week.
+6. Assigned lesson list: each item is a row card (white surface, `--paper-line` border, 16px radius, 12px padding). Row contains:
    - Lesson type icon (Lucide, 20px): BookOpen (story), PenLine (writing), FileText (exam), Languages (video_summary), MonitorPlay (presentation), MessagesSquare (conversation), Mic (pronunciation)
    - Lesson name (16px, Lora, 600, `--text-primary`). Placeholders and live-only rows use the type label as the title.
    - Status line (12px, one line, ellipsis). Lifecycle:
@@ -624,9 +740,9 @@ The learner's home base. Shows today's class, progress, the month's 8-class stac
    - Live-only overrides (never 🔒, never a lesson href, no chevron): upcoming "{typeLabel} · En vivo por Zoom · {date}"; live "EN VIVO · por Zoom"; after "Clase terminada · {date}". If a recording URL is set, a nested "Ver la grabación" link on the card opens YouTube in a new tab. The card body stays inert.
    - Right side: ChevronRight (`--text-muted`) only if the row is navigational
    - Rows separated by 8px gap
-6. "Práctica reciente" section heading (`headline-md`). 32px gap above, 16px gap below. Omit the whole section when every count is zero.
-7. Recent practice summary: unordered list, no cards. Each row is `body-main` `--text-secondary` with a bold label (`font-semibold` `--text-primary`): Dictado, Palabras, Pronunciación. Same list pattern on `/progress`.
-8. Bottom padding: 56px + safe area (tab bar space).
+7. "Práctica reciente" section heading (`headline-md`). 32px gap above, 16px gap below. Omit the whole section when every count is zero.
+8. Recent practice summary: unordered list, no cards. Each row is `body-main` `--text-secondary` with a bold label (`font-semibold` `--text-primary`): Dictado, Palabras, Pronunciación. Same list pattern on `/progress`. Student copy uses **counts**, not dictation percents. Group exam score may still show percent. Teachers may use percents in Analíticas.
+9. Bottom padding: 56px + safe area (tab bar space).
 
 Empty: enrolled with zero sessions: BookOpen 48px `--text-muted` + "Tu profe todavía no ha publicado las clases de este mes." No-course: same icon + "Aún no estás en un grupo. Tu profe te enviará un enlace."
 
@@ -698,7 +814,9 @@ The step-based flow for story lessons. This is the most complex page layout.
 Step 1 - El cuento (Story):
 - Micro-explanation callout (dismissable): "Leer en ingles es la base de todo..."
 - Inline audio player (controls row + seek bar)
-- Story text (Lora, 18px, line-height 32px, `--text-primary`). Interactive word spans with dotted underline. One word highlighted with yellow background (karaoke current word).
+- Story text (Lora, 18px, line-height 32px, `--text-primary`). Interactive word spans with dotted underline. While audio plays, highlight the **current sentence** (dialogue: that `Name:` line) with a quiet `--accent-softer` fill. Not per-word yellow karaoke. Songs keep Truquitos karaoke. Teaching-note yellow stays on notes only. `prefers-reduced-motion`: static sentence mark, no chasing animation.
+- Tap a word: short word help sheet (see Word help sheet). Underline persists until the student taps that word again.
+- Logged-out `/lesson/[slug]` with no `?session=`: render the reader only if `stories.is_free`. Else a Kyle-voice wall, **do not** render `body_text`. Distinct from "No encontré esa lección". Session links stay login-first. Writing, exam, presentation, conversation: no logged-out preview. Video summary stays class-only. Free preview: no persist lookups or answers; a short line that class is the Zoom/session link. Contenido toggle: "Vista previa sin cuenta" writes `is_free` (default off).
 - "The End" (italic, centered, `--text-muted`)
 - Bottom nav: right pill only ("Comprensión →")
 
