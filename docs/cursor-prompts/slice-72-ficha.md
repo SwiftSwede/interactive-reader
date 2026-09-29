@@ -1,5 +1,14 @@
 # Cursor prompt — Ficha: per-student deficiency view (Slice 72)
 
+## Plan review decisions (2026-09-29)
+
+- Slice number 72 is free. This file keeps that number.
+- IPA is `.ipa-text` only, not tappable sound videos (no new client tree).
+- Word block heading is **Palabras que no entendió**, not "Palabras más consultadas", so it does not look like lookups on this page or Analíticas.
+- Merge `word_flag_request_rollup` by `flag_text`: sum `times_requested`, keep the latest `last_requested_at`, then take top 10. Fetch all of that student's rows; do not `LIMIT 10` in SQL.
+- Empty copy for the four unspecified blocks: "Todavía no hay errores guardados." / "Todavía no hay palabras que no entendió." / "Todavía no hay sonidos débiles." / "Todavía no hay observaciones."
+- DESIGN.md documents the Ficha section order. No new tokens.
+
 ## Context
 
 Read `docs/adr/015-deficiency-queue.md` first — Decisions 1, 3, 4, 11 are this slice. The student detail page already has the teacher's tag form (Slice 71); this slice adds what Kyle reads before class: the Ficha, a read-only teacher view of everything the system knows about one student's deficiencies. This is the teacher-only side of the visibility line — nothing here can ever render on a student route.

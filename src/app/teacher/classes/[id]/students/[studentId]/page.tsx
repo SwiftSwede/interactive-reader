@@ -11,6 +11,7 @@ import {
   loadWritingSubmissions,
   sessionTitle,
 } from "@/lib/teacher";
+import { loadFicha, type Ficha } from "@/lib/ficha";
 import {
   loadObservationVocabulary,
   loadOpenFlags,
@@ -47,6 +48,7 @@ export default async function StudentDetailPage({
   const admin = createAdminClient();
   const vocabularyP = loadObservationVocabulary(admin);
   const flagsP = loadOpenFlags(admin, [studentId]);
+  const fichaP = loadFicha(admin, studentId);
 
   const perSession = await Promise.all(
     sessions.map(async (session) => {
@@ -81,7 +83,11 @@ export default async function StudentDetailPage({
     return 0;
   });
 
-  const [vocabulary, openFlags] = await Promise.all([vocabularyP, flagsP]);
+  const [vocabulary, openFlags, ficha] = await Promise.all([
+    vocabularyP,
+    flagsP,
+    fichaP,
+  ]);
 
   return (
     <section>
@@ -102,6 +108,7 @@ export default async function StudentDetailPage({
         <h2 className="text-headline-md text-text-primary">Observación</h2>
         <ObservationTagForm
           studentId={studentId}
+          layout="families"
           vocabulary={vocabulary}
           existingFlags={openFlags.map((flag) => ({
             tagType: flag.tagType,
@@ -110,6 +117,8 @@ export default async function StudentDetailPage({
           }))}
         />
       </div>
+
+      <FichaSection ficha={ficha} />
 
       {focusedFirst.length === 0 ? (
         <p className="mt-8 text-sm text-text-muted">
@@ -236,5 +245,157 @@ export default async function StudentDetailPage({
         </ul>
       )}
     </section>
+  );
+}
+
+function FichaSection({ ficha }: { ficha: Ficha }) {
+  return (
+    <div className="mt-6">
+      <h2 className="text-headline-md text-text-primary">Ficha</h2>
+
+      <h3 className="mt-4 text-sm font-semibold text-text-primary">
+        Banderas activas
+      </h3>
+      {ficha.flags.length === 0 ? (
+        <p className="mt-1 text-sm text-text-muted">Sin banderas activas.</p>
+      ) : (
+        <ul className="mt-2 space-y-2">
+          {ficha.flags.map((flag) => (
+            <li
+              key={`${flag.tagType}-${flag.displayName}-${flag.updatedAt}`}
+              className="flex flex-wrap items-baseline gap-2"
+            >
+              <span className="rounded-small bg-surface-hover px-2.5 py-1 text-sm text-text-primary">
+                {flag.displayName}
+              </span>
+              <span className="text-xs text-text-muted">
+                {flag.familyLabel} · {flag.sourceLabel}
+              </span>
+              <LocalDateTime iso={flag.updatedAt} />
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <h3 className="mt-4 text-sm font-semibold text-text-primary">
+        Errores frecuentes
+      </h3>
+      {ficha.errorEvents.length === 0 ? (
+        <p className="mt-1 text-sm text-text-muted">
+          Todavía no hay errores guardados.
+        </p>
+      ) : (
+        <ul className="mt-2 space-y-3">
+          {ficha.errorEvents.map((event, index) => (
+            <li key={`${event.occurredAt}-${index}`}>
+              {event.tagDisplayNames.length > 0 && (
+                <p className="text-xs font-medium text-text-muted">
+                  {event.tagDisplayNames.join(", ")}
+                </p>
+              )}
+              <p className="mt-0.5 text-sm">
+                <span className="text-text-secondary">{event.answer}</span>
+                {" → "}
+                <span className="font-medium text-text-primary">
+                  {event.corrected}
+                </span>
+              </p>
+              <LocalDateTime iso={event.occurredAt} />
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <h3 className="mt-4 text-sm font-semibold text-text-primary">
+        Palabras que no entendió
+      </h3>
+      {ficha.flaggedWords.length === 0 ? (
+        <p className="mt-1 text-sm text-text-muted">
+          Todavía no hay palabras que no entendió.
+        </p>
+      ) : (
+        <ul className="mt-2 space-y-2">
+          {ficha.flaggedWords.map((word) => (
+            <li
+              key={word.flagText}
+              className="flex flex-wrap items-baseline gap-2"
+            >
+              <span className="rounded-small bg-surface-hover px-2.5 py-1 text-sm text-text-primary">
+                {word.flagText}
+              </span>
+              <span className="text-xs text-text-muted">
+                {word.timesRequested}{" "}
+                {word.timesRequested === 1 ? "vez" : "veces"}
+              </span>
+              <LocalDateTime iso={word.lastRequestedAt} />
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <h3 className="mt-4 text-sm font-semibold text-text-primary">
+        Sonidos débiles
+      </h3>
+      {ficha.weakSounds.length === 0 ? (
+        <p className="mt-1 text-sm text-text-muted">
+          Todavía no hay sonidos débiles.
+        </p>
+      ) : (
+        <ul className="mt-2 flex flex-wrap gap-2">
+          {ficha.weakSounds.map((sound) => (
+            <li
+              key={sound.ipa}
+              className="rounded-small bg-surface-hover px-2.5 py-1"
+            >
+              <span className="ipa-text text-sm text-text-primary">
+                {sound.ipa}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <h3 className="mt-4 text-sm font-semibold text-text-primary">
+        Tus observaciones
+      </h3>
+      {ficha.observations.length === 0 ? (
+        <p className="mt-1 text-sm text-text-muted">
+          Todavía no hay observaciones.
+        </p>
+      ) : (
+        <ul className="mt-2 space-y-3">
+          {ficha.observations.map((event, index) => (
+            <li key={`${event.occurredAt}-${index}`}>
+              {(event.flags.length > 0 || event.clears.length > 0) && (
+                <ul className="flex flex-wrap gap-2">
+                  {event.flags.map((name, flagIndex) => (
+                    <li
+                      key={`flag-${flagIndex}-${name}`}
+                      className="rounded-small bg-surface-hover px-2.5 py-1 text-sm text-text-primary"
+                    >
+                      {name}
+                    </li>
+                  ))}
+                  {event.clears.map((name, clearIndex) => (
+                    <li
+                      key={`clear-${clearIndex}-${name}`}
+                      className="rounded-small bg-surface-hover px-2.5 py-1 text-sm text-text-secondary"
+                    >
+                      {name} · quitada
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {event.note.trim() ? (
+                <p className="mt-1 whitespace-pre-wrap text-sm text-text-primary">
+                  {event.note}
+                </p>
+              ) : null}
+              <LocalDateTime iso={event.occurredAt} />
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }

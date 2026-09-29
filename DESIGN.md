@@ -72,6 +72,7 @@ layout:
 components:
   buttons: [primary, secondary, ghost, step-nav-pill, ActionButton]
   teacher_observation_chip: "8px radius (rounded-small), surface-hover fill, 1px paper-line border, Lucide X in a 44px hit area. Not a pill."
+  teacher_observation_ficha: "Student detail Observación uses three family fields (Errores comunes, Sonidos, Gramática) in one row at 1024px+, stacked below. Notas de clase keeps one Etiqueta field."
   icons: Lucide React only, never emojis
   navigation: browsing mode (bottom tabs) vs lesson mode (full-screen, step nav); never coexist
 ---
@@ -309,14 +310,14 @@ Three columns, full viewport height, no bottom tab bar (the student 3-tab bar do
 
 ### Visual language
 
-Same Paper Light theme, same tokens, same type scale as the student app (Lora headlines, Roboto Flex UI labels). Same tonal elevation: white cards on cream paper, 1px `--paper-line` borders, no shadows except sticky elements. Buttons: rounded-rectangle 16px (the pill shape stays reserved for lesson step nav). Teacher observation chips (Notas de clase and the student page) use the 8px tag radius: `surface-hover` fill, 1px `--paper-line` border, and a Lucide X inside a 44px hit area. Touch targets 44px still apply — Kyle clicks fast mid-class. Teacher create/delete confirms (Nuevo mes, Nueva clase, Borrar mes) are centered `<dialog>` lightboxes (`rounded-sheet`, dimmed backdrop), not inline cards that push the page down.
+Same Paper Light theme, same tokens, same type scale as the student app (Lora headlines, Roboto Flex UI labels). Same tonal elevation: white cards on cream paper, 1px `--paper-line` borders, no shadows except sticky elements. Buttons: rounded-rectangle 16px (the pill shape stays reserved for lesson step nav). Teacher observation chips (Notas de clase and the student page) use the 8px tag radius: `surface-hover` fill, 1px `--paper-line` border, and a Lucide X inside a 44px hit area. On the student Ficha page, Observación is three labeled fields in one desktop row (same input chrome as other teacher forms), not one fused Etiqueta. Touch targets 44px still apply — Kyle clicks fast mid-class. Teacher create/delete confirms (Nuevo mes, Nueva clase, Borrar mes) are centered `<dialog>` lightboxes (`rounded-sheet`, dimmed backdrop), not inline cards that push the page down.
 
 ### Key screens
 
 - **Este mes (default):** current calendar month, plus unarchived future months so generating next month early does not empty the board. One card per group (course): group name, optional theme line (omit if empty), level label, day/time pattern, readiness summary ("1/8 clases listas"), next class with countdown. If a group has a class today (join window from T-10 through session end, or countdown earlier that day), a class-day card (same countdown / join / done phases as student Inicio) shows **Abrir la clase** (teacher session URL) and **Entrar a Zoom** when `zoom_url` is set. Same card in the right panel when that group is selected, on Grupos, and on the group page. Clicking a group expands/drills into its 8-class strip. If no unarchived current or future course exists: empty state "Próximo mes en preparación" with a **Nuevo mes** button that opens the Slice 60 wizard (Nivel → Mes → Patrón → Nombre + optional Tema → Generar).
 - **8-class strip:** the month's 8 sessions as a vertical list, one row per class: class number, type label (Historia, Pronunciación, Por elegir, Conversación, Diálogo, Música, Escritura, Examen, or the resolved Class 3 type), date/time, content status (**Contenido listo** / **Sin contenido** / **Por elegir** for unresolved flex), recording status (URL attached / empty). Empty typed rows get **Elegir contenido**. Flex rows get **Por elegir** (resolve type + content). Selecting a row populates the right context panel.
 - **Grupos:** all courses, current first, archived below under "Meses anteriores". If a group has class today, the same class-day card as Este mes sits above the list. Each row shows theme when set. Archived months are fully browsable read-only, EXCEPT the theme field, recording URLs, and attendance stay editable (recordings are pasted day-after-class; attendance is often fixed late; themes are often named late). Inside a group, the monthly Zoom field is an input until saved, then a terracotta text hyperlink (underline on hover) with an X to clear it and paste another. It must not look like an input or a ghost button. Estudiantes is a card grid (1 col mobile, 2 tablet, 3 desktop). Not a full-width stacked list. Four columns is too tight for names plus "Mover a Pre-intermedio". The global Estudiantes tab stays a searchable list.
-- **Estudiantes:** invite form first, then searchable global roster across groups. Student card: name, email, current group, attendance history, writing submissions with WPM trend, "cambiar de nivel" action (existing roster-move behavior).
+- **Estudiantes:** invite form first, then searchable global roster across groups. Student card: name, email, current group, attendance history, writing submissions with WPM trend, "cambiar de nivel" action (existing roster-move behavior). Course student detail (`/teacher/classes/[id]/students/[studentId]`): breadcrumb + name, Observación (tag form), **Ficha** (five stacked blocks, always present), then the per-session list. Ficha blocks: Banderas activas, Errores frecuentes, Palabras que no entendió (No entendí rollup, merged by word), Sonidos débiles (`.ipa-text` monospace, not tappable, no scores), Tus observaciones. Empty copy is muted `text-sm` paragraphs. No new tokens. No percents or trends in Ficha.
 - **Analíticas:** palabras más consultadas only — per month, per level, aggregated across the month's stories. No other metrics in this phase (attendance rates, engagement scores etc. are future "institute administrator" territory, deliberately excluded).
 - **Contenido (`/teacher/content`):** catalog list with kind/level filters. No labels on the chip rows. Gaps follow Grouping (proximity): 8px inside a row, 20px between kind and level, 40px before the list block. Sort lives on the right, 12px above the list (Ordenar: Recientes, Nombre, Tipo, Nivel). Not a column-header table. Create buttons for writing, exam, presentation, conversation (minimal form, then the Slice 55 editor). Stories are not created here (import pipeline). Trash on each row for catalog admins (`CATALOG_ADMIN_EMAILS`): blocked if any `course_sessions` row still references it, including archived months; confirm lists non-zero children. The delete cell is a full-height strip (no inset rounded chip). Title hover is `--surface-hover`; delete hover fills that strip with `--accent` and a white icon (`--surface`). Nueva clase for writing/exam/conversation: Nueva lección (compose) or Usar una anterior (copy, then assign). Presentation still picks the existing row. Exam editor: paste English-only vocab, Task 1 `(español)` parentheses, bare Task 2/3 lines. Answers optional at create. Collapsible **Respuestas (después de clase)** plus **Copiar respuestas de la clase**. Live preview shows the first 3 student items per task.
 
@@ -974,3 +975,20 @@ Classroom only. `session_type = "presentation"`. Catalog lives in `presentation_
 - After the 90-min window, students get the same pills and can tap parts to jump. Consumer self-study uses that same free nav.
 
 Keep YouTube in review mode with normal controls. No pronunciation. No group work.
+
+### Teacher student detail (`/teacher/classes/[id]/students/[studentId]`)
+Desktop-first center column (max 960px). Same cards, labels, and `LocalDateTime` as the rest of `/teacher/*`. No student chrome.
+
+**Section order:**
+1. Course breadcrumb (`text-sm` muted) + student name (`headline-lg`) + one-line subtitle.
+2. Observación (`headline-md`) + tag form. On this page the form is three family fields in a row from 1024px (`lg:grid-cols-3`, 20px gap): Errores comunes, Sonidos, Gramática. Each field has its own datalist, Marcar, and chips. One Nota + Guardar below. Notas de clase after Terminar clase keeps the single Etiqueta field.
+3. Ficha (`headline-md`). Five `h3` blocks (`text-sm font-semibold`), 16px (`mt-4`) between them, always rendered so empty states do not collapse the layout:
+   1. Banderas activas
+   2. Errores frecuentes
+   3. Palabras que no entendió
+   4. Sonidos débiles
+   5. Tus observaciones
+4. Per-session list (or "Todavía no hay clases en este curso.").
+
+Empty Ficha copy is muted body text, no Lucide empty icons. IPA in Sonidos débiles uses `.ipa-text` only. Ficha never shows accuracy, fluency, percents, or trends.
+
