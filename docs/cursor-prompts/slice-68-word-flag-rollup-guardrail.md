@@ -43,3 +43,12 @@ New append-only table `learning_events`: `id uuid`, `user_id uuid NOT NULL REFER
 - Do not modify `word_flag_requests` schema or ADR 009's anchor semantics. Requests remain session-scoped live signals; the rollup is the durable per-student layer.
 - No UI in this slice. No new npm deps. One migration file: `supabase/migrations/20260928_slice68_word_flag_rollup.sql`.
 - Commit the migration alone; do not sweep unrelated working-tree changes into the commit.
+
+## Plan review decisions
+
+Recorded 2026-09-28 before the build. Kyle asked whether any spec holes needed a decision; none did. These are the interpretations the build follows:
+
+- PRD row is Slice 69. Slice 68 in the PRD is the design overhaul. The migration filename stays `supabase/migrations/20260928_slice68_word_flag_rollup.sql`.
+- `learning_events.occurred_at` is the request's `created_at` (when the student tapped), not the time the row was deleted.
+- After a session delete, the event row remains and `course_session_id` is null. A delete while the session still exists keeps the id. If writing that id would block the session delete, the trigger stores null so the class row can still be removed.
+- Truth docs (PRD, `.cursorrules`, ADR 009 §4, this section) ship in the same commit as the migration. Unrelated working-tree files stay out.
