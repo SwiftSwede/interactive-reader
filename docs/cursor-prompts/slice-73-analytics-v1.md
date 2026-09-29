@@ -1,5 +1,17 @@
 # Cursor prompt — Analíticas v1: cross-student deficiency rollup (Slice 73)
 
+**PRD number:** 73 was free (2026-09-29). This file keeps that number.
+
+## Plan review decisions (2026-09-29)
+
+- Words on Analíticas are `word_lookups` (help-sheet opens), all-time for the selected course roster. Heading **Palabras más consultadas**. Ficha keeps `word_flag_request_rollup` / **Palabras que no entendió**.
+- Course tab picks the roster, not a time window. Lookups, errors, and sticky sounds follow the student all-time.
+- `signalCount` / señales = check-answer event hits only. Sticky error flags raise `studentCount` only.
+- Course tabs = all owned courses including archived. Default = course of the newest session. Bad `?course=` stays on Analíticas and falls back to that default.
+- List chrome = session ordered-list card (`ol.divide-y.rounded-card.border`), not a new table component.
+- Sounds = sticky phonetic `user_topic_evidence`, not Ficha’s pronunciation-attempt IPA. ≥3 students: `bg-surface-hover` + **candidato para banco de sonidos**.
+- DESIGN.md Analíticas screen and the “teachers may use percents” line update in this commit. Counts only.
+
 ## Context
 
 Read `docs/adr/015-deficiency-queue.md` first — Decision 9 (sound-bank demand rule) and the Analíticas rollup are this slice. It fills the `/teacher/analytics` stub, whose placeholder literally promises "las palabras más consultadas por mes y nivel". Slice 72's Ficha answers "what does ONE student need"; this answers "what does the GROUP need" — what Kyle reteaches, and which sound bank to build next.
