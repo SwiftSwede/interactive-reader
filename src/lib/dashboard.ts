@@ -26,6 +26,7 @@ export type DashboardLesson = {
   classEndedAt?: string | null;
   href: string | null;
   liveOnly: boolean;
+  storyId: string | null;
 };
 
 export type DashboardData = {
@@ -41,6 +42,7 @@ export type DashboardData = {
   totals: { completed: number; total: number };
   todaySession: DashboardLesson | null;
   zoomUrl: string | null;
+  resume: { title: string; href: string } | null;
   practice: {
     dictationAttempts: number;
     wordsLookedUp: number;
@@ -194,6 +196,31 @@ export function pickActiveCourseId(
   return sorted[0]?.courseId ?? null;
 }
 
+export function pickResumeLesson(
+  lessons: DashboardLesson[],
+  olderCourses: { lessons: DashboardLesson[] }[],
+  inProgressStoryIds: Set<string>
+): { title: string; href: string } | null {
+  if (inProgressStoryIds.size === 0) return null;
+  const all = [...lessons, ...olderCourses.flatMap((course) => course.lessons)];
+  const candidates = all.filter(
+    (lesson) =>
+      Boolean(lesson.href) &&
+      !lesson.liveOnly &&
+      !lesson.completed &&
+      lesson.storyId != null &&
+      inProgressStoryIds.has(lesson.storyId)
+  );
+  candidates.sort(
+    (a, b) =>
+      new Date(b.sessionStartTime).getTime() -
+      new Date(a.sessionStartTime).getTime()
+  );
+  const hit = candidates[0];
+  if (!hit?.href) return null;
+  return { title: hit.title ?? "Lección", href: hit.href };
+}
+
 function bySessionStartAsc(a: DashboardLesson, b: DashboardLesson): number {
   return (
     new Date(a.sessionStartTime).getTime() -
@@ -297,6 +324,7 @@ export function toDashboardLesson(input: {
     classEndedAt: input.classEndedAt ?? null,
     href,
     liveOnly,
+    storyId: input.storyId,
   };
 }
 
@@ -401,6 +429,7 @@ export async function loadDashboard(
     totals: { completed: 0, total: 0 },
     todaySession: null,
     zoomUrl: null,
+    resume: null,
     practice: {
       dictationAttempts: 0,
       wordsLookedUp: 0,
@@ -554,6 +583,11 @@ export async function loadDashboard(
         .filter((row) => row.status === "completed")
         .map((row) => row.story_id)
     );
+    const inProgressStories = new Set(
+      progressRows
+        .filter((row) => row.status === "in-progress")
+        .map((row) => row.story_id)
+    );
     const completedWriting = new Set(
       writingRows.map((row) => row.writing_prompt_id)
     );
@@ -666,6 +700,7 @@ export async function loadDashboard(
       totals: { completed: completedCount, total: lessons.length },
       todaySession: pickTodaySession(lessons),
       zoomUrl: active?.enrollment.course.zoom_url ?? null,
+      resume: pickResumeLesson(lessons, older, inProgressStories),
       practice: {
         dictationAttempts: progress.dictationTrend.length,
         wordsLookedUp: progress.wordsLookedUp,

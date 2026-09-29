@@ -1,11 +1,12 @@
 "use client";
 
-import { useRef, useState, useEffect, useCallback, memo } from "react";
+import { useRef, useState, useEffect, memo } from "react";
+import { Pause, Play } from "lucide-react";
 import IpaText from "./IpaText";
+import WordHelpSheet from "./WordHelpSheet";
+import ActionButton from "./ActionButton";
 import { wordFlagClassName } from "@/lib/word-flags";
 import type { WordFlagType } from "@/types";
-
-// ── Types ──────────────────────────────────────────────────
 
 export type WordData = {
   id: string;
@@ -26,24 +27,19 @@ export type ExpressionData = {
   explanation: string;
 };
 
-type TooltipState = {
-  visible: boolean;
-  x: number;
-  y: number;
-};
-
-// ── Component ──────────────────────────────────────────────
-
 type WordTooltipProps = {
   word: WordData;
   expression: ExpressionData | null;
   isHighlighted: boolean;
   onPin: (word: WordData) => void;
+  onDismiss?: () => void;
   isActive: boolean;
   isExpressionActive: boolean;
   hintClass?: string;
   onFirstInteraction?: () => void;
   onLookup?: (word: WordData) => void;
+  onClearLookup?: (word: WordData) => void;
+  justCleared?: boolean;
   flagText?: string;
   occurrenceIndex?: number;
   isBold?: boolean;
@@ -71,11 +67,14 @@ function WordTooltip({
   expression,
   isHighlighted,
   onPin,
+  onDismiss,
   isActive,
   isExpressionActive,
   hintClass,
   onFirstInteraction,
   onLookup,
+  onClearLookup,
+  justCleared = false,
   flagText,
   occurrenceIndex = 0,
   isBold = false,
@@ -94,20 +93,20 @@ function WordTooltip({
 }: WordTooltipProps) {
   const spanRef = useRef<HTMLSpanElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [tooltip, setTooltip] = useState<TooltipState>({
-    visible: false,
-    x: 0,
-    y: 0,
-  });
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isPinned, setIsPinned] = useState(false);
   const [noteDraft, setNoteDraft] = useState(flagNote ?? "");
+  const [requestState, setRequestState] = useState<
+    "idle" | "pending" | "success"
+  >("idle");
 
   useEffect(() => {
     setNoteDraft(flagNote ?? "");
   }, [flagNote]);
 
-  // Determine what to show in the tooltip
+  useEffect(() => {
+    if (!isActive) setRequestState("idle");
+  }, [isActive]);
+
   const displayTranslation = expression
     ? expression.spanish_translation
     : word.spanish_translation;
@@ -124,8 +123,10 @@ function WordTooltip({
   };
 
   const handleRequest = () => {
-    if (ownRequested) return;
+    if (ownRequested || studentRequestDisabled) return;
+    setRequestState("pending");
     onRequestWord?.(anchorText, occurrenceIndex);
+    setRequestState("success");
   };
 
   const handleConvert = (e: React.MouseEvent) => {
@@ -133,40 +134,10 @@ function WordTooltip({
     onConvertRequests?.(anchorText, occurrenceIndex);
   };
 
-  // Position the tooltip relative to the word span
-  const positionTooltip = useCallback(() => {
-    const span = spanRef.current;
-    if (!span) return;
-
-    const rect = span.getBoundingClientRect();
-    const tooltipWidth = 320;
-    const viewportWidth = window.innerWidth;
-
-    // Center the tooltip under the word, but clamp to viewport
-    let x = rect.left + rect.width / 2 - tooltipWidth / 2;
-    x = Math.max(8, Math.min(x, viewportWidth - tooltipWidth - 8));
-
-    const y = rect.bottom + 6;
-
-    setTooltip({ visible: true, x, y });
-  }, []);
-
-  // Show tooltip
-  const showTooltip = useCallback(() => {
-    positionTooltip();
-  }, [positionTooltip]);
-
-  // Hide tooltip (only if not pinned)
-  const hideTooltip = useCallback(() => {
-    setTooltip((prev) => ({ ...prev, visible: false }));
-  }, []);
-
-  // Play word audio
   const handlePlayAudio = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!word.audio_url) return;
 
-    // Stop existing audio if playing
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current = null;
@@ -192,7 +163,6 @@ function WordTooltip({
     });
   };
 
-  // Click pins the tooltip. Close happens on click outside or another word.
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (onFirstInteraction) onFirstInteraction();
@@ -200,31 +170,10 @@ function WordTooltip({
       onOpenNote();
       return;
     }
-    setIsPinned(true);
-    showTooltip();
     onPin(word);
-    if (!isPinned) onLookup?.(word);
+    if (isHighlighted) onClearLookup?.(word);
+    else onLookup?.(word);
   };
-
-  // When parent says this word is no longer active (another word clicked, or click outside)
-  useEffect(() => {
-    if (!isActive) {
-      setIsPinned(false);
-      hideTooltip();
-    }
-  }, [isActive, hideTooltip]);
-
-  // Reposition on scroll/resize (only when visible)
-  useEffect(() => {
-    if (!tooltip.visible) return;
-    const handleReposition = () => positionTooltip();
-    window.addEventListener("scroll", handleReposition, true);
-    window.addEventListener("resize", handleReposition);
-    return () => {
-      window.removeEventListener("scroll", handleReposition, true);
-      window.removeEventListener("resize", handleReposition);
-    };
-  }, [tooltip.visible, positionTooltip]);
 
   return (
     <>
@@ -232,7 +181,7 @@ function WordTooltip({
         <span
           ref={spanRef}
           className={`word-span ${isHighlighted ? "word-seen" : ""} ${
-            tooltip.visible ? "word-active" : ""
+            isActive ? "word-active" : ""
           } ${isExpressionActive ? "word-expr-active" : ""} ${hintClass || ""} ${flagClasses}`.trim()}
           data-word-text={anchorText}
           data-word-occurrence={String(occurrenceIndex)}
@@ -256,105 +205,108 @@ function WordTooltip({
         ) : null}
       </span>
 
-      {tooltip.visible && (
-        <div
-          className={`word-tooltip ${isPinned ? "word-tooltip-pinned" : ""}`}
-          style={{ left: tooltip.x, top: tooltip.y }}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="word-tooltip-inner">
+      <WordHelpSheet
+        open={isActive}
+        onClose={() => onDismiss?.()}
+        title={word.text}
+      >
+        <div className="word-tooltip-inner">
+          {justCleared ? (
+            <p className="text-label-sm text-text-muted">Ya no está marcada.</p>
+          ) : null}
+          <div className="word-tooltip-gloss">
             <span className="word-tooltip-translation">
               {displayTranslation || "Sin traduccion"}
             </span>
-            {displayPhonetic && (
-              <span className="word-tooltip-phonetic-row">
-                <span className="word-tooltip-phonetic">
-                  <IpaText text={displayPhonetic} interactive={isPinned} />
-                </span>
-                {word.audio_url && (
-                  <button
-                    className="word-tooltip-play-btn"
-                    onClick={handlePlayAudio}
-                    aria-label="Escuchar pronunciacion"
-                    type="button"
-                  >
-                    {isPlaying ? (
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1" /><rect x="14" y="5" width="4" height="14" rx="1" /></svg>
-                    ) : (
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
-                    )}
-                  </button>
+            {word.part_of_speech ? (
+              <span className="word-tooltip-pos">({word.part_of_speech})</span>
+            ) : null}
+            {displayPhonetic ? (
+              <span className="word-tooltip-phonetic">
+                <IpaText text={displayPhonetic} interactive />
+              </span>
+            ) : null}
+            {word.audio_url ? (
+              <button
+                className="word-tooltip-play-btn"
+                onClick={handlePlayAudio}
+                aria-label="Escuchar pronunciacion"
+                type="button"
+              >
+                {isPlaying ? (
+                  <Pause size={20} strokeWidth={1.75} aria-hidden />
+                ) : (
+                  <Play size={20} strokeWidth={1.75} aria-hidden />
                 )}
-              </span>
-            )}
-            {expression && (
-              <span className="word-tooltip-expression">
-                Expresion: {expression.text}
-              </span>
-            )}
-            {word.part_of_speech && (
-              <span className="word-tooltip-pos">{word.part_of_speech}</span>
-            )}
-            {isPinned && showTeacherFlags && onToggleFlag ? (
-              <div className="word-tooltip-actions">
-                <button
-                  type="button"
-                  className={`word-tooltip-action${isUnderline ? " word-tooltip-action-on" : ""}`}
-                  aria-pressed={isUnderline}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleToggle("underline", !isUnderline);
-                  }}
-                >
-                  Subrayar
-                </button>
-                <button
-                  type="button"
-                  className={`word-tooltip-action${isBold ? " word-tooltip-action-on" : ""}`}
-                  aria-pressed={isBold}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleToggle("bold", !isBold);
-                  }}
-                >
-                  Negrita
-                </button>
-              </div>
-            ) : null}
-            {isPinned && showTeacherFlags && onSaveNote && (isBold || isUnderline) ? (
-              <label className="mt-2 block">
-                <span className="mb-1 block text-label-sm text-text-secondary">
-                  Nota
-                </span>
-                <textarea
-                  className="min-h-20 w-full rounded-card border border-paper-line bg-surface p-2 text-label-md text-text-primary focus:border-accent focus:outline-none"
-                  value={noteDraft}
-                  maxLength={1000}
-                  onChange={(e) => setNoteDraft(e.target.value)}
-                  onBlur={() => onSaveNote(noteDraft)}
-                  onClick={(e) => e.stopPropagation()}
-                />
-              </label>
-            ) : null}
-            {isPinned && showStudentRequest && !ownRequested && onRequestWord ? (
-              <div className="word-tooltip-actions">
-                <button
-                  type="button"
-                  className="word-tooltip-action"
-                  disabled={studentRequestDisabled}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    if (studentRequestDisabled) return;
-                    handleRequest();
-                  }}
-                >
-                  No entendí
-                </button>
-              </div>
+              </button>
             ) : null}
           </div>
+          {expression ? (
+            <span className="word-tooltip-expression">
+              Expresion: {expression.text}
+            </span>
+          ) : null}
+          {showTeacherFlags && onToggleFlag ? (
+            <div className="word-tooltip-actions">
+              <button
+                type="button"
+                className={`word-tooltip-action${isUnderline ? " word-tooltip-action-on" : ""}`}
+                aria-pressed={isUnderline}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleToggle("underline", !isUnderline);
+                }}
+              >
+                Subrayar
+              </button>
+              <button
+                type="button"
+                className={`word-tooltip-action${isBold ? " word-tooltip-action-on" : ""}`}
+                aria-pressed={isBold}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleToggle("bold", !isBold);
+                }}
+              >
+                Negrita
+              </button>
+            </div>
+          ) : null}
+          {showTeacherFlags && onSaveNote && (isBold || isUnderline) ? (
+            <label className="mt-2 block">
+              <span className="mb-1 block text-label-sm text-text-secondary">
+                Nota
+              </span>
+              <textarea
+                className="min-h-20 w-full rounded-card border border-paper-line bg-surface p-2 text-label-md text-text-primary focus:border-accent focus:outline-none"
+                value={noteDraft}
+                maxLength={1000}
+                onChange={(e) => setNoteDraft(e.target.value)}
+                onBlur={() => onSaveNote(noteDraft)}
+                onClick={(e) => e.stopPropagation()}
+              />
+            </label>
+          ) : null}
+          {showStudentRequest && !ownRequested && onRequestWord ? (
+            <div className="word-tooltip-actions mt-2">
+              <ActionButton
+                variant="secondary"
+                className="w-full"
+                state={requestState}
+                pendingLabel="Guardando..."
+                successLabel="Listo"
+                disabled={studentRequestDisabled}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleRequest();
+                }}
+              >
+                No entendí
+              </ActionButton>
+            </div>
+          ) : null}
         </div>
-      )}
+      </WordHelpSheet>
     </>
   );
 }

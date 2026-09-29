@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useState } from "react";
+import ActionButton from "@/components/ActionButton";
 import {
   updateCourseTheme,
   type UpdateCourseThemeResult,
@@ -52,13 +53,13 @@ export default function CourseThemeForm({
       {state?.ok ? (
         <p className="text-label-sm text-text-secondary">{state.message}</p>
       ) : null}
-      <button
+      <ActionButton
         type="submit"
-        disabled={isPending}
-        className="inline-flex min-h-11 items-center justify-center rounded-card bg-accent px-5 py-3 text-label-md font-medium text-white hover:bg-accent-hover disabled:opacity-60"
+        state={isPending ? "pending" : "idle"}
+        pendingLabel="Guardando..."
       >
-        {isPending ? "Guardando..." : "Guardar tema"}
-      </button>
+        Guardar tema
+      </ActionButton>
     </form>
   );
 }

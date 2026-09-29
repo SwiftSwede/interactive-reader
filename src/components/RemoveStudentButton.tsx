@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ActionButton from "@/components/ActionButton";
 import { removeClassroomStudent } from "@/app/teacher/actions";
 
 export default function RemoveStudentButton({
@@ -45,13 +46,14 @@ export default function RemoveStudentButton({
         }}
       >
         <input type="hidden" name="studentId" value={studentId} />
-        <button
+        <ActionButton
           type="submit"
-          disabled={pending}
-          className="flex h-11 w-full items-center justify-center rounded-card bg-accent px-3 text-label-md font-medium text-white hover:bg-accent-hover disabled:opacity-60"
+          className="w-full"
+          state={pending ? "pending" : "idle"}
+          pendingLabel="Sacando..."
         >
-          {pending ? "Sacando..." : "Sí, sacar"}
-        </button>
+          Sí, sacar
+        </ActionButton>
       </form>
       <button
         type="button"

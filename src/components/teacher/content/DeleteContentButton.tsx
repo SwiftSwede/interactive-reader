@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Trash2, X } from "lucide-react";
+import ActionButton from "@/components/ActionButton";
 import {
   deleteCatalogAction,
   previewCatalogDeleteAction,
@@ -120,9 +121,10 @@ export default function DeleteContentButton({
           </>
         )}
         {!loading && !blocked ? (
-          <button
-            type="button"
-            disabled={pending}
+          <ActionButton
+            className="mt-6 w-full"
+            state={pending ? "pending" : "idle"}
+            pendingLabel="Borrando..."
             onClick={async () => {
               setPending(true);
               setError("");
@@ -134,10 +136,9 @@ export default function DeleteContentButton({
               }
               router.refresh();
             }}
-            className="mt-6 flex min-h-11 w-full items-center justify-center rounded-card bg-accent px-3 text-label-md font-medium text-white hover:bg-accent-hover disabled:opacity-60"
           >
-            {pending ? "Borrando..." : "Sí, borrar"}
-          </button>
+            Sí, borrar
+          </ActionButton>
         ) : null}
         <button
           type="button"

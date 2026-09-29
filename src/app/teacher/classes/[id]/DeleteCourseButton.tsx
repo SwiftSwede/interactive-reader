@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { X } from "lucide-react";
+import ActionButton from "@/components/ActionButton";
 import { deleteCourse } from "@/app/teacher/actions";
 
 export default function DeleteCourseButton({
@@ -86,13 +87,14 @@ export default function DeleteCourseButton({
           }}
         >
           <input type="hidden" name="courseId" value={courseId} />
-          <button
+          <ActionButton
             type="submit"
-            disabled={pending}
-            className="flex min-h-11 w-full items-center justify-center rounded-card bg-accent px-3 text-label-md font-medium text-white hover:bg-accent-hover disabled:opacity-60"
+            className="w-full"
+            state={pending ? "pending" : "idle"}
+            pendingLabel="Borrando..."
           >
-            {pending ? "Borrando..." : "Sí, borrar"}
-          </button>
+            Sí, borrar
+          </ActionButton>
         </form>
         <button
           type="button"

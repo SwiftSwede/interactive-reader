@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Check, ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
 import EndClassButton from "@/components/EndClassButton";
+import ActionButton from "@/components/ActionButton";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
 import LessonHeader from "@/components/lesson/LessonHeader";
 import LessonTimer from "@/components/lesson/LessonTimer";
@@ -150,6 +151,7 @@ export default function ExamSession({
     3: initialTask3SubmittedAt,
   });
   const [makeupStartedAt, setMakeupStartedAt] = useState(startedAt);
+  const [submittingTask, setSubmittingTask] = useState<1 | 2 | 3 | null>(null);
   const frozen = useRef(false);
   const classAnswersRef = useRef(classAnswers);
   classAnswersRef.current = classAnswers;
@@ -640,7 +642,9 @@ export default function ExamSession({
 
   async function onSubmitTask(task: 1 | 2 | 3) {
     setError("");
+    setSubmittingTask(task);
     const result = await submitExamTask({ ...payload(), task });
+    setSubmittingTask(null);
     if (!result.ok) {
       setError(result.error);
       return;
@@ -860,7 +864,10 @@ export default function ExamSession({
               }
             />
             {afterClass && !isTeacher && !attended && !taskSubmitted[1] ? (
-              <EntregarButton onClick={() => void onSubmitTask(1)} />
+              <EntregarButton
+                pending={submittingTask === 1}
+                onClick={() => void onSubmitTask(1)}
+              />
             ) : null}
           </div>
         )}
@@ -970,7 +977,10 @@ export default function ExamSession({
                 })}
               </ol>
               {afterClass && !isTeacher && !attended && !taskSubmitted[2] ? (
-                <EntregarButton onClick={() => void onSubmitTask(2)} />
+                <EntregarButton
+                  pending={submittingTask === 2}
+                  onClick={() => void onSubmitTask(2)}
+                />
               ) : null}
             </div>
           )}
@@ -1169,7 +1179,10 @@ export default function ExamSession({
                 })}
               </ol>
               {afterClass && !isTeacher && !attended && !taskSubmitted[2] ? (
-                <EntregarButton onClick={() => void onSubmitTask(2)} />
+                <EntregarButton
+                  pending={submittingTask === 2}
+                  onClick={() => void onSubmitTask(2)}
+                />
               ) : null}
             </div>
           )}
@@ -1314,7 +1327,10 @@ export default function ExamSession({
               })}
             </ol>
             {afterClass && !isTeacher && !attended && !taskSubmitted[3] ? (
-              <EntregarButton onClick={() => void onSubmitTask(3)} />
+              <EntregarButton
+                pending={submittingTask === 3}
+                onClick={() => void onSubmitTask(3)}
+              />
             ) : null}
           </div>
         )}
@@ -1470,14 +1486,21 @@ function StudentCorrectionReveal({
   );
 }
 
-function EntregarButton({ onClick }: { onClick: () => void }) {
+function EntregarButton({
+  onClick,
+  pending,
+}: {
+  onClick: () => void;
+  pending: boolean;
+}) {
   return (
-    <button
-      type="button"
+    <ActionButton
       onClick={onClick}
-      className="mt-4 h-12 w-full rounded-card bg-accent text-label-md font-medium text-white"
+      className="mt-4 w-full h-12"
+      state={pending ? "pending" : "idle"}
+      pendingLabel="Entregando..."
     >
       Entregar
-    </button>
+    </ActionButton>
   );
 }

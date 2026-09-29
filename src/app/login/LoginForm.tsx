@@ -1,15 +1,13 @@
 "use client";
 
 import { useActionState, useState } from "react";
+import ActionButton from "@/components/ActionButton";
 import { createClient } from "@/lib/supabase/client";
 import { AUTH_NEXT_COOKIE, authConfirmRedirectTo, safeNextPath } from "@/lib/auth";
 import { verifyEmailOtp, type VerifyOtpResult } from "./actions";
 
 const fieldClass =
   "h-12 w-full rounded-card border border-paper-line bg-surface px-3 text-body-main text-text-primary placeholder:text-text-muted focus:border-2 focus:border-accent focus:outline-none";
-
-const primaryButtonClass =
-  "flex h-12 w-full items-center justify-center rounded-card bg-accent text-label-md font-semibold text-white hover:bg-accent-hover active:bg-accent-hover disabled:opacity-60";
 
 const otpInitial: VerifyOtpResult | null = null;
 
@@ -98,13 +96,14 @@ export default function LoginForm({ nextPath }: { nextPath: string }) {
             {otpState && !otpState.ok ? otpState.error : errorMessage}
           </p>
         ) : null}
-        <button
+        <ActionButton
           type="submit"
-          disabled={otpPending}
-          className={primaryButtonClass}
+          className="w-full h-12"
+          state={otpPending ? "pending" : "idle"}
+          pendingLabel="Entrando..."
         >
-          {otpPending ? "Entrando..." : "Entrar"}
-        </button>
+          Entrar
+        </ActionButton>
         <button
           type="button"
           onClick={() => {
@@ -142,13 +141,14 @@ export default function LoginForm({ nextPath }: { nextPath: string }) {
         <p className="text-label-md text-error">{errorMessage}</p>
       )}
 
-      <button
+      <ActionButton
         type="submit"
-        disabled={status === "sending"}
-        className={primaryButtonClass}
+        className="w-full h-12"
+        state={status === "sending" ? "pending" : "idle"}
+        pendingLabel="Mandando..."
       >
-        {status === "sending" ? "Mandando..." : "Mándame el código"}
-      </button>
+        Mándame el código
+      </ActionButton>
     </form>
   );
 }

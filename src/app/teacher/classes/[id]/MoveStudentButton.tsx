@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ActionButton from "@/components/ActionButton";
 import { moveStudentToOtherGroup } from "../../actions";
 import type { CourseLevel } from "@/types";
 
@@ -58,13 +59,14 @@ export default function MoveStudentButton({
       >
         <input type="hidden" name="courseId" value={courseId} />
         <input type="hidden" name="studentId" value={studentId} />
-        <button
+        <ActionButton
           type="submit"
-          disabled={pending}
-          className="flex h-11 w-full items-center justify-center rounded-card bg-accent px-3 text-sm font-medium text-white disabled:opacity-60"
+          className="w-full"
+          state={pending ? "pending" : "idle"}
+          pendingLabel="Moviendo..."
         >
-          {pending ? "Moviendo..." : `Sí, a ${toLabel}`}
-        </button>
+          Sí, a {toLabel}
+        </ActionButton>
       </form>
       <button
         type="button"

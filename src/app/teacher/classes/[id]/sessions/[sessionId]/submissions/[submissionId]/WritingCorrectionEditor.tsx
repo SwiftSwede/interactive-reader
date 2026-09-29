@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ActionButton from "@/components/ActionButton";
 import Link from "next/link";
 import { saveWritingCorrection } from "../../../../actions";
 import { tokenizeWords, wordDiff } from "@/lib/writing";
@@ -203,13 +204,14 @@ export default function WritingCorrectionEditor({
 
       {error && <p className="text-sm text-error">{error}</p>}
 
-      <button
+      <ActionButton
         type="submit"
-        disabled={pending}
-        className="w-full rounded-card bg-accent px-4 py-3 text-sm font-medium text-white disabled:opacity-60"
+        className="w-full"
+        state={pending ? "pending" : "idle"}
+        pendingLabel="Guardando..."
       >
-        {pending ? "Guardando..." : "Guardar corrección"}
-      </button>
+        Guardar corrección
+      </ActionButton>
 
       {saved && (
         <p className="text-sm text-text-secondary">

@@ -6,6 +6,7 @@ import type {
   VideoSummaryNoteType,
   VideoSummaryTeachingNote,
 } from "@/types";
+import ActionButton from "@/components/ActionButton";
 import { addVideoSummaryNote, deleteVideoSummaryNote } from "@/app/lesson/[slug]/video-summary-actions";
 import { markFirstMatch } from "@/lib/video-summary-notes";
 
@@ -163,9 +164,11 @@ export function TeachingNoteLightbox({
           <p className="mt-2 text-label-sm text-error">{error}</p>
         ) : null}
         {isTeacher ? (
-          <button
-            type="button"
-            disabled={pending}
+          <ActionButton
+            className="mt-4 w-full text-error"
+            variant="secondary"
+            state={pending ? "pending" : "idle"}
+            pendingLabel="Borrando..."
             onClick={async () => {
               setPending(true);
               setError("");
@@ -177,10 +180,9 @@ export function TeachingNoteLightbox({
               }
               onDeleted(note.id);
             }}
-            className="mt-4 h-11 w-full rounded-card border border-paper-line text-label-md text-error disabled:opacity-60"
           >
             Borrar
-          </button>
+          </ActionButton>
         ) : null}
       </div>
     </dialog>
@@ -264,9 +266,10 @@ export function TeachingNotePopup({
           <p className="mt-1 text-label-sm text-error">{error}</p>
         ) : null}
         <div className="mt-3 flex gap-2">
-          <button
-            type="button"
-            disabled={pending}
+          <ActionButton
+            className="flex-1"
+            state={pending ? "pending" : "idle"}
+            pendingLabel="Guardando..."
             onClick={async () => {
               setPending(true);
               setError("");
@@ -298,10 +301,9 @@ export function TeachingNotePopup({
               });
               dialogRef.current?.close();
             }}
-            className="h-11 flex-1 rounded-card bg-accent text-label-md font-medium text-white disabled:opacity-60"
           >
             Guardar
-          </button>
+          </ActionButton>
           <button
             type="button"
             onClick={() => dialogRef.current?.close()}

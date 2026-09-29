@@ -70,7 +70,7 @@ layout:
   breakpoint_desktop: 1024px
   teacher_exception: /teacher/* is desktop-first 3-column; never applies to student routes
 components:
-  buttons: [primary, secondary, ghost, step-nav-pill]
+  buttons: [primary, secondary, ghost, step-nav-pill, ActionButton]
   icons: Lucide React only, never emojis
   navigation: browsing mode (bottom tabs) vs lesson mode (full-screen, step nav); never coexist
 ---
@@ -375,10 +375,13 @@ Server-hitting primaries stay the **same 44px control**. On tap: `disabled`, `ar
 | Enviar / Mándame el código | Enviando... / Mandando... | (next view) |
 | Comprobar | Comprobando... | (inline result) |
 | Revisar pronunciación | Revisando... | (inline result) |
-| Entrar | Entrando... | (next view) |
+| Entrar / Intermedio / Pre-intermedio | Entrando... | (next view) |
 | Invitar | Invitando... | (inline message) |
 | Iniciar | Iniciando... | (next view) |
 | Borrar / Sí, borrar | Borrando... | (next view) |
+| Generar / Crear curso | Creando... | (next view) |
+| Sí, a … | Moviendo... | (next view) |
+| Cerrar sesión | Cerrando... | (next view) |
 | No entendí | Guardando... | Listo |
 
 Failure: existing "Algo salió mal" plus retry. Skip pure client toggles (play/pause, step pills that only change local step).
@@ -460,11 +463,12 @@ The audio player appears in two places: inline (top of story) and sticky (bottom
 ## Word help sheet
 Short paper sheet for a tapped word. Same family as Ver el texto, not 75vh.
 
-- Height hugs content, cap ~45vh
-- Sits **above** sticky audio (`z-index` 40) and `.step-nav` (`z-index` 35). Use `--lesson-step-nav-height` when padding the sheet bottom so the last control is not hidden.
+- Height hugs content. Full width on a phone. On desktop, max 672px (the lesson column), wider than the 480px sticky player so they do not read as a matched pair. Cap ~45vh above the chrome.
+- Tight stack: grabber, English headword + close, then one gloss line (Spanish, POS in lowercase parentheses, IPA, ghost play).
+- Rises from the **viewport bottom behind** sticky audio (`z-index` 40) and `.step-nav` (`z-index` 35). Sheet stack is `z-index` 30. Overlay is full-screen so story text behind the frosted nav/audio dims the same as the rest of the page. Panel padding-bottom equals that chrome height so word copy is not hidden; the white sheet continues under the player and nav so its outline reads behind them. Nav and audio stay the same style and stay tappable.
 - Grabber, tap outside, swipe down, Escape, or X. Focus trap while open. One word at a time.
 - Motion: 200ms ease-out enter **and** exit. Overlay fades. Reduced motion: instant.
-- First-open contents: Spanish, IPA, play, POS, expression, No entendí, teacher flags. Do not auto-play audio.
+- First-open contents: one gloss line (Spanish, POS, IPA, play), then expression, No entendí, teacher flags. Do not auto-play audio.
 - Same component on story, dialogue, lyrics, bio, and taps inside Ver el texto.
 - Looked-up underline (`word-seen`) persists until the student taps that word again. Clearing the mark does not delete the teacher lookup row (`word_lookups.cleared_at`). Logged-out / teacher preview: no writes. If they just cleared the mark, the sheet may still be open; a quiet line says the mark is gone.
 
@@ -814,7 +818,7 @@ The step-based flow for story lessons. This is the most complex page layout.
 Step 1 - El cuento (Story):
 - Micro-explanation callout (dismissable): "Leer en ingles es la base de todo..."
 - Inline audio player (controls row + seek bar)
-- Story text (Lora, 18px, line-height 32px, `--text-primary`). Interactive word spans with dotted underline. While audio plays, highlight the **current sentence** (dialogue: that `Name:` line) with a quiet `--accent-softer` fill. Not per-word yellow karaoke. Songs keep Truquitos karaoke. Teaching-note yellow stays on notes only. `prefers-reduced-motion`: static sentence mark, no chasing animation.
+- Story text (Lora, 18px, line-height 32px, `--text-primary`). Interactive word spans with dotted underline. While audio plays, highlight the **current sentence** (dialogue: that `Name:` line) with a quiet mix of `--accent-soft` on `--paper`. Not per-word yellow karaoke. Songs keep Truquitos karaoke. Teaching-note yellow stays on notes only. `prefers-reduced-motion`: static sentence mark, no chasing animation.
 - Tap a word: short word help sheet (see Word help sheet). Underline persists until the student taps that word again.
 - Logged-out `/lesson/[slug]` with no `?session=`: render the reader only if `stories.is_free`. Else a Kyle-voice wall, **do not** render `body_text`. Distinct from "No encontré esa lección". Session links stay login-first. Writing, exam, presentation, conversation: no logged-out preview. Video summary stays class-only. Free preview: no persist lookups or answers; a short line that class is the Zoom/session link. Contenido toggle: "Vista previa sin cuenta" writes `is_free` (default off).
 - "The End" (italic, centered, `--text-muted`)

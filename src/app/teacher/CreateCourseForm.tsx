@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import ActionButton from "@/components/ActionButton";
 import { createCourse, type CreateCourseResult } from "./actions";
 
 const initialState: CreateCourseResult | null = null;
@@ -51,13 +52,14 @@ export default function CreateCourseForm() {
         <p className="text-label-sm text-text-secondary">{state.message}</p>
       )}
 
-      <button
+      <ActionButton
         type="submit"
-        disabled={isPending}
-        className="flex min-h-11 w-full items-center justify-center rounded-card bg-accent px-5 py-3 text-label-md font-medium text-white hover:bg-accent-hover disabled:opacity-60"
+        className="w-full"
+        state={isPending ? "pending" : "idle"}
+        pendingLabel="Creando..."
       >
-        {isPending ? "Creando..." : "Crear curso"}
-      </button>
+        Crear curso
+      </ActionButton>
     </form>
   );
 }

@@ -9,6 +9,7 @@ import {
   parseExamTimerMode,
 } from "@/lib/exam";
 import { formatCountdown } from "@/lib/writing";
+import ActionButton from "@/components/ActionButton";
 import type { ExamTimerMode } from "@/types";
 import {
   adjustExamWorkTime,
@@ -38,6 +39,7 @@ export default function ExamTimerStart({
   const [mode, setMode] = useState<ExamTimerMode>(initialMode);
   const [minutes, setMinutes] = useState(initialMinutes);
   const [pending, setPending] = useState(false);
+  const [busy, setBusy] = useState<string | null>(null);
   const [error, setError] = useState("");
   const [now, setNow] = useState(() => Date.now());
 
@@ -96,21 +98,24 @@ export default function ExamTimerStart({
   }, [courseId, sessionId, mode, minutes, started]);
 
   const runAction = async (
+    key: string,
     action: (formData: FormData) => Promise<{ ok: true } | { ok: false; error: string }>,
     extra?: Record<string, string>
   ) => {
     setPending(true);
+    setBusy(key);
     setError("");
     const formData = new FormData();
     formData.set("courseId", courseId);
     formData.set("sessionId", sessionId);
     if (extra) {
-      for (const [key, value] of Object.entries(extra)) {
-        formData.set(key, value);
+      for (const [k, value] of Object.entries(extra)) {
+        formData.set(k, value);
       }
     }
     const result = await action(formData);
     setPending(false);
+    setBusy(null);
     if (!result.ok) {
       setError(result.error);
     }
@@ -126,38 +131,46 @@ export default function ExamTimerStart({
             : "."}
         </p>
         <div className="grid grid-cols-2 gap-2">
-          <button
-            type="button"
+          <ActionButton
+            className="w-full"
+            variant="secondary"
             disabled={pending}
-            onClick={() => void runAction(adjustExamWorkTime, { delta: "5" })}
-            className="flex min-h-11 items-center justify-center rounded-card border border-paper-line bg-white px-3 py-2 text-sm font-medium text-text-primary disabled:opacity-60"
+            state={busy === "plus" ? "pending" : "idle"}
+            pendingLabel="Guardando..."
+            onClick={() => void runAction("plus", adjustExamWorkTime, { delta: "5" })}
           >
             +5 min
-          </button>
-          <button
-            type="button"
+          </ActionButton>
+          <ActionButton
+            className="w-full"
+            variant="secondary"
             disabled={pending}
-            onClick={() => void runAction(adjustExamWorkTime, { delta: "-5" })}
-            className="flex min-h-11 items-center justify-center rounded-card border border-paper-line bg-white px-3 py-2 text-sm font-medium text-text-primary disabled:opacity-60"
+            state={busy === "minus" ? "pending" : "idle"}
+            pendingLabel="Guardando..."
+            onClick={() => void runAction("minus", adjustExamWorkTime, { delta: "-5" })}
           >
             -5 min
-          </button>
-          <button
-            type="button"
+          </ActionButton>
+          <ActionButton
+            className="w-full"
+            variant="secondary"
             disabled={pending}
-            onClick={() => void runAction(restartExamTimer)}
-            className="flex min-h-11 items-center justify-center rounded-card border border-paper-line bg-white px-3 py-2 text-sm font-medium text-text-primary disabled:opacity-60"
+            state={busy === "restart" ? "pending" : "idle"}
+            pendingLabel="Reiniciando..."
+            onClick={() => void runAction("restart", restartExamTimer)}
           >
             Reiniciar
-          </button>
-          <button
-            type="button"
+          </ActionButton>
+          <ActionButton
+            className="w-full"
+            variant="secondary"
             disabled={pending}
-            onClick={() => void runAction(stopExamTimer)}
-            className="flex min-h-11 items-center justify-center rounded-card border border-paper-line bg-white px-3 py-2 text-sm font-medium text-text-primary disabled:opacity-60"
+            state={busy === "stop" ? "pending" : "idle"}
+            pendingLabel="Parando..."
+            onClick={() => void runAction("stop", stopExamTimer)}
           >
             Parar
-          </button>
+          </ActionButton>
         </div>
         {error ? <p className="text-sm text-error">{error}</p> : null}
       </div>
@@ -222,13 +235,14 @@ export default function ExamTimerStart({
       >
         <input type="hidden" name="courseId" value={courseId} />
         <input type="hidden" name="sessionId" value={sessionId} />
-        <button
+        <ActionButton
           type="submit"
-          disabled={pending}
-          className="flex min-h-11 w-full items-center justify-center rounded-card bg-accent px-3 py-2 text-sm font-medium text-white disabled:opacity-60"
+          className="w-full"
+          state={pending ? "pending" : "idle"}
+          pendingLabel="Iniciando..."
         >
-          {pending ? "Iniciando..." : "Iniciar"}
-        </button>
+          Iniciar
+        </ActionButton>
       </form>
       {error ? <p className="text-sm text-error">{error}</p> : null}
     </div>

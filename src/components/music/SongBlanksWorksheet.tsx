@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Check, X } from "lucide-react";
+import ActionButton from "@/components/ActionButton";
 import ClassroomYoutubePlayer from "@/components/ClassroomYoutubePlayer";
 import type { LyricBlank } from "@/types";
 import {
@@ -233,14 +234,15 @@ export default function SongBlanksWorksheet({
       ) : null}
       {teacherLive ? null : !submitted ? (
         <>
-          <button
-            type="button"
+          <ActionButton
+            className="mt-6 w-full h-12"
             onClick={() => void onSubmit()}
             disabled={busy || !allFilled}
-            className="mt-6 h-12 w-full rounded-card bg-accent text-label-md font-medium text-white hover:bg-accent-hover disabled:opacity-60"
+            state={busy ? "pending" : "idle"}
+            pendingLabel="Entregando..."
           >
-            {busy ? "Entregando..." : "Entregar respuestas"}
-          </button>
+            Entregar respuestas
+          </ActionButton>
           {!allFilled ? (
             <p className="mt-2 text-label-sm text-text-muted">
               Llena todos los huecos para entregar.

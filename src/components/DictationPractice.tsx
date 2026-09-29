@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Play } from "lucide-react";
+import ActionButton from "./ActionButton";
 import { usePlaybackRate } from "./PlaybackRateContext";
 import MicroExplanation from "./MicroExplanation";
 import IpaText from "./IpaText";
@@ -106,14 +107,13 @@ export default function DictationPractice({
             rows={3}
           />
 
-          <button
+          <ActionButton
             onClick={handleSubmit}
             disabled={!userText.trim() || !saveResponses}
-            type="button"
-            className="px-5 py-3 rounded-card bg-accent text-white text-label-md disabled:bg-surface-hover disabled:text-text-muted disabled:cursor-not-allowed hover:bg-accent-hover transition-colors min-h-11"
+            className="w-full"
           >
             Comprobar
-          </button>
+          </ActionButton>
         </div>
       )}
 

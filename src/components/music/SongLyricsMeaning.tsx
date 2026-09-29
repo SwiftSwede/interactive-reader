@@ -14,6 +14,7 @@ export default function SongLyricsMeaning({
   storyId,
   sessionId,
   trackLookups,
+  lookedUpWordIds,
   flagging,
 }: {
   bodyText: string;
@@ -23,6 +24,7 @@ export default function SongLyricsMeaning({
   storyId: string;
   sessionId?: string;
   trackLookups: boolean;
+  lookedUpWordIds?: string[];
   flagging?: WordFlagging;
 }) {
   return (
@@ -41,6 +43,7 @@ export default function SongLyricsMeaning({
             storyId={storyId}
             sessionId={sessionId}
             trackLookups={trackLookups}
+            lookedUpWordIds={lookedUpWordIds}
             flagging={flagging}
           />
         </div>

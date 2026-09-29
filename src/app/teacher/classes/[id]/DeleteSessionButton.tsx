@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ActionButton from "@/components/ActionButton";
 import { deleteSession } from "./actions";
 
 export default function DeleteSessionButton({
@@ -47,13 +48,14 @@ export default function DeleteSessionButton({
       >
         <input type="hidden" name="courseId" value={courseId} />
         <input type="hidden" name="sessionId" value={sessionId} />
-        <button
+        <ActionButton
           type="submit"
-          disabled={pending}
-          className="w-full rounded-card bg-accent px-3 py-2 text-sm font-medium text-white disabled:opacity-60"
+          className="w-full"
+          state={pending ? "pending" : "idle"}
+          pendingLabel="Quitando..."
         >
-          {pending ? "Quitando..." : "Sí, quitar"}
-        </button>
+          Sí, quitar
+        </ActionButton>
       </form>
       <button
         type="button"

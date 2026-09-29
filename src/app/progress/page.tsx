@@ -12,10 +12,6 @@ export const metadata = {
   title: "Tu progreso - Profe Kyle",
 };
 
-function formatPercent(value: number): string {
-  return `${Math.round(value * 100)}%`;
-}
-
 export default async function ProgressPage() {
   const supabase = await createClient();
   const {
@@ -103,10 +99,6 @@ export default async function ProgressPage() {
                 ? "todavía no hay intentos."
                 : `${progress.dictationTrend.length} ${
                     progress.dictationTrend.length === 1 ? "intento" : "intentos"
-                  }${
-                    latestDictation
-                      ? `, el último alrededor de ${formatPercent(latestDictation.accuracy)}`
-                      : ""
                   }.`}
             </li>
             <li>

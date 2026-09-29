@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ActionButton from "@/components/ActionButton";
 import { updateWritingPromptTitle } from "../../actions";
 
 export default function WritingTitleForm({
@@ -46,13 +47,15 @@ export default function WritingTitleForm({
           className="w-full rounded-card border border-paper-line bg-white px-3 py-3 text-base text-text-primary focus:border-2 focus:border-accent focus:outline-none"
         />
       </label>
-      <button
+      <ActionButton
         type="submit"
-        disabled={pending}
-        className="mt-2 h-11 w-full rounded-card border border-paper-line text-sm font-medium text-text-primary disabled:opacity-60"
+        variant="secondary"
+        className="mt-2 w-full"
+        state={pending ? "pending" : "idle"}
+        pendingLabel="Guardando..."
       >
-        {pending ? "Guardando..." : "Guardar título"}
-      </button>
+        Guardar título
+      </ActionButton>
       {saved ? (
         <p className="mt-2 text-sm text-success">Listo. Ya tiene título.</p>
       ) : null}

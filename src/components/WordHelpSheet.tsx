@@ -1,47 +1,24 @@
 "use client";
 
-import { useEffect, useRef, type PointerEvent } from "react";
+import { useEffect, useRef, type PointerEvent, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
-import InteractiveStory, { type WordTimestamp } from "./InteractiveStory";
-import type { WordData, ExpressionData } from "./WordTooltip";
-import type { WordFlagging } from "@/types";
 import { useSheetPresence } from "@/hooks/useSheetPresence";
-
-type StoryTextSheetProps = {
-  open: boolean;
-  onClose: () => void;
-  bodyText: string;
-  words: WordData[];
-  expressions: ExpressionData[];
-  audioUrl: string;
-  timestamps: WordTimestamp[];
-  storyId?: string;
-  sessionId?: string;
-  trackLookups?: boolean;
-  lookedUpWordIds?: string[];
-  kind?: "story" | "dialogue" | "movie_talk" | "song";
-  flagging?: WordFlagging;
-};
 
 const FOCUSABLE =
   'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
-export default function StoryTextSheet({
+export default function WordHelpSheet({
   open,
   onClose,
-  bodyText,
-  words,
-  expressions,
-  audioUrl,
-  timestamps,
-  storyId,
-  sessionId,
-  trackLookups,
-  lookedUpWordIds,
-  kind,
-  flagging,
-}: StoryTextSheetProps) {
+  title,
+  children,
+}: {
+  open: boolean;
+  onClose: () => void;
+  title: string;
+  children: ReactNode;
+}) {
   const { present, exiting } = useSheetPresence(open);
   const panelRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -53,8 +30,6 @@ export default function StoryTextSheet({
 
     previousFocus.current = document.activeElement as HTMLElement | null;
     closeRef.current?.focus();
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -83,7 +58,6 @@ export default function StoryTextSheet({
     document.addEventListener("keydown", onKeyDown);
     return () => {
       document.removeEventListener("keydown", onKeyDown);
-      document.body.style.overflow = previousOverflow;
       previousFocus.current?.focus();
     };
   }, [present, exiting, onClose]);
@@ -109,55 +83,42 @@ export default function StoryTextSheet({
     if (dy > 80) onClose();
   };
 
-  if (!present) return null;
+  if (!present || typeof document === "undefined") return null;
+
+  const stateClass = exiting ? " word-help-sheet-exit" : "";
 
   return createPortal(
     <div
-      className={`story-text-sheet${exiting ? " story-text-sheet-exit" : ""}`}
+      className={`word-help-sheet${stateClass}`}
       role="dialog"
       aria-modal="true"
-      aria-labelledby="story-text-sheet-title"
+      aria-labelledby="word-help-sheet-title"
     >
-      <div className="story-text-sheet-overlay" onClick={onClose} />
-      <div className="story-text-sheet-panel" ref={panelRef}>
+      <div className="word-help-sheet-overlay" onClick={onClose} />
+      <div className="word-help-sheet-panel" ref={panelRef}>
         <div
-          className="story-text-sheet-handle"
+          className="word-help-sheet-handle"
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
         >
-          <div className="story-text-sheet-handle-bar" />
+          <div className="word-help-sheet-handle-bar" />
         </div>
-        <div className="story-text-sheet-toolbar">
-          <h2 id="story-text-sheet-title" className="story-text-sheet-title">
-            El cuento
+        <div className="word-help-sheet-toolbar">
+          <h2 id="word-help-sheet-title" className="word-help-sheet-title">
+            {title}
           </h2>
           <button
             ref={closeRef}
             type="button"
-            className="story-text-sheet-close"
+            className="word-help-sheet-close"
             onClick={onClose}
             aria-label="Cerrar"
           >
             <X size={20} aria-hidden="true" />
           </button>
         </div>
-        <div className="story-text-sheet-body">
-          <InteractiveStory
-            bodyText={bodyText}
-            words={words}
-            expressions={expressions}
-            audioUrl={audioUrl}
-            timestamps={timestamps}
-            storyId={storyId}
-            sessionId={sessionId}
-            trackLookups={trackLookups}
-            lookedUpWordIds={lookedUpWordIds}
-            hideAudio
-            kind={kind}
-            flagging={flagging}
-          />
-        </div>
+        <div className="word-help-sheet-body">{children}</div>
       </div>
     </div>,
     document.body

@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useState } from "react";
+import ActionButton from "@/components/ActionButton";
 import { createSession, type CreateSessionResult } from "./actions";
 import {
   defaultWritingMinutes,
@@ -919,10 +920,12 @@ export default function CreateSessionForm({
         <p className="text-sm text-text-secondary">{state.message}</p>
       )}
 
-      <button
+      <ActionButton
         type="submit"
+        className="w-full"
+        state={isPending ? "pending" : "idle"}
+        pendingLabel="Guardando..."
         disabled={
-          isPending ||
           (sessionType === "story" && storyOptions.length === 0) ||
           (sessionType === "dialogue" && dialogueOptions.length === 0) ||
           (sessionType === "movie_talk" && movieTalkOptions.length === 0) ||
@@ -942,10 +945,9 @@ export default function CreateSessionForm({
             promptMode === "new" &&
             conversationQuestions.filter((row) => row.trim()).length < 3)
         }
-        className="w-full rounded-card bg-accent px-4 py-3 text-sm font-medium text-white disabled:opacity-60"
       >
-        {isPending ? "Guardando..." : assignToSessionId ? "Guardar" : "Crear clase"}
-      </button>
+        {assignToSessionId ? "Guardar" : "Crear clase"}
+      </ActionButton>
     </form>
   );
 }

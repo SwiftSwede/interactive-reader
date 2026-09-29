@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import ActionButton from "@/components/ActionButton";
 import {
   updateDisplayName,
   type UpdateDisplayNameResult,
@@ -42,13 +43,15 @@ export default function EditDisplayNameForm({
       {state?.ok ? (
         <p className="mt-2 text-label-md text-success">{state.message}</p>
       ) : null}
-      <button
+      <ActionButton
         type="submit"
-        disabled={isPending}
-        className="mt-3 flex h-12 w-full items-center justify-center rounded-card border border-paper-line text-label-md text-text-primary hover:bg-surface-hover disabled:opacity-60"
+        variant="secondary"
+        className="mt-3 w-full h-12"
+        state={isPending ? "pending" : "idle"}
+        pendingLabel="Guardando..."
       >
-        {isPending ? "Guardando..." : "Guardar nombre"}
-      </button>
+        Guardar nombre
+      </ActionButton>
     </form>
   );
 }

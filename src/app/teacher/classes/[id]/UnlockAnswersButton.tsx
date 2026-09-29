@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ActionButton from "@/components/ActionButton";
 import { unlockAnswers } from "./actions";
 
 export default function UnlockAnswersButton({
@@ -32,13 +33,14 @@ export default function UnlockAnswersButton({
       >
         <input type="hidden" name="courseId" value={courseId} />
         <input type="hidden" name="sessionId" value={sessionId} />
-        <button
+        <ActionButton
           type="submit"
-          disabled={pending}
-          className="flex h-11 w-full items-center justify-center whitespace-nowrap rounded-card bg-accent px-3 text-sm font-medium text-white disabled:opacity-60"
+          className="w-full whitespace-nowrap"
+          state={pending ? "pending" : "idle"}
+          pendingLabel={pendingLabel}
         >
-          {pending ? pendingLabel : label}
-        </button>
+          {label}
+        </ActionButton>
       </form>
       {error && <p className="mt-2 text-sm text-error">{error}</p>}
     </div>

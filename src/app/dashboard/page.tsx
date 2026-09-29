@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen } from "lucide-react";
+import { BookOpen, ChevronRight } from "lucide-react";
 import BrowsingShell from "@/components/shell/BrowsingShell";
 import ClassDayCard from "@/components/dashboard/ClassDayCard";
 import LessonCard from "@/components/dashboard/LessonCard";
@@ -31,6 +31,14 @@ export default async function DashboardPage() {
     data.practice.pronunciationSessions > 0;
 
   const today = data.todaySession;
+  const joinHero =
+    today != null &&
+    getClassDayPhase({
+      sessionStartTime: today.sessionStartTime,
+      sessionEndTime: today.sessionEndTime,
+      classEndedAt: today.classEndedAt,
+    }) === "join";
+  const showResume = data.resume != null && !joinHero;
   const progressPercent =
     data.totals.total === 0
       ? 0
@@ -58,6 +66,26 @@ export default async function DashboardPage() {
               classEndedAt: today.classEndedAt,
             })}
           />
+        ) : null}
+
+        {showResume && data.resume ? (
+          <Link
+            href={data.resume.href}
+            className="mt-4 flex min-h-11 items-center justify-between gap-3 rounded-card border border-paper-line bg-surface px-3 py-3 hover:bg-surface-hover active:bg-accent-soft"
+          >
+            <span>
+              <span className="block text-label-sm text-text-muted">
+                Seguir la lección
+              </span>
+              <span className="mt-1 block text-headline-md text-text-primary">
+                {data.resume.title}
+              </span>
+            </span>
+            <ChevronRight
+              className="h-5 w-5 shrink-0 text-text-muted"
+              aria-hidden="true"
+            />
+          </Link>
         ) : null}
 
         {hasCourse ? (

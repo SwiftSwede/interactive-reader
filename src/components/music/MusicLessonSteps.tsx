@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { Check, ChevronLeft, ChevronRight } from "lucide-react";
 import LessonHeader from "@/components/lesson/LessonHeader";
+import FreePreviewNotice from "@/components/FreePreviewNotice";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
 import ClassroomYoutubePlayer from "@/components/ClassroomYoutubePlayer";
 import EndClassButton from "@/components/EndClassButton";
@@ -40,6 +41,8 @@ export default function MusicLessonSteps({
   allowReveal = true,
   sessionId,
   trackLookups = false,
+  lookedUpWordIds = [],
+  freePreviewNotice = false,
   readerMode = "open",
   isTeacher = false,
   previewLevel = null,
@@ -60,6 +63,8 @@ export default function MusicLessonSteps({
   allowReveal?: boolean;
   sessionId?: string;
   trackLookups?: boolean;
+  lookedUpWordIds?: string[];
+  freePreviewNotice?: boolean;
   readerMode?: "classroom-live" | "classroom-review" | "open";
   isTeacher?: boolean;
   previewLevel?: CourseLevel | null;
@@ -300,6 +305,7 @@ export default function MusicLessonSteps({
             previewLevel={previewLevel}
             viewToggle={viewToggle}
           />
+          {freePreviewNotice ? <FreePreviewNotice /> : null}
           <nav className="step-progress max-w-2xl mx-auto px-2" aria-label="Pasos">
             {steps.map((step, index) => {
               const blocked = studentLive && locked && index > classIndex;
@@ -396,6 +402,7 @@ export default function MusicLessonSteps({
                 storyId={story.id}
                 sessionId={sessionId}
                 trackLookups={trackLookups}
+                lookedUpWordIds={lookedUpWordIds}
                 flagging={flagging}
               />
             ) : null}

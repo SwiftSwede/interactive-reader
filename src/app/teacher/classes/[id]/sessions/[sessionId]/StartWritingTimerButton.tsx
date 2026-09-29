@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ActionButton from "@/components/ActionButton";
 import { startWritingTimer } from "../../actions";
 
 export default function StartWritingTimerButton({
@@ -30,13 +31,14 @@ export default function StartWritingTimerButton({
       >
         <input type="hidden" name="courseId" value={courseId} />
         <input type="hidden" name="sessionId" value={sessionId} />
-        <button
+        <ActionButton
           type="submit"
-          disabled={pending}
-          className="flex min-h-11 w-full items-center justify-center rounded-card bg-accent px-3 py-2 text-sm font-medium text-white disabled:opacity-60"
+          className="w-full"
+          state={pending ? "pending" : "idle"}
+          pendingLabel="Iniciando..."
         >
-          {pending ? "Iniciando..." : label}
-        </button>
+          {label}
+        </ActionButton>
       </form>
       {error && <p className="mt-2 text-sm text-error">{error}</p>}
     </div>

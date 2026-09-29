@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import ActionButton from "@/components/ActionButton";
 import { inviteStudent, type InviteStudentResult } from "./invite-actions";
 
 const initialState: InviteStudentResult | null = null;
@@ -53,13 +54,14 @@ export default function InviteStudentForm() {
         <p className="text-label-sm text-text-secondary">{state.message}</p>
       )}
 
-      <button
+      <ActionButton
         type="submit"
-        disabled={isPending}
-        className="flex min-h-11 w-full items-center justify-center rounded-card bg-accent px-5 py-3 text-label-md font-medium text-white hover:bg-accent-hover disabled:opacity-60"
+        className="w-full"
+        state={isPending ? "pending" : "idle"}
+        pendingLabel="Invitando..."
       >
-        {isPending ? "Invitando..." : "Invitar"}
-      </button>
+        Invitar
+      </ActionButton>
     </form>
   );
 }

@@ -1,6 +1,7 @@
 import { LogOut } from "lucide-react";
 import BackLink from "@/components/BackLink";
 import EditDisplayNameForm from "@/components/dashboard/EditDisplayNameForm";
+import ActionButton from "@/components/ActionButton";
 import BrowsingShell from "@/components/shell/BrowsingShell";
 import { signOut } from "@/app/dashboard/actions";
 import { requireBrowsingStudent, browsingClassroomLevel } from "@/lib/browsing-auth";
@@ -52,13 +53,15 @@ export default async function ProfilePage() {
         </article>
 
         <form action={signOut} className="mt-6">
-          <button
+          <ActionButton
             type="submit"
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-card border border-paper-line text-label-md text-text-primary hover:bg-surface-hover"
+            variant="secondary"
+            className="w-full h-12 gap-2"
+            pendingLabel="Cerrando..."
           >
             <LogOut className="h-5 w-5" aria-hidden="true" />
             Cerrar sesión
-          </button>
+          </ActionButton>
         </form>
       </section>
     </BrowsingShell>

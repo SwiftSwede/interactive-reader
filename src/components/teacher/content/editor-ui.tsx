@@ -2,6 +2,7 @@
 
 import { ChevronDown, ChevronUp, Trash2 } from "lucide-react";
 import type { ReactNode } from "react";
+import ActionButton from "@/components/ActionButton";
 
 export const fieldClass =
   "w-full rounded-card border border-paper-line bg-white px-3 py-3 text-body-main text-text-primary placeholder:text-text-muted focus:border-2 focus:border-accent focus:outline-none";
@@ -60,20 +61,22 @@ export function SaveBar({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <button
-        type="button"
+      <ActionButton
+        className="relative w-full"
         onClick={onSave}
-        disabled={pending || !dirty}
-        className="relative inline-flex min-h-11 items-center justify-center rounded-card bg-accent px-5 text-label-md font-medium text-white hover:bg-accent-hover disabled:opacity-60"
+        disabled={!dirty}
+        state={pending ? "pending" : saved && !dirty ? "success" : "idle"}
+        pendingLabel="Guardando..."
+        successLabel="Guardado"
       >
-        {pending ? "Guardando..." : "Guardar"}
+        Guardar
         {dirty && !pending ? (
           <span
             className="absolute right-3 top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full bg-white"
             aria-hidden="true"
           />
         ) : null}
-      </button>
+      </ActionButton>
       {saved && !dirty ? (
         <p className="text-sm text-success">Listo. Ya quedó guardado.</p>
       ) : null}

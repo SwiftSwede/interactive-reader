@@ -28,7 +28,7 @@ Kyle = INTJ, 4w5w6. Attracts: Deep Seekers (E5), Identity Seekers (E4), Power Se
 - **375px or it doesn't ship.** PWA, no App Store, WhatsApp discovery.
 - **Input before output.** The story reader is the center of gravity; everything orbits it.
 - **No due dates, homework, rubric scores, gradebooks, or pressure language** ("behind," "streak," overdue). Students keep access to their active-period materials after cancellation — "finished bookshelf," not "locked library."
-- **Adoption-gated v1**: value before account/mic/permission asks; declining never punishes (no blur/lock).
+- **Adoption-gated v1**: value before account/mic/permission asks; declining never punishes (no blur/lock). Qualified 2026-09-27: only catalog rows marked free (`stories.is_free` already exists) may be previewed without login. Paid / class-only lessons stay behind auth.
 - **IPA everywhere**, no Kyle custom symbols; every sound tappable → video popup (Bunny Stream).
 - **Class sync is teacher-driven**; student pages are pure mirrors.
 - **Grounded AI only** — no invented answers; every AI output cites its evidence.
@@ -54,3 +54,14 @@ Kyle = INTJ, 4w5w6. Attracts: Deep Seekers (E5), Identity Seekers (E4), Power Se
 2. Cursor does Mobbin research (`02-MOBBIN-GUIDE.md`) — capture patterns, not vibes.
 3. Cursor writes recommendations (`03-RECOMMENDATIONS.md`) — each as a standalone proposal with current state, proposed change, pattern evidence, constraint check, effort, and risk. Kyle approves/rejects/defers each one. Nothing gets implemented without a ✅.
 4. DESIGN.md is the final authority on visual decisions. Any approved change updates DESIGN.md.
+
+## Plan review decisions (Kyle, 2026-09-27)
+
+Recorded from chat so later sessions do not treat Manus tokens or English-first as still open.
+
+1. **Theme:** Keep Paper Light. No dark theme and no student light/dark toggle in this overhaul. Wave 4 is evolve-in-place (tokens, states, a11y), not a graphite/teal reskin.
+2. **Story audio highlight:** Sentence-level quiet highlight on stories. Song karaoke stays on the karaoke step only.
+3. **English-first translation:** Rejected. Word tap keeps Spanish on the first tap (current tooltip contents). Do not hide Spanish behind a second "Traducir" action.
+4. **Logged-out preview:** Not all lessons. Only lessons marked free may be previewed without an account. Everything else stays login-gated. Schema already has `stories.is_free` (default false).
+6. **P01–P04 (2026-09-27 evening):** Word sheet yes, but open/close must be smooth (see P05). Looked-up underline persists until the student taps that word again to clear it (teacher lookup row stays). Inicio resume yes; label is "Seguir la lección", not "Seguir leyendo". Need-state chips (Read / Listen / Repair) were Manus, not Kyle: do not build them.
+7. **Interaction polish** was missing from the first audit pass: sheet/tooltip motion feels abrupt; primary buttons often have no loading state and no confirmation while a save is in flight. That is now E22 / P05.

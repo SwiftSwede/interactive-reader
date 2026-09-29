@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import ActionButton from "@/components/ActionButton";
 import EndClassButton from "@/components/EndClassButton";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
 import LessonHeader from "@/components/lesson/LessonHeader";
@@ -74,6 +75,9 @@ export default function ConversationStudent({
   const [nowMs, setNowMs] = useState(() => Date.now());
   const [frozenLeft, setFrozenLeft] = useState<number | null>(null);
   const [pending, setPending] = useState(false);
+  const [pendingKind, setPendingKind] = useState<
+    "plan" | "next" | "reset" | "pause" | null
+  >(null);
   const [error, setError] = useState("");
   const channelRef = useRef<ReturnType<
     ReturnType<typeof createClient>["channel"]
@@ -193,11 +197,16 @@ export default function ConversationStudent({
   const canPauseReset = isTeacher && showRounds && !waiting && !done;
   const nextLabel = current === total && !waiting ? "Terminar" : "Siguiente";
 
-  async function runAction(action: () => Promise<ConversationActionResult>) {
+  async function runAction(
+    kind: "plan" | "next" | "reset" | "pause",
+    action: () => Promise<ConversationActionResult>
+  ) {
     setPending(true);
+    setPendingKind(kind);
     setError("");
     const result = await action();
     setPending(false);
+    setPendingKind(null);
     if (!result.ok) {
       setError(result.error);
       return;
@@ -253,7 +262,7 @@ export default function ConversationStudent({
                     disabled={pending}
                     onChange={() => {
                       setPlan(option.plan);
-                      void runAction(() =>
+                      void runAction("plan", () =>
                         setConversationPlan({
                           sessionId,
                           plan: option.plan,
@@ -307,35 +316,43 @@ export default function ConversationStudent({
 
             {isTeacher && showRounds ? (
               <div className="mt-4 grid grid-cols-2 gap-2">
-                <button
-                  type="button"
+                <ActionButton
+                  className="w-full"
                   disabled={pending || !canAdvance}
+                  state={pendingKind === "next" ? "pending" : "idle"}
+                  pendingLabel="Guardando..."
                   onClick={() =>
-                    void runAction(() =>
+                    void runAction("next", () =>
                       nextConversationRound({ sessionId })
                     )
                   }
-                  className="h-11 rounded-card bg-accent px-4 text-label-md font-medium text-white disabled:opacity-60"
                 >
                   {nextLabel}
-                </button>
-                <button
-                  type="button"
+                </ActionButton>
+                <ActionButton
+                  className="w-full"
+                  variant="secondary"
                   disabled={pending || !canPauseReset}
+                  state={pendingKind === "reset" ? "pending" : "idle"}
+                  pendingLabel="Reiniciando..."
                   onClick={() =>
-                    void runAction(() =>
+                    void runAction("reset", () =>
                       resetConversationRound({ sessionId })
                     )
                   }
-                  className="h-11 rounded-card border border-paper-line text-label-md disabled:opacity-60"
                 >
                   Reiniciar
-                </button>
-                <button
-                  type="button"
+                </ActionButton>
+                <ActionButton
+                  className="col-span-2 w-full"
+                  variant="secondary"
                   disabled={pending || !canPauseReset}
+                  state={pendingKind === "pause" ? "pending" : "idle"}
+                  pendingLabel={
+                    state === "stopped" ? "Reanudando..." : "Pausando..."
+                  }
                   onClick={() =>
-                    void runAction(() =>
+                    void runAction("pause", () =>
                       state === "stopped"
                         ? resumeConversationRound({
                             sessionId,
@@ -344,10 +361,9 @@ export default function ConversationStudent({
                         : pauseConversationRound({ sessionId })
                     )
                   }
-                  className="col-span-2 h-11 rounded-card border border-paper-line text-label-md disabled:opacity-60"
                 >
                   {state === "stopped" ? "Reanudar" : "Pausar"}
-                </button>
+                </ActionButton>
               </div>
             ) : null}
             {error ? (

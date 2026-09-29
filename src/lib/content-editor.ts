@@ -411,6 +411,7 @@ export async function saveStoryFields(
     synopsis?: string | null;
     warmupQuestion?: string | null;
     freeWriteMinutes?: number;
+    isFree?: boolean;
   }
 ): Promise<EditorSaveResult> {
   const { data: story } = await supabase
@@ -429,6 +430,9 @@ export async function saveStoryFields(
     if (!title) return fail("Ponle un título.");
     if (title.length > 200) return fail("El título se pasó de 200 letras.");
     patch.title = title;
+  }
+  if (fields.isFree !== undefined) {
+    patch.is_free = fields.isFree;
   }
   if (fields.bodyText !== undefined) {
     patch.body_text = fields.bodyText;

@@ -269,3 +269,22 @@ export async function getStoryBySlug(
   if (error || !story) return null;
   return loadStoryRelated(supabase, story as StoryRow);
 }
+
+/** Metadata only. Never returns body_text. Used to distinguish missing vs paid. */
+export async function getStoryPublicMeta(slug: string): Promise<{
+  isFree: boolean;
+  kind: string | null;
+} | null> {
+  const { createAdminClient } = await import("@/lib/supabase/admin");
+  const admin = createAdminClient();
+  const { data, error } = await admin
+    .from("stories")
+    .select("is_free, kind")
+    .eq("slug", slug)
+    .maybeSingle();
+  if (error || !data) return null;
+  return {
+    isFree: data.is_free === true,
+    kind: typeof data.kind === "string" ? data.kind : null,
+  };
+}

@@ -197,19 +197,46 @@ export async function recordWordLookup(input: {
 
     if (!word || word.story_id !== storyId) return;
 
+    const now = new Date().toISOString();
     const row: {
       user_id: string;
       word_id: string;
       story_id: string;
+      looked_up_at: string;
+      cleared_at: null;
       course_session_id?: string;
     } = {
       user_id: user.id,
       word_id: wordId,
       story_id: storyId,
+      looked_up_at: now,
+      cleared_at: null,
     };
 
     if (input.sessionId) {
       row.course_session_id = input.sessionId;
+    }
+
+    const { data: existing } = await supabase
+      .from("word_lookups")
+      .select("id, cleared_at")
+      .eq("user_id", user.id)
+      .eq("word_id", wordId)
+      .maybeSingle();
+
+    if (existing) {
+      const { error } = await supabase
+        .from("word_lookups")
+        .update({
+          cleared_at: null,
+          looked_up_at: now,
+        })
+        .eq("id", existing.id)
+        .eq("user_id", user.id);
+      if (error) {
+        console.error("recordWordLookup failed:", error);
+      }
+      return;
     }
 
     const { error } = await supabase.from("word_lookups").insert(row);
@@ -232,6 +259,35 @@ export async function recordWordLookup(input: {
     }
   } catch (error) {
     console.error("recordWordLookup failed:", error);
+  }
+}
+
+export async function clearWordLookup(input: { wordId: string }): Promise<void> {
+  try {
+    const wordId = input.wordId.trim();
+    if (!wordId) return;
+
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (!user) return;
+
+    const profile = await getProfile(user.id);
+    if (!profile || profile.role === "teacher") return;
+
+    const { error } = await supabase
+      .from("word_lookups")
+      .update({ cleared_at: new Date().toISOString() })
+      .eq("user_id", user.id)
+      .eq("word_id", wordId)
+      .is("cleared_at", null);
+
+    if (error) {
+      console.error("clearWordLookup failed:", error);
+    }
+  } catch (error) {
+    console.error("clearWordLookup failed:", error);
   }
 }
 

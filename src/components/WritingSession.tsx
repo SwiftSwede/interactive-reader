@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Check, ChevronLeft, ChevronRight } from "lucide-react";
+import ActionButton from "@/components/ActionButton";
 import { createClient } from "@/lib/supabase/client";
 import {
   activeWritingTimer,
@@ -634,14 +635,15 @@ export default function WritingSession({
           </p>
 
           {showEntregar ? (
-            <button
-              type="button"
+            <ActionButton
+              className="mt-4 w-full h-12"
               disabled={saving}
+              state={saving ? "pending" : "idle"}
+              pendingLabel="Entregando..."
               onClick={() => void handleSubmit(false)}
-              className="mt-4 h-12 w-full rounded-card bg-accent text-label-md font-medium text-white disabled:opacity-60"
             >
-              {saving ? "Entregando..." : "Entregar"}
-            </button>
+              Entregar
+            </ActionButton>
           ) : null}
 
           {status === "submitted" && !canStartMakeup ? (

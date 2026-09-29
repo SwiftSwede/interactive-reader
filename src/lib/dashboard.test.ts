@@ -8,6 +8,7 @@ import {
   isNearUtcToday,
   pickActiveCourseId,
   pickTodaySession,
+  pickResumeLesson,
   liveOnlyRecordingHref,
   toDashboardLesson,
   type CourseCandidate,
@@ -311,6 +312,7 @@ describe("pickTodaySession", () => {
         sessionEndTime: "2026-09-05T20:30:00.000Z",
         href: null,
         liveOnly: false,
+        storyId: null,
       },
       {
         sessionId: "b",
@@ -325,6 +327,7 @@ describe("pickTodaySession", () => {
         sessionEndTime: "2026-09-06T20:30:00.000Z",
         href: null,
         liveOnly: false,
+        storyId: null,
       },
     ];
     const picked = pickTodaySession(
@@ -401,5 +404,50 @@ describe("pickActiveCourseId", () => {
     };
     const id = pickActiveCourseId([september, october], "intermediate", now);
     assert.equal(id, "sep");
+  });
+});
+
+describe("pickResumeLesson", () => {
+  test("returns the in-progress lesson with an app href", () => {
+    const lesson = toDashboardLesson({
+      sessionId: "s1",
+      sessionType: "story",
+      storyId: "story-1",
+      writingPromptId: null,
+      examPromptId: null,
+      presentationPromptId: null,
+      conversationPromptId: null,
+      title: "The Jersey",
+      storySlug: "the-jersey",
+      token: "tok",
+      recordingYoutubeUrl: null,
+      completed: false,
+      now: new Date("2026-09-01T12:00:00.000Z"),
+      ...times,
+    });
+    const resume = pickResumeLesson([lesson], [], new Set(["story-1"]));
+    assert.equal(resume?.href, "/lesson/the-jersey?session=tok");
+    assert.equal(resume?.title, "The Jersey");
+  });
+
+  test("omits live-only and empty in-progress sets", () => {
+    const lesson = toDashboardLesson({
+      sessionId: "s1",
+      sessionType: "pronunciation",
+      storyId: null,
+      writingPromptId: null,
+      examPromptId: null,
+      presentationPromptId: null,
+      conversationPromptId: null,
+      title: null,
+      storySlug: null,
+      token: "tok",
+      recordingYoutubeUrl: null,
+      completed: false,
+      now: new Date("2026-09-01T12:00:00.000Z"),
+      ...times,
+    });
+    assert.equal(pickResumeLesson([lesson], [], new Set(["story-1"])), null);
+    assert.equal(pickResumeLesson([lesson], [], new Set()), null);
   });
 });

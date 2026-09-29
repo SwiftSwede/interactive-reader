@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import ActionButton from "./ActionButton";
 import MicroExplanation from "./MicroExplanation";
 import { recordPersonalResponse } from "@/app/lesson/[slug]/actions";
 import { draftKey, readDraft, writeDraft } from "@/lib/answer-drafts";
@@ -331,22 +332,19 @@ export default function PersonalQuestions({
               )}
 
               {!state?.corrections && !maxedOut && (
-                <button
+                <ActionButton
+                  className="mt-2"
                   onClick={() => handleCheck(q.position, q.question, q.id)}
                   disabled={
                     !answer.trim() ||
                     state?.loading === true ||
                     !saveResponses
                   }
-                  className={`mt-2 min-h-11 text-label-md px-5 py-3 rounded-card transition-colors ${
-                    answer.trim() && state?.loading !== true
-                      ? "bg-accent text-white hover:bg-accent-hover"
-                      : "bg-surface-hover text-text-muted cursor-not-allowed"
-                  }`}
-                  type="button"
+                  state={state?.loading ? "pending" : "idle"}
+                  pendingLabel="Comprobando..."
                 >
-                  {state?.loading ? "Revisando..." : "Comprobar"}
-                </button>
+                  Comprobar
+                </ActionButton>
               )}
 
               {state?.error && (

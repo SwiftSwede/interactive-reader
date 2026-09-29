@@ -13,6 +13,7 @@ import {
   EditorSection,
   fieldClass,
 } from "@/components/teacher/content/editor-ui";
+import ActionButton from "@/components/ActionButton";
 
 const initial: CatalogMutateResult | null = null;
 
@@ -87,13 +88,13 @@ export default function CreateCatalogForm({
         {state && !state.ok ? (
           <p className="text-sm text-error">{state.error}</p>
         ) : null}
-        <button
+        <ActionButton
           type="submit"
-          disabled={pending}
-          className="inline-flex min-h-11 items-center justify-center rounded-card bg-accent px-5 text-label-md font-medium text-white hover:bg-accent-hover disabled:opacity-60"
+          state={pending ? "pending" : "idle"}
+          pendingLabel="Creando..."
         >
-          {pending ? "Creando..." : "Crear y editar"}
-        </button>
+          Crear y editar
+        </ActionButton>
       </form>
     </EditorSection>
   );

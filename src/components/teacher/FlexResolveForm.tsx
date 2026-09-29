@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useState } from "react";
+import ActionButton from "@/components/ActionButton";
 import {
   resolveFlexSession,
   type FlexActionResult,
@@ -229,13 +230,14 @@ export default function FlexResolveForm({
         <p className="text-label-sm text-text-secondary">{state.message}</p>
       ) : null}
 
-      <button
+      <ActionButton
         type="submit"
-        disabled={pending}
-        className="flex min-h-11 w-full items-center justify-center rounded-card bg-accent px-5 py-3 text-label-md font-medium text-white hover:bg-accent-hover disabled:opacity-60"
+        className="w-full"
+        state={pending ? "pending" : "idle"}
+        pendingLabel="Guardando..."
       >
-        {pending ? "Guardando..." : "Guardar"}
-      </button>
+        Guardar
+      </ActionButton>
     </form>
   );
 }

@@ -1,19 +1,21 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
+import ActionButton from "@/components/ActionButton";
 import { confirmTokenHash } from "@/app/login/actions";
 import type { EmailOtpKind } from "@/lib/auth";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <button
+    <ActionButton
       type="submit"
-      disabled={pending}
-      className="w-full min-h-12 rounded-lg bg-gray-900 px-4 py-3 text-sm font-medium text-white disabled:opacity-60"
+      className="w-full h-12"
+      state={pending ? "pending" : "idle"}
+      pendingLabel="Entrando..."
     >
-      {pending ? "Entrando..." : "Entrar"}
-    </button>
+      Entrar
+    </ActionButton>
   );
 }
 

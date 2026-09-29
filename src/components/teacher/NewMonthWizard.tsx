@@ -13,6 +13,7 @@ import {
   generateMonthDates,
 } from "@/lib/monthly-template";
 import { patternFromSessionStarts } from "@/lib/monthly-template";
+import ActionButton from "@/components/ActionButton";
 import type { CourseLevel } from "@/types";
 
 export type MonthSourceCourse = {
@@ -369,13 +370,15 @@ export default function NewMonthWizard({
             Siguiente
           </button>
         ) : (
-          <button
+          <ActionButton
             type="submit"
-            disabled={isPending || !canGenerate}
-            className="inline-flex min-h-11 flex-1 items-center justify-center rounded-card bg-accent px-4 text-label-md font-medium text-white hover:bg-accent-hover disabled:opacity-60"
+            className="flex-1"
+            disabled={!canGenerate}
+            state={isPending ? "pending" : "idle"}
+            pendingLabel="Creando..."
           >
-            {isPending ? "Creando..." : "Generar"}
-          </button>
+            Generar
+          </ActionButton>
         )}
       </div>
     </form>

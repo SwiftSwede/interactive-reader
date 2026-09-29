@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Check, ChevronLeft, ChevronRight, Pencil, Plus } from "lucide-react";
+import ActionButton from "@/components/ActionButton";
 import EndClassButton from "@/components/EndClassButton";
 import LessonHeader from "@/components/lesson/LessonHeader";
 import ClassroomYoutubePlayer from "@/components/ClassroomYoutubePlayer";
@@ -790,10 +791,10 @@ function VocabCard({
               >
                 Cancelar
               </button>
-              <button
-                type="button"
-                disabled={pending}
-                className="h-11 flex-1 rounded-card bg-accent text-label-md text-white disabled:opacity-60"
+              <ActionButton
+                className="flex-1"
+                state={pending ? "pending" : "idle"}
+                pendingLabel="Guardando..."
                 onClick={async () => {
                   setPending(true);
                   setError("");
@@ -822,12 +823,13 @@ function VocabCard({
                 }}
               >
                 Guardar
-              </button>
+              </ActionButton>
             </div>
-            <button
-              type="button"
-              disabled={pending}
-              className="mt-2 h-11 w-full rounded-card border border-paper-line text-label-md text-error disabled:opacity-60"
+            <ActionButton
+              className="mt-2 w-full text-error"
+              variant="secondary"
+              state={pending ? "pending" : "idle"}
+              pendingLabel="Quitando..."
               onClick={async () => {
                 setPending(true);
                 setError("");
@@ -845,7 +847,7 @@ function VocabCard({
               }}
             >
               Quitar de la lista
-            </button>
+            </ActionButton>
           </div>
         </div>
       ) : null}
@@ -941,10 +943,10 @@ function AddVocabCard({
               >
                 Cancelar
               </button>
-              <button
-                type="button"
-                disabled={pending}
-                className="h-11 flex-1 rounded-card bg-accent text-label-md text-white disabled:opacity-60"
+              <ActionButton
+                className="flex-1"
+                state={pending ? "pending" : "idle"}
+                pendingLabel="Guardando..."
                 onClick={async () => {
                   setPending(true);
                   setError("");
@@ -964,7 +966,7 @@ function AddVocabCard({
                 }}
               >
                 Guardar
-              </button>
+              </ActionButton>
             </div>
           </div>
         </div>

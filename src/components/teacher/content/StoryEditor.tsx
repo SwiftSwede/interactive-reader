@@ -103,6 +103,7 @@ function BasicsSection({
   const [synopsis, setSynopsis] = useState(data.story.synopsis ?? "");
   const [warmup, setWarmup] = useState(data.story.warmup_question ?? "");
   const [freeWrite, setFreeWrite] = useState(data.story.free_write_minutes ?? 5);
+  const [isFree, setIsFree] = useState(data.story.is_free);
   const [pending, setPending] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
@@ -114,6 +115,7 @@ function BasicsSection({
     synopsis: data.story.synopsis ?? "",
     warmup: data.story.warmup_question ?? "",
     freeWrite: data.story.free_write_minutes ?? 5,
+    isFree: data.story.is_free,
   });
 
   const dirty =
@@ -123,7 +125,8 @@ function BasicsSection({
     spanishSummary !== baseline.spanishSummary ||
     synopsis !== baseline.synopsis ||
     warmup !== baseline.warmup ||
-    freeWrite !== baseline.freeWrite;
+    freeWrite !== baseline.freeWrite ||
+    isFree !== baseline.isFree;
 
   const wordCountChanged =
     kind !== "movie_talk" &&
@@ -143,6 +146,20 @@ function BasicsSection({
           }}
         />
       </EditorField>
+      <label className="flex min-h-11 items-center gap-3">
+        <input
+          type="checkbox"
+          className="h-5 w-5 accent-[var(--accent)]"
+          checked={isFree}
+          onChange={(event) => {
+            setIsFree(event.target.checked);
+            setSaved(false);
+          }}
+        />
+        <span className="text-label-md text-text-primary">
+          Vista previa sin cuenta
+        </span>
+      </label>
       {kind === "movie_talk" ? (
         <>
           <EditorField label="Sinopsis">
@@ -249,6 +266,7 @@ function BasicsSection({
             synopsis: kind === "movie_talk" ? synopsis : undefined,
             warmupQuestion: kind === "movie_talk" ? warmup : undefined,
             freeWriteMinutes: kind === "video_summary" ? freeWrite : undefined,
+            isFree,
           });
           setPending(false);
           if (!result.ok) {
@@ -263,6 +281,7 @@ function BasicsSection({
             synopsis,
             warmup,
             freeWrite,
+            isFree,
           });
           setSaved(true);
         }}

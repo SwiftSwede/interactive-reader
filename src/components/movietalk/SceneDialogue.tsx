@@ -16,12 +16,14 @@ export default function SceneDialogue({
   sceneIndex,
   sessionId,
   trackLookups,
+  lookedUpWordIds,
   flagging,
 }: {
   data: LoadedStory;
   sceneIndex: number;
   sessionId?: string;
   trackLookups: boolean;
+  lookedUpWordIds?: string[];
   flagging?: WordFlagging;
 }) {
   const { story, words, expressions, movieTalkScenes } = data;
@@ -117,6 +119,7 @@ export default function SceneDialogue({
         trackLookups={trackLookups}
         kind="movie_talk"
         flagging={flagging}
+        lookedUpWordIds={lookedUpWordIds}
         visibleSceneIndex={sceneIndex}
         highlightSpeaker={selected}
       />

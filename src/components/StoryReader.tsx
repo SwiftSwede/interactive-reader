@@ -82,6 +82,8 @@ export default async function StoryReader({
   savedResponses,
   savedPersonalResponses,
   trackLookups = false,
+  lookedUpWordIds = [],
+  freePreviewNotice = false,
   readerMode = "open",
   isTeacher = false,
   previewLevel = null,
@@ -108,6 +110,8 @@ export default async function StoryReader({
   savedResponses?: SavedComprehensionResponse[];
   savedPersonalResponses?: SavedPersonalResponse[];
   trackLookups?: boolean;
+  lookedUpWordIds?: string[];
+  freePreviewNotice?: boolean;
   readerMode?: "classroom-live" | "classroom-review" | "open";
   isTeacher?: boolean;
   previewLevel?: CourseLevel | null;
@@ -243,6 +247,8 @@ export default async function StoryReader({
         savedResponses={savedResponses}
         savedPersonalResponses={savedPersonalResponses}
         trackLookups={trackLookups}
+        lookedUpWordIds={lookedUpWordIds}
+        freePreviewNotice={freePreviewNotice}
         readerMode={readerMode}
         showPractice={showPractice}
         storyAudioUrl={storyAudioUrl}

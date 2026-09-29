@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ActionButton from "@/components/ActionButton";
 import { endClassSession } from "@/app/teacher/end-class-action";
 
 export default function EndClassButton({
@@ -27,9 +28,10 @@ export default function EndClassButton({
             Listo ni agregar notas en vivo.
           </p>
           <div className="mt-3 flex gap-2">
-            <button
-              type="button"
-              disabled={pending}
+            <ActionButton
+              className="flex-1"
+              state={pending ? "pending" : "idle"}
+              pendingLabel="Guardando..."
               onClick={async () => {
                 setPending(true);
                 setError("");
@@ -41,10 +43,9 @@ export default function EndClassButton({
                 }
                 onEnded?.(result.endedAt);
               }}
-              className="h-11 flex-1 rounded-card bg-accent px-4 text-label-md font-medium text-white disabled:opacity-60"
             >
               Terminar
-            </button>
+            </ActionButton>
             <button
               type="button"
               disabled={pending}

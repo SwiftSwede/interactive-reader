@@ -1,4 +1,5 @@
 import { enterStudentPreview } from "./actions";
+import ActionButton from "@/components/ActionButton";
 
 export const metadata = {
   title: "Ver como estudiante - Profe Kyle",
@@ -16,21 +17,23 @@ export default function TeacherPreviewPage() {
       <div className="mt-8 flex max-w-xl flex-col gap-3">
         <form action={enterStudentPreview}>
           <input type="hidden" name="level" value="intermediate" />
-          <button
+          <ActionButton
             type="submit"
-            className="flex h-12 w-full items-center justify-center rounded-card bg-accent px-5 text-label-md font-semibold text-white hover:bg-accent-hover active:bg-accent-hover"
+            className="w-full h-12"
+            pendingLabel="Entrando..."
           >
             Intermedio
-          </button>
+          </ActionButton>
         </form>
         <form action={enterStudentPreview}>
           <input type="hidden" name="level" value="pre-intermediate" />
-          <button
+          <ActionButton
             type="submit"
-            className="flex h-12 w-full items-center justify-center rounded-card bg-accent px-5 text-label-md font-semibold text-white hover:bg-accent-hover active:bg-accent-hover"
+            className="w-full h-12"
+            pendingLabel="Entrando..."
           >
             Pre-intermedio
-          </button>
+          </ActionButton>
         </form>
       </div>
     </section>

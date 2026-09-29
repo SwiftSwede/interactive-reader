@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
-import { getStoryBySlug } from "@/lib/stories";
+import { getStoryBySlug, getStoryPublicMeta } from "@/lib/stories";
 import {
   resolveSessionAccess,
   isWithinSessionWindow,
@@ -23,6 +23,7 @@ import {
   loadWordFlags,
 } from "@/lib/word-flags";
 import { loadOwnSongLyricAttempts } from "@/lib/services/songAttempts";
+import { loadActiveLookupWordIds } from "@/lib/word-lookups";
 import type { WordFlagging } from "@/types";
 
 export async function generateMetadata({
@@ -83,6 +84,30 @@ export default async function LessonSlugPage({
   }
 
   const supabase = await createClient();
+  const {
+    data: { user: earlyUser },
+  } = await supabase.auth.getUser();
+
+  if (!earlyUser && access.kind === "open") {
+    const meta = await getStoryPublicMeta(slug);
+    if (!meta) {
+      return (
+        <StoryAccessMessage
+          title="No encontré esa lección"
+          body="Revisa el link o pídeselo otra vez al Profe Kyle."
+        />
+      );
+    }
+    if (!meta.isFree) {
+      return (
+        <StoryAccessMessage
+          title="Esta lección es de clase"
+          body="Entra con el email que usas en Zoom, o pídele el link de clase al Profe Kyle."
+        />
+      );
+    }
+  }
+
   const data = await getStoryBySlug(supabase, slug);
 
   if (!data) {
@@ -114,19 +139,19 @@ export default async function LessonSlugPage({
   const isMovieTalk = kind === "movie_talk";
   const classroomPaced = isVideo || isSong || isMovieTalk;
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = earlyUser;
   const profile = user ? await getProfile(user.id) : null;
   const previewLevel = await readTeacherStudentPreview(profile?.role);
   const isTeacher = isTeacherView(profile?.role, previewLevel);
   const previewActive = previewLevel != null;
   const trackLookups = profile != null && profile.role !== "teacher";
-  const saveResponses = previewActive
+  const saveResponses = !user
     ? false
-    : access.kind === "ok"
-      ? access.saveResponses
-      : true;
+    : previewActive
+      ? false
+      : access.kind === "ok"
+        ? access.saveResponses
+        : true;
   const courseLevel =
     profile?.role === "teacher" && access.kind === "ok"
       ? await loadCourseLevel(supabase, access.session.courseId)
@@ -169,6 +194,7 @@ export default async function LessonSlugPage({
     teacherRequests,
     ownRequests,
     savedAttempts,
+    lookedUpWordIds,
   ] = await Promise.all([
     !isVideo && saveResponses
       ? loadOwnComprehensionResponses(
@@ -202,6 +228,9 @@ export default async function LessonSlugPage({
       saveResponses
       ? loadOwnSongLyricAttempts(supabase, sessionId, user.id)
       : Promise.resolve([]),
+    trackLookups && user
+      ? loadActiveLookupWordIds(supabase, user.id, data.story.id)
+      : Promise.resolve([] as string[]),
   ]);
 
   const flagging: WordFlagging | undefined = skipFlags
@@ -226,6 +255,8 @@ export default async function LessonSlugPage({
       savedResponses={savedResponses}
       savedPersonalResponses={savedPersonalResponses}
       trackLookups={trackLookups}
+      lookedUpWordIds={lookedUpWordIds}
+      freePreviewNotice={!user && data.story.is_free}
       readerMode={readerMode}
       isTeacher={isTeacher}
       previewLevel={previewLevel}

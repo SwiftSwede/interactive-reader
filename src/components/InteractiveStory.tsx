@@ -6,7 +6,15 @@ import WordTooltip, {
   type ExpressionData,
 } from "./WordTooltip";
 import StoryAudioPlayer from "./StoryAudioPlayer";
-import { recordWordLookup } from "@/app/lesson/[slug]/actions";
+import {
+  clearWordLookup,
+  recordWordLookup,
+} from "@/app/lesson/[slug]/actions";
+import {
+  audioHighlightMode,
+  lookedUpPositions,
+  sentenceIdsForBody,
+} from "@/lib/sentence-highlight";
 import {
   convertRequestsToFlag,
   requestWordFlag,
@@ -48,6 +56,7 @@ type InteractiveStoryProps = {
   storyId?: string;
   sessionId?: string;
   trackLookups?: boolean;
+  lookedUpWordIds?: string[];
   hideAudio?: boolean;
   kind?: "story" | "dialogue" | "movie_talk" | "song";
   flagging?: WordFlagging;
@@ -66,13 +75,17 @@ export default function InteractiveStory({
   storyId,
   sessionId,
   trackLookups = false,
+  lookedUpWordIds = [],
   hideAudio = false,
   kind = "story",
   flagging,
   visibleSceneIndex,
   highlightSpeaker = null,
 }: InteractiveStoryProps) {
-  const [seenPositions, setSeenPositions] = useState<Set<number>>(new Set());
+  const [seenPositions, setSeenPositions] = useState<Set<number>>(() =>
+    lookedUpPositions(words, lookedUpWordIds)
+  );
+  const [justClearedId, setJustClearedId] = useState<string | null>(null);
   const [activePosition, setActivePosition] = useState<number | null>(null);
   const [activeExpressionId, setActiveExpressionId] = useState<string | null>(
     null
@@ -90,16 +103,21 @@ export default function InteractiveStory({
   const requestsRef = useRef(requests);
   requestsRef.current = requests;
 
-  // Refs for direct-DOM karaoke highlight (bypasses React render cycle).
+  // Refs for direct-DOM sentence highlight (bypasses React render cycle).
   // Driving the highlight through React state (setAudioCurrentTime 60x/sec)
-  // causes re-renders that mobile browsers can't keep up with, resulting
-  // in the highlight flashing for 1 frame and disappearing.
+  // causes re-renders that mobile browsers can't keep up with.
   // Instead, StoryAudioPlayer calls onAudioTime with the current time,
-  // and a RAF loop here directly toggles the .word-audio-current CSS class
-  // on the appropriate DOM element via classList.
+  // and a RAF loop here directly toggles the .sentence-audio-current CSS class.
   const audioTimeRef = useRef(0);
   const karaokeRafRef = useRef<number | null>(null);
-  const highlightedPosRef = useRef<number>(-1);
+  const highlightedSentenceRef = useRef<number>(-1);
+  const highlightMode = audioHighlightMode(kind);
+  const sentenceIds = useMemo(
+    () => sentenceIdsForBody(bodyText, kind),
+    [bodyText, kind]
+  );
+  const sentenceIdsRef = useRef(sentenceIds);
+  sentenceIdsRef.current = sentenceIds;
 
   // Build expression lookup
   const expressionMap = useMemo(() => {
@@ -495,16 +513,6 @@ export default function InteractiveStory({
     };
   }, [flagging?.enabled, handleToggleFlag]);
 
-  // ── Karaoke: direct DOM manipulation ───────────────────
-  // Finds the word span elements once, then on each RAF tick
-  // toggles the .word-audio-current class directly. No React
-  // state updates, no re-renders, no virtual DOM diffing.
-
-  const getWordSpans = useCallback(() => {
-    return containerRef.current?.querySelectorAll<HTMLElement>(".word-span");
-  }, []);
-
-  // Binary search: last word whose start <= time
   const findPositionAtTime = useCallback(
     (time: number) => {
       if (time <= 0) return -1;
@@ -526,37 +534,44 @@ export default function InteractiveStory({
     [timestamps]
   );
 
-  // The RAF loop that does the actual highlight via direct DOM access
+  // ── Sentence highlight: direct DOM manipulation ────────
   const karaokeTick = useCallback(() => {
-    const spans = getWordSpans();
-    if (!spans) return;
+    if (highlightMode === "none") return;
 
-    // Interpolate the audio time for smoothness on mobile
     const time = audioTimeRef.current;
     const newPos = findPositionAtTime(time);
+    const ids = sentenceIdsRef.current;
+    const newSentence = newPos >= 0 ? (ids[newPos] ?? -1) : -1;
 
-    if (newPos !== highlightedPosRef.current) {
-      // Remove highlight from old word
-      if (highlightedPosRef.current >= 0 && highlightedPosRef.current < spans.length) {
-        spans[highlightedPosRef.current].classList.remove("word-audio-current");
-      }
-      // Add highlight to new word
-      if (newPos >= 0 && newPos < spans.length) {
-        spans[newPos].classList.add("word-audio-current");
-
-        // Auto-scroll: only if word is near viewport edge
-        const target = spans[newPos];
-        const rect = target.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-        if (rect.top < 80 || rect.bottom > viewportHeight - 100) {
-          target.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (newSentence !== highlightedSentenceRef.current) {
+      const root = containerRef.current;
+      if (root) {
+        if (highlightedSentenceRef.current >= 0) {
+          root
+            .querySelectorAll(
+              `.sentence-unit[data-sentence-id="${highlightedSentenceRef.current}"]`
+            )
+            .forEach((el) => el.classList.remove("sentence-audio-current"));
+        }
+        if (newSentence >= 0) {
+          const target = root.querySelector<HTMLElement>(
+            `.sentence-unit[data-sentence-id="${newSentence}"]`
+          );
+          if (target) {
+            target.classList.add("sentence-audio-current");
+            const rect = target.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            if (rect.top < 80 || rect.bottom > viewportHeight - 100) {
+              target.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+          }
         }
       }
-      highlightedPosRef.current = newPos;
+      highlightedSentenceRef.current = newSentence;
     }
 
     karaokeRafRef.current = requestAnimationFrame(karaokeTick);
-  }, [getWordSpans, findPositionAtTime]);
+  }, [highlightMode, findPositionAtTime]);
 
   // Start/stop the karaoke RAF loop based on play state
   useEffect(() => {
@@ -568,11 +583,15 @@ export default function InteractiveStory({
         karaokeRafRef.current = null;
       }
       // Clear highlight when audio stops
-      const spans = getWordSpans();
-      if (spans && highlightedPosRef.current >= 0 && highlightedPosRef.current < spans.length) {
-        spans[highlightedPosRef.current].classList.remove("word-audio-current");
+      const root = containerRef.current;
+      if (root && highlightedSentenceRef.current >= 0) {
+        root
+          .querySelectorAll(
+            `.sentence-unit[data-sentence-id="${highlightedSentenceRef.current}"]`
+          )
+          .forEach((el) => el.classList.remove("sentence-audio-current"));
       }
-      highlightedPosRef.current = -1;
+      highlightedSentenceRef.current = -1;
     }
     return () => {
       if (karaokeRafRef.current) {
@@ -580,7 +599,7 @@ export default function InteractiveStory({
         karaokeRafRef.current = null;
       }
     };
-  }, [isAudioPlaying, karaokeTick, getWordSpans]);
+  }, [isAudioPlaying, karaokeTick]);
 
   // Split body text into paragraphs, then tokenize each paragraph.
   // Songs keep blank lines so stanzas match Completa la canción.
@@ -614,6 +633,7 @@ export default function InteractiveStory({
 
   const handleLookup = useCallback(
     (word: WordData) => {
+      setJustClearedId(null);
       if (!trackLookups || !storyId) return;
       void recordWordLookup({
         wordId: word.id,
@@ -624,9 +644,24 @@ export default function InteractiveStory({
     [trackLookups, storyId, sessionId]
   );
 
+  const handleClearLookup = useCallback(
+    (word: WordData) => {
+      setSeenPositions((prev) => {
+        const next = new Set(prev);
+        next.delete(word.position);
+        return next;
+      });
+      setJustClearedId(word.id);
+      if (!trackLookups) return;
+      void clearWordLookup({ wordId: word.id });
+    },
+    [trackLookups]
+  );
+
   const handleDismiss = useCallback(() => {
     setActivePosition(null);
     setActiveExpressionId(null);
+    setJustClearedId(null);
   }, []);
 
   // Dismiss on a real outside click, not on the click that opened or pinned
@@ -642,6 +677,7 @@ export default function InteractiveStory({
         return (
           node.closest(".word-span") != null ||
           node.closest(".word-tooltip") != null ||
+          node.closest(".word-help-sheet") != null ||
           node.closest(".word-flag-badge") != null ||
           node.closest(".sound-video-modal") != null ||
           node.tagName === "DIALOG"
@@ -781,7 +817,32 @@ export default function InteractiveStory({
                   {speakerJoin}
                 </span>
               )}
-              {spokenTokens.map((token, tokenIdx) => {
+              {(() => {
+                const groups: {
+                  sentenceId: number;
+                  start: number;
+                  tokens: { token: string; tokenIdx: number }[];
+                }[] = [];
+                spokenTokens.forEach((token, tokenIdx) => {
+                  const sid = sentenceIds[wordPosition + tokenIdx] ?? 0;
+                  const last = groups[groups.length - 1];
+                  if (!last || last.sentenceId !== sid) {
+                    groups.push({
+                      sentenceId: sid,
+                      start: wordPosition + tokenIdx,
+                      tokens: [{ token, tokenIdx }],
+                    });
+                  } else {
+                    last.tokens.push({ token, tokenIdx });
+                  }
+                });
+                return groups.map((group) => (
+                  <span
+                    key={`s-${group.sentenceId}-${group.start}`}
+                    className="sentence-unit"
+                    data-sentence-id={group.sentenceId}
+                  >
+                    {group.tokens.map(({ token, tokenIdx }) => {
                 const currentPos = wordPosition++;
                 const occurrenceIndex = nextOccurrenceIndex(
                   occurrenceCounts,
@@ -861,6 +922,7 @@ export default function InteractiveStory({
                       expression={expression}
                       isHighlighted={isHighlighted}
                       onPin={handlePin}
+                      onDismiss={handleDismiss}
                       isActive={isActive}
                       isExpressionActive={isExpressionActive}
                       hintClass={
@@ -870,6 +932,8 @@ export default function InteractiveStory({
                       }
                       onFirstInteraction={() => setHasInteracted(true)}
                       onLookup={handleLookup}
+                      onClearLookup={handleClearLookup}
+                      justCleared={justClearedId === word.id}
                       flagText={token}
                       occurrenceIndex={occurrenceIndex}
                       isBold={isBold}
@@ -893,7 +957,10 @@ export default function InteractiveStory({
                     {trailing}
                   </span>
                 );
-              })}
+                    })}
+                  </span>
+                ));
+              })()}
             </p>
           );
         })}

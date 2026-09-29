@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Mic } from "lucide-react";
+import ActionButton from "./ActionButton";
 import MicroExplanation from "./MicroExplanation";
 import PronunciationDebug from "./PronunciationDebug";
 import { assessPronunciation } from "@/lib/pronunciation/client";
@@ -299,14 +300,14 @@ export default function PronunciationPractice({
           )}
 
             {audioBlob && !isRecording && (
-              <button
-                type="button"
+              <ActionButton
                 onClick={() => void handleAssess()}
                 disabled={isSubmitting || !saveResponses}
-                className="px-5 py-3 rounded-card bg-accent text-white text-label-md hover:bg-accent-hover transition-colors min-h-11 disabled:bg-surface-hover disabled:text-text-muted disabled:cursor-not-allowed"
+                state={isSubmitting ? "pending" : "idle"}
+                pendingLabel="Revisando..."
               >
-              {isSubmitting ? "Revisando..." : "Revisar pronunciacion"}
-            </button>
+                Revisar pronunciación
+              </ActionButton>
           )}
 
           {error && (

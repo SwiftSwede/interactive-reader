@@ -31,7 +31,7 @@
   --warning-bg: #f5e6c4;
   --select-caret-size: 16px;
   --select-caret-inset: 16px;
-  --lesson-step-nav-height: 68px;
+  --lesson-step-nav-height: 72px;
 }
 
 @theme inline {
@@ -531,11 +531,15 @@ select:not([multiple]) {
   border-radius: 2px;
 }
 
-/* Current word during audio playback (karaoke highlight) */
-.word-audio-current {
-  background-color: rgb(254 240 138); /* yellow-200 */
-  border-radius: 2px;
-  transition: background-color 0.1s ease;
+/* Current sentence during story audio (quiet fill, not karaoke yellow) */
+.sentence-unit {
+  border-radius: 4px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.sentence-audio-current {
+  background-color: color-mix(in srgb, var(--accent-soft) 55%, var(--paper));
 }
 
 .teaching-note-mark {
@@ -627,29 +631,31 @@ select:not([multiple]) {
   pointer-events: auto;
 }
 
-.word-tooltip-inner {
+.word-help-sheet-body .word-tooltip-inner {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  background: var(--accent-soft);
-  border: 1px solid var(--paper-line);
-  border-radius: var(--radius-small);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
   font-family: var(--font-roboto-flex), system-ui, sans-serif;
   font-size: 14px;
   line-height: 1.4;
 }
 
+.word-tooltip-gloss {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 0;
+  min-height: 44px;
+}
+
 .word-tooltip-translation {
   font-weight: 600;
   color: var(--text-primary);
-}
-
-.word-tooltip-phonetic-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 6px;
 }
 
 .word-tooltip-phonetic {
@@ -659,27 +665,28 @@ select:not([multiple]) {
 }
 
 .word-tooltip-play-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  min-width: 44px;
+  min-height: 44px;
+  margin: -10px 0;
+  padding: 0;
   border: none;
-  border-radius: 50%;
-  background-color: var(--surface);
-  color: var(--accent);
+  border-radius: var(--radius-card);
+  background: transparent;
+  color: var(--text-accent);
   cursor: pointer;
   flex-shrink: 0;
-  transition: background-color 0.15s ease;
   pointer-events: auto;
 }
 
 .word-tooltip-play-btn:hover {
-  background-color: var(--surface-hover);
+  background: var(--accent-soft);
 }
 
 .word-tooltip-play-btn:active {
-  background-color: var(--paper-line);
+  background: var(--paper-line);
 }
 
 .word-tooltip-expression {
@@ -689,10 +696,9 @@ select:not([multiple]) {
 }
 
 .word-tooltip-pos {
-  font-size: 11px;
+  font-size: 13px;
+  font-weight: 400;
   color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
 }
 
 @keyframes tooltip-fade-in {
@@ -1123,6 +1129,11 @@ body:has(.step-nav):has(
   position: absolute;
   inset: 0;
   background: rgba(28, 22, 16, 0.35);
+  animation: sheet-overlay-in 0.2s ease-out;
+}
+
+.story-text-sheet-exit .story-text-sheet-overlay {
+  animation: sheet-overlay-out 0.2s ease-out forwards;
 }
 
 .story-text-sheet-panel {
@@ -1138,6 +1149,10 @@ body:has(.step-nav):has(
   border-top: 1px solid var(--paper-line);
   border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
   animation: story-sheet-in 0.2s ease-out;
+}
+
+.story-text-sheet-exit .story-text-sheet-panel {
+  animation: story-sheet-out 0.2s ease-out forwards;
 }
 
 .story-text-sheet-handle {
@@ -1202,11 +1217,167 @@ body:has(.step-nav):has(
 
 @keyframes story-sheet-in {
   from {
+    opacity: 0;
     transform: translateY(24px);
   }
   to {
+    opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes story-sheet-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@keyframes sheet-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sheet-overlay-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* ── Word help sheet ──────────────────────────────────── */
+/* Full-viewport overlay (dims story behind nav/audio too). Panel rises
+   from the bottom of the screen *behind* sticky audio (z 40) and step-nav
+   (z 35). Content is padded so it is not hidden by that chrome. */
+
+.word-help-sheet {
+  --word-help-behind: calc(
+    var(--lesson-step-nav-height) + env(safe-area-inset-bottom, 0px)
+  );
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+body.sticky-audio-active .word-help-sheet {
+  --word-help-behind: calc(
+    var(--lesson-step-nav-height) + 64px + env(safe-area-inset-bottom, 0px)
+  );
+}
+
+body.sticky-character-band-active .word-help-sheet {
+  --word-help-behind: calc(
+    var(--lesson-step-nav-height) + 72px + env(safe-area-inset-bottom, 0px)
+  );
+}
+
+.word-help-sheet-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(28, 22, 16, 0.35);
+  pointer-events: auto;
+  animation: sheet-overlay-in 0.2s ease-out;
+}
+
+.word-help-sheet-exit .word-help-sheet-overlay {
+  animation: sheet-overlay-out 0.2s ease-out forwards;
+}
+
+.word-help-sheet-panel {
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 672px;
+  margin: 0 auto;
+  max-height: calc(45vh + var(--word-help-behind));
+  padding-bottom: var(--word-help-behind);
+  overflow: hidden;
+  background: var(--surface);
+  border-top: 1px solid var(--paper-line);
+  border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
+  animation: story-sheet-in 0.2s ease-out;
+}
+
+.word-help-sheet-exit .word-help-sheet-panel {
+  animation: story-sheet-out 0.2s ease-out forwards;
+}
+
+.word-help-sheet-handle {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 4px;
+  min-height: 16px;
+  cursor: grab;
+  touch-action: none;
+  flex-shrink: 0;
+}
+
+.word-help-sheet-handle-bar {
+  width: 36px;
+  height: 4px;
+  border-radius: 9999px;
+  background: var(--paper-line);
+}
+
+.word-help-sheet-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 16px 4px;
+  flex-shrink: 0;
+}
+
+.word-help-sheet-title {
+  margin: 0;
+  font-family: var(--font-lora), Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+.word-help-sheet-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 12px;
+  border: none;
+  border-radius: var(--radius-card);
+  background: transparent;
+  color: var(--text-accent);
+  cursor: pointer;
+}
+
+.word-help-sheet-close:hover {
+  background: var(--accent-soft);
+}
+
+.word-help-sheet-body {
+  overflow-y: auto;
+  padding: 0 16px 8px;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ── Audio seek range ───────────────────────────────── */
@@ -1776,7 +1947,10 @@ body.sticky-character-band-active {
   .sticky-lesson-timer,
   .step-panel,
   .step-nav,
-  .story-text-sheet-panel {
+  .story-text-sheet-panel,
+  .story-text-sheet-overlay,
+  .word-help-sheet-panel,
+  .word-help-sheet-overlay {
     animation: none;
   }
 
@@ -1854,6 +2028,26 @@ body.sticky-character-band-active {
       var(--lesson-step-nav-height) + env(safe-area-inset-bottom, 0px) + 16px
     );
     padding-bottom: 0;
+  }
+
+  body:has(.step-nav) .word-help-sheet {
+    --word-help-behind: calc(
+      var(--lesson-step-nav-height) + env(safe-area-inset-bottom, 0px) + 16px
+    );
+  }
+
+  body:has(.step-nav).sticky-audio-active .word-help-sheet {
+    --word-help-behind: calc(
+      var(--lesson-step-nav-height) + env(safe-area-inset-bottom, 0px) + 16px +
+        72px
+    );
+  }
+
+  body:has(.step-nav).sticky-character-band-active .word-help-sheet {
+    --word-help-behind: calc(
+      var(--lesson-step-nav-height) + env(safe-area-inset-bottom, 0px) + 16px +
+        80px
+    );
   }
 
   body:has(.step-nav):has(

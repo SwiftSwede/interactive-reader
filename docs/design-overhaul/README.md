@@ -12,5 +12,5 @@ A four-step design overhaul workflow, kickstarted by the Manus competitive repor
 **Rules:**
 - DESIGN.md remains the final authority on visual decisions; approved proposals update it.
 - Never violate the hard constraints in 00-BRIEF.md (no gamification, no pressure language, value-before-signup, 375px floor, input-first, $0 infra).
-- The light-vs-dark theme is Proposal #1 and is Kyle's call — present both neutrally.
+- Theme is decided: Paper Light. Do not reopen dark vs light in proposals.
 - Build discipline per .cursorrules: `npx tsc --noEmit` + tests before any push touching src/.

@@ -26,6 +26,7 @@ import MusicLessonSteps from "./music/MusicLessonSteps";
 import MovieTalkLessonSteps from "./movietalk/MovieTalkLessonSteps";
 import { PlaybackRateProvider } from "./PlaybackRateContext";
 import EndClassButton from "@/components/EndClassButton";
+import FreePreviewNotice from "@/components/FreePreviewNotice";
 import { getSessionPhase } from "@/lib/session-phase";
 import { createClient } from "@/lib/supabase/client";
 import { recordStoryOpened } from "@/app/lesson/[slug]/actions";
@@ -63,6 +64,8 @@ export default function StorySteps({
   savedResponses,
   savedPersonalResponses,
   trackLookups = false,
+  lookedUpWordIds = [],
+  freePreviewNotice = false,
   readerMode = "open",
   showPractice,
   storyAudioUrl,
@@ -97,6 +100,8 @@ export default function StorySteps({
   savedResponses?: SavedComprehensionResponse[];
   savedPersonalResponses?: SavedPersonalResponse[];
   trackLookups?: boolean;
+  lookedUpWordIds?: string[];
+  freePreviewNotice?: boolean;
   readerMode?: "classroom-live" | "classroom-review" | "open";
   showPractice: boolean;
   storyAudioUrl: string | null;
@@ -129,6 +134,8 @@ export default function StorySteps({
         data={data}
         sessionId={sessionId}
         trackLookups={trackLookups}
+        lookedUpWordIds={lookedUpWordIds}
+        freePreviewNotice={freePreviewNotice}
         readerMode={readerMode}
         isTeacher={isTeacher}
         previewLevel={previewLevel}
@@ -154,6 +161,8 @@ export default function StorySteps({
         allowReveal={allowReveal}
         sessionId={sessionId}
         trackLookups={trackLookups}
+        lookedUpWordIds={lookedUpWordIds}
+        freePreviewNotice={freePreviewNotice}
         readerMode={readerMode}
         isTeacher={isTeacher}
         previewLevel={previewLevel}
@@ -183,6 +192,8 @@ export default function StorySteps({
       savedResponses={savedResponses}
       savedPersonalResponses={savedPersonalResponses}
       trackLookups={trackLookups}
+      lookedUpWordIds={lookedUpWordIds}
+      freePreviewNotice={freePreviewNotice}
       readerMode={readerMode}
       showPractice={showPractice}
       storyAudioUrl={storyAudioUrl}
@@ -215,6 +226,8 @@ function ClassicStorySteps({
   savedResponses,
   savedPersonalResponses,
   trackLookups = false,
+  lookedUpWordIds = [],
+  freePreviewNotice = false,
   readerMode = "open",
   showPractice,
   storyAudioUrl,
@@ -243,6 +256,8 @@ function ClassicStorySteps({
   savedResponses?: SavedComprehensionResponse[];
   savedPersonalResponses?: SavedPersonalResponse[];
   trackLookups?: boolean;
+  lookedUpWordIds?: string[];
+  freePreviewNotice?: boolean;
   readerMode?: "classroom-live" | "classroom-review" | "open";
   showPractice: boolean;
   storyAudioUrl: string | null;
@@ -402,6 +417,7 @@ function ClassicStorySteps({
     storyId: story.id,
     sessionId,
     trackLookups,
+    lookedUpWordIds,
     kind: (story.kind ?? "story") as
       | "story"
       | "dialogue"
@@ -430,6 +446,7 @@ function ClassicStorySteps({
             previewLevel={previewLevel}
             viewToggle={viewToggle}
           />
+          {freePreviewNotice ? <FreePreviewNotice /> : null}
           <nav className="step-progress max-w-2xl mx-auto px-2" aria-label="Pasos">
             {steps.map((step, index) => (
               <div key={step.id} className="contents">
