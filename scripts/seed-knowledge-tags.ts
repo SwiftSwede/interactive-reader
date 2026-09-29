@@ -44,6 +44,26 @@ async function main() {
     console.log(`${table}: ${rows.length} tags`);
   }
 
+  // Error tags stay out of TAG_TYPES (they are not content tags). Seed them
+  // once the slice 71 migration has created error_tags.
+  const errorRows = TAG_SEEDS.error.map((seed) => ({
+    name: seed.name,
+    display_name: seed.displayName,
+  }));
+  const errorTable = tagTableFor("error");
+  const { error: errorTagsError } = await admin
+    .from(errorTable)
+    .upsert(errorRows, { onConflict: "name" });
+
+  if (errorTagsError) {
+    console.error(`${errorTable} upsert failed:`, errorTagsError.message);
+    console.error(
+      "If the table is missing, apply supabase/migrations/20260929_slice71_teacher_observation.sql first."
+    );
+    process.exit(1);
+  }
+  console.log(`${errorTable}: ${errorRows.length} tags`);
+
   // Pass 2: grammar prerequisites, now that every id exists.
   const { data: grammarRows, error: grammarError } = await admin
     .from("grammar_tags")

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import LocalDateTime from "@/components/LocalDateTime";
+import ObservationTagForm from "@/components/teacher/ObservationTagForm";
+import { createAdminClient } from "@/lib/supabase/admin";
 import {
   getOwnedCourse,
   loadCourseSessions,
@@ -9,6 +11,10 @@ import {
   loadWritingSubmissions,
   sessionTitle,
 } from "@/lib/teacher";
+import {
+  loadObservationVocabulary,
+  loadOpenFlags,
+} from "@/lib/topic-evidence";
 
 export const metadata = {
   title: "Estudiante - Profe Kyle",
@@ -38,6 +44,9 @@ export default async function StudentDetailPage({
   }
 
   const displayName = enrollment.display_name.trim() || "Sin nombre";
+  const admin = createAdminClient();
+  const vocabularyP = loadObservationVocabulary(admin);
+  const flagsP = loadOpenFlags(admin, [studentId]);
 
   const perSession = await Promise.all(
     sessions.map(async (session) => {
@@ -72,6 +81,8 @@ export default async function StudentDetailPage({
     return 0;
   });
 
+  const [vocabulary, openFlags] = await Promise.all([vocabularyP, flagsP]);
+
   return (
     <section>
       <p className="text-sm text-text-muted">
@@ -86,6 +97,19 @@ export default async function StudentDetailPage({
       <p className="mt-1 text-sm text-text-secondary">
         Lo que hizo en cada clase. Sin juicios, solo lo que se ve.
       </p>
+
+      <div className="mt-6">
+        <h2 className="text-headline-md text-text-primary">Observación</h2>
+        <ObservationTagForm
+          studentId={studentId}
+          vocabulary={vocabulary}
+          existingFlags={openFlags.map((flag) => ({
+            tagType: flag.tagType,
+            tagName: flag.tagName,
+            displayName: flag.displayName,
+          }))}
+        />
+      </div>
 
       {focusedFirst.length === 0 ? (
         <p className="mt-8 text-sm text-text-muted">

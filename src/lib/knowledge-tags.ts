@@ -175,8 +175,8 @@ export const PHONETIC_TAG_SEEDS: TagSeed[] = [
 ];
 
 /**
- * L1 interference traps. Learner-anchored: these never enter the catalog
- * tag tables. A tag is the trap family. The specific pair rides in event detail.
+ * L1 interference traps. Seeded into `error_tags`, not into content tagging.
+ * A tag is the trap family. The specific pair rides in event detail.
  */
 export const ERROR_TAG_SEEDS: TagSeed[] = [
   { name: "adverb_placement", displayName: "Adverb placement" },

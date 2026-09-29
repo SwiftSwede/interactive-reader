@@ -9,6 +9,12 @@ import SessionRecordingForm from "@/components/teacher/SessionRecordingForm";
 import AttendanceToggle from "@/components/teacher/AttendanceToggle";
 import { isAutoMarked } from "@/lib/attendance";
 import EndClassButton from "@/components/EndClassButton";
+import ClassNotesPanel from "@/components/teacher/ClassNotesPanel";
+import { createAdminClient } from "@/lib/supabase/admin";
+import {
+  loadObservationVocabulary,
+  loadOpenFlags,
+} from "@/lib/topic-evidence";
 import { getSessionPhase, teachingEndMs } from "@/lib/session-phase";
 import StartWritingTimerButton from "./StartWritingTimerButton";
 import WritingTitleForm from "./WritingTitleForm";
@@ -158,6 +164,47 @@ export default async function SessionDetailPage({
     storySlug: session.story?.slug,
   });
 
+  const noteStudents = students.map((row) => ({
+    id: row.studentId,
+    name: row.displayName,
+    email: null as string | null,
+  }));
+  let observationVocabulary: Awaited<
+    ReturnType<typeof loadObservationVocabulary>
+  > = [];
+  let observationFlags: Awaited<ReturnType<typeof loadOpenFlags>> = [];
+
+  if (session.classEndedAt) {
+    const admin = createAdminClient();
+    const studentIds = noteStudents.map((row) => row.id);
+    const emailQuery =
+      studentIds.length === 0
+        ? Promise.resolve({
+            data: [] as { id: string; email: string | null }[],
+            error: null,
+          })
+        : admin.from("profiles").select("id, email").in("id", studentIds);
+
+    const [vocabulary, flags, emails] = await Promise.all([
+      loadObservationVocabulary(admin),
+      loadOpenFlags(admin, studentIds),
+      emailQuery,
+    ]);
+    observationVocabulary = vocabulary;
+    observationFlags = flags;
+    if (emails.error) {
+      console.error("class note emails failed:", emails.error.message);
+    } else {
+      const emailById = new Map(
+        (emails.data ?? []).map((row) => [row.id, row.email])
+      );
+      for (const student of noteStudents) {
+        const email = emailById.get(student.id);
+        student.email = email && email.length > 0 ? email : null;
+      }
+    }
+  }
+
   return (
     <section>
       <p className="text-sm text-text-muted">
@@ -175,7 +222,14 @@ export default async function SessionDetailPage({
       {session.notes && (
         <p className="mt-2 text-sm text-text-secondary">{session.notes}</p>
       )}
-      {classLive ? (
+      {session.classEndedAt ? (
+        <ClassNotesPanel
+          sessionId={session.id}
+          students={noteStudents}
+          vocabulary={observationVocabulary}
+          flags={observationFlags}
+        />
+      ) : classLive ? (
         <EndClassButton
           sessionId={session.id}
           classEndedAt={session.classEndedAt}

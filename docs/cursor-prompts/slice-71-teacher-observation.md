@@ -72,3 +72,12 @@ Surface B — anytime: `students/[studentId]/page.tsx` gets the same `Observatio
 - Student route visibility line untouched: nothing here renders on student routes.
 - PRD row: Slice 71 (if the number is taken, use the next free one and note it in this file's header, as in Slice 69).
 - Commit only this slice's files: migration, seeder + SCRIPTS.md, types, topic-evidence.ts (+ test), content-tags.ts, new action, ObservationTagForm + touched teacher pages, PRD row, this file. Do not sweep the working tree.
+
+## Plan review decisions
+
+- Slice number 71 was free. No rename.
+- The live End class button sits under the title and unmounts once the teaching window closes. Notas de clase occupies that slot when `class_ended_at` is set. A class that ages out without Terminar does not show the panel. The student page remains the anytime surface.
+- `recordTopicEvidence` still swallows database errors for student activities. A teacher save that resolved tags and wrote fewer rows than that fails in Spanish and does not insert the learning event.
+- Clear maps to `practiced`. The teacher function never writes `seen`.
+- The picker is Errores comunes, Sonidos, and Gramática. Vocabulary stays in the evidence allow-list. An existing vocabulary flag can be cleared. A typed name that is not in the picker becomes note text.
+- Chips reuse the 8px tag radius and the existing word-chip surface. They are not pills. DESIGN.md records that sentence.

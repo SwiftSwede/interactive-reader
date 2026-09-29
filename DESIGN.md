@@ -71,6 +71,7 @@ layout:
   teacher_exception: /teacher/* is desktop-first 3-column; never applies to student routes
 components:
   buttons: [primary, secondary, ghost, step-nav-pill, ActionButton]
+  teacher_observation_chip: "8px radius (rounded-small), surface-hover fill, 1px paper-line border, Lucide X in a 44px hit area. Not a pill."
   icons: Lucide React only, never emojis
   navigation: browsing mode (bottom tabs) vs lesson mode (full-screen, step nav); never coexist
 ---
@@ -308,7 +309,7 @@ Three columns, full viewport height, no bottom tab bar (the student 3-tab bar do
 
 ### Visual language
 
-Same Paper Light theme, same tokens, same type scale as the student app (Lora headlines, Roboto Flex UI labels). Same tonal elevation: white cards on cream paper, 1px `--paper-line` borders, no shadows except sticky elements. Buttons: rounded-rectangle 16px (the pill shape stays reserved for lesson step nav). Touch targets 44px still apply — Kyle clicks fast mid-class. Teacher create/delete confirms (Nuevo mes, Nueva clase, Borrar mes) are centered `<dialog>` lightboxes (`rounded-sheet`, dimmed backdrop), not inline cards that push the page down.
+Same Paper Light theme, same tokens, same type scale as the student app (Lora headlines, Roboto Flex UI labels). Same tonal elevation: white cards on cream paper, 1px `--paper-line` borders, no shadows except sticky elements. Buttons: rounded-rectangle 16px (the pill shape stays reserved for lesson step nav). Teacher observation chips (Notas de clase and the student page) use the 8px tag radius: `surface-hover` fill, 1px `--paper-line` border, and a Lucide X inside a 44px hit area. Touch targets 44px still apply — Kyle clicks fast mid-class. Teacher create/delete confirms (Nuevo mes, Nueva clase, Borrar mes) are centered `<dialog>` lightboxes (`rounded-sheet`, dimmed backdrop), not inline cards that push the page down.
 
 ### Key screens
 

@@ -302,11 +302,13 @@ npx tsx scripts/apply-content-tags.ts
 
 ### Seed the Phase 4 tag catalogs
 
-Seeds the GrammarTag, VocabularyTag, and PhoneticTag catalogs after the Phase 4 schema is applied.
+Seeds the GrammarTag, VocabularyTag, and PhoneticTag catalogs, then the 21 error tags into `error_tags`. Idempotent upsert on `name`. Run once after `supabase/migrations/20260929_slice71_teacher_observation.sql` is applied. Safe to re-run.
 
 ```bash
 npx tsx scripts/seed-knowledge-tags.ts
 ```
+
+**Cost / time / status:** One run after the Slice 71 migration. No AI cost.
 
 ---
 

@@ -696,7 +696,8 @@ export type EvidenceSourceType =
   | "dictation"
   | "pronunciation"
   | "writing"
-  | "exam";
+  | "exam"
+  | "teacher_observation";
 
 export interface UserTopicEvidence {
   id: string;

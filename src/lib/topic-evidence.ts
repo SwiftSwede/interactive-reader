@@ -6,7 +6,8 @@ import type {
   TagType,
   UserTopicEvidence,
 } from "@/types";
-import { getTagsForStory } from "./content-tags";
+import { AppError } from "@/lib/errors";
+import { getTagsForStory, tagTableFor } from "./content-tags";
 import { phoneticTagsFromIpa } from "./knowledge-tags";
 
 // ── Topic evidence writer (Phase 4, slice 37) ──────────────
@@ -25,6 +26,7 @@ export const PRACTICE_SOURCES: readonly EvidenceSourceType[] = [
   "pronunciation",
   "writing",
   "exam",
+  "teacher_observation",
 ];
 
 /** Passive exposure. May seed an empty row, never overwrite one. */
@@ -44,6 +46,7 @@ export const CLEARING_SOURCES: readonly EvidenceSourceType[] = [
   "pronunciation",
   "writing",
   "exam",
+  "teacher_observation",
 ];
 
 const STATUS_RANK: Record<EvidenceStatus, number> = {
@@ -71,6 +74,9 @@ export function nextEvidenceStatus(
   existing: ExistingEvidence | null,
   candidate: EvidenceCandidate
 ): EvidenceStatus | null {
+  // Teacher judgment overwrites every previous status, including a sticky flag.
+  if (candidate.sourceType === "teacher_observation") return candidate.status;
+
   if (existing === null) return candidate.status;
 
   // Passive exposure never rewrites an existing judgement.
@@ -199,6 +205,7 @@ const SOURCE_TAG_TYPES: Record<EvidenceSourceType, readonly TagType[]> = {
   pronunciation: ["phonetic"],
   writing: ["grammar", "vocabulary"],
   exam: ["grammar", "vocabulary"],
+  teacher_observation: ["grammar", "vocabulary", "phonetic", "error"],
 };
 
 export function tagTypesForSource(
@@ -321,4 +328,235 @@ export async function getEvidenceForUser(
     evidenceDetail: (row.evidence_detail as Record<string, unknown>) ?? {},
     updatedAt: row.updated_at as string,
   }));
+}
+
+const OBSERVATION_FAILED =
+  "No pude guardar la observación. Inténtalo de nuevo.";
+
+export type TeacherObservationAction = "flag" | "clear";
+
+export type TeacherObservationInput = {
+  studentId: string;
+  sessionId?: string | null;
+  observations: Array<{
+    tagType: TagType;
+    tagName: string;
+    action: TeacherObservationAction;
+  }>;
+  note?: string;
+};
+
+export type TeacherObservationResult = {
+  written: number;
+  flags: string[];
+  clears: string[];
+  note: string;
+};
+
+/**
+ * Writes teacher judgment for one student.
+ *
+ * The caller must already have checked that this teacher owns the student
+ * (and the session, when there is one). Unknown tag names are not errors:
+ * they drop out of the evidence rows and are appended to the note.
+ */
+export async function recordTeacherObservation(
+  supabase: SupabaseClient,
+  input: TeacherObservationInput
+): Promise<TeacherObservationResult> {
+  const byKey = new Map<
+    string,
+    { tagType: TagType; tagName: string; action: TeacherObservationAction }
+  >();
+  for (const observation of input.observations) {
+    const tagName = observation.tagName.trim();
+    if (!tagName) continue;
+    byKey.set(`${observation.tagType}:${tagName}`, {
+      tagType: observation.tagType,
+      tagName,
+      action: observation.action,
+    });
+  }
+
+  const resolved = await Promise.all(
+    [...byKey.values()].map(async (observation) => {
+      const { data, error } = await supabase
+        .from(tagTableFor(observation.tagType))
+        .select("id")
+        .eq("name", observation.tagName)
+        .maybeSingle();
+
+      if (error) {
+        console.error("recordTeacherObservation tag lookup failed:", error.message);
+        throw new AppError(OBSERVATION_FAILED, "TAG_LOOKUP_FAILED", 500);
+      }
+
+      return {
+        ...observation,
+        tagId: (data?.id as string | undefined) ?? null,
+      };
+    })
+  );
+
+  const flags: string[] = [];
+  const clears: string[] = [];
+  const misses: string[] = [];
+  const writes: EvidenceWrite[] = [];
+
+  for (const row of resolved) {
+    if (!row.tagId) {
+      misses.push(row.tagName);
+      continue;
+    }
+    if (row.action === "flag") flags.push(row.tagName);
+    else clears.push(row.tagName);
+    writes.push({
+      tagType: row.tagType,
+      tagId: row.tagId,
+      status: row.action === "flag" ? "needs_more_practice" : "practiced",
+    });
+  }
+
+  const result = await recordTopicEvidence(supabase, {
+    userId: input.studentId,
+    sourceType: "teacher_observation",
+    sourceId: input.sessionId ?? null,
+    writes,
+  });
+
+  if (writes.length > 0 && result.written !== writes.length) {
+    throw new AppError(OBSERVATION_FAILED, "EVIDENCE_WRITE_FAILED", 500);
+  }
+
+  return {
+    written: result.written,
+    flags,
+    clears,
+    note: noteWithMisses(input.note ?? "", misses),
+  };
+}
+
+function noteWithMisses(note: string, misses: string[]): string {
+  const trimmed = note.trim();
+  if (misses.length === 0) return trimmed;
+  const line = `No está en la lista: ${misses.join(", ")}`;
+  return trimmed ? `${trimmed}\n${line}` : line;
+}
+
+export type ObservationTagChoice = {
+  tagType: "error" | "phonetic" | "grammar";
+  group: "Errores comunes" | "Sonidos" | "Gramática";
+  name: string;
+  displayName: string;
+};
+
+const PICKER_GROUPS: Array<{
+  tagType: ObservationTagChoice["tagType"];
+  group: ObservationTagChoice["group"];
+}> = [
+  { tagType: "error", group: "Errores comunes" },
+  { tagType: "phonetic", group: "Sonidos" },
+  { tagType: "grammar", group: "Gramática" },
+];
+
+export async function loadObservationVocabulary(
+  supabase: SupabaseClient
+): Promise<ObservationTagChoice[]> {
+  const groups = await Promise.all(
+    PICKER_GROUPS.map(async ({ tagType, group }) => {
+      const { data, error } = await supabase
+        .from(tagTableFor(tagType))
+        .select("name, display_name")
+        .order("display_name");
+
+      if (error) {
+        console.error("loadObservationVocabulary failed:", error.message);
+        throw new AppError(
+          "No pude cargar las etiquetas.",
+          "TAG_CATALOG_READ_FAILED",
+          500
+        );
+      }
+
+      return (data ?? []).map((row) => ({
+        tagType,
+        group,
+        name: row.name as string,
+        displayName: row.display_name as string,
+      }));
+    })
+  );
+
+  return groups.flat();
+}
+
+export type StudentOpenFlag = {
+  studentId: string;
+  tagType: TagType;
+  tagName: string;
+  displayName: string;
+};
+
+/** Current sticky flags for these students, with catalog names attached. */
+export async function loadOpenFlags(
+  supabase: SupabaseClient,
+  studentIds: string[]
+): Promise<StudentOpenFlag[]> {
+  const ids = [...new Set(studentIds)];
+  if (ids.length === 0) return [];
+
+  const { data, error } = await supabase
+    .from("user_topic_evidence")
+    .select("user_id, tag_type, tag_id")
+    .eq("status", "needs_more_practice")
+    .in("user_id", ids);
+
+  if (error) {
+    console.error("loadOpenFlags failed:", error.message);
+    throw new AppError("No pude cargar las marcas.", "FLAG_READ_FAILED", 500);
+  }
+
+  const rows = data ?? [];
+  const idsByType = new Map<TagType, Set<string>>();
+  for (const row of rows) {
+    const tagType = row.tag_type as TagType;
+    const set = idsByType.get(tagType) ?? new Set<string>();
+    set.add(row.tag_id as string);
+    idsByType.set(tagType, set);
+  }
+
+  const nameByKey = new Map<string, { name: string; displayName: string }>();
+  await Promise.all(
+    [...idsByType.entries()].map(async ([tagType, tagIds]) => {
+      const { data: tags, error: tagError } = await supabase
+        .from(tagTableFor(tagType))
+        .select("id, name, display_name")
+        .in("id", [...tagIds]);
+
+      if (tagError) {
+        console.error("loadOpenFlags catalog failed:", tagError.message);
+        throw new AppError("No pude cargar las marcas.", "FLAG_READ_FAILED", 500);
+      }
+
+      for (const tag of tags ?? []) {
+        nameByKey.set(`${tagType}:${tag.id}`, {
+          name: tag.name as string,
+          displayName: tag.display_name as string,
+        });
+      }
+    })
+  );
+
+  const flags: StudentOpenFlag[] = [];
+  for (const row of rows) {
+    const meta = nameByKey.get(`${row.tag_type}:${row.tag_id}`);
+    if (!meta) continue;
+    flags.push({
+      studentId: row.user_id as string,
+      tagType: row.tag_type as TagType,
+      tagName: meta.name,
+      displayName: meta.displayName,
+    });
+  }
+  return flags;
 }

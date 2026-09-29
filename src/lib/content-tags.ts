@@ -1,5 +1,4 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { AppError } from "@/lib/errors";
 import type {
   ContentRef,
   ContentTag,
@@ -15,7 +14,10 @@ import type {
 // content_id is polymorphic and has no foreign key, so the table each tag row
 // points at is decided here rather than by Postgres.
 
-/** Catalog tag families. Error tags are learner-anchored and have no table. */
+/**
+ * Content-tagging families only. Error tags have their own catalog
+ * (`error_tags`) but never attach to a story or prompt.
+ */
 export const TAG_TYPES: readonly Exclude<TagType, "error">[] = [
   "grammar",
   "vocabulary",
@@ -29,10 +31,11 @@ export const CONTENT_TYPES: readonly ContentType[] = [
   "presentation_prompt",
 ];
 
-const TAG_TABLES: Record<Exclude<TagType, "error">, string> = {
+const TAG_TABLES: Record<TagType, string> = {
   grammar: "grammar_tags",
   vocabulary: "vocabulary_tags",
   phonetic: "phonetic_tags",
+  error: "error_tags",
 };
 
 /** Table that owns content_id for a given content_type. */
@@ -44,12 +47,6 @@ const CONTENT_TABLES: Record<ContentType, string> = {
 };
 
 export function tagTableFor(tagType: TagType): string {
-  if (tagType === "error") {
-    throw new AppError(
-      "Error tags have no catalog table",
-      "ERROR_TAGS_NOT_CATALOG",
-    );
-  }
   return TAG_TABLES[tagType];
 }
 
