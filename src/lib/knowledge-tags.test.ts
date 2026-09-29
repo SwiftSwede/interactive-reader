@@ -4,11 +4,14 @@ import { join } from "node:path";
 import { test } from "node:test";
 
 import {
+  ERROR_TAG_SEEDS,
   GRAMMAR_TAG_SEEDS,
   PHONETIC_TAG_SEEDS,
   VOCABULARY_KEYWORDS,
   VOCABULARY_TAG_SEEDS,
   grammarTagFromLabel,
+  isValidErrorTag,
+  normalizeErrorTags,
   phoneticTagsFromFocusType,
   phoneticTagsFromIpa,
   proposeVocabularyTags,
@@ -88,6 +91,7 @@ test("tag names are unique within each catalog", () => {
     GRAMMAR_TAG_SEEDS,
     VOCABULARY_TAG_SEEDS,
     PHONETIC_TAG_SEEDS,
+    ERROR_TAG_SEEDS,
   ]) {
     const names = seeds.map((seed) => seed.name);
     assert.equal(new Set(names).size, names.length);
@@ -151,6 +155,49 @@ test("vocabulary keywords respect word boundaries", () => {
   // Plurals and simple inflections still count.
   const hits = proposeVocabularyTags("goals goal scored scoring", 1);
   assert.ok(hits.some((tag) => tag.name === "sports"));
+});
+
+test("error tags are a fixed 21-name vocabulary", () => {
+  assert.equal(ERROR_TAG_SEEDS.length, 21);
+  assert.equal(isValidErrorTag("age_expression"), true);
+  assert.equal(isValidErrorTag("invented_tag"), false);
+  for (const seed of ERROR_TAG_SEEDS) {
+    assert.equal(seed.prerequisites, undefined);
+  }
+});
+
+test("normalizeErrorTags keeps known names, drops the rest, and caps at 4", () => {
+  assert.deepEqual(
+    normalizeErrorTags(
+      ["age_expression", "not_a_tag", "age_expression", "for_vs_since"],
+      "I have 25 years",
+      "I am 25 years old",
+    ),
+    ["age_expression", "for_vs_since"],
+  );
+
+  assert.deepEqual(
+    normalizeErrorTags(
+      [
+        "adverb_placement",
+        "on_time",
+        "negative_auxiliary",
+        "subject_omission",
+        "double_negative",
+      ],
+      "Never I arrive at the time",
+      "I never arrive on time",
+    ),
+    ["adverb_placement", "on_time", "negative_auxiliary", "subject_omission"],
+  );
+});
+
+test("normalizeErrorTags is empty when the sentence did not change", () => {
+  assert.deepEqual(
+    normalizeErrorTags(["age_expression"], "I am 25.", "I am 25."),
+    [],
+  );
+  assert.deepEqual(normalizeErrorTags("age_expression", "I have 25 years", "I am 25."), []);
 });
 
 test("every vocabulary keyword group is a seeded tag", () => {

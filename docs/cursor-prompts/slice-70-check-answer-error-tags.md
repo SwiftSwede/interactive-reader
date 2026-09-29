@@ -1,5 +1,13 @@
 # Cursor prompt — check-answer error tags + "Errores comunes" tag family (Slice 70)
 
+## Plan review decisions
+
+- Slice 70 is free in the PRD. No renumber.
+- `content-tags.ts` is in this slice. `tagTableFor("error")` throws. `TAG_TYPES` stays grammar, vocabulary, and phonetic, so the seed script does not upsert error tags.
+- `age_expression` display name is `Age: I am 25`. The parenthetical in this prompt used an em dash. UI copy does not.
+- The learning-event insert is awaited. A failure is logged and the correction still returns.
+- `course_session_id` is null for live class and review. The client sends only question and answer, and this slice does not change the client.
+
 ## Context
 
 Read `docs/adr/015-deficiency-queue.md` first — Decisions 2 and 3 are this slice. Slice 69 shipped the `learning_events` table (teacher-read RLS only, no student policy, inserts via admin client). This slice makes `check-answer` report which controlled error tags apply, and records them as events. It rides the existing AI call — zero new AI cost, no migration, no UI.

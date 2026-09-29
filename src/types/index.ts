@@ -645,7 +645,7 @@ export interface UserHighlight {
 // Tags describe language, not stories. The junction is polymorphic so a
 // writing prompt or an exam can carry the same tag as a story.
 
-export type TagType = "grammar" | "vocabulary" | "phonetic";
+export type TagType = "grammar" | "vocabulary" | "phonetic" | "error";
 
 /** The catalog item that carries a tag. Phase 4 only writes "story". */
 export type ContentType =

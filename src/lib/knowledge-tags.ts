@@ -174,11 +174,71 @@ export const PHONETIC_TAG_SEEDS: TagSeed[] = [
   { name: "word_boundary_linking", displayName: "Unión de palabras" },
 ];
 
+/**
+ * L1 interference traps. Learner-anchored: these never enter the catalog
+ * tag tables. A tag is the trap family. The specific pair rides in event detail.
+ */
+export const ERROR_TAG_SEEDS: TagSeed[] = [
+  { name: "adverb_placement", displayName: "Adverb placement" },
+  { name: "negative_auxiliary", displayName: "Negative auxiliary (don't/doesn't)" },
+  { name: "question_auxiliary", displayName: "Question auxiliary (do/does)" },
+  { name: "subject_omission", displayName: "Subject omission" },
+  { name: "adjective_noun_order", displayName: "Adjective before noun" },
+  { name: "double_negative", displayName: "Double negative" },
+  { name: "perfect_vs_past", displayName: "Present perfect vs past simple" },
+  { name: "body_part_possessive", displayName: "Possessive with body parts" },
+  { name: "good_vs_well", displayName: "Good vs well" },
+  { name: "bare_plurals", displayName: "Bare plural time nouns" },
+  { name: "people_agreement", displayName: "People is/are" },
+  { name: "i_am_agree", displayName: "I am agree" },
+  { name: "on_time", displayName: "On time vs at the time" },
+  { name: "preposition_partner", displayName: "Prepositions with verbs" },
+  { name: "false_friend", displayName: "False friends" },
+  { name: "make_vs_do", displayName: "Make vs do" },
+  { name: "say_vs_tell", displayName: "Say vs tell" },
+  { name: "countability", displayName: "Countability" },
+  { name: "age_expression", displayName: "Age: I am 25" },
+  { name: "participle_adjectives", displayName: "Boring vs bored" },
+  { name: "for_vs_since", displayName: "For vs since" },
+];
+
 export const TAG_SEEDS: Record<TagType, TagSeed[]> = {
   grammar: GRAMMAR_TAG_SEEDS,
   vocabulary: VOCABULARY_TAG_SEEDS,
   phonetic: PHONETIC_TAG_SEEDS,
+  error: ERROR_TAG_SEEDS,
 };
+
+const ERROR_TAG_NAMES = new Set(ERROR_TAG_SEEDS.map((seed) => seed.name));
+
+export function isValidErrorTag(name: string): boolean {
+  return ERROR_TAG_NAMES.has(name);
+}
+
+/**
+ * Keep only known error tags. A sentence the model left unchanged has no
+ * error to record, even if the model sent tags.
+ */
+export function normalizeErrorTags(
+  raw: unknown,
+  answer: string,
+  corrected: string,
+): string[] {
+  if (corrected.trim() === answer.trim()) return [];
+  if (!Array.isArray(raw)) return [];
+
+  const seen = new Set<string>();
+  const tags: string[] = [];
+  for (const item of raw) {
+    if (typeof item !== "string" || !isValidErrorTag(item) || seen.has(item)) {
+      continue;
+    }
+    seen.add(item);
+    tags.push(item);
+    if (tags.length === 4) break;
+  }
+  return tags;
+}
 
 // ── Evaluator label mapping ────────────────────────────────
 // The difficulty evaluator writes free-text tense labels such as

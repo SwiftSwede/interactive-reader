@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import { normalizeErrorTags } from "@/lib/knowledge-tags";
 import { buildCorrectionSegments } from "@/lib/personal-correction";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
@@ -37,12 +38,36 @@ You know the COMMON ERRORS Spanish speakers make in English (L1 interference):
 12. "I am agree": Spanish "estoy de acuerdo" makes students say "I am agree." Correct to "I agree" (delete "am").
 13. Time phrases: "at the time" for punctuality is wrong. English is "on time." "in time" means before a deadline.
 
+ERROR TAGS. Use these exact names in error_tags. One phrase each:
+- adverb_placement: Adverb placement
+- negative_auxiliary: Negative auxiliary (don't/doesn't)
+- question_auxiliary: Question auxiliary (do/does)
+- subject_omission: Subject omission
+- adjective_noun_order: Adjective before noun
+- double_negative: Double negative
+- perfect_vs_past: Present perfect vs past simple
+- body_part_possessive: Possessive with body parts
+- good_vs_well: Good vs well
+- bare_plurals: Bare plural time nouns
+- people_agreement: People is/are
+- i_am_agree: I am agree
+- on_time: On time vs at the time
+- preposition_partner: Prepositions with verbs
+- false_friend: False friends
+- make_vs_do: Make vs do
+- say_vs_tell: Say vs tell
+- countability: Countability
+- age_expression: Age: I am 25
+- participle_adjectives: Boring vs bored
+- for_vs_since: For vs since
+
 YOUR JOB: Return the student's meaning in correct English. Output ONLY a JSON object. No markdown, no code fences, no other text.
 
 JSON shape:
 {
   "corrected": "The fully corrected English sentence.",
-  "note": "Short Spanish explanation."
+  "note": "Short Spanish explanation.",
+  "error_tags": ["array of tag names from the list above, empty if none apply. Only tag errors you actually fixed in 'corrected'. Never invent names."]
 }
 
 CRITICAL RULES:
@@ -62,28 +87,32 @@ Input: "Never I watch soccer"
 Output:
 {
   "corrected": "I never watch soccer",
-  "note": "En ingles, 'never' va despues del sujeto, no al principio. 'I never watch soccer.'"
+  "note": "En ingles, 'never' va despues del sujeto, no al principio. 'I never watch soccer.'",
+  "error_tags": ["adverb_placement"]
 }
 
 Input: "No I like soccer"
 Output:
 {
   "corrected": "I don't like soccer",
-  "note": "Para negar en ingles necesitas 'don't' (o 'doesn't'), no 'no'. 'I don't like soccer.'"
+  "note": "Para negar en ingles necesitas 'don't' (o 'doesn't'), no 'no'. 'I don't like soccer.'",
+  "error_tags": ["negative_auxiliary"]
 }
 
 Input: "Always I arrive at the time"
 Output:
 {
   "corrected": "I always arrive on time",
-  "note": "En ingles, 'always' va despues del sujeto. Y se dice 'on time', no 'at the time'."
+  "note": "En ingles, 'always' va despues del sujeto. Y se dice 'on time', no 'at the time'.",
+  "error_tags": ["adverb_placement", "on_time"]
 }
 
 Input: "I watch soccer Saturdays"
 Output:
 {
   "corrected": "I watch soccer every Saturday",
-  "note": "Para decir que haces algo cada semana, usa 'every Saturday'. 'I watch soccer every Saturday.'"
+  "note": "Para decir que haces algo cada semana, usa 'every Saturday'. 'I watch soccer every Saturday.'",
+  "error_tags": ["bare_plurals"]
 }
 
 Return ONLY the JSON object. No other text.`;
@@ -138,7 +167,8 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const allowed = await consumeCheckAnswerRequest(createAdminClient(), userId);
+    const admin = createAdminClient();
+    const allowed = await consumeCheckAnswerRequest(admin, userId);
     if (!allowed) {
       return NextResponse.json(
         { error: "Has intentado muchas veces. Intenta de nuevo más tarde." },
@@ -198,6 +228,7 @@ export async function POST(request: NextRequest) {
       corrected?: string;
       corrections?: Array<{ text: string; type: string }>;
       note: string;
+      error_tags?: unknown;
     };
 
     try {
@@ -231,6 +262,28 @@ export async function POST(request: NextRequest) {
         { error: "No se pudo procesar tu respuesta. Intenta de nuevo." },
         { status: 502 }
       );
+    }
+
+    const errorTags = normalizeErrorTags(parsed.error_tags, answer, corrected);
+    if (errorTags.length > 0) {
+      try {
+        const { error: eventError } = await admin.from("learning_events").insert({
+          user_id: userId,
+          event_type: "check_answer_error",
+          course_session_id: null,
+          detail: {
+            error_tags: errorTags,
+            question: question.slice(0, 200),
+            answer: answer.slice(0, 500),
+            corrected: corrected.slice(0, 500),
+          },
+        });
+        if (eventError) {
+          console.error("check_answer_error event insert failed:", eventError.message);
+        }
+      } catch (eventErr) {
+        console.error("check_answer_error event insert failed:", eventErr);
+      }
     }
 
     return NextResponse.json({

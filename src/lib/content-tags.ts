@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { AppError } from "@/lib/errors";
 import type {
   ContentRef,
   ContentTag,
@@ -14,7 +15,8 @@ import type {
 // content_id is polymorphic and has no foreign key, so the table each tag row
 // points at is decided here rather than by Postgres.
 
-export const TAG_TYPES: readonly TagType[] = [
+/** Catalog tag families. Error tags are learner-anchored and have no table. */
+export const TAG_TYPES: readonly Exclude<TagType, "error">[] = [
   "grammar",
   "vocabulary",
   "phonetic",
@@ -27,7 +29,7 @@ export const CONTENT_TYPES: readonly ContentType[] = [
   "presentation_prompt",
 ];
 
-const TAG_TABLES: Record<TagType, string> = {
+const TAG_TABLES: Record<Exclude<TagType, "error">, string> = {
   grammar: "grammar_tags",
   vocabulary: "vocabulary_tags",
   phonetic: "phonetic_tags",
@@ -42,6 +44,12 @@ const CONTENT_TABLES: Record<ContentType, string> = {
 };
 
 export function tagTableFor(tagType: TagType): string {
+  if (tagType === "error") {
+    throw new AppError(
+      "Error tags have no catalog table",
+      "ERROR_TAGS_NOT_CATALOG",
+    );
+  }
   return TAG_TABLES[tagType];
 }
 
@@ -49,8 +57,11 @@ export function contentTableFor(contentType: ContentType): string {
   return CONTENT_TABLES[contentType];
 }
 
-export function isTagType(value: unknown): value is TagType {
-  return typeof value === "string" && TAG_TYPES.includes(value as TagType);
+export function isTagType(value: unknown): value is Exclude<TagType, "error"> {
+  return (
+    typeof value === "string" &&
+    (TAG_TYPES as readonly string[]).includes(value)
+  );
 }
 
 export function isContentType(value: unknown): value is ContentType {
