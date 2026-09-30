@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Check } from "lucide-react";
 import { useId, useRef, useState, type FormEvent } from "react";
 import ActionButton from "@/components/ActionButton";
-import type { SessionItem } from "@/lib/drill-session";
+import { parseInlineMarks, type SessionItem } from "@/lib/drill-session";
 
 type Feedback =
   | { kind: "correct" }
@@ -163,7 +163,15 @@ export default function DrillSession({
       {item.format === "teach" ? (
         <>
           <p lang="es" className="mt-4 text-story-body text-text-primary">
-            {item.hook}
+            {parseInlineMarks(item.hook).map((span, spanIndex) => {
+              if (span.kind === "strong") {
+                return <strong key={spanIndex}>{span.value}</strong>;
+              }
+              if (span.kind === "em") {
+                return <em key={spanIndex}>{span.value}</em>;
+              }
+              return <span key={spanIndex}>{span.value}</span>;
+            })}
           </p>
           <div className="mt-8">
             <ActionButton onClick={advance} className="min-h-12 w-full sm:w-auto">

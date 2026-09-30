@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { isRepaso, mcqAllowed, toSessionItem } from "./drill-session";
+import { isRepaso, mcqAllowed, parseInlineMarks, toSessionItem } from "./drill-session";
 import type { DrillItem, DrillItemState } from "./drills";
 
 function item(partial: Partial<DrillItem> & Pick<DrillItem, "id" | "format">): DrillItem {
@@ -54,6 +54,19 @@ test("MCQ is offered only before the first round", () => {
 test("repaso follows an existing state row", () => {
   assert.equal(isRepaso(undefined), false);
   assert.equal(isRepaso(state()), true);
+});
+
+test("teach hooks turn *italic* and **bold** into spans", () => {
+  assert.deepEqual(
+    parseInlineMarks("usa **MAKE** cuando *hacer* lo hace todo."),
+    [
+      { kind: "text", value: "usa " },
+      { kind: "strong", value: "MAKE" },
+      { kind: "text", value: " cuando " },
+      { kind: "em", value: "hacer" },
+      { kind: "text", value: " lo hace todo." },
+    ],
+  );
 });
 
 test("the client item carries no answer, note, or source", () => {

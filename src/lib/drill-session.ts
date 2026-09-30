@@ -33,6 +33,55 @@ export type SessionItem =
       options: string[] | null;
     };
 
+export type InlineSpan =
+  | { kind: "text"; value: string }
+  | { kind: "em"; value: string }
+  | { kind: "strong"; value: string };
+
+/** Teach hooks are stored as light markdown: *italic* and **bold** only. */
+export function parseInlineMarks(source: string): InlineSpan[] {
+  const spans: InlineSpan[] = [];
+  let text = "";
+  let index = 0;
+
+  const flush = () => {
+    if (!text) return;
+    spans.push({ kind: "text", value: text });
+    text = "";
+  };
+
+  while (index < source.length) {
+    if (source.startsWith("**", index)) {
+      const end = source.indexOf("**", index + 2);
+      if (end === -1) {
+        text += "*";
+        index += 1;
+        continue;
+      }
+      flush();
+      spans.push({ kind: "strong", value: source.slice(index + 2, end) });
+      index = end + 2;
+      continue;
+    }
+    if (source[index] === "*") {
+      const end = source.indexOf("*", index + 1);
+      if (end <= index + 1) {
+        text += "*";
+        index += 1;
+        continue;
+      }
+      flush();
+      spans.push({ kind: "em", value: source.slice(index + 1, end) });
+      index = end + 1;
+      continue;
+    }
+    text += source[index];
+    index += 1;
+  }
+  flush();
+  return spans;
+}
+
 function stringOf(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
 }
