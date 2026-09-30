@@ -5,12 +5,18 @@ import {
   generateMonthAction,
   type GenerateMonthActionResult,
 } from "@/app/teacher/actions";
-import { courseMonthKey, currentYearMonth } from "@/lib/teacher-month";
+import {
+  courseMonthKey,
+  currentYearMonth,
+  monthLabelFromYearMonth,
+} from "@/lib/teacher-month";
 import {
   WEEKDAY_SHORT,
+  canStartMonthOn,
   defaultCourseName,
   formatClassPreview,
   generateMonthDates,
+  monthCalendarDays,
 } from "@/lib/monthly-template";
 import { patternFromSessionStarts } from "@/lib/monthly-template";
 import ActionButton from "@/components/ActionButton";
@@ -34,6 +40,20 @@ const HOURS = Array.from({ length: 24 }, (_, hour) =>
 );
 const MINUTES = ["00", "15", "30", "45"];
 const WEEKDAY_ORDER = [1, 2, 3, 4, 5, 6, 0];
+const CALENDAR_HEADS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
+
+function dayAriaLabel(sessionDate: string, isStart: boolean): string {
+  const [year, month, day] = sessionDate.split("-").map(Number);
+  if (!year || !month || !day) return sessionDate;
+  const date = new Date(Date.UTC(year, month - 1, day));
+  const label = date.toLocaleDateString("es", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    timeZone: "UTC",
+  });
+  return isStart ? `${label}, primera clase` : label;
+}
 
 type Step = "nivel" | "mes" | "patron" | "nombre";
 
@@ -92,6 +112,7 @@ export default function NewMonthWizard({
   const [level, setLevel] = useState<CourseLevel | "">("");
   const [yearMonth, setYearMonth] = useState(currentYearMonth());
   const [weekdays, setWeekdays] = useState<number[]>([]);
+  const [startDate, setStartDate] = useState<string | null>(null);
   const [hour, setHour] = useState("");
   const [minute, setMinute] = useState("");
   const [name, setName] = useState("");
@@ -102,6 +123,7 @@ export default function NewMonthWizard({
   useEffect(() => {
     if (!level) return;
     const prior = mostRecentAtLevel(courses, level);
+    setStartDate(null);
     if (!prior) {
       setWeekdays([]);
       setHour("");
@@ -120,9 +142,18 @@ export default function NewMonthWizard({
   }, [level, yearMonth, nameTouched]);
 
   const dates = useMemo(
-    () => generateMonthDates(yearMonth, weekdays),
-    [yearMonth, weekdays]
+    () => generateMonthDates(yearMonth, weekdays, undefined, startDate),
+    [yearMonth, weekdays, startDate]
   );
+  const classDates = useMemo(
+    () => new Set(dates.map((row) => row.sessionDate)),
+    [dates]
+  );
+  const calendarDays = useMemo(
+    () => monthCalendarDays(yearMonth, dates[dates.length - 1]?.sessionDate),
+    [yearMonth, dates]
+  );
+  const firstClass = dates[0]?.sessionDate ?? null;
 
   const occurrences = useMemo(() => {
     if (!hour || !minute) return [];
@@ -194,7 +225,10 @@ export default function NewMonthWizard({
           </span>
           <select
             value={yearMonth}
-            onChange={(event) => setYearMonth(event.target.value)}
+            onChange={(event) => {
+              setYearMonth(event.target.value);
+              setStartDate(null);
+            }}
             className={fieldClass}
           >
             {months.map((month) => (
@@ -219,13 +253,18 @@ export default function NewMonthWizard({
                   <button
                     key={day}
                     type="button"
-                    onClick={() =>
-                      setWeekdays((current) =>
-                        current.includes(day)
-                          ? current.filter((value) => value !== day)
-                          : [...current, day]
-                      )
-                    }
+                    onClick={() => {
+                      const next = weekdays.includes(day)
+                        ? weekdays.filter((value) => value !== day)
+                        : [...weekdays, day];
+                      setWeekdays(next);
+                      if (
+                        startDate &&
+                        !canStartMonthOn(startDate, yearMonth, next)
+                      ) {
+                        setStartDate(null);
+                      }
+                    }}
                     className={`min-h-11 rounded-card border text-label-sm font-medium ${
                       active
                         ? "border-accent bg-accent text-white"
@@ -273,6 +312,73 @@ export default function NewMonthWizard({
               </select>
             </div>
           </div>
+          {weekdays.length > 0 ? (
+            <fieldset>
+              <legend className="mb-1.5 block text-label-md text-text-secondary">
+                Primera clase
+              </legend>
+              <p className="mb-3 text-label-sm text-text-muted">
+                Toca el día en que empieza. Las 8 clases se marcan solas.
+              </p>
+              <p className="mb-2 text-label-sm text-text-secondary">
+                {monthLabelFromYearMonth(yearMonth)}
+              </p>
+              <div className="grid grid-cols-7 gap-1">
+                {CALENDAR_HEADS.map((label) => (
+                  <div
+                    key={label}
+                    className="flex h-8 items-center justify-center text-label-sm text-text-muted"
+                  >
+                    {label}
+                  </div>
+                ))}
+                {calendarDays.map((cell) => {
+                  const isClass = classDates.has(cell.sessionDate);
+                  const selectable = canStartMonthOn(
+                    cell.sessionDate,
+                    yearMonth,
+                    weekdays
+                  );
+                  const isStart = cell.sessionDate === firstClass;
+                  if (!selectable) {
+                    return (
+                      <div
+                        key={cell.sessionDate}
+                        aria-label={
+                          isClass ? dayAriaLabel(cell.sessionDate, false) : undefined
+                        }
+                        className={`flex min-h-11 items-center justify-center text-label-sm ${
+                          isClass
+                            ? "rounded-card border border-accent bg-accent font-medium text-white"
+                            : cell.inMonth
+                              ? "text-text-secondary"
+                              : "text-text-muted"
+                        }`}
+                      >
+                        {cell.day}
+                      </div>
+                    );
+                  }
+                  return (
+                    <button
+                      key={cell.sessionDate}
+                      type="button"
+                      aria-pressed={isClass}
+                      aria-label={dayAriaLabel(cell.sessionDate, isStart)}
+                      onClick={() => setStartDate(cell.sessionDate)}
+                      className={`flex min-h-11 items-center justify-center rounded-card border text-label-sm font-medium ${
+                        isClass
+                          ? "border-accent bg-accent text-white"
+                          : "border-paper-line text-text-primary hover:bg-surface-hover"
+                      }`}
+                    >
+                      {cell.day}
+                    </button>
+                  );
+                })}
+              </div>
+            </fieldset>
+          ) : null}
           {preview ? (
             <p className="text-label-sm text-text-secondary">{preview}</p>
           ) : (

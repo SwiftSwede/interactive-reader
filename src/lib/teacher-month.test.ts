@@ -93,6 +93,38 @@ describe("sessionsInMonth", () => {
     );
   });
 
+  test("does not treat an October opener on Sep 30 as a September course", () => {
+    const sessions = [
+      { sessionDate: "2026-09-30" },
+      { sessionDate: "2026-10-05" },
+      { sessionDate: "2026-10-07" },
+    ];
+    assert.equal(
+      isCourseInMonth(sessions, "2026-09-30T00:00:00.000Z", "2026-09"),
+      false
+    );
+    assert.equal(
+      isCourseInMonth(sessions, "2026-09-30T00:00:00.000Z", "2026-10"),
+      true
+    );
+  });
+
+  test("does not treat the next month's closing class as that month", () => {
+    const sessions = [
+      { sessionDate: "2026-10-07" },
+      { sessionDate: "2026-10-28" },
+      { sessionDate: "2026-11-02" },
+    ];
+    assert.equal(
+      isCourseInMonth(sessions, "2026-10-01T00:00:00.000Z", "2026-11"),
+      false
+    );
+    assert.deepEqual(
+      sessionsInMonth(sessions, "2026-10").map((row) => row.sessionDate),
+      ["2026-10-07", "2026-10-28", "2026-11-02"]
+    );
+  });
+
   test("includes a previous-month opener in the last three days", () => {
     const rows = sessionsInMonth(
       [
@@ -179,6 +211,20 @@ describe("courseMonthKey", () => {
         "2026-08-20T00:00:00.000Z"
       ),
       "2026-09"
+    );
+  });
+
+  test("keeps a short tail in the next month on this month", () => {
+    assert.equal(
+      courseMonthKey(
+        [
+          { sessionDate: "2026-10-07" },
+          { sessionDate: "2026-10-12" },
+          { sessionDate: "2026-11-02" },
+        ],
+        "2026-10-01T00:00:00.000Z"
+      ),
+      "2026-10"
     );
   });
 });

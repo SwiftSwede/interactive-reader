@@ -14,6 +14,9 @@ export function yearMonthFromIso(iso: string): string {
 /** First class of a month-group can land on the last days of the previous month. */
 const MONTH_START_SPILLOVER_DAYS = 3;
 
+/** Last class can land in the first two weeks of the next month. */
+const MONTH_END_SPILLOVER_DAYS = 14;
+
 function addMonthsToYearMonth(yearMonth: string, delta: number): string {
   const [year, month] = yearMonth.split("-").map(Number);
   if (!year || !month) return yearMonth;
@@ -31,7 +34,7 @@ function sessionDay(sessionDate: string): number {
   return Number(sessionDate.slice(8, 10));
 }
 
-function isMonthStartSpilloverDate(
+export function isMonthStartSpilloverDate(
   sessionDate: string,
   yearMonth: string
 ): boolean {
@@ -40,6 +43,62 @@ function isMonthStartSpilloverDate(
   const lastDay = daysInUtcMonth(previous);
   const day = sessionDay(sessionDate);
   return day >= lastDay - MONTH_START_SPILLOVER_DAYS + 1;
+}
+
+export function isMonthEndSpilloverDate(
+  sessionDate: string,
+  yearMonth: string
+): boolean {
+  const following = addMonthsToYearMonth(yearMonth, 1);
+  if (!sessionDate.startsWith(following)) return false;
+  const day = sessionDay(sessionDate);
+  return day >= 1 && day <= MONTH_END_SPILLOVER_DAYS;
+}
+
+export function sessionDateFitsGeneratedMonth(
+  sessionDate: string,
+  yearMonth: string
+): boolean {
+  return (
+    sessionDate.startsWith(yearMonth) ||
+    isMonthStartSpilloverDate(sessionDate, yearMonth) ||
+    isMonthEndSpilloverDate(sessionDate, yearMonth)
+  );
+}
+
+function isTrailingTailOfPreviousMonth(
+  sessions: Array<{ sessionDate: string }>,
+  yearMonth: string
+): boolean {
+  const previous = addMonthsToYearMonth(yearMonth, -1);
+  const inThis = sessions.filter((session) =>
+    session.sessionDate.startsWith(yearMonth)
+  );
+  const inPrevious = sessions.filter((session) =>
+    session.sessionDate.startsWith(previous)
+  );
+  return (
+    inThis.length > 0 &&
+    inThis.length < inPrevious.length &&
+    inThis.every((session) => isMonthEndSpilloverDate(session.sessionDate, previous))
+  );
+}
+
+function isOpeningSpilloverIntoFollowingMonth(
+  sessions: Array<{ sessionDate: string }>,
+  yearMonth: string
+): boolean {
+  const following = addMonthsToYearMonth(yearMonth, 1);
+  const inThis = sessions.filter((session) =>
+    session.sessionDate.startsWith(yearMonth)
+  );
+  const inFollowing = sessions.filter((session) =>
+    session.sessionDate.startsWith(following)
+  );
+  if (inThis.length === 0 || inFollowing.length === 0) return false;
+  return inThis.every((session) =>
+    isMonthStartSpilloverDate(session.sessionDate, following)
+  );
 }
 
 function previousMonthIsOnlyStartSpillover(
@@ -73,6 +132,8 @@ export function isCourseInMonth(
   if (sessions.length === 0) {
     return yearMonthFromIso(createdAt) === yearMonth;
   }
+  if (isOpeningSpilloverIntoFollowingMonth(sessions, yearMonth)) return false;
+  if (isTrailingTailOfPreviousMonth(sessions, yearMonth)) return false;
   if (sessions.some((session) => session.sessionDate.startsWith(yearMonth))) {
     return true;
   }
@@ -83,15 +144,15 @@ export function sessionsInMonth<T extends { sessionDate: string }>(
   sessions: T[],
   yearMonth: string
 ): T[] {
-  const includeSpillover = previousMonthIsOnlyStartSpillover(
-    sessions,
-    yearMonth
-  );
+  const includeStart = previousMonthIsOnlyStartSpillover(sessions, yearMonth);
+  const following = addMonthsToYearMonth(yearMonth, 1);
+  const includeEnd = isTrailingTailOfPreviousMonth(sessions, following);
   return sessions.filter(
     (session) =>
       session.sessionDate.startsWith(yearMonth) ||
-      (includeSpillover &&
-        isMonthStartSpilloverDate(session.sessionDate, yearMonth))
+      (includeStart &&
+        isMonthStartSpilloverDate(session.sessionDate, yearMonth)) ||
+      (includeEnd && isMonthEndSpilloverDate(session.sessionDate, yearMonth))
   );
 }
 
@@ -112,6 +173,9 @@ export function courseMonthKey(
     !sessions.some((session) => session.sessionDate.startsWith(following))
   ) {
     return following;
+  }
+  if (isTrailingTailOfPreviousMonth(sessions, latestMonth)) {
+    return addMonthsToYearMonth(latestMonth, -1);
   }
   return latestMonth;
 }

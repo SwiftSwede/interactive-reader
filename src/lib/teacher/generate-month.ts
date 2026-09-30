@@ -4,7 +4,10 @@ import {
   TEMPLATE_LENGTH,
   shouldArchiveMonthKey,
 } from "@/lib/monthly-template";
-import { courseMonthKey } from "@/lib/teacher-month";
+import {
+  courseMonthKey,
+  sessionDateFitsGeneratedMonth,
+} from "@/lib/teacher-month";
 import type { CourseLevel } from "@/types";
 import type { SupabaseClient } from "@supabase/supabase-js";
 
@@ -77,13 +80,21 @@ export async function generateMonth(
   }
 
   for (const row of input.occurrences) {
-    if (!row.sessionDate.startsWith(input.yearMonth)) {
+    if (!sessionDateFitsGeneratedMonth(row.sessionDate, input.yearMonth)) {
       return { ok: false, error: "Las fechas tienen que ser de ese mes." };
     }
     const start = new Date(row.startIso);
     if (Number.isNaN(start.getTime())) {
       return { ok: false, error: "Pon la hora de las clases." };
     }
+  }
+
+  const monthKey = courseMonthKey(
+    input.occurrences.map((row) => ({ sessionDate: row.sessionDate })),
+    `${input.yearMonth}-01T00:00:00.000Z`
+  );
+  if (monthKey !== input.yearMonth) {
+    return { ok: false, error: "Esas fechas no caben en ese mes." };
   }
 
   const theme = input.theme?.trim() || null;

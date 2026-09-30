@@ -5,7 +5,9 @@ import {
   capOccurrences,
   defaultCourseName,
   formatClassPreview,
+  canStartMonthOn,
   generateMonthDates,
+  monthCalendarDays,
   occurrencesInMonth,
   patternFromSessionStarts,
   shouldArchiveMonthKey,
@@ -53,6 +55,42 @@ describe("generateMonthDates", () => {
   test("does not spill into the previous month", () => {
     const rows = generateMonthDates("2026-10", [2, 4]);
     assert.ok(rows.every((row) => row.sessionDate.startsWith("2026-10")));
+  });
+
+  test("starts on a later weekday when that day is the first class", () => {
+    const rows = generateMonthDates("2026-10", [1, 3], undefined, "2026-10-07");
+    assert.equal(rows.length, 8);
+    assert.equal(rows[0]?.sessionDate, "2026-10-07");
+    assert.equal(rows[1]?.sessionDate, "2026-10-12");
+    assert.equal(rows[7]?.sessionDate, "2026-11-02");
+  });
+
+  test("can open on the previous month's last Wednesday", () => {
+    const rows = generateMonthDates("2026-10", [1, 3], undefined, "2026-09-30");
+    assert.equal(rows.length, 8);
+    assert.equal(rows[0]?.sessionDate, "2026-09-30");
+    assert.equal(rows[1]?.sessionDate, "2026-10-05");
+    assert.equal(rows[7]?.sessionDate, "2026-10-26");
+  });
+
+  test("ignores a start date that is not a chosen weekday", () => {
+    const rows = generateMonthDates("2026-10", [1, 3], undefined, "2026-10-06");
+    assert.equal(rows[0]?.sessionDate, "2026-10-05");
+  });
+});
+
+describe("month calendar", () => {
+  test("opens Monday and includes a class in the next month", () => {
+    const cells = monthCalendarDays("2026-10", "2026-11-02");
+    assert.equal(cells[0]?.sessionDate, "2026-09-28");
+    assert.equal(cells[0]?.weekday, 1);
+    assert.ok(cells.some((cell) => cell.sessionDate === "2026-11-02"));
+  });
+
+  test("allows the last Wednesday of the previous month as a start", () => {
+    assert.equal(canStartMonthOn("2026-09-30", "2026-10", [1, 3]), true);
+    assert.equal(canStartMonthOn("2026-09-29", "2026-10", [1, 3]), false);
+    assert.equal(canStartMonthOn("2026-11-02", "2026-10", [1, 3]), false);
   });
 });
 

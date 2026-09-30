@@ -1,4 +1,9 @@
 import type { SessionType } from "@/lib/activities";
+import {
+  courseMonthKey,
+  isMonthStartSpilloverDate,
+  sessionDateFitsGeneratedMonth,
+} from "@/lib/teacher-month";
 import type { CourseLevel } from "@/types";
 
 export const MONTHLY_TEMPLATE: readonly SessionType[] = [
@@ -78,12 +83,111 @@ export function capOccurrences<T>(rows: T[], length = TEMPLATE_LENGTH): T[] {
   return rows.slice(0, length);
 }
 
+function weekdayOfSessionDate(sessionDate: string): number {
+  return weekdayOnMonthDay(
+    sessionDate.slice(0, 7),
+    Number(sessionDate.slice(8, 10))
+  );
+}
+
+function addUtcDays(sessionDate: string, days: number): string {
+  const [year, month, day] = sessionDate.split("-").map(Number);
+  if (!year || !month || !day) return sessionDate;
+  const date = new Date(Date.UTC(year, month - 1, day + days));
+  return date.toISOString().slice(0, 10);
+}
+
+function isSelectableStart(
+  sessionDate: string,
+  yearMonth: string,
+  weekdays: Set<number>
+): boolean {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(sessionDate)) return false;
+  if (!weekdays.has(weekdayOfSessionDate(sessionDate))) return false;
+  return (
+    sessionDate.startsWith(yearMonth) ||
+    isMonthStartSpilloverDate(sessionDate, yearMonth)
+  );
+}
+
 export function generateMonthDates(
   yearMonth: string,
   weekdays: number[],
-  length = TEMPLATE_LENGTH
+  length = TEMPLATE_LENGTH,
+  startDate?: string | null
 ): ClassOccurrence[] {
-  return capOccurrences(occurrencesInMonth(yearMonth, weekdays), length);
+  const inMonth = capOccurrences(occurrencesInMonth(yearMonth, weekdays), length);
+  const chosen = new Set(weekdays.filter((day) => day >= 0 && day <= 6));
+  if (!startDate || !isSelectableStart(startDate, yearMonth, chosen)) {
+    return inMonth;
+  }
+
+  const rows: ClassOccurrence[] = [];
+  let cursor = startDate;
+  for (let step = 0; step < 70 && rows.length < length; step += 1) {
+    const weekday = weekdayOfSessionDate(cursor);
+    if (chosen.has(weekday)) {
+      if (!sessionDateFitsGeneratedMonth(cursor, yearMonth)) break;
+      const next = [
+        ...rows,
+        { sessionDate: cursor, day: Number(cursor.slice(8, 10)), weekday },
+      ];
+      const key = courseMonthKey(
+        next.map((row) => ({ sessionDate: row.sessionDate })),
+        `${yearMonth}-01T00:00:00.000Z`
+      );
+      if (key !== yearMonth) break;
+      rows.push(next[next.length - 1]);
+    }
+    cursor = addUtcDays(cursor, 1);
+  }
+  return rows;
+}
+
+export type MonthCalendarDay = {
+  sessionDate: string;
+  day: number;
+  weekday: number;
+  inMonth: boolean;
+};
+
+/** Monday-first grid covering the month and any class date just after it. */
+export function monthCalendarDays(
+  yearMonth: string,
+  throughDate?: string | null
+): MonthCalendarDay[] {
+  const [year, month] = yearMonth.split("-").map(Number);
+  if (!year || !month) return [];
+  const firstWeekday = weekdayOnMonthDay(yearMonth, 1);
+  const leading = (firstWeekday + 6) % 7;
+  const last = daysInMonth(yearMonth);
+  const monthEnd = `${yearMonth}-${String(last).padStart(2, "0")}`;
+  const end = throughDate && throughDate > monthEnd ? throughDate : monthEnd;
+  const origin = addUtcDays(`${yearMonth}-01`, -leading);
+  const cells: MonthCalendarDay[] = [];
+  for (let index = 0; index < 42; index += 1) {
+    const sessionDate = addUtcDays(origin, index);
+    cells.push({
+      sessionDate,
+      day: Number(sessionDate.slice(8, 10)),
+      weekday: weekdayOfSessionDate(sessionDate),
+      inMonth: sessionDate.startsWith(yearMonth),
+    });
+    const endOfWeek = index % 7 === 6;
+    if (endOfWeek && sessionDate >= end && cells.length >= leading + last) {
+      break;
+    }
+  }
+  return cells;
+}
+
+export function canStartMonthOn(
+  sessionDate: string,
+  yearMonth: string,
+  weekdays: number[]
+): boolean {
+  const chosen = new Set(weekdays.filter((day) => day >= 0 && day <= 6));
+  return isSelectableStart(sessionDate, yearMonth, chosen);
 }
 
 export function defaultCourseName(
