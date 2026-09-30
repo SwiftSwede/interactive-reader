@@ -20,7 +20,7 @@ The trap family, as it actually shows up:
 2. **P** — I ___ 32 years old. → **am** (MCQ: am / have / be)
 3. **P** — My grandma is 80. She ___ very active. → **is** (MCQ: is / has / feels — keep; reinforces BE for states, no age collision... cut if you want strict one-train-per-session)
 4. **I** — His kids ___ 7 and 9. → **are** (MCQ: are / have / is)
-5. **I** — ___ are you? — I'm 28. → **How old** (MCQ: How old / How many years / What age)
+5. **I** — ¿Cuántos años tienes? Choose the correct English. → **How old are you?** (MCQ: How old are you? / How many years do you have? / What age do you have? — every distractor is a real Spanish-map transfer a student actually produces. The earlier "___ are you?" + "How many years" stem built the implausible hybrid "How many years are you?", which nobody says — bad distractor, fixed.)
 
 ## Translation items (ES → EN)
 

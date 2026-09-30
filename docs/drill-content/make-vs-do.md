@@ -25,7 +25,7 @@ Display name: **Make vs do** · Levels: P (pre-int) + I (int)
 ## Translation items (ES → EN; phrase first, then sentence)
 
 1. **P** — Hice una promesa. → *I made a promise.*
-2. **P** — Haz los platos, por favor. → *Do the dishes, please.*
+2. **P** — Hago las compras los sábados. → *I do the shopping on Saturdays.* (replaces "Haz los platos" — hacer los platos is not natural Spanish; real Spanish is *lavar los platos*, which kills the item's make/do point. Regional check for you: "hacer las compras" vs "hacer el mandado" — use what you'd actually say.)
 3. **I** — Mi papá hace la cena los domingos. → *My dad makes dinner on Sundays.*
 4. **I** — Ellos no hacen ejercicio. → *They don't do exercise. / They don't exercise.*
 
