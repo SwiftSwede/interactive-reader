@@ -15,7 +15,14 @@ The trap family, as it actually shows up:
 - **I have 25 years** → *I am 25 (years old)*
 - **How many years do you have?** → *How old are you?*
 - **My sister has 19 years** → *My sister is 19.*
-- **We have the same age** → *We are the same age.* (I'd cut this one — rarer; your call)
+- **"We have the same age"** → *We are the same age.* (I'd cut this one — rarer; your call)
+- **"For three years old"** → *for three years* (the video's second trap: durations never take "old" — now drilled as cloze #6)
+
+## Source-mined notes (stored for later)
+
+- The video's teaching sequence (useful for the Drill Lab's teach-card layout if it ever grows): state the error ("I have 29 years") → give the BE conjugation present AND past (I'm/was, you're/were…) → drill the question form ("How old are you? Tell me in English"). Past BE (I was 19 when…) is a natural repaso extension — not an item yet; store for when the family needs refreshing.
+- Voice phrases worth keeping verbatim (briefing-generator register): "mi querido estudiante," "no digas…", "tell me in English."
+- Error-detail phrase for evidence_detail: the family has two distinct traps — *have* for age ("I have 29 years") and *old* for durations ("for three years old"). Worth distinguishing in Ficha notes when a student shows one but not the other.
 
 ## Cloze items (typed; MCQ only on first round)
 
@@ -24,6 +31,7 @@ The trap family, as it actually shows up:
 3. **P** — My grandma is 80. She ___ very active. → **is** (MCQ: is / has / feels — keep; reinforces BE for states, no age collision... cut if you want strict one-train-per-session)
 4. **I** — His kids ___ 7 and 9. → **are** (MCQ: are / have / is)
 5. **I** — ¿Cuántos años tienes? Choose the correct English. → **How old are you?** (MCQ: How old are you? / How many years do you have? / What age do you have? — every distractor is a real Spanish-map transfer a student actually produces. The earlier "___ are you?" + "How many years" stem built the implausible hybrid "How many years are you?", which nobody says — bad distractor, fixed.)
+6. **I** — I've studied English for three ___. → **years** (MCQ: years / years old / old years — "years old" is the second trap straight from the video: durations never take "old")
 
 ## Translation items (ES → EN)
 

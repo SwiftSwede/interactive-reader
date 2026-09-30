@@ -24,6 +24,10 @@ En español, *hacer* lo hace todo. En inglés se reparte el trabajo: usa **MAKE*
 6. **I** — Don't ___ the bed; I already did it. → **make** (MCQ: make / do / put)
 7. **I** — We should ___ plans for the long weekend. → **make** (MCQ: make / do / take)
 8. **I** — He always ___ his best in the exams. → **does** (MCQ: does / makes / puts)
+9. **P** — I'll ___ some pancakes for breakfast. → **make** (crear desde cero — the blog's core rule in its purest form)
+10. **I** — He ___ a chair out of wood. → **made** (crear desde cero; MCQ: made / did / built)
+11. **I** — I made the dinner, now you ___ the dishes. → **do** (the blog's exact pair sentence — make the dinner / do the dishes in one item)
+12. **P** — What do you like to ___ in your free time? → **do** (the generic verb, straight from the blog)
 
 ## Translation items (ES → EN; phrase first, then sentence)
 
@@ -31,6 +35,12 @@ En español, *hacer* lo hace todo. En inglés se reparte el trabajo: usa **MAKE*
 2. **P** — Hago las compras los sábados. → *I do the shopping on Saturdays.* (replaces "Haz los platos" — hacer los platos is not natural Spanish; real Spanish is *lavar los platos*, which kills the item's make/do point. Regional check for you: "hacer las compras" vs "hacer el mandado" — use what you'd actually say.)
 3. **I** — Mi papá hace la cena los domingos. → *My dad makes dinner on Sundays.*
 4. **I** — Ellos no hacen ejercicio. → *They don't do exercise. / They don't exercise.*
+
+## Source-mined notes (stored for later)
+
+- **Error-detail phrases** (future evidence_detail / briefing language, from the blog): the trap is one Spanish verb (*hacer*) mapping to two English ones; students report "no sé cuál va" — the collocation list is the fix, not a rule.
+- **Blog coverage note:** the make/do rule has two layers — the core rule (*crear desde cero* = make) and the idiom exceptions (*make a mistake, make money* — created nothing). Items 9–11 drill the core rule; items 1–8 drill the exceptions. Both layers are needed; a student who only learns "make = create" will write *do a mistake*.
+- Unused blog example kept for repaso variety: *Do your homework or you won't go out to the park* (slightly complex sentence — good for int level later).
 
 ## What I deliberately avoided
 
