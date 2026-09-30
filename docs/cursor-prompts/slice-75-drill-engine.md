@@ -73,8 +73,23 @@ Idempotent: upsert keyed on (tag_id, format, content->>'text'/'prompt'); print p
 - Migration applies clean; run `npx tsx scripts/seed-drill-content.ts` → prints 3 teach + 26 cloze + 12 translation; re-run → no duplicates.
 - Probe: `buildDeck` for a mission on `make_vs_do` with a pre-int level returns ≤6 items, teach card first, no 'int'-only items.
 
+## Plan review decisions
+
+Kyle ratified 2026-09-29:
+
+- **Spacing.** 1st correct → 2 days; 2nd → 7 days; 3rd → graduate and schedule 14 days for later repaso. Implement as `nextPracticeAt(clean_recalls - 1, now)` after a correct. A miss always reschedules at stage 0 (2 days). Clamp stage into `SPACING = [2d, 7d, 14d]`. The prompt's `nextPracticeAt(clean_recalls, now)` was an off-by-one vs ADR.
+- **Miss on a graduated item.** Stay graduated. Reset `clean_recalls` to 0 and bump `rounds`; reschedule at 2 days. Do not shrink tu colección. Repaso still draws due graduated items from other tags.
+
+Implementation fills (same session):
+
+- **`drill_item_graduated` fires once.** Only on the transition into `graduated`, not on later correct repaso.
+- **Session-1 overflow.** Teach card first, then cloze, then translation, then stable id/created order. After the level filter, take the first `DECK_SIZE` (6).
+- **Word bank.** Store `{ make: string[], do: string[] }` only when those two bullets exist (make-vs-do). Age trap-map and present-perfect prose become `null`.
+- **Level names.** `drill_items.level` is `'pre_int' | 'int'`. Export `toDrillLevel(courseLevel)` mapping `pre-intermediate` → `pre_int` and `intermediate` → `int`. `buildDeck` takes the already-mapped level. Teach cards are stored as `'int'` and skipped by the level filter.
+- **Parser lives in `src/lib/parse-drill-content.ts`.** The seed script imports it. Tests import the regexes/helpers without pulling a script.
+
 ## Constraints
 
 - No UI. No student routes. No changes to missions.ts or the content files (they are authored input).
-- PRD row: Slice 75 (next free; note in this file's header if taken).
-- Commit only: migration, seeder + SCRIPTS.md, `src/lib/drills.ts` (+ test), PRD row, this file. Do not sweep the working tree.
+- PRD row: Slice 75 (next free; this file already claimed it).
+- Commit only: migration, seeder + SCRIPTS.md, `src/lib/drills.ts` (+ test), parser, PRD row, this file. Do not sweep the working tree.
