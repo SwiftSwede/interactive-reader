@@ -1,18 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { AppError } from "@/lib/errors";
 import { parseHookStructure } from "@/lib/parse-drill-content";
-import {
-  buildDeck,
-  ITEM_COLUMNS,
-  mapItemRow,
-  mapStateRow,
-  STATE_COLUMNS,
-  type DrillItem,
-  type DrillItemState,
-  type DrillLevel,
-  type ItemRow,
-  type StateRow,
-} from "@/lib/drills";
+import type { DrillItem, DrillItemState } from "@/lib/drills";
 
 // What the Lab client receives. Answers, notes, and source links stay on the
 // server; the attempt route checks the answer.
@@ -176,48 +164,6 @@ export function collectionCountOf(state: Iterable<DrillItemState>): number {
   let count = 0;
   for (const row of state) if (row.status === "graduated") count += 1;
   return count;
-}
-
-export type DrillLab = { deck: SessionItem[]; collectionCount: number };
-
-/** Loads the whole active catalog so repaso from other tags can join the deck. */
-export async function loadDrillLab(
-  client: SupabaseClient,
-  input: { userId: string; missionTagId: string; level: DrillLevel; now?: Date },
-): Promise<DrillLab> {
-  const [itemsResult, stateResult] = await Promise.all([
-    client.from("drill_items").select(ITEM_COLUMNS).eq("active", true),
-    client.from("drill_item_state").select(STATE_COLUMNS).eq("user_id", input.userId),
-  ]);
-
-  if (itemsResult.error || stateResult.error) {
-    console.error(
-      "loadDrillLab failed:",
-      itemsResult.error?.message ?? stateResult.error?.message,
-    );
-    throw new AppError("No pude cargar la práctica.", "DRILL_LAB_READ_FAILED", 500);
-  }
-
-  const items = ((itemsResult.data ?? []) as ItemRow[])
-    .map(mapItemRow)
-    .filter((item): item is DrillItem => item !== null);
-  const state = new Map<string, DrillItemState>();
-  for (const row of (stateResult.data ?? []) as StateRow[]) {
-    const mapped = mapStateRow(row);
-    state.set(mapped.itemId, mapped);
-  }
-
-  const deck = buildDeck({
-    missionTagId: input.missionTagId,
-    items,
-    state,
-    now: input.now ?? new Date(),
-    level: input.level,
-  })
-    .map((item) => toSessionItem(item, state.get(item.id)))
-    .filter((item): item is SessionItem => item !== null);
-
-  return { deck, collectionCount: collectionCountOf(state.values()) };
 }
 
 /** Tu colección: graduated items. A read failure is logged and reads as zero. */

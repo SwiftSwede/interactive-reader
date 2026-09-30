@@ -249,21 +249,6 @@ function joinSlug(value: TitleJoin): string | null {
   return typeof row?.slug === "string" ? row.slug : null;
 }
 
-export function liveOnlyRecordingHref(input: {
-  liveOnly: boolean;
-  lifecycle: SessionLifecycle;
-  recordingYoutubeUrl?: string | null;
-}): string | null {
-  if (
-    !input.liveOnly ||
-    input.lifecycle !== "after" ||
-    !input.recordingYoutubeUrl
-  ) {
-    return null;
-  }
-  return input.recordingYoutubeUrl;
-}
-
 export function toDashboardLesson(input: {
   sessionId: string;
   sessionType: SessionType;

@@ -116,4 +116,18 @@ test("the client item carries no answer, note, or source", () => {
     ],
     closing: "Sí, hay excepciones.",
   });
+
+  const leftover = toSessionItem(
+    item({
+      id: "fresh",
+      format: "cloze",
+      content: { text: "I ___ pancakes.", answer: "make", mcq: ["make", "do"] },
+    }),
+    undefined,
+  );
+  assert.equal(leftover?.format, "cloze");
+  if (leftover?.format === "cloze") {
+    assert.equal(leftover.repaso, false);
+    assert.deepEqual(leftover.options, ["make", "do"]);
+  }
 });

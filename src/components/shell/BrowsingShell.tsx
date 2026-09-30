@@ -48,10 +48,7 @@ export default function BrowsingShell({
         </header>
       </div>
 
-      <div
-        className="mx-auto max-w-2xl px-4"
-        style={{ paddingBottom: "calc(56px + env(safe-area-inset-bottom))" }}
-      >
+      <div className="mx-auto max-w-2xl px-4 pb-[calc(72px+env(safe-area-inset-bottom))] lg:pb-[calc(88px+env(safe-area-inset-bottom))]">
         {children}
       </div>
 

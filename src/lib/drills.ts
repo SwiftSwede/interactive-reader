@@ -7,8 +7,9 @@ export type { DrillLevel };
 
 export const DAY_MS = 24 * 60 * 60 * 1000;
 export const SPACING = [2 * DAY_MS, 7 * DAY_MS, 14 * DAY_MS] as const;
+export const LAPSE_MS = DAY_MS;
 export const CLEAN_RECALLS_TO_GRADUATE = 3;
-export const DECK_SIZE = 6;
+export const EXERCISES_PER_CATEGORY_PER_DAY = 5;
 
 export type DrillFormat = "teach" | "cloze" | "translation" | "order";
 export type DrillTagType = "grammar" | "phonetic" | "error";
@@ -40,11 +41,15 @@ export type DrillItemState = {
 };
 
 export type BuildDeckInput = {
-  missionTagId: string;
   items: readonly DrillItem[];
   state: ReadonlyMap<string, DrillItemState>;
   now: Date;
   level: DrillLevel;
+  /** Active unfinished intro tag, or null for a review sitting. */
+  introTagId: string | null;
+  /** Flagged, already-intro’d tags in rank order. Ignored while introTagId is set. */
+  reviewTagIds: readonly string[];
+  introCompletedAtByTagId: ReadonlyMap<string, string>;
 };
 
 const FORMAT_ORDER: Record<DrillFormat, number> = {
@@ -120,7 +125,7 @@ export function applyResult(
       cleanRecalls: 0,
       mcqUsed,
       lastPracticedAt,
-      nextPracticeAt: nextPracticeAt(0, now).toISOString(),
+      nextPracticeAt: new Date(now.getTime() + LAPSE_MS).toISOString(),
       updatedAt,
     };
   }
@@ -161,58 +166,90 @@ function byLadder(a: DrillItem, b: DrillItem): number {
   return a.id.localeCompare(b.id);
 }
 
-function isDueOrUnscheduled(
-  item: DrillItem,
-  state: ReadonlyMap<string, DrillItemState>,
-  now: Date,
-): boolean {
-  const row = state.get(item.id);
-  if (!row) return item.format !== "teach";
-  if (row.nextPracticeAt) return new Date(row.nextPracticeAt) <= now;
-  return row.status !== "graduated";
+function isExercise(item: DrillItem): boolean {
+  return item.format === "cloze" || item.format === "translation";
 }
 
-function isDueGraduatedRepaso(
+function exercisesForTag(
+  eligible: readonly DrillItem[],
+  tagId: string,
+): DrillItem[] {
+  return eligible.filter((item) => item.tagId === tagId && isExercise(item)).sort(byLadder);
+}
+
+function unseenAllowedToday(
   item: DrillItem,
-  missionTagId: string,
+  state: ReadonlyMap<string, DrillItemState>,
+  now: Date,
+  introCompletedAtByTagId: ReadonlyMap<string, string>,
+): boolean {
+  if (state.has(item.id) || !isExercise(item)) return false;
+  const completedAt = introCompletedAtByTagId.get(item.tagId);
+  if (!completedAt) return false;
+  return now.getTime() >= new Date(completedAt).getTime() + DAY_MS;
+}
+
+function isDueReview(
+  item: DrillItem,
   state: ReadonlyMap<string, DrillItemState>,
   now: Date,
 ): boolean {
-  if (item.tagId === missionTagId) return false;
+  if (!isExercise(item)) return false;
   const row = state.get(item.id);
-  if (!row || row.status !== "graduated" || !row.nextPracticeAt) return false;
+  if (!row?.nextPracticeAt) return false;
   return new Date(row.nextPracticeAt) <= now;
 }
 
-export function buildDeck(input: BuildDeckInput): DrillItem[] {
-  const eligible = input.items.filter((item) => isEligible(item, input.level));
-  const missionItems = eligible
-    .filter((item) => item.tagId === input.missionTagId)
-    .sort(byLadder);
-  const isSession1 = !missionItems.some((item) => input.state.has(item.id));
-
-  if (isSession1) return missionItems.slice(0, DECK_SIZE);
-
-  const dueMission = missionItems.filter((item) =>
-    isDueOrUnscheduled(item, input.state, input.now),
+function buildIntroDeck(input: BuildDeckInput, eligible: DrillItem[]): DrillItem[] {
+  const tagId = input.introTagId;
+  if (!tagId) return [];
+  const teach = eligible.find(
+    (item) => item.tagId === tagId && item.format === "teach",
   );
-  const remaining = DECK_SIZE - dueMission.length;
-  if (remaining <= 0) return dueMission.slice(0, DECK_SIZE);
+  const introExercises = exercisesForTag(eligible, tagId).slice(
+    0,
+    EXERCISES_PER_CATEGORY_PER_DAY,
+  );
+  const remaining = introExercises.filter((item) => !input.state.has(item.id));
+  const introStarted = introExercises.some((item) => input.state.has(item.id));
+  const deck: DrillItem[] = [];
+  if (teach && !introStarted) deck.push(teach);
+  deck.push(...remaining);
+  return deck;
+}
 
-  const repaso = eligible
-    .filter((item) =>
-      isDueGraduatedRepaso(item, input.missionTagId, input.state, input.now),
-    )
-    .sort((a, b) => {
+function buildReviewDeck(input: BuildDeckInput, eligible: DrillItem[]): DrillItem[] {
+  const deck: DrillItem[] = [];
+  for (const tagId of input.reviewTagIds) {
+    const pool = exercisesForTag(eligible, tagId);
+    const unseen = pool.filter((item) =>
+      unseenAllowedToday(
+        item,
+        input.state,
+        input.now,
+        input.introCompletedAtByTagId,
+      ),
+    );
+    const due = pool.filter(
+      (item) =>
+        !unseen.includes(item) && isDueReview(item, input.state, input.now),
+    );
+    due.sort((a, b) => {
       const aAt = input.state.get(a.id)?.nextPracticeAt ?? "";
       const bAt = input.state.get(b.id)?.nextPracticeAt ?? "";
       const byDue = aAt.localeCompare(bAt);
       if (byDue !== 0) return byDue;
       return a.id.localeCompare(b.id);
-    })
-    .slice(0, remaining);
+    });
+    deck.push(...[...unseen, ...due].slice(0, EXERCISES_PER_CATEGORY_PER_DAY));
+  }
+  return deck;
+}
 
-  return [...dueMission, ...repaso];
+export function buildDeck(input: BuildDeckInput): DrillItem[] {
+  const eligible = input.items.filter((item) => isEligible(item, input.level));
+  if (input.introTagId) return buildIntroDeck(input, eligible);
+  return buildReviewDeck(input, eligible);
 }
 
 function normalizeAnswer(value: string): string {

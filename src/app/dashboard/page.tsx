@@ -8,22 +8,29 @@ import { requireBrowsingStudent, browsingClassroomLevel } from "@/lib/browsing-a
 import { loadDashboard } from "@/lib/dashboard";
 import { sessionTypeLabel } from "@/lib/activities";
 import { getClassDayPhase } from "@/lib/session-phase";
-import { missionForStudent } from "@/lib/student-mission";
+import { toDrillLevel } from "@/lib/drills";
+import { loadStudentPractice } from "@/lib/student-drills";
 import MissionCard from "@/components/dashboard/MissionCard";
+import ReviewCard from "@/components/dashboard/ReviewCard";
 
 export const metadata = {
   title: "Inicio - Profe Kyle",
 };
 
-async function loadInicioMission(
+async function loadInicioPractice(
   supabase: SupabaseClient,
-  userId: string
+  userId: string,
+  level: ReturnType<typeof browsingClassroomLevel>
 ) {
+  if (!level) return null;
   try {
-    return await missionForStudent(supabase, userId);
+    return await loadStudentPractice(supabase, {
+      userId,
+      level: toDrillLevel(level),
+    });
   } catch (error) {
     console.error(
-      "Inicio mission failed:",
+      "Inicio practice failed:",
       error instanceof Error ? error.message : error
     );
     return null;
@@ -33,7 +40,7 @@ async function loadInicioMission(
 export default async function DashboardPage() {
   const { supabase, user, profile, displayName, preview } =
     await requireBrowsingStudent("/dashboard");
-  const [data, mission] = await Promise.all([
+  const [data, practice] = await Promise.all([
     loadDashboard(
       supabase,
       user.id,
@@ -41,7 +48,13 @@ export default async function DashboardPage() {
       displayName,
       preview ? { previewAsLevel: preview.level } : undefined
     ),
-    preview ? Promise.resolve(null) : loadInicioMission(supabase, user.id),
+    preview
+      ? Promise.resolve(null)
+      : loadInicioPractice(
+          supabase,
+          user.id,
+          browsingClassroomLevel(profile, preview)
+        ),
   ]);
 
   const greeting = data.displayName ? `Hola, ${data.displayName}` : "Hola";
@@ -105,12 +118,14 @@ export default async function DashboardPage() {
           </Link>
         ) : null}
 
-        {mission ? (
+        {practice?.intro ? (
           <MissionCard
-            displayName={mission.displayName}
-            dismissedUntil={mission.dismissedUntil}
+            displayName={practice.intro.displayName}
+            dismissedUntil={practice.intro.dismissedUntil}
           />
         ) : null}
+
+        {practice && practice.reviewCount > 0 ? <ReviewCard /> : null}
 
         {hasCourse ? (
           <Link
@@ -172,7 +187,6 @@ export default async function DashboardPage() {
                     lifecycle={lesson.lifecycle}
                     completed={lesson.completed}
                     hasRecording={lesson.hasRecording}
-                    recordingYoutubeUrl={lesson.recordingYoutubeUrl}
                     sessionDate={lesson.sessionDate}
                     href={lesson.href}
                     liveOnly={lesson.liveOnly}

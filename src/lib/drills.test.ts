@@ -9,7 +9,8 @@ import {
   buildDeck,
   CLEAN_RECALLS_TO_GRADUATE,
   DAY_MS,
-  DECK_SIZE,
+  EXERCISES_PER_CATEGORY_PER_DAY,
+  LAPSE_MS,
   emptyDrillItemState,
   isCorrectAnswer,
   nextPracticeAt,
@@ -28,6 +29,21 @@ import {
 } from "./parse-drill-content";
 
 const NOW = new Date("2026-01-01T00:00:00.000Z");
+
+function deckInput(
+  partial: Partial<Parameters<typeof buildDeck>[0]> &
+    Pick<Parameters<typeof buildDeck>[0], "items">,
+): Parameters<typeof buildDeck>[0] {
+  return {
+    state: new Map(),
+    now: NOW,
+    level: "pre_int",
+    introTagId: null,
+    reviewTagIds: [],
+    introCompletedAtByTagId: new Map(),
+    ...partial,
+  };
+}
 
 function item(partial: Partial<DrillItem> & Pick<DrillItem, "id" | "tagId" | "format">): DrillItem {
   return {
@@ -94,14 +110,14 @@ test("three clean recalls graduate and schedule 14 days", () => {
   assert.equal(current.rounds, 3);
 });
 
-test("a miss resets clean_recalls and reschedules at 2 days", () => {
+test("a miss resets clean_recalls and reschedules tomorrow", () => {
   let current = emptyDrillItemState("student-1", "item-1", NOW);
   current = applyResult(current, { correct: true }, NOW);
   current = applyResult(current, { correct: true }, NOW);
   current = applyResult(current, { correct: false }, NOW);
   assert.equal(current.cleanRecalls, 0);
   assert.equal(current.status, "learning");
-  assert.equal(current.nextPracticeAt, "2026-01-03T00:00:00.000Z");
+  assert.equal(current.nextPracticeAt, new Date(NOW.getTime() + LAPSE_MS).toISOString());
   assert.equal(current.rounds, 3);
   assert.equal(current.mcqUsed, true);
 });
@@ -114,11 +130,11 @@ test("a miss on a graduated item stays graduated", () => {
   current = applyResult(current, { correct: false }, NOW);
   assert.equal(current.status, "graduated");
   assert.equal(current.cleanRecalls, 0);
-  assert.equal(current.nextPracticeAt, "2026-01-03T00:00:00.000Z");
+  assert.equal(current.nextPracticeAt, new Date(NOW.getTime() + LAPSE_MS).toISOString());
   assert.ok(current.graduatedAt);
 });
 
-test("session-1 focused deck puts teach first and hides int cloze from pre_int", () => {
+test("intro sitting is teach plus up to 5 unseen exercises at level", () => {
   const items: DrillItem[] = [
     item({ id: "int-cloze", tagId: "make", format: "cloze", level: "int" }),
     item({ id: "p-cloze-2", tagId: "make", format: "cloze", createdAt: "2026-01-02T00:00:00.000Z" }),
@@ -129,13 +145,9 @@ test("session-1 focused deck puts teach first and hides int cloze from pre_int",
     item({ id: "inactive", tagId: "make", format: "cloze", active: false }),
   ];
 
-  const deck = buildDeck({
-    missionTagId: "make",
-    items,
-    state: new Map(),
-    now: NOW,
-    level: "pre_int",
-  });
+  const deck = buildDeck(
+    deckInput({ items, introTagId: "make" }),
+  );
 
   assert.equal(deck[0]?.id, "teach");
   assert.deepEqual(
@@ -146,10 +158,9 @@ test("session-1 focused deck puts teach first and hides int cloze from pre_int",
     deck.some((row) => row.id === "int-cloze" || row.id === "other-teach"),
     false,
   );
-  assert.ok(deck.length <= DECK_SIZE);
 });
 
-test("session-1 caps at DECK_SIZE after teach then cloze then translation", () => {
+test("intro sitting caps at 5 exercises and leaves leftover unseen out", () => {
   const items: DrillItem[] = [
     item({ id: "teach", tagId: "make", format: "teach", level: "int" }),
     ...Array.from({ length: 6 }, (_, index) =>
@@ -163,70 +174,81 @@ test("session-1 caps at DECK_SIZE after teach then cloze then translation", () =
     item({ id: "tr", tagId: "make", format: "translation" }),
   ];
 
-  const deck = buildDeck({
-    missionTagId: "make",
-    items,
-    state: new Map(),
-    now: NOW,
-    level: "pre_int",
-  });
+  const deck = buildDeck(deckInput({ items, introTagId: "make" }));
 
-  assert.equal(deck.length, DECK_SIZE);
+  assert.equal(deck.length, 1 + EXERCISES_PER_CATEGORY_PER_DAY);
   assert.equal(deck[0]?.id, "teach");
-  assert.equal(deck.some((row) => row.format === "translation"), false);
+  assert.equal(deck.some((row) => row.id === "c5" || row.format === "translation"), false);
 });
 
-test("session-2 mixes due mission items with oldest due repaso", () => {
+test("review mix is unseen then due, cap 5 per tag, no padding", () => {
   const items: DrillItem[] = [
     item({ id: "teach", tagId: "make", format: "teach", level: "int" }),
-    item({ id: "mission-due", tagId: "make", format: "cloze" }),
-    item({ id: "mission-later", tagId: "make", format: "cloze" }),
-    item({ id: "repaso-old", tagId: "age", format: "cloze" }),
-    item({ id: "repaso-new", tagId: "age", format: "translation" }),
-    item({ id: "repaso-not-due", tagId: "age", format: "cloze" }),
+    item({ id: "make-due", tagId: "make", format: "cloze" }),
+    item({ id: "make-later", tagId: "make", format: "cloze" }),
+    item({ id: "age-due-1", tagId: "age", format: "cloze" }),
+    item({ id: "age-due-2", tagId: "age", format: "translation" }),
+    item({ id: "age-later", tagId: "age", format: "cloze" }),
   ];
+  const completed = new Date(NOW.getTime() - 2 * DAY_MS).toISOString();
   const stateMap = new Map<string, DrillItemState>([
-    ["teach", state("teach", { status: "learning", nextPracticeAt: "2026-02-01T00:00:00.000Z" })],
-    ["mission-due", state("mission-due", { nextPracticeAt: "2025-12-31T00:00:00.000Z" })],
-    ["mission-later", state("mission-later", { nextPracticeAt: "2026-02-01T00:00:00.000Z" })],
-    [
-      "repaso-old",
-      state("repaso-old", {
-        status: "graduated",
-        nextPracticeAt: "2025-12-01T00:00:00.000Z",
-      }),
-    ],
-    [
-      "repaso-new",
-      state("repaso-new", {
-        status: "graduated",
-        nextPracticeAt: "2025-12-15T00:00:00.000Z",
-      }),
-    ],
-    [
-      "repaso-not-due",
-      state("repaso-not-due", {
-        status: "graduated",
-        nextPracticeAt: "2026-02-01T00:00:00.000Z",
-      }),
-    ],
+    ["make-due", state("make-due", { nextPracticeAt: "2025-12-31T00:00:00.000Z" })],
+    ["make-later", state("make-later", { nextPracticeAt: "2026-02-01T00:00:00.000Z" })],
+    ["age-due-1", state("age-due-1", { nextPracticeAt: "2025-12-01T00:00:00.000Z" })],
+    ["age-due-2", state("age-due-2", { nextPracticeAt: "2025-12-15T00:00:00.000Z" })],
+    ["age-later", state("age-later", { nextPracticeAt: "2026-02-01T00:00:00.000Z" })],
   ]);
 
-  const deck = buildDeck({
-    missionTagId: "make",
-    items,
-    state: stateMap,
-    now: NOW,
-    level: "pre_int",
-  });
+  const deck = buildDeck(
+    deckInput({
+      items,
+      state: stateMap,
+      reviewTagIds: ["make", "age"],
+      introCompletedAtByTagId: new Map([
+        ["make", completed],
+        ["age", completed],
+      ]),
+    }),
+  );
 
   assert.deepEqual(
     deck.map((row) => row.id),
-    ["mission-due", "repaso-old", "repaso-new"],
+    ["make-due", "age-due-1", "age-due-2"],
   );
 });
 
-test("after session 1 a teach card with no state is not dealt again", () => {
+test("leftover unseen wait a day after intro before review", () => {
+  const items: DrillItem[] = [
+    item({ id: "teach", tagId: "make", format: "teach", level: "int" }),
+    item({ id: "seen", tagId: "make", format: "cloze" }),
+    item({ id: "fresh", tagId: "make", format: "cloze" }),
+  ];
+  const justNow = NOW.toISOString();
+  const later = new Date(NOW.getTime() + DAY_MS);
+
+  const sameDay = buildDeck(
+    deckInput({
+      items,
+      state: new Map([["seen", state("seen", { nextPracticeAt: "2026-02-01T00:00:00.000Z" })]]),
+      reviewTagIds: ["make"],
+      introCompletedAtByTagId: new Map([["make", justNow]]),
+    }),
+  );
+  assert.deepEqual(sameDay.map((row) => row.id), []);
+
+  const nextDay = buildDeck(
+    deckInput({
+      items,
+      now: later,
+      state: new Map([["seen", state("seen", { nextPracticeAt: "2026-02-01T00:00:00.000Z" })]]),
+      reviewTagIds: ["make"],
+      introCompletedAtByTagId: new Map([["make", justNow]]),
+    }),
+  );
+  assert.deepEqual(nextDay.map((row) => row.id), ["fresh"]);
+});
+
+test("after intro has started the teach card is not dealt again", () => {
   const items: DrillItem[] = [
     item({ id: "teach", tagId: "make", format: "teach", level: "int" }),
     item({ id: "seen", tagId: "make", format: "cloze" }),
@@ -236,13 +258,9 @@ test("after session 1 a teach card with no state is not dealt again", () => {
     ["seen", state("seen", { nextPracticeAt: "2026-02-01T00:00:00.000Z" })],
   ]);
 
-  const deck = buildDeck({
-    missionTagId: "make",
-    items,
-    state: stateMap,
-    now: NOW,
-    level: "pre_int",
-  });
+  const deck = buildDeck(
+    deckInput({ items, state: stateMap, introTagId: "make" }),
+  );
 
   assert.deepEqual(
     deck.map((row) => row.id),

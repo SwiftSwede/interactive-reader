@@ -11,7 +11,7 @@ export const MISSION_TAG_TYPES = ["grammar", "phonetic", "error"] as const;
 
 export type MissionTagType = (typeof MISSION_TAG_TYPES)[number];
 
-export type MissionGraduationReason = "teacher_clear";
+export type MissionGraduationReason = "teacher_clear" | "intro_complete";
 
 export type MissionEvidenceRow = {
   tagType: string;
@@ -44,6 +44,7 @@ export type StudentMission = {
   startedAt: string;
   graduatedAt: string | null;
   dismissedUntil: string | null;
+  graduationReason: MissionGraduationReason | null;
   updatedAt: string;
 };
 
@@ -53,7 +54,7 @@ export type ClearedMissionTag = {
 };
 
 const MISSION_COLUMNS =
-  "id, user_id, tag_type, tag_id, status, started_at, graduated_at, dismissed_until, updated_at";
+  "id, user_id, tag_type, tag_id, status, started_at, graduated_at, dismissed_until, graduation_reason, updated_at";
 
 type MissionRow = {
   id: string;
@@ -64,6 +65,7 @@ type MissionRow = {
   started_at: string;
   graduated_at: string | null;
   dismissed_until: string | null;
+  graduation_reason: string | null;
   updated_at: string;
 };
 
@@ -135,6 +137,14 @@ function mapMission(row: MissionRow): StudentMission {
   if (row.status !== "active" && row.status !== "graduated") {
     throw new AppError("No pude leer la misión.", "MISSION_READ_FAILED", 500);
   }
+  const reason = row.graduation_reason ?? null;
+  if (
+    reason != null &&
+    reason !== "teacher_clear" &&
+    reason !== "intro_complete"
+  ) {
+    throw new AppError("No pude leer la misión.", "MISSION_READ_FAILED", 500);
+  }
   return {
     id: row.id,
     userId: row.user_id,
@@ -144,6 +154,7 @@ function mapMission(row: MissionRow): StudentMission {
     startedAt: row.started_at,
     graduatedAt: row.graduated_at,
     dismissedUntil: row.dismissed_until,
+    graduationReason: reason,
     updatedAt: row.updated_at,
   };
 }
@@ -171,7 +182,37 @@ async function readActiveMission(
   return mapMission(data as MissionRow);
 }
 
-async function loadMissionCatalog(client: SupabaseClient): Promise<MissionCatalog> {
+export type IntroCompletedTag = {
+  tagId: string;
+  completedAt: string;
+};
+
+/** Tags whose intro sitting already finished. The topic flag may still be on. */
+export async function listIntroCompletedTags(
+  client: SupabaseClient,
+  userId: string,
+): Promise<IntroCompletedTag[]> {
+  const { data, error } = await client
+    .from("student_missions")
+    .select("tag_id, graduated_at")
+    .eq("user_id", userId)
+    .eq("graduation_reason", "intro_complete");
+
+  if (error) {
+    console.error("listIntroCompletedTags failed:", error.message);
+    throw new AppError("No pude leer la misión.", "MISSION_READ_FAILED", 500);
+  }
+
+  const rows = (data ?? []) as Array<{
+    tag_id: string;
+    graduated_at: string | null;
+  }>;
+  return rows
+    .filter((row) => row.graduated_at)
+    .map((row) => ({ tagId: row.tag_id, completedAt: row.graduated_at! }));
+}
+
+export async function loadMissionCatalog(client: SupabaseClient): Promise<MissionCatalog> {
   const groups = await Promise.all(
     MISSION_TAG_TYPES.map(async (tagType) => {
       const { data, error } = await client
@@ -270,8 +311,12 @@ export async function getOrCreateActiveMission(
 
   if (!evidence.some((row) => isMissionTagType(row.tagType))) return null;
 
+  const introCompleted = await listIntroCompletedTags(client, userId);
   const catalog = await loadMissionCatalog(client);
-  const [winner] = rankMissionCandidates(evidence, catalog);
+  const skip = new Set(introCompleted.map((row) => row.tagId));
+  const [winner] = rankMissionCandidates(evidence, catalog).filter(
+    (candidate) => !skip.has(candidate.tagId),
+  );
   if (!winner) return null;
 
   const { data: inserted, error: insertError } = await client
@@ -362,6 +407,7 @@ export async function graduateMission(
     .update({
       status: "graduated",
       graduated_at: now,
+      graduation_reason: reason,
       updated_at: now,
     })
     .eq("id", missionId)

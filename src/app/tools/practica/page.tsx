@@ -3,9 +3,8 @@ import BackLink from "@/components/BackLink";
 import BrowsingShell from "@/components/shell/BrowsingShell";
 import DrillSession from "@/components/drills/DrillSession";
 import { browsingClassroomLevel, requireBrowsingStudent } from "@/lib/browsing-auth";
-import { loadDrillLab, type DrillLab } from "@/lib/drill-session";
 import { toDrillLevel } from "@/lib/drills";
-import { missionForStudent } from "@/lib/student-mission";
+import { loadStudentPractice, type StudentPractice } from "@/lib/student-drills";
 
 export const metadata = {
   title: "Laboratorio de práctica - Profe Kyle",
@@ -14,23 +13,23 @@ export const metadata = {
 type LabState =
   | { kind: "empty" }
   | { kind: "error" }
-  | { kind: "ready"; missionName: string; lab: DrillLab };
+  | { kind: "ready"; practice: StudentPractice };
 
 async function loadLab(
   supabase: Awaited<ReturnType<typeof requireBrowsingStudent>>["supabase"],
   userId: string,
-  level: ReturnType<typeof browsingClassroomLevel>
+  level: ReturnType<typeof browsingClassroomLevel>,
+  preferReview: boolean
 ): Promise<LabState> {
   if (!level) return { kind: "empty" };
   try {
-    const mission = await missionForStudent(supabase, userId);
-    if (!mission) return { kind: "empty" };
-    const lab = await loadDrillLab(supabase, {
+    const practice = await loadStudentPractice(supabase, {
       userId,
-      missionTagId: mission.tagId,
       level: toDrillLevel(level),
+      preferReview,
     });
-    return { kind: "ready", missionName: mission.displayName, lab };
+    if (practice.deck.length === 0) return { kind: "empty" };
+    return { kind: "ready", practice };
   } catch (error) {
     console.error(
       "Drill Lab load failed:",
@@ -40,12 +39,23 @@ async function loadLab(
   }
 }
 
-export default async function PracticaPage() {
+export default async function PracticaPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ repaso?: string }>;
+}) {
   const { supabase, user, profile, preview } =
     await requireBrowsingStudent("/tools/practica");
+  const { repaso } = await searchParams;
+  const preferReview = repaso === "1";
   const state: LabState = preview
     ? { kind: "empty" }
-    : await loadLab(supabase, user.id, browsingClassroomLevel(profile, preview));
+    : await loadLab(
+        supabase,
+        user.id,
+        browsingClassroomLevel(profile, preview),
+        preferReview
+      );
 
   return (
     <BrowsingShell
@@ -62,9 +72,14 @@ export default async function PracticaPage() {
 
         {state.kind === "ready" ? (
           <DrillSession
-            missionName={state.missionName}
-            deck={state.lab.deck}
-            initialCollectionCount={state.lab.collectionCount}
+            missionName={
+              state.practice.sessionKind === "intro"
+                ? (state.practice.intro?.displayName ?? "práctica de repaso")
+                : "práctica de repaso"
+            }
+            sessionKind={state.practice.sessionKind}
+            deck={state.practice.deck}
+            initialCollectionCount={state.practice.collectionCount}
           />
         ) : state.kind === "error" ? (
           <div className="mt-8">

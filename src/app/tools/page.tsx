@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { ChevronRight, LayoutGrid } from "lucide-react";
 import BrowsingShell from "@/components/shell/BrowsingShell";
-import { requireBrowsingStudent } from "@/lib/browsing-auth";
-import { countCollection } from "@/lib/drill-session";
-import { missionForStudent } from "@/lib/student-mission";
+import { browsingClassroomLevel, requireBrowsingStudent } from "@/lib/browsing-auth";
+import { toDrillLevel } from "@/lib/drills";
+import { loadStudentPractice } from "@/lib/student-drills";
 
 export const metadata = {
   title: "Herramientas - Profe Kyle",
@@ -11,26 +11,41 @@ export const metadata = {
 
 async function loadLabEntry(
   supabase: Awaited<ReturnType<typeof requireBrowsingStudent>>["supabase"],
-  userId: string
+  userId: string,
+  level: ReturnType<typeof browsingClassroomLevel>
 ) {
-  const [mission, collectionCount] = await Promise.all([
-    missionForStudent(supabase, userId).catch((error: unknown) => {
-      console.error(
-        "Herramientas mission failed:",
-        error instanceof Error ? error.message : error
-      );
-      return null;
-    }),
-    countCollection(supabase, userId),
-  ]);
-  return { missionName: mission?.displayName ?? null, collectionCount };
+  if (!level) {
+    return { line: "Todavía no hay nada que practicar.", collectionCount: 0 };
+  }
+  try {
+    const practice = await loadStudentPractice(supabase, {
+      userId,
+      level: toDrillLevel(level),
+    });
+    const line = practice.intro
+      ? practice.intro.displayName
+      : practice.reviewCount > 0
+        ? "Hay ejercicios de repaso."
+        : "Todavía no hay nada que practicar.";
+    return { line, collectionCount: practice.collectionCount };
+  } catch (error) {
+    console.error(
+      "Herramientas practice failed:",
+      error instanceof Error ? error.message : error
+    );
+    return { line: "Todavía no hay nada que practicar.", collectionCount: 0 };
+  }
 }
 
 export default async function ToolsPage() {
-  const { supabase, user, preview } = await requireBrowsingStudent("/tools");
+  const { supabase, user, profile, preview } = await requireBrowsingStudent("/tools");
   const lab = preview
-    ? { missionName: null, collectionCount: 0 }
-    : await loadLabEntry(supabase, user.id);
+    ? { line: "Todavía no hay nada que practicar.", collectionCount: 0 }
+    : await loadLabEntry(
+        supabase,
+        user.id,
+        browsingClassroomLevel(profile, preview)
+      );
 
   return (
     <BrowsingShell
@@ -49,7 +64,7 @@ export default async function ToolsPage() {
               Laboratorio de práctica
             </span>
             <span className="mt-1 block text-label-md text-text-secondary">
-              {lab.missionName ?? "Todavía no hay nada que practicar."}
+              {lab.line}
             </span>
             <span className="mt-1 block text-label-md text-text-secondary">
               Tu colección: {lab.collectionCount}

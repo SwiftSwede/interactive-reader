@@ -75,10 +75,12 @@ function BackToTools() {
 
 export default function DrillSession({
   missionName,
+  sessionKind,
   deck,
   initialCollectionCount,
 }: {
   missionName: string;
+  sessionKind: "intro" | "review";
   deck: SessionItem[];
   initialCollectionCount: number;
 }) {
@@ -118,7 +120,8 @@ export default function DrillSession({
   }
 
   const item = deck[index]!;
-  const header = item.repaso ? "práctica de repaso" : missionName;
+  const header =
+    sessionKind === "review" || item.repaso ? "práctica de repaso" : missionName;
 
   const advance = () => {
     setIndex((current) => current + 1);

@@ -256,6 +256,7 @@ function missionRow(overrides: Partial<StudentMission> = {}): Record<string, unk
     startedAt: "2026-09-01T00:00:00.000Z",
     graduatedAt: null,
     dismissedUntil: "2026-09-30T05:00:00.000Z",
+    graduationReason: null as StudentMission["graduationReason"],
     updatedAt: "2026-09-01T00:00:00.000Z",
     ...overrides,
   };
@@ -268,11 +269,13 @@ function missionRow(overrides: Partial<StudentMission> = {}): Record<string, unk
     started_at: mission.startedAt,
     graduated_at: mission.graduatedAt,
     dismissed_until: mission.dismissedUntil,
+    graduation_reason: mission.graduationReason,
     updated_at: mission.updatedAt,
   };
 }
 
 const emptyCatalog = { data: [], error: null };
+const emptyIntro = { data: [], error: null };
 
 test("an active mission is returned as-is, including a future dismissal", async () => {
   const { client, calls } = scriptedClient([
@@ -307,6 +310,7 @@ test("the teacher-set flag becomes the mission and the start event records its n
       ],
       error: null,
     },
+    emptyIntro,
     { data: [{ id: "past", name: "past_simple" }], error: null },
     emptyCatalog,
     { data: [{ id: "prep", name: "preposition_partner" }], error: null },
@@ -352,6 +356,7 @@ test("a unique-index race returns the existing mission and skips the start event
       ],
       error: null,
     },
+    emptyIntro,
     emptyCatalog,
     emptyCatalog,
     { data: [{ id: "prep", name: "preposition_partner" }], error: null },
@@ -373,6 +378,55 @@ test("a unique-index race returns the existing mission and skips the start event
 
   assert.equal(mission?.id, "mission-existing");
   assert.equal(events.length, 0);
+});
+
+test("an intro-complete tag is skipped so the next flag becomes the mission", async () => {
+  const events: unknown[] = [];
+  const { client } = scriptedClient([
+    { data: null, error: null },
+    {
+      data: [
+        {
+          tag_type: "error",
+          tag_id: "prep",
+          source_type: "teacher_observation",
+          updated_at: "2020-01-01T00:00:00.000Z",
+        },
+        {
+          tag_type: "phonetic",
+          tag_id: "th",
+          source_type: "teacher_observation",
+          updated_at: "2026-06-01T00:00:00.000Z",
+        },
+      ],
+      error: null,
+    },
+    {
+      data: [{ tag_id: "prep", graduated_at: "2026-09-01T00:00:00.000Z" }],
+      error: null,
+    },
+    emptyCatalog,
+    { data: [{ id: "th", name: "th" }], error: null },
+    { data: [{ id: "prep", name: "preposition_partner" }], error: null },
+    { data: missionRow({ tagType: "phonetic", tagId: "th" }), error: null },
+  ]);
+  const admin = {
+    from() {
+      return {
+        insert(payload: unknown) {
+          events.push(payload);
+          return Promise.resolve({ error: null });
+        },
+      };
+    },
+  } as unknown as SupabaseClient;
+
+  const mission = await getOrCreateActiveMission(client, "student-1", admin);
+  assert.equal(mission?.tagId, "th");
+  assert.deepEqual(
+    (events[0] as { detail: { tag_id: string } }).detail.tag_id,
+    "th",
+  );
 });
 
 test("vocabulary flags do not create a mission", async () => {
@@ -411,6 +465,7 @@ test("a catalog read failure is an error", async () => {
       ],
       error: null,
     },
+    emptyIntro,
     { data: null, error: { message: "catalog down" } },
     emptyCatalog,
     emptyCatalog,
@@ -441,6 +496,7 @@ test("a failed start event still returns the mission", async () => {
       ],
       error: null,
     },
+    emptyIntro,
     emptyCatalog,
     emptyCatalog,
     { data: [{ id: "prep", name: "preposition_partner" }], error: null },
@@ -498,9 +554,11 @@ test("graduation sets status and writes mission_graduated", async () => {
   const update = calls[0]?.payload as {
     status: string;
     graduated_at: string;
+    graduation_reason: string;
     updated_at: string;
   };
   assert.equal(update.status, "graduated");
+  assert.equal(update.graduation_reason, "teacher_clear");
   assert.equal(typeof update.graduated_at, "string");
   assert.equal(calls[1]?.table, "learning_events");
   assert.deepEqual(calls[1]?.payload, {

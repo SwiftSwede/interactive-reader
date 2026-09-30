@@ -9,7 +9,6 @@ import {
   pickActiveCourseId,
   pickTodaySession,
   pickResumeLesson,
-  liveOnlyRecordingHref,
   toDashboardLesson,
   type CourseCandidate,
   type DashboardLesson,
@@ -199,33 +198,6 @@ describe("toDashboardLesson", () => {
     assert.equal(lesson.hasRecording, true);
     assert.equal(lesson.recordingYoutubeUrl, "https://youtu.be/abc");
     assert.equal(lesson.completed, true);
-  });
-
-  test("live-only recording link is after-class only", () => {
-    assert.equal(
-      liveOnlyRecordingHref({
-        liveOnly: true,
-        lifecycle: "after",
-        recordingYoutubeUrl: "https://youtu.be/abc",
-      }),
-      "https://youtu.be/abc"
-    );
-    assert.equal(
-      liveOnlyRecordingHref({
-        liveOnly: true,
-        lifecycle: "live",
-        recordingYoutubeUrl: "https://youtu.be/abc",
-      }),
-      null
-    );
-    assert.equal(
-      liveOnlyRecordingHref({
-        liveOnly: false,
-        lifecycle: "after",
-        recordingYoutubeUrl: "https://youtu.be/abc",
-      }),
-      null
-    );
   });
 
   test("flex is live-only with no href", () => {

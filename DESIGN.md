@@ -73,11 +73,15 @@ components:
   buttons: [primary, secondary, ghost, step-nav-pill, ActionButton]
   teacher_observation_chip: "8px radius (rounded-small), surface-hover fill, 1px paper-line border, Lucide X in a 44px hit area. Not a pill."
   teacher_observation_ficha: "Student detail Observación uses three family fields (Errores comunes, Sonidos, Gramática) in one row at 1024px+, stacked below. Notas de clase keeps one Etiqueta field."
-  mission_card: "Inicio, under Seguir (or under the join hero). White, 1px paper-line, 16px radius, px-4 py-3. Title = tag display_name; one framing line; one primary Practicar; quiet text 'más tarde' (label-sm, text-muted, no border/fill, 44px). Absent when no mission, snoozed to next local midnight, or preview."
+  mission_card: "Inicio, under Seguir (or under the join hero). White, 1px paper-line, 16px radius, px-4 py-3. Title = tag display_name; one framing line; one primary Practicar; quiet text 'más tarde' (label-sm, text-muted, no border/fill, 44px). Absent when no unfinished intro, snoozed to next local midnight, or preview."
+  review_card: "Inicio, under the intro mission if any. Smaller invite: title Repaso, one line 'Hay ejercicios esperando.', one Practicar to /tools/practica?repaso=1. No más tarde. Absent when today's review pile is empty or preview."
+  drill_lab: "Herramientas entry card (24px radius, counts only: 'Tu colección: N') + /tools/practica one-item-at-a-time. Intro sitting: teach + up to 5 unseen. Review: mixed, cap 5 per category. Typed input when there are no choices. MCQ first round is the choices alone (no second field). Primary actions sit on the right. Feedback is one line; miss shows 'Era: …' in text-secondary."
   drill_lab: "Herramientas entry card (24px radius, counts only: 'Tu colección: N') + /tools/practica one-item-at-a-time session. Typed input when there are no choices. MCQ first round is the choices alone (no second field). Primary actions sit on the right. Feedback is one line; miss shows 'Era: …' in text-secondary."
   drill_teach_card: "Lead in story-body serif with inline strong/em. Example groups: own lines, italic serif story-body, 16px indent, 1px paper-line left rule, 12px between groups. Closing: body-main text-muted, 24px above. Siguiente right-aligned."
   quiet_text_action: "Text-only secondary action (label-sm, text-muted, 44px hit area). Used for dismissals like 'más tarde'. Not button-shaped."
   icons: Lucide React only, never emojis
+  lesson_card: "Inicio and Lecciones row. Equal height via one reserved 16px muted line under the status. Song uses the Music icon. Live-only with a recording says Grabación disponible and does not link out."
+  browsing_bottom_pad: "Content clears the tab bar: 72px on mobile (56px bar + 16px gap), 88px on desktop (56px bar + 16px float + 16px gap), plus the safe area."
   navigation: browsing mode (bottom tabs) vs lesson mode (full-screen, step nav); never coexist
 ---
 
@@ -261,6 +265,7 @@ On screens wider than 1024px, the layout does NOT change structurally. The same 
 **Tab bar (desktop):**
 - Still at the bottom of the screen, but constrained and centered: max-width 480px, rounded corners (24px radius), 16px margin from bottom and sides. Looks like a floating pill, not a full-width bar.
 - Same 3 tabs, same icons, same labels.
+- Page content clears the pill: 88px bottom padding (56px bar + 16px float + 16px gap) plus the safe area, so the last card is not covered.
 - This is the only element that changes shape on desktop. Everything else just gets more side margin.
 
 **Header (desktop):**
@@ -613,7 +618,7 @@ Pages: Inicio (dashboard), Lecciones (lesson list), Herramientas (tools), Perfil
 - Active tab: `--accent` (terracotta) text color + small dot or underline indicator above the label
 - Inactive tabs: `--text-muted` color
 - Tab icons (Lucide, 20px): Home (Inicio), BookOpen (Lecciones), Wrench or LayoutGrid (Herramientas)
-- Content area has bottom padding of 56px + safe area so content never hides behind the tab bar
+- Content area has bottom padding so content never hides behind the tab bar: 72px on mobile (56px bar + 16px gap) and 88px from the desktop breakpoint up (56px bar + 16px float + 16px gap), plus the safe area
 
 **Header (browsing mode):**
 - Height: 56px, sticky, `--paper-header` background with backdrop blur
@@ -702,7 +707,7 @@ Pages: story lessons, writing lessons, exams, movie talk, music, future lesson t
 ├─────────────────────────┤
 │                          │
 │  [Page content]          │  Dashboard / lesson list / tools
-│  Greeting, progress,     │  (scrolls, padding-bottom 56px)
+│  Greeting, progress,     │  (scrolls; 72px / 88px bottom pad)
 │  assigned lessons...     │
 │                          │
 ├─────────────────────────┤
@@ -723,9 +728,9 @@ Email + 8-digit code. Same Paper Light chrome as browsing mode so the jump into 
 5. Content `max-w-2xl`, `px-4`. No bottom tab bar.
 
 ### Inicio (Dashboard)
-The learner's home base. Shows today's class, where to resume, one practice invite, progress, and the month's 8-class stack.
+The learner's home base. Shows today's class, where to resume, an intro mission and/or a quiet review invite, progress, and the month's 8-class stack.
 
-**Section order (top to bottom).** Rendered order: greeting, class-day card, Seguir la lección, mission card, progress card, Este mes. Items 2 and 3 below describe how resume and the class card share the top slot.
+**Section order (top to bottom).** Rendered order: greeting, class-day card, Seguir la lección, intro mission card, review invite, progress card, Este mes. Items 2 and 3 below describe how resume and the class card share the top slot.
 1. Greeting: "Hola, [name]" (`headline-lg`, Lora, 24px, 700, `--text-primary`). Fall back to "Hola" if the name is missing. In the normal state this is the only Primary-weight text on the page.
 2. Resume row **Seguir la lección** (one label for every type with an app page). Omit when empty. No percent, no audio timestamp, no live-only Zoom rows.
    - **Class day, join window (T-10 through scheduled end):** terracotta join hero only. Do not show resume above or instead of it.
@@ -736,11 +741,12 @@ The learner's home base. Shows today's class, where to resume, one practice invi
    - **joinAt to scheduled session end:** JOIN HERO. Full-width terracotta card. Teaching overtime (Terminar clase / 4h cap) does not keep this hero. After the 90 minutes it becomes the moss "Clase terminada" card even if the lesson page is still in teaching mode. Up to two actions: **Entrar a la clase** (student session URL) when the class has an app page, and **Entrar a Zoom** (`courses.zoom_url`) when a Zoom URL is set. Either can appear alone. Live-only types (Conversación, Pronunciación) never get an app button. If Zoom is unset, do not render a Zoom button. Live-only with no Zoom URL keeps the info card: "{typeLabel} · Entra por Zoom" / "El link está en el chat de Zoom." Type label + course name below. This becomes the page's focal point (greeting stays, the hero wins by color and size).
    - **After session end, same day, no recording URL:** small moss-green card: "✓ Clase terminada · La grabación se subirá a YouTube pronto".
    - One client component ticks locally. No server polling.
-3b. Mission card (Slice 76, `04-MISSION-CARD.md`). Under Seguir la lección, or under the join hero during the join window (Seguir is hidden then). Smaller than the class card: white surface, `--paper-line` border, 16px radius, 16px/12px padding, 16px gap above. Title = the tag's `display_name` (`headline-md`). One framing line `body-main` `--text-secondary`: "Practícalo cuando quieras." One primary **Practicar** (48px, 16px radius) to `/tools/practica`. **más tarde** is quiet text beside it (`label-sm`, `--text-muted`, no border or fill, 44px hit area): it hides the card until the next midnight on the student's phone. No mission, or snoozed, or teacher preview: nothing renders (no empty-state card). No label, streak, count, or percent on the card.
+3b. Intro mission card (Slice 76, `04-MISSION-CARD.md`). Under Seguir la lección, or under the join hero during the join window (Seguir is hidden then). Smaller than the class card: white surface, `--paper-line` border, 16px radius, 16px/12px padding, 16px gap above. Title = the tag's `display_name` (`headline-md`). One framing line `body-main` `--text-secondary`: "Practícalo cuando quieras." One primary **Practicar** (48px, 16px radius) to `/tools/practica`. **más tarde** is quiet text beside it (`label-sm`, `--text-muted`, no border or fill, 44px hit area): it hides the card until the next midnight on the student's phone. No unfinished intro, or snoozed, or teacher preview: nothing renders (no empty-state card). Finishing the intro sitting hides it. No label, streak, count, or percent on the card.
+3c. Review invite. Same card tokens as the intro mission, under it. Title **Repaso** (`headline-md`). One line "Hay ejercicios esperando." One **Practicar** to `/tools/practica?repaso=1`. No **más tarde**. Omit when today's review pile is empty or in teacher preview.
 4. Progress card: white surface, `--paper-line` border, 24px radius, 16px padding. Course display name (`label-md`), "Clases completadas: {n} de {total}" (`label-md`, `--text-secondary`), 4px progress bar (`--accent` fill, `--paper-line` track). Entire card links to `/progress`. `{total}` includes placeholders and live-only rows. Live-only types count toward `{n}` when the teacher marked that student present. No upsell card for classroom students. Classroom Inicio shows the **current calendar month** at the student's Zoom level, not a prior month (a newly enrolled empty month still wins over last month's sessions). Older months on Lecciones are newest first; sessions inside those older months are newest first. Consumer "last opened course" is not stored yet.
 5. "Este mes" section heading (`headline-md`, Lora, 18px, 600). 24px gap above, 16px gap below. The course is a monthly 8-session arc, not a week.
 6. Assigned lesson list: each item is a row card (white surface, `--paper-line` border, 16px radius, 12px padding). Row contains:
-   - Lesson type icon (Lucide, 20px): BookOpen (story), PenLine (writing), FileText (exam), Languages (video_summary), MonitorPlay (presentation), MessagesSquare (conversation), Mic (pronunciation)
+   - Lesson type icon (Lucide, 20px): BookOpen (story, dialogue, movie talk), PenLine (writing), FileText (exam), Languages (video_summary), MonitorPlay (presentation), MessagesSquare (conversation), Mic (pronunciation), Music (song), CalendarDays (flex)
    - Lesson name (16px, Lora, 600, `--text-primary`). Placeholders and live-only rows use the type label as the title.
    - Status line (12px, one line, ellipsis). Lifecycle:
      - placeholder (content FK null): 🔒 Lock, "Próximamente · {date}", not tappable, no chevron
@@ -748,10 +754,10 @@ The learner's home base. Shows today's class, where to resume, one practice invi
      - live: ● filled `--accent` with a subtle pulse (`prefers-reduced-motion` respected), "EN VIVO · entra ahora", chevron
      - after-pending (window closed, no recording URL): ✓ `--success`, "Completada · {date}", plus muted "La grabación llega pronto"
      - after-recorded: ✓ `--success`, "Grabación disponible", chevron
-   - Live-only overrides (never 🔒, never a lesson href, no chevron): upcoming "{typeLabel} · En vivo por Zoom · {date}"; live "EN VIVO · por Zoom"; after "Clase terminada · {date}". If a recording URL is set, a nested "Ver la grabación" link on the card opens YouTube in a new tab. The card body stays inert.
+   - Live-only overrides (never 🔒, never a lesson href, no chevron, no nested recording link): upcoming "{typeLabel} · En vivo por Zoom · {date}"; live "EN VIVO · por Zoom"; after with a recording URL "Grabación disponible"; after without one "Clase terminada · {date}". The card body stays inert. The YouTube URL still shows on lesson pages that have a recording banner.
    - Right side: ChevronRight (`--text-muted`) only if the row is navigational
-   - Rows separated by 8px gap
-7. Bottom padding: 56px + safe area (tab bar space).
+   - Rows separated by 8px gap. Every row reserves one muted status line under the main status (16px, `label-sm` line height), even when that line is empty, so "La grabación llega pronto" does not make one card taller than the rest.
+7. Bottom padding: 72px + safe area on mobile, 88px + safe area on desktop (tab bar clearance).
 
 Práctica reciente (Dictado / Palabras / Pronunciación counts) is not on Inicio (Slice 76, brief decision 4). It lives on `/progress` only, as an unordered list with bold labels, counts not dictation percents.
 
@@ -765,22 +771,22 @@ All assigned lessons, filterable by type.
 2. Filter chips: "Todos" / "Historias" / "Escritura" / "Exámenes" / "Traducción" / "Presentación" (pill-shaped, 8px gap between them, `label-sm`). Active chip: `--accent` background, white text. Inactive: transparent, `--paper-line` border, `--text-secondary` text. No "En vivo" chip. Live-only rows still appear under Todos.
 3. Lesson list: same row card structure as the dashboard assigned lessons, showing all sessions (current course first, then older courses). Group heading per course month ("AGOSTO · NIÑERA", `label-sm` uppercase `--text-muted`) only when the student has more than one course. Use "Cargar más" after 12 rows. No infinite scroll.
 4. Empty state: if no lessons assigned, show Lucide `BookOpen` icon (48px, `--text-muted`), message "Aun no tienes clases asignadas. Tu profe te enviara un enlace." (`body-main`, `--text-secondary`), centered.
-5. Bottom padding: 56px + safe area.
+5. Bottom padding: 72px + safe area on mobile, 88px + safe area on desktop.
 
 ### Herramientas (Tools)
 Supplementary learning tools. The sounds library ships in a later slice. This slice keeps the tab so the tab bar never has to be retrofitted.
 
 **Section order (current):**
 1. Page title: "Herramientas" (`headline-lg`, 24px, 700). Focal point.
-2. Drill Lab entry card (Slice 76), 24px gap above: same shape as the Inicio progress card (white, `--paper-line` border, 24px radius, 16px padding, ChevronRight, whole card links to `/tools/practica`). Lines: **Laboratorio de práctica** (`headline-md`), then the mission `display_name` or "Todavía no hay nada que practicar." (`label-md`, `--text-secondary`), then **Tu colección: N** (`label-md`, `--text-secondary`; N = graduated items, zero shown). The card is always there; it is not absence-gated like Inicio. Counts only: no percent, no "N of M", no streak.
+2. Drill Lab entry card (Slice 76), 24px gap above: same shape as the Inicio progress card (white, `--paper-line` border, 24px radius, 16px padding, ChevronRight, whole card links to `/tools/practica`). Lines: **Laboratorio de práctica** (`headline-md`), then the intro `display_name`, or "Hay ejercicios de repaso.", or "Todavía no hay nada que practicar." (`label-md`, `--text-secondary`), then **Tu colección: N** (`label-md`, `--text-secondary`; N = graduated items, zero shown). The card is always there; it is not absence-gated like Inicio. Counts only: no percent, no "N of M", no streak.
 3. Centered empty state: Lucide `LayoutGrid` (48px, `--text-muted`), "Próximamente: la biblioteca de sonidos del Profe Kyle."
-4. Bottom padding: 56px + safe area.
+4. Bottom padding: 72px + safe area on mobile, 88px + safe area on desktop.
 
 ### Laboratorio de práctica (`/tools/practica`)
 Drill-down under Herramientas, still in browsing mode (tab bar stays, Herramientas active). Blinkist / Apple Books quiet-page register.
 
 1. BackLink "Herramientas" (same as Perfil / Progreso), then page title "Laboratorio de práctica" (`headline-lg`).
-2. One item at a time, max 6 per visit. Above the item: `label-sm` `--text-muted` line with the mission `display_name`, or "práctica de repaso" when the student has practiced that item before. Never "examen", never a position counter.
+2. One item at a time. Intro sitting: teach (once) plus up to 5 unseen exercises for that tag. Review sitting: mixed due and leftover unseen, cap 5 per category, no padding. Above the item: `label-sm` `--text-muted` line with the intro `display_name`, or "práctica de repaso" for a review sitting. Never "examen", never a position counter.
 3. Teach card (first visit of a mission only): structured hook, `lang="es"` on Kyle's prose. **Lead** in `story-body` Lora with inline `**strong**` / `*em*`. **Examples** (em-dash italic groups from the authored hook): each group on its own line(s), italic `story-body` `lang="en"`, 16px indent (`pl-4`), 1px `--paper-line` left rule, 12px between groups, 24px above the list. **Closing** aside (if present): `body-main` `--text-muted`, 24px above. Primary **Siguiente** (48px), right-aligned. Word bank not shown. No literal asterisks in the rendered card.
 4. Cloze: sentence in `story-body` `lang="en"` with the blank as a 2px `--text-muted` underline. Translation: Spanish prompt in `story-body` `lang="es"`. Primary **Comprobar** is right-aligned. Typing is the default when the item has no choices: a labeled text input (shared input style), "La palabra que falta" or "En inglés". MCQ options appear only on a brand-new item's first round and replace that field: full-width stacked rows, 16px radius, 44px, `--paper-line` border (selected: `--accent` border, `--accent-softer` fill). Tapping a row selects it. It does not submit.
 5. Feedback: one line in a reserved 24px slot, then right-aligned **Siguiente**. Correct: Check icon + "Esa sí." (`--success`). Item graduated: Check icon + "Se sumó a tu colección." Miss: "Era: {answer}." (`--text-secondary`, never red). No retry loop, no toast, no confetti, no sound.
@@ -809,7 +815,7 @@ Account management. Accessed via profile icon in header, not a tab. Drill-down p
    - Subscription status: "Activa" (`--success`) or "Expirada" (`--error`) with colored dot
 3. Logout button: secondary style (outlined), full width, 16px radius. Lucide `LogOut` icon + "Cerrar sesion" label.
 4. No stats here. Stats live on the dashboard.
-5. Bottom padding: 56px + safe area.
+5. Bottom padding: 72px + safe area on mobile, 88px + safe area on desktop.
 
 ### Noticias (News)
 Blog/updates. Accessed via news icon in header, not a tab. Drill-down page.
@@ -822,7 +828,7 @@ Blog/updates. Accessed via news icon in header, not a tab. Drill-down page.
    - Excerpt (14px, Roboto Flex, `--text-secondary`, 2-line max with ellipsis)
    - Tap to read full article
 3. Empty state if no articles: Lucide `Newspaper` icon, "No hay noticias todavía." (`--text-secondary`).
-4. Bottom padding: 56px + safe area.
+4. Bottom padding: 72px + safe area on mobile, 88px + safe area on desktop.
 
 ### Story Lesson Page (detailed)
 The step-based flow for story lessons. This is the most complex page layout.
