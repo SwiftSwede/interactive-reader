@@ -74,7 +74,7 @@ components:
   teacher_observation_chip: "8px radius (rounded-small), surface-hover fill, 1px paper-line border, Lucide X in a 44px hit area. Not a pill."
   teacher_observation_ficha: "Student detail Observación uses three family fields (Errores comunes, Sonidos, Gramática) in one row at 1024px+, stacked below. Notas de clase keeps one Etiqueta field."
   mission_card: "Inicio, under Seguir (or under the join hero). White, 1px paper-line, 16px radius, px-4 py-3. Title = tag display_name; one framing line; one primary Practicar; quiet text 'más tarde' (label-sm, text-muted, no border/fill, 44px). Absent when no mission, snoozed to next local midnight, or preview."
-  drill_lab: "Herramientas entry card (24px radius, counts only: 'Tu colección: N') + /tools/practica one-item-at-a-time session. Typed input default; MCQ rows (16px radius, full width) only on a new item's first round. Feedback is one line; miss shows 'Era: …' in text-secondary."
+  drill_lab: "Herramientas entry card (24px radius, counts only: 'Tu colección: N') + /tools/practica one-item-at-a-time session. Typed input when there are no choices. MCQ first round is the choices alone (no second field). Primary actions sit on the right. Feedback is one line; miss shows 'Era: …' in text-secondary."
   quiet_text_action: "Text-only secondary action (label-sm, text-muted, 44px hit area). Used for dismissals like 'más tarde'. Not button-shaped."
   icons: Lucide React only, never emojis
   navigation: browsing mode (bottom tabs) vs lesson mode (full-screen, step nav); never coexist
@@ -780,10 +780,10 @@ Drill-down under Herramientas, still in browsing mode (tab bar stays, Herramient
 
 1. BackLink "Herramientas" (same as Perfil / Progreso), then page title "Laboratorio de práctica" (`headline-lg`).
 2. One item at a time, max 6 per visit. Above the item: `label-sm` `--text-muted` line with the mission `display_name`, or "práctica de repaso" when the student has practiced that item before. Never "examen", never a position counter.
-3. Teach card (first visit of a mission only): Kyle's hook in `story-body` Lora, `lang="es"`. Primary **Siguiente** (48px). Word bank not shown.
-4. Cloze: sentence in `story-body` `lang="en"` with the blank as a 2px `--text-muted` underline. Translation: Spanish prompt in `story-body` `lang="es"`. Then a labeled text input (shared input style) and primary **Comprobar**. Typing is the default. MCQ options appear only on a brand-new item's first round: full-width stacked rows, 16px radius, 44px, `--paper-line` border (selected: `--accent` border, `--accent-softer` fill). Tapping an option fills the input; it does not submit.
-5. Feedback: one line in a reserved 24px slot, then **Siguiente**. Correct: Check icon + "Esa sí." (`--success`). Item graduated: Check icon + "Se sumó a tu colección." Miss: "Era: {answer}." (`--text-secondary`, never red). No retry loop, no toast, no confetti, no sound.
-6. End of deck: "Eso es todo por hoy." + "Tu colección: N" + secondary **Volver a Herramientas**. Nothing due: "Hoy no hay más." with the same count and link. No mission: "Todavía no hay nada que practicar."
+3. Teach card (first visit of a mission only): Kyle's hook in `story-body` Lora, `lang="es"`. Primary **Siguiente** (48px), right-aligned. Word bank not shown. Light markdown in the hook (`*italic*`, `**bold**`) renders as type.
+4. Cloze: sentence in `story-body` `lang="en"` with the blank as a 2px `--text-muted` underline. Translation: Spanish prompt in `story-body` `lang="es"`. Primary **Comprobar** is right-aligned. Typing is the default when the item has no choices: a labeled text input (shared input style), "La palabra que falta" or "En inglés". MCQ options appear only on a brand-new item's first round and replace that field: full-width stacked rows, 16px radius, 44px, `--paper-line` border (selected: `--accent` border, `--accent-softer` fill). Tapping a row selects it. It does not submit.
+5. Feedback: one line in a reserved 24px slot, then right-aligned **Siguiente**. Correct: Check icon + "Esa sí." (`--success`). Item graduated: Check icon + "Se sumó a tu colección." Miss: "Era: {answer}." (`--text-secondary`, never red). No retry loop, no toast, no confetti, no sound.
+6. End of deck: "Eso es todo por hoy." + "Tu colección: N" + right-aligned secondary **Volver a Herramientas**. Nothing due: "Hoy no hay más." with the same count and link. No mission: "Todavía no hay nada que practicar."
 
 **Later (sounds grid, not this slice):**
 1. Sounds section heading: "Sonidos" (`headline-md`, 18px, 600). 16px gap below.

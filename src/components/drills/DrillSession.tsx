@@ -50,12 +50,14 @@ function CollectionLine({ count }: { count: number }) {
 
 function BackToTools() {
   return (
-    <Link
-      href="/tools"
-      className="mt-6 inline-flex min-h-12 items-center justify-center rounded-card border border-paper-line px-5 text-label-md font-medium text-text-primary hover:bg-surface-hover active:bg-surface-hover"
-    >
-      Volver a Herramientas
-    </Link>
+    <div className="mt-6 flex justify-end">
+      <Link
+        href="/tools"
+        className="inline-flex min-h-12 items-center justify-center rounded-card border border-paper-line px-5 text-label-md font-medium text-text-primary hover:bg-surface-hover active:bg-surface-hover"
+      >
+        Volver a Herramientas
+      </Link>
+    </div>
   );
 }
 
@@ -117,8 +119,9 @@ export default function DrillSession({
     event.preventDefault();
     if (item.format === "teach" || feedback || pending) return;
     if (!answer.trim()) {
-      setError("Escribe tu respuesta primero.");
-      inputRef.current?.focus();
+      const choosingNow = Boolean(item.options);
+      setError(choosingNow ? "Elige una." : "Escribe tu respuesta primero.");
+      if (!choosingNow) inputRef.current?.focus();
       return;
     }
     setPending(true);
@@ -173,8 +176,8 @@ export default function DrillSession({
               return <span key={spanIndex}>{span.value}</span>;
             })}
           </p>
-          <div className="mt-8">
-            <ActionButton onClick={advance} className="min-h-12 w-full sm:w-auto">
+          <div className="mt-8 flex justify-end">
+            <ActionButton onClick={advance} className="min-h-12">
               Siguiente
             </ActionButton>
           </div>
@@ -189,19 +192,20 @@ export default function DrillSession({
             </p>
           )}
 
-          {item.options && !feedback ? (
+          {item.options ? (
             <ul className="mt-6 flex flex-col gap-2" aria-label="Opciones">
               {item.options.map((option) => (
                 <li key={option}>
                   <button
                     type="button"
                     lang="en"
+                    disabled={feedback != null}
                     onClick={() => {
                       setAnswer(option);
                       setError(null);
                     }}
                     aria-pressed={answer === option}
-                    className={`min-h-11 w-full rounded-card border px-3 py-2 text-left text-body-main ${
+                    className={`min-h-11 w-full rounded-card border px-3 py-2 text-left text-body-main disabled:opacity-100 ${
                       answer === option
                         ? "border-accent bg-accent-softer text-text-primary"
                         : "border-paper-line bg-surface text-text-primary hover:bg-surface-hover"
@@ -212,28 +216,30 @@ export default function DrillSession({
                 </li>
               ))}
             </ul>
-          ) : null}
-
-          <label htmlFor={inputId} className="mt-6 mb-1 block text-label-sm text-text-secondary">
-            {item.format === "cloze" ? "La palabra que falta" : "En inglés"}
-          </label>
-          <input
-            id={inputId}
-            ref={inputRef}
-            lang="en"
-            value={answer}
-            onChange={(event) => {
-              setAnswer(event.target.value);
-              setError(null);
-            }}
-            readOnly={feedback != null}
-            maxLength={500}
-            autoComplete="off"
-            autoCapitalize="off"
-            autoCorrect="off"
-            spellCheck={false}
-            className={INPUT_CLASS}
-          />
+          ) : (
+            <>
+              <label htmlFor={inputId} className="mt-6 mb-1 block text-label-sm text-text-secondary">
+                {item.format === "cloze" ? "La palabra que falta" : "En inglés"}
+              </label>
+              <input
+                id={inputId}
+                ref={inputRef}
+                lang="en"
+                value={answer}
+                onChange={(event) => {
+                  setAnswer(event.target.value);
+                  setError(null);
+                }}
+                readOnly={feedback != null}
+                maxLength={500}
+                autoComplete="off"
+                autoCapitalize="off"
+                autoCorrect="off"
+                spellCheck={false}
+                className={INPUT_CLASS}
+              />
+            </>
+          )}
 
           <div className="mt-3 min-h-6" role="status" aria-live="polite">
             {error ? <p className="text-label-md text-error">{error}</p> : null}
@@ -257,9 +263,9 @@ export default function DrillSession({
             ) : null}
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 flex justify-end">
             {feedback ? (
-              <ActionButton onClick={advance} className="min-h-12 w-full sm:w-auto">
+              <ActionButton onClick={advance} className="min-h-12">
                 Siguiente
               </ActionButton>
             ) : (
@@ -267,7 +273,7 @@ export default function DrillSession({
                 type="submit"
                 state={pending ? "pending" : "idle"}
                 pendingLabel="Comprobando…"
-                className="min-h-12 w-full sm:w-auto"
+                className="min-h-12"
               >
                 Comprobar
               </ActionButton>
