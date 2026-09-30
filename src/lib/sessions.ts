@@ -11,7 +11,10 @@ import {
   studentSessionPath,
   type SessionType,
 } from "@/lib/activities";
-import { classroomStudentCanAccessSession } from "@/lib/classroom-access";
+import {
+  classroomStudentCanAccessSession,
+  isActiveClassroomSubscription,
+} from "@/lib/classroom-access";
 import { seedClassroomLevelIfEmpty } from "@/lib/classroom-placement";
 import {
   isConversationPlan,
@@ -443,12 +446,14 @@ export async function loadSessionAccess(
       typeof user.user_metadata?.display_name === "string"
         ? user.user_metadata.display_name.trim()
         : "";
-    const enrolled = await enrollClassroomStudent(
-      session.courseId,
-      user.id,
-      displayName
-    );
-    if (enrolled === "wrong-group") return { kind: "wrong-group" };
+    if (isActiveClassroomSubscription(profile.subscriptionStatus)) {
+      const enrolled = await enrollClassroomStudent(
+        session.courseId,
+        user.id,
+        displayName
+      );
+      if (enrolled === "wrong-group") return { kind: "wrong-group" };
+    }
     await recordSessionAttendance(session, user.id);
     await persistAnswersRevealedIfEnded(session);
     return {

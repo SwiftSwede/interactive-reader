@@ -235,11 +235,160 @@ export function isLiveStripeManaged(
   );
 }
 
+export type EnrollmentCourseRow = {
+  courseId: string;
+  archived: boolean;
+};
+
+export type CourseSessionStartRow = {
+  courseId: string;
+  sessionStartTime: string;
+};
+
 /**
- * Drops a classroom student from live class lists without deleting their
- * reading history. Students with a live Stripe sub stay on the roster: pause
- * them in ThriveCart instead, or the webhook will put them back. A leftover
- * stripe_customer_id from a cancelled test purchase does not block Quitar.
+ * Live courses whose first class has not started yet. Alumni keep months
+ * they already sat in, including the current month if class has begun.
+ */
+export function futureLiveCourseIdsToDrop(
+  enrollments: EnrollmentCourseRow[],
+  sessions: CourseSessionStartRow[],
+  now = new Date()
+): string[] {
+  const nowMs = now.getTime();
+  const started = new Set<string>();
+  for (const session of sessions) {
+    if (new Date(session.sessionStartTime).getTime() <= nowMs) {
+      started.add(session.courseId);
+    }
+  }
+
+  return [
+    ...new Set(
+      enrollments
+        .filter((row) => !row.archived && !started.has(row.courseId))
+        .map((row) => row.courseId)
+    ),
+  ];
+}
+
+async function dropFutureLiveEnrollments(studentId: string): Promise<boolean> {
+  const admin = createAdminClient();
+  const { data: enrollmentRows, error: enrollLoadError } = await admin
+    .from("course_enrollments")
+    .select("course_id, courses ( archived )")
+    .eq("student_id", studentId);
+
+  if (enrollLoadError) {
+    console.error("dropFutureLiveEnrollments load failed:", enrollLoadError);
+    return false;
+  }
+
+  type CourseJoin = { archived: boolean };
+  const enrollments: EnrollmentCourseRow[] = (
+    enrollmentRows ?? []
+  ).map((row) => {
+    const course = row.courses as CourseJoin | CourseJoin[] | null;
+    const joined = Array.isArray(course) ? course[0] : course;
+    return {
+      courseId: row.course_id as string,
+      archived: Boolean(joined?.archived),
+    };
+  });
+
+  const liveIds = enrollments
+    .filter((row) => !row.archived)
+    .map((row) => row.courseId);
+  if (liveIds.length === 0) return true;
+
+  const { data: sessionRows, error: sessionError } = await admin
+    .from("course_sessions")
+    .select("course_id, session_start_time")
+    .in("course_id", liveIds);
+
+  if (sessionError) {
+    console.error("dropFutureLiveEnrollments sessions failed:", sessionError);
+    return false;
+  }
+
+  const toDrop = futureLiveCourseIdsToDrop(
+    enrollments,
+    (sessionRows ?? []).map((row) => ({
+      courseId: row.course_id as string,
+      sessionStartTime: row.session_start_time as string,
+    }))
+  );
+  if (toDrop.length === 0) return true;
+
+  const { error: deleteError } = await admin
+    .from("course_enrollments")
+    .delete()
+    .eq("student_id", studentId)
+    .in("course_id", toDrop);
+
+  if (deleteError) {
+    console.error("dropFutureLiveEnrollments delete failed:", deleteError);
+    return false;
+  }
+  return true;
+}
+
+/**
+ * Puts a cancelled/paused student back on courses they already attended.
+ * Used after the old Quitar path wiped every enrollment.
+ */
+export async function restoreAlumniEnrollmentsFromAttendance(
+  studentId: string
+): Promise<{ restored: number } | { ok: false }> {
+  const admin = createAdminClient();
+  const displayName = await displayNameForStudent(studentId);
+
+  const { data: rows, error } = await admin
+    .from("session_attendance")
+    .select("course_sessions ( course_id )")
+    .eq("student_id", studentId)
+    .eq("attended", true);
+
+  if (error) {
+    console.error("restoreAlumniEnrollmentsFromAttendance load failed:", error);
+    return { ok: false };
+  }
+
+  const courseIds = new Set<string>();
+  for (const row of rows ?? []) {
+    const session = row.course_sessions as
+      | { course_id: string }
+      | { course_id: string }[]
+      | null;
+    const joined = Array.isArray(session) ? session[0] : session;
+    if (joined?.course_id) courseIds.add(joined.course_id);
+  }
+
+  let restored = 0;
+  for (const courseId of courseIds) {
+    const { error: insertError } = await admin.from("course_enrollments").insert({
+      course_id: courseId,
+      student_id: studentId,
+      display_name: displayName,
+    });
+    if (!insertError || insertError.code === "23505") {
+      restored += 1;
+    } else {
+      console.error(
+        "restoreAlumniEnrollmentsFromAttendance insert failed:",
+        insertError
+      );
+      return { ok: false };
+    }
+  }
+
+  return { restored };
+}
+
+/**
+ * Drops a classroom student from live class lists without deleting months
+ * they already sat in. PayPal / invited alumni keep those enrollments.
+ * Students with a live Stripe sub stay on the roster: pause them in
+ * ThriveCart instead, or the webhook will put them back.
  */
 export async function removeClassroomStudent(
   studentId: string
@@ -273,15 +422,8 @@ export async function removeClassroomStudent(
     return { ok: false, reason: "stripe" };
   }
 
-  const { error: enrollError } = await admin
-    .from("course_enrollments")
-    .delete()
-    .eq("student_id", studentId);
-
-  if (enrollError) {
-    console.error("removeClassroomStudent unenroll failed:", enrollError);
-    return { ok: false, reason: "error" };
-  }
+  const dropped = await dropFutureLiveEnrollments(studentId);
+  if (!dropped) return { ok: false, reason: "error" };
 
   const { error: updateError } = await admin
     .from("profiles")

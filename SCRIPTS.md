@@ -358,6 +358,17 @@ Sets `profiles.classroom_level` from the live Stripe price when the field is emp
 npx tsx scripts/seed-classroom-level.ts
 ```
 
+### Restore alumni enrollments after Quitar
+
+Puts cancelled or paused classroom students back on courses they attended. Use this when an old Quitar wiped every enrollment (PayPal / invited students). Does not set them active and does not add them to a new month.
+
+```bash
+npx tsx scripts/restore-alumni-enrollments.ts --email student@email.com
+npx tsx scripts/restore-alumni-enrollments.ts --all
+```
+
+**Flags:** `--email` one student, `--all` anyone cancelled/paused with attendance and zero enrollments.
+
 ### Seed Phase 2.5 data
 
 Applies Phase 2.5 seed data (sound videos) after `schema-phase2.5.sql` is run in the Supabase SQL Editor.

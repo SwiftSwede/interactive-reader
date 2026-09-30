@@ -48,7 +48,8 @@ export default async function TeacherStudentsPage() {
           das de alta. Los cursos y el link de Zoom vienen después.
         </p>
         <p className="mb-4 text-label-sm text-text-muted">
-          Quitar es para esos invitados. Si pagan en Stripe, páusalos en
+          Quitar es para invitados y PayPal. Salen de las clases nuevas, pero
+          el mes que ya cursaron se queda. Si pagan en Stripe, páusalos en
           ThriveCart.
         </p>
         <InviteStudentForm />

@@ -7,28 +7,71 @@ export function isActiveClassroomSubscription(
   return status === "active";
 }
 
+export type SubscriptionPeriodWindow = {
+  startedAt: string;
+  endedAt: string | null;
+};
+
+export function periodCoversSessionStart(
+  sessionStartTime: string,
+  periods: SubscriptionPeriodWindow[]
+): boolean {
+  const t = new Date(sessionStartTime).getTime();
+  return periods.some((row) => {
+    const start = new Date(row.startedAt).getTime();
+    const end = row.endedAt
+      ? new Date(row.endedAt).getTime()
+      : Number.POSITIVE_INFINITY;
+    return t >= start && t <= end;
+  });
+}
+
+/** Alumni (cancelled / paused) keep months they already belong to. */
+export function alumniMayAccessSession(params: {
+  enrolledInCourse: boolean;
+  sessionStartTime: string;
+  periods: SubscriptionPeriodWindow[];
+}): boolean {
+  if (params.enrolledInCourse) return true;
+  return periodCoversSessionStart(params.sessionStartTime, params.periods);
+}
+
 export async function classroomStudentCanAccessSession(
   profile: Profile,
-  session: Pick<CourseSession, "sessionStartTime">
+  session: Pick<CourseSession, "sessionStartTime" | "courseId">
 ): Promise<boolean> {
   if (profile.role !== "student-classroom") return false;
   if (profile.subscriptionStatus === "active") return true;
   if (profile.subscriptionStatus === "none") return false;
 
   const admin = createAdminClient();
-  const { data, error } = await admin
-    .from("subscription_periods")
-    .select("started_at, ended_at")
-    .eq("user_id", profile.id);
+  const [{ data: enrollment, error: enrollError }, { data: periods, error: periodError }] =
+    await Promise.all([
+      admin
+        .from("course_enrollments")
+        .select("id")
+        .eq("course_id", session.courseId)
+        .eq("student_id", profile.id)
+        .maybeSingle(),
+      admin
+        .from("subscription_periods")
+        .select("started_at, ended_at")
+        .eq("user_id", profile.id),
+    ]);
 
-  if (error || !data?.length) return false;
+  if (enrollError) {
+    console.error("classroomStudentCanAccessSession enroll:", enrollError);
+  }
+  if (periodError) {
+    console.error("classroomStudentCanAccessSession periods:", periodError);
+  }
 
-  const t = new Date(session.sessionStartTime).getTime();
-  return data.some((row) => {
-    const start = new Date(row.started_at).getTime();
-    const end = row.ended_at
-      ? new Date(row.ended_at).getTime()
-      : Number.POSITIVE_INFINITY;
-    return t >= start && t <= end;
+  return alumniMayAccessSession({
+    enrolledInCourse: Boolean(enrollment),
+    sessionStartTime: session.sessionStartTime,
+    periods: (periods ?? []).map((row) => ({
+      startedAt: row.started_at,
+      endedAt: row.ended_at,
+    })),
   });
 }
