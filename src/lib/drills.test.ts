@@ -11,9 +11,11 @@ import {
   DAY_MS,
   DECK_SIZE,
   emptyDrillItemState,
+  isCorrectAnswer,
   nextPracticeAt,
   recordDrillAttempt,
   SPACING,
+  storedAnswer,
   toDrillLevel,
   type DrillItem,
   type DrillItemState,
@@ -222,6 +224,87 @@ test("session-2 mixes due mission items with oldest due repaso", () => {
     deck.map((row) => row.id),
     ["mission-due", "repaso-old", "repaso-new"],
   );
+});
+
+test("after session 1 a teach card with no state is not dealt again", () => {
+  const items: DrillItem[] = [
+    item({ id: "teach", tagId: "make", format: "teach", level: "int" }),
+    item({ id: "seen", tagId: "make", format: "cloze" }),
+    item({ id: "fresh", tagId: "make", format: "cloze" }),
+  ];
+  const stateMap = new Map<string, DrillItemState>([
+    ["seen", state("seen", { nextPracticeAt: "2026-02-01T00:00:00.000Z" })],
+  ]);
+
+  const deck = buildDeck({
+    missionTagId: "make",
+    items,
+    state: stateMap,
+    now: NOW,
+    level: "pre_int",
+  });
+
+  assert.deepEqual(
+    deck.map((row) => row.id),
+    ["fresh"],
+  );
+});
+
+test("isCorrectAnswer ignores case, spacing, one final mark, and curly apostrophes", () => {
+  const cloze = item({
+    id: "c",
+    tagId: "make",
+    format: "cloze",
+    content: { text: "I need to ___ a decision.", answer: "make" },
+  });
+  assert.equal(isCorrectAnswer(cloze, "make"), true);
+  assert.equal(isCorrectAnswer(cloze, "  MAKE "), true);
+  assert.equal(isCorrectAnswer(cloze, "make."), true);
+  assert.equal(isCorrectAnswer(cloze, "makee"), false);
+  assert.equal(isCorrectAnswer(cloze, "do"), false);
+  assert.equal(isCorrectAnswer(cloze, ""), false);
+
+  const question = item({
+    id: "q",
+    tagId: "age",
+    format: "cloze",
+    content: { text: "¿Cuántos años tienes?", answer: "How old are you?" },
+  });
+  assert.equal(isCorrectAnswer(question, "how old are you"), true);
+  assert.equal(isCorrectAnswer(question, "How old  are you?"), true);
+  assert.equal(isCorrectAnswer(question, "How many years do you have?"), false);
+});
+
+test("isCorrectAnswer accepts any translation alternate", () => {
+  const translation = item({
+    id: "t",
+    tagId: "make",
+    format: "translation",
+    content: {
+      prompt: "Ellos no hacen ejercicio.",
+      answer: "They don't do exercise. / They don't exercise.",
+    },
+  });
+  assert.equal(isCorrectAnswer(translation, "They don't exercise"), true);
+  assert.equal(isCorrectAnswer(translation, "They don\u2019t do exercise."), true);
+  assert.equal(isCorrectAnswer(translation, "They don't make exercise."), false);
+  assert.equal(
+    isCorrectAnswer(translation, "They don't do exercise. / They don't exercise."),
+    false,
+  );
+});
+
+test("teach and order items have no answer", () => {
+  const teach = item({
+    id: "h",
+    tagId: "make",
+    format: "teach",
+    content: { hook: "En español, hacer lo hace todo." },
+  });
+  const order = item({ id: "o", tagId: "make", format: "order", content: { answer: "x" } });
+  assert.equal(storedAnswer(teach), null);
+  assert.equal(isCorrectAnswer(teach, "anything"), false);
+  assert.equal(isCorrectAnswer(order, "x"), false);
 });
 
 test("cloze parser keeps commentary-only and commentary-before-MCQ shapes", () => {

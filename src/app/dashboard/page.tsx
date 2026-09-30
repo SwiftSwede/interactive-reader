@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { SupabaseClient } from "@supabase/supabase-js";
 import { BookOpen, ChevronRight } from "lucide-react";
 import BrowsingShell from "@/components/shell/BrowsingShell";
 import ClassDayCard from "@/components/dashboard/ClassDayCard";
@@ -7,28 +8,44 @@ import { requireBrowsingStudent, browsingClassroomLevel } from "@/lib/browsing-a
 import { loadDashboard } from "@/lib/dashboard";
 import { sessionTypeLabel } from "@/lib/activities";
 import { getClassDayPhase } from "@/lib/session-phase";
+import { missionForStudent } from "@/lib/student-mission";
+import MissionCard from "@/components/dashboard/MissionCard";
 
 export const metadata = {
   title: "Inicio - Profe Kyle",
 };
 
+async function loadInicioMission(
+  supabase: SupabaseClient,
+  userId: string
+) {
+  try {
+    return await missionForStudent(supabase, userId);
+  } catch (error) {
+    console.error(
+      "Inicio mission failed:",
+      error instanceof Error ? error.message : error
+    );
+    return null;
+  }
+}
+
 export default async function DashboardPage() {
   const { supabase, user, profile, displayName, preview } =
     await requireBrowsingStudent("/dashboard");
-  const data = await loadDashboard(
-    supabase,
-    user.id,
-    browsingClassroomLevel(profile, preview),
-    displayName,
-    preview ? { previewAsLevel: preview.level } : undefined
-  );
+  const [data, mission] = await Promise.all([
+    loadDashboard(
+      supabase,
+      user.id,
+      browsingClassroomLevel(profile, preview),
+      displayName,
+      preview ? { previewAsLevel: preview.level } : undefined
+    ),
+    preview ? Promise.resolve(null) : loadInicioMission(supabase, user.id),
+  ]);
 
   const greeting = data.displayName ? `Hola, ${data.displayName}` : "Hola";
   const hasCourse = data.courseDisplayName != null;
-  const showPractice =
-    data.practice.dictationAttempts > 0 ||
-    data.practice.wordsLookedUp > 0 ||
-    data.practice.pronunciationSessions > 0;
 
   const today = data.todaySession;
   const joinHero =
@@ -86,6 +103,13 @@ export default async function DashboardPage() {
               aria-hidden="true"
             />
           </Link>
+        ) : null}
+
+        {mission ? (
+          <MissionCard
+            displayName={mission.displayName}
+            dismissedUntil={mission.dismissedUntil}
+          />
         ) : null}
 
         {hasCourse ? (
@@ -159,35 +183,6 @@ export default async function DashboardPage() {
           </>
         )}
 
-        {showPractice ? (
-          <>
-            <h2 className="mt-8 text-headline-md text-text-primary">
-              Práctica reciente
-            </h2>
-            <ul className="mt-4 list-disc space-y-2 pl-5 text-body-main text-text-secondary">
-              <li>
-                <span className="font-semibold text-text-primary">Dictado:</span>{" "}
-                {data.practice.dictationAttempts}{" "}
-                {data.practice.dictationAttempts === 1 ? "intento" : "intentos"}
-              </li>
-              <li>
-                <span className="font-semibold text-text-primary">
-                  Palabras:
-                </span>{" "}
-                {data.practice.wordsLookedUp}
-              </li>
-              <li>
-                <span className="font-semibold text-text-primary">
-                  Pronunciación:
-                </span>{" "}
-                {data.practice.pronunciationSessions}{" "}
-                {data.practice.pronunciationSessions === 1
-                  ? "sesión"
-                  : "sesiones"}
-              </li>
-            </ul>
-          </>
-        ) : null}
       </section>
     </BrowsingShell>
   );

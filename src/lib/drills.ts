@@ -54,10 +54,13 @@ const FORMAT_ORDER: Record<DrillFormat, number> = {
   order: 3,
 };
 
-const STATE_COLUMNS =
+export const STATE_COLUMNS =
   "id, user_id, item_id, rounds, clean_recalls, mcq_used, last_practiced_at, next_practice_at, status, graduated_at, updated_at";
 
-type StateRow = {
+export const ITEM_COLUMNS =
+  "id, tag_type, tag_id, format, level, content, active, created_at";
+
+export type StateRow = {
   id: string;
   user_id: string;
   item_id: string;
@@ -164,7 +167,7 @@ function isDueOrUnscheduled(
   now: Date,
 ): boolean {
   const row = state.get(item.id);
-  if (!row) return true;
+  if (!row) return item.format !== "teach";
   if (row.nextPracticeAt) return new Date(row.nextPracticeAt) <= now;
   return row.status !== "graduated";
 }
@@ -212,7 +215,69 @@ export function buildDeck(input: BuildDeckInput): DrillItem[] {
   return [...dueMission, ...repaso];
 }
 
-function mapStateRow(row: StateRow): DrillItemState {
+function normalizeAnswer(value: string): string {
+  return value
+    .replace(/[\u2018\u2019\u02bc]/g, "'")
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/[.?!]$/, "")
+    .trim()
+    .toLocaleLowerCase("en");
+}
+
+/** The stored answer for cloze and translation items, or null. */
+export function storedAnswer(item: DrillItem): string | null {
+  if (item.format !== "cloze" && item.format !== "translation") return null;
+  const answer = item.content.answer;
+  return typeof answer === "string" && answer.trim() ? answer : null;
+}
+
+/**
+ * Case, spacing, curly apostrophes, and one final . ? ! do not count.
+ * A different word does. Translations accept any " / " alternate.
+ */
+export function isCorrectAnswer(item: DrillItem, answer: string): boolean {
+  const expected = storedAnswer(item);
+  if (!expected) return false;
+  const given = normalizeAnswer(answer);
+  if (!given) return false;
+  const accepted =
+    item.format === "translation" ? expected.split(" / ") : [expected];
+  return accepted.some((option) => normalizeAnswer(option) === given);
+}
+
+export type ItemRow = {
+  id: string;
+  tag_type: string;
+  tag_id: string;
+  format: string;
+  level: string;
+  content: Record<string, unknown> | null;
+  active: boolean;
+  created_at: string;
+};
+
+const DRILL_FORMATS: readonly DrillFormat[] = ["teach", "cloze", "translation", "order"];
+const DRILL_TAG_TYPES: readonly DrillTagType[] = ["grammar", "phonetic", "error"];
+
+/** Null for a row whose format or family this engine does not know. */
+export function mapItemRow(row: ItemRow): DrillItem | null {
+  const format = DRILL_FORMATS.find((value) => value === row.format);
+  const tagType = DRILL_TAG_TYPES.find((value) => value === row.tag_type);
+  if (!format || !tagType) return null;
+  return {
+    id: row.id,
+    tagType,
+    tagId: row.tag_id,
+    format,
+    level: row.level === "pre_int" ? "pre_int" : "int",
+    content: row.content ?? {},
+    active: row.active,
+    createdAt: row.created_at,
+  };
+}
+
+export function mapStateRow(row: StateRow): DrillItemState {
   return {
     id: row.id,
     userId: row.user_id,

@@ -68,3 +68,20 @@ One card above the sounds-library placeholder: "Laboratorio de práctica" + curr
 - Three correct attempts on one cloze → `drill_item_graduated` once, collection count +1.
 - "más tarde" → Inicio card gone locally, Lab still reachable; dismissed_until stored on the active row.
 - Student routes leak no deficiency data (grep the response payloads).
+
+## Plan review decisions (Kyle, 2026-09-29)
+
+Live code differed from this prompt in two places:
+- Inicio has no "placeholder blocks". The live order was greeting → class card → Seguir → month card → Este mes → Práctica reciente. The mission card goes after Seguir and before the month card. Only Práctica reciente is removed; `loadDashboard` is untouched.
+- `buildDeck` treated a teach item with no state row as due. Teach attempts never write state, so the hook would have led every later visit. After session 1, a stateless teach item is not due. Session 1 still leads with it.
+
+Decisions:
+- **A miss** shows the stored answer: "Era: {answer}." The response adds `expected` only when `correct` is false. The session advances; no in-place retry.
+- **Typed exactness:** ignore case, spacing, one trailing `.` `?` `!`, and curly apostrophes. Translations accept any ` / ` alternate. A different word stays wrong (no fuzzy matching).
+- **Framing line** is one shared sentence, "Practícalo cuando quieras." Tag hooks stay on the teach card.
+- **Deck load** reads every active `drill_items` row (41) plus own state, so repaso from other tags can join.
+- **Client payload** carries no `answer`, `note`, or `sourceUrl`. Teach sends the hook only; the word bank is not rendered.
+- **`graduated`** is true only on the attempt that crossed into graduated.
+- **Teacher preview** never assigns a mission, snoozes, or writes attempts.
+- **más tarde** is quiet text (label-sm, text-muted, 44px). The server bounds the instant to the next 36 hours and writes only the caller's active row.
+- During the join window the card sits under the join hero; Seguir stays hidden.

@@ -56,7 +56,7 @@ This product should never become:
 - **Value before account.** A WhatsApp deep link must deliver a readable, tappable story before any login, permission, or payment ask. Declining never punishes (no blur, no lock, no nag).
 - **Same reader, different overlay.** Classroom and (future) consumer students use identical components; context determines active features.
 - **Reading is primary; never interrupt it.** Practice lives behind post-story transitions or explicit choices.
-- **Invisible structure.** Spaced repetition, deficiency tracking, and progress exist, but present as private evidence and quiet context, never as scores, ranks, or obligations.
+- **Invisible structure.** Spaced repetition, deficiency tracking, and progress exist, but present as private evidence and quiet context, never as scores, ranks, or obligations. Students see one mission (a dismissable invite on Inicio, practiced in Herramientas) and "tu colección", a count of graduated items; flags and error history never reach student routes.
 - **One honest continuation.** Home opens with the exact place to resume ("Continue reading: [story]"), never a demand to return.
 - **Students keep their data.** After subscription ends, active-period materials remain accessible: a finished bookshelf, not a locked library.
 - **Kyle's voice, Kyle's judgment.** Generated text sounds like Kyle; AI never overclaims (no official scores, CEFR verdicts, or diagnoses). Teacher-authored content is pasted verbatim, never "improved."
