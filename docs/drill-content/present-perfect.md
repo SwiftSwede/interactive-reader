@@ -4,7 +4,10 @@ Display name: **Present Perfect** · Levels: P (pre-int) + I (int) · Prereqs: p
 
 ## Teach card
 
-**HOOK (Kyle only — write this):** the honest rule. What it should convey (my suggested angle — your call): Spanish uses "hoy he desayunado" where English says "I had breakfast today" — for **finished moments in the past, English almost always uses past simple**. Present perfect is for two jobs only: *experience up to now* ("I have tried ceviche") and *situations that continue into now* ("I have lived here for years"). The check-answer L1 rule 7 says exactly this; your hook should make students distrust the Spanish map.
+**HOOK (from Profe Kyle's blog "El PRESENTE PERFECTO en inglés", profekyle.com, 2021):**
+El presente perfecto conecta el pasado con **ahora**: la acción pasó, pero su efecto sigue vivo en el presente. Tres usos que vas a practicar en esta misión: **experiencia** (*I have tried ceviche*), **acciones repetidas** (*Mike has come to see you several times*), y **algo que acaba de pasar** (*Ana has just arrived at the bus station*). Señales que lo invitan: *never, ever, already, yet, just, so far*.
+
+*Source: https://www.profekyle.com/aprende-presente-perfecto-en-ingles/ — your examples, your framing; edit freely.*
 
 ## Word bank (proposed — Kyle ratifies)
 

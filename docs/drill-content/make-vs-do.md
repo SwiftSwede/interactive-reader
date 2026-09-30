@@ -4,7 +4,10 @@ Display name: **Make vs do** · Levels: P (pre-int) + I (int)
 
 ## Teach card
 
-**HOOK (Kyle only — write this):** the honest memory rule. What it should convey (in one breath): the Spanish instinct maps both to "hacer," so there's no logic to recover — it's a collocation list, and the list is short. If you want a crutch: *make = creating something new / producing a result; do = an activity, the generic verb.* But your call — your words, your voice, Spanish is fine.
+**HOOK (from Profe Kyle's blog "¿Cuál es la diferencia entre MAKE y DO en inglés americano?", 2023):**
+En español, *hacer* lo hace todo. En inglés se reparte el trabajo: usa **MAKE** cuando **creas algo desde cero** — *I'll make some pancakes for breakfast. He made a chair out of wood.* Usa **DO** para **ejecutar una acción**, la actividad en sí — *Do your homework. What do you like to do in your free time?* Sí, hay excepciones que no son "crear con las manos" — no llores, por favor. La lista es corta y la practicas aquí.
+
+*Source: https://www.profekyle.com/diferencia-entre-make-y-do/ — your examples and framing; edit freely.*
 
 ## Word bank (proposed — Kyle ratifies; cut or add freely)
 

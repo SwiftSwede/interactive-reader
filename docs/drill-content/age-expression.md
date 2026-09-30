@@ -4,7 +4,10 @@ Display name: **Age — I am 25** · Levels: P (pre-int) + I (int)
 
 ## Teach card
 
-**HOOK (Kyle only — write this):** the honest rule. What it should convey: Spanish *tener* años → English **BE**, not have. "Tengo 25 años" is the single most literal Spanish-to-English transfer your students make. One line, no exceptions to list: age is always *I am / she is / they are* + number. Your voice.
+**HOOK (from Profe Kyle's video "NO DIGAS 'I have 29 years' en Inglés Americano", 2020):**
+«Tengo 29 años» NO se traduce palabra por palabra. No digas *I have 29 years* — la edad en inglés usa el verbo **BE**: **I am 29. She is 19. They are 25.** *(I'm 29 years old* también — el "years old" es opcional.*)* Y la pregunta: **How old are you?** — nunca *how many years do you have*. Cero excepciones.
+
+*Source: https://youtu.be/7DFGGbC7uLU — edit freely; keep your voice.*
 
 ## Word bank (proposed — Kyle ratifies)
 
