@@ -7,6 +7,7 @@ import type {
   UserTopicEvidence,
 } from "@/types";
 import { AppError } from "@/lib/errors";
+import { graduateClearedMission } from "@/lib/missions";
 import { getTagsForStory, tagTableFor } from "./content-tags";
 import { phoneticTagsFromIpa } from "./knowledge-tags";
 
@@ -426,6 +427,18 @@ export async function recordTeacherObservation(
 
   if (writes.length > 0 && result.written !== writes.length) {
     throw new AppError(OBSERVATION_FAILED, "EVIDENCE_WRITE_FAILED", 500);
+  }
+
+  const clearedTags = writes.filter((write) => write.status === "practiced");
+  if (clearedTags.length > 0) {
+    try {
+      await graduateClearedMission(supabase, input.studentId, clearedTags);
+    } catch (error) {
+      console.error(
+        "mission graduation after teacher clear failed:",
+        error instanceof Error ? error.message : error,
+      );
+    }
   }
 
   return {

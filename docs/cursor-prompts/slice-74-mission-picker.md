@@ -1,5 +1,7 @@
 # Cursor prompt — mission picker: selection, state, graduation (Slice 74, ADR 015 Phase 2)
 
+Slice number 74 was free in the PRD (2026-09-29).
+
 ## Context
 
 Read in this order before anything: `docs/adr/015-deficiency-queue.md` (Decisions 6, 4, 11), `docs/design-overhaul/04-MISSION-CARD.md` (✅ Approved brief — its "Kyle decisions" table governs placement and semantics), then `.cursorrules` (Phase 2 heading). Phase 2 has begun, so the brief's "do not implement until Phase 2" hold is lifted for THIS slice's scope only.
@@ -68,3 +70,12 @@ RLS: student SELECT own; student INSERT own (`user_id = auth.uid()`); student UP
 - No UI. No student routes. No drill content, no deck selection (that is the Drill Lab slice). No DESIGN.md changes (nothing visual ships).
 - PRD row: Slice 74 (next free; note in this file's header if taken).
 - Commit only: migration, `src/lib/missions.ts` (+ test), the teacher-clear integration point, PRD row, this file. Do not sweep the working tree.
+
+## Plan review decisions (2026-09-29)
+
+- Slice 74 was free. No product conflict with ADR 015 or the approved mission brief.
+- Prerequisites are the direct seed list. A grammar tag is higher-hanging only when one of its own prerequisite names is also `needs_more_practice`.
+- An existing active mission is returned as-is, including when `dismissed_until` is still in the future. Graduation does not create the next mission. Snooze stores the ISO and does not compute local midnight.
+- A catalog read failure throws. `loadTagDisplayNames` is not used, because a read error there becomes an empty index and would look like "no mission."
+- A failed `mission_started` insert is logged and the mission row is still returned. Teacher-clear graduation stays fail-soft so the observation save still succeeds.
+- Verification is `npm test` and `tsc`. The live Notas de clase probe is the same rule as the unit test and was not written against a real student.
