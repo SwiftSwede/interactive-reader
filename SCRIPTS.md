@@ -312,13 +312,13 @@ npx tsx scripts/seed-knowledge-tags.ts
 
 ### Seed drill items from authored markdown
 
-Parses every `docs/drill-content/*.md` file into `drill_items` (teach, cloze, translation). Resolves `tag_id` from the catalogs by name and refuses to invent a missing tag. Idempotent: lookup by tag + format + stem/prompt before insert. Fails if the parsed totals are not 3 teach + 26 cloze + 12 translation. Run after `supabase/migrations/20260929_slice75_drill_items.sql` is applied. Safe to re-run.
+Parses every `docs/drill-content/*.md` file into `drill_items` (teach, cloze, translation). Resolves `tag_id` from the catalogs by name and refuses to invent a missing tag. Idempotent: teach upserts by `(tag_id, format)` (one teach row per tag; a re-run replaces the three teach rows in place, safe because teach never has `drill_item_state`); cloze/translation lookup by stem/prompt. Fails if the parsed totals are not 3 teach + 26 cloze + 12 translation. Run after `supabase/migrations/20260929_slice75_drill_items.sql` is applied. Safe to re-run.
 
 ```bash
 npx tsx scripts/seed-drill-content.ts
 ```
 
-**Cost / time / status:** One run after the Slice 75 migration. No AI cost. Requires the knowledge-tag catalogs (`make_vs_do`, `age_expression`, `present_perfect`).
+**Cost / time / status:** Safe to re-run after Slice 75. Teach content is `{ lead, examples, closing?, sourceUrl }` (closing kept as its own field). No AI cost. Requires the knowledge-tag catalogs (`make_vs_do`, `age_expression`, `present_perfect`).
 
 ---
 

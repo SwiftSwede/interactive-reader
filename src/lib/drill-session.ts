@@ -1,5 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { AppError } from "@/lib/errors";
+import { parseHookStructure } from "@/lib/parse-drill-content";
 import {
   buildDeck,
   ITEM_COLUMNS,
@@ -17,7 +18,14 @@ import {
 // server; the attempt route checks the answer.
 
 export type SessionItem =
-  | { id: string; format: "teach"; repaso: boolean; hook: string }
+  | {
+      id: string;
+      format: "teach";
+      repaso: boolean;
+      lead: string;
+      examples: string[];
+      closing: string | null;
+    }
   | {
       id: string;
       format: "cloze";
@@ -86,6 +94,32 @@ function stringOf(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
 }
 
+function stringList(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .filter((entry): entry is string => typeof entry === "string")
+    .map((entry) => entry.trim())
+    .filter(Boolean);
+}
+
+function teachView(content: Record<string, unknown>): {
+  lead: string;
+  examples: string[];
+  closing: string | null;
+} | null {
+  const structuredLead = stringOf(content.lead);
+  if (structuredLead) {
+    return {
+      lead: structuredLead,
+      examples: stringList(content.examples),
+      closing: stringOf(content.closing) || null,
+    };
+  }
+  const hook = stringOf(content.hook);
+  if (!hook) return null;
+  return parseHookStructure(hook);
+}
+
 export function mcqOptions(item: DrillItem): string[] | null {
   const raw = item.content.mcq;
   if (!Array.isArray(raw)) return null;
@@ -112,8 +146,17 @@ export function toSessionItem(
 ): SessionItem | null {
   const repaso = isRepaso(state);
   if (item.format === "teach") {
-    const hook = stringOf(item.content.hook);
-    return hook ? { id: item.id, format: "teach", repaso: false, hook } : null;
+    const teach = teachView(item.content);
+    return teach
+      ? {
+          id: item.id,
+          format: "teach",
+          repaso: false,
+          lead: teach.lead,
+          examples: teach.examples,
+          closing: teach.closing,
+        }
+      : null;
   }
   const options = mcqAllowed(item, state) ? mcqOptions(item) : null;
   if (item.format === "cloze") {

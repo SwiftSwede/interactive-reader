@@ -2,7 +2,7 @@
 //
 //   npx tsx scripts/seed-drill-content.ts
 //
-// Idempotent: lookup by (tag_id, format, content text/prompt) before insert.
+// Idempotent: teach by (tag_id, format); cloze/translation by stem/prompt.
 // Tags must already exist (run seed-knowledge-tags.ts first). Never invents a tag.
 
 import { readdir, readFile } from "node:fs/promises";
@@ -14,7 +14,9 @@ import { createAdminClient } from "../src/lib/supabase/admin";
 import { tagTableFor } from "../src/lib/content-tags";
 import {
   EXPECTED_SEED_COUNTS,
+  matchExistingDrillItem,
   parseDrillMarkdown,
+  teachSeedContent,
   type ParsedCloze,
   type ParsedDrillFile,
   type ParsedTranslation,
@@ -81,11 +83,7 @@ function payloadsForFile(
   tagId: string,
 ): SeedPayload[] {
   const sourceUrl = parsed.teach.sourceUrl;
-  const teachContent: Record<string, unknown> = {
-    hook: parsed.teach.hook,
-    sourceUrl,
-  };
-  if (parsed.teach.wordBank) teachContent.wordBank = parsed.teach.wordBank;
+  const teachContent = teachSeedContent(parsed.teach);
 
   const rows: SeedPayload[] = [
     {
@@ -127,21 +125,7 @@ function findExisting(
   existing: ExistingRow[],
   payload: SeedPayload,
 ): ExistingRow | undefined {
-  if (payload.format === "teach") {
-    return existing.find((row) => row.format === "teach");
-  }
-  if (payload.format === "cloze") {
-    return existing.find(
-      (row) =>
-        row.format === "cloze" &&
-        (row.content?.text as string | undefined) === payload.content.text,
-    );
-  }
-  return existing.find(
-    (row) =>
-      row.format === "translation" &&
-      (row.content?.prompt as string | undefined) === payload.content.prompt,
-  );
+  return matchExistingDrillItem(existing, payload);
 }
 
 async function resolveTagId(

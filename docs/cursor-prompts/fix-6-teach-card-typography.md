@@ -62,3 +62,9 @@ Replace the single-paragraph teach render with a structured card:
 - Re-run `npx tsx scripts/seed-drill-content.ts` → 3 teach rows updated in place, 0 new cloze/translation inserts, totals guard passes.
 - `/tools/practica` teach card for `make_vs_do`: lead paragraph with bold MAKE/DO, two offset example lines, quiet closing line. No literal `*` or `**` anywhere in the rendered card.
 - Re-run seeder again → still 3 teach rows (no duplicates).
+
+## Plan review decisions
+
+- **Closing stays its own field.** Teach `content` is `{ lead, examples, closing?, sourceUrl }` (plus `wordBank` when present). Closing is not folded into `lead`: the card sets it in `body-main` `--text-muted`.
+- **make-vs-do lead includes the MAKE/DO rules.** The authored paragraph does not end the lead at "el trabajo:". Example groups are only the em-dash italic sentences; interstitial "Usa **DO**…" is joined onto the lead (with a period) so bold MAKE/DO stay in the explanation. `age_expression` and `present_perfect` have zero em-dash groups (lead only).
+- **Quote-line pattern** for examples: existing tokens only (1px `--paper-line` left rule, 16px indent, italic `story-body`). Documented in DESIGN.md as `drill_teach_card`.

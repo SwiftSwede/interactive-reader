@@ -21,6 +21,18 @@ type AttemptResponse = {
 const INPUT_CLASS =
   "w-full rounded-card border border-paper-line bg-surface px-3 py-3 text-body-main text-text-primary focus:border-2 focus:border-accent focus:outline-none";
 
+function MarkedText({ text }: { text: string }) {
+  return parseInlineMarks(text).map((span, spanIndex) => {
+    if (span.kind === "strong") {
+      return <strong key={spanIndex}>{span.value}</strong>;
+    }
+    if (span.kind === "em") {
+      return <em key={spanIndex}>{span.value}</em>;
+    }
+    return <span key={spanIndex}>{span.value}</span>;
+  });
+}
+
 function ClozeSentence({ text }: { text: string }) {
   const parts = text.split("___");
   return (
@@ -165,17 +177,29 @@ export default function DrillSession({
 
       {item.format === "teach" ? (
         <>
-          <p lang="es" className="mt-4 text-story-body text-text-primary">
-            {parseInlineMarks(item.hook).map((span, spanIndex) => {
-              if (span.kind === "strong") {
-                return <strong key={spanIndex}>{span.value}</strong>;
-              }
-              if (span.kind === "em") {
-                return <em key={spanIndex}>{span.value}</em>;
-              }
-              return <span key={spanIndex}>{span.value}</span>;
-            })}
-          </p>
+          <div className="mt-4">
+            <p lang="es" className="text-story-body text-text-primary">
+              <MarkedText text={item.lead} />
+            </p>
+            {item.examples.length > 0 ? (
+              <ul className="mt-6 flex flex-col gap-3">
+                {item.examples.map((example) => (
+                  <li
+                    key={example}
+                    lang="en"
+                    className="border-l border-paper-line pl-4 text-story-body italic text-text-primary"
+                  >
+                    {example}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {item.closing ? (
+              <p lang="es" className="mt-6 text-body-main text-text-muted">
+                <MarkedText text={item.closing} />
+              </p>
+            ) : null}
+          </div>
           <div className="mt-8 flex justify-end">
             <ActionButton onClick={advance} className="min-h-12">
               Siguiente

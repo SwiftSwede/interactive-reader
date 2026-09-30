@@ -92,9 +92,28 @@ test("the client item carries no answer, note, or source", () => {
     item({
       id: "h",
       format: "teach",
-      content: { hook: "Hacer lo hace todo.", wordBank: { make: [], do: [] }, sourceUrl: "x" },
+      content: {
+        lead: "En español, *hacer* lo hace todo. Usa **MAKE**.",
+        examples: [
+          "I'll make some pancakes for breakfast. He made a chair out of wood.",
+          "Do your homework. What do you like to do in your free time?",
+        ],
+        closing: "Sí, hay excepciones.",
+        wordBank: { make: [], do: [] },
+        sourceUrl: "x",
+      },
     }),
     undefined,
   );
-  assert.deepEqual(teach, { id: "h", format: "teach", repaso: false, hook: "Hacer lo hace todo." });
+  assert.deepEqual(teach, {
+    id: "h",
+    format: "teach",
+    repaso: false,
+    lead: "En español, *hacer* lo hace todo. Usa **MAKE**.",
+    examples: [
+      "I'll make some pancakes for breakfast. He made a chair out of wood.",
+      "Do your homework. What do you like to do in your free time?",
+    ],
+    closing: "Sí, hay excepciones.",
+  });
 });

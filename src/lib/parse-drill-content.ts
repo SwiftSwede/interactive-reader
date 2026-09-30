@@ -33,6 +33,23 @@ export type ParsedTeach = {
   wordBank: ParsedWordBank | null;
 };
 
+export type HookStructure = {
+  lead: string;
+  examples: string[];
+  closing: string | null;
+};
+
+export type ExistingDrillRow = {
+  id: string;
+  format: string;
+  content: Record<string, unknown> | null;
+};
+
+export type SeedDrillPayload = {
+  format: "teach" | "cloze" | "translation";
+  content: Record<string, unknown>;
+};
+
 export type ParsedCloze = {
   level: DrillLevel;
   text: string;
@@ -165,6 +182,81 @@ export function parseTranslationLine(line: string): ParsedTranslation | null {
     answer: match[4]!.trim(),
     note: trailing.note,
   };
+}
+
+const EXAMPLE_GROUP_RE = /[—–]\s*\*([^*]+)\*/g;
+
+function cleanHookFragment(value: string): string {
+  return value.replace(/^[—–\s]+/, "").replace(/[—–\s]+$/, "").trim();
+}
+
+function joinLeadFragments(parts: string[]): string {
+  const cleaned = parts.map(cleanHookFragment).filter(Boolean);
+  if (cleaned.length === 0) return "";
+  let lead = cleaned[0]!;
+  for (const next of cleaned.slice(1)) {
+    lead = /[.!?:]$/.test(lead) ? `${lead} ${next}` : `${lead}. ${next}`;
+  }
+  return lead;
+}
+
+/**
+ * Split a teach hook into lead / example groups / closing.
+ * An italic span is an example only when it follows an em dash (`— *…*`).
+ * Bare mentions like *hacer* stay in the lead. Closing is kept as its own
+ * field (not folded into lead) so the card can set it in muted type.
+ */
+export function parseHookStructure(hook: string): HookStructure {
+  const text = hook.trim();
+  const examples: string[] = [];
+  const leadParts: string[] = [];
+  const matcher = new RegExp(EXAMPLE_GROUP_RE.source, "g");
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = matcher.exec(text)) !== null) {
+    leadParts.push(text.slice(lastIndex, match.index));
+    examples.push(match[1]!.trim());
+    lastIndex = match.index + match[0].length;
+  }
+  if (examples.length === 0) {
+    return { lead: text, examples: [], closing: null };
+  }
+  const closing = cleanHookFragment(text.slice(lastIndex)) || null;
+  return { lead: joinLeadFragments(leadParts), examples, closing };
+}
+
+export function teachSeedContent(teach: ParsedTeach): Record<string, unknown> {
+  const structure = parseHookStructure(teach.hook);
+  const content: Record<string, unknown> = {
+    lead: structure.lead,
+    examples: structure.examples,
+    sourceUrl: teach.sourceUrl,
+  };
+  if (structure.closing) content.closing = structure.closing;
+  if (teach.wordBank) content.wordBank = teach.wordBank;
+  return content;
+}
+
+/** Teach matches one row per tag (`format === "teach"`). Cloze/translation match on stem/prompt. */
+export function matchExistingDrillItem(
+  existing: ExistingDrillRow[],
+  payload: SeedDrillPayload,
+): ExistingDrillRow | undefined {
+  if (payload.format === "teach") {
+    return existing.find((row) => row.format === "teach");
+  }
+  if (payload.format === "cloze") {
+    return existing.find(
+      (row) =>
+        row.format === "cloze" &&
+        (row.content?.text as string | undefined) === payload.content.text,
+    );
+  }
+  return existing.find(
+    (row) =>
+      row.format === "translation" &&
+      (row.content?.prompt as string | undefined) === payload.content.prompt,
+  );
 }
 
 function parseWordBank(body: string | undefined): ParsedWordBank | null {
