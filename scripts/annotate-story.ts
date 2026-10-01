@@ -23,7 +23,7 @@ import { movieTalkSpokenText } from "../src/lib/movietalk";
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const SUPABASE_KEY = process.env.SUPABASE_SECRET_KEY!;
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY!;
-const MODEL = "anthropic/claude-sonnet-4";
+const MODEL = "anthropic/claude-sonnet-4.5";
 
 if (!SUPABASE_URL || !SUPABASE_KEY) {
   console.error("Missing Supabase env vars. Check .env.local");
@@ -102,6 +102,7 @@ Return a single JSON object with this structure:
 }
 
 RULES:
+0. CRITICAL — WORD-BY-WORD ALIGNMENT. Each word's "spanish_translation" must be a dictionary-style gloss of THAT EXACT WORD ONLY, in its context. Do NOT translate the sentence and distribute the Spanish tokens across the English words — Spanish word order differs from English, so a sentence translation smeared word-by-word misaligns everything (the tooltip for "egg" would show a different word's translation). Function words must gloss as themselves: "the" -> "el/la/los/las", "she" -> "ella", "when" -> "cuando", "her" -> "su". If your glosses read as a running sentence translation, they are WRONG. Example for "She no longer looked at egg prices": She->"ella", no->"ya no", longer->"más/más tiempo", looked->"miró", at->"(preposición)", egg->"huevo", prices->"precios" — NEVER She->"Ya", at->"precios", egg->"de", prices->"los".
 1. Translate to NEUTRAL LATIN AMERICAN Spanish. Not European Spanish. Use "carro" not "coche", "computadora" not "ordenador", "ustedes" not "vosotros".
 2. Use standard IPA for American English pronunciation. ${KYLE_IPA_ALPHA_RULE}
 3. Include EVERY word in the story, including articles, prepositions, pronouns, etc.
