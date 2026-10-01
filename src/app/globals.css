@@ -375,7 +375,7 @@ select:not([multiple]) {
   cursor: pointer;
   border-radius: 2px;
   transition: background-color 0.15s ease;
-  padding: 0 1px;
+  padding-block: 1px;
 }
 
 .word-span:hover {
@@ -525,10 +525,25 @@ select:not([multiple]) {
   background-color: var(--surface-hover);
 }
 
-/* Words in the same expression group as the active word */
-.word-expr-active {
+/* Active multi-word expression: one wash across the phrase, including the spaces between its words */
+.word-expr-run {
   background-color: var(--accent-soft);
-  border-radius: 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.word-expr-run-start {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.word-expr-run-end {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.word-expr-active {
+  background-color: transparent;
 }
 
 /* Current sentence during story audio (quiet fill, not karaoke yellow) */
@@ -542,7 +557,8 @@ select:not([multiple]) {
   background-color: color-mix(in srgb, var(--accent-soft) 55%, var(--paper));
 }
 
-.story-running-text ::selection {
+.story-running-text ::selection,
+.story-running-text *::selection {
   background-color: color-mix(in srgb, var(--accent-soft) 55%, var(--paper));
   color: var(--text-primary);
 }
@@ -694,10 +710,16 @@ select:not([multiple]) {
   background: var(--paper-line);
 }
 
-.word-tooltip-expression {
-  font-size: 12px;
-  color: var(--text-accent);
-  font-style: italic;
+.word-tooltip-explanation {
+  margin: 4px 0 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-secondary);
+}
+
+.word-tooltip-anchor {
+  font-weight: 600;
+  color: var(--text-secondary);
 }
 
 .word-tooltip-pos {
@@ -1353,6 +1375,8 @@ body.sticky-character-band-active .word-help-sheet {
 }
 
 .word-help-sheet-title {
+  flex: 1;
+  min-width: 0;
   margin: 0;
   font-family: var(--font-lora), Georgia, serif;
   font-size: 18px;

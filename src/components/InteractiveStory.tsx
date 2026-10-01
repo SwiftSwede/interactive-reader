@@ -877,7 +877,8 @@ export default function InteractiveStory({
                 const ownRequested =
                   !flagging?.isTeacher &&
                   (requestCounts.get(flagKey) ?? 0) > 0;
-                const trailing = tokenIdx < spokenTokens.length - 1 ? " " : "";
+                const trailing = tokenIdx < spokenTokens.length - 1;
+                const gap = trailing ? <span className="word-gap"> </span> : null;
                 const flagClass = `${wordFlagClassName({
                   bold: isBold,
                   underline: isUnderline,
@@ -916,7 +917,7 @@ export default function InteractiveStory({
                       >
                         {token}
                       </span>
-                      {trailing}
+                      {gap}
                     </span>
                   );
                 }
@@ -927,13 +928,24 @@ export default function InteractiveStory({
 
                 const isHighlighted = seenPositions.has(word.position);
                 const isActive = activePosition === word.position;
-                const isExpressionActive =
+                const expressionGroupOn =
                   !!word.expression_id &&
-                  word.expression_id === activeExpressionId &&
-                  activePosition !== word.position;
+                  word.expression_id === activeExpressionId;
+                const bridgeSpace =
+                  expressionGroupOn &&
+                  words[currentPos + 1]?.expression_id === word.expression_id;
+                const runStart =
+                  expressionGroupOn &&
+                  words[currentPos - 1]?.expression_id !== word.expression_id;
+                const runClass = expressionGroupOn
+                  ? `word-expr-run${runStart ? " word-expr-run-start" : ""}${
+                      bridgeSpace ? "" : " word-expr-run-end"
+                    }`
+                  : undefined;
 
                 return (
                   <span key={tokenIdx}>
+                    <span className={runClass}>
                     <WordTooltip
                       word={word}
                       expression={expression}
@@ -941,7 +953,7 @@ export default function InteractiveStory({
                       onPin={handlePin}
                       onDismiss={handleDismiss}
                       isActive={isActive}
-                      isExpressionActive={isExpressionActive}
+                      isExpressionActive={expressionGroupOn && !isActive}
                       hintClass={
                         !hideAudio && !hasInteracted && currentPos < 4
                           ? "word-hint"
@@ -971,7 +983,9 @@ export default function InteractiveStory({
                         handleSaveNote(token, occurrenceIndex, note)
                       }
                     />
-                    {trailing}
+                    {bridgeSpace ? gap : null}
+                    </span>
+                    {bridgeSpace ? null : gap}
                   </span>
                 );
                     })}

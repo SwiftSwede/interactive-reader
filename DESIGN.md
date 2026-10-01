@@ -81,7 +81,7 @@ components:
   drill_teach_card: "Lead in story-body serif with inline strong/em. Example groups: own lines, italic serif story-body, 16px indent, 1px paper-line left rule, 12px between groups. Closing: body-main text-muted, 24px above. Siguiente right-aligned."
   quiet_text_action: "Text-only secondary action (label-sm, text-muted, 44px hit area). Used for dismissals like 'más tarde'. Not button-shaped."
   story_sentence_ref: "Every 5th sentence in kind=story running text. First child of .sentence-unit: label-sm, text-muted, tabular-nums, 4px after the digits. pointer-events none, aria-hidden. Digits only, no gutter, no circle, no accent. Song bios off. Dialogue / Movie Talk / song unmarked."
-  story_text_selection: "Native selection inside .story-running-text uses the same quiet wash as sentence audio: accent-soft mixed 55% with paper, text-primary. No new color."
+  story_text_selection: "Native selection inside .story-running-text uses the same quiet wash as sentence audio: accent-soft mixed 55% with paper, text-primary. No new color. Spaces live in .word-gap so the wash is one strip, not per-word boxes."
   icons: Lucide React only, never emojis
   lesson_card: "Inicio and Lecciones row. Equal height via one reserved 16px muted line under the status. Song uses the Music icon. Live-only with a recording says Grabación disponible and does not link out."
   browsing_bottom_pad: "Content clears the tab bar: 72px on mobile (56px bar + 16px gap), 88px on desktop (56px bar + 16px float + 16px gap), plus the safe area."
@@ -478,11 +478,12 @@ The audio player appears in two places: inline (top of story) and sticky (bottom
 Short paper sheet for a tapped word. Same family as Ver el texto, not 75vh.
 
 - Height hugs content. Full width on a phone. On desktop, max 672px (the lesson column), wider than the 480px sticky player so they do not read as a matched pair. Cap ~45vh above the chrome.
-- Tight stack: grabber, English headword + close, then one gloss line (Spanish, POS in lowercase parentheses, IPA, ghost play).
+- Tight stack: grabber, English head (the word, or the full expression when the tap is inside one) + close, then the gloss. Plain words: Spanish, POS in lowercase parentheses, IPA, ghost play. Expressions: Spanish, explanation when set, then the tapped word's IPA and play.
 - Rises from the **viewport bottom behind** sticky audio (`z-index` 40) and `.step-nav` (`z-index` 35). Sheet stack is `z-index` 30. Overlay is full-screen so story text behind the frosted nav/audio dims the same as the rest of the page. Panel padding-bottom equals that chrome height so word copy is not hidden; the white sheet continues under the player and nav so its outline reads behind them. Nav and audio stay the same style and stay tappable.
-- Grabber, tap outside, swipe down, Escape, or X. Focus trap while open. One word at a time.
+- Grabber, tap outside, swipe down, Escape, or X. Focus trap while open. One sheet at a time.
 - Motion: 200ms ease-out enter **and** exit. Overlay fades. Reduced motion: instant.
-- First-open contents: one gloss line (Spanish, POS, IPA, play), then expression, No entendí, teacher flags. Do not auto-play audio.
+- A plain word: English headword, then one gloss line (Spanish, POS in lowercase parentheses, IPA, ghost play), then No entendí, teacher flags. Do not auto-play audio.
+- A word inside a multi-word expression (`words.expression_id`): the whole phrase shares one `--accent-soft` wash, including the spaces between its words. Sheet head is `expressions.text`. Gloss is the expression's Spanish. `explanation` follows when it is set. IPA and play stay on the tapped word, on a second line that names that word, so they are not read as the phrase. No POS on an expression. Flags and No entendí stay on the tapped word. Same behavior for story, dialogue, Movie Talk, song lyrics, and any future lesson that stores expressions.
 - Same component on story, dialogue, lyrics, bio, and taps inside Ver el texto.
 - Looked-up underline (`word-seen`) persists until the student taps that word again. Clearing the mark does not delete the teacher lookup row (`word_lookups.cleared_at`). Logged-out / teacher preview: no writes. If they just cleared the mark, the sheet may still be open; a quiet line says the mark is gone.
 
@@ -845,9 +846,9 @@ The step-based flow for story lessons. This is the most complex page layout.
 Step 1 - El cuento (Story):
 - Micro-explanation callout (dismissable): "Leer en ingles es la base de todo..."
 - Inline audio player (controls row + seek bar)
-- Story text (Lora, 18px, line-height 32px, `--text-primary`). Interactive word spans with dotted underline. While audio plays, highlight the **current sentence** (dialogue: that `Name:` line) with a quiet mix of `--accent-soft` on `--paper`. Not per-word yellow karaoke. Songs keep Truquitos karaoke. Teaching-note yellow stays on notes only. `prefers-reduced-motion`: static sentence mark, no chasing animation. A finger or mouse selection in that text uses the same quiet wash (`--accent-soft` at 55% on `--paper`, `--text-primary`).
+- Story text (Lora, 18px, line-height 32px, `--text-primary`). Interactive word spans with dotted underline. While audio plays, highlight the **current sentence** (dialogue: that `Name:` line) with a quiet mix of `--accent-soft` on `--paper`. Not per-word yellow karaoke. Songs keep Truquitos karaoke. Teaching-note yellow stays on notes only. `prefers-reduced-motion`: static sentence mark, no chasing animation. A finger or mouse selection in that text uses the same quiet wash (`--accent-soft` at 55% on `--paper`, `--text-primary`), including the spaces between word spans (`.word-gap`). Word spans pad vertically only, so the wash does not break into per-word boxes.
 - Sentence reference numbers (`kind = "story"` only): every 5th sentence (5, 10, 15…) gets a muted 1-based digit as the first child of `.sentence-unit` (`label-sm`, `--text-muted`, `tabular-nums`, 4px after the number). Inline in the sentence, not a gutter. `pointer-events: none`, `aria-hidden`. Digits only: no brackets, no circle, no accent. Same sentence, same number at 375px and desktop. Song bios, dialogue, Movie Talk, and songs do not show them.
-- Tap a word: short word help sheet (see Word help sheet). Underline persists until the student taps that word again.
+- Tap a word: short word help sheet (see Word help sheet). A multi-word expression opens as one phrase. Underline persists until the student taps that word again.
 - Logged-out `/lesson/[slug]` with no `?session=`: render the reader only if `stories.is_free`. Else a Kyle-voice wall, **do not** render `body_text`. Distinct from "No encontré esa lección". Session links stay login-first. Writing, exam, presentation, conversation: no logged-out preview. Video summary stays class-only. Free preview: no persist lookups or answers; a short line that class is the Zoom/session link. Contenido toggle: "Vista previa sin cuenta" writes `is_free` (default off).
 - "The End" (italic, centered, `--text-muted`)
 - Bottom nav: right pill only ("Comprensión →")

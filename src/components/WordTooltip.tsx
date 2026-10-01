@@ -113,6 +113,10 @@ function WordTooltip({
     ? expression.spanish_translation
     : word.spanish_translation;
   const displayPhonetic = word.phonetic_transcription;
+  const sheetTitle = expression?.text || word.text;
+  const showWordPronunciation = Boolean(
+    expression && (displayPhonetic || word.audio_url)
+  );
   const anchorText = flagText ?? word.text;
   const flagClasses = `${wordFlagClassName({
     bold: isBold,
@@ -183,7 +187,7 @@ function WordTooltip({
         <span
           ref={spanRef}
           className={`word-span ${isHighlighted ? "word-seen" : ""} ${
-            isActive ? "word-active" : ""
+            isActive && !expression ? "word-active" : ""
           } ${isExpressionActive ? "word-expr-active" : ""} ${hintClass || ""} ${flagClasses}`.trim()}
           data-word-text={anchorText}
           data-word-occurrence={String(occurrenceIndex)}
@@ -210,7 +214,7 @@ function WordTooltip({
       <WordHelpSheet
         open={isActive}
         onClose={() => onDismiss?.()}
-        title={word.text}
+        title={sheetTitle}
       >
         <div className="word-tooltip-inner">
           {justCleared ? (
@@ -220,15 +224,15 @@ function WordTooltip({
             <span className="word-tooltip-translation">
               {displayTranslation || "Sin traduccion"}
             </span>
-            {word.part_of_speech ? (
+            {!expression && word.part_of_speech ? (
               <span className="word-tooltip-pos">({word.part_of_speech})</span>
             ) : null}
-            {displayPhonetic ? (
+            {!expression && displayPhonetic ? (
               <span className="word-tooltip-phonetic">
                 <IpaText text={displayPhonetic} interactive />
               </span>
             ) : null}
-            {word.audio_url ? (
+            {!expression && word.audio_url ? (
               <button
                 className="word-tooltip-play-btn"
                 onClick={handlePlayAudio}
@@ -243,10 +247,34 @@ function WordTooltip({
               </button>
             ) : null}
           </div>
-          {expression ? (
-            <span className="word-tooltip-expression">
-              Expresion: {expression.text}
-            </span>
+          {expression?.explanation ? (
+            <p className="word-tooltip-explanation">{expression.explanation}</p>
+          ) : null}
+          {showWordPronunciation ? (
+            <div className="word-tooltip-gloss">
+              <span className="word-tooltip-anchor" lang="en">
+                {word.text}
+              </span>
+              {displayPhonetic ? (
+                <span className="word-tooltip-phonetic">
+                  <IpaText text={displayPhonetic} interactive />
+                </span>
+              ) : null}
+              {word.audio_url ? (
+                <button
+                  className="word-tooltip-play-btn"
+                  onClick={handlePlayAudio}
+                  aria-label={`Escuchar ${word.text}`}
+                  type="button"
+                >
+                  {isPlaying ? (
+                    <Pause size={20} strokeWidth={1.75} aria-hidden />
+                  ) : (
+                    <Play size={20} strokeWidth={1.75} aria-hidden />
+                  )}
+                </button>
+              ) : null}
+            </div>
           ) : null}
           {showTeacherFlags && onToggleFlag ? (
             <div className="word-tooltip-actions">
