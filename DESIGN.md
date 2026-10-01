@@ -14,7 +14,7 @@ colors:
   text:
     text-primary: "#2d2a26"     # story text, headings
     text-secondary: "#51443c"   # labels, metadata
-    text-muted: "#83746b"       # timestamps, hints
+    text-muted: "#76685f"       # timestamps, hints. 4.98:1 on paper, 4.60:1 on audio-bg
     text-accent: "#6f4627"      # links, interactive text (terracotta)
     text-accent-dark: "#543013" # pressed accent
   accents:
@@ -119,7 +119,7 @@ The personality is grounded, intellectual, and tactile. A trusted mentor, not a 
 |---|---|---|
 | `--text-primary` | `#2d2a26` | Story text, headings (dark warm neutral, not pure black) |
 | `--text-secondary` | `#51443c` | Labels, metadata, secondary content |
-| `--text-muted` | `#83746b` | Timestamps, hints, placeholders |
+| `--text-muted` | `#76685f` | Timestamps, hints, placeholders. Dark enough for 4.5:1 on paper and on the audio bar |
 | `--text-accent` | `#6f4627` | Links, interactive text, audio controls (terracotta) |
 | `--text-accent-dark` | `#543013` | Pressed/active accent state (deep terracotta) |
 
@@ -433,27 +433,22 @@ Same chrome as text inputs. Hide the native disclosure arrow. Draw a 16px chevro
 
 ## Audio Player Layout Rules
 
-The audio player appears in two places: inline (top of story) and sticky (bottom of screen while playing).
+Before play, the story shows one control. After play starts, that control leaves and the sticky bar owns skip, speed, and seek. The two never sit on screen together.
 
-### Inline Player (top of story)
-- Container: `--audio-bg` background, 1px `--audio-border` border, radius `md` (16px), padding 16px
-- Layout: vertical stack. Controls row on top, seek bar below.
-- Controls row: `flex`, `items-center`, `justify-center`, gap 8px between elements
-- Element order: skip-back, play/pause, skip-forward, flexible spacer, speed toggle, time
-- Play/pause button: 48x48px circle, `--accent` background, white icon
-- Skip buttons: 44x44px touch target, SkipBack/SkipForward icon + "10s" label
-- Speed button: 44x44px touch target, Gauge icon + "1x" / "0.75x" label
-- Time display: 12px (Roboto Flex), `--text-muted`, tabular-nums, right-aligned
+### Opening control
+- One 48x48px circle, `--accent` background, white Play icon, with the label "Escuchar" (`label-md`, `--text-secondary`) beside it.
+- No card, no skip, no speed, no seek, no "Lee y escucha" status.
+- If play fails: the story stays, and a line says "No pude cargar el audio. Toca play otra vez." The same button tries again.
 
-### Sticky Player (bottom of screen)
+### Sticky Player (bottom of screen, after play starts)
 - Container: `--audio-bg` background, top border 1px `--audio-border`, subtle shadow (sticky exception)
 - Height: 64px total on mobile
 - Layout: vertical. Seek bar (24px) on top, controls (40px) below.
 - **Controls row must have horizontal padding: 12px left and right.** No element touches the screen edge.
 - Controls row: `flex`, `items-center`, `justify-center`, gap 4px
 - Element order: skip-back, play/pause, skip-forward, speed toggle, time
-- Play/pause: 36x36px (smaller than inline, fits in 40px row)
-- Skip/speed buttons: 36px wide touch target, 40px tall
+- Play/pause: 36x36px
+- Skip/speed buttons: 36px wide touch target, 40px tall. Labels use `label-sm` (12px), not 11px.
 - Time: 12px (Roboto Flex), right-aligned, `margin-left: auto`
 - On desktop (768px+): centered pill, 480px max-width, rounded corners
 
@@ -485,7 +480,7 @@ Short paper sheet for a tapped word. Same family as Ver el texto, not 75vh.
 - A plain word: English headword, then one gloss line (Spanish, POS in lowercase parentheses, IPA, ghost play), then No entendí, teacher flags. Do not auto-play audio.
 - A word inside a multi-word expression (`words.expression_id`): the whole phrase shares one `--accent-soft` wash, including the spaces between its words. Sheet head is `expressions.text`. Gloss is the expression's Spanish. `explanation` follows when it is set. IPA and play stay on the tapped word, on a second line that names that word, so they are not read as the phrase. No POS on an expression. Flags and No entendí stay on the tapped word. Same behavior for story, dialogue, Movie Talk, song lyrics, and any future lesson that stores expressions.
 - Same component on story, dialogue, lyrics, bio, and taps inside Ver el texto.
-- Looked-up underline (`word-seen`) persists until the student taps that word again. Clearing the mark does not delete the teacher lookup row (`word_lookups.cleared_at`). Logged-out / teacher preview: no writes. If they just cleared the mark, the sheet may still be open; a quiet line says the mark is gone.
+- After a lookup, that word's dotted line becomes a 2px solid `--text-secondary` underline (`word-seen`). The 1px dotted `--paper-line` line on every other word stays. A teacher pronunciation underline stays 2px `--accent` and wins when both are on the same word. There is no control to clear the lookup line. The lookup row stays for the teacher. Logged-out / teacher preview: no writes.
 
 ## Step Transitions
 - Fade + slight slide: 200ms ease-out
@@ -844,11 +839,12 @@ The step-based flow for story lessons. This is the most complex page layout.
 **Content zone (scrolls, one step at a time):**
 
 Step 1 - El cuento (Story):
+- The lesson header already shows the title. Do not repeat it in the content column.
 - Micro-explanation callout (dismissable): "Leer en ingles es la base de todo..."
-- Inline audio player (controls row + seek bar)
-- Story text (Lora, 18px, line-height 32px, `--text-primary`). Interactive word spans with dotted underline. While audio plays, highlight the **current sentence** (dialogue: that `Name:` line) with a quiet mix of `--accent-soft` on `--paper`. Not per-word yellow karaoke. Songs keep Truquitos karaoke. Teaching-note yellow stays on notes only. `prefers-reduced-motion`: static sentence mark, no chasing animation. A finger or mouse selection in that text uses the same quiet wash (`--accent-soft` at 55% on `--paper`, `--text-primary`), including the spaces between word spans (`.word-gap`). Word spans pad vertically only, so the wash does not break into per-word boxes.
+- One play control, labeled "Escuchar". Skip, speed, and seek appear on the sticky bar only after play starts.
+- Story text (Lora, 18px, line-height 32px, `--text-primary`). Every interactive word has a resting dotted underline (`--paper-line`) so the tap stays obvious after the first visit. Until the first tap, the first four words also pulse a soft `--accent-soft` wash. `prefers-reduced-motion`: no pulse. The dotted underline stays. While audio plays, highlight the **current sentence** (dialogue: that `Name:` line) with a quiet mix of `--accent-soft` on `--paper`. The page does not scroll to follow the narrator. Not per-word yellow karaoke. Songs keep Truquitos karaoke. Teaching-note yellow stays on notes only. `prefers-reduced-motion`: static sentence mark, no chasing animation. A finger or mouse selection in that text uses the same quiet wash (`--accent-soft` at 55% on `--paper`, `--text-primary`), including the spaces between word spans (`.word-gap`). Word spans pad vertically only, so the wash does not break into per-word boxes. Each word is a keyboard control (`role="button"`).
 - Sentence reference numbers (`kind = "story"` only): every 5th sentence (5, 10, 15…) gets a muted 1-based digit as the first child of `.sentence-unit` (`label-sm`, `--text-muted`, `tabular-nums`, 4px after the number). Inline in the sentence, not a gutter. `pointer-events: none`, `aria-hidden`. Digits only: no brackets, no circle, no accent. Same sentence, same number at 375px and desktop. Song bios, dialogue, Movie Talk, and songs do not show them.
-- Tap a word: short word help sheet (see Word help sheet). A multi-word expression opens as one phrase. Underline persists until the student taps that word again.
+- Tap a word: short word help sheet (see Word help sheet). A multi-word expression opens as one phrase. A looked-up word keeps a 2px solid `--text-secondary` underline. The dotted underline on the other words stays.
 - Logged-out `/lesson/[slug]` with no `?session=`: render the reader only if `stories.is_free`. Else a Kyle-voice wall, **do not** render `body_text`. Distinct from "No encontré esa lección". Session links stay login-first. Writing, exam, presentation, conversation: no logged-out preview. Video summary stays class-only. Free preview: no persist lookups or answers; a short line that class is the Zoom/session link. Contenido toggle: "Vista previa sin cuenta" writes `is_free` (default off).
 - "The End" (italic, centered, `--text-muted`)
 - Bottom nav: right pill only ("Comprensión →")

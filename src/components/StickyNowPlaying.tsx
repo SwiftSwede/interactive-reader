@@ -103,7 +103,7 @@ export default function StickyNowPlaying({
               aria-label="Retroceder 10 segundos"
             >
               <SkipBack size={16} aria-hidden="true" />
-              <span className="text-[11px]">10s</span>
+              <span className="text-label-sm">10s</span>
             </button>
             <button
               onClick={onToggle}
@@ -123,7 +123,7 @@ export default function StickyNowPlaying({
               onClick={() => onSkip(10)}
               aria-label="Adelantar 10 segundos"
             >
-              <span className="text-[11px]">10s</span>
+              <span className="text-label-sm">10s</span>
               <SkipForward size={16} aria-hidden="true" />
             </button>
           </div>
@@ -135,7 +135,7 @@ export default function StickyNowPlaying({
               aria-label={`Velocidad ${rate}x`}
             >
               <Gauge size={16} aria-hidden="true" />
-              <span className="text-[11px]">{rate}x</span>
+              <span className="text-label-sm">{rate}x</span>
             </button>
           </div>
         </div>

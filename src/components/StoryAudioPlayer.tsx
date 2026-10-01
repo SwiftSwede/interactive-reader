@@ -2,9 +2,9 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
-import { Play, Pause, SkipBack, SkipForward, Gauge } from "lucide-react";
+import { Play } from "lucide-react";
 import { usePlaybackRate } from "./PlaybackRateContext";
-import StickyNowPlaying, { SeekBar } from "./StickyNowPlaying";
+import StickyNowPlaying from "./StickyNowPlaying";
 
 type StoryAudioPlayerProps = {
   audioUrl: string;
@@ -25,7 +25,9 @@ export default function StoryAudioPlayer({
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
+  const [audioError, setAudioError] = useState(false);
   const rafRef = useRef<number | null>(null);
+  const triedPlayRef = useRef(false);
   const { rate, toggle: toggleSpeed } = usePlaybackRate();
 
   // Interpolation refs: sync to audio.currentTime via timeupdate event,
@@ -78,12 +80,18 @@ export default function StoryAudioPlayer({
     if (!audio) return;
 
     if (audio.paused) {
+      triedPlayRef.current = true;
+      setAudioError(false);
       audio.playbackRate = rate;
-      audio.play();
+      audio.play().catch(() => {
+        setAudioError(true);
+        setIsPlaying(false);
+        onPlayStateChange(false);
+      });
     } else {
       audio.pause();
     }
-  }, [rate]);
+  }, [onPlayStateChange, rate]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -96,6 +104,7 @@ export default function StoryAudioPlayer({
     if (!audio) return;
 
     const handlePlay = () => {
+      setAudioError(false);
       setHasStarted(true);
       setIsPlaying(true);
       onPlayStateChange(true);
@@ -134,11 +143,20 @@ export default function StoryAudioPlayer({
       setCurrentTime(audio.currentTime);
     };
 
+    const handleError = () => {
+      if (!triedPlayRef.current) return;
+      setAudioError(true);
+      setIsPlaying(false);
+      onPlayStateChange(false);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+
     audio.addEventListener("play", handlePlay);
     audio.addEventListener("pause", handlePause);
     audio.addEventListener("ended", handleEnded);
     audio.addEventListener("timeupdate", handleTimeUpdate);
     audio.addEventListener("seeked", handleSeek);
+    audio.addEventListener("error", handleError);
 
     return () => {
       audio.removeEventListener("play", handlePlay);
@@ -146,6 +164,7 @@ export default function StoryAudioPlayer({
       audio.removeEventListener("ended", handleEnded);
       audio.removeEventListener("timeupdate", handleTimeUpdate);
       audio.removeEventListener("seeked", handleSeek);
+      audio.removeEventListener("error", handleError);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, [onTimeUpdate, onPlayStateChange, updateTime]);
@@ -162,71 +181,34 @@ export default function StoryAudioPlayer({
     };
   }, [hasStarted]);
 
-  const speedLabel = rate === 1 ? "1x" : "0.75x";
-
   return (
-    <div className="mb-6 rounded-card bg-audio-bg border border-audio-border px-4 py-4">
+    <div className={`relative ${hasStarted ? "" : "mb-6"}`}>
       <audio
         ref={audioRef}
         src={audioUrl}
         preload="metadata"
+        className="pointer-events-none absolute h-px w-px overflow-hidden opacity-0"
       />
 
-      <div className="flex flex-col gap-2">
-        <div className="audio-player-controls">
-          <span className="audio-player-status">
-            {isPlaying ? "Escuchando..." : "Lee y escucha"}
-          </span>
-          <div className="audio-player-transport">
-            <button
-              type="button"
-              className="audio-skip-btn"
-              onClick={() => handleSkip(-10)}
-              aria-label="Retroceder 10 segundos"
-            >
-              <SkipBack size={16} aria-hidden="true" />
-              <span className="text-[11px]">10s</span>
-            </button>
-            <button
-              onClick={handleToggle}
-              className="flex items-center justify-center w-12 h-12 rounded-full bg-accent text-white hover:bg-accent-hover transition-colors flex-shrink-0"
-              aria-label={isPlaying ? "Pausar" : "Reproducir"}
-              type="button"
-            >
-              {isPlaying ? (
-                <Pause size={20} aria-hidden="true" />
-              ) : (
-                <Play size={20} aria-hidden="true" />
-              )}
-            </button>
-            <button
-              type="button"
-              className="audio-skip-btn"
-              onClick={() => handleSkip(10)}
-              aria-label="Adelantar 10 segundos"
-            >
-              <span className="text-[11px]">10s</span>
-              <SkipForward size={16} aria-hidden="true" />
-            </button>
-          </div>
-          <div className="audio-player-end">
-            <button
-              type="button"
-              className="audio-speed-btn"
-              onClick={toggleSpeed}
-              aria-label={`Velocidad ${speedLabel}`}
-            >
-              <Gauge size={16} aria-hidden="true" />
-              <span className="text-[11px]">{speedLabel}</span>
-            </button>
-          </div>
+      {audioError ? (
+        <p className="mb-3 text-label-md text-text-secondary" role="alert">
+          No pude cargar el audio. Toca play otra vez.
+        </p>
+      ) : null}
+
+      {hasStarted ? null : (
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleToggle}
+            className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-accent text-white transition-colors hover:bg-accent-hover"
+            aria-label="Escuchar"
+            type="button"
+          >
+            <Play size={20} aria-hidden="true" />
+          </button>
+          <span className="text-label-md text-text-secondary">Escuchar</span>
         </div>
-        <SeekBar
-          currentTime={currentTime}
-          duration={duration}
-          onSeek={applyTime}
-        />
-      </div>
+      )}
 
       {hasStarted
         ? createPortal(

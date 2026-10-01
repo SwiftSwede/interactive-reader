@@ -500,9 +500,6 @@ function ClassicStorySteps({
 
             {active.id === "story" && (
               <>
-                <h2 className="text-headline-lg text-text-primary mb-2">
-                  {story.title}
-                </h2>
                 <MicroExplanation
                   dismissKey="story"
                   text="Leer en ingles es la base de todo. Tu cerebro necesita ver las palabras en contexto para aprenderlas de verdad. Toca cualquier palabra para ver su traduccion y pronunciacion."

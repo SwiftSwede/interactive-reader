@@ -38,8 +38,6 @@ type WordTooltipProps = {
   hintClass?: string;
   onFirstInteraction?: () => void;
   onLookup?: (word: WordData) => void;
-  onClearLookup?: (word: WordData) => void;
-  justCleared?: boolean;
   flagText?: string;
   occurrenceIndex?: number;
   isBold?: boolean;
@@ -73,8 +71,6 @@ function WordTooltip({
   hintClass,
   onFirstInteraction,
   onLookup,
-  onClearLookup,
-  justCleared = false,
   flagText,
   occurrenceIndex = 0,
   isBold = false,
@@ -99,6 +95,7 @@ function WordTooltip({
   const [requestState, setRequestState] = useState<
     "idle" | "pending" | "success"
   >("idle");
+  const [audioError, setAudioError] = useState(false);
 
   useEffect(() => {
     if (noteRef.current && document.activeElement === noteRef.current) return;
@@ -106,7 +103,10 @@ function WordTooltip({
   }, [flagNote]);
 
   useEffect(() => {
-    if (!isActive) setRequestState("idle");
+    if (!isActive) {
+      setRequestState("idle");
+      setAudioError(false);
+    }
   }, [isActive]);
 
   const displayTranslation = expression
@@ -152,6 +152,7 @@ function WordTooltip({
     const audio = new Audio(word.audio_url);
     audioRef.current = audio;
     setIsPlaying(true);
+    setAudioError(false);
 
     audio.addEventListener("ended", () => {
       setIsPlaying(false);
@@ -160,16 +161,18 @@ function WordTooltip({
 
     audio.addEventListener("error", () => {
       setIsPlaying(false);
+      setAudioError(true);
       audioRef.current = null;
     });
 
     audio.play().catch(() => {
       setIsPlaying(false);
+      setAudioError(true);
       audioRef.current = null;
     });
   };
 
-  const handleClick = (e: React.MouseEvent) => {
+  const activateWord = (e: React.SyntheticEvent) => {
     e.stopPropagation();
     if (onFirstInteraction) onFirstInteraction();
     if (!showTeacherFlags && flagNote && onOpenNote) {
@@ -177,8 +180,13 @@ function WordTooltip({
       return;
     }
     onPin(word);
-    if (isHighlighted) onClearLookup?.(word);
-    else onLookup?.(word);
+    if (!isHighlighted) onLookup?.(word);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    e.preventDefault();
+    activateWord(e);
   };
 
   return (
@@ -191,7 +199,11 @@ function WordTooltip({
           } ${isExpressionActive ? "word-expr-active" : ""} ${hintClass || ""} ${flagClasses}`.trim()}
           data-word-text={anchorText}
           data-word-occurrence={String(occurrenceIndex)}
-          onClick={handleClick}
+          role="button"
+          tabIndex={0}
+          lang="en"
+          onClick={activateWord}
+          onKeyDown={handleKeyDown}
         >
           {word.text}
         </span>
@@ -217,12 +229,9 @@ function WordTooltip({
         title={sheetTitle}
       >
         <div className="word-tooltip-inner">
-          {justCleared ? (
-            <p className="text-label-sm text-text-muted">Ya no está marcada.</p>
-          ) : null}
           <div className="word-tooltip-gloss">
-            <span className="word-tooltip-translation">
-              {displayTranslation || "Sin traduccion"}
+            <span className="word-tooltip-translation" lang="es">
+              {displayTranslation || "Sin traducción"}
             </span>
             {!expression && word.part_of_speech ? (
               <span className="word-tooltip-pos">({word.part_of_speech})</span>
@@ -236,7 +245,7 @@ function WordTooltip({
               <button
                 className="word-tooltip-play-btn"
                 onClick={handlePlayAudio}
-                aria-label="Escuchar pronunciacion"
+                aria-label="Escuchar pronunciación"
                 type="button"
               >
                 {isPlaying ? (
@@ -247,6 +256,11 @@ function WordTooltip({
               </button>
             ) : null}
           </div>
+          {audioError ? (
+            <p className="mt-2 text-label-sm text-text-secondary" role="alert">
+              No pude reproducir esa palabra. Toca play otra vez.
+            </p>
+          ) : null}
           {expression?.explanation ? (
             <p className="word-tooltip-explanation">{expression.explanation}</p>
           ) : null}

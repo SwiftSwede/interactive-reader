@@ -6,10 +6,7 @@ import WordTooltip, {
   type ExpressionData,
 } from "./WordTooltip";
 import StoryAudioPlayer from "./StoryAudioPlayer";
-import {
-  clearWordLookup,
-  recordWordLookup,
-} from "@/app/lesson/[slug]/actions";
+import { recordWordLookup } from "@/app/lesson/[slug]/actions";
 import {
   audioHighlightMode,
   lookedUpPositions,
@@ -89,7 +86,6 @@ export default function InteractiveStory({
   const [seenPositions, setSeenPositions] = useState<Set<number>>(() =>
     lookedUpPositions(words, lookedUpWordIds)
   );
-  const [justClearedId, setJustClearedId] = useState<string | null>(null);
   const [activePosition, setActivePosition] = useState<number | null>(null);
   const [activeExpressionId, setActiveExpressionId] = useState<string | null>(
     null
@@ -564,11 +560,6 @@ export default function InteractiveStory({
           );
           if (target) {
             target.classList.add("sentence-audio-current");
-            const rect = target.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
-            if (rect.top < 80 || rect.bottom > viewportHeight - 100) {
-              target.scrollIntoView({ behavior: "smooth", block: "center" });
-            }
           }
         }
       }
@@ -638,7 +629,6 @@ export default function InteractiveStory({
 
   const handleLookup = useCallback(
     (word: WordData) => {
-      setJustClearedId(null);
       if (!trackLookups || !storyId) return;
       void recordWordLookup({
         wordId: word.id,
@@ -649,24 +639,9 @@ export default function InteractiveStory({
     [trackLookups, storyId, sessionId]
   );
 
-  const handleClearLookup = useCallback(
-    (word: WordData) => {
-      setSeenPositions((prev) => {
-        const next = new Set(prev);
-        next.delete(word.position);
-        return next;
-      });
-      setJustClearedId(word.id);
-      if (!trackLookups) return;
-      void clearWordLookup({ wordId: word.id });
-    },
-    [trackLookups]
-  );
-
   const handleDismiss = useCallback(() => {
     setActivePosition(null);
     setActiveExpressionId(null);
-    setJustClearedId(null);
   }, []);
 
   // Dismiss on a real outside click, not on the click that opened or pinned
@@ -961,8 +936,6 @@ export default function InteractiveStory({
                       }
                       onFirstInteraction={() => setHasInteracted(true)}
                       onLookup={handleLookup}
-                      onClearLookup={handleClearLookup}
-                      justCleared={justClearedId === word.id}
                       flagText={token}
                       occurrenceIndex={occurrenceIndex}
                       isBold={isBold}
