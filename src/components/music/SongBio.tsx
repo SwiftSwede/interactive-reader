@@ -23,6 +23,7 @@ export default function SongBio({
         audioUrl=""
         timestamps={[]}
         hideAudio
+        showSentenceNumbers={false}
       />
     </div>
   );

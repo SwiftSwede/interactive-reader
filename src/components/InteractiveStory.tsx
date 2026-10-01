@@ -14,6 +14,7 @@ import {
   audioHighlightMode,
   lookedUpPositions,
   sentenceIdsForBody,
+  sentenceRefLabel,
 } from "@/lib/sentence-highlight";
 import {
   convertRequestsToFlag,
@@ -59,6 +60,8 @@ type InteractiveStoryProps = {
   lookedUpWordIds?: string[];
   hideAudio?: boolean;
   kind?: "story" | "dialogue" | "movie_talk" | "song";
+  /** Story running text only. Song bios pass false; they default to kind=story. */
+  showSentenceNumbers?: boolean;
   flagging?: WordFlagging;
   visibleSceneIndex?: number;
   highlightSpeaker?: string | null;
@@ -78,6 +81,7 @@ export default function InteractiveStory({
   lookedUpWordIds = [],
   hideAudio = false,
   kind = "story",
+  showSentenceNumbers,
   flagging,
   visibleSceneIndex,
   highlightSpeaker = null,
@@ -116,6 +120,7 @@ export default function InteractiveStory({
     () => sentenceIdsForBody(bodyText, kind),
     [bodyText, kind]
   );
+  const showSentenceRefs = kind === "story" && showSentenceNumbers !== false;
   const sentenceIdsRef = useRef(sentenceIds);
   sentenceIdsRef.current = sentenceIds;
 
@@ -836,12 +841,24 @@ export default function InteractiveStory({
                     last.tokens.push({ token, tokenIdx });
                   }
                 });
-                return groups.map((group) => (
+                return groups.map((group) => {
+                  const refLabel = showSentenceRefs
+                    ? sentenceRefLabel(group.sentenceId)
+                    : null;
+                  return (
                   <span
                     key={`s-${group.sentenceId}-${group.start}`}
                     className="sentence-unit"
                     data-sentence-id={group.sentenceId}
                   >
+                    {refLabel != null ? (
+                      <span
+                        className="pointer-events-none mr-1 select-none text-label-sm text-text-muted tabular-nums"
+                        aria-hidden="true"
+                      >
+                        {refLabel}
+                      </span>
+                    ) : null}
                     {group.tokens.map(({ token, tokenIdx }) => {
                 const currentPos = wordPosition++;
                 const occurrenceIndex = nextOccurrenceIndex(
@@ -959,7 +976,8 @@ export default function InteractiveStory({
                 );
                     })}
                   </span>
-                ));
+                  );
+                });
               })()}
             </p>
           );

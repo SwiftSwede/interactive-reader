@@ -80,6 +80,7 @@ components:
   drill_lab: "Herramientas entry card (24px radius, counts only: 'Tu colección: N') + /tools/practica one-item-at-a-time session. Typed input when there are no choices. MCQ first round is the choices alone (no second field). Primary actions sit on the right. Feedback is one line; miss shows 'Era: …' in text-secondary."
   drill_teach_card: "Lead in story-body serif with inline strong/em. Example groups: own lines, italic serif story-body, 16px indent, 1px paper-line left rule, 12px between groups. Closing: body-main text-muted, 24px above. Siguiente right-aligned."
   quiet_text_action: "Text-only secondary action (label-sm, text-muted, 44px hit area). Used for dismissals like 'más tarde'. Not button-shaped."
+  story_sentence_ref: "Every 5th sentence in kind=story running text. First child of .sentence-unit: label-sm, text-muted, tabular-nums, 4px after the digits. pointer-events none, aria-hidden. Digits only, no gutter, no circle, no accent. Song bios off. Dialogue / Movie Talk / song unmarked."
   icons: Lucide React only, never emojis
   lesson_card: "Inicio and Lecciones row. Equal height via one reserved 16px muted line under the status. Song uses the Music icon. Live-only with a recording says Grabación disponible and does not link out."
   browsing_bottom_pad: "Content clears the tab bar: 72px on mobile (56px bar + 16px gap), 88px on desktop (56px bar + 16px float + 16px gap), plus the safe area."
@@ -844,6 +845,7 @@ Step 1 - El cuento (Story):
 - Micro-explanation callout (dismissable): "Leer en ingles es la base de todo..."
 - Inline audio player (controls row + seek bar)
 - Story text (Lora, 18px, line-height 32px, `--text-primary`). Interactive word spans with dotted underline. While audio plays, highlight the **current sentence** (dialogue: that `Name:` line) with a quiet mix of `--accent-soft` on `--paper`. Not per-word yellow karaoke. Songs keep Truquitos karaoke. Teaching-note yellow stays on notes only. `prefers-reduced-motion`: static sentence mark, no chasing animation.
+- Sentence reference numbers (`kind = "story"` only): every 5th sentence (5, 10, 15…) gets a muted 1-based digit as the first child of `.sentence-unit` (`label-sm`, `--text-muted`, `tabular-nums`, 4px after the number). Inline in the sentence, not a gutter. `pointer-events: none`, `aria-hidden`. Digits only: no brackets, no circle, no accent. Same sentence, same number at 375px and desktop. Song bios, dialogue, Movie Talk, and songs do not show them.
 - Tap a word: short word help sheet (see Word help sheet). Underline persists until the student taps that word again.
 - Logged-out `/lesson/[slug]` with no `?session=`: render the reader only if `stories.is_free`. Else a Kyle-voice wall, **do not** render `body_text`. Distinct from "No encontré esa lección". Session links stay login-first. Writing, exam, presentation, conversation: no logged-out preview. Video summary stays class-only. Free preview: no persist lookups or answers; a short line that class is the Zoom/session link. Contenido toggle: "Vista previa sin cuenta" writes `is_free` (default off).
 - "The End" (italic, centered, `--text-muted`)

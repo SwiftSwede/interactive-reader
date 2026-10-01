@@ -5,6 +5,7 @@ import {
   endsSpokenSentence,
   lookedUpPositions,
   sentenceIdsForBody,
+  sentenceRefLabel,
 } from "./sentence-highlight";
 
 describe("audioHighlightMode", () => {
@@ -41,6 +42,22 @@ describe("sentenceIdsForBody", () => {
       "dialogue"
     );
     assert.deepEqual(ids, [0, 0, 0, 0, 0, 1, 1]);
+  });
+});
+
+describe("sentenceRefLabel", () => {
+  test("shows 1-based labels on every 5th sentence only", () => {
+    assert.equal(sentenceRefLabel(0), null);
+    assert.equal(sentenceRefLabel(3), null);
+    assert.equal(sentenceRefLabel(4), 5);
+    assert.equal(sentenceRefLabel(5), null);
+    assert.equal(sentenceRefLabel(9), 10);
+    assert.equal(sentenceRefLabel(14), 15);
+    assert.equal(sentenceRefLabel(22), null);
+  });
+
+  test("returns null for ids that never reach sentence 5", () => {
+    assert.equal(sentenceRefLabel(-1), null);
   });
 });
 

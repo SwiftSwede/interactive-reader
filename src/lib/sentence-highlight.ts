@@ -90,6 +90,12 @@ export function sentenceIdsForBody(
   return sentenceIdsForSpokenTokens(spokenTokenLines(bodyText, kind));
 }
 
+/** 1-based label for every 5th sentence (5, 10, 15…); null otherwise. */
+export function sentenceRefLabel(sentenceId: number): number | null {
+  const n = sentenceId + 1;
+  return n > 0 && n % 5 === 0 ? n : null;
+}
+
 export function lookedUpPositions(
   words: { id: string; position: number }[],
   lookedUpWordIds: Iterable<string>
