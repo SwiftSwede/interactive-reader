@@ -94,12 +94,14 @@ function WordTooltip({
   const spanRef = useRef<HTMLSpanElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const noteRef = useRef<HTMLTextAreaElement>(null);
   const [noteDraft, setNoteDraft] = useState(flagNote ?? "");
   const [requestState, setRequestState] = useState<
     "idle" | "pending" | "success"
   >("idle");
 
   useEffect(() => {
+    if (noteRef.current && document.activeElement === noteRef.current) return;
     setNoteDraft(flagNote ?? "");
   }, [flagNote]);
 
@@ -278,6 +280,7 @@ function WordTooltip({
                 Nota
               </span>
               <textarea
+                ref={noteRef}
                 className="min-h-20 w-full rounded-card border border-paper-line bg-surface p-2 text-label-md text-text-primary focus:border-accent focus:outline-none"
                 value={noteDraft}
                 maxLength={1000}

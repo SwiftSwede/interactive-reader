@@ -721,7 +721,7 @@ export default function InteractiveStory({
     : 0;
 
   return (
-    <div ref={containerRef}>
+    <div ref={containerRef} className="story-running-text">
       {!hideAudio && (
         <StoryAudioPlayer
           audioUrl={audioUrl}

@@ -542,6 +542,11 @@ select:not([multiple]) {
   background-color: color-mix(in srgb, var(--accent-soft) 55%, var(--paper));
 }
 
+.story-running-text ::selection {
+  background-color: color-mix(in srgb, var(--accent-soft) 55%, var(--paper));
+  color: var(--text-primary);
+}
+
 .teaching-note-mark {
   display: inline;
   margin: 0;

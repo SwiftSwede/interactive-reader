@@ -24,17 +24,23 @@ export default function WordHelpSheet({
   const closeRef = useRef<HTMLButtonElement>(null);
   const dragStartY = useRef<number | null>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
 
   useEffect(() => {
     if (!present || exiting) return;
 
     previousFocus.current = document.activeElement as HTMLElement | null;
-    closeRef.current?.focus();
+    const panel = panelRef.current;
+    const active = document.activeElement;
+    if (!panel || !(active instanceof Node) || !panel.contains(active)) {
+      closeRef.current?.focus();
+    }
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
-        onClose();
+        onCloseRef.current();
         return;
       }
       if (event.key !== "Tab" || !panelRef.current) return;
@@ -60,7 +66,7 @@ export default function WordHelpSheet({
       document.removeEventListener("keydown", onKeyDown);
       previousFocus.current?.focus();
     };
-  }, [present, exiting, onClose]);
+  }, [present, exiting]);
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
     dragStartY.current = event.clientY;
