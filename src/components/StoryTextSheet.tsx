@@ -3,7 +3,10 @@
 import { useEffect, useRef, type PointerEvent } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
-import InteractiveStory, { type WordTimestamp } from "./InteractiveStory";
+import InteractiveStory, {
+  type WordFlagStateControl,
+  type WordTimestamp,
+} from "./InteractiveStory";
 import type { WordData, ExpressionData } from "./WordTooltip";
 import type { WordFlagging } from "@/types";
 import { useSheetPresence } from "@/hooks/useSheetPresence";
@@ -22,6 +25,7 @@ type StoryTextSheetProps = {
   lookedUpWordIds?: string[];
   kind?: "story" | "dialogue" | "movie_talk" | "song";
   flagging?: WordFlagging;
+  wordFlagState?: WordFlagStateControl;
 };
 
 const FOCUSABLE =
@@ -41,6 +45,7 @@ export default function StoryTextSheet({
   lookedUpWordIds,
   kind,
   flagging,
+  wordFlagState,
 }: StoryTextSheetProps) {
   const { present, exiting } = useSheetPresence(open);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -156,6 +161,7 @@ export default function StoryTextSheet({
             hideAudio
             kind={kind}
             flagging={flagging}
+            wordFlagState={wordFlagState}
           />
         </div>
       </div>

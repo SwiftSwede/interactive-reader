@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect, useRef, useMemo } from "react";
+import { useState, useCallback, useEffect, useRef, useMemo, type Dispatch, type SetStateAction } from "react";
 import WordTooltip, {
   type WordData,
   type ExpressionData,
@@ -36,6 +36,13 @@ import {
 } from "@/lib/word-flags";
 import type { WordFlag, WordFlagging, WordFlagRequest, WordFlagType } from "@/types";
 
+export type WordFlagStateControl = {
+  flags: WordFlag[];
+  requests: WordFlagRequest[];
+  setFlags: Dispatch<SetStateAction<WordFlag[]>>;
+  setRequests: Dispatch<SetStateAction<WordFlagRequest[]>>;
+};
+
 // ── Types ──────────────────────────────────────────────────
 
 export type WordTimestamp = {
@@ -60,6 +67,8 @@ type InteractiveStoryProps = {
   /** Story running text only. Song bios pass false; they default to kind=story. */
   showSentenceNumbers?: boolean;
   flagging?: WordFlagging;
+  /** Lifted flag state so marks survive step changes in StorySteps. */
+  wordFlagState?: WordFlagStateControl;
   visibleSceneIndex?: number;
   highlightSpeaker?: string | null;
 };
@@ -80,6 +89,7 @@ export default function InteractiveStory({
   kind = "story",
   showSentenceNumbers,
   flagging,
+  wordFlagState,
   visibleSceneIndex,
   highlightSpeaker = null,
 }: InteractiveStoryProps) {
@@ -92,10 +102,16 @@ export default function InteractiveStory({
   );
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
-  const [flags, setFlags] = useState<WordFlag[]>(flagging?.flags ?? []);
-  const [requests, setRequests] = useState<WordFlagRequest[]>(
+  const [internalFlags, setInternalFlags] = useState<WordFlag[]>(
+    flagging?.flags ?? []
+  );
+  const [internalRequests, setInternalRequests] = useState<WordFlagRequest[]>(
     flagging?.requests ?? []
   );
+  const flags = wordFlagState?.flags ?? internalFlags;
+  const setFlags = wordFlagState?.setFlags ?? setInternalFlags;
+  const requests = wordFlagState?.requests ?? internalRequests;
+  const setRequests = wordFlagState?.setRequests ?? setInternalRequests;
   const [openNote, setOpenNote] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const flagsRef = useRef(flags);
@@ -146,12 +162,14 @@ export default function InteractiveStory({
   }, [words]);
 
   useEffect(() => {
-    setFlags(flagging?.flags ?? []);
-  }, [flagging?.flags]);
+    if (wordFlagState) return;
+    setInternalFlags(flagging?.flags ?? []);
+  }, [flagging?.flags, wordFlagState]);
 
   useEffect(() => {
-    setRequests(flagging?.requests ?? []);
-  }, [flagging?.requests]);
+    if (wordFlagState) return;
+    setInternalRequests(flagging?.requests ?? []);
+  }, [flagging?.requests, wordFlagState]);
 
   const flagTypeMap = useMemo(() => {
     const map = new Map<string, WordFlagType[]>();

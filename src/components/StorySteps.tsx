@@ -8,7 +8,10 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import InteractiveStory, { type WordTimestamp } from "./InteractiveStory";
+import InteractiveStory, {
+  type WordFlagStateControl,
+  type WordTimestamp,
+} from "./InteractiveStory";
 import ComprehensionQuestions, {
   type SavedComprehensionResponse,
 } from "./ComprehensionQuestions";
@@ -32,7 +35,7 @@ import { createClient } from "@/lib/supabase/client";
 import { recordStoryOpened } from "@/app/lesson/[slug]/actions";
 import type { LoadedStory } from "@/lib/stories";
 import type { SavedPersonalResponse } from "@/lib/personal-responses";
-import type { CourseLevel, PronunciationWordNote, WordFlagging } from "@/types";
+import type { CourseLevel, PronunciationWordNote, WordFlag, WordFlagging, WordFlagRequest } from "@/types";
 import type { LessonViewToggle } from "@/lib/student-preview";
 
 type StepId =
@@ -330,6 +333,21 @@ function ClassicStorySteps({
   const [classEndedAt, setClassEndedAt] = useState(initialEndedAt);
   const [now, setNow] = useState(() => Date.now());
 
+  const [liveFlags, setLiveFlags] = useState<WordFlag[]>(
+    () => flagging?.flags ?? []
+  );
+  const [liveRequests, setLiveRequests] = useState<WordFlagRequest[]>(
+    () => flagging?.requests ?? []
+  );
+  const wordFlagState: WordFlagStateControl | undefined = flagging
+    ? {
+        flags: liveFlags,
+        requests: liveRequests,
+        setFlags: setLiveFlags,
+        setRequests: setLiveRequests,
+      }
+    : undefined;
+
   const safeIndex = Math.min(activeIndex, steps.length - 1);
   const active = steps[safeIndex];
   const prev = safeIndex > 0 ? steps[safeIndex - 1] : null;
@@ -423,7 +441,10 @@ function ClassicStorySteps({
       | "dialogue"
       | "movie_talk"
       | "song",
-    flagging,
+    flagging: flagging
+      ? { ...flagging, flags: liveFlags, requests: liveRequests }
+      : undefined,
+    wordFlagState,
   };
 
   if (story.kind === "video_summary") {
