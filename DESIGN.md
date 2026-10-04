@@ -63,6 +63,14 @@ touch_targets:
   minimum: 44px
   comfortable: 48px # primary actions
   exemption: inline word spans in story text
+motion:
+  source: "src/app/globals.css :root. Shared duration, easing, distance, scale, and blur names."
+  ease_smooth_out: "cubic-bezier(0.22, 1, 0.36, 1)" # position changes: karaoke highlight, sticky bar enter, step-nav dismiss
+  duration_quick: 150ms # step nav sliding off for the keyboard
+  karaoke_highlight: "200ms ease-smooth-out. Duration stays 200ms."
+  sticky_bar_enter: "180ms ease-smooth-out. Audio bar and character band."
+  sheets_and_steps: "Still 200ms ease-out, symmetric. Not retimed to the shared scale."
+  unused: "Bounce easings are defined and not used. No bounce, rotation, or scale on chrome."
 layout:
   model: one layout that breathes; mobile-first, 672px max content column on desktop
   floor: 375px
@@ -81,7 +89,7 @@ components:
   drill_teach_card: "Lead in story-body serif with inline strong/em. Example groups: own lines, italic serif story-body, 16px indent, 1px paper-line left rule, 12px between groups. Closing: body-main text-muted, 24px above. Siguiente right-aligned."
   quiet_text_action: "Text-only secondary action (label-sm, text-muted, 44px hit area). Used for dismissals like 'más tarde'. Not button-shaped."
   story_sentence_ref: "Every 5th sentence in kind=story running text. First child of .sentence-unit: label-sm, text-muted, tabular-nums, 4px after the digits. pointer-events none, aria-hidden. Digits only, no gutter, no circle, no accent. Song bios off. Dialogue / Movie Talk / song unmarked."
-  step_instructions: "Classic story steps (story + dialogue). Content-column header: step title headline-md, then a disc list body-main text-secondary (8px item gap, 20px indent). Optional last item with strong lead (La regla más importante) and em for *marked* words. 16px below the block. Copy from src/lib/lesson-copy.ts. Sticky header and dot nav unchanged."
+  step_instructions: "kind=story only (dialogue shares StorySteps but omits this block and the story why card). Content-column header: step title headline-md, then a disc list body-main text-secondary (8px item gap, 20px indent). Optional last item with strong lead (La regla más importante) and em for *marked* words. 16px below the block. Copy from src/lib/lesson-copy.ts. Sticky header and dot nav unchanged."
   story_text_selection: "Native selection inside .story-running-text uses the same quiet wash as sentence audio: accent-soft mixed 55% with paper, text-primary. No new color. Spaces live in .word-gap so the wash is one strip, not per-word boxes."
   icons: Lucide React only, never emojis
   lesson_card: "Inicio and Lecciones row. Equal height via one reserved 16px muted line under the status. Song uses the Music icon. Live-only with a recording says Grabación disponible and does not link out."
@@ -426,7 +434,7 @@ Same chrome as text inputs. Hide the native disclosure arrow. Draw a 16px chevro
 - Let layout and typography imply interactivity
 
 ### Step instructions (`StepInstructions`)
-Always-visible how-to for each classic story step. Lives in the scrolling content column, never in the sticky header or dot nav.
+Always-visible how-to for `kind=story` steps only. Dialogue uses the same `StorySteps` shell but does not render this block or the story why card. Lives in the scrolling content column, never in the sticky header or dot nav.
 
 - Title: step name from `LESSON_COPY` (`headline-md`, `--text-primary`). This is the step heading ("Lee la historia"), not the story title from the lesson header.
 - List: disc bullets, `body-main`, `--text-secondary`, 8px between items, 20px left indent (`pl-5`). `lang="es"`.
@@ -491,6 +499,15 @@ Short paper sheet for a tapped word. Same family as Ver el texto, not 75vh.
 - A word inside a multi-word expression (`words.expression_id`): the whole phrase shares one `--accent-soft` wash, including the spaces between its words. Sheet head is `expressions.text`. Gloss is the expression's Spanish. `explanation` follows when it is set. IPA and play stay on the tapped word, on a second line that names that word, so they are not read as the phrase. No POS on an expression. Flags and No entendí stay on the tapped word. Same behavior for story, dialogue, Movie Talk, song lyrics, and any future lesson that stores expressions.
 - Same component on story, dialogue, lyrics, bio, and taps inside Ver el texto.
 - After a lookup, that word's dotted line becomes a 2px solid `--text-secondary` underline (`word-seen`). The 1px dotted `--paper-line` line on every other word stays. A teacher pronunciation underline stays 2px `--accent` and wins when both are on the same word. There is no control to clear the lookup line. The lookup row stays for the teacher. Logged-out / teacher preview: no writes.
+
+## Motion
+Shared names live on `:root` in `src/app/globals.css` (`--duration-*`, `--ease-*`, `--distance-*`, `--scale-*`, `--blur-*`). Use a name when the motion matches that name's job. Do not retune a specced 200ms ease-out just because another duration is nearby.
+
+- Karaoke highlight: 200ms `--ease-smooth-out`. The bar slides to the next line. Reduced motion jumps.
+- Sticky audio bar and character band: enter in 180ms `--ease-smooth-out`, 8px rise.
+- Step nav, keyboard open: slides off in `--duration-quick` (150ms) `--ease-smooth-out`.
+- Bottom sheets, word help, and step content stay 200ms ease-out, enter and exit the same. See those sections.
+- `--ease-bounce` and `--ease-bounce-strong` are on the scale and unused. No bounce, no rotation, no scale on chrome.
 
 ## Step Transitions
 - Fade + slight slide: 200ms ease-out
@@ -849,7 +866,7 @@ The step-based flow for story lessons. This is the most complex page layout.
 **Content zone (scrolls, one step at a time):**
 
 Step 1 - El cuento (Story):
-- The lesson header already shows the story title. The content column opens with the step heading **Lee la historia** (`headline-md`) and the instruction list (`StepInstructions`), then the dismissable why callout from `LESSON_COPY.story`.
+- The lesson header already shows the story title. On `kind=story` only, the content column opens with the step heading **Lee la historia** (`headline-md`) and the instruction list (`StepInstructions`), then the dismissable why callout from `LESSON_COPY.story`. Dialogue omits both.
 - One play control, labeled "Escuchar". Skip, speed, and seek appear on the sticky bar only after play starts.
 - Story text (Lora, 18px, line-height 32px, `--text-primary`). Every interactive word has a resting dotted underline (`--paper-line`) so the tap stays obvious after the first visit. Until the first tap, the first four words also pulse a soft `--accent-soft` wash. `prefers-reduced-motion`: no pulse. The dotted underline stays. While audio plays, highlight the **current sentence** (dialogue: that `Name:` line) with a quiet mix of `--accent-soft` on `--paper`. The page does not scroll to follow the narrator. Not per-word yellow karaoke. Songs keep Truquitos karaoke. Teaching-note yellow stays on notes only. `prefers-reduced-motion`: static sentence mark, no chasing animation. A finger or mouse selection in that text uses the same quiet wash (`--accent-soft` at 55% on `--paper`, `--text-primary`), including the spaces between word spans (`.word-gap`). Word spans pad vertically only, so the wash does not break into per-word boxes. Each word is a keyboard control (`role="button"`).
 - Sentence reference numbers (`kind = "story"` only): every 5th sentence (5, 10, 15…) gets a muted 1-based digit as the first child of `.sentence-unit` (`label-sm`, `--text-muted`, `tabular-nums`, 4px after the number). Inline in the sentence, not a gutter. `pointer-events: none`, `aria-hidden`. Digits only: no brackets, no circle, no accent. Same sentence, same number at 375px and desktop. Song bios, dialogue, Movie Talk, and songs do not show them.

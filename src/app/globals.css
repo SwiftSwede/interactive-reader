@@ -32,6 +32,33 @@
   --select-caret-size: 16px;
   --select-caret-inset: 16px;
   --lesson-step-nav-height: 72px;
+
+  /* Motion. Shared scale. Product motion still follows DESIGN.md. */
+  --duration-stagger: 40ms;
+  --duration-micro: 80ms;
+  --duration-quick: 150ms;
+  --duration-fast: 250ms;
+  --duration-medium: 350ms;
+  --duration-slow: 400ms;
+  --duration-very-slow: 500ms;
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: ease-in-out;
+  --ease-out: ease-out;
+  --ease-linear: linear;
+  --ease-bounce: cubic-bezier(0.34, 1.36, 0.64, 1);
+  --ease-bounce-strong: cubic-bezier(0.34, 3.85, 0.64, 1);
+  --distance-micro: 4px;
+  --distance-small: 6px;
+  --distance-base: 8px;
+  --distance-medium: 12px;
+  --distance-large: 30px;
+  --scale-large: 0.96;
+  --scale-medium: 0.97;
+  --scale-small: 0.98;
+  --scale-tiny: 0.99;
+  --blur-small: 2px;
+  --blur-medium: 3px;
+  --blur-large: 8px;
 }
 
 @theme inline {
@@ -149,9 +176,9 @@ select:not([multiple]) {
 .karaoke-highlight.is-ready,
 .karaoke-rewind.is-ready {
   transition:
-    transform 200ms ease,
-    height 200ms ease,
-    opacity 200ms ease;
+    transform 200ms var(--ease-smooth-out),
+    height 200ms var(--ease-smooth-out),
+    opacity 200ms var(--ease-smooth-out);
 }
 
 .karaoke-rewind {
@@ -911,7 +938,7 @@ select:not([multiple]) {
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.06);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  transition: transform 0.2s ease;
+  transition: transform var(--duration-quick) var(--ease-smooth-out);
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
@@ -1574,7 +1601,7 @@ body.sticky-audio-active {
   justify-content: center;
   pointer-events: none;
   padding-bottom: env(safe-area-inset-bottom, 0px);
-  animation: sticky-audio-in 0.18s ease;
+  animation: sticky-audio-in 0.18s var(--ease-smooth-out);
 }
 
 .sticky-audio-player-bar {
@@ -1723,7 +1750,7 @@ body.sticky-character-band-active {
   justify-content: center;
   pointer-events: none;
   padding-bottom: env(safe-area-inset-bottom, 0px);
-  animation: sticky-audio-in 0.18s ease;
+  animation: sticky-audio-in 0.18s var(--ease-smooth-out);
 }
 
 .sticky-character-band-bar {

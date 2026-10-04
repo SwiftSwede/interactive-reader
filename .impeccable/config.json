@@ -1,0 +1,20 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(0.34, 1.36, 0.64, 1)",
+        "createdAt": "2026-10-04T03:21:50.607Z",
+        "reason": "Kyle confirmed installing the shared motion token file. Bounce curves stay defined and unused; product motion does not apply them."
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(0.34, 3.85, 0.64, 1)",
+        "createdAt": "2026-10-04T03:21:50.631Z",
+        "reason": "Kyle confirmed installing the shared motion token file. Bounce curves stay defined and unused; product motion does not apply them."
+      }
+    ]
+  }
+}
