@@ -15,7 +15,6 @@
 
 **Instructions (always visible):**
 
-- Lee la historia.
 - Léela de arriba a abajo sin detenerte. Si la primera lectura se siente difícil, eso es normal. No entres en pánico.
 - Toca las palabras que no entiendas para ver su traducción y pronunciación.
 - Cuando termines, vuelve a leer la historia. Esta segunda lectura se siente muy diferente.
@@ -30,7 +29,6 @@
 
 **Instructions:**
 
-- Contesta las preguntas.
 - Lee la pregunta y escribe tu respuesta *antes* de mirar la respuesta correcta.
 - No busques la respuesta en el texto con el dedo. Recuérdala. El esfuerzo es el entrenamiento.
 - Cuando reveles la respuesta, compárala con la tuya con calma. Entender por qué te equivocaste vale más que acertar.
@@ -43,7 +41,6 @@
 
 **Instructions:**
 
-- Conecta la historia contigo.
 - Aquí no hay respuesta correcta. Las preguntas son sobre tu vida.
 - Escribe en inglés, aunque te falten palabras. Usa el vocabulario de la historia si puedes.
 - El Profe Kyle te da retroalimentación enfocada en una o dos cosas para mejorar. No es una calificación.
@@ -56,7 +53,6 @@
 
 **Instructions:**
 
-- Entrena tu oído.
 - Escucha la oración y escribe exactamente lo que oyes. Sin ver el texto.
 - Puedes escucharla las veces que necesites. Va lento a propósito.
 - Después compara lo que escribiste con la oración real. No es un examen de ortografía: es un diagnóstico de tu oído.
@@ -69,7 +65,6 @@
 
 **Instructions:**
 
-- Repite en voz alta.
 - Escucha la oración y repítela en voz alta, imitando el ritmo y la entonación.
 - Diez repeticiones por ronda, cinco rondas. No pienses en la gramática. Solo escucha y repite.
 - Si te equivocas, sigue. La boca aprende con repeticiones, no con perfección.
@@ -82,7 +77,6 @@
 
 **Instructions:**
 
-- Grábate y escúchate.
 - Graba la oración con tu voz y compárala con la referencia.
 - Escucha tu grabación sin rodeos. Te va a sonar raro. Todos suenan raro la primera vez.
 - El objetivo no es sonar gringo. Es que la gente te entienda a la primera.
@@ -96,7 +90,7 @@
 ## Implementation
 
 1. **New copy module `src/lib/lesson-copy.ts`:** exports one typed map keyed by step id (`story | comprehension | personal | dictation | choral | pronunciation`), each entry `{ title: string; instructions: string[]; why: string }`. Note the story instructions use a bold lead ("La regla más importante:") on the final bullet — model the shape that fits the existing micro-explanation styling, or add a light `note?: string` field; prefer reusing existing tokens.
-2. **Step instructions block:** render `{ title }` + the instruction list at the top of each step panel in `StorySteps.tsx` (and inside the per-practice components that currently receive `microExplanation`, wherever the panel top lives). This is a NEW visible component (e.g. `StepInstructions` in `src/components/lesson/`), presentation-only, using existing DESIGN.md tokens. Currently the panels have no visible step title, only the dot nav — this block becomes the panel header. Do not create new tokens; if an uncovered pattern is needed, stop and ask (the `.cursorrules` ask-gate governs). Document the component in DESIGN.md in the same commit.
+2. **Step instructions block:** the sticky top bar and the dot nav are UNTOUCHED. Inside the content area, at the top of each step panel, render: the step `{ title }` as a visible heading (e.g. "Lee la historia", "Entrena tu oído"), the instruction list directly underneath it, then the existing activity content below (play button, story text, inputs). Order per Kyle: title → instructions → activity. This is a NEW visible component (e.g. `StepInstructions` in `src/components/lesson/`), presentation-only, using existing DESIGN.md tokens. The story step currently has no visible title; the module's `title` field supplies it. Do not create new tokens; if an uncovered pattern is needed, stop and ask (the `.cursorrules` ask-gate governs). Document the component in DESIGN.md in the same commit.
 3. **Why callouts:** replace every hard-coded `text="..."` / `microExplanation="..."` prop in `StorySteps.tsx`, `DictationPractice.tsx`, `ComprehensionQuestions.tsx`, `PersonalQuestions.tsx`, `ChoralPractice.tsx`, `PronunciationPractice.tsx` with the copy module's `why` field. Keep `MicroExplanation.tsx` behavior EXACTLY as is (one-time, localStorage-dismissed, per dismissKey). Preserve the classroom-live conditional for personal.
 4. **Locked steps untouched:** the "Dictado, coral y pronunciación se abren el día de Pronunciación" hint stays.
 5. **Out of scope (later slices):** the `/welcome` first-run route, teach cards in Drill Lab / missions, other lesson kinds.
