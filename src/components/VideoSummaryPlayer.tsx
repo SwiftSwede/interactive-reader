@@ -12,6 +12,8 @@ import VideoSummaryTranslationStep from "@/components/VideoSummaryTranslationSte
 import EndClassButton from "@/components/EndClassButton";
 import { getSessionPhase } from "@/lib/session-phase";
 import { remainingMs } from "@/lib/writing";
+import { VIDEO_SUMMARY_COPY, type VideoSummaryStepId } from "@/lib/lesson-copy";
+import StepInstructions from "@/components/lesson/StepInstructions";
 import type {
   CourseLevel,
   VideoSummaryFreeWrite as FreeWrite,
@@ -27,13 +29,11 @@ type TeacherWrite = {
   wordCount: number;
 };
 
-type StepId = "video" | "write" | "translate";
+type StepId = VideoSummaryStepId;
 
-const STEPS: { id: StepId; label: string }[] = [
-  { id: "video", label: "El Video" },
-  { id: "write", label: "Tu Resumen" },
-  { id: "translate", label: "Traducción" },
-];
+const STEPS: { id: StepId; label: string }[] = (
+  Object.keys(VIDEO_SUMMARY_COPY) as StepId[]
+).map((id) => ({ id, label: VIDEO_SUMMARY_COPY[id].title }));
 
 export default function VideoSummaryPlayer({
   storyId,
@@ -259,11 +259,7 @@ export default function VideoSummaryPlayer({
                 Falta el video. Avísale al Profe Kyle.
               </p>
             )}
-            {!isTeacher && (
-              <p className="text-label-md text-text-secondary">
-                Toma notas de lo que ves
-              </p>
-            )}
+            <StepInstructions copy={VIDEO_SUMMARY_COPY.video} />
             {canOpenWrite ? (
               <button
                 type="button"
@@ -281,25 +277,29 @@ export default function VideoSummaryPlayer({
         )}
 
         {step === "write" && canOpenWrite && (
-          <VideoSummaryFreeWrite
-            sessionId={sessionId}
-            storyId={storyId}
-            minutes={freeWriteMinutes}
-            timerStartedAt={timerStartedAt}
-            isTeacher={isTeacher}
-            live={live}
-            classEnded={phase === "after"}
-            courseId={courseId}
-            onTimerStarted={setTimerStartedAt}
-            initialText={freeWrite?.submissionText ?? ""}
-            alreadySubmitted={Boolean(freeWrite?.submittedAt)}
-            initialTeacherWrites={teacherFreeWrites}
-            saveResponses={saveResponses}
-          />
+          <>
+            <StepInstructions copy={VIDEO_SUMMARY_COPY.write} />
+            <VideoSummaryFreeWrite
+              sessionId={sessionId}
+              storyId={storyId}
+              minutes={freeWriteMinutes}
+              timerStartedAt={timerStartedAt}
+              isTeacher={isTeacher}
+              live={live}
+              classEnded={phase === "after"}
+              courseId={courseId}
+              onTimerStarted={setTimerStartedAt}
+              initialText={freeWrite?.submissionText ?? ""}
+              alreadySubmitted={Boolean(freeWrite?.submittedAt)}
+              initialTeacherWrites={teacherFreeWrites}
+              saveResponses={saveResponses}
+            />
+          </>
         )}
 
         {step === "translate" && canOpenTranslate && (
           <>
+            <StepInstructions copy={VIDEO_SUMMARY_COPY.translate} />
             <VideoSummaryTranslationStep
               storyId={storyId}
               sessionId={sessionId}

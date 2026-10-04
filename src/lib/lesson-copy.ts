@@ -11,12 +11,17 @@ export type LessonCopyNote = {
   body: string;
 };
 
-export type LessonCopyEntry = {
+export type StepInstructionsCopy = {
   title: string;
   instructions: string[];
-  why: string;
   note?: LessonCopyNote;
 };
+
+export type LessonCopyEntry = StepInstructionsCopy & {
+  why: string;
+};
+
+export type VideoSummaryStepId = "video" | "write" | "translate";
 
 export const LESSON_COPY: Record<StoryStepId, LessonCopyEntry> = {
   story: {
@@ -80,6 +85,33 @@ export const LESSON_COPY: Record<StoryStepId, LessonCopyEntry> = {
   },
 };
 
+export const VIDEO_SUMMARY_COPY: Record<
+  VideoSummaryStepId,
+  StepInstructionsCopy
+> = {
+  video: {
+    title: "El Video",
+    instructions: [
+      "Mira el video con atención. Es la base de todo lo que sigue.",
+      "Si quieres, anota unas palabras que te ayuden a recordar lo que viste. No es necesario apuntar todo.",
+    ],
+  },
+  write: {
+    title: "Tu Resumen",
+    instructions: [
+      "Escribe un resumen del video en inglés, con tus propias palabras.",
+      "Escribe hasta que el tiempo termine. No tiene que ser perfecto.",
+      "El Profe Kyle lee tu resumen para conocer tu inglés, y pensar en el video te deja listo para la traducción.",
+    ],
+  },
+  translate: {
+    title: "Traducción",
+    instructions: [
+      "Esta parte es colaborativa. Cuando el Profe Kyle pida una traducción, di tu versión en voz alta; después él escribe la traducción real.",
+    ],
+  },
+};
+
 export type WelcomeCopy = {
   title: string;
   body: string;
@@ -134,4 +166,17 @@ export function flattenWelcomeCopy(copy: WelcomeCopy = WELCOME_COPY): string[] {
     copy.closing,
     copy.button,
   ];
+}
+
+export function flattenVideoSummaryCopy(
+  copy: Record<VideoSummaryStepId, StepInstructionsCopy> = VIDEO_SUMMARY_COPY,
+): string[] {
+  const out: string[] = [];
+  for (const entry of Object.values(copy)) {
+    out.push(entry.title, ...entry.instructions);
+    if (entry.note) {
+      out.push(entry.note.lead, entry.note.body);
+    }
+  }
+  return out;
 }

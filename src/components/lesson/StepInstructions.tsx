@@ -1,4 +1,4 @@
-import type { LessonCopyEntry } from "@/lib/lesson-copy";
+import type { StepInstructionsCopy } from "@/lib/lesson-copy";
 
 function InlineMarks({ text }: { text: string }) {
   const parts = text.split(/(\*[^*]+\*)/g);
@@ -14,7 +14,11 @@ function InlineMarks({ text }: { text: string }) {
   );
 }
 
-export default function StepInstructions({ copy }: { copy: LessonCopyEntry }) {
+export default function StepInstructions({
+  copy,
+}: {
+  copy: StepInstructionsCopy;
+}) {
   return (
     <header className="mb-4" lang="es">
       <h2 className="text-headline-md text-text-primary mb-2">{copy.title}</h2>
