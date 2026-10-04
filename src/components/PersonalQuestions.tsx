@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import ActionButton from "./ActionButton";
 import MicroExplanation from "./MicroExplanation";
+import StepInstructions from "./lesson/StepInstructions";
+import { LESSON_COPY } from "@/lib/lesson-copy";
 import { recordPersonalResponse } from "@/app/lesson/[slug]/actions";
 import { draftKey, readDraft, writeDraft } from "@/lib/answer-drafts";
 import type { CorrectionSegment } from "@/lib/personal-correction";
@@ -17,7 +19,6 @@ type Question = {
 type PersonalQuestionsProps = {
   questions: Question[];
   mode?: "classroom-live" | "write";
-  microExplanation?: string;
   sessionId?: string;
   savedResponses?: SavedPersonalResponse[];
   saveResponses?: boolean;
@@ -87,7 +88,6 @@ function persistDraft(
 export default function PersonalQuestions({
   questions,
   mode = "write",
-  microExplanation,
   sessionId,
   savedResponses,
   saveResponses = true,
@@ -255,9 +255,7 @@ export default function PersonalQuestions({
   if (mode === "classroom-live") {
     return (
       <section>
-        <h3 className="text-headline-md text-text-primary mb-1">
-          Personal Questions
-        </h3>
+        <StepInstructions copy={LESSON_COPY.personal} />
         <p className="mb-4 rounded-card border border-paper-line bg-accent-softer px-3 py-3 text-label-md text-text-accent">
           Discutir en clase
         </p>
@@ -282,16 +280,12 @@ export default function PersonalQuestions({
 
   return (
     <section>
-      <h3 className="text-headline-md text-text-primary mb-1">
-        Personal Questions
-      </h3>
-      <p className="text-label-md text-text-secondary mb-4">
-        Escribe tu respuesta en ingles y recibe feedback de Profe Kyle.
-      </p>
+      <StepInstructions copy={LESSON_COPY.personal} />
 
-      {microExplanation && (
-        <MicroExplanation dismissKey="personal" text={microExplanation} />
-      )}
+      <MicroExplanation
+        dismissKey="personal"
+        text={LESSON_COPY.personal.why}
+      />
 
       <div className="space-y-4">
         {questions.map((q, idx) => {

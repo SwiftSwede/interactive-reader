@@ -6,6 +6,8 @@ import {
 } from "@/app/lesson/[slug]/actions";
 import { draftKey, readDraft, writeDraft } from "@/lib/answer-drafts";
 import MicroExplanation from "./MicroExplanation";
+import StepInstructions from "./lesson/StepInstructions";
+import { LESSON_COPY } from "@/lib/lesson-copy";
 
 // ── Types ──────────────────────────────────────────────────
 
@@ -28,7 +30,6 @@ type ComprehensionQuestionsProps = {
   unlockAt?: string;
   sessionId?: string;
   savedResponses?: SavedComprehensionResponse[];
-  microExplanation?: string;
   saveResponses?: boolean;
 };
 
@@ -72,7 +73,6 @@ export default function ComprehensionQuestions({
   unlockAt,
   sessionId,
   savedResponses,
-  microExplanation,
   saveResponses = true,
 }: ComprehensionQuestionsProps) {
   const initial = hydrateFromSaved(questions, savedResponses);
@@ -234,21 +234,17 @@ export default function ComprehensionQuestions({
 
   return (
     <section>
-      <h3 className="text-headline-md text-text-primary mb-1">
-        Comprehension Questions
-      </h3>
-      <p className="text-label-md text-text-secondary mb-4">
-        {canReveal
-          ? "Escribe tu respuesta y luego verifica si acertaste."
-          : "Escribe tu respuesta. El Profe Kyle te dice cuándo puedes verificar."}
-      </p>
+      <StepInstructions copy={LESSON_COPY.comprehension} />
+      {!canReveal ? (
+        <p className="text-label-md text-text-secondary mb-4">
+          El Profe Kyle te dice cuándo puedes verificar.
+        </p>
+      ) : null}
 
-      {microExplanation && (
-        <MicroExplanation
-          dismissKey="comprehension"
-          text={microExplanation}
-        />
-      )}
+      <MicroExplanation
+        dismissKey="comprehension"
+        text={LESSON_COPY.comprehension.why}
+      />
 
       <div className="space-y-4">
         {questions.map((q, idx) => {

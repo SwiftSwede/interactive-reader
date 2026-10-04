@@ -81,6 +81,7 @@ components:
   drill_teach_card: "Lead in story-body serif with inline strong/em. Example groups: own lines, italic serif story-body, 16px indent, 1px paper-line left rule, 12px between groups. Closing: body-main text-muted, 24px above. Siguiente right-aligned."
   quiet_text_action: "Text-only secondary action (label-sm, text-muted, 44px hit area). Used for dismissals like 'más tarde'. Not button-shaped."
   story_sentence_ref: "Every 5th sentence in kind=story running text. First child of .sentence-unit: label-sm, text-muted, tabular-nums, 4px after the digits. pointer-events none, aria-hidden. Digits only, no gutter, no circle, no accent. Song bios off. Dialogue / Movie Talk / song unmarked."
+  step_instructions: "Classic story steps (story + dialogue). Content-column header: step title headline-md, then a disc list body-main text-secondary (8px item gap, 20px indent). Optional last item with strong lead (La regla más importante) and em for *marked* words. 16px below the block. Copy from src/lib/lesson-copy.ts. Sticky header and dot nav unchanged."
   story_text_selection: "Native selection inside .story-running-text uses the same quiet wash as sentence audio: accent-soft mixed 55% with paper, text-primary. No new color. Spaces live in .word-gap so the wash is one strip, not per-word boxes."
   icons: Lucide React only, never emojis
   lesson_card: "Inicio and Lecciones row. Equal height via one reserved 16px muted line under the status. Song uses the Music icon. Live-only with a recording says Grabación disponible and does not link out."
@@ -423,6 +424,15 @@ Same chrome as text inputs. Hide the native disclosure arrow. Draw a 16px chevro
 - Items separated by 1px horizontal rules (`--paper-line`)
 - Avoid chevron icons unless the list item is strictly navigational
 - Let layout and typography imply interactivity
+
+### Step instructions (`StepInstructions`)
+Always-visible how-to for each classic story step. Lives in the scrolling content column, never in the sticky header or dot nav.
+
+- Title: step name from `LESSON_COPY` (`headline-md`, `--text-primary`). This is the step heading ("Lee la historia"), not the story title from the lesson header.
+- List: disc bullets, `body-main`, `--text-secondary`, 8px between items, 20px left indent (`pl-5`). `lang="es"`.
+- Story only: last bullet lead **La regla más importante:** (`font-semibold`, `--text-primary`) then the rest of that line. Words wrapped in `*…*` in the copy module render as `<em>`.
+- 16px gap (`mb-4`) before the why callout / activity.
+- Why callouts stay `MicroExplanation` (accent-softer card, one-time localStorage dismiss). Copy is vault-sourced in `src/lib/lesson-copy.ts`. Personal why is omitted in classroom-live.
 
 ### Progress Dots
 - Inactive: 8px circle, `--paper-dot` (#c4a574 warm gold)
@@ -839,8 +849,7 @@ The step-based flow for story lessons. This is the most complex page layout.
 **Content zone (scrolls, one step at a time):**
 
 Step 1 - El cuento (Story):
-- The lesson header already shows the title. Do not repeat it in the content column.
-- Micro-explanation callout (dismissable): "Leer en ingles es la base de todo..."
+- The lesson header already shows the story title. The content column opens with the step heading **Lee la historia** (`headline-md`) and the instruction list (`StepInstructions`), then the dismissable why callout from `LESSON_COPY.story`.
 - One play control, labeled "Escuchar". Skip, speed, and seek appear on the sticky bar only after play starts.
 - Story text (Lora, 18px, line-height 32px, `--text-primary`). Every interactive word has a resting dotted underline (`--paper-line`) so the tap stays obvious after the first visit. Until the first tap, the first four words also pulse a soft `--accent-soft` wash. `prefers-reduced-motion`: no pulse. The dotted underline stays. While audio plays, highlight the **current sentence** (dialogue: that `Name:` line) with a quiet mix of `--accent-soft` on `--paper`. The page does not scroll to follow the narrator. Not per-word yellow karaoke. Songs keep Truquitos karaoke. Teaching-note yellow stays on notes only. `prefers-reduced-motion`: static sentence mark, no chasing animation. A finger or mouse selection in that text uses the same quiet wash (`--accent-soft` at 55% on `--paper`, `--text-primary`), including the spaces between word spans (`.word-gap`). Word spans pad vertically only, so the wash does not break into per-word boxes. Each word is a keyboard control (`role="button"`).
 - Sentence reference numbers (`kind = "story"` only): every 5th sentence (5, 10, 15…) gets a muted 1-based digit as the first child of `.sentence-unit` (`label-sm`, `--text-muted`, `tabular-nums`, 4px after the number). Inline in the sentence, not a gutter. `pointer-events: none`, `aria-hidden`. Digits only: no brackets, no circle, no accent. Same sentence, same number at 375px and desktop. Song bios, dialogue, Movie Talk, and songs do not show them.
@@ -851,19 +860,19 @@ Step 1 - El cuento (Story):
 
 Step 2 - Comprension (Comprehension):
 - "Ver el texto" button (ghost, BookOpen icon + "El cuento" label) — opens bottom sheet
-- Micro-explanation callout: "Contesta antes de ver la respuesta..."
+- Step heading **Contesta las preguntas** plus the instruction list, then the why callout (`LESSON_COPY.comprehension`). If answers are still gated, one extra line: "El Profe Kyle te dice cuándo puedes verificar."
 - Question cards: white surface, `--paper-line` border, 16px radius, 16px padding. Each card: question (16px, Lora, 600), textarea (white, `--paper-line` border, 16px radius), "Ver respuesta" button (primary, 16px radius). Revealed answers show in `--surface-hover` background box.
 - Bottom nav: left pill ("← El cuento"), right pill ("Personal →")
 
 Step 3 - Personal (Personal Questions):
 - "Ver el texto" button
-- Micro-explanation callout: "Estas preguntas no tienen una respuesta correcta..."
+- Step heading **Conecta la historia contigo** plus the instruction list. Why callout (`LESSON_COPY.personal`) in review/write only, never classroom-live. Live still shows "Discutir en clase".
 - Question cards with textarea + "Comprobar" button. AI feedback shows inline (green additions, red strikethrough, amber moved words, underline-only at the destination). Legend chips use the same highlight marks as the words.
 - Bottom nav: left pill ("← Comprensión"), right pill ("Dictado →")
 
 Step 4 - Dictado (Dictation):
 - "Ver el texto" button
-- Micro-explanation callout: "Sabias que la mayoria de los errores de escucha..."
+- Step heading **Entrena tu oído** plus the instruction list, then the why callout (`LESSON_COPY.dictation`).
 - Play button (64px circle, `--accent`, white Play icon, centered)
 - "Escucha y escribe lo que oyes" (`label-md`, `--text-secondary`, centered)
 - Textarea (full width, 4 rows)
@@ -873,6 +882,7 @@ Step 4 - Dictado (Dictation):
 
 Step 5 - Coral (Choral Practice):
 - "Ver el texto" button
+- Step heading **Repite en voz alta** plus the instruction list, then the why callout (`LESSON_COPY.choral`)
 - Play button for choral audio
 - Round counter: "Repeticiones: 0/10" (`headline-md`, tabular-nums)
 - Round indicator: 5 dots filling as rounds complete
@@ -881,6 +891,7 @@ Step 5 - Coral (Choral Practice):
 
 Step 6 - Pronunciación (Pronunciation Assessment):
 - "Ver el texto" button
+- Step heading **Grábate y escúchate** plus the instruction list, then the why callout (`LESSON_COPY.pronunciation`)
 - Reference sentence in a card (white, `--paper-line` border)
 - Microphone button (64px circle, `--accent`, white Mic icon)
 - "Toca para grabar" (`label-md`, `--text-secondary`)

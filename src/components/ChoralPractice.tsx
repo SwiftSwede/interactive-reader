@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { usePlaybackRate } from "./PlaybackRateContext";
 import MicroExplanation from "./MicroExplanation";
+import StepInstructions from "./lesson/StepInstructions";
+import { LESSON_COPY } from "@/lib/lesson-copy";
 
 const PLAYS_PER_ROUND = 10;
 const TOTAL_ROUNDS = 5;
@@ -140,17 +142,11 @@ export default function ChoralPractice({
     <section>
       <audio ref={audioRef} src={audioUrl} preload="metadata" />
 
-      <h3 className="text-headline-md text-text-primary mb-2">
-        Práctica coral
-      </h3>
-
-      <p className="text-label-md text-text-secondary mb-3">
-        Escucha el clip y repite en voz alta. No pienses. Solo sigue.
-      </p>
+      <StepInstructions copy={LESSON_COPY.choral} />
 
       <MicroExplanation
         dismissKey="choral"
-        text="Repetir en voz alta es como ir al gimnasio: tu boca necesita las repeticiones para que el sonido salga solo. No pienses. Escucha y repite."
+        text={LESSON_COPY.choral.why}
       />
 
       {completed ? (

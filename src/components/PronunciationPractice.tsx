@@ -4,6 +4,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Mic } from "lucide-react";
 import ActionButton from "./ActionButton";
 import MicroExplanation from "./MicroExplanation";
+import StepInstructions from "./lesson/StepInstructions";
+import { LESSON_COPY } from "@/lib/lesson-copy";
 import PronunciationDebug from "./PronunciationDebug";
 import { assessPronunciation } from "@/lib/pronunciation/client";
 import type { PronunciationAssessmentResponse } from "@/lib/pronunciation/types";
@@ -226,17 +228,11 @@ export default function PronunciationPractice({
 
   return (
     <section>
-      <h3 className="text-headline-md text-text-primary mb-2">
-        Practica tu pronunciacion
-      </h3>
-
-      <p className="text-label-md text-text-secondary mb-3">
-        Lee esta oracion en voz alta:
-      </p>
+      <StepInstructions copy={LESSON_COPY.pronunciation} />
 
       <MicroExplanation
         dismissKey="pronunciation"
-        text="Esto no es un examen. Graba la oracion, escuchate, y vuelve a intentar. El oido y la boca se entrenan juntos."
+        text={LESSON_COPY.pronunciation.why}
       />
 
       <p className="rounded-card bg-surface border border-paper-line p-4 text-body-main font-semibold text-text-primary">

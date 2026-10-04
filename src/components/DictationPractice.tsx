@@ -5,8 +5,10 @@ import { Play } from "lucide-react";
 import ActionButton from "./ActionButton";
 import { usePlaybackRate } from "./PlaybackRateContext";
 import MicroExplanation from "./MicroExplanation";
+import StepInstructions from "./lesson/StepInstructions";
 import IpaText from "./IpaText";
 import { recordDictationAttempt } from "@/app/lesson/[slug]/actions";
+import { LESSON_COPY } from "@/lib/lesson-copy";
 import type { PronunciationWordNote } from "@/types";
 
 type DictationPracticeProps = {
@@ -16,7 +18,6 @@ type DictationPracticeProps = {
   ipaText?: string;
   wordNotes?: PronunciationWordNote[];
   explanation?: string;
-  microExplanation: string;
   /** Omitted for anonymous free-story practice, which stays in-session. */
   storyId?: string;
   sessionId?: string;
@@ -30,7 +31,6 @@ export default function DictationPractice({
   ipaText,
   wordNotes = [],
   explanation,
-  microExplanation,
   storyId,
   sessionId,
   saveResponses = true,
@@ -77,15 +77,12 @@ export default function DictationPractice({
     <section>
       <audio ref={audioRef} src={audioUrl} preload="metadata" />
 
-      <h3 className="text-headline-md text-text-primary mb-2">
-        Dictado: Escucha y escribe
-      </h3>
+      <StepInstructions copy={LESSON_COPY.dictation} />
 
-      <p className="text-label-md text-text-secondary mb-3">
-        Escucha el audio y escribe lo que oyes. No mires el texto.
-      </p>
-
-      <MicroExplanation dismissKey="dictation" text={microExplanation} />
+      <MicroExplanation
+        dismissKey="dictation"
+        text={LESSON_COPY.dictation.why}
+      />
 
       {phase === "listening" && (
         <div className="space-y-4">

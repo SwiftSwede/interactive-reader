@@ -23,6 +23,8 @@ import MicroExplanation from "./MicroExplanation";
 import StoryTextSheet from "./StoryTextSheet";
 import LessonHeader from "@/components/lesson/LessonHeader";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
+import StepInstructions from "@/components/lesson/StepInstructions";
+import { LESSON_COPY } from "@/lib/lesson-copy";
 import { lessonHeaderWordCount } from "@/lib/lesson-header";
 import { storyStepRecordingUrl } from "@/lib/story-practice";
 import MusicLessonSteps from "./music/MusicLessonSteps";
@@ -521,9 +523,10 @@ function ClassicStorySteps({
 
             {active.id === "story" && (
               <>
+                <StepInstructions copy={LESSON_COPY.story} />
                 <MicroExplanation
                   dismissKey="story"
-                  text="Leer en ingles es la base de todo. Tu cerebro necesita ver las palabras en contexto para aprenderlas de verdad. Toca cualquier palabra para ver su traduccion y pronunciacion."
+                  text={LESSON_COPY.story.why}
                 />
                 <InteractiveStory {...storyProps} />
                 {story.kind !== "story" && story.kind !== "song" ? null : (
@@ -545,7 +548,6 @@ function ClassicStorySteps({
                 storyId={story.id}
                 sessionId={sessionId}
                 saveResponses={saveResponses}
-                microExplanation="Sabias que la mayoria de los errores de escucha no son por falta de vocabulario, sino porque las palabras suenan diferente cuando se hablan rapido? Este ejercicio te muestra exactamente donde tu oido te falla."
               />
             )}
 
@@ -587,7 +589,6 @@ function ClassicStorySteps({
                 sessionId={sessionId}
                 savedResponses={savedResponses}
                 saveResponses={saveResponses}
-                microExplanation="Contesta antes de ver la respuesta. Si la lees primero, tu cerebro no trabaja. El esfuerzo de intentar es donde ocurre el aprendizaje. Escribir tu respuesta te ayuda a fijar el vocabulario en la memoria."
               />
             </div>
           )}
@@ -608,11 +609,6 @@ function ClassicStorySteps({
                 sessionId={sessionId}
                 savedResponses={savedPersonalResponses}
                 saveResponses={saveResponses}
-                microExplanation={
-                  readerMode === "classroom-live"
-                    ? undefined
-                    : "Estas preguntas no tienen una respuesta correcta. Conectan la historia con tu vida y te hacen pensar en como usar el vocabulario nuevo. El Profe Kyle te da feedback enfocado en una o dos cosas para mejorar."
-                }
               />
             </div>
           )}
