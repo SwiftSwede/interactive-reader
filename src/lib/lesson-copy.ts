@@ -80,6 +80,39 @@ export const LESSON_COPY: Record<StoryStepId, LessonCopyEntry> = {
   },
 };
 
+export type WelcomeCopy = {
+  title: string;
+  body: string;
+  bullets: { lead: string; text: string }[];
+  closing: string;
+  button: string;
+};
+
+export const WELCOME_COPY: WelcomeCopy = {
+  title: "Bienvenido a tu app de inglés.",
+  body: "Esta app acompaña tus clases del Confident Speaker Circle. No es tarea adicional: es el material de tu curso, en tu bolsillo.",
+  bullets: [
+    {
+      lead: "Apoyo para tu estudio.",
+      text: "Esta app existe para respaldar lo que hacemos en clase. Si quieres avanzar más rápido, úsala en tu tiempo libre. Si no, la app también te sirve.",
+    },
+    {
+      lead: "Todo se guarda solo.",
+      text: "Tus respuestas, tus palabras, tu progreso. Cierras y vuelves cuando quieras.",
+    },
+    {
+      lead: "No hay calificaciones.",
+      text: "Aquí se practica. Los errores son información, no castigo.",
+    },
+    {
+      lead: "Toca cualquier palabra.",
+      text: "Traducción y pronunciación al instante.",
+    },
+  ],
+  closing: "¿Listo? Tus clases te esperan.",
+  button: "Entendido, vamos",
+};
+
 export function flattenLessonCopy(
   copy: Record<StoryStepId, LessonCopyEntry> = LESSON_COPY,
 ): string[] {
@@ -91,4 +124,14 @@ export function flattenLessonCopy(
     }
   }
   return out;
+}
+
+export function flattenWelcomeCopy(copy: WelcomeCopy = WELCOME_COPY): string[] {
+  return [
+    copy.title,
+    copy.body,
+    ...copy.bullets.flatMap((bullet) => [bullet.lead, bullet.text]),
+    copy.closing,
+    copy.button,
+  ];
 }

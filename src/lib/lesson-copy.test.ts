@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";
-import { flattenLessonCopy, LESSON_COPY } from "./lesson-copy";
+import { flattenLessonCopy, flattenWelcomeCopy, LESSON_COPY } from "./lesson-copy";
 
 const STEPS = [
   "story",
@@ -12,7 +12,7 @@ const STEPS = [
 ] as const;
 
 const ASCII_TELLS =
-  /Sabias|ingles|oido|Traduccion|pronunciacion|calificacion|Ortografia|escuchate|Graba la oracion[^,]/;
+  /Sabias|ingles|oido|Traduccion|pronunciacion|calificacion(?!es)|Ortografia|escuchate|Graba la oracion[^,]|Clases te esperan/;
 
 describe("LESSON_COPY", () => {
   test("has an entry for every story step", () => {
@@ -45,5 +45,18 @@ describe("LESSON_COPY", () => {
     assert.match(blob, /recuperación/);
     assert.match(blob, /retroalimentación/);
     assert.match(blob, /Grábate/);
+  });
+});
+
+describe("WELCOME_COPY", () => {
+  test("has no em dashes and keeps Spanish accents", () => {
+    const blob = flattenWelcomeCopy().join("\n");
+    assert.equal(blob.includes("\u2014"), false);
+    assert.equal(blob.includes("—"), false);
+    assert.doesNotMatch(blob, ASCII_TELLS);
+    assert.match(blob, /Bienvenido a tu app de inglés/);
+    assert.match(blob, /calificaciones/);
+    assert.match(blob, /Tus clases te esperan/);
+    assert.match(blob, /Entendido, vamos/);
   });
 });

@@ -12,6 +12,7 @@ import { toDrillLevel } from "@/lib/drills";
 import { loadStudentPractice } from "@/lib/student-drills";
 import MissionCard from "@/components/dashboard/MissionCard";
 import ReviewCard from "@/components/dashboard/ReviewCard";
+import WelcomeGate from "@/components/WelcomeGate";
 
 export const metadata = {
   title: "Inicio - Profe Kyle",
@@ -76,6 +77,7 @@ export default async function DashboardPage() {
 
   return (
     <BrowsingShell activeTab="inicio" previewLevel={preview?.level ?? null}>
+      <WelcomeGate skip={Boolean(preview)}>
       <section className="pt-6">
         <h1 className="text-headline-lg text-text-primary">{greeting}</h1>
 
@@ -198,6 +200,7 @@ export default async function DashboardPage() {
         )}
 
       </section>
+      </WelcomeGate>
     </BrowsingShell>
   );
 }

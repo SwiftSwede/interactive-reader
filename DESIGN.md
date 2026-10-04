@@ -90,6 +90,7 @@ components:
   quiet_text_action: "Text-only secondary action (label-sm, text-muted, 44px hit area). Used for dismissals like 'más tarde'. Not button-shaped."
   story_sentence_ref: "Every 5th sentence in kind=story running text. First child of .sentence-unit: label-sm, text-muted, tabular-nums, 4px after the digits. pointer-events none, aria-hidden. Digits only, no gutter, no circle, no accent. Song bios off. Dialogue / Movie Talk / song unmarked."
   step_instructions: "kind=story only (dialogue shares StorySteps but omits this block and the story why card). Content-column header: step title headline-md, then a disc list body-main text-secondary (8px item gap, 20px indent). Optional last item with strong lead (La regla más importante) and em for *marked* words. 16px below the block. Copy from src/lib/lesson-copy.ts. Sticky header and dot nav unchanged."
+  welcome_card: "Classroom first-run only. localStorage welcome-seen. Replaces Inicio main content or the story lesson article (kind=story, not teacher, not preview). White rounded-card, 1px paper-line, p-4. Title headline-md. Lead and closing body-main text-secondary. Disc list like StepInstructions, bold leads. One ActionButton Entendido, vamos (48px). Canonical /welcome. Fail-open if storage is blocked. Copy in src/lib/lesson-copy.ts WELCOME_COPY."
   story_text_selection: "Native selection inside .story-running-text uses the same quiet wash as sentence audio: accent-soft mixed 55% with paper, text-primary. No new color. Spaces live in .word-gap so the wash is one strip, not per-word boxes."
   icons: Lucide React only, never emojis
   lesson_card: "Inicio and Lecciones row. Equal height via one reserved 16px muted line under the status. Song uses the Music icon. Live-only with a recording says Grabación disponible and does not link out."
@@ -442,6 +443,16 @@ Always-visible how-to for `kind=story` steps only. Dialogue uses the same `Story
 - 16px gap (`mb-4`) before the why callout / activity.
 - Why callouts stay `MicroExplanation` (accent-softer card, one-time localStorage dismiss). Copy is vault-sourced in `src/lib/lesson-copy.ts`. Personal why is omitted in classroom-live.
 
+### Welcome card (`WelcomeCard` + `WelcomeGate`)
+First-run classroom orientation. Copy is `WELCOME_COPY` in `src/lib/lesson-copy.ts`. No schema.
+
+- Card: white `--surface`, 1px `--paper-line`, `rounded-card` (16px), 16px padding. `lang="es"`.
+- Title `headline-md`. Lead paragraph and closing line `body-main` `--text-secondary`. Disc list matches StepInstructions (8px gap, 20px indent); bullet leads `font-semibold` `--text-primary`.
+- One primary ActionButton **Entendido, vamos** (48px, full width). Writes `localStorage welcome-seen = "1"`. Storage errors fail open (treat as seen).
+- Inicio: `WelcomeGate` replaces the main column until dismissed. Teacher preview (`preview`) skips the gate.
+- Story lesson (`kind=story` only): gate wraps the article under the sticky header and dots. Teachers and preview skip it. Dialogue, music, exam, and other lesson types do not get this card.
+- Canonical route `/welcome` uses the same card in the browsing shell. Button goes to `/dashboard`. Nothing redirects students onto that URL.
+
 ### Progress Dots
 - Inactive: 8px circle, `--paper-dot` (#c4a574 warm gold)
 - Active: 12px circle, `--accent` (terracotta), subtle ring
@@ -756,7 +767,7 @@ Email + 8-digit code. Same Paper Light chrome as browsing mode so the jump into 
 ### Inicio (Dashboard)
 The learner's home base. Shows today's class, where to resume, an intro mission and/or a quiet review invite, progress, and the month's 8-class stack.
 
-**Section order (top to bottom).** Rendered order: greeting, class-day card, Seguir la lección, intro mission card, review invite, progress card, Este mes. Items 2 and 3 below describe how resume and the class card share the top slot.
+**Section order (top to bottom).** First unseen classroom visit: `WelcomeGate` replaces this column with the welcome card until **Entendido, vamos**. Teacher preview never shows it. After that, rendered order: greeting, class-day card, Seguir la lección, intro mission card, review invite, progress card, Este mes. Items 2 and 3 below describe how resume and the class card share the top slot.
 1. Greeting: "Hola, [name]" (`headline-lg`, Lora, 24px, 700, `--text-primary`). Fall back to "Hola" if the name is missing. In the normal state this is the only Primary-weight text on the page.
 2. Resume row **Seguir la lección** (one label for every type with an app page). Omit when empty. No percent, no audio timestamp, no live-only Zoom rows.
    - **Class day, join window (T-10 through scheduled end):** terracotta join hero only. Do not show resume above or instead of it.
@@ -864,6 +875,8 @@ The step-based flow for story lessons. This is the most complex page layout.
 - Subheader: progress dots (6 dots for 6 steps: El cuento, Comprension, Personal, Dictado, Coral, Pronunciacion)
 
 **Content zone (scrolls, one step at a time):**
+
+On a classroom student's first visit (`welcome-seen` unset), `kind=story` only: the welcome card replaces the article (header and dots stay). Teachers and preview skip it.
 
 Step 1 - El cuento (Story):
 - The lesson header already shows the story title. On `kind=story` only, the content column opens with the step heading **Lee la historia** (`headline-md`) and the instruction list (`StepInstructions`), then the dismissable why callout from `LESSON_COPY.story`. Dialogue omits both.

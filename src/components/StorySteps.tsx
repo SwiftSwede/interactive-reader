@@ -24,6 +24,7 @@ import StoryTextSheet from "./StoryTextSheet";
 import LessonHeader from "@/components/lesson/LessonHeader";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
 import StepInstructions from "@/components/lesson/StepInstructions";
+import WelcomeGate from "@/components/WelcomeGate";
 import { LESSON_COPY } from "@/lib/lesson-copy";
 import { lessonHeaderWordCount } from "@/lib/lesson-header";
 import { storyStepRecordingUrl } from "@/lib/story-practice";
@@ -453,6 +454,9 @@ function ClassicStorySteps({
     return null;
   }
 
+  const skipWelcome =
+    story.kind !== "story" || isTeacher || previewLevel != null;
+
   return (
     <PlaybackRateProvider>
       <main className="story-page min-h-screen">
@@ -508,6 +512,7 @@ function ClassicStorySteps({
         </div>
 
         <article className="max-w-2xl mx-auto px-4 py-6">
+          <WelcomeGate skip={skipWelcome}>
           {bannerUrl ? <RecordingBanner youtubeUrl={bannerUrl} /> : null}
           <div key={active.id} className="step-panel">
             {!isStory && (
@@ -662,6 +667,7 @@ function ClassicStorySteps({
               onEnded={setClassEndedAt}
             />
           ) : null}
+          </WelcomeGate>
         </article>
 
         <StoryTextSheet
