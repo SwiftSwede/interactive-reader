@@ -523,11 +523,15 @@ function ClassicStorySteps({
 
             {active.id === "story" && (
               <>
-                <StepInstructions copy={LESSON_COPY.story} />
-                <MicroExplanation
-                  dismissKey="story"
-                  text={LESSON_COPY.story.why}
-                />
+                {story.kind === "story" ? (
+                  <>
+                    <StepInstructions copy={LESSON_COPY.story} />
+                    <MicroExplanation
+                      dismissKey="story"
+                      text={LESSON_COPY.story.why}
+                    />
+                  </>
+                ) : null}
                 <InteractiveStory {...storyProps} />
                 {story.kind !== "story" && story.kind !== "song" ? null : (
                 <p className="text-center text-text-muted mt-8 italic">
