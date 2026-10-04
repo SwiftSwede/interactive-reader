@@ -49,8 +49,19 @@ import type {
   PresentationVocabNote,
 } from "@/types";
 import type { LessonViewToggle } from "@/lib/student-preview";
+import {
+  PRESENTATION_COPY,
+  PRESENTATION_CYCLE_STEPS,
+  stepCopyForMode,
+  type PresentationCycleStepId,
+} from "@/lib/lesson-copy";
+import StepInstructions from "@/components/lesson/StepInstructions";
+import MicroExplanation from "@/components/MicroExplanation";
 
-const CYCLE_LABELS = ["Vocabulario", "Preguntas", "Video", "Respuestas"];
+const CYCLE_LABELS = PRESENTATION_CYCLE_STEPS.map(
+  (id) => PRESENTATION_COPY[id].title,
+);
+const CYCLE_KINDS = ["vocab", "questions", "video", "answers"] as const;
 const SAVE_DEBOUNCE_MS = 600;
 
 export default function PresentationPlayer({
@@ -523,12 +534,7 @@ export default function PresentationPlayer({
                     disabled={!showNav}
                     onClick={() => {
                       if (!showNav || !segment) return;
-                      const kinds = [
-                        "vocab",
-                        "questions",
-                        "video",
-                        "answers",
-                      ] as const;
+                      const kinds = CYCLE_KINDS;
                       goTo({ kind: kinds[index], segmentId: segment.id });
                     }}
                   >
@@ -565,40 +571,68 @@ export default function PresentationPlayer({
           ) : null}
 
           {step.kind === "vocab" && segment ? (
-            <VocabStep
-              segment={segment}
-              notes={notes}
-              isTeacher={isTeacher}
-              sessionId={sessionId}
-            />
+            <>
+              <CycleStepChrome
+                copyId="vocabulario"
+                live={phase === "live"}
+                isTeacher={isTeacher}
+              />
+              <VocabStep
+                segment={segment}
+                notes={notes}
+                isTeacher={isTeacher}
+                sessionId={sessionId}
+              />
+            </>
           ) : null}
 
           {step.kind === "questions" && segment ? (
-            <QuestionsPreview segment={segment} />
+            <>
+              <CycleStepChrome
+                copyId="preguntas"
+                live={phase === "live"}
+                isTeacher={isTeacher}
+              />
+              <QuestionsPreview segment={segment} />
+            </>
           ) : null}
 
           {step.kind === "video" && segment ? (
-            <VideoStep
-              segment={segment}
-              sessionId={sessionId}
-              isTeacher={isTeacher}
-              live={liveVideo}
-            />
+            <>
+              <CycleStepChrome
+                copyId="video"
+                live={phase === "live"}
+                isTeacher={isTeacher}
+              />
+              <VideoStep
+                segment={segment}
+                sessionId={sessionId}
+                isTeacher={isTeacher}
+                live={liveVideo}
+              />
+            </>
           ) : null}
 
           {step.kind === "answers" && segment ? (
-            <AnswersStep
-              segment={segment}
-              sessionId={sessionId}
-              isTeacher={isTeacher}
-              reviewMode={phase === "after"}
-              allowReveal={allowReveal}
-              saveResponses={saveResponses}
-              savedResponses={savedResponses}
-              classAnswers={classAnswers}
-              publishClassAnswer={publishClassAnswer}
-              unlockAt={sessionEndTime}
-            />
+            <>
+              <CycleStepChrome
+                copyId="respuestas"
+                live={phase === "live"}
+                isTeacher={isTeacher}
+              />
+              <AnswersStep
+                segment={segment}
+                sessionId={sessionId}
+                isTeacher={isTeacher}
+                reviewMode={phase === "after"}
+                allowReveal={allowReveal}
+                saveResponses={saveResponses}
+                savedResponses={savedResponses}
+                classAnswers={classAnswers}
+                publishClassAnswer={publishClassAnswer}
+                unlockAt={sessionEndTime}
+              />
+            </>
           ) : null}
 
           {step.kind === "done" ? (
@@ -650,6 +684,29 @@ export default function PresentationPlayer({
   );
 }
 
+function CycleStepChrome({
+  copyId,
+  live,
+  isTeacher,
+}: {
+  copyId: PresentationCycleStepId;
+  live: boolean;
+  isTeacher: boolean;
+}) {
+  const copy = PRESENTATION_COPY[copyId];
+  return (
+    <>
+      <StepInstructions copy={stepCopyForMode(copy, live)} />
+      {copy.why && !isTeacher ? (
+        <MicroExplanation
+          dismissKey={`presentation-${copyId}`}
+          text={copy.why}
+        />
+      ) : null}
+    </>
+  );
+}
+
 function VocabStep({
   segment,
   notes,
@@ -671,7 +728,6 @@ function VocabStep({
 
   return (
     <section className="space-y-3">
-      <h2 className="text-headline-md text-text-primary">Vocabulario</h2>
       {segment.vocabulary.map((item) => (
         <VocabCard
           key={item.english}
@@ -978,11 +1034,7 @@ function AddVocabCard({
 function QuestionsPreview({ segment }: { segment: PresentationSegment }) {
   return (
     <section>
-      <h2 className="text-headline-md text-text-primary">Preguntas</h2>
-      <p className="mt-1 text-label-md text-text-secondary">
-        Escucha para estas respuestas. Todavía no escribas.
-      </p>
-      <ol className="mt-4 space-y-3">
+      <ol className="space-y-3">
         {segment.comprehensionQuestions.map((question) => (
           <li
             key={question.id}
@@ -1018,7 +1070,6 @@ function VideoStep({
   }
   return (
     <section>
-      <h2 className="sr-only">Video</h2>
       {live && !isTeacher ? (
         <p className="mb-3 text-label-md text-text-secondary">
           El Profe Kyle está controlando el video.
@@ -1175,16 +1226,11 @@ function AnswersStep({
 
   return (
     <section>
-      <h2 className="text-headline-md text-text-primary">Respuestas</h2>
-      <p className="mt-1 mb-4 text-label-md text-text-secondary">
-        {isTeacher
-          ? "Escribe la respuesta y toca Listo. Sale en el teléfono de ellos."
-          : liveFollow
-            ? "El Profe Kyle escribe la respuesta. Tú la ves aquí."
-            : canReveal
-              ? "Escribe tu respuesta y luego verifica si acertaste."
-              : "Escribe tu respuesta. El Profe Kyle te dice cuándo puedes verificar."}
-      </p>
+      {isTeacher ? (
+        <p className="mb-4 text-label-md text-text-secondary">
+          Escribe la respuesta y toca Listo. Sale en el teléfono de ellos.
+        </p>
+      ) : null}
       {error ? <p className="mb-3 text-sm text-error">{error}</p> : null}
       <div className="space-y-4">
         {segment.comprehensionQuestions.map((question, index) => {

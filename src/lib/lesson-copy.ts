@@ -14,14 +14,32 @@ export type LessonCopyNote = {
 export type StepInstructionsCopy = {
   title: string;
   instructions: string[];
+  instructionsLive?: string[];
+  why?: string;
   note?: LessonCopyNote;
 };
 
-export type LessonCopyEntry = StepInstructionsCopy & {
+export type LessonCopyEntry = Omit<StepInstructionsCopy, "why"> & {
   why: string;
 };
 
 export type VideoSummaryStepId = "video" | "write" | "translate";
+
+export type PresentationCycleStepId =
+  | "vocabulario"
+  | "preguntas"
+  | "video"
+  | "respuestas";
+
+export function stepCopyForMode(
+  copy: StepInstructionsCopy,
+  live: boolean,
+): StepInstructionsCopy {
+  if (live && copy.instructionsLive && copy.instructionsLive.length > 0) {
+    return { ...copy, instructions: copy.instructionsLive };
+  }
+  return copy;
+}
 
 export const LESSON_COPY: Record<StoryStepId, LessonCopyEntry> = {
   story: {
@@ -95,6 +113,7 @@ export const VIDEO_SUMMARY_COPY: Record<
       "Mira el video con atención. Es la base de todo lo que sigue.",
       "Si quieres, anota unas palabras que te ayuden a recordar lo que viste. No es necesario apuntar todo.",
     ],
+    why: "Todo lo demás se construye sobre entender la historia. Si miras el video solo por verlo, escribir y traducir después son adivinanzas. Mira con intención: la historia que entiendes es la materia prima de todos los ejercicios que siguen.",
   },
   write: {
     title: "Tu Resumen",
@@ -103,14 +122,69 @@ export const VIDEO_SUMMARY_COPY: Record<
       "Escribe hasta que el tiempo termine. No tiene que ser perfecto.",
       "El Profe Kyle lee tu resumen para conocer tu inglés, y pensar en el video te deja listo para la traducción.",
     ],
+    why: "Escribir en inglés, aunque te falten palabras, te obliga a producir el idioma de verdad. Ahí descubres qué sabes decir y qué te falta. Ese es el mejor calentamiento posible para la traducción, y es exactamente lo que el Profe Kyle necesita ver de tu inglés.",
   },
   translate: {
     title: "Traducción",
     instructions: [
+      "Escribe tu versión en inglés, oración por oración.",
+      "Cuando termines, compárala con la traducción del Profe Kyle.",
+    ],
+    instructionsLive: [
       "Esta parte es colaborativa. Cuando el Profe Kyle pida una traducción, di tu versión en voz alta; después él escribe la traducción real.",
     ],
+    why: 'Al intentar traducir descubres exactamente qué te falta decir. Ese momento de "¿cómo se dice?" es cuando tu mente está buscando el hueco, y lo que veas después cae en un lugar preparado. Nadie aprende frases nuevas sin haber sentido primero que las necesitaba.',
   },
 };
+
+export const PRESENTATION_COPY: Record<
+  PresentationCycleStepId,
+  StepInstructionsCopy
+> = {
+  vocabulario: {
+    title: "Vocabulario",
+    instructions: [
+      "El Profe Kyle presenta el vocabulario nuevo del video. Escucha las explicaciones.",
+      "¿Tienes dudas sobre una palabra? Pregunta ahora. Este es el momento para preguntar.",
+    ],
+    why: "Ver un video lleno de palabras desconocidas es ruido: entra y no se queda nada. Conocer el vocabulario antes es lo que convierte el video en entrada que tu cerebro sí puede guardar. No es un trámite antes del video. Es lo que hace que el video funcione.",
+  },
+  preguntas: {
+    title: "Preguntas",
+    instructions: [
+      "Estas son las preguntas que vas a responder del video.",
+      "Léelas con calma, pero no las respondas todavía. Primero toca ver el video.",
+    ],
+    why: "Tu cerebro escucha diferente cuando sabe qué buscar. Con las preguntas antes del video, no estás solo viendo: estás cazando respuestas. Por eso te las damos primero y no después. Escuchar con intención vale mucho más que escuchar y rezar para acordarte.",
+  },
+  video: {
+    title: "Video",
+    instructions: [
+      "Mira el video y mantén las preguntas en mente.",
+      "Si quieres, anota las respuestas para recordarlas. Si tu memoria te alcanza sin notas, también está bien.",
+    ],
+  },
+  respuestas: {
+    title: "Respuestas",
+    instructions: [
+      "Escribe tu respuesta en inglés con tus propias palabras.",
+      "Cuando termines, compárala con la respuesta correcta.",
+      "Repite esta parte cuando quieras: cada video sirve para practicar a tu ritmo.",
+    ],
+    instructionsLive: [
+      "Esta parte es en vivo: el Profe Kyle pregunta, tú das tu versión en voz alta, y él escribe la respuesta real.",
+      "Al final, puedes preguntar cualquier cosa sobre el vocabulario o algo que viste en el video.",
+    ],
+    why: "Intentar producir la respuesta, aunque quede a medias, enseña más que escuchar la respuesta correcta. El esfuerzo de recordarlo tú es lo que fija el vocabulario en la memoria. La respuesta correcta es el premio final, no el reemplazo del intento.",
+  },
+};
+
+export const PRESENTATION_CYCLE_STEPS: PresentationCycleStepId[] = [
+  "vocabulario",
+  "preguntas",
+  "video",
+  "respuestas",
+];
 
 export type WelcomeCopy = {
   title: string;
@@ -150,7 +224,9 @@ export function flattenLessonCopy(
 ): string[] {
   const out: string[] = [];
   for (const entry of Object.values(copy)) {
-    out.push(entry.title, ...entry.instructions, entry.why);
+    out.push(entry.title, ...entry.instructions);
+    if (entry.instructionsLive) out.push(...entry.instructionsLive);
+    out.push(entry.why);
     if (entry.note) {
       out.push(entry.note.lead, entry.note.body);
     }
@@ -174,6 +250,23 @@ export function flattenVideoSummaryCopy(
   const out: string[] = [];
   for (const entry of Object.values(copy)) {
     out.push(entry.title, ...entry.instructions);
+    if (entry.instructionsLive) out.push(...entry.instructionsLive);
+    if (entry.why) out.push(entry.why);
+    if (entry.note) {
+      out.push(entry.note.lead, entry.note.body);
+    }
+  }
+  return out;
+}
+
+export function flattenPresentationCopy(
+  copy: Record<PresentationCycleStepId, StepInstructionsCopy> = PRESENTATION_COPY,
+): string[] {
+  const out: string[] = [];
+  for (const entry of Object.values(copy)) {
+    out.push(entry.title, ...entry.instructions);
+    if (entry.instructionsLive) out.push(...entry.instructionsLive);
+    if (entry.why) out.push(entry.why);
     if (entry.note) {
       out.push(entry.note.lead, entry.note.body);
     }

@@ -12,8 +12,13 @@ import VideoSummaryTranslationStep from "@/components/VideoSummaryTranslationSte
 import EndClassButton from "@/components/EndClassButton";
 import { getSessionPhase } from "@/lib/session-phase";
 import { remainingMs } from "@/lib/writing";
-import { VIDEO_SUMMARY_COPY, type VideoSummaryStepId } from "@/lib/lesson-copy";
+import {
+  stepCopyForMode,
+  VIDEO_SUMMARY_COPY,
+  type VideoSummaryStepId,
+} from "@/lib/lesson-copy";
 import StepInstructions from "@/components/lesson/StepInstructions";
+import MicroExplanation from "@/components/MicroExplanation";
 import type {
   CourseLevel,
   VideoSummaryFreeWrite as FreeWrite,
@@ -260,6 +265,12 @@ export default function VideoSummaryPlayer({
               </p>
             )}
             <StepInstructions copy={VIDEO_SUMMARY_COPY.video} />
+            {!isTeacher && VIDEO_SUMMARY_COPY.video.why ? (
+              <MicroExplanation
+                dismissKey="vs-video"
+                text={VIDEO_SUMMARY_COPY.video.why}
+              />
+            ) : null}
             {canOpenWrite ? (
               <button
                 type="button"
@@ -279,6 +290,12 @@ export default function VideoSummaryPlayer({
         {step === "write" && canOpenWrite && (
           <>
             <StepInstructions copy={VIDEO_SUMMARY_COPY.write} />
+            {!isTeacher && VIDEO_SUMMARY_COPY.write.why ? (
+              <MicroExplanation
+                dismissKey="vs-resumen"
+                text={VIDEO_SUMMARY_COPY.write.why}
+              />
+            ) : null}
             <VideoSummaryFreeWrite
               sessionId={sessionId}
               storyId={storyId}
@@ -299,7 +316,15 @@ export default function VideoSummaryPlayer({
 
         {step === "translate" && canOpenTranslate && (
           <>
-            <StepInstructions copy={VIDEO_SUMMARY_COPY.translate} />
+            <StepInstructions
+              copy={stepCopyForMode(VIDEO_SUMMARY_COPY.translate, live)}
+            />
+            {!isTeacher && VIDEO_SUMMARY_COPY.translate.why ? (
+              <MicroExplanation
+                dismissKey="vs-traduccion"
+                text={VIDEO_SUMMARY_COPY.translate.why}
+              />
+            ) : null}
             <VideoSummaryTranslationStep
               storyId={storyId}
               sessionId={sessionId}

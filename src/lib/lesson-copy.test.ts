@@ -2,9 +2,13 @@ import assert from "node:assert/strict";
 import { describe, test } from "node:test";
 import {
   flattenLessonCopy,
+  flattenPresentationCopy,
   flattenVideoSummaryCopy,
   flattenWelcomeCopy,
   LESSON_COPY,
+  PRESENTATION_COPY,
+  PRESENTATION_CYCLE_STEPS,
+  stepCopyForMode,
   VIDEO_SUMMARY_COPY,
 } from "./lesson-copy";
 
@@ -62,7 +66,7 @@ describe("VIDEO_SUMMARY_COPY", () => {
       const entry = VIDEO_SUMMARY_COPY[id];
       assert.ok(entry.title.length > 0);
       assert.ok(entry.instructions.length > 0);
-      assert.equal("why" in entry, false);
+      assert.ok((entry.why ?? "").length > 0);
     }
   });
 
@@ -81,6 +85,64 @@ describe("VIDEO_SUMMARY_COPY", () => {
     assert.match(blob, /inglés/);
     assert.match(blob, /traducción/);
     assert.match(blob, /atención/);
+    assert.match(blob, /oración por oración/);
+    assert.match(blob, /colaborativa/);
+  });
+
+  test("Traducción uses live override only in live mode", () => {
+    const copy = VIDEO_SUMMARY_COPY.translate;
+    assert.match(
+      stepCopyForMode(copy, true).instructions.join("\n"),
+      /colaborativa/,
+    );
+    assert.match(
+      stepCopyForMode(copy, false).instructions.join("\n"),
+      /oración por oración/,
+    );
+  });
+});
+
+describe("PRESENTATION_COPY", () => {
+  test("has an entry for every cycle step", () => {
+    for (const id of PRESENTATION_CYCLE_STEPS) {
+      const entry = PRESENTATION_COPY[id];
+      assert.ok(entry.title.length > 0);
+      assert.ok(entry.instructions.length > 0);
+    }
+    assert.ok(PRESENTATION_COPY.vocabulario.why);
+    assert.ok(PRESENTATION_COPY.preguntas.why);
+    assert.ok(PRESENTATION_COPY.respuestas.why);
+    assert.equal(PRESENTATION_COPY.video.why, undefined);
+  });
+
+  test("titles match the Presentación cycle labels", () => {
+    assert.equal(PRESENTATION_COPY.vocabulario.title, "Vocabulario");
+    assert.equal(PRESENTATION_COPY.preguntas.title, "Preguntas");
+    assert.equal(PRESENTATION_COPY.video.title, "Video");
+    assert.equal(PRESENTATION_COPY.respuestas.title, "Respuestas");
+  });
+
+  test("has no em dashes and keeps Spanish accents", () => {
+    const blob = flattenPresentationCopy().join("\n");
+    assert.equal(blob.includes("\u2014"), false);
+    assert.equal(blob.includes("—"), false);
+    assert.doesNotMatch(blob, ASCII_TELLS);
+    assert.match(blob, /rezar/);
+    assert.match(blob, /inglés/);
+    assert.match(blob, /Léelas/);
+    assert.match(blob, /vocabulario/);
+  });
+
+  test("Respuestas uses live override only in live mode", () => {
+    const copy = PRESENTATION_COPY.respuestas;
+    assert.match(
+      stepCopyForMode(copy, true).instructions.join("\n"),
+      /en vivo/,
+    );
+    assert.match(
+      stepCopyForMode(copy, false).instructions.join("\n"),
+      /propias palabras/,
+    );
   });
 });
 
