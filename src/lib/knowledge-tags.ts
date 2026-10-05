@@ -182,6 +182,7 @@ export const ERROR_TAG_SEEDS: TagSeed[] = [
   { name: "adverb_placement", displayName: "Adverb placement" },
   { name: "negative_auxiliary", displayName: "Negative auxiliary (don't/doesn't)" },
   { name: "question_auxiliary", displayName: "Question auxiliary (do/does)" },
+  { name: "embedded_question", displayName: "Embedded question word order" },
   { name: "subject_omission", displayName: "Subject omission" },
   { name: "adjective_noun_order", displayName: "Adjective before noun" },
   { name: "double_negative", displayName: "Double negative" },

@@ -42,6 +42,7 @@ ERROR TAGS. Use these exact names in error_tags. One phrase each:
 - adverb_placement: Adverb placement
 - negative_auxiliary: Negative auxiliary (don't/doesn't)
 - question_auxiliary: Question auxiliary (do/does)
+- embedded_question: Question word order inside a statement. When a question word ("what", "where", "how", "when", "who") is part of a statement, English uses statement word order: "I didn't know where she was from", not "where was she from". "Do you know what I want", not "what do I want". "She told me how old she was", not "how old was she".
 - subject_omission: Subject omission
 - adjective_noun_order: Adjective before noun
 - double_negative: Double negative
@@ -113,6 +114,14 @@ Output:
   "corrected": "I watch soccer every Saturday",
   "note": "Para decir que haces algo cada semana, usa 'every Saturday'. 'I watch soccer every Saturday.'",
   "error_tags": ["bare_plurals"]
+}
+
+Input: "She told me how old was she"
+Output:
+{
+  "corrected": "She told me how old she was",
+  "note": "Dentro de una oracion, la pregunta pierde su estructura: 'She told me how old she was'.",
+  "error_tags": ["embedded_question"]
 }
 
 Return ONLY the JSON object. No other text.`;
