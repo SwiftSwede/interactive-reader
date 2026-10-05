@@ -31,6 +31,8 @@ describe("LESSON_COPY", () => {
       assert.ok(entry.title.length > 0);
       assert.ok(entry.instructions.length > 0);
       assert.ok(entry.why.length > 0);
+      assert.ok(entry.line.length > 0);
+      assert.ok(entry.whyShort.length > 0);
     }
   });
 
@@ -99,6 +101,14 @@ describe("VIDEO_SUMMARY_COPY", () => {
       stepCopyForMode(copy, false).instructions.join("\n"),
       /oración por oración/,
     );
+    assert.equal(
+      stepCopyForMode(copy, true).line,
+      "Di tu versión en voz alta; el Profe escribe la real.",
+    );
+    assert.equal(
+      stepCopyForMode(copy, false).line,
+      "Escribe tu traducción y compárala con la del Profe.",
+    );
   });
 });
 
@@ -113,6 +123,8 @@ describe("PRESENTATION_COPY", () => {
     assert.ok(PRESENTATION_COPY.preguntas.why);
     assert.ok(PRESENTATION_COPY.respuestas.why);
     assert.equal(PRESENTATION_COPY.video.why, undefined);
+    assert.equal(PRESENTATION_COPY.video.whyShort, undefined);
+    assert.ok(PRESENTATION_COPY.video.line.length > 0);
   });
 
   test("titles match the Presentación cycle labels", () => {
@@ -142,6 +154,14 @@ describe("PRESENTATION_COPY", () => {
     assert.match(
       stepCopyForMode(copy, false).instructions.join("\n"),
       /propias palabras/,
+    );
+    assert.equal(
+      stepCopyForMode(copy, true).line,
+      "El Profe pregunta; da tu versión en voz alta.",
+    );
+    assert.equal(
+      stepCopyForMode(copy, false).line,
+      "Escribe tu respuesta y compárala.",
     );
   });
 });

@@ -533,7 +533,7 @@ function ClassicStorySteps({
                     <StepInstructions copy={LESSON_COPY.story} />
                     <MicroExplanation
                       dismissKey="story"
-                      text={LESSON_COPY.story.why}
+                      text={LESSON_COPY.story.whyShort}
                     />
                   </>
                 ) : null}

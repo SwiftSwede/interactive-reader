@@ -232,7 +232,7 @@ export default function PronunciationPractice({
 
       <MicroExplanation
         dismissKey="pronunciation"
-        text={LESSON_COPY.pronunciation.why}
+        text={LESSON_COPY.pronunciation.whyShort}
       />
 
       <p className="rounded-card bg-surface border border-paper-line p-4 text-body-main font-semibold text-text-primary">

@@ -146,7 +146,7 @@ export default function ChoralPractice({
 
       <MicroExplanation
         dismissKey="choral"
-        text={LESSON_COPY.choral.why}
+        text={LESSON_COPY.choral.whyShort}
       />
 
       {completed ? (

@@ -13,14 +13,19 @@ export type LessonCopyNote = {
 
 export type StepInstructionsCopy = {
   title: string;
+  line: string;
   instructions: string[];
   instructionsLive?: string[];
+  lineLive?: string;
   why?: string;
+  whyShort?: string;
+  whyShortLive?: string;
   note?: LessonCopyNote;
 };
 
-export type LessonCopyEntry = Omit<StepInstructionsCopy, "why"> & {
+export type LessonCopyEntry = Omit<StepInstructionsCopy, "why" | "whyShort"> & {
   why: string;
+  whyShort: string;
 };
 
 export type VideoSummaryStepId = "video" | "write" | "translate";
@@ -35,15 +40,24 @@ export function stepCopyForMode(
   copy: StepInstructionsCopy,
   live: boolean,
 ): StepInstructionsCopy {
-  if (live && copy.instructionsLive && copy.instructionsLive.length > 0) {
-    return { ...copy, instructions: copy.instructionsLive };
-  }
-  return copy;
+  if (!live) return copy;
+  return {
+    ...copy,
+    instructions:
+      copy.instructionsLive && copy.instructionsLive.length > 0
+        ? copy.instructionsLive
+        : copy.instructions,
+    line: copy.lineLive ?? copy.line,
+    whyShort: copy.whyShortLive ?? copy.whyShort,
+  };
 }
 
 export const LESSON_COPY: Record<StoryStepId, LessonCopyEntry> = {
   story: {
     title: "Lee la historia",
+    line: "Léela de corrido. Toca las palabras que no entiendas.",
+    whyShort:
+      "Ningún material tiene la densidad de vocabulario de un texto. Por eso los que leen aprenden más rápido.",
     instructions: [
       "Léela de arriba a abajo sin detenerte. Si la primera lectura se siente difícil, eso es normal. No entres en pánico.",
       "Toca las palabras que no entiendas para ver su traducción y pronunciación.",
@@ -58,6 +72,9 @@ export const LESSON_COPY: Record<StoryStepId, LessonCopyEntry> = {
   },
   comprehension: {
     title: "Contesta las preguntas",
+    line: "Responde antes de mirar la respuesta.",
+    whyShort:
+      "Tu cerebro fija lo que aprende leyendo cuando intentas recordarlo. Intentarlo y fallar es el entrenamiento que hace rápido tu memoria.",
     instructions: [
       "Lee la pregunta y escribe tu respuesta *antes* de mirar la respuesta correcta.",
       "No busques la respuesta en el texto con el dedo. Recuérdala. El esfuerzo es el entrenamiento.",
@@ -67,6 +84,9 @@ export const LESSON_COPY: Record<StoryStepId, LessonCopyEntry> = {
   },
   personal: {
     title: "Conecta la historia contigo",
+    line: "Escribe tus respuestas. Aquí no hay incorrectas.",
+    whyShort:
+      "Hablar de tu vida te obliga a producir inglés de verdad. Ahí descubres qué te falta decir.",
     instructions: [
       "Aquí no hay respuesta correcta. Las preguntas son sobre tu vida.",
       "Escribe en inglés, aunque te falten palabras. Usa el vocabulario de la historia si puedes.",
@@ -76,6 +96,9 @@ export const LESSON_COPY: Record<StoryStepId, LessonCopyEntry> = {
   },
   dictation: {
     title: "Entrena tu oído",
+    line: "Escucha y escribe lo que oyes.",
+    whyShort:
+      "Las palabras que crees conocer pueden sonar diferentes cuando se hablan rápido. Este ejercicio te muestra exactamente dónde te falla el oído.",
     instructions: [
       "Escucha la oración y escribe exactamente lo que oyes. Sin ver el texto.",
       "Puedes escucharla las veces que necesites. Va lento a propósito.",
@@ -85,6 +108,9 @@ export const LESSON_COPY: Record<StoryStepId, LessonCopyEntry> = {
   },
   choral: {
     title: "Repite en voz alta",
+    line: "Escucha y repite en voz alta.",
+    whyShort:
+      "Repetir en voz alta entrena tu boca como el gimnasio: con repeticiones, el sonido sale solo.",
     instructions: [
       "Escucha la oración y repítela en voz alta, imitando el ritmo y la entonación.",
       "Diez repeticiones por ronda, cinco rondas. No pienses en la gramática. Solo escucha y repite.",
@@ -94,6 +120,9 @@ export const LESSON_COPY: Record<StoryStepId, LessonCopyEntry> = {
   },
   pronunciation: {
     title: "Grábate y escúchate",
+    line: "Grábate y compárate con la referencia.",
+    whyShort:
+      "No puedes corregir un sonido que no puedes escuchar. Grabarte y escucharte es la herramienta más honesta que existe.",
     instructions: [
       "Graba la oración con tu voz y compárala con la referencia.",
       "Escucha tu grabación sin rodeos. Te va a sonar raro. Todos suenan raro la primera vez.",
@@ -109,6 +138,9 @@ export const VIDEO_SUMMARY_COPY: Record<
 > = {
   video: {
     title: "El Video",
+    line: "Mira el video. Anota solo si quieres.",
+    whyShort:
+      "Entender la historia es la materia prima de todo lo que sigue. Mira con intención, no por ver.",
     instructions: [
       "Mira el video con atención. Es la base de todo lo que sigue.",
       "Si quieres, anota unas palabras que te ayuden a recordar lo que viste. No es necesario apuntar todo.",
@@ -117,6 +149,9 @@ export const VIDEO_SUMMARY_COPY: Record<
   },
   write: {
     title: "Tu Resumen",
+    line: "Escribe tu resumen en inglés hasta que el tiempo termine.",
+    whyShort:
+      "Escribir te obliga a producir el idioma de verdad. Ahí descubres qué sabes decir y qué te falta.",
     instructions: [
       "Escribe un resumen del video en inglés, con tus propias palabras.",
       "Escribe hasta que el tiempo termine. No tiene que ser perfecto.",
@@ -126,6 +161,10 @@ export const VIDEO_SUMMARY_COPY: Record<
   },
   translate: {
     title: "Traducción",
+    line: "Escribe tu traducción y compárala con la del Profe.",
+    lineLive: "Di tu versión en voz alta; el Profe escribe la real.",
+    whyShort:
+      'El momento de "¿cómo se dice?" es cuando tu mente busca el hueco. Ahí es donde la traducción enseña.',
     instructions: [
       "Escribe tu versión en inglés, oración por oración.",
       "Cuando termines, compárala con la traducción del Profe Kyle.",
@@ -143,6 +182,9 @@ export const PRESENTATION_COPY: Record<
 > = {
   vocabulario: {
     title: "Vocabulario",
+    line: "Escucha la explicación y pregunta tus dudas.",
+    whyShort:
+      "Un video lleno de palabras desconocidas es ruido. Conocerlas antes es lo que lo convierte en entrada que tu cerebro sí guarda.",
     instructions: [
       "El Profe Kyle presenta el vocabulario nuevo del video. Escucha las explicaciones.",
       "¿Tienes dudas sobre una palabra? Pregunta ahora. Este es el momento para preguntar.",
@@ -151,6 +193,9 @@ export const PRESENTATION_COPY: Record<
   },
   preguntas: {
     title: "Preguntas",
+    line: "Léelas con calma; las respondemos después del video.",
+    whyShort:
+      "Tu cerebro escucha diferente cuando sabe qué buscar. Con las preguntas antes, estás cazando respuestas, no solo viendo.",
     instructions: [
       "Estas son las preguntas que vas a responder del video.",
       "Léelas con calma, pero no las respondas todavía. Primero toca ver el video.",
@@ -159,6 +204,7 @@ export const PRESENTATION_COPY: Record<
   },
   video: {
     title: "Video",
+    line: "Mira el video con las preguntas en mente.",
     instructions: [
       "Mira el video y mantén las preguntas en mente.",
       "Si quieres, anota las respuestas para recordarlas. Si tu memoria te alcanza sin notas, también está bien.",
@@ -166,6 +212,10 @@ export const PRESENTATION_COPY: Record<
   },
   respuestas: {
     title: "Respuestas",
+    line: "Escribe tu respuesta y compárala.",
+    lineLive: "El Profe pregunta; da tu versión en voz alta.",
+    whyShort:
+      "Producir la respuesta, aunque quede a medias, fija el vocabulario. La correcta es el premio, no el reemplazo.",
     instructions: [
       "Escribe tu respuesta en inglés con tus propias palabras.",
       "Cuando termines, compárala con la respuesta correcta.",
@@ -224,8 +274,9 @@ export function flattenLessonCopy(
 ): string[] {
   const out: string[] = [];
   for (const entry of Object.values(copy)) {
-    out.push(entry.title, ...entry.instructions);
+    out.push(entry.title, entry.line, entry.whyShort, ...entry.instructions);
     if (entry.instructionsLive) out.push(...entry.instructionsLive);
+    if (entry.lineLive) out.push(entry.lineLive);
     out.push(entry.why);
     if (entry.note) {
       out.push(entry.note.lead, entry.note.body);
@@ -249,8 +300,11 @@ export function flattenVideoSummaryCopy(
 ): string[] {
   const out: string[] = [];
   for (const entry of Object.values(copy)) {
-    out.push(entry.title, ...entry.instructions);
+    out.push(entry.title, entry.line, ...entry.instructions);
+    if (entry.lineLive) out.push(entry.lineLive);
     if (entry.instructionsLive) out.push(...entry.instructionsLive);
+    if (entry.whyShort) out.push(entry.whyShort);
+    if (entry.whyShortLive) out.push(entry.whyShortLive);
     if (entry.why) out.push(entry.why);
     if (entry.note) {
       out.push(entry.note.lead, entry.note.body);
@@ -264,8 +318,11 @@ export function flattenPresentationCopy(
 ): string[] {
   const out: string[] = [];
   for (const entry of Object.values(copy)) {
-    out.push(entry.title, ...entry.instructions);
+    out.push(entry.title, entry.line, ...entry.instructions);
+    if (entry.lineLive) out.push(entry.lineLive);
     if (entry.instructionsLive) out.push(...entry.instructionsLive);
+    if (entry.whyShort) out.push(entry.whyShort);
+    if (entry.whyShortLive) out.push(entry.whyShortLive);
     if (entry.why) out.push(entry.why);
     if (entry.note) {
       out.push(entry.note.lead, entry.note.body);

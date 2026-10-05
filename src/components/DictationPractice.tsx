@@ -81,7 +81,7 @@ export default function DictationPractice({
 
       <MicroExplanation
         dismissKey="dictation"
-        text={LESSON_COPY.dictation.why}
+        text={LESSON_COPY.dictation.whyShort}
       />
 
       {phase === "listening" && (

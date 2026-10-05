@@ -693,14 +693,14 @@ function CycleStepChrome({
   live: boolean;
   isTeacher: boolean;
 }) {
-  const copy = PRESENTATION_COPY[copyId];
+  const copy = stepCopyForMode(PRESENTATION_COPY[copyId], live);
   return (
     <>
-      <StepInstructions copy={stepCopyForMode(copy, live)} />
-      {copy.why && !isTeacher ? (
+      <StepInstructions copy={copy} />
+      {copy.line && copy.whyShort && !isTeacher ? (
         <MicroExplanation
           dismissKey={`presentation-${copyId}`}
-          text={copy.why}
+          text={copy.whyShort}
         />
       ) : null}
     </>

@@ -116,6 +116,7 @@ export default function VideoSummaryPlayer({
         )
       : "after";
   const live = phase === "live";
+  const translateCopy = stepCopyForMode(VIDEO_SUMMARY_COPY.translate, live);
   const writingDone = Boolean(
     timerStartedAt && remainingMs(timerStartedAt, freeWriteMinutes, now) <= 0
   );
@@ -265,10 +266,12 @@ export default function VideoSummaryPlayer({
               </p>
             )}
             <StepInstructions copy={VIDEO_SUMMARY_COPY.video} />
-            {!isTeacher && VIDEO_SUMMARY_COPY.video.why ? (
+            {!isTeacher &&
+            VIDEO_SUMMARY_COPY.video.line &&
+            VIDEO_SUMMARY_COPY.video.whyShort ? (
               <MicroExplanation
                 dismissKey="vs-video"
-                text={VIDEO_SUMMARY_COPY.video.why}
+                text={VIDEO_SUMMARY_COPY.video.whyShort}
               />
             ) : null}
             {canOpenWrite ? (
@@ -290,10 +293,12 @@ export default function VideoSummaryPlayer({
         {step === "write" && canOpenWrite && (
           <>
             <StepInstructions copy={VIDEO_SUMMARY_COPY.write} />
-            {!isTeacher && VIDEO_SUMMARY_COPY.write.why ? (
+            {!isTeacher &&
+            VIDEO_SUMMARY_COPY.write.line &&
+            VIDEO_SUMMARY_COPY.write.whyShort ? (
               <MicroExplanation
                 dismissKey="vs-resumen"
-                text={VIDEO_SUMMARY_COPY.write.why}
+                text={VIDEO_SUMMARY_COPY.write.whyShort}
               />
             ) : null}
             <VideoSummaryFreeWrite
@@ -316,13 +321,11 @@ export default function VideoSummaryPlayer({
 
         {step === "translate" && canOpenTranslate && (
           <>
-            <StepInstructions
-              copy={stepCopyForMode(VIDEO_SUMMARY_COPY.translate, live)}
-            />
-            {!isTeacher && VIDEO_SUMMARY_COPY.translate.why ? (
+            <StepInstructions copy={translateCopy} />
+            {!isTeacher && translateCopy.line && translateCopy.whyShort ? (
               <MicroExplanation
                 dismissKey="vs-traduccion"
-                text={VIDEO_SUMMARY_COPY.translate.why}
+                text={translateCopy.whyShort}
               />
             ) : null}
             <VideoSummaryTranslationStep

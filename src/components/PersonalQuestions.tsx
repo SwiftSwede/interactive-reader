@@ -284,7 +284,7 @@ export default function PersonalQuestions({
 
       <MicroExplanation
         dismissKey="personal"
-        text={LESSON_COPY.personal.why}
+        text={LESSON_COPY.personal.whyShort}
       />
 
       <div className="space-y-4">

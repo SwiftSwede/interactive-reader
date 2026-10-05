@@ -30,9 +30,9 @@ export default function StepInstructions({
 }) {
   const [open, setOpen] = useState(false);
   const close = useCallback(() => setOpen(false), []);
-  const line = copy.instructions[0] ?? "";
-  const more = copy.instructions.slice(1);
-  const hasMore = more.length > 0 || Boolean(copy.note);
+  const line = copy.line;
+  const hasSheet =
+    copy.instructions.length > 0 || Boolean(copy.note) || Boolean(copy.why);
 
   return (
     <header className="mb-4" lang="es">
@@ -40,7 +40,7 @@ export default function StepInstructions({
         <h2 className="text-headline-md text-text-primary min-w-0 pt-2">
           {copy.title}
         </h2>
-        {hasMore ? (
+        {hasSheet ? (
           <button
             type="button"
             className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-card text-text-muted hover:bg-accent-soft hover:text-text-accent active:bg-accent-soft"
@@ -56,12 +56,13 @@ export default function StepInstructions({
           <InlineMarks text={line} />
         </p>
       ) : null}
-      {hasMore ? (
+      {hasSheet ? (
         <StepHowSheet
           open={open}
           onClose={close}
-          lines={more}
+          lines={copy.instructions}
           note={copy.note}
+          why={copy.why}
         />
       ) : null}
     </header>
@@ -73,11 +74,13 @@ function StepHowSheet({
   onClose,
   lines,
   note,
+  why,
 }: {
   open: boolean;
   onClose: () => void;
   lines: string[];
   note?: LessonCopyNote;
+  why?: string;
 }) {
   const { present, exiting } = useSheetPresence(open);
   const titleId = useId();
@@ -180,19 +183,28 @@ function StepHowSheet({
             <X size={20} aria-hidden="true" />
           </button>
         </div>
-        <div className="story-text-sheet-body space-y-2 text-body-main text-text-secondary">
-          {lines.map((line) => (
-            <p key={line}>
-              <InlineMarks text={line} />
-            </p>
-          ))}
-          {note ? (
-            <p>
-              <strong className="font-semibold text-text-primary">
-                {note.lead}
-              </strong>{" "}
-              <InlineMarks text={note.body} />
-            </p>
+        <div className="story-text-sheet-body text-body-main text-text-secondary">
+          <h3 className="text-label-md text-text-primary">¿Qué hago?</h3>
+          <div className="mt-2 space-y-2">
+            {lines.map((line) => (
+              <p key={line}>
+                <InlineMarks text={line} />
+              </p>
+            ))}
+            {note ? (
+              <p>
+                <strong className="font-semibold text-text-primary">
+                  {note.lead}
+                </strong>{" "}
+                <InlineMarks text={note.body} />
+              </p>
+            ) : null}
+          </div>
+          {why ? (
+            <div className="mt-4">
+              <h3 className="text-label-md text-text-primary">¿Por qué?</h3>
+              <p className="mt-2">{why}</p>
+            </div>
           ) : null}
         </div>
       </div>

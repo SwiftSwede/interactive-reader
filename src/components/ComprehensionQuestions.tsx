@@ -243,7 +243,7 @@ export default function ComprehensionQuestions({
 
       <MicroExplanation
         dismissKey="comprehension"
-        text={LESSON_COPY.comprehension.why}
+        text={LESSON_COPY.comprehension.whyShort}
       />
 
       <div className="space-y-4">
