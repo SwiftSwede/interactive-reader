@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useId, useRef, useState, type PointerEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
 import { createPortal } from "react-dom";
 import { Info, X } from "lucide-react";
 import type { LessonCopyNote, StepInstructionsCopy } from "@/lib/lesson-copy";
@@ -83,7 +83,6 @@ function StepHowSheet({
   why?: string;
 }) {
   const { present, exiting } = useSheetPresence(open);
-  const titleId = useId();
   const panelRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const dragStartY = useRef<number | null>(null);
@@ -157,7 +156,7 @@ function StepHowSheet({
       className={`story-text-sheet${exiting ? " story-text-sheet-exit" : ""}`}
       role="dialog"
       aria-modal="true"
-      aria-labelledby={titleId}
+      aria-label="Cómo"
     >
       <div className="story-text-sheet-overlay" onClick={onClose} />
       <div className="story-text-sheet-panel" ref={panelRef}>
@@ -169,10 +168,7 @@ function StepHowSheet({
         >
           <div className="story-text-sheet-handle-bar" />
         </div>
-        <div className="story-text-sheet-toolbar">
-          <h2 id={titleId} className="story-text-sheet-title">
-            Cómo
-          </h2>
+        <div className="story-text-sheet-toolbar justify-end">
           <button
             ref={closeRef}
             type="button"
@@ -184,7 +180,7 @@ function StepHowSheet({
           </button>
         </div>
         <div className="story-text-sheet-body text-body-main text-text-secondary">
-          <h3 className="text-label-md text-text-primary">¿Qué hago?</h3>
+          <h2 className="text-label-md text-text-primary">¿Qué hago?</h2>
           <div className="mt-2 space-y-2">
             {lines.map((line) => (
               <p key={line}>
@@ -202,7 +198,7 @@ function StepHowSheet({
           </div>
           {why ? (
             <div className="mt-4">
-              <h3 className="text-label-md text-text-primary">¿Por qué?</h3>
+              <h2 className="text-label-md text-text-primary">¿Por qué?</h2>
               <p className="mt-2">{why}</p>
             </div>
           ) : null}
