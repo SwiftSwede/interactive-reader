@@ -793,9 +793,11 @@ select:not([multiple]) {
   border: 1px solid var(--paper-line);
   border-radius: var(--radius-card);
   padding: 12px 40px 12px 12px;
-  font-family: var(--font-lora), Georgia, serif;
-  font-size: 16px;
-  line-height: 28px;
+  font-family: var(--font-roboto-flex), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.02em;
   color: var(--text-secondary);
   position: relative;
   overflow: hidden;
