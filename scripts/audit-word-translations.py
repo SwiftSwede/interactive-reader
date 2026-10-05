@@ -32,7 +32,7 @@ EXPECTED = {
     "a": ["un", "una", "uno", "por", "para", "cada", "al", "año", "en"],
     "and": ["y", "e", "mientras"],
     "of": ["de", "del", "por", "con", "en"],
-    "to": ["a", "para", "que", "de", "al", "hacia", "ser", "darse", "continuar", "verla", "darte", "ir", "seguir", "hasta", "(infinitivo)"],
+    "to": ["a", "para", "que", "de", "al", "hacia", "ser", "darse", "continuar", "verla", "darte", "ir", "seguir", "hasta", "(infinitivo)", "(preposición de infinitivo)", "contigo"],
     "in": ["en", "dentro", "a", "con", "frente", "en la", "en el", "para"],
     "on": ["en", "sobre", "encima", "adelante", "partícula", "en ello", "al", "el", "de"],
     "she": ["ella"],
