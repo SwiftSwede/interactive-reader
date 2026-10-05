@@ -1247,6 +1247,10 @@ body:has(.step-nav):has(
   flex-shrink: 0;
 }
 
+.story-text-sheet-toolbar--end {
+  justify-content: flex-end;
+}
+
 .story-text-sheet-title {
   margin: 0;
   font-family: var(--font-lora), Georgia, serif;

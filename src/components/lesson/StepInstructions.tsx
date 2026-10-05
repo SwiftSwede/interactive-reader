@@ -168,7 +168,7 @@ function StepHowSheet({
         >
           <div className="story-text-sheet-handle-bar" />
         </div>
-        <div className="story-text-sheet-toolbar justify-end">
+        <div className="story-text-sheet-toolbar story-text-sheet-toolbar--end">
           <button
             ref={closeRef}
             type="button"
