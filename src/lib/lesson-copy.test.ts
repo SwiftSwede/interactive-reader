@@ -2,10 +2,12 @@ import assert from "node:assert/strict";
 import { describe, test } from "node:test";
 import {
   flattenLessonCopy,
+  flattenMovieTalkCopy,
   flattenPresentationCopy,
   flattenVideoSummaryCopy,
   flattenWelcomeCopy,
   LESSON_COPY,
+  MOVIE_TALK_COPY,
   PRESENTATION_COPY,
   PRESENTATION_CYCLE_STEPS,
   stepCopyForMode,
@@ -163,6 +165,44 @@ describe("PRESENTATION_COPY", () => {
       stepCopyForMode(copy, false).line,
       "Escribe tu respuesta y compárala.",
     );
+  });
+});
+
+describe("MOVIE_TALK_COPY", () => {
+  test("warmup has a line and no why card", () => {
+    assert.equal(
+      MOVIE_TALK_COPY.warmup.line,
+      "Lee la pregunta y prepárate para comentarla con la clase.",
+    );
+    assert.equal(MOVIE_TALK_COPY.warmup.whyShort, undefined);
+    assert.equal(MOVIE_TALK_COPY.warmup.why, undefined);
+  });
+
+  test("scene video reuses the presentation Preguntas why", () => {
+    assert.equal(
+      MOVIE_TALK_COPY.video.why,
+      PRESENTATION_COPY.preguntas.why,
+    );
+    assert.ok(MOVIE_TALK_COPY.synopsis.whyShort);
+    assert.equal(
+      MOVIE_TALK_COPY.synopsis.why,
+      MOVIE_TALK_COPY.synopsis.whyShort,
+    );
+    assert.equal(
+      MOVIE_TALK_COPY.dialogo.why,
+      MOVIE_TALK_COPY.dialogo.whyShort,
+    );
+  });
+
+  test("has no em dashes and keeps Spanish accents", () => {
+    const blob = flattenMovieTalkCopy().join("\n");
+    assert.equal(blob.includes("\u2014"), false);
+    assert.equal(blob.includes("—"), false);
+    assert.doesNotMatch(blob, ASCII_TELLS);
+    assert.match(blob, /atención/);
+    assert.match(blob, /sinopsis/);
+    assert.match(blob, /diálogo/);
+    assert.match(blob, /inglés/);
   });
 });
 

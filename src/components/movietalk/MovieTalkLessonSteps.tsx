@@ -4,6 +4,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { Check, ChevronLeft, ChevronRight } from "lucide-react";
 import LessonHeader from "@/components/lesson/LessonHeader";
+import StepInstructions from "@/components/lesson/StepInstructions";
+import MicroExplanation from "@/components/MicroExplanation";
 import FreePreviewNotice from "@/components/FreePreviewNotice";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
 import EndClassButton from "@/components/EndClassButton";
@@ -31,8 +33,32 @@ import {
 } from "@/lib/movietalk";
 import type { LoadedStory, MovieTalkSceneRow } from "@/lib/stories";
 import type { SavedComprehensionResponse } from "@/components/ComprehensionQuestions";
+import { MOVIE_TALK_COPY, type MovieTalkCopyId } from "@/lib/lesson-copy";
 import type { CourseLevel, WordFlagging } from "@/types";
 import type { LessonViewToggle } from "@/lib/student-preview";
+
+function MovieTalkStepIntro({
+  copyId,
+  title,
+  isTeacher,
+}: {
+  copyId: MovieTalkCopyId;
+  title: string;
+  isTeacher: boolean;
+}) {
+  const copy = { ...MOVIE_TALK_COPY[copyId], title };
+  return (
+    <>
+      <StepInstructions copy={copy} />
+      {copy.line && copy.whyShort && !isTeacher ? (
+        <MicroExplanation
+          dismissKey={`movietalk-${copyId}`}
+          text={copy.whyShort}
+        />
+      ) : null}
+    </>
+  );
+}
 
 function toSceneFields(rows: MovieTalkSceneRow[]): MovieTalkSceneFields[] {
   return rows.map((row) => ({
@@ -388,20 +414,27 @@ export default function MovieTalkLessonSteps({
           ) : null}
           <div key={active?.id} className="step-panel">
             {active?.id === "warmup" ? (
-              <div className="rounded-card border border-paper-line bg-surface p-5">
-                <h2 className="text-headline-lg text-text-primary mb-3">
-                  Warm-up
-                </h2>
-                <p className="text-body-main text-text-primary">
-                  {story.warmup_question}
-                </p>
-              </div>
+              <>
+                <MovieTalkStepIntro
+                  copyId="warmup"
+                  title={active.label}
+                  isTeacher={isTeacher}
+                />
+                <div className="rounded-card border border-paper-line bg-surface p-5">
+                  <p className="text-body-main text-text-primary">
+                    {story.warmup_question}
+                  </p>
+                </div>
+              </>
             ) : null}
             {active?.id === "synopsis" ? (
+              <>
+                <MovieTalkStepIntro
+                  copyId="synopsis"
+                  title={active.label}
+                  isTeacher={isTeacher}
+                />
               <div className="rounded-card border border-paper-line bg-surface p-5">
-                <h2 className="text-headline-lg text-text-primary mb-3">
-                  Sinopsis
-                </h2>
                 {story.synopsis?.trim() ? (
                   <p className="text-body-main text-text-primary">
                     {story.synopsis}
@@ -412,8 +445,15 @@ export default function MovieTalkLessonSteps({
                   </p>
                 )}
               </div>
+              </>
             ) : null}
-            {parsed?.kind === "video" ? (
+            {parsed?.kind === "video" && active ? (
+              <>
+                <MovieTalkStepIntro
+                  copyId="video"
+                  title={active.label}
+                  isTeacher={isTeacher}
+                />
               <SceneVideoQuestions
                 scene={sceneRow}
                 questions={sceneQuestions}
@@ -427,8 +467,15 @@ export default function MovieTalkLessonSteps({
                 onClassAnswer={onClassAnswer}
                 onClassBlur={flushClassAnswers}
               />
+              </>
             ) : null}
-            {parsed?.kind === "dialogo" ? (
+            {parsed?.kind === "dialogo" && active ? (
+              <>
+                <MovieTalkStepIntro
+                  copyId="dialogo"
+                  title={active.label}
+                  isTeacher={isTeacher}
+                />
               <SceneDialogue
                 data={data}
                 sceneIndex={sceneIndex}
@@ -437,6 +484,7 @@ export default function MovieTalkLessonSteps({
                 lookedUpWordIds={lookedUpWordIds}
                 flagging={flagging}
               />
+              </>
             ) : null}
             {active?.id === "end" ? (
               <div className="rounded-card border border-paper-line bg-surface p-5">

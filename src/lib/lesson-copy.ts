@@ -236,6 +236,58 @@ export const PRESENTATION_CYCLE_STEPS: PresentationCycleStepId[] = [
   "respuestas",
 ];
 
+export type MovieTalkCopyId = "warmup" | "synopsis" | "video" | "dialogo";
+
+const MOVIE_TALK_SYNOPSIS_WHY =
+  "Saber de qué va la historia libera tu atención para el idioma. No adivinas de qué hablan: escuchas cómo lo dicen.";
+
+const MOVIE_TALK_DIALOGUE_WHY =
+  'Aquí escuchaste inglés de verdad, sin ayuda y sin vocabulario preparado. Leer el diálogo te revela lo que en realidad dijeron. Esos momentos de "¡ah, eso era!" son tu cerebro aprendiendo.';
+
+export const MOVIE_TALK_COPY: Record<MovieTalkCopyId, StepInstructionsCopy> = {
+  warmup: {
+    title: "Warm-up",
+    line: "Lee la pregunta y prepárate para comentarla con la clase.",
+    instructions: [
+      "Lee la pregunta con calma.",
+      "Prepárate para comentar tu respuesta con la clase en voz alta.",
+    ],
+  },
+  synopsis: {
+    title: "Sinopsis",
+    line: "Lee de qué trata el video antes de verlo.",
+    whyShort: MOVIE_TALK_SYNOPSIS_WHY,
+    why: MOVIE_TALK_SYNOPSIS_WHY,
+    instructions: [
+      "Lee la sinopsis.",
+      "Es un resumen corto de la historia: te dice de qué va, no lo que se dice.",
+    ],
+  },
+  video: {
+    title: "Video",
+    line: "Mira la escena y busca las respuestas a las preguntas.",
+    whyShort:
+      "Tu cerebro escucha diferente cuando sabe qué buscar. Con las preguntas antes, estás cazando respuestas, no solo viendo.",
+    why: PRESENTATION_COPY.preguntas.why,
+    instructions: [
+      "Lee las preguntas de la escena con calma, pero no las respondas todavía.",
+      "Mira la escena con las preguntas en mente.",
+      "Si quieres, anota las respuestas para recordarlas. Si tu memoria te alcanza sin notas, también está bien.",
+    ],
+  },
+  dialogo: {
+    title: "Diálogo",
+    line: "Lee el diálogo en voz alta con tus compañeros.",
+    whyShort: MOVIE_TALK_DIALOGUE_WHY,
+    why: MOVIE_TALK_DIALOGUE_WHY,
+    instructions: [
+      "El Profe Kyle elige a los lectores; leen sus partes en voz alta.",
+      "Después de la lectura, repasamos juntos el vocabulario nuevo de la escena.",
+      "Toca cualquier palabra que no entiendas para ver su traducción.",
+    ],
+  },
+};
+
 export type WelcomeCopy = {
   title: string;
   body: string;
@@ -281,6 +333,18 @@ export function flattenLessonCopy(
     if (entry.note) {
       out.push(entry.note.lead, entry.note.body);
     }
+  }
+  return out;
+}
+
+export function flattenMovieTalkCopy(
+  copy: Record<MovieTalkCopyId, StepInstructionsCopy> = MOVIE_TALK_COPY,
+): string[] {
+  const out: string[] = [];
+  for (const entry of Object.values(copy)) {
+    out.push(entry.title, entry.line, ...entry.instructions);
+    if (entry.whyShort) out.push(entry.whyShort);
+    if (entry.why && entry.why !== entry.whyShort) out.push(entry.why);
   }
   return out;
 }
