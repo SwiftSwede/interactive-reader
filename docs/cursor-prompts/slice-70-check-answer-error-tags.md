@@ -1,5 +1,7 @@
 # Cursor prompt — check-answer error tags + "Errores comunes" tag family (Slice 70)
 
+> Update: 2026-10-05. Vocabulary is now 22 names: `embedded_question` (Embedded question word order) added for the statement word order mistake ("Do you know what I want", not "what do I want"; "I didn't know where she was from", not "where was she from"). Commit 36b327d.
+
 ## Plan review decisions
 
 - Slice 70 is free in the PRD. No renumber.
