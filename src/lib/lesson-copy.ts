@@ -277,6 +277,73 @@ export const CONVERSATION_COPY: StepInstructionsCopy = {
   why: "Hablar mejor no viene de hablar de temas nuevos cada vez: viene de repetir. En la técnica 4/3/2, la ronda dos sale mejor que la ronda uno, y la tres mejor que la dos. Aquí nadie repite en seco: cada ronda es con una persona nueva, con las correcciones del Profe en el chat, y el descanso de la mitad para pensar qué mejorar. La confianza no viene de la suerte: viene de la segunda vuelta.",
 };
 
+export type MusicCopyId =
+  | "bio"
+  | "blind_listen"
+  | "blanks"
+  | "lyrics_meaning"
+  | "truquitos_karaoke";
+
+export const MUSIC_COPY_IDS: MusicCopyId[] = [
+  "bio",
+  "blind_listen",
+  "blanks",
+  "lyrics_meaning",
+  "truquitos_karaoke",
+];
+
+export const MUSIC_COPY: Record<MusicCopyId, StepInstructionsCopy> = {
+  bio: {
+    title: "El artista",
+    line: "Lee la historia del artista antes de escuchar su canción.",
+    whyShort:
+      "Conocer al artista convierte una canción suelta en una historia. Y las historias se recuerdan: así es como la canción se te queda.",
+    why: "Conocer al artista convierte una canción suelta en una historia. Y las historias se recuerdan: así es como la canción se te queda.",
+    instructions: [
+      "Lee la historia del artista antes de escuchar su canción.",
+    ],
+  },
+  blind_listen: {
+    title: "Primera escucha",
+    line: "Mira el video y escucha sin letra. ¿Cuánto entiendes?",
+    whyShort:
+      "Sin letra y sin ayuda, solo trabaja tu inglés. Lo que entiendas hoy es tu punto de partida: en unos minutos verás cuánto de eso era ruido y cuánto era inglés.",
+    why: "Sin letra y sin ayuda, solo trabaja tu inglés. Lo que entiendas hoy es tu punto de partida: en unos minutos verás cuánto de eso era ruido y cuánto era inglés.",
+    instructions: ["Mira el video y escucha sin letra. ¿Cuánto entiendes?"],
+  },
+  blanks: {
+    title: "Completa la canción",
+    line: "Escucha dos veces, escribe las palabras que faltan y entrega tus respuestas.",
+    whyShort:
+      "Las palabras que faltan no se adivinan: se escuchan. Es el entrenamiento de oído más puro que existe, y cada canción deja tu oído mejor para la siguiente.",
+    why: "Las palabras que faltan no se adivinan: se escuchan. Es el entrenamiento de oído más puro que existe, y cada canción deja tu oído mejor para la siguiente.",
+    instructions: [
+      "La canción suena dos veces. Anota lo que oigas en cada espacio.",
+      "Si se te escapa una, no entres en pánico: la canción vuelve a sonar.",
+      "Cuando termines, entrega tus respuestas y después comparamos juntos.",
+    ],
+  },
+  lyrics_meaning: {
+    title: "La letra",
+    line: "Lee la letra completa con la traducción a tu alcance.",
+    whyShort:
+      "Con la letra completa, la canción deja de ser ruido y se vuelve historia. El Profe Kyle te cuenta qué significa, y por qué la gente la canta.",
+    why: "Con la letra completa, la canción deja de ser ruido y se vuelve historia. El Profe Kyle te cuenta qué significa, y por qué la gente la canta.",
+    instructions: ["Lee la letra completa con la traducción a tu alcance."],
+  },
+  truquitos_karaoke: {
+    title: "Truquitos y karaoke",
+    line: "Canta con la letra fonética. Primero con el Profe, después solo con el cantante.",
+    whyShort:
+      'Los cantantes comen y pegan palabras: "what do you" suena "whaddya". Los Truquitos te muestran cómo suena el inglés de verdad, y cantarlo es la forma más divertida de entrenar tu boca.',
+    why: 'Los cantantes comen y pegan palabras: "what do you" suena "whaddya". Los Truquitos te muestran cómo suena el inglés de verdad, y cantarlo es la forma más divertida de entrenar tu boca.',
+    instructions: [
+      "El botón cambia entre la letra normal y la letra fonética.",
+      "Son dos rondas y tu micrófono está apagado en ambas. En la primera, el Profe canta contigo para darte el ritmo; en la segunda, canta siguiendo solo la voz del cantante.",
+    ],
+  },
+};
+
 export const MOVIE_TALK_COPY: Record<MovieTalkCopyId, StepInstructionsCopy> = {
   warmup: {
     title: "Warm-up",
@@ -386,6 +453,18 @@ export function flattenDialogueReadCopy(
   copy: LessonCopyEntry = DIALOGUE_READ_COPY,
 ): string[] {
   return [copy.title, copy.line, copy.whyShort, ...copy.instructions, copy.why];
+}
+
+export function flattenMusicCopy(
+  copy: Record<MusicCopyId, StepInstructionsCopy> = MUSIC_COPY,
+): string[] {
+  const out: string[] = [];
+  for (const entry of Object.values(copy)) {
+    out.push(entry.title, entry.line, ...entry.instructions);
+    if (entry.whyShort) out.push(entry.whyShort);
+    if (entry.why && entry.why !== entry.whyShort) out.push(entry.why);
+  }
+  return out;
 }
 
 export function flattenConversationCopy(

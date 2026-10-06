@@ -249,9 +249,6 @@ export default function SongTruquitosKaraoke({
             </button>
           ) : null}
           <div className="karaoke-lyrics text-story-body text-text-primary">
-            <h2 className="text-headline-lg text-text-primary mb-4">
-              Truquitos y karaoke
-            </h2>
             {karaokeLines.map((line, index) => {
               if (line.lineIndex === null) {
                 return <div key={`gap-${index}`} className="h-8" />;

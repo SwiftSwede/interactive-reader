@@ -31,7 +31,6 @@ export default function SongLyricsMeaning({
     <div>
       <div className="flex justify-center">
         <div className="inline-block text-left">
-          <h2 className="text-headline-lg text-text-primary mb-4">La letra</h2>
           <InteractiveStory
             bodyText={bodyText}
             words={words}

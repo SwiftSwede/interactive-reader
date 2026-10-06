@@ -4,6 +4,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { Check, ChevronLeft, ChevronRight } from "lucide-react";
 import LessonHeader from "@/components/lesson/LessonHeader";
+import StepInstructions from "@/components/lesson/StepInstructions";
+import MicroExplanation from "@/components/MicroExplanation";
 import FreePreviewNotice from "@/components/FreePreviewNotice";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
 import ClassroomYoutubePlayer from "@/components/ClassroomYoutubePlayer";
@@ -34,7 +36,26 @@ import { youtubeEmbedId } from "@/lib/youtube-sync";
 import type { LoadedStory } from "@/lib/stories";
 import type { SavedSongAttempt } from "@/lib/services/songAttempts";
 import type { CourseLevel, WordFlagging } from "@/types";
+import { MUSIC_COPY, type MusicCopyId } from "@/lib/lesson-copy";
 import type { LessonViewToggle } from "@/lib/student-preview";
+
+function MusicStepIntro({
+  copyId,
+  isTeacher,
+}: {
+  copyId: MusicCopyId;
+  isTeacher: boolean;
+}) {
+  const copy = MUSIC_COPY[copyId];
+  return (
+    <>
+      <StepInstructions copy={copy} />
+      {copy.line && copy.whyShort && !isTeacher ? (
+        <MicroExplanation dismissKey={`music-${copyId}`} text={copy.whyShort} />
+      ) : null}
+    </>
+  );
+}
 
 export default function MusicLessonSteps({
   data,
@@ -357,17 +378,14 @@ export default function MusicLessonSteps({
           ) : null}
           <div key={active?.id} className="step-panel">
             {active?.id === "bio" && story.artist_bio ? (
-              <SongBio bio={story.artist_bio} words={bioWords} />
+              <>
+                <MusicStepIntro copyId="bio" isTeacher={isTeacher} />
+                <SongBio bio={story.artist_bio} words={bioWords} />
+              </>
             ) : null}
             {active?.id === "blind_listen" && youtubeId ? (
-              <div>
-                <h2 className="text-headline-lg text-text-primary mb-2">
-                  Primera escucha
-                </h2>
-                <p className="mb-4 text-label-md text-text-secondary">
-                  Escucha sin leer la letra. ¿Cuánto entiendes? No importa si no
-                  entiendes todo.
-                </p>
+              <>
+                <MusicStepIntro copyId="blind_listen" isTeacher={isTeacher} />
                 <ClassroomYoutubePlayer
                   videoId={youtubeId}
                   title={story.title}
@@ -375,10 +393,12 @@ export default function MusicLessonSteps({
                   isTeacher={isTeacher}
                   live={youtubeLive}
                 />
-              </div>
+              </>
             ) : null}
             {active?.id === "blanks" ? (
-              <SongBlanksWorksheet
+              <>
+                <MusicStepIntro copyId="blanks" isTeacher={isTeacher} />
+                <SongBlanksWorksheet
                 bodyText={story.body_text}
                 blanks={lyricBlanks}
                 sessionId={sessionId}
@@ -392,9 +412,12 @@ export default function MusicLessonSteps({
                 onClassAnswer={onClassAnswer}
                 onClassBlur={flushClassAnswers}
               />
+              </>
             ) : null}
             {active?.id === "lyrics_meaning" ? (
-              <SongLyricsMeaning
+              <>
+                <MusicStepIntro copyId="lyrics_meaning" isTeacher={isTeacher} />
+                <SongLyricsMeaning
                 bodyText={story.body_text}
                 words={words}
                 expressions={expressions}
@@ -405,9 +428,15 @@ export default function MusicLessonSteps({
                 lookedUpWordIds={lookedUpWordIds}
                 flagging={flagging}
               />
+              </>
             ) : null}
             {active?.id === "truquitos_karaoke" && youtubeId ? (
-              <SongTruquitosKaraoke
+              <>
+                <MusicStepIntro
+                  copyId="truquitos_karaoke"
+                  isTeacher={isTeacher}
+                />
+                <SongTruquitosKaraoke
                 bodyText={story.body_text}
                 lyricsIpa={story.lyrics_ipa}
                 lineTimestamps={story.line_timestamps}
@@ -418,6 +447,7 @@ export default function MusicLessonSteps({
                 live={youtubeLive}
                 showSeekBack={!live}
               />
+              </>
             ) : null}
           </div>
 

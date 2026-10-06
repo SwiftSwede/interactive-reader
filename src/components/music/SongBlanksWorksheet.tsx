@@ -182,18 +182,8 @@ export default function SongBlanksWorksheet({
     blanks.map((blank) => [blank.id, blank.answer])
   ) as Record<number, string>;
 
-  const instructions = teacherLive
-    ? "Escribe las respuestas en los huecos. Los teléfonos siguen lo que escribes."
-    : live
-      ? "Escucha, escribe lo que oigas, y entrega. El Profe Kyle escribe las respuestas después."
-      : "Escucha, escribe lo que oigas, y entrega para ver qué acertaste.";
-
   return (
     <div>
-      <h2 className="text-headline-lg text-text-primary mb-2">
-        Completa la canción
-      </h2>
-      <p className="mb-4 text-label-md text-text-secondary">{instructions}</p>
       {videoId ? (
         <div className="mb-6">
           <ClassroomYoutubePlayer

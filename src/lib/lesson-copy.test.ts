@@ -7,11 +7,14 @@ import {
   flattenDialogueReadCopy,
   flattenLessonCopy,
   flattenMovieTalkCopy,
+  flattenMusicCopy,
   flattenPresentationCopy,
   flattenVideoSummaryCopy,
   flattenWelcomeCopy,
   LESSON_COPY,
   MOVIE_TALK_COPY,
+  MUSIC_COPY,
+  MUSIC_COPY_IDS,
   PRESENTATION_COPY,
   PRESENTATION_CYCLE_STEPS,
   readStepCopy,
@@ -267,6 +270,46 @@ describe("DIALOGUE_READ_COPY", () => {
     assert.match(blob, /diálogo/);
     assert.match(blob, /inglés/);
     assert.match(blob, /pronunciación/);
+  });
+});
+
+describe("MUSIC_COPY", () => {
+  test("has an entry for every music class step", () => {
+    for (const id of MUSIC_COPY_IDS) {
+      const entry = MUSIC_COPY[id];
+      assert.ok(entry.title.length > 0);
+      assert.ok(entry.line.length > 0);
+      assert.ok(entry.whyShort);
+      assert.ok(entry.instructions.length > 0);
+    }
+  });
+
+  test("keeps approved lines and karaoke sheet copy", () => {
+    assert.equal(
+      MUSIC_COPY.blind_listen.line,
+      "Mira el video y escucha sin letra. ¿Cuánto entiendes?",
+    );
+    assert.equal(MUSIC_COPY.blanks.instructions.length, 3);
+    assert.equal(MUSIC_COPY.truquitos_karaoke.instructions.length, 2);
+    assert.match(
+      MUSIC_COPY.truquitos_karaoke.instructions[1] ?? "",
+      /micrófono está apagado/,
+    );
+    assert.doesNotMatch(
+      flattenMusicCopy().join("\n"),
+      /No importa si no entiendes todo/,
+    );
+  });
+
+  test("has no em dashes and keeps Spanish accents", () => {
+    const blob = flattenMusicCopy().join("\n");
+    assert.equal(blob.includes("\u2014"), false);
+    assert.equal(blob.includes("—"), false);
+    assert.doesNotMatch(blob, ASCII_TELLS);
+    assert.match(blob, /canción/);
+    assert.match(blob, /inglés/);
+    assert.match(blob, /oído/);
+    assert.match(blob, /fonética/);
   });
 });
 
