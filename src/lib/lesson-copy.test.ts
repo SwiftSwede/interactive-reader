@@ -2,7 +2,9 @@ import assert from "node:assert/strict";
 import { describe, test } from "node:test";
 import {
   CONVERSATION_COPY,
+  DIALOGUE_READ_COPY,
   flattenConversationCopy,
+  flattenDialogueReadCopy,
   flattenLessonCopy,
   flattenMovieTalkCopy,
   flattenPresentationCopy,
@@ -12,6 +14,7 @@ import {
   MOVIE_TALK_COPY,
   PRESENTATION_COPY,
   PRESENTATION_CYCLE_STEPS,
+  readStepCopy,
   stepCopyForMode,
   VIDEO_SUMMARY_COPY,
 } from "./lesson-copy";
@@ -231,6 +234,39 @@ describe("CONVERSATION_COPY", () => {
     assert.match(blob, /inglés/);
     assert.match(blob, /Léelas/);
     assert.match(blob, /técnica/);
+  });
+});
+
+describe("DIALOGUE_READ_COPY", () => {
+  test("readStepCopy uses dialogue copy only for kind=dialogue", () => {
+    assert.equal(readStepCopy("story"), LESSON_COPY.story);
+    assert.equal(readStepCopy("dialogue"), DIALOGUE_READ_COPY);
+    assert.equal(readStepCopy("song"), LESSON_COPY.story);
+  });
+
+  test("keeps approved line, whyShort, and sheet copy", () => {
+    assert.equal(
+      DIALOGUE_READ_COPY.line,
+      "Lee tu parte en voz alta con tu grupo. Es lectura fría: nadie la ha preparado, y eso es el punto.",
+    );
+    assert.equal(
+      DIALOGUE_READ_COPY.whyShort,
+      "Ningún material tiene la densidad de vocabulario de un texto, y un diálogo muestra el vocabulario de la conversación real: lo que la gente de verdad dice. Además, leerlo en voz alta ensaya tu boca para la próxima conversación.",
+    );
+    assert.equal(DIALOGUE_READ_COPY.instructions.length, 4);
+    assert.match(DIALOGUE_READ_COPY.why, /No es teatro/);
+    assert.match(DIALOGUE_READ_COPY.why, /calificación/);
+  });
+
+  test("has no em dashes and keeps Spanish accents", () => {
+    const blob = flattenDialogueReadCopy().join("\n");
+    assert.equal(blob.includes("\u2014"), false);
+    assert.equal(blob.includes("—"), false);
+    assert.doesNotMatch(blob, ASCII_TELLS);
+    assert.match(blob, /fría/);
+    assert.match(blob, /diálogo/);
+    assert.match(blob, /inglés/);
+    assert.match(blob, /pronunciación/);
   });
 });
 

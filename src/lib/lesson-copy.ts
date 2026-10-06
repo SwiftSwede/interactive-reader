@@ -132,6 +132,24 @@ export const LESSON_COPY: Record<StoryStepId, LessonCopyEntry> = {
   },
 };
 
+export const DIALOGUE_READ_COPY: LessonCopyEntry = {
+  title: "El diálogo",
+  line: "Lee tu parte en voz alta con tu grupo. Es lectura fría: nadie la ha preparado, y eso es el punto.",
+  whyShort:
+    "Ningún material tiene la densidad de vocabulario de un texto, y un diálogo muestra el vocabulario de la conversación real: lo que la gente de verdad dice. Además, leerlo en voz alta ensaya tu boca para la próxima conversación.",
+  instructions: [
+    "Elige tu personaje con tu grupo. Cada uno lee las líneas de su personaje en voz alta.",
+    "Lee de corrido. Si una palabra se te atasca, sigue: las palabras difíciles de hoy son las que repasaremos todos juntos después.",
+    "Toca las palabras que no entiendas para ver su traducción y pronunciación.",
+    "Cuando terminen de leer, respondan las preguntas juntos.",
+  ],
+  why: "Ningún material tiene la densidad de vocabulario de un texto: cada oración está construida completamente de palabras, y todo lo que lee alguien que aprende inglés es vocabulario que se queda. Un diálogo tiene una ventaja que un cuento no tiene: es vocabulario de conversación real, lo que la gente de verdad dice, en frases que vas a usar tú también. Y leerlo en voz alta es el ensayo: la boca practica hoy lo que la conversación real pedirá mañana. No es teatro: no hay público ni calificación.",
+};
+
+export function readStepCopy(kind: string | null | undefined): LessonCopyEntry {
+  return kind === "dialogue" ? DIALOGUE_READ_COPY : LESSON_COPY.story;
+}
+
 export const VIDEO_SUMMARY_COPY: Record<
   VideoSummaryStepId,
   StepInstructionsCopy
@@ -362,6 +380,12 @@ export function flattenMovieTalkCopy(
     if (entry.why && entry.why !== entry.whyShort) out.push(entry.why);
   }
   return out;
+}
+
+export function flattenDialogueReadCopy(
+  copy: LessonCopyEntry = DIALOGUE_READ_COPY,
+): string[] {
+  return [copy.title, copy.line, copy.whyShort, ...copy.instructions, copy.why];
 }
 
 export function flattenConversationCopy(

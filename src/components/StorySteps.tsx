@@ -25,7 +25,7 @@ import LessonHeader from "@/components/lesson/LessonHeader";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
 import StepInstructions from "@/components/lesson/StepInstructions";
 import WelcomeGate from "@/components/WelcomeGate";
-import { LESSON_COPY } from "@/lib/lesson-copy";
+import { readStepCopy } from "@/lib/lesson-copy";
 import { lessonHeaderWordCount } from "@/lib/lesson-header";
 import { storyStepRecordingUrl } from "@/lib/story-practice";
 import MusicLessonSteps from "./music/MusicLessonSteps";
@@ -456,6 +456,7 @@ function ClassicStorySteps({
 
   const skipWelcome =
     story.kind !== "story" || isTeacher || previewLevel != null;
+  const readCopy = readStepCopy(story.kind);
 
   return (
     <PlaybackRateProvider>
@@ -528,13 +529,17 @@ function ClassicStorySteps({
 
             {active.id === "story" && (
               <>
-                {story.kind === "story" ? (
+                {story.kind === "story" || story.kind === "dialogue" ? (
                   <>
-                    <StepInstructions copy={LESSON_COPY.story} />
-                    <MicroExplanation
-                      dismissKey="story"
-                      text={LESSON_COPY.story.whyShort}
-                    />
+                    <StepInstructions copy={readCopy} />
+                    {readCopy.line && readCopy.whyShort ? (
+                      <MicroExplanation
+                        dismissKey={
+                          story.kind === "dialogue" ? "dialogue" : "story"
+                        }
+                        text={readCopy.whyShort}
+                      />
+                    ) : null}
                   </>
                 ) : null}
                 <InteractiveStory {...storyProps} />
