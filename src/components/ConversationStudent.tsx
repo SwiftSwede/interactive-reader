@@ -6,6 +6,9 @@ import EndClassButton from "@/components/EndClassButton";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
 import LessonHeader from "@/components/lesson/LessonHeader";
 import LessonTimer from "@/components/lesson/LessonTimer";
+import StepInstructions from "@/components/lesson/StepInstructions";
+import MicroExplanation from "@/components/MicroExplanation";
+import { CONVERSATION_COPY } from "@/lib/lesson-copy";
 import { createClient } from "@/lib/supabase/client";
 import { getSessionPhase } from "@/lib/session-phase";
 import {
@@ -238,6 +241,13 @@ export default function ConversationStudent({
       <article className="mx-auto max-w-2xl px-4 py-6">
         {prompt.theme ? (
           <p className="mb-4 text-label-sm text-text-secondary">{prompt.theme}</p>
+        ) : null}
+        <StepInstructions copy={CONVERSATION_COPY} hideTitle />
+        {CONVERSATION_COPY.line && CONVERSATION_COPY.whyShort && !isTeacher ? (
+          <MicroExplanation
+            dismissKey="conversation"
+            text={CONVERSATION_COPY.whyShort}
+          />
         ) : null}
         {isTeacher && !afterClass && current === 0 ? (
           <fieldset className="mb-6">

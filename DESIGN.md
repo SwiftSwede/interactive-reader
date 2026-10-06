@@ -89,7 +89,7 @@ components:
   drill_teach_card: "Lead in story-body serif with inline strong/em. Example groups: own lines, italic serif story-body, 16px indent, 1px paper-line left rule, 12px between groups. Closing: body-main text-muted, 24px above. Siguiente right-aligned."
   quiet_text_action: "Text-only secondary action (label-sm, text-muted, 44px hit area). Used for dismissals like 'más tarde'. Not button-shaped."
   story_sentence_ref: "Every 5th sentence in kind=story running text. First child of .sentence-unit: label-sm, text-muted, tabular-nums, 4px after the digits. pointer-events none, aria-hidden. Digits only, no gutter, no circle, no accent. Song bios off. Dialogue / Movie Talk / song unmarked."
-  step_instructions: "story steps + video summary steps + presentation cycle steps + Movie Talk steps except Fin (dialogue shares StorySteps but omits this block and the story why card). Content-column header: step title headline-md, then copy.line as one label-md text-secondary sentence. 44px Info (aria-label Cómo) opens the existing bottom sheet (no sheet title; close only in the toolbar): section ¿Qué hago? (full instructions + note) then ¿Por qué? (full why paragraph). No why: only ¿Qué hago?. Live class uses lineLive for Traducción and Respuestas. Why cards: MicroExplanation shows whyShort (accent-softer, label-md, X only, one-time localStorage) under the one-liner; first-time students, every mode; skip teacher chrome. Presentation Video has no why card. Movie Talk Warm-up and Fin have no why card. Sticky header and dot nav unchanged."
+  step_instructions: "story steps + video summary steps + presentation cycle steps + Movie Talk steps except Fin + conversation page (dialogue shares StorySteps but omits this block and the story why card). Content-column header: step title headline-md, then copy.line as one label-md text-secondary sentence. Conversation has no steps: hide the title and put Cómo beside the one-liner. 44px Info (aria-label Cómo) opens the existing bottom sheet (no sheet title; close only in the toolbar): section ¿Qué hago? (full instructions + note) then ¿Por qué? (full why paragraph). No why: only ¿Qué hago?. Live class uses lineLive for Traducción and Respuestas. Why cards: MicroExplanation shows whyShort (accent-softer, label-md, X only, one-time localStorage) under the one-liner; first-time students, every mode; skip teacher chrome. Presentation Video has no why card. Movie Talk Warm-up and Fin have no why card. Conversation dismiss key is conversation (one-time across classes). Sticky header and dot nav unchanged."
   welcome_card: "Classroom first-run only. localStorage welcome-seen. Replaces Inicio main content or the story lesson article (kind=story, not teacher, not preview). White rounded-card, 1px paper-line, p-4. Title headline-md. Lead and closing body-main text-secondary. Its own disc list (8px gap, 20px indent), bold leads. One ActionButton Entendido, vamos (48px). Canonical /welcome. Fail-open if storage is blocked. Copy in src/lib/lesson-copy.ts WELCOME_COPY."
   story_text_selection: "Native selection inside .story-running-text uses the same quiet wash as sentence audio: accent-soft mixed 55% with paper, text-primary. No new color. Spaces live in .word-gap so the wash is one strip, not per-word boxes."
   icons: Lucide React only, never emojis
@@ -435,14 +435,14 @@ Same chrome as text inputs. Hide the native disclosure arrow. Draw a 16px chevro
 - Let layout and typography imply interactivity
 
 ### Step instructions (`StepInstructions`)
-Always-visible how-to for `kind=story` steps, video summary (Traducción) steps, presentation cycle steps (Vocabulario / Preguntas / Video / Respuestas), and Movie Talk steps except Fin. Dialogue uses the same `StorySteps` shell but does not render this block or the story why card. Lives in the scrolling content column, never in the sticky header or dot nav.
+Always-visible how-to for `kind=story` steps, video summary (Traducción) steps, presentation cycle steps (Vocabulario / Preguntas / Video / Respuestas), Movie Talk steps except Fin, and the conversation page. Dialogue uses the same `StorySteps` shell but does not render this block or the story why card. Lives in the scrolling content column, never in the sticky header or dot nav.
 
-- Title: step name from `LESSON_COPY`, `VIDEO_SUMMARY_COPY`, or `PRESENTATION_COPY` (`headline-md`, `--text-primary`). This is the step heading ("Lee la historia", "El Video", "Vocabulario"), not the lesson title from the header. Same row, right side: a 44px ghost `Info` control (`aria-label` **Cómo**) when the sheet has instructions, a note, or a why paragraph.
+- Title: step name from `LESSON_COPY`, `VIDEO_SUMMARY_COPY`, `PRESENTATION_COPY`, or `MOVIE_TALK_COPY` (`headline-md`, `--text-primary`). This is the step heading ("Lee la historia", "El Video", "Vocabulario"), not the lesson title from the header. Same row, right side: a 44px ghost `Info` control (`aria-label` **Cómo**) when the sheet has instructions, a note, or a why paragraph. Conversation has no steps: `hideTitle` puts **Cómo** on the one-liner row instead.
 - Visible line: `line` from the copy module (`label-md`, `--text-secondary`). `lang="es"`. Words wrapped in `*…*` render as `<em>`.
 - Sheet: the same bottom sheet as Ver el texto. No sheet title row: grabber, then close (top right), then body. Section heading **¿Qué hago?** (`label-md`, `--text-primary`, `h2`), then the full `instructions` list and the optional note (`body-main`, `--text-secondary`, 8px apart). Story note lead stays `font-semibold`, `--text-primary`. Then **¿Por qué?** with the full `why` paragraph. A step with no `why` shows only ¿Qué hago?.
 - 16px gap (`mb-4`) before the why callout / activity.
-- Optional `instructionsLive` replaces `instructions` during live class for Respuestas and Traducción. `lineLive` replaces `line` in those two steps. Review and self-learning use `instructions` and `line`.
-- Why callouts stay `MicroExplanation`: accent-softer card, `label-md` (Roboto Flex 14px 600, `--text-secondary`), X only, one-time localStorage dismiss. The card shows `whyShort`, and only when `line` is also set. The long `why` stays in the sheet. Students see them in every mode (live and review). Teachers skip them. Story personal why stays omitted in classroom-live. Presentation keys: `presentation-vocabulario`, `presentation-preguntas`, `presentation-respuestas` (no video why). Video summary keys: `vs-video`, `vs-resumen`, `vs-traduccion`. Dialogue omits this block.
+- Optional `instructionsLive` replaces `instructions` during live class for Respuestas and Traducción. `lineLive` replaces `line` in those two steps. Review and self-learning use `instructions` and `line`. Conversation uses the same copy in live and after class.
+- Why callouts stay `MicroExplanation`: accent-softer card, `label-md` (Roboto Flex 14px 600, `--text-secondary`), X only, one-time localStorage dismiss. The card shows `whyShort`, and only when `line` is also set. The long `why` stays in the sheet. Students see them in every mode (live and review). Teachers skip them. Story personal why stays omitted in classroom-live. Presentation keys: `presentation-vocabulario`, `presentation-preguntas`, `presentation-respuestas` (no video why). Video summary keys: `vs-video`, `vs-resumen`, `vs-traduccion`. Movie Talk keys: `movietalk-synopsis`, `movietalk-video`, `movietalk-dialogo`. Conversation key: `conversation` (one-time across all conversation classes). Dialogue omits this block.
 
 ### Welcome card (`WelcomeCard` + `WelcomeGate`)
 First-run classroom orientation. Copy is `WELCOME_COPY` in `src/lib/lesson-copy.ts`. No schema.
@@ -1043,6 +1043,17 @@ Classroom only. `session_type = "presentation"`. Catalog lives in `presentation_
 - After the 90-min window, students get the same pills and can tap parts to jump. Consumer self-study uses that same free nav.
 
 Keep YouTube in review mode with normal controls. No pronunciation. No group work.
+
+### Conversation Lesson Page (detailed)
+Classroom only. `session_type = "conversation"`. Catalog lives in `conversation_prompts`. Route: `/conversation?session=`. Single page, no step nav.
+
+**Header zone:** lesson type "Conversación", prompt title, CEFR. No dots.
+
+**Content zone:**
+- Optional theme line (`label-sm`, `--text-secondary`).
+- Then `StepInstructions` from `CONVERSATION_COPY` with the title hidden (the header already says Conversación). One `line` plus a 44px **Cómo** on the same row. The sheet uses ¿Qué hago? and ¿Por qué?. Same copy in live class and after class. The sheet says "seis rondas" even when the teacher picks another plan.
+- First-time students get a `MicroExplanation` why card (`dismissKey` `conversation`) under the one-liner. Teachers skip the card. Vista de estudiante shows it.
+- Teacher plan fieldset, round card, numbered questions, recording banner, and Terminar clase stay as they were, under the onboarding block.
 
 ### Teacher student detail (`/teacher/classes/[id]/students/[studentId]`)
 Desktop-first center column (max 960px). Same cards, labels, and `LocalDateTime` as the rest of `/teacher/*`. No student chrome.

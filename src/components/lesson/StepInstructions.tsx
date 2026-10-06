@@ -25,36 +25,53 @@ const FOCUSABLE =
 
 export default function StepInstructions({
   copy,
+  hideTitle = false,
 }: {
   copy: StepInstructionsCopy;
+  hideTitle?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const close = useCallback(() => setOpen(false), []);
   const line = copy.line;
   const hasSheet =
     copy.instructions.length > 0 || Boolean(copy.note) || Boolean(copy.why);
+  const showTitle = Boolean(copy.title) && !hideTitle;
+  const howButton = hasSheet ? (
+    <button
+      type="button"
+      className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-card text-text-muted hover:bg-accent-soft hover:text-text-accent active:bg-accent-soft"
+      aria-label="Cómo"
+      onClick={() => setOpen(true)}
+    >
+      <Info size={18} aria-hidden="true" />
+    </button>
+  ) : null;
 
   return (
     <header className="mb-4" lang="es">
-      <div className="flex items-start justify-between gap-2">
-        <h2 className="text-headline-md text-text-primary min-w-0 pt-2">
-          {copy.title}
-        </h2>
-        {hasSheet ? (
-          <button
-            type="button"
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-card text-text-muted hover:bg-accent-soft hover:text-text-accent active:bg-accent-soft"
-            aria-label="Cómo"
-            onClick={() => setOpen(true)}
-          >
-            <Info size={18} aria-hidden="true" />
-          </button>
-        ) : null}
-      </div>
+      {showTitle ? (
+        <div className="flex items-start justify-between gap-2">
+          <h2 className="text-headline-md text-text-primary min-w-0 pt-2">
+            {copy.title}
+          </h2>
+          {howButton}
+        </div>
+      ) : null}
       {line ? (
-        <p className="mt-2 text-label-md text-text-secondary">
-          <InlineMarks text={line} />
-        </p>
+        showTitle ? (
+          <p className="mt-2 text-label-md text-text-secondary">
+            <InlineMarks text={line} />
+          </p>
+        ) : (
+          <div className="flex items-start justify-between gap-2">
+            <p className="min-w-0 flex-1 pt-2 text-label-md text-text-secondary">
+              <InlineMarks text={line} />
+            </p>
+            {howButton}
+          </div>
+        )
+      ) : !showTitle ? (
+        howButton
       ) : null}
       {hasSheet ? (
         <StepHowSheet

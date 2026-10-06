@@ -244,6 +244,21 @@ const MOVIE_TALK_SYNOPSIS_WHY =
 const MOVIE_TALK_DIALOGUE_WHY =
   'Aquí escuchaste inglés de verdad, sin ayuda y sin vocabulario preparado. Leer el diálogo te revela lo que en realidad dijeron. Esos momentos de "¡ah, eso era!" son tu cerebro aprendiendo.';
 
+export const CONVERSATION_COPY: StepInstructionsCopy = {
+  title: "Conversación",
+  line: "Habla en inglés en parejas. Son las mismas preguntas en cada ronda, con una persona nueva.",
+  whyShort:
+    "Repetir lo mismo con una persona nueva es el método: tu inglés sale más rápido y más seguro en cada ronda. Es la técnica 4/3/2 del lingüista Paul Nation, con evidencia académica detrás.",
+  instructions: [
+    "Hay seis rondas en parejas. En cada ronda, uno pregunta y el otro responde.",
+    "En la primera mitad tu papel es uno; en la mitad del descanso, los roles cambian. Todos preguntan y todos responden.",
+    "Las preguntas son las mismas en las seis rondas. Tu pareja cambia cada ronda; tu inglés mejora cada ronda.",
+    "El Profe Kyle escucha todas las parejas y deja correcciones en el chat. Léelas: son material para tu siguiente ronda.",
+    "Si te falta una palabra, dilo de otra forma. Preguntar cómo se dice también cuenta.",
+  ],
+  why: "Hablar mejor no viene de hablar de temas nuevos cada vez: viene de repetir. En la técnica 4/3/2, la ronda dos sale mejor que la ronda uno, y la tres mejor que la dos. Aquí nadie repite en seco: cada ronda es con una persona nueva, con las correcciones del Profe en el chat, y el descanso de la mitad para pensar qué mejorar. La confianza no viene de la suerte: viene de la segunda vuelta.",
+};
+
 export const MOVIE_TALK_COPY: Record<MovieTalkCopyId, StepInstructionsCopy> = {
   warmup: {
     title: "Warm-up",
@@ -346,6 +361,15 @@ export function flattenMovieTalkCopy(
     if (entry.whyShort) out.push(entry.whyShort);
     if (entry.why && entry.why !== entry.whyShort) out.push(entry.why);
   }
+  return out;
+}
+
+export function flattenConversationCopy(
+  copy: StepInstructionsCopy = CONVERSATION_COPY,
+): string[] {
+  const out: string[] = [copy.title, copy.line, ...copy.instructions];
+  if (copy.whyShort) out.push(copy.whyShort);
+  if (copy.why && copy.why !== copy.whyShort) out.push(copy.why);
   return out;
 }
 

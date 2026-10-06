@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";
 import {
+  CONVERSATION_COPY,
+  flattenConversationCopy,
   flattenLessonCopy,
   flattenMovieTalkCopy,
   flattenPresentationCopy,
@@ -203,6 +205,32 @@ describe("MOVIE_TALK_COPY", () => {
     assert.match(blob, /sinopsis/);
     assert.match(blob, /diálogo/);
     assert.match(blob, /inglés/);
+  });
+});
+
+describe("CONVERSATION_COPY", () => {
+  test("keeps approved line, whyShort, and sheet copy", () => {
+    assert.equal(
+      CONVERSATION_COPY.line,
+      "Habla en inglés en parejas. Son las mismas preguntas en cada ronda, con una persona nueva.",
+    );
+    assert.equal(
+      CONVERSATION_COPY.whyShort,
+      "Repetir lo mismo con una persona nueva es el método: tu inglés sale más rápido y más seguro en cada ronda. Es la técnica 4/3/2 del lingüista Paul Nation, con evidencia académica detrás.",
+    );
+    assert.equal(CONVERSATION_COPY.instructions.length, 5);
+    assert.match(CONVERSATION_COPY.why ?? "", /técnica 4\/3\/2/);
+    assert.match(CONVERSATION_COPY.why ?? "", /segunda vuelta/);
+  });
+
+  test("has no em dashes and keeps Spanish accents", () => {
+    const blob = flattenConversationCopy().join("\n");
+    assert.equal(blob.includes("\u2014"), false);
+    assert.equal(blob.includes("—"), false);
+    assert.doesNotMatch(blob, ASCII_TELLS);
+    assert.match(blob, /inglés/);
+    assert.match(blob, /Léelas/);
+    assert.match(blob, /técnica/);
   });
 });
 
