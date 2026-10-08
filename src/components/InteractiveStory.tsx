@@ -805,12 +805,14 @@ export default function InteractiveStory({
               key={paraIdx}
               data-speaker={speakerName ?? undefined}
               className={`text-story-body text-text-primary${lyricLayout ? " mb-0" : ""}${
-                kind === "movie_talk" ? " movie-talk-line" : ""
-              }${highlighted ? " movie-talk-line-on" : ""}`}
+                speakerName ? " script-line" : ""
+              }${kind === "movie_talk" ? " movie-talk-line" : ""}${
+                highlighted ? " movie-talk-line-on" : ""
+              }`}
             >
               {speakerName && (
                 <span
-                  className={`mr-1 font-heading text-label-md${
+                  className={`script-speaker font-heading text-label-md${
                     kind === "movie_talk"
                       ? ` movie-talk-speaker${highlighted ? " movie-talk-speaker-on" : ""}`
                       : " text-text-accent"
@@ -839,7 +841,7 @@ export default function InteractiveStory({
                     last.tokens.push({ token, tokenIdx });
                   }
                 });
-                return groups.map((group) => {
+                const spoken = groups.map((group) => {
                   const refLabel = showSentenceRefs
                     ? sentenceRefLabel(group.sentenceId)
                     : null;
@@ -988,6 +990,11 @@ export default function InteractiveStory({
                   </span>
                   );
                 });
+                return speakerName ? (
+                  <span className="script-spoken">{spoken}</span>
+                ) : (
+                  spoken
+                );
               })()}
             </p>
           );

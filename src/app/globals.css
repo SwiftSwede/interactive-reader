@@ -154,6 +154,21 @@ select:not([multiple]) {
   line-height: 28px;
 }
 
+.script-line {
+  display: flex;
+  align-items: baseline;
+  column-gap: 4px;
+}
+
+.script-speaker {
+  flex: 0 0 auto;
+}
+
+.script-spoken {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .karaoke-track {
   position: relative;
   display: inline-block;
