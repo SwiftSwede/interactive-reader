@@ -143,6 +143,17 @@ select:not([multiple]) {
   letter-spacing: 0.01em;
 }
 
+/* Dialogue and Movie Talk: one speaker turn per line, not a story paragraph. */
+.script-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.script-stack > .text-story-body {
+  line-height: 28px;
+}
+
 .karaoke-track {
   position: relative;
   display: inline-block;
@@ -448,7 +459,7 @@ select:not([multiple]) {
 .movie-talk-line {
   margin-left: -8px;
   margin-right: -8px;
-  padding: 4px 8px;
+  padding: 0 8px;
   border-radius: var(--radius-small);
 }
 

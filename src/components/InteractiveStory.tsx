@@ -618,6 +618,7 @@ export default function InteractiveStory({
   // Split body text into paragraphs, then tokenize each paragraph.
   // Songs keep blank lines so stanzas match Completa la canción.
   const lyricLayout = kind === "song";
+  const scriptLayout = kind === "dialogue" || kind === "movie_talk";
   const paragraphs = lyricLayout
     ? bodyText.split("\n")
     : bodyText.split("\n").filter((p) => p.trim());
@@ -724,7 +725,11 @@ export default function InteractiveStory({
         />
       )}
 
-      <div className={lyricLayout ? undefined : "space-y-4"}>
+      <div
+        className={
+          lyricLayout ? undefined : scriptLayout ? "script-stack" : "space-y-4"
+        }
+      >
         {paragraphs.map((paragraph, paraIdx) => {
           if (lyricLayout && !paragraph.trim()) {
             return <div key={paraIdx} className="h-8" />;
