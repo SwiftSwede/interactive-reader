@@ -411,6 +411,39 @@ async function main() {
   // Run the LLM annotation
   const annotation = await annotateWithLLM(textForLlm);
 
+  // Alignment guard: the annotation stream must start with the transcript's
+  // own first word and cover roughly the same number of tokens. A mismatch
+  // means the LLM annotated extra text (title/synopsis leak) or dropped text,
+  // which offsets every word position and silently kills tap-to-reveal.
+  // ABORT before inserting, before any money is spent on wrong data.
+  const expectedTokens = textForLlm.split(/\s+/).filter(Boolean);
+  const gotWords = annotation.words.map((w) => w.text);
+  const norm = (s: string) => s.replace(/[’‘]/g, "'").toLowerCase();
+  if (
+    gotWords.length === 0 ||
+    norm(gotWords[0]) !== norm(expectedTokens[0] ?? "")
+  ) {
+    console.error(
+      `ALIGNMENT MISMATCH: expected first token "${expectedTokens[0]}" but ` +
+        `annotation starts with "${gotWords[0]}". Not inserting anything. ` +
+        `Check the seeded body_text before spending another annotation run.`
+    );
+    process.exit(1);
+  }
+  const ratio = annotation.words.length / Math.max(expectedTokens.length, 1);
+  if (ratio < 0.9 || ratio > 1.1) {
+    console.error(
+      `ALIGNMENT MISMATCH: transcript has ${expectedTokens.length} tokens but ` +
+        `annotation has ${annotation.words.length} words (ratio ${ratio.toFixed(2)}). ` +
+        `Not inserting anything.`
+    );
+    process.exit(1);
+  }
+  console.log(
+    `Alignment check passed: first word "${gotWords[0]}", ` +
+      `${annotation.words.length} words vs ${expectedTokens.length} tokens.`
+  );
+
   console.log("");
   console.log(`LLM returned ${annotation.words.length} words and ${annotation.expressions?.length || 0} expressions.`);
 

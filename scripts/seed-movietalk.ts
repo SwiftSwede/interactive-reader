@@ -23,7 +23,12 @@ import { config } from "dotenv";
 config({ path: ".env.local", override: true });
 
 import { createAdminClient } from "../src/lib/supabase/admin";
-import { movieTalkCharacters, splitTranscriptScenes } from "../src/lib/movietalk";
+import {
+  movieTalkCharacters,
+  movieTalkSpokenText,
+  MOVIE_TALK_SPEAKER_RE,
+  splitTranscriptScenes,
+} from "../src/lib/movietalk";
 
 type ComprehensionQuestion = {
   question: string;
@@ -288,6 +293,204 @@ Angus-Yeah, well, I had momentum.`,
       },
     ],
   },
+  {
+    slug: "beetlejuice",
+    title: "Beetlejuice",
+    level: "intermediate",
+    cefr: "B1/B2",
+    synopsis: "After a recently deceased couple finds their idyllic country home occupied by an unbearable family of New York city-dwellers, they attempt to reclaim their residence by haunting the newcomers. When their amateur ghostly scare tactics prove ineffective, they turn to a crude and chaotic \"bio-exorcist\" for assistance. However, their desperate decision quickly spirals out of control, forcing the ghosts to navigate a surreal supernatural underworld to save their home and themselves from a volatile spirit who has his own dangerous agenda.",
+    warmupQuestion: null,
+    scenes: [
+      {
+        sceneNumber: 1,
+        youtubeUrl: "https://www.youtube.com/watch?v=AuVxh3bRVQg",
+        startSeconds: null,
+        endSeconds: null,
+        questionStartPosition: 1,
+        questionEndPosition: 3,
+      },
+      {
+        sceneNumber: 2,
+        youtubeUrl: "https://www.youtube.com/watch?v=HERc9XIFZBo",
+        startSeconds: null,
+        endSeconds: null,
+        questionStartPosition: 4,
+        questionEndPosition: 6,
+      },
+      {
+        sceneNumber: 3,
+        youtubeUrl: "https://www.youtube.com/watch?v=OeEa3gTsVDo",
+        startSeconds: null,
+        endSeconds: null,
+        questionStartPosition: 7,
+        questionEndPosition: 9,
+      },
+    ],
+    body: `Barbara-Ugh, Jane.
+Adam-It's your turn, honey. Good luck.
+Barbara-Thanks.
+Jane-Hi, Barbara.
+Barbara-Hi.
+Jane-Glad I caught you. Heard you were on vacation.
+Barbara-That's right. Complete vacation.
+Jane-Honey, today I'm $260,000.
+Barbara-No, Jane. It's 6:45 in the morning.
+Jane-This offer is real. From a man in New York City who only saw a photograph.
+Adam-Jane, don't send people photos of our house.
+Jane-He wants to bring the wife and family up here for some peace and quiet.
+Barbara-That's exactly what we're looking for.
+Jane-But, Barbara, this house is too big for you. It really ought to be for a couple with a family, you know...? Oh, pumpkin, I didn't mean anything. It's just that this house is too big. I'll see you in a few weeks. Okay?
+Barbara-Okay.
+Jane- All right. Think about it.
+Barbara-Take care.
+Jane-Boo! I was just telling Barbara about this offer...
+Adam-No, Jane.
+Jane-Adam.
+Adam-Barbara, come with me down to the store.
+Barbara-What for?
+Adam-I need a new brush for this tung oil. And I want to get a part for the model.
+Barbara-Well, you just run in, okay?
+Adam-Two weeks at home. The perfect vacation.
+Barbara-Jane says we should sell the house to someone with a family.
+Adam-Well, I don't think that it's any of Jane's business. Besides, we could try again on this vacation, you know.
+Barbara-Oh, really? What are you saying?
+Adam-How are you doing, Ernie?
+Ernie-Hi, how are you?
+Bill-Morning, Adam. Need a haircut before your vacation?
+Adam-No, thanks, Bill.
+Bill-How's the model coming?
+Adam-Oh, it's great.
+Bill-You know, you said Bozman built that foundation in 1835. But his grandson... He got hair right down to his goddamn shoulders. He says to me, "just trim it a little."
+I took the scissors to him so fast...
+Adam-See you later, huh, bill?
+Bill-Right.
+Barbara-This is gonna be great. Are you sure you wouldn't rather go to Jamaica or someplace like that?
+Adam-No way. There's no place like home. Hey, look out for that...!
+Barbara-Perfect start to our vacation.
+Adam-Well, you'll feel better when you're dry, honey.
+Barbara-That fire wasn't burning when we left.
+Adam-How's your arm?
+Barbara-I don't know. It feels frozen. I'll make some coffee and you get wood for the fire.
+Adam-Maybe we should just take things extra slow.
+Barbara-Do you remember how we got back up here?
+Adam-I'm gonna go back down to the bridge and retrace our steps.
+Adam-You saved my...
+Barbara-two hours.
+Adam-Barbara, you are not gonna believe... what?
+Barbara-That's how long you were gone.
+Adam-What is going on?
+Adam-I have to show you something. Look. [Look around for a few seconds in silence] There's that. and there's that.
+Adam-'Handbook for the recently diseased.'
+Barbara-Deceased.
+Adam-"Deceased "
+Barbara-I don't know where it came from. Look at the publisher.
+Adam-"Handbook for the Recently Deceased Press."
+Barbara-You know what? I don't think we survived the crash.
+Barbara-I hate this. Just... can you give me the basics?
+Adam-Well, this book isn't arranged that way. What do you wanna know?
+Barbara-Well, why did you disappear when you stepped off the porch? Are we halfway to heaven, are we halfway to hell? And how long is this gonna last?
+Adam-I don't see anything about heaven or hell. This book reads like stereo instructions. Listen to this: "Geographical and temporal perimeters. Functional perimeters vary from manifestation to manifestation." Oh, this is gonna take some time, honey.
+Beetlejuice-Damn sandworms. Thirteen percent, huh? Well, I better find a job. Let's see. Business section. Ooh-la-la. What do we got here? The Maitlands, huh? Cute couple. Look nice and stupid too.
+***
+Dead Man-Want a cigarette?
+Barbara-Uh, no, thank you.
+Dead Man-Trying to cut down myself.
+Barbara-Adam, is this what happens when you die?
+Receptionist-This is what happens when you die. That is what happens when he dies. And that is what happens when they die. It's all very personal. And I'll tell you something. If I knew then what I know now, I wouldn't have had my little accident.
+Dead Man-Maitland. Party of two. Take the handbook and go to the sixth door.
+Barbara-Oh, we forgot our handbook.
+Dead Man-Come on.
+Announcer-All new arrivals, report to waiting room number 8. Flight 409 is arriving at gate 3.
+Dead Man-How do I look? There are no mirrors on this side.
+Adam-Fine. You look fine.
+Dead Man-Yeah?
+Barbara-Fine.
+Dead Woman-Thanks. I've been feeling a little flat.
+Announcer-Will the Peterson party report to door number 9? Peterson party, please report to door number 9. All new arrivals, report to waiting room number 8.
+Barbara-A hundred and twenty-five years. I can't believe this. I can't believe they didn't tell us. Oh, Adam, what is this?
+Janitor-That's the lost souls' room. A room for ghosts that have been exorcised. Poor devils. That's death for the dead. It's all in the handbook. Keep moving.
+Adam-Five. This is the sixth door.
+Barbara-Boy, oh, boy, this place just gets weirder and weirder.
+Adam-Barbara. We're home. Look at this place. Everything's different.
+Barbara-All our furniture's gone.
+Adam-How long do you suppose we were waiting there?
+Juno-Three months. I'd almost given up on you. I was about to leave. I do have other clients.
+Barbara-Are you Juno, our caseworker?
+Juno-Yes. I evaluate individual cases and determine if help is needed, deserved and available
+Adam-Are you available?
+Juno-No. What's wrong?
+Barbara-We're very unhappy.
+Juno-What did you expect? You're dead.
+Adam-We want to get rid of the people who moved in here. Barbara and I worked very hard on this house. We probably wouldn't mind sharing the house with people who were...
+Juno-More like you used to be.
+Barbara-Yes.
+Adam-But these people...
+Juno-Things seem pretty quiet here. You should thank god you didn't die in Italy. The Deetzes. Okay, have you been studying the manual?
+Adam-Well, we tried.
+Juno-The intermediate interface chapter on haunting says it all. Get them out yourselves. It's your house. Haunted houses aren't easy to come by.
+Barbara-Well, we don't quite get it.
+Juno-I heard. Tore your faces right off. It doesn't do any good to pull your heads off in front of people... If they can't see you.
+Adam-We should start more simply?
+Juno-Start simply. Do what you know. Use your talents. Practice. You should have been studying those lessons since day one. Ooh. I've got to go.
+Barbara-What about that guy in the flyer, Betel...?
+Juno-Shh! Don't even say his name. You don't want his help.
+Barbara-Well...
+Adam-We might.
+Juno-No, you don't. He does not work well with others.
+Adam-What do you mean?
+Juno-I didn't want to bring it up. But rather than have you stumble onto it and make another mistake, I'll tell you. He was my assistant. But he was a troublemaker. He went out on his own as a freelance bio-exorcist. Claimed he could get rid of the living. Got into more trouble. In fact, I believe he's been sleazing around your cemetery lately.
+The only way he can be brought back... Is by calling his name three times. But I strongly suggest... That you remove the Deetzes yourselves.
+Adam-Well, how do we contact you if we need you again?
+Barbara-Oh, Adam, that guy's in our cemetery.
+Adam-She's right, honey. We just have to keep this simple. We can do this. Come on.
+Beetlejuice-Hey, you. Hey, come here. Hungry? Come on. Hey, come here. I got something good for you. Come on. Come on over. We'll have a little bite, you'll have something to nosh. Come here.
+***
+Lydia-Sick. Sexual perversion. If you guys are gonna do that weird sexual stuff, do it in your own bedroom. [Looks at pictures] No feet. Are you the guys hiding out in the attic?
+Adam-We're ghosts.
+Barbara-Whoo!
+Lydia-What do you look like under there?
+Adam-Aren't you scared?
+Lydia-I'm not scared of sheets. Are you gross under there? Are you night of the living dead under there? Like all bloody veins and pus?
+Adam-Night of the what?
+Lydia-Living dead. It's a movie.
+Barbara-If I had seen a ghost at your age, I would have been scared out of my wits.
+Lydia-You're not gross. Why are you wearing sheets?
+Barbara-We're practicing.
+Adam-You can see us without the sheets?
+Lydia-Of course I can see you.
+Adam-Well, how is it that you see us and nobody else can?
+Lydia-Well, I read through that ‘Handbook for the Recently Deceased’. It says, "live people ignore the strange and unusual." I myself am strange and unusual.
+Barbara-You look like a regular girl to me.
+Adam-You read our book?
+Lydia-Yeah.
+Adam-You could follow it?
+Lydia-Yeah. Why were you in Delia's bedroom?
+Adam-We were trying to scare your mother.
+Lydia-Stepmother. Anyway, you can't scare her. She's sleeping with prince valium tonight.
+Lydia-You did this? You carved all these little houses and things?
+Adam-Mm-hm.
+Lydia-And this used to be your house. Why do you want to scare everybody?
+Adam-Well, we wanted to frighten you so you would move out.
+Lydia-You don't know the Deetzes very well. My father bought this place. He never walks away from equity. Why don't you leave?
+Barbara-We can't. we haven't left the house since the funeral
+Lydia-Funeral… god! You guys really are dead. This is amazing.
+Charles-Lydia.
+Lydia-I better go.
+Barbara-Wait. Don't tell your parents that we're up here.
+Adam-Unless you think it'll frighten them away. You tell them that we are horrible, desperate, ghoulish creatures who will stop at nothing to get our house back.
+Lydia-What if this is a dream? Can you guys do any tricks to prove I'm not dreaming? Well, if you are real ghosts, you guys better get another routine because those sheets... They don't work.`,
+    comprehensionQuestions: [
+      { position: 1, question: "How much money is Jane's offer for the house today?", answer: "$260,000" },
+      { position: 2, question: "Why do Adam and Barbara drive to town?", answer: "Adam needs a new brush for the tung oil and a part for the model" },
+      { position: 3, question: "How long was Adam gone when he stepped off the porch?", answer: "Two hours" },
+      { position: 4, question: "What does Juno say about the Maitlands' appointment, and why couldn't she wait longer?", answer: "Three months; she was about to leave and she has other clients" },
+      { position: 5, question: "How can the guy in the flyer be brought back?", answer: "By calling his name three times" },
+      { position: 6, question: "Who should scare the family out of the house?", answer: "Adam and Barbara" },
+      { position: 7, question: "According to Lydia, why can she see the ghosts when nobody else can?", answer: "She is strange and unusual" },
+      { position: 8, question: "What movie does Lydia mention when she asks if the ghosts are \"gross under there\"?", answer: "Night of the Living Dead" },
+      { position: 9, question: "What does Lydia say her stepmother is doing tonight?", answer: "Sleeping with Prince Valium" }
+    ],
+  },
 ];
 
 function tokensOf(body: string): number {
@@ -342,11 +545,53 @@ async function liveResponsesExist(
   return (count ?? 0) > 0;
 }
 
+// Guard against the 2026-10 Beetlejuice failure: a non-transcript paragraph
+// (synopsis, title, URL) leaked into body and the annotator tokenized it,
+// offsetting every word position, which silently killed all tap-to-reveal
+// tooltips. These checks run BEFORE any DB write.
+function validateTranscript(mt: MovieTalk): void {
+  const lines = mt.body
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0);
+
+  const first = lines[0] ?? "";
+  if (!MOVIE_TALK_SPEAKER_RE.test(first)) {
+    throw new Error(
+      `${mt.slug}: transcript must START with a Name-Dialogue line ` +
+        `(e.g. "Barbara-Ugh, Jane."). First line is: "${first.slice(0, 60)}". ` +
+        `A synopsis/title paragraph likely leaked into the body.`
+    );
+  }
+
+  const nameless = lines.filter(
+    (line) => line !== "***" && !MOVIE_TALK_SPEAKER_RE.test(line)
+  );
+  if (nameless.length > 0) {
+    console.warn(
+      `${mt.slug}: ${nameless.length} transcript line(s) have no speaker name. ` +
+        `They render as plain text and will not get speaker styling. First: ` +
+        `"${nameless[0].slice(0, 60)}"`
+    );
+  }
+
+  const spokenTokens = movieTalkSpokenText(mt.body)
+    .split(/\s+/)
+    .filter(Boolean).length;
+  if (spokenTokens < 10) {
+    throw new Error(
+      `${mt.slug}: spoken transcript is only ${spokenTokens} tokens. ` +
+        `The body looks empty or mis-parsed.`
+    );
+  }
+}
+
 async function seedMovieTalk(
   admin: ReturnType<typeof createAdminClient>,
   mt: MovieTalk,
   force: boolean
 ) {
+  validateTranscript(mt);
   const { data: existing } = await admin
     .from("stories")
     .select("id, body_text, youtube_url, synopsis, warmup_question")
