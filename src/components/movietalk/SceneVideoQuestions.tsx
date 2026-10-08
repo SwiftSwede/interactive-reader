@@ -101,9 +101,6 @@ export default function SceneVideoQuestions({
 
   return (
     <div>
-      <h2 className="text-headline-lg text-text-primary mb-4">
-        Video y preguntas
-      </h2>
       {videoId ? (
         <div className="mb-6">
           <ClassroomYoutubePlayer

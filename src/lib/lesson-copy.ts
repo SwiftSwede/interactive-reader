@@ -377,13 +377,14 @@ export const MOVIE_TALK_COPY: Record<MovieTalkCopyId, StepInstructionsCopy> = {
   },
   dialogo: {
     title: "Diálogo",
-    line: "Lee el diálogo en voz alta con tus compañeros.",
+    line: "Lee el diálogo en voz alta con tus compañeros. Toca un personaje para marcar sus líneas.",
     whyShort: MOVIE_TALK_DIALOGUE_WHY,
     why: MOVIE_TALK_DIALOGUE_WHY,
     instructions: [
       "El Profe Kyle elige a los lectores; leen sus partes en voz alta.",
       "Después de la lectura, repasamos juntos el vocabulario nuevo de la escena.",
       "Toca cualquier palabra que no entiendas para ver su traducción.",
+      "Toca un personaje para marcar sus líneas. Toca fuera para quitar la marca.",
     ],
   },
 };

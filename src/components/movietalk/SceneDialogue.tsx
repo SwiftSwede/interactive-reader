@@ -90,11 +90,6 @@ export default function SceneDialogue({
 
   return (
     <div ref={wrapRef}>
-      <h2 className="text-headline-lg text-text-primary mb-2">Diálogo</h2>
-      <p className="mb-4 text-label-md text-text-secondary">
-        Toca un personaje para marcar sus líneas. Toca fuera para quitar la
-        marca.
-      </p>
       <div
         ref={bandRef}
         className="mb-4"

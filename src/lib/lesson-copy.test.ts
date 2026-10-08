@@ -200,6 +200,15 @@ describe("MOVIE_TALK_COPY", () => {
       MOVIE_TALK_COPY.dialogo.why,
       MOVIE_TALK_COPY.dialogo.whyShort,
     );
+    assert.equal(
+      MOVIE_TALK_COPY.dialogo.line,
+      "Lee el diálogo en voz alta con tus compañeros. Toca un personaje para marcar sus líneas.",
+    );
+    assert.ok(
+      MOVIE_TALK_COPY.dialogo.instructions.some((line) =>
+        line.includes("Toca fuera para quitar la marca"),
+      ),
+    );
   });
 
   test("has no em dashes and keeps Spanish accents", () => {

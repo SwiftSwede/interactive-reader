@@ -21,7 +21,7 @@ rules, no new design decisions.
 | warmup | Lee la pregunta y prepárate para comentarla con la clase. | (none) |
 | synopsis | Lee de qué trata el video antes de verlo. | Saber de qué va la historia libera tu atención para el idioma. No adivinas de qué hablan: escuchas cómo lo dicen. |
 | scene video | Mira la escena y busca las respuestas a las preguntas. | Tu cerebro escucha diferente cuando sabe qué buscar. Con las preguntas antes, estás cazando respuestas, no solo viendo. |
-| scene diálogo | Lee el diálogo en voz alta con tus compañeros. | Aquí escuchaste inglés de verdad, sin ayuda y sin vocabulario preparado. Leer el diálogo te revela lo que en realidad dijeron. Esos momentos de "¡ah, eso era!" son tu cerebro aprendiendo. |
+| scene diálogo | Lee el diálogo en voz alta con tus compañeros. Toca un personaje para marcar sus líneas. | Aquí escuchaste inglés de verdad, sin ayuda y sin vocabulario preparado. Leer el diálogo te revela lo que en realidad dijeron. Esos momentos de "¡ah, eso era!" son tu cerebro aprendiendo. |
 
 ### Sheet contents (`¿Qué hago?` / `¿Por qué?` sections)
 
@@ -39,8 +39,9 @@ rules, no new design decisions.
 - **Scene diálogo:** ¿Qué hago?: "El Profe Kyle elige a los lectores; leen sus
   partes en voz alta." / "Después de la lectura, repasamos juntos el
   vocabulario nuevo de la escena." / "Toca cualquier palabra que no entiendas
-  para ver su traducción."  ¿Por qué?: expand the whyShort into the sheet body
-  verbatim (it is already the full argument).
+  para ver su traducción." / "Toca un personaje para marcar sus líneas. Toca
+  fuera para quitar la marca."  ¿Por qué?: expand the whyShort into the sheet
+  body verbatim (it is already the full argument).
 - **Fin:** nothing. Leave the existing closing panel untouched.
 
 ## Wiring
@@ -73,3 +74,9 @@ rules, no new design decisions.
 ## Verification
 
 - tsc clean, full suite green, PRD + DESIGN.md synced, build hash recorded.
+
+## Plan review decisions
+
+Kyle, 2026-10-07: drop the second scene heading (`Video y preguntas`, `Diálogo`)
+under `StepInstructions`. Fold the character-band how-to into the Diálogo
+one-liner and Cómo sheet. Video has no extra instruction to merge.
