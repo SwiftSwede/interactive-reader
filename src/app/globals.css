@@ -143,11 +143,17 @@ select:not([multiple]) {
   letter-spacing: 0.01em;
 }
 
-/* Dialogue and Movie Talk: one speaker turn per line, not a story paragraph. */
+/* Dialogue and Movie Talk: one speaker turn per line, not a story paragraph.
+   Shared name column (longest speaker) so spoken text shares one left edge. */
 .script-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  row-gap: 4px;
+  column-gap: 4px;
+}
+
+.script-stack > :not(.script-line) {
+  grid-column: 1 / -1;
 }
 
 .script-stack > .text-story-body {
@@ -155,17 +161,17 @@ select:not([multiple]) {
 }
 
 .script-line {
-  display: flex;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
   align-items: baseline;
-  column-gap: 4px;
 }
 
 .script-speaker {
-  flex: 0 0 auto;
+  white-space: nowrap;
 }
 
 .script-spoken {
-  flex: 1 1 auto;
   min-width: 0;
 }
 
