@@ -709,6 +709,7 @@ export default function InteractiveStory({
 
   let wordPosition = 0;
   let currentScene = 0;
+  let lastSpeaker: string | null = null;
   const occurrenceCounts = new Map<string, number>();
   const audioDuration = timestamps.length > 0
     ? timestamps[timestamps.length - 1].end
@@ -738,6 +739,7 @@ export default function InteractiveStory({
           const sceneBreak =
             kind === "movie_talk" && isMovieTalkSceneBreak(paragraph);
           if (sceneBreak) {
+            lastSpeaker = null;
             const divider =
               visibleSceneIndex == null ? (
                 <p
@@ -762,6 +764,11 @@ export default function InteractiveStory({
               : null;
           const speakerName = movieTalkName ?? dialogueName;
           const speakerJoin = movieTalkName ? "-" : dialogueName ? ":" : "";
+          const continuation =
+            scriptLayout && !speakerName && lastSpeaker != null;
+          const scriptTurn = Boolean(speakerName) || continuation;
+          const turnSpeaker = speakerName ?? (continuation ? lastSpeaker : null);
+          if (speakerName) lastSpeaker = speakerName;
           const inView =
             visibleSceneIndex == null || currentScene === visibleSceneIndex;
 
@@ -769,6 +776,7 @@ export default function InteractiveStory({
             (kind === "dialogue" || kind === "movie_talk") &&
             isMovieTalkStageDirection(paragraph)
           ) {
+            lastSpeaker = null;
             if (!inView) return null;
             return (
               <p key={paraIdx} className="text-label-sm italic text-text-muted">
@@ -798,19 +806,19 @@ export default function InteractiveStory({
           }
 
           const highlighted =
-            Boolean(highlightSpeaker) && speakerName === highlightSpeaker;
+            Boolean(highlightSpeaker) && turnSpeaker === highlightSpeaker;
 
           return (
             <p
               key={paraIdx}
-              data-speaker={speakerName ?? undefined}
+              data-speaker={turnSpeaker ?? undefined}
               className={`text-story-body text-text-primary${lyricLayout ? " mb-0" : ""}${
-                speakerName ? " script-line" : ""
+                scriptTurn ? " script-line" : ""
               }${kind === "movie_talk" ? " movie-talk-line" : ""}${
                 highlighted ? " movie-talk-line-on" : ""
               }`}
             >
-              {speakerName && (
+              {scriptTurn && (
                 <span
                   className={`script-speaker font-heading text-label-md${
                     kind === "movie_talk"
@@ -818,8 +826,7 @@ export default function InteractiveStory({
                       : " text-text-accent"
                   }`}
                 >
-                  {speakerName}
-                  {speakerJoin}
+                  {speakerName ? `${speakerName}${speakerJoin}` : null}
                 </span>
               )}
               {(() => {
@@ -990,7 +997,7 @@ export default function InteractiveStory({
                   </span>
                   );
                 });
-                return speakerName ? (
+                return scriptTurn ? (
                   <span className="script-spoken">{spoken}</span>
                 ) : (
                   spoken
