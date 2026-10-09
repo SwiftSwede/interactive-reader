@@ -168,6 +168,25 @@ export function isMovieTalkStageDirection(line: string): boolean {
   return /^\[[^\]]*\]$/.test(line.trim());
 }
 
+/** Inline stage direction token inside a speaker turn, e.g. "[sighs]" or "[sighs],". */
+export function isMovieTalkStageDirectionToken(token: string): boolean {
+  return /\[[^\]]*\]/.test(token);
+}
+
+/**
+ * A stage direction can span several whitespace tokens
+ * ("[Cut to Beetlejuice reading the newspaper]"). The renderer tracks
+ * bracket state across the paragraph: this token opens the span.
+ */
+export function opensMovieTalkStageDirection(token: string): boolean {
+  return token.includes("[");
+}
+
+/** True when the token carries the closing bracket of the span. */
+export function closesMovieTalkStageDirection(token: string): boolean {
+  return token.includes("]");
+}
+
 export function isMovieTalkSceneBreak(line: string): boolean {
   return /^\*+\s*$/.test(line.trim());
 }

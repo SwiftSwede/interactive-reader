@@ -11,6 +11,10 @@ import {
   movieTalkSpokenText,
   speakerOfLine,
   splitTranscriptScenes,
+  isMovieTalkStageDirectionToken,
+  opensMovieTalkStageDirection,
+  closesMovieTalkStageDirection,
+  MOVIE_TALK_SPEAKER_RE,
 } from "./movietalk";
 
 const SCENES = [
@@ -58,6 +62,75 @@ describe("speakerOfLine", () => {
 
   test("skips bracketed stage directions", () => {
     assert.equal(speakerOfLine("[Hunham looks at Mary]"), null);
+  });
+});
+
+describe("isMovieTalkStageDirectionToken", () => {
+  test("detects fully-bracketed tokens", () => {
+    assert.equal(isMovieTalkStageDirectionToken("[sighs]"), true);
+  });
+
+  test("detects brackets with trailing punctuation", () => {
+    assert.equal(isMovieTalkStageDirectionToken("[sighs],"), true);
+    assert.equal(isMovieTalkStageDirectionToken("[gasps]."), true);
+  });
+
+  test("does not detect plain spoken tokens", () => {
+    assert.equal(isMovieTalkStageDirectionToken("sighs"), false);
+    assert.equal(isMovieTalkStageDirectionToken("sighs,"), false);
+  });
+});
+
+describe("multi-token stage direction span", () => {
+  /** Mirrors the InteractiveStory renderer: bracket state per paragraph. */
+  function italicTokens(line: string): string[] {
+    const spoken = line.replace(
+      new RegExp(`${MOVIE_TALK_SPEAKER_RE.source}\\s*`),
+      ""
+    );
+    const tokens = spoken.split(/\s+/).filter(Boolean);
+    let inStageDir = false;
+    const italics: string[] = [];
+    for (const token of tokens) {
+      const stageDir =
+        inStageDir || opensMovieTalkStageDirection(token);
+      if (stageDir) {
+        inStageDir = !closesMovieTalkStageDirection(token);
+      }
+      if (stageDir) italics.push(token);
+    }
+    return italics;
+  }
+
+  test("fully-bracketed single-token direction stays italic", () => {
+    assert.deepEqual(
+      italicTokens("Lydia-Oh wow [sighs] dead people."),
+      ["[sighs]"]
+    );
+  });
+
+  test("multi-token direction italicizes the whole span", () => {
+    assert.deepEqual(
+      italicTokens(
+        "Beetlejuice-[Cut to Beetlejuice reading the newspaper] What do I have to do?"
+      ),
+      ["[Cut", "to", "Beetlejuice", "reading", "the", "newspaper]"]
+    );
+  });
+
+  test("tokens after the closing bracket go back to regular font", () => {
+    const line =
+      "Adam-[Holding up the newspaper] We're very serious.";
+    assert.deepEqual(italicTokens(line), ["[Holding", "up", "the", "newspaper]"]);
+  });
+
+  test("directions never span a line break: state resets per line", () => {
+    const line = "Barbara-[Reading] Nice house.";
+    assert.deepEqual(italicTokens(line), ["[Reading]"]);
+  });
+
+  test("spoken text with no brackets is never italic", () => {
+    assert.deepEqual(italicTokens("Beetlejuice-Hand over the book!"), []);
   });
 });
 

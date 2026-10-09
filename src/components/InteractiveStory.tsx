@@ -23,6 +23,8 @@ import NoteLightbox from "@/components/NoteLightbox";
 import {
   isMovieTalkSceneBreak,
   isMovieTalkStageDirection,
+  opensMovieTalkStageDirection,
+  closesMovieTalkStageDirection,
   MOVIE_TALK_SPEAKER_RE,
   speakerOfLine,
 } from "@/lib/movietalk";
@@ -850,6 +852,7 @@ export default function InteractiveStory({
                     last.tokens.push({ token, tokenIdx });
                   }
                 });
+                let inStageDir = false;
                 const spoken = groups.map((group) => {
                   const refLabel = showSentenceRefs
                     ? sentenceRefLabel(group.sentenceId)
@@ -888,6 +891,11 @@ export default function InteractiveStory({
                   (requestCounts.get(flagKey) ?? 0) > 0;
                 const trailing = tokenIdx < spokenTokens.length - 1;
                 const gap = trailing ? <span className="word-gap"> </span> : null;
+                const stageDir =
+                  inStageDir || opensMovieTalkStageDirection(token);
+                if (stageDir) {
+                  inStageDir = !closesMovieTalkStageDirection(token);
+                }
                 const flagClass = `${wordFlagClassName({
                   bold: isBold,
                   underline: isUnderline,
@@ -914,7 +922,11 @@ export default function InteractiveStory({
                       <span
                         data-word-text={token}
                         data-word-occurrence={String(occurrenceIndex)}
-                        className={flagClass}
+                        className={`${
+                          flagClass ? `${flagClass} ` : ""
+                        }${
+                          stageDir ? "italic" : ""
+                        }`.trim()}
                         onClick={
                           flagNote && !showTeacherFlags
                             ? (e) => {
@@ -974,6 +986,7 @@ export default function InteractiveStory({
                       occurrenceIndex={occurrenceIndex}
                       isBold={isBold}
                       isUnderline={isUnderline}
+                      stageDir={stageDir}
                       requestCount={requestCount}
                       ownRequested={ownRequested}
                       showTeacherFlags={showTeacherFlags}

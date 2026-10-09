@@ -42,6 +42,7 @@ type WordTooltipProps = {
   occurrenceIndex?: number;
   isBold?: boolean;
   isUnderline?: boolean;
+  stageDir?: boolean;
   requestCount?: number;
   ownRequested?: boolean;
   showTeacherFlags?: boolean;
@@ -75,6 +76,7 @@ function WordTooltip({
   occurrenceIndex = 0,
   isBold = false,
   isUnderline = false,
+  stageDir = false,
   requestCount = 0,
   ownRequested = false,
   showTeacherFlags = false,
@@ -196,7 +198,9 @@ function WordTooltip({
           ref={spanRef}
           className={`word-span ${isHighlighted ? "word-seen" : ""} ${
             isActive && !expression ? "word-active" : ""
-          } ${isExpressionActive ? "word-expr-active" : ""} ${hintClass || ""} ${flagClasses}`.trim()}
+          } ${isExpressionActive ? "word-expr-active" : ""} ${hintClass || ""} ${
+            stageDir ? "italic" : ""
+          } ${flagClasses}`.trim()}
           data-word-text={anchorText}
           data-word-occurrence={String(occurrenceIndex)}
           role="button"
