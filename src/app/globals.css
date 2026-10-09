@@ -164,10 +164,13 @@ select:not([multiple]) {
   display: grid;
   grid-template-columns: subgrid;
   grid-column: 1 / -1;
-  align-items: baseline;
+  align-items: center;
 }
 
 .script-speaker {
+  justify-self: start;
+  width: fit-content;
+  max-width: 100%;
   white-space: nowrap;
 }
 
@@ -480,7 +483,7 @@ select:not([multiple]) {
 .movie-talk-line {
   margin-left: -8px;
   margin-right: -8px;
-  padding: 0 8px;
+  padding: 2px 8px;
   border-radius: var(--radius-small);
 }
 
@@ -490,7 +493,7 @@ select:not([multiple]) {
 
 .movie-talk-speaker {
   display: inline-block;
-  padding: 0 6px;
+  padding: 1px 6px;
   border-radius: var(--radius-small);
   color: var(--text-accent);
 }

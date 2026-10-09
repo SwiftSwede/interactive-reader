@@ -821,9 +821,11 @@ export default function InteractiveStory({
               {scriptTurn && (
                 <span
                   className={`script-speaker font-heading text-label-md${
-                    kind === "movie_talk"
+                    speakerName && kind === "movie_talk"
                       ? ` movie-talk-speaker${highlighted ? " movie-talk-speaker-on" : ""}`
-                      : " text-text-accent"
+                      : speakerName
+                        ? " text-text-accent"
+                        : ""
                   }`}
                 >
                   {speakerName ? `${speakerName}${speakerJoin}` : null}
