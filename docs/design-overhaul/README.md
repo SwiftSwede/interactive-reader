@@ -9,6 +9,7 @@ A four-step design overhaul workflow, kickstarted by the Manus competitive repor
 3. Do `02-MOBBIN-GUIDE.md` — Mobbin pattern research mapped to audit findings. Capture patterns with sources, not vibes.
 4. Write `03-RECOMMENDATIONS.md` — one proposal per change, in waves, using the format inside. Kyle approves/rejects/defers each. **Nothing is implemented until its Status is ✅ Approved by Kyle.** (Done 2026-09-27: P01–P03, P05–P08 approved and built; P04 rejected.)
 5. `04-MISSION-CARD.md` — the design brief for the ADR 015 Phase 2 student surfaces (mission card + Drill Lab). Kyle approves the brief before that slice runs; it cites 02 captures, no new capture session.
+6. `mobbin-dashboard-refs/` — Shop + DoorDash web homes Kyle pinned 2026-10-09 for a later Inicio / Este mes pass. JPEGs live in-repo; Mobbin URLs on each row.
 
 **Rules:**
 - DESIGN.md remains the final authority on visual decisions; approved proposals update it.

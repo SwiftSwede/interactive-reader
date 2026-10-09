@@ -1765,16 +1765,84 @@ body.sticky-audio-active {
 /* ── Sticky character band (Movie Talk diálogo) ─────────── */
 
 .character-band {
+  position: relative;
+}
+
+.character-band-scroller {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.character-band-scroller::-webkit-scrollbar {
+  display: none;
 }
 
 .character-band-row {
   display: flex;
-  justify-content: safe center;
+  justify-content: center;
   gap: 8px;
-  width: 100%;
-  min-width: min-content;
+  width: max-content;
+  min-width: 100%;
+}
+
+.character-band-overflow .character-band-row {
+  justify-content: flex-start;
+}
+
+.character-band-fade-end {
+  mask-image: linear-gradient(
+    to right,
+    #000 0,
+    #000 calc(100% - 40px),
+    transparent 100%
+  );
+}
+
+.character-band-fade-start {
+  mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 100%);
+}
+
+.character-band-fade-both {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 40px,
+    #000 calc(100% - 40px),
+    transparent 100%
+  );
+}
+
+.character-band-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  display: flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--paper-line);
+  border-radius: 9999px;
+  background: var(--surface);
+  color: var(--text-accent);
+  transform: translateY(-50%);
+}
+
+.character-band-arrow:hover {
+  background: var(--accent-soft);
+}
+
+.character-band-arrow:active {
+  background: var(--surface-hover);
+}
+
+.character-band-arrow-start {
+  left: 0;
+}
+
+.character-band-arrow-end {
+  right: 0;
 }
 
 body.sticky-character-band-active {

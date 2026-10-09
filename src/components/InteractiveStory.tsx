@@ -763,7 +763,7 @@ export default function InteractiveStory({
               ? paragraph.match(/^([A-Za-zÁÉÍÓÚáéíóúñÑ.' -]+):/)?.[1]
               : null;
           const speakerName = movieTalkName ?? dialogueName;
-          const speakerJoin = movieTalkName ? "-" : dialogueName ? ":" : "";
+          const speakerJoin = movieTalkName ? "" : dialogueName ? ":" : "";
           const continuation =
             scriptLayout && !speakerName && lastSpeaker != null;
           const scriptTurn = Boolean(speakerName) || continuation;

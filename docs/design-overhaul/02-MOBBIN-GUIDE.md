@@ -25,6 +25,7 @@
 - **Any app**: bottom-sheet word/detail patterns (Airbnb, Apple Maps detail sheets) — drag handle, dismiss, layered info.
 - **Duolingo (for negative reference only)**: capture their Practice Hub clarity of "continue" WITHOUT the streak/XP chrome — note what to keep (clear single next action) and what to strip (currency, flame, leagues). Explicitly labeled: pattern skeleton yes, engagement mechanics no.
 - **Notion/linear-style apps**: quiet teacher dashboard patterns if desktop dashboard patterns needed later — deprioritize for now.
+- **Shop + DoorDash web homes (Kyle, 2026-10-09):** pinned in [`mobbin-dashboard-refs/`](mobbin-dashboard-refs/README.md) for a later student/teacher dashboard pass. Chip overflow chevrons and finite labeled shelves. Not a catalog to copy.
 
 ## Capture rules
 
