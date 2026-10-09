@@ -164,7 +164,7 @@ select:not([multiple]) {
   display: grid;
   grid-template-columns: subgrid;
   grid-column: 1 / -1;
-  align-items: center;
+  align-items: start;
 }
 
 .script-speaker {
@@ -172,6 +172,10 @@ select:not([multiple]) {
   width: fit-content;
   max-width: 100%;
   white-space: nowrap;
+}
+
+.script-line > .script-speaker {
+  line-height: 28px;
 }
 
 .script-spoken {
@@ -493,7 +497,7 @@ select:not([multiple]) {
 
 .movie-talk-speaker {
   display: inline-block;
-  padding: 1px 6px;
+  padding: 0 6px;
   border-radius: var(--radius-small);
   color: var(--text-accent);
 }
