@@ -23,7 +23,7 @@ import { movieTalkSpokenText } from "../src/lib/movietalk";
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const SUPABASE_KEY = process.env.SUPABASE_SECRET_KEY!;
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY!;
-const MODEL = "anthropic/claude-sonnet-4.5";
+const MODEL = process.env.ANNOTATE_MODEL || "anthropic/claude-sonnet-4.5";
 
 if (!SUPABASE_URL || !SUPABASE_KEY) {
   console.error("Missing Supabase env vars. Check .env.local");
@@ -278,7 +278,8 @@ async function annotateWithLLM(storyText: string): Promise<LLMResponse> {
 
 async function insertAnnotation(
   storyId: string,
-  annotation: LLMResponse
+  annotation: LLMResponse,
+  wordSlots: number[]
 ) {
   // First, insert expressions
   const expressionIdMap = new Map<string, string>(); // expr_1 → uuid
@@ -311,10 +312,14 @@ async function insertAnnotation(
   for (let i = 0; i < annotation.words.length; i++) {
     const w = annotation.words[i];
     const exprUuid = w.expression_id ? expressionIdMap.get(w.expression_id) || null : null;
+    // wordSlots[i] = the token's index in the app's full token stream. Tokens
+    // that are pure punctuation get no annotation row, so positions stay
+    // aligned with the reader's token stream.
+    const position = wordSlots[i] ?? i;
 
     const { data, error } = await supabase.from("words").insert({
       story_id: storyId,
-      position: i,
+      position,
       text: w.text,
       lemma: w.lemma || "",
       spanish_translation: w.spanish_translation || "",
@@ -326,7 +331,7 @@ async function insertAnnotation(
     }).select().single();
 
     if (error) {
-      console.error(`Error inserting word "${w.text}" at position ${i}:`, error);
+      console.error(`Error inserting word "${w.text}" at position ${position}:`, error);
       continue;
     }
 
@@ -411,37 +416,65 @@ async function main() {
   // Run the LLM annotation
   const annotation = await annotateWithLLM(textForLlm);
 
-  // Alignment guard: the annotation stream must start with the transcript's
-  // own first word and cover roughly the same number of tokens. A mismatch
-  // means the LLM annotated extra text (title/synopsis leak) or dropped text,
-  // which offsets every word position and silently kills tap-to-reveal.
-  // ABORT before inserting, before any money is spent on wrong data.
-  const expectedTokens = textForLlm.split(/\s+/).filter(Boolean);
-  const gotWords = annotation.words.map((w) => w.text);
-  const norm = (s: string) => s.replace(/[’‘]/g, "'").toLowerCase();
-  if (
-    gotWords.length === 0 ||
-    norm(gotWords[0]) !== norm(expectedTokens[0] ?? "")
-  ) {
-    console.error(
-      `ALIGNMENT MISMATCH: expected first token "${expectedTokens[0]}" but ` +
-        `annotation starts with "${gotWords[0]}". Not inserting anything. ` +
-        `Check the seeded body_text before spending another annotation run.`
-    );
-    process.exit(1);
+  // Cheap models sometimes emit punctuation as SEPARATE tokens ("Well", ",", "I").
+  // The reader tokenizes with punctuation attached ("Well,"), so any split
+  // punctuation shifts every later position and silently misaligns tooltips.
+  // Merge punctuation-only tokens into the previous word before the guard.
+  const merged: LLMWord[] = [];
+  for (const w of annotation.words) {
+    const hasContent = /[\p{L}\p{N}]/u.test(w.text);
+    if (hasContent || merged.length === 0) {
+      merged.push({ ...w });
+    } else {
+      merged[merged.length - 1].text += w.text;
+    }
   }
-  const ratio = annotation.words.length / Math.max(expectedTokens.length, 1);
-  if (ratio < 0.9 || ratio > 1.1) {
+  if (merged.length !== annotation.words.length) {
+    console.log(
+      `Merged ${annotation.words.length - merged.length} punctuation-only token(s) into neighboring words.`
+    );
+  }
+  annotation.words = merged;
+
+  // Strict alignment guard: the annotation stream (word-bearing tokens only,
+  // after punctuation merge) must match the transcript's word-bearing tokens
+  // 1:1. Punctuation-only tokens in the transcript (a lone quote, an em dash)
+  // get no annotation row, but the app's position numbering still counts them,
+  // so rows are inserted at wordSlots indices. Any other mismatch means the
+  // LLM split/dropped/merged real words, which offsets every word position and
+  // silently kills tap-to-reveal. ABORT before inserting anything.
+  const expectedTokens = textForLlm.split(/\s+/).filter(Boolean);
+  const wordSlots: number[] = [];
+  expectedTokens.forEach((t, idx) => {
+    if (/[\p{L}\p{N}]/u.test(t)) wordSlots.push(idx);
+  });
+  const expectedWords = wordSlots.map((i) => expectedTokens[i]);
+  const gotWords = annotation.words.map((w) => w.text);
+  const norm = (s: string) =>
+    s.replace(/[’‘]/g, "'").replace(/[^\p{L}\p{N}']/gu, "").toLowerCase();
+  const diffs: string[] = [];
+  const maxLen = Math.max(gotWords.length, expectedWords.length);
+  for (let i = 0; i < maxLen; i++) {
+    const got = gotWords[i] ?? "<missing>";
+    const want = expectedWords[i] ?? "<missing>";
+    if (norm(got) !== norm(want)) {
+      diffs.push(
+        `  pos ${wordSlots[i] ?? i}: expected "${want}" got "${got}"`
+      );
+      if (diffs.length >= 10) break;
+    }
+  }
+  if (diffs.length > 0 || gotWords.length !== expectedWords.length) {
     console.error(
-      `ALIGNMENT MISMATCH: transcript has ${expectedTokens.length} tokens but ` +
-        `annotation has ${annotation.words.length} words (ratio ${ratio.toFixed(2)}). ` +
-        `Not inserting anything.`
+      `ALIGNMENT MISMATCH: transcript has ${expectedWords.length} word tokens ` +
+        `(of ${expectedTokens.length} total) but annotation has ${gotWords.length} words. ` +
+        `Not inserting anything. First differences:\n${diffs.join("\n")}`
     );
     process.exit(1);
   }
   console.log(
-    `Alignment check passed: first word "${gotWords[0]}", ` +
-      `${annotation.words.length} words vs ${expectedTokens.length} tokens.`
+    `Alignment check passed: ${gotWords.length} words match the transcript 1:1 ` +
+      `(${expectedTokens.length - expectedWords.length} punctuation-only token(s) skipped).`
   );
 
   console.log("");
@@ -462,7 +495,7 @@ async function main() {
 
   // Insert into database
   console.log("\nInserting into database...");
-  const count = await insertAnnotation(story.id, annotation);
+  const count = await insertAnnotation(story.id, annotation, wordSlots);
 
   console.log("");
   console.log(`Done! ${count} words and ${annotation.expressions?.length || 0} expressions inserted for "${story.title}".`);
