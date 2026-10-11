@@ -147,6 +147,18 @@ export default function InteractiveStory({
     return map;
   }, [expressions]);
 
+  // Words can carry position gaps (the annotator leaves slots for
+  // punctuation-only tokens like a lone quote with no row). Look words up by
+  // their stored position value, never by array index: for older datasets
+  // positions are contiguous so both are identical, but for gap datasets an
+  // array-index lookup shifts every token after the gap and kills all
+  // tooltips downstream of it.
+  const wordsByPosition = useMemo(() => {
+    const map = new Map<number, WordData>();
+    for (const word of words) map.set(word.position, word);
+    return map;
+  }, [words]);
+
   // Build expression group map: expression_id -> Set of word positions
   const expressionPositions = useMemo(() => {
     const map = new Map<string, Set<number>>();
@@ -877,7 +889,7 @@ export default function InteractiveStory({
                   occurrenceCounts,
                   token
                 );
-                const word = words[currentPos];
+                const word = wordsByPosition.get(currentPos);
                 const flagKey = flagAnchorKey(token, occurrenceIndex);
                 const types = flagTypeMap.get(flagKey) ?? [];
                 const isBold = types.includes("bold");
@@ -954,10 +966,10 @@ export default function InteractiveStory({
                   word.expression_id === activeExpressionId;
                 const bridgeSpace =
                   expressionGroupOn &&
-                  words[currentPos + 1]?.expression_id === word.expression_id;
+                  wordsByPosition.get(currentPos + 1)?.expression_id === word.expression_id;
                 const runStart =
                   expressionGroupOn &&
-                  words[currentPos - 1]?.expression_id !== word.expression_id;
+                  wordsByPosition.get(currentPos - 1)?.expression_id !== word.expression_id;
                 const runClass = expressionGroupOn
                   ? `word-expr-run${runStart ? " word-expr-run-start" : ""}${
                       bridgeSpace ? "" : " word-expr-run-end"
