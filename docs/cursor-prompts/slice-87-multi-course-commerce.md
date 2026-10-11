@@ -3,6 +3,15 @@
 > If the PRD slice number is taken, use the next free number and note it in the header.
 > Decision record: `docs/adr/016-multi-course-commerce-self-paced.md` (read it first — this slice implements its Decision section).
 
+## Plan review decisions (2026-10-10)
+
+- Each library grants only its own level. Intermediate does not include pre-intermediate. Pronunciation includes pronunciation only. This replaces the cumulative-downward sentence in the ADR.
+- Linear unlock is beginner courses only. Pre-intermediate and intermediate lessons stay open in any order.
+- Unlock is per course. Finishing beginner course 1 does not gate course 2.
+- Continuar stays on the Inicio card until every lesson in that course is completed. "Completaste el curso." is only for that case.
+- Enrollment rows are created when Inicio loads, not inside the purchase insert.
+- Continuar links to `/lesson/{slug}`.
+
 ## Goal
 
 The app currently assumes every course is a monthly Zoom group. This slice makes the data model support self-paced courses and one-time-purchase products, wires access checks, adds teacher admin for creating a self-paced course and ordering its lessons, and gives Inicio the data it needs to show multiple courses with a continue pointer. NO Stripe Checkout yet, NO beginner step engine, NO Inicio visual redesign.

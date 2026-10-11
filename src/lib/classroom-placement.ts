@@ -81,6 +81,7 @@ export async function enrollStudentInUnarchivedLevel(params: {
     .from("courses")
     .select("id")
     .eq("level", params.level)
+    .eq("format", "group")
     .eq("archived", false);
 
   if (error) {
@@ -109,6 +110,7 @@ export async function unenrollStudentFromUnarchivedLevel(params: {
     .from("courses")
     .select("id")
     .eq("level", params.level)
+    .eq("format", "group")
     .eq("archived", false);
 
   if (error || !courses?.length) return;
@@ -179,6 +181,7 @@ export async function moveStudentToClassroomLevel(params: {
     .from("courses")
     .select("id", { count: "exact", head: true })
     .eq("level", params.toLevel)
+    .eq("format", "group")
     .eq("archived", false);
 
   return { enrolledInLiveCourse: (count ?? 0) > 0 };
@@ -275,7 +278,7 @@ async function dropFutureLiveEnrollments(studentId: string): Promise<boolean> {
   const admin = createAdminClient();
   const { data: enrollmentRows, error: enrollLoadError } = await admin
     .from("course_enrollments")
-    .select("course_id, courses ( archived )")
+    .select("course_id, courses ( archived, format )")
     .eq("student_id", studentId);
 
   if (enrollLoadError) {
@@ -283,16 +286,19 @@ async function dropFutureLiveEnrollments(studentId: string): Promise<boolean> {
     return false;
   }
 
-  type CourseJoin = { archived: boolean };
+  type CourseJoin = { archived: boolean; format?: string | null };
   const enrollments: EnrollmentCourseRow[] = (
     enrollmentRows ?? []
-  ).map((row) => {
+  ).flatMap((row) => {
     const course = row.courses as CourseJoin | CourseJoin[] | null;
     const joined = Array.isArray(course) ? course[0] : course;
-    return {
-      courseId: row.course_id as string,
-      archived: Boolean(joined?.archived),
-    };
+    if (joined?.format === "self_paced") return [];
+    return [
+      {
+        courseId: row.course_id as string,
+        archived: Boolean(joined?.archived),
+      },
+    ];
   });
 
   const liveIds = enrollments

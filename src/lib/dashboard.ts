@@ -8,6 +8,13 @@ import {
 } from "@/lib/activities";
 import { loadStudentProgress } from "@/lib/progress";
 import {
+  ensureSelfPacedEnrollments,
+  getOwnedGrants,
+  loadSelfPacedCards,
+  studentCanAccessSelfPacedCourse,
+  type SelfPacedCourseCard,
+} from "@/lib/library-access";
+import {
   getSessionLifecycle,
   type SessionLifecycle,
 } from "@/lib/session-phase";
@@ -43,6 +50,7 @@ export type DashboardData = {
   todaySession: DashboardLesson | null;
   zoomUrl: string | null;
   resume: { title: string; href: string } | null;
+  selfPacedCourses: SelfPacedCourseCard[];
   practice: {
     dictationAttempts: number;
     wordsLookedUp: number;
@@ -415,6 +423,7 @@ export async function loadDashboard(
     todaySession: null,
     zoomUrl: null,
     resume: null,
+    selfPacedCourses: [],
     practice: {
       dictationAttempts: 0,
       wordsLookedUp: 0,
@@ -423,27 +432,51 @@ export async function loadDashboard(
   };
 
   try {
+    if (!options?.previewAsLevel) {
+      try {
+        await ensureSelfPacedEnrollments(userId);
+      } catch (error) {
+        console.error(
+          "ensureSelfPacedEnrollments:",
+          error instanceof Error ? error.message : error
+        );
+      }
+    }
+
     const enrollmentPromise = options?.previewAsLevel
       ? Promise.resolve({ data: [] as never[], error: null })
       : supabase
           .from("course_enrollments")
           .select(
-            "course_id, display_name, enrolled_at, courses ( id, name, level, archived, zoom_url, theme )"
+            "course_id, display_name, enrolled_at, courses ( id, name, level, archived, zoom_url, theme, format, is_published )"
           )
           .eq("student_id", userId);
 
     const previewCoursesPromise = options?.previewAsLevel
       ? supabase
           .from("courses")
-          .select("id, name, level, archived, zoom_url, theme, created_at")
+          .select("id, name, level, archived, zoom_url, theme, created_at, format")
           .eq("teacher_id", userId)
           .eq("level", options.previewAsLevel)
+          .eq("format", "group")
+          .eq("archived", false)
+      : Promise.resolve({ data: [] as never[], error: null });
+
+    const previewSelfPacedPromise = options?.previewAsLevel
+      ? supabase
+          .from("courses")
+          .select("id, name, level")
+          .eq("teacher_id", userId)
+          .eq("format", "self_paced")
+          .eq("level", options.previewAsLevel)
+          .eq("is_published", true)
           .eq("archived", false)
       : Promise.resolve({ data: [] as never[], error: null });
 
     const [
       enrollmentResult,
       previewCoursesResult,
+      previewSelfPacedResult,
       progress,
       writingRows,
       progressRows,
@@ -453,6 +486,7 @@ export async function loadDashboard(
     ] = await Promise.all([
       enrollmentPromise,
       previewCoursesPromise,
+      previewSelfPacedPromise,
       loadStudentProgress(supabase, userId, classroomLevel),
       safeSelect<{ writing_prompt_id: string }>("writing_submissions", () =>
         supabase
@@ -508,6 +542,8 @@ export async function loadDashboard(
       archived: boolean;
       zoom_url?: string | null;
       theme?: string | null;
+      format?: string | null;
+      is_published?: boolean | null;
     };
     type EnrollmentRow = {
       course_id: string;
@@ -542,7 +578,11 @@ export async function loadDashboard(
           })
           .filter((row): row is NonNullable<typeof row> => row != null);
 
-    const courseIds = enrollments.map((row) => row.courseId);
+    const groupEnrollments = enrollments.filter(
+      (row) => row.course.format !== "self_paced"
+    );
+
+    const courseIds = groupEnrollments.map((row) => row.courseId);
     const sessionRows = await loadSessionRows(supabase, courseIds);
 
     const examSessionIds = sessionRows
@@ -643,7 +683,7 @@ export async function loadDashboard(
       lessonsByCourse.set(row.course_id, list);
     }
 
-    const ranked = enrollments.map((enrollment) => {
+    const ranked = groupEnrollments.map((enrollment) => {
       const lessons = lessonsByCourse.get(enrollment.courseId) ?? [];
       const latestStart = lessons.reduce((max, lesson) => {
         const t = new Date(lesson.sessionStartTime).getTime();
@@ -675,6 +715,45 @@ export async function loadDashboard(
     const lessons = [...(active?.lessons ?? [])].sort(bySessionStartAsc);
     const completedCount = lessons.filter((lesson) => lesson.completed).length;
 
+    let selfPacedCourses: SelfPacedCourseCard[] = [];
+    try {
+      if (options?.previewAsLevel) {
+        if (previewSelfPacedResult.error) {
+          console.error(
+            "loadDashboard preview self-paced:",
+            previewSelfPacedResult.error.message
+          );
+        }
+        const previewCourses = (previewSelfPacedResult.data ?? []) as Array<{
+          id: string;
+          name: string;
+        }>;
+        selfPacedCourses = await loadSelfPacedCards(userId, previewCourses);
+      } else {
+        const grants = await getOwnedGrants(userId);
+        const owned = enrollments.filter(
+          (row) =>
+            row.course.format === "self_paced" &&
+            row.course.is_published !== false &&
+            row.course.archived !== true &&
+            studentCanAccessSelfPacedCourse(grants, {
+              id: row.course.id,
+              format: "self_paced",
+              level: row.course.level,
+            })
+        );
+        selfPacedCourses = await loadSelfPacedCards(
+          userId,
+          owned.map((row) => ({ id: row.course.id, name: row.course.name }))
+        );
+      }
+    } catch (error) {
+      console.error(
+        "loadDashboard self-paced cards:",
+        error instanceof Error ? error.message : error
+      );
+    }
+
     return {
       displayName:
         active?.enrollment.displayName ?? displayNameFallback,
@@ -686,6 +765,7 @@ export async function loadDashboard(
       todaySession: pickTodaySession(lessons),
       zoomUrl: active?.enrollment.course.zoom_url ?? null,
       resume: pickResumeLesson(lessons, older, inProgressStories),
+      selfPacedCourses,
       practice: {
         dictationAttempts: progress.dictationTrend.length,
         wordsLookedUp: progress.wordsLookedUp,

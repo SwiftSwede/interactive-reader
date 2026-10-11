@@ -18,6 +18,7 @@ export type CourseRosterResult = {
 };
 
 export function courseLevelLabel(level: CourseLevel): string {
+  if (level === "beginner") return "Principiante";
   return level === "pre-intermediate" ? "Pre-intermedio" : "Intermedio";
 }
 
@@ -95,6 +96,7 @@ export async function loadTeacherCourses(
     .from("courses")
     .select("id, name, level, created_at, archived, zoom_url, theme")
     .eq("teacher_id", teacherId)
+    .eq("format", "group")
     .order("created_at", { ascending: false });
 
   if (error || !data) {
@@ -126,7 +128,7 @@ export async function mapStudentsToCurrentGroup(
   const { data, error } = await supabase
     .from("course_enrollments")
     .select(
-      "student_id, course_id, enrolled_at, courses ( id, name, archived )"
+      "student_id, course_id, enrolled_at, courses ( id, name, archived, format )"
     )
     .in("student_id", uniqueIds);
 
@@ -135,7 +137,12 @@ export async function mapStudentsToCurrentGroup(
     return result;
   }
 
-  type CourseJoin = { id: string; name: string; archived: boolean };
+  type CourseJoin = {
+    id: string;
+    name: string;
+    archived: boolean;
+    format?: string | null;
+  };
   type EnrollmentRow = {
     student_id: string;
     course_id: string;
@@ -155,7 +162,7 @@ export async function mapStudentsToCurrentGroup(
 
   for (const row of data as EnrollmentRow[]) {
     const course = Array.isArray(row.courses) ? row.courses[0] : row.courses;
-    if (!course) continue;
+    if (!course || course.format === "self_paced") continue;
     const list = byStudent.get(row.student_id) ?? [];
     list.push({
       courseId: row.course_id,

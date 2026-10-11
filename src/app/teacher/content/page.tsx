@@ -17,7 +17,7 @@ export default async function TeacherContentPage() {
       <h1 className="text-headline-lg text-text-primary">Contenido</h1>
       <p className="mt-2 text-body-main text-text-secondary">
         Aquí arreglas typos, preguntas y clips, y creas escrituras, exámenes,
-        presentaciones y conversaciones.
+        presentaciones, conversaciones y cursos autoguiados.
       </p>
       <div className="mt-8">
         <ContentIndex

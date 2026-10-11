@@ -68,6 +68,8 @@ const CREATE_LINKS = [
   { href: "/teacher/content/exam/new", label: "Nuevo examen" },
   { href: "/teacher/content/presentation/new", label: "Nueva presentación" },
   { href: "/teacher/content/conversation/new", label: "Nueva conversación" },
+  { href: "/teacher/content/courses", label: "Cursos autoguiados" },
+  { href: "/teacher/products", label: "Productos" },
 ] as const;
 
 export default function ContentIndex({

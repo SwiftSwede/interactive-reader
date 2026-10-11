@@ -12,6 +12,7 @@ import { toDrillLevel } from "@/lib/drills";
 import { loadStudentPractice } from "@/lib/student-drills";
 import MissionCard from "@/components/dashboard/MissionCard";
 import ReviewCard from "@/components/dashboard/ReviewCard";
+import SelfPacedCourseCard from "@/components/dashboard/SelfPacedCourseCard";
 import WelcomeGate from "@/components/WelcomeGate";
 
 export const metadata = {
@@ -129,6 +130,16 @@ export default async function DashboardPage() {
 
         {practice && practice.reviewCount > 0 ? <ReviewCard /> : null}
 
+        {data.selfPacedCourses.map((course) => (
+          <SelfPacedCourseCard
+            key={course.courseId}
+            name={course.name}
+            completed={course.completed}
+            total={course.total}
+            nextHref={course.nextHref}
+          />
+        ))}
+
         {hasCourse ? (
           <Link
             href="/progress"
@@ -157,7 +168,7 @@ export default async function DashboardPage() {
           </Link>
         ) : null}
 
-        {!hasCourse ? (
+        {!hasCourse && data.selfPacedCourses.length === 0 ? (
           <div className="mt-16 flex flex-col items-center px-4 text-center">
             <BookOpen
               className="h-12 w-12 text-text-muted"

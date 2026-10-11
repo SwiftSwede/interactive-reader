@@ -107,6 +107,7 @@ export async function generateMonth(
     .select("id, created_at, archived, zoom_url")
     .eq("teacher_id", input.teacherId)
     .eq("level", input.level)
+    .eq("format", "group")
     .order("created_at", { ascending: false });
 
   if (priorError) {

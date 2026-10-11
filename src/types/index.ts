@@ -181,7 +181,14 @@ export interface ChoralPracticeCompletion {
 
 export type UserRole = "student-classroom" | "student-consumer" | "teacher";
 export type SubscriptionStatus = "active" | "cancelled" | "paused" | "none";
-export type CourseLevel = "pre-intermediate" | "intermediate";
+export type CourseLevel = "beginner" | "pre-intermediate" | "intermediate";
+export type CourseFormat = "group" | "self_paced";
+export type LibraryLevel =
+  | "beginner"
+  | "pre-intermediate"
+  | "intermediate"
+  | "pronunciation";
+export type ProductKind = "library" | "course" | "bundle";
 export type SessionType =
   | "story"
   | "writing"

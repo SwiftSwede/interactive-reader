@@ -211,6 +211,12 @@ export default function WritingSession({
       if (!startedAt && !hasWritingText(textRef.current)) return;
       if (autoSubmitted.current && fromTimer) return;
       if (fromTimer) autoSubmitted.current = true;
+      if (prompt.level !== "pre-intermediate" && prompt.level !== "intermediate") {
+        setSaving(false);
+        setError("Algo salió mal. Intenta de nuevo.");
+        autoSubmitted.current = false;
+        return;
+      }
       setSaving(true);
       setError("");
       const result = await submitWriting({

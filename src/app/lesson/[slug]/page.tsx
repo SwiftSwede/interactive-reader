@@ -24,6 +24,7 @@ import {
 } from "@/lib/word-flags";
 import { loadOwnSongLyricAttempts } from "@/lib/services/songAttempts";
 import { loadActiveLookupWordIds } from "@/lib/word-lookups";
+import { loadSelfPacedLessonGate } from "@/lib/library-access";
 import type { WordFlagging } from "@/types";
 
 export async function generateMetadata({
@@ -143,6 +144,39 @@ export default async function LessonSlugPage({
   const profile = user ? await getProfile(user.id) : null;
   const previewLevel = await readTeacherStudentPreview(profile?.role);
   const isTeacher = isTeacherView(profile?.role, previewLevel);
+
+  if (access.kind !== "ok" && user && profile?.role !== "teacher") {
+    let gate: "skip" | "allow" | "denied" | "locked" = "skip";
+    try {
+      gate = await loadSelfPacedLessonGate({
+        userId: user.id,
+        storyId: data.story.id,
+        isTeacher: false,
+        sessionOk: false,
+      });
+    } catch (error) {
+      console.error(
+        "self-paced lesson gate:",
+        error instanceof Error ? error.message : error
+      );
+    }
+    if (gate === "denied") {
+      return (
+        <StoryAccessMessage
+          title="Esta lección es de un curso"
+          body="Esta lección es de un curso que todavía no tienes."
+        />
+      );
+    }
+    if (gate === "locked") {
+      return (
+        <StoryAccessMessage
+          title="Completa la lección anterior"
+          body="Termina la lección de antes y esta se abre."
+        />
+      );
+    }
+  }
   const previewActive = previewLevel != null;
   const trackLookups = profile != null && profile.role !== "teacher";
   const saveResponses = !user

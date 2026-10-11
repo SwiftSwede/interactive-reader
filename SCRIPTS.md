@@ -358,6 +358,16 @@ Sets `profiles.classroom_level` from the live Stripe price when the field is emp
 npx tsx scripts/seed-classroom-level.ts
 ```
 
+### Seed library products (slice 87)
+
+Inserts the four unpublished $47 libraries (principiante, pre-intermedio, intermedio, pronunciación) if those names are missing. Does not create courses and does not overwrite a product Kyle already edited.
+
+```bash
+npx tsx scripts/seed-products.ts
+```
+
+**Cost / time / status:** Safe to re-run. Requires `supabase/migrations/20261010_slice87_multi_course_commerce.sql`.
+
 ### Restore alumni enrollments after Quitar
 
 Puts cancelled or paused classroom students back on courses they attended. Use this when an old Quitar wiped every enrollment (PayPal / invited students). Does not set them active and does not add them to a new month.

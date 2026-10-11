@@ -320,13 +320,17 @@ export async function getOwnedCourse(courseId: string): Promise<{
   const supabase = await createClient();
   const { data } = await supabase
     .from("courses")
-    .select("id, name, level, teacher_id, archived, zoom_url, theme")
+    .select("id, name, level, teacher_id, archived, zoom_url, theme, format")
     .eq("id", courseId)
     .eq("teacher_id", teacher.id)
     .maybeSingle();
 
   if (!data) {
     redirect("/teacher");
+  }
+
+  if ((data as { format?: string | null }).format === "self_paced") {
+    redirect(`/teacher/content/courses/${courseId}`);
   }
 
   const course = data as OwnedCourse;
