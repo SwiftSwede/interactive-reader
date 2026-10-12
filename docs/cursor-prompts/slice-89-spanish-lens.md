@@ -24,13 +24,13 @@
 
 ### 2. Info icon + info card on each sound card (`SoundChart.tsx`)
 
-- Next to the existing video icon (top-right of each card), add an **Info** icon (lucide `Info`) with aria-label `Explicación de {cell.name}`. Same 44px hit target pattern, `text-text-muted hover:text-text-accent`.
+- **Top-LEFT corner of each card.** The video icon stays top-RIGHT. Opposite corners is the deliberate layout rule (Kyle's call): students can't fat-finger the wrong control when the two hit zones never share an edge, and a thumb landing between them falls through to the card's main play action. Add the **Info** icon (lucide `Info`) with aria-label `Explicación de {cell.name}`. Same 44px hit target pattern, `text-text-muted hover:text-text-accent`.
 - Tap opens the existing bottom-sheet pattern (the one the app already uses for Ver el texto / Cómo): surface card, drag handle, close only in toolbar. Content, all Spanish with accents, NO em dashes:
   - Small relation line at top, color-coded by `relation` (see §3 palette): "Existe igual en español" / "Casi igual, con un truco" / "Solo existe en inglés".
   - The `noteEs` paragraph as body text.
   - If `mnemonicEs` exists: render it as a distinct one-liner (accent-soft background, label-md) labeled "Truco:".
   - One link at the bottom: `Escuchar y practicar` → `/sounds/{slug}` (the full sound page already has the video + coach blocks + examples).
-- Both icons must not overlap on 375px: video icon stays top-right, Info icon sits directly LEFT of it (two 44px zones inside a 1/3-width card is tight; if that fails on 375px, move Info to bottom-right of the card instead, above the keyword line, and verify visually).
+- Opposite-corner placement is required, not a fallback: Info top-left, video top-right, symmetric 44px zones. On 375px a 1/3-width card is tight; if the two corner zones would collide at that width, shrink BOTH to 40px hit targets on 375px rather than moving a corner or making the zones asymmetric (verify visually at 375px).
 
 ### 3. Spanish toggle (one control for the whole chart)
 
