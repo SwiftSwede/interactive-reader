@@ -48,10 +48,11 @@ EXPECTED = {
     "but": ["pero", "sino", "más que", "solo"],
     "not": ["no", "ni"],
     "it": ["eso", "lo", "él", "el", "eso/lo", "que", "no", "esto", "lo ", "así", "era", "eran"],
-    "what": ["qué", "que", "qué/que", "lo que"],
+    "what": ["qué", "que", "qué/que", "lo que", "de qué", "cuáles", "cual", "qué "],
     "how": ["cómo", "como", "cuánto", "cuanto", "qué tan"],
     "why": ["por qué", "porque"],
     "who": ["quién", "quien", "que", "podían", "a quién"],
+    "are": ["son", "están", "estan", "sean", "estás", "eres", "sois", "estaría", "van a"],
 }
 
 
@@ -78,6 +79,8 @@ def clean(t):
     if not t:
         return ""
     t = t.strip().lower().strip('".¡¿?!¿').strip()
+    # strip leading non-letter junk (bracket tokens like "[A", speaker tokens like "1-The")
+    t = t.lstrip("[0123456789- ")
     # keep only the first alternative listed
     return t.split("(")[0].split("/")[0].strip()
 

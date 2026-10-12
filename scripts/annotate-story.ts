@@ -106,6 +106,8 @@ RULES:
 1. Translate to NEUTRAL LATIN AMERICAN Spanish. Not European Spanish. Use "carro" not "coche", "computadora" not "ordenador", "ustedes" not "vosotros".
 2. Use standard IPA for American English pronunciation. ${KYLE_IPA_ALPHA_RULE}
 3. Include EVERY word in the story, including articles, prepositions, pronouns, etc.
+3a. Include bracketed stage directions like "[Walks up to the door]" — annotate the words inside the brackets exactly as they appear, keeping the opening/closing brackets attached to their adjacent words ("[Walks", "door]"). Do NOT skip them.
+3b. In dialogue lines like "Jane-Are you ready", the token "Jane-Are" is ONE word (speaker name hyphen-joined to the first word). Never split it at the hyphen.
 4. Preserve punctuation attached to words (e.g. "jersey." not "jersey" and ".")
 5. For proper nouns (Cristiano Ronaldo, Real Madrid, Barcelona, Adidas, Messi), set spanish_translation to the name itself and is_transparent to true.
 6. For contractions (don't, can't, I'll), treat them as single words.
