@@ -184,6 +184,60 @@ export function conversationPlanLabels(
   ];
 }
 
+const LIST_MARK_PREFIX =
+  /^(?:[\u2022\u2023\u2043\u2219\u25E6\u25AA\u25AB\u25CF\u25CB\u00B7\u2027\u30FB\uFF0D*\-+\u2013\u2014]\s*|(?:\d+|[A-Za-z])[.)]\s+)/;
+
+function decodeHtmlEntities(value: string): string {
+  return value
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/gi, "'");
+}
+
+function stripHtmlToText(value: string): string {
+  return decodeHtmlEntities(
+    value
+      .replace(/<br\s*\/?>/gi, "\n")
+      .replace(/<\/p>/gi, "\n")
+      .replace(/<[^>]+>/g, " ")
+  )
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+export function parsePastedQuestionList(raw: string): string[] {
+  const text = raw.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+  const questions: string[] = [];
+  for (const line of text.split("\n")) {
+    let cleaned = line.replace(/^\s+/, "").replace(/\s+$/, "");
+    cleaned = cleaned.replace(/^\t+/, "");
+    cleaned = cleaned.replace(LIST_MARK_PREFIX, "").trim();
+    if (!cleaned) continue;
+    questions.push(cleaned);
+  }
+  return questions;
+}
+
+export function parsePastedQuestionHtml(html: string): string[] {
+  const items = [...html.matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/gi)];
+  if (items.length === 0) return [];
+  return parsePastedQuestionList(
+    items.map((match) => stripHtmlToText(match[1])).join("\n")
+  );
+}
+
+export function questionsFromClipboard(input: {
+  html?: string;
+  text?: string;
+}): string[] {
+  const fromText = parsePastedQuestionList(input.text ?? "");
+  const fromHtml = input.html ? parsePastedQuestionHtml(input.html) : [];
+  return fromHtml.length > fromText.length ? fromHtml : fromText;
+}
+
 export function numberedQuestionList(questions: string[]): string {
   return questions
     .map((question, index) => `${index + 1}. ${question.trim()}`)

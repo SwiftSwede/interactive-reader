@@ -8,7 +8,11 @@ import {
   defaultExamTask2Type,
   type SessionType,
 } from "@/lib/activities";
-import { appendNumberedQuestions } from "@/lib/conversation";
+import {
+  appendNumberedQuestions,
+  parsePastedQuestionList,
+  questionsFromClipboard,
+} from "@/lib/conversation";
 import type { CourseLevel } from "@/types";
 
 const initialState: CreateSessionResult | null = null;
@@ -78,12 +82,10 @@ export default function CreateSessionForm({
   const [copyPromptId, setCopyPromptId] = useState("");
   const [promptMode, setPromptMode] = useState<"new" | "copy">("new");
   const [previousPromptId, setPreviousPromptId] = useState("");
-  const [conversationQuestions, setConversationQuestions] = useState([
-    "",
-    "",
-    "",
-    "",
-  ]);
+  const [conversationListText, setConversationListText] = useState("");
+  const conversationQuestions = parsePastedQuestionList(conversationListText);
+  const conversationPreview = conversationQuestions.slice(0, 6);
+  const conversationOverflow = conversationQuestions.length > 6;
 
   useEffect(() => {
     if (state?.ok) onCreated?.();
@@ -683,51 +685,56 @@ export default function CreateSessionForm({
             />
           </label>
           <div>
-            <p className="mb-1.5 text-sm font-medium text-text-secondary">
-              Preguntas (3 a 6)
-            </p>
-            <div className="space-y-2">
-              {conversationQuestions.map((question, index) => (
-                <input
-                  key={index}
-                  name="conversationQuestion"
-                  value={question}
-                  required={index < 3}
-                  maxLength={500}
-                  onChange={(event) => {
-                    const next = [...conversationQuestions];
-                    next[index] = event.target.value;
-                    setConversationQuestions(next);
-                  }}
-                  className={fieldClass}
-                  placeholder={`Pregunta ${index + 1}`}
-                />
-              ))}
-            </div>
-            <div className="mt-2 flex gap-2">
-              {conversationQuestions.length < 6 ? (
-                <button
-                  type="button"
-                  onClick={() =>
-                    setConversationQuestions([...conversationQuestions, ""])
+            <label className="block">
+              <span className="mb-1.5 block text-sm font-medium text-text-secondary">
+                Preguntas (3 a 6)
+              </span>
+              <textarea
+                rows={8}
+                value={conversationListText}
+                onChange={(event) =>
+                  setConversationListText(event.target.value)
+                }
+                onPaste={(event) => {
+                  const text = event.clipboardData.getData("text/plain");
+                  const html = event.clipboardData.getData("text/html");
+                  const pasted = questionsFromClipboard({ html, text });
+                  const empty = conversationListText.trim() === "";
+                  if (pasted.length >= 2 || (empty && pasted.length === 1)) {
+                    event.preventDefault();
+                    setConversationListText(pasted.join("\n"));
                   }
-                  className="h-11 flex-1 rounded-card border border-paper-line text-sm"
-                >
-                  Agregar
-                </button>
-              ) : null}
-              {conversationQuestions.length > 3 ? (
-                <button
-                  type="button"
-                  onClick={() =>
-                    setConversationQuestions(conversationQuestions.slice(0, -1))
-                  }
-                  className="h-11 flex-1 rounded-card border border-paper-line text-sm"
-                >
-                  Quitar
-                </button>
-              ) : null}
-            </div>
+                }}
+                className="w-full resize-y rounded-card border border-paper-line bg-surface px-3 py-3 text-base text-text-primary focus:border-2 focus:border-accent focus:outline-none"
+                placeholder={
+                  "Have you read Gabo?\nWhat stayed with you?\nWould you visit Aracataca?"
+                }
+              />
+              <span className="mt-1.5 block text-xs text-text-muted">
+                Pega la lista del Doc. Una pregunta por renglón. Los
+                estudiantes las ven numeradas.
+              </span>
+            </label>
+            {conversationPreview.map((question, index) => (
+              <input
+                key={`q-${index}`}
+                type="hidden"
+                name="conversationQuestion"
+                value={question}
+              />
+            ))}
+            {conversationPreview.length > 0 ? (
+              <ol className="mt-3 list-decimal space-y-1 pl-6 text-body-main text-text-primary">
+                {conversationPreview.map((question, index) => (
+                  <li key={`preview-${index}`}>{question}</li>
+                ))}
+              </ol>
+            ) : null}
+            {conversationOverflow ? (
+              <p className="mt-2 text-xs text-text-muted">
+                Solo se guardan las primeras 6.
+              </p>
+            ) : null}
           </div>
         </>
         )
@@ -943,7 +950,7 @@ export default function CreateSessionForm({
             (conversationPrompts.length === 0 || !previousPromptId)) ||
           (sessionType === "conversation" &&
             promptMode === "new" &&
-            conversationQuestions.filter((row) => row.trim()).length < 3)
+            conversationPreview.filter((row) => row.trim()).length < 3)
         }
       >
         {assignToSessionId ? "Guardar" : "Crear clase"}

@@ -9,6 +9,9 @@ import {
   numberedQuestionList,
   parseConversationQuestions,
   parseConversationRoundSync,
+  parsePastedQuestionHtml,
+  parsePastedQuestionList,
+  questionsFromClipboard,
   roundLengthSeconds,
   roundTotal,
   secondsLeft,
@@ -155,6 +158,32 @@ describe("questions", () => {
     assert.equal(
       appendNumberedQuestions("Write about Gabo.", ["Have you read him?"]),
       "Write about Gabo.\n1. Have you read him?"
+    );
+  });
+
+  test("turns a pasted Doc list into one question per line", () => {
+    assert.deepEqual(
+      parsePastedQuestionList(
+        "• Have you read Gabo?\r\n- What stayed with you?\n1. Would you visit Aracataca?\n"
+      ),
+      [
+        "Have you read Gabo?",
+        "What stayed with you?",
+        "Would you visit Aracataca?",
+      ]
+    );
+    assert.deepEqual(
+      parsePastedQuestionHtml(
+        "<ul><li>Have you read Gabo?</li><li><span>What stayed with you?</span></li></ul>"
+      ),
+      ["Have you read Gabo?", "What stayed with you?"]
+    );
+    assert.deepEqual(
+      questionsFromClipboard({
+        text: "Have you read Gabo?\nWhat stayed with you?",
+        html: "<ul><li>One</li><li>Two</li><li>Three</li></ul>",
+      }),
+      ["One", "Two", "Three"]
     );
   });
 });

@@ -47,6 +47,7 @@ export default function NewClassButton({
   conversationPrompts: CatalogPromptOption[];
 }) {
   const [open, setOpen] = useState(false);
+  const [formKey, setFormKey] = useState(0);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
 
@@ -94,19 +95,21 @@ export default function NewClassButton({
           Una clase es un Zoom: una actividad, 90 minutos, un link para el chat.
         </p>
         <div className="mt-6">
-          {open ? (
-            <CreateSessionForm
-              courseId={courseId}
-              courseLevel={courseLevel}
-              stories={stories}
-              presentationPrompts={presentationPrompts}
-              conversationCopyPrompts={conversationCopyPrompts}
-              writingPrompts={writingPrompts}
-              examPrompts={examPrompts}
-              conversationPrompts={conversationPrompts}
-              onCreated={() => setOpen(false)}
-            />
-          ) : null}
+          <CreateSessionForm
+            key={formKey}
+            courseId={courseId}
+            courseLevel={courseLevel}
+            stories={stories}
+            presentationPrompts={presentationPrompts}
+            conversationCopyPrompts={conversationCopyPrompts}
+            writingPrompts={writingPrompts}
+            examPrompts={examPrompts}
+            conversationPrompts={conversationPrompts}
+            onCreated={() => {
+              setOpen(false);
+              setFormKey((value) => value + 1);
+            }}
+          />
         </div>
       </dialog>
     </>

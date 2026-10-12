@@ -43,6 +43,7 @@ export default function SessionContentDialog({
   triggerLabel: string;
 }) {
   const [open, setOpen] = useState(false);
+  const [formKey, setFormKey] = useState(0);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
 
@@ -91,18 +92,22 @@ export default function SessionContentDialog({
           </button>
         </div>
         <div className="mt-6">
-          {open && mode === "flex" ? (
+          {mode === "flex" ? (
             <FlexResolveForm
+              key={formKey}
               courseId={courseId}
               sessionId={sessionId}
               courseLevel={courseLevel}
               stories={stories}
               presentationPrompts={presentationPrompts}
-              onDone={() => setOpen(false)}
+              onDone={() => {
+                setOpen(false);
+                setFormKey((value) => value + 1);
+              }}
             />
-          ) : null}
-          {open && mode === "assign" ? (
+          ) : (
             <CreateSessionForm
+              key={formKey}
               courseId={courseId}
               courseLevel={courseLevel}
               stories={stories}
@@ -113,9 +118,12 @@ export default function SessionContentDialog({
               conversationPrompts={conversationPrompts}
               lockedType={sessionType}
               assignToSessionId={sessionId}
-              onCreated={() => setOpen(false)}
+              onCreated={() => {
+                setOpen(false);
+                setFormKey((value) => value + 1);
+              }}
             />
-          ) : null}
+          )}
         </div>
       </dialog>
     </>
