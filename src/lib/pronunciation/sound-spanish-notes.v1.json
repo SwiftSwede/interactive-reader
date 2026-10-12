@@ -1,0 +1,293 @@
+{
+  "version": 1,
+  "source": "E4L Pronunciation video course draft (2021), filed in the vault at Language-Wiki/source-materials/e4l-pronunciation-video-course-draft-2021.md. Kyle's own per-sound explanations, condensed. All copy in his voice: Spanish with accents, no em dashes.",
+  "relations": {
+    "igual": "Existe igual en español",
+    "parecido": "Casi igual, con un truco",
+    "unico": "Solo existe en inglés"
+  },
+  "sounds": [
+    {
+      "slug": "vowel_short_i",
+      "relation": "unico",
+      "noteEs": "Esta vocal no existe en el español. La lengua va entre la i y la e de español, bien relajada. Es corta: una sonrisa ligera, no una sonrisa completa. Si la haces como la i de español, sit suena como seat.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "vowel_long_ee",
+      "relation": "parecido",
+      "noteEs": "Esta vocal sí existe en el español, pero aquí es larga. La i de español es corta. Las dos son iguales aparte de la duración: sostén el sonido, iiiii. Si la haces corta, seat suena como sit.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "vowel_schwa",
+      "relation": "unico",
+      "noteEs": "La schwa no existe en el español porque tus vocales siempre se pronuncian puras. Es la vocal más común del inglés y no tiene letra fija: se escribe a, e, o u. Es el sonido más perezoso: mandíbula media, lengua centrada, labios sin redondear, sin énfasis.",
+      "mnemonicEs": "Si pronuncias todas las vocales puras, la abuela saca la chancla."
+    },
+    {
+      "slug": "vowel_short_u",
+      "relation": "unico",
+      "noteEs": "Esta vocal no existe en el español. El truco: di la o de español y relaja los labios sin redondearlos. También es como la a de español, pero con la lengua un poquito más atrás, hacia el centro de la boca.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "vowel_short_oo",
+      "relation": "unico",
+      "noteEs": "Esta vocal no existe en el español. La lengua va un poco enfrente y abajo de la u de española. Los labios van como los de un burro cuando rebuzna, y sueltas el aire como si alguien te diera un golpe en el plexo solar.",
+      "mnemonicEs": "El sonido de un chimpancé macho alfa protegiendo a sus hembras, pero sin redondear los labios como un pato."
+    },
+    {
+      "slug": "vowel_long_o",
+      "relation": "parecido",
+      "noteEs": "La o de inglés no es un sonido simple como la de español: es un diptongo. Empiezas con la o y terminas con los labios muy redondeados: O-U. Si la pronuncias como la o de español, se nota.",
+      "mnemonicEs": "Termina con un beso de pescado."
+    },
+    {
+      "slug": "vowel_long_u",
+      "relation": "parecido",
+      "noteEs": "Esta vocal sí existe en el español, pero aquí es larga. La u de española es corta: sostén el sonido, uuuu, con los labios en posición de beso. Ojo: algunas u llevan una y escondida antes, como en few y cute: suena a you.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "vowel_y_glide_initial",
+      "relation": "parecido",
+      "noteEs": "Cuando la u empieza una palabra en inglés, muchas veces lleva una y escondida al principio. No digas university: di iuniversity. Ese deslizamiento al principio es la clave.",
+      "mnemonicEs": "Piensa en iunaitid, no united."
+    },
+    {
+      "slug": "vowel_r_colored_er",
+      "relation": "unico",
+      "noteEs": "Esta vocal no existe en el español. La lengua hace todo lo contrario a la r de española: la punta abajo, la parte de atrás arriba, sin tocar nada. Vocal y r se fusionan en un solo sonido.",
+      "mnemonicEs": "Un perro gruñendo."
+    },
+    {
+      "slug": "short-e",
+      "relation": "parecido",
+      "noteEs": "No existe en el español, pero es casi igual a la e: la lengua va un poquito más abajo. Honestamente, si usas la e de español, la mayoría de los nativos no lo va a notar.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "short-a",
+      "relation": "unico",
+      "noteEs": "No existe en el español. Es parecida a la a de española, pero la lengua va más adelante y la boca más abierta. Si la pronuncias como la a de español, suena muy cerrada y los nativos pueden confundirla.",
+      "mnemonicEs": "La boca que abres para el médico. Suena un poco irritante, y eso está bien."
+    },
+    {
+      "slug": "listerine",
+      "relation": "unico",
+      "noteEs": "Esta vocal no existe en el español. La lengua va un poco más atrás que en la a de española, con la mandíbula bien abierta.",
+      "mnemonicEs": "El sonido de hacer gárgaras con enjuague bucal en el fondo de la boca."
+    },
+    {
+      "slug": "ay",
+      "relation": "parecido",
+      "noteEs": "Casi igual a la ei de español, pero abres la boca más. La lengua se mueve de la e hacia la i: dos sonidos juntos.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "ai",
+      "relation": "parecido",
+      "noteEs": "Casi igual a la ai de español, pero abres la boca más. La lengua viaja de la a hacia la i.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "oy",
+      "relation": "parecido",
+      "noteEs": "Casi igual a la oi de español, pero empuja más con los labios. La lengua viaja de la o hacia la i.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "ow",
+      "relation": "parecido",
+      "noteEs": "Casi igual a la au de español, pero abres la boca más. La lengua viaja de la a hacia la u.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "ar",
+      "relation": "unico",
+      "noteEs": "Esta vocal con r no existe en el español. Es la a abierta fundida con la r americana: car, start, farm.",
+      "mnemonicEs": "La R de pirata. Si sabes el sonido de los piratas en las películas, ya la tienes."
+    },
+    {
+      "slug": "or",
+      "relation": "unico",
+      "noteEs": "La O de inglés es un diptongo: más abierta que la o de español y termina con un beso. Aquí se une con la r: four, more, floor.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "air",
+      "relation": "unico",
+      "noteEs": "La e de inglés se une con la r en un solo movimiento: air, care, there. No son dos sonidos separados.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "ear",
+      "relation": "unico",
+      "noteEs": "La i corta se une con la r: near, here, beer. Un solo sonido que viaja hacia la r.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "ure",
+      "relation": "unico",
+      "noteEs": "La u corta se une con la r: tour, sure. Es rara y aparece en pocas palabras, pero existe.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "p",
+      "relation": "parecido",
+      "noteEs": "Igual a la p de español, pero explosiva: escupe un poquito de aire al comienzo de la palabra o en la sílaba con énfasis.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "b",
+      "relation": "parecido",
+      "noteEs": "Más fuerte que la b de español. Es una p con vibración: siente la voz en la garganta mientras los labios se juntan.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "t",
+      "relation": "parecido",
+      "noteEs": "Como la t de español, pero la lengua va un poco más atrás, en la cresta detrás de los dientes, y el sonido es más fuerte. En inglés americano, la t entre vocales suena a d suave: water, better.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "d",
+      "relation": "parecido",
+      "noteEs": "Como la d de español, pero la lengua va un poco más atrás y el sonido es más fuerte. Cuidado: no la cambies por una r de español suave, ahí se crea el acento.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "k",
+      "relation": "igual",
+      "noteEs": "Igual a la k de español. Nada más que agregar: cat, back, school.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "g",
+      "relation": "igual",
+      "noteEs": "Como la g de español cuando le sigue una u: go, big, give. Es una k con vibración.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "f",
+      "relation": "igual",
+      "noteEs": "Igual a la f de español. Dientes superiores sobre el labio inferior y aire: fun, coffee, laugh.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "consonant_v",
+      "relation": "unico",
+      "noteEs": "En la mayoría del español, la b y la v suenan igual. En inglés no. La v es una f con vibración: mismos dientes y labio, pero con voz. Deberías sentir el zumbido en el labio inferior. Contrasta: very y berry.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "consonant_th_voiceless",
+      "relation": "unico",
+      "noteEs": "No existe en el español latinoamericano (los de España la tienen: es como su z). La punta de la lengua va ligeramente entre los dientes y soplas aire, sin voz. Contrasta: think y tink, thin y sin.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "consonant_th_voiced",
+      "relation": "unico",
+      "noteEs": "Una th sorda pero con vibración. Como una d suave: la punta de la lengua va detrás de los dientes, sin pegarse. Si la pegas, suena a d. Siente la vibración en la punta de la lengua: this, that, mother.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "s",
+      "relation": "igual",
+      "noteEs": "Igual a la s de español. Ojo con las terminaciones: si la palabra termina en sonido sordo, la s final suena s (cats); si termina en sonido sonoro, suena z (kids).",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "z",
+      "relation": "unico",
+      "noteEs": "El español no tiene este sonido: es una s con vibración. Manda la vibración de la garganta hasta la punta de la lengua: zoo, lazy, kids. En español siempre dices s, y aquí eso delata.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "sh",
+      "relation": "parecido",
+      "noteEs": "La parte delantera de la lengua sube hacia la bóveda y puedes sostener el aire hasta agotarlo: ship, fish, nation.",
+      "mnemonicEs": "Igual a la ll de Argentina o la ch del norte de México."
+    },
+    {
+      "slug": "zh",
+      "relation": "unico",
+      "noteEs": "Una sh con vibración. Es rara incluso en inglés: vision, measure, beige. Misma posición que la sh, pero con voz.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "consonant_h",
+      "relation": "parecido",
+      "noteEs": "Es solo aire, un susurro suave, como empañar un vidrio con el aliento. Sin raspado en la garganta. Y ojo: en español la h es muda, aquí casi siempre se pronuncia: hat, hello, who.",
+      "mnemonicEs": "Como una j de español pero mucho más suave."
+    },
+    {
+      "slug": "ch",
+      "relation": "igual",
+      "noteEs": "Igual a la ch de español en la mayoría de Latinoamérica (y en el norte de México y Panamá): church, watch, chair.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "english-j",
+      "relation": "parecido",
+      "noteEs": "Una y de español más fuerte: es la ch con vibración. Si dices la y suave de español, se oye floja: dale más fuerza y vibración. gel, giant, jump.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "m",
+      "relation": "igual",
+      "noteEs": "Igual a la m de español: milk, time, summer. Aire por la nariz, labios juntados.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "n",
+      "relation": "igual",
+      "noteEs": "Igual a la n de español: no, sun, funny.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "ng",
+      "relation": "unico",
+      "noteEs": "Oficialmente no existe en el español, pero extraoficialmente sí. En inglés la oyes al final de las palabras: sing, think, long. La g casi siempre es muda.",
+      "mnemonicEs": "Di Cuenca y escucha esa n del medio. Esa es esta consonante."
+    },
+    {
+      "slug": "l",
+      "relation": "igual",
+      "noteEs": "Igual a la l de español. Se usa antes de una vocal: like, love, light, leave.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "consonant_dark_l",
+      "relation": "parecido",
+      "noteEs": "La L oscura. Parecida a la l, pero en vez de usar la punta, plánchala contra los dientes y los alvéolos, y levanta la parte de atrás de la lengua. Se usa antes de consonante o al final de palabra: will, pull, world, milk.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "consonant_r",
+      "relation": "unico",
+      "noteEs": "Muy diferente de la r de español. La punta de la lengua no toca nada: relajada, abajo. La parte de atrás sube. La consonante y la vocal con R son casi el mismo sonido.",
+      "mnemonicEs": "Si gruñes como el perro de la vocal con R, ya tienes esta consonante."
+    },
+    {
+      "slug": "w",
+      "relation": "parecido",
+      "noteEs": "Casi igual a la u de palabras como Cuenca y Guadalajara. El error típico es agregar una g. No la agregues: es suave. we, went, always.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "consonant_y",
+      "relation": "parecido",
+      "noteEs": "Parecido a la y o ll de Latinoamérica, pero sin fricción. La y española roza, la inglesa se desliza: una i rápida que corre hacia la vocal siguiente. yes, you, yellow.",
+      "mnemonicEs": null
+    },
+    {
+      "slug": "consonant_glottal_stop",
+      "relation": "unico",
+      "noteEs": "La parada glotal, uno de los sonidos más raros para hispanohablantes. Cortas el aire en la garganta, como la t retenida sin terminar. Los nativos la usamos para comer la t: button, mountain, Manhattan, y entre palabras: it was. Entenderla te hace entender mejor el inglés hablado.",
+      "mnemonicEs": "El sonido de uh-oh."
+    }
+  ]
+}
