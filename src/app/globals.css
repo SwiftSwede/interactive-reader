@@ -2154,7 +2154,7 @@ body.sticky-character-band-active {
   fill: var(--accent-softer);
 }
 
-.sound-diagram-hit.is-selected line:last-of-type {
+.sound-diagram-hit.is-selected line[stroke="var(--accent)"] {
   stroke: var(--text-accent-dark);
 }
 

@@ -4,10 +4,10 @@ import { useRef, useState } from "react";
 import { Video } from "lucide-react";
 import SoundVideoModal from "@/components/SoundVideoModal";
 import {
-  CHART_HEADER,
   CONSONANT_INTRO,
+  DIPHTHONG_INTRO,
+  MONOPHTHONG_INTRO,
   SLOW_TAP_MS,
-  VOWEL_INTRO,
   nextPlayback,
   type SoundCell,
   type SoundChart as SoundChartData,
@@ -62,9 +62,7 @@ export default function SoundChart({ chart }: { chart: SoundChartData }) {
 
   return (
     <>
-      <p className="text-body-main text-text-secondary">{CHART_HEADER}</p>
-
-      <section className="mt-8">
+      <section>
         <h2 className="text-headline-md text-text-primary">Consonantes</h2>
         <p className="mt-2 text-body-main text-text-secondary">{CONSONANT_INTRO}</p>
         {consonantSections.map((section) => (
@@ -83,10 +81,10 @@ export default function SoundChart({ chart }: { chart: SoundChartData }) {
 
       <section className="mt-10">
         <h2 className="text-headline-md text-text-primary">Vocales</h2>
-        <p className="mt-2 text-body-main text-text-secondary">{VOWEL_INTRO}</p>
         <SoundDiagram
           src="/sounds/vowel-trapezoid.svg"
           label="Monóftongos"
+          intro={MONOPHTHONG_INTRO}
           caption={captionFor("vowel-")}
           activeId={activeDiagram}
           onSelect={playDiagram}
@@ -94,6 +92,7 @@ export default function SoundChart({ chart }: { chart: SoundChartData }) {
         <SoundDiagram
           src="/sounds/diphthong-trapezoid.svg"
           label="Diptongos"
+          intro={DIPHTHONG_INTRO}
           caption={captionFor("diphthong-")}
           activeId={activeDiagram}
           onSelect={playDiagram}

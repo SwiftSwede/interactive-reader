@@ -280,7 +280,7 @@ Writes one MP3 per keyword and example word on the public sound chart (`/sounds`
 npx tsx scripts/gen-sound-audio.ts
 ```
 
-If a matching file already exists in `public/audio/words/`, the script copies it instead of calling TTS again. The old Bing speech host started returning 403 in October 2026. This script tries Edge's current read-aloud host first, then the old one.
+If a matching file already exists in `public/audio/words/`, the script copies it instead of calling TTS again. `cat` is synthesized with `en-US-GuyNeural` instead of copied, because isolated Aria says it too close to "cot". Pass `--force` to rebuild every file, or `npx tsx scripts/gen-sound-audio.ts cat` to rebuild one word. The old Bing speech host started returning 403 in October 2026. This script tries Edge's current read-aloud host first, then the old one.
 
 **Cost:** $0 (Edge TTS). **Time:** about a minute for the full chart. Needs `edge_tts` in Python, the same install as `generate-word-audio.py`.
 

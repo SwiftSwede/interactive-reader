@@ -16,6 +16,11 @@ const RATE = "-10%";
 const OUT_DIR = path.join(process.cwd(), "public", "audio", "sounds");
 const WORD_DIR = path.join(process.cwd(), "public", "audio", "words");
 
+/** Isolated Aria "cat" lands too close to "cot". Guy keeps the jaw open for /æ/. */
+const VOICE_HINTS: Record<string, string> = {
+  cat: "en-US-GuyNeural",
+};
+
 function wordsToGenerate(): Map<string, string> {
   const chart = buildSoundChart();
   const words = new Map<string, string>();
@@ -81,25 +86,34 @@ async function fileExists(file: string): Promise<boolean> {
 async function main() {
   await mkdir(OUT_DIR, { recursive: true });
   const words = wordsToGenerate();
+  const force = new Set(
+    process.argv.slice(2).filter((arg) => arg !== "--force")
+  );
+  const forceAll = process.argv.includes("--force") && force.size === 0;
   let created = 0;
   let skipped = 0;
 
   for (const [slug, word] of words) {
     const dest = path.join(OUT_DIR, `${slug}.mp3`);
-    if (await fileExists(dest)) {
+    const voice = VOICE_HINTS[word] ?? VOICE_HINTS[slug] ?? VOICE;
+    const replace = forceAll || force.has(slug) || force.has(word);
+    if (!replace && (await fileExists(dest))) {
       skipped += 1;
       continue;
     }
-    const shared = path.join(WORD_DIR, `${slug}.mp3`);
-    if (await fileExists(shared)) {
-      await copyFile(shared, dest);
-      created += 1;
-      console.log(`copied ${slug}.mp3 from word audio (${word})`);
-      continue;
+    const hinted = voice !== VOICE;
+    if (!hinted) {
+      const shared = path.join(WORD_DIR, `${slug}.mp3`);
+      if (await fileExists(shared)) {
+        await copyFile(shared, dest);
+        created += 1;
+        console.log(`copied ${slug}.mp3 from word audio (${word})`);
+        continue;
+      }
     }
-    await runPython(SAVE_SCRIPT, [word, dest, VOICE, RATE]);
+    await runPython(SAVE_SCRIPT, [word, dest, voice, RATE]);
     created += 1;
-    console.log(`wrote ${slug}.mp3 (${word})`);
+    console.log(`wrote ${slug}.mp3 (${word}${hinted ? `, ${voice}` : ""})`);
   }
 
   console.log(`done. created ${created}, skipped ${skipped}, total ${words.size}`);

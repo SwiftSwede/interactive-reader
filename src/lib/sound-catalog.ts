@@ -175,7 +175,7 @@ export const SOUND_VIDEO_CATALOG: SoundVideo[] = [
   sound("k", "k", "K", "The K in cat, back, school.", ["cat", "back", "school"]),
   sound("g", "g", "G", "The G in go, big, give.", ["go", "big", "give"], ["ɡ"]),
   sound("f", "f", "F", "The F in fun, leaf, coffee.", ["fun", "leaf", "coffee"]),
-  sound("v", "v", "Viper V", "English V, not a Spanish B.", [
+  sound("v", "v", "f con vibración", "English V, not a Spanish B.", [
     "viper",
     "very",
     "have",

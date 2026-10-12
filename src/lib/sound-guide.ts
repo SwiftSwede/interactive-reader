@@ -27,10 +27,11 @@ export const PLACEMENT_NOTES = [
 export const CONSONANT_INTRO =
   "Las consonantes bloquean el aire. Las vocales lo moldean. Cada grupo de abajo lo bloquea de una forma distinta.";
 
-export const VOWEL_INTRO =
-  "Un monóftongo deja la lengua quieta. Un diptongo la mueve. El español tiene 5 vocales puras. El inglés tiene 11, más 5 que se mueven. Por eso suena turbio hasta que las aprendes.";
+export const MONOPHTHONG_INTRO =
+  "Un monóftongo deja la lengua quieta. El español tiene 5 vocales puras. El inglés tiene 11.";
 
-export const CHART_HEADER = "Escucha primero. Esto no es gramática.";
+export const DIPHTHONG_INTRO =
+  "Un diptongo la mueve. El inglés tiene 5 que se mueven. Por eso suena turbio hasta que las aprendes.";
 
 export type SoundSectionId =
   | "fricatives"

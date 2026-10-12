@@ -82,6 +82,19 @@ Source of truth for names + wording: Kyle's draft at vault `Language-Wiki/source
 - Pronunciation library product wiring (the `pronunciation` product level exists from Slice 87; linking the product to this page comes with the Stripe slice).
 - Fabien-style illustrations.
 
+## Plan review decisions
+
+Recorded 2026-10-11, before the build. These override the sections above where they disagree.
+
+- Chart inventory is the full sound catalog, not guide-only cells. Leave these process rows off the chart: `consonant_t_d_alveolar`, `consonant_ed_endings`, `consonant_stops_aspiration`, `consonant_d_final_devoiced`. `d_final` must not replace the /d/ card.
+- The Gliglish minimal-pairs drill is a later slice. Kyle will describe it after the chart. This slice does not build the exercise, `onAttempt`, or pair-only audio.
+- A card tap plays the keyword word (the guide's first example when joined, otherwise the catalog's first example). It does not open the video and it does not navigate. A second tap within 1200ms replays that file at playback rate 0.75. The video is a separate control on every card, including sounds that still show the placeholder.
+- Cards use the catalog informal `name` (Short I, Angry Monkey, Listerine Vowel). Spanish `nameEs` stays on the explanation page.
+- Vowels use two stacked diagrams (monophthong chips, diphthong arrows). Geometric SVGs ship now in `public/sounds/`. Kyle can replace those files in Affinity Designer later if the group ids stay the same. R-colored vowels and juː stay off the diagrams. `juː` sits in Vocales largas beside `uː`. Catalog `ʊɹ` sits with the other r-colored vowels.
+- Press uses the existing motion tokens (`--scale-medium` 0.97, `--duration-quick` 150ms, `--ease-smooth-out`). DESIGN.md records that as the only scale exception. `prefers-reduced-motion` skips it.
+- Herramientas is the public door for logged-in and logged-out visitors. `/tools` no longer requires login. The header link for logged-out visitors is **Entra** to `/login`, not "Crea tu cuenta gratis". Laboratorio de práctica sends logged-out visitors to `/login?next=/tools/practica`. Inicio and Lecciones still require login. The free-story home stays the logged-out homepage without tabs. Do not add a Sonidos link on the login page.
+- Mnemonics stay off the chart. This slice does not draft them.
+
 ## Honesty rules
 
 - All Spanish copy with written accents; NO em dashes anywhere.

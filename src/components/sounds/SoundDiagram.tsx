@@ -5,12 +5,14 @@ import { useEffect, useRef, useState } from "react";
 export default function SoundDiagram({
   src,
   label,
+  intro,
   caption,
   activeId,
   onSelect,
 }: {
   src: string;
   label: string;
+  intro?: string;
   caption: string;
   activeId: string | null;
   onSelect: (id: string) => void;
@@ -87,6 +89,9 @@ export default function SoundDiagram({
   return (
     <figure className="mt-6">
       <figcaption className="text-label-md text-text-secondary">{label}</figcaption>
+      {intro ? (
+        <p className="mt-2 text-body-main text-text-secondary">{intro}</p>
+      ) : null}
       {failed ? (
         <p className="mt-3 text-body-main text-text-secondary">
           No pude cargar el diagrama. Las tarjetas de abajo siguen funcionando.
