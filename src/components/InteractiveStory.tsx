@@ -957,7 +957,7 @@ export default function InteractiveStory({
             kind === "movie_talk" ? speakerOfLine(paragraph) : null;
           const dialogueName =
             kind === "dialogue"
-              ? paragraph.match(/^([A-Za-zÁÉÍÓÚáéíóúñÑ.' -]+):/)?.[1]
+              ? paragraph.match(/^([A-Za-zÁÉÍÓÚáéíóúñÑ0-9.' -]+):/)?.[1]
               : null;
           const speakerName = movieTalkName ?? dialogueName;
           const speakerJoin = movieTalkName ? "" : dialogueName ? ":" : "";
@@ -987,7 +987,7 @@ export default function InteractiveStory({
                 .replace(
                   movieTalkName
                     ? new RegExp(MOVIE_TALK_SPEAKER_RE.source + "\\s*")
-                    : /^([A-Za-zÁÉÍÓÚáéíóúñÑ.' -]+):\s*/,
+                    : /^([A-Za-zÁÉÍÓÚáéíóúñÑ0-9.' -]+):\s*/,
                   ""
                 )
                 .split(/\s+/)

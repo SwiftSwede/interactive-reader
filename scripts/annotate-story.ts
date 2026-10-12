@@ -18,6 +18,31 @@ import { WebSocket } from "ws";
 import { KYLE_IPA_ALPHA_RULE } from "../src/lib/ipa-conventions";
 import { movieTalkSpokenText } from "../src/lib/movietalk";
 
+// Spoken-text stream for dialogues: the reader renders pure bracket lines as
+// italic stage directions and speaker prefixes ("Jane:" / "Jane-") as labels,
+// and NEITHER consumes word positions. The words table must therefore cover
+// only the spoken tokens, so annotation (and its alignment guard) runs on the
+// same stripped stream. Keep the prefix regexes in sync with
+// InteractiveStory.tsx (dialogueName + spokenTokens strip).
+function dialogueSpokenText(body: string): string {
+  return body
+    .split("\n")
+    .filter((l) => {
+      const t = l.trim();
+      return t.length > 0 && !/^\[[^\]]*\]$/.test(t); // drop pure stage directions
+    })
+    .map((l) =>
+      l.replace(
+        /^([A-Za-zÁÉÍÓÚáéíóúñÑ0-9][A-Za-zÁÉÍÓÚáéíóúñÑ0-9.' \-]*?)(:\s*|\s+-\s*|-\s*)/,
+        ""
+      )
+    )
+    .join("\n")
+    .replace(/\[[^\]]*\]/g, "") // inline stage directions are unspoken too
+    .replace(/[ \t]+/g, " ")
+    .trim();
+}
+
 // ── Config ─────────────────────────────────────────────────
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -390,10 +415,17 @@ async function main() {
   const textForLlm =
     kind === "movie_talk"
       ? movieTalkSpokenText(story.body_text)
-      : story.body_text;
+      : kind === "dialogue"
+        ? dialogueSpokenText(story.body_text)
+        : story.body_text;
   if (kind === "movie_talk") {
     console.log(
       "Movie Talk: skipping speaker names, *** dividers, and stage directions in the annotation stream."
+    );
+  }
+  if (kind === "dialogue") {
+    console.log(
+      "Dialogue: skipping stage directions and speaker prefixes in the annotation stream."
     );
   }
 

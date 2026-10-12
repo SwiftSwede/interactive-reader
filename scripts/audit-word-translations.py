@@ -52,7 +52,7 @@ EXPECTED = {
     "how": ["cómo", "como", "cuánto", "cuanto", "qué tan"],
     "why": ["por qué", "porque"],
     "who": ["quién", "quien", "que", "podían", "a quién"],
-    "are": ["son", "están", "estan", "sean", "estás", "eres", "sois", "estaría", "van a"],
+    "are": ["son", "están", "estan", "sean", "estás", "eres", "sois", "estaría", "van a", "hay"],
 }
 
 
