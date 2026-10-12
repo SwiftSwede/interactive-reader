@@ -24,11 +24,8 @@ export default async function SoundsPage() {
       accountHref={user ? "/profile" : "/login"}
       accountLabel={user ? "Perfil" : "Entra"}
     >
-      <section className="pt-6">
-        <h1 className="text-headline-lg text-text-primary">Guía de sonidos</h1>
-        <div className="mt-4">
-          <SoundChart chart={chart} />
-        </div>
+      <section className="pt-2">
+        <SoundChart chart={chart} />
       </section>
     </BrowsingShell>
   );

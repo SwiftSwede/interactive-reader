@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 export default function SoundDiagram({
   src,
   label,
   intro,
+  note,
   caption,
   activeId,
   onSelect,
@@ -13,6 +14,7 @@ export default function SoundDiagram({
   src: string;
   label: string;
   intro?: string;
+  note?: ReactNode;
   caption: string;
   activeId: string | null;
   onSelect: (id: string) => void;
@@ -92,6 +94,7 @@ export default function SoundDiagram({
       {intro ? (
         <p className="mt-2 text-body-main text-text-secondary">{intro}</p>
       ) : null}
+      {note ? <div className="mt-2">{note}</div> : null}
       {failed ? (
         <p className="mt-3 text-body-main text-text-secondary">
           No pude cargar el diagrama. Las tarjetas de abajo siguen funcionando.

@@ -5,6 +5,17 @@
 > 1. An **info icon** on each sound card that opens Kyle's detailed, unique explanation of that sound.
 > 2. A **Spanish toggle** that visually shows what English shares with Spanish and what it does not: Spanish vowels appear on the mouth trapezoids, and consonant cards get a three-state relation badge.
 
+## Plan review decisions (2026-10-12)
+
+Kyle's answers before the build. These override §3 where they disagree.
+
+- Keep one chart-wide control. Default OFF. `localStorage` key `sounds-spanish-lens`.
+- It sits on the same line as **Guía de sonidos**, right-aligned. That row sticks under the browsing header on scroll. The legend scrolls away with the page.
+- Widget is a Photoroom-style switch plus the words **Comparar con español** (`label-sm`). A naked switch does not explain itself. DESIGN.md records the pill-radius exception.
+- Spanish ghosts are monophthong only (`a e i o u` on `vowel-trapezoid-es.svg`). No Spanish markers on the diphthong chart. Spanish `o` sits near English `ʌ`.
+- Legend copy: "Verde: igual. Terracota: parecido. Borde punteado: solo en inglés."
+- Info stays top-left and video top-right, both 44px. The relation mark is a dot on the Info icon, not a second hit target. `unico` cards get a dashed border while the lens is on.
+
 ## Content source (already authored, do NOT rewrite copy)
 
 - `src/lib/pronunciation/sound-spanish-notes.v1.json` — 47 entries, one per catalog card, each with:

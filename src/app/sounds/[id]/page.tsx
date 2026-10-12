@@ -8,6 +8,9 @@ import { documentTitle } from "@/lib/page-title";
 import {
   allSoundSlugs,
   soundCellBySlug,
+  spanishRelationLabel,
+  type SpanishNote,
+  type SpanishRelation,
 } from "@/lib/sound-guide";
 import { getSoundVideos } from "@/lib/sound-videos";
 import { createClient } from "@/lib/supabase/server";
@@ -69,6 +72,10 @@ export default async function SoundPage({
           <SoundVideoFrame video={cell.video} autoplay={false} />
         </div>
 
+        {cell.spanishNote ? (
+          <SpanishNoteBlock note={cell.spanishNote} />
+        ) : null}
+
         {cell.coach ? (
           <div className="mt-8 flex flex-col gap-6">
             <CoachBlock title="Por qué" body={cell.coach.why} />
@@ -99,6 +106,29 @@ export default async function SoundPage({
         ) : null}
       </section>
     </BrowsingShell>
+  );
+}
+
+const RELATION_TEXT: Record<SpanishRelation, string> = {
+  igual: "text-secondary-accent",
+  parecido: "text-text-accent",
+  unico: "text-text-muted",
+};
+
+function SpanishNoteBlock({ note }: { note: SpanishNote }) {
+  return (
+    <div className="mt-8">
+      <h2 className="text-label-md text-text-secondary">En español</h2>
+      <p className={`mt-2 text-label-md ${RELATION_TEXT[note.relation]}`}>
+        {spanishRelationLabel(note.relation)}
+      </p>
+      <p className="mt-2 text-body-main text-text-muted">{note.noteEs}</p>
+      {note.mnemonicEs ? (
+        <p className="mt-3 rounded-card bg-accent-soft px-3 py-2 text-label-md text-text-primary">
+          Truco: {note.mnemonicEs}
+        </p>
+      ) : null}
+    </div>
   );
 }
 

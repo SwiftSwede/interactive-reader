@@ -1,4 +1,5 @@
 import guideFile from "@/lib/pronunciation/latam-enus-sounds-guide.v1.json";
+import notesFile from "@/lib/pronunciation/sound-spanish-notes.v1.json";
 import type { SoundVideo } from "@/types";
 import { SOUND_VIDEO_CATALOG } from "./sound-catalog";
 
@@ -32,6 +33,14 @@ export const MONOPHTHONG_INTRO =
 
 export const DIPHTHONG_INTRO =
   "Un diptongo la mueve. El inglés tiene 5 que se mueven. Por eso suena turbio hasta que las aprendes.";
+
+export const SPANISH_LENS_STORAGE_KEY = "sounds-spanish-lens";
+
+export const SPANISH_LENS_LEGEND = [
+  { text: "Relleno oscuro: igual", relation: "igual" },
+  { text: "Borde terracota: parecido", relation: "parecido" },
+  { text: "Borde punteado: solo en inglés", relation: "unico" },
+] as const;
 
 export type SoundSectionId =
   | "fricatives"
@@ -206,6 +215,27 @@ export type SoundCoach = {
   nameEs: string;
 };
 
+const SPANISH_RELATIONS = ["igual", "parecido", "unico"] as const;
+
+export type SpanishRelation = (typeof SPANISH_RELATIONS)[number];
+
+export type SpanishNote = {
+  slug: string;
+  relation: SpanishRelation;
+  noteEs: string;
+  mnemonicEs: string | null;
+};
+
+type NotesFile = {
+  relations: Record<SpanishRelation, string>;
+  sounds: Array<{
+    slug: string;
+    relation: string;
+    noteEs: string;
+    mnemonicEs: string | null;
+  }>;
+};
+
 export type SoundCell = {
   slug: string;
   symbol: string;
@@ -218,6 +248,7 @@ export type SoundCell = {
   sectionId: SoundSectionId;
   diagramId: string | null;
   coach: SoundCoach | null;
+  spanishNote: SpanishNote | null;
   video: SoundVideo;
 };
 
@@ -227,6 +258,32 @@ export type SoundChart = {
 };
 
 const guide = guideFile as GuideFile;
+const spanishNotes = notesFile as NotesFile;
+
+function isSpanishRelation(value: string): value is SpanishRelation {
+  return (SPANISH_RELATIONS as readonly string[]).includes(value);
+}
+
+const notesBySlug = new Map<string, SpanishNote>();
+for (const sound of spanishNotes.sounds) {
+  const noteEs = sound.noteEs.trim();
+  if (!isSpanishRelation(sound.relation) || noteEs.length === 0) continue;
+  const mnemonic = sound.mnemonicEs?.trim() ?? "";
+  notesBySlug.set(sound.slug, {
+    slug: sound.slug,
+    relation: sound.relation,
+    noteEs,
+    mnemonicEs: mnemonic.length > 0 ? mnemonic : null,
+  });
+}
+
+export function spanishRelationLabel(relation: SpanishRelation): string {
+  return spanishNotes.relations[relation];
+}
+
+export function spanishNoteForSlug(slug: string): SpanishNote | null {
+  return notesBySlug.get(slug) ?? null;
+}
 
 export function guideTargets(): GuideTarget[] {
   return [...guide.targets.vowels, ...guide.targets.consonants];
@@ -309,6 +366,10 @@ export function buildSoundChart(videos: SoundVideo[] = SOUND_VIDEO_CATALOG): Sou
     const keyword = exampleWords[0] ?? "";
     const slug = joined?.id ?? UNJOINED_SLUG_BY_SYMBOL[video.symbol];
     if (!slug) continue;
+    const spanishNote = spanishNoteForSlug(slug);
+    if (!spanishNote && process.env.NODE_ENV !== "production") {
+      console.warn(`sound chart: no Spanish note for ${slug}`);
+    }
     cells.push({
       slug,
       symbol: video.symbol,
@@ -321,6 +382,7 @@ export function buildSoundChart(videos: SoundVideo[] = SOUND_VIDEO_CATALOG): Sou
       sectionId: section.id,
       diagramId: DIAGRAM_ID_BY_IPA[video.ipa] ?? null,
       coach: joined ? coachFrom(joined) : null,
+      spanishNote,
       video,
     });
   }

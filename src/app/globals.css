@@ -1976,6 +1976,37 @@ body.sticky-character-band-active {
   backdrop-filter: blur(8px);
 }
 
+/* ── Sticky sound-chart title (only once Guía de sonidos leaves the viewport) ── */
+
+.sound-chart-dock {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  z-index: 15;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  padding: 8px 16px 0;
+  animation: sticky-timer-in 0.2s ease;
+}
+
+.sound-chart-dock-pill {
+  pointer-events: auto;
+  display: flex;
+  width: 100%;
+  max-width: 42rem;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 4px 16px;
+  border: 1px solid var(--paper-line);
+  border-radius: 9999px;
+  background: var(--paper-header);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(8px);
+}
+
 @keyframes sticky-timer-in {
   from {
     opacity: 0;
@@ -2147,6 +2178,10 @@ body.sticky-character-band-active {
 .sound-diagram-hit {
   cursor: pointer;
   touch-action: manipulation;
+}
+
+.sound-diagram-hit-es {
+  pointer-events: none;
 }
 
 .sound-diagram-hit.is-selected circle {

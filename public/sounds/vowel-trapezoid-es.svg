@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 343 340" role="group" aria-label="Monóftongos">
+  <path d="M32.0 32.0 H311.0 V308.0 L171.1 308.0 Z" fill="var(--surface)" stroke="var(--paper-line)" stroke-width="1.5"/>
+  <path d="M78.4 124.0 H311.0 M124.7 216.0 H311.0 M171.5 32.0 L241.0 308.0" fill="none" stroke="var(--paper-line)" stroke-width="1.25"/>
+  <g class="sound-diagram-hit-es" aria-hidden="true">
+    <circle cx="112" cy="42" r="14" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="112" y="47" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="var(--accent)">i</text>
+  </g>
+  <g class="sound-diagram-hit-es" aria-hidden="true">
+    <circle cx="262" cy="36" r="14" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="262" y="41" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="var(--accent)">u</text>
+  </g>
+  <g class="sound-diagram-hit-es" aria-hidden="true">
+    <circle cx="118" cy="175" r="14" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="118" y="180" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="var(--accent)">e</text>
+  </g>
+  <g class="sound-diagram-hit-es" aria-hidden="true">
+    <circle cx="198" cy="248" r="14" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="198" y="253" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="var(--accent)">a</text>
+  </g>
+  <g class="sound-diagram-hit-es" aria-hidden="true">
+    <circle cx="275" cy="175" r="14" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="275" y="180" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="var(--accent)">o</text>
+  </g>
+  <g id="vowel-i" class="sound-diagram-hit" role="button" tabindex="0" aria-label="iː">
+    <circle cx="44.8" cy="45.1" r="22" fill="var(--surface)" stroke="var(--paper-line)" stroke-width="1.5"/>
+    <text x="44.8" y="50.1" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="var(--text-primary)">iː</text>
+  </g>
+  <g id="vowel-u" class="sound-diagram-hit" role="button" tabindex="0" aria-label="uː">
+    <circle cx="299.8" cy="45.1" r="22" fill="var(--surface)" stroke="var(--paper-line)" stroke-width="1.5"/>
+    <text x="299.8" y="50.1" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="var(--text-primary)">uː</text>
+  </g>
+  <g id="vowel-ih" class="sound-diagram-hit" role="button" tabindex="0" aria-label="ɪ">
+    <circle cx="136.9" cy="80.3" r="22" fill="var(--surface)" stroke="var(--paper-line)" stroke-width="1.5"/>
+    <text x="136.9" y="85.3" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="var(--text-primary)">ɪ</text>
+  </g>
+  <g id="vowel-uu" class="sound-diagram-hit" role="button" tabindex="0" aria-label="ʊ">
+    <circle cx="263.9" cy="80.3" r="22" fill="var(--surface)" stroke="var(--paper-line)" stroke-width="1.5"/>
+    <text x="263.9" y="85.3" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="var(--text-primary)">ʊ</text>
+  </g>
+  <g id="vowel-schwa" class="sound-diagram-hit" role="button" tabindex="0" aria-label="ə">
+    <circle cx="217.8" cy="164.6" r="22" fill="var(--surface)" stroke="var(--paper-line)" stroke-width="1.5"/>
+    <text x="217.8" y="169.6" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="var(--text-primary)">ə</text>
+  </g>
+  <g id="vowel-e" class="sound-diagram-hit" role="button" tabindex="0" aria-label="ɛ">
+    <circle cx="136.4" cy="216.5" r="22" fill="var(--surface)" stroke="var(--paper-line)" stroke-width="1.5"/>
+    <text x="136.4" y="221.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="var(--text-primary)">ɛ</text>
+  </g>
+  <g id="vowel-uh" class="sound-diagram-hit" role="button" tabindex="0" aria-label="ʌ">
+    <circle cx="230.0" cy="216.5" r="22" fill="var(--surface)" stroke="var(--paper-line)" stroke-width="1.5"/>
+    <text x="230.0" y="221.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="var(--text-primary)">ʌ</text>
+  </g>
+  <g id="vowel-ae" class="sound-diagram-hit" role="button" tabindex="0" aria-label="æ">
+    <circle cx="161.4" cy="263.8" r="22" fill="var(--surface)" stroke="var(--paper-line)" stroke-width="1.5"/>
+    <text x="161.4" y="268.8" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="var(--text-primary)">æ</text>
+  </g>
+  <g id="vowel-ah" class="sound-diagram-hit" role="button" tabindex="0" aria-label="ɑ">
+    <circle cx="299.8" cy="293.9" r="22" fill="var(--surface)" stroke="var(--paper-line)" stroke-width="1.5"/>
+    <text x="299.8" y="298.9" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="var(--text-primary)">ɑ</text>
+  </g>
+</svg>

@@ -83,6 +83,23 @@ describe("sound guide chart", () => {
     assert.equal(shortI?.audioPath, "/audio/sounds/sit.mp3");
   });
 
+  test("attaches a Spanish note to every cell", () => {
+    const counts: Record<string, number> = { igual: 0, parecido: 0, unico: 0 };
+    for (const cell of chart.cells) {
+      assert.ok(cell.spanishNote, cell.slug);
+      assert.ok(cell.spanishNote.noteEs.trim().length > 0);
+      assert.ok(cell.spanishNote.relation in counts);
+      counts[cell.spanishNote.relation] += 1;
+    }
+    assert.equal(chart.cells.length, 47);
+    assert.deepEqual(counts, { igual: 8, parecido: 19, unico: 20 });
+    assert.equal(
+      chart.cells.find((cell) => cell.slug === "vowel_short_i")?.spanishNote
+        ?.relation,
+      "unico"
+    );
+  });
+
   test("keeps section order from the taxonomy", () => {
     assert.deepEqual(
       chart.sections.map((section) => section.id),
