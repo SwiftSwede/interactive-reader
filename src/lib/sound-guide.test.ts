@@ -10,8 +10,10 @@ import {
   buildSoundChart,
   guideTargets,
   ipaTokens,
+  SPANISH_VOWEL_GHOSTS,
   nextPlayback,
   sectionForIpa,
+  spanishGhostForId,
 } from "./sound-guide";
 
 describe("sound guide chart", () => {
@@ -100,6 +102,23 @@ describe("sound guide chart", () => {
     );
   });
 
+  test("maps five Spanish monophthong ghosts to Mexican example words", () => {
+    assert.equal(SPANISH_VOWEL_GHOSTS.length, 5);
+    assert.deepEqual(
+      SPANISH_VOWEL_GHOSTS.map((ghost) => ghost.letter).sort(),
+      ["a", "e", "i", "o", "u"]
+    );
+    assert.equal(spanishGhostForId("vowel-es-a")?.word, "casa");
+    assert.equal(spanishGhostForId("vowel-es-e")?.word, "mesa");
+    assert.equal(spanishGhostForId("vowel-es-i")?.word, "sí");
+    assert.equal(spanishGhostForId("vowel-es-o")?.word, "no");
+    assert.equal(spanishGhostForId("vowel-es-u")?.word, "tú");
+    for (const ghost of SPANISH_VOWEL_GHOSTS) {
+      assert.equal(ghost.audioPath, `/audio/sounds/es/${audioSlug(ghost.word)}.mp3`);
+    }
+    assert.equal(spanishGhostForId("vowel-i"), null);
+  });
+
   test("keeps section order from the taxonomy", () => {
     assert.deepEqual(
       chart.sections.map((section) => section.id),
@@ -123,6 +142,8 @@ describe("ipa tokens and audio slug", () => {
     assert.equal(audioSlug("Luke"), "luke");
     assert.equal(audioSlug("Jess"), "jess");
     assert.equal(audioSlug("sit"), "sit");
+    assert.equal(audioSlug("sí"), "si");
+    assert.equal(audioSlug("tú"), "tu");
   });
 });
 

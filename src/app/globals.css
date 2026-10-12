@@ -2181,12 +2181,22 @@ body.sticky-character-band-active {
 }
 
 .sound-diagram-hit-es {
-  pointer-events: none;
+  cursor: pointer;
+  touch-action: manipulation;
 }
 
 .sound-diagram-hit.is-selected circle {
   stroke: var(--accent);
   fill: var(--accent-softer);
+}
+
+.sound-diagram-hit-es.is-selected .sound-diagram-hit-es-face {
+  fill: var(--accent);
+  stroke: var(--text-accent-dark);
+}
+
+.sound-diagram-hit-es.is-selected text {
+  fill: var(--surface);
 }
 
 .sound-diagram-hit.is-selected line[stroke="var(--accent)"] {

@@ -12,6 +12,7 @@ import {
   SPANISH_LENS_LEGEND,
   SPANISH_LENS_STORAGE_KEY,
   nextPlayback,
+  spanishGhostForId,
   type SoundCell,
   type SoundChart as SoundChartData,
   type SpanishRelation,
@@ -129,6 +130,12 @@ export default function SoundChart({ chart }: { chart: SoundChartData }) {
   }, []);
 
   useEffect(() => {
+    if (!lens && activeDiagram?.startsWith("vowel-es-")) {
+      setActiveDiagram(null);
+    }
+  }, [lens, activeDiagram]);
+
+  useEffect(() => {
     const node = titleRef.current;
     if (!node) return;
     const observer = new IntersectionObserver(
@@ -155,6 +162,8 @@ export default function SoundChart({ chart }: { chart: SoundChartData }) {
 
   function captionFor(prefix: string): string {
     if (!activeDiagram?.startsWith(prefix)) return "";
+    const ghost = spanishGhostForId(activeDiagram);
+    if (ghost) return ghost.word;
     return chart.cells.find((cell) => cell.diagramId === activeDiagram)?.name ?? "";
   }
 
@@ -181,7 +190,28 @@ export default function SoundChart({ chart }: { chart: SoundChartData }) {
     });
   }
 
+  function playSpanishGhost(id: string) {
+    const ghost = spanishGhostForId(id);
+    if (!ghost) return;
+    const now = Date.now();
+    const same = lastTap.current?.slug === ghost.diagramId;
+    const elapsed = same && lastTap.current ? now - lastTap.current.at : Number.POSITIVE_INFINITY;
+    const mode = nextPlayback(same, elapsed);
+    lastTap.current = { slug: ghost.diagramId, at: now };
+    setAudioError(null);
+    setActiveSlug(null);
+    setActiveDiagram(ghost.diagramId);
+
+    playSoundUrl(ghost.audioPath, mode === "slow" ? 0.75 : 1).catch(() => {
+      setAudioError(ghost.diagramId);
+    });
+  }
+
   function playDiagram(id: string) {
+    if (spanishGhostForId(id)) {
+      playSpanishGhost(id);
+      return;
+    }
     const cell = chart.cells.find((item) => item.diagramId === id);
     if (cell) play(cell);
   }
@@ -245,6 +275,7 @@ export default function SoundChart({ chart }: { chart: SoundChartData }) {
           intro={MONOPHTHONG_INTRO}
           note={lens ? <VowelKey /> : undefined}
           caption={captionFor("vowel-")}
+          captionLang={activeDiagram?.startsWith("vowel-es-") ? "es" : undefined}
           activeId={activeDiagram}
           onSelect={playDiagram}
         />

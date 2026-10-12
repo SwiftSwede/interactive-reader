@@ -8,6 +8,7 @@ export default function SoundDiagram({
   intro,
   note,
   caption,
+  captionLang,
   activeId,
   onSelect,
 }: {
@@ -16,6 +17,7 @@ export default function SoundDiagram({
   intro?: string;
   note?: ReactNode;
   caption: string;
+  captionLang?: string;
   activeId: string | null;
   onSelect: (id: string) => void;
 }) {
@@ -43,7 +45,9 @@ export default function SoundDiagram({
         hostRef.current.innerHTML = markup;
         setFailed(false);
         const hits = [
-          ...hostRef.current.querySelectorAll<SVGGElement>(".sound-diagram-hit"),
+          ...hostRef.current.querySelectorAll<SVGGElement>(
+            ".sound-diagram-hit, .sound-diagram-hit-es"
+          ),
         ];
         const onClick = (event: Event) => {
           const target = event.currentTarget;
@@ -83,7 +87,9 @@ export default function SoundDiagram({
   useEffect(() => {
     const host = hostRef.current;
     if (!host) return;
-    for (const hit of host.querySelectorAll<SVGGElement>(".sound-diagram-hit")) {
+    for (const hit of host.querySelectorAll<SVGGElement>(
+      ".sound-diagram-hit, .sound-diagram-hit-es"
+    )) {
       hit.classList.toggle("is-selected", hit.id === activeId);
     }
   }, [activeId, failed]);
@@ -102,7 +108,11 @@ export default function SoundDiagram({
       ) : (
         <div ref={hostRef} className="sound-diagram mt-3" />
       )}
-      <p className="mt-2 h-6 text-center text-label-md text-text-primary" aria-live="polite">
+      <p
+        className="mt-2 h-6 text-center text-label-md text-text-primary"
+        lang={captionLang}
+        aria-live="polite"
+      >
         {caption || "\u00a0"}
       </p>
     </figure>

@@ -42,6 +42,50 @@ export const SPANISH_LENS_LEGEND = [
   { text: "Borde punteado: solo en inglés", relation: "unico" },
 ] as const;
 
+export type SpanishVowelGhost = {
+  diagramId: string;
+  letter: "a" | "e" | "i" | "o" | "u";
+  word: string;
+  audioPath: string;
+};
+
+export const SPANISH_VOWEL_GHOSTS: readonly SpanishVowelGhost[] = [
+  {
+    diagramId: "vowel-es-i",
+    letter: "i",
+    word: "sí",
+    audioPath: "/audio/sounds/es/si.mp3",
+  },
+  {
+    diagramId: "vowel-es-u",
+    letter: "u",
+    word: "tú",
+    audioPath: "/audio/sounds/es/tu.mp3",
+  },
+  {
+    diagramId: "vowel-es-e",
+    letter: "e",
+    word: "mesa",
+    audioPath: "/audio/sounds/es/mesa.mp3",
+  },
+  {
+    diagramId: "vowel-es-a",
+    letter: "a",
+    word: "casa",
+    audioPath: "/audio/sounds/es/casa.mp3",
+  },
+  {
+    diagramId: "vowel-es-o",
+    letter: "o",
+    word: "no",
+    audioPath: "/audio/sounds/es/no.mp3",
+  },
+] as const;
+
+export function spanishGhostForId(id: string): SpanishVowelGhost | null {
+  return SPANISH_VOWEL_GHOSTS.find((ghost) => ghost.diagramId === id) ?? null;
+}
+
 export type SoundSectionId =
   | "fricatives"
   | "stops"
@@ -297,7 +341,11 @@ export function ipaTokens(ipa: string): string[] {
 }
 
 export function audioSlug(word: string): string {
-  return word.toLowerCase().replace(/[^a-z0-9]/g, "");
+  return word
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]/g, "");
 }
 
 export function keywordAudioPath(word: string): string {

@@ -284,6 +284,18 @@ If a matching file already exists in `public/audio/words/`, the script copies it
 
 **Cost:** $0 (Edge TTS). **Time:** about a minute for the full chart. Needs `edge_tts` in Python, the same install as `generate-word-audio.py`.
 
+### Generate Spanish vowel ghost audio
+
+Writes one MP3 per Spanish monophthong ghost on `/sounds` (`casa`, `mesa`, `sí`, `no`, `tú`) into `public/audio/sounds/es/<slug>.mp3`. Skips files that already exist. Voice is Edge TTS `es-MX-DaliaNeural` at -10%. These files are the v1 voice. Replacing a file with Kyle's recording needs no code change. The chart's second tap plays the same file slower.
+
+```bash
+npx tsx scripts/gen-spanish-vowel-audio.ts
+```
+
+Pass `--force` to rebuild every file, or `npx tsx scripts/gen-spanish-vowel-audio.ts casa` to rebuild one word.
+
+**Cost:** $0 (Edge TTS). **Time:** a few seconds. Needs `edge_tts` in Python.
+
 ### Update word audio URLs
 
 Updates the `audio_url` field in Supabase for one story's word rows, based on `scripts/audio-mapping.json` (written by `generate-word-audio.py`). Takes `--slug` (required); the old "free story" auto-detect was removed — it would crash with PGRST116 now that several stories are free.
