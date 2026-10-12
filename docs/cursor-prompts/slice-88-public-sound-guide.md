@@ -15,16 +15,42 @@ A public `/sounds` page: the full General American sound inventory as a clickabl
 
 ## Visual references (Kyle-ratified)
 
-- **americanipachart.com** — layout inspiration: clean grid of sound cells, click-through to detail, generous whitespace, playful but unified. Kyle noted its mixed-style illustrations as a defect: OURS USES NO ILLUSTRATIONS in v1. Cells are IPA symbol + Spanish name.
+- **americanipachart.com** — layout inspiration: clean grid of sound cells, click-through to detail, generous whitespace, playful but unified. Kyle noted its mixed-style illustrations as a defect: OURS USES NO ILLUSTRATIONS in v1. Cells are IPA symbol + Spanish name. **Its other weakness is the opportunity: Fabien never explains why the consonants are grouped. Kyle's own 2021 pronunciation course DOES, and this slice ships that layer.**
 - **gliglish.com/minimal-pairs** — exercise inspiration: hear one word, two choices on screen, tap the one you heard, instant feedback, then hear both back to back. Copy the mechanic, not the branding.
 - Everything renders with existing DESIGN.md tokens (Paper Light). NO new colors, fonts, or invented values (ask-gate applies). IPA symbols use the app's existing IPA typography.
+
+## Chart organization: Kyle's sound taxonomy (from his 2021 video course draft)
+
+Source of truth for names + wording: Kyle's draft at vault `Language-Wiki/source-materials/e4l-pronunciation-video-course-draft-2021.md`; distilled in vault `Language-Wiki/concepts/pronunciation-course-sound-taxonomy.md`. The guide JSON's `targets` groups (vowels/consonants) map INTO these sections; each guide target's `id`/`ipa` determines its cell. If a sound exists in the JSON but not below, place it by its closest articulatory group and list it in the PR as a placement note.
+
+**Consonant sections, in this order, each with a one-line explanation (Kyle's own definitions, use them as the section subtitle):**
+
+1. **Fricativas** — "exprimiendo aire por una pequeña brecha" (/f v θ ð s z ʃ ʒ h/)
+2. **Explosivas** — "bloqueando el aire completamente antes de dejarlo salir" (/p b t d k g ʔ/)
+3. **Africadas** — "combinando explosiva y fricativa juntas" (/tʃ dʒ/)
+4. **Aproximantes** — "casi como vocales sin mucha obstrucción" (/w ɹ j/)
+5. **Aproximantes laterales** — igual pero "por los lados de la lengua" (/l ɫ/)
+6. **Nasales** — "soltando aire por la nariz" (/m n ŋ/)
+
+**Vowel sections, in this order:**
+
+1. **Vocales débiles** (ə and the weak forms of i, ɪ, u; the guide's schwa lives here)
+2. **Vocales cortas** (ɪ ʊ ɛ ʌ ɑ æ)
+3. **Vocales largas** (iː uː ɚ and the r-colored ɑr ɔr ɛr ɪr)
+4. **Diptongos** (aɪ eɪ aʊ ɔɪ oʊ)
+
+**Two explanation moments Kyle wants that Fabien never ships (render as short intro text, in his voice, Spanish, with accents, no em dashes):**
+
+- Above the consonant groups: consonants BLOCK the air, vowels SHAPE it; the consonant groups differ in HOW they block it (squeeze, hold, hold+squeeze, barely, sideways, through the nose). One sentence each is enough; the section subtitle IS the explanation.
+- Above the vowel groups: monoptongos = the tongue stays still; diptongos = the tongue moves. Spanish has 5 pure vowels, English has 11 plus 5 movers, which is why English sounds "muddy" to Spanish ears until these are learned. This is the "cómo leer esta tabla" moment.
+- Keep it to ~2 short paragraphs total; do not write an essay. His mnemonics (chimpancé ʊ, perro gruñendo ɚ, R de pirata ɑr) stay on the individual SOUND pages (future coach text), not the chart.
 
 ## Scope
 
 ### 1. Public chart page `/sounds`
 
 - No auth required. Works on 375px (mobile-first rule). Add `<meta>` title/description in Spanish ("Los sonidos del inglés americano | Profe Kyle").
-- Sections: Vocales, Consonantes (from the guide JSON's `targets`, joined to sound videos). Optionally a short "Grupos de confusión" intro strip naming the classic Spanish-speaker traps (seat/sit, ship/sheep) linking to those sounds.
+- Sections: the Kyle taxonomy above (Vocales: débiles/cortas/largas/diptongos; Consonantes: fricativas/explosivas/africadas/aproximantes/laterales/nasales), built from the guide JSON's `targets` joined to sound videos. Group headings render with Kyle's one-line explanations as subtitles.
 - Each cell: IPA symbol (large), `nameEs` (small), a subtle dot/badge when a video exists vs muted styling when not (placeholder still clickable — the sound page explains with coachEs text even without video).
 - Header: one line in Kyle's voice: listening first, no grammar drilling. Link to learn.profekyle.com signup for logged-out users ("Crea tu cuenta gratis" or existing signup path) — do not gate anything behind it.
 - Navigation entry: logged-out → visible from the landing/login chrome where sensible; logged-in students → a Herramientas card ("Guía de sonidos"); keep existing bottom nav untouched (no new tab — same rule as Drill Lab).
