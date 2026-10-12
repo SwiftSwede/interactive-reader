@@ -112,8 +112,39 @@ Bitzer se limpió mientras preparaba el baño del niño. Lo encontró de nuevo c
 El niño había vuelto a agarrar su libro. Bitzer cedió y se sentó a leerle su cuento. Pero el niño no quería que le leyera. Lanzó el sombrero de Bitzer a una cinta transportadora y la encendió cuando Bitzer se subió para recuperarlo. Luego se montó sobre Bitzer y lo cabalgó como si fuera un caballo. Tras un intenso minuto de cabalgata, ambos salieron disparados. Bitzer estaba maltrecho y el niño satisfecho.
 
 Tiempo después, la madre llegó a casa y encontró a su hijo viendo la televisión y comiendo bocadillos. Se quedó atónita. El niño le pidió a su madre que se callara y señaló a Bitzer, que dormía en su cama.`,
-  },
+},
+{
+slug: "shaun-sheep-little-sheep-of-horrors",
+title: "Shaun the Sheep: Little Sheep of Horrors",
+youtubeUrl: "https://www.youtube.com/watch?v=qf5ah1RGPMc",
+englishSummary: `The farmer sits in his chair watching a scary movie. He eats pizza without taking his eyes off the television. Behind him, the sheep watch the movie through the window. Timmy is too small to see over the adult sheep, so he tries to jump to get a view.
+
+The farmer isn't impressed with the movie, so he turns off the TV and goes to the kitchen. The sheep want to know how the movie ends, but they head to the barn disappointed. Timmy has other ideas. He sneaks in through the open front door as the farmer takes out the trash and eats the leftover pizza. Then he accidentally turns on the TV when he steps on the remote. He climbs onto the chair to enjoy the movie.
+
+In the barn, the mother sheep realizes her baby is missing. In a panic, she wakes up her fellow sheep to find him. In the house, Timmy has fallen asleep, and the farmer turns off the TV without noticing him. The sheep peek in through the living room window and see Timmy's soother on the floor. A clue! They need to get inside the house, and they decide the chimney is the best option.
+
+Bitzer is woken up by the thunder. He is horrified to see the sheep on the roof and runs to the house. The farmer gets ready for bed, but the kettle whistles downstairs and he goes to turn off the stove. As soon as he leaves, the sheep come falling down the chimney into his room. Later, he sees the TV is on again, thinks it's broken, and unplugs it. The sheep clean up their mess. Bitzer goes down the chimney to chase after them.
+
+The sheep hide in the shower from the farmer as he enters the bathroom. One of the sheep thinks the farmer has a knife and is about to scream when Shaun throws soap into one sheep's mouth. What the sheep thought was a knife was actually an electric toothbrush.
+
+The farmer goes to his bedroom where a dirty Bitzer quickly hides behind the door. When the farmer closes the door, he sees a strange creature hanging from it and screams! Bitzer runs downstairs into the living room and sees a sheep foaming at the mouth and screams! The sheep see an ugly black creature and scream back. Shaun shushes them. Then Timmy appears with a face covered in pizza sauce. It looks like blood! Everybody starts screaming again. Shaun quiets them down again and proves it is pizza sauce, not blood. Then they hear the door opening and everyone jumps out the window before the farmer finds them. Bitzer grabs the movie on the way out, and the animals end the night watching the rest of it.`,
+// Kyle's edited, English-structured Spanish translation.
+// Some phrasing is deliberately non-idiomatic to mirror English syntax
+// (the "English-structured Spanish" technique) — do NOT "fix" it.
+spanishSummary: `El granjero está sentado en su sillón viendo una película de terror. Come pizza sin apartar la vista de la televisión. Detrás de él, las ovejas observan la película a través de la ventana. Timmy es demasiado pequeño para ver por encima de las ovejas adultas, así que intenta saltar para ver mejor.
+
+Al granjero no le impresiona la película, así que apaga la televisión y se dirige a la cocina. Las ovejas quieren saber cómo termina, pero se dirigen al establo decepcionadas. Timmy tiene otros planes. Se cuela por la puerta principal abierta mientras el granjero saca la basura y se come la pizza sobrada. Entonces, accidentalmente enciende la televisión al pisar el control remoto. Se sube al sillón para disfrutar de la película.
+
+En el establo, la oveja madre se da cuenta de que su cría ha desaparecido. Presa del pánico, despierta a las demás ovejas para buscarla. En la casa, Timmy se ha quedado dormido y el granjero apaga la televisión sin notarlo. Las ovejas se asoman por la ventana de la sala y ven el chupete de Timmy en el suelo. ¡Una pista! Necesitan entrar en la casa y deciden que la chimenea es la mejor opción.
+
+Bitzer se despierta con el trueno. Horrorizado al ver las ovejas en el tejado, corre hacia la casa. El granjero se prepara para irse a dormir, pero la tetera silba abajo y va a apagar la estufa. En cuanto se va, las ovejas caen por la chimenea hasta su habitación. Más tarde, ve que la televisión está encendida de nuevo, piensa que está rota y la desenchufa. Las ovejas limpian el desastre. Bitzer baja por la chimenea para perseguirlas.
+
+Las ovejas se esconden en la ducha del granjero cuando este entra al baño. Una de las ovejas cree que el granjero tiene un cuchillo y está a punto de gritar cuando Shaun le echa jabón en la boca. Lo que la oveja creía que era un cuchillo era en realidad un cepillo de dientes eléctrico.
+
+El granjero va a su habitación, donde un Bitzer sucio se esconde rápidamente detrás de la puerta. Cuando el granjero cierra la puerta, ve una extraña criatura colgando de ella y grita. Bitzer baja corriendo al salón y ve una oveja espumando en la boca, ¡y grita! La oveja ve una criatura negra y fea y grita también. Shaun las calla. Entonces aparece Timmy con la cara cubierta de salsa de pizza. ¡Parece sangre! Todos empiezan a gritar de nuevo. Shaun los calma otra vez y demuestra que es salsa de pizza, no sangre. Entonces oyen que se abre la puerta y todos saltan por la ventana antes de que el granjero los encuentre. Bitzer coge la película al salir, y los animales terminan la noche viendo el resto.`,
+},
 ];
+
 
 const spanishParagraphs = (text: string) =>
   text.split("\n\n").map((p) => p.trim()).filter(Boolean);

@@ -25,10 +25,14 @@ export default function BrowsingShell({
   children,
   activeTab,
   previewLevel = null,
+  accountHref = "/profile",
+  accountLabel = "Perfil",
 }: {
   children: React.ReactNode;
   activeTab: BrowsingTab | null;
   previewLevel?: CourseLevel | null;
+  accountHref?: string;
+  accountLabel?: string;
 }) {
   return (
     <div className="min-h-screen bg-paper">
@@ -37,13 +41,22 @@ export default function BrowsingShell({
         <header className="h-14 border-b border-paper-line bg-paper-header backdrop-blur-sm">
           <div className="mx-auto flex h-full max-w-2xl items-center justify-between px-4">
             <p className="text-label-sm text-text-secondary">Profe Kyle</p>
-            <Link
-              href="/profile"
-              aria-label="Perfil"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-card text-text-muted hover:bg-accent-soft hover:text-text-accent active:bg-surface-hover"
-            >
-              <User className="h-5 w-5" aria-hidden="true" />
-            </Link>
+            {accountLabel === "Perfil" ? (
+              <Link
+                href={accountHref}
+                aria-label="Perfil"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-card text-text-muted hover:bg-accent-soft hover:text-text-accent active:bg-surface-hover"
+              >
+                <User className="h-5 w-5" aria-hidden="true" />
+              </Link>
+            ) : (
+              <Link
+                href={accountHref}
+                className="inline-flex h-11 items-center rounded-card px-3 text-label-md text-text-secondary hover:bg-accent-soft hover:text-text-accent active:bg-surface-hover"
+              >
+                {accountLabel}
+              </Link>
+            )}
           </div>
         </header>
       </div>

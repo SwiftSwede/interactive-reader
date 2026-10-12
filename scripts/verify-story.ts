@@ -38,5 +38,11 @@ async function main() {
     .select("id", { count: "exact", head: true })
     .eq("story_id", s.data.id);
   console.log("total words:", count);
+  const q = await a
+    .from("comprehension_questions")
+    .select("position,question,level")
+    .eq("story_id", s.data.id)
+    .order("position");
+  console.log("questions:", q.data!.length, q.data!.map((x) => `${x.position}:${x.level}`).join(", "));
 }
 main();

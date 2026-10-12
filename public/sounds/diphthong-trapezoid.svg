@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 343 340" role="group" aria-label="Diptongos">
+  <defs>
+    <marker id="diphthong-head" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="var(--accent)"/>
+    </marker>
+  </defs>
+  <path d="M78 28 H265 L318 308 H25 Z" fill="var(--surface)" stroke="var(--paper-line)" stroke-width="1.5"/>
+  <g id="diphthong-ey" class="sound-diagram-hit" role="button" tabindex="0" aria-label="ej">
+    <line x1="78" y1="190" x2="86" y2="78" stroke="transparent" stroke-width="22" stroke-linecap="round"/>
+    <line x1="78" y1="190" x2="86" y2="78" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" marker-end="url(#diphthong-head)"/>
+  </g>
+  <g id="diphthong-ay" class="sound-diagram-hit" role="button" tabindex="0" aria-label="aj">
+    <line x1="110" y1="286" x2="130" y2="128" stroke="transparent" stroke-width="22" stroke-linecap="round"/>
+    <line x1="110" y1="286" x2="130" y2="128" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" marker-end="url(#diphthong-head)"/>
+  </g>
+  <g id="diphthong-ow" class="sound-diagram-hit" role="button" tabindex="0" aria-label="aŠ">
+    <line x1="180" y1="286" x2="236" y2="100" stroke="transparent" stroke-width="22" stroke-linecap="round"/>
+    <line x1="180" y1="286" x2="236" y2="100" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" marker-end="url(#diphthong-head)"/>
+  </g>
+  <g id="diphthong-oy" class="sound-diagram-hit" role="button" tabindex="0" aria-label="Tj">
+    <line x1="250" y1="270" x2="150" y2="140" stroke="transparent" stroke-width="22" stroke-linecap="round"/>
+    <line x1="250" y1="270" x2="150" y2="140" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" marker-end="url(#diphthong-head)"/>
+  </g>
+  <g id="diphthong-oh" class="sound-diagram-hit" role="button" tabindex="0" aria-label="oŠ">
+    <line x1="220" y1="210" x2="250" y2="86" stroke="transparent" stroke-width="22" stroke-linecap="round"/>
+    <line x1="220" y1="210" x2="250" y2="86" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" marker-end="url(#diphthong-head)"/>
+  </g>
+</svg>

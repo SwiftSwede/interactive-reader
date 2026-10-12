@@ -336,20 +336,20 @@ Barbara-That's right. Complete vacation.
 Jane-Honey, today I'm $260,000.
 Barbara-No, Jane. It's 6:45 in the morning.
 Jane-This offer is real. From a man in New York City who only saw a photograph.
-Adam-Jane, don't send people photos of our house.
+Barbara-Jane, don't send people photos of our house.
 Jane-He wants to bring the wife and family up here for some peace and quiet.
 Barbara-That's exactly what we're looking for.
 Jane-But, Barbara, this house is too big for you. It really ought to be for a couple with a family, you know...? Oh, pumpkin, I didn't mean anything. It's just that this house is too big. I'll see you in a few weeks. Okay?
 Barbara-Okay.
-Jane- All right. Think about it.
-Barbara-Take care.
+Jane-All right. Think about it.
+Barbara-Take care. [Downstairs Adam is doing something]
 Jane-Boo! I was just telling Barbara about this offer...
 Adam-No, Jane.
 Jane-Adam.
 Adam-Barbara, come with me down to the store.
 Barbara-What for?
 Adam-I need a new brush for this tung oil. And I want to get a part for the model.
-Barbara-Well, you just run in, okay?
+Barbara-Well, you just run in, okay? [The two get in the car and drive to town]
 Adam-Two weeks at home. The perfect vacation.
 Barbara-Jane says we should sell the house to someone with a family.
 Adam-Well, I don't think that it's any of Jane's business. Besides, we could try again on this vacation, you know.
@@ -360,40 +360,38 @@ Bill-Morning, Adam. Need a haircut before your vacation?
 Adam-No, thanks, Bill.
 Bill-How's the model coming?
 Adam-Oh, it's great.
-Bill-You know, you said Bozman built that foundation in 1835. But his grandson... He got hair right down to his goddamn shoulders. He says to me, "just trim it a little."
-I took the scissors to him so fast...
-Adam-See you later, huh, bill?
+Bill-You know, you said Bozman built that foundation in 1835. [Adam ignores him and enters the store to grab his things and leaves again] But his grandson... He got hair right down to his goddamn shoulders. He says to me, "just trim it a little.” I took the scissors to him so fast...
+Adam-See you later, huh, Bill?
 Bill-Right.
-Barbara-This is gonna be great. Are you sure you wouldn't rather go to Jamaica or someplace like that?
-Adam-No way. There's no place like home. Hey, look out for that...!
+Barbara-This is gonna be great.
+Adam-Are you sure you wouldn't rather go to Jamaica or someplace like that?
+Barbara-No way. There's no place like home. Hey, look out for that...! [Car swerves to avoid hitting a dog, drives over a bridge into the river and they drown]
 Barbara-Perfect start to our vacation.
 Adam-Well, you'll feel better when you're dry, honey.
 Barbara-That fire wasn't burning when we left.
 Adam-How's your arm?
 Barbara-I don't know. It feels frozen. I'll make some coffee and you get wood for the fire.
-Adam-Maybe we should just take things extra slow.
-Barbara-Do you remember how we got back up here?
-Adam-I'm gonna go back down to the bridge and retrace our steps.
+Adam-Maybe we should just take things extra slow. Do you remember how we got back up here? I'm gonna go back down to the bridge and retrace our steps. [Steps off porch and enters a barren wasteland before getting pulled back by Barbara]
 Adam-You saved my...
-Barbara-two hours.
+Barbara-2 hours.
 Adam-Barbara, you are not gonna believe... what?
 Barbara-That's how long you were gone.
 Adam-What is going on?
-Adam-I have to show you something. Look. [Look around for a few seconds in silence] There's that. and there's that.
+Barbara-I have to show you something. Look. [Look around for a few seconds in silence] There's that. and there's that.
 Adam-'Handbook for the recently diseased.'
 Barbara-Deceased.
 Adam-"Deceased "
 Barbara-I don't know where it came from. Look at the publisher.
 Adam-"Handbook for the Recently Deceased Press."
-Barbara-You know what? I don't think we survived the crash.
+Barbara-You know what? I don't think we survived the crash. [Upstairs Adam reads the book]
 Barbara-I hate this. Just... can you give me the basics?
 Adam-Well, this book isn't arranged that way. What do you wanna know?
 Barbara-Well, why did you disappear when you stepped off the porch? Are we halfway to heaven, are we halfway to hell? And how long is this gonna last?
-Adam-I don't see anything about heaven or hell. This book reads like stereo instructions. Listen to this: "Geographical and temporal perimeters. Functional perimeters vary from manifestation to manifestation." Oh, this is gonna take some time, honey.
+Adam-I don't see anything about heaven or hell. This book reads like stereo instructions. Listen to this: "Geographical and temporal perimeters. Functional perimeters vary from manifestation to manifestation." Oh, this is gonna take some time, honey. [Cut to Beetlejuice reading the newspaper]
 Beetlejuice-Damn sandworms. Thirteen percent, huh? Well, I better find a job. Let's see. Business section. Ooh-la-la. What do we got here? The Maitlands, huh? Cute couple. Look nice and stupid too.
 ***
 Dead Man-Want a cigarette?
-Barbara-Uh, no, thank you.
+Adam-Uh, no, thank you.
 Dead Man-Trying to cut down myself.
 Barbara-Adam, is this what happens when you die?
 Receptionist-This is what happens when you die. That is what happens when he dies. And that is what happens when they die. It's all very personal. And I'll tell you something. If I knew then what I know now, I wouldn't have had my little accident.
@@ -405,9 +403,9 @@ Dead Man-How do I look? There are no mirrors on this side.
 Adam-Fine. You look fine.
 Dead Man-Yeah?
 Barbara-Fine.
-Dead Woman-Thanks. I've been feeling a little flat.
+Dead Man-Thanks. I've been feeling a little flat.
 Announcer-Will the Peterson party report to door number 9? Peterson party, please report to door number 9. All new arrivals, report to waiting room number 8.
-Barbara-A hundred and twenty-five years. I can't believe this. I can't believe they didn't tell us. Oh, Adam, what is this?
+Barbara-125 years. I can't believe this. I can't believe they didn't tell us. Oh, Adam, what is this?
 Janitor-That's the lost souls' room. A room for ghosts that have been exorcised. Poor devils. That's death for the dead. It's all in the handbook. Keep moving.
 Adam-Five. This is the sixth door.
 Barbara-Boy, oh, boy, this place just gets weirder and weirder.
@@ -438,11 +436,10 @@ Barbara-Well...
 Adam-We might.
 Juno-No, you don't. He does not work well with others.
 Adam-What do you mean?
-Juno-I didn't want to bring it up. But rather than have you stumble onto it and make another mistake, I'll tell you. He was my assistant. But he was a troublemaker. He went out on his own as a freelance bio-exorcist. Claimed he could get rid of the living. Got into more trouble. In fact, I believe he's been sleazing around your cemetery lately.
-The only way he can be brought back... Is by calling his name three times. But I strongly suggest... That you remove the Deetzes yourselves.
-Adam-Well, how do we contact you if we need you again?
+Juno-I didn't want to bring it up. But rather than have you stumble onto it and make another mistake, I'll tell you. He was my assistant. But he was a troublemaker. He went out on his own as a freelance bio-exorcist. Claimed he could get rid of the living. Got into more trouble. In fact, I believe he's been sleazing around your cemetery lately. The only way he can be brought back... Is by calling his name three times. But I strongly suggest... That you remove the Deetzes yourselves.
+Adam-Well, how do we contact you if we need you again? [Juno vanishes]
 Barbara-Oh, Adam, that guy's in our cemetery.
-Adam-She's right, honey. We just have to keep this simple. We can do this. Come on.
+Adam-She's right, honey. We just have to keep this simple. We can do this. Come on. [Leave room and camera zooms in on model village]
 Beetlejuice-Hey, you. Hey, come here. Hungry? Come on. Hey, come here. I got something good for you. Come on. Come on over. We'll have a little bite, you'll have something to nosh. Come here.
 ***
 Lydia-Sick. Sexual perversion. If you guys are gonna do that weird sexual stuff, do it in your own bedroom. [Looks at pictures] No feet. Are you the guys hiding out in the attic?
@@ -450,7 +447,7 @@ Adam-We're ghosts.
 Barbara-Whoo!
 Lydia-What do you look like under there?
 Adam-Aren't you scared?
-Lydia-I'm not scared of sheets. Are you gross under there? Are you night of the living dead under there? Like all bloody veins and pus?
+Lydia-I'm not scared of sheets. Are you gross under there? Are you Night of the Living Dead under there? Like all bloody veins and pus?
 Adam-Night of the what?
 Lydia-Living dead. It's a movie.
 Barbara-If I had seen a ghost at your age, I would have been scared out of my wits.
@@ -459,21 +456,21 @@ Barbara-We're practicing.
 Adam-You can see us without the sheets?
 Lydia-Of course I can see you.
 Adam-Well, how is it that you see us and nobody else can?
-Lydia-Well, I read through that ‘Handbook for the Recently Deceased’. It says, "live people ignore the strange and unusual." I myself am strange and unusual.
+Lydia-Well, I read through that “Handbook for the Recently Deceased”. It says, "live people ignore the strange and unusual." I myself am strange and unusual.
 Barbara-You look like a regular girl to me.
 Adam-You read our book?
 Lydia-Yeah.
 Adam-You could follow it?
 Lydia-Yeah. Why were you in Delia's bedroom?
 Adam-We were trying to scare your mother.
-Lydia-Stepmother. Anyway, you can't scare her. She's sleeping with prince valium tonight.
+Lydia-Stepmother. Anyway, you can't scare her. She's sleeping with prince valium tonight. [Cut to attic]
 Lydia-You did this? You carved all these little houses and things?
 Adam-Mm-hm.
 Lydia-And this used to be your house. Why do you want to scare everybody?
 Adam-Well, we wanted to frighten you so you would move out.
 Lydia-You don't know the Deetzes very well. My father bought this place. He never walks away from equity. Why don't you leave?
 Barbara-We can't. we haven't left the house since the funeral
-Lydia-Funeral… god! You guys really are dead. This is amazing.
+Lydia-Funeral? god! You guys really are dead. This is amazing.
 Charles-Lydia.
 Lydia-I better go.
 Barbara-Wait. Don't tell your parents that we're up here.

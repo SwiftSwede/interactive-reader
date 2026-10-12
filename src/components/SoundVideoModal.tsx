@@ -1,20 +1,22 @@
 "use client";
 
 import { useEffect, useId, useRef } from "react";
+import Link from "next/link";
 import type { SoundVideo } from "@/types";
-import { getBunnyEmbedUrl } from "@/lib/bunny";
+import SoundVideoFrame from "./SoundVideoFrame";
 
 export default function SoundVideoModal({
   video,
   onClose,
+  explanationHref,
 }: {
   video: SoundVideo | null;
   onClose: () => void;
+  explanationHref?: string | null;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const titleId = useId();
-  const embedUrl = video ? getBunnyEmbedUrl(video.bunnyVideoId) : null;
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -74,20 +76,15 @@ export default function SoundVideoModal({
           {video.description && (
             <p className="sound-video-modal-desc">{video.description}</p>
           )}
-          {embedUrl ? (
-            <div className="sound-video-modal-frame">
-              <iframe
-                src={embedUrl}
-                title={`Video: ${video.name}`}
-                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          ) : (
-            <p className="sound-video-modal-empty">
-              Todavía no tengo el video de este sonido. Vuelve pronto.
-            </p>
-          )}
+          <SoundVideoFrame video={video} />
+          {explanationHref ? (
+            <Link
+              href={explanationHref}
+              className="mt-4 inline-flex min-h-11 items-center text-label-md text-text-accent hover:text-text-accent-dark"
+            >
+              Ver la explicación
+            </Link>
+          ) : null}
         </div>
       )}
     </dialog>

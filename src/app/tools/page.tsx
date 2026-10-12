@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { ChevronRight, LayoutGrid } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import BrowsingShell from "@/components/shell/BrowsingShell";
 import { browsingClassroomLevel, requireBrowsingStudent } from "@/lib/browsing-auth";
 import { toDrillLevel } from "@/lib/drills";
 import { loadStudentPractice } from "@/lib/student-drills";
+import { createClient } from "@/lib/supabase/server";
 
 export const metadata = {
   title: "Herramientas - Profe Kyle",
@@ -37,13 +38,73 @@ async function loadLabEntry(
   }
 }
 
+function SoundsCard() {
+  return (
+    <Link
+      href="/sounds"
+      className="mt-4 flex items-center justify-between gap-3 rounded-sheet border border-paper-line bg-surface p-4 hover:bg-surface-hover active:bg-accent-soft"
+    >
+      <span>
+        <span className="block text-headline-md text-text-primary">
+          Guía de sonidos
+        </span>
+        <span className="mt-1 block text-label-md text-text-secondary">
+          Los sonidos del inglés americano.
+        </span>
+      </span>
+      <ChevronRight
+        className="h-5 w-5 shrink-0 text-text-muted"
+        aria-hidden="true"
+      />
+    </Link>
+  );
+}
+
 export default async function ToolsPage() {
-  const { supabase, user, profile, preview } = await requireBrowsingStudent("/tools");
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return (
+      <BrowsingShell
+        activeTab="herramientas"
+        accountHref="/login"
+        accountLabel="Entra"
+      >
+        <section className="pt-6">
+          <h1 className="text-headline-lg text-text-primary">Herramientas</h1>
+          <Link
+            href="/login?next=/tools/practica"
+            className="mt-6 flex items-center justify-between gap-3 rounded-sheet border border-paper-line bg-surface p-4 hover:bg-surface-hover active:bg-accent-soft"
+          >
+            <span>
+              <span className="block text-headline-md text-text-primary">
+                Laboratorio de práctica
+              </span>
+              <span className="mt-1 block text-label-md text-text-secondary">
+                Entra para ver tu colección.
+              </span>
+            </span>
+            <ChevronRight
+              className="h-5 w-5 shrink-0 text-text-muted"
+              aria-hidden="true"
+            />
+          </Link>
+          <SoundsCard />
+        </section>
+      </BrowsingShell>
+    );
+  }
+
+  const { supabase: authed, user: student, profile, preview } =
+    await requireBrowsingStudent("/tools");
   const lab = preview
     ? { line: "Todavía no hay nada que practicar.", collectionCount: 0 }
     : await loadLabEntry(
-        supabase,
-        user.id,
+        authed,
+        student.id,
         browsingClassroomLevel(profile, preview)
       );
 
@@ -76,12 +137,7 @@ export default async function ToolsPage() {
           />
         </Link>
 
-        <div className="mt-16 flex flex-col items-center px-4 text-center">
-          <LayoutGrid className="h-12 w-12 text-text-muted" aria-hidden="true" />
-          <p className="mt-4 text-body-main text-text-secondary">
-            Próximamente: la biblioteca de sonidos del Profe Kyle.
-          </p>
-        </div>
+        <SoundsCard />
       </section>
     </BrowsingShell>
   );

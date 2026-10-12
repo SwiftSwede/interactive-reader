@@ -502,6 +502,11 @@ select:not([multiple]) {
   color: var(--text-accent);
 }
 
+.script-line > .script-speaker.movie-talk-speaker {
+  line-height: 20px;
+  margin-top: 4px;
+}
+
 .movie-talk-speaker-on {
   background-color: var(--accent);
   color: var(--surface);
@@ -594,6 +599,62 @@ select:not([multiple]) {
 .word-tooltip-action-on {
   border-color: var(--accent);
   background: var(--accent-soft);
+}
+
+.selection-flag-menu {
+  position: fixed;
+  z-index: 50;
+  max-width: calc(100vw - 16px);
+  padding: 4px;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.selection-flag-menu-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.selection-flag-menu-action {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-small);
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-roboto-flex), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.selection-flag-menu-action:hover {
+  background: var(--surface-hover);
+}
+
+.selection-flag-menu-action:active {
+  background: var(--paper-line);
+}
+
+.selection-flag-menu-action:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.selection-flag-menu-action-on {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.selection-flag-menu-note {
+  display: block;
+  width: 240px;
+  max-width: calc(100vw - 32px);
+  padding: 8px 8px 4px;
 }
 
 .word-active {
@@ -2066,6 +2127,43 @@ body.sticky-character-band-active {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+.sound-card {
+  transition: transform var(--duration-quick) var(--ease-smooth-out);
+  touch-action: manipulation;
+}
+
+.sound-card:active {
+  transform: scale(var(--scale-medium));
+}
+
+.sound-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.sound-diagram-hit {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.sound-diagram-hit.is-selected circle {
+  stroke: var(--accent);
+  fill: var(--accent-softer);
+}
+
+.sound-diagram-hit.is-selected line:last-of-type {
+  stroke: var(--text-accent-dark);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sound-card,
+  .sound-card:active {
+    transition: none;
+    transform: none;
+  }
 }
 
 .sound-video-modal-empty {

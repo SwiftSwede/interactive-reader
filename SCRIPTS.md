@@ -272,6 +272,18 @@ npx tsx scripts/update-word-audio.ts --slug <slug>        # set words.audio_url 
 
 **Cost:** $0 (Edge TTS). **Time:** ~1-2 min per 100 unique words.
 
+### Generate sound-chart audio
+
+Writes one MP3 per keyword and example word on the public sound chart (`/sounds`) into `public/audio/sounds/<word>.mp3`. Skips files that already exist. Voice is Edge TTS `en-US-AriaNeural` at -10%, the same voice as story word audio. These files are the v1 voice. Replacing a file with Kyle's recording needs no code change. The chart's second tap plays the same file slower. It does not generate a second clip.
+
+```bash
+npx tsx scripts/gen-sound-audio.ts
+```
+
+If a matching file already exists in `public/audio/words/`, the script copies it instead of calling TTS again. The old Bing speech host started returning 403 in October 2026. This script tries Edge's current read-aloud host first, then the old one.
+
+**Cost:** $0 (Edge TTS). **Time:** about a minute for the full chart. Needs `edge_tts` in Python, the same install as `generate-word-audio.py`.
+
 ### Update word audio URLs
 
 Updates the `audio_url` field in Supabase for one story's word rows, based on `scripts/audio-mapping.json` (written by `generate-word-audio.py`). Takes `--slug` (required); the old "free story" auto-detect was removed — it would crash with PGRST116 now that several stories are free.

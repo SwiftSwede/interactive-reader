@@ -34,6 +34,16 @@ export function wordFlagClassName(input: {
   return classes.join(" ");
 }
 
+export function sharedSelectionNote(
+  notes: Array<string | null | undefined>
+): string {
+  const unique = new Set(
+    notes.map((note) => note?.trim() ?? "").filter((note) => note.length > 0)
+  );
+  if (unique.size !== 1) return "";
+  return [...unique][0] ?? "";
+}
+
 export function shouldUnmarkAll(
   selected: { types: WordFlagType[] }[],
   type: WordFlagType

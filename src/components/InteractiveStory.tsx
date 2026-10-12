@@ -20,6 +20,10 @@ import {
   setWordFlag,
 } from "@/app/lesson/[slug]/word-flag-actions";
 import NoteLightbox from "@/components/NoteLightbox";
+import SelectionFlagMenu, {
+  type SelectionAnchor,
+  type SelectionRect,
+} from "@/components/SelectionFlagMenu";
 import {
   isMovieTalkSceneBreak,
   isMovieTalkStageDirection,
@@ -33,10 +37,75 @@ import {
   flagAnchorKey,
   nextOccurrenceIndex,
   requestCountByAnchor,
+  sharedSelectionNote,
   shouldUnmarkAll,
   wordFlagClassName,
 } from "@/lib/word-flags";
 import type { WordFlag, WordFlagging, WordFlagRequest, WordFlagType } from "@/types";
+
+function isSelectionMenuTarget(target: EventTarget | null) {
+  return (
+    target instanceof Element &&
+    Boolean(target.closest(".selection-flag-menu"))
+  );
+}
+
+function readSelectionAnchors(container: HTMLElement): {
+  anchors: SelectionAnchor[];
+  rect: SelectionRect;
+} | null {
+  const selection = window.getSelection();
+  if (!selection || selection.rangeCount === 0 || selection.isCollapsed) {
+    return null;
+  }
+  const range = selection.getRangeAt(0);
+  const ancestor = range.commonAncestorContainer;
+  const ancestorEl =
+    ancestor.nodeType === Node.ELEMENT_NODE
+      ? (ancestor as Element)
+      : ancestor.parentElement;
+  if (!ancestorEl || !container.contains(ancestorEl)) return null;
+
+  const anchors = Array.from(
+    container.querySelectorAll<HTMLElement>("[data-word-text]")
+  )
+    .filter((span) => {
+      try {
+        return range.intersectsNode(span);
+      } catch {
+        return false;
+      }
+    })
+    .map((span) => ({
+      flagText: span.dataset.wordText ?? "",
+      occurrenceIndex: Number(span.dataset.wordOccurrence),
+    }))
+    .filter(
+      (row) => row.flagText.length > 0 && Number.isFinite(row.occurrenceIndex)
+    );
+  if (anchors.length === 0) return null;
+
+  const box = range.getBoundingClientRect();
+  return {
+    anchors,
+    rect: {
+      top: box.top,
+      bottom: box.bottom,
+      center: box.left + box.width / 2,
+    },
+  };
+}
+
+function sameSelectionAnchors(a: SelectionAnchor[], b: SelectionAnchor[]) {
+  return (
+    a.length === b.length &&
+    a.every(
+      (row, index) =>
+        row.flagText === b[index]?.flagText &&
+        row.occurrenceIndex === b[index]?.occurrenceIndex
+    )
+  );
+}
 
 export type WordFlagStateControl = {
   flags: WordFlag[];
@@ -115,6 +184,10 @@ export default function InteractiveStory({
   const requests = wordFlagState?.requests ?? internalRequests;
   const setRequests = wordFlagState?.setRequests ?? setInternalRequests;
   const [openNote, setOpenNote] = useState<string | null>(null);
+  const [selectionMenu, setSelectionMenu] = useState<{
+    anchors: SelectionAnchor[];
+    rect: SelectionRect;
+  } | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const flagsRef = useRef(flags);
   flagsRef.current = flags;
@@ -337,8 +410,12 @@ export default function InteractiveStory({
   const handleSaveNote = useCallback(
     (flagText: string, occurrenceIndex: number, note: string) => {
       if (!flagging?.enabled) return;
-      const key = flagAnchorKey(flagText, occurrenceIndex);
-      const types = flagTypeMap.get(key) ?? [];
+      const types = flagsRef.current
+        .filter(
+          (row) =>
+            row.flagText === flagText && row.occurrenceIndex === occurrenceIndex
+        )
+        .map((row) => row.flagType);
       if (types.length === 0) return;
       setFlags((current) =>
         current.map((row) =>
@@ -357,8 +434,114 @@ export default function InteractiveStory({
         });
       }
     },
-    [flagging?.enabled, flagging?.storyId, flagTypeMap]
+    [flagging?.enabled, flagging?.storyId]
   );
+
+  const applySelectionStyle = useCallback(
+    (anchors: SelectionAnchor[], type: WordFlagType, note: string | null) => {
+      const selected = anchors.map((anchor) => ({
+        types: flagsRef.current
+          .filter(
+            (row) =>
+              row.flagText === anchor.flagText &&
+              row.occurrenceIndex === anchor.occurrenceIndex
+          )
+          .map((row) => row.flagType),
+      }));
+      const unmark = shouldUnmarkAll(selected, type);
+      const trimmed = note?.trim() ?? "";
+      for (const anchor of anchors) {
+        handleToggleFlag(
+          anchor.flagText,
+          anchor.occurrenceIndex,
+          type,
+          !unmark
+        );
+        if (!unmark && trimmed && flagging?.storyId) {
+          setFlags((current) =>
+            current.map((row) =>
+              row.flagText === anchor.flagText &&
+              row.occurrenceIndex === anchor.occurrenceIndex &&
+              row.flagType === type
+                ? { ...row, note: trimmed }
+                : row
+            )
+          );
+          void saveWordFlagNote({
+            storyId: flagging.storyId,
+            flagText: anchor.flagText,
+            occurrenceIndex: anchor.occurrenceIndex,
+            flagType: type,
+            note: trimmed,
+          });
+        }
+      }
+    },
+    [flagging?.storyId, handleToggleFlag]
+  );
+
+  const saveSelectionNote = useCallback(
+    (anchors: SelectionAnchor[], note: string) => {
+      for (const anchor of anchors) {
+        handleSaveNote(anchor.flagText, anchor.occurrenceIndex, note);
+      }
+    },
+    [handleSaveNote]
+  );
+
+  useEffect(() => {
+    if (!flagging?.enabled) return;
+
+    const showFromSelection = () => {
+      const container = containerRef.current;
+      if (!container) return;
+      const next = readSelectionAnchors(container);
+      if (!next) return;
+      setActivePosition(null);
+      setSelectionMenu(next);
+    };
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (isSelectionMenuTarget(event.target)) return;
+      setSelectionMenu(null);
+    };
+
+    const onPointerUp = (event: PointerEvent) => {
+      if (isSelectionMenuTarget(event.target)) return;
+      showFromSelection();
+    };
+
+    const onKeyUp = (event: KeyboardEvent) => {
+      if (isSelectionMenuTarget(event.target)) return;
+      if (event.shiftKey || event.key === "Shift") showFromSelection();
+    };
+
+    const onScroll = () => {
+      const container = containerRef.current;
+      if (!container) return;
+      const next = readSelectionAnchors(container);
+      if (!next) return;
+      setSelectionMenu((current) => {
+        if (!current || !sameSelectionAnchors(current.anchors, next.anchors)) {
+          return current;
+        }
+        return next;
+      });
+    };
+
+    document.addEventListener("pointerdown", onPointerDown, true);
+    document.addEventListener("pointerup", onPointerUp);
+    document.addEventListener("keyup", onKeyUp);
+    window.addEventListener("scroll", onScroll, true);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown, true);
+      document.removeEventListener("pointerup", onPointerUp);
+      document.removeEventListener("keyup", onKeyUp);
+      window.removeEventListener("scroll", onScroll, true);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [flagging?.enabled]);
 
   useEffect(() => {
     if (!flagging?.isTeacher || !flagging.sessionId) return;
@@ -1034,6 +1217,49 @@ export default function InteractiveStory({
           );
         })}
       </div>
+      {selectionMenu && flagging?.enabled ? (
+        <SelectionFlagMenu
+          key={selectionMenu.anchors
+            .map((row) => `${row.flagText}:${row.occurrenceIndex}`)
+            .join("|")}
+          anchors={selectionMenu.anchors}
+          rect={selectionMenu.rect}
+          initialNote={sharedSelectionNote(
+            selectionMenu.anchors.map(
+              (anchor) =>
+                noteByAnchor.get(
+                  flagAnchorKey(anchor.flagText, anchor.occurrenceIndex)
+                ) ?? null
+            )
+          )}
+          pressed={{
+            bold: shouldUnmarkAll(
+              selectionMenu.anchors.map((anchor) => ({
+                types:
+                  flagTypeMap.get(
+                    flagAnchorKey(anchor.flagText, anchor.occurrenceIndex)
+                  ) ?? [],
+              })),
+              "bold"
+            ),
+            underline: shouldUnmarkAll(
+              selectionMenu.anchors.map((anchor) => ({
+                types:
+                  flagTypeMap.get(
+                    flagAnchorKey(anchor.flagText, anchor.occurrenceIndex)
+                  ) ?? [],
+              })),
+              "underline"
+            ),
+          }}
+          onToggle={(type, note) =>
+            applySelectionStyle(selectionMenu.anchors, type, note)
+          }
+          onSaveNote={(note) =>
+            saveSelectionNote(selectionMenu.anchors, note)
+          }
+        />
+      ) : null}
       {openNote ? (
         <NoteLightbox note={openNote} onClose={() => setOpenNote(null)} />
       ) : null}

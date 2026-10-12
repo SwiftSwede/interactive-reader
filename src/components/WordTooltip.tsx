@@ -176,6 +176,14 @@ function WordTooltip({
 
   const activateWord = (e: React.SyntheticEvent) => {
     e.stopPropagation();
+    const selection = window.getSelection();
+    if (selection && !selection.isCollapsed && spanRef.current) {
+      try {
+        if (selection.containsNode(spanRef.current, true)) return;
+      } catch {
+        return;
+      }
+    }
     if (onFirstInteraction) onFirstInteraction();
     if (!showTeacherFlags && flagNote && onOpenNote) {
       onOpenNote();

@@ -5,6 +5,7 @@ import {
   nextOccurrenceIndex,
   occurrenceIndexForTokens,
   requestCountByAnchor,
+  sharedSelectionNote,
   shouldUnmarkAll,
   wordFlagClassName,
 } from "./word-flags";
@@ -41,6 +42,14 @@ describe("flag toggle", () => {
       ),
       false
     );
+  });
+});
+
+describe("selection note", () => {
+  test("prefills only when every noted word shares one note", () => {
+    assert.equal(sharedSelectionNote(["  same  ", "same", null]), "same");
+    assert.equal(sharedSelectionNote(["one", "two"]), "");
+    assert.equal(sharedSelectionNote([null, "  "]), "");
   });
 });
 
