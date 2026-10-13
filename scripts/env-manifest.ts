@@ -98,6 +98,11 @@ export const ENV_MANIFEST: EnvVarSpec[] = [
     severity: "feature",
     feature: "Teacher catalog delete",
   },
+  {
+    name: "MAILERLITE_API_TOKEN",
+    severity: "feature",
+    feature: "Workshop registration (MailerLite)",
+  },
 ];
 
 export type EnvCheckResult = {

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Lora, Roboto_Flex } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
@@ -24,10 +25,13 @@ export const metadata: Metadata = {
     "Lee y escucha inglés con Profe Kyle. Toca cualquier palabra para ver la traducción y la pronunciación.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const pathname = (await headers()).get("x-pathname") ?? "";
+  const lang = pathname.startsWith("/workshop") ? "es" : "en";
+
   return (
     <html
-      lang="en"
+      lang={lang}
       className={`${lora.variable} ${robotoFlex.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">

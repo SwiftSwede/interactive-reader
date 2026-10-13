@@ -77,6 +77,7 @@ layout:
   breakpoint_tablet: 600px
   breakpoint_desktop: 1024px
   teacher_exception: /teacher/* is desktop-first 3-column; never applies to student routes
+  marketing_exception: /workshop and /workshop/gracias match the Thrive webinar pages. Not paper. No tab bar.
 components:
   buttons: [primary, secondary, ghost, step-nav-pill, ActionButton]
   teacher_observation_chip: "8px radius (rounded-small), surface-hover fill, 1px paper-line border, Lucide X in a 44px hit area. Not a pill."
@@ -101,6 +102,7 @@ components:
   lesson_card: "Inicio and Lecciones row. Equal height via one reserved 16px muted line under the status. Song uses the Music icon. Live-only with a recording says Grabación disponible and does not link out."
   browsing_bottom_pad: "Content clears the tab bar: 72px on mobile (56px bar + 16px gap), 88px on desktop (56px bar + 16px float + 16px gap), plus the safe area."
   navigation: browsing mode (bottom tabs) vs lesson mode (full-screen, step nav); never coexist
+  workshop_landing: "Public /workshop. Thrive webinar skin, one 680px column, html lang=es. Inline form in the first viewport (Olly/Brunson archive pattern): kicker, facts, date, name/email, privacy line, repeated CTAs. Liberty is an img under a navy wash that darkens toward the form. IPA as a list, not three cards. No popup, no phone. Open Sans. Not paper, no tab bar."
 ---
 
 # Design System
@@ -322,6 +324,10 @@ On screens wider than 1024px, the layout does NOT change structurally. The same 
 - No full-width header content. Header content is constrained to 672px.
 - No split-view lessons. No secondary panel showing the story text alongside the questions. The bottom sheet is the cross-reference mechanism on all screen sizes.
 - No wider story text column. 672px is the max for readability. Do not let stories stretch wider on desktop.
+
+## Public marketing routes (`/workshop`)
+
+**Deliberate exception to Paper Light.** `/workshop` and `/workshop/gracias` follow Kyle's Thrive webinar ([live page](https://www.profekyle.com/webinar-no-congelarte-mas/)), with phonetic-signup proof of a simple lead form ([live page](https://www.profekyle.com/signup-phonetic-training/)): Statue of Liberty photo (`<img>` in a top band, cropped to the statue, navy wash becoming solid behind the form; thanks page does not load the photo), navy `#202f60` date card, coral `#cc333d` CTA (AA with white), the form on the photo (not a white band), then a gray learn list with coral IPA circles in a row, not three floating cards. Document language is Spanish (`html lang=es`). Open Sans. Conversion order matches archived free-registration funnels (Olly, Brunson challenges): kicker, title, event facts, date card, then the form. No "Cuándo" label. The date stays above the fields. Privacy line, repeated CTAs. This is a registration lander for ad traffic, not a short ad itself. One 680px column at every width. No popup, no phone field, no two-column hero. Not paper, no tab bar. Student and teacher routes never import this skin.
 
 ## Teacher Dashboard (`/teacher/*`)
 
