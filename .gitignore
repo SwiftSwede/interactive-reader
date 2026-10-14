@@ -49,3 +49,4 @@ tsconfig.tsbuildinfo
 .vercel
 .env*
 .venv/
+.annotate-cache/
