@@ -201,6 +201,12 @@ export const ERROR_TAG_SEEDS: TagSeed[] = [
   { name: "age_expression", displayName: "Age: I am 25" },
   { name: "participle_adjectives", displayName: "Boring vs bored" },
   { name: "for_vs_since", displayName: "For vs since" },
+  { name: "past_simple_omission", displayName: "Past simple (narration)" },
+  { name: "time_preposition", displayName: "Prepositions of time" },
+  { name: "place_preposition", displayName: "Prepositions of place" },
+  { name: "negative_infinitive", displayName: "Negative infinitive" },
+  { name: "double_comparative", displayName: "Double comparative" },
+  { name: "compound_subject_agreement", displayName: "Compound subject agreement" },
 ];
 
 export const TAG_SEEDS: Record<TagType, TagSeed[]> = {

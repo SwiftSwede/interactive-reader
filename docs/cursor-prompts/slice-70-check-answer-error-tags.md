@@ -69,3 +69,7 @@ Extend the co-located `knowledge-tags` test file (create if absent): valid tag p
 - No UI, no migration, no new deps, no `user_topic_evidence` writes, no client changes.
 - PRD row: Slice 70 (if taken in the PRD, use the next free number and note it in the prompt file header, as in Slice 69).
 - Commit only this slice's files: `src/types/index.ts`, `src/lib/knowledge-tags.ts` (+ test), `src/app/api/check-answer/route.ts`, PRD row, this prompt file. Do not sweep the working tree.
+
+## 2026-10-13: 6 new L1 error tags (22 to 28), mined from the Oct 12 pre-int conversation class transcript
+
+Kyle tagged recurring errors from the Zoom transcript of the pre-int M+W conversation class (scary movies). Added: past_simple_omission (narration told in present: "I eat a lot" -> "I ate a lot"; 9+ instances, 4 students), time_preposition ("in the night" -> "at night", 5 instances, 3 students), place_preposition ("en el bus" -> "on the bus"; Andrea said "in his boss"), negative_infinitive ("to don't scream" -> "not to scream"), double_comparative ("more easy" -> "easier"), compound_subject_agreement ("my daughter and my husband doesn't" -> "don't"). Files: knowledge-tags.ts seeds, check-answer SYSTEM_PROMPT list + 4 EXAMPLES entries, count-pinning test 22->28, DB upsert via seed-knowledge-tags.ts (error_tags: 28 confirmed). Tests 14/14 pass, tsc clean. Borderline single-hitters NOT added: "the another" (double determiner), "scare movies" (adjective formation), await corroboration.

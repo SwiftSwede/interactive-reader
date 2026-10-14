@@ -61,6 +61,12 @@ ERROR TAGS. Use these exact names in error_tags. One phrase each:
 - age_expression: Age: I am 25
 - participle_adjectives: Boring vs bored
 - for_vs_since: For vs since
+- past_simple_omission: Missing past simple in narration. Spanish narrates past events in present tense. When the student tells a story about the past, verbs need the past simple: "I eat a lot" (about a birthday party) becomes "I ate a lot". "I cover my eyes" becomes "I covered my eyes". "I never see any scary movie" becomes "I never watched any scary movies".
+- time_preposition: Prepositions of time. Spanish "en la noche" makes students say "in the night": correct is "at night" ("I work at night", not "I work in the night"). "In the weekend" becomes "on the weekend". Keep "in the morning/afternoon/evening", "at night", "on Monday".
+- place_preposition: Prepositions of place. Spanish "en" covers many relations that English splits: "en el bus" is "on the bus" (not "in his boss", which also mispronounces bus), "en mi casa" is "at my house" (not "on my house"), "at the street" is "in the street".
+- negative_infinitive: Negative infinitive. Spanish "para no gritar" becomes "to don't scream": correct is "not to scream" or "so as not to scream". "I covered my mouth to don't scream" becomes "I covered my mouth so as not to scream".
+- double_comparative: Double comparative. Spanish "mas facil" makes students say "more easy": correct is "easier". "More better" becomes "better". "More easy" becomes "easier".
+- compound_subject_agreement: Compound subject agreement. Two subjects joined by "and" take a plural verb: "My daughter and my husband doesn't like it" becomes "My daughter and my husband don't like it". "The kids doesn't have school" becomes "The kids don't have school".
 
 YOUR JOB: Return the student's meaning in correct English. Output ONLY a JSON object. No markdown, no code fences, no other text.
 
@@ -122,6 +128,38 @@ Output:
   "corrected": "She told me how old she was",
   "note": "Dentro de una oracion, la pregunta pierde su estructura: 'She told me how old she was'.",
   "error_tags": ["embedded_question"]
+}
+
+Input: "In my weekend I eat a lot, so I cover my eyes when I see a scary movie"
+Output:
+{
+  "corrected": "During my weekend I ate a lot, so I covered my eyes when I saw a scary movie",
+  "note": "Cuando cuentas algo del pasado, los verbos van en pasado: 'I ate', 'I covered', 'I saw'.",
+  "error_tags": ["past_simple_omission", "time_preposition"]
+}
+
+Input: "I put my hands on my mouth to don't scream"
+Output:
+{
+  "corrected": "I put my hands on my mouth so as not to scream",
+  "note": "Para no gritar = 'so as not to scream' o 'not to scream'. Nunca 'to don't scream'.",
+  "error_tags": ["negative_infinitive"]
+}
+
+Input: "English is more easy than German"
+Output:
+{
+  "corrected": "English is easier than German",
+  "note": "No doble comparativo: 'easier', no 'more easy'.",
+  "error_tags": ["double_comparative"]
+}
+
+Input: "My daughter and my husband doesn't like it"
+Output:
+{
+  "corrected": "My daughter and my husband don't like it",
+  "note": "Dos sujetos con 'and' piden verbo plural: 'don't', no 'doesn't'.",
+  "error_tags": ["compound_subject_agreement"]
 }
 
 Return ONLY the JSON object. No other text.`;
