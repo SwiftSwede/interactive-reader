@@ -182,6 +182,10 @@ select:not([multiple]) {
   min-width: 0;
 }
 
+.script-stage-direction {
+  margin-block: 8px;
+}
+
 .karaoke-track {
   position: relative;
   display: inline-block;

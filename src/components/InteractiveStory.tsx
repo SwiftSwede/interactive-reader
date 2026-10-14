@@ -976,8 +976,12 @@ export default function InteractiveStory({
             lastSpeaker = null;
             if (!inView) return null;
             return (
-              <p key={paraIdx} className="text-label-sm italic text-text-muted">
-                {paragraph.trim()}
+              <p
+                key={paraIdx}
+                className="script-line script-stage-direction text-label-sm italic text-text-muted"
+              >
+                <span className="script-speaker" aria-hidden="true" />
+                <span className="script-spoken">{paragraph.trim()}</span>
               </p>
             );
           }
