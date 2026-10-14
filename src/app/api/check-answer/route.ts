@@ -67,6 +67,9 @@ ERROR TAGS. Use these exact names in error_tags. One phrase each:
 - negative_infinitive: Negative infinitive. Spanish "para no gritar" becomes "to don't scream": correct is "not to scream" or "so as not to scream". "I covered my mouth to don't scream" becomes "I covered my mouth so as not to scream".
 - double_comparative: Double comparative. Spanish "mas facil" makes students say "more easy": correct is "easier". "More better" becomes "better". "More easy" becomes "easier".
 - compound_subject_agreement: Compound subject agreement. Two subjects joined by "and" take a plural verb: "My daughter and my husband doesn't like it" becomes "My daughter and my husband don't like it". "The kids doesn't have school" becomes "The kids don't have school".
+- third_person_s_missing: Missing -s on third person singular. Spanish verbs don't change with the subject, English does: "My customer complain every time" becomes "My customer complains every time". "She visit my brother" becomes "She visits my brother" (or "She visited my brother" in the past). "He want" becomes "He wants".
+- gerund_after_preposition: Gerund (-ing) after a preposition. After "for", "about", "of", "in", "by", a verb needs -ing: "I'm sorry for show up late" becomes "I'm sorry for showing up late". "Instead of watch TV" becomes "Instead of watching TV". "Thank you for come" becomes "Thank you for coming".
+- be_omission: Missing "be" before "gonna"/"going to". Spanish drops the auxiliary: "I gonna wake up my husband" becomes "I'm gonna wake up my husband" (or "I'm going to wake up my husband"). "She gonna call" becomes "She's gonna call". "They going to investigate" becomes "They're going to investigate".
 
 YOUR JOB: Return the student's meaning in correct English. Output ONLY a JSON object. No markdown, no code fences, no other text.
 
@@ -160,6 +163,30 @@ Output:
   "corrected": "My daughter and my husband don't like it",
   "note": "Dos sujetos con 'and' piden verbo plural: 'don't', no 'doesn't'.",
   "error_tags": ["compound_subject_agreement"]
+}
+
+Input: "My customer complain every time and she visit us tomorrow"
+Output:
+{
+  "corrected": "My customer complains every time and she visits us tomorrow",
+  "note": "Tercera persona (he, she, it) siempre lleva -s: 'complains', 'visits'.",
+  "error_tags": ["third_person_s_missing"]
+}
+
+Input: "I'm sorry for show up late, teacher"
+Output:
+{
+  "corrected": "I'm sorry for showing up late, teacher",
+  "note": "Despues de una preposicion (for, about, of), el verbo lleva -ing: 'for showing up'.",
+  "error_tags": ["gerund_after_preposition"]
+}
+
+Input: "I gonna wake up my husband and he gonna check"
+Output:
+{
+  "corrected": "I'm gonna wake up my husband and he's gonna check",
+  "note": "Nunca 'I gonna'. Siempre 'I'm gonna' (o 'I'm going to').",
+  "error_tags": ["be_omission"]
 }
 
 Return ONLY the JSON object. No other text.`;

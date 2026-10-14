@@ -157,8 +157,8 @@ test("vocabulary keywords respect word boundaries", () => {
   assert.ok(hits.some((tag) => tag.name === "sports"));
 });
 
-test("error tags are a fixed 28-name vocabulary", () => {
-  assert.equal(ERROR_TAG_SEEDS.length, 28);
+test("error tags are a fixed 31-name vocabulary", () => {
+  assert.equal(ERROR_TAG_SEEDS.length, 31);
   assert.equal(isValidErrorTag("embedded_question"), true);
   assert.equal(isValidErrorTag("age_expression"), true);
   assert.equal(isValidErrorTag("invented_tag"), false);

@@ -207,6 +207,9 @@ export const ERROR_TAG_SEEDS: TagSeed[] = [
   { name: "negative_infinitive", displayName: "Negative infinitive" },
   { name: "double_comparative", displayName: "Double comparative" },
   { name: "compound_subject_agreement", displayName: "Compound subject agreement" },
+  { name: "third_person_s_missing", displayName: "Third person -s" },
+  { name: "gerund_after_preposition", displayName: "Gerund after preposition" },
+  { name: "be_omission", displayName: "Missing verb be (gonna)" },
 ];
 
 export const TAG_SEEDS: Record<TagType, TagSeed[]> = {
