@@ -13,6 +13,9 @@
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
 
+import { createHash } from "crypto";
+import fs from "fs";
+import path from "path";
 import { createClient } from "@supabase/supabase-js";
 import { WebSocket } from "ws";
 import { KYLE_IPA_ALPHA_RULE } from "../src/lib/ipa-conventions";
@@ -146,6 +149,76 @@ ${storyText}
 Return ONLY the JSON object. No explanation, no markdown code fences, just the raw JSON.`;
 }
 
+// ── Chunk cache ────────────────────────────────────────────
+// Each successfully annotated (and verified) chunk is cached on disk, keyed by
+// sha256(model + chunk text). On a re-run (e.g. one chunk failed inspection
+// last time), cached chunks are reused and ONLY the failed chunk is
+// re-annotated — the whole dialogue is never re-run from scratch.
+const CHUNK_CACHE_DIR = path.resolve(process.cwd(), ".annotate-cache");
+const cacheKey = (chunkText: string) =>
+  createHash("sha256").update(`${MODEL}\n${chunkText}`).digest("hex").slice(0, 32);
+
+function readChunkCache(key: string): LLMResponse | null {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(CHUNK_CACHE_DIR, `${key}.json`), "utf8"));
+  } catch {
+    return null;
+  }
+}
+
+function writeChunkCache(key: string, res: LLMResponse) {
+  try {
+    fs.mkdirSync(CHUNK_CACHE_DIR, { recursive: true });
+    fs.writeFileSync(path.join(CHUNK_CACHE_DIR, `${key}.json`), JSON.stringify(res));
+  } catch (err) {
+    console.warn(`  (cache write failed, non-fatal: ${err})`);
+  }
+}
+
+// Merge punctuation-only tokens into the previous word before verification.
+// Cheap models sometimes emit punctuation as SEPARATE tokens ("Well", ",", "I").
+// The reader tokenizes with punctuation attached ("Well,"), so any split
+// punctuation shifts every later position and silently misaligns tooltips.
+function mergePunctuationTokens(words: LLMWord[]): LLMWord[] {
+  const merged: LLMWord[] = [];
+  for (const w of words) {
+    const hasContent = /[\p{L}\p{N}]/u.test(w.text);
+    if (hasContent || merged.length === 0) {
+      merged.push({ ...w });
+    } else {
+      merged[merged.length - 1].text += w.text;
+    }
+  }
+  return merged;
+}
+
+const normToken = (s: string) =>
+  s.replace(/[’‘]/g, "'").replace(/[^\p{L}\p{N}']/gu, "").toLowerCase();
+
+// Per-chunk inspection: the merged annotation for THIS chunk must match the
+// chunk's own word-bearing tokens 1:1. Chunk token streams concatenate to the
+// full transcript stream (chunks are whole non-empty lines), so per-chunk
+// verification composes into the global alignment guard.
+function inspectChunk(annotation: LLMResponse, chunkText: string): string[] {
+  const expectedTokens = chunkText.split(/\s+/).filter(Boolean);
+  const expectedWords = expectedTokens.filter((t) => /[\p{L}\p{N}]/u.test(t));
+  const gotWords = mergePunctuationTokens(annotation.words).map((w) => w.text);
+  const diffs: string[] = [];
+  const maxLen = Math.max(gotWords.length, expectedWords.length);
+  for (let i = 0; i < maxLen; i++) {
+    const got = gotWords[i] ?? "<missing>";
+    const want = expectedWords[i] ?? "<missing>";
+    if (normToken(got) !== normToken(want)) {
+      diffs.push(`expected "${want}" got "${got}"`);
+      if (diffs.length >= 5) break;
+    }
+  }
+  if (gotWords.length !== expectedWords.length) {
+    diffs.unshift(`count: expected ${expectedWords.length}, got ${gotWords.length}`);
+  }
+  return diffs;
+}
+
 // ── Call the LLM ──────────────────────────────────────────
 
 type LLMWord = {
@@ -200,7 +273,7 @@ async function annotateChunkWithLLM(chunkText: string, chunkIndex: number): Prom
   if (!response.ok) {
     const errorText = await response.text();
     console.error(`OpenRouter API error ${response.status}:`, errorText);
-    process.exit(1);
+    throw new Error(`OpenRouter API error ${response.status}`); // bisect/retry ladder handles it
   }
 
   const data = await response.json();
@@ -208,7 +281,7 @@ async function annotateChunkWithLLM(chunkText: string, chunkIndex: number): Prom
 
   if (!content) {
     console.error("No content in LLM response:", JSON.stringify(data, null, 2));
-    process.exit(1);
+    throw new Error("No content in LLM response");
   }
 
   // Strip markdown code fences if present
@@ -253,16 +326,48 @@ async function annotateWithLLM(storyText: string): Promise<LLMResponse> {
   const allExpressions: LLMExpression[] = [];
   let exprCounter = 0;
 
-  // Recursive bisect annotator: annotate a chunk; on parse failure, split in
-  // half and annotate each side. Guarantees forward progress down to ~2 lines.
+  // Chunk-level retry ladder: cache → LLM (with network retries) → per-chunk
+  // inspection → bisect on failure. A chunk that keeps failing bisects down to
+  // single lines; a single line that still fails throws after retries (it
+  // never silently vanishes — that would shift every later word position).
   async function annotateChunk(text: string, depth: number, tag: string): Promise<LLMResponse> {
+    const key = cacheKey(text);
+    const cached = readChunkCache(key);
+    if (cached) {
+      console.log(`  ${tag}: cache hit (${cached.words.length} words)`);
+      return cached;
+    }
+
+    const tryOnce = async (): Promise<LLMResponse> => {
+      const res = await annotateChunkWithLLM(text, tag);
+      // Punctuation-merge + inspect THIS chunk before accepting/caching it.
+      const merged = mergePunctuationTokens(res.words);
+      res.words = merged;
+      const diffs = inspectChunk(res, text);
+      if (diffs.length > 0) {
+        throw new Error(`chunk inspection failed: ${diffs.slice(0, 3).join(" | ")}`);
+      }
+      writeChunkCache(key, res);
+      return res;
+    };
+
     try {
-      return await annotateChunkWithLLM(text, tag);
+      return await tryOnce();
     } catch (err) {
+      console.error(`  ${tag}: failed (${err instanceof Error ? err.message : err})`);
       const lines = text.split("\n").filter((l) => l.trim());
+      // Single line: retry the LLM a couple of times before giving up hard.
       if (lines.length < 2) {
-        console.error(`  ${tag}: single line still failing — dropping it`);
-        return { words: [], expressions: [] };
+        for (let attempt = 2; attempt <= 3; attempt++) {
+          console.error(`  ${tag}: retrying single line (attempt ${attempt}/3)`);
+          try {
+            return await tryOnce();
+          } catch (err2) {
+            console.error(`  ${tag}: attempt ${attempt} failed (${err2 instanceof Error ? err2.message : err2})`);
+          }
+        }
+        console.error(`  ${tag}: single line failed 3 attempts — ABORTING (never drop a line)`);
+        throw new Error(`Chunk "${tag}" is unannotatable after retries`);
       }
       const half = Math.ceil(lines.length / 2);
       console.log(`  ${tag}: bisecting (${lines.length} lines -> ${half}+${lines.length - half})`);
@@ -450,19 +555,10 @@ async function main() {
   // Run the LLM annotation
   const annotation = await annotateWithLLM(textForLlm);
 
-  // Cheap models sometimes emit punctuation as SEPARATE tokens ("Well", ",", "I").
-  // The reader tokenizes with punctuation attached ("Well,"), so any split
-  // punctuation shifts every later position and silently misaligns tooltips.
-  // Merge punctuation-only tokens into the previous word before the guard.
-  const merged: LLMWord[] = [];
-  for (const w of annotation.words) {
-    const hasContent = /[\p{L}\p{N}]/u.test(w.text);
-    if (hasContent || merged.length === 0) {
-      merged.push({ ...w });
-    } else {
-      merged[merged.length - 1].text += w.text;
-    }
-  }
+  // Cheap models sometimes emit punctuation as SEPARATE tokens — merge them
+  // (per-chunk inspection already merged each cached chunk; this is a belt-and-
+  // braces pass over the concatenated result).
+  const merged = mergePunctuationTokens(annotation.words);
   if (merged.length !== annotation.words.length) {
     console.log(
       `Merged ${annotation.words.length - merged.length} punctuation-only token(s) into neighboring words.`
@@ -533,7 +629,7 @@ async function main() {
 
   console.log("");
   console.log(`Done! ${count} words and ${annotation.expressions?.length || 0} expressions inserted for "${story.title}".`);
-  console.log("Next step: Slice 4 — build the hover/tap tooltip UI.");
+  console.log("Next: dedupe-expressions.ts, then the word-audio pipeline.");
 }
 
 main().catch((err) => {
