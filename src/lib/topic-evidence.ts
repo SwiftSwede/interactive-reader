@@ -48,6 +48,7 @@ export const CLEARING_SOURCES: readonly EvidenceSourceType[] = [
   "writing",
   "exam",
   "teacher_observation",
+  "iplo_course",
 ];
 
 const STATUS_RANK: Record<EvidenceStatus, number> = {
@@ -207,6 +208,7 @@ const SOURCE_TAG_TYPES: Record<EvidenceSourceType, readonly TagType[]> = {
   writing: ["grammar", "vocabulary"],
   exam: ["grammar", "vocabulary"],
   teacher_observation: ["grammar", "vocabulary", "phonetic", "error"],
+  iplo_course: ["grammar"],
 };
 
 export function tagTypesForSource(

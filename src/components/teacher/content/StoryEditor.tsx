@@ -71,7 +71,7 @@ export default function StoryEditor({ data }: { data: StoryForEdit }) {
       {kind === "movie_talk" ? <MovieTalkSection data={data} /> : null}
       {kind === "video_summary" ? <ParagraphsSection data={data} /> : null}
       {kind === "song" ? <SongSection data={data} /> : null}
-      {kind !== "song" && kind !== "video_summary" ? (
+      {kind !== "song" && kind !== "video_summary" && kind !== "audio_course" ? (
         <>
           <QuestionsSection data={data} />
           {data.personalQuestions.length > 0 || kind === "story" || kind === "dialogue" ? (
@@ -120,7 +120,7 @@ function BasicsSection({
 
   const dirty =
     title !== baseline.title ||
-    (kind !== "movie_talk" && bodyText !== baseline.bodyText) ||
+    (kind !== "movie_talk" && kind !== "audio_course" && bodyText !== baseline.bodyText) ||
     youtubeUrl !== baseline.youtubeUrl ||
     spanishSummary !== baseline.spanishSummary ||
     synopsis !== baseline.synopsis ||
@@ -130,6 +130,7 @@ function BasicsSection({
 
   const wordCountChanged =
     kind !== "movie_talk" &&
+    kind !== "audio_course" &&
     storyWordCount(bodyText) !== initialCount &&
     bodyText !== baseline.bodyText;
 
@@ -188,6 +189,10 @@ function BasicsSection({
             />
           </EditorField>
         </>
+      ) : kind === "audio_course" ? (
+        <p className="text-body-md text-text-secondary">
+          El audio y las pausas vienen del archivo importado.
+        </p>
       ) : (
         <EditorField label={kind === "song" ? "Letra" : kind === "video_summary" ? "Texto en inglés" : "Texto"}>
           <textarea
@@ -260,7 +265,7 @@ function BasicsSection({
           setError("");
           const result = await saveStoryFieldsAction(data.story.slug, {
             title,
-            bodyText: kind === "movie_talk" ? undefined : bodyText,
+            bodyText: kind === "movie_talk" || kind === "audio_course" ? undefined : bodyText,
             youtubeUrl: kind === "song" || kind === "video_summary" ? youtubeUrl : undefined,
             spanishSummary: kind === "video_summary" ? spanishSummary : undefined,
             synopsis: kind === "movie_talk" ? synopsis : undefined,

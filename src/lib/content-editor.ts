@@ -87,6 +87,7 @@ const STORY_KINDS: StoryKind[] = [
   "movie_talk",
   "song",
   "video_summary",
+  "audio_course",
 ];
 
 export function isStoryKind(value: string | null | undefined): value is StoryKind {
@@ -95,7 +96,8 @@ export function isStoryKind(value: string | null | undefined): value is StoryKin
     value === "dialogue" ||
     value === "movie_talk" ||
     value === "song" ||
-    value === "video_summary"
+    value === "video_summary" ||
+    value === "audio_course"
   );
 }
 
@@ -104,6 +106,7 @@ export function contentKindLabel(kind: ContentKind): string {
   if (kind === "movie_talk") return "Movie Talk";
   if (kind === "song") return "Canción";
   if (kind === "video_summary") return "Traducción";
+  if (kind === "audio_course") return "Audio";
   if (kind === "writing") return "Escritura";
   if (kind === "exam") return "Examen";
   if (kind === "presentation") return "Presentación";

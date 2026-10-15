@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import { Play, Pause, SkipBack, SkipForward, Gauge } from "lucide-react";
 
 // Spotify-style mini player. Callers portal this to document.body so
@@ -29,6 +30,10 @@ export function SeekBar({
 }) {
   const max = Math.max(duration, 0);
   const progressPercent = max > 0 ? Math.min((currentTime / max) * 100, 100) : 0;
+  // A controlled range can emit change when React updates `value` during
+  // playback. That seek jumped the lesson to the pause and cut the question.
+  const dragging = useRef(false);
+  const dragStart = useRef(0);
 
   return (
     <div className={compact ? "sticky-audio-player-seek" : "audio-seek-row"}>
@@ -49,7 +54,34 @@ export function SeekBar({
           max={max || 0}
           step={0.1}
           value={Math.min(currentTime, max)}
-          onChange={(e) => onSeek(Number(e.target.value))}
+          onPointerDown={(e) => {
+            dragging.current = true;
+            dragStart.current = Number(e.currentTarget.value);
+          }}
+          onPointerUp={(e) => {
+            const next = Number(e.currentTarget.value);
+            if (dragging.current && Math.abs(next - dragStart.current) > 0.05) onSeek(next);
+            dragging.current = false;
+          }}
+          onPointerCancel={() => {
+            dragging.current = false;
+          }}
+          onKeyDown={(e) => {
+            dragging.current = true;
+            dragStart.current = Number(e.currentTarget.value);
+          }}
+          onKeyUp={(e) => {
+            const next = Number(e.currentTarget.value);
+            if (dragging.current && Math.abs(next - dragStart.current) > 0.05) onSeek(next);
+            dragging.current = false;
+          }}
+          onBlur={() => {
+            dragging.current = false;
+          }}
+          onChange={(e) => {
+            if (!dragging.current) return;
+            onSeek(Number(e.target.value));
+          }}
           aria-label="Progreso"
         />
       </div>

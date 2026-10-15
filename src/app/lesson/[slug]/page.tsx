@@ -213,7 +213,7 @@ export default async function LessonSlugPage({
       : "classroom-review";
   }
 
-  const skipFlags = isVideo;
+  const skipFlags = isVideo || kind === "audio_course";
   const classroomTextKind =
     kind === "story" || kind === "dialogue" || kind === "movie_talk";
   const loadStudentFlags =

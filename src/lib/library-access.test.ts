@@ -269,7 +269,7 @@ describe("decideSelfPacedLesson", () => {
     );
   });
 
-  test("an unpublished membership does not gate the story", () => {
+  test("an unpublished membership stays closed for a student", () => {
     assert.equal(
       decideSelfPacedLesson({
         isTeacher: false,
@@ -278,7 +278,7 @@ describe("decideSelfPacedLesson", () => {
         grants: emptyGrants(),
         completedStoryIds: new Set(),
       }),
-      "skip"
+      "denied"
     );
   });
 });

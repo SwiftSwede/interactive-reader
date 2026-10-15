@@ -15,10 +15,14 @@ import {
   confirmationAfter,
   englishOnScreen,
   karaokePieces,
+  lessonVocabulary,
+  promptQuestionText,
   promptRefs,
   resolveTimeZone,
+  savedProgressIsStale,
   type IploScript,
   type IploSegment,
+  type KaraokePiece,
 } from "@/lib/iplo";
 import type { CourseLevel } from "@/types";
 import type { LessonViewToggle } from "@/lib/student-preview";
@@ -48,6 +52,24 @@ function segmentAt(segments: IploSegment[], time: number): IploSegment | null {
 
 function storageKey(storyId: string, day: string) {
   return `iplo:${storyId}:${day}`;
+}
+
+type SavedProgress = {
+  time?: number;
+  answers?: Record<number, StoredAnswer>;
+  skipped?: number[];
+  seedVersion?: string;
+};
+
+function readSavedProgress(raw: string | null, scriptVersion: string | undefined): SavedProgress | "stale" | null {
+  if (!raw) return null;
+  try {
+    const saved = JSON.parse(raw) as SavedProgress;
+    if (savedProgressIsStale(saved.seedVersion, scriptVersion)) return "stale";
+    return saved;
+  } catch {
+    return "stale";
+  }
 }
 
 export default function AudioCoursePlayer({
@@ -90,6 +112,7 @@ export default function AudioCoursePlayer({
   );
   const today = useMemo(() => calendarDateKey(zone, new Date()), [zone]);
   const prompts = useMemo(() => promptRefs(script), [script]);
+  const vocabulary = useMemo(() => lessonVocabulary(script), [script]);
 
   const [blocked, setBlocked] = useState(() => {
     if (!writes) return false;
@@ -116,13 +139,14 @@ export default function AudioCoursePlayer({
   useEffect(() => {
     if (!writes || blocked) return;
     try {
-      const raw = sessionStorage.getItem(storageKey(storyId, today));
-      if (!raw) return;
-      const saved = JSON.parse(raw) as {
-        time?: number;
-        answers?: Record<number, StoredAnswer>;
-        skipped?: number[];
-      };
+      const key = storageKey(storyId, today);
+      const raw = sessionStorage.getItem(key);
+      const saved = readSavedProgress(raw, script.seedVersion);
+      if (saved === "stale") {
+        sessionStorage.removeItem(key);
+        return;
+      }
+      if (!saved) return;
       if (saved.answers) {
         setAnswers(saved.answers);
         answersRef.current = saved.answers;
@@ -139,7 +163,7 @@ export default function AudioCoursePlayer({
     } catch {
       sessionStorage.removeItem(storageKey(storyId, today));
     }
-  }, [blocked, storyId, today, writes]);
+  }, [blocked, script.seedVersion, storyId, today, writes]);
 
   useEffect(() => {
     if (feedback || !endedRef.current) return;
@@ -175,6 +199,7 @@ export default function AudioCoursePlayer({
         time: nextTime,
         answers: nextAnswers,
         skipped: [...skippedRef.current],
+        ...(script.seedVersion ? { seedVersion: script.seedVersion } : {}),
       })
     );
   }
@@ -342,7 +367,7 @@ export default function AudioCoursePlayer({
     if (answers[ref.index]) return false;
     return time + 0.05 >= ref.prompt.start && time + 0.02 < ref.prompt.pauseAt;
   });
-  const english = holdingQuestion ? null : englishOnScreen(script.segments, time);
+  const screenLine = holdingQuestion ? null : englishOnScreen(script.segments, time);
   const activePrompt = prompts.find((ref) => ref.index === activeIndex) ?? null;
   const known = activePrompt ? answers[activePrompt.index] : undefined;
   const showInput = Boolean(activePrompt) && !feedback && !done;
@@ -375,11 +400,32 @@ export default function AudioCoursePlayer({
             Ya practicaste esta lección hoy. Vuelve mañana.
           </p>
         ) : done ? (
-          <p className="px-2 pt-16 text-center font-headline text-headline-lg text-text-primary">
-            {doneLine
-              ? "Listo. Ya puedes seguir con English for Latinos 1."
-              : "Listo."}
-          </p>
+          <div className="px-2 pt-16 text-center">
+            <p className="font-headline text-headline-lg text-text-primary">
+              {doneLine
+                ? "Listo. Ya puedes seguir con English for Latinos 1."
+                : "Listo."}
+            </p>
+            {vocabulary.length > 0 ? (
+              <div className="mt-10">
+                <h2 className="font-headline text-headline-md text-text-primary">Palabras de hoy</h2>
+                <p className="mt-2 text-body-main text-text-muted">
+                  Escuchaste y usaste estas palabras hoy.
+                </p>
+                <ul className="mt-6 flex flex-wrap justify-center gap-2">
+                  {vocabulary.map((word) => (
+                    <li
+                      key={word}
+                      lang="en"
+                      className="rounded-card bg-surface px-3 py-1 text-label-sm text-text-secondary"
+                    >
+                      {word}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+          </div>
         ) : (
           <>
             <div className="flex h-8 items-center justify-center">
@@ -415,7 +461,7 @@ export default function AudioCoursePlayer({
               ) : showInput && activePrompt ? (
                 <div className="mx-auto w-full max-w-md">
                   <p className="text-center font-story text-story-body text-text-primary" lang="es">
-                    {activePrompt.prompt.spanish}
+                    {promptQuestionText(activePrompt.prompt.spanish)}
                   </p>
                   {known ? (
                     <div className="mt-6">
@@ -468,23 +514,18 @@ export default function AudioCoursePlayer({
                 </div>
               ) : (
                 <div className="flex flex-col items-center gap-6">
-                  {english ? (
-                    <p className="max-w-[22rem] text-center font-headline text-headline-lg text-text-primary" lang="en">
-                      {karaokePieces(english.text, english.words, time).map((piece, index) => (
-                        <span
-                          key={`${index}-${piece.piece}`}
-                          className={
-                            piece.active
-                              ? "rounded-sm bg-accent-soft transition-[background-color] duration-200 motion-reduce:transition-none"
-                              : undefined
-                          }
-                        >
-                          {piece.piece}
-                        </span>
-                      ))}
-                    </p>
+                  {screenLine ? (
+                    <KaraokeLine
+                      pieces={karaokePieces(screenLine.segment.text, screenLine.segment.words, time)}
+                      lang={screenLine.kind === "narration" ? "es" : "en"}
+                      className={
+                        screenLine.kind === "narration"
+                          ? "max-w-[22rem] text-center text-body-main text-text-muted"
+                          : "max-w-[22rem] text-center font-headline text-headline-lg text-text-primary"
+                      }
+                    />
                   ) : null}
-                  {feedback && (english || !feedback.withLine) ? (
+                  {feedback && (screenLine?.kind === "english" || !feedback.withLine) ? (
                     <ResultLine correct={feedback.correct} model={feedback.model} />
                   ) : null}
                 </div>
@@ -567,9 +608,14 @@ export default function AudioCoursePlayer({
           setDuration(node.duration || script.durationSeconds);
           if (writes) {
             try {
-              const raw = sessionStorage.getItem(storageKey(storyId, today));
-              const saved = raw ? (JSON.parse(raw) as { time?: number }) : null;
-              if (typeof saved?.time === "number" && saved.time > 0) {
+              const key = storageKey(storyId, today);
+              const saved = readSavedProgress(sessionStorage.getItem(key), script.seedVersion);
+              if (saved === "stale") {
+                sessionStorage.removeItem(key);
+                pendingSeekRef.current = null;
+                return;
+              }
+              if (saved && typeof saved.time === "number" && saved.time > 0) {
                 pendingSeekRef.current = saved.time;
                 setTime(saved.time);
               }
@@ -605,6 +651,33 @@ export default function AudioCoursePlayer({
         }}
       />
     </div>
+  );
+}
+
+function KaraokeLine({
+  pieces,
+  lang,
+  className,
+}: {
+  pieces: KaraokePiece[];
+  lang: "en" | "es";
+  className: string;
+}) {
+  return (
+    <p className={className} lang={lang}>
+      {pieces.map((piece, index) => (
+        <span
+          key={`${index}-${piece.piece}`}
+          className={
+            piece.active
+              ? "rounded-sm bg-accent-soft text-text-primary transition-[background-color,color] duration-200 motion-reduce:transition-none"
+              : undefined
+          }
+        >
+          {piece.piece}
+        </span>
+      ))}
+    </p>
   );
 }
 

@@ -262,6 +262,84 @@ function normalizeAnswer(value: string): string {
     .toLocaleLowerCase("en");
 }
 
+/** Long forms for a contraction. Ambiguous pairs keep both. */
+const CONTRACTION_EXPANSIONS: Record<string, readonly string[]> = {
+  "don't": ["do not"],
+  "doesn't": ["does not"],
+  "didn't": ["did not"],
+  "i'm": ["i am"],
+  "i've": ["i have"],
+  "i'll": ["i will"],
+  "i'd": ["i would", "i had"],
+  "you're": ["you are"],
+  "you've": ["you have"],
+  "you'll": ["you will"],
+  "you'd": ["you would", "you had"],
+  "he's": ["he is", "he has"],
+  "she's": ["she is", "she has"],
+  "it's": ["it is", "it has"],
+  "we're": ["we are"],
+  "we've": ["we have"],
+  "we'll": ["we will"],
+  "we'd": ["we would", "we had"],
+  "they're": ["they are"],
+  "they've": ["they have"],
+  "they'll": ["they will"],
+  "they'd": ["they would", "they had"],
+  "that's": ["that is"],
+  "what's": ["what is"],
+  "there's": ["there is"],
+  "here's": ["here is"],
+  "let's": ["let us"],
+  "can't": ["cannot"],
+  "won't": ["will not"],
+  "isn't": ["is not"],
+  "aren't": ["are not"],
+  "wasn't": ["was not"],
+  "weren't": ["were not"],
+  "haven't": ["have not"],
+  "hasn't": ["has not"],
+  "hadn't": ["had not"],
+  "wouldn't": ["would not"],
+  "couldn't": ["could not"],
+  "shouldn't": ["should not"],
+  "mustn't": ["must not"],
+};
+
+function expansionsOf(normalized: string): string[] {
+  const tokens = normalized.split(" ").filter(Boolean);
+  let forms = [""];
+  for (const token of tokens) {
+    const alts = CONTRACTION_EXPANSIONS[token] ?? [token];
+    const next: string[] = [];
+    for (const form of forms) {
+      for (const alt of alts) {
+        next.push(form ? `${form} ${alt}` : alt);
+      }
+    }
+    forms = next;
+    if (forms.length > 32) break;
+  }
+  return forms;
+}
+
+/**
+ * Case, spacing, curly apostrophes, one trailing . ? !, " / " alternates,
+ * and contraction pairs (don't / do not). A different word does not match.
+ */
+export function answersMatch(expected: readonly string[], given: string): boolean {
+  const givenForms = new Set(expansionsOf(normalizeAnswer(given)));
+  if ([...givenForms].every((form) => form.length === 0)) return false;
+  for (const option of expected) {
+    for (const piece of option.split(" / ")) {
+      if (expansionsOf(normalizeAnswer(piece)).some((form) => form && givenForms.has(form))) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
 /** The stored answer for cloze and translation items, or null. */
 export function storedAnswer(item: DrillItem): string | null {
   if (item.format !== "cloze" && item.format !== "translation") return null;
@@ -270,17 +348,14 @@ export function storedAnswer(item: DrillItem): string | null {
 }
 
 /**
- * Case, spacing, curly apostrophes, and one final . ? ! do not count.
- * A different word does. Translations accept any " / " alternate.
+ * Case, spacing, curly apostrophes, one final . ? !, contraction pairs,
+ * and " / " alternates do not count as a different answer.
  */
 export function isCorrectAnswer(item: DrillItem, answer: string): boolean {
   const expected = storedAnswer(item);
   if (!expected) return false;
-  const given = normalizeAnswer(answer);
-  if (!given) return false;
-  const accepted =
-    item.format === "translation" ? expected.split(" / ") : [expected];
-  return accepted.some((option) => normalizeAnswer(option) === given);
+  const accepted = item.format === "translation" ? expected.split(" / ") : [expected];
+  return answersMatch(accepted, answer);
 }
 
 export type ItemRow = {

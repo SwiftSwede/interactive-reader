@@ -25,6 +25,7 @@ export type StoryRow = {
   song_meaning?: string | null;
   lyrics_ipa?: unknown;
   line_timestamps?: unknown;
+  audio_script?: unknown;
   spanish_summary?: string | null;
   synopsis?: string | null;
   warmup_question?: string | null;

@@ -2,9 +2,9 @@
 """IPLO pipeline step 2 (v3): DP token alignment of script lines to chunk transcripts.
 
 Needleman-Wunsch over script tokens vs transcript tokens (monotonic). Per script
-line: aligned span -> segment. English lines get word timings; prompt lines get
-expected answers from the FOLLOWING script English lines (authoritative answer key).
-Narration = everything not prompt/english.
+line: aligned span -> segment. English and narration lines get word timings;
+prompt lines get expected answers from the FOLLOWING script English lines
+(authoritative answer key). Narration = everything not prompt/english.
 """
 import json, re, sys, unicodedata
 
@@ -186,6 +186,21 @@ def split_narration_prefix(line):
     if len(toks_of(prefix)) < 6:
         return None
     return prefix, prompt
+
+
+def timed_words(line, js, tw):
+    """Word timings that actually belong to this line. Neighbour bleed is dropped."""
+    words = [tw[j] for j in js]
+    allowed = {}
+    for t in toks_of(line):
+        allowed[t] = allowed.get(t, 0) + 1
+    kept, used = [], {}
+    for w in words:
+        c = used.get(w[0], 0)
+        if allowed.get(w[0], 0) > c:
+            used[w[0]] = c + 1
+            kept.append(w)
+    return [{"w": w, "start": round(x, 2), "end": round(y, 2)} for w, x, y in kept]
 
 
 def main():
@@ -370,29 +385,18 @@ def main():
                          "spanish": line, "expected": exp})
 
         elif not is_kyle:
-            words = [tw[j] for j in js]
-            # drop any token whose word is not in this line's text (bleed from
-            # neighbouring lines) so karaoke never lights the wrong word
-            allowed = {}
-            for t in toks_of(line):
-                allowed[t] = allowed.get(t, 0) + 1
-            kept, used = [], {}
-            for w in words:
-                c = used.get(w[0], 0)
-                if allowed.get(w[0], 0) > c:
-                    used[w[0]] = c + 1
-                    kept.append(w)
-            words = kept
             segs.append({"t": "english", "start": round(start, 2), "end": round(end, 2),
                          "text": line,
-                         "words": [{"w": w, "start": round(x, 2), "end": round(y, 2)} for w, x, y in words]})
+                         "words": timed_words(line, js, tw)})
         else:
+            words = timed_words(line, js, tw)
             if segs and segs[-1]["t"] == "narration":
                 segs[-1]["end"] = round(end, 2)
                 segs[-1]["lines"] = segs[-1].get("lines", []) + [line]
+                segs[-1]["words"] = segs[-1].get("words", []) + words
             else:
                 segs.append({"t": "narration", "start": round(start, 2), "end": round(end, 2),
-                             "lines": [line]})
+                             "lines": [line], "words": words})
 
     # order segments by time; a segment may never run past the next one
     segs.sort(key=lambda s: (s["start"], 0 if s["t"] == "narration" else 1))

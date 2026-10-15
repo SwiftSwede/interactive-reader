@@ -2,6 +2,9 @@ import { createClient } from "@/lib/supabase/server";
 import SoundVideoProvider from "@/components/SoundVideoProvider";
 import StorySteps from "@/components/StorySteps";
 import VideoSummaryPlayer from "@/components/VideoSummaryPlayer";
+import AudioCoursePlayer from "@/components/AudioCoursePlayer";
+import { parseAudioScript } from "@/lib/iplo";
+import { loadIploSessionState } from "@/lib/iplo-session";
 import { getSoundVideos } from "@/lib/sound-videos";
 import type { LoadedStory } from "@/lib/stories";
 import type { SavedComprehensionResponse } from "@/components/ComprehensionQuestions";
@@ -134,6 +137,38 @@ export default async function StoryReader({
   const { story, pronunciationDrill } = data;
 
   const supabase = await createClient();
+
+  if (story.kind === "audio_course") {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    const script = parseAudioScript(story.audio_script);
+    const session = user
+      ? await loadIploSessionState(story.id, user.id)
+      : { completedOnce: false, closingLine: false, dayMarks: [] as string[] };
+    if (!script) {
+      return (
+        <p className="px-4 pt-16 text-center text-body-md text-text-secondary">
+          Esta lección todavía no tiene audio.
+        </p>
+      );
+    }
+    return (
+      <AudioCoursePlayer
+        storyId={story.id}
+        title={story.title}
+        level={story.level}
+        script={script}
+        completedOnce={session.completedOnce}
+        dayMarks={session.dayMarks}
+        closingLine={session.closingLine}
+        writes={Boolean(user) && saveResponses && !isTeacher}
+        isTeacher={isTeacher}
+        previewLevel={previewLevel}
+        viewToggle={viewToggle}
+      />
+    );
+  }
 
   if (story.kind === "video_summary" && sessionId) {
     const {

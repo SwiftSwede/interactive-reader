@@ -7,6 +7,28 @@
    "end": 10.18,
    "lines": [
     "Escucha la siguiente conversación."
+   ],
+   "words": [
+    {
+     "w": "escucha",
+     "start": 5.12,
+     "end": 6.52
+    },
+    {
+     "w": "la",
+     "start": 6.34,
+     "end": 6.58
+    },
+    {
+     "w": "siguiente",
+     "start": 6.58,
+     "end": 7.04
+    },
+    {
+     "w": "conversacion",
+     "start": 7.04,
+     "end": 8.24
+    }
    ]
   },
   {
@@ -423,6 +445,453 @@
    "end": 94.86,
    "lines": [
     "En esta primera lección, aprendes cómo conjugar el verbo ‘to speak’ en el presente simple, y de eso, cómo conjugar 99% de los verbos en inglés en el presente simple. En inglés, como el español, el presente simple se usa para hablar de hechos, rutinas y hábitos. Por ejemplo, “We speak English” lo que significa, “hablamos inglés.” Es un hecho entonces usamos el presente simple tanto en inglés como en español. Empecemos aprendiendo cómo usar el verbo ‘to speak’ en el presente simple. Así es cómo dices el verbo ‘hablar’ en inglés. Escucha y repite después de la mujer."
+   ],
+   "words": [
+    {
+     "w": "en",
+     "start": 47.08,
+     "end": 47.88
+    },
+    {
+     "w": "esta",
+     "start": 47.88,
+     "end": 48.68
+    },
+    {
+     "w": "primera",
+     "start": 48.68,
+     "end": 49.08
+    },
+    {
+     "w": "leccion",
+     "start": 49.08,
+     "end": 49.7
+    },
+    {
+     "w": "aprendes",
+     "start": 49.7,
+     "end": 50.28
+    },
+    {
+     "w": "como",
+     "start": 50.28,
+     "end": 50.64
+    },
+    {
+     "w": "conjugar",
+     "start": 50.64,
+     "end": 51.12
+    },
+    {
+     "w": "el",
+     "start": 51.12,
+     "end": 51.32
+    },
+    {
+     "w": "to",
+     "start": 51.42,
+     "end": 51.88
+    },
+    {
+     "w": "speak",
+     "start": 51.88,
+     "end": 52.24
+    },
+    {
+     "w": "en",
+     "start": 52.44,
+     "end": 52.72
+    },
+    {
+     "w": "el",
+     "start": 52.72,
+     "end": 52.96
+    },
+    {
+     "w": "presente",
+     "start": 52.96,
+     "end": 53.24
+    },
+    {
+     "w": "simple",
+     "start": 53.24,
+     "end": 53.7
+    },
+    {
+     "w": "y",
+     "start": 53.7,
+     "end": 54.1
+    },
+    {
+     "w": "de",
+     "start": 54.1,
+     "end": 54.28
+    },
+    {
+     "w": "eso",
+     "start": 54.28,
+     "end": 54.6
+    },
+    {
+     "w": "como",
+     "start": 54.6,
+     "end": 54.98
+    },
+    {
+     "w": "conjugar",
+     "start": 54.98,
+     "end": 55.9
+    },
+    {
+     "w": "de",
+     "start": 57.5,
+     "end": 57.7
+    },
+    {
+     "w": "los",
+     "start": 57.7,
+     "end": 57.9
+    },
+    {
+     "w": "en",
+     "start": 58.26,
+     "end": 58.5
+    },
+    {
+     "w": "ingles",
+     "start": 58.5,
+     "end": 58.72
+    },
+    {
+     "w": "en",
+     "start": 58.72,
+     "end": 59.28
+    },
+    {
+     "w": "el",
+     "start": 59.28,
+     "end": 59.56
+    },
+    {
+     "w": "presente",
+     "start": 59.56,
+     "end": 59.88
+    },
+    {
+     "w": "simple",
+     "start": 59.88,
+     "end": 60.32
+    },
+    {
+     "w": "en",
+     "start": 60.96,
+     "end": 61.0
+    },
+    {
+     "w": "ingles",
+     "start": 61.0,
+     "end": 61.52
+    },
+    {
+     "w": "como",
+     "start": 62.06,
+     "end": 62.38
+    },
+    {
+     "w": "el",
+     "start": 62.38,
+     "end": 62.82
+    },
+    {
+     "w": "espanol",
+     "start": 62.82,
+     "end": 63.38
+    },
+    {
+     "w": "el",
+     "start": 63.88,
+     "end": 64.1
+    },
+    {
+     "w": "presente",
+     "start": 64.1,
+     "end": 64.42
+    },
+    {
+     "w": "simple",
+     "start": 64.42,
+     "end": 64.74
+    },
+    {
+     "w": "se",
+     "start": 64.74,
+     "end": 65.0
+    },
+    {
+     "w": "usa",
+     "start": 65.0,
+     "end": 65.18
+    },
+    {
+     "w": "para",
+     "start": 65.18,
+     "end": 65.42
+    },
+    {
+     "w": "hablar",
+     "start": 65.42,
+     "end": 65.7
+    },
+    {
+     "w": "de",
+     "start": 65.7,
+     "end": 65.94
+    },
+    {
+     "w": "hechos",
+     "start": 65.94,
+     "end": 66.42
+    },
+    {
+     "w": "rutinas",
+     "start": 66.8,
+     "end": 67.3
+    },
+    {
+     "w": "y",
+     "start": 67.3,
+     "end": 67.54
+    },
+    {
+     "w": "por",
+     "start": 68.4,
+     "end": 68.64
+    },
+    {
+     "w": "ejemplo",
+     "start": 68.64,
+     "end": 69.14
+    },
+    {
+     "w": "we",
+     "start": 69.56,
+     "end": 69.84
+    },
+    {
+     "w": "speak",
+     "start": 69.84,
+     "end": 70.16
+    },
+    {
+     "w": "english",
+     "start": 70.16,
+     "end": 70.56
+    },
+    {
+     "w": "lo",
+     "start": 71.08,
+     "end": 71.26
+    },
+    {
+     "w": "que",
+     "start": 71.26,
+     "end": 71.46
+    },
+    {
+     "w": "significa",
+     "start": 71.46,
+     "end": 72.18
+    },
+    {
+     "w": "hablamos",
+     "start": 72.18,
+     "end": 73.0
+    },
+    {
+     "w": "ingles",
+     "start": 73.0,
+     "end": 73.38
+    },
+    {
+     "w": "es",
+     "start": 74.06,
+     "end": 74.32
+    },
+    {
+     "w": "un",
+     "start": 74.32,
+     "end": 74.52
+    },
+    {
+     "w": "hecho",
+     "start": 74.52,
+     "end": 74.72
+    },
+    {
+     "w": "entonces",
+     "start": 74.72,
+     "end": 75.4
+    },
+    {
+     "w": "usamos",
+     "start": 75.4,
+     "end": 76.04
+    },
+    {
+     "w": "el",
+     "start": 76.04,
+     "end": 76.32
+    },
+    {
+     "w": "simple",
+     "start": 76.74,
+     "end": 77.34
+    },
+    {
+     "w": "tanto",
+     "start": 77.34,
+     "end": 77.9
+    },
+    {
+     "w": "en",
+     "start": 77.9,
+     "end": 78.18
+    },
+    {
+     "w": "ingles",
+     "start": 78.18,
+     "end": 78.48
+    },
+    {
+     "w": "como",
+     "start": 78.48,
+     "end": 79.14
+    },
+    {
+     "w": "en",
+     "start": 79.14,
+     "end": 79.38
+    },
+    {
+     "w": "espanol",
+     "start": 79.38,
+     "end": 80.14
+    },
+    {
+     "w": "empecemos",
+     "start": 80.14,
+     "end": 81.24
+    },
+    {
+     "w": "aprendiendo",
+     "start": 81.24,
+     "end": 81.88
+    },
+    {
+     "w": "como",
+     "start": 81.88,
+     "end": 82.2
+    },
+    {
+     "w": "usar",
+     "start": 82.2,
+     "end": 82.8
+    },
+    {
+     "w": "el",
+     "start": 82.8,
+     "end": 83.06
+    },
+    {
+     "w": "to",
+     "start": 83.18,
+     "end": 83.38
+    },
+    {
+     "w": "speak",
+     "start": 83.38,
+     "end": 83.62
+    },
+    {
+     "w": "en",
+     "start": 83.82,
+     "end": 84.36
+    },
+    {
+     "w": "el",
+     "start": 84.36,
+     "end": 84.6
+    },
+    {
+     "w": "presente",
+     "start": 84.6,
+     "end": 84.92
+    },
+    {
+     "w": "simple",
+     "start": 84.92,
+     "end": 85.58
+    },
+    {
+     "w": "asi",
+     "start": 86.3,
+     "end": 86.56
+    },
+    {
+     "w": "es",
+     "start": 86.56,
+     "end": 87.0
+    },
+    {
+     "w": "como",
+     "start": 87.0,
+     "end": 87.32
+    },
+    {
+     "w": "dices",
+     "start": 87.32,
+     "end": 87.66
+    },
+    {
+     "w": "el",
+     "start": 87.66,
+     "end": 87.82
+    },
+    {
+     "w": "hablar",
+     "start": 88.26,
+     "end": 88.62
+    },
+    {
+     "w": "en",
+     "start": 88.62,
+     "end": 88.96
+    },
+    {
+     "w": "ingles",
+     "start": 88.96,
+     "end": 89.3
+    },
+    {
+     "w": "escucha",
+     "start": 89.94,
+     "end": 90.56
+    },
+    {
+     "w": "y",
+     "start": 90.56,
+     "end": 91.34
+    },
+    {
+     "w": "despues",
+     "start": 91.76,
+     "end": 92.58
+    },
+    {
+     "w": "de",
+     "start": 92.58,
+     "end": 93.02
+    }
    ]
   },
   {
@@ -477,6 +946,133 @@
    "end": 121.12,
    "lines": [
     "¿Respondiste después de él? Excelente. Es importante que lo hagas para grabar todo en la mente. Ahora así es cómo decimos, “hablo.” Escucha y repite."
+   ],
+   "words": [
+    {
+     "w": "respondiste",
+     "start": 106.62,
+     "end": 107.46
+    },
+    {
+     "w": "despues",
+     "start": 107.38,
+     "end": 107.72
+    },
+    {
+     "w": "de",
+     "start": 107.72,
+     "end": 107.98
+    },
+    {
+     "w": "el",
+     "start": 107.98,
+     "end": 108.22
+    },
+    {
+     "w": "excelente",
+     "start": 108.52,
+     "end": 109.72
+    },
+    {
+     "w": "es",
+     "start": 109.94,
+     "end": 110.08
+    },
+    {
+     "w": "importante",
+     "start": 110.08,
+     "end": 110.52
+    },
+    {
+     "w": "que",
+     "start": 110.52,
+     "end": 110.86
+    },
+    {
+     "w": "lo",
+     "start": 110.86,
+     "end": 111.04
+    },
+    {
+     "w": "hagas",
+     "start": 111.04,
+     "end": 111.34
+    },
+    {
+     "w": "para",
+     "start": 111.34,
+     "end": 111.66
+    },
+    {
+     "w": "grabar",
+     "start": 111.66,
+     "end": 112.04
+    },
+    {
+     "w": "todo",
+     "start": 112.04,
+     "end": 112.42
+    },
+    {
+     "w": "en",
+     "start": 112.42,
+     "end": 112.62
+    },
+    {
+     "w": "la",
+     "start": 112.62,
+     "end": 112.7
+    },
+    {
+     "w": "mente",
+     "start": 112.7,
+     "end": 112.96
+    },
+    {
+     "w": "ahora",
+     "start": 113.42,
+     "end": 113.72
+    },
+    {
+     "w": "asi",
+     "start": 114.2,
+     "end": 114.46
+    },
+    {
+     "w": "es",
+     "start": 114.46,
+     "end": 114.6
+    },
+    {
+     "w": "como",
+     "start": 114.6,
+     "end": 114.78
+    },
+    {
+     "w": "decimos",
+     "start": 114.78,
+     "end": 115.22
+    },
+    {
+     "w": "hablo",
+     "start": 115.74,
+     "end": 116.86
+    },
+    {
+     "w": "escucha",
+     "start": 117.26,
+     "end": 117.9
+    },
+    {
+     "w": "y",
+     "start": 117.9,
+     "end": 118.36
+    },
+    {
+     "w": "repite",
+     "start": 118.36,
+     "end": 118.98
+    }
    ]
   },
   {
@@ -617,6 +1213,103 @@
    "end": 164.8,
    "lines": [
     "Asegúrate que imitas la pronunciación del hablante nativo de inglés. Así es cómo dices “tú hablas.” Escucha y repite."
+   ],
+   "words": [
+    {
+     "w": "asegurate",
+     "start": 151.4,
+     "end": 152.92
+    },
+    {
+     "w": "que",
+     "start": 152.92,
+     "end": 153.18
+    },
+    {
+     "w": "imitas",
+     "start": 153.46,
+     "end": 154.3
+    },
+    {
+     "w": "la",
+     "start": 154.22,
+     "end": 154.66
+    },
+    {
+     "w": "pronunciacion",
+     "start": 154.66,
+     "end": 155.64
+    },
+    {
+     "w": "del",
+     "start": 155.64,
+     "end": 156.14
+    },
+    {
+     "w": "hablante",
+     "start": 156.14,
+     "end": 156.54
+    },
+    {
+     "w": "nativo",
+     "start": 156.54,
+     "end": 157.02
+    },
+    {
+     "w": "de",
+     "start": 157.02,
+     "end": 157.22
+    },
+    {
+     "w": "ingles",
+     "start": 157.22,
+     "end": 157.46
+    },
+    {
+     "w": "asi",
+     "start": 158.18,
+     "end": 158.62
+    },
+    {
+     "w": "es",
+     "start": 158.62,
+     "end": 159.04
+    },
+    {
+     "w": "como",
+     "start": 159.04,
+     "end": 159.32
+    },
+    {
+     "w": "dices",
+     "start": 159.32,
+     "end": 159.72
+    },
+    {
+     "w": "tu",
+     "start": 159.72,
+     "end": 160.38
+    },
+    {
+     "w": "hablas",
+     "start": 160.38,
+     "end": 160.98
+    },
+    {
+     "w": "escucha",
+     "start": 161.56,
+     "end": 162.2
+    },
+    {
+     "w": "y",
+     "start": 162.2,
+     "end": 162.86
+    },
+    {
+     "w": "repite",
+     "start": 162.86,
+     "end": 163.6
+    }
    ]
   },
   {
@@ -833,6 +1526,58 @@
    "end": 218.4,
    "lines": [
     "Así es cómo se dice \"él habla\". Escucha y repite."
+   ],
+   "words": [
+    {
+     "w": "asi",
+     "start": 212.66,
+     "end": 212.88
+    },
+    {
+     "w": "es",
+     "start": 212.88,
+     "end": 213.04
+    },
+    {
+     "w": "como",
+     "start": 213.04,
+     "end": 213.26
+    },
+    {
+     "w": "se",
+     "start": 213.26,
+     "end": 213.44
+    },
+    {
+     "w": "dice",
+     "start": 213.44,
+     "end": 213.78
+    },
+    {
+     "w": "el",
+     "start": 213.78,
+     "end": 214.38
+    },
+    {
+     "w": "habla",
+     "start": 214.38,
+     "end": 214.72
+    },
+    {
+     "w": "escucha",
+     "start": 215.16,
+     "end": 215.68
+    },
+    {
+     "w": "y",
+     "start": 215.68,
+     "end": 216.3
+    },
+    {
+     "w": "repite",
+     "start": 216.3,
+     "end": 216.92
+    }
    ]
   },
   {
@@ -1059,6 +1804,28 @@
    "end": 277.66,
    "lines": [
     "Now listen to how you’d say, “she speaks.” Escucha y repite."
+   ],
+   "words": [
+    {
+     "w": "escucha",
+     "start": 270.52,
+     "end": 271.64
+    },
+    {
+     "w": "y",
+     "start": 275.34,
+     "end": 275.96
+    },
+    {
+     "w": "repite",
+     "start": 275.96,
+     "end": 276.5
+    },
+    {
+     "w": "she",
+     "start": 277.66,
+     "end": 278.04
+    }
    ]
   },
   {
@@ -1503,6 +2270,58 @@
    "end": 379.44,
    "lines": [
     "Así es cómo se dice \"nosotros hablamos\".  Escucha y repite."
+   ],
+   "words": [
+    {
+     "w": "asi",
+     "start": 373.0,
+     "end": 373.38
+    },
+    {
+     "w": "es",
+     "start": 373.38,
+     "end": 373.62
+    },
+    {
+     "w": "como",
+     "start": 373.62,
+     "end": 373.84
+    },
+    {
+     "w": "se",
+     "start": 373.84,
+     "end": 374.02
+    },
+    {
+     "w": "dice",
+     "start": 374.02,
+     "end": 374.38
+    },
+    {
+     "w": "nosotros",
+     "start": 374.38,
+     "end": 374.96
+    },
+    {
+     "w": "hablamos",
+     "start": 374.96,
+     "end": 376.42
+    },
+    {
+     "w": "escucha",
+     "start": 376.8,
+     "end": 377.36
+    },
+    {
+     "w": "y",
+     "start": 377.36,
+     "end": 377.96
+    },
+    {
+     "w": "repite",
+     "start": 377.96,
+     "end": 378.68
+    }
    ]
   },
   {
@@ -1643,6 +2462,98 @@
    "end": 418.28,
    "lines": [
     "Así es cómo se dice “ellos hablan” cuando se refiere a un grupo de personas. Escucha y repite."
+   ],
+   "words": [
+    {
+     "w": "asi",
+     "start": 408.42,
+     "end": 408.72
+    },
+    {
+     "w": "es",
+     "start": 408.72,
+     "end": 408.96
+    },
+    {
+     "w": "como",
+     "start": 408.96,
+     "end": 409.16
+    },
+    {
+     "w": "se",
+     "start": 409.16,
+     "end": 409.34
+    },
+    {
+     "w": "dice",
+     "start": 409.34,
+     "end": 409.68
+    },
+    {
+     "w": "ellos",
+     "start": 409.68,
+     "end": 410.96
+    },
+    {
+     "w": "hablan",
+     "start": 410.96,
+     "end": 411.74
+    },
+    {
+     "w": "cuando",
+     "start": 411.74,
+     "end": 412.14
+    },
+    {
+     "w": "se",
+     "start": 412.14,
+     "end": 412.44
+    },
+    {
+     "w": "refiere",
+     "start": 412.44,
+     "end": 413.08
+    },
+    {
+     "w": "a",
+     "start": 413.08,
+     "end": 413.38
+    },
+    {
+     "w": "un",
+     "start": 413.38,
+     "end": 413.56
+    },
+    {
+     "w": "grupo",
+     "start": 413.56,
+     "end": 413.82
+    },
+    {
+     "w": "de",
+     "start": 413.82,
+     "end": 414.04
+    },
+    {
+     "w": "personas",
+     "start": 414.04,
+     "end": 414.54
+    },
+    {
+     "w": "escucha",
+     "start": 415.2,
+     "end": 416.04
+    },
+    {
+     "w": "y",
+     "start": 416.04,
+     "end": 416.56
+    },
+    {
+     "w": "repite",
+     "start": 416.56,
+     "end": 417.5
+    }
    ]
   },
   {
@@ -1783,6 +2694,198 @@
    "end": 502.64,
    "lines": [
     "Espero que hayas notado qué tan fácil es el sistema de conjugación en inglés. Mientras en español hay 5 conjugaciones diferentes, en inglés solo hay 2 y una de las conjugaciones tiene la misma forma como el verbo raíz. Así de fácil"
+   ],
+   "words": [
+    {
+     "w": "que",
+     "start": 461.34,
+     "end": 461.58
+    },
+    {
+     "w": "hayas",
+     "start": 461.58,
+     "end": 461.84
+    },
+    {
+     "w": "notado",
+     "start": 461.84,
+     "end": 462.22
+    },
+    {
+     "w": "que",
+     "start": 462.22,
+     "end": 462.52
+    },
+    {
+     "w": "tan",
+     "start": 462.52,
+     "end": 462.92
+    },
+    {
+     "w": "facil",
+     "start": 462.92,
+     "end": 463.42
+    },
+    {
+     "w": "es",
+     "start": 463.42,
+     "end": 463.84
+    },
+    {
+     "w": "el",
+     "start": 463.84,
+     "end": 464.02
+    },
+    {
+     "w": "sistema",
+     "start": 464.02,
+     "end": 464.68
+    },
+    {
+     "w": "de",
+     "start": 464.68,
+     "end": 464.92
+    },
+    {
+     "w": "conjugacion",
+     "start": 464.92,
+     "end": 465.74
+    },
+    {
+     "w": "en",
+     "start": 465.74,
+     "end": 465.94
+    },
+    {
+     "w": "ingles",
+     "start": 465.94,
+     "end": 466.12
+    },
+    {
+     "w": "mientras",
+     "start": 466.7,
+     "end": 467.38
+    },
+    {
+     "w": "en",
+     "start": 467.38,
+     "end": 467.68
+    },
+    {
+     "w": "espanol",
+     "start": 467.68,
+     "end": 468.46
+    },
+    {
+     "w": "hay",
+     "start": 468.46,
+     "end": 468.82
+    },
+    {
+     "w": "conjugaciones",
+     "start": 469.24,
+     "end": 470.06
+    },
+    {
+     "w": "diferentes",
+     "start": 470.06,
+     "end": 470.52
+    },
+    {
+     "w": "en",
+     "start": 471.3,
+     "end": 471.46
+    },
+    {
+     "w": "ingles",
+     "start": 471.46,
+     "end": 471.62
+    },
+    {
+     "w": "solo",
+     "start": 471.62,
+     "end": 472.02
+    },
+    {
+     "w": "hay",
+     "start": 472.02,
+     "end": 472.24
+    },
+    {
+     "w": "y",
+     "start": 472.44,
+     "end": 472.74
+    },
+    {
+     "w": "una",
+     "start": 472.74,
+     "end": 473.34
+    },
+    {
+     "w": "de",
+     "start": 473.34,
+     "end": 473.54
+    },
+    {
+     "w": "las",
+     "start": 473.54,
+     "end": 473.7
+    },
+    {
+     "w": "conjugaciones",
+     "start": 473.7,
+     "end": 474.54
+    },
+    {
+     "w": "tiene",
+     "start": 474.54,
+     "end": 474.88
+    },
+    {
+     "w": "la",
+     "start": 474.88,
+     "end": 475.08
+    },
+    {
+     "w": "misma",
+     "start": 475.08,
+     "end": 475.8
+    },
+    {
+     "w": "forma",
+     "start": 475.8,
+     "end": 476.8
+    },
+    {
+     "w": "como",
+     "start": 476.8,
+     "end": 477.16
+    },
+    {
+     "w": "el",
+     "start": 477.16,
+     "end": 477.32
+    },
+    {
+     "w": "verbo",
+     "start": 477.32,
+     "end": 477.64
+    },
+    {
+     "w": "raiz",
+     "start": 477.64,
+     "end": 478.34
+    },
+    {
+     "w": "de",
+     "start": 501.14,
+     "end": 501.32
+    },
+    {
+     "w": "facil",
+     "start": 501.32,
+     "end": 501.66
+    }
    ]
   },
   {
@@ -2247,6 +3350,93 @@
    "end": 610.9,
    "lines": [
     "Así es cómo se dice la palabra “inglés” como en “el idioma de inglés”. Escucha y repite."
+   ],
+   "words": [
+    {
+     "w": "asi",
+     "start": 603.02,
+     "end": 603.4
+    },
+    {
+     "w": "es",
+     "start": 603.4,
+     "end": 603.64
+    },
+    {
+     "w": "como",
+     "start": 603.64,
+     "end": 603.86
+    },
+    {
+     "w": "se",
+     "start": 603.86,
+     "end": 604.06
+    },
+    {
+     "w": "dice",
+     "start": 604.06,
+     "end": 604.32
+    },
+    {
+     "w": "la",
+     "start": 604.32,
+     "end": 604.46
+    },
+    {
+     "w": "palabra",
+     "start": 604.46,
+     "end": 604.78
+    },
+    {
+     "w": "ingles",
+     "start": 604.78,
+     "end": 605.28
+    },
+    {
+     "w": "como",
+     "start": 605.28,
+     "end": 606.0
+    },
+    {
+     "w": "en",
+     "start": 606.0,
+     "end": 606.68
+    },
+    {
+     "w": "el",
+     "start": 606.68,
+     "end": 607.0
+    },
+    {
+     "w": "idioma",
+     "start": 607.0,
+     "end": 607.4
+    },
+    {
+     "w": "de",
+     "start": 607.4,
+     "end": 607.76
+    },
+    {
+     "w": "ingles",
+     "start": 607.76,
+     "end": 608.28
+    },
+    {
+     "w": "escucha",
+     "start": 609.0,
+     "end": 609.62
+    },
+    {
+     "w": "y",
+     "start": 609.62,
+     "end": 610.12
+    },
+    {
+     "w": "repite",
+     "start": 610.12,
+     "end": 610.9
+    }
    ]
   },
   {
@@ -2301,6 +3491,58 @@
    "end": 629.48,
    "lines": [
     "Así es cómo se dice “ustedes hablan”. Escucha y repite."
+   ],
+   "words": [
+    {
+     "w": "asi",
+     "start": 623.06,
+     "end": 623.44
+    },
+    {
+     "w": "es",
+     "start": 623.44,
+     "end": 623.66
+    },
+    {
+     "w": "como",
+     "start": 623.66,
+     "end": 623.82
+    },
+    {
+     "w": "se",
+     "start": 623.82,
+     "end": 624.04
+    },
+    {
+     "w": "dice",
+     "start": 624.04,
+     "end": 624.4
+    },
+    {
+     "w": "ustedes",
+     "start": 624.4,
+     "end": 625.1
+    },
+    {
+     "w": "hablan",
+     "start": 625.1,
+     "end": 625.96
+    },
+    {
+     "w": "escucha",
+     "start": 626.18,
+     "end": 627.36
+    },
+    {
+     "w": "y",
+     "start": 627.14,
+     "end": 627.68
+    },
+    {
+     "w": "repite",
+     "start": 627.68,
+     "end": 628.56
+    }
    ]
   },
   {
@@ -2385,6 +3627,73 @@
    "end": 652.68,
    "lines": [
     "Algunas veces decimos solo ‘you’ para referirnos a ‘ustedes’. Algo a tener en cuenta."
+   ],
+   "words": [
+    {
+     "w": "algunas",
+     "start": 645.32,
+     "end": 645.82
+    },
+    {
+     "w": "veces",
+     "start": 645.82,
+     "end": 646.18
+    },
+    {
+     "w": "decimos",
+     "start": 646.18,
+     "end": 646.6
+    },
+    {
+     "w": "solo",
+     "start": 646.6,
+     "end": 646.98
+    },
+    {
+     "w": "you",
+     "start": 646.98,
+     "end": 647.46
+    },
+    {
+     "w": "para",
+     "start": 647.46,
+     "end": 648.56
+    },
+    {
+     "w": "a",
+     "start": 649.52,
+     "end": 649.78
+    },
+    {
+     "w": "ustedes",
+     "start": 649.78,
+     "end": 650.26
+    },
+    {
+     "w": "algo",
+     "start": 650.78,
+     "end": 651.1
+    },
+    {
+     "w": "a",
+     "start": 651.1,
+     "end": 651.16
+    },
+    {
+     "w": "tener",
+     "start": 651.16,
+     "end": 651.46
+    },
+    {
+     "w": "en",
+     "start": 651.46,
+     "end": 651.78
+    },
+    {
+     "w": "cuenta",
+     "start": 651.78,
+     "end": 652.1
+    }
    ]
   },
   {
@@ -2856,6 +4165,253 @@
    "end": 800.94,
    "lines": [
     "Algo más para tomar en cuenta es que no podemos comernos el sujeto antes del verbo como haces en español. Eso es debido a nuestro sistema simple de conjugación. Sin el sujeto, no sabemos a quién te refieres. Ahora escucha la conversación que escuchaste al comienzo de la lección."
+   ],
+   "words": [
+    {
+     "w": "algo",
+     "start": 776.82,
+     "end": 777.22
+    },
+    {
+     "w": "mas",
+     "start": 777.22,
+     "end": 777.38
+    },
+    {
+     "w": "para",
+     "start": 777.38,
+     "end": 777.6
+    },
+    {
+     "w": "tomar",
+     "start": 777.6,
+     "end": 777.9
+    },
+    {
+     "w": "en",
+     "start": 777.9,
+     "end": 778.18
+    },
+    {
+     "w": "cuenta",
+     "start": 778.18,
+     "end": 778.52
+    },
+    {
+     "w": "es",
+     "start": 778.52,
+     "end": 778.7
+    },
+    {
+     "w": "que",
+     "start": 778.7,
+     "end": 778.82
+    },
+    {
+     "w": "no",
+     "start": 778.82,
+     "end": 779.12
+    },
+    {
+     "w": "podemos",
+     "start": 779.12,
+     "end": 779.62
+    },
+    {
+     "w": "comernos",
+     "start": 779.62,
+     "end": 780.28
+    },
+    {
+     "w": "el",
+     "start": 780.28,
+     "end": 780.46
+    },
+    {
+     "w": "sujeto",
+     "start": 780.46,
+     "end": 781.28
+    },
+    {
+     "w": "antes",
+     "start": 781.28,
+     "end": 782.0
+    },
+    {
+     "w": "del",
+     "start": 782.0,
+     "end": 782.26
+    },
+    {
+     "w": "verbo",
+     "start": 782.26,
+     "end": 782.6
+    },
+    {
+     "w": "como",
+     "start": 782.6,
+     "end": 782.88
+    },
+    {
+     "w": "haces",
+     "start": 782.88,
+     "end": 783.34
+    },
+    {
+     "w": "en",
+     "start": 783.34,
+     "end": 783.74
+    },
+    {
+     "w": "espanol",
+     "start": 783.74,
+     "end": 784.4
+    },
+    {
+     "w": "eso",
+     "start": 785.04,
+     "end": 785.34
+    },
+    {
+     "w": "es",
+     "start": 785.34,
+     "end": 785.56
+    },
+    {
+     "w": "debido",
+     "start": 785.56,
+     "end": 785.86
+    },
+    {
+     "w": "a",
+     "start": 785.86,
+     "end": 786.26
+    },
+    {
+     "w": "nuestro",
+     "start": 786.26,
+     "end": 786.6
+    },
+    {
+     "w": "sistema",
+     "start": 786.6,
+     "end": 787.42
+    },
+    {
+     "w": "simple",
+     "start": 787.42,
+     "end": 787.86
+    },
+    {
+     "w": "de",
+     "start": 787.86,
+     "end": 788.12
+    },
+    {
+     "w": "conjugacion",
+     "start": 788.12,
+     "end": 788.9
+    },
+    {
+     "w": "sin",
+     "start": 789.2,
+     "end": 789.94
+    },
+    {
+     "w": "el",
+     "start": 789.86,
+     "end": 790.0
+    },
+    {
+     "w": "sujeto",
+     "start": 790.0,
+     "end": 790.41
+    },
+    {
+     "w": "no",
+     "start": 790.9,
+     "end": 791.32
+    },
+    {
+     "w": "sabemos",
+     "start": 791.32,
+     "end": 791.82
+    },
+    {
+     "w": "a",
+     "start": 791.82,
+     "end": 792.16
+    },
+    {
+     "w": "quien",
+     "start": 792.16,
+     "end": 792.76
+    },
+    {
+     "w": "te",
+     "start": 792.76,
+     "end": 793.46
+    },
+    {
+     "w": "refieres",
+     "start": 793.46,
+     "end": 794.48
+    },
+    {
+     "w": "ahora",
+     "start": 794.98,
+     "end": 795.26
+    },
+    {
+     "w": "escucha",
+     "start": 795.72,
+     "end": 796.16
+    },
+    {
+     "w": "la",
+     "start": 796.16,
+     "end": 796.24
+    },
+    {
+     "w": "conversacion",
+     "start": 796.24,
+     "end": 796.94
+    },
+    {
+     "w": "que",
+     "start": 796.94,
+     "end": 797.18
+    },
+    {
+     "w": "escuchaste",
+     "start": 797.18,
+     "end": 797.7
+    },
+    {
+     "w": "al",
+     "start": 797.7,
+     "end": 797.88
+    },
+    {
+     "w": "comienzo",
+     "start": 797.88,
+     "end": 798.36
+    },
+    {
+     "w": "de",
+     "start": 798.36,
+     "end": 798.48
+    },
+    {
+     "w": "la",
+     "start": 798.48,
+     "end": 798.62
+    },
+    {
+     "w": "leccion",
+     "start": 798.62,
+     "end": 799.04
+    }
    ]
   },
   {
@@ -3272,6 +4828,193 @@
    "end": 861.12,
    "lines": [
     "Esto es el final de la lección. Si aún no te sientes cómodo con la estructura de estas oraciones y preguntas en inglés, repite la lección tantas veces como sea necesario para sentirte cómodo respondiendo a todo."
+   ],
+   "words": [
+    {
+     "w": "esto",
+     "start": 838.62,
+     "end": 839.42
+    },
+    {
+     "w": "es",
+     "start": 839.42,
+     "end": 839.86
+    },
+    {
+     "w": "el",
+     "start": 839.86,
+     "end": 840.06
+    },
+    {
+     "w": "final",
+     "start": 840.06,
+     "end": 840.48
+    },
+    {
+     "w": "de",
+     "start": 840.48,
+     "end": 840.8
+    },
+    {
+     "w": "la",
+     "start": 840.8,
+     "end": 840.92
+    },
+    {
+     "w": "leccion",
+     "start": 840.92,
+     "end": 841.44
+    },
+    {
+     "w": "si",
+     "start": 841.8,
+     "end": 842.0
+    },
+    {
+     "w": "aun",
+     "start": 841.9,
+     "end": 842.16
+    },
+    {
+     "w": "no",
+     "start": 842.16,
+     "end": 842.4
+    },
+    {
+     "w": "te",
+     "start": 842.4,
+     "end": 842.58
+    },
+    {
+     "w": "sientes",
+     "start": 842.58,
+     "end": 843.14
+    },
+    {
+     "w": "comodo",
+     "start": 843.14,
+     "end": 843.78
+    },
+    {
+     "w": "con",
+     "start": 843.78,
+     "end": 844.0
+    },
+    {
+     "w": "la",
+     "start": 844.0,
+     "end": 844.14
+    },
+    {
+     "w": "estructura",
+     "start": 844.14,
+     "end": 844.62
+    },
+    {
+     "w": "de",
+     "start": 844.62,
+     "end": 844.86
+    },
+    {
+     "w": "estas",
+     "start": 844.86,
+     "end": 845.38
+    },
+    {
+     "w": "oraciones",
+     "start": 845.38,
+     "end": 846.06
+    },
+    {
+     "w": "y",
+     "start": 846.06,
+     "end": 846.26
+    },
+    {
+     "w": "preguntas",
+     "start": 846.26,
+     "end": 846.62
+    },
+    {
+     "w": "en",
+     "start": 846.62,
+     "end": 846.9
+    },
+    {
+     "w": "ingles",
+     "start": 846.9,
+     "end": 847.08
+    },
+    {
+     "w": "repite",
+     "start": 847.6,
+     "end": 848.3
+    },
+    {
+     "w": "la",
+     "start": 848.3,
+     "end": 848.44
+    },
+    {
+     "w": "leccion",
+     "start": 848.44,
+     "end": 849.04
+    },
+    {
+     "w": "tantas",
+     "start": 849.2,
+     "end": 849.98
+    },
+    {
+     "w": "veces",
+     "start": 849.86,
+     "end": 850.12
+    },
+    {
+     "w": "como",
+     "start": 850.12,
+     "end": 850.42
+    },
+    {
+     "w": "sea",
+     "start": 850.42,
+     "end": 850.66
+    },
+    {
+     "w": "necesario",
+     "start": 850.66,
+     "end": 851.3
+    },
+    {
+     "w": "para",
+     "start": 851.3,
+     "end": 851.8
+    },
+    {
+     "w": "sentirte",
+     "start": 851.8,
+     "end": 852.36
+    },
+    {
+     "w": "comodo",
+     "start": 852.36,
+     "end": 852.82
+    },
+    {
+     "w": "respondiendo",
+     "start": 852.82,
+     "end": 853.6
+    },
+    {
+     "w": "a",
+     "start": 853.6,
+     "end": 853.78
+    },
+    {
+     "w": "todo",
+     "start": 853.78,
+     "end": 854.02
+    }
    ]
   }
  ]

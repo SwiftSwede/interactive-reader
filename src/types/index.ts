@@ -16,7 +16,8 @@ export type StoryKind =
   | "dialogue"
   | "movie_talk"
   | "song"
-  | "video_summary";
+  | "video_summary"
+  | "audio_course";
 
 export interface Story {
   id: string;
@@ -704,7 +705,8 @@ export type EvidenceSourceType =
   | "pronunciation"
   | "writing"
   | "exam"
-  | "teacher_observation";
+  | "teacher_observation"
+  | "iplo_course";
 
 export interface UserTopicEvidence {
   id: string;

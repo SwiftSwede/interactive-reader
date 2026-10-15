@@ -18,6 +18,17 @@ You need `.env.local` in the project root with Supabase + OpenRouter keys. If yo
 
 ## Adding New Content
 
+### Seed an Inglés por los Oídos audio lesson
+
+Reads `scripts/iplo/dayN-segments.json` and upserts one `audio_course` story plus the unpublished course. Every write stamps `audio_script.seedVersion` so an open tab drops a stale script. This run is Day 1 only. Later days fail until their grammar tag is mapped.
+
+```bash
+npx tsx scripts/iplo-import.ts --only 1
+```
+
+**Flags:** `--only` day number, 1 to 23.
+**Cost / time / status:** no API cost. Does not publish the course.
+
 ### Seed a story from the Obsidian vault into the database
 
 Parses the vault markdown file (story body, comprehension questions, personal questions, pronunciation drill) and inserts it into Supabase. If comprehension questions have no answers, calls Claude Sonnet to generate them automatically.

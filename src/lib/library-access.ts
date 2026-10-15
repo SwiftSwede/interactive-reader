@@ -1,4 +1,5 @@
 import { AppError } from "@/lib/errors";
+import { courseLessonTotal } from "@/lib/iplo";
 import { createAdminClient } from "@/lib/supabase/admin";
 import type { CourseFormat, CourseLevel, LibraryLevel } from "@/types";
 
@@ -124,8 +125,9 @@ export function decideSelfPacedLesson(input: {
   grants: OwnedGrants;
   completedStoryIds: Set<string>;
 }): SelfPacedLessonDecision {
+  if (input.memberships.length === 0) return "skip";
   const published = input.memberships.filter((row) => row.published);
-  if (published.length === 0) return "skip";
+  if (published.length === 0) return "denied";
   if (input.isTeacher || input.sessionOk) return "allow";
 
   const accessible = published.filter((row) =>
@@ -227,7 +229,10 @@ type LessonJoin = {
   course_id: string;
   position: number;
   story_id: string;
-  stories: { slug: string } | { slug: string }[] | null;
+  stories:
+    | { slug: string; kind: string | null }
+    | { slug: string; kind: string | null }[]
+    | null;
 };
 
 export async function loadSelfPacedCards(
@@ -239,7 +244,7 @@ export async function loadSelfPacedCards(
   const courseIds = courses.map((course) => course.id);
   const { data, error } = await admin
     .from("course_lessons")
-    .select("course_id, position, story_id, stories(slug)")
+    .select("course_id, position, story_id, stories(slug, kind)")
     .in("course_id", courseIds)
     .order("position", { ascending: true });
 
@@ -275,6 +280,7 @@ export async function loadSelfPacedCards(
             storyId: row.story_id,
             slug: story?.slug ?? "",
             position: row.position,
+            kind: story?.kind ?? null,
           };
         })
         .filter((row) => row.slug);
@@ -283,12 +289,16 @@ export async function loadSelfPacedCards(
         [...completed].map((storyId) => ({ storyId, status: "completed" }))
       );
       const done = rows.filter((row) => completed.has(row.storyId)).length;
-      const copy = selfPacedCardCopy(done, rows.length);
+      const total = courseLessonTotal(
+        rows.length,
+        rows.some((row) => row.kind === "audio_course")
+      );
+      const copy = selfPacedCardCopy(done, total);
       return {
         courseId: course.id,
         name: nameById.get(course.id) ?? course.name,
         completed: done,
-        total: rows.length,
+        total,
         nextHref: copy.showContinue && next ? `/lesson/${next.slug}` : null,
       };
     })
@@ -349,7 +359,8 @@ export async function loadSelfPacedLessonGate(input: {
     })
     .filter((row): row is NonNullable<typeof row> => row != null);
 
-  if (!hits.some((row) => row.published)) return "skip";
+  if (hits.length === 0) return "skip";
+  if (!hits.some((row) => row.published)) return "denied";
 
   const courseIds = [...new Set(hits.map((row) => row.courseId))];
   const { data: lessonRows, error: lessonError } = await admin

@@ -101,7 +101,8 @@ export default function CreateSessionForm({
       row.kind !== "video_summary" &&
       row.kind !== "dialogue" &&
       row.kind !== "movie_talk" &&
-      row.kind !== "song"
+      row.kind !== "song" &&
+      row.kind !== "audio_course"
   );
   const videoOptions = stories.filter((row) => row.kind === "video_summary");
   const dialogueOptions = stories.filter((row) => row.kind === "dialogue");
