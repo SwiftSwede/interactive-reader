@@ -326,11 +326,13 @@ def main():
                     continue
                 dedup.append(e)
             exp = dedup
-            # pause just BEFORE the answer starts (next line's first word), never
-            # at this span's end: unaligned trailing tokens would cut the question
+            # pause just BEFORE the FIRST line that follows the question (the
+            # answer repeats in the script; searching past ALL expected lines
+            # landed the pause one answer too late)
             pause = end
-            if m2 <= len(line_ranges) - 1 and spans[m2]:
-                pause = tw[spans[m2][0]][1] - 0.15
+            nxt_k = next((m3 for m3 in range(k + 1, len(line_ranges)) if spans[m3]), None)
+            if nxt_k is not None:
+                pause = tw[spans[nxt_k][0]][1] - 0.15
             segs.append({"t": "prompt", "start": round(start, 2), "pauseAt": round(pause, 2),
                          "spanish": prompt_text, "expected": exp})
 
