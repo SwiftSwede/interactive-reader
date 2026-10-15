@@ -61,10 +61,16 @@ def main(path):
             fixed_ans += 1
         nxt = segs[i + 1] if i + 1 < len(segs) else None
         if nxt and isinstance(nxt.get("start"), (int, float)):
-            pause = round(max(s["start"], nxt["start"] - 0.15), 2)
-            if abs(pause - s.get("pauseAt", -1)) > 0.01:
-                fixed_pause += 1
-            s["pauseAt"] = pause
+            # the aligner now computes gap-aware pauses (right after the question
+            # when the recording has an answer gap). Only repair a BROKEN pause:
+            # at/before the prompt start, or running into/past the next segment.
+            pause = s.get("pauseAt", -1)
+            broken = pause <= s["start"] or pause >= nxt["start"]
+            if broken:
+                fixed = round(max(s["start"], nxt["start"] - 0.15), 2)
+                if abs(fixed - pause) > 0.01:
+                    fixed_pause += 1
+                s["pauseAt"] = fixed
     json.dump(d, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(f"{path}: {fixed_ans} answer keys deduped, {fixed_pause} pauseAt moved")
 

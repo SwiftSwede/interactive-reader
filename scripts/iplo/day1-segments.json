@@ -3,7 +3,7 @@
  "segments": [
   {
    "t": "narration",
-   "start": 5.7,
+   "start": 5.12,
    "end": 10.18,
    "lines": [
     "Escucha la siguiente conversación."
@@ -387,7 +387,7 @@
   {
    "t": "english",
    "start": 43.0,
-   "end": 50.5,
+   "end": 47.08,
    "text": "No. We don’t speak English.",
    "words": [
     {
@@ -419,7 +419,7 @@
   },
   {
    "t": "narration",
-   "start": 50.5,
+   "start": 47.08,
    "end": 94.86,
    "lines": [
     "En esta primera lección, aprendes cómo conjugar el verbo ‘to speak’ en el presente simple, y de eso, cómo conjugar 99% de los verbos en inglés en el presente simple. En inglés, como el español, el presente simple se usa para hablar de hechos, rutinas y hábitos. Por ejemplo, “We speak English” lo que significa, “hablamos inglés.” Es un hecho entonces usamos el presente simple tanto en inglés como en español. Empecemos aprendiendo cómo usar el verbo ‘to speak’ en el presente simple. Así es cómo dices el verbo ‘hablar’ en inglés. Escucha y repite después de la mujer."
@@ -428,7 +428,7 @@
   {
    "t": "english",
    "start": 94.86,
-   "end": 99.36,
+   "end": 98.74,
    "text": "Speak. Speak.",
    "words": [
     {
@@ -445,7 +445,7 @@
   },
   {
    "t": "prompt",
-   "start": 99.36,
+   "start": 98.74,
    "pauseAt": 102.41,
    "spanish": "Otra vez, ¿Cómo se dice ‘hablar’ en inglés?",
    "expected": [
@@ -456,7 +456,7 @@
   {
    "t": "english",
    "start": 102.56,
-   "end": 106.72,
+   "end": 106.62,
    "text": "Speak. Speak.",
    "words": [
     {
@@ -473,7 +473,7 @@
   },
   {
    "t": "narration",
-   "start": 106.72,
+   "start": 106.62,
    "end": 121.12,
    "lines": [
     "¿Respondiste después de él? Excelente. Es importante que lo hagas para grabar todo en la mente. Ahora así es cómo decimos, “hablo.” Escucha y repite."
@@ -510,7 +510,7 @@
   {
    "t": "prompt",
    "start": 126.24,
-   "pauseAt": 129.69,
+   "pauseAt": 129.62,
    "spanish": "¿Cómo se dice “yo hablo”?",
    "expected": [
     "I speak."
@@ -520,7 +520,7 @@
   {
    "t": "english",
    "start": 129.84,
-   "end": 134.82,
+   "end": 134.1,
    "text": "I speak. I speak.",
    "words": [
     {
@@ -547,8 +547,8 @@
   },
   {
    "t": "prompt",
-   "start": 134.82,
-   "pauseAt": 138.25,
+   "start": 134.1,
+   "pauseAt": 138.16,
    "spanish": "¿Puedes adivinar qué palabra significa “yo”?",
    "expected": [
     "I."
@@ -576,7 +576,7 @@
   {
    "t": "prompt",
    "start": 142.2,
-   "pauseAt": 147.53,
+   "pauseAt": 147.3,
    "spanish": "Otra vez, ¿cómo se dice “yo hablo” en inglés?",
    "expected": [
     "I speak."
@@ -622,7 +622,7 @@
   {
    "t": "english",
    "start": 164.8,
-   "end": 169.62,
+   "end": 169.04,
    "text": "You speak. You speak.",
    "words": [
     {
@@ -649,8 +649,8 @@
   },
   {
    "t": "prompt",
-   "start": 169.62,
-   "pauseAt": 173.11,
+   "start": 169.04,
+   "pauseAt": 172.84,
    "spanish": "¿Cómo se dice \"tú hablas\"?",
    "expected": [
     "You speak."
@@ -660,7 +660,7 @@
   {
    "t": "english",
    "start": 173.26,
-   "end": 177.72,
+   "end": 177.46,
    "text": "You speak. You speak.",
    "words": [
     {
@@ -687,8 +687,8 @@
   },
   {
    "t": "prompt",
-   "start": 177.72,
-   "pauseAt": 182.87,
+   "start": 177.46,
+   "pauseAt": 182.38,
    "spanish": "¿Puedes adivinar qué palabra significa “tú”?",
    "expected": [
     "You."
@@ -716,7 +716,7 @@
   {
    "t": "prompt",
    "start": 186.72,
-   "pauseAt": 192.03,
+   "pauseAt": 191.74,
    "spanish": "Otra vez, ¿cómo se dice \"tú hablas\"?",
    "expected": [
     "You speak."
@@ -792,7 +792,7 @@
   {
    "t": "prompt",
    "start": 204.12,
-   "pauseAt": 208.45,
+   "pauseAt": 207.86,
    "spanish": "¿Y cómo se dice \"tú hablas\"?",
    "expected": [
     "You speak."
@@ -830,48 +830,20 @@
   {
    "t": "narration",
    "start": 212.66,
-   "end": 219.18,
+   "end": 218.4,
    "lines": [
     "Así es cómo se dice \"él habla\". Escucha y repite."
    ]
   },
   {
    "t": "prompt",
-   "start": 219.18,
-   "pauseAt": 222.85,
+   "start": 218.4,
+   "pauseAt": 221.78,
    "spanish": "¿Cómo se dice \"él habla\"?",
    "expected": [
     "He speaks."
    ],
    "end": 223.0
-  },
-  {
-   "t": "english",
-   "start": 223.0,
-   "end": 223.0,
-   "text": "He speaks. He speaks.",
-   "words": [
-    {
-     "w": "he",
-     "start": 223.0,
-     "end": 223.58
-    },
-    {
-     "w": "speaks",
-     "start": 223.58,
-     "end": 224.04
-    },
-    {
-     "w": "he",
-     "start": 225.1,
-     "end": 225.56
-    },
-    {
-     "w": "speaks",
-     "start": 225.56,
-     "end": 226.02
-    }
-   ]
   },
   {
    "t": "english",
@@ -904,35 +876,35 @@
   {
    "t": "prompt",
    "start": 227.08,
-   "pauseAt": 233.21,
+   "pauseAt": 231.02,
    "spanish": "¿Puedes adivinar qué palabra significa ‘él’?",
    "expected": [
     "He."
    ],
-   "end": 233.36
+   "end": 232.36
   },
   {
    "t": "english",
-   "start": 233.36,
+   "start": 232.36,
    "end": 236.0,
    "text": "He. He.",
    "words": [
     {
      "w": "he",
-     "start": 233.36,
-     "end": 234.16
+     "start": 232.36,
+     "end": 233.0
     },
     {
      "w": "he",
-     "start": 234.16,
-     "end": 234.96
+     "start": 233.36,
+     "end": 234.16
     }
    ]
   },
   {
    "t": "prompt",
    "start": 236.0,
-   "pauseAt": 240.11,
+   "pauseAt": 240.02,
    "spanish": "Otra vez. ¿Cómo se dice \"él habla\"?",
    "expected": [
     "He speaks."
@@ -942,7 +914,7 @@
   {
    "t": "english",
    "start": 240.26,
-   "end": 245.42,
+   "end": 244.74,
    "text": "He speaks. He speaks.",
    "words": [
     {
@@ -969,8 +941,8 @@
   },
   {
    "t": "prompt",
-   "start": 245.42,
-   "pauseAt": 248.53,
+   "start": 244.74,
+   "pauseAt": 247.78,
    "spanish": "Ahora di \"yo hablo\".",
    "expected": [
     "I speak."
@@ -1008,7 +980,7 @@
   {
    "t": "prompt",
    "start": 253.4,
-   "pauseAt": 255.91,
+   "pauseAt": 255.82,
    "spanish": "¿Y cómo se dice \"tú hablas\"?",
    "expected": [
     "You speak."
@@ -1046,7 +1018,7 @@
   {
    "t": "prompt",
    "start": 260.82,
-   "pauseAt": 265.01,
+   "pauseAt": 264.52,
    "spanish": "¿Cómo se dice \"él habla\"?",
    "expected": [
     "He speaks."
@@ -1056,7 +1028,7 @@
   {
    "t": "english",
    "start": 265.16,
-   "end": 270.66,
+   "end": 270.52,
    "text": "He speaks. He speaks.",
    "words": [
     {
@@ -1083,7 +1055,7 @@
   },
   {
    "t": "narration",
-   "start": 270.66,
+   "start": 270.52,
    "end": 277.66,
    "lines": [
     "Now listen to how you’d say, “she speaks.” Escucha y repite."
@@ -1092,7 +1064,7 @@
   {
    "t": "english",
    "start": 277.66,
-   "end": 283.32,
+   "end": 283.22,
    "text": "She speaks. She speaks.",
    "words": [
     {
@@ -1107,8 +1079,8 @@
     },
     {
      "w": "she",
-     "start": 280.14,
-     "end": 281.26
+     "start": 278.14,
+     "end": 278.14
     },
     {
      "w": "speaks",
@@ -1119,7 +1091,7 @@
   },
   {
    "t": "prompt",
-   "start": 283.32,
+   "start": 283.22,
    "pauseAt": 285.25,
    "spanish": "¿Cómo se dice \"ella habla\"?",
    "expected": [
@@ -1158,7 +1130,7 @@
   {
    "t": "prompt",
    "start": 291.82,
-   "pauseAt": 295.71,
+   "pauseAt": 295.42,
    "spanish": "¿Puedes adivinar qué palabra significa  “ella”?",
    "expected": [
     "She."
@@ -1168,7 +1140,7 @@
   {
    "t": "english",
    "start": 295.86,
-   "end": 300.7,
+   "end": 300.02,
    "text": "She. She.",
    "words": [
     {
@@ -1178,15 +1150,15 @@
     },
     {
      "w": "she",
-     "start": 298.9,
-     "end": 299.38
+     "start": 296.56,
+     "end": 296.98
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 300.7,
-   "pauseAt": 304.49,
+   "start": 300.02,
+   "pauseAt": 304.34,
    "spanish": "Otra vez. ¿Cómo se dice \"ella habla\"?",
    "expected": [
     "She speaks."
@@ -1262,7 +1234,7 @@
   {
    "t": "prompt",
    "start": 317.72,
-   "pauseAt": 320.37,
+   "pauseAt": 320.32,
    "spanish": "¿Y cómo se dice \"tú hablas\"?",
    "expected": [
     "You speak."
@@ -1272,7 +1244,7 @@
   {
    "t": "english",
    "start": 320.52,
-   "end": 325.36,
+   "end": 324.88,
    "text": "You speak. You speak.",
    "words": [
     {
@@ -1299,8 +1271,8 @@
   },
   {
    "t": "prompt",
-   "start": 325.36,
-   "pauseAt": 328.07,
+   "start": 324.88,
+   "pauseAt": 327.5,
    "spanish": "Ahora di \"él habla\".",
    "expected": [
     "He speaks."
@@ -1338,7 +1310,7 @@
   {
    "t": "prompt",
    "start": 333.3,
-   "pauseAt": 336.09,
+   "pauseAt": 335.92,
    "spanish": "¿Y cómo se dice \"ella habla\"?",
    "expected": [
     "She speaks."
@@ -1414,7 +1386,7 @@
   {
    "t": "prompt",
    "start": 349.16,
-   "pauseAt": 351.99,
+   "pauseAt": 351.74,
    "spanish": "¿Cómo se dice \"tú hablas\"?",
    "expected": [
     "You speak."
@@ -1439,8 +1411,8 @@
     },
     {
      "w": "you",
-     "start": 354.54,
-     "end": 354.84
+     "start": 353.84,
+     "end": 354.9
     },
     {
      "w": "speak",
@@ -1452,7 +1424,7 @@
   {
    "t": "prompt",
    "start": 356.78,
-   "pauseAt": 359.79,
+   "pauseAt": 358.94,
    "spanish": "Ahora di \"él habla\".",
    "expected": [
     "He speaks."
@@ -1490,7 +1462,7 @@
   {
    "t": "prompt",
    "start": 364.84,
-   "pauseAt": 367.97,
+   "pauseAt": 367.62,
    "spanish": "¿Y cómo se dice \"ella habla\"?",
    "expected": [
     "She speaks."
@@ -1512,27 +1484,37 @@
      "w": "speaks",
      "start": 368.36,
      "end": 368.88
+    },
+    {
+     "w": "she",
+     "start": 370.76,
+     "end": 371.06
+    },
+    {
+     "w": "speaks",
+     "start": 371.06,
+     "end": 371.72
     }
    ]
   },
   {
    "t": "narration",
    "start": 373.0,
-   "end": 379.52,
+   "end": 379.44,
    "lines": [
     "Así es cómo se dice \"nosotros hablamos\".  Escucha y repite."
    ]
   },
   {
    "t": "english",
-   "start": 379.52,
+   "start": 379.44,
    "end": 383.06,
    "text": "We speak. We speak.",
    "words": [
     {
      "w": "we",
-     "start": 379.52,
-     "end": 379.62
+     "start": 379.44,
+     "end": 379.86
     },
     {
      "w": "speak",
@@ -1541,13 +1523,13 @@
     },
     {
      "w": "we",
-     "start": 385.86,
-     "end": 387.44
+     "start": 381.22,
+     "end": 382.48
     },
     {
      "w": "speak",
-     "start": 387.44,
-     "end": 387.86
+     "start": 382.48,
+     "end": 383.52
     }
    ]
   },
@@ -1592,40 +1574,40 @@
   {
    "t": "prompt",
    "start": 391.66,
-   "pauseAt": 398.19,
+   "pauseAt": 395.28,
    "spanish": "¿Puedes adivinar qué palabra significa  “nosotros”?",
    "expected": [
     "We."
    ],
-   "end": 398.34
+   "end": 395.9
+  },
+  {
+   "t": "english",
+   "start": 395.9,
+   "end": 398.34,
+   "text": "We. We.",
+   "words": [
+    {
+     "w": "we",
+     "start": 395.9,
+     "end": 396.26
+    },
+    {
+     "w": "we",
+     "start": 397.48,
+     "end": 397.92
+    }
+   ]
   },
   {
    "t": "prompt",
    "start": 398.34,
-   "pauseAt": 402.89,
+   "pauseAt": 402.62,
    "spanish": "Otra vez. ¿Cómo se dice \"nosotros hablamos\"?",
    "expected": [
     "We speak."
    ],
    "end": 403.04
-  },
-  {
-   "t": "english",
-   "start": 403.04,
-   "end": 403.04,
-   "text": "We. We.",
-   "words": [
-    {
-     "w": "we",
-     "start": 403.04,
-     "end": 403.64
-    },
-    {
-     "w": "we",
-     "start": 405.32,
-     "end": 406.32
-    }
-   ]
   },
   {
    "t": "english",
@@ -1695,7 +1677,7 @@
    "t": "prompt",
    "start": 424.74,
    "pauseAt": 437.71,
-   "spanish": "¿Cómo se dice \"ellos hablan\" when referring to a group of males or a group that consists of both males and Womans.",
+   "spanish": "¿Cómo se dice \"ellos hablan\" cuando se refiere a un grupo de hombres, o a un grupo de hombres y mujeres?",
    "expected": [
     "They speak."
    ],
@@ -1704,7 +1686,7 @@
   {
    "t": "english",
    "start": 437.86,
-   "end": 442.24,
+   "end": 442.16,
    "text": "They speak. They speak.",
    "words": [
     {
@@ -1719,8 +1701,8 @@
     },
     {
      "w": "they",
-     "start": 440.18,
-     "end": 440.66
+     "start": 439.76,
+     "end": 440.82
     },
     {
      "w": "speak",
@@ -1731,41 +1713,41 @@
   },
   {
    "t": "prompt",
-   "start": 442.24,
-   "pauseAt": 451.27,
+   "start": 442.16,
+   "pauseAt": 445.68,
    "spanish": "¿Puedes adivinar qué palabra significa “ellos”?",
    "expected": [
     "They."
    ],
-   "end": 451.42
+   "end": 445.96
+  },
+  {
+   "t": "english",
+   "start": 445.96,
+   "end": 451.42,
+   "text": "They. They.",
+   "words": [
+    {
+     "w": "they",
+     "start": 445.96,
+     "end": 446.78
+    },
+    {
+     "w": "they",
+     "start": 446.44,
+     "end": 447.1
+    }
+   ]
   },
   {
    "t": "prompt",
    "start": 451.42,
-   "pauseAt": 455.63,
+   "pauseAt": 455.54,
    "spanish": "Otra vez. ¿Cómo se dice \"ellos hablan\"?",
    "expected": [
     "They speak."
    ],
    "end": 455.78
-  },
-  {
-   "t": "english",
-   "start": 455.78,
-   "end": 455.78,
-   "text": "They. They.",
-   "words": [
-    {
-     "w": "they",
-     "start": 455.78,
-     "end": 456.38
-    },
-    {
-     "w": "they",
-     "start": 457.9,
-     "end": 458.72
-    }
-   ]
   },
   {
    "t": "english",
@@ -1798,15 +1780,15 @@
   {
    "t": "narration",
    "start": 461.34,
-   "end": 461.34,
+   "end": 502.64,
    "lines": [
     "Espero que hayas notado qué tan fácil es el sistema de conjugación en inglés. Mientras en español hay 5 conjugaciones diferentes, en inglés solo hay 2 y una de las conjugaciones tiene la misma forma como el verbo raíz. Así de fácil"
    ]
   },
   {
    "t": "prompt",
-   "start": 461.34,
-   "pauseAt": 506.63,
+   "start": 502.64,
+   "pauseAt": 506.32,
    "spanish": "Ahora dime cómo decir \"yo hablo\".",
    "expected": [
     "I speak."
@@ -1816,7 +1798,7 @@
   {
    "t": "english",
    "start": 506.78,
-   "end": 511.14,
+   "end": 510.78,
    "text": "I speak I speak",
    "words": [
     {
@@ -1843,8 +1825,8 @@
   },
   {
    "t": "prompt",
-   "start": 511.14,
-   "pauseAt": 513.91,
+   "start": 510.78,
+   "pauseAt": 513.8,
    "spanish": "¿Y cómo se dice \"tú hablas\"?",
    "expected": [
     "You speak."
@@ -1854,7 +1836,7 @@
   {
    "t": "english",
    "start": 514.06,
-   "end": 518.86,
+   "end": 518.64,
    "text": "You speak. You speak.",
    "words": [
     {
@@ -1881,8 +1863,8 @@
   },
   {
    "t": "prompt",
-   "start": 518.86,
-   "pauseAt": 521.45,
+   "start": 518.64,
+   "pauseAt": 520.96,
    "spanish": "Ahora di \"él habla\".",
    "expected": [
     "He speaks."
@@ -1930,7 +1912,7 @@
   {
    "t": "english",
    "start": 529.18,
-   "end": 534.38,
+   "end": 532.62,
    "text": "She speaks. She speaks.",
    "words": [
     {
@@ -1957,7 +1939,7 @@
   },
   {
    "t": "prompt",
-   "start": 534.38,
+   "start": 532.62,
    "pauseAt": 536.17,
    "spanish": "Ahora di \"yo hablo\".",
    "expected": [
@@ -1982,16 +1964,21 @@
      "end": 537.32
     },
     {
+     "w": "i",
+     "start": 538.48,
+     "end": 539.78
+    },
+    {
      "w": "speak",
-     "start": 544.84,
-     "end": 545.3
+     "start": 539.78,
+     "end": 540.48
     }
    ]
   },
   {
    "t": "prompt",
    "start": 541.0,
-   "pauseAt": 544.43,
+   "pauseAt": 544.02,
    "spanish": "¿Cómo se dice \"tú hablas\"?",
    "expected": [
     "You speak."
@@ -2001,7 +1988,7 @@
   {
    "t": "english",
    "start": 544.58,
-   "end": 549.32,
+   "end": 549.08,
    "text": "You speak. You speak.",
    "words": [
     {
@@ -2028,8 +2015,8 @@
   },
   {
    "t": "prompt",
-   "start": 549.32,
-   "pauseAt": 551.89,
+   "start": 549.08,
+   "pauseAt": 551.44,
    "spanish": "Ahora di \"él habla\".",
    "expected": [
     "He speaks."
@@ -2067,7 +2054,7 @@
   {
    "t": "prompt",
    "start": 556.62,
-   "pauseAt": 559.59,
+   "pauseAt": 559.4,
    "spanish": "¿Y cómo se dice \"ella habla\"?",
    "expected": [
     "She speaks."
@@ -2105,23 +2092,23 @@
   {
    "t": "prompt",
    "start": 564.74,
-   "pauseAt": 568.15,
+   "pauseAt": 567.74,
    "spanish": "¿Y cómo se dice \"nosotros hablamos\"?",
    "expected": [
     "We speak."
    ],
-   "end": 568.3
+   "end": 568.17
   },
   {
    "t": "english",
-   "start": 568.3,
+   "start": 568.17,
    "end": 574.7,
    "text": "We speak. We speak.",
    "words": [
     {
      "w": "we",
-     "start": 568.3,
-     "end": 568.6
+     "start": 568.17,
+     "end": 568.7
     },
     {
      "w": "speak",
@@ -2143,7 +2130,7 @@
   {
    "t": "prompt",
    "start": 574.7,
-   "pauseAt": 578.33,
+   "pauseAt": 578.2,
    "spanish": "Otra vez. ¿Cómo se dice \"nosotros hablamos\"?",
    "expected": [
     "We speak."
@@ -2181,7 +2168,7 @@
   {
    "t": "prompt",
    "start": 584.46,
-   "pauseAt": 588.41,
+   "pauseAt": 587.54,
    "spanish": "¿Y cómo se dice \"ellos hablan\"?",
    "expected": [
     "They speak."
@@ -2219,23 +2206,23 @@
   {
    "t": "prompt",
    "start": 593.94,
-   "pauseAt": 597.97,
+   "pauseAt": 597.89,
    "spanish": "Otra vez. ¿Cómo se dice \"ellos hablan\"?",
    "expected": [
     "They speak."
    ],
-   "end": 598.12
+   "end": 598.04
   },
   {
    "t": "english",
-   "start": 598.12,
+   "start": 598.04,
    "end": 603.02,
    "text": "They speak. They speak.",
    "words": [
     {
      "w": "they",
-     "start": 598.12,
-     "end": 598.48
+     "start": 598.04,
+     "end": 598.56
     },
     {
      "w": "speak",
@@ -2275,15 +2262,15 @@
     },
     {
      "w": "english",
-     "start": 613.6,
-     "end": 614.78
+     "start": 611.82,
+     "end": 612.46
     }
    ]
   },
   {
    "t": "prompt",
    "start": 615.72,
-   "pauseAt": 618.55,
+   "pauseAt": 618.38,
    "spanish": "¿Cómo se dice “inglés”?",
    "expected": [
     "English."
@@ -2357,7 +2344,7 @@
   {
    "t": "prompt",
    "start": 636.3,
-   "pauseAt": 640.57,
+   "pauseAt": 640.16,
    "spanish": "¿Puedes adivinar qué palabra significa “ustedes”?",
    "expected": [
     "You guys."
@@ -2367,7 +2354,7 @@
   {
    "t": "english",
    "start": 640.72,
-   "end": 644.18,
+   "end": 645.32,
    "text": "You guys. You guys.",
    "words": [
     {
@@ -2393,21 +2380,49 @@
    ]
   },
   {
+   "t": "narration",
+   "start": 645.32,
+   "end": 652.68,
+   "lines": [
+    "Algunas veces decimos solo ‘you’ para referirnos a ‘ustedes’. Algo a tener en cuenta."
+   ]
+  },
+  {
    "t": "prompt",
-   "start": 644.18,
-   "pauseAt": 659.97,
-   "spanish": "Algunas veces decimos solo ‘you’ para referirnos a ‘ustedes’. Algo a tener en cuenta. ¿Y cómo se dice “ustedes hablan inglés”?",
+   "start": 652.68,
+   "pauseAt": 654.41,
+   "spanish": "¿Y cómo se dice “ustedes hablan inglés”?",
    "expected": [
     "You guys speak English."
    ],
-   "end": 660.12
+   "end": 654.56
   },
   {
    "t": "english",
-   "start": 660.12,
+   "start": 654.56,
    "end": 665.56,
    "text": "You guys speak English. You guys speak English.",
    "words": [
+    {
+     "w": "you",
+     "start": 654.56,
+     "end": 655.9
+    },
+    {
+     "w": "guys",
+     "start": 655.88,
+     "end": 656.2
+    },
+    {
+     "w": "speak",
+     "start": 656.2,
+     "end": 656.54
+    },
+    {
+     "w": "english",
+     "start": 656.54,
+     "end": 657.0
+    },
     {
      "w": "you",
      "start": 660.12,
@@ -2427,26 +2442,6 @@
      "w": "english",
      "start": 661.32,
      "end": 661.82
-    },
-    {
-     "w": "you",
-     "start": 664.24,
-     "end": 664.38
-    },
-    {
-     "w": "guys",
-     "start": 664.38,
-     "end": 664.38
-    },
-    {
-     "w": "speak",
-     "start": 664.38,
-     "end": 664.38
-    },
-    {
-     "w": "english",
-     "start": 664.38,
-     "end": 664.38
     }
    ]
   },
@@ -2501,23 +2496,23 @@
   {
    "t": "prompt",
    "start": 675.76,
-   "pauseAt": 682.73,
+   "pauseAt": 679.2,
    "spanish": "Otra vez. ¿Cómo se dice “yo hablo inglés”",
    "expected": [
     "I speak English."
    ],
-   "end": 682.88
+   "end": 682.1
   },
   {
    "t": "english",
-   "start": 682.88,
-   "end": 686.32,
+   "start": 682.1,
+   "end": 686.1,
    "text": "I speak English.",
    "words": [
     {
      "w": "i",
-     "start": 682.88,
-     "end": 683.1
+     "start": 682.1,
+     "end": 683.14
     },
     {
      "w": "speak",
@@ -2533,7 +2528,7 @@
   },
   {
    "t": "prompt",
-   "start": 686.32,
+   "start": 686.1,
    "pauseAt": 690.27,
    "spanish": "Ahora dime ¿Cómo se dice “tú hablas inglés”?",
    "expected": [
@@ -2544,7 +2539,7 @@
   {
    "t": "english",
    "start": 690.42,
-   "end": 698.1,
+   "end": 697.02,
    "text": "You speak English. You speak English.",
    "words": [
     {
@@ -2581,8 +2576,8 @@
   },
   {
    "t": "prompt",
-   "start": 698.1,
-   "pauseAt": 704.47,
+   "start": 697.02,
+   "pauseAt": 701.98,
    "spanish": "Otra vez. ¿Cómo se dice “hablas inglés”?",
    "expected": [
     "You speak English."
@@ -2592,7 +2587,7 @@
   {
    "t": "english",
    "start": 704.62,
-   "end": 708.4,
+   "end": 708.16,
    "text": "You speak English.",
    "words": [
     {
@@ -2614,8 +2609,8 @@
   },
   {
    "t": "prompt",
-   "start": 708.4,
-   "pauseAt": 711.57,
+   "start": 708.16,
+   "pauseAt": 711.32,
    "spanish": "¿Cómo se dice \"él habla inglés\"?",
    "expected": [
     "He speaks English."
@@ -2625,7 +2620,7 @@
   {
    "t": "english",
    "start": 711.72,
-   "end": 719.6,
+   "end": 718.82,
    "text": "He speaks English. He speaks English.",
    "words": [
     {
@@ -2662,57 +2657,57 @@
   },
   {
    "t": "prompt",
-   "start": 719.6,
-   "pauseAt": 726.95,
+   "start": 718.82,
+   "pauseAt": 723.23,
    "spanish": "Otra vez. ¿Cómo se dice \"él habla inglés\"?",
    "expected": [
     "He speaks English."
    ],
-   "end": 727.1
+   "end": 723.38
   },
   {
    "t": "english",
-   "start": 727.1,
+   "start": 723.38,
    "end": 730.28,
    "text": "He speaks English.",
    "words": [
     {
      "w": "he",
-     "start": 727.1,
-     "end": 727.88
+     "start": 723.38,
+     "end": 723.68
     },
     {
      "w": "speaks",
-     "start": 727.88,
-     "end": 728.28
+     "start": 723.68,
+     "end": 724.06
     },
     {
      "w": "english",
-     "start": 728.28,
-     "end": 728.88
+     "start": 724.06,
+     "end": 724.64
     }
    ]
   },
   {
    "t": "prompt",
    "start": 730.28,
-   "pauseAt": 733.07,
+   "pauseAt": 732.8,
    "spanish": "¿Y cómo se dice “hablamos inglés”?",
    "expected": [
     "We speak English."
    ],
-   "end": 733.22
+   "end": 733.1
   },
   {
    "t": "english",
-   "start": 733.22,
+   "start": 733.1,
    "end": 740.04,
    "text": "We speak English. We speak English.",
    "words": [
     {
      "w": "we",
-     "start": 733.22,
-     "end": 733.52
+     "start": 733.1,
+     "end": 733.68
     },
     {
      "w": "speak",
@@ -2726,13 +2721,13 @@
     },
     {
      "w": "we",
-     "start": 736.12,
-     "end": 736.9
+     "start": 734.7,
+     "end": 734.7
     },
     {
      "w": "speak",
-     "start": 736.9,
-     "end": 737.28
+     "start": 734.7,
+     "end": 737.44
     },
     {
      "w": "english",
@@ -2744,40 +2739,40 @@
   {
    "t": "prompt",
    "start": 740.04,
-   "pauseAt": 747.29,
+   "pauseAt": 744.12,
    "spanish": "Dime otra vez. ¿Cómo se dice “nosotros hablamos inglés”?",
    "expected": [
     "We speak English."
    ],
-   "end": 747.44
+   "end": 744.66
   },
   {
    "t": "english",
-   "start": 747.44,
+   "start": 744.66,
    "end": 752.1,
    "text": "We speak English.",
    "words": [
     {
      "w": "we",
-     "start": 747.44,
-     "end": 748.34
+     "start": 744.66,
+     "end": 744.98
     },
     {
      "w": "speak",
-     "start": 748.34,
-     "end": 748.74
+     "start": 744.98,
+     "end": 745.36
     },
     {
      "w": "english",
-     "start": 748.74,
-     "end": 749.28
+     "start": 745.36,
+     "end": 745.88
     }
    ]
   },
   {
    "t": "prompt",
    "start": 752.1,
-   "pauseAt": 756.59,
+   "pauseAt": 756.14,
    "spanish": "Ahora dime ¿Cómo se dice “ellos hablan inglés”?",
    "expected": [
     "They speak English."
@@ -2825,33 +2820,33 @@
   {
    "t": "prompt",
    "start": 765.24,
-   "pauseAt": 772.29,
+   "pauseAt": 769.1,
    "spanish": "Otra vez. ¿Cómo se dice “ellos hablan inglés”?",
    "expected": [
     "They speak English."
    ],
-   "end": 772.44
+   "end": 769.54
   },
   {
    "t": "english",
-   "start": 772.44,
+   "start": 769.54,
    "end": 776.82,
    "text": "They speak English.",
    "words": [
     {
      "w": "they",
-     "start": 772.44,
-     "end": 773.26
+     "start": 769.54,
+     "end": 769.84
     },
     {
      "w": "speak",
-     "start": 773.26,
-     "end": 773.64
+     "start": 769.84,
+     "end": 770.2
     },
     {
      "w": "english",
-     "start": 773.64,
-     "end": 774.12
+     "start": 770.2,
+     "end": 770.66
     }
    ]
   },

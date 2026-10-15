@@ -167,12 +167,45 @@ def local_refine(T, tw, lo, hi):
     return best
 
 
+PROMPT_TRIGGER_RE = re.compile(
+    r"(?i)(?:y\s+)?(?:ahora\s+dime,?\s*)?(?:otra\s+vez\.?\s*)?(?:dime\s+)?(?:y\s+)?cómo se dice|ahora di\b|ahora dime\b|¿puedes adivinar|cont[ée]stale|dile esto|preg[úu]ntale|hazle saber")
+
+
+def split_narration_prefix(line):
+    """A Profe line can merge a lecture + the prompt trigger (one physical line
+    or continuation-line appending). Split so each half aligns to its own
+    audio: the lecture becomes narration, the trigger starts the prompt."""
+    m = PROMPT_TRIGGER_RE.search(line)
+    if not m or m.start() == 0:
+        return None
+    prefix, prompt = line[: m.start()].strip(" ,."), line[m.start():].strip()
+    # an opening ¿/¡ must ride with the question, not the narration prefix
+    while prefix.endswith(("¿", "¡")):
+        prompt = prefix[-1] + prompt
+        prefix = prefix[:-1].rstrip()
+    if len(toks_of(prefix)) < 6:
+        return None
+    return prefix, prompt
+
+
 def main():
     chunk_dir, day, out = sys.argv[1], int(sys.argv[2]), sys.argv[3]
     text = open(SCRIPT, encoding="utf-8", errors="replace").read()
     parts = re.split(r"(?im)^[\s\ufeff]*(?:Day|DAY)\s*(\d+)\b.*$", text)
     days = {int(parts[i]): parts[i + 1] for i in range(1, len(parts), 2)}
     lines = parse_script(days[day])
+    # split lecture+prompt lines BEFORE alignment so each half aligns to its
+    # own audio (one physical script line can hold a lecture and a question)
+    split_lines = []
+    for sp, line in lines:
+        if sp.startswith("Profe"):
+            s = split_narration_prefix(line)
+            if s:
+                split_lines.append([sp, s[0]])
+                split_lines.append([sp, s[1]])
+                continue
+        split_lines.append([sp, line])
+    lines = split_lines
     if chunk_dir.endswith(".json"):
         tw = load_whisper_words(chunk_dir)
     else:
@@ -244,20 +277,24 @@ def main():
             return True
         return False
 
-    PROMPT_TRIGGER_RE = re.compile(
-        r"(?i)(?:y\s+)?(?:ahora\s+dime,?\s*)?(?:otra\s+vez\.?\s*)?(?:dime\s+)?(?:y\s+)?cómo se dice|ahora di\b|ahora dime\b|¿puedes adivinar|cont[ée]stale|dile esto|preg[úu]ntale|hazle saber")
-
-    def split_narration_prefix(line):
-        """A script line can merge narration + the prompt trigger (continuation
-        lines get appended). Split so the narration prefix is not part of the
-        prompt's aligned span."""
-        m = PROMPT_TRIGGER_RE.search(line)
-        if not m or m.start() == 0:
-            return None
-        prefix, prompt = line[: m.start()].strip(" ,."), line[m.start():].strip()
-        if len(toks_of(prefix)) < 6:
-            return None
-        return prefix, prompt
+    # rescue: the answer line following a prompt belongs immediately after the
+    # prompt's audio. If its span starts far later (the DP preferred a fuller
+    # repeat elsewhere), re-match it in the window right after the prompt.
+    for k in range(len(line_ranges) - 1):
+        if not (spans[k] and spans[k + 1]):
+            continue
+        if not is_prompt_line(line_ranges[k][2], line_ranges[k][3]):
+            continue
+        prompt_last = spans[k][3][-1]
+        ans_start_t = tw[spans[k + 1][3][0]][1]
+        if ans_start_t - tw[prompt_last][2] <= 3.5:
+            continue
+        i0, i1 = line_ranges[k + 1][0], line_ranges[k + 1][1]
+        refined = local_refine(st[i0:i1], tw, prompt_last + 1, prompt_last + 40)
+        if refined:
+            js = [m for m in refined if m is not None]
+            if len(js) >= max(2, int(0.5 * (i1 - i0))):
+                spans[k + 1] = (min(js), max(js), len(js) / (i1 - i0), js)
 
     segs, misses = [], []
     for k, (i0, i1, sp, line) in enumerate(line_ranges):
@@ -302,14 +339,7 @@ def main():
         w0, w1, cov, js = span
         start, end = tw[w0][1], tw[w1][2]
         if is_prompt:
-            # narration prefix merged into the line (continuation lines) -> emit separately
-            split = split_narration_prefix(line)
-            prompt_text = line
-            if split:
-                prefix, prompt_text = split
-                segs.append({"t": "narration", "start": round(start, 2), "end": round(start, 2),
-                             "lines": [prefix]})
-            # audio pauses AFTER the question is asked, before the confirmation
+            # (lecture+prompt lines were already split before alignment)
             exp = []
             m2 = k + 1
             while m2 < len(lines) and not lines[m2][0].startswith("Profe"):
@@ -326,15 +356,18 @@ def main():
                     continue
                 dedup.append(e)
             exp = dedup
-            # pause just BEFORE the FIRST line that follows the question (the
-            # answer repeats in the script; searching past ALL expected lines
-            # landed the pause one answer too late)
+            # pause right after the question ends when the recording contains a
+            # real answer gap; otherwise just before the answer. Using the first
+            # following line alone made the student wait through the recorded
+            # silence before the input appeared (Kyle, 3:53 / 6:38).
             pause = end
             nxt_k = next((m3 for m3 in range(k + 1, len(line_ranges)) if spans[m3]), None)
             if nxt_k is not None:
-                pause = tw[spans[nxt_k][0]][1] - 0.15
+                nxt_start = tw[spans[nxt_k][0]][1]
+                pause = min(end + 0.5, nxt_start - 0.15)
+                pause = max(pause, min(end, nxt_start - 0.15))
             segs.append({"t": "prompt", "start": round(start, 2), "pauseAt": round(pause, 2),
-                         "spanish": prompt_text, "expected": exp})
+                         "spanish": line, "expected": exp})
 
         elif not is_kyle:
             words = [tw[j] for j in js]
@@ -363,6 +396,24 @@ def main():
 
     # order segments by time; a segment may never run past the next one
     segs.sort(key=lambda s: (s["start"], 0 if s["t"] == "narration" else 1))
+    # drop duplicate english segments: when the recording skips a script line
+    # (Kyle's edit) two identical script lines can match the same audio span
+    deduped = []
+    for s in segs:
+        if (
+            deduped
+            and s["t"] == "english"
+            and deduped[-1]["t"] == "english"
+            and fold(deduped[-1]["text"]) == fold(s["text"])
+            and s["start"] < deduped[-1].get("end", 0) + 0.5
+            and abs(deduped[-1]["start"] - s["start"]) < 30
+        ):
+            # keep the richer copy (more word timings)
+            if len(s["words"]) > len(deduped[-1]["words"]):
+                deduped[-1] = s
+            continue
+        deduped.append(s)
+    segs = deduped
     for k in range(len(segs) - 1):
         nxt = segs[k + 1]["start"]
         if segs[k].get("end", 0) > nxt:
