@@ -121,6 +121,56 @@ test("error merge unions students across evidence and events; señales are event
   assert.equal(analytics.sounds[0]?.tagId, "tag-th");
 });
 
+test("error merge groups by tag name so evidence and events never list the same tag twice", () => {
+  const tagIndex = indexWith([
+    {
+      id: "tag-make-do",
+      tagType: "error",
+      name: "make_vs_do",
+      displayName: "Make vs do",
+    },
+  ]);
+
+  const analytics = buildAnalytics({
+    tagIndex,
+    lookups: [],
+    evidence: [{ userId: "s1", tagType: "error", tagId: "tag-make-do" }],
+    errorEvents: [{ userId: "s2", errorTags: ["make_vs_do"] }],
+  });
+
+  assert.equal(analytics.errors.length, 1);
+  assert.equal(analytics.errors[0]?.tagId, "tag-make-do");
+  assert.equal(analytics.errors[0]?.displayName, "Make vs do");
+  assert.equal(analytics.errors[0]?.studentCount, 2);
+  assert.equal(analytics.errors[0]?.signalCount, 1);
+});
+
+test("error merge resolves event names to catalog ids after a tag rename", () => {
+  const tagIndex = indexWith([
+    {
+      id: "tag-comp",
+      tagType: "error",
+      name: "comparative_formation",
+      displayName: "Comparative formation",
+    },
+  ]);
+
+  // The event still carries the old name (recorded before the rename).
+  const analytics = buildAnalytics({
+    tagIndex,
+    lookups: [],
+    evidence: [{ userId: "s1", tagType: "error", tagId: "tag-comp" }],
+    errorEvents: [{ userId: "s2", errorTags: ["double_comparative"] }],
+  });
+
+  // Old name is not in the catalog: it stays its own row rather than
+  // silently merging into the renamed tag.
+  assert.equal(analytics.errors.length, 2);
+  const renamed = analytics.errors.find((row) => row.tagId === "tag-comp");
+  assert.equal(renamed?.displayName, "Comparative formation");
+  assert.equal(renamed?.studentCount, 1);
+});
+
 test("error merge keeps unknown event names and does not count evidence as señales", () => {
   const analytics = buildAnalytics(
     emptyInput({
