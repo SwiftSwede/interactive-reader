@@ -429,6 +429,22 @@ def main():
 
     matched = len([s for s in spans if s])
     print(f"anchored {matched}/{len(lines)} lines ({100*matched/len(lines):.0f}%)")
+
+    # per-line verification report (for verify_alignment.py)
+    if "--report" in sys.argv:
+        rp = sys.argv[sys.argv.index("--report") + 1]
+        report = []
+        for k, (i0, i1, sp, line) in enumerate(line_ranges):
+            entry = {"idx": k, "speaker": sp, "text": line, "tokens": i1 - i0}
+            if spans[k]:
+                w0, w1, cov, js = spans[k]
+                entry.update({"anchored": True, "start": round(tw[w0][1], 2),
+                              "end": round(tw[w1][2], 2), "words": len(js)})
+            else:
+                entry.update({"anchored": False, "words": 0})
+            report.append(entry)
+        json.dump(report, open(rp, "w"), ensure_ascii=False, indent=1)
+        print("report ->", rp)
     for s in segs:
         if s["t"] != "english":
             continue
@@ -443,5 +459,5 @@ def main():
     json.dump({"lesson": day, "segments": segs}, open(out, "w"), ensure_ascii=False, indent=1)
     print("wrote", out)
 
-
-main()
+if __name__ == "__main__":
+    main()

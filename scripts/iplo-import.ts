@@ -13,7 +13,7 @@
 //
 // Days 2-23 stay unmapped until their grammar tags and segment files exist.
 
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
 
@@ -66,7 +66,7 @@ async function main() {
 
   const slug = `iplo-day-${day}`;
   const audioScript = {
-    audioUrl: `/audio/iplo/day-${day}.mp3`,
+    audioUrl: `/audio/iplo/day-${day}${existsSync(`public/audio/iplo/day-${day}-filled.mp3`) ? "-filled" : ""}.mp3?v=cbr`,
     grammarTagId: tag.id as string,
     durationSeconds,
     seedVersion: new Date().toISOString(),
