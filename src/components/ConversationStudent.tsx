@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import ActionButton from "@/components/ActionButton";
+import AskTeacherButton from "@/components/ask/AskTeacherButton";
 import EndClassButton from "@/components/EndClassButton";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
 import LessonHeader from "@/components/lesson/LessonHeader";
@@ -407,7 +408,14 @@ export default function ConversationStudent({
             classEndedAt={endedAt}
             onEnded={setEndedAt}
           />
-        ) : null}
+        ) : (
+          <AskTeacherButton
+            hidden={previewLevel != null}
+            layout="quiet-bar"
+            surface="conversacion"
+            courseSessionId={sessionId}
+          />
+        )}
       </article>
     </main>
   );

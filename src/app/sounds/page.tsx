@@ -23,6 +23,7 @@ export default async function SoundsPage() {
       activeTab="herramientas"
       accountHref={user ? "/profile" : "/login"}
       accountLabel={user ? "Perfil" : "Entra"}
+      askSurface={user ? "sonidos" : null}
     >
       <section className="pt-2">
         <SoundChart chart={chart} />

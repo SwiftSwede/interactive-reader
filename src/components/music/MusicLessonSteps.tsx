@@ -9,6 +9,7 @@ import MicroExplanation from "@/components/MicroExplanation";
 import FreePreviewNotice from "@/components/FreePreviewNotice";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
 import ClassroomYoutubePlayer from "@/components/ClassroomYoutubePlayer";
+import AskTeacherButton from "@/components/ask/AskTeacherButton";
 import EndClassButton from "@/components/EndClassButton";
 import SongBio from "@/components/music/SongBio";
 import SongBlanksWorksheet from "@/components/music/SongBlanksWorksheet";
@@ -310,6 +311,7 @@ export default function MusicLessonSteps({
     saveResponses;
   const teacherPacing = isTeacher && live && Boolean(sessionId);
   const onStepButton = teacherPacing ? goWithClass : goTo;
+  const showAsk = !isTeacher && previewLevel == null;
 
   return (
     <PlaybackRateProvider>
@@ -452,7 +454,15 @@ export default function MusicLessonSteps({
           </div>
 
           <nav
-            className={`step-nav${teacherPacing ? " step-nav-paced" : ""}`}
+            className={`step-nav${
+              teacherPacing
+                ? " step-nav-paced"
+                : showAsk
+                  ? next
+                    ? " step-nav-ask"
+                    : " step-nav-ask step-nav-ask-done"
+                  : ""
+            }`}
             aria-label="Navegación de pasos"
           >
             {prev ? (
@@ -464,7 +474,7 @@ export default function MusicLessonSteps({
                 <ChevronLeft size={16} aria-hidden="true" />
                 {prev.label}
               </button>
-            ) : teacherPacing ? (
+            ) : teacherPacing || showAsk ? (
               <span />
             ) : null}
             {teacherPacing ? (
@@ -475,6 +485,12 @@ export default function MusicLessonSteps({
               >
                 {locked ? "Abrir todas" : "Bloquear pasos"}
               </button>
+            ) : showAsk && next ? (
+              <AskTeacherButton
+                surface="leccion"
+                storyId={story.id}
+                courseSessionId={sessionId ?? null}
+              />
             ) : null}
             {next ? (
               <button
@@ -502,6 +518,13 @@ export default function MusicLessonSteps({
                 </Link>
               </p>
             )}
+            {showAsk && !next && !teacherPacing ? (
+              <AskTeacherButton
+                surface="leccion"
+                storyId={story.id}
+                courseSessionId={sessionId ?? null}
+              />
+            ) : null}
           </nav>
           {isTeacher && sessionId && live && !next && !forwardBlocked ? (
             <EndClassButton

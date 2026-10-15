@@ -112,6 +112,7 @@ export default async function ToolsPage() {
     <BrowsingShell
       activeTab="herramientas"
       previewLevel={preview?.level ?? null}
+      askSurface="herramientas"
     >
       <section className="pt-6">
         <h1 className="text-headline-lg text-text-primary">Herramientas</h1>

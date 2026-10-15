@@ -77,7 +77,11 @@ export default async function DashboardPage() {
       : Math.min(100, Math.round((data.totals.completed / data.totals.total) * 100));
 
   return (
-    <BrowsingShell activeTab="inicio" previewLevel={preview?.level ?? null}>
+    <BrowsingShell
+      activeTab="inicio"
+      previewLevel={preview?.level ?? null}
+      askSurface="inicio"
+    >
       <WelcomeGate skip={Boolean(preview)}>
       <section className="pt-6">
         <h1 className="text-headline-lg text-text-primary">{greeting}</h1>

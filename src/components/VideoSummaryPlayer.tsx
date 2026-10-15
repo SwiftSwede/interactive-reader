@@ -9,6 +9,7 @@ import { createClient } from "@/lib/supabase/client";
 import { youtubeEmbedId } from "@/lib/youtube-sync";
 import VideoSummaryFreeWrite from "@/components/VideoSummaryFreeWrite";
 import VideoSummaryTranslationStep from "@/components/VideoSummaryTranslationStep";
+import AskTeacherButton from "@/components/ask/AskTeacherButton";
 import EndClassButton from "@/components/EndClassButton";
 import { getSessionPhase } from "@/lib/session-phase";
 import { remainingMs } from "@/lib/writing";
@@ -346,6 +347,14 @@ export default function VideoSummaryPlayer({
             ) : null}
           </>
         )}
+        {!isTeacher && previewLevel == null ? (
+          <AskTeacherButton
+            layout="quiet-bar"
+            surface="leccion"
+            storyId={storyId}
+            courseSessionId={sessionId}
+          />
+        ) : null}
       </article>
     </main>
   );

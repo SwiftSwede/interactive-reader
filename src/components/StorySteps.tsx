@@ -31,6 +31,7 @@ import { storyStepRecordingUrl } from "@/lib/story-practice";
 import MusicLessonSteps from "./music/MusicLessonSteps";
 import MovieTalkLessonSteps from "./movietalk/MovieTalkLessonSteps";
 import { PlaybackRateProvider } from "./PlaybackRateContext";
+import AskTeacherButton from "@/components/ask/AskTeacherButton";
 import EndClassButton from "@/components/EndClassButton";
 import FreePreviewNotice from "@/components/FreePreviewNotice";
 import { getSessionPhase } from "@/lib/session-phase";
@@ -457,6 +458,7 @@ function ClassicStorySteps({
   const skipWelcome =
     story.kind !== "story" || isTeacher || previewLevel != null;
   const readCopy = readStepCopy(story.kind);
+  const showAsk = !isTeacher && previewLevel == null;
 
   return (
     <PlaybackRateProvider>
@@ -633,8 +635,13 @@ function ClassicStorySteps({
             </p>
           ) : null}
 
-          <nav className="step-nav" aria-label="Navegación de pasos">
-            {prev && (
+          <nav
+            className={`step-nav${
+              showAsk ? (next ? " step-nav-ask" : " step-nav-ask step-nav-ask-done") : ""
+            }`}
+            aria-label="Navegación de pasos"
+          >
+            {prev ? (
               <button
                 type="button"
                 className="step-nav-btn"
@@ -643,7 +650,16 @@ function ClassicStorySteps({
                 <ChevronLeft size={16} aria-hidden="true" />
                 {prev.label}
               </button>
-            )}
+            ) : showAsk ? (
+              <span />
+            ) : null}
+            {showAsk && next ? (
+              <AskTeacherButton
+                surface="leccion"
+                storyId={story.id}
+                courseSessionId={sessionId ?? null}
+              />
+            ) : null}
             {next ? (
               <button
                 type="button"
@@ -664,6 +680,13 @@ function ClassicStorySteps({
                 </Link>
               </p>
             )}
+            {showAsk && !next ? (
+              <AskTeacherButton
+                surface="leccion"
+                storyId={story.id}
+                courseSessionId={sessionId ?? null}
+              />
+            ) : null}
           </nav>
           {isTeacher && sessionId && live && !next ? (
             <EndClassButton

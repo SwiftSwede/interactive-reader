@@ -26,7 +26,11 @@ export default async function ProfilePage() {
   const active = profile?.subscriptionStatus === "active";
 
   return (
-    <BrowsingShell activeTab={null} previewLevel={preview?.level ?? null}>
+    <BrowsingShell
+      activeTab={null}
+      previewLevel={preview?.level ?? null}
+      askSurface="perfil"
+    >
       <section className="pt-4">
         <div className="-ml-2 mb-2">
           <BackLink href="/dashboard" showLabel />

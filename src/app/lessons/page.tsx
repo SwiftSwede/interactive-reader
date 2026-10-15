@@ -36,7 +36,11 @@ export default async function LessonsPage() {
   const empty = groups.length === 0;
 
   return (
-    <BrowsingShell activeTab="lecciones" previewLevel={preview?.level ?? null}>
+    <BrowsingShell
+      activeTab="lecciones"
+      previewLevel={preview?.level ?? null}
+      askSurface="lecciones"
+    >
       <section className="pt-6">
         <h1 className="text-headline-lg text-text-primary">Lecciones</h1>
         {empty ? (

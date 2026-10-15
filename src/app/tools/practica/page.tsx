@@ -61,6 +61,7 @@ export default async function PracticaPage({
     <BrowsingShell
       activeTab="herramientas"
       previewLevel={preview?.level ?? null}
+      askSurface="practica"
     >
       <section className="pt-4">
         <div className="-ml-2 mb-2">

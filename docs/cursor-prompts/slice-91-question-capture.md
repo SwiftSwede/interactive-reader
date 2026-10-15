@@ -1,8 +1,21 @@
 # Slice 91: Question capture button ("No sé cómo decir...")
 
-> If the PRD slice number 91 is taken, use the next free number and note it in the header.
+> Slice 91 was free (PRD Section 7 stopped at 89). Slice 90 exists only as an unbuilt Iplo doc.
 
 **Merge danger: LOW.** Additive: one new table + RLS, no changes to existing tables, no FK cascades into existing flows (both FKs nullable). Blast radius: none of the existing lesson flows change behavior; the button is an insert-only surface.
+
+## Plan review decisions
+
+Kyle, 2026-10-14:
+
+- Presentation while `showNav` is false, and conversation (students have no Siguiente row): a quiet glass bar that is only the round `?`. No fake Atrás or Siguiente.
+- Tab-bar asks do not attach to a live class. Both ids stay null. They show on the teacher student page (`/teacher/classes/[id]/students/[studentId]`), not in Preguntas (N).
+- Required `surface` column records the screen: `inicio`, `lecciones`, `herramientas`, `practica`, `sonidos`, `perfil`, `leccion`, `presentacion`, `conversacion`.
+- Circle is 44px (touch-target floor), not the prompt's ~40px.
+- Logged-out `/tools` and `/sounds` do not show the button.
+- Traducción (`VideoSummaryPlayer`) has no pill row in live code. Students get the quiet bar there too. Exam and writing stay excluded.
+- Browsing ask does not sit in the tab bar. Instagram's plus is the middle of five equal icons; a filled disc between three labeled tabs is a different object. The `?` is a ghost 44px control in the header, next to Perfil (same family as User; closer to Fitbit "Ask coach" in the chrome than to Instagram).
+- Last step: `?` takes Siguiente's right slot. Listo stays in the middle column. Center-aligned copy must occupy the center region, not the right cell.
 
 ## Goal
 

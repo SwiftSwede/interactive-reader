@@ -2,7 +2,13 @@
 
 import { useEffect, useState } from "react";
 
-export default function LocalDateTime({ iso }: { iso: string }) {
+export default function LocalDateTime({
+  iso,
+  className,
+}: {
+  iso: string;
+  className?: string;
+}) {
   const [label, setLabel] = useState("");
 
   useEffect(() => {
@@ -17,7 +23,10 @@ export default function LocalDateTime({ iso }: { iso: string }) {
   }, [iso]);
 
   return (
-    <time dateTime={iso} className="mt-0.5 block text-label-sm text-text-muted">
+    <time
+      dateTime={iso}
+      className={className ?? "mt-0.5 block text-label-sm text-text-muted"}
+    >
       {label || "…"}
     </time>
   );

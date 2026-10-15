@@ -8,6 +8,7 @@ import StepInstructions from "@/components/lesson/StepInstructions";
 import MicroExplanation from "@/components/MicroExplanation";
 import FreePreviewNotice from "@/components/FreePreviewNotice";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
+import AskTeacherButton from "@/components/ask/AskTeacherButton";
 import EndClassButton from "@/components/EndClassButton";
 import SceneDialogue from "@/components/movietalk/SceneDialogue";
 import SceneVideoQuestions from "@/components/movietalk/SceneVideoQuestions";
@@ -327,6 +328,7 @@ export default function MovieTalkLessonSteps({
 
   const teacherPacing = isTeacher && live && Boolean(sessionId);
   const onStepButton = teacherPacing ? goWithClass : goTo;
+  const showAsk = !isTeacher && previewLevel == null;
   const parsed = active ? parseSceneStep(active.id) : null;
   const sceneRow = parsed
     ? movieTalkScenes.find((row) => row.scene_number === parsed.sceneNumber)
@@ -497,7 +499,15 @@ export default function MovieTalkLessonSteps({
           </div>
 
           <nav
-            className={`step-nav${teacherPacing ? " step-nav-paced" : ""}`}
+            className={`step-nav${
+              teacherPacing
+                ? " step-nav-paced"
+                : showAsk
+                  ? next
+                    ? " step-nav-ask"
+                    : " step-nav-ask step-nav-ask-done"
+                  : ""
+            }`}
             aria-label="Navegación de pasos"
           >
             {prev ? (
@@ -509,7 +519,7 @@ export default function MovieTalkLessonSteps({
                 <ChevronLeft size={16} aria-hidden="true" />
                 {prev.label}
               </button>
-            ) : teacherPacing ? (
+            ) : teacherPacing || showAsk ? (
               <span />
             ) : null}
             {teacherPacing ? (
@@ -520,6 +530,12 @@ export default function MovieTalkLessonSteps({
               >
                 {locked ? "Abrir todas" : "Bloquear pasos"}
               </button>
+            ) : showAsk && next ? (
+              <AskTeacherButton
+                surface="leccion"
+                storyId={story.id}
+                courseSessionId={sessionId ?? null}
+              />
             ) : null}
             {next ? (
               <button
@@ -547,6 +563,13 @@ export default function MovieTalkLessonSteps({
                 </Link>
               </p>
             )}
+            {showAsk && !next && !teacherPacing ? (
+              <AskTeacherButton
+                surface="leccion"
+                storyId={story.id}
+                courseSessionId={sessionId ?? null}
+              />
+            ) : null}
           </nav>
           {isTeacher && sessionId && live && !next && !forwardBlocked ? (
             <EndClassButton

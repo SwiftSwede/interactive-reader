@@ -55,6 +55,7 @@ export default async function SoundPage({
       activeTab="herramientas"
       accountHref={user ? "/profile" : "/login"}
       accountLabel={user ? "Perfil" : "Entra"}
+      askSurface={user ? "sonidos" : null}
     >
       <section className="pt-6 pb-8">
         <BackLink href="/sounds" label="Guía de sonidos" showLabel />

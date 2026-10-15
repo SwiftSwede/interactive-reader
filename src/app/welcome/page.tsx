@@ -11,7 +11,11 @@ export default async function WelcomePage() {
   const { preview } = await requireBrowsingStudent("/welcome");
 
   return (
-    <BrowsingShell activeTab="inicio" previewLevel={preview?.level ?? null}>
+    <BrowsingShell
+      activeTab="inicio"
+      previewLevel={preview?.level ?? null}
+      askSurface="inicio"
+    >
       <section className="pt-6">
         <WelcomeCard>
           <WelcomeContinueButton />

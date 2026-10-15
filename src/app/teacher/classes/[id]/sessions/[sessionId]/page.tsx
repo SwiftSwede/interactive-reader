@@ -9,6 +9,7 @@ import SessionRecordingForm from "@/components/teacher/SessionRecordingForm";
 import AttendanceToggle from "@/components/teacher/AttendanceToggle";
 import { isAutoMarked } from "@/lib/attendance";
 import EndClassButton from "@/components/EndClassButton";
+import SessionQuestionQueue from "@/components/teacher/SessionQuestionQueue";
 import ClassNotesPanel from "@/components/teacher/ClassNotesPanel";
 import { createAdminClient } from "@/lib/supabase/admin";
 import {
@@ -29,6 +30,7 @@ import {
   loadWritingSubmissions,
   sessionTitle,
 } from "@/lib/teacher";
+import { listSessionQuestionRequests } from "@/lib/question-requests";
 import { parseLyricBlanks } from "@/lib/music";
 import { getSongBlankAnalytics } from "@/lib/services/songAttempts";
 import { isLateWritingSubmit } from "@/lib/writing";
@@ -98,7 +100,7 @@ export default async function SessionDetailPage({
   const isConversation = session.sessionType === "conversation";
   const isSong = session.sessionType === "song";
   const isLiveOnly = isLiveOnlySessionType(session.sessionType);
-  const [students, lookedUpWords, submissions, examSubs, freeWrites] =
+  const [students, lookedUpWords, submissions, examSubs, freeWrites, questionRequests] =
     await Promise.all([
       loadSessionStudentStatus(
         supabase,
@@ -116,6 +118,11 @@ export default async function SessionDetailPage({
       isVideo
         ? loadVideoSummaryFreeWrites(supabase, session.id)
         : Promise.resolve([]),
+      listSessionQuestionRequests(
+        createAdminClient(),
+        session.id,
+        course.id
+      ),
     ]);
 
   const submissionByStudent = new Map(
@@ -219,6 +226,10 @@ export default async function SessionDetailPage({
         {sessionTitle(session)}
       </h1>
       <LocalDateTime iso={session.start} />
+      <SessionQuestionQueue
+        sessionId={session.id}
+        initialRequests={questionRequests}
+      />
       {session.notes && (
         <p className="mt-2 text-sm text-text-secondary">{session.notes}</p>
       )}

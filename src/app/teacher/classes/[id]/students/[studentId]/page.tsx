@@ -12,6 +12,8 @@ import {
   sessionTitle,
 } from "@/lib/teacher";
 import { loadFicha, type Ficha } from "@/lib/ficha";
+import { listStudentQuestionRequests } from "@/lib/question-requests";
+import StudentQuestionsBlock from "@/components/teacher/StudentQuestionsBlock";
 import {
   loadObservationVocabulary,
   loadOpenFlags,
@@ -49,6 +51,7 @@ export default async function StudentDetailPage({
   const vocabularyP = loadObservationVocabulary(admin);
   const flagsP = loadOpenFlags(admin, [studentId]);
   const fichaP = loadFicha(admin, studentId);
+  const questionsP = listStudentQuestionRequests(admin, studentId);
 
   const perSession = await Promise.all(
     sessions.map(async (session) => {
@@ -83,10 +86,11 @@ export default async function StudentDetailPage({
     return 0;
   });
 
-  const [vocabulary, openFlags, ficha] = await Promise.all([
+  const [vocabulary, openFlags, ficha, questions] = await Promise.all([
     vocabularyP,
     flagsP,
     fichaP,
+    questionsP,
   ]);
 
   return (
@@ -119,6 +123,8 @@ export default async function StudentDetailPage({
       </div>
 
       <FichaSection ficha={ficha} />
+
+      <StudentQuestionsBlock requests={questions} />
 
       {focusedFirst.length === 0 ? (
         <p className="mt-8 text-sm text-text-muted">

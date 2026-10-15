@@ -29,6 +29,8 @@ Interactive reader and classroom companion for the Confident Speaker Circle: a N
 - Never break a working slice; commit and push after every verified slice.
 - Magic-link auth, no passwords. IPA everywhere in the app. Mobile-first: nothing ships that doesn't work at 375px.
 - Read `docs/adr/` before architectural decisions; write a new ADR for significant ones.
+  -When reporting to me, be extremely concise, load-bearing words only. Priorities: user understanding > concision > grammar. Directive not recap → never padding. Split-second read. Do not compromise on meaning. Presenting data: use tables.
+  End with: _DO THIS_ block → concrete next actions for user, numbered, priority-first. Spell out reply options on decisions. Omit only when no user action.
 
 ## Product and UI
 

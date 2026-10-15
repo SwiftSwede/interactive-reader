@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Check, ChevronLeft, ChevronRight, Pencil, Plus } from "lucide-react";
 import ActionButton from "@/components/ActionButton";
+import AskTeacherButton from "@/components/ask/AskTeacherButton";
 import EndClassButton from "@/components/EndClassButton";
 import LessonHeader from "@/components/lesson/LessonHeader";
 import ClassroomYoutubePlayer from "@/components/ClassroomYoutubePlayer";
@@ -113,6 +114,7 @@ export default function PresentationPlayer({
   const studentLocked = !isTeacher && phase === "before";
   const followTeacher = !isTeacher && phase === "live";
   const showNav = isTeacher || phase === "after";
+  const showAsk = !isTeacher && previewLevel == null;
   const writeStep = isTeacher && phase !== "after";
   const liveVideo = phase === "live";
 
@@ -643,7 +645,12 @@ export default function PresentationPlayer({
         </div>
 
         {showNav ? (
-          <nav className="step-nav" aria-label="Navegación de pasos">
+          <nav
+            className={`step-nav${
+              showAsk ? (next ? " step-nav-ask" : " step-nav-ask step-nav-ask-done") : ""
+            }`}
+            aria-label="Navegación de pasos"
+          >
             {prev ? (
               <button
                 type="button"
@@ -656,6 +663,12 @@ export default function PresentationPlayer({
             ) : (
               <span />
             )}
+            {showAsk && next ? (
+              <AskTeacherButton
+                surface="presentacion"
+                courseSessionId={sessionId}
+              />
+            ) : null}
             {next ? (
               <button
                 type="button"
@@ -665,12 +678,29 @@ export default function PresentationPlayer({
                 {step.kind === "warmup" ? "Empezar" : presentationStepLabel(next)}
                 <ChevronRight size={16} aria-hidden="true" />
               </button>
+            ) : (
+              <span />
+            )}
+            {showAsk && !next ? (
+              <AskTeacherButton
+                surface="presentacion"
+                courseSessionId={sessionId}
+              />
             ) : null}
           </nav>
         ) : (
-          <p className="mt-6 text-center text-label-sm text-text-muted">
-            El Profe Kyle está guiando la clase.
-          </p>
+          <>
+            <p className="mt-6 text-center text-label-sm text-text-muted">
+              El Profe Kyle está guiando la clase.
+            </p>
+            {showAsk ? (
+              <AskTeacherButton
+                layout="quiet-bar"
+                surface="presentacion"
+                courseSessionId={sessionId}
+              />
+            ) : null}
+          </>
         )}
         {isTeacher && liveVideo && !next ? (
           <EndClassButton
