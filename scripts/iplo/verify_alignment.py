@@ -15,7 +15,7 @@ classifies every script line that disagrees with the audio:
 - SPEAKER_NAME: the script labels a voice Woman/Man while the audio names the
   speaker (e.g. "despues de Sara"). Proposes a mapping.
 
-Usage: verify_alignment.py <report.json> <transcript.json> <segments.json>
+Usage: verify_alignment.py <report.json> <transcript.json> <segments.json> [original-whisper.json]
 """
 import json, re, sys, unicodedata
 
@@ -94,25 +94,31 @@ def main():
                 "audio_words_in_span": span_words,
             })
 
-    # --- LANGUAGE_MISMATCH: prompt lines with English text over Spanish audio
+    # --- LANGUAGE_MISMATCH: a Profe line whose script text is not what the
+    # audio says (Kyle translating on the fly). General matched-ratio test on
+    # ALL Profe lines: a legit English quote inside Spanish narration still
+    # matches (whisper heard it), a wholesale translation does not. The
+    # proposal is the transcript's own wording over the line's span.
+    tseg_txt = json.load(open(sys.argv[4], encoding="utf-8")) if len(sys.argv) > 4 else {"segments": []}
     for e in report:
         if not e["anchored"] or not e["speaker"].startswith("Profe"):
             continue
-        english_hits = ENGLISH_MARKERS.findall(e["text"])
-        if not english_hits:
+        script_toks = toks(e["text"])
+        if len(script_toks) < 4:
             continue
         span_words = [w[0] for w in words if e["start"] - 0.5 <= w[1] <= e["end"] + 0.5]
         span_set = set(span_words)
-        script_toks = toks(e["text"])
-        unmatched = [t for t in script_toks
-                     if t not in span_set and not any(t[:3] == s[:3] for s in span_set)]
-        if len(unmatched) >= 3:
+        matched = sum(1 for t in script_toks
+                      if t in span_set or any(t[:3] == s[:3] for s in span_set))
+        ratio = matched / len(script_toks)
+        if ratio < 0.5:
+            said = " ".join(seg["text"].strip() for seg in tseg_txt["segments"]
+                            if e["start"] - 0.5 <= seg["start"] <= e["end"])
             findings.append({
                 "type": "LANGUAGE_MISMATCH",
                 "line": e["idx"], "speaker": e["speaker"], "text": e["text"],
-                "english_markers": english_hits,
-                "unmatched_tokens": unmatched,
-                "audio_says": span_words,
+                "match_ratio": round(ratio, 2),
+                "proposal": said.strip(),
             })
 
     # --- SPEAKER_NAME: names mentioned in the audio/script vs labels

@@ -32,6 +32,8 @@ def main():
     for f in findings:
         if f["type"] != "SKIPPED_IN_RECORDING" or not f["donor_candidates"]:
             continue
+        if f.get("filled"):
+            continue
         donor = f["donor_candidates"][0]
         # kept duplicate: the english segment with the same text nearest the
         # claimed span (both script lines claimed this span; one was deduped)
@@ -50,6 +52,7 @@ def main():
              "end": round(w_e - donor["start"], 2) + ins_at}
             for w, w_s, w_e in words if donor["start"] - 0.2 <= w_s <= donor["end"] + 0.2
         ]
+        f["filled"] = {"donor": donor["start"], "at": ins_at}
         inserts.append({"at": ins_at, "d_start": donor["start"], "d_end": donor["end"],
                         "dur": round(donor["end"] - donor["start"], 2),
                         "speaker": donor["speaker"], "text": f["text"],
@@ -89,6 +92,7 @@ def main():
         mp3 = out_mp3
 
     json.dump(data, open(out_segs, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(findings, open(findings_f, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print("wrote", out_mp3, "and", out_segs)
 
 
