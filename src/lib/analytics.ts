@@ -70,20 +70,17 @@ function asStringArray(value: unknown): string[] {
   return value.filter((item): item is string => typeof item === "string");
 }
 
-function resolveErrorTag(
-  index: TagDisplayIndex,
-  name: string
-): { tagId: string; displayName: string } {
+function resolveErrorTagId(index: TagDisplayIndex, name: string): string {
   const preferred = index.byName.get(`error:${name}`);
   if (!preferred) {
-    return { tagId: name, displayName: name };
+    return name;
   }
   for (const [id, display] of index.byId) {
     if (display.tagType === "error" && display.name === name) {
-      return { tagId: id, displayName: preferred.displayName };
+      return id;
     }
   }
-  return { tagId: name, displayName: preferred.displayName };
+  return name;
 }
 
 function resolveDisplayName(index: TagDisplayIndex, tagId: string): string {
@@ -140,42 +137,58 @@ function mergeErrors(
   events: AnalyticsErrorEventRow[],
   limit: number = ANALYTICS_ERROR_LIMIT
 ): AnalyticsError[] {
+  // Group by tag NAME, not by identifier. Evidence rows carry UUIDs while
+  // events carry names; grouping each side by its own identifier can list the
+  // same tag twice in the dashboard when the catalog lookup misses on one
+  // side (index load failure, stale id, or an event name the catalog lost).
   const byTag = new Map<
     string,
-    { displayName: string; students: Set<string>; signalCount: number }
+    {
+      tagId: string;
+      displayName: string;
+      students: Set<string>;
+      signalCount: number;
+    }
   >();
 
-  const take = (tagId: string, displayName: string) => {
-    const existing = byTag.get(tagId);
+  const take = (key: string, tagId: string, displayName: string) => {
+    const existing = byTag.get(key);
     if (existing) return existing;
     const created = {
+      tagId,
       displayName,
       students: new Set<string>(),
       signalCount: 0,
     };
-    byTag.set(tagId, created);
+    byTag.set(key, created);
     return created;
   };
 
   for (const row of evidence) {
     if (row.tagType !== "error") continue;
-    const entry = take(row.tagId, resolveDisplayName(index, row.tagId));
+    const display = index.byId.get(row.tagId);
+    const key = display ? `name:${display.name}` : `id:${row.tagId}`;
+    const entry = take(key, row.tagId, display?.displayName ?? row.tagId);
     entry.students.add(row.userId);
   }
 
   for (const event of events) {
     for (const name of event.errorTags) {
       if (!name) continue;
-      const resolved = resolveErrorTag(index, name);
-      const entry = take(resolved.tagId, resolved.displayName);
+      const display = index.byName.get(`error:${name}`);
+      const entry = take(
+        `name:${name}`,
+        resolveErrorTagId(index, name),
+        display?.displayName ?? name
+      );
       entry.students.add(event.userId);
       entry.signalCount += 1;
     }
   }
 
-  return [...byTag.entries()]
-    .map(([tagId, entry]) => ({
-      tagId,
+  return [...byTag.values()]
+    .map((entry) => ({
+      tagId: entry.tagId,
       displayName: entry.displayName,
       studentCount: entry.students.size,
       signalCount: entry.signalCount,
