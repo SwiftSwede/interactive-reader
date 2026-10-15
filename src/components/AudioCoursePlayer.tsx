@@ -183,11 +183,13 @@ export default function AudioCoursePlayer({
     const audio = audioRef.current;
     const ref = prompts.find((item) => item.index === index);
     if (!audio || !ref) return;
+    // Never seek forward to the pause. A jump lands in the gap and cuts off
+    // the question the student is still hearing.
+    if (audio.currentTime + 0.08 < ref.prompt.pauseAt) return;
     audio.pause();
-    audio.currentTime = ref.prompt.pauseAt;
     heldRef.current.add(index);
     setActiveIndex(index);
-    setTime(ref.prompt.pauseAt);
+    setTime(audio.currentTime);
     setPlaying(false);
     setDraft("");
   }
@@ -226,16 +228,20 @@ export default function AudioCoursePlayer({
     if (!audio || feedback) return;
     const current = audio.currentTime;
     if (waitingForAnswer() && target > current + 0.05) return;
+    // Teacher auditing their own course seeks freely (no wall, passed prompts
+    // marked skipped in-memory so they don't trigger pauses); students keep the
+    // wall on first runs and the free seek on replays.
+    const freeSeek = completedOnce || isTeacher;
     const next = clampSeek({
       target,
       current,
-      completedOnce,
+      completedOnce: freeSeek,
       prompts: prompts.map((ref) => ({
         pauseAt: ref.prompt.pauseAt,
         answered: Boolean(answersRef.current[ref.index]),
       })),
     });
-    if (completedOnce && next > current + 0.05) {
+    if (freeSeek && next > current + 0.05) {
       for (const ref of prompts) {
         if (
           ref.prompt.pauseAt > current + 0.05 &&
@@ -329,7 +335,14 @@ export default function AudioCoursePlayer({
   }
 
   const segment = segmentAt(script.segments, time);
-  const english = englishOnScreen(script.segments, time);
+  // The answer line is timed early. Keep it off screen until this question's
+  // pause, or "Speak" shows up while the question is still finishing.
+  const holdingQuestion = prompts.some((ref) => {
+    if (skippedRef.current.has(ref.index) || heldRef.current.has(ref.index)) return false;
+    if (answers[ref.index]) return false;
+    return time + 0.05 >= ref.prompt.start && time + 0.02 < ref.prompt.pauseAt;
+  });
+  const english = holdingQuestion ? null : englishOnScreen(script.segments, time);
   const activePrompt = prompts.find((ref) => ref.index === activeIndex) ?? null;
   const known = activePrompt ? answers[activePrompt.index] : undefined;
   const showInput = Boolean(activePrompt) && !feedback && !done;
@@ -470,10 +483,6 @@ export default function AudioCoursePlayer({
                         </span>
                       ))}
                     </p>
-                  ) : segment?.t === "prompt" && !feedback ? (
-                    <p className="max-w-[22rem] text-center font-headline text-headline-lg text-text-primary" lang="es">
-                      {segment.spanish}
-                    </p>
                   ) : null}
                   {feedback && (english || !feedback.withLine) ? (
                     <ResultLine correct={feedback.correct} model={feedback.model} />
@@ -569,7 +578,6 @@ export default function AudioCoursePlayer({
             }
           }
         }}
-        onError={() => setAudioError(true)}
         onPlay={(event) => {
           if (waitingForAnswer()) {
             event.currentTarget.pause();
