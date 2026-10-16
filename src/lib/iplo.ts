@@ -490,14 +490,27 @@ export function promptAnswerAt(prompt: IploPrompt): number {
 
 /** Input screen only. Repeat prompts ("Otra vez, ¿cómo...?") drop the lead and
  * show the bare question. "Ahora di ..." / "Ahora dime cómo decir ..." keep the
- * full sentence: the lead is the sentence's subject, not a repeat prompt. */
+ * full sentence: the lead is the sentence's subject, not a repeat prompt.
+ * Whisper transcripts lowercase after ¿ ("¿cómo...") - normalize casing here. */
 export function promptQuestionText(spanish: string): string {
   const trimmed = spanish.trim();
   if (/^(dime otra vez\.|otra vez\.|otra vez)[.,]?\s*/i.test(trimmed)) {
     const stripped = trimmed.replace(/^(dime otra vez\.|otra vez\.|otra vez)[.,]?\s*/i, "").trim();
-    return stripped.startsWith("¿") ? stripped : trimmed;
+    if (!stripped.startsWith("¿")) return trimmed;
+    return normalizeQuestion(stripped);
   }
-  return trimmed;
+  return normalizeQuestion(trimmed);
+}
+
+function normalizeQuestion(q: string): string {
+  if (q.startsWith("¿")) {
+    const rest = q.slice(1);
+    return "¿" + rest.charAt(0).toLocaleUpperCase("es") + rest.slice(1);
+  }
+  if (/^(cómo|qué|cuál|cuáles|dónde|adónde|quién|quiénes|puedes|puede)\b/i.test(q)) {
+    return "¿" + q.charAt(0).toLocaleUpperCase("es") + q.slice(1);
+  }
+  return q;
 }
 
 /** First-seen content words from each prompt's first expected answer. Cap 12. */

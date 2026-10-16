@@ -110,6 +110,21 @@ export default function AudioCoursePlayer({
   const pendingSeekRef = useRef<number | null>(null);
   const endedRef = useRef(false);
 
+  // Seeking an audio element before its metadata arrives (readyState 0) can
+  // wedge it permanently: paused=false, currentTime frozen, no fetch, no error.
+  // Always defer the seek until loadedmetadata when data has not arrived.
+  function applySeek(audio: HTMLAudioElement, time: number) {
+    if (audio.readyState >= 1) {
+      audio.currentTime = time;
+      return;
+    }
+    const apply = () => {
+      audio.removeEventListener("loadedmetadata", apply);
+      audio.currentTime = time;
+    };
+    audio.addEventListener("loadedmetadata", apply, { once: true });
+  }
+
   const zone = useMemo(
     () => resolveTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone),
     []
@@ -230,7 +245,7 @@ export default function AudioCoursePlayer({
     // apply a saved-position seek only once data exists (play gesture), never
     // at load time - a load-time seek can wedge the element with no data
     if (pendingSeekRef.current != null) {
-      audio.currentTime = pendingSeekRef.current;
+      applySeek(audio, pendingSeekRef.current);
       pendingSeekRef.current = null;
     }
     void audio.play();
@@ -291,7 +306,7 @@ export default function AudioCoursePlayer({
       }
       setActiveIndex(null);
     }
-    audio.currentTime = next;
+    applySeek(audio, next);
     setTime(next);
     persist(answersRef.current, next);
   }

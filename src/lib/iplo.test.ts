@@ -379,6 +379,12 @@ test("promptQuestionText strips the conversational lead on the input screen", ()
   );
   assert.equal(promptQuestionText("Dime otra vez. ¿Cómo se dice?"), "¿Cómo se dice?");
   assert.equal(promptQuestionText("¿Cómo se dice hablar?"), "¿Cómo se dice hablar?");
+  // Whisper lowercases after ¿ - normalize casing for the student
+  assert.equal(promptQuestionText("¿cómo se dice hablar?"), "¿Cómo se dice hablar?");
+  assert.equal(
+    promptQuestionText("otra vez, ¿cómo se dice hablar?"),
+    "¿Cómo se dice hablar?"
+  );
 });
 
 test("lessonVocabulary keeps first-seen words and caps at 12", () => {
