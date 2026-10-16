@@ -215,28 +215,32 @@ export function WorkshopLanding({ aviso }: { aviso?: string }) {
       <section className="wk-bio wk-gray">
         <div className="wk-column">
           <h2>Tu profesor</h2>
-          <picture>
-            <source type="image/webp" srcSet="/workshop/kyle.webp" />
-            <img
-              className="wk-portrait"
-              src="/workshop/kyle.png"
-              alt="Profe Kyle"
-              width={360}
-              height={319}
-              loading="lazy"
-              decoding="async"
-            />
-          </picture>
-          <p>
-            Profe Kyle es profesor certificado por Cambridge (CELTA), con un Bachelor of Arts de
-            la University of British Columbia en Vancouver, más de 450,000 seguidores y más de 7
-            cursos de autoaprendizaje para hispanohablantes. Desde 2018 enseña inglés en línea
-            exclusivamente a estudiantes latinos.
-          </p>
-          <p>
-            Su método: enseñar inglés a través del contexto, no de la gramática, priorizando la
-            pronunciación, el vocabulario cotidiano y la fluidez práctica desde el primer día.
-          </p>
+          <div className="wk-bio-layout">
+            <picture>
+              <source type="image/webp" srcSet="/workshop/kyle.webp" />
+              <img
+                className="wk-portrait"
+                src="/workshop/kyle.png"
+                alt="Profe Kyle"
+                width={360}
+                height={319}
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <div className="wk-bio-copy">
+              <p>
+                Profe Kyle es profesor certificado por Cambridge (CELTA), con un Bachelor of Arts de
+                la University of British Columbia en Vancouver, más de 450,000 seguidores y más de 7
+                cursos de autoaprendizaje para hispanohablantes. Desde 2018 enseña inglés en línea
+                exclusivamente a estudiantes latinos.
+              </p>
+              <p>
+                Su método: enseñar inglés a través del contexto, no de la gramática, priorizando la
+                pronunciación, el vocabulario cotidiano y la fluidez práctica desde el primer día.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
