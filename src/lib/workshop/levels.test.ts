@@ -6,10 +6,10 @@ test("each dropdown level maps to one tag", () => {
   assert.deepEqual(
     workshopLevels.map((level) => [level.id, levelTag(level.id)]),
     [
-      ["beginner", "lvl-beginner"],
-      ["pre", "lvl-pre"],
-      ["int", "lvl-int"],
-      ["adv", "lvl-adv"],
+      ["beginner", "Principiante"],
+      ["pre", "Pre-Intermediate"],
+      ["int", "Intermediate"],
+      ["adv", "Advanced"],
     ],
   );
 });

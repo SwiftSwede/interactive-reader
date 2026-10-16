@@ -1,10 +1,7 @@
 import { AppError } from "@/lib/errors";
-import { workshopConfig } from "./config";
 import { levelTag, type WorkshopLevelId } from "./levels";
 
 const API = "https://connect.mailerlite.com/api";
-
-type Group = { id: string; name: string };
 
 export type WorkshopLead = {
   name: string;
@@ -15,6 +12,7 @@ export type WorkshopLead = {
 type Deps = {
   fetch: typeof fetch;
   token: string;
+  groupId: string;
 };
 
 function headers(token: string): HeadersInit {
@@ -26,79 +24,25 @@ function headers(token: string): HeadersInit {
   };
 }
 
-async function readJson(response: Response): Promise<{ data?: Group[] | Group }> {
-  try {
-    return (await response.json()) as { data?: Group[] | Group };
-  } catch (error) {
-    console.error("MailerLite response was not JSON", {
-      status: response.status,
-      message: error instanceof Error ? error.message : "unknown",
-    });
-    throw new AppError(
-      "No pude guardar tu cupo. Intenta de nuevo.",
-      "MAILERLITE_RESPONSE",
-      502,
-    );
-  }
-}
-
-async function ensureGroup(name: string, deps: Deps): Promise<string> {
-  const url = new URL(`${API}/groups`);
-  url.searchParams.set("filter[name]", name);
-  url.searchParams.set("limit", "100");
-  const listed = await deps.fetch(url, { headers: headers(deps.token) });
-  if (!listed.ok) {
-    console.error("MailerLite group lookup failed", { status: listed.status, name });
-    throw new AppError(
-      "No pude guardar tu cupo. Intenta de nuevo.",
-      "MAILERLITE_GROUP",
-      502,
-    );
-  }
-  const body = await readJson(listed);
-  const groups = Array.isArray(body.data) ? body.data : [];
-  const exact = groups.find((group) => group.name === name);
-  if (exact) return exact.id;
-
-  const created = await deps.fetch(`${API}/groups`, {
-    method: "POST",
-    headers: headers(deps.token),
-    body: JSON.stringify({ name }),
-  });
-  if (created.status !== 201) {
-    console.error("MailerLite group create failed", { status: created.status, name });
-    throw new AppError(
-      "No pude guardar tu cupo. Intenta de nuevo.",
-      "MAILERLITE_GROUP_CREATE",
-      502,
-    );
-  }
-  const createdBody = await readJson(created);
-  const group = createdBody.data;
-  if (!group || Array.isArray(group) || !group.id) {
-    throw new AppError(
-      "No pude guardar tu cupo. Intenta de nuevo.",
-      "MAILERLITE_GROUP_CREATE",
-      502,
-    );
-  }
-  return group.id;
-}
-
 export async function registerWorkshopLead(lead: WorkshopLead, deps: Deps): Promise<void> {
-  const groupNames = [
-    workshopConfig.mailerLiteGroup,
-    workshopConfig.sourceTag,
-    levelTag(lead.level),
-  ];
-  const groupIds = await Promise.all(groupNames.map((name) => ensureGroup(name, deps)));
+  if (!deps.groupId) {
+    throw new AppError(
+      "La inscripción no está lista todavía. Intenta de nuevo en un rato.",
+      "MAILERLITE_GROUP",
+      503,
+    );
+  }
+
   const response = await deps.fetch(`${API}/subscribers`, {
     method: "POST",
     headers: headers(deps.token),
     body: JSON.stringify({
       email: lead.email,
-      fields: { name: lead.name },
-      groups: groupIds,
+      fields: {
+        name: lead.name,
+        english_level: levelTag(lead.level),
+      },
+      groups: [deps.groupId],
       status: "active",
     }),
   });

@@ -9,8 +9,6 @@ export const workshopConfig = {
   ],
   zoomLink: null as string | null,
   whatsappInvite: null as string | null,
-  mailerLiteGroup: "taller-escucha-2026-10",
-  sourceTag: "src-web",
   pixelId: "144295942965827",
   heroImage: "/workshop/liberty.jpg",
   portraitImage: "/workshop/kyle.png",

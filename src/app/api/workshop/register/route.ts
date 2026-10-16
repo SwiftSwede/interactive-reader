@@ -78,7 +78,8 @@ export async function POST(request: Request) {
   }
 
   const token = process.env.MAILERLITE_API_TOKEN?.trim();
-  if (!token) {
+  const groupId = process.env.MAILERLITE_GROUP_ID?.trim();
+  if (!token || !groupId) {
     return fail(request, "espera", 503);
   }
 
@@ -89,7 +90,7 @@ export async function POST(request: Request) {
         email: parsed.data.email,
         level: parsed.data.level,
       },
-      { fetch, token },
+      { fetch, token, groupId },
     );
     return succeed(request);
   } catch (error) {

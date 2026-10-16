@@ -10,31 +10,13 @@ function jsonResponse(status: number, body: unknown): Response {
   });
 }
 
-test("signup creates a missing group and posts the subscriber once", async () => {
+test("signup posts the subscriber into the env group with a level field", async () => {
   const calls: { url: string; method: string; body?: unknown }[] = [];
   const fetchImpl: typeof fetch = async (input, init) => {
     const url = String(input);
     const method = init?.method ?? "GET";
     const body = typeof init?.body === "string" ? JSON.parse(init.body) : undefined;
     calls.push({ url, method, body });
-    if (method === "GET" && url.includes("filter%5Bname%5D=taller-escucha-2026-10")) {
-      return jsonResponse(200, {
-        data: [
-          { id: "partial", name: "taller-escucha-2026-10-old" },
-          { id: "cycle", name: "taller-escucha-2026-10" },
-        ],
-      });
-    }
-    if (method === "GET" && url.includes("src-web")) {
-      return jsonResponse(200, { data: [{ id: "src", name: "src-web" }] });
-    }
-    if (method === "GET" && url.includes("lvl-pre")) {
-      return jsonResponse(200, { data: [] });
-    }
-    if (method === "POST" && url.endsWith("/groups")) {
-      assert.equal(body.name, "lvl-pre");
-      return jsonResponse(201, { data: { id: "level", name: "lvl-pre" } });
-    }
     if (method === "POST" && url.endsWith("/subscribers")) {
       return jsonResponse(201, { data: { id: "sub" } });
     }
@@ -43,30 +25,26 @@ test("signup creates a missing group and posts the subscriber once", async () =>
 
   await registerWorkshopLead(
     { name: "Ana", email: "ana@example.com", level: "pre" },
-    { fetch: fetchImpl, token: "test-token" },
+    { fetch: fetchImpl, token: "test-token", groupId: "taller-escucha-id" },
   );
 
-  const subscribe = calls.find((call) => call.url.endsWith("/subscribers"));
-  assert.ok(subscribe);
-  assert.deepEqual(subscribe.body, {
+  assert.equal(calls.length, 1);
+  assert.equal(calls[0].url.endsWith("/subscribers"), true);
+  assert.deepEqual(calls[0].body, {
     email: "ana@example.com",
-    fields: { name: "Ana" },
-    groups: ["cycle", "src", "level"],
+    fields: { name: "Ana", english_level: "Pre-Intermediate" },
+    groups: ["taller-escucha-id"],
     status: "active",
   });
-  assert.equal(
-    calls.filter((call) => call.method === "POST" && call.url.endsWith("/groups")).length,
-    1,
-  );
 });
 
-test("a failed group lookup does not subscribe", async () => {
+test("a failed subscribe does not retry group writes", async () => {
   const fetchImpl: typeof fetch = async () => jsonResponse(401, { message: "Unauthenticated." });
   await assert.rejects(
     () =>
       registerWorkshopLead(
         { name: "Ana", email: "ana@example.com", level: "int" },
-        { fetch: fetchImpl, token: "bad" },
+        { fetch: fetchImpl, token: "bad", groupId: "taller-escucha-id" },
       ),
     (error: unknown) => error instanceof AppError && error.statusCode === 502,
   );

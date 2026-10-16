@@ -2,22 +2,22 @@ export const workshopLevels = [
   {
     id: "beginner",
     label: "Principiante total",
-    tag: "lvl-beginner",
+    tag: "Principiante",
   },
   {
     id: "pre",
     label: "Puedo armar oraciones pero me trabo",
-    tag: "lvl-pre",
+    tag: "Pre-Intermediate",
   },
   {
     id: "int",
     label: "Puedo conversar con errores",
-    tag: "lvl-int",
+    tag: "Intermediate",
   },
   {
     id: "adv",
     label: "Cómodo pero quiero pulir",
-    tag: "lvl-adv",
+    tag: "Advanced",
   },
 ] as const;
 

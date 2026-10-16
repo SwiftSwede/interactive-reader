@@ -103,6 +103,11 @@ export const ENV_MANIFEST: EnvVarSpec[] = [
     severity: "feature",
     feature: "Workshop registration (MailerLite)",
   },
+  {
+    name: "MAILERLITE_GROUP_ID",
+    severity: "feature",
+    feature: "Workshop registration (MailerLite)",
+  },
 ];
 
 export type EnvCheckResult = {
