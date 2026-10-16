@@ -464,11 +464,23 @@ export function promptLeadText(spanish: string): string | null {
   return trimmed.slice(0, match[1].length);
 }
 
-/** When the question and the input appear. A lead stays a caption until it ends. */
+/** When the question and the input appear. Only repeat-lead prompts ("Otra vez,
+ * ¿cómo se dice...?") open at the lead's end, so the student hears the lead
+ * first. "Ahora di ..." prompts open at the pause: the sentence itself is the
+ * question, and it must be heard in full before the input appears. Never open
+ * at the segment start or before the question is spoken. */
 export function promptInputAt(prompt: IploPrompt): number {
   const lead = prompt.leadEnd;
-  if (lead != null && lead > prompt.start + 0.05 && lead < prompt.pauseAt - 0.05) return lead;
-  return prompt.start;
+  const repeatLead = /^dime otra vez\.|^otra vez[.,]/i.test(prompt.spanish.trim());
+  if (
+    lead != null &&
+    repeatLead &&
+    lead > prompt.start + 0.05 &&
+    lead < prompt.pauseAt - 0.05
+  ) {
+    return lead;
+  }
+  return prompt.pauseAt;
 }
 
 /** When the audio pauses. Always after the question has been asked. */
@@ -476,13 +488,14 @@ export function promptAnswerAt(prompt: IploPrompt): number {
   return prompt.pauseAt;
 }
 
-/** Input screen only. The seeded prompt and the karaoke line keep the full sentence. */
+/** Input screen only. Repeat prompts ("Otra vez, ¿cómo...?") drop the lead and
+ * show the bare question. "Ahora di ..." / "Ahora dime cómo decir ..." keep the
+ * full sentence: the lead is the sentence's subject, not a repeat prompt. */
 export function promptQuestionText(spanish: string): string {
   const trimmed = spanish.trim();
-  for (const lead of PROMPT_LEADS) {
-    if (!lead.test(trimmed)) continue;
-    const stripped = trimmed.replace(lead, "").replace(/^[\s,]+/, "").trim();
-    return stripped || trimmed;
+  if (/^(dime otra vez\.|otra vez\.|otra vez)[.,]?\s*/i.test(trimmed)) {
+    const stripped = trimmed.replace(/^(dime otra vez\.|otra vez\.|otra vez)[.,]?\s*/i, "").trim();
+    return stripped.startsWith("¿") ? stripped : trimmed;
   }
   return trimmed;
 }

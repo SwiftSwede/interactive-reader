@@ -48,6 +48,78 @@ def dedupe_expected(expected):
     return out
 
 
+LEAD_SEQUENCES = (
+    ("dime", "otra", "vez"),
+    ("otra", "vez"),
+    ("ahora", "dime"),
+    ("ahora", "di"),
+)
+
+
+def lead_sequence(spanish):
+    folded = fold(spanish).lstrip("¿¡ ")
+    for seq in LEAD_SEQUENCES:
+        if folded.startswith(" ".join(seq)):
+            return seq
+    return None
+
+
+def lead_end(spanish, words, start, pause_at):
+    """End of the spoken lead (Otra vez / Ahora di). The input opens here."""
+    seq = lead_sequence(spanish)
+    if not seq:
+        return None
+    window = [
+        (re.sub(r"[^a-z]", "", fold(w["word"])), w["end"])
+        for w in words
+        if start - 0.4 <= w["start"] <= pause_at + 0.3
+    ]
+    for i in range(len(window)):
+        idx = i
+        last_end = None
+        ok = True
+        for token in seq:
+            found = None
+            for j in range(idx, min(len(window), idx + 5)):
+                heard = window[j][0]
+                same = heard == token or (token and heard.startswith(token))
+                gender = token == "otra" and heard in ("otra", "otro")
+                if same or gender:
+                    found = j
+                    break
+            if found is None:
+                ok = False
+                break
+            last_end = window[found][1]
+            idx = found + 1
+        if ok and last_end is not None and start - 0.05 <= last_end < pause_at - 0.15:
+            return round(last_end, 2)
+    return None
+
+
+def mark_lead_ends(segs, whisper_path):
+    whisper = json.load(open(whisper_path, encoding="utf-8"))
+    words = []
+    for seg in whisper.get("segments", []):
+        words.extend(seg.get("words") or [])
+    marked = missed = 0
+    for s in segs:
+        if s.get("t") != "prompt":
+            continue
+        if not lead_sequence(s.get("spanish", "")):
+            s.pop("leadEnd", None)
+            continue
+        end = lead_end(s["spanish"], words, s["start"], s.get("pauseAt", s["start"]))
+        if end is None:
+            s.pop("leadEnd", None)
+            missed += 1
+            print(f"  no leadEnd {s['start']}: {s['spanish'][:60]}")
+            continue
+        s["leadEnd"] = end
+        marked += 1
+    return marked, missed
+
+
 def main(path):
     d = json.load(open(path, encoding="utf-8"))
     segs = d["segments"]
@@ -71,8 +143,15 @@ def main(path):
                 if abs(fixed - pause) > 0.01:
                     fixed_pause += 1
                 s["pauseAt"] = fixed
+    whisper_path = path.replace("-segments.json", "-whisper.json")
+    marked = missed = 0
+    if whisper_path != path:
+        try:
+            marked, missed = mark_lead_ends(segs, whisper_path)
+        except FileNotFoundError:
+            print(f"no whisper file at {whisper_path}, leadEnd left unset")
     json.dump(d, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    print(f"{path}: {fixed_ans} answer keys deduped, {fixed_pause} pauseAt moved")
+    print(f"{path}: {fixed_ans} answer keys deduped, {fixed_pause} pauseAt moved, {marked} leadEnd set, {missed} missed")
 
 
 if __name__ == "__main__":

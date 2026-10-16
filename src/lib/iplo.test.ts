@@ -356,9 +356,10 @@ test("the question and the input open when the question starts, and the pause wa
   assert.equal(promptQuestionText(prompt.spanish), "¿Cómo se dice ‘hablar’ en inglés?");
   assert.equal(promptInputAt(prompt), 99.46);
   assert.equal(promptAnswerAt(prompt), 102.41);
+  // Never before the question is heard: no timed lead -> wait for the pause.
   assert.equal(
     promptInputAt({ ...prompt, leadEnd: undefined, spanish: "¿Cómo se dice “yo hablo”?" }),
-    98.74
+    102.41
   );
 });
 
@@ -371,10 +372,10 @@ test("promptQuestionText strips the conversational lead on the input screen", ()
     promptQuestionText("Otra vez. ¿Cómo se dice \"él habla\"?"),
     "¿Cómo se dice \"él habla\"?"
   );
-  assert.equal(promptQuestionText("Ahora di “yo hablo.”"), "“yo hablo.”");
+  assert.equal(promptQuestionText("Ahora di “yo hablo.”"), "Ahora di “yo hablo.”");
   assert.equal(
     promptQuestionText("Ahora dime cómo decir \"yo hablo\"."),
-    "cómo decir \"yo hablo\"."
+    "Ahora dime cómo decir \"yo hablo\"."
   );
   assert.equal(promptQuestionText("Dime otra vez. ¿Cómo se dice?"), "¿Cómo se dice?");
   assert.equal(promptQuestionText("¿Cómo se dice hablar?"), "¿Cómo se dice hablar?");

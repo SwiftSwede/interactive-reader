@@ -214,7 +214,9 @@ export default function AudioCoursePlayer({
     if (!audio || !ref) return;
     // Never seek forward to the pause. A jump lands in the gap and cuts off
     // the question the student is still hearing.
-    if (audio.currentTime + 0.08 < promptAnswerAt(ref.prompt)) return;
+    if (audio.currentTime + 0.08 < promptAnswerAt(ref.prompt)) {
+      return;
+    }
     audio.pause();
     heldRef.current.add(index);
     setActiveIndex(index);
