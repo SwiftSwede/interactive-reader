@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Play, Pause, SkipBack, SkipForward, Gauge } from "lucide-react";
 
 // Spotify-style mini player. Callers portal this to document.body so
@@ -29,16 +29,32 @@ export function SeekBar({
   compact?: boolean;
 }) {
   const max = Math.max(duration, 0);
-  const progressPercent = max > 0 ? Math.min((currentTime / max) * 100, 100) : 0;
-  // A controlled range can emit change when React updates `value` during
-  // playback. That seek jumped the lesson to the pause and cut the question.
+  // One seek on release. Seeking on every drag tick leaves the decoder on a
+  // different word than the clock, and the captions stay wrong after that.
   const dragging = useRef(false);
   const dragStart = useRef(0);
+  const dragValueRef = useRef<number | null>(null);
+  const [dragValue, setDragValue] = useState<number | null>(null);
+  const shown = dragValue ?? Math.min(currentTime, max);
+  const progressPercent = max > 0 ? Math.min((shown / max) * 100, 100) : 0;
+
+  function setDrag(value: number) {
+    dragValueRef.current = value;
+    setDragValue(value);
+  }
+
+  function commit(value: number) {
+    const next = dragValueRef.current ?? value;
+    if (dragging.current && Math.abs(next - dragStart.current) > 0.05) onSeek(next);
+    dragging.current = false;
+    dragValueRef.current = null;
+    setDragValue(null);
+  }
 
   return (
     <div className={compact ? "sticky-audio-player-seek" : "audio-seek-row"}>
       <span className="audio-seek-time" aria-label="Tiempo transcurrido">
-        {formatTime(currentTime)}
+        {formatTime(shown)}
       </span>
       <div className="audio-seek-wrap">
         <div className="audio-seek-track" aria-hidden="true">
@@ -53,40 +69,36 @@ export function SeekBar({
           min={0}
           max={max || 0}
           step={0.1}
-          value={Math.min(currentTime, max)}
+          value={shown}
           onPointerDown={(e) => {
             dragging.current = true;
             dragStart.current = Number(e.currentTarget.value);
           }}
-          onPointerUp={(e) => {
-            const next = Number(e.currentTarget.value);
-            if (dragging.current && Math.abs(next - dragStart.current) > 0.05) onSeek(next);
-            dragging.current = false;
-          }}
+          onPointerUp={(e) => commit(Number(e.currentTarget.value))}
           onPointerCancel={() => {
             dragging.current = false;
+            dragValueRef.current = null;
+            setDragValue(null);
           }}
           onKeyDown={(e) => {
             dragging.current = true;
             dragStart.current = Number(e.currentTarget.value);
           }}
-          onKeyUp={(e) => {
-            const next = Number(e.currentTarget.value);
-            if (dragging.current && Math.abs(next - dragStart.current) > 0.05) onSeek(next);
-            dragging.current = false;
-          }}
+          onKeyUp={(e) => commit(Number(e.currentTarget.value))}
           onBlur={() => {
             dragging.current = false;
+            dragValueRef.current = null;
+            setDragValue(null);
           }}
           onChange={(e) => {
             if (!dragging.current) return;
-            onSeek(Number(e.target.value));
+            setDrag(Number(e.target.value));
           }}
           aria-label="Progreso"
         />
       </div>
       <span className="audio-seek-time" aria-label="Tiempo restante">
-        {formatTime(remainingTime(currentTime, duration))}
+        {formatTime(remainingTime(shown, duration))}
       </span>
     </div>
   );

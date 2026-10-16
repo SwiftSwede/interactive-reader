@@ -27,7 +27,10 @@ export type IploEnglish = {
 export type IploPrompt = {
   t: "prompt";
   start: number;
+  /** End of the spoken question. */
   pauseAt: number;
+  /** End of a lead such as "Otra vez". The input opens here. */
+  leadEnd?: number;
   end: number;
   spanish: string;
   expected: string[];
@@ -115,12 +118,13 @@ export function parseAudioScript(value: unknown): IploScript | null {
     } else if (seg.t === "prompt") {
       const spanish = str(seg.spanish);
       const pauseAt = num(seg.pauseAt) ?? start;
+      const leadEnd = num(seg.leadEnd) ?? undefined;
       const end = num(seg.end) ?? pauseAt;
       const expected = Array.isArray(seg.expected)
         ? seg.expected.filter((item): item is string => typeof item === "string" && item.trim().length > 0)
         : [];
       if (!spanish || expected.length === 0) continue;
-      segments.push({ t: "prompt", start, pauseAt, end, spanish, expected });
+      segments.push({ t: "prompt", start, pauseAt, leadEnd, end, spanish, expected });
     }
   }
   if (segments.length === 0) return null;
@@ -148,30 +152,15 @@ export function confirmationAfter(
   return null;
 }
 
-/** The English sentence on screen: the current english segment, or, while the
- * teacher narrates over it, the most recent english sentence - but only for a
- * bounded hold after its audio ends. Short explanations keep the sentence up
- * (reading time); a long lecture clears it so a stale sentence doesn't sit
- * through a new topic. */
-export const IPLO_ENGLISH_HOLD_S = 8;
-
+/** English while an English line is playing. Spanish as soon as the teaching starts. */
 export function englishOnScreen(
   segments: IploSegment[],
   time: number
 ): ScreenLine | null {
   const segment = segmentAt(segments, time);
   if (segment?.t === "english") return { kind: "english", segment };
-  if (segment?.t !== "narration") return null;
-  let last: IploEnglish | null = null;
-  for (const item of segments) {
-    if (item.start > time + 0.02) break;
-    if (item.t === "english") last = item;
-  }
-  if (last && time <= last.end + IPLO_ENGLISH_HOLD_S) {
-    return { kind: "english", segment: last };
-  }
-  if (!segment.text) return null;
-  return { kind: "narration", segment };
+  if (segment?.t === "narration" && segment.text) return { kind: "narration", segment };
+  return null;
 }
 
 function segmentAt(segments: IploSegment[], time: number): IploSegment | null {
@@ -286,6 +275,171 @@ export function scoreAttempt(
   };
 }
 
+/** About one caption line of body-main inside an 18rem measure. */
+export const IPLO_SUBTITLE_CHARS = 34;
+export const IPLO_SUBTITLE_MAX_LINES = 3;
+
+export type SubtitleCue = { text: string; start: number; end: number };
+
+function splitSentences(text: string): string[] {
+  const sentences: string[] = [];
+  let buf = "";
+  let quotes = 0;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    buf += ch;
+    if (ch === "\u201c") quotes += 1;
+    else if (ch === "\u201d" || ch === "\u00bb") quotes = Math.max(0, quotes - 1);
+    else if (ch === '"') quotes = quotes > 0 ? quotes - 1 : quotes + 1;
+    if (quotes > 0 || !/[.!?]/.test(ch)) continue;
+    const rest = text.slice(i + 1).replace(/^\s+/, "");
+    if (!rest || /^[A-ZÁÉÍÓÚÑ¿¡]/.test(rest)) {
+      const sentence = buf.trim();
+      if (sentence) sentences.push(sentence);
+      buf = "";
+    }
+  }
+  const tail = buf.trim();
+  if (tail) sentences.push(tail);
+  return sentences;
+}
+
+function wrapLines(text: string, width: number): string[] {
+  const words = text.split(/\s+/).filter(Boolean);
+  const lines: string[] = [];
+  let current = "";
+  for (const word of words) {
+    const next = current ? `${current} ${word}` : word;
+    if (current && next.length > width) {
+      lines.push(current);
+      current = word;
+    } else {
+      current = next;
+    }
+  }
+  if (current) lines.push(current);
+  return lines;
+}
+
+function lineCount(text: string): number {
+  return wrapLines(text, IPLO_SUBTITLE_CHARS).length;
+}
+
+/** Keep a whole sentence when it fits in three lines. Longer sentences break on a clause. */
+function packSentence(sentence: string): string[] {
+  if (lineCount(sentence) <= IPLO_SUBTITLE_MAX_LINES) return [sentence];
+  const clauses = sentence.split(/(?<=[,;:])\s+/).filter(Boolean);
+  const packed: string[] = [];
+  let buffer = "";
+  for (const clause of clauses) {
+    const next = buffer ? `${buffer} ${clause}` : clause;
+    if (buffer && lineCount(next) > IPLO_SUBTITLE_MAX_LINES) {
+      packed.push(buffer);
+      buffer = clause;
+    } else {
+      buffer = next;
+    }
+  }
+  if (buffer) packed.push(buffer);
+  return packed.flatMap((cue) => {
+    if (lineCount(cue) <= IPLO_SUBTITLE_MAX_LINES) return [cue];
+    const lines = wrapLines(cue, IPLO_SUBTITLE_CHARS);
+    const groups: string[] = [];
+    for (let i = 0; i < lines.length; i += IPLO_SUBTITLE_MAX_LINES) {
+      groups.push(lines.slice(i, i + IPLO_SUBTITLE_MAX_LINES).join(" "));
+    }
+    return groups;
+  });
+}
+
+function cueTexts(text: string): string[] {
+  return splitSentences(text).flatMap(packSentence);
+}
+
+function tokenMatches(script: string, heard: string): boolean {
+  if (!script || !heard) return false;
+  if (script === heard) return true;
+  if (script.length >= 3 && heard.length >= 3 && (heard.startsWith(script) || script.startsWith(heard))) {
+    return true;
+  }
+  return false;
+}
+
+function assignCueTimes(
+  texts: string[],
+  words: IploWord[],
+  start: number,
+  end: number
+): SubtitleCue[] {
+  let wordIndex = 0;
+  const matched = texts.map((text) => {
+    const tokens = text.split(/\s+/).map(foldToken).filter(Boolean);
+    let first = -1;
+    let last = -1;
+    for (const token of tokens) {
+      const windowEnd = Math.min(words.length, wordIndex + 6);
+      for (let k = wordIndex; k < windowEnd; k++) {
+        if (!tokenMatches(token, foldToken(words[k].w))) continue;
+        if (first < 0) first = k;
+        last = k;
+        wordIndex = k + 1;
+        break;
+      }
+    }
+    return { text, first, last };
+  });
+
+  const cues: SubtitleCue[] = matched.map((item) => ({
+    text: item.text,
+    start: item.first >= 0 ? words[item.first].start : Number.NaN,
+    end: item.last >= 0 ? words[item.last].end : Number.NaN,
+  }));
+
+  const timed = cues.map((cue) => Number.isFinite(cue.start) && Number.isFinite(cue.end));
+  let index = 0;
+  while (index < cues.length) {
+    if (timed[index]) {
+      index += 1;
+      continue;
+    }
+    const runStart = index;
+    while (index < cues.length && !timed[index]) index += 1;
+    const left = runStart > 0 ? cues[runStart - 1].end : start;
+    const right = index < cues.length ? cues[index].start : end;
+    const run = cues.slice(runStart, index);
+    const weight = run.reduce((sum, cue) => sum + cue.text.length, 0) || run.length;
+    let cursor = left;
+    for (const cue of run) {
+      const span = Math.max(0, right - left) * (cue.text.length / weight);
+      cue.start = cursor;
+      cue.end = cursor + span;
+      cursor = cue.end;
+    }
+  }
+  if (cues.length > 0 && cues[0].start > start) cues[0].start = start;
+  const last = cues[cues.length - 1];
+  if (last && last.end < end) last.end = end;
+  return cues;
+}
+
+/** Spanish teaching, one caption at a time. No highlight. */
+export function subtitleCues(segment: IploNarration): SubtitleCue[] {
+  const texts = cueTexts(segment.text);
+  if (texts.length === 0) return [];
+  return assignCueTimes(texts, segment.words, segment.start, segment.end);
+}
+
+export function subtitleAt(segment: IploNarration, time: number): string | null {
+  const cues = subtitleCues(segment);
+  let current: SubtitleCue | null = null;
+  for (const cue of cues) {
+    if (cue.start <= time + 0.02) current = cue;
+    else break;
+  }
+  if (!current) return cues[0]?.text ?? null;
+  return current.text;
+}
+
 function foldToken(value: string): string {
   return value
     .normalize("NFD")
@@ -301,6 +455,26 @@ const PROMPT_LEADS = [
   /^ahora dime,?\s*/i,
   /^ahora di\s*/i,
 ];
+
+/** The teaching caption while the lead is spoken. "Otra vez", not the question. */
+export function promptLeadText(spanish: string): string | null {
+  const trimmed = spanish.trim();
+  const match = trimmed.match(/^(dime otra vez\.|otra vez\.|otra vez|ahora dime|ahora di)/i);
+  if (!match) return null;
+  return trimmed.slice(0, match[1].length);
+}
+
+/** When the question and the input appear. A lead stays a caption until it ends. */
+export function promptInputAt(prompt: IploPrompt): number {
+  const lead = prompt.leadEnd;
+  if (lead != null && lead > prompt.start + 0.05 && lead < prompt.pauseAt - 0.05) return lead;
+  return prompt.start;
+}
+
+/** When the audio pauses. Always after the question has been asked. */
+export function promptAnswerAt(prompt: IploPrompt): number {
+  return prompt.pauseAt;
+}
 
 /** Input screen only. The seeded prompt and the karaoke line keep the full sentence. */
 export function promptQuestionText(spanish: string): string {

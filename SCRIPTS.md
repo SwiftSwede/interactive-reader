@@ -27,7 +27,18 @@ npx tsx scripts/iplo-import.ts --only 1
 ```
 
 **Flags:** `--only` day number, 1 to 23.
-**Cost / time / status:** no API cost. Does not publish the course.
+**Cost / time / status:** no API cost. Does not publish the course. Prefers `public/audio/iplo/day-N-filled.m4a` when it exists. Never convert the original `day-N.mp3` to "fix" seeking; convert the filled MP3. A fill is approved state.
+
+### Check an Iplo day's clock against Whisper
+
+If a skip leaves captions behind the audio, run this before touching the player. Compare `audioUrl` and `ffprobe` duration to `durationSeconds` first. A lag vs **original** Whisper at a filled insert (Day 1, 3:38 "He speaks") is the fill. Do not delete it.
+
+```bash
+python3 scripts/iplo/check_clock.py --day 1
+```
+
+**Flags:** `--day` 1 to 23. Needs `scripts/iplo/dayN-segments.json` and `dayN-whisper.json`.
+**Cost / time / status:** free, local. Exit 2 when the unfilled clock disagrees. If a filled m4a exists, that disagreement at the insert is expected.
 
 ### Seed a story from the Obsidian vault into the database
 

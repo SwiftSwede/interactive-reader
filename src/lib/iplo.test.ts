@@ -10,9 +10,16 @@ import {
   karaokePieces,
   lessonVocabulary,
   parseAudioScript,
+  promptAnswerAt,
+  promptInputAt,
+  promptLeadText,
   promptQuestionText,
   savedProgressIsStale,
   scoreAttempt,
+  subtitleAt,
+  subtitleCues,
+  IPLO_SUBTITLE_MAX_LINES,
+  type IploNarration,
   type IploPromptRef,
   type IploSegment,
 } from "./iplo";
@@ -228,9 +235,9 @@ test("englishOnScreen keeps the last English sentence up while the teacher narra
     { t: "english", start: 20, end: 22, text: "He speaks Spanish.", words: [] },
     { t: "prompt", start: 22, end: 24, pauseAt: 23, spanish: "¿Cómo se dice?", expected: ["He speaks Spanish."] },
   ];
-  // narration over "I speak English." keeps it on screen
-  assert.equal(englishOnScreen(segments, 15)?.segment.text, "I speak English.");
-  assert.equal(englishOnScreen(segments, 15)?.kind, "english");
+  // teaching replaces the dialogue line as soon as the narration starts
+  assert.equal(englishOnScreen(segments, 15)?.kind, "narration");
+  assert.equal(englishOnScreen(segments, 15)?.segment.text, "Ahora escucha.");
   // the next English sentence replaces it
   assert.equal(englishOnScreen(segments, 21)?.segment.text, "He speaks Spanish.");
   // a prompt clears the screen (no free answers)
@@ -240,16 +247,13 @@ test("englishOnScreen keeps the last English sentence up while the teacher narra
   assert.equal(englishOnScreen(segments, 5)?.segment.text, "Escucha.");
 });
 
-test("englishOnScreen clears the stale sentence after the bounded hold", () => {
+test("englishOnScreen shows Spanish as soon as the teaching starts", () => {
   const segments: IploSegment[] = [
     { t: "english", start: 10, end: 12, text: "I speak English.", words: [] },
     { t: "narration", start: 12, end: 40, text: "Una explicación larga.", words: [] },
   ];
-  // within the hold: still visible
-  assert.equal(englishOnScreen(segments, 19)?.segment.text, "I speak English.");
-  // past the hold (a long lecture): Spanish narration takes the screen
-  assert.equal(englishOnScreen(segments, 25)?.kind, "narration");
-  assert.equal(englishOnScreen(segments, 25)?.segment.text, "Una explicación larga.");
+  assert.equal(englishOnScreen(segments, 12)?.kind, "narration");
+  assert.equal(englishOnScreen(segments, 12)?.segment.text, "Una explicación larga.");
 });
 
 test("parseAudioScript keeps narration text and words", () => {
@@ -277,6 +281,56 @@ test("parseAudioScript keeps narration text and words", () => {
   assert.equal("lines" in narration, false);
 });
 
+function narration(text: string, words: { w: string; start: number; end: number }[] = []): IploNarration {
+  const end = words.at(-1)?.end ?? 10;
+  return { t: "narration", start: words[0]?.start ?? 0, end, text, words };
+}
+
+function captionLines(text: string): number {
+  const words = text.split(/\s+/);
+  let lines = 1;
+  let current = "";
+  for (const word of words) {
+    const next = current ? `${current} ${word}` : word;
+    if (current && next.length > 34) {
+      lines += 1;
+      current = word;
+    } else {
+      current = next;
+    }
+  }
+  return lines;
+}
+
+test("subtitle cues keep a short sentence whole and cap a lecture at three lines", () => {
+  const short = subtitleCues(narration("Escucha y repite."));
+  assert.equal(short.length, 1);
+  assert.equal(short[0]?.text, "Escucha y repite.");
+
+  const oneSentence = "En inglés, como el español, el presente simple se usa para hablar de hechos.";
+  const kept = subtitleCues(narration(oneSentence));
+  assert.equal(kept.length, 1);
+  assert.ok(captionLines(kept[0].text) <= IPLO_SUBTITLE_MAX_LINES);
+
+  const lecture =
+    "En esta primera lección, aprendes cómo conjugar el verbo ‘to speak’ en el presente simple, y de eso, cómo conjugar 99% de los verbos en inglés en el presente simple. Escucha y repite después de la mujer.";
+  const words = lecture.split(/\s+/).map((w, index) => ({
+    w,
+    start: index,
+    end: index + 0.8,
+  }));
+  const cues = subtitleCues(narration(lecture, words));
+  assert.ok(cues.length >= 3);
+  for (const cue of cues) {
+    assert.ok(captionLines(cue.text) <= IPLO_SUBTITLE_MAX_LINES, cue.text);
+  }
+  assert.match(cues[0]?.text ?? "", /^En esta primera lección/);
+  assert.equal(cues.at(-1)?.text, "Escucha y repite después de la mujer.");
+  const midway = subtitleAt(narration(lecture, words), 4);
+  assert.ok(midway);
+  assert.notEqual(midway, lecture);
+});
+
 test("karaokePieces lights an accented narration word", () => {
   const pieces = karaokePieces(
     "Escucha la siguiente conversación.",
@@ -284,6 +338,28 @@ test("karaokePieces lights an accented narration word", () => {
     1.2
   );
   assert.equal(pieces.find((piece) => piece.piece.startsWith("conversación"))?.active, true);
+});
+
+test("the question and the input open when the question starts, and the pause waits until it ends", () => {
+  const prompt = {
+    t: "prompt" as const,
+    start: 98.74,
+    leadEnd: 99.46,
+    pauseAt: 102.41,
+    end: 102.56,
+    spanish: "Otra vez, ¿Cómo se dice ‘hablar’ en inglés?",
+    expected: ["Speak."],
+  };
+  assert.equal(promptLeadText(prompt.spanish), "Otra vez");
+  assert.equal(promptLeadText("Ahora di “yo hablo.”"), "Ahora di");
+  assert.equal(promptLeadText("¿Cómo se dice “yo hablo”?"), null);
+  assert.equal(promptQuestionText(prompt.spanish), "¿Cómo se dice ‘hablar’ en inglés?");
+  assert.equal(promptInputAt(prompt), 99.46);
+  assert.equal(promptAnswerAt(prompt), 102.41);
+  assert.equal(
+    promptInputAt({ ...prompt, leadEnd: undefined, spanish: "¿Cómo se dice “yo hablo”?" }),
+    98.74
+  );
 });
 
 test("promptQuestionText strips the conversational lead on the input screen", () => {

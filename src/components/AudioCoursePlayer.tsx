@@ -16,10 +16,14 @@ import {
   englishOnScreen,
   karaokePieces,
   lessonVocabulary,
+  promptAnswerAt,
+  promptInputAt,
+  promptLeadText,
   promptQuestionText,
   promptRefs,
   resolveTimeZone,
   savedProgressIsStale,
+  subtitleAt,
   type IploScript,
   type IploSegment,
   type KaraokePiece,
@@ -210,13 +214,12 @@ export default function AudioCoursePlayer({
     if (!audio || !ref) return;
     // Never seek forward to the pause. A jump lands in the gap and cuts off
     // the question the student is still hearing.
-    if (audio.currentTime + 0.08 < ref.prompt.pauseAt) return;
+    if (audio.currentTime + 0.08 < promptAnswerAt(ref.prompt)) return;
     audio.pause();
     heldRef.current.add(index);
     setActiveIndex(index);
     setTime(audio.currentTime);
     setPlaying(false);
-    setDraft("");
   }
 
   function resumeAudio() {
@@ -238,7 +241,7 @@ export default function AudioCoursePlayer({
     for (const ref of prompts) {
       if (skippedRef.current.has(ref.index)) continue;
       if (heldRef.current.has(ref.index)) continue;
-      if (now + 0.05 < ref.prompt.pauseAt) continue;
+      if (now + 0.05 < promptAnswerAt(ref.prompt)) continue;
       pauseFor(ref.index);
       return;
     }
@@ -262,15 +265,15 @@ export default function AudioCoursePlayer({
       current,
       completedOnce: freeSeek,
       prompts: prompts.map((ref) => ({
-        pauseAt: ref.prompt.pauseAt,
+        pauseAt: promptAnswerAt(ref.prompt),
         answered: Boolean(answersRef.current[ref.index]),
       })),
     });
     if (freeSeek && next > current + 0.05) {
       for (const ref of prompts) {
         if (
-          ref.prompt.pauseAt > current + 0.05 &&
-          ref.prompt.pauseAt <= next + 0.02 &&
+          promptAnswerAt(ref.prompt) > current + 0.05 &&
+          promptAnswerAt(ref.prompt) <= next + 0.02 &&
           !answersRef.current[ref.index]
         ) {
           skippedRef.current.add(ref.index);
@@ -279,7 +282,7 @@ export default function AudioCoursePlayer({
     }
     if (next < current - 0.05) {
       for (const ref of prompts) {
-        if (ref.prompt.pauseAt >= next - 0.05) {
+        if (promptAnswerAt(ref.prompt) >= next - 0.05) {
           skippedRef.current.delete(ref.index);
           heldRef.current.delete(ref.index);
         }
@@ -360,22 +363,43 @@ export default function AudioCoursePlayer({
   }
 
   const segment = segmentAt(script.segments, time);
-  // The answer line is timed early. Keep it off screen until this question's
-  // pause, or "Speak" shows up while the question is still finishing.
-  const holdingQuestion = prompts.some((ref) => {
-    if (skippedRef.current.has(ref.index) || heldRef.current.has(ref.index)) return false;
-    if (answers[ref.index]) return false;
-    return time + 0.05 >= ref.prompt.start && time + 0.02 < ref.prompt.pauseAt;
-  });
-  const screenLine = holdingQuestion ? null : englishOnScreen(script.segments, time);
-  const activePrompt = prompts.find((ref) => ref.index === activeIndex) ?? null;
+  // "Otra vez" is a caption while those words play. The question and the input
+  // open when the question starts. The audio keeps going and pauses at pauseAt.
+  const writing =
+    prompts.find((ref) => {
+      if (feedback || done || skippedRef.current.has(ref.index) || answers[ref.index]) return false;
+      if (activeIndex === ref.index) return true;
+      const openAt = promptInputAt(ref.prompt);
+      return time + 0.05 >= openAt && time + 0.02 < ref.prompt.pauseAt;
+    }) ?? null;
+  const leadCaption =
+    writing
+      ? null
+      : prompts
+          .map((ref) => {
+            if (skippedRef.current.has(ref.index) || heldRef.current.has(ref.index)) return null;
+            if (answers[ref.index]) return null;
+            const lead = promptLeadText(ref.prompt.spanish);
+            const openAt = promptInputAt(ref.prompt);
+            if (!lead || openAt <= ref.prompt.start + 0.05) return null;
+            if (time + 0.05 < ref.prompt.start || time + 0.02 >= openAt) return null;
+            return lead;
+          })
+          .find((lead) => lead != null) ?? null;
+  const screenLine = leadCaption || writing ? null : englishOnScreen(script.segments, time);
+  const caption = leadCaption ?? (screenLine?.kind === "narration" ? subtitleAt(screenLine.segment, time) : null);
+  const activePrompt = writing;
   const known = activePrompt ? answers[activePrompt.index] : undefined;
   const showInput = Boolean(activePrompt) && !feedback && !done;
 
   useEffect(() => {
+    setDraft("");
+  }, [activePrompt?.index]);
+
+  useEffect(() => {
     if (!showInput || known) return;
     answerRef.current?.focus({ preventScroll: true });
-  }, [showInput, known, activeIndex]);
+  }, [showInput, known, activePrompt?.index]);
 
   const chip =
     done || feedback || (segment?.t === "english" && !showInput)
@@ -435,13 +459,7 @@ export default function AudioCoursePlayer({
                 </span>
               ) : null}
             </div>
-            <div
-              className={
-                showInput
-                  ? "flex flex-col justify-start pt-8"
-                  : "flex min-h-[40dvh] flex-col items-center justify-center"
-              }
-            >
+            <div className="flex min-h-[40dvh] flex-col items-center pt-[20dvh]">
               {audioError ? (
                 <div className="text-center">
                   <p className="text-body-md text-text-secondary">
@@ -514,15 +532,15 @@ export default function AudioCoursePlayer({
                 </div>
               ) : (
                 <div className="flex flex-col items-center gap-6">
-                  {screenLine ? (
+                  {caption ? (
+                    <p className="max-w-[18rem] text-center text-body-main text-text-primary" lang="es">
+                      {caption}
+                    </p>
+                  ) : screenLine?.kind === "english" ? (
                     <KaraokeLine
                       pieces={karaokePieces(screenLine.segment.text, screenLine.segment.words, time)}
-                      lang={screenLine.kind === "narration" ? "es" : "en"}
-                      className={
-                        screenLine.kind === "narration"
-                          ? "max-w-[22rem] text-center text-body-main text-text-muted"
-                          : "max-w-[22rem] text-center font-headline text-headline-lg text-text-primary"
-                      }
+                      lang="en"
+                      className="max-w-[22rem] text-center font-headline text-headline-lg text-text-primary"
                     />
                   ) : null}
                   {feedback && (screenLine?.kind === "english" || !feedback.withLine) ? (
@@ -560,7 +578,9 @@ export default function AudioCoursePlayer({
                 <button
                   type="button"
                   className="audio-skip-btn"
-                  onClick={() => onSeek(Math.max(0, time - IPLO_BACK_SECONDS))}
+                  onClick={() =>
+                    onSeek(Math.max(0, (audioRef.current?.currentTime ?? time) - IPLO_BACK_SECONDS))
+                  }
                   aria-label="Retroceder 15 segundos"
                   disabled={Boolean(feedback)}
                 >
@@ -584,7 +604,9 @@ export default function AudioCoursePlayer({
                 <button
                   type="button"
                   className="audio-skip-btn"
-                  onClick={() => onSeek(time + IPLO_BACK_SECONDS)}
+                  onClick={() =>
+                    onSeek((audioRef.current?.currentTime ?? time) + IPLO_BACK_SECONDS)
+                  }
                   aria-label="Adelantar 15 segundos"
                   disabled={Boolean(feedback) || waitingForAnswer()}
                 >
@@ -633,6 +655,9 @@ export default function AudioCoursePlayer({
           setPlaying(true);
         }}
         onPause={() => setPlaying(false)}
+        onSeeked={(event) => {
+          setTime(event.currentTarget.currentTime);
+        }}
         onTimeUpdate={(event) => {
           const now = event.currentTarget.currentTime;
           setTime(now);
