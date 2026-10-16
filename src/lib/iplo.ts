@@ -464,23 +464,14 @@ export function promptLeadText(spanish: string): string | null {
   return trimmed.slice(0, match[1].length);
 }
 
-/** When the question and the input appear. Only repeat-lead prompts ("Otra vez,
- * ¿cómo se dice...?") open at the lead's end, so the student hears the lead
- * first. "Ahora di ..." prompts open at the pause: the sentence itself is the
- * question, and it must be heard in full before the input appears. Never open
- * at the segment start or before the question is spoken. */
+/** When the question and the input appear: the moment the question or request
+ * starts being said. Repeat-lead prompts ("Otra vez, ¿cómo se dice...?") open
+ * at the lead's end; prompts without a lead open at the segment start, because
+ * the request begins immediately. */
 export function promptInputAt(prompt: IploPrompt): number {
   const lead = prompt.leadEnd;
-  const repeatLead = /^dime otra vez\.|^otra vez[.,]/i.test(prompt.spanish.trim());
-  if (
-    lead != null &&
-    repeatLead &&
-    lead > prompt.start + 0.05 &&
-    lead < prompt.pauseAt - 0.05
-  ) {
-    return lead;
-  }
-  return prompt.pauseAt;
+  if (lead != null && lead > prompt.start + 0.05 && lead < prompt.pauseAt - 0.05) return lead;
+  return prompt.start;
 }
 
 /** When the audio pauses. Always after the question has been asked. */

@@ -356,10 +356,10 @@ test("the question and the input open when the question starts, and the pause wa
   assert.equal(promptQuestionText(prompt.spanish), "¿Cómo se dice ‘hablar’ en inglés?");
   assert.equal(promptInputAt(prompt), 99.46);
   assert.equal(promptAnswerAt(prompt), 102.41);
-  // Never before the question is heard: no timed lead -> wait for the pause.
+  // Input opens when the question starts being said: leadEnd, else seg start.
   assert.equal(
     promptInputAt({ ...prompt, leadEnd: undefined, spanish: "¿Cómo se dice “yo hablo”?" }),
-    102.41
+    98.74
   );
 });
 
