@@ -13,4 +13,6 @@ export const workshopConfig = {
   heroImage: "/workshop/liberty.jpg",
   portraitImage: "/workshop/kyle.png",
   losSecretosUrl: "https://www.profekyle.com/curso-secretos-del-ingles-hablado/",
+  privacyPolicyUrl: "https://www.profekyle.com/politica-de-privacidad/",
+  termsOfServiceUrl: "https://www.profekyle.com/terminos-de-servicio/",
 } as const;

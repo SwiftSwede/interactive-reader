@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Charis_SIL, Open_Sans } from "next/font/google";
 import Script from "next/script";
+import { WorkshopLegalLinks } from "@/components/workshop/WorkshopLegalLinks";
 import { workshopConfig } from "@/lib/workshop/config";
 import "./workshop.css";
 
@@ -46,6 +47,7 @@ fbq('track', 'PageView');`}
         <div className="wk-column">
           <p>Profe Kyle</p>
           <a href="https://www.profekyle.com">www.profekyle.com</a>
+          <WorkshopLegalLinks variant="footer" />
         </div>
       </footer>
     </div>

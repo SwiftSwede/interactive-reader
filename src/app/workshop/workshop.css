@@ -312,6 +312,26 @@ body:has(.workshop) {
   text-align: center;
 }
 
+.wk-legal {
+  margin: 8px 0 0;
+  color: rgba(250, 250, 250, 0.88);
+  font-size: 13px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.wk-legal a {
+  color: #9ad3ec;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.wk-legal a:focus-visible {
+  outline: 2px solid #9ad3ec;
+  outline-offset: 2px;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .wk-cta:hover {
     filter: brightness(1.05);
@@ -679,13 +699,19 @@ body:has(.workshop) {
   width: 180px;
   max-width: 50%;
   margin: 0 auto 20px;
+  aspect-ratio: 1;
+  box-sizing: border-box;
+  border: 4px solid var(--wk-navy);
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .wk-bio .wk-portrait {
   display: block;
   width: 100%;
-  height: auto;
-  border-radius: var(--wk-radius);
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
 }
 
 .wk-footer {
@@ -704,6 +730,23 @@ body:has(.workshop) {
   align-items: center;
   min-height: 44px;
   color: #9ad3ec;
+}
+
+.wk-footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+  width: 100%;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.wk-footer-legal a {
+  min-height: 44px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .wk-thanks {

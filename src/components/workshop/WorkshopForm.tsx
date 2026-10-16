@@ -2,6 +2,7 @@
 
 import { Mail, User } from "lucide-react";
 import { useEffect, useState, type FormEvent } from "react";
+import { WorkshopLegalLinks } from "@/components/workshop/WorkshopLegalLinks";
 import { workshopLevels } from "@/lib/workshop/levels";
 
 const avisoCopy: Record<string, string> = {
@@ -114,6 +115,7 @@ export function WorkshopForm({ aviso }: { aviso?: string }) {
       <p className="wk-reassure">
         Gratis. No pedimos tarjeta. El email es para el Zoom y la grabación.
       </p>
+      <WorkshopLegalLinks variant="form" />
     </form>
   );
 }
