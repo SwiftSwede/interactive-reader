@@ -66,7 +66,7 @@ async function main() {
 
   const slug = `iplo-day-${day}`;
   const audioScript = {
-    audioUrl: `/audio/iplo/day-${day}${existsSync(`public/audio/iplo/day-${day}-filled.mp3`) ? "-filled" : ""}.mp3?v=cbr`,
+    audioUrl: `/audio/iplo/day-${day}${existsSync(`public/audio/iplo/day-${day}-filled.m4a`) ? "-filled" : ""}.m4a`,
     grammarTagId: tag.id as string,
     durationSeconds,
     seedVersion: new Date().toISOString(),
