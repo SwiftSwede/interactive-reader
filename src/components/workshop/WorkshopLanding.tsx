@@ -34,15 +34,11 @@ const sounds = [
 const steps = [
   {
     title: "Demo en vivo.",
-    body: "Escuchas el sonido natural y compruebas que tu oído no lo registra. (Sí, en vivo, con todos.)",
+    body: "Escuchas el sonido natural en vivo.",
   },
   {
     title: "Entrenamiento.",
     body: "Posición de boca, ejemplos, y práctica guiada, sonido por sonido.",
-  },
-  {
-    title: "Una oración completa.",
-    body: "Juntamos los tres sonidos en una sola oración y la dominas.",
   },
   {
     title: "El cierre.",
