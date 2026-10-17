@@ -207,6 +207,7 @@ export const ERROR_TAG_SEEDS: TagSeed[] = [
   { name: "negative_infinitive", displayName: "Negative infinitive" },
   { name: "comparative_formation", displayName: "Comparative formation" },
   { name: "article_omission", displayName: "Articles (a/an/the)" },
+  { name: "have_to_negation", displayName: "Have to (negation)" },
   { name: "compound_subject_agreement", displayName: "Compound subject agreement" },
   { name: "third_person_s_missing", displayName: "Third person -s" },
   { name: "gerund_after_preposition", displayName: "Gerund after preposition" },
