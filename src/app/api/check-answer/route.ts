@@ -67,7 +67,7 @@ ERROR TAGS. Use these exact names in error_tags. One phrase each:
 - negative_infinitive: Negative infinitive. Spanish "para no gritar" becomes "to don't scream": correct is "not to scream" or "so as not to scream". "I covered my mouth to don't scream" becomes "I covered my mouth so as not to scream".
 - comparative_formation: Comparative formation. Spanish "mas facil" makes students say "more easy": correct is "easier". "More better" becomes "better". Short adjectives also fail in superlatives: "the most white" becomes "the whitest".
 - article_omission: Articles (a/an/the). Spanish drops articles: "today was special day" becomes "today was a special day". Wrong a/an before a vowel sound: "a interesting class" becomes "an interesting class". Extra "the" on place names: "in the Latin America" becomes "in Latin America".
-- have_to_negation: "Have to" negation. In American English only auxiliary have (Spanish haber) contracts: "She hasn't arrived". The verb have (tener, obligation) never contracts: "She hasn't to pay anything" becomes "She doesn't have to pay anything". "I haven't time" becomes "I don't have time".
+- tener_haber_contraction_confusion: Haber vs tener (have). In American English only auxiliary have (Spanish haber) contracts: "She hasn't arrived". The verb have (tener, obligation) never contracts: "She hasn't to pay anything" becomes "She doesn't have to pay anything". "I haven't time" becomes "I don't have time".
 - compound_subject_agreement: Compound subject agreement. Two subjects joined by "and" take a plural verb: "My daughter and my husband doesn't like it" becomes "My daughter and my husband don't like it". "The kids doesn't have school" becomes "The kids don't have school".
 - third_person_s_missing: Missing -s on third person singular. Spanish verbs don't change with the subject, English does: "My customer complain every time" becomes "My customer complains every time". "She visit my brother" becomes "She visits my brother" (or "She visited my brother" in the past). "He want" becomes "He wants".
 - gerund_after_preposition: Gerund (-ing) after a preposition. After "for", "about", "of", "in", "by", a verb needs -ing: "I'm sorry for show up late" becomes "I'm sorry for showing up late". "Instead of watch TV" becomes "Instead of watching TV". "Thank you for come" becomes "Thank you for coming".
@@ -172,7 +172,7 @@ Output:
 {
   "corrected": "He doesn't have to pay anything",
   "note": "Con 'tener que', la negacion usa 'doesn't have to': 'He doesn't have to pay'.",
-  "error_tags": ["have_to_negation"]
+  "error_tags": ["tener_haber_contraction_confusion"]
 }
 
 Input: "My daughter and my husband doesn't like it"
