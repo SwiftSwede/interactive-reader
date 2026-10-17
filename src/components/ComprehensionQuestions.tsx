@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import posthog from "posthog-js";
 import {
   saveComprehensionResponse,
 } from "@/app/lesson/[slug]/actions";
@@ -206,6 +207,12 @@ export default function ComprehensionQuestions({
   const handleReveal = (position: number, questionId: string) => {
     if (!canReveal) return;
     setRevealed((prev) => new Set(prev).add(position));
+    if (posthog.__loaded) {
+      posthog.capture("comprehension_answer_revealed", {
+        question_position: position,
+        had_response: Boolean(answers[position]?.trim()),
+      });
+    }
     flushSave(questionId, answers[position] || "", true);
   };
 

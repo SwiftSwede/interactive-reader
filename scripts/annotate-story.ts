@@ -20,6 +20,7 @@ import { createClient } from "@supabase/supabase-js";
 import { WebSocket } from "ws";
 import { KYLE_IPA_ALPHA_RULE } from "../src/lib/ipa-conventions";
 import { movieTalkSpokenText } from "../src/lib/movietalk";
+import { captureOpenRouterGeneration, shutdownPosthogAi } from "./posthog-ai";
 
 // Spoken-text stream for dialogues: the reader renders pure bracket lines as
 // italic stage directions and speaker prefixes ("Jane:" / "Jane-") as labels,
@@ -248,6 +249,7 @@ async function annotateChunkWithLLM(chunkText: string, chunkIndex: number): Prom
 
   console.log(`  Chunk ${chunkIndex}: calling LLM (${prompt.length} chars)...`);
 
+  const startedAt = performance.now();
   const response = await fetch(
     "https://openrouter.ai/api/v1/chat/completions",
     {
@@ -283,6 +285,17 @@ async function annotateChunkWithLLM(chunkText: string, chunkIndex: number): Prom
     console.error("No content in LLM response:", JSON.stringify(data, null, 2));
     throw new Error("No content in LLM response");
   }
+
+  await captureOpenRouterGeneration({
+    spanName: "annotate_story_chunk",
+    model: MODEL,
+    messages: [{ role: "user", content: prompt }],
+    content,
+    usage: data.usage,
+    temperature: 0.3,
+    maxTokens: 64000,
+    latencySeconds: (performance.now() - startedAt) / 1000,
+  });
 
   // Strip markdown code fences if present
   let jsonStr = content.trim();
@@ -632,7 +645,10 @@ async function main() {
   console.log("Next: dedupe-expressions.ts, then the word-audio pipeline.");
 }
 
-main().catch((err) => {
-  console.error("Unhandled error:", err);
-  process.exit(1);
-});
+main()
+  .then(() => shutdownPosthogAi())
+  .catch(async (err) => {
+    console.error("Unhandled error:", err);
+    await shutdownPosthogAi();
+    process.exit(1);
+  });

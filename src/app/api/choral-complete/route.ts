@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { getProfile } from "@/lib/auth-server";
+import { emitPosthogLog, schedulePosthogLogFlush } from "@/lib/posthog-logs";
 
 const BodySchema = z.object({
   storyId: z.string().uuid(),
@@ -70,6 +71,12 @@ export async function POST(request: Request) {
       );
     }
 
+    emitPosthogLog("choral practice completed", "INFO", {
+      event: "choral_practice_completed",
+      route: "/api/choral-complete",
+      rounds_completed: parsed.data.roundsCompleted,
+    });
+    schedulePosthogLogFlush();
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error("choral-complete failed:", error);

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import posthog from "posthog-js";
 import { Check, ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
 import EndClassButton from "@/components/EndClassButton";
 import ActionButton from "@/components/ActionButton";
@@ -653,6 +654,9 @@ export default function ExamSession({
       ...current,
       [task]: new Date().toISOString(),
     }));
+    if (posthog.__loaded) {
+      posthog.capture("exam_task_submitted", { task_number: task });
+    }
     if (task === 3) {
       setStatus("submitted");
       setActiveIndex(examStepIndex("puntaje"));

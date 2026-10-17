@@ -3,7 +3,9 @@ import { headers } from "next/headers";
 import { Lora, Roboto_Flex } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
-import InAppBrowserRedirect from "@/components/InAppBrowserRedirect";
+import InAppBrowserRedirect, {
+  PostHogIdentity,
+} from "@/components/InAppBrowserRedirect";
 
 const lora = Lora({
   subsets: ["latin"],
@@ -36,6 +38,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <InAppBrowserRedirect />
+        <PostHogIdentity />
         {children}
         <Analytics />
       </body>

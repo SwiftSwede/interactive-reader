@@ -19,10 +19,12 @@ This script:
 5. Combines profiler + rubric data into a final difficulty profile
 """
 
+import atexit
 import json
 import os
 import sys
 import time
+import uuid
 import argparse
 import subprocess
 import urllib.request
@@ -30,6 +32,82 @@ import urllib.error
 from pathlib import Path
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def load_posthog_env():
+    """Load only the public PostHog settings needed by this standalone CLI."""
+    env_path = Path(SCRIPT_DIR).parents[2] / ".env.local"
+    if not env_path.exists():
+        return
+    for line in env_path.read_text(encoding="utf-8").splitlines():
+        if "=" not in line or line.lstrip().startswith("#"):
+            continue
+        key, value = line.split("=", 1)
+        if key in {"NEXT_PUBLIC_POSTHOG_KEY", "NEXT_PUBLIC_POSTHOG_HOST"}:
+            os.environ.setdefault(key, value.strip().strip('"').strip("'"))
+
+
+load_posthog_env()
+POSTHOG_KEY = os.environ.get("NEXT_PUBLIC_POSTHOG_KEY")
+POSTHOG_HOST = os.environ.get("NEXT_PUBLIC_POSTHOG_HOST")
+
+if not POSTHOG_KEY or not POSTHOG_HOST:
+    if os.environ.get("NODE_ENV") == "development":
+        missing_variable = (
+            "NEXT_PUBLIC_POSTHOG_KEY"
+            if not POSTHOG_KEY
+            else "NEXT_PUBLIC_POSTHOG_HOST"
+        )
+        raise RuntimeError(
+            f"{missing_variable} variable required by PostHog is missing or un-configured, this causes events to be silently missed. This error stops appearing once {missing_variable} is configured"
+        )
+    posthog_client = None
+else:
+    from posthog import Posthog
+
+    posthog_client = Posthog(
+        POSTHOG_KEY,
+        host=POSTHOG_HOST,
+        flush_at=1,
+        flush_interval=0,
+        privacy_mode=False,
+        enable_exception_autocapture=True,
+    )
+    atexit.register(posthog_client.shutdown)
+
+AI_SESSION_ID = str(uuid.uuid4())
+
+
+def capture_openrouter_generation(prompt, model, result, latency_seconds):
+    if not posthog_client:
+        return
+
+    content = result["choices"][0]["message"]["content"]
+    usage = result.get("usage", {})
+    posthog_client.capture(
+        distinct_id=AI_SESSION_ID,
+        event="$ai_generation",
+        properties={
+            # This local content tool has no authenticated app user. The
+            # process-run session id keeps the event anonymous and prevents a
+            # person profile.
+            "$process_person_profile": False,
+            "$ai_trace_id": str(uuid.uuid4()),
+            "$ai_session_id": AI_SESSION_ID,
+            "$ai_span_id": str(uuid.uuid4()),
+            "$ai_span_name": "evaluate_story_difficulty",
+            "$ai_model": model,
+            "$ai_provider": "openrouter",
+            "$ai_input": [{"role": "user", "content": prompt}],
+            "$ai_input_tokens": usage.get("prompt_tokens"),
+            "$ai_output_choices": [{"role": "assistant", "content": content}],
+            "$ai_output_tokens": usage.get("completion_tokens"),
+            "$ai_latency": latency_seconds,
+            "$ai_temperature": 0,
+            "$ai_max_tokens": 4096,
+        },
+    )
+    posthog_client.flush()
 
 
 def run_profiler(story_path):
@@ -120,6 +198,7 @@ def call_llm(prompt, model="z-ai/glm-5.2"):
     }
     
     req = urllib.request.Request(url, data=data, headers=headers)
+    started_at = time.monotonic()
     
     # Retry with exponential backoff for rate limiting
     max_retries = 3
@@ -127,6 +206,9 @@ def call_llm(prompt, model="z-ai/glm-5.2"):
         try:
             with urllib.request.urlopen(req, timeout=120) as response:
                 result = json.loads(response.read().decode("utf-8"))
+                capture_openrouter_generation(
+                    prompt, model, result, time.monotonic() - started_at
+                )
                 return result["choices"][0]["message"]["content"]
         except urllib.error.HTTPError as e:
             if e.code == 429 and attempt < max_retries - 1:

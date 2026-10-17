@@ -20,6 +20,10 @@
     "apply-content-tags": "tsx scripts/apply-content-tags.ts"
   },
   "dependencies": {
+    "@opentelemetry/api-logs": "^0.223.0",
+    "@opentelemetry/exporter-logs-otlp-http": "^0.223.0",
+    "@opentelemetry/resources": "^2.12.0",
+    "@opentelemetry/sdk-logs": "^0.223.0",
     "@supabase/ssr": "^0.12.4",
     "@supabase/supabase-js": "^2.109.0",
     "@tanstack/react-query": "^5.101.4",
@@ -29,6 +33,8 @@
     "lucide-react": "^1.37.0",
     "microsoft-cognitiveservices-speech-sdk": "^1.51.0",
     "next": "16.3.0",
+    "posthog-js": "^1.438.12",
+    "posthog-node": "^5.56.2",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "stripe": "^22.5.0",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import posthog from "posthog-js";
 import { Check } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import {
@@ -64,6 +65,12 @@ export default function VideoSummaryTranslationStep({
     const result = await markParagraphReady(paragraphId);
     setMarkingId(null);
     if (!result.ok) return;
+    if (posthog.__loaded) {
+      posthog.capture("translation_paragraph_marked_ready", {
+        paragraph_position: paragraphs.find((item) => item.id === paragraphId)
+          ?.position,
+      });
+    }
     setParagraphs((current) =>
       current.map((item) =>
         item.id === paragraphId

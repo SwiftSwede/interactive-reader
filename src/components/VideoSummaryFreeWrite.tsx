@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import posthog from "posthog-js";
 import { countWords, formatCountdown, remainingMs } from "@/lib/writing";
 import LessonTimer from "@/components/lesson/LessonTimer";
 import {
@@ -77,6 +78,12 @@ export default function VideoSummaryFreeWrite({
         autoSubmitted.current = false;
         return;
       }
+      if (posthog.__loaded) {
+        posthog.capture("video_summary_submitted", {
+          submission_method: fromTimer ? "timer" : "manual",
+          word_count: countWords(textRef.current),
+        });
+      }
       setSubmitted(true);
     },
     [isTeacher, submitted, timerStartedAt, sessionId, storyId, saveResponses]
@@ -124,6 +131,7 @@ export default function VideoSummaryFreeWrite({
       setError(result.error);
       return;
     }
+    if (posthog.__loaded) posthog.capture("video_summary_timer_started");
     onTimerStarted(new Date().toISOString());
   }
 

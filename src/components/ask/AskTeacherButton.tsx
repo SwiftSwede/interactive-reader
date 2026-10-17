@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import posthog from "posthog-js";
 import ActionButton from "@/components/ActionButton";
 import WordHelpSheet from "@/components/WordHelpSheet";
 import { createQuestionRequest } from "@/app/ask/actions";
@@ -69,6 +70,13 @@ export default function AskTeacherButton({
     if (!result.ok) {
       setError(result.error);
       return;
+    }
+    if (posthog.__loaded) {
+      posthog.capture("teacher_question_submitted", {
+        surface,
+        has_story_context: Boolean(storyId),
+        has_session_context: Boolean(courseSessionId),
+      });
     }
     setSent(true);
     closeTimer.current = window.setTimeout(() => {

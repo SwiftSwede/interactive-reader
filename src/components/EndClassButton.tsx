@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import posthog from "posthog-js";
 import ActionButton from "@/components/ActionButton";
 import { endClassSession } from "@/app/teacher/end-class-action";
 
@@ -41,6 +42,7 @@ export default function EndClassButton({
                   setError(result.error);
                   return;
                 }
+                if (posthog.__loaded) posthog.capture("class_ended");
                 onEnded?.(result.endedAt);
               }}
             >

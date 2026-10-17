@@ -3,6 +3,7 @@ import BackLink from "@/components/BackLink";
 import EditDisplayNameForm from "@/components/dashboard/EditDisplayNameForm";
 import ActionButton from "@/components/ActionButton";
 import BrowsingShell from "@/components/shell/BrowsingShell";
+import { PostHogResetOnSubmit } from "@/components/InAppBrowserRedirect";
 import { signOut } from "@/app/dashboard/actions";
 import { requireBrowsingStudent, browsingClassroomLevel } from "@/lib/browsing-auth";
 import { loadDashboard } from "@/lib/dashboard";
@@ -56,7 +57,7 @@ export default async function ProfilePage() {
           {preview ? null : <EditDisplayNameForm currentName={name} />}
         </article>
 
-        <form action={signOut} className="mt-6">
+        <PostHogResetOnSubmit action={signOut} className="mt-6">
           <ActionButton
             type="submit"
             variant="secondary"
@@ -66,7 +67,7 @@ export default async function ProfilePage() {
             <LogOut className="h-5 w-5" aria-hidden="true" />
             Cerrar sesión
           </ActionButton>
-        </form>
+        </PostHogResetOnSubmit>
       </section>
     </BrowsingShell>
   );

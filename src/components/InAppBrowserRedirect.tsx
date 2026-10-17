@@ -1,6 +1,82 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import posthog from "posthog-js";
+import { getPostHogHost, getPostHogProjectToken } from "@/lib/posthog-public-env";
+import { createClient } from "@/lib/supabase/client";
+
+const isPostHogConfigured = Boolean(
+  getPostHogProjectToken() && getPostHogHost()
+);
+
+export function PostHogIdentity() {
+  useEffect(() => {
+    if (!isPostHogConfigured) return;
+
+    const supabase = createClient();
+    let identifiedUserId: string | null = null;
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "SIGNED_OUT") {
+        identifiedUserId = null;
+        posthog.reset();
+        return;
+      }
+
+      if (
+        event !== "INITIAL_SESSION" &&
+        event !== "SIGNED_IN" &&
+        event !== "USER_UPDATED"
+      ) {
+        return;
+      }
+
+      const user = session?.user;
+      if (!user) return;
+
+      if (identifiedUserId && identifiedUserId !== user.id) {
+        posthog.reset();
+      }
+      identifiedUserId = user.id;
+
+      const personProperties: Record<string, string> = {};
+      if (user.email) personProperties.email = user.email;
+      const displayName = user.user_metadata?.display_name;
+      if (typeof displayName === "string" && displayName.trim()) {
+        personProperties.name = displayName.trim();
+      }
+
+      posthog.identify(user.id, personProperties);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  return null;
+}
+
+export function PostHogResetOnSubmit({
+  action,
+  children,
+  className,
+}: {
+  action: (formData: FormData) => void | Promise<void>;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <form
+      action={action}
+      className={className}
+      onSubmit={() => {
+        if (isPostHogConfigured) posthog.reset();
+      }}
+    >
+      {children}
+    </form>
+  );
+}
 
 /**
  * Detects in-app browsers that throttle requestAnimationFrame or have

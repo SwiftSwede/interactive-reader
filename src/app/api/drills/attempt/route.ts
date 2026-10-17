@@ -5,6 +5,7 @@ import { submitDrillAttempt } from "@/lib/drill-attempt";
 import { AppError } from "@/lib/errors";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
+import { emitPosthogLog, schedulePosthogLogFlush } from "@/lib/posthog-logs";
 
 const BodySchema = z.object({
   itemId: z.string().uuid(),
@@ -51,12 +52,24 @@ export async function POST(request: Request) {
       itemId: parsed.data.itemId,
       answer: parsed.data.answer,
     });
+    emitPosthogLog("drill attempt completed", "INFO", {
+      event: "drill_attempt_completed",
+      route: "/api/drills/attempt",
+      outcome: "success",
+    });
+    schedulePosthogLogFlush();
     return NextResponse.json(result);
   } catch (error) {
     if (error instanceof AppError && error.statusCode < 500) {
       return NextResponse.json({ error: error.message }, { status: error.statusCode });
     }
     console.error("drills/attempt failed:", error instanceof Error ? error.message : error);
+    emitPosthogLog("drill attempt completed", "ERROR", {
+      event: "drill_attempt_completed",
+      route: "/api/drills/attempt",
+      outcome: "server_error",
+    });
+    schedulePosthogLogFlush();
     return NextResponse.json(
       { error: "Algo salió mal. Intenta de nuevo." },
       { status: 500 },

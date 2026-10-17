@@ -8,6 +8,7 @@ import TeacherBackLink from "@/app/teacher/TeacherBackLink";
 import TeacherNav from "./TeacherNav";
 import ContextPanel from "./ContextPanel";
 import { TeacherPanelProvider } from "./TeacherPanelContext";
+import { PostHogResetOnSubmit } from "@/components/InAppBrowserRedirect";
 
 function Wordmark({ onClick }: { onClick?: () => void }) {
   return (
@@ -49,7 +50,7 @@ function RailFooter({
           Ver app como estudiante
         </span>
       </Link>
-      <form action={signOut} className="mt-2">
+      <PostHogResetOnSubmit action={signOut} className="mt-2">
         <button
           type="submit"
           className="inline-flex min-h-11 w-full items-center rounded-card px-3 text-label-sm text-text-accent hover:bg-accent-soft hover:text-text-accent-dark active:bg-surface-hover min-[600px]:max-lg:justify-center min-[600px]:max-lg:px-0"
@@ -61,7 +62,7 @@ function RailFooter({
           />
           <span className="min-[600px]:max-lg:sr-only">Cerrar sesión</span>
         </button>
-      </form>
+      </PostHogResetOnSubmit>
     </div>
   );
 }

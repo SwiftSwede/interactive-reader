@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Check } from "lucide-react";
+import posthog from "posthog-js";
 import { useId, useRef, useState, type FormEvent } from "react";
 import ActionButton from "@/components/ActionButton";
 import { parseInlineMarks, type SessionItem } from "@/lib/drill-session";
@@ -161,6 +162,14 @@ export default function DrillSession({
         return;
       }
       setCollectionCount(body.collectionCount);
+      if (posthog.__loaded) {
+        posthog.capture("drill_attempt_completed", {
+          session_kind: sessionKind,
+          item_format: item.format,
+          correct: body.correct,
+          graduated: body.graduated,
+        });
+      }
       if (!body.correct) {
         setFeedback({ kind: "wrong", expected: body.expected ?? "" });
       } else {

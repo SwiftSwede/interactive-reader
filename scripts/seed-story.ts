@@ -27,6 +27,7 @@ import { createClient } from "@supabase/supabase-js";
 import { readFileSync, existsSync } from "fs";
 import { WebSocket } from "ws";
 import { stripStressMarks } from "../src/lib/pronunciation/referenceText";
+import { captureOpenRouterGeneration, shutdownPosthogAi } from "./posthog-ai";
 
 // ── Config ─────────────────────────────────────────────────
 
@@ -373,6 +374,7 @@ Return a JSON array of ${questions.length} answer strings:`;
 
   console.log(`  Calling Claude Sonnet to generate ${questions.length} answers...`);
 
+  const startedAt = performance.now();
   const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
     method: "POST",
     headers: {
@@ -400,6 +402,17 @@ Return a JSON array of ${questions.length} answer strings:`;
     console.error("No content in LLM response:", JSON.stringify(data, null, 2));
     process.exit(1);
   }
+
+  await captureOpenRouterGeneration({
+    spanName: "generate_comprehension_answers",
+    model: "anthropic/claude-sonnet-4",
+    messages: [{ role: "user", content: prompt }],
+    content,
+    usage: data.usage,
+    temperature: 0.3,
+    maxTokens: 2000,
+    latencySeconds: (performance.now() - startedAt) / 1000,
+  });
 
   let jsonStr = content.trim();
   if (jsonStr.startsWith("```")) {
@@ -610,7 +623,10 @@ async function main() {
   console.log(`Next step: annotate words → npx tsx scripts/annotate-story.ts --slug ${slug}`);
 }
 
-main().catch((err) => {
-  console.error("Unhandled error:", err);
-  process.exit(1);
-});
+main()
+  .then(() => shutdownPosthogAi())
+  .catch(async (err) => {
+    console.error("Unhandled error:", err);
+    await shutdownPosthogAi();
+    process.exit(1);
+  });
