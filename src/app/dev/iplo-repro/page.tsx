@@ -10,6 +10,8 @@ const DAY_FILES: Record<string, { file: string; duration: number }> = {
   "1": { file: "/audio/iplo/day-1-filled.m4a", duration: 864.4 },
   // Filled: donor replay spliced at 1180 (+2.80s); segments are on this timeline.
   "2": { file: "/audio/iplo/day-2-filled.m4a", duration: 1287.02 },
+  // No fill yet: recording skips 6 script lines pending Kyle's verdict (2026-10-18).
+  "3": { file: "/audio/iplo/day-3.m4a", duration: 966.4 },
 };
 
 export default async function Page({

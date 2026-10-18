@@ -22,6 +22,8 @@ import { createAdminClient } from "../src/lib/supabase/admin";
 const COURSE_NAME = "Inglés por los Oídos";
 const GRAMMAR_BY_DAY: Record<number, string> = {
   1: "present_simple",
+  2: "present_simple",
+  3: "present_simple",
 };
 
 function onlyDay(): number {
