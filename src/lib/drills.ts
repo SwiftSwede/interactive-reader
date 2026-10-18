@@ -311,7 +311,12 @@ function expansionsOf(normalized: string): string[] {
   const tokens = normalized.split(" ").filter(Boolean);
   let forms = [""];
   for (const token of tokens) {
-    const alts = CONTRACTION_EXPANSIONS[token] ?? [token];
+    // The original token stays an alternate: a given "dont" (no apostrophe) must
+    // be able to match an expected "don't" / "do not" and vice versa (Kyle:
+    // loosen the criteria for beginners).
+    const alts = CONTRACTION_EXPANSIONS[token]
+      ? [token, ...CONTRACTION_EXPANSIONS[token]]
+      : [token];
     const next: string[] = [];
     for (const form of forms) {
       for (const alt of alts) {
