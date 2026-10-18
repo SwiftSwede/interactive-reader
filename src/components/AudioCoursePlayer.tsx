@@ -327,12 +327,22 @@ export default function AudioCoursePlayer({
     answersRef.current = next;
     setAnswers(next);
     const spoken = confirmationAfter(script.segments, ref.index);
+    // The feedback hold must never ride over the NEXT prompt's pause: when a
+    // prompt lacks its own replay, confirmationAfter grabs the next prompt's
+    // replay, and feedback (which suppresses considerPause) then swallowed the
+    // next pause - the model answered before the student could write (Kyle QA
+    // 2026-10-15, 19:50). Cap the hold at the next prompt's start.
+    const nextPrompt = prompts.find((item) => item.index > ref.index);
+    const audioEnd = Math.min(
+      spoken?.end ?? ref.prompt.end,
+      nextPrompt ? nextPrompt.prompt.start : Infinity
+    );
     setFeedback({
       index: ref.index,
       correct,
       model: ref.prompt.expected[0] ?? "",
       until: Date.now() + IPLO_FEEDBACK_HOLD_MS,
-      audioEnd: spoken?.end ?? ref.prompt.end,
+      audioEnd,
       withLine: Boolean(spoken),
     });
     setActiveIndex(null);
