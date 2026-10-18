@@ -657,7 +657,7 @@ export default function AudioCoursePlayer({
 
       <audio
         ref={audioRef}
-        src={script.audioUrl}
+        src={script.seedVersion ? `${script.audioUrl}?v=${encodeURIComponent(script.seedVersion)}` : script.audioUrl}
         preload="auto"
         className="pointer-events-none absolute h-px w-px overflow-hidden opacity-0"
         onLoadedMetadata={(event) => {

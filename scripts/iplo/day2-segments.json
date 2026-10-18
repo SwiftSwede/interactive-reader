@@ -1339,7 +1339,7 @@
   {
    "t": "english",
    "start": 183.68,
-   "end": 193.48,
+   "end": 191.3,
    "text": "She doesn’t speak. She doesn’t speak.",
    "words": [
     {
@@ -1371,6 +1371,21 @@
      "w": "speak",
      "start": 188.06,
      "end": 188.34
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 191.4,
+   "end": 193.4,
+   "lines": [
+    "Excelente."
+   ],
+   "words": [
+    {
+     "w": "excelente",
+     "start": 191.84,
+     "end": 192.44
     }
    ]
   },
@@ -3915,7 +3930,7 @@
   {
    "t": "english",
    "start": 626.02,
-   "end": 632.82,
+   "end": 630.9,
    "text": "Not you. Not you.",
    "words": [
     {
@@ -3937,6 +3952,21 @@
      "w": "you",
      "start": 629.26,
      "end": 629.68
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 631.0,
+   "end": 632.7,
+   "lines": [
+    "Excelente."
+   ],
+   "words": [
+    {
+     "w": "excelente",
+     "start": 631.34,
+     "end": 631.94
     }
    ]
   },
@@ -4639,7 +4669,7 @@
   {
    "t": "english",
    "start": 782.12,
-   "end": 790.84,
+   "end": 789.2,
    "text": "Who, us? Who, us?",
    "words": [
     {
@@ -4661,6 +4691,21 @@
      "w": "us",
      "start": 787.04,
      "end": 787.36
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 789.3,
+   "end": 790.7,
+   "lines": [
+    "Excelente."
+   ],
+   "words": [
+    {
+     "w": "excelente",
+     "start": 789.66,
+     "end": 790.26
     }
    ]
   },
@@ -5662,7 +5707,7 @@
   {
    "t": "english",
    "start": 991.42,
-   "end": 1000.94,
+   "end": 998.9,
    "text": "They speak English. They speak English.",
    "words": [
     {
@@ -5694,6 +5739,21 @@
      "w": "english",
      "start": 996.08,
      "end": 996.64
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 999.0,
+   "end": 1000.8,
+   "lines": [
+    "Excelente."
+   ],
+   "words": [
+    {
+     "w": "excelente",
+     "start": 999.34,
+     "end": 999.94
     }
    ]
   },
@@ -6753,7 +6813,7 @@
   {
    "t": "english",
    "start": 1190.5,
-   "end": 1199.4,
+   "end": 1197.7,
    "text": "Do you guys speak English? Do you guys speak English?",
    "words": [
     {
@@ -6805,6 +6865,21 @@
      "w": "english",
      "start": 1195.32,
      "end": 1195.8
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 1197.8,
+   "end": 1199.3,
+   "lines": [
+    "Excelente."
+   ],
+   "words": [
+    {
+     "w": "excelente",
+     "start": 1198.2,
+     "end": 1198.8
     }
    ]
   },
