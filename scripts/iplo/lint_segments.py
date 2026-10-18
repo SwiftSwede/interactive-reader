@@ -52,17 +52,19 @@ def fold(value: str) -> str:
 def load(day: int):
     segs_path = IPLO / f"day{day}-segments.json"
     if not segs_path.exists():
-        return None, None, 0.0, None
+        return None, None, []
     data = json.loads(segs_path.read_text())
     fill = data.get("fill") or {}
-    shift_at = fill.get("at")
-    shift = float(fill.get("shift", 0.0)) if shift_at is not None else 0.0
+    if isinstance(fill, list):
+        fills = [(float(f["at"]), float(f["shift"])) for f in fill]
+    else:
+        fills = [(float(fill["at"]), float(fill["shift"]))] if fill.get("at") is not None else []
     whisper_path = IPLO / f"day{day}-whisper.json"
     whisper = []
     if whisper_path.exists():
         raw = json.loads(whisper_path.read_text())["segments"][0]["words"]
         whisper = [(w["start"], w["end"], fold(w["word"])) for w in raw if fold(w["word"])]
-    return data["segments"], whisper, shift, shift_at
+    return data["segments"], whisper, fills
 
 
 def audio_duration(day: int):
@@ -82,13 +84,17 @@ def audio_duration(day: int):
 
 
 def lint_day(day: int, findings: list):
-    segs, whisper, shift, shift_at = load(day)
+    segs, whisper, fills = load(day)
     if segs is None:
         print(f"day {day}: no segments file, skipped")
         return
 
     def filled(t):
-        return t + shift if shift_at is not None and t >= shift_at else t
+        out = t
+        for at, shift in fills:
+            if t >= at:
+                out += shift
+        return out
 
     def whisper_span(t0, t1):
         return [(filled(s), t) for s, e, t in whisper if t0 - 0.5 <= filled(s) <= t1 + 0.5]

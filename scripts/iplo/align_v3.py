@@ -168,7 +168,8 @@ def local_refine(T, tw, lo, hi):
 
 
 PROMPT_TRIGGER_RE = re.compile(
-    r"(?i)(?:y\s+)?(?:ahora\s+dime,?\s*)?(?:otra\s+vez\.?\s*)?(?:dime\s+)?(?:y\s+)?cómo se dice|ahora di\b|ahora dime\b|¿puedes adivinar|cont[ée]stale|dile esto|preg[úu]ntale|hazle saber")
+    r"(?i)(?:y\s+)?(?:ahora\s+dime,?\s*)?(?:otra\s+vez\.?\s*)?(?:dime\s+)?(?:y\s+)?cómo se dice|ahora di\b|ahora dime\b|¿puedes adivinar|cómo preguntarías|cómo preguntar\b|cómo preguntas\b|cómo responderías|cómo respondes\b|cómo responder\b|cont[ée]stale|dile esto|preg[úu]ntale|hazle saber")
+IMPERATIVE_SPLIT_RE = re.compile(r"(?i)(?:^|[.,]\s*)(?:ahora\s+)?(?:intenta\s+)?(?:di|responde|pregunta|contesta)\b\s*[\u201c\u201d\u2018\u2019'\"¿]|(?:^|[.,]\s*)ahora\s+(?:intenta\s+(?:decir|preguntar|responder)|responde|pregunta)\b|(?:^|[.,]\s*)intenta\s+(?:decir|preguntar|responder)\b|(?:^|[.,]\s*)pregunta\s+otra\s+vez")
 
 
 def split_narration_prefix(line):
@@ -177,30 +178,75 @@ def split_narration_prefix(line):
     audio: the lecture becomes narration, the trigger starts the prompt."""
     m = PROMPT_TRIGGER_RE.search(line)
     if not m or m.start() == 0:
-        return None
+        m2 = IMPERATIVE_SPLIT_RE.search(line)
+        if not m2 or len(toks_of(line[:m2.start()])) < 6:
+            return None
+        m = m2
     prefix, prompt = line[: m.start()].strip(" ,."), line[m.start():].strip()
     # an opening ¿/¡ must ride with the question, not the narration prefix
     while prefix.endswith(("¿", "¡")):
         prompt = prefix[-1] + prompt
         prefix = prefix[:-1].rstrip()
+    # a dangling connector left in the prefix reads as a detached fragment
+    # ("... que es 'does'. Ahora," + "intenta decir..."): move trailing
+    # connectors onto the prompt half
+    moved = re.match(r"(?s)(.*?)(\b(?:ahora|y|entonces|luego|despues|despu\u00e9s|bien|ya)\b[.,]?\s*)$", prefix, re.I)
+    if moved and moved.group(1).strip():
+        prefix, prompt = moved.group(1).strip(" .,"), moved.group(2) + " " + prompt.lstrip(" .,")
     if len(toks_of(prefix)) < 6:
         return None
-    return prefix, prompt
+    return prefix, prompt.lstrip(" .,")
 
 
-def timed_words(line, js, tw):
+def timed_words(line, js, tw, span_start=None, span_end=None):
     """Word timings that actually belong to this line. Neighbour bleed is dropped."""
     words = [tw[j] for j in js]
     allowed = {}
     for t in toks_of(line):
         allowed[t] = allowed.get(t, 0) + 1
-    kept, used = [], {}
+    kept, used = [], []
     for w in words:
-        c = used.get(w[0], 0)
+        c = used.count(w[0])
         if allowed.get(w[0], 0) > c:
-            used[w[0]] = c + 1
+            used.append(w[0])
             kept.append(w)
-    return [{"w": w, "start": round(x, 2), "end": round(y, 2)} for w, x, y in kept]
+    # whisper (both passes) drops quiet words in fast choral speech: any text
+    # token with no timing gets an interpolated slot between its matched
+    # neighbours so karaoke highlighting never goes dark mid-line.
+    toks = toks_of(line)
+    by_tok = {}
+    for w in kept:
+        by_tok.setdefault(w[0], []).append(w)
+    if not kept:
+        # no anchored words at all: distribute evenly across the span
+        if span_start is None:
+            return []
+        n = len(toks) or 1
+        step = (span_end - span_start) / n
+        return [{"w": toks[i], "start": round(span_start + i * step, 2),
+                 "end": round(span_start + (i + 1) * step - 0.02, 2)} for i in range(n)]
+    out = []
+    prev_end = kept[0][1]
+    ti = 0
+    for tok in toks:
+        if ti < len(kept) and kept[ti][0] == tok:
+            out.append(kept[ti]); prev_end = kept[ti][2]; ti += 1
+        else:
+            # unmatched text token: interpolate inside [prev_end, next matched start]
+            nxt = kept[ti][1] if ti < len(kept) else None
+            if nxt is None:
+                # trailing unmatched tokens (an unrecorded repeat): spread them
+                # forward at speaking pace instead of stacking them in one slot
+                remaining = len(toks) - ti
+                span_cap = span_end if span_end is not None else prev_end + remaining * 0.4
+                room = max(0.0, span_cap - prev_end - 0.15)
+                step = min(0.45, room / remaining) if remaining else 0.0
+                out.append([tok, round(prev_end + 0.05, 2), round(prev_end + 0.05 + step, 2)])
+            else:
+                mid = (prev_end + nxt) / 2
+                out.append([tok, round(prev_end + 0.02, 2), round(max(prev_end + 0.02, min(mid, nxt - 0.02)), 2)])
+            prev_end = out[-1][2]
+    return [{"w": w, "start": round(x, 2), "end": round(y, 2)} for w, x, y in out]
 
 
 def main():
@@ -275,9 +321,10 @@ def main():
             if len(js) >= max(1, int(0.5 * (i1 - i0))):
                 spans[k] = (min(js), max(js), len(js) / (i1 - i0), js)
 
-    PROMPT_RE = re.compile(r"(¿?\s*(?:cómo se dice|y cómo se dice|cómo dirías)|ahora di|¿puedes adivinar qué palabra significa)", re.I)
+    PROMPT_RE = re.compile(r"(¿?\s*(?:cómo se dice|y cómo se dice|cómo dirías|cómo preguntas|cómo preguntar|cómo preguntarías|cómo responderías|cómo respondes|cómo decir|te acuerdas cómo decir)|ahora di|¿puedes adivinar qué palabra significa)", re.I)
     RP_PROMPT_RE = re.compile(r"(cont[ée]stale|dile esto|preg[úu]ntale|contesta|hazle saber)", re.I)
-    NARR_HINT_RE = re.compile(r"^(as[íi] es|escucha y repite|as[íi] es como)", re.I)
+    NARR_HINT_RE = re.compile(r"(así es cómo|escucha y repite|así es como)", re.I)
+    IMPERATIVE_PROMPT_RE = re.compile(r"^\s*(?:y\s+)?(?:ahora\s+)?(?:otra\s+vez[,.]?\s*)?(?:intenta\s+)?(?:di\b|dime\b|decir\b|responder?\b|pregunta\b|preguntar\b|contesta\b)", re.I)
 
     def is_prompt_line(sp, line):
         if not sp.startswith("Profe"):
@@ -285,6 +332,8 @@ def main():
         if NARR_HINT_RE.search(line):
             return False
         if "ahora di" in line.lower() or "ahora escucha cómo" in line.lower():
+            return True
+        if IMPERATIVE_PROMPT_RE.match(line):
             return True
         if RP_PROMPT_RE.search(line):
             return True
@@ -342,7 +391,7 @@ def main():
                 for e in exp:
                     t = toks_of(e)
                     if len(t) >= 2 and len(t) % 2 == 0 and t[: len(t) // 2] == t[len(t) // 2:]:
-                        e = " ".join(re.sub(r"[^\w'\s]", " ", e).split()[: len(t) // 2]) + "."
+                        e = " ".join(re.sub(r"[^\w\s']", " ", e.replace("\u2019", "'").replace("\u2018", "'")).split()[: len(t) // 2]) + "."
                     if dedup and fold(dedup[-1]) == fold(e):
                         continue
                     dedup.append(e)
@@ -366,7 +415,7 @@ def main():
             for e in exp:
                 t = toks_of(e)
                 if len(t) >= 2 and len(t) % 2 == 0 and t[: len(t) // 2] == t[len(t) // 2:]:
-                    e = " ".join(re.sub(r"[^\w'\s]", " ", e).split()[: len(t) // 2]) + "."
+                    e = " ".join(re.sub(r"[^\w\s']", " ", e.replace("\u2019", "'").replace("\u2018", "'")).split()[: len(t) // 2]) + "."
                 if dedup and fold(dedup[-1]) == fold(e):
                     continue
                 dedup.append(e)
@@ -387,9 +436,9 @@ def main():
         elif not is_kyle:
             segs.append({"t": "english", "start": round(start, 2), "end": round(end, 2),
                          "text": line,
-                         "words": timed_words(line, js, tw)})
+                         "words": timed_words(line, js, tw, tw[w0][1], tw[w1][2])})
         else:
-            words = timed_words(line, js, tw)
+            words = timed_words(line, js, tw, tw[w0][1], tw[w1][2])
             if segs and segs[-1]["t"] == "narration":
                 segs[-1]["end"] = round(end, 2)
                 segs[-1]["lines"] = segs[-1].get("lines", []) + [line]
