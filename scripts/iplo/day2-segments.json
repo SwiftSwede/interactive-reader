@@ -1875,7 +1875,7 @@
   {
    "t": "english",
    "start": 268.04,
-   "end": 278.86,
+   "end": 277.2,
    "text": "They don’t speak. They don’t speak.",
    "words": [
     {
@@ -1907,6 +1907,21 @@
      "w": "speak",
      "start": 274.2,
      "end": 274.5
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 277.3,
+   "end": 278.7,
+   "lines": [
+    "Perfecto."
+   ],
+   "words": [
+    {
+     "w": "perfecto",
+     "start": 277.72,
+     "end": 278.32
     }
    ]
   },
@@ -7828,5 +7843,9 @@
    ]
   }
  ],
- "duration_note": "aligned to day-2-filled.m4a (donor spliced at 1180.0, +2.80s)"
+ "duration_note": "aligned to day-2-filled.m4a (donor spliced at 1180.0, +2.80s)",
+ "fill": {
+  "at": 1180.0,
+  "shift": 2.8
+ }
 }
