@@ -398,9 +398,17 @@ export default function AudioCoursePlayer({
             if (answers[ref.index]) return null;
             const lead = promptLeadText(ref.prompt.spanish);
             const openAt = promptInputAt(ref.prompt);
-            if (!lead || openAt <= ref.prompt.start + 0.05) return null;
+            if (openAt <= ref.prompt.start + 0.05) return null;
             if (time + 0.05 < ref.prompt.start || time + 0.02 >= openAt) return null;
-            return lead;
+            // Repeat leads ("Otra vez") caption just the lead - their question
+            // text strips it, so the caption is the only place the lead shows.
+            // All other leads (Ahora di/dime, question leads) get NO caption:
+            // the prompt card itself opens when the question starts, and a
+            // caption would show the same text twice (Kyle QA 2026-10-15:
+            // "appears briefly before the prompt then appears again in the
+            // prompt. The brief appearance should be deleted.").
+            if (lead) return lead;
+            return null;
           })
           .find((lead) => lead != null) ?? null;
   const screenLine = leadCaption || writing ? null : englishOnScreen(script.segments, time);

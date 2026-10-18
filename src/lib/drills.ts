@@ -255,6 +255,7 @@ export function buildDeck(input: BuildDeckInput): DrillItem[] {
 function normalizeAnswer(value: string): string {
   return value
     .replace(/[\u2018\u2019\u02bc]/g, "'")
+    .replace(/,/g, " ")
     .replace(/\s+/g, " ")
     .trim()
     .replace(/[.?!]$/, "")
@@ -328,11 +329,20 @@ function expansionsOf(normalized: string): string[] {
  * and contraction pairs (don't / do not). A different word does not match.
  */
 export function answersMatch(expected: readonly string[], given: string): boolean {
-  const givenForms = new Set(expansionsOf(normalizeAnswer(given)));
+  // Beginners: apostrophes are nice, not the end of the world (Kyle). Every
+  // form is also compared apostrophe-less, so "dont" matches "don't".
+  const apoless = (form: string) => form.replace(/'/g, "");
+  const givenForms = new Set(
+    expansionsOf(normalizeAnswer(given)).flatMap((form) => [form, apoless(form)])
+  );
   if ([...givenForms].every((form) => form.length === 0)) return false;
   for (const option of expected) {
     for (const piece of option.split(" / ")) {
-      if (expansionsOf(normalizeAnswer(piece)).some((form) => form && givenForms.has(form))) {
+      if (
+        expansionsOf(normalizeAnswer(piece)).some(
+          (form) => form && (givenForms.has(form) || givenForms.has(apoless(form)))
+        )
+      ) {
         return true;
       }
     }

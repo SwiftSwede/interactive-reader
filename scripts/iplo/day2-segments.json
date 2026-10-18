@@ -1,0 +1,7636 @@
+{
+ "lesson": 2,
+ "segments": [
+  {
+   "t": "narration",
+   "start": 7.16,
+   "end": 17.0,
+   "lines": [
+    "Bienvenido/bienvenida de nuevo al curso. Comencemos la lección 2. Escucha la siguiente conversación."
+   ],
+   "words": [
+    {
+     "w": "bienvenidobienvenida",
+     "start": 8.56,
+     "end": 8.56
+    },
+    {
+     "w": "de",
+     "start": 8.54,
+     "end": 8.68
+    },
+    {
+     "w": "nuevo",
+     "start": 8.68,
+     "end": 9.02
+    },
+    {
+     "w": "al",
+     "start": 9.02,
+     "end": 9.56
+    },
+    {
+     "w": "curso",
+     "start": 9.56,
+     "end": 9.98
+    },
+    {
+     "w": "comencemos",
+     "start": 10.52,
+     "end": 11.2
+    },
+    {
+     "w": "la",
+     "start": 11.2,
+     "end": 11.38
+    },
+    {
+     "w": "leccion",
+     "start": 11.38,
+     "end": 11.74
+    },
+    {
+     "w": "2",
+     "start": 11.76,
+     "end": 12.25
+    },
+    {
+     "w": "escucha",
+     "start": 12.76,
+     "end": 13.28
+    },
+    {
+     "w": "la",
+     "start": 13.28,
+     "end": 13.46
+    },
+    {
+     "w": "siguiente",
+     "start": 13.46,
+     "end": 13.92
+    },
+    {
+     "w": "conversacion",
+     "start": 13.92,
+     "end": 15.08
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 17.0,
+   "end": 20.46,
+   "text": "Hello. Do you speak English?",
+   "words": [
+    {
+     "w": "hello",
+     "start": 17.0,
+     "end": 17.68
+    },
+    {
+     "w": "do",
+     "start": 18.34,
+     "end": 18.56
+    },
+    {
+     "w": "you",
+     "start": 18.56,
+     "end": 18.74
+    },
+    {
+     "w": "speak",
+     "start": 18.74,
+     "end": 19.0
+    },
+    {
+     "w": "english",
+     "start": 19.0,
+     "end": 19.34
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 20.46,
+   "end": 26.78,
+   "text": "Yes, I speak a bit of English. But I speak French a lot better. Do you speak English?",
+   "words": [
+    {
+     "w": "yes",
+     "start": 20.46,
+     "end": 20.74
+    },
+    {
+     "w": "i",
+     "start": 21.08,
+     "end": 21.28
+    },
+    {
+     "w": "speak",
+     "start": 21.28,
+     "end": 21.54
+    },
+    {
+     "w": "a",
+     "start": 21.54,
+     "end": 21.74
+    },
+    {
+     "w": "bit",
+     "start": 21.74,
+     "end": 21.88
+    },
+    {
+     "w": "of",
+     "start": 21.88,
+     "end": 22.02
+    },
+    {
+     "w": "english",
+     "start": 22.02,
+     "end": 22.38
+    },
+    {
+     "w": "but",
+     "start": 22.7,
+     "end": 22.88
+    },
+    {
+     "w": "i",
+     "start": 22.88,
+     "end": 23.02
+    },
+    {
+     "w": "speak",
+     "start": 23.02,
+     "end": 23.32
+    },
+    {
+     "w": "french",
+     "start": 23.32,
+     "end": 23.64
+    },
+    {
+     "w": "a",
+     "start": 23.64,
+     "end": 23.9
+    },
+    {
+     "w": "lot",
+     "start": 23.9,
+     "end": 24.14
+    },
+    {
+     "w": "better",
+     "start": 24.14,
+     "end": 24.44
+    },
+    {
+     "w": "do",
+     "start": 24.98,
+     "end": 25.22
+    },
+    {
+     "w": "you",
+     "start": 25.22,
+     "end": 25.36
+    },
+    {
+     "w": "speak",
+     "start": 25.36,
+     "end": 25.54
+    },
+    {
+     "w": "english",
+     "start": 25.54,
+     "end": 25.86
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 26.78,
+   "end": 32.52,
+   "text": "Yes, I speak English. Do you speak English?",
+   "words": [
+    {
+     "w": "yes",
+     "start": 26.78,
+     "end": 27.14
+    },
+    {
+     "w": "i",
+     "start": 27.84,
+     "end": 28.12
+    },
+    {
+     "w": "speak",
+     "start": 28.12,
+     "end": 28.4
+    },
+    {
+     "w": "english",
+     "start": 28.4,
+     "end": 28.76
+    },
+    {
+     "w": "do",
+     "start": 29.4,
+     "end": 29.74
+    },
+    {
+     "w": "you",
+     "start": 29.74,
+     "end": 29.92
+    },
+    {
+     "w": "speak",
+     "start": 29.92,
+     "end": 30.16
+    },
+    {
+     "w": "english",
+     "start": 30.16,
+     "end": 30.5
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 32.52,
+   "end": 38.74,
+   "text": "Yes, I speak English. But I do not speak Chinese. Do you speak Chinese?",
+   "words": [
+    {
+     "w": "yes",
+     "start": 32.54,
+     "end": 32.54
+    },
+    {
+     "w": "i",
+     "start": 32.52,
+     "end": 32.62
+    },
+    {
+     "w": "speak",
+     "start": 32.62,
+     "end": 32.82
+    },
+    {
+     "w": "english",
+     "start": 32.82,
+     "end": 33.34
+    },
+    {
+     "w": "but",
+     "start": 33.36,
+     "end": 33.78
+    },
+    {
+     "w": "i",
+     "start": 33.8,
+     "end": 34.0
+    },
+    {
+     "w": "do",
+     "start": 34.02,
+     "end": 34.11
+    },
+    {
+     "w": "not",
+     "start": 34.22,
+     "end": 34.4
+    },
+    {
+     "w": "speak",
+     "start": 34.4,
+     "end": 34.72
+    },
+    {
+     "w": "chinese",
+     "start": 34.74,
+     "end": 35.34
+    },
+    {
+     "w": "do",
+     "start": 35.96,
+     "end": 36.2
+    },
+    {
+     "w": "you",
+     "start": 36.22,
+     "end": 36.28
+    },
+    {
+     "w": "speak",
+     "start": 36.36,
+     "end": 36.64
+    },
+    {
+     "w": "chinese",
+     "start": 36.64,
+     "end": 37.0
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 38.74,
+   "end": 43.36,
+   "text": "No, I don’t speak Chinese. Does she speak Chinese?",
+   "words": [
+    {
+     "w": "no",
+     "start": 38.76,
+     "end": 38.76
+    },
+    {
+     "w": "i",
+     "start": 38.74,
+     "end": 39.08
+    },
+    {
+     "w": "dont",
+     "start": 39.1,
+     "end": 39.1
+    },
+    {
+     "w": "speak",
+     "start": 39.12,
+     "end": 39.12
+    },
+    {
+     "w": "chinese",
+     "start": 39.14,
+     "end": 39.14
+    },
+    {
+     "w": "does",
+     "start": 39.16,
+     "end": 39.16
+    },
+    {
+     "w": "she",
+     "start": 39.18,
+     "end": 39.18
+    },
+    {
+     "w": "speak",
+     "start": 39.2,
+     "end": 39.2
+    },
+    {
+     "w": "chinese",
+     "start": 39.22,
+     "end": 39.22
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 43.36,
+   "end": 51.28,
+   "text": "No, she doesn’t speak Chinese either. She speaks Spanish. Do you guys speak Spanish?",
+   "words": [
+    {
+     "w": "no",
+     "start": 43.36,
+     "end": 43.94
+    },
+    {
+     "w": "she",
+     "start": 44.32,
+     "end": 44.5
+    },
+    {
+     "w": "doesnt",
+     "start": 44.5,
+     "end": 44.84
+    },
+    {
+     "w": "speak",
+     "start": 44.84,
+     "end": 45.1
+    },
+    {
+     "w": "chinese",
+     "start": 45.1,
+     "end": 45.58
+    },
+    {
+     "w": "either",
+     "start": 45.58,
+     "end": 45.96
+    },
+    {
+     "w": "she",
+     "start": 46.48,
+     "end": 46.7
+    },
+    {
+     "w": "speaks",
+     "start": 46.7,
+     "end": 47.0
+    },
+    {
+     "w": "spanish",
+     "start": 47.0,
+     "end": 47.42
+    },
+    {
+     "w": "do",
+     "start": 47.92,
+     "end": 48.34
+    },
+    {
+     "w": "you",
+     "start": 48.34,
+     "end": 48.5
+    },
+    {
+     "w": "guys",
+     "start": 48.5,
+     "end": 48.76
+    },
+    {
+     "w": "speak",
+     "start": 48.76,
+     "end": 49.08
+    },
+    {
+     "w": "spanish",
+     "start": 49.08,
+     "end": 49.48
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 51.28,
+   "end": 56.6,
+   "text": "Yes, we speak Spanish. And you guys? Do you guys speak Spanish?",
+   "words": [
+    {
+     "w": "yes",
+     "start": 51.3,
+     "end": 51.3
+    },
+    {
+     "w": "we",
+     "start": 51.28,
+     "end": 51.54
+    },
+    {
+     "w": "speak",
+     "start": 51.54,
+     "end": 51.76
+    },
+    {
+     "w": "spanish",
+     "start": 51.76,
+     "end": 52.16
+    },
+    {
+     "w": "and",
+     "start": 53.02,
+     "end": 53.28
+    },
+    {
+     "w": "you",
+     "start": 53.28,
+     "end": 53.48
+    },
+    {
+     "w": "guys",
+     "start": 53.48,
+     "end": 53.9
+    },
+    {
+     "w": "do",
+     "start": 54.58,
+     "end": 54.84
+    },
+    {
+     "w": "you",
+     "start": 54.84,
+     "end": 55.14
+    },
+    {
+     "w": "guys",
+     "start": 55.14,
+     "end": 55.44
+    },
+    {
+     "w": "speak",
+     "start": 55.44,
+     "end": 55.82
+    },
+    {
+     "w": "spanish",
+     "start": 55.82,
+     "end": 56.34
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 56.6,
+   "end": 63.38,
+   "text": "No, we don’t speak Spanish. But we speak a bit of Italian.",
+   "words": [
+    {
+     "w": "no",
+     "start": 56.6,
+     "end": 57.78
+    },
+    {
+     "w": "we",
+     "start": 57.84,
+     "end": 57.96
+    },
+    {
+     "w": "dont",
+     "start": 57.96,
+     "end": 58.22
+    },
+    {
+     "w": "speak",
+     "start": 58.22,
+     "end": 58.44
+    },
+    {
+     "w": "spanish",
+     "start": 58.44,
+     "end": 58.92
+    },
+    {
+     "w": "but",
+     "start": 59.22,
+     "end": 59.62
+    },
+    {
+     "w": "we",
+     "start": 59.62,
+     "end": 59.74
+    },
+    {
+     "w": "speak",
+     "start": 59.76,
+     "end": 59.88
+    },
+    {
+     "w": "a",
+     "start": 60.02,
+     "end": 60.22
+    },
+    {
+     "w": "bit",
+     "start": 60.22,
+     "end": 60.34
+    },
+    {
+     "w": "of",
+     "start": 60.34,
+     "end": 60.44
+    },
+    {
+     "w": "italian",
+     "start": 60.44,
+     "end": 60.9
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 63.38,
+   "end": 79.52,
+   "lines": [
+    "Ya que aprendiste cómo crear frases afirmativas en inglés en el presente simple, aprendemos a crear frases negativas. Así es cómo decir “no hablo.” Escucha y repite."
+   ],
+   "words": [
+    {
+     "w": "ya",
+     "start": 63.38,
+     "end": 63.78
+    },
+    {
+     "w": "que",
+     "start": 63.78,
+     "end": 63.98
+    },
+    {
+     "w": "aprendiste",
+     "start": 63.98,
+     "end": 64.62
+    },
+    {
+     "w": "como",
+     "start": 64.62,
+     "end": 65.08
+    },
+    {
+     "w": "crear",
+     "start": 65.08,
+     "end": 65.48
+    },
+    {
+     "w": "frases",
+     "start": 65.48,
+     "end": 65.98
+    },
+    {
+     "w": "afirmativas",
+     "start": 65.98,
+     "end": 66.7
+    },
+    {
+     "w": "en",
+     "start": 66.7,
+     "end": 67.02
+    },
+    {
+     "w": "ingles",
+     "start": 67.02,
+     "end": 67.28
+    },
+    {
+     "w": "en",
+     "start": 67.28,
+     "end": 67.72
+    },
+    {
+     "w": "el",
+     "start": 67.72,
+     "end": 67.84
+    },
+    {
+     "w": "presente",
+     "start": 67.84,
+     "end": 68.14
+    },
+    {
+     "w": "simple",
+     "start": 68.14,
+     "end": 68.6
+    },
+    {
+     "w": "aprendemos",
+     "start": 69.16,
+     "end": 69.86
+    },
+    {
+     "w": "a",
+     "start": 69.86,
+     "end": 70.02
+    },
+    {
+     "w": "crear",
+     "start": 70.02,
+     "end": 70.42
+    },
+    {
+     "w": "frases",
+     "start": 70.42,
+     "end": 71.02
+    },
+    {
+     "w": "negativas",
+     "start": 71.02,
+     "end": 71.66
+    },
+    {
+     "w": "asi",
+     "start": 72.54,
+     "end": 72.96
+    },
+    {
+     "w": "es",
+     "start": 72.96,
+     "end": 73.16
+    },
+    {
+     "w": "como",
+     "start": 73.16,
+     "end": 73.38
+    },
+    {
+     "w": "decir",
+     "start": 73.38,
+     "end": 73.76
+    },
+    {
+     "w": "no",
+     "start": 73.76,
+     "end": 75.24
+    },
+    {
+     "w": "hablo",
+     "start": 75.24,
+     "end": 75.98
+    },
+    {
+     "w": "escucha",
+     "start": 76.38,
+     "end": 77.0
+    },
+    {
+     "w": "y",
+     "start": 77.0,
+     "end": 77.78
+    },
+    {
+     "w": "repite",
+     "start": 77.78,
+     "end": 78.82
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 79.52,
+   "end": 86.6,
+   "text": "I don’t speak. I don’t speak.",
+   "words": [
+    {
+     "w": "i",
+     "start": 79.52,
+     "end": 79.8
+    },
+    {
+     "w": "dont",
+     "start": 79.8,
+     "end": 80.46
+    },
+    {
+     "w": "speak",
+     "start": 80.46,
+     "end": 80.74
+    },
+    {
+     "w": "i",
+     "start": 83.2,
+     "end": 83.56
+    },
+    {
+     "w": "dont",
+     "start": 83.56,
+     "end": 84.2
+    },
+    {
+     "w": "speak",
+     "start": 84.2,
+     "end": 84.5
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 86.6,
+   "pauseAt": 88.96,
+   "spanish": "Di, “No hablo.”",
+   "expected": [
+    "I don't speak."
+   ],
+   "end": 89.22
+  },
+  {
+   "t": "english",
+   "start": 89.22,
+   "end": 92.98,
+   "text": "I don’t speak. I don’t speak.",
+   "words": [
+    {
+     "w": "i",
+     "start": 89.22,
+     "end": 89.48
+    },
+    {
+     "w": "dont",
+     "start": 89.48,
+     "end": 89.8
+    },
+    {
+     "w": "speak",
+     "start": 89.8,
+     "end": 90.06
+    },
+    {
+     "w": "i",
+     "start": 92.22,
+     "end": 92.4
+    },
+    {
+     "w": "dont",
+     "start": 92.4,
+     "end": 92.72
+    },
+    {
+     "w": "speak",
+     "start": 92.72,
+     "end": 92.98
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 92.98,
+   "pauseAt": 98.12,
+   "spanish": "¿Cómo se dice “no hablas”?",
+   "expected": [
+    "You don't speak."
+   ],
+   "end": 98.28
+  },
+  {
+   "t": "english",
+   "start": 98.28,
+   "end": 107.74,
+   "text": "You don’t speak. You don’t speak.",
+   "words": [
+    {
+     "w": "you",
+     "start": 98.28,
+     "end": 99.28
+    },
+    {
+     "w": "dont",
+     "start": 99.28,
+     "end": 99.94
+    },
+    {
+     "w": "speak",
+     "start": 99.94,
+     "end": 100.24
+    },
+    {
+     "w": "you",
+     "start": 102.5,
+     "end": 103.72
+    },
+    {
+     "w": "dont",
+     "start": 103.72,
+     "end": 104.52
+    },
+    {
+     "w": "speak",
+     "start": 104.52,
+     "end": 104.84
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 107.74,
+   "pauseAt": 110.72,
+   "spanish": "Ahora di, “No hablas inglés.”",
+   "expected": [
+    "You don’t speak English."
+   ],
+   "end": 111.32,
+   "leadEnd": 108.7
+  },
+  {
+   "t": "english",
+   "start": 111.32,
+   "end": 123.14,
+   "text": "You don’t speak English. You don’t speak English.",
+   "words": [
+    {
+     "w": "you",
+     "start": 111.32,
+     "end": 112.24
+    },
+    {
+     "w": "dont",
+     "start": 112.24,
+     "end": 112.78
+    },
+    {
+     "w": "speak",
+     "start": 112.78,
+     "end": 113.06
+    },
+    {
+     "w": "english",
+     "start": 113.06,
+     "end": 113.6
+    },
+    {
+     "w": "you",
+     "start": 116.36,
+     "end": 117.28
+    },
+    {
+     "w": "dont",
+     "start": 117.28,
+     "end": 117.82
+    },
+    {
+     "w": "speak",
+     "start": 117.82,
+     "end": 118.1
+    },
+    {
+     "w": "english",
+     "start": 118.1,
+     "end": 118.64
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 123.14,
+   "end": 157.06,
+   "lines": [
+    "¿Notaste que para crear una frase negativa, necesitas poner el verbo auxiliar “do” y después el marcador negativo ‘not’ antes del verbo? Cuando hablamos, combinamos las  palabras para crear la contracción negativa “don’t” o “doesn’t”. Con la tercera persona singular (he, she, it, dog, man, woman), necesitamos usar la segunda conjugación de “do” que es “does”"
+   ],
+   "words": [
+    {
+     "w": "notaste",
+     "start": 123.16,
+     "end": 123.16
+    },
+    {
+     "w": "que",
+     "start": 123.14,
+     "end": 123.4
+    },
+    {
+     "w": "para",
+     "start": 123.4,
+     "end": 123.76
+    },
+    {
+     "w": "crear",
+     "start": 123.76,
+     "end": 124.2
+    },
+    {
+     "w": "una",
+     "start": 124.2,
+     "end": 124.5
+    },
+    {
+     "w": "frase",
+     "start": 124.5,
+     "end": 124.78
+    },
+    {
+     "w": "negativa",
+     "start": 124.78,
+     "end": 125.36
+    },
+    {
+     "w": "necesitas",
+     "start": 125.36,
+     "end": 126.02
+    },
+    {
+     "w": "poner",
+     "start": 126.02,
+     "end": 126.42
+    },
+    {
+     "w": "el",
+     "start": 126.44,
+     "end": 126.57
+    },
+    {
+     "w": "verbo",
+     "start": 126.72,
+     "end": 126.98
+    },
+    {
+     "w": "auxiliar",
+     "start": 126.98,
+     "end": 127.24
+    },
+    {
+     "w": "do",
+     "start": 127.24,
+     "end": 127.7
+    },
+    {
+     "w": "y",
+     "start": 127.72,
+     "end": 127.9
+    },
+    {
+     "w": "despues",
+     "start": 128.1,
+     "end": 128.38
+    },
+    {
+     "w": "el",
+     "start": 128.38,
+     "end": 128.72
+    },
+    {
+     "w": "marcador",
+     "start": 128.72,
+     "end": 129.38
+    },
+    {
+     "w": "negativo",
+     "start": 129.4,
+     "end": 129.66
+    },
+    {
+     "w": "not",
+     "start": 129.94,
+     "end": 130.32
+    },
+    {
+     "w": "antes",
+     "start": 130.82,
+     "end": 131.06
+    },
+    {
+     "w": "del",
+     "start": 131.06,
+     "end": 131.26
+    },
+    {
+     "w": "verbo",
+     "start": 131.26,
+     "end": 131.56
+    },
+    {
+     "w": "cuando",
+     "start": 132.42,
+     "end": 132.62
+    },
+    {
+     "w": "hablamos",
+     "start": 132.62,
+     "end": 133.14
+    },
+    {
+     "w": "combinamos",
+     "start": 133.14,
+     "end": 134.1
+    },
+    {
+     "w": "las",
+     "start": 134.1,
+     "end": 134.28
+    },
+    {
+     "w": "palabras",
+     "start": 134.28,
+     "end": 134.58
+    },
+    {
+     "w": "para",
+     "start": 134.58,
+     "end": 134.94
+    },
+    {
+     "w": "crear",
+     "start": 134.94,
+     "end": 135.34
+    },
+    {
+     "w": "la",
+     "start": 135.34,
+     "end": 135.8
+    },
+    {
+     "w": "contraccion",
+     "start": 135.8,
+     "end": 136.58
+    },
+    {
+     "w": "negativa",
+     "start": 136.58,
+     "end": 137.12
+    },
+    {
+     "w": "dont",
+     "start": 137.12,
+     "end": 138.3
+    },
+    {
+     "w": "o",
+     "start": 138.32,
+     "end": 138.53
+    },
+    {
+     "w": "doesnt",
+     "start": 138.76,
+     "end": 140.2
+    },
+    {
+     "w": "con",
+     "start": 140.7,
+     "end": 141.2
+    },
+    {
+     "w": "la",
+     "start": 141.2,
+     "end": 141.42
+    },
+    {
+     "w": "tercera",
+     "start": 141.42,
+     "end": 141.94
+    },
+    {
+     "w": "persona",
+     "start": 141.94,
+     "end": 142.46
+    },
+    {
+     "w": "singular",
+     "start": 142.46,
+     "end": 142.96
+    },
+    {
+     "w": "he",
+     "start": 143.7,
+     "end": 144.24
+    },
+    {
+     "w": "she",
+     "start": 144.62,
+     "end": 145.32
+    },
+    {
+     "w": "it",
+     "start": 146.1,
+     "end": 146.42
+    },
+    {
+     "w": "dog",
+     "start": 147.1,
+     "end": 147.54
+    },
+    {
+     "w": "man",
+     "start": 148.16,
+     "end": 148.54
+    },
+    {
+     "w": "woman",
+     "start": 149.26,
+     "end": 149.62
+    },
+    {
+     "w": "necesitamos",
+     "start": 150.3,
+     "end": 151.06
+    },
+    {
+     "w": "usar",
+     "start": 151.06,
+     "end": 151.38
+    },
+    {
+     "w": "la",
+     "start": 151.38,
+     "end": 151.58
+    },
+    {
+     "w": "segunda",
+     "start": 151.58,
+     "end": 152.24
+    },
+    {
+     "w": "conjugacion",
+     "start": 152.24,
+     "end": 153.3
+    },
+    {
+     "w": "de",
+     "start": 153.3,
+     "end": 153.52
+    },
+    {
+     "w": "do",
+     "start": 153.52,
+     "end": 153.82
+    },
+    {
+     "w": "que",
+     "start": 154.2,
+     "end": 154.38
+    },
+    {
+     "w": "es",
+     "start": 154.38,
+     "end": 154.72
+    },
+    {
+     "w": "does",
+     "start": 154.72,
+     "end": 155.84
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 157.06,
+   "pauseAt": 160.65,
+   "spanish": "Ahora intenta decir “él no habla.”",
+   "expected": [
+    "He doesn't speak."
+   ],
+   "end": 160.8
+  },
+  {
+   "t": "english",
+   "start": 160.8,
+   "end": 168.38,
+   "text": "He doesn’t speak. He doesn’t speak.",
+   "words": [
+    {
+     "w": "he",
+     "start": 160.8,
+     "end": 161.0
+    },
+    {
+     "w": "doesnt",
+     "start": 161.0,
+     "end": 161.4
+    },
+    {
+     "w": "speak",
+     "start": 161.4,
+     "end": 161.72
+    },
+    {
+     "w": "he",
+     "start": 164.02,
+     "end": 165.02
+    },
+    {
+     "w": "doesnt",
+     "start": 165.02,
+     "end": 165.44
+    },
+    {
+     "w": "speak",
+     "start": 165.44,
+     "end": 165.74
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 168.38,
+   "pauseAt": 173.11,
+   "spanish": "Otra vez, ¿cómo se dice “él no habla”?",
+   "expected": [
+    "He doesn't speak."
+   ],
+   "end": 173.26,
+   "leadEnd": 169.56
+  },
+  {
+   "t": "english",
+   "start": 173.26,
+   "end": 181.06,
+   "text": "He doesn’t speak. He doesn’t speak.",
+   "words": [
+    {
+     "w": "he",
+     "start": 173.26,
+     "end": 173.74
+    },
+    {
+     "w": "doesnt",
+     "start": 173.74,
+     "end": 174.42
+    },
+    {
+     "w": "speak",
+     "start": 174.42,
+     "end": 174.84
+    },
+    {
+     "w": "he",
+     "start": 176.26,
+     "end": 177.14
+    },
+    {
+     "w": "doesnt",
+     "start": 177.14,
+     "end": 177.86
+    },
+    {
+     "w": "speak",
+     "start": 177.86,
+     "end": 178.32
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 181.06,
+   "pauseAt": 183.46,
+   "spanish": "Ahora di “ella no habla”.",
+   "expected": [
+    "She doesn't speak."
+   ],
+   "end": 183.68,
+   "leadEnd": 181.6
+  },
+  {
+   "t": "english",
+   "start": 183.68,
+   "end": 193.48,
+   "text": "She doesn’t speak. She doesn’t speak.",
+   "words": [
+    {
+     "w": "she",
+     "start": 183.68,
+     "end": 184.38
+    },
+    {
+     "w": "doesnt",
+     "start": 184.38,
+     "end": 184.8
+    },
+    {
+     "w": "speak",
+     "start": 184.8,
+     "end": 185.12
+    },
+    {
+     "w": "she",
+     "start": 186.22,
+     "end": 187.62
+    },
+    {
+     "w": "doesnt",
+     "start": 187.62,
+     "end": 188.06
+    },
+    {
+     "w": "speak",
+     "start": 188.06,
+     "end": 188.34
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 193.48,
+   "pauseAt": 196.47,
+   "spanish": "Ahora di “ella no habla inglés”.",
+   "expected": [
+    "She doesn’t speak English."
+   ],
+   "end": 196.62,
+   "leadEnd": 194.26
+  },
+  {
+   "t": "english",
+   "start": 196.62,
+   "end": 201.02,
+   "text": "She doesn’t speak English.",
+   "words": [
+    {
+     "w": "she",
+     "start": 196.64,
+     "end": 196.64
+    },
+    {
+     "w": "doesnt",
+     "start": 196.62,
+     "end": 198.02
+    },
+    {
+     "w": "speak",
+     "start": 198.02,
+     "end": 198.34
+    },
+    {
+     "w": "english",
+     "start": 198.34,
+     "end": 198.76
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 201.02,
+   "pauseAt": 205.68,
+   "spanish": "¿Te acuerdas cómo decir “nosotros hablamos”?",
+   "expected": [
+    "We speak."
+   ],
+   "end": 210.7
+  },
+  {
+   "t": "english",
+   "start": 206.34,
+   "end": 209.6,
+   "text": "We speak. We speak.",
+   "words": [
+    {
+     "w": "we",
+     "start": 206.34,
+     "end": 206.9
+    },
+    {
+     "w": "speak",
+     "start": 206.9,
+     "end": 207.54
+    },
+    {
+     "w": "we",
+     "start": 208.34,
+     "end": 208.9
+    },
+    {
+     "w": "speak",
+     "start": 208.9,
+     "end": 209.54
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 210.7,
+   "pauseAt": 214.49,
+   "spanish": "Ahora intenta decir “no hablamos”.",
+   "expected": [
+    "We don't speak."
+   ],
+   "end": 214.64
+  },
+  {
+   "t": "english",
+   "start": 214.64,
+   "end": 220.12,
+   "text": "We don’t speak. We don’t speak.",
+   "words": [
+    {
+     "w": "we",
+     "start": 214.64,
+     "end": 215.64
+    },
+    {
+     "w": "dont",
+     "start": 215.64,
+     "end": 216.0
+    },
+    {
+     "w": "speak",
+     "start": 216.0,
+     "end": 216.24
+    },
+    {
+     "w": "we",
+     "start": 217.34,
+     "end": 218.48
+    },
+    {
+     "w": "dont",
+     "start": 218.48,
+     "end": 218.9
+    },
+    {
+     "w": "speak",
+     "start": 218.9,
+     "end": 219.12
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 220.12,
+   "pauseAt": 224.59,
+   "spanish": "Y ¿cómo se dice “no hablamos inglés”?",
+   "expected": [
+    "We don't speak English."
+   ],
+   "end": 224.74
+  },
+  {
+   "t": "english",
+   "start": 224.74,
+   "end": 235.48,
+   "text": "We don’t speak English. We don’t speak English.",
+   "words": [
+    {
+     "w": "we",
+     "start": 224.74,
+     "end": 226.28
+    },
+    {
+     "w": "dont",
+     "start": 226.18,
+     "end": 226.78
+    },
+    {
+     "w": "speak",
+     "start": 226.78,
+     "end": 227.04
+    },
+    {
+     "w": "english",
+     "start": 227.04,
+     "end": 227.42
+    },
+    {
+     "w": "we",
+     "start": 230.32,
+     "end": 231.46
+    },
+    {
+     "w": "dont",
+     "start": 231.46,
+     "end": 232.08
+    },
+    {
+     "w": "speak",
+     "start": 232.08,
+     "end": 232.36
+    },
+    {
+     "w": "english",
+     "start": 232.36,
+     "end": 232.8
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 235.48,
+   "end": 265.28,
+   "lines": [
+    "Usamos “nosotros” y “we” (primera persona plural) en español e inglés cuando nos referimos a un grupo que nos incluye y a otras personas. Usamos “they” (tercera persona plural) cuando nos referimos a un grupo de personas que no nos incluye, no importa si son hombres o mujeres. En inglés, usamos “they” para “ellos” y “ellas”"
+   ],
+   "words": [
+    {
+     "w": "usamos",
+     "start": 235.48,
+     "end": 236.06
+    },
+    {
+     "w": "nosotros",
+     "start": 236.06,
+     "end": 236.7
+    },
+    {
+     "w": "y",
+     "start": 236.7,
+     "end": 237.18
+    },
+    {
+     "w": "we",
+     "start": 237.18,
+     "end": 237.8
+    },
+    {
+     "w": "primera",
+     "start": 238.18,
+     "end": 238.74
+    },
+    {
+     "w": "persona",
+     "start": 238.74,
+     "end": 239.2
+    },
+    {
+     "w": "plural",
+     "start": 239.2,
+     "end": 239.54
+    },
+    {
+     "w": "en",
+     "start": 240.22,
+     "end": 240.34
+    },
+    {
+     "w": "espanol",
+     "start": 240.34,
+     "end": 240.98
+    },
+    {
+     "w": "e",
+     "start": 240.98,
+     "end": 241.56
+    },
+    {
+     "w": "ingles",
+     "start": 241.56,
+     "end": 241.88
+    },
+    {
+     "w": "cuando",
+     "start": 241.88,
+     "end": 242.48
+    },
+    {
+     "w": "nos",
+     "start": 242.48,
+     "end": 242.88
+    },
+    {
+     "w": "referimos",
+     "start": 242.88,
+     "end": 244.44
+    },
+    {
+     "w": "a",
+     "start": 244.44,
+     "end": 244.62
+    },
+    {
+     "w": "un",
+     "start": 244.62,
+     "end": 244.84
+    },
+    {
+     "w": "grupo",
+     "start": 244.84,
+     "end": 245.14
+    },
+    {
+     "w": "que",
+     "start": 245.14,
+     "end": 245.76
+    },
+    {
+     "w": "nos",
+     "start": 245.76,
+     "end": 245.98
+    },
+    {
+     "w": "incluye",
+     "start": 245.98,
+     "end": 246.9
+    },
+    {
+     "w": "y",
+     "start": 246.9,
+     "end": 247.2
+    },
+    {
+     "w": "a",
+     "start": 247.2,
+     "end": 247.34
+    },
+    {
+     "w": "otras",
+     "start": 247.34,
+     "end": 247.58
+    },
+    {
+     "w": "personas",
+     "start": 247.58,
+     "end": 248.12
+    },
+    {
+     "w": "usamos",
+     "start": 248.7,
+     "end": 249.22
+    },
+    {
+     "w": "they",
+     "start": 249.42,
+     "end": 250.42
+    },
+    {
+     "w": "tercera",
+     "start": 250.12,
+     "end": 251.04
+    },
+    {
+     "w": "persona",
+     "start": 251.04,
+     "end": 251.52
+    },
+    {
+     "w": "plural",
+     "start": 251.52,
+     "end": 251.88
+    },
+    {
+     "w": "cuando",
+     "start": 252.52,
+     "end": 252.72
+    },
+    {
+     "w": "nos",
+     "start": 252.72,
+     "end": 253.08
+    },
+    {
+     "w": "referimos",
+     "start": 253.08,
+     "end": 254.1
+    },
+    {
+     "w": "a",
+     "start": 254.1,
+     "end": 254.46
+    },
+    {
+     "w": "un",
+     "start": 254.46,
+     "end": 254.58
+    },
+    {
+     "w": "grupo",
+     "start": 254.58,
+     "end": 254.76
+    },
+    {
+     "w": "de",
+     "start": 254.76,
+     "end": 254.94
+    },
+    {
+     "w": "personas",
+     "start": 254.94,
+     "end": 255.32
+    },
+    {
+     "w": "que",
+     "start": 255.32,
+     "end": 255.72
+    },
+    {
+     "w": "no",
+     "start": 255.72,
+     "end": 256.1
+    },
+    {
+     "w": "nos",
+     "start": 256.1,
+     "end": 256.32
+    },
+    {
+     "w": "incluye",
+     "start": 256.32,
+     "end": 256.92
+    },
+    {
+     "w": "no",
+     "start": 257.36,
+     "end": 257.48
+    },
+    {
+     "w": "importa",
+     "start": 257.48,
+     "end": 257.78
+    },
+    {
+     "w": "si",
+     "start": 257.78,
+     "end": 258.02
+    },
+    {
+     "w": "son",
+     "start": 258.02,
+     "end": 258.22
+    },
+    {
+     "w": "hombres",
+     "start": 258.22,
+     "end": 258.56
+    },
+    {
+     "w": "o",
+     "start": 258.56,
+     "end": 259.22
+    },
+    {
+     "w": "mujeres",
+     "start": 259.22,
+     "end": 259.64
+    },
+    {
+     "w": "en",
+     "start": 260.36,
+     "end": 260.56
+    },
+    {
+     "w": "ingles",
+     "start": 260.56,
+     "end": 260.72
+    },
+    {
+     "w": "usamos",
+     "start": 260.72,
+     "end": 261.38
+    },
+    {
+     "w": "they",
+     "start": 261.92,
+     "end": 262.62
+    },
+    {
+     "w": "para",
+     "start": 262.42,
+     "end": 263.14
+    },
+    {
+     "w": "ellos",
+     "start": 263.14,
+     "end": 263.48
+    },
+    {
+     "w": "y",
+     "start": 263.48,
+     "end": 264.16
+    },
+    {
+     "w": "ellas",
+     "start": 264.16,
+     "end": 264.54
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 265.28,
+   "pauseAt": 267.89,
+   "spanish": "Di “ellos no hablan”.",
+   "expected": [
+    "They don't speak."
+   ],
+   "end": 268.04
+  },
+  {
+   "t": "english",
+   "start": 268.04,
+   "end": 278.86,
+   "text": "They don’t speak. They don’t speak.",
+   "words": [
+    {
+     "w": "they",
+     "start": 268.04,
+     "end": 269.22
+    },
+    {
+     "w": "dont",
+     "start": 269.18,
+     "end": 269.68
+    },
+    {
+     "w": "speak",
+     "start": 269.68,
+     "end": 269.98
+    },
+    {
+     "w": "they",
+     "start": 272.92,
+     "end": 273.64
+    },
+    {
+     "w": "dont",
+     "start": 273.64,
+     "end": 274.2
+    },
+    {
+     "w": "speak",
+     "start": 274.2,
+     "end": 274.5
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 278.86,
+   "pauseAt": 281.82,
+   "spanish": "Di “ellos no hablan inglés”.",
+   "expected": [
+    "They don’t speak English."
+   ],
+   "end": 282.4
+  },
+  {
+   "t": "english",
+   "start": 282.4,
+   "end": 289.64,
+   "text": "They don’t speak English. They don’t speak English.",
+   "words": [
+    {
+     "w": "they",
+     "start": 282.4,
+     "end": 283.04
+    },
+    {
+     "w": "dont",
+     "start": 283.04,
+     "end": 283.34
+    },
+    {
+     "w": "speak",
+     "start": 283.34,
+     "end": 283.62
+    },
+    {
+     "w": "english",
+     "start": 283.62,
+     "end": 284.18
+    },
+    {
+     "w": "they",
+     "start": 285.9,
+     "end": 286.54
+    },
+    {
+     "w": "dont",
+     "start": 286.54,
+     "end": 286.84
+    },
+    {
+     "w": "speak",
+     "start": 286.84,
+     "end": 287.12
+    },
+    {
+     "w": "english",
+     "start": 287.12,
+     "end": 287.68
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 289.64,
+   "pauseAt": 292.57,
+   "spanish": "Y ¿cómo se dice “ustedes no hablan”?",
+   "expected": [
+    "You guys don’t speak."
+   ],
+   "end": 292.72
+  },
+  {
+   "t": "english",
+   "start": 292.72,
+   "end": 301.66,
+   "text": "You guys don’t speak. You guys don’t speak.",
+   "words": [
+    {
+     "w": "you",
+     "start": 292.72,
+     "end": 293.4
+    },
+    {
+     "w": "guys",
+     "start": 293.4,
+     "end": 293.86
+    },
+    {
+     "w": "dont",
+     "start": 293.86,
+     "end": 294.48
+    },
+    {
+     "w": "speak",
+     "start": 294.48,
+     "end": 294.84
+    },
+    {
+     "w": "you",
+     "start": 298.04,
+     "end": 298.72
+    },
+    {
+     "w": "guys",
+     "start": 298.72,
+     "end": 299.18
+    },
+    {
+     "w": "dont",
+     "start": 299.18,
+     "end": 299.8
+    },
+    {
+     "w": "speak",
+     "start": 299.8,
+     "end": 300.16
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 301.66,
+   "pauseAt": 306.56,
+   "spanish": "Y ¿cómo se dice? “ustedes no hablan inglés.”",
+   "expected": [
+    "You guys don’t speak English."
+   ],
+   "end": 306.84
+  },
+  {
+   "t": "english",
+   "start": 306.84,
+   "end": 316.54,
+   "text": "You guys don’t speak English. You guys don’t speak English.",
+   "words": [
+    {
+     "w": "you",
+     "start": 306.84,
+     "end": 307.34
+    },
+    {
+     "w": "guys",
+     "start": 307.34,
+     "end": 307.66
+    },
+    {
+     "w": "dont",
+     "start": 307.66,
+     "end": 308.06
+    },
+    {
+     "w": "speak",
+     "start": 308.06,
+     "end": 308.3
+    },
+    {
+     "w": "english",
+     "start": 308.3,
+     "end": 308.84
+    },
+    {
+     "w": "you",
+     "start": 312.48,
+     "end": 312.98
+    },
+    {
+     "w": "guys",
+     "start": 312.98,
+     "end": 313.3
+    },
+    {
+     "w": "dont",
+     "start": 313.3,
+     "end": 313.7
+    },
+    {
+     "w": "speak",
+     "start": 313.7,
+     "end": 313.94
+    },
+    {
+     "w": "english",
+     "start": 313.94,
+     "end": 314.48
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 316.54,
+   "end": 346.86,
+   "lines": [
+    "Ahora sabes cómo conjugar un verbo regular en inglés de forma afirmativa y negativa en el presente simple. Sin embargo, no sabes cómo crear preguntas con los verbos regulares en el presente simple. Aprendemos a hacerlo ahora. Así es",
+    "cómo preguntas, “¿hablas inglés?”. Escucha y repite."
+   ],
+   "words": [
+    {
+     "w": "ahora",
+     "start": 316.54,
+     "end": 317.62
+    },
+    {
+     "w": "sabes",
+     "start": 317.52,
+     "end": 317.86
+    },
+    {
+     "w": "como",
+     "start": 317.86,
+     "end": 318.72
+    },
+    {
+     "w": "conjugar",
+     "start": 318.72,
+     "end": 319.42
+    },
+    {
+     "w": "un",
+     "start": 319.42,
+     "end": 319.76
+    },
+    {
+     "w": "verbo",
+     "start": 319.76,
+     "end": 320.42
+    },
+    {
+     "w": "regular",
+     "start": 320.42,
+     "end": 321.54
+    },
+    {
+     "w": "en",
+     "start": 321.54,
+     "end": 322.18
+    },
+    {
+     "w": "ingles",
+     "start": 322.18,
+     "end": 322.4
+    },
+    {
+     "w": "de",
+     "start": 322.4,
+     "end": 322.76
+    },
+    {
+     "w": "forma",
+     "start": 322.76,
+     "end": 323.14
+    },
+    {
+     "w": "afirmativa",
+     "start": 323.14,
+     "end": 324.42
+    },
+    {
+     "w": "y",
+     "start": 324.42,
+     "end": 325.28
+    },
+    {
+     "w": "negativa",
+     "start": 325.28,
+     "end": 325.72
+    },
+    {
+     "w": "en",
+     "start": 325.72,
+     "end": 326.52
+    },
+    {
+     "w": "el",
+     "start": 326.52,
+     "end": 326.64
+    },
+    {
+     "w": "presente",
+     "start": 326.64,
+     "end": 327.02
+    },
+    {
+     "w": "simple",
+     "start": 327.02,
+     "end": 327.5
+    },
+    {
+     "w": "sin",
+     "start": 327.5,
+     "end": 328.36
+    },
+    {
+     "w": "embargo",
+     "start": 328.36,
+     "end": 328.7
+    },
+    {
+     "w": "no",
+     "start": 329.26,
+     "end": 329.6
+    },
+    {
+     "w": "sabes",
+     "start": 329.6,
+     "end": 330.12
+    },
+    {
+     "w": "como",
+     "start": 330.12,
+     "end": 330.84
+    },
+    {
+     "w": "crear",
+     "start": 330.84,
+     "end": 331.36
+    },
+    {
+     "w": "preguntas",
+     "start": 331.36,
+     "end": 331.88
+    },
+    {
+     "w": "con",
+     "start": 331.88,
+     "end": 332.3
+    },
+    {
+     "w": "los",
+     "start": 332.3,
+     "end": 332.44
+    },
+    {
+     "w": "verbos",
+     "start": 332.44,
+     "end": 332.86
+    },
+    {
+     "w": "regulares",
+     "start": 332.86,
+     "end": 333.72
+    },
+    {
+     "w": "en",
+     "start": 333.72,
+     "end": 334.14
+    },
+    {
+     "w": "el",
+     "start": 334.14,
+     "end": 334.26
+    },
+    {
+     "w": "presente",
+     "start": 334.26,
+     "end": 334.62
+    },
+    {
+     "w": "simple",
+     "start": 334.62,
+     "end": 335.1
+    },
+    {
+     "w": "aprendemos",
+     "start": 336.12,
+     "end": 336.96
+    },
+    {
+     "w": "a",
+     "start": 336.96,
+     "end": 337.24
+    },
+    {
+     "w": "hacerlo",
+     "start": 337.24,
+     "end": 337.66
+    },
+    {
+     "w": "ahora",
+     "start": 337.66,
+     "end": 338.62
+    },
+    {
+     "w": "asi",
+     "start": 338.94,
+     "end": 340.26
+    },
+    {
+     "w": "es",
+     "start": 340.1,
+     "end": 340.46
+    },
+    {
+     "w": "como",
+     "start": 340.46,
+     "end": 341.04
+    },
+    {
+     "w": "preguntas",
+     "start": 341.04,
+     "end": 341.84
+    },
+    {
+     "w": "hablas",
+     "start": 342.72,
+     "end": 343.0
+    },
+    {
+     "w": "ingles",
+     "start": 343.0,
+     "end": 343.3
+    },
+    {
+     "w": "escucha",
+     "start": 344.14,
+     "end": 345.1
+    },
+    {
+     "w": "y",
+     "start": 345.1,
+     "end": 345.42
+    },
+    {
+     "w": "repite",
+     "start": 345.42,
+     "end": 346.16
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 346.86,
+   "end": 354.7,
+   "text": "Do you speak English? Do you speak English?",
+   "words": [
+    {
+     "w": "do",
+     "start": 346.86,
+     "end": 347.54
+    },
+    {
+     "w": "you",
+     "start": 347.54,
+     "end": 347.74
+    },
+    {
+     "w": "speak",
+     "start": 347.74,
+     "end": 348.04
+    },
+    {
+     "w": "english",
+     "start": 348.04,
+     "end": 348.5
+    },
+    {
+     "w": "do",
+     "start": 348.55,
+     "end": 348.55
+    },
+    {
+     "w": "you",
+     "start": 348.6,
+     "end": 348.6
+    },
+    {
+     "w": "speak",
+     "start": 348.65,
+     "end": 348.65
+    },
+    {
+     "w": "english",
+     "start": 348.7,
+     "end": 348.7
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 354.7,
+   "end": 361.0,
+   "lines": [
+    "¿Subiste la entonación al final de la pregunta como haces en español? Excelente."
+   ],
+   "words": [
+    {
+     "w": "subiste",
+     "start": 354.7,
+     "end": 355.38
+    },
+    {
+     "w": "la",
+     "start": 355.38,
+     "end": 355.58
+    },
+    {
+     "w": "entonacion",
+     "start": 355.58,
+     "end": 356.22
+    },
+    {
+     "w": "al",
+     "start": 356.22,
+     "end": 356.48
+    },
+    {
+     "w": "final",
+     "start": 356.48,
+     "end": 356.7
+    },
+    {
+     "w": "de",
+     "start": 356.7,
+     "end": 356.88
+    },
+    {
+     "w": "la",
+     "start": 356.88,
+     "end": 356.96
+    },
+    {
+     "w": "pregunta",
+     "start": 356.96,
+     "end": 357.26
+    },
+    {
+     "w": "como",
+     "start": 357.26,
+     "end": 357.62
+    },
+    {
+     "w": "haces",
+     "start": 357.62,
+     "end": 357.96
+    },
+    {
+     "w": "en",
+     "start": 357.96,
+     "end": 358.18
+    },
+    {
+     "w": "espanol",
+     "start": 358.18,
+     "end": 358.68
+    },
+    {
+     "w": "excelente",
+     "start": 359.66,
+     "end": 360.34
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 361.0,
+   "pauseAt": 363.9,
+   "spanish": "¿Cómo se dice “¿hablas inglés?”?",
+   "expected": [
+    "Do you speak English?"
+   ],
+   "end": 364.88
+  },
+  {
+   "t": "english",
+   "start": 364.88,
+   "end": 373.8,
+   "text": "Do you speak English? Do you speak English?",
+   "words": [
+    {
+     "w": "do",
+     "start": 364.9,
+     "end": 364.9
+    },
+    {
+     "w": "you",
+     "start": 364.88,
+     "end": 365.08
+    },
+    {
+     "w": "speak",
+     "start": 365.08,
+     "end": 365.36
+    },
+    {
+     "w": "english",
+     "start": 365.36,
+     "end": 365.84
+    },
+    {
+     "w": "do",
+     "start": 365.89,
+     "end": 366.34
+    },
+    {
+     "w": "you",
+     "start": 366.39,
+     "end": 366.84
+    },
+    {
+     "w": "speak",
+     "start": 366.89,
+     "end": 367.34
+    },
+    {
+     "w": "english",
+     "start": 367.39,
+     "end": 367.84
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 373.8,
+   "pauseAt": 377.86,
+   "spanish": "Otra vez, ¿cómo preguntar “¿hablas inglés?”?",
+   "expected": [
+    "Do you speak English?"
+   ],
+   "end": 378.64,
+   "leadEnd": 374.2
+  },
+  {
+   "t": "english",
+   "start": 378.64,
+   "end": 385.62,
+   "text": "Do you speak English?",
+   "words": [
+    {
+     "w": "do",
+     "start": 378.64,
+     "end": 378.8
+    },
+    {
+     "w": "you",
+     "start": 378.8,
+     "end": 378.98
+    },
+    {
+     "w": "speak",
+     "start": 378.98,
+     "end": 379.2
+    },
+    {
+     "w": "english",
+     "start": 379.2,
+     "end": 379.56
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 385.62,
+   "end": 388.54,
+   "lines": [
+    "Ahora solo escucha esta respuesta."
+   ],
+   "words": [
+    {
+     "w": "ahora",
+     "start": 385.62,
+     "end": 386.52
+    },
+    {
+     "w": "solo",
+     "start": 386.34,
+     "end": 386.76
+    },
+    {
+     "w": "escucha",
+     "start": 386.76,
+     "end": 387.6
+    },
+    {
+     "w": "esta",
+     "start": 387.6,
+     "end": 387.98
+    },
+    {
+     "w": "respuesta",
+     "start": 387.98,
+     "end": 388.54
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 388.54,
+   "end": 392.96,
+   "text": "Yes, I speak English.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 388.54,
+     "end": 390.22
+    },
+    {
+     "w": "i",
+     "start": 390.56,
+     "end": 390.78
+    },
+    {
+     "w": "speak",
+     "start": 390.78,
+     "end": 391.06
+    },
+    {
+     "w": "english",
+     "start": 391.06,
+     "end": 391.58
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 392.96,
+   "end": 400.72,
+   "lines": [
+    "Ella acaba de decir “sí, hablo inglés”. Escucha y repite la palabra para “sí” ."
+   ],
+   "words": [
+    {
+     "w": "ella",
+     "start": 392.96,
+     "end": 393.1
+    },
+    {
+     "w": "acaba",
+     "start": 393.1,
+     "end": 393.58
+    },
+    {
+     "w": "de",
+     "start": 393.58,
+     "end": 393.78
+    },
+    {
+     "w": "decir",
+     "start": 393.78,
+     "end": 394.14
+    },
+    {
+     "w": "si",
+     "start": 394.14,
+     "end": 394.96
+    },
+    {
+     "w": "hablo",
+     "start": 395.56,
+     "end": 395.9
+    },
+    {
+     "w": "ingles",
+     "start": 395.9,
+     "end": 396.18
+    },
+    {
+     "w": "escucha",
+     "start": 396.36,
+     "end": 397.6
+    },
+    {
+     "w": "y",
+     "start": 397.46,
+     "end": 397.84
+    },
+    {
+     "w": "repite",
+     "start": 397.84,
+     "end": 398.6
+    },
+    {
+     "w": "la",
+     "start": 398.6,
+     "end": 398.82
+    },
+    {
+     "w": "palabra",
+     "start": 398.82,
+     "end": 399.18
+    },
+    {
+     "w": "para",
+     "start": 399.18,
+     "end": 399.44
+    },
+    {
+     "w": "si",
+     "start": 399.44,
+     "end": 400.08
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 400.72,
+   "end": 405.88,
+   "text": "Yes. Yes.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 400.72,
+     "end": 401.16
+    },
+    {
+     "w": "yes",
+     "start": 401.76,
+     "end": 403.26
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 405.88,
+   "pauseAt": 408.88,
+   "spanish": "¿Cómo preguntas, “¿hablas inglés?”?",
+   "expected": [
+    "Do you speak English?"
+   ],
+   "end": 409.54
+  },
+  {
+   "t": "english",
+   "start": 409.54,
+   "end": 418.18,
+   "text": "Do you speak English? Do you speak English?",
+   "words": [
+    {
+     "w": "do",
+     "start": 409.54,
+     "end": 410.0
+    },
+    {
+     "w": "you",
+     "start": 410.0,
+     "end": 410.22
+    },
+    {
+     "w": "speak",
+     "start": 410.22,
+     "end": 410.44
+    },
+    {
+     "w": "english",
+     "start": 410.44,
+     "end": 410.84
+    },
+    {
+     "w": "do",
+     "start": 413.72,
+     "end": 414.44
+    },
+    {
+     "w": "you",
+     "start": 414.44,
+     "end": 414.66
+    },
+    {
+     "w": "speak",
+     "start": 414.66,
+     "end": 414.88
+    },
+    {
+     "w": "english",
+     "start": 414.88,
+     "end": 415.22
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 418.18,
+   "end": 427.08,
+   "lines": [
+    "Toma en cuenta que necesitamos el verbo auxiliar ‘do’ otra vez cuando hacemos una pregunta en inglés. Otra vez,"
+   ],
+   "words": [
+    {
+     "w": "toma",
+     "start": 418.18,
+     "end": 418.9
+    },
+    {
+     "w": "en",
+     "start": 418.9,
+     "end": 418.98
+    },
+    {
+     "w": "cuenta",
+     "start": 418.98,
+     "end": 419.26
+    },
+    {
+     "w": "que",
+     "start": 419.26,
+     "end": 419.5
+    },
+    {
+     "w": "necesitamos",
+     "start": 419.5,
+     "end": 420.28
+    },
+    {
+     "w": "el",
+     "start": 420.28,
+     "end": 420.6
+    },
+    {
+     "w": "verbo",
+     "start": 420.6,
+     "end": 420.96
+    },
+    {
+     "w": "auxiliar",
+     "start": 420.96,
+     "end": 421.4
+    },
+    {
+     "w": "do",
+     "start": 421.4,
+     "end": 421.9
+    },
+    {
+     "w": "otra",
+     "start": 421.9,
+     "end": 422.56
+    },
+    {
+     "w": "vez",
+     "start": 422.56,
+     "end": 422.8
+    },
+    {
+     "w": "cuando",
+     "start": 422.8,
+     "end": 423.1
+    },
+    {
+     "w": "hacemos",
+     "start": 423.1,
+     "end": 423.46
+    },
+    {
+     "w": "una",
+     "start": 423.46,
+     "end": 423.84
+    },
+    {
+     "w": "pregunta",
+     "start": 423.84,
+     "end": 424.26
+    },
+    {
+     "w": "en",
+     "start": 424.26,
+     "end": 424.48
+    },
+    {
+     "w": "ingles",
+     "start": 424.48,
+     "end": 424.66
+    },
+    {
+     "w": "otra",
+     "start": 425.74,
+     "end": 426.02
+    },
+    {
+     "w": "vez",
+     "start": 426.02,
+     "end": 426.24
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 427.08,
+   "pauseAt": 429.76,
+   "spanish": "¿cómo preguntar “¿hablas inglés?”?",
+   "expected": [
+    "Do you speak English?"
+   ],
+   "end": 431.04
+  },
+  {
+   "t": "english",
+   "start": 431.04,
+   "end": 434.0,
+   "text": "Do you speak English?",
+   "words": [
+    {
+     "w": "do",
+     "start": 431.04,
+     "end": 431.32
+    },
+    {
+     "w": "you",
+     "start": 431.32,
+     "end": 431.64
+    },
+    {
+     "w": "speak",
+     "start": 431.64,
+     "end": 431.94
+    },
+    {
+     "w": "english",
+     "start": 431.94,
+     "end": 432.46
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 434.0,
+   "pauseAt": 436.65,
+   "spanish": "Responde, “Sí, hablo inglés.”",
+   "expected": [
+    "Yes, I speak English."
+   ],
+   "end": 436.8
+  },
+  {
+   "t": "english",
+   "start": 436.8,
+   "end": 449.14,
+   "text": "Yes, I speak English. Yes, I speak English.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 436.8,
+     "end": 438.08
+    },
+    {
+     "w": "i",
+     "start": 438.48,
+     "end": 438.66
+    },
+    {
+     "w": "speak",
+     "start": 438.66,
+     "end": 438.96
+    },
+    {
+     "w": "english",
+     "start": 438.96,
+     "end": 439.48
+    },
+    {
+     "w": "yes",
+     "start": 442.3,
+     "end": 443.02
+    },
+    {
+     "w": "i",
+     "start": 443.46,
+     "end": 443.64
+    },
+    {
+     "w": "speak",
+     "start": 443.64,
+     "end": 443.92
+    },
+    {
+     "w": "english",
+     "start": 443.92,
+     "end": 444.52
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 449.14,
+   "pauseAt": 451.92,
+   "spanish": "Pregunta otra vez, “¿hablas inglés?”.",
+   "expected": [
+    "Do you speak English?"
+   ],
+   "end": 452.52
+  },
+  {
+   "t": "english",
+   "start": 452.52,
+   "end": 457.98,
+   "text": "Do you speak English?",
+   "words": [
+    {
+     "w": "do",
+     "start": 452.52,
+     "end": 452.8
+    },
+    {
+     "w": "you",
+     "start": 452.8,
+     "end": 452.98
+    },
+    {
+     "w": "speak",
+     "start": 452.98,
+     "end": 453.18
+    },
+    {
+     "w": "english",
+     "start": 453.18,
+     "end": 453.54
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 457.98,
+   "pauseAt": 461.39,
+   "spanish": "¿Cómo responderías? “No, no hablo inglés.”",
+   "expected": [
+    "No, I don’t speak English."
+   ],
+   "end": 461.54
+  },
+  {
+   "t": "english",
+   "start": 461.54,
+   "end": 472.96,
+   "text": "No, I don’t speak English. No, I don’t speak English.",
+   "words": [
+    {
+     "w": "no",
+     "start": 461.54,
+     "end": 462.56
+    },
+    {
+     "w": "i",
+     "start": 462.96,
+     "end": 463.18
+    },
+    {
+     "w": "dont",
+     "start": 463.18,
+     "end": 463.48
+    },
+    {
+     "w": "speak",
+     "start": 463.48,
+     "end": 463.78
+    },
+    {
+     "w": "english",
+     "start": 463.78,
+     "end": 464.26
+    },
+    {
+     "w": "no",
+     "start": 467.1,
+     "end": 468.12
+    },
+    {
+     "w": "i",
+     "start": 468.52,
+     "end": 468.74
+    },
+    {
+     "w": "dont",
+     "start": 468.74,
+     "end": 469.04
+    },
+    {
+     "w": "speak",
+     "start": 469.04,
+     "end": 469.34
+    },
+    {
+     "w": "english",
+     "start": 469.34,
+     "end": 469.82
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 472.96,
+   "pauseAt": 476.0,
+   "spanish": "Otra vez pregunta, “¿hablas inglés?”",
+   "expected": [
+    "Do you speak English?"
+   ],
+   "end": 476.52,
+   "leadEnd": 473.52
+  },
+  {
+   "t": "english",
+   "start": 476.52,
+   "end": 481.18,
+   "text": "Do you speak English?",
+   "words": [
+    {
+     "w": "do",
+     "start": 476.52,
+     "end": 476.88
+    },
+    {
+     "w": "you",
+     "start": 476.88,
+     "end": 477.02
+    },
+    {
+     "w": "speak",
+     "start": 477.02,
+     "end": 477.22
+    },
+    {
+     "w": "english",
+     "start": 477.22,
+     "end": 477.54
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 481.18,
+   "end": 483.18,
+   "lines": [
+    "Solo escucha esta respuesta."
+   ],
+   "words": [
+    {
+     "w": "solo",
+     "start": 481.18,
+     "end": 481.48
+    },
+    {
+     "w": "escucha",
+     "start": 481.48,
+     "end": 482.12
+    },
+    {
+     "w": "esta",
+     "start": 482.12,
+     "end": 482.62
+    },
+    {
+     "w": "respuesta",
+     "start": 482.62,
+     "end": 483.18
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 483.18,
+   "end": 485.54,
+   "text": "Who?",
+   "words": [
+    {
+     "w": "who",
+     "start": 483.18,
+     "end": 484.62
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 485.54,
+   "end": 492.6,
+   "lines": [
+    "Ella acaba de preguntar “¿quién?” Escucha y repite la palabra para “¿quién?”"
+   ],
+   "words": [
+    {
+     "w": "ella",
+     "start": 485.54,
+     "end": 485.54
+    },
+    {
+     "w": "acaba",
+     "start": 485.54,
+     "end": 486.08
+    },
+    {
+     "w": "de",
+     "start": 486.08,
+     "end": 486.24
+    },
+    {
+     "w": "preguntar",
+     "start": 486.24,
+     "end": 486.8
+    },
+    {
+     "w": "quien",
+     "start": 487.5,
+     "end": 487.76
+    },
+    {
+     "w": "escucha",
+     "start": 488.72,
+     "end": 489.36
+    },
+    {
+     "w": "y",
+     "start": 489.36,
+     "end": 489.74
+    },
+    {
+     "w": "repite",
+     "start": 489.74,
+     "end": 490.42
+    },
+    {
+     "w": "la",
+     "start": 490.42,
+     "end": 490.56
+    },
+    {
+     "w": "palabra",
+     "start": 490.56,
+     "end": 490.8
+    },
+    {
+     "w": "para",
+     "start": 490.8,
+     "end": 491.08
+    },
+    {
+     "w": "quien",
+     "start": 491.08,
+     "end": 491.72
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 492.6,
+   "end": 495.02,
+   "text": "Who? Who?",
+   "words": [
+    {
+     "w": "who",
+     "start": 492.6,
+     "end": 492.94
+    },
+    {
+     "w": "who",
+     "start": 499.26,
+     "end": 499.6
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 495.02,
+   "pauseAt": 498.76,
+   "spanish": "¿Cómo preguntas? “¿quién?”",
+   "expected": [
+    "Who?"
+   ],
+   "end": 499.26
+  },
+  {
+   "t": "english",
+   "start": 499.26,
+   "end": 502.86,
+   "text": "Who? Who?",
+   "words": [
+    {
+     "w": "who",
+     "start": 499.26,
+     "end": 499.6
+    },
+    {
+     "w": "who",
+     "start": 501.74,
+     "end": 502.26
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 502.86,
+   "pauseAt": 506.46,
+   "spanish": "¿Te acuerdas cómo decir “yo”?",
+   "expected": [
+    "I."
+   ],
+   "end": 507.04
+  },
+  {
+   "t": "english",
+   "start": 507.04,
+   "end": 508.54,
+   "text": "I. I.",
+   "words": [
+    {
+     "w": "i",
+     "start": 507.04,
+     "end": 507.54
+    },
+    {
+     "w": "i",
+     "start": 508.02,
+     "end": 510.54
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 508.54,
+   "pauseAt": 513.22,
+   "spanish": "¿Cómo preguntas, “¿hablas inglés?”",
+   "expected": [
+    "Do you speak English?"
+   ],
+   "end": 513.72
+  },
+  {
+   "t": "english",
+   "start": 513.72,
+   "end": 519.08,
+   "text": "Do you speak English?",
+   "words": [
+    {
+     "w": "do",
+     "start": 513.72,
+     "end": 514.18
+    },
+    {
+     "w": "you",
+     "start": 514.18,
+     "end": 514.44
+    },
+    {
+     "w": "speak",
+     "start": 514.44,
+     "end": 514.64
+    },
+    {
+     "w": "english",
+     "start": 514.64,
+     "end": 514.98
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 519.08,
+   "pauseAt": 523.16,
+   "spanish": "Intenta responder, “¿quién, yo?”?",
+   "expected": [
+    "Who, me?"
+   ],
+   "end": 523.76
+  },
+  {
+   "t": "english",
+   "start": 523.76,
+   "end": 527.35,
+   "text": "Who, me? Who, me?",
+   "words": [
+    {
+     "w": "who",
+     "start": 523.76,
+     "end": 524.1
+    },
+    {
+     "w": "me",
+     "start": 524.1,
+     "end": 524.42
+    },
+    {
+     "w": "who",
+     "start": 526.04,
+     "end": 526.7
+    },
+    {
+     "w": "me",
+     "start": 526.88,
+     "end": 527.62
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 527.35,
+   "pauseAt": 531.8,
+   "spanish": "¿Cómo preguntas, “¿quién, yo?”?",
+   "expected": [
+    "Who, me?"
+   ],
+   "end": 532.08
+  },
+  {
+   "t": "english",
+   "start": 532.08,
+   "end": 537.34,
+   "text": "Who, me?",
+   "words": [
+    {
+     "w": "who",
+     "start": 532.08,
+     "end": 532.56
+    },
+    {
+     "w": "me",
+     "start": 533.8,
+     "end": 534.6
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 537.34,
+   "end": 566.0,
+   "lines": [
+    "Una trampa, ¿no? En español usas los pronombres de sujeto (yo, tú, él, ella, nosotros, ellos) para responder con una respuesta corta. Por otro lado nosotros en inglés usamos los pronombres de objeto me, you, him, her, us, them"
+   ],
+   "words": [
+    {
+     "w": "una",
+     "start": 537.36,
+     "end": 537.36
+    },
+    {
+     "w": "trampa",
+     "start": 537.34,
+     "end": 537.72
+    },
+    {
+     "w": "no",
+     "start": 537.88,
+     "end": 537.96
+    },
+    {
+     "w": "en",
+     "start": 538.44,
+     "end": 538.58
+    },
+    {
+     "w": "espanol",
+     "start": 538.58,
+     "end": 539.3
+    },
+    {
+     "w": "usas",
+     "start": 539.3,
+     "end": 539.84
+    },
+    {
+     "w": "los",
+     "start": 539.84,
+     "end": 540.06
+    },
+    {
+     "w": "pronombres",
+     "start": 540.06,
+     "end": 540.62
+    },
+    {
+     "w": "de",
+     "start": 540.62,
+     "end": 540.9
+    },
+    {
+     "w": "sujeto",
+     "start": 540.9,
+     "end": 541.76
+    },
+    {
+     "w": "yo",
+     "start": 541.78,
+     "end": 542.18
+    },
+    {
+     "w": "tu",
+     "start": 542.44,
+     "end": 542.76
+    },
+    {
+     "w": "el",
+     "start": 543.46,
+     "end": 543.66
+    },
+    {
+     "w": "ella",
+     "start": 544.14,
+     "end": 544.52
+    },
+    {
+     "w": "nosotros",
+     "start": 545.0,
+     "end": 545.38
+    },
+    {
+     "w": "ellos",
+     "start": 545.92,
+     "end": 546.16
+    },
+    {
+     "w": "para",
+     "start": 546.3,
+     "end": 547.22
+    },
+    {
+     "w": "responder",
+     "start": 547.06,
+     "end": 547.74
+    },
+    {
+     "w": "con",
+     "start": 547.74,
+     "end": 548.08
+    },
+    {
+     "w": "una",
+     "start": 548.08,
+     "end": 548.28
+    },
+    {
+     "w": "respuesta",
+     "start": 548.28,
+     "end": 548.9
+    },
+    {
+     "w": "corta",
+     "start": 548.9,
+     "end": 549.52
+    },
+    {
+     "w": "por",
+     "start": 550.18,
+     "end": 550.48
+    },
+    {
+     "w": "otro",
+     "start": 550.48,
+     "end": 550.9
+    },
+    {
+     "w": "lado",
+     "start": 550.9,
+     "end": 551.46
+    },
+    {
+     "w": "nosotros",
+     "start": 551.58,
+     "end": 551.88
+    },
+    {
+     "w": "en",
+     "start": 551.88,
+     "end": 552.34
+    },
+    {
+     "w": "ingles",
+     "start": 552.34,
+     "end": 552.54
+    },
+    {
+     "w": "usamos",
+     "start": 552.54,
+     "end": 553.14
+    },
+    {
+     "w": "los",
+     "start": 553.14,
+     "end": 553.52
+    },
+    {
+     "w": "pronombres",
+     "start": 553.52,
+     "end": 554.38
+    },
+    {
+     "w": "de",
+     "start": 554.38,
+     "end": 554.7
+    },
+    {
+     "w": "objeto",
+     "start": 554.7,
+     "end": 555.16
+    },
+    {
+     "w": "me",
+     "start": 555.16,
+     "end": 555.76
+    },
+    {
+     "w": "you",
+     "start": 557.3,
+     "end": 557.9
+    },
+    {
+     "w": "him",
+     "start": 559.08,
+     "end": 559.6800000000001
+    },
+    {
+     "w": "her",
+     "start": 561.7,
+     "end": 562.3000000000001
+    },
+    {
+     "w": "us",
+     "start": 562.84,
+     "end": 563.44
+    },
+    {
+     "w": "them",
+     "start": 565.32,
+     "end": 565.9200000000001
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 566.0,
+   "pauseAt": 570.32,
+   "spanish": "Ahora responde, “sí, hablo inglés”.",
+   "expected": [
+    "Yes, I speak English."
+   ],
+   "end": 570.84
+  },
+  {
+   "t": "english",
+   "start": 570.84,
+   "end": 581.04,
+   "text": "Yes, I speak English. Yes, I speak English.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 570.84,
+     "end": 571.4
+    },
+    {
+     "w": "i",
+     "start": 571.78,
+     "end": 571.96
+    },
+    {
+     "w": "speak",
+     "start": 571.96,
+     "end": 572.22
+    },
+    {
+     "w": "english",
+     "start": 572.22,
+     "end": 572.74
+    },
+    {
+     "w": "yes",
+     "start": 576.7,
+     "end": 577.26
+    },
+    {
+     "w": "i",
+     "start": 577.64,
+     "end": 577.82
+    },
+    {
+     "w": "speak",
+     "start": 577.82,
+     "end": 578.08
+    },
+    {
+     "w": "english",
+     "start": 578.08,
+     "end": 578.6
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 581.04,
+   "pauseAt": 584.62,
+   "spanish": "Otra vez pregunta “¿hablas inglés?”",
+   "expected": [
+    "Do you speak English?"
+   ],
+   "end": 585.24,
+   "leadEnd": 582.1
+  },
+  {
+   "t": "english",
+   "start": 585.24,
+   "end": 589.22,
+   "text": "Do you speak English?",
+   "words": [
+    {
+     "w": "do",
+     "start": 585.24,
+     "end": 585.72
+    },
+    {
+     "w": "you",
+     "start": 585.72,
+     "end": 585.92
+    },
+    {
+     "w": "speak",
+     "start": 585.92,
+     "end": 586.12
+    },
+    {
+     "w": "english",
+     "start": 586.12,
+     "end": 586.5
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 589.22,
+   "pauseAt": 593.44,
+   "spanish": "¿Cómo respondes, “¿quién, yo?”?",
+   "expected": [
+    "Who, me?"
+   ],
+   "end": 594.28
+  },
+  {
+   "t": "english",
+   "start": 594.28,
+   "end": 598.64,
+   "text": "Who, me?",
+   "words": [
+    {
+     "w": "who",
+     "start": 594.28,
+     "end": 594.74
+    },
+    {
+     "w": "me",
+     "start": 594.74,
+     "end": 595.04
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 598.64,
+   "end": 601.84,
+   "lines": [
+    "Solo escucha esta respuesta."
+   ],
+   "words": [
+    {
+     "w": "solo",
+     "start": 598.64,
+     "end": 598.84
+    },
+    {
+     "w": "escucha",
+     "start": 598.84,
+     "end": 599.58
+    },
+    {
+     "w": "esta",
+     "start": 599.58,
+     "end": 600.1
+    },
+    {
+     "w": "respuesta",
+     "start": 600.1,
+     "end": 600.74
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 601.84,
+   "end": 603.6,
+   "text": "Not you.",
+   "words": [
+    {
+     "w": "not",
+     "start": 601.84,
+     "end": 602.48
+    },
+    {
+     "w": "you",
+     "start": 602.48,
+     "end": 602.88
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 603.6,
+   "end": 616.82,
+   "lines": [
+    "Él acaba de decir “tú no.” “Not you” significa “tú no”. Escucha y repite la frase “tú no.”"
+   ],
+   "words": [
+    {
+     "w": "el",
+     "start": 603.6,
+     "end": 604.84
+    },
+    {
+     "w": "acaba",
+     "start": 604.72,
+     "end": 605.0
+    },
+    {
+     "w": "de",
+     "start": 605.0,
+     "end": 605.2
+    },
+    {
+     "w": "decir",
+     "start": 605.2,
+     "end": 605.48
+    },
+    {
+     "w": "tu",
+     "start": 606.2,
+     "end": 606.4
+    },
+    {
+     "w": "no",
+     "start": 606.4,
+     "end": 606.56
+    },
+    {
+     "w": "not",
+     "start": 606.56,
+     "end": 608.08
+    },
+    {
+     "w": "you",
+     "start": 608.08,
+     "end": 608.52
+    },
+    {
+     "w": "significa",
+     "start": 608.52,
+     "end": 609.06
+    },
+    {
+     "w": "tu",
+     "start": 609.64,
+     "end": 611.06
+    },
+    {
+     "w": "no",
+     "start": 610.92,
+     "end": 611.22
+    },
+    {
+     "w": "escucha",
+     "start": 612.24,
+     "end": 612.72
+    },
+    {
+     "w": "y",
+     "start": 612.72,
+     "end": 613.06
+    },
+    {
+     "w": "repite",
+     "start": 613.06,
+     "end": 613.72
+    },
+    {
+     "w": "la",
+     "start": 613.72,
+     "end": 613.86
+    },
+    {
+     "w": "frase",
+     "start": 613.86,
+     "end": 614.22
+    },
+    {
+     "w": "tu",
+     "start": 614.44,
+     "end": 615.6
+    },
+    {
+     "w": "no",
+     "start": 615.48,
+     "end": 615.74
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 616.82,
+   "end": 621.7,
+   "text": "Not you. Not you.",
+   "words": [
+    {
+     "w": "not",
+     "start": 616.82,
+     "end": 617.28
+    },
+    {
+     "w": "you",
+     "start": 617.28,
+     "end": 617.66
+    },
+    {
+     "w": "not",
+     "start": 618.84,
+     "end": 619.94
+    },
+    {
+     "w": "you",
+     "start": 619.82,
+     "end": 620.24
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 621.7,
+   "pauseAt": 625.04,
+   "spanish": "¿Cómo se dice “tú no”?",
+   "expected": [
+    "Not you."
+   ],
+   "end": 626.02
+  },
+  {
+   "t": "english",
+   "start": 626.02,
+   "end": 632.82,
+   "text": "Not you. Not you.",
+   "words": [
+    {
+     "w": "not",
+     "start": 626.02,
+     "end": 626.46
+    },
+    {
+     "w": "you",
+     "start": 626.46,
+     "end": 626.9
+    },
+    {
+     "w": "not",
+     "start": 628.1,
+     "end": 629.26
+    },
+    {
+     "w": "you",
+     "start": 629.26,
+     "end": 629.68
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 632.82,
+   "pauseAt": 636.64,
+   "spanish": "Intenta preguntar, “¿quién, él?”",
+   "expected": [
+    "Who, him?"
+   ],
+   "end": 636.96
+  },
+  {
+   "t": "english",
+   "start": 636.96,
+   "end": 643.16,
+   "text": "Who, him? Who, him?",
+   "words": [
+    {
+     "w": "who",
+     "start": 636.96,
+     "end": 637.28
+    },
+    {
+     "w": "him",
+     "start": 637.28,
+     "end": 637.62
+    },
+    {
+     "w": "who",
+     "start": 639.9,
+     "end": 640.22
+    },
+    {
+     "w": "him",
+     "start": 640.22,
+     "end": 640.56
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 643.16,
+   "pauseAt": 647.06,
+   "spanish": "¿Cómo preguntar “¿quién, él?”",
+   "expected": [
+    "Who, him?"
+   ],
+   "end": 647.88
+  },
+  {
+   "t": "english",
+   "start": 647.88,
+   "end": 657.42,
+   "text": "Who, him? Who, him?",
+   "words": [
+    {
+     "w": "who",
+     "start": 647.88,
+     "end": 648.18
+    },
+    {
+     "w": "him",
+     "start": 648.18,
+     "end": 649.14
+    },
+    {
+     "w": "who",
+     "start": 651.42,
+     "end": 651.72
+    },
+    {
+     "w": "him",
+     "start": 651.72,
+     "end": 652.64
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 657.42,
+   "pauseAt": 660.02,
+   "spanish": "¿Cómo decir “no él.”?",
+   "expected": [
+    "Not him."
+   ],
+   "end": 660.42
+  },
+  {
+   "t": "english",
+   "start": 660.42,
+   "end": 666.42,
+   "text": "Not him. Not him.",
+   "words": [
+    {
+     "w": "not",
+     "start": 660.42,
+     "end": 660.7
+    },
+    {
+     "w": "him",
+     "start": 660.7,
+     "end": 661.12
+    },
+    {
+     "w": "not",
+     "start": 661.6,
+     "end": 662.92
+    },
+    {
+     "w": "him",
+     "start": 662.92,
+     "end": 663.88
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 666.42,
+   "end": 669.36,
+   "lines": [
+    "Solo escucha esta respuesta."
+   ],
+   "words": [
+    {
+     "w": "solo",
+     "start": 666.42,
+     "end": 666.64
+    },
+    {
+     "w": "escucha",
+     "start": 666.64,
+     "end": 667.36
+    },
+    {
+     "w": "esta",
+     "start": 667.36,
+     "end": 667.88
+    },
+    {
+     "w": "respuesta",
+     "start": 667.88,
+     "end": 668.5
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 669.36,
+   "end": 671.0,
+   "text": "Then who?",
+   "words": [
+    {
+     "w": "then",
+     "start": 669.36,
+     "end": 669.68
+    },
+    {
+     "w": "who",
+     "start": 669.68,
+     "end": 670.02
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 671.0,
+   "end": 693.14,
+   "lines": [
+    "Ella acaba de preguntar “¿Entonces quién?” “Then who?” significa “¿entonces quién?”. Escucha y repite.",
+    "Then who? Then who?"
+   ],
+   "words": [
+    {
+     "w": "ella",
+     "start": 671.0,
+     "end": 671.34
+    },
+    {
+     "w": "acaba",
+     "start": 671.34,
+     "end": 671.66
+    },
+    {
+     "w": "de",
+     "start": 671.66,
+     "end": 671.84
+    },
+    {
+     "w": "preguntar",
+     "start": 671.84,
+     "end": 672.54
+    },
+    {
+     "w": "entonces",
+     "start": 673.4,
+     "end": 673.68
+    },
+    {
+     "w": "quien",
+     "start": 673.68,
+     "end": 674.16
+    },
+    {
+     "w": "then",
+     "start": 675.62,
+     "end": 676.0
+    },
+    {
+     "w": "who",
+     "start": 676.0,
+     "end": 676.34
+    },
+    {
+     "w": "significa",
+     "start": 677.0,
+     "end": 677.68
+    },
+    {
+     "w": "entonces",
+     "start": 677.74,
+     "end": 678.86
+    },
+    {
+     "w": "quien",
+     "start": 678.64,
+     "end": 679.08
+    },
+    {
+     "w": "escucha",
+     "start": 679.08,
+     "end": 680.66
+    },
+    {
+     "w": "y",
+     "start": 680.66,
+     "end": 681.08
+    },
+    {
+     "w": "repite",
+     "start": 681.08,
+     "end": 681.88
+    },
+    {
+     "w": "then",
+     "start": 683.08,
+     "end": 683.5
+    },
+    {
+     "w": "who",
+     "start": 683.5,
+     "end": 683.9
+    },
+    {
+     "w": "then",
+     "start": 685.82,
+     "end": 686.2
+    },
+    {
+     "w": "who",
+     "start": 686.28,
+     "end": 686.7
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 693.14,
+   "end": 698.24,
+   "text": "Then who? Then who?",
+   "words": [
+    {
+     "w": "then",
+     "start": 693.14,
+     "end": 693.68
+    },
+    {
+     "w": "who",
+     "start": 693.68,
+     "end": 693.98
+    },
+    {
+     "w": "then",
+     "start": 696.62,
+     "end": 696.98
+    },
+    {
+     "w": "who",
+     "start": 696.98,
+     "end": 697.64
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 698.24,
+   "pauseAt": 702.32,
+   "spanish": "¿Cómo preguntas “¿entonces quién?”?",
+   "expected": [
+    "Then who?"
+   ],
+   "end": 702.54
+  },
+  {
+   "t": "english",
+   "start": 702.54,
+   "end": 705.88,
+   "text": "Then who? Then who?",
+   "words": [
+    {
+     "w": "then",
+     "start": 702.54,
+     "end": 703.0
+    },
+    {
+     "w": "who",
+     "start": 703.0,
+     "end": 703.38
+    },
+    {
+     "w": "then",
+     "start": 704.62,
+     "end": 705.58
+    },
+    {
+     "w": "who",
+     "start": 705.5,
+     "end": 705.88
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 705.88,
+   "end": 714.76,
+   "lines": [
+    "En la pregunta, “then who?” ¿qué palabra piensas significa “entonces”?"
+   ],
+   "words": [
+    {
+     "w": "en",
+     "start": 705.88,
+     "end": 707.56
+    },
+    {
+     "w": "la",
+     "start": 707.56,
+     "end": 707.66
+    },
+    {
+     "w": "pregunta",
+     "start": 707.66,
+     "end": 708.04
+    },
+    {
+     "w": "then",
+     "start": 708.2,
+     "end": 709.12
+    },
+    {
+     "w": "who",
+     "start": 709.02,
+     "end": 709.28
+    },
+    {
+     "w": "que",
+     "start": 710.28,
+     "end": 710.5
+    },
+    {
+     "w": "palabra",
+     "start": 710.5,
+     "end": 710.9
+    },
+    {
+     "w": "piensas",
+     "start": 710.9,
+     "end": 711.8
+    },
+    {
+     "w": "significa",
+     "start": 711.8,
+     "end": 712.54
+    },
+    {
+     "w": "entonces",
+     "start": 713.04,
+     "end": 713.4
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 714.76,
+   "end": 722.22,
+   "text": "Then. Then.",
+   "words": [
+    {
+     "w": "then",
+     "start": 714.76,
+     "end": 715.08
+    },
+    {
+     "w": "then",
+     "start": 717.44,
+     "end": 717.96
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 722.22,
+   "pauseAt": 724.38,
+   "spanish": "¿Cómo se dice “entonces”?",
+   "expected": [
+    "Then."
+   ],
+   "end": 725.28
+  },
+  {
+   "t": "english",
+   "start": 725.28,
+   "end": 733.22,
+   "text": "Then. Then.",
+   "words": [
+    {
+     "w": "then",
+     "start": 725.28,
+     "end": 725.58
+    },
+    {
+     "w": "then",
+     "start": 727.52,
+     "end": 728.34
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 733.22,
+   "end": 735.94,
+   "lines": [
+    "Solo escucha esta pregunta."
+   ],
+   "words": [
+    {
+     "w": "solo",
+     "start": 733.22,
+     "end": 733.32
+    },
+    {
+     "w": "escucha",
+     "start": 733.32,
+     "end": 733.84
+    },
+    {
+     "w": "esta",
+     "start": 733.84,
+     "end": 734.12
+    },
+    {
+     "w": "pregunta",
+     "start": 734.12,
+     "end": 735.2
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 735.94,
+   "end": 738.22,
+   "text": "Do they speak English?",
+   "words": [
+    {
+     "w": "do",
+     "start": 735.94,
+     "end": 736.42
+    },
+    {
+     "w": "they",
+     "start": 736.42,
+     "end": 736.68
+    },
+    {
+     "w": "speak",
+     "start": 736.68,
+     "end": 737.0
+    },
+    {
+     "w": "english",
+     "start": 737.0,
+     "end": 737.44
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 738.22,
+   "pauseAt": 742.04,
+   "spanish": "Intenta preguntar “¿quién, ellos?\"",
+   "expected": [
+    "Who, them?"
+   ],
+   "end": 742.26
+  },
+  {
+   "t": "english",
+   "start": 742.26,
+   "end": 749.14,
+   "text": "Who, them? Who, them?",
+   "words": [
+    {
+     "w": "who",
+     "start": 742.26,
+     "end": 742.58
+    },
+    {
+     "w": "them",
+     "start": 742.84,
+     "end": 744.16
+    },
+    {
+     "w": "who",
+     "start": 745.8,
+     "end": 746.14
+    },
+    {
+     "w": "them",
+     "start": 747.04,
+     "end": 747.44
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 749.14,
+   "pauseAt": 753.42,
+   "spanish": "Otra vez pregunta, “¿quién, ellos?”",
+   "expected": [
+    "Who, them?"
+   ],
+   "end": 753.7,
+   "leadEnd": 750.14
+  },
+  {
+   "t": "english",
+   "start": 753.7,
+   "end": 761.26,
+   "text": "Who, them? Who, them?",
+   "words": [
+    {
+     "w": "who",
+     "start": 753.7,
+     "end": 754.04
+    },
+    {
+     "w": "them",
+     "start": 755.02,
+     "end": 755.28
+    },
+    {
+     "w": "who",
+     "start": 756.36,
+     "end": 757.22
+    },
+    {
+     "w": "them",
+     "start": 757.22,
+     "end": 758.3
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 761.26,
+   "pauseAt": 763.9,
+   "spanish": "¿Cómo decir “no ellos\"?",
+   "expected": [
+    "Not them."
+   ],
+   "end": 764.3
+  },
+  {
+   "t": "english",
+   "start": 764.3,
+   "end": 769.66,
+   "text": "Not them. Not them.",
+   "words": [
+    {
+     "w": "not",
+     "start": 764.3,
+     "end": 764.88
+    },
+    {
+     "w": "them",
+     "start": 764.88,
+     "end": 765.24
+    },
+    {
+     "w": "not",
+     "start": 767.08,
+     "end": 767.4
+    },
+    {
+     "w": "them",
+     "start": 767.4,
+     "end": 767.86
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 769.66,
+   "end": 774.08,
+   "lines": [
+    "Cambiando el tema, pregunta, “¿ustedes hablan inglés?\""
+   ],
+   "words": [
+    {
+     "w": "cambiando",
+     "start": 769.66,
+     "end": 770.34
+    },
+    {
+     "w": "el",
+     "start": 770.34,
+     "end": 770.64
+    },
+    {
+     "w": "tema",
+     "start": 770.64,
+     "end": 770.96
+    },
+    {
+     "w": "pregunta",
+     "start": 771.08,
+     "end": 771.36
+    },
+    {
+     "w": "ustedes",
+     "start": 771.36,
+     "end": 772.64
+    },
+    {
+     "w": "hablan",
+     "start": 772.64,
+     "end": 772.92
+    },
+    {
+     "w": "ingles",
+     "start": 772.92,
+     "end": 773.16
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 774.08,
+   "end": 779.12,
+   "text": "Do you guys speak English?",
+   "words": [
+    {
+     "w": "do",
+     "start": 774.08,
+     "end": 774.5
+    },
+    {
+     "w": "you",
+     "start": 774.5,
+     "end": 774.7
+    },
+    {
+     "w": "guys",
+     "start": 774.7,
+     "end": 774.98
+    },
+    {
+     "w": "speak",
+     "start": 774.98,
+     "end": 775.32
+    },
+    {
+     "w": "english",
+     "start": 775.32,
+     "end": 775.78
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 779.12,
+   "pauseAt": 781.97,
+   "spanish": "¿Cómo se dice “¿quién, nosotros?\"?",
+   "expected": [
+    "Who, us?"
+   ],
+   "end": 782.12
+  },
+  {
+   "t": "english",
+   "start": 782.12,
+   "end": 790.84,
+   "text": "Who, us? Who, us?",
+   "words": [
+    {
+     "w": "who",
+     "start": 782.12,
+     "end": 783.3
+    },
+    {
+     "w": "us",
+     "start": 783.26,
+     "end": 784.12
+    },
+    {
+     "w": "who",
+     "start": 786.26,
+     "end": 786.48
+    },
+    {
+     "w": "us",
+     "start": 787.04,
+     "end": 787.36
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 790.84,
+   "end": 793.34,
+   "lines": [
+    "Solo escucha esta respuesta."
+   ],
+   "words": [
+    {
+     "w": "solo",
+     "start": 790.84,
+     "end": 791.06
+    },
+    {
+     "w": "escucha",
+     "start": 791.06,
+     "end": 791.72
+    },
+    {
+     "w": "esta",
+     "start": 791.72,
+     "end": 792.08
+    },
+    {
+     "w": "respuesta",
+     "start": 792.08,
+     "end": 792.58
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 793.34,
+   "end": 797.58,
+   "text": "Yes, you guys. Do you guys speak English?",
+   "words": [
+    {
+     "w": "yes",
+     "start": 793.34,
+     "end": 793.88
+    },
+    {
+     "w": "you",
+     "start": 794.24,
+     "end": 794.4
+    },
+    {
+     "w": "guys",
+     "start": 794.4,
+     "end": 794.7
+    },
+    {
+     "w": "do",
+     "start": 795.12,
+     "end": 795.42
+    },
+    {
+     "w": "you",
+     "start": 795.42,
+     "end": 795.62
+    },
+    {
+     "w": "guys",
+     "start": 795.62,
+     "end": 795.88
+    },
+    {
+     "w": "speak",
+     "start": 795.88,
+     "end": 796.2
+    },
+    {
+     "w": "english",
+     "start": 796.2,
+     "end": 796.6
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 797.58,
+   "pauseAt": 800.38,
+   "spanish": "¿Cómo decir \"sí, hablamos inglés.\"?",
+   "expected": [
+    "Yes, we speak English."
+   ],
+   "end": 800.76
+  },
+  {
+   "t": "english",
+   "start": 800.76,
+   "end": 811.1,
+   "text": "Yes, we speak English. Yes, we speak English.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 800.76,
+     "end": 801.4
+    },
+    {
+     "w": "we",
+     "start": 802.24,
+     "end": 802.5
+    },
+    {
+     "w": "speak",
+     "start": 802.5,
+     "end": 802.74
+    },
+    {
+     "w": "english",
+     "start": 802.74,
+     "end": 803.08
+    },
+    {
+     "w": "yes",
+     "start": 805.62,
+     "end": 806.44
+    },
+    {
+     "w": "we",
+     "start": 807.14,
+     "end": 807.6
+    },
+    {
+     "w": "speak",
+     "start": 807.6,
+     "end": 807.86
+    },
+    {
+     "w": "english",
+     "start": 807.86,
+     "end": 808.2
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 811.1,
+   "end": 814.38,
+   "lines": [
+    "Ahora solo escucha esta pregunta."
+   ],
+   "words": [
+    {
+     "w": "ahora",
+     "start": 811.1,
+     "end": 811.94
+    },
+    {
+     "w": "solo",
+     "start": 812.12,
+     "end": 812.24
+    },
+    {
+     "w": "escucha",
+     "start": 812.24,
+     "end": 812.74
+    },
+    {
+     "w": "esta",
+     "start": 812.74,
+     "end": 812.98
+    },
+    {
+     "w": "pregunta",
+     "start": 812.98,
+     "end": 813.44
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 814.38,
+   "end": 817.38,
+   "text": "Do you guys speak Spanish?",
+   "words": [
+    {
+     "w": "do",
+     "start": 814.38,
+     "end": 814.78
+    },
+    {
+     "w": "you",
+     "start": 814.78,
+     "end": 815.04
+    },
+    {
+     "w": "guys",
+     "start": 815.04,
+     "end": 815.24
+    },
+    {
+     "w": "speak",
+     "start": 815.24,
+     "end": 815.56
+    },
+    {
+     "w": "spanish",
+     "start": 815.56,
+     "end": 815.98
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 817.38,
+   "end": 826.6,
+   "lines": [
+    "Él acaba de preguntar “¿Ustedes hablan español?” Así es cómo decimos “español.” Escucha y repite."
+   ],
+   "words": [
+    {
+     "w": "el",
+     "start": 817.38,
+     "end": 817.52
+    },
+    {
+     "w": "acaba",
+     "start": 817.52,
+     "end": 817.78
+    },
+    {
+     "w": "de",
+     "start": 817.78,
+     "end": 817.98
+    },
+    {
+     "w": "preguntar",
+     "start": 817.98,
+     "end": 818.58
+    },
+    {
+     "w": "ustedes",
+     "start": 819.36,
+     "end": 819.86
+    },
+    {
+     "w": "hablan",
+     "start": 819.86,
+     "end": 820.12
+    },
+    {
+     "w": "espanol",
+     "start": 820.12,
+     "end": 820.54
+    },
+    {
+     "w": "asi",
+     "start": 821.64,
+     "end": 821.92
+    },
+    {
+     "w": "es",
+     "start": 821.92,
+     "end": 822.1
+    },
+    {
+     "w": "como",
+     "start": 822.1,
+     "end": 822.26
+    },
+    {
+     "w": "decimos",
+     "start": 822.26,
+     "end": 822.64
+    },
+    {
+     "w": "espanol",
+     "start": 822.64,
+     "end": 823.3
+    },
+    {
+     "w": "escucha",
+     "start": 824.06,
+     "end": 824.54
+    },
+    {
+     "w": "y",
+     "start": 824.54,
+     "end": 825.22
+    },
+    {
+     "w": "repite",
+     "start": 825.22,
+     "end": 825.94
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 826.6,
+   "end": 831.68,
+   "text": "Spanish. Spanish.",
+   "words": [
+    {
+     "w": "spanish",
+     "start": 826.6,
+     "end": 827.0
+    },
+    {
+     "w": "spanish",
+     "start": 828.76,
+     "end": 829.6
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 831.68,
+   "pauseAt": 834.06,
+   "spanish": "¿cómo se dice “español”?",
+   "expected": [
+    "Spanish."
+   ],
+   "end": 834.82
+  },
+  {
+   "t": "english",
+   "start": 834.82,
+   "end": 844.24,
+   "text": "Spanish. Spanish.",
+   "words": [
+    {
+     "w": "spanish",
+     "start": 834.82,
+     "end": 835.66
+    },
+    {
+     "w": "spanish",
+     "start": 836.16,
+     "end": 837.28
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 844.24,
+   "end": 848.44,
+   "lines": [
+    "¿Cómo dices “sí, hablamos español.”?"
+   ],
+   "words": [
+    {
+     "w": "como",
+     "start": 844.24,
+     "end": 844.54
+    },
+    {
+     "w": "dices",
+     "start": 844.54,
+     "end": 845.26
+    },
+    {
+     "w": "si",
+     "start": 845.82,
+     "end": 846.1
+    },
+    {
+     "w": "hablamos",
+     "start": 846.48,
+     "end": 846.86
+    },
+    {
+     "w": "espanol",
+     "start": 846.86,
+     "end": 847.32
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 848.44,
+   "end": 858.28,
+   "text": "Yes, we speak Spanish. Yes, we speak Spanish.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 848.44,
+     "end": 848.72
+    },
+    {
+     "w": "we",
+     "start": 849.08,
+     "end": 849.22
+    },
+    {
+     "w": "speak",
+     "start": 849.22,
+     "end": 849.52
+    },
+    {
+     "w": "spanish",
+     "start": 849.52,
+     "end": 849.94
+    },
+    {
+     "w": "yes",
+     "start": 852.72,
+     "end": 853.48
+    },
+    {
+     "w": "we",
+     "start": 853.84,
+     "end": 854.0
+    },
+    {
+     "w": "speak",
+     "start": 854.0,
+     "end": 854.32
+    },
+    {
+     "w": "spanish",
+     "start": 854.32,
+     "end": 854.76
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 858.28,
+   "end": 862.4,
+   "lines": [
+    "¿Cómo le preguntas a alguien, “¿hablas español?”"
+   ],
+   "words": [
+    {
+     "w": "como",
+     "start": 858.28,
+     "end": 859.04
+    },
+    {
+     "w": "le",
+     "start": 859.04,
+     "end": 859.18
+    },
+    {
+     "w": "preguntas",
+     "start": 859.18,
+     "end": 859.56
+    },
+    {
+     "w": "a",
+     "start": 859.56,
+     "end": 859.8
+    },
+    {
+     "w": "alguien",
+     "start": 859.8,
+     "end": 860.04
+    },
+    {
+     "w": "hablas",
+     "start": 860.06,
+     "end": 860.67
+    },
+    {
+     "w": "espanol",
+     "start": 861.3,
+     "end": 861.72
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 862.4,
+   "end": 870.94,
+   "text": "Do you speak Spanish? Do you speak Spanish?",
+   "words": [
+    {
+     "w": "do",
+     "start": 862.4,
+     "end": 862.64
+    },
+    {
+     "w": "you",
+     "start": 862.64,
+     "end": 862.88
+    },
+    {
+     "w": "speak",
+     "start": 862.88,
+     "end": 863.12
+    },
+    {
+     "w": "spanish",
+     "start": 863.12,
+     "end": 863.56
+    },
+    {
+     "w": "do",
+     "start": 866.46,
+     "end": 867.38
+    },
+    {
+     "w": "you",
+     "start": 867.38,
+     "end": 867.6
+    },
+    {
+     "w": "speak",
+     "start": 867.6,
+     "end": 867.86
+    },
+    {
+     "w": "spanish",
+     "start": 867.86,
+     "end": 868.3
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 870.94,
+   "pauseAt": 874.68,
+   "spanish": "Responde “sí, hablo español.”",
+   "expected": [
+    "Yes, I speak Spanish."
+   ],
+   "end": 875.04
+  },
+  {
+   "t": "english",
+   "start": 875.04,
+   "end": 886.26,
+   "text": "Yes, I speak Spanish. Yes, I speak Spanish.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 875.04,
+     "end": 875.5
+    },
+    {
+     "w": "i",
+     "start": 876.16,
+     "end": 876.44
+    },
+    {
+     "w": "speak",
+     "start": 876.44,
+     "end": 876.68
+    },
+    {
+     "w": "spanish",
+     "start": 876.68,
+     "end": 877.14
+    },
+    {
+     "w": "yes",
+     "start": 879.98,
+     "end": 880.9
+    },
+    {
+     "w": "i",
+     "start": 881.8,
+     "end": 882.36
+    },
+    {
+     "w": "speak",
+     "start": 882.36,
+     "end": 882.62
+    },
+    {
+     "w": "spanish",
+     "start": 882.62,
+     "end": 883.06
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 886.26,
+   "pauseAt": 890.52,
+   "spanish": "Y ¿cómo dirías, “no, no hablo español.”?",
+   "expected": [
+    "No, I don’t speak Spanish. I don’t speak Spanish."
+   ],
+   "end": 890.86
+  },
+  {
+   "t": "english",
+   "start": 890.86,
+   "end": 904.94,
+   "text": "No, I don’t speak Spanish. I don’t speak Spanish.",
+   "words": [
+    {
+     "w": "no",
+     "start": 890.86,
+     "end": 891.26
+    },
+    {
+     "w": "i",
+     "start": 891.98,
+     "end": 892.2
+    },
+    {
+     "w": "dont",
+     "start": 892.2,
+     "end": 892.48
+    },
+    {
+     "w": "speak",
+     "start": 892.48,
+     "end": 892.68
+    },
+    {
+     "w": "spanish",
+     "start": 892.68,
+     "end": 893.08
+    },
+    {
+     "w": "i",
+     "start": 898.82,
+     "end": 898.96
+    },
+    {
+     "w": "dont",
+     "start": 898.96,
+     "end": 899.3
+    },
+    {
+     "w": "speak",
+     "start": 899.3,
+     "end": 899.48
+    },
+    {
+     "w": "spanish",
+     "start": 899.48,
+     "end": 899.9
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 904.94,
+   "pauseAt": 909.0,
+   "spanish": "Y ¿cómo preguntarías, “¿Él habla español?”",
+   "expected": [
+    "Does he speak Spanish?"
+   ],
+   "end": 909.46
+  },
+  {
+   "t": "english",
+   "start": 909.46,
+   "end": 917.92,
+   "text": "Does he speak Spanish? Does he speak Spanish?",
+   "words": [
+    {
+     "w": "does",
+     "start": 909.46,
+     "end": 909.84
+    },
+    {
+     "w": "he",
+     "start": 909.84,
+     "end": 910.08
+    },
+    {
+     "w": "speak",
+     "start": 910.08,
+     "end": 910.38
+    },
+    {
+     "w": "spanish",
+     "start": 910.38,
+     "end": 910.8
+    },
+    {
+     "w": "does",
+     "start": 913.22,
+     "end": 914.04
+    },
+    {
+     "w": "he",
+     "start": 914.04,
+     "end": 914.3
+    },
+    {
+     "w": "speak",
+     "start": 914.3,
+     "end": 914.6
+    },
+    {
+     "w": "spanish",
+     "start": 914.6,
+     "end": 915.0
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 917.92,
+   "pauseAt": 920.89,
+   "spanish": "Responde “no, él no habla español.”",
+   "expected": [
+    "No, he doesn't speak Spanish."
+   ],
+   "end": 921.04
+  },
+  {
+   "t": "english",
+   "start": 921.04,
+   "end": 935.96,
+   "text": "No, he doesn’t speak Spanish. No, he doesn’t speak Spanish.",
+   "words": [
+    {
+     "w": "no",
+     "start": 921.04,
+     "end": 922.6
+    },
+    {
+     "w": "he",
+     "start": 923.22,
+     "end": 923.48
+    },
+    {
+     "w": "doesnt",
+     "start": 923.48,
+     "end": 923.88
+    },
+    {
+     "w": "speak",
+     "start": 923.88,
+     "end": 924.2
+    },
+    {
+     "w": "spanish",
+     "start": 924.2,
+     "end": 925.28
+    },
+    {
+     "w": "no",
+     "start": 927.68,
+     "end": 928.6
+    },
+    {
+     "w": "he",
+     "start": 929.12,
+     "end": 929.48
+    },
+    {
+     "w": "doesnt",
+     "start": 929.48,
+     "end": 929.82
+    },
+    {
+     "w": "speak",
+     "start": 929.82,
+     "end": 930.1
+    },
+    {
+     "w": "spanish",
+     "start": 930.1,
+     "end": 931.2
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 935.96,
+   "pauseAt": 938.24,
+   "spanish": "Di “él habla inglés.”",
+   "expected": [
+    "He speaks English."
+   ],
+   "end": 939.16
+  },
+  {
+   "t": "english",
+   "start": 939.16,
+   "end": 946.64,
+   "text": "He speaks English. He speaks English.",
+   "words": [
+    {
+     "w": "he",
+     "start": 939.16,
+     "end": 940.54
+    },
+    {
+     "w": "speaks",
+     "start": 940.56,
+     "end": 941.94
+    },
+    {
+     "w": "english",
+     "start": 941.96,
+     "end": 943.34
+    },
+    {
+     "w": "he",
+     "start": 943.36,
+     "end": 944.74
+    },
+    {
+     "w": "speaks",
+     "start": 944.76,
+     "end": 946.14
+    },
+    {
+     "w": "english",
+     "start": 946.16,
+     "end": 947.54
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 946.64,
+   "pauseAt": 951.6,
+   "spanish": "Y ¿cómo preguntarías, “¿ella habla inglés?”?",
+   "expected": [
+    "Does she speak English?"
+   ],
+   "end": 952.14
+  },
+  {
+   "t": "english",
+   "start": 952.14,
+   "end": 960.52,
+   "text": "Does she speak English? Does she speak English?",
+   "words": [
+    {
+     "w": "does",
+     "start": 952.14,
+     "end": 952.44
+    },
+    {
+     "w": "she",
+     "start": 952.44,
+     "end": 952.74
+    },
+    {
+     "w": "speak",
+     "start": 952.74,
+     "end": 953.1
+    },
+    {
+     "w": "english",
+     "start": 953.1,
+     "end": 953.48
+    },
+    {
+     "w": "does",
+     "start": 954.0,
+     "end": 954.0
+    },
+    {
+     "w": "she",
+     "start": 954.0,
+     "end": 957.04
+    },
+    {
+     "w": "speak",
+     "start": 957.04,
+     "end": 957.4
+    },
+    {
+     "w": "english",
+     "start": 957.4,
+     "end": 958.14
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 960.52,
+   "pauseAt": 964.38,
+   "spanish": "Responde “sí, ella habla inglés”",
+   "expected": [
+    "Yes, she speaks English."
+   ],
+   "end": 964.86
+  },
+  {
+   "t": "english",
+   "start": 964.86,
+   "end": 975.54,
+   "text": "Yes, she speaks English. Yes, she speaks English.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 964.86,
+     "end": 965.24
+    },
+    {
+     "w": "she",
+     "start": 965.9,
+     "end": 966.26
+    },
+    {
+     "w": "speaks",
+     "start": 966.26,
+     "end": 966.6
+    },
+    {
+     "w": "english",
+     "start": 966.6,
+     "end": 966.94
+    },
+    {
+     "w": "yes",
+     "start": 971.04,
+     "end": 971.28
+    },
+    {
+     "w": "she",
+     "start": 971.8,
+     "end": 972.22
+    },
+    {
+     "w": "speaks",
+     "start": 972.22,
+     "end": 972.52
+    },
+    {
+     "w": "english",
+     "start": 972.52,
+     "end": 972.92
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 975.54,
+   "pauseAt": 979.55,
+   "spanish": "Ahora pregunta, “¿ellos hablan inglés?”",
+   "expected": [
+    "Do they speak English?"
+   ],
+   "end": 979.7
+  },
+  {
+   "t": "english",
+   "start": 979.7,
+   "end": 988.32,
+   "text": "Do they speak English? Do they speak English?",
+   "words": [
+    {
+     "w": "do",
+     "start": 979.7,
+     "end": 980.76
+    },
+    {
+     "w": "they",
+     "start": 980.72,
+     "end": 980.96
+    },
+    {
+     "w": "speak",
+     "start": 980.96,
+     "end": 981.3
+    },
+    {
+     "w": "english",
+     "start": 981.3,
+     "end": 981.78
+    },
+    {
+     "w": "do",
+     "start": 984.08,
+     "end": 984.48
+    },
+    {
+     "w": "they",
+     "start": 984.48,
+     "end": 984.72
+    },
+    {
+     "w": "speak",
+     "start": 984.72,
+     "end": 985.1
+    },
+    {
+     "w": "english",
+     "start": 985.1,
+     "end": 985.58
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 988.32,
+   "pauseAt": 990.98,
+   "spanish": "Di, “ellos hablan inglés.”",
+   "expected": [
+    "They speak English."
+   ],
+   "end": 991.42
+  },
+  {
+   "t": "english",
+   "start": 991.42,
+   "end": 1000.94,
+   "text": "They speak English. They speak English.",
+   "words": [
+    {
+     "w": "they",
+     "start": 991.42,
+     "end": 991.82
+    },
+    {
+     "w": "speak",
+     "start": 991.82,
+     "end": 992.18
+    },
+    {
+     "w": "english",
+     "start": 992.18,
+     "end": 992.74
+    },
+    {
+     "w": "they",
+     "start": 995.4,
+     "end": 995.72
+    },
+    {
+     "w": "speak",
+     "start": 995.72,
+     "end": 996.08
+    },
+    {
+     "w": "english",
+     "start": 996.08,
+     "end": 996.64
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 1000.94,
+   "end": 1003.1,
+   "lines": [
+    "Ahora solo escucha esta pregunta."
+   ],
+   "words": [
+    {
+     "w": "ahora",
+     "start": 1000.94,
+     "end": 1001.16
+    },
+    {
+     "w": "solo",
+     "start": 1001.16,
+     "end": 1001.48
+    },
+    {
+     "w": "escucha",
+     "start": 1001.48,
+     "end": 1001.96
+    },
+    {
+     "w": "esta",
+     "start": 1001.96,
+     "end": 1002.18
+    },
+    {
+     "w": "pregunta",
+     "start": 1002.18,
+     "end": 1002.52
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1003.1,
+   "end": 1005.22,
+   "text": "Do you speak French?",
+   "words": [
+    {
+     "w": "do",
+     "start": 1003.1,
+     "end": 1003.26
+    },
+    {
+     "w": "you",
+     "start": 1003.26,
+     "end": 1003.42
+    },
+    {
+     "w": "speak",
+     "start": 1003.42,
+     "end": 1003.64
+    },
+    {
+     "w": "french",
+     "start": 1003.64,
+     "end": 1004.08
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 1005.22,
+   "end": 1014.48,
+   "lines": [
+    "Él acaba de preguntar “¿hablas francés?”. Así es cómo decimos “francés.” Escucha y repite."
+   ],
+   "words": [
+    {
+     "w": "el",
+     "start": 1005.22,
+     "end": 1005.3
+    },
+    {
+     "w": "acaba",
+     "start": 1005.3,
+     "end": 1005.52
+    },
+    {
+     "w": "de",
+     "start": 1005.52,
+     "end": 1005.68
+    },
+    {
+     "w": "preguntar",
+     "start": 1005.68,
+     "end": 1006.22
+    },
+    {
+     "w": "hablas",
+     "start": 1006.24,
+     "end": 1006.85
+    },
+    {
+     "w": "frances",
+     "start": 1007.48,
+     "end": 1008.26
+    },
+    {
+     "w": "asi",
+     "start": 1009.24,
+     "end": 1009.56
+    },
+    {
+     "w": "es",
+     "start": 1009.56,
+     "end": 1009.7
+    },
+    {
+     "w": "como",
+     "start": 1009.7,
+     "end": 1009.88
+    },
+    {
+     "w": "decimos",
+     "start": 1009.88,
+     "end": 1010.22
+    },
+    {
+     "w": "frances",
+     "start": 1010.22,
+     "end": 1011.12
+    },
+    {
+     "w": "escucha",
+     "start": 1011.7,
+     "end": 1012.22
+    },
+    {
+     "w": "y",
+     "start": 1012.22,
+     "end": 1012.84
+    },
+    {
+     "w": "repite",
+     "start": 1012.84,
+     "end": 1013.7
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1014.48,
+   "end": 1019.2,
+   "text": "French. French.",
+   "words": [
+    {
+     "w": "french",
+     "start": 1014.48,
+     "end": 1014.94
+    },
+    {
+     "w": "french",
+     "start": 1016.5,
+     "end": 1016.98
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 1019.2,
+   "pauseAt": 1021.22,
+   "spanish": "¿cómo se dice “francés”?",
+   "expected": [
+    "French."
+   ],
+   "end": 1021.56
+  },
+  {
+   "t": "english",
+   "start": 1021.56,
+   "end": 1026.88,
+   "text": "French. French.",
+   "words": [
+    {
+     "w": "french",
+     "start": 1021.56,
+     "end": 1022.18
+    },
+    {
+     "w": "french",
+     "start": 1023.94,
+     "end": 1024.92
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 1026.88,
+   "pauseAt": 1030.97,
+   "spanish": "¿Cómo responderías \"sí, hablo francés.”?",
+   "expected": [
+    "Yes, I speak French."
+   ],
+   "end": 1031.12
+  },
+  {
+   "t": "english",
+   "start": 1031.12,
+   "end": 1043.42,
+   "text": "Yes, I speak French. Yes, I speak French.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 1031.12,
+     "end": 1031.12
+    },
+    {
+     "w": "i",
+     "start": 1032.5,
+     "end": 1032.68
+    },
+    {
+     "w": "speak",
+     "start": 1032.68,
+     "end": 1032.96
+    },
+    {
+     "w": "french",
+     "start": 1032.96,
+     "end": 1033.44
+    },
+    {
+     "w": "yes",
+     "start": 1036.72,
+     "end": 1037.46
+    },
+    {
+     "w": "i",
+     "start": 1037.92,
+     "end": 1038.1
+    },
+    {
+     "w": "speak",
+     "start": 1038.1,
+     "end": 1038.38
+    },
+    {
+     "w": "french",
+     "start": 1038.38,
+     "end": 1038.9
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 1043.42,
+   "pauseAt": 1045.97,
+   "spanish": "¿Cómo preguntas, “hablas francés?”",
+   "expected": [
+    "Do you speak French?"
+   ],
+   "end": 1046.12
+  },
+  {
+   "t": "english",
+   "start": 1046.12,
+   "end": 1054.48,
+   "text": "Do you speak French? Do you speak French?",
+   "words": [
+    {
+     "w": "do",
+     "start": 1046.12,
+     "end": 1047.22
+    },
+    {
+     "w": "you",
+     "start": 1047.22,
+     "end": 1047.42
+    },
+    {
+     "w": "speak",
+     "start": 1047.42,
+     "end": 1047.72
+    },
+    {
+     "w": "french",
+     "start": 1047.72,
+     "end": 1048.16
+    },
+    {
+     "w": "do",
+     "start": 1048.5,
+     "end": 1048.5
+    },
+    {
+     "w": "you",
+     "start": 1048.5,
+     "end": 1051.36
+    },
+    {
+     "w": "speak",
+     "start": 1051.36,
+     "end": 1051.62
+    },
+    {
+     "w": "french",
+     "start": 1051.62,
+     "end": 1052.24
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 1054.48,
+   "pauseAt": 1058.15,
+   "spanish": "Responde “sí, hablo francés.”",
+   "expected": [
+    "Yes, I speak French."
+   ],
+   "end": 1058.3
+  },
+  {
+   "t": "english",
+   "start": 1058.3,
+   "end": 1068.82,
+   "text": "Yes, I speak French. Yes, I speak French.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 1058.3,
+     "end": 1059.02
+    },
+    {
+     "w": "i",
+     "start": 1059.74,
+     "end": 1060.06
+    },
+    {
+     "w": "speak",
+     "start": 1060.06,
+     "end": 1060.28
+    },
+    {
+     "w": "french",
+     "start": 1060.28,
+     "end": 1060.64
+    },
+    {
+     "w": "yes",
+     "start": 1063.64,
+     "end": 1064.64
+    },
+    {
+     "w": "i",
+     "start": 1065.36,
+     "end": 1065.6
+    },
+    {
+     "w": "speak",
+     "start": 1065.6,
+     "end": 1065.82
+    },
+    {
+     "w": "french",
+     "start": 1065.82,
+     "end": 1066.26
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 1068.82,
+   "pauseAt": 1074.0,
+   "spanish": "Y ¿cómo dirías, “no, no hablo francés.”?",
+   "expected": [
+    "No, I don’t speak French. I don’t speak French."
+   ],
+   "end": 1074.54
+  },
+  {
+   "t": "english",
+   "start": 1074.54,
+   "end": 1086.46,
+   "text": "No, I don’t speak French. I don’t speak French.",
+   "words": [
+    {
+     "w": "no",
+     "start": 1074.54,
+     "end": 1075.38
+    },
+    {
+     "w": "i",
+     "start": 1076.02,
+     "end": 1076.24
+    },
+    {
+     "w": "dont",
+     "start": 1076.24,
+     "end": 1076.6
+    },
+    {
+     "w": "speak",
+     "start": 1076.6,
+     "end": 1076.84
+    },
+    {
+     "w": "french",
+     "start": 1076.84,
+     "end": 1077.22
+    },
+    {
+     "w": "i",
+     "start": 1081.5,
+     "end": 1082.0
+    },
+    {
+     "w": "dont",
+     "start": 1082.0,
+     "end": 1082.34
+    },
+    {
+     "w": "speak",
+     "start": 1082.34,
+     "end": 1082.6
+    },
+    {
+     "w": "french",
+     "start": 1082.6,
+     "end": 1083.12
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 1086.46,
+   "end": 1088.68,
+   "lines": [
+    "Ahora solo escucha esta pregunta."
+   ],
+   "words": [
+    {
+     "w": "ahora",
+     "start": 1086.46,
+     "end": 1086.7
+    },
+    {
+     "w": "solo",
+     "start": 1086.7,
+     "end": 1087.02
+    },
+    {
+     "w": "escucha",
+     "start": 1087.02,
+     "end": 1087.46
+    },
+    {
+     "w": "esta",
+     "start": 1087.46,
+     "end": 1087.6
+    },
+    {
+     "w": "pregunta",
+     "start": 1087.6,
+     "end": 1087.98
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1088.68,
+   "end": 1091.6,
+   "text": "Does he speak Italian?",
+   "words": [
+    {
+     "w": "does",
+     "start": 1088.68,
+     "end": 1089.24
+    },
+    {
+     "w": "he",
+     "start": 1089.24,
+     "end": 1089.5
+    },
+    {
+     "w": "speak",
+     "start": 1089.5,
+     "end": 1089.82
+    },
+    {
+     "w": "italian",
+     "start": 1089.82,
+     "end": 1090.2
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 1091.6,
+   "end": 1100.68,
+   "lines": [
+    "Ella acaba de preguntar “¿él habla italiano?” Así es cómo decimos “italiano.” Escucha y repite."
+   ],
+   "words": [
+    {
+     "w": "ella",
+     "start": 1091.6,
+     "end": 1091.94
+    },
+    {
+     "w": "acaba",
+     "start": 1091.8,
+     "end": 1092.02
+    },
+    {
+     "w": "de",
+     "start": 1092.02,
+     "end": 1092.26
+    },
+    {
+     "w": "preguntar",
+     "start": 1092.26,
+     "end": 1092.78
+    },
+    {
+     "w": "el",
+     "start": 1093.84,
+     "end": 1093.92
+    },
+    {
+     "w": "habla",
+     "start": 1093.92,
+     "end": 1094.16
+    },
+    {
+     "w": "italiano",
+     "start": 1094.16,
+     "end": 1094.64
+    },
+    {
+     "w": "asi",
+     "start": 1095.76,
+     "end": 1096.16
+    },
+    {
+     "w": "es",
+     "start": 1096.16,
+     "end": 1096.34
+    },
+    {
+     "w": "como",
+     "start": 1096.34,
+     "end": 1096.46
+    },
+    {
+     "w": "decimos",
+     "start": 1096.46,
+     "end": 1096.8
+    },
+    {
+     "w": "italiano",
+     "start": 1096.8,
+     "end": 1097.56
+    },
+    {
+     "w": "escucha",
+     "start": 1098.38,
+     "end": 1099.06
+    },
+    {
+     "w": "y",
+     "start": 1099.06,
+     "end": 1099.84
+    },
+    {
+     "w": "repite",
+     "start": 1099.84,
+     "end": 1100.68
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1100.68,
+   "end": 1107.08,
+   "text": "Italian. Italian.",
+   "words": [
+    {
+     "w": "italian",
+     "start": 1100.68,
+     "end": 1102.42
+    },
+    {
+     "w": "italian",
+     "start": 1104.76,
+     "end": 1105.8
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 1107.08,
+   "pauseAt": 1108.31,
+   "spanish": "¿Cómo se dice “italiano”?",
+   "expected": [
+    "Italian."
+   ],
+   "end": 1108.46
+  },
+  {
+   "t": "english",
+   "start": 1108.46,
+   "end": 1117.04,
+   "text": "Italian. Italian.",
+   "words": [
+    {
+     "w": "italian",
+     "start": 1110.22,
+     "end": 1111.04
+    },
+    {
+     "w": "italian",
+     "start": 1111.09,
+     "end": 1111.09
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 1117.04,
+   "end": 1120.36,
+   "lines": [
+    "Escucha la misma pregunta otra vez."
+   ],
+   "words": [
+    {
+     "w": "escucha",
+     "start": 1117.04,
+     "end": 1117.54
+    },
+    {
+     "w": "la",
+     "start": 1117.54,
+     "end": 1117.9
+    },
+    {
+     "w": "misma",
+     "start": 1117.9,
+     "end": 1118.38
+    },
+    {
+     "w": "pregunta",
+     "start": 1118.38,
+     "end": 1118.88
+    },
+    {
+     "w": "otra",
+     "start": 1118.88,
+     "end": 1119.28
+    },
+    {
+     "w": "vez",
+     "start": 1119.28,
+     "end": 1119.62
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1120.36,
+   "end": 1123.1,
+   "text": "Does he speak Italian?",
+   "words": [
+    {
+     "w": "does",
+     "start": 1120.36,
+     "end": 1120.92
+    },
+    {
+     "w": "he",
+     "start": 1120.92,
+     "end": 1121.16
+    },
+    {
+     "w": "speak",
+     "start": 1121.16,
+     "end": 1121.44
+    },
+    {
+     "w": "italian",
+     "start": 1121.44,
+     "end": 1121.9
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 1123.1,
+   "pauseAt": 1126.49,
+   "spanish": "Responde “no, él no habla italiano.”",
+   "expected": [
+    "No, he doesn't speak Italian."
+   ],
+   "end": 1126.64
+  },
+  {
+   "t": "english",
+   "start": 1126.64,
+   "end": 1138.18,
+   "text": "No, he doesn’t speak Italian. No, he doesn’t speak Italian.",
+   "words": [
+    {
+     "w": "no",
+     "start": 1126.64,
+     "end": 1127.92
+    },
+    {
+     "w": "he",
+     "start": 1128.06,
+     "end": 1128.42
+    },
+    {
+     "w": "doesnt",
+     "start": 1128.42,
+     "end": 1128.82
+    },
+    {
+     "w": "speak",
+     "start": 1128.82,
+     "end": 1129.04
+    },
+    {
+     "w": "italian",
+     "start": 1129.04,
+     "end": 1129.52
+    },
+    {
+     "w": "no",
+     "start": 1132.08,
+     "end": 1133.0
+    },
+    {
+     "w": "he",
+     "start": 1134.08,
+     "end": 1134.66
+    },
+    {
+     "w": "doesnt",
+     "start": 1134.66,
+     "end": 1135.04
+    },
+    {
+     "w": "speak",
+     "start": 1135.04,
+     "end": 1135.26
+    },
+    {
+     "w": "italian",
+     "start": 1135.26,
+     "end": 1135.74
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 1138.18,
+   "pauseAt": 1142.6,
+   "spanish": "Y ¿cómo preguntarías “¿ella habla italiano?”?",
+   "expected": [
+    "Does she speak Italian?"
+   ],
+   "end": 1143.12
+  },
+  {
+   "t": "english",
+   "start": 1143.12,
+   "end": 1151.38,
+   "text": "Does she speak Italian? Does she speak Italian?",
+   "words": [
+    {
+     "w": "does",
+     "start": 1143.12,
+     "end": 1143.34
+    },
+    {
+     "w": "she",
+     "start": 1143.34,
+     "end": 1143.66
+    },
+    {
+     "w": "speak",
+     "start": 1143.66,
+     "end": 1143.9
+    },
+    {
+     "w": "italian",
+     "start": 1143.9,
+     "end": 1144.38
+    },
+    {
+     "w": "does",
+     "start": 1144.43,
+     "end": 1144.88
+    },
+    {
+     "w": "she",
+     "start": 1144.93,
+     "end": 1145.38
+    },
+    {
+     "w": "speak",
+     "start": 1145.43,
+     "end": 1145.88
+    },
+    {
+     "w": "italian",
+     "start": 1145.93,
+     "end": 1146.38
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 1151.38,
+   "pauseAt": 1154.61,
+   "spanish": "Responde “sí, ella habla italiano”",
+   "expected": [
+    "Yes, she speaks Italian."
+   ],
+   "end": 1154.76
+  },
+  {
+   "t": "english",
+   "start": 1154.76,
+   "end": 1166.96,
+   "text": "Yes, she speaks Italian. Yes, she speaks Italian.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 1154.76,
+     "end": 1156.06
+    },
+    {
+     "w": "she",
+     "start": 1156.34,
+     "end": 1157.34
+    },
+    {
+     "w": "speaks",
+     "start": 1157.34,
+     "end": 1157.64
+    },
+    {
+     "w": "italian",
+     "start": 1157.64,
+     "end": 1158.08
+    },
+    {
+     "w": "yes",
+     "start": 1161.04,
+     "end": 1161.88
+    },
+    {
+     "w": "she",
+     "start": 1162.84,
+     "end": 1163.32
+    },
+    {
+     "w": "speaks",
+     "start": 1163.32,
+     "end": 1163.64
+    },
+    {
+     "w": "italian",
+     "start": 1163.64,
+     "end": 1164.14
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 1166.96,
+   "end": 1169.66,
+   "lines": [
+    "Ahora solo escucha esta pregunta."
+   ],
+   "words": [
+    {
+     "w": "ahora",
+     "start": 1166.96,
+     "end": 1167.8
+    },
+    {
+     "w": "solo",
+     "start": 1167.68,
+     "end": 1168.02
+    },
+    {
+     "w": "escucha",
+     "start": 1168.02,
+     "end": 1168.46
+    },
+    {
+     "w": "esta",
+     "start": 1168.46,
+     "end": 1168.58
+    },
+    {
+     "w": "pregunta",
+     "start": 1168.58,
+     "end": 1168.98
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1169.66,
+   "end": 1172.34,
+   "text": "Do you guys speak English?",
+   "words": [
+    {
+     "w": "do",
+     "start": 1169.66,
+     "end": 1170.06
+    },
+    {
+     "w": "you",
+     "start": 1170.06,
+     "end": 1170.34
+    },
+    {
+     "w": "guys",
+     "start": 1170.34,
+     "end": 1170.54
+    },
+    {
+     "w": "speak",
+     "start": 1170.54,
+     "end": 1170.82
+    },
+    {
+     "w": "english",
+     "start": 1170.82,
+     "end": 1171.18
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 1172.34,
+   "end": 1176.12,
+   "lines": [
+    "Él acaba de preguntar “¿ustedes hablan inglés?”"
+   ],
+   "words": [
+    {
+     "w": "el",
+     "start": 1172.34,
+     "end": 1172.46
+    },
+    {
+     "w": "acaba",
+     "start": 1172.46,
+     "end": 1172.74
+    },
+    {
+     "w": "de",
+     "start": 1172.74,
+     "end": 1172.9
+    },
+    {
+     "w": "preguntar",
+     "start": 1172.9,
+     "end": 1173.52
+    },
+    {
+     "w": "ustedes",
+     "start": 1174.08,
+     "end": 1174.52
+    },
+    {
+     "w": "hablan",
+     "start": 1174.52,
+     "end": 1174.76
+    },
+    {
+     "w": "ingles",
+     "start": 1174.76,
+     "end": 1175.04
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 1176.12,
+   "pauseAt": 1179.8,
+   "spanish": "¿Cómo responderías \"sí, hablamos inglés.”?",
+   "expected": [
+    "Yes, we speak English."
+   ],
+   "end": 1184.08
+  },
+  {
+   "t": "prompt",
+   "start": 1184.08,
+   "pauseAt": 1187.52,
+   "spanish": "¿Cómo preguntarías, “¿ustedes hablan inglés?”?",
+   "expected": [
+    "Do you guys speak English?"
+   ],
+   "end": 1187.7
+  },
+  {
+   "t": "english",
+   "start": 1187.7,
+   "end": 1196.6,
+   "text": "Do you guys speak English? Do you guys speak English?",
+   "words": [
+    {
+     "w": "do",
+     "start": 1187.7,
+     "end": 1187.84
+    },
+    {
+     "w": "you",
+     "start": 1187.84,
+     "end": 1188.08
+    },
+    {
+     "w": "guys",
+     "start": 1188.08,
+     "end": 1188.3
+    },
+    {
+     "w": "speak",
+     "start": 1188.3,
+     "end": 1188.62
+    },
+    {
+     "w": "english",
+     "start": 1188.62,
+     "end": 1189.12
+    },
+    {
+     "w": "do",
+     "start": 1191.64,
+     "end": 1191.72
+    },
+    {
+     "w": "you",
+     "start": 1191.72,
+     "end": 1191.96
+    },
+    {
+     "w": "guys",
+     "start": 1191.96,
+     "end": 1192.16
+    },
+    {
+     "w": "speak",
+     "start": 1192.16,
+     "end": 1192.52
+    },
+    {
+     "w": "english",
+     "start": 1192.52,
+     "end": 1193.0
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 1196.6,
+   "end": 1198.56,
+   "lines": [
+    "Solo escucha esta respuesta."
+   ],
+   "words": [
+    {
+     "w": "solo",
+     "start": 1196.6,
+     "end": 1196.76
+    },
+    {
+     "w": "escucha",
+     "start": 1196.76,
+     "end": 1197.4
+    },
+    {
+     "w": "esta",
+     "start": 1197.4,
+     "end": 1197.7
+    },
+    {
+     "w": "respuesta",
+     "start": 1197.7,
+     "end": 1198.18
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1198.56,
+   "end": 1204.74,
+   "text": "No, we don’t speak English. But we speak Spanish.",
+   "words": [
+    {
+     "w": "no",
+     "start": 1198.56,
+     "end": 1198.56
+    },
+    {
+     "w": "we",
+     "start": 1199.98,
+     "end": 1200.24
+    },
+    {
+     "w": "dont",
+     "start": 1200.24,
+     "end": 1200.66
+    },
+    {
+     "w": "speak",
+     "start": 1200.66,
+     "end": 1200.88
+    },
+    {
+     "w": "english",
+     "start": 1200.88,
+     "end": 1201.34
+    },
+    {
+     "w": "but",
+     "start": 1201.86,
+     "end": 1202.16
+    },
+    {
+     "w": "we",
+     "start": 1202.16,
+     "end": 1202.36
+    },
+    {
+     "w": "speak",
+     "start": 1202.36,
+     "end": 1202.58
+    },
+    {
+     "w": "spanish",
+     "start": 1202.58,
+     "end": 1202.96
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 1204.74,
+   "end": 1212.02,
+   "lines": [
+    "Buen trabajo. Ahora escucha la conversación que escuchaste al comienzo de la lección."
+   ],
+   "words": [
+    {
+     "w": "buen",
+     "start": 1204.74,
+     "end": 1205.16
+    },
+    {
+     "w": "trabajo",
+     "start": 1205.16,
+     "end": 1205.54
+    },
+    {
+     "w": "ahora",
+     "start": 1205.54,
+     "end": 1206.34
+    },
+    {
+     "w": "escucha",
+     "start": 1206.34,
+     "end": 1206.82
+    },
+    {
+     "w": "la",
+     "start": 1206.82,
+     "end": 1206.9
+    },
+    {
+     "w": "conversacion",
+     "start": 1206.9,
+     "end": 1207.66
+    },
+    {
+     "w": "que",
+     "start": 1207.66,
+     "end": 1207.88
+    },
+    {
+     "w": "escuchaste",
+     "start": 1207.88,
+     "end": 1208.54
+    },
+    {
+     "w": "al",
+     "start": 1208.54,
+     "end": 1208.76
+    },
+    {
+     "w": "comienzo",
+     "start": 1208.76,
+     "end": 1209.58
+    },
+    {
+     "w": "de",
+     "start": 1209.58,
+     "end": 1209.8
+    },
+    {
+     "w": "la",
+     "start": 1209.8,
+     "end": 1209.94
+    },
+    {
+     "w": "leccion",
+     "start": 1209.94,
+     "end": 1210.36
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1212.02,
+   "end": 1215.46,
+   "text": "Hello. Do you speak English?",
+   "words": [
+    {
+     "w": "hello",
+     "start": 1212.02,
+     "end": 1212.64
+    },
+    {
+     "w": "do",
+     "start": 1213.34,
+     "end": 1213.54
+    },
+    {
+     "w": "you",
+     "start": 1213.54,
+     "end": 1213.72
+    },
+    {
+     "w": "speak",
+     "start": 1213.72,
+     "end": 1213.98
+    },
+    {
+     "w": "english",
+     "start": 1213.98,
+     "end": 1214.32
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1215.46,
+   "end": 1221.54,
+   "text": "Yes, I speak a bit of English. But I speak French a lot better. Do you speak English?",
+   "words": [
+    {
+     "w": "yes",
+     "start": 1215.46,
+     "end": 1215.74
+    },
+    {
+     "w": "i",
+     "start": 1216.1,
+     "end": 1216.26
+    },
+    {
+     "w": "speak",
+     "start": 1216.26,
+     "end": 1216.52
+    },
+    {
+     "w": "a",
+     "start": 1216.52,
+     "end": 1216.7
+    },
+    {
+     "w": "bit",
+     "start": 1216.7,
+     "end": 1216.86
+    },
+    {
+     "w": "of",
+     "start": 1216.86,
+     "end": 1217.0
+    },
+    {
+     "w": "english",
+     "start": 1217.0,
+     "end": 1217.34
+    },
+    {
+     "w": "but",
+     "start": 1217.72,
+     "end": 1217.88
+    },
+    {
+     "w": "i",
+     "start": 1217.88,
+     "end": 1218.0
+    },
+    {
+     "w": "speak",
+     "start": 1218.0,
+     "end": 1218.3
+    },
+    {
+     "w": "french",
+     "start": 1218.3,
+     "end": 1218.68
+    },
+    {
+     "w": "a",
+     "start": 1218.68,
+     "end": 1218.86
+    },
+    {
+     "w": "lot",
+     "start": 1218.86,
+     "end": 1219.1
+    },
+    {
+     "w": "better",
+     "start": 1219.1,
+     "end": 1219.42
+    },
+    {
+     "w": "do",
+     "start": 1220.02,
+     "end": 1220.18
+    },
+    {
+     "w": "you",
+     "start": 1220.18,
+     "end": 1220.32
+    },
+    {
+     "w": "speak",
+     "start": 1220.32,
+     "end": 1220.54
+    },
+    {
+     "w": "english",
+     "start": 1220.54,
+     "end": 1220.82
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1221.54,
+   "end": 1225.78,
+   "text": "Yes, I speak English. Do you speak English?",
+   "words": [
+    {
+     "w": "yes",
+     "start": 1221.54,
+     "end": 1222.16
+    },
+    {
+     "w": "i",
+     "start": 1222.78,
+     "end": 1223.1
+    },
+    {
+     "w": "speak",
+     "start": 1223.1,
+     "end": 1223.38
+    },
+    {
+     "w": "english",
+     "start": 1223.38,
+     "end": 1223.76
+    },
+    {
+     "w": "do",
+     "start": 1224.3,
+     "end": 1224.7
+    },
+    {
+     "w": "you",
+     "start": 1224.7,
+     "end": 1224.9
+    },
+    {
+     "w": "speak",
+     "start": 1224.9,
+     "end": 1225.14
+    },
+    {
+     "w": "english",
+     "start": 1225.14,
+     "end": 1225.48
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1225.78,
+   "end": 1232.82,
+   "text": "Yes, I speak English. But I do not speak Chinese. Do you speak Chinese?",
+   "words": [
+    {
+     "w": "yes",
+     "start": 1225.78,
+     "end": 1225.78
+    },
+    {
+     "w": "i",
+     "start": 1227.5,
+     "end": 1227.6
+    },
+    {
+     "w": "speak",
+     "start": 1227.6,
+     "end": 1227.8
+    },
+    {
+     "w": "english",
+     "start": 1227.8,
+     "end": 1228.24
+    },
+    {
+     "w": "but",
+     "start": 1228.72,
+     "end": 1228.96
+    },
+    {
+     "w": "i",
+     "start": 1228.96,
+     "end": 1229.08
+    },
+    {
+     "w": "do",
+     "start": 1229.08,
+     "end": 1229.2
+    },
+    {
+     "w": "not",
+     "start": 1229.2,
+     "end": 1229.4
+    },
+    {
+     "w": "speak",
+     "start": 1229.4,
+     "end": 1229.7
+    },
+    {
+     "w": "chinese",
+     "start": 1229.7,
+     "end": 1230.08
+    },
+    {
+     "w": "do",
+     "start": 1230.96,
+     "end": 1231.18
+    },
+    {
+     "w": "you",
+     "start": 1231.18,
+     "end": 1231.34
+    },
+    {
+     "w": "speak",
+     "start": 1231.34,
+     "end": 1231.6
+    },
+    {
+     "w": "chinese",
+     "start": 1231.6,
+     "end": 1231.94
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1232.82,
+   "end": 1238.24,
+   "text": "No, I don’t speak Chinese. Does she speak Chinese?",
+   "words": [
+    {
+     "w": "no",
+     "start": 1232.82,
+     "end": 1233.16
+    },
+    {
+     "w": "i",
+     "start": 1233.16,
+     "end": 1233.24
+    },
+    {
+     "w": "dont",
+     "start": 1233.24,
+     "end": 1234.42
+    },
+    {
+     "w": "speak",
+     "start": 1234.42,
+     "end": 1234.62
+    },
+    {
+     "w": "chinese",
+     "start": 1234.62,
+     "end": 1235.14
+    },
+    {
+     "w": "does",
+     "start": 1235.86,
+     "end": 1236.24
+    },
+    {
+     "w": "she",
+     "start": 1236.24,
+     "end": 1236.58
+    },
+    {
+     "w": "speak",
+     "start": 1236.58,
+     "end": 1236.92
+    },
+    {
+     "w": "chinese",
+     "start": 1236.92,
+     "end": 1237.36
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1238.24,
+   "end": 1245.38,
+   "text": "No, she doesn’t speak Chinese either. She speaks Spanish. Do you guys speak Spanish?",
+   "words": [
+    {
+     "w": "no",
+     "start": 1238.24,
+     "end": 1238.92
+    },
+    {
+     "w": "she",
+     "start": 1239.28,
+     "end": 1239.48
+    },
+    {
+     "w": "doesnt",
+     "start": 1239.48,
+     "end": 1239.84
+    },
+    {
+     "w": "speak",
+     "start": 1239.84,
+     "end": 1240.08
+    },
+    {
+     "w": "chinese",
+     "start": 1240.08,
+     "end": 1240.54
+    },
+    {
+     "w": "either",
+     "start": 1240.54,
+     "end": 1240.96
+    },
+    {
+     "w": "she",
+     "start": 1241.48,
+     "end": 1241.68
+    },
+    {
+     "w": "speaks",
+     "start": 1241.68,
+     "end": 1241.98
+    },
+    {
+     "w": "spanish",
+     "start": 1241.98,
+     "end": 1242.38
+    },
+    {
+     "w": "do",
+     "start": 1243.1,
+     "end": 1243.32
+    },
+    {
+     "w": "you",
+     "start": 1243.32,
+     "end": 1243.52
+    },
+    {
+     "w": "guys",
+     "start": 1243.52,
+     "end": 1243.74
+    },
+    {
+     "w": "speak",
+     "start": 1243.74,
+     "end": 1244.06
+    },
+    {
+     "w": "spanish",
+     "start": 1244.06,
+     "end": 1244.48
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1245.38,
+   "end": 1251.62,
+   "text": "Yes, we speak English. And you guys? Do you guys speak Spanish?",
+   "words": [
+    {
+     "w": "yes",
+     "start": 1245.38,
+     "end": 1245.84
+    },
+    {
+     "w": "we",
+     "start": 1246.28,
+     "end": 1246.52
+    },
+    {
+     "w": "speak",
+     "start": 1246.52,
+     "end": 1246.76
+    },
+    {
+     "w": "english",
+     "start": 1246.78,
+     "end": 1247.3
+    },
+    {
+     "w": "and",
+     "start": 1247.84,
+     "end": 1248.24
+    },
+    {
+     "w": "you",
+     "start": 1248.24,
+     "end": 1248.46
+    },
+    {
+     "w": "guys",
+     "start": 1248.46,
+     "end": 1248.88
+    },
+    {
+     "w": "do",
+     "start": 1249.54,
+     "end": 1249.82
+    },
+    {
+     "w": "you",
+     "start": 1249.82,
+     "end": 1250.12
+    },
+    {
+     "w": "guys",
+     "start": 1250.12,
+     "end": 1250.42
+    },
+    {
+     "w": "speak",
+     "start": 1250.42,
+     "end": 1250.8
+    },
+    {
+     "w": "spanish",
+     "start": 1250.8,
+     "end": 1251.32
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1251.62,
+   "end": 1260.18,
+   "text": "No, we don’t speak Spanish. But we speak a bit of Italian.",
+   "words": [
+    {
+     "w": "no",
+     "start": 1251.62,
+     "end": 1252.76
+    },
+    {
+     "w": "we",
+     "start": 1252.82,
+     "end": 1252.94
+    },
+    {
+     "w": "dont",
+     "start": 1252.94,
+     "end": 1253.22
+    },
+    {
+     "w": "speak",
+     "start": 1253.22,
+     "end": 1253.42
+    },
+    {
+     "w": "spanish",
+     "start": 1253.42,
+     "end": 1253.92
+    },
+    {
+     "w": "but",
+     "start": 1254.2,
+     "end": 1254.62
+    },
+    {
+     "w": "we",
+     "start": 1254.62,
+     "end": 1254.74
+    },
+    {
+     "w": "speak",
+     "start": 1254.74,
+     "end": 1255.02
+    },
+    {
+     "w": "a",
+     "start": 1255.02,
+     "end": 1255.2
+    },
+    {
+     "w": "bit",
+     "start": 1255.2,
+     "end": 1255.32
+    },
+    {
+     "w": "of",
+     "start": 1255.32,
+     "end": 1255.44
+    },
+    {
+     "w": "italian",
+     "start": 1255.44,
+     "end": 1255.88
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 1260.18,
+   "end": 1283.38,
+   "lines": [
+    "Esto es el final de la lección. Si aún no te sientes cómodo con la estructura de estas oraciones y preguntas en inglés, repite la lección tantas veces como sea necesario para sentirte cómodo respondiendo a todo."
+   ],
+   "words": [
+    {
+     "w": "esto",
+     "start": 1260.18,
+     "end": 1260.46
+    },
+    {
+     "w": "es",
+     "start": 1260.46,
+     "end": 1260.7
+    },
+    {
+     "w": "el",
+     "start": 1260.7,
+     "end": 1260.84
+    },
+    {
+     "w": "final",
+     "start": 1260.84,
+     "end": 1261.14
+    },
+    {
+     "w": "de",
+     "start": 1261.14,
+     "end": 1261.36
+    },
+    {
+     "w": "la",
+     "start": 1261.36,
+     "end": 1261.46
+    },
+    {
+     "w": "leccion",
+     "start": 1261.46,
+     "end": 1261.88
+    },
+    {
+     "w": "si",
+     "start": 1261.88,
+     "end": 1262.52
+    },
+    {
+     "w": "aun",
+     "start": 1262.52,
+     "end": 1262.8
+    },
+    {
+     "w": "no",
+     "start": 1262.8,
+     "end": 1263.18
+    },
+    {
+     "w": "te",
+     "start": 1263.18,
+     "end": 1263.54
+    },
+    {
+     "w": "sientes",
+     "start": 1263.54,
+     "end": 1264.22
+    },
+    {
+     "w": "comodo",
+     "start": 1264.22,
+     "end": 1264.94
+    },
+    {
+     "w": "con",
+     "start": 1264.94,
+     "end": 1265.18
+    },
+    {
+     "w": "la",
+     "start": 1265.18,
+     "end": 1265.56
+    },
+    {
+     "w": "estructura",
+     "start": 1265.56,
+     "end": 1266.32
+    },
+    {
+     "w": "de",
+     "start": 1266.32,
+     "end": 1266.52
+    },
+    {
+     "w": "estas",
+     "start": 1266.52,
+     "end": 1266.86
+    },
+    {
+     "w": "oraciones",
+     "start": 1266.86,
+     "end": 1267.5
+    },
+    {
+     "w": "y",
+     "start": 1267.5,
+     "end": 1267.72
+    },
+    {
+     "w": "preguntas",
+     "start": 1267.72,
+     "end": 1268.1
+    },
+    {
+     "w": "en",
+     "start": 1268.1,
+     "end": 1268.3
+    },
+    {
+     "w": "ingles",
+     "start": 1268.3,
+     "end": 1268.52
+    },
+    {
+     "w": "repite",
+     "start": 1269.1,
+     "end": 1269.84
+    },
+    {
+     "w": "la",
+     "start": 1269.84,
+     "end": 1269.96
+    },
+    {
+     "w": "leccion",
+     "start": 1269.96,
+     "end": 1270.36
+    },
+    {
+     "w": "tantas",
+     "start": 1270.36,
+     "end": 1271.02
+    },
+    {
+     "w": "veces",
+     "start": 1271.02,
+     "end": 1271.6
+    },
+    {
+     "w": "como",
+     "start": 1271.6,
+     "end": 1272.1
+    },
+    {
+     "w": "sea",
+     "start": 1272.1,
+     "end": 1272.44
+    },
+    {
+     "w": "necesario",
+     "start": 1272.44,
+     "end": 1273.18
+    },
+    {
+     "w": "para",
+     "start": 1273.18,
+     "end": 1273.8
+    },
+    {
+     "w": "sentirte",
+     "start": 1273.8,
+     "end": 1274.42
+    },
+    {
+     "w": "comodo",
+     "start": 1274.42,
+     "end": 1275.14
+    },
+    {
+     "w": "respondiendo",
+     "start": 1275.14,
+     "end": 1276.24
+    },
+    {
+     "w": "a",
+     "start": 1276.24,
+     "end": 1276.44
+    },
+    {
+     "w": "todo",
+     "start": 1276.44,
+     "end": 1276.74
+    }
+   ]
+  }
+ ]
+}
