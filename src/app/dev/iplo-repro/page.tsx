@@ -1,0 +1,48 @@
+// DEV-ONLY repro harness for the Iplo player. Delete after the playthrough.
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { parseAudioScript } from "@/lib/iplo";
+import AudioCoursePlayer from "@/components/AudioCoursePlayer";
+
+export const dynamic = "force-dynamic";
+
+const DAY_FILES: Record<string, { file: string; duration: number }> = {
+  "1": { file: "/audio/iplo/day-1-filled.m4a", duration: 864.4 },
+  // Filled: donor replay spliced at 1180 (+2.80s); segments are on this timeline.
+  "2": { file: "/audio/iplo/day-2-filled.m4a", duration: 1287.02 },
+};
+
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: Promise<{ day?: string }>;
+}) {
+  const sp = (await searchParams) ?? {};
+  const day = sp.day && DAY_FILES[sp.day] ? sp.day : "1";
+  const info = DAY_FILES[day];
+  const raw = JSON.parse(
+    readFileSync(join(process.cwd(), `scripts/iplo/day${day}-segments.json`), "utf8")
+  );
+  const script = parseAudioScript({
+    audioUrl: info.file,
+    grammarTagId: "dev",
+    durationSeconds: info.duration,
+    segments: raw.segments,
+  });
+  if (!script) return <p>Script failed parseAudioScript.</p>;
+  return (
+    <AudioCoursePlayer
+      storyId="dev-repro"
+      title={`DIAG Día ${day}`}
+      level="beginner"
+      script={script}
+      completedOnce={false}
+      dayMarks={[]}
+      closingLine={false}
+      writes={false}
+      isTeacher
+      previewLevel={null}
+      viewToggle={null}
+    />
+  );
+}
