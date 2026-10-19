@@ -238,6 +238,30 @@ therefore cannot be substitution-shaped; it must be DISTRIBUTION-shaped:
   Spanish /a/-/e/ and one with exaggerated English vowels; the aggregator must rank the
   depressed vowels as top patterns in clip 1 and not in clip 2.
 
+### Spike 1b: Kyle validation takes (2026-10-19, same passage twice)
+
+Take 1 = normal American vowels, take 2 = deliberately relaxed Spanish-leaning /æ/-/ɛ/.
+Read the full numbers in scripts/speaking-probe/results/ (gitignored).
+
+- **Azure DOES score vowel quality:** /æ/ 98.8 → 88.6 and /ɛ/ 98.5 → 89.5 between takes,
+  zero instances below 60. The "correct phoneme, lower quality" theory is confirmed
+  numerically: quality shows up as score depression, exactly as Kyle predicted.
+- **Within-speaker baseline detection FAILED on this data:** the whole take sagged
+  (baseline 98.4 → 93.4); /ð/ /p/ /w/ dropped MORE than the target vowels. Acting noise
+  contaminates the self-relative signal. Do not rely on self-baseline alone.
+- **Native-reference detection WORKED:** against Kyle's good take, /æ/ (−10.2) and /ɛ/
+  (−9.0) rank among the largest per-phoneme drops. And across all 7 student voice notes,
+  EVERY student is below the Kyle reference on /æ/ (−6 to −19), 6/7 below on /ɛ/.
+- **Product consequence: teacher reference recordings become a first-class artifact.**
+  Kyle records a reference reading of each prompt (he already records his own audio for
+  every lesson); the aggregator compares student phoneme averages against that reference.
+  Design the aggregator with TWO signals: (1) self-baseline sag, (2) teacher-reference
+  gap. A pattern fires when either is strong; reference-gap is the one validated here.
+- Caveats: one recording each, acting confound (non-vowel phonemes also moved), student
+  recordings differ in mic/distance/content. Treat as direction, keep the two-signal
+  design, and re-validate once students record INSIDE the prototype with the same prompt
+  and Kyle's reference clip.
+
 ## Merge-danger
 
 - New migration only; no changes to existing tables or the scripted
