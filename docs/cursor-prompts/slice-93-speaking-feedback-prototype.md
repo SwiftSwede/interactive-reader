@@ -182,6 +182,35 @@ primary acceptance input for (a) and a supplement for (b).
 - (e) Generated copy passes Kyle's copy axes: written Spanish accents present,
   zero em dashes.
 
+## Spike 1 findings (run 2026-10-19, 7 WhatsApp voice notes, 97-453 words each)
+
+- **westus2 unscripted assessment WORKS** with the existing resource/key. Phoneme-level
+  accuracy scores come back per word, plus syllables, ErrorType, and a clean transcript.
+  Long audio (206s, 453 words) processes fine in continuous mode.
+- **Codec verdict:** the installed Speech SDK build has NO compressed-input support
+  (`getCompressedFormat` missing, `fromWavFileInput` crashes in FileAudioSource.readHeader).
+  Working path = ffmpeg/raw PCM 16k mono push stream. Production implication: the API route
+  should accept WAV/PCM (browser AudioWorklet WAV capture) or server-transcode; do NOT
+  send webm/opus through this SDK.
+- **Latency finding (important):** per-file end-to-end recognition took ~2-7 min wall clock.
+  A synchronous API route is not viable; the attempt flow must be async: upload → job
+  → poll/refresh for the feedback card. Confirm per-call latency on smaller clips before
+  finalizing UI copy about waiting.
+- **Transcript quality is excellent** and grammar errors are clearly visible in the raw
+  text ("I stood it software engineer", "He is only three years" for a daughter, "I working
+  in a telecommunications company") — strong fuel for the grammar agent.
+- **Mangled-word signal is strong:** directorate (12), coworkers (4), native (16),
+  aspirate (17), fluently (16), understand (17) — genuinely hard words, plausible real
+  mispronunciations.
+- **Phoneme-pattern signal needs tuning before it matches Kyle's intuition:** absolute
+  threshold 60 surfaces /n/, /t/, /ax/ as "patterns" with averages of 74-90, which read
+  as word-final consonant noise, not real confusions. Real-looking signals: /s/ (18 low,
+  avg 73.7) for one speaker, /r/ (11 low) for another. Vowel-confusion patterns
+  (the Paula /æ/~/ɛ/ case) did NOT surface at absolute threshold 60. Spec the aggregator
+  to tune: relative threshold (phoneme low when score < min(60, speaker_avg - 15)),
+  dedupe example words, consider position weighting (word-final vs stressed). Validate
+  against a recording where Kyle injects a known vowel swap before locking thresholds.
+
 ## Merge-danger
 
 - New migration only; no changes to existing tables or the scripted
