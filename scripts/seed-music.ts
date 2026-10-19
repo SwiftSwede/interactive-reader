@@ -679,11 +679,13 @@ I've become so numb, I can't feel you there
 I've become so numb, I can't feel you there
 (I'm tired of being what you want me to be)`,
     // Blanks transcribed from the deck's own numbering (1)-(9), Oct 2026 deck.
-    // - (3) "is another mistake" sits on TWO IDENTICAL verse lines -> ONE
-    //   entry, two placements (checker's legit multi-line case).
+    // Kyle edited the deck blanks 2026-10-19: exposed words moved out of the
+    // blanks -> (2) "Put under", (3) "another mistake", (5) "afraid",
+    // (6) "in front of you". Transcribed verbatim; verified attempts = 0.
+    // - (3) sits on TWO IDENTICAL verse lines -> ONE entry, two placements
+    //   (checker's legit multi-line case).
     // - (4) "aware" sits on THREE IDENTICAL chorus lines -> ONE entry,
     //   three placements (same case).
-    // - (2), (5), (6) are multi-word single-entry blanks.
     lyricBlanks: [
       {
         id: 1,
@@ -692,13 +694,13 @@ I've become so numb, I can't feel you there
       },
       {
         id: 2,
-        prompt: "___ ____ ___ _____ of walking in your shoes",
-        answer: "Put under the pressure",
+        prompt: "___ ____ the pressure of walking in your shoes",
+        answer: "Put under",
       },
       {
         id: 3,
-        prompt: "Every step that I take __ _____ _____ to you",
-        answer: "is another mistake",
+        prompt: "Every step that I take is _____ _____ to you",
+        answer: "another mistake",
       },
       {
         id: 4,
@@ -707,13 +709,13 @@ I've become so numb, I can't feel you there
       },
       {
         id: 5,
-        prompt: "Holding too tightly, _____ __ ____ _____?",
-        answer: "afraid to lose control",
+        prompt: "Holding too tightly, _____ to lose control?",
+        answer: "afraid",
       },
       {
         id: 6,
-        prompt: "Has fallen apart _____ __ _____ __ ___",
-        answer: "right in front of you",
+        prompt: "Has fallen apart right __ _____ __ ___",
+        answer: "in front of you",
       },
       {
         id: 7,
