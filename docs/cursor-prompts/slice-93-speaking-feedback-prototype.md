@@ -1,0 +1,162 @@
+# Slice 93: Speaking Feedback Prototype (unscripted speech → multi-agent feedback)
+
+Status: SPEC DRAFT — awaiting Kyle's plan-review
+Target: standalone prototype route, display-only, teacher-first
+
+## Goal
+
+A student (v1: Kyle, then 2-3 int-group volunteers) opens a prototype page, sees a
+speaking prompt, records a spoken answer in the browser, and gets unified feedback
+covering pronunciation patterns, grammar, and vocabulary. No scores shown to the
+student. No punctuation feedback (this is speech).
+
+Writing variant (punctuation agent) is a later slice; out of scope here.
+
+## Plan-review (Kyle's decisions, recorded 2026-10-18)
+
+| # | Decision | Resolution |
+|---|----------|------------|
+| 1 | Placement | Standalone prototype route, magic-link auth, display-only. RESOLVED (recommended, unobjected) |
+| 2 | First testers | Kyle first with 5-10 recordings incl. deliberately-bad ones; then 2-3 int volunteers. RESOLVED (recommended, unobjected) |
+| 3 | Level | Int (high B1) first. RESOLVED (recommended, unobjected) |
+| 4 | Prompt | Single hardcoded prompt; must elicit 4+ sentences. Candidates drafted in this file; Kyle picks. RESOLVED |
+| 5 | Length limits | HARD floor 15s (under → "too short, try again" state). Soft nudge at 30s. HARD cap 180s with auto-stop. RESOLVED |
+| 6 | Capture | Browser MediaRecorder in-page (webm/opus), upload to Supabase Storage, stream to Azure. If Azure rejects webm/opus, fall back to in-browser WAV capture. RESOLVED (recommended, unobjected) |
+| 7 | Keep audio | YES: private Supabase Storage bucket keyed by attempt id. RESOLVED |
+| 8 | Azure resource | Reuse existing AZURE_SPEECH_KEY / AZURE_SPEECH_REGION=westus2 (present in .env.local AND Vercel Production). Spike step 1 = live probe that unscripted assessment works on westus2; only if it fails, create a new resource in a supported region. RESOLVED |
+| 9 | Scripted vs unscripted | UNSCRIPTED (speaking scenario, no reference text). Note: existing azurePronunciation.ts is scripted-only (referenceText required); this slice adds a separate unscripted path. RESOLVED |
+| 10 | Aggregation thresholds | Constants in one config file (values below). RESOLVED (recommended, unobjected) |
+| 11 | Models | GPT-4o-mini for all 4 calls via OpenRouter, structured JSON from specialists. Bump grammar model only if QA shows misses. RESOLVED (recommended, unobjected) |
+| 12 | Feedback language | Spanish meta-commentary, English for corrected example sentences. No praise padding. RESOLVED |
+| 13 | Deficiency queue | OUT of scope. Store raw attempt JSON in one table; tag-mapping deferred. RESOLVED |
+| 14 | Student output | No numbers, no scores visible to students. Feedback prose only. RESOLVED |
+| 15 | Success criteria | See "Acceptance" below. RESOLVED (recommended, unobjected) |
+
+## Chosen prompt (v1, hardcoded constant)
+
+Kyle picks one of:
+
+- P1: "Think about a person who changed the way you see something: a teacher, a family member, someone you worked with. Who was it, and what did they change for you?"
+- P2: "What is something you used to believe about learning or work that you don't believe anymore? What changed your mind?"
+- P3: "Describe a moment in the last year when you had to speak English and it didn't go how you wanted. What happened, and what would you do differently now?"
+
+Default if Kyle does not amend: P1.
+
+## Architecture
+
+```
+[Prototype page /prototype/speaking]
+  prompt card → record button (MediaRecorder) → length gates (15/30/180)
+  → upload audio to Supabase Storage (attempt id = uuid)
+  → POST /api/speaking-feedback { attemptId }
+      ├─ Azure Speech SDK, unscripted pronunciation assessment (new code path,
+      │   no referenceText; continuous mode since audio > 30s)
+      │   → raw JSON: word entries w/ phoneme AccuracyScores, errorTypes,
+      │     prosody/fluency; recognized text = transcript
+      ├─ aggregatePhonemePatterns(raw)   [pure fn, src/lib/pronunciation/]
+      ├─ three parallel OpenRouter calls (structured JSON):
+      │   grammarAgent(transcript, level)
+      │   vocabularyAgent(transcript, level)
+      │   pronunciationPedagogyAgent(transcript, aggregatedPatterns, level)
+      ├─ synthesizer call → unified Spanish/English feedback card JSON
+      └─ persist attempt row (audio path, raw azure json, agent outputs,
+          final feedback) → return feedback to page
+```
+
+### Reuse, do not rebuild
+
+- `src/lib/pronunciation/thresholds.ts`, `azure-ipa.ts`,
+  `latam-enus-sounds-guide.v1.json`, `spanishCoachRules.ts`: reuse for IPA naming
+  and LatAm-specific coaching lines where applicable. Do NOT modify them in this
+  slice; read-only reuse. If a shape mismatches, wrap, don't edit.
+- Supabase auth/session patterns and OpenRouter call patterns already in the repo:
+  follow the existing helper conventions (find them before writing new ones).
+
+### Aggregation config (single file, e.g. `src/lib/pronunciation/speakingFeedbackConfig.ts`)
+
+```ts
+PHONEME_ERROR_THRESHOLD = 60      // Azure's own mispronunciation cutoff
+WORD_MANGLE_THRESHOLD = 40        // word-level accuracy → "completely mispronounced"
+MAX_MANGLED_WORDS_SHOWN = 3
+PATTERN_MIN_INSTANCES = 3         // phoneme needs 3+ error instances to be a pattern
+MAX_PATTERNS_SHOWN = 2
+MIN_AUDIO_SECONDS = 15            // hard floor → retry state
+NUDGE_SECONDS = 30                // soft UI nudge
+MAX_AUDIO_SECONDS = 180           // hard cap, client auto-stop
+```
+
+Pattern output shape: `{ phoneme, ipaDisplay, instanceCount, avgAccuracy,
+exampleWords: string[] }` — sorted by (instanceCount desc, avgAccuracy asc).
+
+### Agent contracts (structured JSON, temperature low)
+
+All specialists receive: transcript, prompt text, level ("int"), and the rule
+"report only real errors; if the English is correct, say so explicitly rather
+than inventing issues."
+
+- **grammarAgent** → `{ errors: [{ heard, corrected, rule, severity }], ok: bool }`
+- **vocabularyAgent** → `{ suggestions: [{ heard, better, why }], ok: bool }`
+  (cognate synonyms are intentional; do not flag them)
+- **pronunciationPedagogyAgent** → input includes aggregated patterns + mangled
+  words; returns `{ patterns: [{ pattern, friendlyName, examples, tip }],
+  mangledWords, ok: bool }` — writes for a student with weak pronunciation:
+  top patterns only, no exhaustive lists.
+- **synthesizer** → takes all three + prompt, emits final card JSON:
+  `{ transcript, patterns: [...], grammarFixes: [...], vocabularyTip, closingLine }`
+  in Spanish meta-commentary with English example sentences. No scores. No em
+  dashes anywhere in generated copy. Cap: card reads in under 60 seconds.
+
+## Storage
+
+One migration: `speaking_attempts` table
+(id uuid, user_id, prompt_id text, audio_path text, duration_s numeric,
+azure_raw jsonb, aggregate jsonb, agent_outputs jsonb, final_feedback jsonb,
+created_at). Private bucket `speaking-attempts` for audio. RLS: owner-only read;
+teacher access via service role only.
+
+## Route + UI
+
+- `src/app/prototype/speaking/page.tsx` (auth-gated, mobile-first, 375px check).
+  Vertical: prompt card → record button with live timer (nudge at 30s, auto-stop
+  180s) → processing state → feedback card.
+- Feedback card order: student's transcript (plain text, v1 not tappable) →
+  pronunciation patterns (1-2, each with example words from their own speech) →
+  grammar before/after list → one vocabulary tip → one encouraging closing line.
+- No re-record limit in v1; attempts are cheap.
+- Retry/under-15s state shows a friendly retry message (in Spanish).
+
+## Spike order (build in this order, stop and report if a spike fails)
+
+1. **Azure probe:** script (throwaway, deleted after) posting a 60s test wav/webm
+   through unscripted assessment on westus2. Verifies region support + webm/opus
+   acceptance + real JSON shape. This decides #6 fallback and #8.
+2. Capture + upload + length gates, no analysis. Record, replay audio from
+   storage.
+3. Aggregation fn + unit tests (`npx tsx --test` per file; npm test glob fails on
+   Node 20 — use git ls-files fallback).
+4. Agent chain behind the API route, tested with the stored probe recordings.
+5. Page polish + Kyle's QA loop.
+
+## Acceptance
+
+- (a) On Kyle's deliberately-bad recordings, reported top patterns match the
+  injected phoneme errors.
+- (b) On 3 real student recordings, grammarAgent catches errors Kyle would
+  catch, with zero false corrections of correct English.
+- (c) Prompt → speak → feedback in under 90 seconds end-to-end.
+- (d) No scores or numbers visible anywhere in the student UI.
+- (e) Generated copy passes Kyle's copy axes: written Spanish accents present,
+  zero em dashes.
+
+## Merge-danger
+
+- New migration only; no changes to existing tables or the scripted
+  `/api/assess` path. Do not touch `azurePronunciation.ts` (new sibling file for
+  unscripted assessment).
+- Existing pronunciation lib files are read-only in this slice.
+
+## Cost estimate (to confirm during spike)
+
+Azure unscripted assessment ≈ STT pricing (~$0.016-0.03/audio-min depending on
+tier; add-on content scoring may bill extra — confirm on the probe) + 4 LLM calls
+(< $0.01/attempt). Even 200 attempts/month stays under a few dollars.
