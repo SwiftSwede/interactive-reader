@@ -12,7 +12,7 @@ const DAY_FILES: Record<string, { file: string; duration: number }> = {
   "2": { file: "/audio/iplo/day-2-filled.m4a", duration: 1287.02 },
   // Closed-loop repairs pending: a few taught woman lines are absent from the recording.
   // Filled: donors (Yes-you 66.6+87.5, Yes-her 182.5, composite Do-you-guys-speak-French 314.5, walk-donor 755.1) + 9 acoustic pockets + ending narration; 2026-10-18.
-  "3": { file: "/audio/iplo/day-3-filled.m4a", duration: 984.35 },
+  "3": { file: "/audio/iplo/day-3-filled.m4a", duration: 985.16 },
 };
 
 export default async function Page({
