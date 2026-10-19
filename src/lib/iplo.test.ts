@@ -351,7 +351,7 @@ test("the question and the input open when the question starts, and the pause wa
     expected: ["Speak."],
   };
   assert.equal(promptLeadText(prompt.spanish), "Otra vez");
-  assert.equal(promptLeadText("Ahora di “yo hablo.”"), "Ahora di");
+  assert.equal(promptLeadText("Ahora di “yo hablo.”"), null);
   assert.equal(promptLeadText("¿Cómo se dice “yo hablo”?"), null);
   assert.equal(promptQuestionText(prompt.spanish), "¿Cómo se dice ‘hablar’ en inglés?");
   assert.equal(promptInputAt(prompt), 99.46);
@@ -384,6 +384,15 @@ test("promptQuestionText strips the conversational lead on the input screen", ()
   assert.equal(
     promptQuestionText("otra vez, ¿cómo se dice hablar?"),
     "¿Cómo se dice hablar?"
+  );
+  // strip the instruction too, else "Otra vez" shows twice (lead caption + card)
+  assert.equal(
+    promptQuestionText("Otra vez, pregunta, “¿él anda todos los días?”"),
+    "¿Él anda todos los días?"
+  );
+  assert.equal(
+    promptQuestionText("Otra vez, pregunta, “¿él anda?”."),
+    "¿Él anda?"
   );
 });
 

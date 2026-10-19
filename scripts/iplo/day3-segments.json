@@ -859,7 +859,7 @@
   },
   {
    "t": "prompt",
-   "start": 96.46,
+   "start": 96.76,
    "pauseAt": 99.95,
    "spanish": "Responde, “sí, hablo inglés.”",
    "expected": [
@@ -1399,7 +1399,7 @@
   },
   {
    "t": "prompt",
-   "start": 176.54,
+   "start": 176.96,
    "pauseAt": 180.43,
    "spanish": "Pregúntale otra vez “¿quién, ella?”",
    "expected": [
@@ -2792,7 +2792,7 @@
   },
   {
    "t": "prompt",
-   "start": 399.2,
+   "start": 399.88,
    "pauseAt": 401.84,
    "spanish": "¿cómo se dice “andar\"?",
    "expected": [
@@ -2954,7 +2954,7 @@
   },
   {
    "t": "prompt",
-   "start": 426.02,
+   "start": 427.26,
    "end": 427.26,
    "pauseAt": 431.21,
    "spanish": "¿Y cómo responder \"sí, ando.\"",
@@ -3440,7 +3440,7 @@
   {
    "t": "english",
    "start": 505.18,
-   "end": 509.1,
+   "end": 508.74,
    "text": "Does he walk?",
    "words": [
     {
@@ -3462,7 +3462,7 @@
   },
   {
    "t": "prompt",
-   "start": 509.12,
+   "start": 508.76,
    "pauseAt": 511.94,
    "spanish": "Responde, “sí, él anda.”",
    "expected": [
@@ -3585,6 +3585,21 @@
    ]
   },
   {
+   "t": "narration",
+   "start": 536.3,
+   "end": 537.14,
+   "lines": [
+    "Exacto."
+   ],
+   "words": [
+    {
+     "w": "exacto",
+     "start": 536.3,
+     "end": 537.13
+    }
+   ]
+  },
+  {
    "t": "prompt",
    "start": 537.16,
    "pauseAt": 541.21,
@@ -3641,7 +3656,7 @@
   {
    "t": "english",
    "start": 550.9,
-   "end": 563.6,
+   "end": 563.29,
    "text": "Yes, he walks every day. Yes, he walks every day.",
    "words": [
     {
@@ -3698,7 +3713,7 @@
   },
   {
    "t": "prompt",
-   "start": 563.62,
+   "start": 563.31,
    "pauseAt": 567.21,
    "spanish": "Ahora pregunta, “¿ella anda todos los días?”",
    "expected": [
@@ -4688,7 +4703,7 @@
   },
   {
    "t": "prompt",
-   "start": 701.16,
+   "start": 701.8,
    "pauseAt": 704.77,
    "spanish": "Di “ellos no andan a la escuela todos los días.”",
    "expected": [
@@ -5156,7 +5171,7 @@
   },
   {
    "t": "prompt",
-   "start": 758.23,
+   "start": 757.82,
    "pauseAt": 761.81,
    "spanish": "Responde “no, no andamos a la escuela.”",
    "expected": [

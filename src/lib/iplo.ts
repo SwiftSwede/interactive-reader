@@ -458,8 +458,12 @@ const PROMPT_LEADS = [
 
 /** The teaching caption while the lead is spoken. "Otra vez", not the question. */
 export function promptLeadText(spanish: string): string | null {
+  // Only repeat leads get a caption: their lead is stripped from the question
+  // text, so the caption is the only place the lead appears. "Ahora di/ dime"
+  // leads KEEP the full sentence as the question text (ratified), so a caption
+  // would show the lead twice - none for those.
   const trimmed = spanish.trim();
-  const match = trimmed.match(/^(dime otra vez\.|otra vez\.|otra vez|ahora dime|ahora di)/i);
+  const match = trimmed.match(/^(dime otra vez\.|otra vez\.|otra vez)/i);
   if (!match) return null;
   return trimmed.slice(0, match[1].length);
 }
@@ -485,10 +489,27 @@ export function promptAnswerAt(prompt: IploPrompt): number {
  * Whisper transcripts lowercase after ¿ ("¿cómo...") - normalize casing here. */
 export function promptQuestionText(spanish: string): string {
   const trimmed = spanish.trim();
-  if (/^(dime otra vez\.|otra vez\.|otra vez)[.,]?\s*/i.test(trimmed)) {
-    const stripped = trimmed.replace(/^(dime otra vez\.|otra vez\.|otra vez)[.,]?\s*/i, "").trim();
-    if (!stripped.startsWith("¿")) return trimmed;
-    return normalizeQuestion(stripped);
+  if (/^(dime otra vez\.|otra vez)[.,;]?\s*/i.test(trimmed)) {
+    // Repeat leads may carry an instruction between lead and question
+    // ("Otra vez, pregunta, "¿él anda?"") - strip that too, else the card
+    // shows "Otra vez" twice: once as the lead caption, once inside the
+    // question text (Kyle QA 2026-10-18).
+    let stripped = trimmed
+      .replace(/^(dime otra vez\.|otra vez)[.,;]?\s*/i, "")
+      .replace(/^(pregunta|pregúntale|responde|di|contesta)[.,]?\s*/i, "")
+      .trim();
+    // The quoted question may open with a curly quote ("\u201c¿...") - keep it in
+    // the display but allow the ¿ check through it.
+    const quote = /^[“"']/.test(stripped) ? stripped[0] : "";
+        if (quote) stripped = stripped.slice(1).trimStart();
+        if (!stripped.startsWith("¿")) return trimmed;
+        const q = normalizeQuestion(stripped);
+        // A fully quote-wrapped repeat question ("“¿él anda?”.") displays bare -
+        // the quotes and trailing period belong to the script notation, not the
+        // student-facing question. The closing glyph is ”, not the opening “.
+        if (q.endsWith('”.')) return q.slice(0, -2);
+        if (q.endsWith('”')) return q.slice(0, -1);
+        return q;
   }
   return normalizeQuestion(trimmed);
 }
