@@ -211,6 +211,33 @@ primary acceptance input for (a) and a supplement for (b).
   dedupe example words, consider position weighting (word-final vs stressed). Validate
   against a recording where Kyle injects a known vowel swap before locking thresholds.
 
+### Kyle's correction (2026-10-19): the Paula case is a QUALITY pattern, not a SUBSTITUTION
+
+The /a/-/e/ problem Kyle teaches is not hearing the wrong phoneme: the Spanish /a/ and /e/
+are more relaxed than their English counterparts, so Azure recognizes the CORRECT phoneme
+and scores it only mildly low. No instance ever crosses an error threshold. Detection
+therefore cannot be substitution-shaped; it must be DISTRIBUTION-shaped:
+
+- Per speaker, compute a baseline (mean accuracy across all phonemes).
+- A quality pattern = a phoneme whose AVERAGE accuracy sits systematically below the
+  speaker's own baseline across enough instances (e.g. /æ/ avg 78 vs baseline 88 over
+  15+ instances), even with zero instances below 60.
+- Report such patterns as "sound quality" feedback, not "wrong sound" feedback, and let
+  the pedagogy layer phrase them the way Kyle teaches it (the Spanish vowel is lazier/
+  more relaxed than the English one).
+- Map depressed phonemes to the Spanish-lens relations already in the app
+  (`sound-spanish-notes.v1.json` igual/parecido/unico + ghost vowels, Slice 89): a
+  depressed /æ/ is exactly a "parecido" sound where the Spanish ghost vowel is leaking
+  through. This is the same phenomenon the sound guide teaches, seen through assessment
+  data instead of a chart.
+- Honest limit: Azure exposes accuracy scores, not acoustic-quality measures. A "correct
+  but lax" vowel is only visible through this statistical depression, which needs enough
+  instances (that is why the prompt must elicit length). Research-grade acoustic quality
+  scoring (GOP variants) is a future option, not this slice.
+- Validation: Kyle records two clips of the same passage, one with deliberately relaxed
+  Spanish /a/-/e/ and one with exaggerated English vowels; the aggregator must rank the
+  depressed vowels as top patterns in clip 1 and not in clip 2.
+
 ## Merge-danger
 
 - New migration only; no changes to existing tables or the scripted
