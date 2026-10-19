@@ -11,8 +11,8 @@ const DAY_FILES: Record<string, { file: string; duration: number }> = {
   // Filled: donor replay spliced at 1180 (+2.80s); segments are on this timeline.
   "2": { file: "/audio/iplo/day-2-filled.m4a", duration: 1287.02 },
   // Closed-loop repairs pending: a few taught woman lines are absent from the recording.
-  // Filled: donors (Yes-you 66.6+87.5, Yes-her 182.5, Does-she 103.5, composite Do-you-guys-speak-French 314.5, walk-donor 755.1) + 9 acoustic pockets + ending narration; 2026-10-18.
-  "3": { file: "/audio/iplo/day-3-filled.m4a", duration: 986.52 },
+  // Filled from the original take, cut list in segments JSON fill metadata (donors: Yes-you x2, Yes-her x2, Does-she x2, composite French, walk donor, Yes-her 182.5, Does-she 103.5, composite Do-you-guys-speak-French 314.5, walk-donor 755.1) + 9 acoustic pockets + ending narration; 2026-10-18.
+  "3": { file: "/audio/iplo/day-3-filled.m4a", duration: 988.67 },
 };
 
 export default async function Page({
