@@ -1,6 +1,6 @@
 # Slice 93: Speaking Feedback Prototype (unscripted speech → multi-agent feedback)
 
-Status: SPEC DRAFT — awaiting Kyle's plan-review
+Status: BUILT locally 2026-10-18, not committed. Westus2 unscripted probe returned phoneme scores.
 Target: standalone prototype route, display-only, teacher-first
 
 ## Goal
@@ -11,6 +11,16 @@ covering pronunciation patterns, grammar, and vocabulary. No scores shown to the
 student. No punctuation feedback (this is speech).
 
 Writing variant (punctuation agent) is a later slice; out of scope here.
+
+## Plan review decisions (2026-10-18, grill)
+
+- Prompt is P1. `prompt_id` is `p1`.
+- Hidden route. Logged-out users go to magic-link login. A logged-in email that is neither `TEACHER_EMAILS` nor `SPEAKING_PROTOTYPE_EMAILS` gets 404.
+- `isTeacherEmail` is the owner: uncapped, and the only viewer of every attempt, including pattern counts.
+- Volunteers: 3 completed attempts per `America/Mexico_City` day. A row counts only when `final_feedback` is saved. Failed calls do not count.
+- Closing line is one Spanish next step. No praise.
+- Audio: store the browser webm, convert with the existing server ffmpeg path, send WAV to Azure. In-browser WAV only if ffmpeg fails.
+- Student feedback shows no scores and no assessment digits. The recording clock stays.
 
 ## Plan-review (Kyle's decisions, recorded 2026-10-18)
 
@@ -125,11 +135,35 @@ teacher access via service role only.
 - No re-record limit in v1; attempts are cheap.
 - Retry/under-15s state shows a friendly retry message (in Spanish).
 
+## Test corpus: WhatsApp voice notes (Kyle's decision, 2026-10-18)
+
+Kyle already collects 1-2 minute self-introduction voice notes from prospective
+students (he asks for them). These are the ideal corpus: real LatAm accents, real
+unscripted speech, longer than the 30s minimum, and they decouple the analysis
+pipeline from browser capture. Procedure:
+
+- Pull the audio files out of WhatsApp (WhatsApp Web/desktop export; WhatsApp
+  voice notes are .ogg/.opus — the SAME codec family as the browser MediaRecorder
+  webm/opus fallback, so this corpus doubles as the Azure codec acceptance test).
+- Drop them in a local (gitignored) folder, e.g. `scripts/speaking-probe/audio/`;
+  NEVER commit prospective students' voice recordings to the repo.
+- Name files with an initial or nickname, not full names; store nothing in
+  Supabase for this corpus (the attempts table is for in-app attempts only).
+- Privacy stance: these are private messages from prospects, used for internal
+  spike/QA only, not shown to anyone or fed into any student-facing feature.
+  If feedback output is ever used in the funnel later, that is a separate,
+  explicit decision (and consent), not this slice.
+
+Spike order is unchanged, but the corpus replaces Kyle-only recordings as the
+primary acceptance input for (a) and a supplement for (b).
+
 ## Spike order (build in this order, stop and report if a spike fails)
 
 1. **Azure probe:** script (throwaway, deleted after) posting a 60s test wav/webm
    through unscripted assessment on westus2. Verifies region support + webm/opus
-   acceptance + real JSON shape. This decides #6 fallback and #8.
+   acceptance + real JSON shape. This decides #6 fallback and #8. Immediately
+   after, run the same probe over the WhatsApp voice-note corpus (batch, one row
+   per file, dump aggregate + raw JSON to local files for Kyle to eyeball).
 2. Capture + upload + length gates, no analysis. Record, replay audio from
    storage.
 3. Aggregation fn + unit tests (`npx tsx --test` per file; npm test glob fails on
