@@ -110,7 +110,14 @@ than inventing issues."
 - **pronunciationPedagogyAgent** → input includes aggregated patterns + mangled
   words; returns `{ patterns: [{ pattern, friendlyName, examples, tip }],
   mangledWords, ok: bool }` — writes for a student with weak pronunciation:
-  top patterns only, no exhaustive lists.
+  top patterns only, no exhaustive lists. FUTURE (not this slice): feed the
+  pedagogy agent the app's Truquito/coach content library so a detected
+  deficiency links to Kyle's authored teaching (e.g. flap-t pattern → the flap-t
+  Truquito; "want to" in transcript → the reduction Truquito) instead of the
+  agent inventing explanations. Truquitos are Kyle-authored display content
+  (rule-generated drafts + Kyle's ear as gold standard); they are teaching
+  material the analyzer POINTS TO, never scored behavior: Azure cannot grade
+  glottal stops or h-deletion directly, only quality scores + break signals.
 - **synthesizer** → takes all three + prompt, emits final card JSON:
   `{ transcript, patterns: [...], grammarFixes: [...], vocabularyTip, closingLine }`
   in Spanish meta-commentary with English example sentences. No scores. No em
