@@ -4,7 +4,7 @@
   {
    "t": "narration",
    "start": 5.12,
-   "end": 10.18,
+   "end": 10.16,
    "lines": [
     "Escucha la siguiente conversación."
    ],
@@ -34,7 +34,7 @@
   {
    "t": "english",
    "start": 10.18,
-   "end": 13.6,
+   "end": 13.58,
    "text": "Hey. Do you speak English?",
    "words": [
     {
@@ -67,7 +67,7 @@
   {
    "t": "english",
    "start": 13.6,
-   "end": 16.32,
+   "end": 16.3,
    "text": "Yeah, I speak a little bit of English.",
    "words": [
     {
@@ -115,7 +115,7 @@
   {
    "t": "english",
    "start": 16.32,
-   "end": 18.6,
+   "end": 18.58,
    "text": "Do you speak Spanish?",
    "words": [
     {
@@ -143,7 +143,7 @@
   {
    "t": "english",
    "start": 18.6,
-   "end": 21.02,
+   "end": 21.0,
    "text": "Yes, I speak Spanish.",
    "words": [
     {
@@ -171,7 +171,7 @@
   {
    "t": "english",
    "start": 21.02,
-   "end": 24.54,
+   "end": 24.52,
    "text": "And her? Does she speak Spanish?",
    "words": [
     {
@@ -209,7 +209,7 @@
   {
    "t": "english",
    "start": 24.54,
-   "end": 27.62,
+   "end": 27.6,
    "text": "No. She doesn’t speak Spanish.",
    "words": [
     {
@@ -242,7 +242,7 @@
   {
    "t": "english",
    "start": 27.62,
-   "end": 31.86,
+   "end": 31.84,
    "text": "And them? Do they speak Spanish?",
    "words": [
     {
@@ -280,7 +280,7 @@
   {
    "t": "english",
    "start": 31.86,
-   "end": 38.94,
+   "end": 38.92,
    "text": "No. They don’t speak Spanish. And you guys? Do you guys speak Spanish?",
    "words": [
     {
@@ -353,7 +353,7 @@
   {
    "t": "english",
    "start": 38.94,
-   "end": 40.66,
+   "end": 40.64,
    "text": "Yep, we speak Spanish.",
    "words": [
     {
@@ -376,7 +376,7 @@
   {
    "t": "english",
    "start": 40.66,
-   "end": 43.0,
+   "end": 42.98,
    "text": "Do you guys speak English?",
    "words": [
     {
@@ -409,7 +409,7 @@
   {
    "t": "english",
    "start": 43.0,
-   "end": 47.08,
+   "end": 47.06,
    "text": "No. We don’t speak English.",
    "words": [
     {
@@ -442,7 +442,7 @@
   {
    "t": "narration",
    "start": 47.08,
-   "end": 94.86,
+   "end": 94.84,
    "lines": [
     "En esta primera lección, aprendes cómo conjugar el verbo ‘to speak’ en el presente simple, y de eso, cómo conjugar 99% de los verbos en inglés en el presente simple. En inglés, como el español, el presente simple se usa para hablar de hechos, rutinas y hábitos. Por ejemplo, “We speak English” lo que significa, “hablamos inglés.” Es un hecho entonces usamos el presente simple tanto en inglés como en español. Empecemos aprendiendo cómo usar el verbo ‘to speak’ en el presente simple. Así es cómo dices el verbo ‘hablar’ en inglés. Escucha y repite después de la mujer."
    ],
@@ -897,7 +897,7 @@
   {
    "t": "english",
    "start": 94.86,
-   "end": 98.74,
+   "end": 98.72,
    "text": "Speak. Speak.",
    "words": [
     {
@@ -920,13 +920,13 @@
    "expected": [
     "Speak."
    ],
-   "end": 102.56,
+   "end": 102.54,
    "leadEnd": 99.46
   },
   {
    "t": "english",
    "start": 102.56,
-   "end": 106.62,
+   "end": 106.6,
    "text": "Speak. Speak.",
    "words": [
     {
@@ -944,7 +944,7 @@
   {
    "t": "narration",
    "start": 106.62,
-   "end": 121.12,
+   "end": 121.1,
    "lines": [
     "¿Respondiste después de él? Excelente. Es importante que lo hagas para grabar todo en la mente. Ahora así es cómo decimos, “hablo.” Escucha y repite."
    ],
@@ -1079,7 +1079,7 @@
   {
    "t": "english",
    "start": 121.12,
-   "end": 126.24,
+   "end": 126.22,
    "text": "I speak. I speak.",
    "words": [
     {
@@ -1112,12 +1112,12 @@
    "expected": [
     "I speak."
    ],
-   "end": 129.84
+   "end": 129.82
   },
   {
    "t": "english",
    "start": 129.84,
-   "end": 134.1,
+   "end": 134.08,
    "text": "I speak. I speak.",
    "words": [
     {
@@ -1150,12 +1150,12 @@
    "expected": [
     "I."
    ],
-   "end": 138.4
+   "end": 138.38
   },
   {
    "t": "english",
    "start": 138.4,
-   "end": 142.2,
+   "end": 142.18,
    "text": "I. I.",
    "words": [
     {
@@ -1178,13 +1178,13 @@
    "expected": [
     "I speak."
    ],
-   "end": 147.68,
+   "end": 147.66,
    "leadEnd": 143.64
   },
   {
    "t": "english",
    "start": 147.68,
-   "end": 151.4,
+   "end": 151.38,
    "text": "I speak. I speak.",
    "words": [
     {
@@ -1212,7 +1212,7 @@
   {
    "t": "narration",
    "start": 151.4,
-   "end": 164.8,
+   "end": 164.78,
    "lines": [
     "Asegúrate que imitas la pronunciación del hablante nativo de inglés. Así es cómo dices “tú hablas.” Escucha y repite."
    ],
@@ -1317,7 +1317,7 @@
   {
    "t": "english",
    "start": 164.8,
-   "end": 169.04,
+   "end": 169.02,
    "text": "You speak. You speak.",
    "words": [
     {
@@ -1350,12 +1350,12 @@
    "expected": [
     "You speak."
    ],
-   "end": 173.26
+   "end": 173.24
   },
   {
    "t": "english",
    "start": 173.26,
-   "end": 177.46,
+   "end": 177.44,
    "text": "You speak. You speak.",
    "words": [
     {
@@ -1388,12 +1388,12 @@
    "expected": [
     "You."
    ],
-   "end": 183.02
+   "end": 183.0
   },
   {
    "t": "english",
    "start": 183.02,
-   "end": 186.72,
+   "end": 186.7,
    "text": "You. You.",
    "words": [
     {
@@ -1416,13 +1416,13 @@
    "expected": [
     "You speak."
    ],
-   "end": 192.18,
+   "end": 192.16,
    "leadEnd": 187.88
   },
   {
    "t": "english",
    "start": 192.18,
-   "end": 196.9,
+   "end": 196.88,
    "text": "You speak. You speak.",
    "words": [
     {
@@ -1455,13 +1455,13 @@
    "expected": [
     "I speak."
    ],
-   "end": 200.18,
+   "end": 200.16,
    "leadEnd": 198.06
   },
   {
    "t": "english",
    "start": 200.18,
-   "end": 204.12,
+   "end": 204.1,
    "text": "I speak I speak",
    "words": [
     {
@@ -1494,12 +1494,12 @@
    "expected": [
     "You speak."
    ],
-   "end": 208.6
+   "end": 208.58
   },
   {
    "t": "english",
    "start": 208.6,
-   "end": 212.66,
+   "end": 212.64,
    "text": "You speak. You speak.",
    "words": [
     {
@@ -1527,7 +1527,7 @@
   {
    "t": "narration",
    "start": 212.66,
-   "end": 218.4,
+   "end": 218.38,
    "lines": [
     "Así es cómo se dice \"él habla\". Escucha y repite."
    ],
@@ -1587,7 +1587,7 @@
   {
    "t": "english",
    "start": 218.4,
-   "end": 221.68,
+   "end": 221.66,
    "text": "He speaks. He speaks.",
    "words": [
     {
@@ -1620,12 +1620,12 @@
    "expected": [
     "He speaks."
    ],
-   "end": 226.28
+   "end": 226.26
   },
   {
    "t": "english",
    "start": 226.28,
-   "end": 230.36,
+   "end": 230.34,
    "text": "He speaks. He speaks.",
    "words": [
     {
@@ -1658,12 +1658,12 @@
    "expected": [
     "He."
    ],
-   "end": 235.64
+   "end": 235.62
   },
   {
    "t": "english",
    "start": 235.64,
-   "end": 239.28,
+   "end": 239.26,
    "text": "He. He.",
    "words": [
     {
@@ -1686,13 +1686,13 @@
    "expected": [
     "He speaks."
    ],
-   "end": 243.54,
+   "end": 243.52,
    "leadEnd": 237.12
   },
   {
    "t": "english",
    "start": 243.54,
-   "end": 248.02,
+   "end": 248.0,
    "text": "He speaks. He speaks.",
    "words": [
     {
@@ -1725,13 +1725,13 @@
    "expected": [
     "I speak."
    ],
-   "end": 251.96,
+   "end": 251.94,
    "leadEnd": 246.34
   },
   {
    "t": "english",
    "start": 251.96,
-   "end": 256.68,
+   "end": 256.66,
    "text": "I speak I speak",
    "words": [
     {
@@ -1764,12 +1764,12 @@
    "expected": [
     "You speak."
    ],
-   "end": 259.34
+   "end": 259.32
   },
   {
    "t": "english",
    "start": 259.34,
-   "end": 264.1,
+   "end": 264.08,
    "text": "You speak. You speak.",
    "words": [
     {
@@ -1802,12 +1802,12 @@
    "expected": [
     "He speaks."
    ],
-   "end": 268.44
+   "end": 268.42
   },
   {
    "t": "english",
    "start": 268.44,
-   "end": 273.8,
+   "end": 273.78,
    "text": "He speaks. He speaks.",
    "words": [
     {
@@ -1835,7 +1835,7 @@
   {
    "t": "narration",
    "start": 273.8,
-   "end": 280.94,
+   "end": 280.92,
    "lines": [
     "Ahora, escucha cómo dirías “ella habla”. Escucha y repite."
    ],
@@ -1865,7 +1865,7 @@
   {
    "t": "english",
    "start": 280.94,
-   "end": 286.5,
+   "end": 286.48,
    "text": "She speaks. She speaks.",
    "words": [
     {
@@ -1898,12 +1898,12 @@
    "expected": [
     "She speaks."
    ],
-   "end": 288.68
+   "end": 288.66
   },
   {
    "t": "english",
    "start": 288.68,
-   "end": 295.1,
+   "end": 295.08,
    "text": "She speaks. She speaks.",
    "words": [
     {
@@ -1936,12 +1936,12 @@
    "expected": [
     "She."
    ],
-   "end": 299.14
+   "end": 299.12
   },
   {
    "t": "english",
    "start": 299.14,
-   "end": 303.3,
+   "end": 303.28,
    "text": "She. She.",
    "words": [
     {
@@ -1964,13 +1964,13 @@
    "expected": [
     "She speaks."
    ],
-   "end": 307.92,
+   "end": 307.9,
    "leadEnd": 301.2
   },
   {
    "t": "english",
    "start": 307.92,
-   "end": 313.34,
+   "end": 313.32,
    "text": "She speaks. She speaks.",
    "words": [
     {
@@ -2003,13 +2003,13 @@
    "expected": [
     "I speak."
    ],
-   "end": 316.22,
+   "end": 316.2,
    "leadEnd": 310.74
   },
   {
    "t": "english",
    "start": 316.22,
-   "end": 321.0,
+   "end": 320.98,
    "text": "I speak. I speak",
    "words": [
     {
@@ -2042,12 +2042,12 @@
    "expected": [
     "You speak."
    ],
-   "end": 323.8
+   "end": 323.78
   },
   {
    "t": "english",
    "start": 323.8,
-   "end": 328.16,
+   "end": 328.14,
    "text": "You speak. You speak.",
    "words": [
     {
@@ -2080,13 +2080,13 @@
    "expected": [
     "He speaks."
    ],
-   "end": 331.5,
+   "end": 331.48,
    "leadEnd": 326.08
   },
   {
    "t": "english",
    "start": 331.5,
-   "end": 336.58,
+   "end": 336.56,
    "text": "He speaks. He speaks.",
    "words": [
     {
@@ -2119,12 +2119,12 @@
    "expected": [
     "She speaks."
    ],
-   "end": 339.52
+   "end": 339.5
   },
   {
    "t": "english",
    "start": 339.52,
-   "end": 345.36,
+   "end": 345.34,
    "text": "She speaks. She speaks.",
    "words": [
     {
@@ -2157,13 +2157,13 @@
    "expected": [
     "I speak."
    ],
-   "end": 347.66,
+   "end": 347.64,
    "leadEnd": 342.58
   },
   {
    "t": "english",
    "start": 347.66,
-   "end": 352.44,
+   "end": 352.42,
    "text": "I speak. I speak.",
    "words": [
     {
@@ -2196,12 +2196,12 @@
    "expected": [
     "You speak."
    ],
-   "end": 355.42
+   "end": 355.4
   },
   {
    "t": "english",
    "start": 355.42,
-   "end": 360.06,
+   "end": 360.04,
    "text": "You speak. You speak.",
    "words": [
     {
@@ -2234,13 +2234,13 @@
    "expected": [
     "He speaks."
    ],
-   "end": 363.22,
+   "end": 363.2,
    "leadEnd": 357.38
   },
   {
    "t": "english",
    "start": 363.22,
-   "end": 368.12,
+   "end": 368.1,
    "text": "He speaks. He speaks.",
    "words": [
     {
@@ -2273,12 +2273,12 @@
    "expected": [
     "She speaks."
    ],
-   "end": 371.4
+   "end": 371.38
   },
   {
    "t": "english",
    "start": 371.4,
-   "end": 376.28,
+   "end": 376.26,
    "text": "She speaks. She speaks.",
    "words": [
     {
@@ -2306,7 +2306,7 @@
   {
    "t": "narration",
    "start": 376.28,
-   "end": 382.72,
+   "end": 382.7,
    "lines": [
     "Así es cómo se dice \"nosotros hablamos\".  Escucha y repite."
    ],
@@ -2366,7 +2366,7 @@
   {
    "t": "english",
    "start": 382.72,
-   "end": 386.34,
+   "end": 386.32,
    "text": "We speak. We speak.",
    "words": [
     {
@@ -2399,12 +2399,12 @@
    "expected": [
     "We speak."
    ],
-   "end": 389.14
+   "end": 389.12
   },
   {
    "t": "english",
    "start": 389.14,
-   "end": 394.94,
+   "end": 394.92,
    "text": "We speak. We speak.",
    "words": [
     {
@@ -2437,12 +2437,12 @@
    "expected": [
     "We."
    ],
-   "end": 399.18
+   "end": 399.16
   },
   {
    "t": "english",
    "start": 399.18,
-   "end": 401.62,
+   "end": 401.6,
    "text": "We. We.",
    "words": [
     {
@@ -2465,13 +2465,13 @@
    "expected": [
     "We speak."
    ],
-   "end": 406.32,
+   "end": 406.3,
    "leadEnd": 399.28
   },
   {
    "t": "english",
    "start": 406.32,
-   "end": 411.7,
+   "end": 411.68,
    "text": "We speak. We speak.",
    "words": [
     {
@@ -2499,7 +2499,7 @@
   {
    "t": "narration",
    "start": 411.7,
-   "end": 421.56,
+   "end": 421.54,
    "lines": [
     "Así es cómo se dice “ellos hablan” cuando se refiere a un grupo de personas. Escucha y repite."
    ],
@@ -2599,7 +2599,7 @@
   {
    "t": "english",
    "start": 421.56,
-   "end": 428.02,
+   "end": 428.0,
    "text": "They speak. They speak.",
    "words": [
     {
@@ -2632,12 +2632,12 @@
    "expected": [
     "They speak."
    ],
-   "end": 441.14
+   "end": 441.12
   },
   {
    "t": "english",
    "start": 441.14,
-   "end": 445.44,
+   "end": 445.42,
    "text": "They speak. They speak.",
    "words": [
     {
@@ -2670,12 +2670,12 @@
    "expected": [
     "They."
    ],
-   "end": 449.24
+   "end": 449.22
   },
   {
    "t": "english",
    "start": 449.24,
-   "end": 454.7,
+   "end": 450.14,
    "text": "They. They.",
    "words": [
     {
@@ -2691,6 +2691,21 @@
    ]
   },
   {
+   "t": "narration",
+   "start": 450.16,
+   "end": 451.6,
+   "lines": [
+    "Perfecto."
+   ],
+   "words": [
+    {
+     "w": "perfecto",
+     "start": 450.18,
+     "end": 451.2
+    }
+   ]
+  },
+  {
    "t": "prompt",
    "start": 454.7,
    "pauseAt": 458.82,
@@ -2698,13 +2713,13 @@
    "expected": [
     "They speak."
    ],
-   "end": 459.06,
+   "end": 459.04,
    "leadEnd": 451.96
   },
   {
    "t": "english",
    "start": 459.06,
-   "end": 464.62,
+   "end": 464.6,
    "text": "They speak. They speak.",
    "words": [
     {
@@ -2732,7 +2747,7 @@
   {
    "t": "narration",
    "start": 464.62,
-   "end": 505.92,
+   "end": 505.9,
    "lines": [
     "Espero que hayas notado qué tan fácil es el sistema de conjugación en inglés. Mientras en español hay 5 conjugaciones diferentes, en inglés solo hay 2 y una de las conjugaciones tiene la misma forma como el verbo raíz. Así de fácil"
    ],
@@ -2937,13 +2952,13 @@
    "expected": [
     "I speak."
    ],
-   "end": 510.06,
+   "end": 510.04,
    "leadEnd": 503.74
   },
   {
    "t": "english",
    "start": 510.06,
-   "end": 514.06,
+   "end": 514.04,
    "text": "I speak I speak",
    "words": [
     {
@@ -2976,12 +2991,12 @@
    "expected": [
     "You speak."
    ],
-   "end": 517.34
+   "end": 517.32
   },
   {
    "t": "english",
    "start": 517.34,
-   "end": 521.92,
+   "end": 521.9,
    "text": "You speak. You speak.",
    "words": [
     {
@@ -3014,13 +3029,13 @@
    "expected": [
     "He speaks."
    ],
-   "end": 524.88,
+   "end": 524.86,
    "leadEnd": 519.2
   },
   {
    "t": "english",
    "start": 524.88,
-   "end": 529.46,
+   "end": 529.44,
    "text": "He speaks. He speaks.",
    "words": [
     {
@@ -3053,12 +3068,12 @@
    "expected": [
     "She speaks."
    ],
-   "end": 532.46
+   "end": 532.44
   },
   {
    "t": "english",
    "start": 532.46,
-   "end": 535.9,
+   "end": 535.88,
    "text": "She speaks. She speaks.",
    "words": [
     {
@@ -3091,13 +3106,13 @@
    "expected": [
     "I speak."
    ],
-   "end": 539.6,
+   "end": 539.58,
    "leadEnd": 534.72
   },
   {
    "t": "english",
    "start": 539.6,
-   "end": 544.28,
+   "end": 544.26,
    "text": "I speak I speak",
    "words": [
     {
@@ -3130,12 +3145,12 @@
    "expected": [
     "You speak."
    ],
-   "end": 547.86
+   "end": 547.84
   },
   {
    "t": "english",
    "start": 547.86,
-   "end": 552.36,
+   "end": 552.34,
    "text": "You speak. You speak.",
    "words": [
     {
@@ -3168,13 +3183,13 @@
    "expected": [
     "He speaks."
    ],
-   "end": 555.32,
+   "end": 555.3,
    "leadEnd": 549.66
   },
   {
    "t": "english",
    "start": 555.32,
-   "end": 559.9,
+   "end": 559.88,
    "text": "He speaks. He speaks.",
    "words": [
     {
@@ -3207,12 +3222,12 @@
    "expected": [
     "She speaks."
    ],
-   "end": 563.02
+   "end": 563.0
   },
   {
    "t": "english",
    "start": 563.02,
-   "end": 568.02,
+   "end": 568.0,
    "text": "She speaks. She speaks.",
    "words": [
     {
@@ -3245,12 +3260,12 @@
    "expected": [
     "We speak."
    ],
-   "end": 571.45
+   "end": 571.43
   },
   {
    "t": "english",
    "start": 571.45,
-   "end": 577.98,
+   "end": 575.24,
    "text": "We speak. We speak.",
    "words": [
     {
@@ -3272,6 +3287,11 @@
      "w": "speak",
      "start": 574.66,
      "end": 575.24
+    },
+    {
+     "w": "speak",
+     "start": 574.66,
+     "end": 575.24
     }
    ]
   },
@@ -3283,13 +3303,13 @@
    "expected": [
     "We speak."
    ],
-   "end": 581.76,
+   "end": 581.74,
    "leadEnd": 575.18
   },
   {
    "t": "english",
    "start": 581.76,
-   "end": 587.74,
+   "end": 585.5,
    "text": "We speak. We speak.",
    "words": [
     {
@@ -3311,6 +3331,11 @@
      "w": "speak",
      "start": 584.9,
      "end": 585.5
+    },
+    {
+     "w": "speak",
+     "start": 584.9,
+     "end": 585.5
     }
    ]
   },
@@ -3322,12 +3347,12 @@
    "expected": [
     "They speak."
    ],
-   "end": 591.84
+   "end": 591.82
   },
   {
    "t": "english",
    "start": 591.84,
-   "end": 597.22,
+   "end": 597.2,
    "text": "They speak. They speak.",
    "words": [
     {
@@ -3360,13 +3385,13 @@
    "expected": [
     "They speak."
    ],
-   "end": 601.32,
+   "end": 601.3,
    "leadEnd": 594.5
   },
   {
    "t": "english",
    "start": 601.32,
-   "end": 606.3,
+   "end": 606.28,
    "text": "They speak. They speak.",
    "words": [
     {
@@ -3394,7 +3419,7 @@
   {
    "t": "narration",
    "start": 606.3,
-   "end": 614.18,
+   "end": 614.16,
    "lines": [
     "Así es cómo se dice la palabra “inglés” como en “el idioma de inglés”. Escucha y repite."
    ],
@@ -3489,7 +3514,7 @@
   {
    "t": "english",
    "start": 614.18,
-   "end": 619.0,
+   "end": 618.98,
    "text": "English. English.",
    "words": [
     {
@@ -3512,12 +3537,12 @@
    "expected": [
     "English."
    ],
-   "end": 621.98
+   "end": 621.96
   },
   {
    "t": "english",
    "start": 621.98,
-   "end": 626.34,
+   "end": 626.32,
    "text": "English. English.",
    "words": [
     {
@@ -3535,7 +3560,7 @@
   {
    "t": "narration",
    "start": 626.34,
-   "end": 632.76,
+   "end": 632.74,
    "lines": [
     "Así es cómo se dice “ustedes hablan”. Escucha y repite."
    ],
@@ -3595,7 +3620,7 @@
   {
    "t": "english",
    "start": 632.76,
-   "end": 639.58,
+   "end": 639.56,
    "text": "You guys speak. You guys speak",
    "words": [
     {
@@ -3638,12 +3663,12 @@
    "expected": [
     "You guys."
    ],
-   "end": 644.0
+   "end": 643.98
   },
   {
    "t": "english",
    "start": 644.0,
-   "end": 648.6,
+   "end": 648.58,
    "text": "You guys. You guys.",
    "words": [
     {
@@ -3671,7 +3696,7 @@
   {
    "t": "narration",
    "start": 648.6,
-   "end": 655.96,
+   "end": 655.94,
    "lines": [
     "Algunas veces decimos solo ‘you’ para referirnos a ‘ustedes’. Algo a tener en cuenta."
    ],
@@ -3751,12 +3776,12 @@
    "expected": [
     "You guys speak English."
    ],
-   "end": 657.84
+   "end": 657.82
   },
   {
    "t": "english",
    "start": 657.84,
-   "end": 668.84,
+   "end": 664.34,
    "text": "You guys speak English. You guys speak English.",
    "words": [
     {
@@ -3802,6 +3827,21 @@
    ]
   },
   {
+   "t": "narration",
+   "start": 664.36,
+   "end": 665.28,
+   "lines": [
+    "Buen trabajo."
+   ],
+   "words": [
+    {
+     "w": "buen trabajo",
+     "start": 664.38,
+     "end": 664.88
+    }
+   ]
+  },
+  {
    "t": "prompt",
    "start": 668.84,
    "pauseAt": 671.63,
@@ -3809,12 +3849,12 @@
    "expected": [
     "I speak English."
    ],
-   "end": 671.78
+   "end": 671.76
   },
   {
    "t": "english",
    "start": 671.78,
-   "end": 679.04,
+   "end": 679.02,
    "text": "I speak English. I speak English.",
    "words": [
     {
@@ -3857,13 +3897,13 @@
    "expected": [
     "I speak English."
    ],
-   "end": 685.38,
+   "end": 685.36,
    "leadEnd": 676.28
   },
   {
    "t": "english",
    "start": 685.38,
-   "end": 689.38,
+   "end": 689.36,
    "text": "I speak English.",
    "words": [
     {
@@ -3891,13 +3931,13 @@
    "expected": [
     "You speak English."
    ],
-   "end": 693.7,
+   "end": 693.68,
    "leadEnd": 686.62
   },
   {
    "t": "english",
    "start": 693.7,
-   "end": 700.3,
+   "end": 700.28,
    "text": "You speak English. You speak English.",
    "words": [
     {
@@ -3940,13 +3980,13 @@
    "expected": [
     "You speak English."
    ],
-   "end": 707.9,
+   "end": 707.88,
    "leadEnd": 698.34
   },
   {
    "t": "english",
    "start": 707.9,
-   "end": 711.44,
+   "end": 711.42,
    "text": "You speak English.",
    "words": [
     {
@@ -3974,12 +4014,12 @@
    "expected": [
     "He speaks English."
    ],
-   "end": 715.0
+   "end": 714.98
   },
   {
    "t": "english",
    "start": 715.0,
-   "end": 722.1,
+   "end": 722.08,
    "text": "He speaks English. He speaks English.",
    "words": [
     {
@@ -4022,13 +4062,13 @@
    "expected": [
     "He speaks English."
    ],
-   "end": 726.66,
+   "end": 726.64,
    "leadEnd": 719.88
   },
   {
    "t": "english",
    "start": 726.66,
-   "end": 733.56,
+   "end": 733.54,
    "text": "He speaks English.",
    "words": [
     {
@@ -4056,12 +4096,12 @@
    "expected": [
     "We speak English."
    ],
-   "end": 736.38
+   "end": 736.36
   },
   {
    "t": "english",
    "start": 736.38,
-   "end": 743.32,
+   "end": 743.3,
    "text": "We speak English. We speak English.",
    "words": [
     {
@@ -4104,13 +4144,13 @@
    "expected": [
     "We speak English."
    ],
-   "end": 747.94,
+   "end": 747.92,
    "leadEnd": 740.84
   },
   {
    "t": "english",
    "start": 747.94,
-   "end": 755.38,
+   "end": 755.36,
    "text": "We speak English.",
    "words": [
     {
@@ -4138,13 +4178,13 @@
    "expected": [
     "They speak English."
    ],
-   "end": 760.02,
+   "end": 760.0,
    "leadEnd": 752.7
   },
   {
    "t": "english",
    "start": 760.02,
-   "end": 768.52,
+   "end": 764.38,
    "text": "They speak English. They speak English.",
    "words": [
     {
@@ -4180,6 +4220,21 @@
    ]
   },
   {
+   "t": "narration",
+   "start": 764.4,
+   "end": 765.5,
+   "lines": [
+    "Excelente."
+   ],
+   "words": [
+    {
+     "w": "excelente",
+     "start": 764.42,
+     "end": 765.1
+    }
+   ]
+  },
+  {
    "t": "prompt",
    "start": 768.52,
    "pauseAt": 772.38,
@@ -4187,13 +4242,13 @@
    "expected": [
     "They speak English."
    ],
-   "end": 772.82,
+   "end": 772.8,
    "leadEnd": 765.66
   },
   {
    "t": "english",
    "start": 772.82,
-   "end": 780.1,
+   "end": 780.08,
    "text": "They speak English.",
    "words": [
     {
@@ -4216,7 +4271,7 @@
   {
    "t": "narration",
    "start": 780.1,
-   "end": 804.22,
+   "end": 804.2,
    "lines": [
     "Algo más para tomar en cuenta es que no podemos comernos el sujeto antes del verbo como haces en español. Eso es debido a nuestro sistema simple de conjugación. Sin el sujeto, no sabemos a quién te refieres. Ahora escucha la conversación que escuchaste al comienzo de la lección."
    ],
@@ -4471,7 +4526,7 @@
   {
    "t": "english",
    "start": 804.22,
-   "end": 807.56,
+   "end": 807.54,
    "text": "Hey. Do you speak English?",
    "words": [
     {
@@ -4504,7 +4559,7 @@
   {
    "t": "english",
    "start": 807.56,
-   "end": 810.34,
+   "end": 810.32,
    "text": "Yeah, I speak a little bit of English.",
    "words": [
     {
@@ -4552,7 +4607,7 @@
   {
    "t": "english",
    "start": 810.34,
-   "end": 812.56,
+   "end": 812.54,
    "text": "Do you speak Spanish?",
    "words": [
     {
@@ -4580,7 +4635,7 @@
   {
    "t": "english",
    "start": 812.56,
-   "end": 815.0,
+   "end": 814.98,
    "text": "Yes, I speak Spanish.",
    "words": [
     {
@@ -4608,7 +4663,7 @@
   {
    "t": "english",
    "start": 815.0,
-   "end": 818.52,
+   "end": 818.5,
    "text": "And her? Does she speak Spanish?",
    "words": [
     {
@@ -4646,7 +4701,7 @@
   {
    "t": "english",
    "start": 818.52,
-   "end": 821.9,
+   "end": 821.88,
    "text": "No. She doesn’t speak Spanish.",
    "words": [
     {
@@ -4679,7 +4734,7 @@
   {
    "t": "english",
    "start": 821.9,
-   "end": 825.68,
+   "end": 825.66,
    "text": "And them? Do they speak Spanish?",
    "words": [
     {
@@ -4717,7 +4772,7 @@
   {
    "t": "english",
    "start": 825.68,
-   "end": 832.94,
+   "end": 832.92,
    "text": "No. They don’t speak Spanish. And you guys? Do you guys speak Spanish?",
    "words": [
     {
@@ -4790,7 +4845,7 @@
   {
    "t": "english",
    "start": 832.94,
-   "end": 834.5,
+   "end": 834.48,
    "text": "Yep, we speak Spanish.",
    "words": [
     {
@@ -4813,7 +4868,7 @@
   {
    "t": "english",
    "start": 834.5,
-   "end": 837.1,
+   "end": 837.08,
    "text": "Do you guys speak English?",
    "words": [
     {
@@ -4846,7 +4901,7 @@
   {
    "t": "english",
    "start": 837.1,
-   "end": 841.9,
+   "end": 841.88,
    "text": "No. We don’t speak English.",
    "words": [
     {

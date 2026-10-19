@@ -332,10 +332,26 @@ export default function AudioCoursePlayer({
     // replay, and feedback (which suppresses considerPause) then swallowed the
     // next pause - the model answered before the student could write (Kyle QA
     // 2026-10-15, 19:50). Cap the hold at the next prompt's start.
+    // Kyle QA 2026-10-18: praise words ("Excelente", "Buen trabajo") narrate
+    // between the replay and the next prompt and never got a screen moment
+    // because feedback owned the display the whole time. Ratified: end the
+    // feedback hold as soon as the next audio begins - the cap is now the
+    // start of the next segment of ANY kind, and the praise shows as its
+    // normal Spanish caption while it plays.
+    const promptSeg = script.segments.find(
+      (item) => item.t === "prompt" && item.start === ref.prompt.start
+    );
+    const afterSpoken = script.segments[
+      Math.max(
+        script.segments.indexOf(promptSeg ?? script.segments[0]),
+        script.segments.findIndex((item) => item === spoken)
+      ) + 1
+    ];
     const nextPrompt = prompts.find((item) => item.index > ref.index);
     const audioEnd = Math.min(
       spoken?.end ?? ref.prompt.end,
-      nextPrompt ? nextPrompt.prompt.start : Infinity
+      nextPrompt ? nextPrompt.prompt.start : Infinity,
+      afterSpoken ? afterSpoken.start : Infinity
     );
     setFeedback({
       index: ref.index,
