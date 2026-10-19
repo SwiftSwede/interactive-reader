@@ -258,7 +258,19 @@ export default function AudioCoursePlayer({
     for (const ref of prompts) {
       if (skippedRef.current.has(ref.index)) continue;
       if (heldRef.current.has(ref.index)) continue;
-      if (now + 0.05 < promptAnswerAt(ref.prompt)) continue;
+      if (answersRef.current[ref.index]) continue;
+      const at = promptAnswerAt(ref.prompt);
+      if (now + 0.05 < at) continue;
+      // A session restore can land PAST a prompt's pause with heldRef empty
+      // (heldRef is in-memory, answers persist). Firing pauseFor there cuts
+      // audio mid-word and pops a stale question screen (Kyle QA 2026-10-19:
+      // "Do you speak En-" chopped at 1:35). Only a fresh pass over the pause
+      // point counts; anything well past it is held silently, and a backward
+      // seek re-arms it via onSeek's heldRef cleanup.
+      if (now - at > 0.5) {
+        heldRef.current.add(ref.index);
+        continue;
+      }
       pauseFor(ref.index);
       return;
     }

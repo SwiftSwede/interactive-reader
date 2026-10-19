@@ -840,7 +840,7 @@
   {
    "t": "english",
    "start": 92.48,
-   "end": 94.44,
+   "end": 94.8,
    "text": "Yes, you. Do you speak English?",
    "words": [
     {
@@ -871,7 +871,7 @@
     {
      "w": "english",
      "start": 94.1,
-     "end": 94.44
+     "end": 94.73
     }
    ]
   },
