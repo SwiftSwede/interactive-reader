@@ -473,6 +473,164 @@ The Offspring became one of the most successful punk bands of the 1990s, combini
       { line_index: 33, ipa_text: "næ næ, waɪ doʊnt ju ɡɛt ə dʒɑb" },
     ],
   },
+  {
+    slug: "monster-mash",
+    title: "Monster Mash",
+    artist: "Bobby Pickett",
+    level: "pre-intermediate",
+    youtubeUrl: "https://www.youtube.com/watch?v=vNuVifA7DSU",
+    body: `I was working in the lab, late one night
+When my eyes beheld an eerie sight
+For my monster from his slab, began to rise
+And suddenly to my surprise
+
+He did the monster mash
+(The monster mash) It was a graveyard smash
+(He did the mash) It caught on in a flash
+(He did the mash) He did the monster mash
+
+From my laboratory in the castle east
+To the master bedroom where the vampires feast
+The ghouls all came from their humble abodes
+To get a jolt from my electrodes
+
+They did the monster mash
+(The monster mash) It was a graveyard smash
+(They did the mash) It caught on in a flash
+(They did the mash) They did the monster mash
+
+The zombies were having fun (tennis shoe, wa hoo)
+The party had just begun (tennis shoe, wa hoo)
+The guests included Wolfman, Dracula and his son
+The scene was rockin', all were digging the sounds
+Igor on chains, backed by his baying hounds
+The coffin-bangers were about to arrive
+With their vocal group, 'The Crypt-Kicker Five'
+
+They played the monster mash
+(The monster mash) It was a graveyard smash
+(They played the mash) It caught on in a flash
+(They played the mash) They played the monster mash
+
+Out from his coffin, Drac's voice did ring
+Seems he was troubled by just one thing
+He opened the lid and shook his fist and said
+"Whatever happened to my Transylvania Twist?
+
+It's now the monster mash
+(The monster mash) And it's a graveyard smash
+(It's now the mash) It's caught on in a flash
+(It's now the mash) It's now the monster mash
+
+Now everything's cool, Drac's a part of the band
+And my Monster Mash is the hit of the land
+For you, the living, this mash was meant too
+When you get to my door, tell them Boris sent you
+
+Then you can monster mash
+(The monster mash) And do my graveyard smash
+(Then you can mash) You'll catch on in a flash
+(Then you can mash) Then you can monster mash`,
+    // Blanks transcribed from the deck's own numbering (1)-(8), Oct 2026 deck.
+    // Eight single-word blanks, each answer appears on exactly ONE line in the
+    // body (no repeats, no multi-entry ids). Deck "meant too" kept as sung —
+    // that's the lyric, not a typo to fix.
+    lyricBlanks: [
+      {
+        id: 1,
+        prompt: "I was working in the ___, late one night",
+        answer: "lab",
+      },
+      {
+        id: 2,
+        prompt: "And suddenly to my ________",
+        answer: "surprise",
+      },
+      {
+        id: 3,
+        prompt: "From my laboratory in the ______ east",
+        answer: "castle",
+      },
+      {
+        id: 4,
+        prompt: "To the master bedroom where the ________ feast",
+        answer: "vampires",
+      },
+      {
+        id: 5,
+        prompt: "The scene was rockin', all were digging the ______",
+        answer: "sounds",
+      },
+      {
+        id: 6,
+        prompt: "The coffin-bangers were about to ______",
+        answer: "arrive",
+      },
+      {
+        id: 7,
+        prompt: "Out from his ______, Drac's voice did ring",
+        answer: "coffin",
+      },
+      {
+        id: 8,
+        prompt: "And my Monster Mash is the hit of the ____",
+        answer: "land",
+      },
+    ],
+    // VERBATIM from the deck bio slide. Never rewrite.
+    artistBio: `Bobby Pickett
+Was an American singer, songwriter, actor and comedian. In 1962 he co-wrote a parody song called “monster mash”. The song parodied the dance fads which were popular at that time in the USA.
+No major label wanted to touch the song. Only a tiny record label had the balls to release it. The song would turn out to be a hit and sold a million records.
+	Bobby would never release a song as popular as this one. At the same time, the song continues being popular in the USA and can be heard a lot in October to get into the Halloween spirit.
+	Let’s take a look at it.`,
+    // songMeaning intentionally ABSENT — ratification 2026-09-16: Kyle dictates
+    // his interpretation first; it gets pasted verbatim. Never AI-draft.
+    lyricsIpa: [
+      { line_index: 0, ipa_text: "aɪ wəz wɝkɪŋ ɪn ðə læb, leɪt wʌn naɪt" },
+      { line_index: 1, ipa_text: "wɛn maɪ aɪz bɪhɛld ən ɪri saɪt" },
+      { line_index: 2, ipa_text: "fɔɹ maɪ mɑnstɚ fɹʌm ɪz slæb, bəɡæn tə raɪz" },
+      { line_index: 3, ipa_text: "ænd sʌdənli tə maɪ sɚpɹaɪz" },
+      { line_index: 4, ipa_text: "hi dɪd ðə mɑnstɚ mæʃ" },
+      { line_index: 5, ipa_text: "(ðə mɑnstɚ mæʃ) ɪt wəz ə ɡɹeɪvjɑɹd smæʃ" },
+      { line_index: 6, ipa_text: "(hi dɪd ðə mæʃ) ɪt kɑt ɑn ɪn ə flæʃ" },
+      { line_index: 7, ipa_text: "(hi dɪd ðə mæʃ) hi dɪd ðə mɑnstɚ mæʃ" },
+      { line_index: 8, ipa_text: "fɹʌm maɪ ləbɔɹətɔɹi ɪn ðə kæsəl ist" },
+      { line_index: 9, ipa_text: "tə ðə mæstɚ bɛdɹum wɛɹ ðə væmpaɪɹz fist" },
+      { line_index: 10, ipa_text: "ðə ɡulz ɔl kem fɹʌm ðɛɹ hʌməl əboʊdz" },
+      { line_index: 11, ipa_text: "tə ɡɛt ə dʒoʊlt fɹʌm maɪ ɪlɛktɹoʊdz" },
+      { line_index: 12, ipa_text: "ðeɪ dɪd ðə mɑnstɚ mæʃ" },
+      { line_index: 13, ipa_text: "(ðə mɑnstɚ mæʃ) ɪt wəz ə ɡɹeɪvjɑɹd smæʃ" },
+      { line_index: 14, ipa_text: "(ðeɪ dɪd ðə mæʃ) ɪt kɑt ɑn ɪn ə flæʃ" },
+      { line_index: 15, ipa_text: "(ðeɪ dɪd ðə mæʃ) ðeɪ dɪd ðə mɑnstɚ mæʃ" },
+      { line_index: 16, ipa_text: "ðə zɑmbiz wɚ hævɪŋ fʌn (tɛnɪs ʃu, wɑ hu)" },
+      { line_index: 17, ipa_text: "ðə pɑɹti həd dʒəst bɪɡʌn (tɛnɪs ʃu, wɑ hu)" },
+      { line_index: 18, ipa_text: "ðə ɡɛsts ɪnkudɪd wʊlfmæn, dɹækjələ ænd ɪz sʌn" },
+      { line_index: 19, ipa_text: "ðə sin wəz ɹɑkɪn, ɔl wɚ dɪɡɪŋ ðə saʊndz" },
+      { line_index: 20, ipa_text: "aɪɡɔɹ ɑn tʃeɪnz, bækst baɪ ɪz beɪɪŋ haʊndz" },
+      { line_index: 21, ipa_text: "ðə kɑfɪn beɪŋɡɚz wɚ əbaʊt tu əɹaɪv" },
+      { line_index: 22, ipa_text: "wɪð ðɛɹ voʊkəl ɡɹup, ðə kɹɪpt kɪkɚ faɪv" },
+      { line_index: 23, ipa_text: "ðeɪ pleɪd ðə mɑnstɚ mæʃ" },
+      { line_index: 24, ipa_text: "(ðə mɑnstɚ mæʃ) ɪt wəz ə ɡɹeɪvjɑɹd smæʃ" },
+      { line_index: 25, ipa_text: "(ðeɪ pleɪd ðə mæʃ) ɪt kɑt ɑn ɪn ə flæʃ" },
+      { line_index: 26, ipa_text: "(ðeɪ pleɪd ðə mæʃ) ðeɪ pleɪd ðə mɑnstɚ mæʃ" },
+      { line_index: 27, ipa_text: "aʊt fɹʌm ɪz kɑfɪn, dɹæks vɔɪs dɪd ɹɪŋ" },
+      { line_index: 28, ipa_text: "simz hi wəz tɹʌbəld baɪ dʒəst wʌn θɪŋ" },
+      { line_index: 29, ipa_text: "hi oʊpənd ðə lɪd ənd ʃʊk ɪz fɪst ənd sɛd" },
+      { line_index: 30, ipa_text: "wʌtɛvɚ hæpənd tə maɪ tɹænzɪlveɪnjə twɪst" },
+      { line_index: 31, ipa_text: "ɪts naʊ ðə mɑnstɚ mæʃ" },
+      { line_index: 32, ipa_text: "(ðə mɑnstɚ mæʃ) ænd ɪts ə ɡɹeɪvjɑɹd smæʃ" },
+      { line_index: 33, ipa_text: "(ɪts naʊ ðə mæʃ) ɪts kɑt ɑn ɪn ə flæʃ" },
+      { line_index: 34, ipa_text: "(ɪts naʊ ðə mæʃ) ɪts naʊ ðə mɑnstɚ mæʃ" },
+      { line_index: 35, ipa_text: "naʊ ɛvɹiθɪŋz kul, dɹæks ə pɑɹt əv ðə bænd" },
+      { line_index: 36, ipa_text: "ænd maɪ mɑnstɚ mæʃ ɪz ðə hɪt əv ðə lænd" },
+      { line_index: 37, ipa_text: "fɔɹ ju, ðə lɪvɪŋ, ðɪs mæʃ wəz mɛnt tu" },
+      { line_index: 38, ipa_text: "wɛn ju ɡɛt tə maɪ dɔɹ, tɛl ðəm bɔɹɪs sɛnt ju" },
+      { line_index: 39, ipa_text: "ðɛn ju kæn mɑnstɚ mæʃ" },
+      { line_index: 40, ipa_text: "(ðə mɑnstɚ mæʃ) ænd du maɪ ɡɹeɪvjɑɹd smæʃ" },
+      { line_index: 41, ipa_text: "(ðɛn ju kæn mæʃ) jul kætʃ ɑn ɪn ə flæʃ" },
+      { line_index: 42, ipa_text: "(ðɛn ju kæn mæʃ) ðɛn ju kæn mɑnstɚ mæʃ" },
+    ],
+  },
 ];
 
 function tokensOf(body: string): number {
