@@ -631,6 +631,154 @@ No major label wanted to touch the song. Only a tiny record label had the balls 
       { line_index: 42, ipa_text: "(ðɛn ju kæn mæʃ) ðɛn ju kæn mɑnstɚ mæʃ" },
     ],
   },
+  {
+    slug: "numb",
+    title: "Numb",
+    artist: "Linkin Park",
+    level: "intermediate",
+    youtubeUrl: "https://www.youtube.com/watch?v=kXYiU_JCYtU",
+    body: `I'm tired of being what you want me to be
+Feeling so faithless, lost under the surface
+Don't know what you're expecting of me
+Put under the pressure of walking in your shoes
+(Caught in the undertow, just caught in the undertow)
+Every step that I take is another mistake to you
+(Caught in the undertow, just caught in the undertow)
+
+I've become so numb, I can't feel you there
+Become so tired, so much more aware
+I'm becoming this, all I want to do
+Is be more like me and be less like you
+
+Can't you see that you're smothering me
+Holding too tightly, afraid to lose control?
+'Cause everything that you thought I would be
+Has fallen apart right in front of you
+(Caught in the undertow, just caught in the undertow)
+Every step that I take is another mistake to you
+(Caught in the undertow, just caught in the undertow)
+And every second I waste is more than I can take
+
+I've become so numb, I can't feel you there
+Become so tired, so much more aware
+I'm becoming this, all I want to do
+Is be more like me and be less like you
+
+And I know
+I may end up failing too
+But I know
+You were just like me with someone disappointed in you
+
+I've become so numb, I can't feel you there
+Become so tired, so much more aware
+I'm becoming this, all I want to do
+Is be more like me and be less like you
+
+I've become so numb, I can't feel you there
+(I'm tired of being what you want me to be)
+I've become so numb, I can't feel you there
+(I'm tired of being what you want me to be)`,
+    // Blanks transcribed from the deck's own numbering (1)-(9), Oct 2026 deck.
+    // - (3) "is another mistake" sits on TWO IDENTICAL verse lines -> ONE
+    //   entry, two placements (checker's legit multi-line case).
+    // - (4) "aware" sits on THREE IDENTICAL chorus lines -> ONE entry,
+    //   three placements (same case).
+    // - (2), (5), (6) are multi-word single-entry blanks.
+    lyricBlanks: [
+      {
+        id: 1,
+        prompt: "Feeling so _____, lost under the surface",
+        answer: "faithless",
+      },
+      {
+        id: 2,
+        prompt: "___ ____ ___ _____ of walking in your shoes",
+        answer: "Put under the pressure",
+      },
+      {
+        id: 3,
+        prompt: "Every step that I take __ _____ _____ to you",
+        answer: "is another mistake",
+      },
+      {
+        id: 4,
+        prompt: "Become so tired, so much more _____",
+        answer: "aware",
+      },
+      {
+        id: 5,
+        prompt: "Holding too tightly, _____ __ ____ _____?",
+        answer: "afraid to lose control",
+      },
+      {
+        id: 6,
+        prompt: "Has fallen apart _____ __ _____ __ ___",
+        answer: "right in front of you",
+      },
+      {
+        id: 7,
+        prompt: "And every second I _____ is more than I can take",
+        answer: "waste",
+      },
+      {
+        id: 8,
+        prompt: "I may end up _____ too",
+        answer: "failing",
+      },
+      {
+        id: 9,
+        prompt: "You were just like me with someone _____ in you",
+        answer: "disappointed",
+      },
+    ],
+    // VERBATIM from the deck bio slide. Never rewrite.
+    artistBio: `Linkin Park
+Is an American rock band formed in 1996. The band’s first international success came in 2000 upon the release of their debut album Hybrid Theory. Since then, they have become not only one of the of the most successful rock bands in the world, but also musical acts.
+Their sound in the beginning was described as nu-metal, a rock genre distinguishable for its use of rapping and heavy sound, and depressed and angry lyrics. A lot of anger at the cool kids and parents.
+Later on they incorporated more electronic into their sound.
+The band has sold more than 100 million records worldwide.
+Sadly, in 2017, lead singer Chester Bennington committed suicide.
+In today’s class, we’ll look at one of their most popular songs from their sophomore album Meteora. A song about parents who put too much pressure on their children.`,
+    // songMeaning intentionally ABSENT — ratification 2026-09-16: Kyle dictates
+    // his interpretation first; it gets pasted verbatim. Never AI-draft.
+    lyricsIpa: [
+      { line_index: 0, ipa_text: "aɪm taɪɚd əv biɪŋ wʌt ju wɑnt mi tə bi" },
+      { line_index: 1, ipa_text: "filɪŋ soʊ feɪθləs, lɔst ʌndɚ ðə sɝfəs" },
+      { line_index: 2, ipa_text: "doʊnt noʊ wʌt jɚ ɪkspɛktɪŋ əv mi" },
+      { line_index: 3, ipa_text: "pʊt ʌndɚ ðə pɹɛʃɚ əv wokɪŋ ɪn jɔɹ ʃuz" },
+      { line_index: 4, ipa_text: "(kɑt ɪn ði ʌndɚtoʊ, dʒəst kɑt ɪn ði ʌndɚtoʊ)" },
+      { line_index: 5, ipa_text: "ɛvɹi stɛp ðæt aɪ teɪk ɪz ənʌðɚ mɪsteɪk tə ju" },
+      { line_index: 6, ipa_text: "(kɑt ɪn ði ʌndɚtoʊ, dʒəst kɑt ɪn ði ʌndɚtoʊ)" },
+      { line_index: 7, ipa_text: "aɪv bɪkʌm soʊ nʌm, aɪ kænt fil ju ðɛɹ" },
+      { line_index: 8, ipa_text: "bɪkʌm soʊ taɪɚd, soʊ mʌtʃ mɔɹ əwɛɹ" },
+      { line_index: 9, ipa_text: "aɪm bɪkʌmɪŋ ðɪs, ɔl aɪ wɑnt tə du" },
+      { line_index: 10, ipa_text: "ɪz bi mɔɹ laɪk mi ænd bi lɛs laɪk ju" },
+      { line_index: 11, ipa_text: "kænt ju si ðæt jɚ smʌðɚɪŋ mi" },
+      { line_index: 12, ipa_text: "hoʊldɪŋ tu taɪtli, əfɹeɪd tə luz kəntɹoʊl" },
+      { line_index: 13, ipa_text: "kəz ɛvɹiθɪŋ ðæt ju θɔt aɪ wʊd bi" },
+      { line_index: 14, ipa_text: "hæz fɑlən əpɑɹt raɪt ɪn fɹʌnt əv ju" },
+      { line_index: 15, ipa_text: "(kɑt ɪn ði ʌndɚtoʊ, dʒəst kɑt ɪn ði ʌndɚtoʊ)" },
+      { line_index: 16, ipa_text: "ɛvɹi stɛp ðæt aɪ teɪk ɪz ənʌðɚ mɪsteɪk tə ju" },
+      { line_index: 17, ipa_text: "(kɑt ɪn ði ʌndɚtoʊ, dʒəst kɑt ɪn ði ʌndɚtoʊ)" },
+      { line_index: 18, ipa_text: "ænd ɛvɹi sɛkənd aɪ weɪst ɪz mɔɹ ðæn aɪ kæn teɪk" },
+      { line_index: 19, ipa_text: "aɪv bɪkʌm soʊ nʌm, aɪ kænt fil ju ðɛɹ" },
+      { line_index: 20, ipa_text: "bɪkʌm soʊ taɪɚd, soʊ mʌtʃ mɔɹ əwɛɹ" },
+      { line_index: 21, ipa_text: "aɪm bɪkʌmɪŋ ðɪs, ɔl aɪ wɑnt tə du" },
+      { line_index: 22, ipa_text: "ɪz bi mɔɹ laɪk mi ænd bi lɛs laɪk ju" },
+      { line_index: 23, ipa_text: "ænd aɪ noʊ" },
+      { line_index: 24, ipa_text: "aɪ meɪ ɛnd ʌp feɪlɪŋ tu" },
+      { line_index: 25, ipa_text: "bʌt aɪ noʊ" },
+      { line_index: 26, ipa_text: "ju wɚ dʒəst laɪk mi wɪð sʌmwʌn dɪsəpɔɪntɪd ɪn ju" },
+      { line_index: 27, ipa_text: "aɪv bɪkʌm soʊ nʌm, aɪ kænt fil ju ðɛɹ" },
+      { line_index: 28, ipa_text: "bɪkʌm soʊ taɪɚd, soʊ mʌtʃ mɔɹ əwɛɹ" },
+      { line_index: 29, ipa_text: "aɪm bɪkʌmɪŋ ðɪs, ɔl aɪ wɑnt tə du" },
+      { line_index: 30, ipa_text: "ɪz bi mɔɹ laɪk mi ænd bi lɛs laɪk ju" },
+      { line_index: 31, ipa_text: "aɪv bɪkʌm soʊ nʌm, aɪ kænt fil ju ðɛɹ" },
+      { line_index: 32, ipa_text: "(aɪm taɪɚd əv biɪŋ wʌt ju wɑnt mi tə bi)" },
+      { line_index: 33, ipa_text: "aɪv bɪkʌm soʊ nʌm, aɪ kænt fil ju ðɛɹ" },
+      { line_index: 34, ipa_text: "(aɪm taɪɚd əv biɪŋ wʌt ju wɑnt mi tə bi)" },
+    ],
+  },
 ];
 
 function tokensOf(body: string): number {
