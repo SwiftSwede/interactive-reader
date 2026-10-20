@@ -32,7 +32,7 @@ def toks(text):
 def main():
     day = int(sys.argv[1])
     seg_path = os.path.join(IPLO, f"day{day}-segments.json")
-    radius, max_drift = 20.0, 1.0
+    radius, max_drift = 25.0, 1.5
     for i, arg in enumerate(sys.argv):
         if arg == "--filled": seg_path = sys.argv[i + 1]
         if arg == "--radius": radius = float(sys.argv[i + 1])

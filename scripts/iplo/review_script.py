@@ -41,9 +41,15 @@ def main():
         print(f"ERROR: {whisper} not found. Run whisper first.")
         sys.exit(1)
 
-    # 1. Run aligner
-    print("Running aligner...")
-    r = run(["python3", os.path.join(IPLO, "align_v3.py"), whisper, str(day), segments, "--report", report_json])
+    # 1. Run aligner - into a THROWAWAY segments path. The aligner overwrites
+    #    its output file, and day{N}-segments.json holds days of hand repairs
+    #    (expected arrays, ghost drops, leadEnd, donor fills) that a fresh
+    #    alignment would wipe (this destroyed the file once already).
+    review_segments = f"/tmp/day{day}-review-segments.json"
+    if os.path.exists(segments):
+        import shutil; shutil.copy(segments, review_segments)
+    print("Running aligner (throwaway copy - production segments untouched)...")
+    r = run(["python3", os.path.join(IPLO, "align_v3.py"), whisper, str(day), review_segments, "--report", report_json])
     print(r.stdout.strip())
     if r.returncode != 0:
         print(f"Aligner stderr: {r.stderr[-500:]}")
