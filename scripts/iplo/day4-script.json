@@ -1,0 +1,701 @@
+{
+ "lesson": 4,
+ "title": "Simple Present + Times of Day",
+ "scriptLines": [
+  {
+   "i": 0,
+   "speaker": "Profe Kyle",
+   "text": "Bienvenidos a lección 4. Hoy repasamos más el presente simple y aprendes a hablar de los tiempos del día. Escucha la siguiente conversación."
+  },
+  {
+   "i": 1,
+   "speaker": "Man",
+   "text": "Do you eat in the morning?"
+  },
+  {
+   "i": 2,
+   "speaker": "Woman",
+   "text": "Yes, I eat in the morning."
+  },
+  {
+   "i": 3,
+   "speaker": "Man",
+   "text": "But do you eat in the morning every day?"
+  },
+  {
+   "i": 4,
+   "speaker": "Woman",
+   "text": "Yes, I eat in the morning every day. Before going to school I always eat breakfast. And you? Do you eat in the morning every day?"
+  },
+  {
+   "i": 5,
+   "speaker": "Man",
+   "text": "Who? Me?"
+  },
+  {
+   "i": 6,
+   "speaker": "Woman",
+   "text": "Yes, you. Do you eat in the morning every day?"
+  },
+  {
+   "i": 7,
+   "speaker": "Man",
+   "text": "Sometimes yes, sometimes no."
+  },
+  {
+   "i": 8,
+   "speaker": "Woman",
+   "text": "And your friends? Do they always eat in the morning?"
+  },
+  {
+   "i": 9,
+   "speaker": "Man",
+   "text": "My friends never eat in the morning. They always eat in the afternoon. And you? Do you eat in the afternoon?"
+  },
+  {
+   "i": 10,
+   "speaker": "Woman",
+   "text": "No, I never eat lunch. But I always eat in the evening. And you? Do you eat in the evening?"
+  },
+  {
+   "i": 11,
+   "speaker": "Man",
+   "text": "Me, yes. I always eat in the evening. In the evening, I always feel like eating."
+  },
+  {
+   "i": 12,
+   "speaker": "Profe Kyle",
+   "text": "En esta lección aprenderás cómo usar los adverbios de tiempo y adverbios de frecuencia. También practicarás conjugar los verbos en el presente simple. Recuerda que el presente simple, como en español, se usa para hablar de rutinas y hábitos. Así es cómo decimos el verbo ‘comer’ en inglés. Escucha y repite."
+  },
+  {
+   "i": 13,
+   "speaker": "Woman",
+   "text": "Eat. Eat."
+  },
+  {
+   "i": 14,
+   "speaker": "Profe Kyle",
+   "text": "¿Cómo se dice ‘comer’ en inglés?"
+  },
+  {
+   "i": 15,
+   "speaker": "Man",
+   "text": "Eat. Eat."
+  },
+  {
+   "i": 16,
+   "speaker": "Profe Kyle",
+   "text": "Intenta decir “yo como”."
+  },
+  {
+   "i": 17,
+   "speaker": "Woman",
+   "text": "I eat. I eat."
+  },
+  {
+   "i": 18,
+   "speaker": "Profe Kyle",
+   "text": "¿Cómo se dice “como”?"
+  },
+  {
+   "i": 19,
+   "speaker": "Man",
+   "text": "I eat. I eat."
+  },
+  {
+   "i": 20,
+   "speaker": "Profe Kyle",
+   "text": "Escucha esta pregunta:"
+  },
+  {
+   "i": 21,
+   "speaker": "Woman",
+   "text": "Do you eat?"
+  },
+  {
+   "i": 22,
+   "speaker": "Profe Kyle",
+   "text": "¿Cómo respondes “sí, yo como\"?"
+  },
+  {
+   "i": 23,
+   "speaker": "Man",
+   "text": "Yes, I eat. Yes, I eat."
+  },
+  {
+   "i": 24,
+   "speaker": "Profe Kyle",
+   "text": "Di, “yo como todos los días”."
+  },
+  {
+   "i": 25,
+   "speaker": "Woman",
+   "text": "I eat every day."
+  },
+  {
+   "i": 26,
+   "speaker": "Profe Kyle",
+   "text": "¿Cómo preguntarías a un amigo, “¿comes todos los días?\"?"
+  },
+  {
+   "i": 27,
+   "speaker": "Man",
+   "text": "Do you eat every day? Do you eat every day?"
+  },
+  {
+   "i": 28,
+   "speaker": "Profe Kyle",
+   "text": "Pregunta otra vez \"¿comes todos los días?\"?"
+  },
+  {
+   "i": 29,
+   "speaker": "Man",
+   "text": "Do you eat every day?"
+  },
+  {
+   "i": 30,
+   "speaker": "Profe Kyle",
+   "text": "Escucha esta respuesta."
+  },
+  {
+   "i": 31,
+   "speaker": "Woman",
+   "text": "Yes, I eat every day. But sometimes I don’t eat in the morning."
+  },
+  {
+   "i": 32,
+   "speaker": "Profe Kyle",
+   "text": "Ella acaba de decir “But sometimes I don’t eat in the morning.” “But sometimes I don’t eat in the morning,” significa “pero a veces no como por la mañana.” Así es cómo se dice “por la mañana.” Escucha y repite."
+  },
+  {
+   "i": 33,
+   "speaker": "Woman",
+   "text": "In the morning. In the morning."
+  },
+  {
+   "i": 34,
+   "speaker": "Profe Kyle",
+   "text": "Se dice con la misma estructura con tarde y noche. ‘In the afternoon’ y ‘in the evening’. Recuerda que en inglés tenemos dos “noches”, ‘evening’ y ‘night’. ‘Evening’ normalmente es cuando está oscuro, pero las personas siguen haciendo diligencias y actividades. Sería entre las 7 y las 10. ‘Night’ es cuando las personas descansan antes de dormir o cuando ya están durmiendo. Sería entre las 10 y las 12  de la noche. Con ‘night’, decimos ‘at night’ no ‘in the night’. Entonces, ¿cómo se dice ‘por la mañana’?"
+  },
+  {
+   "i": 35,
+   "speaker": "Woman",
+   "text": "In the morning. In the morning."
+  },
+  {
+   "i": 36,
+   "speaker": "Profe Kyle",
+   "text": "Hablando con un amigo, ¿cómo preguntas “¿comes por la mañana?”?"
+  },
+  {
+   "i": 37,
+   "speaker": "Man",
+   "text": "Do you eat in the morning? Do you eat in the morning?"
+  },
+  {
+   "i": 38,
+   "speaker": "Profe Kyle",
+   "text": "En lugar de decir ‘eat in the morning’ también escucharás a gringos decir ‘have breakfast’. ‘Have breakfast’ significa ‘desayunar’. En inglés, no tenemos un verbo para las comidas como desayunar, almorzar y cenar. Tenemos que decir ‘comer’ o ‘tener’ y después la comida que comemos. Otra vez, ¿Cómo preguntar “¿comes por la mañana?”?"
+  },
+  {
+   "i": 39,
+   "speaker": "Man",
+   "text": "Do you eat in the morning? Do you eat in the morning?"
+  },
+  {
+   "i": 40,
+   "speaker": "Profe Kyle",
+   "text": "Escucha esta respuesta:"
+  },
+  {
+   "i": 41,
+   "speaker": "Woman",
+   "text": "No, I don’t eat in the morning. I only eat in the afternoon."
+  },
+  {
+   "i": 42,
+   "speaker": "Profe Kyle",
+   "text": "Ella acaba de decir “I only eat in the afternoon.\" “I only eat in the afternoon,\" significa “Solo como por la tarde.\" Así es cómo se dice ‘en la tarde’. Escucha y repite."
+  },
+  {
+   "i": 43,
+   "speaker": "Woman",
+   "text": "In the afternoon. In the afternoon."
+  },
+  {
+   "i": 44,
+   "speaker": "Profe Kyle",
+   "text": "Otra vez, ¿cómo se dice ‘por la tarde’?"
+  },
+  {
+   "i": 45,
+   "speaker": "Woman",
+   "text": "In the afternoon. In the afternoon."
+  },
+  {
+   "i": 46,
+   "speaker": "Profe Kyle",
+   "text": "Ahora pregunta “¿comes por la tarde?”."
+  },
+  {
+   "i": 47,
+   "speaker": "Man",
+   "text": "Do you eat in the afternoon? Do you eat in the afternoon?"
+  },
+  {
+   "i": 48,
+   "speaker": "Profe Kyle",
+   "text": "Recuerda que ‘almorzar’ en inglés es ‘to eat lunch’ o ‘to have lunch’. Otra vez, ¿cómo preguntar “¿comes por la tarde?”?"
+  },
+  {
+   "i": 49,
+   "speaker": "Man",
+   "text": "Do you eat in the afternoon?"
+  },
+  {
+   "i": 50,
+   "speaker": "Profe Kyle",
+   "text": "Responde, “sí, como por la tarde.”"
+  },
+  {
+   "i": 51,
+   "speaker": "Woman",
+   "text": "Yes, I eat in the afternoon."
+  },
+  {
+   "i": 52,
+   "speaker": "Profe Kyle",
+   "text": "¿Y cómo preguntarías “¿ustedes comen?”?"
+  },
+  {
+   "i": 53,
+   "speaker": "Man",
+   "text": "Do you guys eat? Do you guys eat?"
+  },
+  {
+   "i": 54,
+   "speaker": "Profe Kyle",
+   "text": "Ahora pregunta “¿ustedes comen por la tarde?”."
+  },
+  {
+   "i": 55,
+   "speaker": "Man",
+   "text": "Do you guys eat in the afternoon? Do you guys eat in the afternoon?"
+  },
+  {
+   "i": 56,
+   "speaker": "Profe Kyle",
+   "text": "Ahora solo escucha a la mujer."
+  },
+  {
+   "i": 57,
+   "speaker": "Woman",
+   "text": "Yes, we eat in the afternoon. And you? Do you guys eat in the afternoon?"
+  },
+  {
+   "i": 58,
+   "speaker": "Profe Kyle",
+   "text": "Responde diciendo “nosotros comemos”."
+  },
+  {
+   "i": 59,
+   "speaker": "Man",
+   "text": "We eat. We eat."
+  },
+  {
+   "i": 60,
+   "speaker": "Profe Kyle",
+   "text": "Escucha su pregunta otra vez."
+  },
+  {
+   "i": 61,
+   "speaker": "Woman",
+   "text": "Do you guys eat in the afternoon?"
+  },
+  {
+   "i": 62,
+   "speaker": "Profe Kyle",
+   "text": "Responde “sí, comemos por la tarde.”"
+  },
+  {
+   "i": 63,
+   "speaker": "Man",
+   "text": "Yes, we eat in the afternoon. Yes, we eat in the afternoon."
+  },
+  {
+   "i": 64,
+   "speaker": "Profe Kyle",
+   "text": "Escucha esta pregunta:"
+  },
+  {
+   "i": 65,
+   "speaker": "Woman",
+   "text": "Do you guys eat in the morning?"
+  },
+  {
+   "i": 66,
+   "speaker": "Profe Kyle",
+   "text": "Responde “no, no comemos por la mañana.”"
+  },
+  {
+   "i": 67,
+   "speaker": "Man",
+   "text": "No, we don’t eat in the morning. No, we don’t eat in the morning."
+  },
+  {
+   "i": 68,
+   "speaker": "Profe Kyle",
+   "text": "Escucha otra vez la misma pregunta."
+  },
+  {
+   "i": 69,
+   "speaker": "Woman",
+   "text": "Do you guys eat in the morning?"
+  },
+  {
+   "i": 70,
+   "speaker": "Profe Kyle",
+   "text": "Esta vez responde “comemos por la mañana y por la tarde.”"
+  },
+  {
+   "i": 71,
+   "speaker": "Man",
+   "text": "We eat in the morning and in the afternoon. We eat in the morning and in the afternoon."
+  },
+  {
+   "i": 72,
+   "speaker": "Profe Kyle",
+   "text": "Di, “comemos por la mañana y por la tarde.”"
+  },
+  {
+   "i": 73,
+   "speaker": "Man",
+   "text": "We eat in the morning and in the afternoon."
+  },
+  {
+   "i": 74,
+   "speaker": "Profe Kyle",
+   "text": "Ahora di, “comemos por la mañana y por la tarde todos los días.”"
+  },
+  {
+   "i": 75,
+   "speaker": "Woman",
+   "text": "We eat in the morning and in the afternoon every day."
+  },
+  {
+   "i": 76,
+   "speaker": "Profe Kyle",
+   "text": "Otra vez, ¿cómo se dice “comemos por la mañana y por la tarde todos los días.”?"
+  },
+  {
+   "i": 77,
+   "speaker": "Man",
+   "text": "We eat in the morning and in the afternoon every day."
+  },
+  {
+   "i": 78,
+   "speaker": "Profe Kyle",
+   "text": "¿Y cómo preguntar “¿Ellos comen por la mañana?”?"
+  },
+  {
+   "i": 79,
+   "speaker": "Man",
+   "text": "Do they eat in the morning? Do they eat in the morning?"
+  },
+  {
+   "i": 80,
+   "speaker": "Profe Kyle",
+   "text": "Solo escucha la siguiente."
+  },
+  {
+   "i": 81,
+   "speaker": "Woman",
+   "text": "Yes, they eat in the morning. Do they eat in the afternoon every day?"
+  },
+  {
+   "i": 82,
+   "speaker": "Profe Kyle",
+   "text": "Responde “No, ellos no comen por la tarde todos los días.”"
+  },
+  {
+   "i": 83,
+   "speaker": "Man",
+   "text": "No, they don't eat in the afternoon every day."
+  },
+  {
+   "i": 84,
+   "speaker": "Profe Kyle",
+   "text": "Di, “ellos no comen por la tarde todos los días.”"
+  },
+  {
+   "i": 85,
+   "speaker": "Man",
+   "text": "They don’t eat in the afternoon every day."
+  },
+  {
+   "i": 86,
+   "speaker": "Profe Kyle",
+   "text": "Escucha la mujer."
+  },
+  {
+   "i": 87,
+   "speaker": "Woman",
+   "text": "No, they don’t eat in the afternoon every day. But they always eat in the evening."
+  },
+  {
+   "i": 88,
+   "speaker": "Profe Kyle",
+   "text": "Ella acaba de decir \"But they always eat in the evening.\" \"But they always eat in the evening,\" significa “pero ellos siempre comen por la noche.” Así es cómo decimos ‘por la noche’ cuando no dormimos ni descansamos. Escucha y repite."
+  },
+  {
+   "i": 89,
+   "speaker": "Woman",
+   "text": "In the evening. In the evening."
+  },
+  {
+   "i": 90,
+   "speaker": "Profe Kyle",
+   "text": "Recuerda que ‘night’ es normalmente después de las 10 de la noche y es cuando los gringos comienzan a dormir o descansar antes de dormir. ¿Cómo decir ‘por la noche’ cuando la persona está durmiendo?"
+  },
+  {
+   "i": 91,
+   "speaker": "Woman",
+   "text": "At night. At night."
+  },
+  {
+   "i": 92,
+   "speaker": "Profe Kyle",
+   "text": "¿Cómo decir ‘por la noche’ cuando la persona está cenando?"
+  },
+  {
+   "i": 93,
+   "speaker": "Woman",
+   "text": "In the evening. In the evening."
+  },
+  {
+   "i": 94,
+   "speaker": "Profe Kyle",
+   "text": "Ahora pregunta “¿comes por la noche?”."
+  },
+  {
+   "i": 95,
+   "speaker": "Man",
+   "text": "Do you eat in the evening? Do you eat in the evening?"
+  },
+  {
+   "i": 96,
+   "speaker": "Profe Kyle",
+   "text": "En vez de decir ‘to eat in the evening’ puedes escuchar a los gringos decir ‘eat dinner’ o ‘to eat supper’. No hay ninguna gran diferencia entre ‘dinner’ o ‘supper’. Recuerda también que podemos decir ‘to have dinner/supper’ en inglés. NO decimos ‘to take dinner/supper’. Ahora escucha la siguiente pregunta."
+  },
+  {
+   "i": 97,
+   "speaker": "Man",
+   "text": "Do you eat in the evening?"
+  },
+  {
+   "i": 98,
+   "speaker": "Profe Kyle",
+   "text": "Responde, “no, yo no como por las noches.”"
+  },
+  {
+   "i": 99,
+   "speaker": "Woman",
+   "text": "No, I don’t eat in the evenings."
+  },
+  {
+   "i": 100,
+   "speaker": "Profe Kyle",
+   "text": "Di, “no como por las noches.”"
+  },
+  {
+   "i": 101,
+   "speaker": "Woman",
+   "text": "I don’t eat in the evenings."
+  },
+  {
+   "i": 102,
+   "speaker": "Profe Kyle",
+   "text": "Cambia el tema y pregunta “¿caminas por las mañanas?”."
+  },
+  {
+   "i": 103,
+   "speaker": "Man",
+   "text": "Do you walk in the morning? Do you walk in the morning?"
+  },
+  {
+   "i": 104,
+   "speaker": "Profe Kyle",
+   "text": "Escucha esta respuesta."
+  },
+  {
+   "i": 105,
+   "speaker": "Woman",
+   "text": "Yes, I walk in the morning. I always walk in the morning."
+  },
+  {
+   "i": 106,
+   "speaker": "Profe Kyle",
+   "text": "Ella acaba de decir “I always walk in the morning.\" “I always walk in the morning,\" significa \"siempre camino por la mañana.\" Así es cómo dices la palabra ‘siempre’. Escucha y repite."
+  },
+  {
+   "i": 107,
+   "speaker": "Woman",
+   "text": "Always. Always."
+  },
+  {
+   "i": 108,
+   "speaker": "Profe Kyle",
+   "text": "Otra vez, ¿cómo se dice ‘siempre’?"
+  },
+  {
+   "i": 109,
+   "speaker": "Man",
+   "text": "Always. Always."
+  },
+  {
+   "i": 110,
+   "speaker": "Profe Kyle",
+   "text": "Ahora pregunta “¿Ustedes siempre caminan por las tardes?”"
+  },
+  {
+   "i": 111,
+   "speaker": "Man",
+   "text": "Do you guys always walk in the afternoons? Do you guys always walk in the afternoons?"
+  },
+  {
+   "i": 112,
+   "speaker": "Profe Kyle",
+   "text": "Escucha esta respuesta:"
+  },
+  {
+   "i": 113,
+   "speaker": "Woman",
+   "text": "We never walk in the afternoon."
+  },
+  {
+   "i": 114,
+   "speaker": "Profe Kyle",
+   "text": "Ella acaba de decir “We never walk in the afternoon.” Así es cómo decimos ‘nunca’. Escucha y repite."
+  },
+  {
+   "i": 115,
+   "speaker": "Woman",
+   "text": "Never. Never."
+  },
+  {
+   "i": 116,
+   "speaker": "Profe Kyle",
+   "text": "Otra vez, ¿cómo se dice ‘nunca’?"
+  },
+  {
+   "i": 117,
+   "speaker": "Man",
+   "text": "Never. Never."
+  },
+  {
+   "i": 118,
+   "speaker": "Profe Kyle",
+   "text": "Ahora escucha su respuesta:"
+  },
+  {
+   "i": 119,
+   "speaker": "Woman",
+   "text": "Do you guys eat in the morning?"
+  },
+  {
+   "i": 120,
+   "speaker": "Profe Kyle",
+   "text": "Responde “nunca comemos por las mañanas.”"
+  },
+  {
+   "i": 121,
+   "speaker": "Man",
+   "text": "We never eat in the mornings. We never eat in the mornings."
+  },
+  {
+   "i": 122,
+   "speaker": "Profe Kyle",
+   "text": "Otra vez, di, “nunca comemos por las mañanas.”"
+  },
+  {
+   "i": 123,
+   "speaker": "Woman",
+   "text": "We never eat in the mornings."
+  },
+  {
+   "i": 124,
+   "speaker": "Profe Kyle",
+   "text": "Y ¿cómo se dice “siempre comemos por las tardes.”?"
+  },
+  {
+   "i": 125,
+   "speaker": "Man",
+   "text": "We always eat in the afternoons. We always eat in the afternoons."
+  },
+  {
+   "i": 126,
+   "speaker": "Profe Kyle",
+   "text": "Ahora escucha la misma conversación que escuchaste al comienzo de la lección."
+  },
+  {
+   "i": 127,
+   "speaker": "Man",
+   "text": "Do you eat in the morning?"
+  },
+  {
+   "i": 128,
+   "speaker": "Woman",
+   "text": "Yes, I eat in the morning."
+  },
+  {
+   "i": 129,
+   "speaker": "Man",
+   "text": "But do you eat in the morning every day?"
+  },
+  {
+   "i": 130,
+   "speaker": "Woman",
+   "text": "Yes, I eat in the morning every day. Before going to school I always eat breakfast. And you? Do you eat in the morning every day?"
+  },
+  {
+   "i": 131,
+   "speaker": "Man",
+   "text": "Who? Me?"
+  },
+  {
+   "i": 132,
+   "speaker": "Woman",
+   "text": "Yes, you. Do you eat in the morning every day?"
+  },
+  {
+   "i": 133,
+   "speaker": "Man",
+   "text": "Sometimes yes, sometimes no."
+  },
+  {
+   "i": 134,
+   "speaker": "Woman",
+   "text": "And your friends? Do they always eat in the morning?"
+  },
+  {
+   "i": 135,
+   "speaker": "Man",
+   "text": "My friends never eat in the morning. They always eat in the afternoon. And you? Do you eat in the afternoon?"
+  },
+  {
+   "i": 136,
+   "speaker": "Woman",
+   "text": "No, I never eat lunch. But I always eat in the evening. And you?  Do you eat in the evening?"
+  },
+  {
+   "i": 137,
+   "speaker": "Man",
+   "text": "Yes. I always eat in the evening. In the evening, I always feel like eating."
+  },
+  {
+   "i": 138,
+   "speaker": "Profe Kyle",
+   "text": "Él acaba de decir, “In the evening, I always feel like eating.” “In the evening, I always feel like eating.” significa “Por las noches, siempre tengo ganas de comer.” La frase “feel like” significa “tener ganas de.” Por ejemplo, “to feel like eating” significa “tener ganas de comer.” “to feel like walking” significa “tener ganas de caminar.” Y este es el final de la lección . Si estás cómodo respondiendo a las preguntas, entonces estás listo para seguir con la lección . Si no estás cómodo, escucha la lección otra vez hasta que te sientes cómodo respondiendo a mis preguntas."
+  }
+ ]
+}
