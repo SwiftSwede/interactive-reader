@@ -645,7 +645,7 @@
   {
    "t": "english",
    "start": 65.5,
-   "end": 67.98,
+   "end": 66.58,
    "text": "Who, me?",
    "words": [
     {
@@ -662,29 +662,29 @@
   },
   {
    "t": "english",
-   "start": 68.0,
-   "end": 69.4,
+   "start": 66.6,
+   "end": 67.8,
    "text": "Do you speak English?",
    "words": [
     {
-     "w": "do",
-     "start": 68.02,
-     "end": 68.16
+     "w": "Do",
+     "start": 66.62,
+     "end": 66.84
     },
     {
      "w": "you",
-     "start": 68.16,
-     "end": 68.28
+     "start": 66.84,
+     "end": 67.02
     },
     {
      "w": "speak",
-     "start": 68.28,
-     "end": 68.52
+     "start": 67.02,
+     "end": 67.28
     },
     {
-     "w": "english",
-     "start": 68.52,
-     "end": 68.9
+     "w": "English",
+     "start": 67.28,
+     "end": 67.66
     }
    ]
   },
@@ -822,7 +822,7 @@
   {
    "t": "english",
    "start": 91.28,
-   "end": 92.46,
+   "end": 92.44,
    "text": "Who, me?",
    "words": [
     {
@@ -839,39 +839,39 @@
   },
   {
    "t": "english",
-   "start": 92.48,
-   "end": 94.8,
+   "start": 92.46,
+   "end": 94.65,
    "text": "Yes, you. Do you speak English?",
    "words": [
     {
-     "w": "yes",
-     "start": 92.48,
-     "end": 92.9
+     "w": "Yes",
+     "start": 92.46,
+     "end": 92.74
     },
     {
      "w": "you",
      "start": 92.9,
-     "end": 93.04
+     "end": 93.06
     },
     {
-     "w": "do",
+     "w": "Do",
      "start": 93.5,
-     "end": 93.64
+     "end": 93.62
     },
     {
      "w": "you",
-     "start": 93.64,
+     "start": 93.62,
      "end": 93.86
     },
     {
      "w": "speak",
      "start": 93.86,
-     "end": 94.1
+     "end": 94.12
     },
     {
-     "w": "english",
-     "start": 94.1,
-     "end": 94.73
+     "w": "English",
+     "start": 94.12,
+     "end": 94.5
     }
    ]
   },
@@ -1516,39 +1516,39 @@
   },
   {
    "t": "english",
-   "start": 189.71,
-   "end": 192.61,
+   "start": 186.69,
+   "end": 189.75,
    "text": "Yes, her. Does she speak English?",
    "words": [
     {
-     "w": "yes",
-     "start": 189.71,
-     "end": 189.79
+     "w": "Yes",
+     "start": 187.34,
+     "end": 187.42
     },
     {
      "w": "her",
-     "start": 189.89,
-     "end": 190.05
+     "start": 187.6,
+     "end": 187.84
     },
     {
-     "w": "does",
-     "start": 191.71,
-     "end": 191.91
+     "w": "Does",
+     "start": 188.32,
+     "end": 188.52
     },
     {
      "w": "she",
-     "start": 191.91,
-     "end": 192.21
+     "start": 188.52,
+     "end": 188.82
     },
     {
      "w": "speak",
-     "start": 192.21,
-     "end": 192.41
+     "start": 188.82,
+     "end": 189.06
     },
     {
-     "w": "english",
-     "start": 192.41,
-     "end": 192.73
+     "w": "English",
+     "start": 189.06,
+     "end": 189.58
     }
    ]
   },
@@ -1780,7 +1780,7 @@
   {
    "t": "narration",
    "start": 235.17,
-   "end": 237.67,
+   "end": 237.28,
    "lines": [
     "Ahora ella te hace esta pregunta:"
    ],
@@ -1819,84 +1819,89 @@
   },
   {
    "t": "english",
-   "start": 237.69,
-   "end": 239.57,
+   "start": 237.3,
+   "end": 238.4,
    "text": "Does she speak English?",
    "words": [
     {
-     "w": "do",
-     "start": 238.01,
-     "end": 238.01
+     "w": "Does",
+     "start": 237.3,
+     "end": 237.52
     },
     {
-     "w": "they",
-     "start": 238.03,
-     "end": 238.03
+     "w": "she",
+     "start": 237.52,
+     "end": 237.76
     },
     {
      "w": "speak",
-     "start": 237.99,
-     "end": 238.25
+     "start": 237.76,
+     "end": 238.06
     },
     {
-     "w": "english",
-     "start": 238.25,
-     "end": 238.75
+     "w": "English",
+     "start": 238.06,
+     "end": 238.42
     }
    ]
   },
   {
    "t": "narration",
-   "start": 239.59,
+   "start": 238.42,
    "end": 244.03,
    "lines": [
     "Otra vez, no estás seguro a quién se refiere"
    ],
    "words": [
     {
-     "w": "otra",
-     "start": 239.59,
-     "end": 240.15
+     "w": "Otra",
+     "start": 238.42,
+     "end": 239.88
     },
     {
-     "w": "vez",
-     "start": 240.15,
-     "end": 240.59
+     "w": "vez.",
+     "start": 239.88,
+     "end": 240.16
     },
     {
-     "w": "no",
-     "start": 240.85,
-     "end": 241.13
+     "w": "No",
+     "start": 240.76,
+     "end": 240.88
     },
     {
-     "w": "estas",
-     "start": 241.15,
-     "end": 241.27
+     "w": "estás",
+     "start": 240.88,
+     "end": 241.16
     },
     {
      "w": "seguro",
-     "start": 241.41,
-     "end": 241.87
+     "start": 241.16,
+     "end": 241.64
     },
     {
      "w": "a",
-     "start": 241.87,
-     "end": 242.25
+     "start": 241.64,
+     "end": 241.88
     },
     {
-     "w": "quien",
-     "start": 242.25,
-     "end": 242.49
+     "w": "quién",
+     "start": 241.88,
+     "end": 242.18
     },
     {
      "w": "se",
-     "start": 242.49,
-     "end": 242.97
+     "start": 242.18,
+     "end": 242.56
     },
     {
-     "w": "refiere",
-     "start": 242.97,
-     "end": 243.67
+     "w": "refiere.",
+     "start": 242.56,
+     "end": 243.26
+    },
+    {
+     "w": "Pregúntale.",
+     "start": 243.78,
+     "end": 244.24
     }
    ]
   },
@@ -2268,7 +2273,7 @@
     "They speak French."
    ],
    "end": 306.39,
-   "leadEnd": 301.85,
+   "leadEnd": 301.25,
    "words": []
   },
   {
@@ -2336,7 +2341,7 @@
   {
    "t": "english",
    "start": 315.91,
-   "end": 320.17,
+   "end": 318.59,
    "text": "No, I don’t speak Spanish.",
    "words": [
     {
@@ -2368,78 +2373,78 @@
   },
   {
    "t": "english",
-   "start": 320.19,
-   "end": 321.77,
+   "start": 318.61,
+   "end": 320.25,
    "text": "Do you guys speak French?",
    "words": [
     {
-     "w": "do",
-     "start": 320.23,
-     "end": 320.41
+     "w": "Do",
+     "start": 318.65,
+     "end": 318.83
     },
     {
      "w": "you",
-     "start": 320.41,
-     "end": 320.61
+     "start": 318.83,
+     "end": 319.03
     },
     {
      "w": "guys",
-     "start": 320.61,
-     "end": 320.83
+     "start": 319.03,
+     "end": 319.25
     },
     {
      "w": "speak",
-     "start": 320.91,
-     "end": 321.19
+     "start": 319.33,
+     "end": 319.61
     },
     {
-     "w": "french",
-     "start": 321.19,
-     "end": 321.71
+     "w": "French",
+     "start": 319.61,
+     "end": 320.07
     }
    ]
   },
   {
    "t": "prompt",
    "start": 323.73,
-   "pauseAt": 329.72,
+   "pauseAt": 327.6,
    "spanish": "Responde, “no, no hablamos francés.”",
    "expected": [
     "No, we don’t speak French."
    ],
-   "end": 328.07,
+   "end": 327.68,
    "words": []
   },
   {
    "t": "english",
-   "start": 328.09,
-   "end": 334.31,
+   "start": 327.7,
+   "end": 331.3,
    "text": "No, we don’t speak French.",
    "words": [
     {
-     "w": "no",
-     "start": 328.09,
-     "end": 328.37
+     "w": "No",
+     "start": 327.74,
+     "end": 328.0
     },
     {
      "w": "we",
-     "start": 329.57,
-     "end": 330.25
+     "start": 329.72,
+     "end": 330.04
     },
     {
-     "w": "dont",
-     "start": 330.25,
-     "end": 330.69
+     "w": "don't",
+     "start": 330.04,
+     "end": 330.52
     },
     {
      "w": "speak",
-     "start": 330.69,
-     "end": 331.01
+     "start": 330.52,
+     "end": 330.78
     },
     {
-     "w": "french",
-     "start": 331.01,
-     "end": 331.81
+     "w": "French",
+     "start": 330.78,
+     "end": 331.26
     }
    ]
   },
@@ -5231,7 +5236,7 @@
   {
    "t": "narration",
    "start": 756.75,
-   "end": 761.12,
+   "end": 759.27,
    "lines": [
     "Escucha esta pregunta."
    ],
@@ -5255,39 +5260,39 @@
   },
   {
    "t": "english",
-   "start": 761.14,
-   "end": 762.36,
+   "start": 759.29,
+   "end": 761.2,
    "text": "Do you guys walk to school?",
    "words": [
     {
-     "w": "do",
-     "start": 761.16,
-     "end": 761.3
+     "w": "Do",
+     "start": 759.29,
+     "end": 759.83
     },
     {
      "w": "you",
-     "start": 761.36,
-     "end": 761.56
+     "start": 759.83,
+     "end": 760.07
     },
     {
      "w": "guys",
-     "start": 761.56,
-     "end": 761.76
+     "start": 760.07,
+     "end": 760.25
     },
     {
      "w": "walk",
-     "start": 761.76,
-     "end": 762.01
+     "start": 760.25,
+     "end": 760.51
     },
     {
      "w": "to",
-     "start": 762.01,
-     "end": 762.26
+     "start": 760.51,
+     "end": 760.75
     },
     {
      "w": "school",
-     "start": 762.26,
-     "end": 762.56
+     "start": 760.75,
+     "end": 761.05
     }
    ]
   },
