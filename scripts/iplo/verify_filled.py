@@ -182,10 +182,64 @@ def main():
         print(f"  MISSING @{s['start']:.1f}s score {score:.0%}")
         print(f"      expected: {exp!r}")
 
+    # --- check 4: text language vs audio language (decision required) ------
+    # A segment whose text is English over Spanish audio (or the inverse) is a
+    # source discrepancy. Never auto-resolve: report it for Kyle to decide
+    # which source is the truest one. (The day-3 ending shipped English text
+    # over Spanish audio for days because whisper auto-translated and nobody
+    # compared languages.)
+    ES_WORDS = {
+        "el","los","que","de","para","con","por","cómo","como","quién","quien","qué","que",
+        "dice","significa","escucha","pregunta","pregúntale","responde","ahora","solo",
+        "ustedes","ella","él","sí","hablamos","hablan","habla","ando","ando","escuela",
+        "días","dia","días","trabajo","bien","muy","eso","esta","este","palabra","forma",
+        "corta","lección","felicidades","terminaste","nos","vemos","siguiente","querido",
+        "querida","bienvenido","bienvenida","sigamos","siguiente","ejercicio","hagamos",
+        "usted","tú","tu"," respuesta","significan","palabra","motocicleta","va","hace",
+        "todas","todos","la","las","sus","próximas","otra","vez","acaba","preguntar",
+    }
+    EN_WORDS = {
+        "the","i","you","we","they","do","does","don","doesn","she","he","it","and","yes",
+        "what","means","said","just","walk","walks","speak","speaks","english","school",
+        "every","day","guys","friend","morning","together","motorbike","motorcycle",
+        "short","form","word","finished","lesson","next","see","congratulations","good",
+        "work","her","him","them","us","me","who","there","that","this",
+    }
+    def lang_class(tokens):
+        es = sum(1 for t in tokens if t in ES_WORDS)
+        en = sum(1 for t in tokens if t in EN_WORDS)
+        if en >= 3 and en > es * 1.5: return "en"
+        if es >= 3 and es > en * 1.5: return "es"
+        return "mixed"
+
+    print("\n== Text-vs-audio language (decision required) ==")
+    lang_flags = 0
+    for s in segs:
+        if s.get("t") not in ("english", "narration"):
+            continue
+        # positional heard text: whatever the transcript heard inside the
+        # segment's own span (strict - padding pulls in neighbours' audio and
+        # flips the language class).
+        heard = " ".join(w[0] for w in fwords if s["start"] <= w[1] <= s["end"])
+        if not heard:
+            continue
+        t_cls = lang_class(toks(s.get("text", "") or " ".join(s.get("lines", []))))
+        a_cls = lang_class(heard.split())
+        if t_cls in ("en", "es") and a_cls in ("en", "es") and t_cls != a_cls:
+            print(f"  LANGUAGE-MISMATCH @{s['start']:.1f}s [{s.get('t')}] text={t_cls} audio={a_cls}")
+            print(f"      text:  {str(s.get('text') or s.get('lines'))[:90]!r}")
+            print(f"      heard: {heard[:90]!r}")
+            print(f"      DECISION NEEDED: which source is truest? (fix text / re-transcribe / re-record)")
+            lang_flags += 1
+            failures.append(f"language@{s['start']:.1f}s")
+    if lang_flags == 0:
+        print("  clean - every segment's text matches its audio language")
+
     if failures:
-        print(f"\n{len(failures)} HARD FAILURE(S): {', '.join(failures)}")
+        print(f"\n{len(failures)} FINDING(S): {', '.join(failures)}")
+        print("Resolve each with Kyle before seeding: never guess which source is truest.")
         sys.exit(1)
-    print("\nHard checks clean (donor reconciliation + pocket silence).")
+    print("\nHard checks clean (donor reconciliation + pocket silence + language).")
     sys.exit(0)
 
 if __name__ == "__main__":
