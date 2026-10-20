@@ -915,29 +915,29 @@
   },
   {
    "t": "english",
-   "start": 104.4,
-   "end": 106.12,
+   "start": 102.9,
+   "end": 104.5,
    "text": "Does she speak English?",
    "words": [
     {
      "w": "does",
-     "start": 104.78,
-     "end": 104.98
+     "start": 103.0,
+     "end": 103.3
     },
     {
      "w": "she",
-     "start": 104.98,
-     "end": 105.28
+     "start": 103.5,
+     "end": 103.7
     },
     {
      "w": "speak",
-     "start": 105.28,
-     "end": 105.52
+     "start": 103.7,
+     "end": 103.98
     },
     {
      "w": "english",
-     "start": 105.52,
-     "end": 106.04
+     "start": 103.98,
+     "end": 104.32
     }
    ]
   },
@@ -1061,7 +1061,7 @@
    "t": "english",
    "start": 127.2,
    "end": 128.8,
-   "text": "Yes, him. Does he speak English?",
+   "text": "Yes, he speaks English.",
    "words": [
     {
      "w": "yes",
