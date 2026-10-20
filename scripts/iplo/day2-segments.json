@@ -7996,6 +7996,7 @@
  "duration_note": "aligned to day-2-filled.m4a (donor spliced at 1180.0, +2.80s)",
  "fill": {
   "at": 1180.0,
-  "shift": 2.8
+  "shift": 2.8,
+  "donorText": "Yes, we speak English."
  }
 }

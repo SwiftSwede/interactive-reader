@@ -89,6 +89,8 @@ def main():
     data = json.load(open(seg_path, encoding="utf-8"))
     segs = data["segments"]
     fills = data.get("fill", [])
+    if isinstance(fills, dict):
+        fills = [fills]  # single {at, shift} entry (day-2 shape); day 3+ uses a list
     wj = json.load(open(filled_json, encoding="utf-8"))
     fwords = [(fold(w["word"].strip().replace("'", "").replace("’", "")), w["start"], w["end"])
               for seg in wj["segments"] for w in seg.get("words", []) if w["word"].strip()]
