@@ -33,7 +33,8 @@ import {
 import { listSessionQuestionRequests } from "@/lib/question-requests";
 import { parseLyricBlanks } from "@/lib/music";
 import { getSongBlankAnalytics } from "@/lib/services/songAttempts";
-import { isLateWritingSubmit } from "@/lib/writing";
+import { isLateWritingSubmit, splitWritingQuestions } from "@/lib/writing";
+import WritingQuestions from "@/components/WritingQuestions";
 
 export const metadata = {
   title: "Clase - Profe Kyle",
@@ -367,10 +368,15 @@ export default async function SessionDetailPage({
 
       {isWriting && session.writingPrompt && (
         <div className="mt-8 rounded-card border border-paper-line px-3 py-3">
-          <p className="text-xs font-medium text-text-muted">Pregunta</p>
-          <p className="mt-1 whitespace-pre-wrap text-sm text-text-primary">
-            {session.writingPrompt.promptText}
+          <p className="text-xs font-medium text-text-muted">
+            {splitWritingQuestions(session.writingPrompt.promptText).length > 1
+              ? "Preguntas"
+              : "Pregunta"}
           </p>
+          <WritingQuestions
+            text={session.writingPrompt.promptText}
+            className="mt-1 text-sm text-text-primary"
+          />
           <p className="mt-2 text-xs text-text-muted">
             {session.writingPrompt.writingTimeMinutes} minutos
           </p>

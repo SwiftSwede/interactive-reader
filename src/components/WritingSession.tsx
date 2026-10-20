@@ -30,6 +30,7 @@ import {
   toggleWritingStepLock,
 } from "@/app/teacher/writing-pacing-actions";
 import WritingCorrectionView from "@/components/WritingCorrectionView";
+import WritingQuestions from "@/components/WritingQuestions";
 import EndClassButton from "@/components/EndClassButton";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
 import LessonHeader from "@/components/lesson/LessonHeader";
@@ -490,9 +491,10 @@ export default function WritingSession({
             {WRITING_STEP_TITLES.preguntas}
           </h2>
           <div className="rounded-card border border-paper-line bg-white px-4 py-4">
-            <p className="whitespace-pre-wrap font-heading text-headline-md text-text-primary">
-              {prompt.promptText}
-            </p>
+            <WritingQuestions
+              text={prompt.promptText}
+              className="font-heading text-headline-md text-text-primary"
+            />
           </div>
         </div>
 
@@ -565,9 +567,10 @@ export default function WritingSession({
           ) : null}
 
           <div className="rounded-card border border-paper-line bg-white px-4 py-4">
-            <p className="whitespace-pre-wrap font-heading text-headline-md text-text-primary">
-              {prompt.promptText}
-            </p>
+            <WritingQuestions
+              text={prompt.promptText}
+              className="font-heading text-headline-md text-text-primary"
+            />
           </div>
 
           {isTeacher ? (

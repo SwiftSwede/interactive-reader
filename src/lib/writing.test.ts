@@ -7,6 +7,8 @@ import {
   hasWritingExampleStep,
   hasWritingText,
   isLateWritingSubmit,
+  joinWritingQuestions,
+  splitWritingQuestions,
   remainingMs,
   writingStepList,
   type WritingStepFields,
@@ -240,6 +242,62 @@ describe("writingStepList", () => {
     assert.equal(decodeWritingStep("ejemplo", preInt), "preguntas");
     assert.equal(decodeWritingStep("escribir", preInt), "escribir");
     assert.equal(decodeWritingStep("nope", preInt), "preguntas");
+  });
+});
+
+describe("writing questions", () => {
+  test("keeps a single question as plain text", () => {
+    assert.equal(joinWritingQuestions(["What would you do?"]), "What would you do?");
+    assert.deepEqual(splitWritingQuestions("What would you do?"), [
+      "What would you do?",
+    ]);
+  });
+
+  test("numbers two or more questions and reads them back", () => {
+    const stored = joinWritingQuestions([
+      "What would you do?",
+      "Where would you go?",
+      "  ",
+      "Who would you call?",
+    ]);
+    assert.equal(
+      stored,
+      "1. What would you do?\n\n2. Where would you go?\n\n3. Who would you call?"
+    );
+    assert.deepEqual(splitWritingQuestions(stored), [
+      "What would you do?",
+      "Where would you go?",
+      "Who would you call?",
+    ]);
+  });
+
+  test("keeps a line break inside one numbered question", () => {
+    const stored = joinWritingQuestions([
+      "First line\nSecond line",
+      "Next question",
+    ]);
+    assert.deepEqual(splitWritingQuestions(stored), [
+      "First line\nSecond line",
+      "Next question",
+    ]);
+  });
+
+  test("keeps at most six questions", () => {
+    const stored = joinWritingQuestions([
+      "one",
+      "two",
+      "three",
+      "four",
+      "five",
+      "six",
+      "seven",
+    ]);
+    assert.equal(splitWritingQuestions(stored).length, 6);
+  });
+
+  test("does not split a paragraph that is not a numbered list", () => {
+    const paragraph = "One idea.\nAnother sentence that is still the prompt.";
+    assert.deepEqual(splitWritingQuestions(paragraph), [paragraph]);
   });
 });
 

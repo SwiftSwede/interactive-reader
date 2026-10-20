@@ -962,7 +962,7 @@ export async function saveWritingPrompt(
   const promptText = fields.promptText.trim();
   if (!title) return fail("Ponle un título a la escritura.");
   if (title.length > 120) return fail("El título se pasó de 120 letras.");
-  if (!promptText) return fail("Escribe la pregunta de escritura.");
+  if (!promptText) return fail("Escribe al menos una pregunta.");
   if (fields.writingTimeMinutes !== 10 && fields.writingTimeMinutes !== 20) {
     return fail("El tiempo es 10 o 20 minutos.");
   }

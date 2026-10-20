@@ -195,6 +195,47 @@ export function wordsPerMinute(
   return Math.round((wordCount / elapsedSeconds) * 60 * 10) / 10;
 }
 
+export const MAX_INTERMEDIATE_WRITING_QUESTIONS = 6;
+
+const NUMBERED_QUESTION_LINE = /^(\d+)[.)]\s+([\s\S]*)$/;
+
+export function splitWritingQuestions(promptText: string): string[] {
+  const text = promptText.replace(/\r\n/g, "\n").trim();
+  if (!text) return [];
+  const lines = text.split("\n");
+  const numbered = lines.filter((line) =>
+    NUMBERED_QUESTION_LINE.test(line.trim())
+  );
+  if (numbered.length < 2) return [text];
+
+  const blocks: string[] = [];
+  let current: string[] | null = null;
+  for (const line of lines) {
+    const match = line.trim().match(NUMBERED_QUESTION_LINE);
+    if (match) {
+      if (current) blocks.push(current.join("\n").trim());
+      current = [match[2]];
+      continue;
+    }
+    if (current) current.push(line);
+  }
+  if (current) blocks.push(current.join("\n").trim());
+  const questions = blocks.filter(Boolean);
+  return questions.length >= 2 ? questions : [text];
+}
+
+export function joinWritingQuestions(questions: string[]): string {
+  const cleaned = questions
+    .map((question) => question.trim())
+    .filter(Boolean)
+    .slice(0, MAX_INTERMEDIATE_WRITING_QUESTIONS);
+  if (cleaned.length === 0) return "";
+  if (cleaned.length === 1) return cleaned[0];
+  return cleaned
+    .map((question, index) => `${index + 1}. ${question}`)
+    .join("\n\n");
+}
+
 export function promptTitleFromText(promptText: string): string {
   const compact = promptText.replace(/\s+/g, " ").trim();
   if (!compact) return "Escritura";

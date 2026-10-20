@@ -13,6 +13,15 @@ import {
   parsePastedQuestionList,
   questionsFromClipboard,
 } from "@/lib/conversation";
+import {
+  joinWritingQuestions,
+  MAX_INTERMEDIATE_WRITING_QUESTIONS,
+} from "@/lib/writing";
+import {
+  AddButton,
+  ReorderControls,
+  moveItem,
+} from "@/components/teacher/content/editor-ui";
 import type { CourseLevel } from "@/types";
 
 const initialState: CreateSessionResult | null = null;
@@ -79,6 +88,7 @@ export default function CreateSessionForm({
     lockedType ?? "story"
   );
   const [promptText, setPromptText] = useState("");
+  const [writingQuestions, setWritingQuestions] = useState<string[]>([""]);
   const [copyPromptId, setCopyPromptId] = useState("");
   const [promptMode, setPromptMode] = useState<"new" | "copy">("new");
   const [previousPromptId, setPreviousPromptId] = useState("");
@@ -369,6 +379,65 @@ export default function CreateSessionForm({
               placeholder="If I were..."
             />
           </label>
+          {courseLevel === "intermediate" ? (
+            <div className="flex flex-col gap-3">
+              <input
+                type="hidden"
+                name="promptText"
+                value={joinWritingQuestions(writingQuestions)}
+              />
+              {writingQuestions.map((question, index) => (
+                <label key={index} className="block">
+                  <span className="mb-1.5 flex items-center justify-between gap-2">
+                    <span className="text-sm font-medium text-text-secondary">
+                      Pregunta {index + 1}
+                    </span>
+                    {writingQuestions.length > 1 ? (
+                      <ReorderControls
+                        index={index}
+                        total={writingQuestions.length}
+                        onMove={(direction) =>
+                          setWritingQuestions(
+                            moveItem(writingQuestions, index, direction)
+                          )
+                        }
+                        onDelete={() =>
+                          setWritingQuestions(
+                            writingQuestions.filter((_, item) => item !== index)
+                          )
+                        }
+                        deleteLabel="Quitar pregunta"
+                      />
+                    ) : null}
+                  </span>
+                  <textarea
+                    required={index === 0}
+                    rows={3}
+                    value={question}
+                    onChange={(event) => {
+                      const next = [...writingQuestions];
+                      next[index] = event.target.value;
+                      setWritingQuestions(next);
+                    }}
+                    className="w-full resize-y rounded-card border border-paper-line px-3 py-3 text-base text-text-primary focus:border-2 focus:border-accent focus:outline-none"
+                    placeholder="What would you do if..."
+                  />
+                </label>
+              ))}
+              {writingQuestions.length < MAX_INTERMEDIATE_WRITING_QUESTIONS ? (
+                <AddButton
+                  label="+ Agregar pregunta"
+                  onClick={() =>
+                    setWritingQuestions([...writingQuestions, ""])
+                  }
+                />
+              ) : null}
+              <p className="text-xs text-text-muted">
+                Hasta {MAX_INTERMEDIATE_WRITING_QUESTIONS}. Los estudiantes las
+                ven numeradas.
+              </p>
+            </div>
+          ) : (
           <label className="block">
             <span className="mb-1.5 block text-sm font-medium text-text-secondary">
               Pregunta
@@ -383,6 +452,7 @@ export default function CreateSessionForm({
               placeholder="What would you do if..."
             />
           </label>
+          )}
           {courseLevel === "pre-intermediate" &&
           conversationCopyPrompts.length > 0 ? (
             <div className="rounded-card border border-paper-line bg-surface p-3">
@@ -943,6 +1013,10 @@ export default function CreateSessionForm({
           (sessionType === "writing" &&
             promptMode === "copy" &&
             (writingPrompts.length === 0 || !previousPromptId)) ||
+          (sessionType === "writing" &&
+            promptMode === "new" &&
+            courseLevel === "intermediate" &&
+            joinWritingQuestions(writingQuestions) === "") ||
           (sessionType === "exam" &&
             promptMode === "copy" &&
             (examPrompts.length === 0 || !previousPromptId)) ||

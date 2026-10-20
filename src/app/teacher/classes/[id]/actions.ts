@@ -10,7 +10,7 @@ import {
   attachExamPrompt,
   attachWritingPrompt,
 } from "@/lib/catalog-crud";
-import { wordDiff } from "@/lib/writing";
+import { joinWritingQuestions, splitWritingQuestions, wordDiff } from "@/lib/writing";
 import {
   applyExamWorkTimeDelta,
   defaultExamTaskCopy,
@@ -186,7 +186,11 @@ export async function createSession(
     }
 
     const title = String(formData.get("writingTitle") ?? "").trim();
-    const promptText = String(formData.get("promptText") ?? "").trim();
+    const isIntermediate = course.level === "intermediate";
+    const rawPrompt = String(formData.get("promptText") ?? "").trim();
+    const promptText = isIntermediate
+      ? joinWritingQuestions(splitWritingQuestions(rawPrompt))
+      : rawPrompt;
     if (!title) {
       return { ok: false, error: "Ponle un título a la escritura." };
     }
@@ -194,7 +198,7 @@ export async function createSession(
       return { ok: false, error: "El título se pasó de 120 letras." };
     }
     if (!promptText) {
-      return { ok: false, error: "Escribe la pregunta de escritura." };
+      return { ok: false, error: "Escribe al menos una pregunta." };
     }
 
     const minutesRaw = Number(formData.get("writingTimeMinutes"));
@@ -203,7 +207,6 @@ export async function createSession(
         ? minutesRaw
         : defaultWritingMinutes(course.level as CourseLevel);
 
-    const isIntermediate = course.level === "intermediate";
     const structureLesson = isIntermediate
       ? String(formData.get("structureLesson") ?? "").trim() || null
       : null;
