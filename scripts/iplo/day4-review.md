@@ -27,7 +27,7 @@ These script lines could not be matched to any audio span:
 
 
 ### ⚪ line 79 (Profe Kyle)
-Ahora di, “comemos por la mañana y por la tarde todos los días.”
+Ahora di, “comemos por la mañana y por la tarde.”
 
 
 ## Anchored Lines (143) — OK
