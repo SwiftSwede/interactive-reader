@@ -915,7 +915,7 @@
   },
   {
    "t": "english",
-   "start": 104.78,
+   "start": 104.4,
    "end": 106.12,
    "text": "Does she speak English?",
    "words": [
@@ -1061,7 +1061,7 @@
    "t": "english",
    "start": 127.2,
    "end": 128.8,
-   "text": "Yes, he speaks English.",
+   "text": "Yes, him. Does he speak English?",
    "words": [
     {
      "w": "yes",
