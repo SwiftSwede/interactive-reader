@@ -13,8 +13,8 @@ const DAY_FILES: Record<string, { file: string; duration: number }> = {
   // Closed-loop repairs pending: a few taught woman lines are absent from the recording.
   // Filled from the original take, cut list in segments JSON fill metadata (donors: Yes-you x2, Yes-her x2, Does-she x2, composite French, walk donor, Yes-her 182.5, Does-she 103.5, composite Do-you-guys-speak-French 314.5, walk-donor 755.1) + 9 acoustic pockets + ending narration; 2026-10-18.
   "3": { file: "/audio/iplo/day-3-filled.m4a", duration: 992.30 },
-  // Unfilled take (inglesPorLosOidosFinal4.wav); no fills yet — review gate clean, imported unpublished.
-  "4": { file: "/audio/iplo/day-4.m4a", duration: 1020.94 },
+  // Filled: donor "In the afternoon." spliced at 366.15 (+1.5s); segments are on this timeline.
+  "4": { file: "/audio/iplo/day-4-filled.m4a", duration: 1022.70 },
 };
 
 export default async function Page({
