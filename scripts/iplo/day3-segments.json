@@ -843,2251 +843,2251 @@
   {
    "t": "english",
    "start": 92.46,
-   "end": 94.65,
+   "end": 95.05,
    "text": "Yes, you. Do you speak English?",
    "words": [
     {
      "w": "Yes",
      "start": 92.46,
-     "end": 92.74
+     "end": 92.98
     },
     {
      "w": "you",
-     "start": 92.9,
-     "end": 93.06
+     "start": 93.18,
+     "end": 93.34
     },
     {
      "w": "Do",
-     "start": 93.5,
-     "end": 93.62
+     "start": 93.72,
+     "end": 93.92
     },
     {
      "w": "you",
-     "start": 93.62,
-     "end": 93.86
+     "start": 93.92,
+     "end": 94.14
     },
     {
      "w": "speak",
-     "start": 93.86,
-     "end": 94.12
+     "start": 94.14,
+     "end": 94.38
     },
     {
      "w": "English",
-     "start": 94.12,
-     "end": 94.5
+     "start": 94.38,
+     "end": 94.88
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 96.4,
-   "pauseAt": 99.89,
+   "start": 96.72,
+   "pauseAt": 100.21,
    "spanish": "Responde, “sí, hablo inglés.”",
    "expected": [
     "Yes, I speak English."
    ],
-   "end": 100.02,
+   "end": 100.34,
    "words": []
   },
   {
    "t": "english",
-   "start": 100.04,
-   "end": 102.24,
+   "start": 100.36,
+   "end": 102.56,
    "text": "Yes, I speak English.",
    "words": [
     {
      "w": "yes",
-     "start": 100.04,
-     "end": 100.56
+     "start": 100.36,
+     "end": 100.88
     },
     {
      "w": "i",
-     "start": 101.36,
-     "end": 101.62
+     "start": 101.68,
+     "end": 101.94
     },
     {
      "w": "speak",
-     "start": 101.62,
-     "end": 101.84
+     "start": 101.94,
+     "end": 102.16
     },
     {
      "w": "english",
-     "start": 101.84,
-     "end": 102.24
+     "start": 102.16,
+     "end": 102.56
     }
    ]
   },
   {
    "t": "english",
-   "start": 102.9,
-   "end": 104.5,
+   "start": 103.22,
+   "end": 104.82,
    "text": "Does she speak English?",
    "words": [
     {
      "w": "does",
-     "start": 103.0,
-     "end": 103.3
+     "start": 103.32,
+     "end": 103.62
     },
     {
      "w": "she",
-     "start": 103.5,
-     "end": 103.7
+     "start": 103.82,
+     "end": 104.02
     },
     {
      "w": "speak",
-     "start": 103.7,
-     "end": 103.98
+     "start": 104.02,
+     "end": 104.3
     },
     {
      "w": "english",
-     "start": 103.98,
-     "end": 104.32
+     "start": 104.3,
+     "end": 104.64
     }
    ]
   },
   {
    "t": "narration",
-   "start": 107.14,
-   "end": 111.54,
+   "start": 107.46,
+   "end": 111.86,
    "lines": [
     "Esta vez no estás seguro a quién se refiere"
    ],
    "words": [
     {
      "w": "esta",
-     "start": 107.14,
-     "end": 107.42
+     "start": 107.46,
+     "end": 107.74
     },
     {
      "w": "vez",
-     "start": 107.5,
-     "end": 107.82
-    },
-    {
-     "w": "no",
      "start": 107.82,
      "end": 108.14
     },
     {
+     "w": "no",
+     "start": 108.14,
+     "end": 108.46
+    },
+    {
      "w": "estas",
-     "start": 108.16,
-     "end": 108.25
+     "start": 108.48,
+     "end": 108.57
     },
     {
      "w": "seguro",
-     "start": 108.36,
-     "end": 108.82
+     "start": 108.68,
+     "end": 109.14
     },
     {
      "w": "a",
-     "start": 108.82,
-     "end": 109.24
+     "start": 109.14,
+     "end": 109.56
     },
     {
      "w": "quien",
-     "start": 109.24,
-     "end": 109.64
+     "start": 109.56,
+     "end": 109.96
     },
     {
      "w": "se",
-     "start": 109.64,
-     "end": 110.38
+     "start": 109.96,
+     "end": 110.7
     },
     {
      "w": "refiere",
-     "start": 110.38,
-     "end": 111.18
+     "start": 110.7,
+     "end": 111.5
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 111.56,
-   "pauseAt": 113.52,
+   "start": 111.88,
+   "pauseAt": 113.84,
    "spanish": "Pregúntale, “¿quién?”",
    "expected": [
     "Who?"
    ],
-   "end": 113.72,
+   "end": 114.04,
    "words": []
   },
   {
    "t": "english",
-   "start": 113.74,
-   "end": 116.22,
+   "start": 114.06,
+   "end": 116.54,
    "text": "Who?",
    "words": [
     {
      "w": "who",
-     "start": 113.74,
-     "end": 114.32
+     "start": 114.06,
+     "end": 114.64
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 116.24,
-   "pauseAt": 119.92,
+   "start": 116.56,
+   "pauseAt": 120.24,
    "spanish": "Ahora pregúntale “¿quién, él?”",
    "expected": [
     "Who, him?"
    ],
-   "end": 120.12,
+   "end": 120.44,
    "words": []
   },
   {
    "t": "english",
-   "start": 120.14,
-   "end": 122.68,
+   "start": 120.46,
+   "end": 123.0,
    "text": "Who, him?",
    "words": [
     {
      "w": "who",
-     "start": 120.14,
-     "end": 120.5
+     "start": 120.46,
+     "end": 120.82
     },
     {
      "w": "him",
-     "start": 120.55,
-     "end": 120.55
+     "start": 120.87,
+     "end": 120.87
     }
    ]
   },
   {
    "t": "english",
-   "start": 122.7,
-   "end": 125.33,
+   "start": 123.02,
+   "end": 125.65,
    "text": "Yes, him. Does he speak English?",
    "words": [
     {
      "w": "yes",
-     "start": 122.82,
-     "end": 123.24
+     "start": 123.14,
+     "end": 123.56
     },
     {
      "w": "him",
-     "start": 123.42,
-     "end": 123.6
+     "start": 123.74,
+     "end": 123.92
     },
     {
      "w": "does",
-     "start": 124.16,
-     "end": 124.26
+     "start": 124.48,
+     "end": 124.58
     },
     {
      "w": "he",
-     "start": 124.26,
-     "end": 124.48
+     "start": 124.58,
+     "end": 124.8
     },
     {
      "w": "speak",
-     "start": 124.48,
-     "end": 124.74
+     "start": 124.8,
+     "end": 125.06
     },
     {
      "w": "english",
-     "start": 124.74,
-     "end": 125.08
+     "start": 125.06,
+     "end": 125.4
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 125.35,
-   "pauseAt": 129.85,
+   "start": 125.67,
+   "pauseAt": 130.17,
    "spanish": "Responde, “sí, él habla inglés.”",
    "expected": [
     "Yes, he speaks English."
    ],
-   "end": 130.05,
+   "end": 130.37,
    "words": []
   },
   {
    "t": "english",
-   "start": 130.07,
-   "end": 131.67,
+   "start": 130.39,
+   "end": 131.99,
    "text": "Yes, he speaks English.",
    "words": [
     {
      "w": "yes",
-     "start": 130.07,
-     "end": 130.61
+     "start": 130.39,
+     "end": 130.93
     },
     {
      "w": "he",
-     "start": 131.25,
-     "end": 131.39
+     "start": 131.57,
+     "end": 131.71
     },
     {
      "w": "speaks",
-     "start": 131.39,
-     "end": 131.67
+     "start": 131.71,
+     "end": 131.99
     },
     {
      "w": "english",
-     "start": 131.67,
-     "end": 132.09
+     "start": 131.99,
+     "end": 132.41
     }
    ]
   },
   {
    "t": "narration",
-   "start": 135.47,
-   "end": 140.97,
+   "start": 135.79,
+   "end": 141.29,
    "lines": [
     "Ella no escuchó tu respuesta, entonces le preguntas otra vez."
    ],
    "words": [
     {
      "w": "ella",
-     "start": 135.49,
-     "end": 135.49
+     "start": 135.81,
+     "end": 135.81
     },
     {
      "w": "no",
-     "start": 135.47,
-     "end": 135.77
+     "start": 135.79,
+     "end": 136.09
     },
     {
      "w": "escucho",
-     "start": 135.77,
-     "end": 136.67
+     "start": 136.09,
+     "end": 136.99
     },
     {
      "w": "tu",
-     "start": 136.67,
-     "end": 136.95
+     "start": 136.99,
+     "end": 137.27
     },
     {
      "w": "respuesta",
-     "start": 136.95,
-     "end": 137.93
+     "start": 137.27,
+     "end": 138.25
     },
     {
      "w": "entonces",
-     "start": 138.61,
-     "end": 139.09
+     "start": 138.93,
+     "end": 139.41
     },
     {
      "w": "le",
-     "start": 139.11,
-     "end": 139.5
+     "start": 139.43,
+     "end": 139.82
     },
     {
      "w": "preguntas",
-     "start": 139.52,
-     "end": 139.7
+     "start": 139.84,
+     "end": 140.02
     },
     {
      "w": "otra",
-     "start": 139.91,
-     "end": 140.19
+     "start": 140.23,
+     "end": 140.51
     },
     {
      "w": "vez",
-     "start": 140.19,
-     "end": 140.53
+     "start": 140.51,
+     "end": 140.85
     }
    ]
   },
   {
    "t": "english",
-   "start": 140.99,
-   "end": 143.17,
+   "start": 141.31,
+   "end": 143.49,
    "text": "Does he speak English?",
    "words": [
     {
      "w": "does",
-     "start": 140.99,
-     "end": 141.39
+     "start": 141.31,
+     "end": 141.71
     },
     {
      "w": "he",
-     "start": 141.39,
-     "end": 141.55
+     "start": 141.71,
+     "end": 141.87
     },
     {
      "w": "speak",
-     "start": 141.55,
-     "end": 141.83
+     "start": 141.87,
+     "end": 142.15
     },
     {
      "w": "english",
-     "start": 141.83,
-     "end": 142.19
+     "start": 142.15,
+     "end": 142.51
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 143.19,
-   "pauseAt": 146.86,
+   "start": 143.51,
+   "pauseAt": 147.18,
    "spanish": "Responde, “sí, él habla inglés.”",
    "expected": [
     "Yes, he speaks English."
    ],
-   "end": 146.99,
+   "end": 147.31,
    "words": []
   },
   {
    "t": "english",
-   "start": 147.01,
-   "end": 152.69,
+   "start": 147.33,
+   "end": 153.01,
    "text": "Yes, he speaks English.",
    "words": [
     {
      "w": "yes",
-     "start": 147.01,
-     "end": 147.77
+     "start": 147.33,
+     "end": 148.09
     },
     {
      "w": "he",
-     "start": 148.65,
-     "end": 148.81
+     "start": 148.97,
+     "end": 149.13
     },
     {
      "w": "speaks",
-     "start": 148.81,
-     "end": 149.09
+     "start": 149.13,
+     "end": 149.41
     },
     {
      "w": "english",
-     "start": 149.09,
-     "end": 149.47
+     "start": 149.41,
+     "end": 149.79
     }
    ]
   },
   {
    "t": "narration",
-   "start": 152.71,
-   "end": 154.63,
+   "start": 153.03,
+   "end": 154.95,
    "lines": [
     "Ella te hace otra pregunta."
    ],
    "words": [
     {
      "w": "ella",
-     "start": 152.71,
-     "end": 152.89
+     "start": 153.03,
+     "end": 153.21
     },
     {
      "w": "te",
-     "start": 152.89,
-     "end": 153.09
+     "start": 153.21,
+     "end": 153.41
     },
     {
      "w": "hace",
-     "start": 153.09,
-     "end": 153.31
+     "start": 153.41,
+     "end": 153.63
     },
     {
      "w": "otra",
-     "start": 153.31,
-     "end": 153.55
+     "start": 153.63,
+     "end": 153.87
     },
     {
      "w": "pregunta",
-     "start": 153.55,
-     "end": 153.97
+     "start": 153.87,
+     "end": 154.29
     }
    ]
   },
   {
    "t": "english",
-   "start": 154.65,
-   "end": 157.15,
+   "start": 154.97,
+   "end": 157.47,
    "text": "Does she speak English?",
    "words": [
     {
      "w": "does",
-     "start": 154.65,
-     "end": 154.91
+     "start": 154.97,
+     "end": 155.23
     },
     {
      "w": "she",
-     "start": 154.91,
-     "end": 155.17
+     "start": 155.23,
+     "end": 155.49
     },
     {
      "w": "speak",
-     "start": 155.17,
-     "end": 155.47
+     "start": 155.49,
+     "end": 155.79
     },
     {
      "w": "english",
-     "start": 155.47,
-     "end": 155.85
+     "start": 155.79,
+     "end": 156.17
     }
    ]
   },
   {
    "t": "narration",
-   "start": 157.17,
-   "end": 161.81,
+   "start": 157.49,
+   "end": 162.13,
    "lines": [
     "Otra vez, no estás seguro a quién se refiere"
    ],
    "words": [
     {
      "w": "otra",
-     "start": 157.17,
-     "end": 157.41
+     "start": 157.49,
+     "end": 157.73
     },
     {
      "w": "vez",
-     "start": 157.41,
-     "end": 157.69
+     "start": 157.73,
+     "end": 158.01
     },
     {
      "w": "no",
-     "start": 158.19,
-     "end": 158.39
+     "start": 158.51,
+     "end": 158.71
     },
     {
      "w": "estas",
-     "start": 158.39,
-     "end": 158.73
+     "start": 158.71,
+     "end": 159.05
     },
     {
      "w": "seguro",
-     "start": 158.73,
-     "end": 159.33
+     "start": 159.05,
+     "end": 159.65
     },
     {
      "w": "a",
-     "start": 159.45,
-     "end": 159.77
+     "start": 159.77,
+     "end": 160.09
     },
     {
      "w": "quien",
-     "start": 159.77,
-     "end": 160.03
+     "start": 160.09,
+     "end": 160.35
     },
     {
      "w": "se",
-     "start": 160.03,
-     "end": 160.73
+     "start": 160.35,
+     "end": 161.05
     },
     {
      "w": "refiere",
-     "start": 160.23,
-     "end": 160.95
+     "start": 160.55,
+     "end": 161.27
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 161.83,
-   "pauseAt": 163.85,
+   "start": 162.15,
+   "pauseAt": 164.17,
    "spanish": "Pregúntale, “¿quién?”",
    "expected": [
     "Who?"
    ],
-   "end": 164.05,
+   "end": 164.37,
    "words": []
   },
   {
    "t": "english",
-   "start": 164.07,
-   "end": 166.13,
+   "start": 164.39,
+   "end": 166.45,
    "text": "Who?",
    "words": [
     {
      "w": "who",
-     "start": 164.07,
-     "end": 164.43
+     "start": 164.39,
+     "end": 164.75
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 166.15,
-   "pauseAt": 169.65,
+   "start": 166.47,
+   "pauseAt": 169.97,
    "spanish": "Ahora pregúntale, “¿quién, ella?”",
    "expected": [
     "Who, her?"
    ],
-   "end": 169.97,
+   "end": 170.29,
    "words": []
   },
   {
    "t": "english",
-   "start": 169.99,
-   "end": 173.35,
+   "start": 170.31,
+   "end": 173.67,
    "text": "Who, her?",
    "words": [
     {
      "w": "who",
-     "start": 169.99,
-     "end": 170.33
+     "start": 170.31,
+     "end": 170.65
     },
     {
      "w": "her",
-     "start": 170.97,
-     "end": 171.23
+     "start": 171.29,
+     "end": 171.55
     }
    ]
   },
   {
    "t": "narration",
-   "start": 173.37,
-   "end": 177.97,
+   "start": 173.69,
+   "end": 178.29,
    "lines": [
     "Ella no te escuchó. Y te pregunta, “¿qué?”"
    ],
    "words": [
     {
      "w": "ella",
-     "start": 173.37,
-     "end": 174.29
+     "start": 173.69,
+     "end": 174.61
     },
     {
      "w": "no",
-     "start": 174.37,
-     "end": 174.51
+     "start": 174.69,
+     "end": 174.83
     },
     {
      "w": "te",
-     "start": 174.51,
-     "end": 174.77
+     "start": 174.83,
+     "end": 175.09
     },
     {
      "w": "escucho",
-     "start": 174.77,
-     "end": 175.33
+     "start": 175.09,
+     "end": 175.65
     },
     {
      "w": "y",
-     "start": 175.33,
-     "end": 175.69
+     "start": 175.65,
+     "end": 176.01
     },
     {
      "w": "te",
-     "start": 175.69,
-     "end": 175.91
-    },
-    {
-     "w": "pregunta",
-     "start": 175.91,
+     "start": 176.01,
      "end": 176.23
     },
     {
+     "w": "pregunta",
+     "start": 176.23,
+     "end": 176.55
+    },
+    {
      "w": "que",
-     "start": 176.97,
-     "end": 177.25
+     "start": 177.29,
+     "end": 177.57
     }
    ]
   },
   {
    "t": "english",
-   "start": 177.99,
-   "end": 180.67,
+   "start": 178.31,
+   "end": 180.99,
    "text": "What?",
    "words": [
     {
      "w": "what",
-     "start": 177.99,
-     "end": 178.39
+     "start": 178.31,
+     "end": 178.71
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 180.69,
-   "pauseAt": 184.58,
+   "start": 181.01,
+   "pauseAt": 184.9,
    "spanish": "Pregúntale otra vez “¿quién, ella?”",
    "expected": [
     "Who, her?"
    ],
-   "end": 184.71,
+   "end": 185.03,
    "words": []
   },
   {
    "t": "english",
-   "start": 184.73,
-   "end": 186.21,
+   "start": 185.05,
+   "end": 186.53,
    "text": "Who, her?",
    "words": [
     {
      "w": "who",
-     "start": 184.73,
-     "end": 185.27
+     "start": 185.05,
+     "end": 185.59
     },
     {
      "w": "her",
-     "start": 185.99,
-     "end": 186.21
+     "start": 186.31,
+     "end": 186.53
     }
    ]
   },
   {
    "t": "english",
-   "start": 186.69,
-   "end": 189.75,
+   "start": 187.01,
+   "end": 190.07,
    "text": "Yes, her. Does she speak English?",
    "words": [
     {
      "w": "Yes",
-     "start": 187.34,
-     "end": 187.42
+     "start": 187.66,
+     "end": 187.74
     },
     {
      "w": "her",
-     "start": 187.6,
-     "end": 187.84
+     "start": 187.92,
+     "end": 188.16
     },
     {
      "w": "Does",
-     "start": 188.32,
-     "end": 188.52
+     "start": 188.64,
+     "end": 188.84
     },
     {
      "w": "she",
-     "start": 188.52,
-     "end": 188.82
+     "start": 188.84,
+     "end": 189.14
     },
     {
      "w": "speak",
-     "start": 188.82,
-     "end": 189.06
+     "start": 189.14,
+     "end": 189.38
     },
     {
      "w": "English",
-     "start": 189.06,
-     "end": 189.58
+     "start": 189.38,
+     "end": 189.9
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 192.63,
-   "pauseAt": 196.45,
+   "start": 192.95,
+   "pauseAt": 196.77,
    "spanish": "Responde, “no, ella no habla inglés.”",
    "expected": [
     "No, she doesn’t speak English."
    ],
-   "end": 196.65,
+   "end": 196.97,
    "words": []
   },
   {
    "t": "english",
-   "start": 196.67,
-   "end": 204.41,
+   "start": 196.99,
+   "end": 204.73,
    "text": "No, she doesn’t speak English.",
    "words": [
     {
      "w": "no",
-     "start": 196.67,
-     "end": 197.59
+     "start": 196.99,
+     "end": 197.91
     },
     {
      "w": "she",
-     "start": 197.95,
-     "end": 198.75
+     "start": 198.27,
+     "end": 199.07
     },
     {
      "w": "doesnt",
-     "start": 198.75,
-     "end": 199.23
-    },
-    {
-     "w": "speak",
-     "start": 199.23,
+     "start": 199.07,
      "end": 199.55
     },
     {
-     "w": "english",
+     "w": "speak",
      "start": 199.55,
-     "end": 200.61
+     "end": 199.87
+    },
+    {
+     "w": "english",
+     "start": 199.87,
+     "end": 200.93
     }
    ]
   },
   {
    "t": "narration",
-   "start": 204.43,
-   "end": 210.67,
+   "start": 204.75,
+   "end": 210.99,
    "lines": [
     "Ella no escuchó tu respuesta, entonces ella te pregunta otra vez."
    ],
    "words": [
     {
      "w": "ella",
-     "start": 204.43,
-     "end": 205.23
+     "start": 204.75,
+     "end": 205.55
     },
     {
      "w": "no",
-     "start": 205.33,
-     "end": 205.61
+     "start": 205.65,
+     "end": 205.93
     },
     {
      "w": "escucho",
-     "start": 205.61,
-     "end": 205.97
+     "start": 205.93,
+     "end": 206.29
     },
     {
      "w": "tu",
-     "start": 205.97,
-     "end": 206.27
+     "start": 206.29,
+     "end": 206.59
     },
     {
      "w": "respuesta",
-     "start": 206.27,
-     "end": 206.93
+     "start": 206.59,
+     "end": 207.25
     },
     {
      "w": "entonces",
-     "start": 207.25,
-     "end": 207.77
+     "start": 207.57,
+     "end": 208.09
     },
     {
      "w": "ella",
-     "start": 207.45,
-     "end": 208.55
+     "start": 207.77,
+     "end": 208.87
     },
     {
      "w": "te",
-     "start": 208.67,
-     "end": 208.95
-    },
-    {
-     "w": "pregunta",
-     "start": 208.95,
+     "start": 208.99,
      "end": 209.27
     },
     {
-     "w": "otra",
+     "w": "pregunta",
      "start": 209.27,
-     "end": 209.71
+     "end": 209.59
+    },
+    {
+     "w": "otra",
+     "start": 209.59,
+     "end": 210.03
     },
     {
      "w": "vez",
-     "start": 209.71,
-     "end": 210.11
+     "start": 210.03,
+     "end": 210.43
     }
    ]
   },
   {
    "t": "english",
-   "start": 210.69,
-   "end": 212.93,
+   "start": 211.01,
+   "end": 213.25,
    "text": "Yes, her. Does she speak English?",
    "words": [
     {
      "w": "yes",
-     "start": 210.69,
-     "end": 210.77
+     "start": 211.01,
+     "end": 211.09
     },
     {
      "w": "her",
-     "start": 210.95,
-     "end": 211.19
+     "start": 211.27,
+     "end": 211.51
     },
     {
      "w": "does",
-     "start": 211.67,
-     "end": 211.87
+     "start": 211.99,
+     "end": 212.19
     },
     {
      "w": "she",
-     "start": 211.87,
-     "end": 212.17
+     "start": 212.19,
+     "end": 212.49
     },
     {
      "w": "speak",
-     "start": 212.17,
-     "end": 212.41
+     "start": 212.49,
+     "end": 212.73
     },
     {
      "w": "english",
-     "start": 212.41,
-     "end": 212.93
+     "start": 212.73,
+     "end": 213.25
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 214.35,
-   "pauseAt": 218.49,
+   "start": 214.67,
+   "pauseAt": 218.81,
    "spanish": "Responde, “no, ella no habla inglés.”",
    "expected": [
     "No, she doesn’t speak English."
    ],
-   "end": 218.93,
+   "end": 219.25,
    "words": []
   },
   {
    "t": "english",
-   "start": 218.95,
-   "end": 225.53,
+   "start": 219.27,
+   "end": 225.85,
    "text": "No, she doesn’t speak English.",
    "words": [
     {
      "w": "no",
-     "start": 218.95,
-     "end": 219.19
+     "start": 219.27,
+     "end": 219.51
     },
     {
      "w": "she",
-     "start": 219.43,
-     "end": 219.93
+     "start": 219.75,
+     "end": 220.25
     },
     {
      "w": "doesnt",
-     "start": 219.93,
-     "end": 220.81
+     "start": 220.25,
+     "end": 221.13
     },
     {
      "w": "speak",
-     "start": 220.81,
-     "end": 221.25
+     "start": 221.13,
+     "end": 221.57
     },
     {
      "w": "english",
-     "start": 221.25,
-     "end": 222.23
+     "start": 221.57,
+     "end": 222.55
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 225.55,
-   "pauseAt": 229.58,
+   "start": 225.87,
+   "pauseAt": 229.9,
    "spanish": "Di “ella habla portugués.”",
    "expected": [
     "She speaks Portuguese."
    ],
-   "end": 227.99,
+   "end": 228.31,
    "words": []
   },
   {
    "t": "english",
-   "start": 228.01,
-   "end": 231.29,
+   "start": 228.33,
+   "end": 231.61,
    "text": "She speaks Portuguese.",
    "words": [
     {
      "w": "she",
-     "start": 228.01,
-     "end": 230.19
+     "start": 228.33,
+     "end": 230.51
     },
     {
      "w": "speaks",
-     "start": 230.37,
-     "end": 230.89
+     "start": 230.69,
+     "end": 231.21
     },
     {
      "w": "portuguese",
-     "start": 230.89,
-     "end": 231.99
+     "start": 231.21,
+     "end": 232.31
     }
    ]
   },
   {
    "t": "narration",
-   "start": 235.17,
-   "end": 237.28,
+   "start": 235.49,
+   "end": 237.6,
    "lines": [
     "Ahora ella te hace esta pregunta:"
    ],
    "words": [
     {
      "w": "ahora",
-     "start": 235.17,
-     "end": 235.55
+     "start": 235.49,
+     "end": 235.87
     },
     {
      "w": "ella",
-     "start": 235.55,
-     "end": 235.81
+     "start": 235.87,
+     "end": 236.13
     },
     {
      "w": "te",
-     "start": 235.81,
-     "end": 236.03
-    },
-    {
-     "w": "hace",
-     "start": 236.03,
-     "end": 236.17
-    },
-    {
-     "w": "esta",
-     "start": 236.17,
+     "start": 236.13,
      "end": 236.35
     },
     {
-     "w": "pregunta",
+     "w": "hace",
      "start": 236.35,
-     "end": 236.83
+     "end": 236.49
+    },
+    {
+     "w": "esta",
+     "start": 236.49,
+     "end": 236.67
+    },
+    {
+     "w": "pregunta",
+     "start": 236.67,
+     "end": 237.15
     }
    ]
   },
   {
    "t": "english",
-   "start": 237.3,
-   "end": 238.82,
+   "start": 237.62,
+   "end": 239.14,
    "text": "Does she speak English?",
    "words": [
     {
      "w": "Does",
-     "start": 237.3,
-     "end": 237.52
+     "start": 237.62,
+     "end": 237.84
     },
     {
      "w": "she",
-     "start": 237.52,
-     "end": 237.76
+     "start": 237.84,
+     "end": 238.08
     },
     {
      "w": "speak",
-     "start": 237.76,
-     "end": 238.06
+     "start": 238.08,
+     "end": 238.38
     },
     {
      "w": "English",
-     "start": 238.06,
-     "end": 238.78
+     "start": 238.38,
+     "end": 239.1
     }
    ]
   },
   {
    "t": "narration",
-   "start": 239.65,
-   "end": 244.03,
+   "start": 239.97,
+   "end": 244.35,
    "lines": [
     "Otra vez, no estás seguro a quién se refiere"
    ],
    "words": [
     {
      "w": "Otra",
-     "start": 239.7,
-     "end": 240.05
+     "start": 240.02,
+     "end": 240.37
     },
     {
      "w": "vez.",
-     "start": 240.05,
-     "end": 240.49
+     "start": 240.37,
+     "end": 240.81
     },
     {
      "w": "No",
-     "start": 240.76,
-     "end": 240.88
+     "start": 241.08,
+     "end": 241.2
     },
     {
      "w": "estás",
-     "start": 240.88,
-     "end": 241.16
+     "start": 241.2,
+     "end": 241.48
     },
     {
      "w": "seguro",
-     "start": 241.16,
-     "end": 241.64
+     "start": 241.48,
+     "end": 241.96
     },
     {
      "w": "a",
-     "start": 241.64,
-     "end": 241.88
+     "start": 241.96,
+     "end": 242.2
     },
     {
      "w": "quién",
-     "start": 241.88,
-     "end": 242.18
+     "start": 242.2,
+     "end": 242.5
     },
     {
      "w": "se",
-     "start": 242.18,
-     "end": 242.56
+     "start": 242.5,
+     "end": 242.88
     },
     {
      "w": "refiere.",
-     "start": 242.56,
-     "end": 243.26
+     "start": 242.88,
+     "end": 243.58
     },
     {
      "w": "Pregúntale.",
-     "start": 243.78,
-     "end": 244.24
+     "start": 244.1,
+     "end": 244.56
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 244.05,
-   "pauseAt": 245.97,
+   "start": 244.37,
+   "pauseAt": 246.29,
    "spanish": "Pregúntale “¿quién?”",
    "expected": [
     "Who?"
    ],
-   "end": 246.19,
+   "end": 246.51,
    "words": []
   },
   {
    "t": "english",
-   "start": 246.21,
-   "end": 248.23,
+   "start": 246.53,
+   "end": 248.55,
    "text": "Who?",
    "words": [
     {
      "w": "who",
-     "start": 246.21,
-     "end": 246.57
+     "start": 246.53,
+     "end": 246.89
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 248.25,
-   "pauseAt": 252.49,
+   "start": 248.57,
+   "pauseAt": 252.81,
    "spanish": "Ahora pregúntale “¿quién, nosotros?”",
    "expected": [
     "Who, us?"
    ],
-   "end": 252.75,
+   "end": 253.07,
    "words": []
   },
   {
    "t": "english",
-   "start": 252.77,
-   "end": 255.83,
+   "start": 253.09,
+   "end": 256.15,
    "text": "Who, us?",
    "words": [
     {
      "w": "who",
-     "start": 252.77,
-     "end": 253.21
+     "start": 253.09,
+     "end": 253.53
     },
     {
      "w": "us",
-     "start": 253.75,
-     "end": 254.23
+     "start": 254.07,
+     "end": 254.55
     }
    ]
   },
   {
    "t": "narration",
-   "start": 255.85,
-   "end": 259.97,
+   "start": 256.17,
+   "end": 260.29,
    "lines": [
     "Ella no te escuchó. Te pregunta “¿qué?”"
    ],
    "words": [
     {
      "w": "ella",
-     "start": 255.85,
-     "end": 256.21
+     "start": 256.17,
+     "end": 256.53
     },
     {
      "w": "no",
-     "start": 256.21,
-     "end": 256.39
+     "start": 256.53,
+     "end": 256.71
     },
     {
      "w": "te",
-     "start": 256.39,
-     "end": 256.63
+     "start": 256.71,
+     "end": 256.95
     },
     {
      "w": "escucho",
-     "start": 256.63,
-     "end": 257.23
+     "start": 256.95,
+     "end": 257.55
     },
     {
      "w": "te",
-     "start": 257.71,
-     "end": 257.99
+     "start": 258.03,
+     "end": 258.31
     },
     {
      "w": "pregunta",
-     "start": 257.99,
-     "end": 258.37
+     "start": 258.31,
+     "end": 258.69
     },
     {
      "w": "que",
-     "start": 258.21,
-     "end": 259.09
+     "start": 258.53,
+     "end": 259.41
     }
    ]
   },
   {
    "t": "english",
-   "start": 259.99,
-   "end": 261.17,
+   "start": 260.31,
+   "end": 261.49,
    "text": "What?",
    "words": [
     {
      "w": "what",
-     "start": 259.99,
-     "end": 260.35
+     "start": 260.31,
+     "end": 260.67
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 261.19,
-   "pauseAt": 264.31,
+   "start": 261.51,
+   "pauseAt": 264.63,
    "spanish": "Pregúntale otra vez “¿quién, nosotros?”",
    "expected": [
     "Who, us?"
    ],
-   "end": 264.47,
+   "end": 264.79,
    "words": []
   },
   {
    "t": "english",
-   "start": 264.49,
-   "end": 267.37,
+   "start": 264.81,
+   "end": 267.69,
    "text": "Who, us?",
    "words": [
     {
      "w": "who",
-     "start": 264.49,
-     "end": 264.79
+     "start": 264.81,
+     "end": 265.11
     },
     {
      "w": "us",
-     "start": 265.51,
-     "end": 266.07
+     "start": 265.83,
+     "end": 266.39
     }
    ]
   },
   {
    "t": "english",
-   "start": 267.39,
-   "end": 270.73,
+   "start": 267.71,
+   "end": 271.05,
    "text": "Not us. Do they speak English?",
    "words": [
     {
      "w": "not",
-     "start": 267.39,
-     "end": 268.19
+     "start": 267.71,
+     "end": 268.51
     },
     {
      "w": "us",
-     "start": 268.19,
-     "end": 268.49
+     "start": 268.51,
+     "end": 268.81
     },
     {
      "w": "do",
-     "start": 269.13,
-     "end": 269.23
+     "start": 269.45,
+     "end": 269.55
     },
     {
      "w": "they",
-     "start": 269.23,
-     "end": 269.43
+     "start": 269.55,
+     "end": 269.75
     },
     {
      "w": "speak",
-     "start": 269.43,
-     "end": 269.69
+     "start": 269.75,
+     "end": 270.01
     },
     {
      "w": "english",
-     "start": 269.69,
-     "end": 270.05
+     "start": 270.01,
+     "end": 270.37
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 270.75,
-   "pauseAt": 275.04,
+   "start": 271.07,
+   "pauseAt": 275.36,
    "spanish": "Responde, “no, ellos no hablan inglés.”",
    "expected": [
     "No, they don’t speak English."
    ],
-   "end": 275.17,
+   "end": 275.49,
    "words": []
   },
   {
    "t": "english",
-   "start": 275.19,
-   "end": 280.99,
+   "start": 275.51,
+   "end": 281.31,
    "text": "No, they don’t speak English.",
    "words": [
     {
      "w": "no",
-     "start": 275.19,
-     "end": 275.49
+     "start": 275.51,
+     "end": 275.81
     },
     {
      "w": "they",
-     "start": 275.93,
-     "end": 276.47
+     "start": 276.25,
+     "end": 276.79
     },
     {
      "w": "dont",
-     "start": 276.47,
-     "end": 276.73
+     "start": 276.79,
+     "end": 277.05
     },
     {
      "w": "speak",
-     "start": 276.73,
-     "end": 277.01
+     "start": 277.05,
+     "end": 277.33
     },
     {
      "w": "english",
-     "start": 277.01,
-     "end": 278.11
+     "start": 277.33,
+     "end": 278.43
     }
    ]
   },
   {
    "t": "narration",
-   "start": 281.01,
-   "end": 286.47,
+   "start": 281.33,
+   "end": 286.79,
    "lines": [
     "Ella no escuchó tu respuesta, entonces ella te pregunta otra vez:"
    ],
    "words": [
     {
      "w": "ella",
-     "start": 281.01,
-     "end": 281.81
+     "start": 281.33,
+     "end": 282.13
     },
     {
      "w": "no",
-     "start": 281.99,
-     "end": 282.49
+     "start": 282.31,
+     "end": 282.81
     },
     {
      "w": "escucho",
-     "start": 282.49,
-     "end": 282.91
+     "start": 282.81,
+     "end": 283.23
     },
     {
      "w": "tu",
-     "start": 282.91,
-     "end": 283.19
+     "start": 283.23,
+     "end": 283.51
     },
     {
      "w": "respuesta",
-     "start": 283.19,
-     "end": 283.85
+     "start": 283.51,
+     "end": 284.17
     },
     {
      "w": "entonces",
-     "start": 284.29,
-     "end": 284.81
+     "start": 284.61,
+     "end": 285.13
     },
     {
      "w": "ella",
-     "start": 284.45,
-     "end": 285.15
+     "start": 284.77,
+     "end": 285.47
     },
     {
      "w": "te",
-     "start": 285.27,
-     "end": 285.59
-    },
-    {
-     "w": "pregunta",
      "start": 285.59,
      "end": 285.91
     },
     {
-     "w": "otra",
+     "w": "pregunta",
      "start": 285.91,
-     "end": 286.37
+     "end": 286.23
+    },
+    {
+     "w": "otra",
+     "start": 286.23,
+     "end": 286.69
     },
     {
      "w": "vez",
-     "start": 286.37,
-     "end": 286.81
+     "start": 286.69,
+     "end": 287.13
     }
    ]
   },
   {
    "t": "english",
-   "start": 286.49,
-   "end": 289.39,
+   "start": 286.81,
+   "end": 289.71,
    "text": "Do they speak English?",
    "words": [
     {
      "w": "do",
-     "start": 286.49,
-     "end": 287.49
+     "start": 286.81,
+     "end": 287.81
     },
     {
      "w": "they",
-     "start": 287.49,
-     "end": 287.67
+     "start": 287.81,
+     "end": 287.99
     },
     {
      "w": "speak",
-     "start": 287.67,
-     "end": 287.95
+     "start": 287.99,
+     "end": 288.27
     },
     {
      "w": "english",
-     "start": 287.95,
-     "end": 288.35
+     "start": 288.27,
+     "end": 288.67
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 289.41,
-   "pauseAt": 294.11,
+   "start": 289.73,
+   "pauseAt": 294.43,
    "spanish": "Responde, “no, ellos no hablan inglés.”",
    "expected": [
     "No, they don’t speak English."
    ],
-   "end": 294.67,
+   "end": 294.99,
    "words": []
   },
   {
    "t": "english",
-   "start": 294.69,
-   "end": 299.91,
+   "start": 295.01,
+   "end": 300.23,
    "text": "No, they don’t speak English.",
    "words": [
     {
      "w": "no",
-     "start": 294.69,
-     "end": 295.17
+     "start": 295.01,
+     "end": 295.49
     },
     {
      "w": "they",
-     "start": 295.61,
-     "end": 295.91
+     "start": 295.93,
+     "end": 296.23
     },
     {
      "w": "dont",
-     "start": 295.91,
-     "end": 296.17
+     "start": 296.23,
+     "end": 296.49
     },
     {
      "w": "speak",
-     "start": 296.17,
-     "end": 296.37
+     "start": 296.49,
+     "end": 296.69
     },
     {
      "w": "english",
-     "start": 296.37,
-     "end": 297.05
+     "start": 296.69,
+     "end": 297.37
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 300.01,
-   "pauseAt": 305.64,
+   "start": 300.33,
+   "pauseAt": 305.96,
    "spanish": "Ahora di “ellos hablan francés.”",
    "expected": [
     "They speak French."
    ],
-   "end": 306.39,
-   "leadEnd": 301.25,
+   "end": 306.71,
+   "leadEnd": 301.57,
    "words": []
   },
   {
    "t": "english",
-   "start": 306.41,
-   "end": 309.31,
+   "start": 306.73,
+   "end": 309.63,
    "text": "They speak French.",
    "words": [
     {
      "w": "they",
-     "start": 306.41,
-     "end": 306.41
+     "start": 306.73,
+     "end": 306.73
     },
     {
      "w": "speak",
-     "start": 306.41,
-     "end": 306.89
+     "start": 306.73,
+     "end": 307.21
     },
     {
      "w": "french",
-     "start": 306.89,
-     "end": 307.77
+     "start": 307.21,
+     "end": 308.09
     }
    ]
   },
   {
    "t": "english",
-   "start": 309.33,
-   "end": 311.95,
+   "start": 309.65,
+   "end": 312.27,
    "text": "Do you speak Spanish?",
    "words": [
     {
      "w": "do",
-     "start": 309.33,
-     "end": 309.97
+     "start": 309.65,
+     "end": 310.29
     },
     {
      "w": "you",
-     "start": 310.01,
-     "end": 310.31
+     "start": 310.33,
+     "end": 310.63
     },
     {
      "w": "speak",
-     "start": 310.31,
-     "end": 310.59
+     "start": 310.63,
+     "end": 310.91
     },
     {
      "w": "spanish",
-     "start": 310.59,
-     "end": 311.13
+     "start": 310.91,
+     "end": 311.45
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 311.97,
-   "pauseAt": 315.35,
+   "start": 312.29,
+   "pauseAt": 315.67,
    "spanish": "Responde, “no, no hablo español.”",
    "expected": [
     "No, I don’t speak Spanish."
    ],
-   "end": 315.89,
+   "end": 316.21,
    "words": []
   },
   {
    "t": "english",
-   "start": 315.91,
-   "end": 318.59,
+   "start": 316.23,
+   "end": 318.91,
    "text": "No, I don’t speak Spanish.",
    "words": [
     {
      "w": "no",
-     "start": 315.91,
-     "end": 316.15
+     "start": 316.23,
+     "end": 316.47
     },
     {
      "w": "i",
-     "start": 316.23,
-     "end": 317.05
+     "start": 316.55,
+     "end": 317.37
     },
     {
      "w": "dont",
-     "start": 317.05,
-     "end": 317.31
+     "start": 317.37,
+     "end": 317.63
     },
     {
      "w": "speak",
-     "start": 317.31,
-     "end": 317.55
+     "start": 317.63,
+     "end": 317.87
     },
     {
      "w": "spanish",
-     "start": 317.55,
-     "end": 318.33
+     "start": 317.87,
+     "end": 318.65
     }
    ]
   },
   {
    "t": "english",
-   "start": 318.61,
-   "end": 320.25,
+   "start": 318.93,
+   "end": 320.57,
    "text": "Do you guys speak French?",
    "words": [
     {
      "w": "Do",
-     "start": 318.65,
-     "end": 318.83
+     "start": 318.97,
+     "end": 319.15
     },
     {
      "w": "you",
-     "start": 318.83,
-     "end": 319.03
+     "start": 319.15,
+     "end": 319.35
     },
     {
      "w": "guys",
-     "start": 319.03,
-     "end": 319.25
+     "start": 319.35,
+     "end": 319.57
     },
     {
      "w": "speak",
-     "start": 319.33,
-     "end": 319.61
+     "start": 319.65,
+     "end": 319.93
     },
     {
      "w": "French",
-     "start": 319.61,
-     "end": 320.07
+     "start": 319.93,
+     "end": 320.39
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 323.73,
-   "pauseAt": 327.6,
+   "start": 324.05,
+   "pauseAt": 327.92,
    "spanish": "Responde, “no, no hablamos francés.”",
    "expected": [
     "No, we don’t speak French."
    ],
-   "end": 327.68,
+   "end": 328.0,
    "words": []
   },
   {
    "t": "english",
-   "start": 327.7,
-   "end": 331.3,
+   "start": 328.02,
+   "end": 331.62,
    "text": "No, we don’t speak French.",
    "words": [
     {
      "w": "No",
-     "start": 327.74,
-     "end": 328.0
+     "start": 328.06,
+     "end": 328.32
     },
     {
      "w": "we",
-     "start": 329.72,
-     "end": 330.04
+     "start": 330.04,
+     "end": 330.36
     },
     {
      "w": "don't",
-     "start": 330.04,
-     "end": 330.52
+     "start": 330.36,
+     "end": 330.84
     },
     {
      "w": "speak",
-     "start": 330.52,
-     "end": 330.78
+     "start": 330.84,
+     "end": 331.1
     },
     {
      "w": "French",
-     "start": 330.78,
-     "end": 331.26
+     "start": 331.1,
+     "end": 331.58
     }
    ]
   },
   {
    "t": "english",
-   "start": 334.33,
-   "end": 338.05,
+   "start": 334.65,
+   "end": 338.37,
    "text": "And her? Does she speak French?",
    "words": [
     {
      "w": "and",
-     "start": 334.33,
-     "end": 335.17
+     "start": 334.65,
+     "end": 335.49
     },
     {
      "w": "her",
-     "start": 335.21,
-     "end": 335.67
+     "start": 335.53,
+     "end": 335.99
     },
     {
      "w": "does",
-     "start": 336.07,
-     "end": 336.27
+     "start": 336.39,
+     "end": 336.59
     },
     {
      "w": "she",
-     "start": 336.27,
-     "end": 336.55
+     "start": 336.59,
+     "end": 336.87
     },
     {
      "w": "speak",
-     "start": 336.55,
-     "end": 336.83
+     "start": 336.87,
+     "end": 337.15
     },
     {
      "w": "french",
-     "start": 336.83,
-     "end": 337.29
+     "start": 337.15,
+     "end": 337.61
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 338.07,
-   "pauseAt": 343.57,
+   "start": 338.39,
+   "pauseAt": 343.89,
    "spanish": "Responde, “no, ella no habla francés.”",
    "expected": [
     "No, she doesn’t speak French."
    ],
-   "end": 344.11,
+   "end": 344.43,
    "words": []
   },
   {
    "t": "english",
-   "start": 344.13,
-   "end": 349.6,
+   "start": 344.45,
+   "end": 349.92,
    "text": "No, she doesn’t speak French.",
    "words": [
     {
      "w": "no",
-     "start": 344.13,
-     "end": 344.55
+     "start": 344.45,
+     "end": 344.87
     },
     {
      "w": "she",
-     "start": 344.83,
-     "end": 345.13
+     "start": 345.15,
+     "end": 345.45
     },
     {
      "w": "doesnt",
-     "start": 345.13,
-     "end": 345.49
+     "start": 345.45,
+     "end": 345.81
     },
     {
      "w": "speak",
-     "start": 345.49,
-     "end": 345.77
+     "start": 345.81,
+     "end": 346.09
     },
     {
      "w": "french",
-     "start": 345.77,
-     "end": 346.55
+     "start": 346.09,
+     "end": 346.87
     }
    ]
   },
   {
    "t": "narration",
-   "start": 349.65,
-   "end": 351.3,
+   "start": 349.97,
+   "end": 351.62,
    "lines": [
     "Buen trabajo."
    ],
    "words": [
     {
      "w": "buen",
-     "start": 349.72,
-     "end": 350.34
+     "start": 350.04,
+     "end": 350.66
     },
     {
      "w": "trabajo",
-     "start": 350.34,
-     "end": 350.64
+     "start": 350.66,
+     "end": 350.96
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 351.39,
-   "pauseAt": 354.94,
+   "start": 351.71,
+   "pauseAt": 355.26,
    "spanish": "Di, “ella habla inglés.”",
    "expected": [
     "She speaks English."
    ],
-   "end": 355.41,
+   "end": 355.73,
    "words": []
   },
   {
    "t": "english",
-   "start": 355.43,
-   "end": 360.27,
+   "start": 355.75,
+   "end": 360.59,
    "text": "She speaks English.",
    "words": [
     {
      "w": "she",
-     "start": 355.43,
-     "end": 355.69
+     "start": 355.75,
+     "end": 356.01
     },
     {
      "w": "speaks",
-     "start": 355.69,
-     "end": 356.17
+     "start": 356.01,
+     "end": 356.49
     },
     {
      "w": "english",
-     "start": 356.17,
-     "end": 357.07
+     "start": 356.49,
+     "end": 357.39
     }
    ]
   },
   {
    "t": "narration",
-   "start": 360.29,
-   "end": 364.09,
+   "start": 360.61,
+   "end": 364.41,
    "lines": [
     "Recuerda que en inglés usamos los pronombres de objeto"
    ],
    "words": [
     {
      "w": "que",
-     "start": 360.41,
-     "end": 360.61
+     "start": 360.73,
+     "end": 360.93
     },
     {
      "w": "en",
-     "start": 360.61,
-     "end": 360.73
+     "start": 360.93,
+     "end": 361.05
     },
     {
      "w": "inglés",
-     "start": 360.73,
-     "end": 361.07
+     "start": 361.05,
+     "end": 361.39
     },
     {
      "w": "usamos",
-     "start": 360.93,
-     "end": 361.53
+     "start": 361.25,
+     "end": 361.85
     },
     {
      "w": "los",
-     "start": 361.53,
-     "end": 361.87
+     "start": 361.85,
+     "end": 362.19
     },
     {
      "w": "pronombres",
-     "start": 361.87,
-     "end": 362.37
+     "start": 362.19,
+     "end": 362.69
     },
     {
      "w": "de",
-     "start": 362.37,
-     "end": 362.67
+     "start": 362.69,
+     "end": 362.99
     },
     {
      "w": "objeto",
-     "start": 362.67,
-     "end": 363.15
+     "start": 362.99,
+     "end": 363.47
     },
     {
      "w": "me",
-     "start": 364.07,
-     "end": 364.45
+     "start": 364.39,
+     "end": 364.77
     }
    ]
   },
   {
    "t": "narration",
-   "start": 364.19,
-   "end": 370.09,
+   "start": 364.51,
+   "end": 370.41,
    "lines": [
     "me, you, him, her, us, them"
    ],
    "words": [
     {
      "w": "you",
-     "start": 364.69,
-     "end": 365.37
+     "start": 365.01,
+     "end": 365.69
     },
     {
      "w": "him",
-     "start": 365.99,
-     "end": 366.29
+     "start": 366.31,
+     "end": 366.61
     },
     {
      "w": "her",
-     "start": 366.93,
-     "end": 367.37
+     "start": 367.25,
+     "end": 367.69
     },
     {
      "w": "us",
-     "start": 367.99,
-     "end": 368.41
+     "start": 368.31,
+     "end": 368.73
     },
     {
      "w": "them",
-     "start": 369.07,
-     "end": 369.35
+     "start": 369.39,
+     "end": 369.67
     },
     {
      "w": "parlas",
-     "start": 369.91,
-     "end": 370.39
+     "start": 370.23,
+     "end": 370.71
     }
    ]
   },
   {
    "t": "narration",
-   "start": 370.19,
-   "end": 376.89,
+   "start": 370.51,
+   "end": 377.21,
    "lines": [
     "para las respuestas cortas, a diferencia de español que usa los pronombres de sujeto"
    ],
    "words": [
     {
      "w": "respuestas",
-     "start": 370.39,
-     "end": 371.29
+     "start": 370.71,
+     "end": 371.61
     },
     {
      "w": "cortas",
-     "start": 371.43,
-     "end": 372.45
+     "start": 371.75,
+     "end": 372.77
     },
     {
      "w": "a",
-     "start": 372.75,
-     "end": 372.99
+     "start": 373.07,
+     "end": 373.31
     },
     {
      "w": "diferencia",
-     "start": 372.99,
-     "end": 373.55
+     "start": 373.31,
+     "end": 373.87
     },
     {
      "w": "de",
-     "start": 373.55,
-     "end": 373.99
+     "start": 373.87,
+     "end": 374.31
     },
     {
      "w": "español",
-     "start": 373.99,
-     "end": 374.47
+     "start": 374.31,
+     "end": 374.79
     },
     {
      "w": "que",
-     "start": 374.47,
-     "end": 374.75
+     "start": 374.79,
+     "end": 375.07
     },
     {
      "w": "usa",
-     "start": 374.75,
-     "end": 374.91
-    },
-    {
-     "w": "los",
-     "start": 374.91,
+     "start": 375.07,
      "end": 375.23
     },
     {
-     "w": "pronombres",
+     "w": "los",
      "start": 375.23,
-     "end": 375.77
+     "end": 375.55
+    },
+    {
+     "w": "pronombres",
+     "start": 375.55,
+     "end": 376.09
     },
     {
      "w": "de",
-     "start": 375.77,
-     "end": 376.19
+     "start": 376.09,
+     "end": 376.51
     },
     {
      "w": "sujeto",
-     "start": 376.19,
-     "end": 376.69
+     "start": 376.51,
+     "end": 377.01
     },
     {
      "w": "yo",
-     "start": 376.83,
-     "end": 377.95
+     "start": 377.15,
+     "end": 378.27
     }
    ]
   },
   {
    "t": "narration",
-   "start": 376.99,
-   "end": 383.89,
+   "start": 377.31,
+   "end": 384.21,
    "lines": [
     "(yo, tú, él, ella, nosotros, ellos)"
    ],
    "words": [
     {
      "w": "tú",
-     "start": 378.83,
-     "end": 378.93
+     "start": 379.15,
+     "end": 379.25
     },
     {
      "w": "él",
-     "start": 380.09,
-     "end": 380.09
+     "start": 380.41,
+     "end": 380.41
     },
     {
      "w": "ella",
-     "start": 380.87,
-     "end": 381.23
+     "start": 381.19,
+     "end": 381.55
     },
     {
      "w": "nosotros",
-     "start": 381.85,
-     "end": 382.31
+     "start": 382.17,
+     "end": 382.63
     },
     {
      "w": "ellos",
-     "start": 383.15,
-     "end": 383.41
+     "start": 383.47,
+     "end": 383.73
     }
    ]
   },
   {
    "t": "narration",
-   "start": 383.99,
-   "end": 398.29,
+   "start": 384.31,
+   "end": 398.61,
    "lines": [
     "En inglés: \"not me\", \"no mí\". En español: \"yo no\", \"I no\". Ahora aprendemos cómo decir \"andar\". Escucha y repite."
    ],
    "words": [
     {
      "w": "en",
-     "start": 384.07,
-     "end": 384.35
+     "start": 384.39,
+     "end": 384.67
     },
     {
      "w": "inglés",
-     "start": 384.35,
-     "end": 384.69
+     "start": 384.67,
+     "end": 385.01
     },
     {
      "w": "not",
-     "start": 385.49,
-     "end": 386.05
+     "start": 385.81,
+     "end": 386.37
     },
     {
      "w": "me",
-     "start": 386.05,
-     "end": 387.07
+     "start": 386.37,
+     "end": 387.39
     },
     {
      "w": "no",
-     "start": 387.43,
-     "end": 387.57
+     "start": 387.75,
+     "end": 387.89
     },
     {
      "w": "me",
-     "start": 387.57,
-     "end": 387.87
+     "start": 387.89,
+     "end": 388.19
     },
     {
      "w": "en",
-     "start": 388.45,
-     "end": 388.61
+     "start": 388.77,
+     "end": 388.93
     },
     {
      "w": "español",
-     "start": 388.61,
-     "end": 389.11
+     "start": 388.93,
+     "end": 389.43
     },
     {
      "w": "yo",
-     "start": 389.69,
-     "end": 389.87
+     "start": 390.01,
+     "end": 390.19
     },
     {
      "w": "no",
-     "start": 389.87,
-     "end": 390.21
+     "start": 390.19,
+     "end": 390.53
     },
     {
      "w": "i",
-     "start": 390.93,
-     "end": 391.25
+     "start": 391.25,
+     "end": 391.57
     },
     {
      "w": "know",
-     "start": 391.25,
-     "end": 391.55
+     "start": 391.57,
+     "end": 391.87
     },
     {
      "w": "ahora",
-     "start": 392.31,
-     "end": 392.71
+     "start": 392.63,
+     "end": 393.03
     },
     {
      "w": "aprendemos",
-     "start": 392.71,
-     "end": 393.33
+     "start": 393.03,
+     "end": 393.65
     },
     {
      "w": "cómo",
-     "start": 393.33,
-     "end": 393.63
+     "start": 393.65,
+     "end": 393.95
     },
     {
      "w": "decir",
-     "start": 393.63,
-     "end": 394.13
+     "start": 393.95,
+     "end": 394.45
     },
     {
      "w": "andar",
-     "start": 394.13,
-     "end": 395.23
+     "start": 394.45,
+     "end": 395.55
     },
     {
      "w": "escucha",
-     "start": 395.85,
-     "end": 396.47
+     "start": 396.17,
+     "end": 396.79
     },
     {
      "w": "y",
-     "start": 396.47,
-     "end": 397.47
+     "start": 396.79,
+     "end": 397.79
     },
     {
      "w": "repite",
-     "start": 396.91,
-     "end": 397.77
+     "start": 397.23,
+     "end": 398.09
     }
    ]
   },
   {
    "t": "english",
-   "start": 398.31,
-   "end": 403.33,
+   "start": 398.63,
+   "end": 403.65,
    "text": "Walk. Walk.",
    "words": [
     {
      "w": "walk",
-     "start": 398.31,
-     "end": 398.75
+     "start": 398.63,
+     "end": 399.07
     },
     {
      "w": "walk",
-     "start": 400.37,
-     "end": 401.31
+     "start": 400.69,
+     "end": 401.63
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 403.35,
-   "pauseAt": 405.99,
+   "start": 403.67,
+   "pauseAt": 406.31,
    "spanish": "¿cómo se dice “andar\"?",
    "expected": [
     "Walk."
    ],
-   "end": 406.27,
+   "end": 406.59,
    "words": []
   },
   {
    "t": "english",
-   "start": 406.29,
-   "end": 411.39,
+   "start": 406.61,
+   "end": 411.71,
    "text": "Walk. Walk.",
    "words": [
     {
      "w": "walk",
-     "start": 406.29,
-     "end": 406.73
+     "start": 406.61,
+     "end": 407.05
     },
     {
      "w": "walk",
-     "start": 409.09,
-     "end": 410.09
+     "start": 409.41,
+     "end": 410.41
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 411.41,
-   "pauseAt": 414.02,
+   "start": 411.73,
+   "pauseAt": 414.34,
    "spanish": "Intenta decir “ando”.",
    "expected": [
     "I walk."
    ],
-   "end": 414.15,
+   "end": 414.47,
    "words": []
   },
   {
    "t": "english",
-   "start": 414.17,
-   "end": 417.2,
+   "start": 414.49,
+   "end": 417.52,
    "text": "I walk. I walk.",
    "words": [
     {
      "w": "I",
-     "start": 414.2,
-     "end": 414.4
+     "start": 414.52,
+     "end": 414.72
     },
     {
      "w": "walk",
-     "start": 414.4,
-     "end": 414.75
+     "start": 414.72,
+     "end": 415.07
     },
     {
      "w": "I",
-     "start": 416.24,
-     "end": 416.54
+     "start": 416.56,
+     "end": 416.86
     },
     {
      "w": "walk",
-     "start": 416.54,
-     "end": 416.92
+     "start": 416.86,
+     "end": 417.24
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 418.69,
-   "pauseAt": 421.42,
+   "start": 419.01,
+   "pauseAt": 421.74,
    "spanish": "¿cómo se dice \"ando”?",
    "expected": [
     "I walk."
    ],
-   "end": 421.23,
+   "end": 421.55,
    "words": []
   },
   {
    "t": "english",
-   "start": 421.25,
-   "end": 427.75,
+   "start": 421.57,
+   "end": 428.07,
    "text": "I walk. I walk.",
    "words": [
     {
      "w": "I",
-     "start": 421.3,
-     "end": 421.62
+     "start": 421.62,
+     "end": 421.94
     },
     {
      "w": "walk",
-     "start": 421.62,
-     "end": 421.98
+     "start": 421.94,
+     "end": 422.3
     },
     {
      "w": "I",
-     "start": 424.68,
-     "end": 425.0
+     "start": 425.0,
+     "end": 425.32
     },
     {
      "w": "walk",
-     "start": 425.0,
-     "end": 425.26
+     "start": 425.32,
+     "end": 425.58
     }
    ]
   },
   {
    "t": "narration",
-   "start": 427.77,
-   "end": 429.28,
+   "start": 428.09,
+   "end": 429.6,
    "lines": [
     "Solo escucha esta pregunta."
    ],
    "words": [
     {
      "w": "solo",
-     "start": 427.79,
-     "end": 427.79
+     "start": 428.11,
+     "end": 428.11
     },
     {
      "w": "escucha",
-     "start": 427.77,
-     "end": 428.33
+     "start": 428.09,
+     "end": 428.65
     },
     {
      "w": "esta",
-     "start": 428.33,
-     "end": 428.51
+     "start": 428.65,
+     "end": 428.83
     },
     {
      "w": "pregunta",
-     "start": 428.51,
-     "end": 429.23
+     "start": 428.83,
+     "end": 429.55
     }
    ]
   },
   {
    "t": "english",
-   "start": 429.3,
-   "end": 430.15,
+   "start": 429.62,
+   "end": 430.47,
    "text": "Do you walk?",
    "words": [
     {
      "w": "Do",
-     "start": 429.3,
-     "end": 429.52
+     "start": 429.62,
+     "end": 429.84
     },
     {
      "w": "you",
-     "start": 429.52,
-     "end": 429.72
+     "start": 429.84,
+     "end": 430.04
     },
     {
      "w": "walk",
-     "start": 429.72,
-     "end": 430.08
+     "start": 430.04,
+     "end": 430.4
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 430.17,
-   "end": 431.41,
-   "pauseAt": 436.1,
+   "start": 430.49,
+   "end": 431.73,
+   "pauseAt": 436.42,
    "spanish": "¿Y cómo responder? \"sí, ando.\"",
    "expected": [
     "Yes, I walk."
@@ -3095,4273 +3095,4273 @@
    "words": [
     {
      "w": "¿y",
-     "start": 430.17,
-     "end": 431.33
+     "start": 430.49,
+     "end": 431.65
     },
     {
      "w": "cómo",
-     "start": 431.43,
-     "end": 432.05
+     "start": 431.75,
+     "end": 432.37
     },
     {
      "w": "responder",
-     "start": 432.05,
-     "end": 432.83
+     "start": 432.37,
+     "end": 433.15
     },
     {
      "w": "sí",
-     "start": 433.41,
-     "end": 433.47
+     "start": 433.73,
+     "end": 433.79
     },
     {
      "w": "ando",
-     "start": 434.13,
-     "end": 435.11
+     "start": 434.45,
+     "end": 435.43
     }
    ],
-   "leadEnd": 430.9
+   "leadEnd": 434.92
   },
   {
    "t": "narration",
-   "start": 431.43,
-   "end": 434.9,
+   "start": 431.75,
+   "end": 435.22,
    "lines": [
-    "¿Cómo responder \"sí, ando.\""
+    "¿Y cómo responder? \"Sí, ando.\""
    ],
    "words": [
     {
      "w": "como",
-     "start": 431.43,
-     "end": 432.05
+     "start": 431.75,
+     "end": 432.37
     },
     {
      "w": "responder",
-     "start": 432.05,
-     "end": 432.83
+     "start": 432.37,
+     "end": 433.15
     },
     {
      "w": "si",
-     "start": 433.41,
-     "end": 433.47
+     "start": 433.73,
+     "end": 433.79
     },
     {
      "w": "ando",
-     "start": 434.13,
-     "end": 435.11
+     "start": 434.45,
+     "end": 435.43
     }
    ]
   },
   {
    "t": "english",
-   "start": 436.51,
-   "end": 445.09,
+   "start": 436.83,
+   "end": 445.41,
    "text": "Yes, I walk. Yes, I walk.",
    "words": [
     {
      "w": "yes",
-     "start": 436.51,
-     "end": 436.79
+     "start": 436.83,
+     "end": 437.11
     },
     {
      "w": "i",
-     "start": 437.59,
-     "end": 437.77
+     "start": 437.91,
+     "end": 438.09
     },
     {
      "w": "walk",
-     "start": 437.77,
-     "end": 438.45
+     "start": 438.09,
+     "end": 438.77
     },
     {
      "w": "yes",
-     "start": 440.81,
-     "end": 441.01
+     "start": 441.13,
+     "end": 441.33
     },
     {
      "w": "i",
-     "start": 441.57,
-     "end": 441.83
+     "start": 441.89,
+     "end": 442.15
     },
     {
      "w": "walk",
-     "start": 441.83,
-     "end": 442.61
+     "start": 442.15,
+     "end": 442.93
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 445.11,
-   "pauseAt": 449.09,
+   "start": 445.43,
+   "pauseAt": 449.41,
    "spanish": "Hablando con un amigo, pregúntale “¿andas?\".",
    "expected": [
     "Do you walk?"
    ],
-   "end": 449.39,
+   "end": 449.71,
    "words": []
   },
   {
    "t": "english",
-   "start": 449.41,
-   "end": 454.85,
+   "start": 449.73,
+   "end": 455.17,
    "text": "Do you walk? Do you walk?",
    "words": [
     {
      "w": "do",
-     "start": 449.41,
-     "end": 449.63
+     "start": 449.73,
+     "end": 449.95
     },
     {
      "w": "you",
-     "start": 449.63,
-     "end": 449.89
+     "start": 449.95,
+     "end": 450.21
     },
     {
      "w": "walk",
-     "start": 449.89,
-     "end": 450.23
+     "start": 450.21,
+     "end": 450.55
     },
     {
      "w": "do",
-     "start": 451.83,
-     "end": 451.97
+     "start": 452.15,
+     "end": 452.29
     },
     {
      "w": "you",
-     "start": 451.97,
-     "end": 452.21
+     "start": 452.29,
+     "end": 452.53
     },
     {
      "w": "walk",
-     "start": 452.21,
-     "end": 452.65
+     "start": 452.53,
+     "end": 452.97
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 454.87,
-   "pauseAt": 459.17,
+   "start": 455.19,
+   "pauseAt": 459.49,
    "spanish": "Otra vez, ¿Cómo preguntas \"¿andas?\"?",
    "expected": [
     "Do you walk?"
    ],
-   "end": 459.37,
-   "leadEnd": 456.27,
+   "end": 459.69,
+   "leadEnd": 456.59,
    "words": []
   },
   {
    "t": "english",
-   "start": 459.39,
-   "end": 460.17,
+   "start": 459.71,
+   "end": 460.49,
    "text": "Do you walk?",
    "words": [
     {
      "w": "do",
-     "start": 459.39,
-     "end": 459.45
+     "start": 459.71,
+     "end": 459.77
     },
     {
      "w": "you",
-     "start": 459.45,
-     "end": 459.75
+     "start": 459.77,
+     "end": 460.07
     },
     {
      "w": "walk",
-     "start": 459.75,
-     "end": 460.17
+     "start": 460.07,
+     "end": 460.49
     }
    ]
   },
   {
    "t": "narration",
-   "start": 462.89,
-   "end": 463.81,
+   "start": 463.21,
+   "end": 464.13,
    "lines": [
     "Excelente."
    ],
    "words": [
     {
      "w": "excelente",
-     "start": 462.89,
-     "end": 463.81
+     "start": 463.21,
+     "end": 464.13
     }
    ]
   },
   {
    "t": "narration",
-   "start": 464.49,
-   "end": 466.95,
+   "start": 464.81,
+   "end": 467.27,
    "lines": [
     "Solo escucha esta respuesta."
    ],
    "words": [
     {
      "w": "solo",
-     "start": 464.51,
-     "end": 464.51
+     "start": 464.83,
+     "end": 464.83
     },
     {
      "w": "escucha",
-     "start": 464.49,
-     "end": 465.07
-    },
-    {
-     "w": "esta",
-     "start": 465.07,
+     "start": 464.81,
      "end": 465.39
     },
     {
-     "w": "respuesta",
+     "w": "esta",
      "start": 465.39,
-     "end": 466.15
+     "end": 465.71
+    },
+    {
+     "w": "respuesta",
+     "start": 465.71,
+     "end": 466.47
     }
    ]
   },
   {
    "t": "english",
-   "start": 466.97,
-   "end": 470.59,
+   "start": 467.29,
+   "end": 470.91,
    "text": "Yes, I walk every day.",
    "words": [
     {
      "w": "yes",
-     "start": 466.97,
-     "end": 467.31
+     "start": 467.29,
+     "end": 467.63
     },
     {
      "w": "i",
-     "start": 468.27,
-     "end": 468.51
+     "start": 468.59,
+     "end": 468.83
     },
     {
      "w": "walk",
-     "start": 468.51,
-     "end": 469.03
+     "start": 468.83,
+     "end": 469.35
     },
     {
      "w": "every",
-     "start": 469.03,
-     "end": 469.57
+     "start": 469.35,
+     "end": 469.89
     },
     {
      "w": "day",
-     "start": 469.57,
-     "end": 469.91
+     "start": 469.89,
+     "end": 470.23
     }
    ]
   },
   {
    "t": "narration",
-   "start": 470.61,
-   "end": 480.97,
+   "start": 470.93,
+   "end": 481.29,
    "lines": [
     "Él acaba de decir “sí, ando todos los días.” Escucha y repite la frase “todos los días\"."
    ],
    "words": [
     {
      "w": "el",
-     "start": 470.61,
-     "end": 470.85
+     "start": 470.93,
+     "end": 471.17
     },
     {
      "w": "acaba",
-     "start": 470.85,
-     "end": 471.09
+     "start": 471.17,
+     "end": 471.41
     },
     {
      "w": "de",
-     "start": 471.09,
-     "end": 471.39
+     "start": 471.41,
+     "end": 471.71
     },
     {
      "w": "decir",
-     "start": 471.39,
-     "end": 471.69
+     "start": 471.71,
+     "end": 472.01
     },
     {
      "w": "si",
-     "start": 471.69,
-     "end": 472.87
+     "start": 472.01,
+     "end": 473.19
     },
     {
      "w": "ando",
-     "start": 473.33,
-     "end": 473.87
+     "start": 473.65,
+     "end": 474.19
     },
     {
      "w": "todos",
-     "start": 473.87,
-     "end": 474.49
+     "start": 474.19,
+     "end": 474.81
     },
     {
      "w": "los",
-     "start": 474.49,
-     "end": 474.77
+     "start": 474.81,
+     "end": 475.09
     },
     {
      "w": "dias",
-     "start": 474.77,
-     "end": 475.21
+     "start": 475.09,
+     "end": 475.53
     },
     {
      "w": "escucha",
-     "start": 475.91,
-     "end": 476.53
+     "start": 476.23,
+     "end": 476.85
     },
     {
      "w": "y",
-     "start": 476.53,
-     "end": 477.19
+     "start": 476.85,
+     "end": 477.51
     },
     {
      "w": "repite",
-     "start": 477.19,
-     "end": 477.81
+     "start": 477.51,
+     "end": 478.13
     },
     {
      "w": "la",
-     "start": 477.81,
-     "end": 478.05
+     "start": 478.13,
+     "end": 478.37
     },
     {
      "w": "frase",
-     "start": 478.05,
-     "end": 478.39
+     "start": 478.37,
+     "end": 478.71
     },
     {
      "w": "todos",
-     "start": 478.39,
-     "end": 479.57
-    },
-    {
-     "w": "los",
-     "start": 479.57,
+     "start": 478.71,
      "end": 479.89
     },
     {
-     "w": "dias",
+     "w": "los",
      "start": 479.89,
-     "end": 480.33
+     "end": 480.21
+    },
+    {
+     "w": "dias",
+     "start": 480.21,
+     "end": 480.65
     }
    ]
   },
   {
    "t": "english",
-   "start": 480.99,
-   "end": 486.15,
+   "start": 481.31,
+   "end": 486.47,
    "text": "Every day. Every day.",
    "words": [
     {
      "w": "every",
-     "start": 480.99,
-     "end": 481.45
+     "start": 481.31,
+     "end": 481.77
     },
     {
      "w": "day",
-     "start": 481.45,
-     "end": 481.85
+     "start": 481.77,
+     "end": 482.17
     },
     {
      "w": "every",
-     "start": 483.35,
-     "end": 484.15
+     "start": 483.67,
+     "end": 484.47
     },
     {
      "w": "day",
-     "start": 484.15,
-     "end": 484.55
+     "start": 484.47,
+     "end": 484.87
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 486.17,
-   "pauseAt": 489.23,
+   "start": 486.49,
+   "pauseAt": 489.55,
    "spanish": "¿Cómo se dice “todos los días”?",
    "expected": [
     "Every day."
    ],
-   "end": 489.53,
+   "end": 489.85,
    "words": []
   },
   {
    "t": "english",
-   "start": 489.55,
-   "end": 496.51,
+   "start": 489.87,
+   "end": 496.83,
    "text": "Every day. Every day.",
    "words": [
     {
      "w": "every",
-     "start": 489.55,
-     "end": 489.79
+     "start": 489.87,
+     "end": 490.11
     },
     {
      "w": "day",
-     "start": 489.79,
-     "end": 490.49
+     "start": 490.11,
+     "end": 490.81
     },
     {
      "w": "every",
-     "start": 491.31,
-     "end": 492.11
+     "start": 491.63,
+     "end": 492.43
     },
     {
      "w": "day",
-     "start": 492.31,
-     "end": 493.05
+     "start": 492.63,
+     "end": 493.37
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 496.53,
-   "pauseAt": 499.39,
+   "start": 496.85,
+   "pauseAt": 499.71,
    "spanish": "Intenta preguntar, “¿él anda?”.",
    "expected": [
     "Does he walk?"
    ],
-   "end": 499.65,
+   "end": 499.97,
    "words": []
   },
   {
    "t": "english",
-   "start": 499.67,
-   "end": 506.05,
+   "start": 499.99,
+   "end": 506.37,
    "text": "Does he walk? Does he walk?",
    "words": [
     {
      "w": "does",
-     "start": 499.67,
-     "end": 499.89
+     "start": 499.99,
+     "end": 500.21
     },
     {
      "w": "he",
-     "start": 499.89,
-     "end": 500.15
+     "start": 500.21,
+     "end": 500.47
     },
     {
      "w": "walk",
-     "start": 500.15,
-     "end": 500.51
+     "start": 500.47,
+     "end": 500.83
     },
     {
      "w": "does",
-     "start": 502.77,
-     "end": 502.99
+     "start": 503.09,
+     "end": 503.31
     },
     {
      "w": "he",
-     "start": 502.99,
-     "end": 503.27
+     "start": 503.31,
+     "end": 503.59
     },
     {
      "w": "walk",
-     "start": 503.27,
-     "end": 503.81
+     "start": 503.59,
+     "end": 504.13
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 506.07,
-   "pauseAt": 510.18,
+   "start": 506.39,
+   "pauseAt": 510.5,
    "spanish": "Otra vez, pregunta, “¿él anda?”.",
    "expected": [
     "Does he walk?"
    ],
-   "end": 510.31,
-   "leadEnd": 507.05,
+   "end": 510.63,
+   "leadEnd": 507.37,
    "words": []
   },
   {
    "t": "english",
-   "start": 510.33,
-   "end": 514.25,
+   "start": 510.65,
+   "end": 514.57,
    "text": "Does he walk?",
    "words": [
     {
      "w": "does",
-     "start": 510.33,
-     "end": 510.65
+     "start": 510.65,
+     "end": 510.97
     },
     {
      "w": "he",
-     "start": 510.65,
-     "end": 510.89
+     "start": 510.97,
+     "end": 511.21
     },
     {
      "w": "walk",
-     "start": 510.89,
-     "end": 511.31
+     "start": 511.21,
+     "end": 511.63
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 514.27,
-   "pauseAt": 518.09,
+   "start": 514.59,
+   "pauseAt": 518.41,
    "spanish": "Responde, “sí, él anda.”",
    "expected": [
     "Yes, he walks."
    ],
-   "end": 518.39,
+   "end": 518.71,
    "words": []
   },
   {
    "t": "english",
-   "start": 518.41,
-   "end": 527.59,
+   "start": 518.73,
+   "end": 527.91,
    "text": "Yes, he walks. Yes, he walks.",
    "words": [
     {
      "w": "yes",
-     "start": 518.41,
-     "end": 518.57
+     "start": 518.73,
+     "end": 518.89
     },
     {
      "w": "he",
-     "start": 519.35,
-     "end": 519.53
+     "start": 519.67,
+     "end": 519.85
     },
     {
      "w": "walks",
-     "start": 519.53,
-     "end": 520.29
+     "start": 519.85,
+     "end": 520.61
     },
     {
      "w": "yes",
-     "start": 522.51,
-     "end": 523.19
+     "start": 522.83,
+     "end": 523.51
     },
     {
      "w": "he",
-     "start": 523.77,
-     "end": 523.99
+     "start": 524.09,
+     "end": 524.31
     },
     {
      "w": "walks",
-     "start": 523.99,
-     "end": 524.65
+     "start": 524.31,
+     "end": 524.97
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 527.61,
-   "pauseAt": 531.75,
+   "start": 527.93,
+   "pauseAt": 532.07,
    "spanish": "Ahora pregunta, “¿él anda todos los días?”",
    "expected": [
     "Does he walk every day?"
    ],
-   "end": 532.17,
+   "end": 532.49,
    "words": []
   },
   {
    "t": "english",
-   "start": 532.19,
-   "end": 534.29,
+   "start": 532.51,
+   "end": 534.61,
    "text": "Does he walk every day?",
    "words": [
     {
      "w": "does",
-     "start": 532.19,
-     "end": 532.39
+     "start": 532.51,
+     "end": 532.71
     },
     {
      "w": "he",
-     "start": 532.39,
-     "end": 532.61
+     "start": 532.71,
+     "end": 532.93
     },
     {
      "w": "walk",
-     "start": 532.61,
-     "end": 532.97
+     "start": 532.93,
+     "end": 533.29
     },
     {
      "w": "every",
-     "start": 532.97,
-     "end": 533.33
+     "start": 533.29,
+     "end": 533.65
     },
     {
      "w": "day",
-     "start": 533.33,
-     "end": 533.97
+     "start": 533.65,
+     "end": 534.29
     }
    ]
   },
   {
    "t": "english",
-   "start": 535.85,
-   "end": 537.93,
+   "start": 536.17,
+   "end": 538.25,
    "text": "Does he walk every day?",
    "words": [
     {
      "w": "does",
-     "start": 535.85,
-     "end": 536.53
+     "start": 536.17,
+     "end": 536.85
     },
     {
      "w": "he",
-     "start": 536.61,
-     "end": 536.81
+     "start": 536.93,
+     "end": 537.13
     },
     {
      "w": "walk",
-     "start": 536.81,
-     "end": 537.15
+     "start": 537.13,
+     "end": 537.47
     },
     {
      "w": "every",
-     "start": 537.15,
-     "end": 537.53
+     "start": 537.47,
+     "end": 537.85
     },
     {
      "w": "day",
-     "start": 537.53,
-     "end": 537.93
+     "start": 537.85,
+     "end": 538.25
     }
    ]
   },
   {
    "t": "narration",
-   "start": 541.45,
-   "end": 542.29,
+   "start": 541.77,
+   "end": 542.61,
    "lines": [
     "Exacto."
    ],
    "words": [
     {
      "w": "exacto",
-     "start": 541.45,
-     "end": 542.29
+     "start": 541.77,
+     "end": 542.61
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 542.31,
-   "pauseAt": 546.7,
+   "start": 542.63,
+   "pauseAt": 547.02,
    "spanish": "Otra vez, pregunta, “¿él anda todos los días?”",
    "expected": [
     "Does he walk every day?"
    ],
-   "end": 547.3,
-   "leadEnd": 542.75,
+   "end": 547.62,
+   "leadEnd": 543.07,
    "words": []
   },
   {
    "t": "english",
-   "start": 547.51,
-   "end": 552.75,
+   "start": 547.83,
+   "end": 553.07,
    "text": "Does he walk every day?",
    "words": [
     {
      "w": "does",
-     "start": 547.51,
-     "end": 547.51
+     "start": 547.83,
+     "end": 547.83
     },
     {
      "w": "he",
-     "start": 547.51,
-     "end": 547.79
-    },
-    {
-     "w": "walk",
-     "start": 547.79,
+     "start": 547.83,
      "end": 548.11
     },
     {
-     "w": "every",
+     "w": "walk",
      "start": 548.11,
-     "end": 548.49
+     "end": 548.43
+    },
+    {
+     "w": "every",
+     "start": 548.43,
+     "end": 548.81
     },
     {
      "w": "day",
-     "start": 548.49,
-     "end": 548.89
+     "start": 548.81,
+     "end": 549.21
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 552.77,
-   "pauseAt": 556.9,
+   "start": 553.09,
+   "pauseAt": 557.22,
    "spanish": "Responde, “sí, él anda todos los días.”",
    "expected": [
     "Yes, he walks every day."
    ],
-   "end": 557.03,
+   "end": 557.35,
    "words": []
   },
   {
    "t": "english",
-   "start": 557.05,
-   "end": 569.75,
+   "start": 557.37,
+   "end": 570.07,
    "text": "Yes, he walks every day. Yes, he walks every day.",
    "words": [
     {
      "w": "yes",
-     "start": 557.05,
-     "end": 557.43
+     "start": 557.37,
+     "end": 557.75
     },
     {
      "w": "he",
-     "start": 558.11,
-     "end": 558.31
+     "start": 558.43,
+     "end": 558.63
     },
     {
      "w": "walks",
-     "start": 558.31,
-     "end": 558.67
+     "start": 558.63,
+     "end": 558.99
     },
     {
      "w": "every",
-     "start": 558.67,
-     "end": 559.29
+     "start": 558.99,
+     "end": 559.61
     },
     {
      "w": "day",
-     "start": 559.29,
-     "end": 562.83
+     "start": 559.61,
+     "end": 563.15
     },
     {
      "w": "yes",
-     "start": 562.87,
-     "end": 563.59
+     "start": 563.19,
+     "end": 563.91
     },
     {
      "w": "he",
-     "start": 564.37,
-     "end": 564.65
+     "start": 564.69,
+     "end": 564.97
     },
     {
      "w": "walks",
-     "start": 564.65,
-     "end": 565.07
+     "start": 564.97,
+     "end": 565.39
     },
     {
      "w": "every",
-     "start": 565.07,
-     "end": 565.63
+     "start": 565.39,
+     "end": 565.95
     },
     {
      "w": "day",
-     "start": 565.63,
-     "end": 566.67
+     "start": 565.95,
+     "end": 566.99
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 569.77,
-   "pauseAt": 573.36,
+   "start": 570.09,
+   "pauseAt": 573.68,
    "spanish": "Ahora pregunta, “¿ella anda todos los días?”",
    "expected": [
     "Does she walk every day?"
    ],
-   "end": 573.49,
+   "end": 573.81,
    "words": []
   },
   {
    "t": "english",
-   "start": 573.51,
-   "end": 583.71,
+   "start": 573.83,
+   "end": 584.03,
    "text": "Does she walk every day? Does she walk every day?",
    "words": [
     {
      "w": "does",
-     "start": 573.51,
-     "end": 573.95
+     "start": 573.83,
+     "end": 574.27
     },
     {
      "w": "she",
-     "start": 573.97,
-     "end": 574.29
+     "start": 574.29,
+     "end": 574.61
     },
     {
      "w": "walk",
-     "start": 574.29,
-     "end": 574.59
+     "start": 574.61,
+     "end": 574.91
     },
     {
      "w": "every",
-     "start": 574.59,
-     "end": 574.95
+     "start": 574.91,
+     "end": 575.27
     },
     {
      "w": "day",
-     "start": 574.95,
-     "end": 575.63
+     "start": 575.27,
+     "end": 575.95
     },
     {
      "w": "does",
-     "start": 577.27,
-     "end": 577.99
+     "start": 577.59,
+     "end": 578.31
     },
     {
      "w": "she",
-     "start": 578.03,
-     "end": 578.35
+     "start": 578.35,
+     "end": 578.67
     },
     {
      "w": "walk",
-     "start": 578.35,
-     "end": 578.65
+     "start": 578.67,
+     "end": 578.97
     },
     {
      "w": "every",
-     "start": 578.65,
-     "end": 579.01
+     "start": 578.97,
+     "end": 579.33
     },
     {
      "w": "day",
-     "start": 579.01,
-     "end": 579.47
+     "start": 579.33,
+     "end": 579.79
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 583.73,
-   "pauseAt": 586.92,
+   "start": 584.05,
+   "pauseAt": 587.24,
    "spanish": "Responde, “No, ella no anda todos los días.”",
    "expected": [
     "No, she doesn't walk every day."
    ],
-   "end": 587.05,
+   "end": 587.37,
    "words": []
   },
   {
    "t": "english",
-   "start": 587.07,
-   "end": 598.98,
+   "start": 587.39,
+   "end": 599.3,
    "text": "No, she doesn’t walk every day. No, she doesn’t walk every day.",
    "words": [
     {
      "w": "no",
-     "start": 587.07,
-     "end": 587.45
+     "start": 587.39,
+     "end": 587.77
     },
     {
      "w": "she",
-     "start": 587.83,
-     "end": 588.15
+     "start": 588.15,
+     "end": 588.47
     },
     {
      "w": "doesnt",
-     "start": 588.15,
-     "end": 588.65
+     "start": 588.47,
+     "end": 588.97
     },
     {
      "w": "walk",
-     "start": 588.65,
-     "end": 589.01
+     "start": 588.97,
+     "end": 589.33
     },
     {
      "w": "every",
-     "start": 589.01,
-     "end": 589.39
+     "start": 589.33,
+     "end": 589.71
     },
     {
      "w": "day",
-     "start": 589.39,
-     "end": 590.55
+     "start": 589.71,
+     "end": 590.87
     },
     {
      "w": "no",
-     "start": 592.79,
-     "end": 593.49
+     "start": 593.11,
+     "end": 593.81
     },
     {
      "w": "she",
-     "start": 594.23,
-     "end": 594.53
+     "start": 594.55,
+     "end": 594.85
     },
     {
      "w": "doesnt",
-     "start": 594.53,
-     "end": 594.95
+     "start": 594.85,
+     "end": 595.27
     },
     {
      "w": "walk",
-     "start": 594.95,
-     "end": 595.25
+     "start": 595.27,
+     "end": 595.57
     },
     {
      "w": "every",
-     "start": 595.25,
-     "end": 595.67
+     "start": 595.57,
+     "end": 595.99
     },
     {
      "w": "day",
-     "start": 595.67,
-     "end": 596.87
+     "start": 595.99,
+     "end": 597.19
     }
    ]
   },
   {
    "t": "narration",
-   "start": 599.0,
-   "end": 600.05,
+   "start": 599.32,
+   "end": 600.37,
    "lines": [
     "Exacto."
    ],
    "words": [
     {
      "w": "Exacto",
-     "start": 599.1,
-     "end": 599.82
+     "start": 599.42,
+     "end": 600.14
     }
    ]
   },
   {
    "t": "narration",
-   "start": 600.1,
-   "end": 602.58,
+   "start": 600.42,
+   "end": 602.9,
    "lines": [
     "Solo escucha esta pregunta."
    ],
    "words": [
     {
      "w": "Ahora",
-     "start": 600.18,
-     "end": 600.4
+     "start": 600.5,
+     "end": 600.72
     },
     {
      "w": "solo",
-     "start": 600.4,
-     "end": 600.74
+     "start": 600.72,
+     "end": 601.06
     },
     {
      "w": "escucha",
-     "start": 600.74,
-     "end": 601.28
+     "start": 601.06,
+     "end": 601.6
     },
     {
      "w": "esta",
-     "start": 601.28,
-     "end": 601.46
+     "start": 601.6,
+     "end": 601.78
     },
     {
      "w": "pregunta",
-     "start": 601.46,
-     "end": 601.92
+     "start": 601.78,
+     "end": 602.24
     }
    ]
   },
   {
    "t": "english",
-   "start": 602.6,
-   "end": 604.9,
+   "start": 602.92,
+   "end": 605.22,
    "text": "Does she speak English every day?",
    "words": [
     {
      "w": "Does",
-     "start": 602.66,
-     "end": 603.04
+     "start": 602.98,
+     "end": 603.36
     },
     {
      "w": "she",
-     "start": 603.04,
-     "end": 603.22
+     "start": 603.36,
+     "end": 603.54
     },
     {
      "w": "speak",
-     "start": 603.22,
-     "end": 603.5
+     "start": 603.54,
+     "end": 603.82
     },
     {
      "w": "English",
-     "start": 603.5,
-     "end": 603.88
+     "start": 603.82,
+     "end": 604.2
     },
     {
      "w": "every",
-     "start": 603.88,
-     "end": 604.22
+     "start": 604.2,
+     "end": 604.54
     },
     {
      "w": "day",
-     "start": 604.22,
-     "end": 604.52
+     "start": 604.54,
+     "end": 604.84
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 605.55,
-   "pauseAt": 611.56,
+   "start": 605.87,
+   "pauseAt": 611.88,
    "spanish": "Responde, “No, ella no habla inglés todos los días.”",
    "expected": [
     "No, she doesn't speak English every day."
    ],
-   "end": 610.01,
+   "end": 610.33,
    "words": [],
-   "leadEnd": 605.6
+   "leadEnd": 605.92
   },
   {
    "t": "english",
-   "start": 610.03,
-   "end": 623.11,
+   "start": 610.35,
+   "end": 623.43,
    "text": "No, she doesn’t speak English every day. No, she doesn’t speak English every day.",
    "words": [
     {
      "w": "no",
-     "start": 610.03,
-     "end": 612.11
+     "start": 610.35,
+     "end": 612.43
     },
     {
      "w": "she",
-     "start": 612.47,
-     "end": 612.69
-    },
-    {
-     "w": "doesnt",
-     "start": 612.69,
+     "start": 612.79,
      "end": 613.01
     },
     {
-     "w": "speak",
+     "w": "doesnt",
      "start": 613.01,
-     "end": 613.27
+     "end": 613.33
+    },
+    {
+     "w": "speak",
+     "start": 613.33,
+     "end": 613.59
     },
     {
      "w": "english",
-     "start": 613.27,
-     "end": 613.65
-    },
-    {
-     "w": "every",
-     "start": 613.65,
+     "start": 613.59,
      "end": 613.97
     },
     {
-     "w": "day",
+     "w": "every",
      "start": 613.97,
-     "end": 614.87
+     "end": 614.29
+    },
+    {
+     "w": "day",
+     "start": 614.29,
+     "end": 615.19
     },
     {
      "w": "no",
-     "start": 617.19,
-     "end": 617.81
+     "start": 617.51,
+     "end": 618.13
     },
     {
      "w": "she",
-     "start": 618.17,
-     "end": 618.41
+     "start": 618.49,
+     "end": 618.73
     },
     {
      "w": "doesnt",
-     "start": 618.41,
-     "end": 618.83
+     "start": 618.73,
+     "end": 619.15
     },
     {
      "w": "speak",
-     "start": 618.83,
-     "end": 619.05
+     "start": 619.15,
+     "end": 619.37
     },
     {
      "w": "english",
-     "start": 619.05,
-     "end": 619.41
-    },
-    {
-     "w": "every",
-     "start": 619.41,
+     "start": 619.37,
      "end": 619.73
     },
     {
-     "w": "day",
+     "w": "every",
      "start": 619.73,
-     "end": 620.13
+     "end": 620.05
+    },
+    {
+     "w": "day",
+     "start": 620.05,
+     "end": 620.45
     }
    ]
   },
   {
    "t": "narration",
-   "start": 623.13,
-   "end": 623.89,
+   "start": 623.45,
+   "end": 624.21,
    "lines": [
     "Perfecto."
    ],
    "words": [
     {
      "w": "perfecto",
-     "start": 623.13,
-     "end": 623.89
+     "start": 623.45,
+     "end": 624.21
     }
    ]
   },
   {
    "t": "narration",
-   "start": 624.71,
-   "end": 627.19,
+   "start": 625.03,
+   "end": 627.51,
    "lines": [
     "Solo escucha esta pregunta."
    ],
    "words": [
     {
      "w": "solo",
-     "start": 624.71,
-     "end": 624.99
+     "start": 625.03,
+     "end": 625.31
     },
     {
      "w": "escucha",
-     "start": 624.99,
-     "end": 625.45
+     "start": 625.31,
+     "end": 625.77
     },
     {
      "w": "esta",
-     "start": 625.45,
-     "end": 625.61
+     "start": 625.77,
+     "end": 625.93
     },
     {
      "w": "pregunta",
-     "start": 625.61,
-     "end": 626.33
+     "start": 625.93,
+     "end": 626.65
     }
    ]
   },
   {
    "t": "english",
-   "start": 627.21,
-   "end": 629.89,
+   "start": 627.53,
+   "end": 630.21,
    "text": "Does she walk to school every day?",
    "words": [
     {
      "w": "does",
-     "start": 627.21,
-     "end": 627.25
+     "start": 627.53,
+     "end": 627.57
     },
     {
      "w": "she",
-     "start": 627.25,
-     "end": 627.45
+     "start": 627.57,
+     "end": 627.77
     },
     {
      "w": "walk",
-     "start": 627.45,
-     "end": 627.69
+     "start": 627.77,
+     "end": 628.01
     },
     {
      "w": "to",
-     "start": 627.69,
-     "end": 627.89
+     "start": 628.01,
+     "end": 628.21
     },
     {
      "w": "school",
-     "start": 627.89,
-     "end": 628.19
+     "start": 628.21,
+     "end": 628.51
     },
     {
      "w": "every",
-     "start": 628.19,
-     "end": 628.61
+     "start": 628.51,
+     "end": 628.93
     },
     {
      "w": "day",
-     "start": 628.61,
-     "end": 629.05
+     "start": 628.93,
+     "end": 629.37
     }
    ]
   },
   {
    "t": "narration",
-   "start": 629.91,
-   "end": 645.63,
+   "start": 630.23,
+   "end": 645.95,
    "lines": [
     "Ella acaba de preguntar “¿Ella anda a la escuela todos los días?” “Does she walk to school every day?” significa “ella anda a la escuela todos los días.” Escucha y repite la frase “a la escuela”"
    ],
    "words": [
     {
      "w": "ella",
-     "start": 629.93,
-     "end": 629.93
-    },
-    {
-     "w": "acaba",
-     "start": 629.91,
+     "start": 630.25,
      "end": 630.25
     },
     {
+     "w": "acaba",
+     "start": 630.23,
+     "end": 630.57
+    },
+    {
      "w": "de",
-     "start": 630.25,
-     "end": 630.41
+     "start": 630.57,
+     "end": 630.73
     },
     {
      "w": "preguntar",
-     "start": 630.41,
-     "end": 631.81
+     "start": 630.73,
+     "end": 632.13
     },
     {
      "w": "ella",
-     "start": 631.83,
-     "end": 631.96
+     "start": 632.15,
+     "end": 632.28
     },
     {
      "w": "anda",
-     "start": 632.11,
-     "end": 632.45
+     "start": 632.43,
+     "end": 632.77
     },
     {
      "w": "a",
-     "start": 632.45,
-     "end": 632.57
+     "start": 632.77,
+     "end": 632.89
     },
     {
      "w": "la",
-     "start": 632.57,
-     "end": 632.73
+     "start": 632.89,
+     "end": 633.05
     },
     {
      "w": "escuela",
-     "start": 632.73,
-     "end": 632.97
+     "start": 633.05,
+     "end": 633.29
     },
     {
      "w": "todos",
-     "start": 632.97,
-     "end": 633.65
+     "start": 633.29,
+     "end": 633.97
     },
     {
      "w": "los",
-     "start": 633.65,
-     "end": 633.89
+     "start": 633.97,
+     "end": 634.21
     },
     {
      "w": "dias",
-     "start": 633.89,
-     "end": 634.15
+     "start": 634.21,
+     "end": 634.47
     },
     {
      "w": "does",
-     "start": 635.05,
-     "end": 635.13
+     "start": 635.37,
+     "end": 635.45
     },
     {
      "w": "she",
-     "start": 635.13,
-     "end": 635.35
+     "start": 635.45,
+     "end": 635.67
     },
     {
      "w": "walk",
-     "start": 635.35,
-     "end": 635.53
+     "start": 635.67,
+     "end": 635.85
     },
     {
      "w": "to",
-     "start": 635.53,
-     "end": 635.69
+     "start": 635.85,
+     "end": 636.01
     },
     {
      "w": "school",
-     "start": 635.69,
-     "end": 635.89
+     "start": 636.01,
+     "end": 636.21
     },
     {
      "w": "every",
-     "start": 635.89,
-     "end": 636.17
+     "start": 636.21,
+     "end": 636.49
     },
     {
      "w": "day",
-     "start": 636.17,
-     "end": 636.69
+     "start": 636.49,
+     "end": 637.01
     },
     {
      "w": "significa",
-     "start": 636.71,
-     "end": 637.29
+     "start": 637.03,
+     "end": 637.61
     },
     {
      "w": "ella",
-     "start": 637.31,
-     "end": 637.91
+     "start": 637.63,
+     "end": 638.23
     },
     {
      "w": "anda",
-     "start": 638.53,
-     "end": 638.83
+     "start": 638.85,
+     "end": 639.15
     },
     {
      "w": "a",
-     "start": 638.83,
-     "end": 638.93
+     "start": 639.15,
+     "end": 639.25
     },
     {
      "w": "la",
-     "start": 638.93,
-     "end": 638.97
+     "start": 639.25,
+     "end": 639.29
     },
     {
      "w": "escuela",
-     "start": 638.97,
-     "end": 639.21
+     "start": 639.29,
+     "end": 639.53
     },
     {
      "w": "todos",
-     "start": 639.21,
-     "end": 639.87
+     "start": 639.53,
+     "end": 640.19
     },
     {
      "w": "los",
-     "start": 639.87,
-     "end": 640.13
+     "start": 640.19,
+     "end": 640.45
     },
     {
      "w": "dias",
-     "start": 640.13,
-     "end": 640.37
+     "start": 640.45,
+     "end": 640.69
     },
     {
      "w": "escucha",
-     "start": 641.49,
-     "end": 642.05
+     "start": 641.81,
+     "end": 642.37
     },
     {
      "w": "y",
-     "start": 642.05,
-     "end": 642.43
+     "start": 642.37,
+     "end": 642.75
     },
     {
      "w": "repite",
-     "start": 642.43,
-     "end": 643.03
+     "start": 642.75,
+     "end": 643.35
     },
     {
      "w": "la",
-     "start": 643.03,
-     "end": 643.23
+     "start": 643.35,
+     "end": 643.55
     },
     {
      "w": "frase",
-     "start": 643.23,
-     "end": 643.59
+     "start": 643.55,
+     "end": 643.91
     },
     {
      "w": "a",
-     "start": 643.59,
-     "end": 644.35
+     "start": 643.91,
+     "end": 644.67
     },
     {
      "w": "la",
-     "start": 644.35,
-     "end": 644.53
+     "start": 644.67,
+     "end": 644.85
     },
     {
      "w": "escuela",
-     "start": 644.53,
-     "end": 644.89
+     "start": 644.85,
+     "end": 645.21
     }
    ]
   },
   {
    "t": "english",
-   "start": 645.65,
-   "end": 652.11,
+   "start": 645.97,
+   "end": 652.43,
    "text": "To school. To school.",
    "words": [
     {
      "w": "to",
-     "start": 645.65,
-     "end": 645.73
+     "start": 645.97,
+     "end": 646.05
     },
     {
      "w": "school",
-     "start": 645.73,
-     "end": 646.21
+     "start": 646.05,
+     "end": 646.53
     },
     {
      "w": "to",
-     "start": 647.61,
-     "end": 648.33
+     "start": 647.93,
+     "end": 648.65
     },
     {
      "w": "school",
-     "start": 648.33,
-     "end": 648.85
+     "start": 648.65,
+     "end": 649.17
     }
    ]
   },
   {
    "t": "narration",
-   "start": 652.13,
-   "end": 660.51,
+   "start": 652.45,
+   "end": 660.83,
    "lines": [
     "No, “to the school” sino “to school”. Otra vez, SOLO escucha a su pregunta:"
    ],
    "words": [
     {
      "w": "no",
-     "start": 652.15,
-     "end": 652.15
+     "start": 652.47,
+     "end": 652.47
     },
     {
      "w": "to",
-     "start": 652.13,
-     "end": 652.41
+     "start": 652.45,
+     "end": 652.73
     },
     {
      "w": "the",
-     "start": 652.41,
-     "end": 652.57
+     "start": 652.73,
+     "end": 652.89
     },
     {
      "w": "school",
-     "start": 652.57,
-     "end": 653.01
+     "start": 652.89,
+     "end": 653.33
     },
     {
      "w": "sino",
-     "start": 653.03,
-     "end": 653.94
+     "start": 653.35,
+     "end": 654.26
     },
     {
      "w": "to",
-     "start": 654.87,
-     "end": 655.05
+     "start": 655.19,
+     "end": 655.37
     },
     {
      "w": "school",
-     "start": 655.05,
-     "end": 655.61
+     "start": 655.37,
+     "end": 655.93
     },
     {
      "w": "otra",
-     "start": 656.21,
-     "end": 657.01
+     "start": 656.53,
+     "end": 657.33
     },
     {
      "w": "vez",
-     "start": 657.01,
-     "end": 657.41
+     "start": 657.33,
+     "end": 657.73
     },
     {
      "w": "solo",
-     "start": 657.63,
-     "end": 657.95
+     "start": 657.95,
+     "end": 658.27
     },
     {
      "w": "escucha",
-     "start": 658.13,
-     "end": 658.73
+     "start": 658.45,
+     "end": 659.05
     },
     {
      "w": "a",
-     "start": 658.73,
-     "end": 658.95
+     "start": 659.05,
+     "end": 659.27
     },
     {
      "w": "su",
-     "start": 658.95,
-     "end": 659.09
+     "start": 659.27,
+     "end": 659.41
     },
     {
      "w": "pregunta",
-     "start": 659.09,
-     "end": 659.97
+     "start": 659.41,
+     "end": 660.29
     }
    ]
   },
   {
    "t": "english",
-   "start": 660.53,
-   "end": 662.77,
+   "start": 660.85,
+   "end": 663.09,
    "text": "Does she walk to school every day?",
    "words": [
     {
      "w": "does",
-     "start": 660.53,
-     "end": 660.53
+     "start": 660.85,
+     "end": 660.85
     },
     {
      "w": "she",
-     "start": 660.53,
-     "end": 660.75
+     "start": 660.85,
+     "end": 661.07
     },
     {
      "w": "walk",
-     "start": 660.75,
-     "end": 660.99
+     "start": 661.07,
+     "end": 661.31
     },
     {
      "w": "to",
-     "start": 660.99,
-     "end": 661.19
-    },
-    {
-     "w": "school",
-     "start": 661.19,
+     "start": 661.31,
      "end": 661.51
     },
     {
-     "w": "every",
+     "w": "school",
      "start": 661.51,
-     "end": 661.93
+     "end": 661.83
+    },
+    {
+     "w": "every",
+     "start": 661.83,
+     "end": 662.25
     },
     {
      "w": "day",
-     "start": 661.93,
-     "end": 662.23
+     "start": 662.25,
+     "end": 662.55
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 662.79,
-   "pauseAt": 668.21,
+   "start": 663.11,
+   "pauseAt": 668.53,
    "spanish": "Responde “sí, ella anda a la escuela todos los días.”",
    "expected": [
     "Yes, she walks to school every day."
    ],
-   "end": 668.43,
+   "end": 668.75,
    "words": []
   },
   {
    "t": "english",
-   "start": 668.45,
-   "end": 682.83,
+   "start": 668.77,
+   "end": 683.15,
    "text": "Yes, she walks to school every day. Yes, she walks to school every day.",
    "words": [
     {
      "w": "yes",
-     "start": 668.45,
-     "end": 669.17
+     "start": 668.77,
+     "end": 669.49
     },
     {
      "w": "she",
-     "start": 669.17,
-     "end": 670.25
+     "start": 669.49,
+     "end": 670.57
     },
     {
      "w": "walks",
-     "start": 670.47,
-     "end": 670.85
+     "start": 670.79,
+     "end": 671.17
     },
     {
      "w": "to",
-     "start": 670.85,
-     "end": 671.11
+     "start": 671.17,
+     "end": 671.43
     },
     {
      "w": "school",
-     "start": 671.11,
-     "end": 671.85
+     "start": 671.43,
+     "end": 672.17
     },
     {
      "w": "every",
-     "start": 671.33,
-     "end": 672.25
+     "start": 671.65,
+     "end": 672.57
     },
     {
      "w": "day",
-     "start": 672.45,
-     "end": 672.97
+     "start": 672.77,
+     "end": 673.29
     },
     {
      "w": "yes",
-     "start": 675.61,
-     "end": 676.39
+     "start": 675.93,
+     "end": 676.71
     },
     {
      "w": "she",
-     "start": 676.61,
-     "end": 677.03
+     "start": 676.93,
+     "end": 677.35
     },
     {
      "w": "walks",
-     "start": 677.03,
-     "end": 677.41
+     "start": 677.35,
+     "end": 677.73
     },
     {
      "w": "to",
-     "start": 677.41,
-     "end": 677.65
+     "start": 677.73,
+     "end": 677.97
     },
     {
      "w": "school",
-     "start": 677.65,
-     "end": 678.39
+     "start": 677.97,
+     "end": 678.71
     },
     {
      "w": "every",
-     "start": 677.89,
-     "end": 678.83
+     "start": 678.21,
+     "end": 679.15
     },
     {
      "w": "day",
-     "start": 679.03,
-     "end": 679.89
+     "start": 679.35,
+     "end": 680.21
     }
    ]
   },
   {
    "t": "narration",
-   "start": 682.85,
-   "end": 684.95,
+   "start": 683.17,
+   "end": 685.27,
    "lines": [
     "Solo escucha esta pregunta."
    ],
    "words": [
     {
      "w": "solo",
-     "start": 682.85,
-     "end": 683.17
+     "start": 683.17,
+     "end": 683.49
     },
     {
      "w": "escucha",
-     "start": 683.17,
-     "end": 683.59
+     "start": 683.49,
+     "end": 683.91
     },
     {
      "w": "esta",
-     "start": 683.59,
-     "end": 683.73
+     "start": 683.91,
+     "end": 684.05
     },
     {
      "w": "pregunta",
-     "start": 683.73,
-     "end": 684.21
+     "start": 684.05,
+     "end": 684.53
     }
    ]
   },
   {
    "t": "english",
-   "start": 684.97,
-   "end": 687.57,
+   "start": 685.29,
+   "end": 687.89,
    "text": "Do they walk to school every day?",
    "words": [
     {
      "w": "do",
-     "start": 684.97,
-     "end": 685.07
+     "start": 685.29,
+     "end": 685.39
     },
     {
      "w": "they",
-     "start": 685.07,
-     "end": 685.29
+     "start": 685.39,
+     "end": 685.61
     },
     {
      "w": "walk",
-     "start": 685.29,
-     "end": 685.57
+     "start": 685.61,
+     "end": 685.89
     },
     {
      "w": "to",
-     "start": 685.57,
-     "end": 685.77
+     "start": 685.89,
+     "end": 686.09
     },
     {
      "w": "school",
-     "start": 685.77,
-     "end": 686.11
+     "start": 686.09,
+     "end": 686.43
     },
     {
      "w": "every",
-     "start": 686.11,
-     "end": 686.51
+     "start": 686.43,
+     "end": 686.83
     },
     {
      "w": "day",
-     "start": 686.51,
-     "end": 686.89
+     "start": 686.83,
+     "end": 687.21
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 687.59,
-   "pauseAt": 693.42,
+   "start": 687.91,
+   "pauseAt": 693.74,
    "spanish": "Responde “no, ellos no andan a la escuela todos los días.”",
    "expected": [
     "No, they don't walk to school every day."
    ],
-   "end": 693.55,
+   "end": 693.87,
    "words": []
   },
   {
    "t": "english",
-   "start": 693.57,
-   "end": 707.28,
+   "start": 693.89,
+   "end": 707.6,
    "text": "No, they don’t walk to school every day. No, they don’t walk to school every day.",
    "words": [
     {
      "w": "no",
-     "start": 693.57,
-     "end": 693.91
+     "start": 693.89,
+     "end": 694.23
     },
     {
      "w": "they",
-     "start": 694.65,
-     "end": 694.95
+     "start": 694.97,
+     "end": 695.27
     },
     {
      "w": "dont",
-     "start": 694.95,
-     "end": 695.23
-    },
-    {
-     "w": "walk",
-     "start": 695.23,
+     "start": 695.27,
      "end": 695.55
     },
     {
-     "w": "to",
+     "w": "walk",
      "start": 695.55,
-     "end": 695.75
+     "end": 695.87
+    },
+    {
+     "w": "to",
+     "start": 695.87,
+     "end": 696.07
     },
     {
      "w": "school",
-     "start": 695.75,
-     "end": 696.15
+     "start": 696.07,
+     "end": 696.47
     },
     {
      "w": "every",
-     "start": 696.15,
-     "end": 696.63
+     "start": 696.47,
+     "end": 696.95
     },
     {
      "w": "day",
-     "start": 696.63,
-     "end": 697.33
+     "start": 696.95,
+     "end": 697.65
     },
     {
      "w": "no",
-     "start": 699.17,
-     "end": 699.85
+     "start": 699.49,
+     "end": 700.17
     },
     {
      "w": "they",
-     "start": 700.33,
-     "end": 700.59
+     "start": 700.65,
+     "end": 700.91
     },
     {
      "w": "dont",
-     "start": 700.59,
-     "end": 700.95
+     "start": 700.91,
+     "end": 701.27
     },
     {
      "w": "walk",
-     "start": 700.95,
-     "end": 701.17
+     "start": 701.27,
+     "end": 701.49
     },
     {
      "w": "to",
-     "start": 701.17,
-     "end": 701.37
+     "start": 701.49,
+     "end": 701.69
     },
     {
      "w": "school",
-     "start": 701.37,
-     "end": 701.79
+     "start": 701.69,
+     "end": 702.11
     },
     {
      "w": "every",
-     "start": 701.79,
-     "end": 702.41
+     "start": 702.11,
+     "end": 702.73
     },
     {
      "w": "day",
-     "start": 702.41,
-     "end": 703.17
+     "start": 702.73,
+     "end": 703.49
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 707.31,
-   "pauseAt": 710.92,
+   "start": 707.63,
+   "pauseAt": 711.24,
    "spanish": "Di “ellos no andan a la escuela todos los días.”",
    "expected": [
     "They don’t walk to school every day."
    ],
-   "end": 711.05,
+   "end": 711.37,
    "words": []
   },
   {
    "t": "english",
-   "start": 711.07,
-   "end": 717.08,
+   "start": 711.39,
+   "end": 717.4,
    "text": "They don’t walk to school every day.",
    "words": [
     {
      "w": "they",
-     "start": 711.07,
-     "end": 711.61
+     "start": 711.39,
+     "end": 711.93
     },
     {
      "w": "dont",
-     "start": 711.67,
-     "end": 712.11
+     "start": 711.99,
+     "end": 712.43
     },
     {
      "w": "walk",
-     "start": 712.11,
-     "end": 712.41
+     "start": 712.43,
+     "end": 712.73
     },
     {
      "w": "to",
-     "start": 712.41,
-     "end": 712.61
+     "start": 712.73,
+     "end": 712.93
     },
     {
      "w": "school",
-     "start": 712.61,
-     "end": 712.95
+     "start": 712.93,
+     "end": 713.27
     },
     {
      "w": "every",
-     "start": 712.95,
-     "end": 713.39
+     "start": 713.27,
+     "end": 713.71
     },
     {
      "w": "day",
-     "start": 713.39,
-     "end": 714.39
+     "start": 713.71,
+     "end": 714.71
     }
    ]
   },
   {
    "t": "narration",
-   "start": 717.1,
-   "end": 718.3,
+   "start": 717.42,
+   "end": 718.62,
    "lines": [
     "Buen trabajo."
    ],
    "words": [
     {
      "w": "Buen",
-     "start": 717.21,
-     "end": 717.83
+     "start": 717.53,
+     "end": 718.15
     },
     {
      "w": "trabajo",
-     "start": 717.83,
-     "end": 718.06
+     "start": 718.15,
+     "end": 718.38
     }
    ]
   },
   {
    "t": "narration",
-   "start": 718.73,
-   "end": 720.23,
+   "start": 719.05,
+   "end": 720.55,
    "lines": [
     "Solo escucha esta pregunta."
    ],
    "words": [
     {
      "w": "solo",
-     "start": 718.73,
-     "end": 718.95
+     "start": 719.05,
+     "end": 719.27
     },
     {
      "w": "escucha",
-     "start": 718.95,
-     "end": 719.35
+     "start": 719.27,
+     "end": 719.67
     },
     {
      "w": "esta",
-     "start": 719.35,
-     "end": 719.47
+     "start": 719.67,
+     "end": 719.79
     },
     {
      "w": "pregunta",
-     "start": 719.47,
-     "end": 720.03
+     "start": 719.79,
+     "end": 720.35
     }
    ]
   },
   {
    "t": "english",
-   "start": 720.25,
-   "end": 721.45,
+   "start": 720.57,
+   "end": 721.77,
    "text": "And you guys?",
    "words": [
     {
      "w": "and",
-     "start": 720.25,
-     "end": 720.71
+     "start": 720.57,
+     "end": 721.03
     },
     {
      "w": "you",
-     "start": 720.71,
-     "end": 720.87
+     "start": 721.03,
+     "end": 721.19
     },
     {
      "w": "guys",
-     "start": 720.87,
-     "end": 721.25
+     "start": 721.19,
+     "end": 721.57
     }
    ]
   },
   {
    "t": "narration",
-   "start": 721.47,
-   "end": 728.55,
+   "start": 721.79,
+   "end": 728.87,
    "lines": [
     "Ella acaba de preguntar “¿Y ustedes?” “¿Y ustedes?” lo que significa “and you guys?”. Para esta pregunta corta, solo usamos el pronombre de sujeto."
    ],
    "words": [
     {
      "w": "ella",
-     "start": 721.47,
-     "end": 722.17
+     "start": 721.79,
+     "end": 722.49
     },
     {
      "w": "acaba",
-     "start": 722.17,
-     "end": 722.43
+     "start": 722.49,
+     "end": 722.75
     },
     {
      "w": "de",
-     "start": 722.43,
-     "end": 722.61
+     "start": 722.75,
+     "end": 722.93
     },
     {
      "w": "preguntar",
-     "start": 722.61,
-     "end": 723.53
+     "start": 722.93,
+     "end": 723.85
     },
     {
      "w": "y",
-     "start": 723.55,
-     "end": 723.57
+     "start": 723.87,
+     "end": 723.89
     },
     {
      "w": "ustedes",
-     "start": 723.61,
-     "end": 724.13
+     "start": 723.93,
+     "end": 724.45
     },
     {
      "w": "y",
-     "start": 724.15,
-     "end": 724.47
+     "start": 724.47,
+     "end": 724.79
     },
     {
      "w": "ustedes",
-     "start": 724.49,
-     "end": 724.64
+     "start": 724.81,
+     "end": 724.96
     },
     {
      "w": "lo",
-     "start": 724.81,
-     "end": 724.97
+     "start": 725.13,
+     "end": 725.29
     },
     {
      "w": "que",
-     "start": 725.11,
-     "end": 725.31
+     "start": 725.43,
+     "end": 725.63
     },
     {
      "w": "significa",
-     "start": 725.31,
-     "end": 725.93
+     "start": 725.63,
+     "end": 726.25
     },
     {
      "w": "and",
-     "start": 726.13,
-     "end": 726.37
+     "start": 726.45,
+     "end": 726.69
     },
     {
      "w": "you",
-     "start": 726.49,
-     "end": 726.67
+     "start": 726.81,
+     "end": 726.99
     },
     {
      "w": "guys",
-     "start": 726.67,
-     "end": 726.89
+     "start": 726.99,
+     "end": 727.21
     },
     {
      "w": "para",
-     "start": 726.79,
-     "end": 727.95
+     "start": 727.11,
+     "end": 728.27
     },
     {
      "w": "esta",
-     "start": 728.09,
-     "end": 728.23
+     "start": 728.41,
+     "end": 728.55
     },
     {
      "w": "pregunta",
-     "start": 728.23,
-     "end": 728.59
+     "start": 728.55,
+     "end": 728.91
     }
    ]
   },
   {
    "t": "english",
-   "start": 728.66,
-   "end": 732.3,
+   "start": 728.98,
+   "end": 732.62,
    "text": "And you guys?",
    "words": [
     {
      "w": "And",
-     "start": 728.66,
-     "end": 729.0
+     "start": 728.98,
+     "end": 729.32
     },
     {
      "w": "you",
-     "start": 729.0,
-     "end": 729.26
+     "start": 729.32,
+     "end": 729.58
     },
     {
      "w": "guys",
-     "start": 729.26,
-     "end": 729.9
+     "start": 729.58,
+     "end": 730.22
     }
    ]
   },
   {
    "t": "narration",
-   "start": 732.4,
-   "end": 736.71,
+   "start": 732.72,
+   "end": 737.03,
    "lines": [
     "Ahora solo escucha sus próximas preguntas:"
    ],
    "words": [
     {
      "w": "ahora",
-     "start": 733.15,
-     "end": 733.43
+     "start": 733.47,
+     "end": 733.75
     },
     {
      "w": "solo",
-     "start": 733.45,
-     "end": 733.85
+     "start": 733.77,
+     "end": 734.17
     },
     {
      "w": "escucha",
-     "start": 733.85,
-     "end": 734.41
+     "start": 734.17,
+     "end": 734.73
     },
     {
      "w": "sus",
-     "start": 734.41,
-     "end": 734.71
+     "start": 734.73,
+     "end": 735.03
     },
     {
      "w": "proximas",
-     "start": 734.71,
-     "end": 735.39
+     "start": 735.03,
+     "end": 735.71
     },
     {
      "w": "preguntas",
-     "start": 735.39,
-     "end": 735.78
+     "start": 735.71,
+     "end": 736.1
     }
    ]
   },
   {
    "t": "english",
-   "start": 736.73,
-   "end": 739.61,
+   "start": 737.05,
+   "end": 739.93,
    "text": "And you guys? Do you guys walk?",
    "words": [
     {
      "w": "and",
-     "start": 736.73,
-     "end": 736.73
+     "start": 737.05,
+     "end": 737.05
     },
     {
      "w": "you",
-     "start": 736.73,
-     "end": 736.99
+     "start": 737.05,
+     "end": 737.31
     },
     {
      "w": "guys",
-     "start": 736.99,
-     "end": 737.35
+     "start": 737.31,
+     "end": 737.67
     },
     {
      "w": "do",
-     "start": 737.87,
-     "end": 738.01
+     "start": 738.19,
+     "end": 738.33
     },
     {
      "w": "you",
-     "start": 738.01,
-     "end": 738.23
+     "start": 738.33,
+     "end": 738.55
     },
     {
      "w": "guys",
-     "start": 738.23,
-     "end": 738.45
+     "start": 738.55,
+     "end": 738.77
     },
     {
      "w": "walk",
-     "start": 738.45,
-     "end": 738.75
+     "start": 738.77,
+     "end": 739.07
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 739.63,
-   "pauseAt": 742.36,
+   "start": 739.95,
+   "pauseAt": 742.68,
    "spanish": "Responde “no, no andamos.”",
    "expected": [
     "No, we don't walk."
    ],
-   "end": 741.29,
+   "end": 741.61,
    "words": []
   },
   {
    "t": "english",
-   "start": 741.31,
-   "end": 751.47,
+   "start": 741.63,
+   "end": 751.79,
    "text": "No, we don’t walk. No, we don’t walk.",
    "words": [
     {
      "w": "no",
-     "start": 741.31,
-     "end": 741.49
+     "start": 741.63,
+     "end": 741.81
     },
     {
      "w": "we",
-     "start": 743.43,
-     "end": 743.69
+     "start": 743.75,
+     "end": 744.01
     },
     {
      "w": "dont",
-     "start": 743.69,
-     "end": 746.55
+     "start": 744.01,
+     "end": 746.87
     },
     {
      "w": "walk",
-     "start": 743.85,
-     "end": 744.09
+     "start": 744.17,
+     "end": 744.41
     },
     {
      "w": "no",
-     "start": 746.49,
-     "end": 747.17
+     "start": 746.81,
+     "end": 747.49
     },
     {
      "w": "we",
-     "start": 747.83,
-     "end": 748.21
+     "start": 748.15,
+     "end": 748.53
     },
     {
      "w": "dont",
-     "start": 748.21,
-     "end": 748.55
+     "start": 748.53,
+     "end": 748.87
     },
     {
      "w": "walk",
-     "start": 748.55,
-     "end": 748.94
+     "start": 748.87,
+     "end": 749.26
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 751.49,
-   "pauseAt": 754.6,
+   "start": 751.81,
+   "pauseAt": 754.92,
    "spanish": "¿Cómo se dice “no andamos.”?",
    "expected": [
     "We don’t walk."
    ],
-   "end": 754.73,
+   "end": 755.05,
    "words": []
   },
   {
    "t": "english",
-   "start": 754.75,
-   "end": 758.73,
+   "start": 755.07,
+   "end": 759.05,
    "text": "We don’t walk.",
    "words": [
     {
      "w": "we",
-     "start": 754.75,
-     "end": 754.99
+     "start": 755.07,
+     "end": 755.31
     },
     {
      "w": "dont",
-     "start": 754.99,
-     "end": 755.27
+     "start": 755.31,
+     "end": 755.59
     },
     {
      "w": "walk",
-     "start": 755.27,
-     "end": 755.91
+     "start": 755.59,
+     "end": 756.23
     }
    ]
   },
   {
    "t": "narration",
-   "start": 758.75,
-   "end": 761.27,
+   "start": 759.07,
+   "end": 761.59,
    "lines": [
     "Escucha esta pregunta."
    ],
    "words": [
     {
      "w": "escucha",
-     "start": 758.75,
-     "end": 759.63
+     "start": 759.07,
+     "end": 759.95
     },
     {
      "w": "esta",
-     "start": 759.63,
-     "end": 759.83
+     "start": 759.95,
+     "end": 760.15
     },
     {
      "w": "pregunta",
-     "start": 759.83,
-     "end": 760.95
+     "start": 760.15,
+     "end": 761.27
     }
    ]
   },
   {
    "t": "english",
-   "start": 761.29,
-   "end": 763.2,
+   "start": 761.61,
+   "end": 763.52,
    "text": "Do you guys walk to school?",
    "words": [
     {
      "w": "Do",
-     "start": 761.29,
-     "end": 761.83
+     "start": 761.61,
+     "end": 762.15
     },
     {
      "w": "you",
-     "start": 761.83,
-     "end": 762.07
+     "start": 762.15,
+     "end": 762.39
     },
     {
      "w": "guys",
-     "start": 762.07,
-     "end": 762.25
+     "start": 762.39,
+     "end": 762.57
     },
     {
      "w": "walk",
-     "start": 762.25,
-     "end": 762.51
+     "start": 762.57,
+     "end": 762.83
     },
     {
      "w": "to",
-     "start": 762.51,
-     "end": 762.75
+     "start": 762.83,
+     "end": 763.07
     },
     {
      "w": "school",
-     "start": 762.75,
-     "end": 763.05
+     "start": 763.07,
+     "end": 763.37
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 764.38,
-   "pauseAt": 767.96,
+   "start": 764.7,
+   "pauseAt": 768.28,
    "spanish": "Responde “no, no andamos a la escuela.”",
    "expected": [
     "No, we don’t walk to school."
    ],
-   "end": 768.7,
+   "end": 769.02,
    "words": []
   },
   {
    "t": "english",
-   "start": 768.72,
-   "end": 775.18,
+   "start": 769.04,
+   "end": 775.5,
    "text": "No, we don’t walk to school.",
    "words": [
     {
      "w": "no",
-     "start": 768.72,
-     "end": 769.26
+     "start": 769.04,
+     "end": 769.58
     },
     {
      "w": "we",
-     "start": 769.5,
-     "end": 770.02
+     "start": 769.82,
+     "end": 770.34
     },
     {
      "w": "dont",
-     "start": 770.02,
-     "end": 770.22
+     "start": 770.34,
+     "end": 770.54
     },
     {
      "w": "walk",
-     "start": 770.22,
-     "end": 770.5
+     "start": 770.54,
+     "end": 770.82
     },
     {
      "w": "to",
-     "start": 770.5,
-     "end": 770.68
+     "start": 770.82,
+     "end": 771.0
     },
     {
      "w": "school",
-     "start": 770.68,
-     "end": 771.52
+     "start": 771.0,
+     "end": 771.84
     }
    ]
   },
   {
    "t": "narration",
-   "start": 775.2,
-   "end": 775.94,
+   "start": 775.52,
+   "end": 776.26,
    "lines": [
     "Perfecto."
    ],
    "words": [
     {
      "w": "perfecto",
-     "start": 775.2,
-     "end": 775.94
+     "start": 775.52,
+     "end": 776.26
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 776.22,
-   "pauseAt": 779.4,
+   "start": 776.54,
+   "pauseAt": 779.72,
    "spanish": "Di “no andamos a la escuela.”",
    "expected": [
     "We don’t walk to school."
    ],
-   "end": 780.5,
+   "end": 780.82,
    "words": []
   },
   {
    "t": "english",
-   "start": 780.52,
-   "end": 786.02,
+   "start": 780.84,
+   "end": 786.34,
    "text": "We don’t walk to school.",
    "words": [
     {
      "w": "we",
-     "start": 780.52,
-     "end": 781.4
+     "start": 780.84,
+     "end": 781.72
     },
     {
      "w": "dont",
-     "start": 781.4,
-     "end": 781.62
+     "start": 781.72,
+     "end": 781.94
     },
     {
      "w": "walk",
-     "start": 781.62,
-     "end": 781.88
+     "start": 781.94,
+     "end": 782.2
     },
     {
      "w": "to",
-     "start": 781.88,
-     "end": 782.16
+     "start": 782.2,
+     "end": 782.48
     },
     {
      "w": "school",
-     "start": 782.16,
-     "end": 782.6
+     "start": 782.48,
+     "end": 782.92
     }
    ]
   },
   {
    "t": "narration",
-   "start": 786.04,
-   "end": 786.84,
+   "start": 786.36,
+   "end": 787.16,
    "lines": [
     "Perfecto."
    ],
    "words": [
     {
      "w": "perfecto",
-     "start": 786.04,
-     "end": 786.84
+     "start": 786.36,
+     "end": 787.16
     }
    ]
   },
   {
    "t": "narration",
-   "start": 787.28,
-   "end": 788.04,
+   "start": 787.6,
+   "end": 788.36,
    "lines": [
     "Escucha esta pregunta:"
    ],
    "words": [
     {
      "w": "escucha",
-     "start": 787.28,
-     "end": 787.6
+     "start": 787.6,
+     "end": 787.92
     },
     {
      "w": "esta",
-     "start": 787.6,
-     "end": 787.76
+     "start": 787.92,
+     "end": 788.08
     },
     {
      "w": "pregunta",
-     "start": 787.76,
-     "end": 788.46
+     "start": 788.08,
+     "end": 788.78
     }
    ]
   },
   {
    "t": "english",
-   "start": 788.06,
-   "end": 790.44,
+   "start": 788.38,
+   "end": 790.76,
    "text": "Do you guys walk to school?",
    "words": [
     {
      "w": "do",
-     "start": 788.06,
-     "end": 788.96
+     "start": 788.38,
+     "end": 789.28
     },
     {
      "w": "you",
-     "start": 788.96,
-     "end": 789.2
+     "start": 789.28,
+     "end": 789.52
     },
     {
      "w": "guys",
-     "start": 789.2,
-     "end": 789.38
+     "start": 789.52,
+     "end": 789.7
     },
     {
      "w": "walk",
-     "start": 789.38,
-     "end": 789.64
+     "start": 789.7,
+     "end": 789.96
     },
     {
      "w": "to",
-     "start": 789.64,
-     "end": 789.88
+     "start": 789.96,
+     "end": 790.2
     },
     {
      "w": "school",
-     "start": 789.88,
-     "end": 790.18
+     "start": 790.2,
+     "end": 790.5
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 791.0,
-   "end": 796.72,
+   "start": 791.32,
+   "end": 797.04,
    "lines": [
     "Cómo responder “no, no andamos a la escuela todos los días.”"
    ],
    "words": [
     {
      "w": "como",
-     "start": 791.0,
-     "end": 791.56
+     "start": 791.32,
+     "end": 791.88
     },
     {
      "w": "responder",
-     "start": 791.72,
-     "end": 792.34
+     "start": 792.04,
+     "end": 792.66
     },
     {
      "w": "no",
-     "start": 792.96,
-     "end": 793.12
+     "start": 793.28,
+     "end": 793.44
     },
     {
      "w": "no",
-     "start": 793.82,
-     "end": 793.82
+     "start": 794.14,
+     "end": 794.14
     },
     {
      "w": "andamos",
-     "start": 793.82,
-     "end": 794.32
-    },
-    {
-     "w": "a",
-     "start": 794.32,
-     "end": 794.48
-    },
-    {
-     "w": "la",
-     "start": 794.48,
+     "start": 794.14,
      "end": 794.64
     },
     {
-     "w": "escuela",
+     "w": "a",
      "start": 794.64,
+     "end": 794.8
+    },
+    {
+     "w": "la",
+     "start": 794.8,
      "end": 794.96
     },
     {
-     "w": "todos",
+     "w": "escuela",
      "start": 794.96,
-     "end": 795.56
+     "end": 795.28
+    },
+    {
+     "w": "todos",
+     "start": 795.28,
+     "end": 795.88
     },
     {
      "w": "los",
-     "start": 795.56,
-     "end": 795.78
+     "start": 795.88,
+     "end": 796.1
     },
     {
      "w": "dias",
-     "start": 795.78,
-     "end": 796.12
+     "start": 796.1,
+     "end": 796.44
     }
    ],
    "spanish": "¿Cómo responder? \"no, no andamos a la escuela todos los días.\"",
    "expected": [
     "No, we don’t walk to school every day."
    ],
-   "pauseAt": 796.59
+   "pauseAt": 796.91
   },
   {
    "t": "english",
-   "start": 796.74,
-   "end": 808.52,
+   "start": 797.06,
+   "end": 808.84,
    "text": "No, we don’t walk to school every day. No, we don’t walk to school every day.",
    "words": [
     {
      "w": "no",
-     "start": 796.74,
-     "end": 797.04
+     "start": 797.06,
+     "end": 797.36
     },
     {
      "w": "we",
-     "start": 797.64,
-     "end": 797.88
+     "start": 797.96,
+     "end": 798.2
     },
     {
      "w": "dont",
-     "start": 797.88,
-     "end": 798.08
+     "start": 798.2,
+     "end": 798.4
     },
     {
      "w": "walk",
-     "start": 798.08,
-     "end": 798.34
+     "start": 798.4,
+     "end": 798.66
     },
     {
      "w": "to",
-     "start": 798.34,
-     "end": 798.54
+     "start": 798.66,
+     "end": 798.86
     },
     {
      "w": "school",
-     "start": 798.54,
-     "end": 798.74
+     "start": 798.86,
+     "end": 799.06
     },
     {
      "w": "every",
-     "start": 798.74,
-     "end": 799.08
+     "start": 799.06,
+     "end": 799.4
     },
     {
      "w": "day",
-     "start": 799.08,
-     "end": 800.08
+     "start": 799.4,
+     "end": 800.4
     },
     {
      "w": "no",
-     "start": 802.94,
-     "end": 803.5
+     "start": 803.26,
+     "end": 803.82
     },
     {
      "w": "we",
-     "start": 803.72,
-     "end": 804.22
+     "start": 804.04,
+     "end": 804.54
     },
     {
      "w": "dont",
-     "start": 804.22,
-     "end": 804.48
+     "start": 804.54,
+     "end": 804.8
     },
     {
      "w": "walk",
-     "start": 804.48,
-     "end": 804.76
+     "start": 804.8,
+     "end": 805.08
     },
     {
      "w": "to",
-     "start": 804.76,
-     "end": 804.9
+     "start": 805.08,
+     "end": 805.22
     },
     {
      "w": "school",
-     "start": 804.9,
-     "end": 805.16
-    },
-    {
-     "w": "every",
-     "start": 805.16,
+     "start": 805.22,
      "end": 805.48
     },
     {
-     "w": "day",
+     "w": "every",
      "start": 805.48,
-     "end": 806.08
+     "end": 805.8
+    },
+    {
+     "w": "day",
+     "start": 805.8,
+     "end": 806.4
     }
    ]
   },
   {
    "t": "narration",
-   "start": 808.54,
-   "end": 809.54,
+   "start": 808.86,
+   "end": 809.86,
    "lines": [
     "Buen trabajo."
    ],
    "words": [
     {
      "w": "buen trabajo",
-     "start": 808.54,
-     "end": 809.54
+     "start": 808.86,
+     "end": 809.86
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 810.18,
-   "pauseAt": 814.88,
+   "start": 810.5,
+   "pauseAt": 815.2,
    "spanish": "Di, “no andamos a la escuela todos los días.”",
    "expected": [
     "We don’t walk to school every day."
    ],
-   "end": 815.22,
+   "end": 815.54,
    "words": []
   },
   {
    "t": "english",
-   "start": 815.24,
-   "end": 820.44,
+   "start": 815.56,
+   "end": 820.76,
    "text": "We don’t walk to school every day.",
    "words": [
     {
      "w": "we",
-     "start": 815.24,
-     "end": 815.38
+     "start": 815.56,
+     "end": 815.7
     },
     {
      "w": "dont",
-     "start": 815.38,
-     "end": 815.64
+     "start": 815.7,
+     "end": 815.96
     },
     {
      "w": "walk",
-     "start": 815.64,
-     "end": 815.9
+     "start": 815.96,
+     "end": 816.22
     },
     {
      "w": "to",
-     "start": 815.9,
-     "end": 816.12
+     "start": 816.22,
+     "end": 816.44
     },
     {
      "w": "school",
-     "start": 816.12,
-     "end": 816.34
+     "start": 816.44,
+     "end": 816.66
     },
     {
      "w": "every",
-     "start": 816.34,
-     "end": 816.72
+     "start": 816.66,
+     "end": 817.04
     },
     {
      "w": "day",
-     "start": 816.72,
-     "end": 817.56
+     "start": 817.04,
+     "end": 817.88
     }
    ]
   },
   {
    "t": "narration",
-   "start": 820.46,
-   "end": 821.24,
+   "start": 820.78,
+   "end": 821.56,
    "lines": [
     "Perfecto."
    ],
    "words": [
     {
      "w": "perfecto",
-     "start": 820.46,
-     "end": 821.24
+     "start": 820.78,
+     "end": 821.56
     }
    ]
   },
   {
    "t": "narration",
-   "start": 821.62,
-   "end": 823.76,
+   "start": 821.94,
+   "end": 824.08,
    "lines": [
     "Solo escucha esta pregunta."
    ],
    "words": [
     {
      "w": "solo",
-     "start": 821.62,
-     "end": 821.9
+     "start": 821.94,
+     "end": 822.22
     },
     {
      "w": "escucha",
-     "start": 821.9,
-     "end": 822.36
+     "start": 822.22,
+     "end": 822.68
     },
     {
      "w": "esta",
-     "start": 822.36,
-     "end": 822.5
+     "start": 822.68,
+     "end": 822.82
     },
     {
      "w": "pregunta",
-     "start": 822.5,
-     "end": 823.08
+     "start": 822.82,
+     "end": 823.4
     }
    ]
   },
   {
    "t": "english",
-   "start": 823.78,
-   "end": 826.7,
+   "start": 824.1,
+   "end": 827.02,
    "text": "Do you guys speak English every day?",
    "words": [
     {
      "w": "do",
-     "start": 823.78,
-     "end": 823.96
+     "start": 824.1,
+     "end": 824.28
     },
     {
      "w": "you",
-     "start": 823.96,
-     "end": 824.16
+     "start": 824.28,
+     "end": 824.48
     },
     {
      "w": "guys",
-     "start": 824.16,
-     "end": 824.38
+     "start": 824.48,
+     "end": 824.7
     },
     {
      "w": "speak",
-     "start": 824.38,
-     "end": 824.68
+     "start": 824.7,
+     "end": 825.0
     },
     {
      "w": "english",
-     "start": 824.68,
-     "end": 825.16
+     "start": 825.0,
+     "end": 825.48
     },
     {
      "w": "every",
-     "start": 825.16,
-     "end": 825.58
+     "start": 825.48,
+     "end": 825.9
     },
     {
      "w": "day",
-     "start": 825.58,
-     "end": 825.88
+     "start": 825.9,
+     "end": 826.2
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 826.72,
-   "pauseAt": 832.94,
+   "start": 827.04,
+   "pauseAt": 833.26,
    "spanish": "Responde “sí, hablamos inglés todos los días.”",
    "expected": [
     "Yes, we speak English every day."
    ],
-   "end": 833.12,
+   "end": 833.44,
    "words": []
   },
   {
    "t": "english",
-   "start": 833.14,
-   "end": 846.94,
+   "start": 833.46,
+   "end": 847.26,
    "text": "Yes, we speak English every day. Yes, we speak English every day.",
    "words": [
     {
      "w": "yes",
-     "start": 833.14,
-     "end": 833.62
+     "start": 833.46,
+     "end": 833.94
     },
     {
      "w": "we",
-     "start": 834.44,
-     "end": 834.7
+     "start": 834.76,
+     "end": 835.02
     },
     {
      "w": "speak",
-     "start": 834.7,
-     "end": 834.98
+     "start": 835.02,
+     "end": 835.3
     },
     {
      "w": "english",
-     "start": 834.98,
-     "end": 835.46
+     "start": 835.3,
+     "end": 835.78
     },
     {
      "w": "every",
-     "start": 835.46,
-     "end": 835.94
+     "start": 835.78,
+     "end": 836.26
     },
     {
      "w": "day",
-     "start": 835.94,
-     "end": 836.94
+     "start": 836.26,
+     "end": 837.26
     },
     {
      "w": "yes",
-     "start": 839.68,
-     "end": 840.46
+     "start": 840.0,
+     "end": 840.78
     },
     {
      "w": "we",
-     "start": 841.04,
-     "end": 841.26
+     "start": 841.36,
+     "end": 841.58
     },
     {
      "w": "speak",
-     "start": 841.26,
-     "end": 841.54
+     "start": 841.58,
+     "end": 841.86
     },
     {
      "w": "english",
-     "start": 841.54,
-     "end": 841.9
+     "start": 841.86,
+     "end": 842.22
     },
     {
      "w": "every",
-     "start": 841.9,
-     "end": 842.18
+     "start": 842.22,
+     "end": 842.5
     },
     {
      "w": "day",
-     "start": 842.18,
-     "end": 842.46
+     "start": 842.5,
+     "end": 842.78
     }
    ]
   },
   {
    "t": "narration",
-   "start": 846.96,
-   "end": 847.4,
+   "start": 847.28,
+   "end": 847.72,
    "lines": [
     "Perfecto."
    ],
    "words": [
     {
      "w": "perfecto",
-     "start": 846.96,
-     "end": 847.54
+     "start": 847.28,
+     "end": 847.86
     }
    ]
   },
   {
    "t": "narration",
-   "start": 847.42,
-   "end": 849.98,
+   "start": 847.74,
+   "end": 850.3,
    "lines": [
     "Solo escucha esta pregunta."
    ],
    "words": [
     {
      "w": "solo",
-     "start": 847.42,
-     "end": 848.04
+     "start": 847.74,
+     "end": 848.36
     },
     {
      "w": "escucha",
-     "start": 848.18,
-     "end": 848.58
+     "start": 848.5,
+     "end": 848.9
     },
     {
      "w": "esta",
-     "start": 848.58,
-     "end": 848.7
+     "start": 848.9,
+     "end": 849.02
     },
     {
      "w": "pregunta",
-     "start": 848.7,
-     "end": 849.42
+     "start": 849.02,
+     "end": 849.74
     }
    ]
   },
   {
    "t": "english",
-   "start": 850.0,
-   "end": 853.3,
+   "start": 850.32,
+   "end": 853.62,
    "text": "Do you guys speak English at school every day?",
    "words": [
     {
      "w": "do",
-     "start": 850.0,
-     "end": 850.04
+     "start": 850.32,
+     "end": 850.36
     },
     {
      "w": "you",
-     "start": 850.04,
-     "end": 850.2
+     "start": 850.36,
+     "end": 850.52
     },
     {
      "w": "guys",
-     "start": 850.2,
-     "end": 850.42
+     "start": 850.52,
+     "end": 850.74
     },
     {
      "w": "speak",
-     "start": 850.42,
-     "end": 850.66
+     "start": 850.74,
+     "end": 850.98
     },
     {
      "w": "english",
-     "start": 850.66,
-     "end": 851.06
+     "start": 850.98,
+     "end": 851.38
     },
     {
      "w": "at",
-     "start": 851.06,
-     "end": 851.36
+     "start": 851.38,
+     "end": 851.68
     },
     {
      "w": "school",
-     "start": 851.36,
-     "end": 851.7
+     "start": 851.68,
+     "end": 852.02
     },
     {
      "w": "every",
-     "start": 851.7,
-     "end": 852.14
+     "start": 852.02,
+     "end": 852.46
     },
     {
      "w": "day",
-     "start": 852.14,
-     "end": 852.42
+     "start": 852.46,
+     "end": 852.74
     }
    ]
   },
   {
    "t": "narration",
-   "start": 853.32,
-   "end": 870.72,
+   "start": 853.64,
+   "end": 871.04,
    "lines": [
     "Ella acaba de preguntar, “¿ustedes hablan inglés en la escuela todos los días?” \"Do you guys speak English at school every day?\" Significa “¿ustedes hablan inglés en la escuela todos los días?”. Escucha la pregunta otra vez."
    ],
    "words": [
     {
      "w": "ella",
-     "start": 853.32,
-     "end": 853.7
+     "start": 853.64,
+     "end": 854.02
     },
     {
      "w": "acaba",
-     "start": 853.72,
-     "end": 853.88
+     "start": 854.04,
+     "end": 854.2
     },
     {
      "w": "de",
-     "start": 854.06,
-     "end": 854.06
+     "start": 854.38,
+     "end": 854.38
     },
     {
      "w": "preguntar",
-     "start": 854.06,
-     "end": 855.18
+     "start": 854.38,
+     "end": 855.5
     },
     {
      "w": "ustedes",
-     "start": 855.36,
-     "end": 856.22
+     "start": 855.68,
+     "end": 856.54
     },
     {
      "w": "hablan",
-     "start": 856.32,
-     "end": 856.64
+     "start": 856.64,
+     "end": 856.96
     },
     {
      "w": "inglés",
-     "start": 856.64,
-     "end": 856.98
+     "start": 856.96,
+     "end": 857.3
     },
     {
      "w": "en",
-     "start": 856.88,
-     "end": 857.12
+     "start": 857.2,
+     "end": 857.44
     },
     {
      "w": "la",
-     "start": 857.12,
-     "end": 857.4
+     "start": 857.44,
+     "end": 857.72
     },
     {
      "w": "escuela",
-     "start": 857.4,
-     "end": 857.82
+     "start": 857.72,
+     "end": 858.14
     },
     {
      "w": "todos",
-     "start": 857.82,
-     "end": 858.42
+     "start": 858.14,
+     "end": 858.74
     },
     {
      "w": "los",
-     "start": 858.42,
-     "end": 858.68
+     "start": 858.74,
+     "end": 859.0
     },
     {
      "w": "dias",
-     "start": 858.68,
-     "end": 859.06
+     "start": 859.0,
+     "end": 859.38
     },
     {
      "w": "do",
-     "start": 859.74,
-     "end": 860.28
+     "start": 860.06,
+     "end": 860.6
     },
     {
      "w": "you",
-     "start": 860.28,
-     "end": 860.42
+     "start": 860.6,
+     "end": 860.74
     },
     {
      "w": "guys",
-     "start": 860.42,
-     "end": 860.54
+     "start": 860.74,
+     "end": 860.86
     },
     {
      "w": "speak",
-     "start": 860.54,
-     "end": 860.84
+     "start": 860.86,
+     "end": 861.16
     },
     {
      "w": "english",
-     "start": 860.84,
-     "end": 861.24
+     "start": 861.16,
+     "end": 861.56
     },
     {
      "w": "at",
-     "start": 861.24,
-     "end": 861.52
+     "start": 861.56,
+     "end": 861.84
     },
     {
      "w": "school",
-     "start": 861.52,
-     "end": 861.76
+     "start": 861.84,
+     "end": 862.08
     },
     {
      "w": "every",
-     "start": 861.76,
-     "end": 862.0
-    },
-    {
-     "w": "day",
-     "start": 862.0,
+     "start": 862.08,
      "end": 862.32
     },
     {
+     "w": "day",
+     "start": 862.32,
+     "end": 862.64
+    },
+    {
      "w": "significa",
-     "start": 863.04,
-     "end": 863.8
+     "start": 863.36,
+     "end": 864.12
     },
     {
      "w": "ustedes",
-     "start": 864.62,
-     "end": 865.32
+     "start": 864.94,
+     "end": 865.64
     },
     {
      "w": "hablan",
-     "start": 865.42,
-     "end": 865.72
+     "start": 865.74,
+     "end": 866.04
     },
     {
      "w": "inglés",
-     "start": 865.72,
-     "end": 866.06
+     "start": 866.04,
+     "end": 866.38
     },
     {
      "w": "en",
-     "start": 865.96,
-     "end": 866.16
+     "start": 866.28,
+     "end": 866.48
     },
     {
      "w": "la",
-     "start": 866.16,
-     "end": 866.44
+     "start": 866.48,
+     "end": 866.76
     },
     {
      "w": "escuela",
-     "start": 866.44,
-     "end": 866.74
+     "start": 866.76,
+     "end": 867.06
     },
     {
      "w": "todos",
-     "start": 866.74,
-     "end": 867.24
+     "start": 867.06,
+     "end": 867.56
     },
     {
      "w": "los",
-     "start": 867.24,
-     "end": 867.44
+     "start": 867.56,
+     "end": 867.76
     },
     {
      "w": "dias",
-     "start": 867.44,
-     "end": 867.84
+     "start": 867.76,
+     "end": 868.16
     },
     {
      "w": "escucha",
-     "start": 868.72,
-     "end": 869.22
+     "start": 869.04,
+     "end": 869.54
     },
     {
      "w": "la",
-     "start": 869.22,
-     "end": 869.42
+     "start": 869.54,
+     "end": 869.74
     },
     {
      "w": "pregunta",
-     "start": 869.42,
-     "end": 869.72
+     "start": 869.74,
+     "end": 870.04
     },
     {
      "w": "otra",
-     "start": 869.72,
-     "end": 870.08
+     "start": 870.04,
+     "end": 870.4
     },
     {
      "w": "vez",
-     "start": 870.08,
-     "end": 870.46
+     "start": 870.4,
+     "end": 870.78
     }
    ]
   },
   {
    "t": "english",
-   "start": 870.74,
-   "end": 874.14,
+   "start": 871.06,
+   "end": 874.46,
    "text": "Do you guys speak English at school every day?",
    "words": [
     {
      "w": "do",
-     "start": 870.74,
-     "end": 871.04
+     "start": 871.06,
+     "end": 871.36
     },
     {
      "w": "you",
-     "start": 871.04,
-     "end": 871.18
+     "start": 871.36,
+     "end": 871.5
     },
     {
      "w": "guys",
-     "start": 871.18,
-     "end": 871.34
+     "start": 871.5,
+     "end": 871.66
     },
     {
      "w": "speak",
-     "start": 871.34,
-     "end": 871.56
+     "start": 871.66,
+     "end": 871.88
     },
     {
      "w": "english",
-     "start": 871.56,
-     "end": 871.94
+     "start": 871.88,
+     "end": 872.26
     },
     {
      "w": "at",
-     "start": 871.94,
-     "end": 872.24
+     "start": 872.26,
+     "end": 872.56
     },
     {
      "w": "school",
-     "start": 872.24,
-     "end": 872.6
+     "start": 872.56,
+     "end": 872.92
     },
     {
      "w": "every",
-     "start": 872.6,
-     "end": 872.96
+     "start": 872.92,
+     "end": 873.28
     },
     {
      "w": "day",
-     "start": 872.96,
-     "end": 873.3
+     "start": 873.28,
+     "end": 873.62
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 874.16,
-   "pauseAt": 879.89,
+   "start": 874.48,
+   "pauseAt": 880.21,
    "spanish": "Responde, “sí, hablamos inglés en la escuela todos los días.”",
    "expected": [
     "Yes, we speak English at school every day."
    ],
-   "end": 880.02,
+   "end": 880.34,
    "words": []
   },
   {
    "t": "english",
-   "start": 880.04,
-   "end": 894.42,
+   "start": 880.36,
+   "end": 894.74,
    "text": "Yes, we speak English at school every day. Yes, we speak English at school every day.",
    "words": [
     {
      "w": "yes",
-     "start": 880.04,
-     "end": 880.48
+     "start": 880.36,
+     "end": 880.8
     },
     {
      "w": "we",
-     "start": 880.82,
-     "end": 881.08
+     "start": 881.14,
+     "end": 881.4
     },
     {
      "w": "speak",
-     "start": 881.08,
-     "end": 881.32
+     "start": 881.4,
+     "end": 881.64
     },
     {
      "w": "english",
-     "start": 881.32,
-     "end": 881.68
+     "start": 881.64,
+     "end": 882.0
     },
     {
      "w": "at",
-     "start": 881.68,
-     "end": 881.96
+     "start": 882.0,
+     "end": 882.28
     },
     {
      "w": "school",
-     "start": 881.96,
-     "end": 882.58
+     "start": 882.28,
+     "end": 882.9
     },
     {
      "w": "every",
-     "start": 882.12,
-     "end": 882.94
+     "start": 882.44,
+     "end": 883.26
     },
     {
      "w": "day",
-     "start": 883.08,
-     "end": 883.08
+     "start": 883.4,
+     "end": 883.4
     },
     {
      "w": "yes",
-     "start": 887.54,
-     "end": 888.16
+     "start": 887.86,
+     "end": 888.48
     },
     {
      "w": "we",
-     "start": 888.84,
-     "end": 889.08
+     "start": 889.16,
+     "end": 889.4
     },
     {
      "w": "speak",
-     "start": 889.08,
-     "end": 889.34
+     "start": 889.4,
+     "end": 889.66
     },
     {
      "w": "english",
-     "start": 889.34,
-     "end": 889.64
+     "start": 889.66,
+     "end": 889.96
     },
     {
      "w": "at",
-     "start": 889.64,
-     "end": 889.9
+     "start": 889.96,
+     "end": 890.22
     },
     {
      "w": "school",
-     "start": 889.9,
-     "end": 890.2
+     "start": 890.22,
+     "end": 890.52
     },
     {
      "w": "every",
-     "start": 890.2,
-     "end": 890.6
+     "start": 890.52,
+     "end": 890.92
     },
     {
      "w": "day",
-     "start": 890.6,
-     "end": 891.9
+     "start": 890.92,
+     "end": 892.22
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 894.44,
-   "pauseAt": 898.97,
+   "start": 894.76,
+   "pauseAt": 899.29,
    "spanish": "Di, “hablamos inglés en la escuela.”",
    "expected": [
     "We speak English at school."
    ],
-   "end": 899.16,
+   "end": 899.48,
    "words": []
   },
   {
    "t": "english",
-   "start": 899.18,
-   "end": 901.81,
+   "start": 899.5,
+   "end": 902.13,
    "text": "We speak English at school.",
    "words": [
     {
      "w": "we",
-     "start": 899.18,
-     "end": 899.44
+     "start": 899.5,
+     "end": 899.76
     },
     {
      "w": "speak",
-     "start": 899.44,
-     "end": 899.74
+     "start": 899.76,
+     "end": 900.06
     },
     {
      "w": "english",
-     "start": 899.74,
-     "end": 900.1
+     "start": 900.06,
+     "end": 900.42
     },
     {
      "w": "at",
-     "start": 900.1,
-     "end": 900.38
+     "start": 900.42,
+     "end": 900.7
     },
     {
      "w": "school",
-     "start": 900.38,
-     "end": 900.88
+     "start": 900.7,
+     "end": 901.2
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 901.83,
-   "pauseAt": 908.44,
+   "start": 902.15,
+   "pauseAt": 908.76,
    "spanish": "Ahora di, “hablamos inglés en la escuela todos los días.”",
    "expected": [
     "We speak English at school every day."
    ],
-   "end": 908.86,
-   "leadEnd": 901.86,
+   "end": 909.18,
+   "leadEnd": 902.18,
    "words": []
   },
   {
    "t": "english",
-   "start": 908.88,
-   "end": 914.66,
+   "start": 909.2,
+   "end": 914.98,
    "text": "We speak English at school every day.",
    "words": [
     {
      "w": "we",
-     "start": 908.88,
-     "end": 908.96
+     "start": 909.2,
+     "end": 909.28
     },
     {
      "w": "speak",
-     "start": 909.06,
-     "end": 909.34
+     "start": 909.38,
+     "end": 909.66
     },
     {
      "w": "english",
-     "start": 909.34,
-     "end": 909.68
+     "start": 909.66,
+     "end": 910.0
     },
     {
      "w": "at",
-     "start": 909.68,
-     "end": 909.9
+     "start": 910.0,
+     "end": 910.22
     },
     {
      "w": "school",
-     "start": 909.9,
-     "end": 910.58
+     "start": 910.22,
+     "end": 910.9
     },
     {
      "w": "every",
-     "start": 910.1,
-     "end": 911.02
+     "start": 910.42,
+     "end": 911.34
     },
     {
      "w": "day",
-     "start": 911.2,
-     "end": 911.94
+     "start": 911.52,
+     "end": 912.26
     }
    ]
   },
   {
    "t": "narration",
-   "start": 914.68,
-   "end": 915.98,
+   "start": 915.0,
+   "end": 916.3,
    "lines": [
     "Buen trabajo."
    ],
    "words": [
     {
      "w": "buen",
-     "start": 914.76,
-     "end": 915.44
+     "start": 915.08,
+     "end": 915.76
     },
     {
      "w": "trabajo",
-     "start": 915.44,
-     "end": 915.78
+     "start": 915.76,
+     "end": 916.1
     }
    ]
   },
   {
    "t": "narration",
-   "start": 917.4,
-   "end": 927.04,
+   "start": 917.72,
+   "end": 927.36,
    "lines": [
     "Ahora escucha la misma conversación que escuchaste al comienzo de la lección. A ver si ahora todo tiene sentido para ti."
    ],
    "words": [
     {
      "w": "ahora",
-     "start": 917.4,
-     "end": 917.7
+     "start": 917.72,
+     "end": 918.02
     },
     {
      "w": "escucha",
-     "start": 917.7,
-     "end": 918.26
+     "start": 918.02,
+     "end": 918.58
     },
     {
      "w": "la",
-     "start": 918.0,
-     "end": 918.1
+     "start": 918.32,
+     "end": 918.42
     },
     {
      "w": "misma",
-     "start": 918.46,
-     "end": 918.82
+     "start": 918.78,
+     "end": 919.14
     },
     {
      "w": "conversacion",
-     "start": 918.82,
-     "end": 919.68
+     "start": 919.14,
+     "end": 920.0
     },
     {
      "w": "que",
-     "start": 919.68,
-     "end": 919.9
+     "start": 920.0,
+     "end": 920.22
     },
     {
      "w": "escuchaste",
-     "start": 919.9,
-     "end": 920.44
+     "start": 920.22,
+     "end": 920.76
     },
     {
      "w": "al",
-     "start": 920.44,
-     "end": 920.72
+     "start": 920.76,
+     "end": 921.04
     },
     {
      "w": "comienzo",
-     "start": 920.72,
-     "end": 921.22
+     "start": 921.04,
+     "end": 921.54
     },
     {
      "w": "de",
-     "start": 921.22,
-     "end": 921.34
+     "start": 921.54,
+     "end": 921.66
     },
     {
      "w": "la",
-     "start": 921.34,
-     "end": 921.5
+     "start": 921.66,
+     "end": 921.82
     },
     {
      "w": "leccion",
-     "start": 921.5,
-     "end": 922.04
+     "start": 921.82,
+     "end": 922.36
     }
    ]
   },
   {
    "t": "english",
-   "start": 927.06,
-   "end": 929.3,
+   "start": 927.38,
+   "end": 929.62,
    "text": "Do you speak English?",
    "words": [
     {
      "w": "do",
-     "start": 927.06,
-     "end": 927.7
+     "start": 927.38,
+     "end": 928.02
     },
     {
      "w": "you",
-     "start": 927.7,
-     "end": 927.9
+     "start": 928.02,
+     "end": 928.22
     },
     {
      "w": "speak",
-     "start": 927.9,
-     "end": 928.12
+     "start": 928.22,
+     "end": 928.44
     },
     {
      "w": "english",
-     "start": 928.12,
-     "end": 928.5
+     "start": 928.44,
+     "end": 928.82
     }
    ]
   },
   {
    "t": "english",
-   "start": 929.32,
-   "end": 931.0,
+   "start": 929.64,
+   "end": 931.32,
    "text": "Yes, I speak English.",
    "words": [
     {
      "w": "yes",
-     "start": 929.32,
-     "end": 929.6
+     "start": 929.64,
+     "end": 929.92
     },
     {
      "w": "i",
-     "start": 930.04,
-     "end": 930.28
+     "start": 930.36,
+     "end": 930.6
     },
     {
      "w": "speak",
-     "start": 930.28,
-     "end": 930.56
+     "start": 930.6,
+     "end": 930.88
     },
     {
      "w": "english",
-     "start": 930.56,
-     "end": 931.02
+     "start": 930.88,
+     "end": 931.34
     }
    ]
   },
   {
    "t": "english",
-   "start": 931.02,
-   "end": 934.4,
+   "start": 931.34,
+   "end": 934.72,
    "text": "Do you speak English at school?",
    "words": [
     {
      "w": "do",
-     "start": 931.02,
-     "end": 932.1
+     "start": 931.34,
+     "end": 932.42
     },
     {
      "w": "you",
-     "start": 932.1,
-     "end": 932.26
+     "start": 932.42,
+     "end": 932.58
     },
     {
      "w": "speak",
-     "start": 932.26,
-     "end": 932.48
+     "start": 932.58,
+     "end": 932.8
     },
     {
      "w": "english",
-     "start": 932.48,
-     "end": 932.9
+     "start": 932.8,
+     "end": 933.22
     },
     {
      "w": "at",
-     "start": 932.9,
-     "end": 933.38
+     "start": 933.22,
+     "end": 933.7
     },
     {
      "w": "school",
-     "start": 933.38,
-     "end": 933.72
+     "start": 933.7,
+     "end": 934.04
     }
    ]
   },
   {
    "t": "english",
-   "start": 934.42,
-   "end": 937.68,
+   "start": 934.74,
+   "end": 938.0,
    "text": "Yes, we all speak English at school.",
    "words": [
     {
      "w": "yes",
-     "start": 934.42,
-     "end": 934.82
+     "start": 934.74,
+     "end": 935.14
     },
     {
      "w": "we",
-     "start": 935.28,
-     "end": 935.48
+     "start": 935.6,
+     "end": 935.8
     },
     {
      "w": "all",
-     "start": 935.48,
-     "end": 935.76
+     "start": 935.8,
+     "end": 936.08
     },
     {
      "w": "speak",
-     "start": 935.76,
-     "end": 936.0
+     "start": 936.08,
+     "end": 936.32
     },
     {
      "w": "english",
-     "start": 936.0,
-     "end": 936.4
+     "start": 936.32,
+     "end": 936.72
     },
     {
      "w": "at",
-     "start": 936.4,
-     "end": 936.66
+     "start": 936.72,
+     "end": 936.98
     },
     {
      "w": "school",
-     "start": 936.66,
-     "end": 936.98
+     "start": 936.98,
+     "end": 937.3
     }
    ]
   },
   {
    "t": "english",
-   "start": 937.7,
-   "end": 939.4,
+   "start": 938.02,
+   "end": 939.72,
    "text": "Do you walk to school?",
    "words": [
     {
      "w": "do",
-     "start": 937.7,
-     "end": 938.0
+     "start": 938.02,
+     "end": 938.32
     },
     {
      "w": "you",
-     "start": 938.0,
-     "end": 938.14
+     "start": 938.32,
+     "end": 938.46
     },
     {
      "w": "walk",
-     "start": 938.14,
-     "end": 938.44
+     "start": 938.46,
+     "end": 938.76
     },
     {
      "w": "to",
-     "start": 938.44,
-     "end": 938.64
+     "start": 938.76,
+     "end": 938.96
     },
     {
      "w": "school",
-     "start": 938.64,
-     "end": 938.88
+     "start": 938.96,
+     "end": 939.2
     }
    ]
   },
   {
    "t": "english",
-   "start": 939.42,
-   "end": 943.68,
+   "start": 939.74,
+   "end": 944.0,
    "text": "Yes, I walk to school in the morning. Do you walk to school?",
    "words": [
     {
      "w": "yes",
-     "start": 939.42,
-     "end": 939.72
+     "start": 939.74,
+     "end": 940.04
     },
     {
      "w": "i",
-     "start": 940.24,
-     "end": 940.4
+     "start": 940.56,
+     "end": 940.72
     },
     {
      "w": "walk",
-     "start": 940.4,
-     "end": 940.62
+     "start": 940.72,
+     "end": 940.94
     },
     {
      "w": "to",
-     "start": 940.62,
-     "end": 940.8
+     "start": 940.94,
+     "end": 941.12
     },
     {
      "w": "school",
-     "start": 940.8,
-     "end": 941.08
+     "start": 941.12,
+     "end": 941.4
     },
     {
      "w": "in",
-     "start": 941.08,
-     "end": 941.28
+     "start": 941.4,
+     "end": 941.6
     },
     {
      "w": "the",
-     "start": 941.28,
-     "end": 941.36
+     "start": 941.6,
+     "end": 941.68
     },
     {
      "w": "morning",
-     "start": 941.36,
-     "end": 941.64
+     "start": 941.68,
+     "end": 941.96
     },
     {
      "w": "do",
-     "start": 942.26,
-     "end": 942.44
+     "start": 942.58,
+     "end": 942.76
     },
     {
      "w": "you",
-     "start": 942.44,
-     "end": 942.64
+     "start": 942.76,
+     "end": 942.96
     },
     {
      "w": "walk",
-     "start": 942.64,
-     "end": 942.84
+     "start": 942.96,
+     "end": 943.16
     },
     {
      "w": "to",
-     "start": 942.84,
-     "end": 943.0
+     "start": 943.16,
+     "end": 943.32
     },
     {
      "w": "school",
-     "start": 943.0,
-     "end": 943.26
+     "start": 943.32,
+     "end": 943.58
     }
    ]
   },
   {
    "t": "english",
-   "start": 943.7,
-   "end": 951.04,
+   "start": 944.02,
+   "end": 951.36,
    "text": "Yes, I walk to school every day. And your friend? Do you guys walk to school together?",
    "words": [
     {
      "w": "yes",
-     "start": 943.7,
-     "end": 944.1
+     "start": 944.02,
+     "end": 944.42
     },
     {
      "w": "i",
-     "start": 944.84,
-     "end": 945.1
+     "start": 945.16,
+     "end": 945.42
     },
     {
      "w": "walk",
-     "start": 945.1,
-     "end": 945.32
+     "start": 945.42,
+     "end": 945.64
     },
     {
      "w": "to",
-     "start": 945.32,
-     "end": 945.48
+     "start": 945.64,
+     "end": 945.8
     },
     {
      "w": "school",
-     "start": 945.48,
-     "end": 945.76
+     "start": 945.8,
+     "end": 946.08
     },
     {
      "w": "every",
-     "start": 945.76,
-     "end": 945.98
+     "start": 946.08,
+     "end": 946.3
     },
     {
      "w": "day",
-     "start": 945.98,
-     "end": 946.24
+     "start": 946.3,
+     "end": 946.56
     },
     {
      "w": "and",
-     "start": 946.86,
-     "end": 947.1
+     "start": 947.18,
+     "end": 947.42
     },
     {
      "w": "your",
-     "start": 947.1,
-     "end": 947.22
+     "start": 947.42,
+     "end": 947.54
     },
     {
      "w": "friend",
-     "start": 947.22,
-     "end": 947.5
+     "start": 947.54,
+     "end": 947.82
     },
     {
      "w": "do",
-     "start": 948.12,
-     "end": 948.38
+     "start": 948.44,
+     "end": 948.7
     },
     {
      "w": "you",
-     "start": 948.38,
-     "end": 948.6
+     "start": 948.7,
+     "end": 948.92
     },
     {
      "w": "guys",
-     "start": 948.6,
-     "end": 949.0
+     "start": 948.92,
+     "end": 949.32
     },
     {
      "w": "walk",
-     "start": 949.0,
-     "end": 949.4
+     "start": 949.32,
+     "end": 949.72
     },
     {
      "w": "to",
-     "start": 949.4,
-     "end": 949.64
+     "start": 949.72,
+     "end": 949.96
     },
     {
      "w": "school",
-     "start": 949.64,
-     "end": 949.9
+     "start": 949.96,
+     "end": 950.22
     },
     {
      "w": "together",
-     "start": 949.9,
-     "end": 950.22
+     "start": 950.22,
+     "end": 950.54
     }
    ]
   },
   {
    "t": "english",
-   "start": 951.06,
-   "end": 955.38,
+   "start": 951.38,
+   "end": 955.7,
    "text": "No, she doesn’t walk to school. She goes to school by motorbike.",
    "words": [
     {
      "w": "no",
-     "start": 951.06,
-     "end": 951.52
+     "start": 951.38,
+     "end": 951.84
     },
     {
      "w": "she",
-     "start": 951.86,
-     "end": 952.04
+     "start": 952.18,
+     "end": 952.36
     },
     {
      "w": "doesnt",
-     "start": 952.04,
-     "end": 952.38
+     "start": 952.36,
+     "end": 952.7
     },
     {
      "w": "walk",
-     "start": 952.38,
-     "end": 952.54
+     "start": 952.7,
+     "end": 952.86
     },
     {
      "w": "to",
-     "start": 952.54,
-     "end": 952.74
+     "start": 952.86,
+     "end": 953.06
     },
     {
      "w": "school",
-     "start": 952.74,
-     "end": 953.04
+     "start": 953.06,
+     "end": 953.36
     },
     {
      "w": "she",
-     "start": 953.56,
-     "end": 953.82
+     "start": 953.88,
+     "end": 954.14
     },
     {
      "w": "goes",
-     "start": 953.82,
-     "end": 954.04
+     "start": 954.14,
+     "end": 954.36
     },
     {
      "w": "to",
-     "start": 954.04,
-     "end": 954.28
+     "start": 954.36,
+     "end": 954.6
     },
     {
      "w": "school",
-     "start": 954.28,
-     "end": 954.56
+     "start": 954.6,
+     "end": 954.88
     },
     {
      "w": "by",
-     "start": 954.56,
-     "end": 954.8
+     "start": 954.88,
+     "end": 955.12
     },
     {
      "w": "motorbike",
-     "start": 954.8,
-     "end": 955.38
+     "start": 955.12,
+     "end": 955.7
     }
    ]
   },
   {
    "t": "narration",
-   "start": 957.15,
-   "end": 961.7,
+   "start": 957.47,
+   "end": 962.02,
    "lines": [
     "Ella acaba de decir, “She goes to school by motorbike.”"
    ],
    "words": [
     {
      "w": "Ella",
-     "start": 957.22,
-     "end": 957.82
+     "start": 957.54,
+     "end": 958.14
     },
     {
      "w": "acaba",
-     "start": 957.82,
-     "end": 958.16
+     "start": 958.14,
+     "end": 958.48
     },
     {
      "w": "de",
-     "start": 958.16,
-     "end": 958.4
+     "start": 958.48,
+     "end": 958.72
     },
     {
      "w": "decir",
-     "start": 958.4,
-     "end": 958.7
+     "start": 958.72,
+     "end": 959.02
     },
     {
      "w": "she",
-     "start": 958.7,
-     "end": 959.46
+     "start": 959.02,
+     "end": 959.78
     },
     {
      "w": "goes",
-     "start": 959.46,
-     "end": 959.76
+     "start": 959.78,
+     "end": 960.08
     },
     {
      "w": "to",
-     "start": 959.76,
-     "end": 960.02
+     "start": 960.08,
+     "end": 960.34
     },
     {
      "w": "school",
-     "start": 960.02,
-     "end": 960.36
+     "start": 960.34,
+     "end": 960.68
     },
     {
      "w": "by",
-     "start": 960.36,
-     "end": 960.66
+     "start": 960.68,
+     "end": 960.98
     },
     {
      "w": "motorbike.",
-     "start": 960.66,
-     "end": 961.52
+     "start": 960.98,
+     "end": 961.84
     }
    ]
   },
   {
    "t": "narration",
-   "start": 962.15,
-   "end": 965.75,
+   "start": 962.47,
+   "end": 966.07,
    "lines": [
     "Lo que significa: “Ella va a la escuela en moto.”"
    ],
    "words": [
     {
      "w": "Lo",
-     "start": 962.22,
-     "end": 962.48
+     "start": 962.54,
+     "end": 962.8
     },
     {
      "w": "que",
-     "start": 962.48,
-     "end": 962.64
+     "start": 962.8,
+     "end": 962.96
     },
     {
      "w": "significa",
-     "start": 962.64,
-     "end": 963.28
+     "start": 962.96,
+     "end": 963.6
     },
     {
      "w": "ella",
-     "start": 963.28,
-     "end": 964.3
+     "start": 963.6,
+     "end": 964.62
     },
     {
      "w": "va",
-     "start": 964.3,
-     "end": 964.6
+     "start": 964.62,
+     "end": 964.92
     },
     {
      "w": "a",
-     "start": 964.6,
-     "end": 964.74
+     "start": 964.92,
+     "end": 965.06
     },
     {
      "w": "la",
-     "start": 964.74,
-     "end": 964.74
+     "start": 965.06,
+     "end": 965.06
     },
     {
      "w": "escuela",
-     "start": 964.74,
-     "end": 965.04
+     "start": 965.06,
+     "end": 965.36
     },
     {
      "w": "en",
-     "start": 965.04,
-     "end": 965.3
+     "start": 965.36,
+     "end": 965.62
     },
     {
      "w": "moto.",
-     "start": 965.3,
-     "end": 965.56
+     "start": 965.62,
+     "end": 965.88
     }
    ]
   },
   {
    "t": "narration",
-   "start": 966.55,
-   "end": 971.45,
+   "start": 966.87,
+   "end": 971.77,
    "lines": [
     "“Motorbike” es una forma corta de la palabra “motorcycle”."
    ],
    "words": [
     {
      "w": "Motorbike",
-     "start": 966.64,
-     "end": 967.24
+     "start": 966.96,
+     "end": 967.56
     },
     {
      "w": "es",
-     "start": 967.24,
-     "end": 967.48
+     "start": 967.56,
+     "end": 967.8
     },
     {
      "w": "una",
-     "start": 967.48,
-     "end": 967.64
+     "start": 967.8,
+     "end": 967.96
     },
     {
      "w": "forma",
-     "start": 967.64,
-     "end": 967.98
+     "start": 967.96,
+     "end": 968.3
     },
     {
      "w": "corta",
-     "start": 967.98,
-     "end": 968.9
+     "start": 968.3,
+     "end": 969.22
     },
     {
      "w": "de",
-     "start": 968.9,
-     "end": 969.18
+     "start": 969.22,
+     "end": 969.5
     },
     {
      "w": "la",
-     "start": 969.18,
-     "end": 969.48
+     "start": 969.5,
+     "end": 969.8
     },
     {
      "w": "palabra",
-     "start": 969.48,
-     "end": 969.94
+     "start": 969.8,
+     "end": 970.26
     },
     {
      "w": "motorcycle.",
-     "start": 969.94,
-     "end": 971.28
+     "start": 970.26,
+     "end": 971.6
     }
    ]
   },
   {
    "t": "narration",
-   "start": 972.15,
-   "end": 974.88,
+   "start": 972.47,
+   "end": 975.2,
    "lines": [
     "La que significa: “motocicleta.”"
    ],
    "words": [
     {
      "w": "La",
-     "start": 972.22,
-     "end": 972.68
+     "start": 972.54,
+     "end": 973.0
     },
     {
      "w": "que",
-     "start": 972.68,
-     "end": 972.84
+     "start": 973.0,
+     "end": 973.16
     },
     {
      "w": "significa",
-     "start": 972.84,
-     "end": 973.54
+     "start": 973.16,
+     "end": 973.86
     },
     {
      "w": "motocicleta.",
-     "start": 973.54,
-     "end": 974.78
+     "start": 973.86,
+     "end": 975.1
     },
     {
      "w": "Y",
-     "start": 974.78,
-     "end": 975.78
+     "start": 975.1,
+     "end": 976.1
     }
    ]
   },
   {
    "t": "narration",
-   "start": 974.9,
-   "end": 977.45,
+   "start": 975.22,
+   "end": 977.77,
    "lines": [
     "Y eso es todo para esta lección."
    ],
    "words": [
     {
      "w": "Y",
-     "start": 974.78,
-     "end": 975.78
+     "start": 975.1,
+     "end": 976.1
     },
     {
      "w": "eso",
-     "start": 975.78,
-     "end": 976.04
+     "start": 976.1,
+     "end": 976.36
     },
     {
      "w": "es",
-     "start": 976.04,
-     "end": 976.22
+     "start": 976.36,
+     "end": 976.54
     },
     {
      "w": "todo",
-     "start": 976.22,
-     "end": 976.42
+     "start": 976.54,
+     "end": 976.74
     },
     {
      "w": "para",
-     "start": 976.42,
-     "end": 976.68
+     "start": 976.74,
+     "end": 977.0
     },
     {
      "w": "esta",
-     "start": 976.68,
-     "end": 976.88
+     "start": 977.0,
+     "end": 977.2
     },
     {
      "w": "lección.",
-     "start": 976.88,
-     "end": 977.28
+     "start": 977.2,
+     "end": 977.6
     }
    ]
   },
   {
    "t": "narration",
-   "start": 977.55,
-   "end": 978.45,
+   "start": 977.87,
+   "end": 978.77,
    "lines": [
     "Felicidades."
    ],
    "words": [
     {
      "w": "Felicidades.",
-     "start": 977.68,
-     "end": 978.36
+     "start": 978.0,
+     "end": 978.68
     }
    ]
   },
   {
    "t": "narration",
-   "start": 978.95,
-   "end": 982.6,
+   "start": 979.27,
+   "end": 982.92,
    "lines": [
     "Terminaste la lección 3. Buen trabajo."
    ],
    "words": [
     {
      "w": "Terminaste",
-     "start": 979.02,
-     "end": 979.52
-    },
-    {
-     "w": "la",
-     "start": 979.52,
+     "start": 979.34,
      "end": 979.84
     },
     {
-     "w": "lección",
+     "w": "la",
      "start": 979.84,
-     "end": 980.38
+     "end": 980.16
+    },
+    {
+     "w": "lección",
+     "start": 980.16,
+     "end": 980.7
     },
     {
      "w": "3.",
-     "start": 980.38,
-     "end": 981.26
+     "start": 980.7,
+     "end": 981.58
     },
     {
      "w": "Buen",
-     "start": 981.9,
-     "end": 982.24
+     "start": 982.22,
+     "end": 982.56
     },
     {
      "w": "trabajo.",
-     "start": 982.24,
-     "end": 982.5
+     "start": 982.56,
+     "end": 982.82
     }
    ]
   },
   {
    "t": "narration",
-   "start": 983.0,
-   "end": 986.95,
+   "start": 983.32,
+   "end": 987.27,
    "lines": [
     "Nos vemos en la siguiente lección, la lección 4."
    ],
    "words": [
     {
      "w": "Nos",
-     "start": 983.1,
-     "end": 983.26
+     "start": 983.42,
+     "end": 983.58
     },
     {
      "w": "vemos",
-     "start": 983.26,
-     "end": 983.62
+     "start": 983.58,
+     "end": 983.94
     },
     {
      "w": "en",
-     "start": 983.62,
-     "end": 983.98
+     "start": 983.94,
+     "end": 984.3
     },
     {
      "w": "la",
-     "start": 983.98,
-     "end": 984.08
+     "start": 984.3,
+     "end": 984.4
     },
     {
      "w": "siguiente",
-     "start": 984.08,
-     "end": 984.36
+     "start": 984.4,
+     "end": 984.68
     },
     {
      "w": "lección,",
-     "start": 984.36,
-     "end": 985.1
+     "start": 984.68,
+     "end": 985.42
     },
     {
      "w": "la",
-     "start": 985.54,
-     "end": 985.66
+     "start": 985.86,
+     "end": 985.98
     },
     {
      "w": "lección",
-     "start": 985.66,
-     "end": 986.16
+     "start": 985.98,
+     "end": 986.48
     },
     {
      "w": "4.",
-     "start": 986.16,
-     "end": 986.82
+     "start": 986.48,
+     "end": 987.14
     }
    ]
   },
   {
    "t": "narration",
-   "start": 987.6,
-   "end": 991.7,
+   "start": 987.92,
+   "end": 992.02,
    "lines": [
     "Mi querido, querida estudiante."
    ],
    "words": [
     {
      "w": "Mi",
-     "start": 987.72,
-     "end": 988.1
+     "start": 988.04,
+     "end": 988.42
     },
     {
      "w": "querido",
-     "start": 988.1,
-     "end": 989.2
+     "start": 988.42,
+     "end": 989.52
     },
     {
      "w": "querida",
-     "start": 989.2,
-     "end": 990.48
+     "start": 989.52,
+     "end": 990.8
     },
     {
      "w": "estudiante.",
-     "start": 990.48,
-     "end": 991.5
+     "start": 990.8,
+     "end": 991.82
     }
    ]
   }
@@ -7392,13 +7392,13 @@
   },
   {
    "at": 92.158,
-   "shift": 2.18,
+   "shift": 2.5,
    "donorText": "Yes, you. Do you speak English?",
    "insert": [
     [
      "self",
      84.92,
-     87.1
+     87.42
     ]
    ]
   },
