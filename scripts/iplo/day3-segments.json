@@ -3119,37 +3119,7 @@
      "end": 435.43
     }
    ],
-   "leadEnd": 434.92
-  },
-  {
-   "t": "narration",
-   "start": 431.75,
-   "end": 435.22,
-   "lines": [
-    "¿Y cómo responder? \"Sí, ando.\""
-   ],
-   "words": [
-    {
-     "w": "como",
-     "start": 431.75,
-     "end": 432.37
-    },
-    {
-     "w": "responder",
-     "start": 432.37,
-     "end": 433.15
-    },
-    {
-     "w": "si",
-     "start": 433.73,
-     "end": 433.79
-    },
-    {
-     "w": "ando",
-     "start": 434.45,
-     "end": 435.43
-    }
-   ]
+   "leadEnd": 431.22
   },
   {
    "t": "english",
