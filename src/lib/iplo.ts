@@ -489,29 +489,27 @@ export function promptAnswerAt(prompt: IploPrompt): number {
  * Whisper transcripts lowercase after ¿ ("¿cómo...") - normalize casing here. */
 export function promptQuestionText(spanish: string): string {
   const trimmed = spanish.trim();
-  if (/^(dime otra vez\.|otra vez)[.,;]?\s*/i.test(trimmed)) {
-    // Repeat leads may carry an instruction between lead and question
-    // ("Otra vez, pregunta, "¿él anda?"") - strip that too, else the card
-    // shows "Otra vez" twice: once as the lead caption, once inside the
-    // question text (Kyle QA 2026-10-18).
-    let stripped = trimmed
-      .replace(/^(dime otra vez\.|otra vez)[.,;]?\s*/i, "")
-      .replace(/^(pregunta|pregúntale|responde|di|contesta)[.,]?\s*/i, "")
-      .trim();
-    // The quoted question may open with a curly quote ("\u201c¿...") - keep it in
-    // the display but allow the ¿ check through it.
-    const quote = /^[“"']/.test(stripped) ? stripped[0] : "";
-        if (quote) stripped = stripped.slice(1).trimStart();
-        if (!stripped.startsWith("¿")) return trimmed;
-        const q = normalizeQuestion(stripped);
-        // A fully quote-wrapped repeat question ("“¿él anda?”.") displays bare -
-        // the quotes and trailing period belong to the script notation, not the
-        // student-facing question. The closing glyph is ”, not the opening “.
-        if (q.endsWith('”.')) return q.slice(0, -2);
-        if (q.endsWith('”')) return q.slice(0, -1);
-        return q;
+  // Repeat leads may carry an instruction between lead and question
+  // ("Otra vez, pregunta, "¿él anda?"". Kyle QA 2026-10-19: KEEP the
+  // instruction verb - "Pregunta" belongs on the card; only the "Otra vez"
+  // lead is stripped.)
+  let rest = trimmed
+    .replace(/^(dime otra vez\.|otra vez)[.,;]?\s*/i, "")
+    .trim();
+  const quote = /^[“"']/.test(rest) ? rest[0] : "";
+  const core = quote ? rest.slice(1).trimStart() : rest;
+  if (!core.startsWith("¿")) {
+    // Instruction-style prompt ("Pregunta, "¿...?"", "Responde, "..."") -
+    // display it verbatim, capitalized.
+    return rest.charAt(0).toLocaleUpperCase("es") + rest.slice(1);
   }
-  return normalizeQuestion(trimmed);
+  const q = normalizeQuestion(core);
+  // A fully quote-wrapped repeat question (""¿él anda?"."") displays bare -
+  // the quotes and trailing period belong to the script notation, not the
+  // student-facing question. The closing glyph is ”, not the opening “.
+  if (q.endsWith("”.")) return q.slice(0, -2);
+  if (q.endsWith("”")) return q.slice(0, -1);
+  return q;
 }
 
 function normalizeQuestion(q: string): string {

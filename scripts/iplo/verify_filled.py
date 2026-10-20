@@ -126,8 +126,8 @@ def main():
     print("\n== Pocket silence (RMS) ==")
     levels, rate = rms_profile(audio)
     for i, fstart, fend, f in filled_positions(fills):
-        if f.get("donorText") or f["shift"] <= 0:
-            continue
+        if f.get("donorText") or f.get("insert") or f.get("cut") or f["shift"] <= 0:
+            continue  # donor inserts and removals carry audio by design
         a, b = int(fstart * rate), int(fend * rate)
         window = levels[max(a, 0):min(b, len(levels))]
         if not window:

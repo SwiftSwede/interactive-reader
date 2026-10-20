@@ -385,14 +385,15 @@ test("promptQuestionText strips the conversational lead on the input screen", ()
     promptQuestionText("otra vez, ¿cómo se dice hablar?"),
     "¿Cómo se dice hablar?"
   );
-  // strip the instruction too, else "Otra vez" shows twice (lead caption + card)
+  // "Otra vez" lead is stripped; the instruction verb STAYS on the card
+  // (Kyle QA 2026-10-19: "Pregunta 'blah blah?'" parts are missing "Pregunta")
   assert.equal(
     promptQuestionText("Otra vez, pregunta, “¿él anda todos los días?”"),
-    "¿Él anda todos los días?"
+    "Pregunta, “¿él anda todos los días?”"
   );
   assert.equal(
     promptQuestionText("Otra vez, pregunta, “¿él anda?”."),
-    "¿Él anda?"
+    "Pregunta, “¿él anda?”."
   );
 });
 
