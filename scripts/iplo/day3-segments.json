@@ -6078,38 +6078,22 @@
    "text": "Do you speak English?",
    "words": [
     {
-     "w": {
-      "w": "do",
-      "start": 901.44,
-      "end": 902.08
-     },
+     "w": "do",
      "start": 920.48,
      "end": 921.24
     },
     {
-     "w": {
-      "w": "you",
-      "start": 902.08,
-      "end": 902.28
-     },
+     "w": "you",
      "start": 921.24,
      "end": 921.42
     },
     {
-     "w": {
-      "w": "speak",
-      "start": 902.28,
-      "end": 902.5
-     },
+     "w": "speak",
      "start": 921.42,
      "end": 921.64
     },
     {
-     "w": {
-      "w": "english",
-      "start": 902.5,
-      "end": 902.88
-     },
+     "w": "english",
      "start": 921.64,
      "end": 922.08
     }
@@ -6117,45 +6101,29 @@
   },
   {
    "t": "english",
-   "start": 922.55,
-   "end": 924.85,
+   "start": 922.67,
+   "end": 924.95,
    "text": "Yes, I speak English.",
    "words": [
     {
-     "w": {
-      "w": "yes",
-      "start": 903.7,
-      "end": 903.98
-     },
-     "start": 891.46,
-     "end": 891.66
+     "w": "yes",
+     "start": 922.82,
+     "end": 923.12
     },
     {
-     "w": {
-      "w": "i",
-      "start": 904.42,
-      "end": 904.66
-     },
-     "start": 892.56,
-     "end": 892.86
+     "w": "i",
+     "start": 923.58,
+     "end": 923.82
     },
     {
-     "w": {
-      "w": "speak",
-      "start": 904.66,
-      "end": 904.94
-     },
-     "start": 892.86,
-     "end": 893.16
+     "w": "speak",
+     "start": 923.82,
+     "end": 924.08
     },
     {
-     "w": {
-      "w": "english",
-      "start": 904.94,
-      "end": 905.4
-     },
-     "start": 893.16,
-     "end": 893.48
+     "w": "english",
+     "start": 924.08,
+     "end": 924.6
     }
    ]
   },
@@ -6166,56 +6134,32 @@
    "text": "Do you speak English at school?",
    "words": [
     {
-     "w": {
-      "w": "do",
-      "start": 905.4,
-      "end": 906.48
-     },
+     "w": "do",
      "start": 925.34,
      "end": 925.64
     },
     {
-     "w": {
-      "w": "you",
-      "start": 906.48,
-      "end": 906.64
-     },
+     "w": "you",
      "start": 925.64,
      "end": 925.8
     },
     {
-     "w": {
-      "w": "speak",
-      "start": 906.64,
-      "end": 906.86
-     },
+     "w": "speak",
      "start": 925.8,
      "end": 926.02
     },
     {
-     "w": {
-      "w": "english",
-      "start": 906.86,
-      "end": 907.28
-     },
+     "w": "english",
      "start": 926.02,
      "end": 926.5
     },
     {
-     "w": {
-      "w": "at",
-      "start": 907.28,
-      "end": 907.76
-     },
+     "w": "at",
      "start": 926.5,
      "end": 926.92
     },
     {
-     "w": {
-      "w": "school",
-      "start": 907.76,
-      "end": 908.1
-     },
+     "w": "school",
      "start": 926.92,
      "end": 927.24
     }
@@ -6228,65 +6172,37 @@
    "text": "Yes, we all speak English at school.",
    "words": [
     {
-     "w": {
-      "w": "yes",
-      "start": 908.8,
-      "end": 909.2
-     },
+     "w": "yes",
      "start": 927.86,
      "end": 928.38
     },
     {
-     "w": {
-      "w": "we",
-      "start": 909.66,
-      "end": 909.86
-     },
+     "w": "we",
      "start": 928.38,
      "end": 928.96
     },
     {
-     "w": {
-      "w": "all",
-      "start": 909.86,
-      "end": 910.14
-     },
+     "w": "all",
      "start": 928.96,
      "end": 929.28
     },
     {
-     "w": {
-      "w": "speak",
-      "start": 910.14,
-      "end": 910.38
-     },
+     "w": "speak",
      "start": 929.28,
      "end": 929.54
     },
     {
-     "w": {
-      "w": "english",
-      "start": 910.38,
-      "end": 910.78
-     },
+     "w": "english",
      "start": 929.54,
      "end": 929.94
     },
     {
-     "w": {
-      "w": "at",
-      "start": 910.78,
-      "end": 911.04
-     },
+     "w": "at",
      "start": 929.94,
      "end": 930.2
     },
     {
-     "w": {
-      "w": "school",
-      "start": 911.04,
-      "end": 911.36
-     },
+     "w": "school",
      "start": 930.2,
      "end": 930.52
     }
@@ -6299,47 +6215,27 @@
    "text": "Do you walk to school?",
    "words": [
     {
-     "w": {
-      "w": "do",
-      "start": 912.08,
-      "end": 912.38
-     },
+     "w": "do",
      "start": 931.06,
      "end": 931.54
     },
     {
-     "w": {
-      "w": "you",
-      "start": 912.38,
-      "end": 912.52
-     },
+     "w": "you",
      "start": 931.54,
      "end": 931.68
     },
     {
-     "w": {
-      "w": "walk",
-      "start": 912.52,
-      "end": 912.82
-     },
+     "w": "walk",
      "start": 931.68,
      "end": 931.96
     },
     {
-     "w": {
-      "w": "to",
-      "start": 912.82,
-      "end": 913.02
-     },
+     "w": "to",
      "start": 931.96,
      "end": 932.18
     },
     {
-     "w": {
-      "w": "school",
-      "start": 913.02,
-      "end": 913.26
-     },
+     "w": "school",
      "start": 932.18,
      "end": 932.4
     }
@@ -6352,119 +6248,67 @@
    "text": "Yes, I walk to school in the morning. Do you walk to school?",
    "words": [
     {
-     "w": {
-      "w": "yes",
-      "start": 913.8,
-      "end": 914.1
-     },
+     "w": "yes",
      "start": 932.92,
      "end": 933.24
     },
     {
-     "w": {
-      "w": "i",
-      "start": 914.62,
-      "end": 914.78
-     },
+     "w": "i",
      "start": 933.78,
      "end": 933.94
     },
     {
-     "w": {
-      "w": "walk",
-      "start": 914.78,
-      "end": 915.0
-     },
+     "w": "walk",
      "start": 933.94,
      "end": 934.14
     },
     {
-     "w": {
-      "w": "to",
-      "start": 915.0,
-      "end": 915.18
-     },
+     "w": "to",
      "start": 934.14,
      "end": 934.32
     },
     {
-     "w": {
-      "w": "school",
-      "start": 915.18,
-      "end": 915.46
-     },
+     "w": "school",
      "start": 934.32,
      "end": 934.62
     },
     {
-     "w": {
-      "w": "in",
-      "start": 915.46,
-      "end": 915.66
-     },
+     "w": "in",
      "start": 934.62,
      "end": 934.8
     },
     {
-     "w": {
-      "w": "the",
-      "start": 915.66,
-      "end": 915.74
-     },
+     "w": "the",
      "start": 934.8,
      "end": 934.9
     },
     {
-     "w": {
-      "w": "morning",
-      "start": 915.74,
-      "end": 916.02
-     },
+     "w": "morning",
      "start": 934.9,
      "end": 935.18
     },
     {
-     "w": {
-      "w": "do",
-      "start": 916.64,
-      "end": 916.82
-     },
+     "w": "do",
      "start": 935.72,
      "end": 935.96
     },
     {
-     "w": {
-      "w": "you",
-      "start": 916.82,
-      "end": 917.02
-     },
+     "w": "you",
      "start": 935.96,
      "end": 936.16
     },
     {
-     "w": {
-      "w": "walk",
-      "start": 917.02,
-      "end": 917.22
-     },
+     "w": "walk",
      "start": 936.16,
      "end": 936.36
     },
     {
-     "w": {
-      "w": "to",
-      "start": 917.22,
-      "end": 917.38
-     },
+     "w": "to",
      "start": 936.36,
      "end": 936.52
     },
     {
-     "w": {
-      "w": "school",
-      "start": 917.38,
-      "end": 917.64
-     },
+     "w": "school",
      "start": 936.52,
      "end": 936.82
     }
@@ -6477,155 +6321,87 @@
    "text": "Yes, I walk to school every day. And your friend? Do you guys walk to school together?",
    "words": [
     {
-     "w": {
-      "w": "yes",
-      "start": 918.08,
-      "end": 918.48
-     },
+     "w": "yes",
      "start": 937.22,
      "end": 937.62
     },
     {
-     "w": {
-      "w": "i",
-      "start": 919.22,
-      "end": 919.48
-     },
+     "w": "i",
      "start": 938.36,
      "end": 938.64
     },
     {
-     "w": {
-      "w": "walk",
-      "start": 919.48,
-      "end": 919.7
-     },
+     "w": "walk",
      "start": 938.64,
      "end": 938.84
     },
     {
-     "w": {
-      "w": "to",
-      "start": 919.7,
-      "end": 919.86
-     },
+     "w": "to",
      "start": 938.84,
      "end": 939.02
     },
     {
-     "w": {
-      "w": "school",
-      "start": 919.86,
-      "end": 920.14
-     },
+     "w": "school",
      "start": 939.02,
      "end": 939.28
     },
     {
-     "w": {
-      "w": "every",
-      "start": 920.14,
-      "end": 920.36
-     },
+     "w": "every",
      "start": 939.28,
      "end": 939.52
     },
     {
-     "w": {
-      "w": "day",
-      "start": 920.36,
-      "end": 920.62
-     },
+     "w": "day",
      "start": 939.52,
      "end": 939.78
     },
     {
-     "w": {
-      "w": "and",
-      "start": 921.24,
-      "end": 921.48
-     },
+     "w": "and",
      "start": 940.34,
      "end": 940.62
     },
     {
-     "w": {
-      "w": "your",
-      "start": 921.48,
-      "end": 921.6
-     },
+     "w": "your",
      "start": 940.62,
      "end": 940.74
     },
     {
-     "w": {
-      "w": "friend",
-      "start": 921.6,
-      "end": 921.88
-     },
+     "w": "friend",
      "start": 940.74,
      "end": 941.04
     },
     {
-     "w": {
-      "w": "do",
-      "start": 922.5,
-      "end": 922.76
-     },
+     "w": "do",
      "start": 941.7,
      "end": 941.9
     },
     {
-     "w": {
-      "w": "you",
-      "start": 922.76,
-      "end": 922.98
-     },
+     "w": "you",
      "start": 941.9,
      "end": 942.12
     },
     {
-     "w": {
-      "w": "guys",
-      "start": 922.98,
-      "end": 923.38
-     },
+     "w": "guys",
      "start": 942.12,
      "end": 942.54
     },
     {
-     "w": {
-      "w": "walk",
-      "start": 923.38,
-      "end": 923.78
-     },
+     "w": "walk",
      "start": 942.54,
      "end": 942.94
     },
     {
-     "w": {
-      "w": "to",
-      "start": 923.78,
-      "end": 924.02
-     },
+     "w": "to",
      "start": 942.94,
      "end": 943.16
     },
     {
-     "w": {
-      "w": "school",
-      "start": 924.02,
-      "end": 924.28
-     },
+     "w": "school",
      "start": 943.16,
      "end": 943.42
     },
     {
-     "w": {
-      "w": "together",
-      "start": 924.28,
-      "end": 924.6
-     },
+     "w": "together",
      "start": 943.42,
      "end": 943.74
     }
@@ -6638,110 +6414,62 @@
    "text": "No, she doesn’t walk to school. She goes to school by motorbike.",
    "words": [
     {
-     "w": {
-      "w": "no",
-      "start": 925.44,
-      "end": 925.9
-     },
+     "w": "no",
      "start": 944.62,
      "end": 945.06
     },
     {
-     "w": {
-      "w": "she",
-      "start": 926.24,
-      "end": 926.42
-     },
+     "w": "she",
      "start": 945.38,
      "end": 945.56
     },
     {
-     "w": {
-      "w": "doesnt",
-      "start": 926.42,
-      "end": 926.76
-     },
+     "w": "doesnt",
      "start": 945.56,
      "end": 945.9
     },
     {
-     "w": {
-      "w": "walk",
-      "start": 926.76,
-      "end": 926.92
-     },
+     "w": "walk",
      "start": 945.9,
      "end": 946.08
     },
     {
-     "w": {
-      "w": "to",
-      "start": 926.92,
-      "end": 927.12
-     },
+     "w": "to",
      "start": 946.08,
      "end": 946.28
     },
     {
-     "w": {
-      "w": "school",
-      "start": 927.12,
-      "end": 927.42
-     },
+     "w": "school",
      "start": 946.28,
      "end": 946.58
     },
     {
-     "w": {
-      "w": "she",
-      "start": 927.94,
-      "end": 928.2
-     },
+     "w": "she",
      "start": 947.12,
      "end": 947.34
     },
     {
-     "w": {
-      "w": "goes",
-      "start": 928.2,
-      "end": 928.42
-     },
+     "w": "goes",
      "start": 947.34,
      "end": 947.58
     },
     {
-     "w": {
-      "w": "to",
-      "start": 928.42,
-      "end": 928.66
-     },
+     "w": "to",
      "start": 947.58,
      "end": 947.82
     },
     {
-     "w": {
-      "w": "school",
-      "start": 928.66,
-      "end": 928.94
-     },
+     "w": "school",
      "start": 947.82,
      "end": 948.08
     },
     {
-     "w": {
-      "w": "by",
-      "start": 928.94,
-      "end": 929.18
-     },
+     "w": "by",
      "start": 948.08,
      "end": 948.34
     },
     {
-     "w": {
-      "w": "motorbike",
-      "start": 929.18,
-      "end": 929.76
-     },
+     "w": "motorbike",
      "start": 948.34,
      "end": 948.92
     }
