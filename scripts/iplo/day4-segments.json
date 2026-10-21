@@ -3083,8 +3083,8 @@
   {
    "t": "english",
    "start": 364.75,
-   "end": 369.0,
-   "text": "In the afternoon. In the afternoon.",
+   "end": 366.14,
+   "text": "In the afternoon.",
    "words": [
     {
      "w": "In",
@@ -3100,7 +3100,15 @@
      "w": "afternoon.",
      "start": 365.25,
      "end": 365.95
-    },
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 366.15,
+   "end": 369.0,
+   "text": "In the afternoon.",
+   "words": [
     {
      "w": "In",
      "start": 366.25,
