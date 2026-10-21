@@ -3106,5014 +3106,5283 @@
   {
    "t": "english",
    "start": 366.15,
-   "end": 369.0,
+   "end": 370.15,
    "text": "In the afternoon.",
    "words": [
     {
      "w": "In",
-     "start": 366.25,
-     "end": 366.6
+     "start": 367.4,
+     "end": 367.75
     },
     {
      "w": "the",
-     "start": 366.61,
-     "end": 366.73
+     "start": 367.76,
+     "end": 367.88
     },
     {
      "w": "afternoon.",
-     "start": 366.73,
-     "end": 367.5
+     "start": 367.88,
+     "end": 368.65
     }
    ]
   },
   {
    "t": "narration",
-   "start": 369.42,
-   "end": 370.18,
+   "start": 370.57,
+   "end": 371.33,
    "lines": [
     "Excelente."
    ],
    "words": [
     {
      "w": "excelente",
-     "start": 369.42,
-     "end": 370.18
+     "start": 370.57,
+     "end": 371.33
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 370.56,
-   "pauseAt": 373.72,
+   "start": 371.71,
+   "pauseAt": 374.87,
    "spanish": "Ahora pregunta “¿comes por la tarde?”.",
    "expected": [
     "Do you eat in the afternoon?"
    ],
-   "end": 373.92
+   "end": 375.07
   },
   {
    "t": "english",
-   "start": 373.92,
-   "end": 384.66,
+   "start": 375.07,
+   "end": 385.81,
    "text": "Do you eat in the afternoon? Do you eat in the afternoon?",
    "words": [
     {
      "w": "do",
-     "start": 373.92,
-     "end": 374.62
+     "start": 375.07,
+     "end": 375.77
     },
     {
      "w": "you",
-     "start": 374.62,
-     "end": 374.82
+     "start": 375.77,
+     "end": 375.97
     },
     {
      "w": "eat",
-     "start": 374.82,
-     "end": 375.02
+     "start": 375.97,
+     "end": 376.17
     },
     {
      "w": "in",
-     "start": 375.02,
-     "end": 375.14
+     "start": 376.17,
+     "end": 376.29
     },
     {
      "w": "the",
-     "start": 375.14,
-     "end": 375.26
+     "start": 376.29,
+     "end": 376.41
     },
     {
      "w": "afternoon",
-     "start": 375.26,
-     "end": 375.76
+     "start": 376.41,
+     "end": 376.91
     },
     {
      "w": "do",
-     "start": 379.14,
-     "end": 379.92
+     "start": 380.29,
+     "end": 381.07
     },
     {
      "w": "you",
-     "start": 379.92,
-     "end": 380.18
+     "start": 381.07,
+     "end": 381.33
     },
     {
      "w": "eat",
-     "start": 380.18,
-     "end": 380.46
+     "start": 381.33,
+     "end": 381.61
     },
     {
      "w": "in",
-     "start": 380.46,
-     "end": 380.58
+     "start": 381.61,
+     "end": 381.73
     },
     {
      "w": "the",
-     "start": 380.58,
-     "end": 380.7
+     "start": 381.73,
+     "end": 381.85
     },
     {
      "w": "afternoon",
-     "start": 380.7,
-     "end": 381.2
+     "start": 381.85,
+     "end": 382.35
     }
    ]
   },
   {
    "t": "narration",
-   "start": 384.66,
-   "end": 392.74,
+   "start": 385.81,
+   "end": 393.89,
    "lines": [
     "Recuerda que ‘almorzar’ en inglés es ‘to eat lunch’ o ‘to have lunch’. Otra vez,"
    ],
    "words": [
     {
      "w": "recuerda",
-     "start": 384.66,
-     "end": 385.44
+     "start": 385.81,
+     "end": 386.59
     },
     {
      "w": "que",
-     "start": 385.44,
-     "end": 385.58
+     "start": 386.59,
+     "end": 386.73
     },
     {
      "w": "almorzar",
-     "start": 385.8,
-     "end": 386.18
+     "start": 386.95,
+     "end": 387.33
     },
     {
      "w": "en",
-     "start": 386.18,
-     "end": 386.36
+     "start": 387.33,
+     "end": 387.51
     },
     {
      "w": "ingles",
-     "start": 386.36,
-     "end": 386.56
+     "start": 387.51,
+     "end": 387.71
     },
     {
      "w": "es",
-     "start": 386.56,
-     "end": 386.96
+     "start": 387.71,
+     "end": 388.11
     },
     {
      "w": "to",
-     "start": 386.96,
-     "end": 387.56
+     "start": 388.11,
+     "end": 388.71
     },
     {
      "w": "eat",
-     "start": 387.56,
-     "end": 387.9
+     "start": 388.71,
+     "end": 389.05
     },
     {
      "w": "lunch",
-     "start": 387.9,
-     "end": 388.34
+     "start": 389.05,
+     "end": 389.49
     },
     {
      "w": "o",
-     "start": 388.34,
-     "end": 388.84
+     "start": 389.49,
+     "end": 389.99
     },
     {
      "w": "to",
-     "start": 388.84,
-     "end": 389.38
+     "start": 389.99,
+     "end": 390.53
     },
     {
      "w": "have",
-     "start": 389.38,
-     "end": 389.8
+     "start": 390.53,
+     "end": 390.95
     },
     {
      "w": "lunch",
-     "start": 389.8,
-     "end": 390.18
+     "start": 390.95,
+     "end": 391.33
     },
     {
      "w": "otra",
-     "start": 391.3,
-     "end": 392.08
+     "start": 392.45,
+     "end": 393.23
     },
     {
      "w": "vez",
-     "start": 392.08,
-     "end": 392.28
+     "start": 393.23,
+     "end": 393.43
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 392.74,
-   "pauseAt": 396.18,
+   "start": 393.89,
+   "pauseAt": 397.33,
    "spanish": "¿cómo preguntar “¿comes por la tarde?”?",
    "expected": [
     "Do you eat in the afternoon?"
    ],
-   "end": 396.51
+   "end": 397.66
   },
   {
    "t": "english",
-   "start": 396.65,
-   "end": 398.7,
+   "start": 397.8,
+   "end": 399.85,
    "text": "Do you eat in the afternoon?",
    "words": [
     {
      "w": "Do",
-     "start": 396.65,
-     "end": 397.0
+     "start": 397.8,
+     "end": 398.15
     },
     {
      "w": "you",
-     "start": 397.05,
-     "end": 397.15
+     "start": 398.2,
+     "end": 398.3
     },
     {
      "w": "eat",
-     "start": 397.29,
-     "end": 397.4
+     "start": 398.44,
+     "end": 398.55
     },
     {
      "w": "in",
-     "start": 397.53,
-     "end": 397.67
+     "start": 398.68,
+     "end": 398.82
     },
     {
      "w": "the",
-     "start": 397.67,
-     "end": 397.75
+     "start": 398.82,
+     "end": 398.9
     },
     {
      "w": "afternoon?",
-     "start": 397.75,
-     "end": 398.45
+     "start": 398.9,
+     "end": 399.6
     }
    ]
   },
   {
    "t": "narration",
-   "start": 400.84,
-   "end": 401.44,
+   "start": 401.99,
+   "end": 402.59,
    "lines": [
     "Perfecto."
    ],
    "words": [
     {
      "w": "perfecto",
-     "start": 400.84,
-     "end": 401.44
+     "start": 401.99,
+     "end": 402.59
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 401.62,
-   "pauseAt": 405.31,
+   "start": 402.77,
+   "pauseAt": 406.46,
    "spanish": "Responde, “sí, como por la tarde.”",
    "expected": [
     "Yes, I eat in the afternoon."
    ],
-   "end": 405.46
+   "end": 406.61
   },
   {
    "t": "english",
-   "start": 405.46,
-   "end": 412.26,
+   "start": 406.61,
+   "end": 413.41,
    "text": "Yes, I eat in the afternoon.",
    "words": [
     {
      "w": "yes",
-     "start": 405.46,
-     "end": 406.14
+     "start": 406.61,
+     "end": 407.29
     },
     {
      "w": "i",
-     "start": 406.4,
-     "end": 406.78
+     "start": 407.55,
+     "end": 407.93
     },
     {
      "w": "eat",
-     "start": 406.78,
-     "end": 407.04
+     "start": 407.93,
+     "end": 408.19
     },
     {
      "w": "in",
-     "start": 407.04,
-     "end": 407.24
+     "start": 408.19,
+     "end": 408.39
     },
     {
      "w": "the",
-     "start": 407.24,
-     "end": 407.36
+     "start": 408.39,
+     "end": 408.51
     },
     {
      "w": "afternoon",
-     "start": 407.36,
-     "end": 407.92
+     "start": 408.51,
+     "end": 409.07
     }
    ]
   },
   {
    "t": "narration",
-   "start": 410.9,
-   "end": 411.6,
+   "start": 412.05,
+   "end": 412.75,
    "lines": [
     "Buen trabajo."
    ],
    "words": [
     {
      "w": "buen",
-     "start": 410.9,
-     "end": 411.3
+     "start": 412.05,
+     "end": 412.45
     },
     {
      "w": "trabajo",
-     "start": 411.3,
-     "end": 411.6
+     "start": 412.45,
+     "end": 412.75
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 412.26,
-   "pauseAt": 415.55,
+   "start": 413.41,
+   "pauseAt": 416.7,
    "spanish": "¿Y cómo preguntarías “¿ustedes comen?”?",
    "expected": [
     "Do you guys eat?"
    ],
-   "end": 415.7
+   "end": 416.85
   },
   {
    "t": "english",
-   "start": 415.7,
-   "end": 422.92,
+   "start": 416.85,
+   "end": 424.07,
    "text": "Do you guys eat? Do you guys eat?",
    "words": [
     {
      "w": "do",
-     "start": 415.7,
-     "end": 416.38
+     "start": 416.85,
+     "end": 417.53
     },
     {
      "w": "you",
-     "start": 416.38,
-     "end": 416.62
+     "start": 417.53,
+     "end": 417.77
     },
     {
      "w": "guys",
-     "start": 416.62,
-     "end": 416.84
+     "start": 417.77,
+     "end": 417.99
     },
     {
      "w": "eat",
-     "start": 416.84,
-     "end": 417.18
+     "start": 417.99,
+     "end": 418.33
     },
     {
      "w": "do",
-     "start": 418.78,
-     "end": 419.46
+     "start": 419.93,
+     "end": 420.61
     },
     {
      "w": "you",
-     "start": 419.46,
-     "end": 419.7
+     "start": 420.61,
+     "end": 420.85
     },
     {
      "w": "guys",
-     "start": 419.7,
-     "end": 419.94
+     "start": 420.85,
+     "end": 421.09
     },
     {
      "w": "eat",
-     "start": 419.94,
-     "end": 420.24
+     "start": 421.09,
+     "end": 421.39
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 422.92,
-   "pauseAt": 426.8,
+   "start": 424.07,
+   "pauseAt": 427.95,
    "spanish": "Ahora pregunta “¿ustedes comen por la tarde?”.",
    "expected": [
     "Do you guys eat in the afternoon?"
    ],
-   "end": 427.05
+   "end": 428.2
   },
   {
    "t": "english",
-   "start": 427.2,
-   "end": 433.8,
+   "start": 428.35,
+   "end": 434.95,
    "text": "Do you guys eat in the afternoon? Do you guys eat in the afternoon?",
    "words": [
     {
      "w": "Do",
-     "start": 427.2,
-     "end": 427.5
+     "start": 428.35,
+     "end": 428.65
     },
     {
      "w": "you",
-     "start": 427.48,
-     "end": 427.6
+     "start": 428.63,
+     "end": 428.75
     },
     {
      "w": "guys",
-     "start": 427.72,
-     "end": 427.9
+     "start": 428.87,
+     "end": 429.05
     },
     {
      "w": "eat",
-     "start": 427.92,
-     "end": 428.14
+     "start": 429.07,
+     "end": 429.29
     },
     {
      "w": "in",
-     "start": 428.14,
-     "end": 428.26
+     "start": 429.29,
+     "end": 429.41
     },
     {
      "w": "the",
-     "start": 428.26,
-     "end": 428.36
+     "start": 429.41,
+     "end": 429.51
     },
     {
      "w": "afternoon?",
-     "start": 428.36,
-     "end": 429.3
+     "start": 429.51,
+     "end": 430.45
     },
     {
      "w": "Do",
-     "start": 431.7,
-     "end": 432.06
+     "start": 432.85,
+     "end": 433.21
     },
     {
      "w": "you",
-     "start": 432.06,
-     "end": 432.28
+     "start": 433.21,
+     "end": 433.43
     },
     {
      "w": "guys",
-     "start": 432.28,
-     "end": 432.5
+     "start": 433.43,
+     "end": 433.65
     },
     {
      "w": "eat",
-     "start": 432.5,
-     "end": 432.72
+     "start": 433.65,
+     "end": 433.87
     },
     {
      "w": "in",
-     "start": 432.72,
-     "end": 432.86
+     "start": 433.87,
+     "end": 434.01
     },
     {
      "w": "the",
-     "start": 432.86,
-     "end": 432.94
+     "start": 434.01,
+     "end": 434.09
     },
     {
      "w": "afternoon?",
-     "start": 432.94,
-     "end": 433.65
+     "start": 434.09,
+     "end": 434.8
     }
    ]
   },
   {
    "t": "narration",
-   "start": 437.4,
-   "end": 439.48,
+   "start": 438.55,
+   "end": 440.63,
    "lines": [
     "Ahora solo escucha a la mujer."
    ],
    "words": [
     {
      "w": "ahora",
-     "start": 437.66,
-     "end": 437.66
+     "start": 438.81,
+     "end": 438.81
     },
     {
      "w": "solo",
-     "start": 437.66,
-     "end": 437.92
+     "start": 438.81,
+     "end": 439.07
     },
     {
      "w": "escucha",
-     "start": 437.92,
-     "end": 438.44
+     "start": 439.07,
+     "end": 439.59
     },
     {
      "w": "a",
-     "start": 438.44,
-     "end": 438.56
+     "start": 439.59,
+     "end": 439.71
     },
     {
      "w": "la",
-     "start": 438.56,
-     "end": 438.62
+     "start": 439.71,
+     "end": 439.77
     },
     {
      "w": "mujer",
-     "start": 438.62,
-     "end": 438.96
+     "start": 439.77,
+     "end": 440.11
     }
    ]
   },
   {
    "t": "english",
-   "start": 439.48,
-   "end": 447.02,
+   "start": 440.63,
+   "end": 448.17,
    "text": "Yes, we eat in the afternoon. And you? Do you guys eat in the afternoon?",
    "words": [
     {
      "w": "yes",
-     "start": 439.48,
-     "end": 440.26
+     "start": 440.63,
+     "end": 441.41
     },
     {
      "w": "we",
-     "start": 440.56,
-     "end": 440.96
+     "start": 441.71,
+     "end": 442.11
     },
     {
      "w": "eat",
-     "start": 440.96,
-     "end": 441.24
+     "start": 442.11,
+     "end": 442.39
     },
     {
      "w": "in",
-     "start": 441.24,
-     "end": 441.42
+     "start": 442.39,
+     "end": 442.57
     },
     {
      "w": "the",
-     "start": 441.42,
-     "end": 441.54
+     "start": 442.57,
+     "end": 442.69
     },
     {
      "w": "afternoon",
-     "start": 441.54,
-     "end": 442.08
+     "start": 442.69,
+     "end": 443.23
     },
     {
      "w": "and",
-     "start": 442.58,
-     "end": 443.0
+     "start": 443.73,
+     "end": 444.15
     },
     {
      "w": "you",
-     "start": 443.0,
-     "end": 443.26
+     "start": 444.15,
+     "end": 444.41
     },
     {
      "w": "do",
-     "start": 443.58,
-     "end": 444.14
+     "start": 444.73,
+     "end": 445.29
     },
     {
      "w": "you",
-     "start": 444.14,
-     "end": 444.3
+     "start": 445.29,
+     "end": 445.45
     },
     {
      "w": "guys",
-     "start": 444.3,
-     "end": 444.56
+     "start": 445.45,
+     "end": 445.71
     },
     {
      "w": "eat",
-     "start": 444.56,
-     "end": 444.82
+     "start": 445.71,
+     "end": 445.97
     },
     {
      "w": "in",
-     "start": 444.82,
-     "end": 445.02
+     "start": 445.97,
+     "end": 446.17
     },
     {
      "w": "the",
-     "start": 445.02,
-     "end": 445.12
+     "start": 446.17,
+     "end": 446.27
     },
     {
      "w": "afternoon",
-     "start": 445.12,
-     "end": 445.64
+     "start": 446.27,
+     "end": 446.79
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 447.02,
-   "pauseAt": 450.95,
+   "start": 448.17,
+   "pauseAt": 452.1,
    "spanish": "Responde diciendo “nosotros comemos”.",
    "expected": [
     "We eat."
    ],
-   "end": 451.1
+   "end": 452.25
   },
   {
    "t": "english",
-   "start": 451.1,
-   "end": 456.68,
+   "start": 452.25,
+   "end": 457.83,
    "text": "We eat. We eat.",
    "words": [
     {
      "w": "we",
-     "start": 451.1,
-     "end": 451.9
+     "start": 452.25,
+     "end": 453.05
     },
     {
      "w": "eat",
-     "start": 451.9,
-     "end": 452.3
+     "start": 453.05,
+     "end": 453.45
     },
     {
      "w": "we",
-     "start": 453.94,
-     "end": 454.74
+     "start": 455.09,
+     "end": 455.89
     },
     {
      "w": "eat",
-     "start": 454.74,
-     "end": 455.12
+     "start": 455.89,
+     "end": 456.27
     }
    ]
   },
   {
    "t": "narration",
-   "start": 456.68,
-   "end": 459.19,
+   "start": 457.83,
+   "end": 460.34,
    "lines": [
     "Escucha su pregunta otra vez."
    ],
    "words": [
     {
      "w": "escucha",
-     "start": 456.68,
-     "end": 457.38
+     "start": 457.83,
+     "end": 458.53
     },
     {
      "w": "su",
-     "start": 457.38,
-     "end": 457.54
+     "start": 458.53,
+     "end": 458.69
     },
     {
      "w": "pregunta",
-     "start": 457.54,
-     "end": 457.94
+     "start": 458.69,
+     "end": 459.09
     },
     {
      "w": "otra",
-     "start": 457.94,
-     "end": 458.16
+     "start": 459.09,
+     "end": 459.31
     },
     {
      "w": "vez",
-     "start": 458.16,
-     "end": 458.54
+     "start": 459.31,
+     "end": 459.69
     }
    ]
   },
   {
    "t": "english",
-   "start": 459.19,
-   "end": 462.24,
+   "start": 460.34,
+   "end": 463.39,
    "text": "Do you guys eat in the afternoon?",
    "words": [
     {
      "w": "do",
-     "start": 459.19,
-     "end": 459.54
+     "start": 460.34,
+     "end": 460.69
     },
     {
      "w": "you",
-     "start": 459.54,
-     "end": 459.72
+     "start": 460.69,
+     "end": 460.87
     },
     {
      "w": "guys",
-     "start": 459.72,
-     "end": 459.98
+     "start": 460.87,
+     "end": 461.13
     },
     {
      "w": "eat",
-     "start": 459.98,
-     "end": 460.24
+     "start": 461.13,
+     "end": 461.39
     },
     {
      "w": "in",
-     "start": 460.24,
-     "end": 460.44
+     "start": 461.39,
+     "end": 461.59
     },
     {
      "w": "the",
-     "start": 460.44,
-     "end": 460.54
+     "start": 461.59,
+     "end": 461.69
     },
     {
      "w": "afternoon",
-     "start": 460.54,
-     "end": 461.0
+     "start": 461.69,
+     "end": 462.15
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 462.24,
-   "pauseAt": 466.22,
+   "start": 463.39,
+   "pauseAt": 467.37,
    "spanish": "Responde “sí, comemos por la tarde.”",
    "expected": [
     "Yes, we eat in the afternoon."
    ],
-   "end": 466.66
+   "end": 467.81
   },
   {
    "t": "english",
-   "start": 466.66,
-   "end": 479.66,
+   "start": 467.81,
+   "end": 480.81,
    "text": "Yes, we eat in the afternoon. Yes, we eat in the afternoon.",
    "words": [
     {
      "w": "yes",
-     "start": 466.66,
-     "end": 467.14
+     "start": 467.81,
+     "end": 468.29
     },
     {
      "w": "we",
-     "start": 467.46,
-     "end": 468.12
+     "start": 468.61,
+     "end": 469.27
     },
     {
      "w": "eat",
-     "start": 468.12,
-     "end": 468.34
+     "start": 469.27,
+     "end": 469.49
     },
     {
      "w": "in",
-     "start": 468.34,
-     "end": 468.46
+     "start": 469.49,
+     "end": 469.61
     },
     {
      "w": "the",
-     "start": 468.46,
-     "end": 468.58
+     "start": 469.61,
+     "end": 469.73
     },
     {
      "w": "afternoon",
-     "start": 468.58,
-     "end": 469.08
+     "start": 469.73,
+     "end": 470.23
     },
     {
      "w": "yes",
-     "start": 472.58,
-     "end": 473.28
+     "start": 473.73,
+     "end": 474.43
     },
     {
      "w": "we",
-     "start": 473.72,
-     "end": 474.02
+     "start": 474.87,
+     "end": 475.17
     },
     {
      "w": "eat",
-     "start": 474.02,
-     "end": 474.3
+     "start": 475.17,
+     "end": 475.45
     },
     {
      "w": "in",
-     "start": 474.3,
-     "end": 474.42
+     "start": 475.45,
+     "end": 475.57
     },
     {
      "w": "the",
-     "start": 474.42,
-     "end": 474.54
+     "start": 475.57,
+     "end": 475.69
     },
     {
      "w": "afternoon",
-     "start": 474.54,
-     "end": 475.04
+     "start": 475.69,
+     "end": 476.19
     }
    ]
   },
   {
    "t": "narration",
-   "start": 478.54,
-   "end": 479.24,
+   "start": 479.69,
+   "end": 480.39,
    "lines": [
     "Excelente."
    ],
    "words": [
     {
      "w": "excelente",
-     "start": 478.54,
-     "end": 479.24
+     "start": 479.69,
+     "end": 480.39
     }
    ]
   },
   {
    "t": "narration",
-   "start": 479.66,
-   "end": 481.1,
+   "start": 480.81,
+   "end": 482.25,
    "lines": [
     "Escucha esta pregunta:"
    ],
    "words": [
     {
      "w": "escucha",
-     "start": 479.66,
-     "end": 480.32
+     "start": 480.81,
+     "end": 481.47
     },
     {
      "w": "esta",
-     "start": 480.32,
-     "end": 480.54
+     "start": 481.47,
+     "end": 481.69
     },
     {
      "w": "pregunta",
-     "start": 480.54,
-     "end": 480.98
+     "start": 481.69,
+     "end": 482.13
     }
    ]
   },
   {
    "t": "english",
-   "start": 481.48,
-   "end": 483.5,
+   "start": 482.63,
+   "end": 484.65,
    "text": "Do you guys eat in the morning?",
    "words": [
     {
      "w": "Do",
-     "start": 481.48,
-     "end": 481.96
+     "start": 482.63,
+     "end": 483.11
     },
     {
      "w": "you",
-     "start": 481.96,
-     "end": 482.1
+     "start": 483.11,
+     "end": 483.25
     },
     {
      "w": "guys",
-     "start": 482.1,
-     "end": 482.3
+     "start": 483.25,
+     "end": 483.45
     },
     {
      "w": "eat",
-     "start": 482.3,
-     "end": 482.56
+     "start": 483.45,
+     "end": 483.71
     },
     {
      "w": "in",
-     "start": 482.56,
-     "end": 482.74
+     "start": 483.71,
+     "end": 483.89
     },
     {
      "w": "the",
-     "start": 482.74,
-     "end": 482.82
+     "start": 483.89,
+     "end": 483.97
     },
     {
      "w": "morning?",
-     "start": 482.82,
-     "end": 483.4
+     "start": 483.97,
+     "end": 484.55
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 483.75,
-   "pauseAt": 487.9,
+   "start": 484.9,
+   "pauseAt": 489.05,
    "spanish": "Responde “no, no comemos por la mañana.”",
    "expected": [
     "No, we don't eat in the morning."
    ],
-   "end": 488.12
+   "end": 489.27
   },
   {
    "t": "english",
-   "start": 488.12,
-   "end": 498.96,
+   "start": 489.27,
+   "end": 500.11,
    "text": "No, we don’t eat in the morning. No, we don’t eat in the morning.",
    "words": [
     {
      "w": "no",
-     "start": 488.12,
-     "end": 488.58
+     "start": 489.27,
+     "end": 489.73
     },
     {
      "w": "we",
-     "start": 488.98,
-     "end": 489.46
+     "start": 490.13,
+     "end": 490.61
     },
     {
      "w": "dont",
-     "start": 489.46,
-     "end": 489.9
+     "start": 490.61,
+     "end": 491.05
     },
     {
      "w": "eat",
-     "start": 489.9,
-     "end": 490.04
+     "start": 491.05,
+     "end": 491.19
     },
     {
      "w": "in",
-     "start": 490.04,
-     "end": 490.18
+     "start": 491.19,
+     "end": 491.33
     },
     {
      "w": "the",
-     "start": 490.18,
-     "end": 490.28
+     "start": 491.33,
+     "end": 491.43
     },
     {
      "w": "morning",
-     "start": 490.28,
-     "end": 490.62
+     "start": 491.43,
+     "end": 491.77
     },
     {
      "w": "no",
-     "start": 493.3,
-     "end": 493.98
+     "start": 494.45,
+     "end": 495.13
     },
     {
      "w": "we",
-     "start": 494.34,
-     "end": 494.7
+     "start": 495.49,
+     "end": 495.85
     },
     {
      "w": "dont",
-     "start": 494.7,
-     "end": 495.08
+     "start": 495.85,
+     "end": 496.23
     },
     {
      "w": "eat",
-     "start": 495.08,
-     "end": 495.22
+     "start": 496.23,
+     "end": 496.37
     },
     {
      "w": "in",
-     "start": 495.22,
-     "end": 495.36
+     "start": 496.37,
+     "end": 496.51
     },
     {
      "w": "the",
-     "start": 495.36,
-     "end": 495.46
+     "start": 496.51,
+     "end": 496.61
     },
     {
      "w": "morning",
-     "start": 495.46,
-     "end": 495.78
+     "start": 496.61,
+     "end": 496.93
     }
    ]
   },
   {
    "t": "narration",
-   "start": 498.96,
-   "end": 501.7,
+   "start": 500.11,
+   "end": 502.85,
    "lines": [
     "Escucha otra vez la misma pregunta."
    ],
    "words": [
     {
      "w": "escucha",
-     "start": 498.96,
-     "end": 499.64
+     "start": 500.11,
+     "end": 500.79
     },
     {
      "w": "otra",
-     "start": 499.64,
-     "end": 499.9
+     "start": 500.79,
+     "end": 501.05
     },
     {
      "w": "vez",
-     "start": 499.9,
-     "end": 500.14
+     "start": 501.05,
+     "end": 501.29
     },
     {
      "w": "la",
-     "start": 500.14,
-     "end": 500.34
+     "start": 501.29,
+     "end": 501.49
     },
     {
      "w": "misma",
-     "start": 500.34,
-     "end": 500.74
+     "start": 501.49,
+     "end": 501.89
     },
     {
      "w": "pregunta",
-     "start": 500.74,
-     "end": 501.24
+     "start": 501.89,
+     "end": 502.39
     }
    ]
   },
   {
    "t": "english",
-   "start": 502.0,
-   "end": 503.45,
+   "start": 503.15,
+   "end": 504.6,
    "text": "Do you guys eat in the morning?",
    "words": [
     {
      "w": "Do",
-     "start": 502.0,
-     "end": 502.36
+     "start": 503.15,
+     "end": 503.51
     },
     {
      "w": "you",
-     "start": 502.36,
-     "end": 502.48
+     "start": 503.51,
+     "end": 503.63
     },
     {
      "w": "guys",
-     "start": 502.48,
-     "end": 502.68
+     "start": 503.63,
+     "end": 503.83
     },
     {
      "w": "eat",
-     "start": 502.68,
-     "end": 502.94
+     "start": 503.83,
+     "end": 504.09
     },
     {
      "w": "in",
-     "start": 502.94,
-     "end": 503.12
+     "start": 504.09,
+     "end": 504.27
     },
     {
      "w": "the",
-     "start": 503.12,
-     "end": 503.22
+     "start": 504.27,
+     "end": 504.37
     },
     {
      "w": "morning?",
-     "start": 503.22,
-     "end": 503.45
+     "start": 504.37,
+     "end": 504.6
     }
    ]
   },
   {
    "t": "narration",
-   "start": 504.05,
-   "end": 509.44,
+   "start": 505.2,
+   "end": 510.59,
    "lines": [
     "Esta vez responde “comemos por la mañana y por la tarde.”"
    ],
    "words": [
     {
      "w": "Esta",
-     "start": 504.05,
-     "end": 504.48
+     "start": 505.2,
+     "end": 505.63
     },
     {
      "w": "vez",
-     "start": 504.48,
-     "end": 504.74
+     "start": 505.63,
+     "end": 505.89
     },
     {
      "w": "responde",
-     "start": 504.74,
-     "end": 505.2
+     "start": 505.89,
+     "end": 506.35
     }
    ]
   },
   {
    "t": "english",
-   "start": 509.44,
-   "end": 526.28,
+   "start": 510.59,
+   "end": 527.43,
    "text": "We eat in the morning and in the afternoon. We eat in the morning and in the afternoon.",
    "words": [
     {
      "w": "we",
-     "start": 509.44,
-     "end": 510.12
+     "start": 510.59,
+     "end": 511.27
     },
     {
      "w": "eat",
-     "start": 510.12,
-     "end": 510.36
+     "start": 511.27,
+     "end": 511.51
     },
     {
      "w": "in",
-     "start": 510.36,
-     "end": 510.46
+     "start": 511.51,
+     "end": 511.61
     },
     {
      "w": "the",
-     "start": 510.46,
-     "end": 510.56
+     "start": 511.61,
+     "end": 511.71
     },
     {
      "w": "morning",
-     "start": 510.56,
-     "end": 510.94
+     "start": 511.71,
+     "end": 512.09
     },
     {
      "w": "and",
-     "start": 510.94,
-     "end": 512.1
+     "start": 512.09,
+     "end": 513.25
     },
     {
      "w": "in",
-     "start": 512.1,
-     "end": 512.34
+     "start": 513.25,
+     "end": 513.49
     },
     {
      "w": "the",
-     "start": 512.34,
-     "end": 512.5
+     "start": 513.49,
+     "end": 513.65
     },
     {
      "w": "afternoon",
-     "start": 512.5,
-     "end": 513.06
+     "start": 513.65,
+     "end": 514.21
     },
     {
      "w": "we",
-     "start": 516.76,
-     "end": 517.36
+     "start": 517.91,
+     "end": 518.51
     },
     {
      "w": "eat",
-     "start": 517.36,
-     "end": 517.68
+     "start": 518.51,
+     "end": 518.83
     },
     {
      "w": "in",
-     "start": 517.68,
-     "end": 517.8
+     "start": 518.83,
+     "end": 518.95
     },
     {
      "w": "the",
-     "start": 517.8,
-     "end": 517.92
+     "start": 518.95,
+     "end": 519.07
     },
     {
      "w": "morning",
-     "start": 517.92,
-     "end": 518.3
+     "start": 519.07,
+     "end": 519.45
     },
     {
      "w": "and",
-     "start": 518.3,
-     "end": 519.46
+     "start": 519.45,
+     "end": 520.61
     },
     {
      "w": "in",
-     "start": 519.46,
-     "end": 519.7
+     "start": 520.61,
+     "end": 520.85
     },
     {
      "w": "the",
-     "start": 519.7,
-     "end": 519.82
+     "start": 520.85,
+     "end": 520.97
     },
     {
      "w": "afternoon",
-     "start": 519.82,
-     "end": 520.3
+     "start": 520.97,
+     "end": 521.45
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 526.28,
-   "pauseAt": 530.3,
+   "start": 527.43,
+   "pauseAt": 531.45,
    "spanish": "Di, “comemos por la mañana y por la tarde.”",
    "expected": [
     "We eat in the morning and in the afternoon."
    ],
-   "end": 530.54
+   "end": 531.69
   },
   {
    "t": "english",
-   "start": 530.54,
-   "end": 533.88,
+   "start": 531.69,
+   "end": 535.03,
    "text": "We eat in the morning and in the afternoon.",
    "words": [
     {
      "w": "we",
-     "start": 530.54,
-     "end": 531.06
+     "start": 531.69,
+     "end": 532.21
     },
     {
      "w": "eat",
-     "start": 531.06,
-     "end": 531.3
+     "start": 532.21,
+     "end": 532.45
     },
     {
      "w": "in",
-     "start": 531.3,
-     "end": 531.42
+     "start": 532.45,
+     "end": 532.57
     },
     {
      "w": "the",
-     "start": 531.42,
-     "end": 531.5
+     "start": 532.57,
+     "end": 532.65
     },
     {
      "w": "morning",
-     "start": 531.5,
-     "end": 531.84
+     "start": 532.65,
+     "end": 532.99
     },
     {
      "w": "and",
-     "start": 531.84,
-     "end": 532.84
+     "start": 532.99,
+     "end": 533.99
     },
     {
      "w": "in",
-     "start": 532.84,
-     "end": 533.04
+     "start": 533.99,
+     "end": 534.19
     },
     {
      "w": "the",
-     "start": 533.04,
-     "end": 533.14
+     "start": 534.19,
+     "end": 534.29
     },
     {
      "w": "afternoon",
-     "start": 533.14,
-     "end": 533.58
+     "start": 534.29,
+     "end": 534.73
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 533.88,
-   "pauseAt": 543.53,
+   "start": 535.03,
+   "pauseAt": 544.68,
    "spanish": "Ahora di, “comemos por la mañana y por la tarde.”",
    "expected": [
     "We eat in the morning and in the afternoon every day."
    ],
-   "end": 543.68
+   "end": 544.83
   },
   {
    "t": "english",
-   "start": 543.68,
-   "end": 550.78,
+   "start": 544.83,
+   "end": 551.93,
    "text": "We eat in the morning and in the afternoon every day.",
    "words": [
     {
      "w": "we",
-     "start": 543.68,
-     "end": 544.34
+     "start": 544.83,
+     "end": 545.49
     },
     {
      "w": "eat",
-     "start": 544.34,
-     "end": 544.7
+     "start": 545.49,
+     "end": 545.85
     },
     {
      "w": "in",
-     "start": 544.7,
-     "end": 544.9
+     "start": 545.85,
+     "end": 546.05
     },
     {
      "w": "the",
-     "start": 544.9,
-     "end": 544.98
+     "start": 546.05,
+     "end": 546.13
     },
     {
      "w": "morning",
-     "start": 544.98,
-     "end": 545.3
+     "start": 546.13,
+     "end": 546.45
     },
     {
      "w": "and",
-     "start": 545.3,
-     "end": 545.64
+     "start": 546.45,
+     "end": 546.79
     },
     {
      "w": "in",
-     "start": 545.64,
-     "end": 545.82
+     "start": 546.79,
+     "end": 546.97
     },
     {
      "w": "the",
-     "start": 545.82,
-     "end": 545.92
+     "start": 546.97,
+     "end": 547.07
     },
     {
      "w": "afternoon",
-     "start": 545.92,
-     "end": 546.44
+     "start": 547.07,
+     "end": 547.59
     },
     {
      "w": "every",
-     "start": 546.44,
-     "end": 546.92
+     "start": 547.59,
+     "end": 548.07
     },
     {
      "w": "day",
-     "start": 546.92,
-     "end": 547.36
+     "start": 548.07,
+     "end": 548.51
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 550.78,
-   "pauseAt": 558.39,
+   "start": 551.93,
+   "pauseAt": 559.54,
    "spanish": "Otra vez, ¿cómo se dice “comemos por la mañana y por la tarde todos los días.”?",
    "expected": [
     "We eat in the morning and in the afternoon every day."
    ],
-   "end": 558.54,
-   "leadEnd": 551.72
+   "end": 559.69,
+   "leadEnd": 552.87
   },
   {
    "t": "english",
-   "start": 558.54,
-   "end": 565.98,
+   "start": 559.69,
+   "end": 567.13,
    "text": "We eat in the morning and in the afternoon every day.",
    "words": [
     {
      "w": "we",
-     "start": 558.54,
-     "end": 558.8
+     "start": 559.69,
+     "end": 559.95
     },
     {
      "w": "eat",
-     "start": 558.8,
-     "end": 559.08
+     "start": 559.95,
+     "end": 560.23
     },
     {
      "w": "in",
-     "start": 559.08,
-     "end": 559.2
+     "start": 560.23,
+     "end": 560.35
     },
     {
      "w": "the",
-     "start": 559.2,
-     "end": 559.3
+     "start": 560.35,
+     "end": 560.45
     },
     {
      "w": "morning",
-     "start": 559.3,
-     "end": 559.62
+     "start": 560.45,
+     "end": 560.77
     },
     {
      "w": "and",
-     "start": 559.62,
-     "end": 560.68
+     "start": 560.77,
+     "end": 561.83
     },
     {
      "w": "in",
-     "start": 560.68,
-     "end": 560.86
+     "start": 561.83,
+     "end": 562.01
     },
     {
      "w": "the",
-     "start": 560.86,
-     "end": 560.98
+     "start": 562.01,
+     "end": 562.13
     },
     {
      "w": "afternoon",
-     "start": 560.98,
-     "end": 561.5
+     "start": 562.13,
+     "end": 562.65
     },
     {
      "w": "every",
-     "start": 561.5,
-     "end": 562.26
+     "start": 562.65,
+     "end": 563.41
     },
     {
      "w": "day",
-     "start": 562.26,
-     "end": 562.56
+     "start": 563.41,
+     "end": 563.71
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 565.98,
-   "pauseAt": 570.8,
+   "start": 567.13,
+   "pauseAt": 571.95,
    "spanish": "¿Y cómo preguntar “¿Ellos comen por la mañana?”?",
    "expected": [
     "Do they eat in the morning?"
    ],
-   "end": 571.46
+   "end": 572.61
   },
   {
    "t": "english",
-   "start": 571.35,
-   "end": 577.6,
+   "start": 572.5,
+   "end": 578.75,
    "text": "Do they eat in the morning? Do they eat in the morning?",
    "words": [
     {
      "w": "Do",
-     "start": 571.35,
-     "end": 571.63
+     "start": 572.5,
+     "end": 572.78
     },
     {
      "w": "they",
-     "start": 571.63,
-     "end": 571.81
+     "start": 572.78,
+     "end": 572.96
     },
     {
      "w": "eat",
-     "start": 571.81,
-     "end": 572.09
+     "start": 572.96,
+     "end": 573.24
     },
     {
      "w": "in",
-     "start": 572.09,
-     "end": 572.19
+     "start": 573.24,
+     "end": 573.34
     },
     {
      "w": "the",
-     "start": 572.19,
-     "end": 572.27
+     "start": 573.34,
+     "end": 573.42
     },
     {
      "w": "morning?",
-     "start": 572.27,
-     "end": 572.7
+     "start": 573.42,
+     "end": 573.85
     },
     {
      "w": "Do",
-     "start": 575.85,
-     "end": 576.17
+     "start": 577.0,
+     "end": 577.32
     },
     {
      "w": "they",
-     "start": 576.17,
-     "end": 576.41
+     "start": 577.32,
+     "end": 577.56
     },
     {
      "w": "eat",
-     "start": 576.41,
-     "end": 576.71
+     "start": 577.56,
+     "end": 577.86
     },
     {
      "w": "in",
-     "start": 576.71,
-     "end": 576.81
+     "start": 577.86,
+     "end": 577.96
     },
     {
      "w": "the",
-     "start": 576.81,
-     "end": 576.91
+     "start": 577.96,
+     "end": 578.06
     },
     {
      "w": "morning?",
-     "start": 576.91,
-     "end": 577.35
+     "start": 578.06,
+     "end": 578.5
     }
    ]
   },
   {
    "t": "narration",
-   "start": 581.02,
-   "end": 583.08,
+   "start": 582.17,
+   "end": 584.23,
    "lines": [
     "Solo escucha la siguiente."
    ],
    "words": [
     {
      "w": "solo",
-     "start": 581.02,
-     "end": 581.28
+     "start": 582.17,
+     "end": 582.43
     },
     {
      "w": "escucha",
-     "start": 581.28,
-     "end": 581.66
+     "start": 582.43,
+     "end": 582.81
     },
     {
      "w": "la",
-     "start": 581.66,
-     "end": 581.76
+     "start": 582.81,
+     "end": 582.91
     },
     {
      "w": "siguiente",
-     "start": 581.76,
-     "end": 582.22
+     "start": 582.91,
+     "end": 583.37
     }
    ]
   },
   {
    "t": "english",
-   "start": 583.08,
-   "end": 588.2,
+   "start": 584.23,
+   "end": 589.35,
    "text": "Yes, they eat in the morning. Do they eat in the afternoon every day?",
    "words": [
     {
      "w": "yes",
-     "start": 583.08,
-     "end": 583.58
+     "start": 584.23,
+     "end": 584.73
     },
     {
      "w": "they",
-     "start": 583.86,
-     "end": 584.06
+     "start": 585.01,
+     "end": 585.21
     },
     {
      "w": "eat",
-     "start": 584.06,
-     "end": 584.3
+     "start": 585.21,
+     "end": 585.45
     },
     {
      "w": "in",
-     "start": 584.3,
-     "end": 584.4
+     "start": 585.45,
+     "end": 585.55
     },
     {
      "w": "the",
-     "start": 584.4,
-     "end": 584.48
+     "start": 585.55,
+     "end": 585.63
     },
     {
      "w": "morning",
-     "start": 584.48,
-     "end": 584.76
+     "start": 585.63,
+     "end": 585.91
     },
     {
      "w": "do",
-     "start": 585.14,
-     "end": 585.56
+     "start": 586.29,
+     "end": 586.71
     },
     {
      "w": "they",
-     "start": 585.56,
-     "end": 585.7
+     "start": 586.71,
+     "end": 586.85
     },
     {
      "w": "eat",
-     "start": 585.7,
-     "end": 585.92
+     "start": 586.85,
+     "end": 587.07
     },
     {
      "w": "in",
-     "start": 585.92,
-     "end": 586.02
+     "start": 587.07,
+     "end": 587.17
     },
     {
      "w": "the",
-     "start": 586.02,
-     "end": 586.12
+     "start": 587.17,
+     "end": 587.27
     },
     {
      "w": "afternoon",
-     "start": 586.12,
-     "end": 586.62
+     "start": 587.27,
+     "end": 587.77
     },
     {
      "w": "every",
-     "start": 586.62,
-     "end": 587.04
+     "start": 587.77,
+     "end": 588.19
     },
     {
      "w": "day",
-     "start": 587.04,
-     "end": 587.34
+     "start": 588.19,
+     "end": 588.49
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 588.2,
-   "pauseAt": 593.22,
+   "start": 589.35,
+   "pauseAt": 594.37,
    "spanish": "Responde “No, ellos no comen por la tarde todos los días.”",
    "expected": [
     "No, they don't eat in the afternoon every day."
    ],
-   "end": 593.52
+   "end": 594.67
   },
   {
    "t": "english",
-   "start": 593.52,
-   "end": 603.18,
+   "start": 594.67,
+   "end": 604.33,
    "text": "No, they don't eat in the afternoon every day.",
    "words": [
     {
      "w": "no",
-     "start": 593.52,
-     "end": 594.18
+     "start": 594.67,
+     "end": 595.33
     },
     {
      "w": "they",
-     "start": 594.5,
-     "end": 595.02
+     "start": 595.65,
+     "end": 596.17
     },
     {
      "w": "dont",
-     "start": 595.02,
-     "end": 595.42
+     "start": 596.17,
+     "end": 596.57
     },
     {
      "w": "eat",
-     "start": 595.42,
-     "end": 595.56
+     "start": 596.57,
+     "end": 596.71
     },
     {
      "w": "in",
-     "start": 595.56,
-     "end": 595.68
+     "start": 596.71,
+     "end": 596.83
     },
     {
      "w": "the",
-     "start": 595.68,
-     "end": 595.82
+     "start": 596.83,
+     "end": 596.97
     },
     {
      "w": "afternoon",
-     "start": 595.82,
-     "end": 596.34
+     "start": 596.97,
+     "end": 597.49
     },
     {
      "w": "every",
-     "start": 596.34,
-     "end": 597.14
+     "start": 597.49,
+     "end": 598.29
     },
     {
      "w": "day",
-     "start": 597.14,
-     "end": 597.48
+     "start": 598.29,
+     "end": 598.63
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 603.18,
-   "pauseAt": 607.61,
+   "start": 604.33,
+   "pauseAt": 608.76,
    "spanish": "Di, “ellos no comen por la tarde todos los días.”",
    "expected": [
     "They don’t eat in the afternoon every day."
    ],
-   "end": 607.76
+   "end": 608.91
   },
   {
    "t": "english",
-   "start": 607.76,
-   "end": 615.22,
+   "start": 608.91,
+   "end": 616.37,
    "text": "They don’t eat in the afternoon every day.",
    "words": [
     {
      "w": "they",
-     "start": 607.76,
-     "end": 608.4
+     "start": 608.91,
+     "end": 609.55
     },
     {
      "w": "dont",
-     "start": 608.4,
-     "end": 608.94
+     "start": 609.55,
+     "end": 610.09
     },
     {
      "w": "eat",
-     "start": 608.94,
-     "end": 609.08
+     "start": 610.09,
+     "end": 610.23
     },
     {
      "w": "in",
-     "start": 609.08,
-     "end": 609.24
+     "start": 610.23,
+     "end": 610.39
     },
     {
      "w": "the",
-     "start": 609.24,
-     "end": 609.34
+     "start": 610.39,
+     "end": 610.49
     },
     {
      "w": "afternoon",
-     "start": 609.34,
-     "end": 609.86
+     "start": 610.49,
+     "end": 611.01
     },
     {
      "w": "every",
-     "start": 609.86,
-     "end": 610.3
+     "start": 611.01,
+     "end": 611.45
     },
     {
      "w": "day",
-     "start": 610.3,
-     "end": 610.64
+     "start": 611.45,
+     "end": 611.79
     }
    ]
   },
   {
    "t": "narration",
-   "start": 615.22,
-   "end": 617.22,
+   "start": 616.37,
+   "end": 618.37,
    "lines": [
     "Escucha la mujer."
    ],
    "words": [
     {
      "w": "escucha",
-     "start": 615.22,
-     "end": 615.86
+     "start": 616.37,
+     "end": 617.01
     },
     {
      "w": "la",
-     "start": 616.06,
-     "end": 616.12
+     "start": 617.21,
+     "end": 617.27
     },
     {
      "w": "mujer",
-     "start": 616.12,
-     "end": 616.48
+     "start": 617.27,
+     "end": 617.63
     }
    ]
   },
   {
    "t": "english",
-   "start": 617.22,
-   "end": 622.72,
+   "start": 618.37,
+   "end": 623.87,
    "text": "No, they don’t eat in the afternoon every day. But they always eat in the evening.",
    "words": [
     {
      "w": "no",
-     "start": 617.22,
-     "end": 617.52
+     "start": 618.37,
+     "end": 618.67
     },
     {
      "w": "they",
-     "start": 617.72,
-     "end": 617.98
+     "start": 618.87,
+     "end": 619.13
     },
     {
      "w": "dont",
-     "start": 617.98,
-     "end": 618.28
+     "start": 619.13,
+     "end": 619.43
     },
     {
      "w": "eat",
-     "start": 618.28,
-     "end": 618.5
+     "start": 619.43,
+     "end": 619.65
     },
     {
      "w": "in",
-     "start": 618.5,
-     "end": 618.64
+     "start": 619.65,
+     "end": 619.79
     },
     {
      "w": "the",
-     "start": 618.64,
-     "end": 618.74
+     "start": 619.79,
+     "end": 619.89
     },
     {
      "w": "afternoon",
-     "start": 618.74,
-     "end": 619.2
+     "start": 619.89,
+     "end": 620.35
     },
     {
      "w": "every",
-     "start": 619.2,
-     "end": 619.56
+     "start": 620.35,
+     "end": 620.71
     },
     {
      "w": "day",
-     "start": 619.56,
-     "end": 619.88
+     "start": 620.71,
+     "end": 621.03
     },
     {
      "w": "but",
-     "start": 620.12,
-     "end": 620.42
+     "start": 621.27,
+     "end": 621.57
     },
     {
      "w": "they",
-     "start": 620.42,
-     "end": 620.58
+     "start": 621.57,
+     "end": 621.73
     },
     {
      "w": "always",
-     "start": 620.58,
-     "end": 621.04
+     "start": 621.73,
+     "end": 622.19
     },
     {
      "w": "eat",
-     "start": 621.04,
-     "end": 621.34
+     "start": 622.19,
+     "end": 622.49
     },
     {
      "w": "in",
-     "start": 621.34,
-     "end": 621.5
+     "start": 622.49,
+     "end": 622.65
     },
     {
      "w": "the",
-     "start": 621.5,
-     "end": 621.6
+     "start": 622.65,
+     "end": 622.75
     },
     {
      "w": "evening",
-     "start": 621.6,
-     "end": 621.94
+     "start": 622.75,
+     "end": 623.09
     }
    ]
   },
   {
    "t": "narration",
-   "start": 622.72,
-   "end": 644.8,
+   "start": 623.87,
+   "end": 645.95,
    "lines": [
     "Ella acaba de decir \"But they always eat in the evening.\" \"But they always eat in the evening,\" significa “pero ellos siempre comen por la noche.” Así es cómo decimos ‘por la noche’ cuando no dormimos ni descansamos. Escucha y repite."
    ],
    "words": [
     {
      "w": "ella",
-     "start": 622.72,
-     "end": 623.36
+     "start": 623.87,
+     "end": 624.51
     },
     {
      "w": "acaba",
-     "start": 623.36,
-     "end": 623.68
+     "start": 624.51,
+     "end": 624.83
     },
     {
      "w": "de",
-     "start": 623.68,
-     "end": 623.8
+     "start": 624.83,
+     "end": 624.95
     },
     {
      "w": "decir",
-     "start": 623.8,
-     "end": 624.18
+     "start": 624.95,
+     "end": 625.33
     },
     {
      "w": "but",
-     "start": 624.76,
-     "end": 625.22
+     "start": 625.91,
+     "end": 626.37
     },
     {
      "w": "they",
-     "start": 625.22,
-     "end": 625.56
+     "start": 626.37,
+     "end": 626.71
     },
     {
      "w": "always",
-     "start": 625.56,
-     "end": 626.1
+     "start": 626.71,
+     "end": 627.25
     },
     {
      "w": "eat",
-     "start": 626.1,
-     "end": 626.46
+     "start": 627.25,
+     "end": 627.61
     },
     {
      "w": "in",
-     "start": 626.46,
-     "end": 626.6
+     "start": 627.61,
+     "end": 627.75
     },
     {
      "w": "the",
-     "start": 626.6,
-     "end": 626.74
+     "start": 627.75,
+     "end": 627.89
     },
     {
      "w": "evening",
-     "start": 626.74,
-     "end": 627.2
+     "start": 627.89,
+     "end": 628.35
     },
     {
      "w": "but",
-     "start": 627.2,
-     "end": 628.6
+     "start": 628.35,
+     "end": 629.75
     },
     {
      "w": "they",
-     "start": 628.6,
-     "end": 628.84
+     "start": 629.75,
+     "end": 629.99
     },
     {
      "w": "always",
-     "start": 628.84,
-     "end": 629.36
+     "start": 629.99,
+     "end": 630.51
     },
     {
      "w": "eat",
-     "start": 629.36,
-     "end": 629.64
+     "start": 630.51,
+     "end": 630.79
     },
     {
      "w": "in",
-     "start": 629.64,
-     "end": 629.76
+     "start": 630.79,
+     "end": 630.91
     },
     {
      "w": "the",
-     "start": 629.76,
-     "end": 629.94
+     "start": 630.91,
+     "end": 631.09
     },
     {
      "w": "evening",
-     "start": 629.94,
-     "end": 630.34
+     "start": 631.09,
+     "end": 631.49
     },
     {
      "w": "significa",
-     "start": 630.34,
-     "end": 631.3
+     "start": 631.49,
+     "end": 632.45
     },
     {
      "w": "pero",
-     "start": 631.54,
-     "end": 632.18
+     "start": 632.69,
+     "end": 633.33
     },
     {
      "w": "ellos",
-     "start": 632.18,
-     "end": 632.62
+     "start": 633.33,
+     "end": 633.77
     },
     {
      "w": "siempre",
-     "start": 632.62,
-     "end": 633.34
+     "start": 633.77,
+     "end": 634.49
     },
     {
      "w": "comen",
-     "start": 633.34,
-     "end": 633.76
+     "start": 634.49,
+     "end": 634.91
     },
     {
      "w": "por",
-     "start": 633.76,
-     "end": 633.98
+     "start": 634.91,
+     "end": 635.13
     },
     {
      "w": "la",
-     "start": 633.98,
-     "end": 634.16
+     "start": 635.13,
+     "end": 635.31
     },
     {
      "w": "noche",
-     "start": 634.16,
-     "end": 634.66
+     "start": 635.31,
+     "end": 635.81
     },
     {
      "w": "asi",
-     "start": 635.38,
-     "end": 636.2
+     "start": 636.53,
+     "end": 637.35
     },
     {
      "w": "es",
-     "start": 636.2,
-     "end": 636.44
+     "start": 637.35,
+     "end": 637.59
     },
     {
      "w": "como",
-     "start": 636.44,
-     "end": 636.66
+     "start": 637.59,
+     "end": 637.81
     },
     {
      "w": "decimos",
-     "start": 636.66,
-     "end": 637.04
+     "start": 637.81,
+     "end": 638.19
     },
     {
      "w": "por",
-     "start": 637.04,
-     "end": 637.26
+     "start": 638.19,
+     "end": 638.41
     },
     {
      "w": "la",
-     "start": 637.26,
-     "end": 637.38
+     "start": 638.41,
+     "end": 638.53
     },
     {
      "w": "noche",
-     "start": 637.38,
-     "end": 637.68
+     "start": 638.53,
+     "end": 638.83
     },
     {
      "w": "cuando",
-     "start": 637.68,
-     "end": 638.04
+     "start": 638.83,
+     "end": 639.19
     },
     {
      "w": "no",
-     "start": 638.04,
-     "end": 638.56
+     "start": 639.19,
+     "end": 639.71
     },
     {
      "w": "dormimos",
-     "start": 638.56,
-     "end": 639.9
+     "start": 639.71,
+     "end": 641.05
     },
     {
      "w": "ni",
-     "start": 639.9,
-     "end": 640.56
+     "start": 641.05,
+     "end": 641.71
     },
     {
      "w": "descansamos",
-     "start": 640.56,
-     "end": 641.68
+     "start": 641.71,
+     "end": 642.83
     },
     {
      "w": "escucha",
-     "start": 641.98,
-     "end": 642.84
+     "start": 643.13,
+     "end": 643.99
     },
     {
      "w": "y",
-     "start": 642.84,
-     "end": 643.4
+     "start": 643.99,
+     "end": 644.55
     },
     {
      "w": "repite",
-     "start": 643.4,
-     "end": 644.26
+     "start": 644.55,
+     "end": 645.41
     }
    ]
   },
   {
    "t": "english",
-   "start": 644.8,
-   "end": 650.04,
+   "start": 645.95,
+   "end": 651.19,
    "text": "In the evening. In the evening.",
    "words": [
     {
      "w": "in",
-     "start": 644.8,
-     "end": 644.98
+     "start": 645.95,
+     "end": 646.13
     },
     {
      "w": "the",
-     "start": 644.98,
-     "end": 645.12
+     "start": 646.13,
+     "end": 646.27
     },
     {
      "w": "evening",
-     "start": 645.12,
-     "end": 645.54
+     "start": 646.27,
+     "end": 646.69
     },
     {
      "w": "in",
-     "start": 646.66,
-     "end": 647.52
+     "start": 647.81,
+     "end": 648.67
     },
     {
      "w": "the",
-     "start": 647.52,
-     "end": 647.66
+     "start": 648.67,
+     "end": 648.81
     },
     {
      "w": "evening",
-     "start": 647.66,
-     "end": 648.1
-    }
-   ]
-  },
-  {
-   "t": "prompt",
-   "start": 650.04,
-   "pauseAt": 666.79,
-   "spanish": "Recuerda que ‘night’ es normalmente después de las 10 de la noche y es cuando los gringos comienzan a dormir o descansar antes de dormir. ¿Cómo decir ‘por la noche’ cuando la persona está durmiendo?",
-   "expected": [
-    "At night."
-   ],
-   "end": 666.94
-  },
-  {
-   "t": "english",
-   "start": 666.94,
-   "end": 673.42,
-   "text": "At night. At night.",
-   "words": [
-    {
-     "w": "at",
-     "start": 666.94,
-     "end": 667.54
-    },
-    {
-     "w": "night",
-     "start": 667.54,
-     "end": 667.96
-    },
-    {
-     "w": "at",
-     "start": 669.7,
-     "end": 670.42
-    },
-    {
-     "w": "night",
-     "start": 670.42,
-     "end": 670.8
-    }
-   ]
-  },
-  {
-   "t": "prompt",
-   "start": 673.42,
-   "pauseAt": 676.51,
-   "spanish": "¿Cómo decir ‘por la noche’ cuando la persona está cenando?",
-   "expected": [
-    "In the evening."
-   ],
-   "end": 676.66
-  },
-  {
-   "t": "english",
-   "start": 676.66,
-   "end": 684.84,
-   "text": "In the evening. In the evening.",
-   "words": [
-    {
-     "w": "in",
-     "start": 676.66,
-     "end": 677.18
-    },
-    {
-     "w": "the",
-     "start": 677.18,
-     "end": 677.3
-    },
-    {
-     "w": "evening",
-     "start": 677.3,
-     "end": 677.74
-    },
-    {
-     "w": "in",
-     "start": 679.04,
-     "end": 679.74
-    },
-    {
-     "w": "the",
-     "start": 679.74,
-     "end": 679.86
-    },
-    {
-     "w": "evening",
-     "start": 679.86,
-     "end": 680.3
+     "start": 648.81,
+     "end": 649.25
     }
    ]
   },
   {
    "t": "narration",
-   "start": 683.54,
-   "end": 684.26,
+   "start": 651.15,
+   "end": 663.1,
+   "lines": [
+    "Recuerda que ‘night’ es normalmente después de las 10 de la noche y es cuando los gringos comienzan a dormir o descansar antes de dormir."
+   ],
+   "words": [
+    {
+     "w": "Recuerda",
+     "start": 651.19,
+     "end": 651.93
+    },
+    {
+     "w": "que",
+     "start": 651.93,
+     "end": 652.09
+    },
+    {
+     "w": "night",
+     "start": 652.09,
+     "end": 652.57
+    },
+    {
+     "w": "es",
+     "start": 652.57,
+     "end": 653.35
+    },
+    {
+     "w": "normalmente",
+     "start": 653.35,
+     "end": 654.53
+    },
+    {
+     "w": "después",
+     "start": 654.53,
+     "end": 655.35
+    },
+    {
+     "w": "de",
+     "start": 655.35,
+     "end": 655.81
+    },
+    {
+     "w": "las",
+     "start": 655.81,
+     "end": 656.05
+    },
+    {
+     "w": "10",
+     "start": 656.05,
+     "end": 656.37
+    },
+    {
+     "w": "de",
+     "start": 656.37,
+     "end": 656.63
+    },
+    {
+     "w": "la",
+     "start": 656.63,
+     "end": 656.79
+    },
+    {
+     "w": "noche",
+     "start": 656.79,
+     "end": 657.05
+    },
+    {
+     "w": "y",
+     "start": 657.05,
+     "end": 657.29
+    },
+    {
+     "w": "es",
+     "start": 657.29,
+     "end": 657.47
+    },
+    {
+     "w": "cuando",
+     "start": 657.47,
+     "end": 657.69
+    },
+    {
+     "w": "los",
+     "start": 657.69,
+     "end": 657.87
+    },
+    {
+     "w": "gringos",
+     "start": 657.87,
+     "end": 658.31
+    },
+    {
+     "w": "comenzamos",
+     "start": 658.31,
+     "end": 659.91
+    },
+    {
+     "w": "a",
+     "start": 659.91,
+     "end": 660.07
+    },
+    {
+     "w": "dormir",
+     "start": 660.07,
+     "end": 660.39
+    },
+    {
+     "w": "o",
+     "start": 660.39,
+     "end": 661.07
+    },
+    {
+     "w": "descansar",
+     "start": 661.07,
+     "end": 661.93
+    },
+    {
+     "w": "antes",
+     "start": 661.93,
+     "end": 662.69
+    },
+    {
+     "w": "de",
+     "start": 662.69,
+     "end": 663.09
+    },
+    {
+     "w": "dormir.",
+     "start": 663.09,
+     "end": 663.49
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 663.45,
+   "end": 668.09,
+   "spanish": "¿Cómo decir ‘por la noche’ cuando la persona está durmiendo?",
+   "expected": [
+    "At night."
+   ],
+   "pauseAt": 667.94,
+   "words": [
+    {
+     "w": "¿Cómo",
+     "start": 663.49,
+     "end": 664.53
+    },
+    {
+     "w": "decir",
+     "start": 664.53,
+     "end": 664.97
+    },
+    {
+     "w": "por",
+     "start": 664.97,
+     "end": 665.53
+    },
+    {
+     "w": "la",
+     "start": 665.53,
+     "end": 665.73
+    },
+    {
+     "w": "noche",
+     "start": 665.73,
+     "end": 666.01
+    },
+    {
+     "w": "cuando",
+     "start": 666.01,
+     "end": 666.33
+    },
+    {
+     "w": "la",
+     "start": 666.33,
+     "end": 666.49
+    },
+    {
+     "w": "persona",
+     "start": 666.49,
+     "end": 666.85
+    },
+    {
+     "w": "está",
+     "start": 666.85,
+     "end": 667.09
+    },
+    {
+     "w": "durmiendo?",
+     "start": 667.09,
+     "end": 667.77
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 668.09,
+   "end": 674.57,
+   "text": "At night. At night.",
+   "words": [
+    {
+     "w": "at",
+     "start": 668.09,
+     "end": 668.69
+    },
+    {
+     "w": "night",
+     "start": 668.69,
+     "end": 669.11
+    },
+    {
+     "w": "at",
+     "start": 670.85,
+     "end": 671.57
+    },
+    {
+     "w": "night",
+     "start": 671.57,
+     "end": 671.95
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 674.57,
+   "pauseAt": 677.66,
+   "spanish": "¿Cómo decir ‘por la noche’ cuando la persona está cenando?",
+   "expected": [
+    "In the evening."
+   ],
+   "end": 677.81
+  },
+  {
+   "t": "english",
+   "start": 677.81,
+   "end": 685.99,
+   "text": "In the evening. In the evening.",
+   "words": [
+    {
+     "w": "in",
+     "start": 677.81,
+     "end": 678.33
+    },
+    {
+     "w": "the",
+     "start": 678.33,
+     "end": 678.45
+    },
+    {
+     "w": "evening",
+     "start": 678.45,
+     "end": 678.89
+    },
+    {
+     "w": "in",
+     "start": 680.19,
+     "end": 680.89
+    },
+    {
+     "w": "the",
+     "start": 680.89,
+     "end": 681.01
+    },
+    {
+     "w": "evening",
+     "start": 681.01,
+     "end": 681.45
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 684.69,
+   "end": 685.41,
    "lines": [
     "Excelente."
    ],
    "words": [
     {
      "w": "excelente",
-     "start": 683.54,
-     "end": 684.26
+     "start": 684.69,
+     "end": 685.41
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 684.84,
-   "pauseAt": 687.79,
+   "start": 685.99,
+   "pauseAt": 688.94,
    "spanish": "Ahora pregunta “¿comes por la noche?”.",
    "expected": [
     "Do you eat in the evening?"
    ],
-   "end": 687.94
+   "end": 689.09
   },
   {
    "t": "english",
-   "start": 687.94,
-   "end": 698.1,
+   "start": 689.09,
+   "end": 699.25,
    "text": "Do you eat in the evening? Do you eat in the evening?",
    "words": [
     {
      "w": "do",
-     "start": 687.94,
-     "end": 688.64
+     "start": 689.09,
+     "end": 689.79
     },
     {
      "w": "you",
-     "start": 688.64,
-     "end": 688.84
+     "start": 689.79,
+     "end": 689.99
     },
     {
      "w": "eat",
-     "start": 688.84,
-     "end": 689.04
+     "start": 689.99,
+     "end": 690.19
     },
     {
      "w": "in",
-     "start": 689.04,
-     "end": 689.18
+     "start": 690.19,
+     "end": 690.33
     },
     {
      "w": "the",
-     "start": 689.18,
-     "end": 689.36
+     "start": 690.33,
+     "end": 690.51
     },
     {
      "w": "evening",
-     "start": 689.36,
-     "end": 689.72
+     "start": 690.51,
+     "end": 690.87
     },
     {
      "w": "do",
-     "start": 692.88,
-     "end": 693.68
+     "start": 694.03,
+     "end": 694.83
     },
     {
      "w": "you",
-     "start": 693.68,
-     "end": 693.94
+     "start": 694.83,
+     "end": 695.09
     },
     {
      "w": "eat",
-     "start": 693.94,
-     "end": 694.18
+     "start": 695.09,
+     "end": 695.33
     },
     {
      "w": "in",
-     "start": 694.18,
-     "end": 694.36
+     "start": 695.33,
+     "end": 695.51
     },
     {
      "w": "the",
-     "start": 694.36,
-     "end": 694.52
+     "start": 695.51,
+     "end": 695.67
     },
     {
      "w": "evening",
-     "start": 694.52,
-     "end": 694.86
+     "start": 695.67,
+     "end": 696.01
     }
    ]
   },
   {
    "t": "narration",
-   "start": 698.1,
-   "end": 726.56,
+   "start": 699.25,
+   "end": 727.71,
    "lines": [
     "En vez de decir ‘to eat in the evening’ puedes escuchar a los gringos decir ‘eat dinner’ o ‘to eat supper’. No hay ninguna gran diferencia entre ‘dinner’ o ‘supper’. Recuerda también que podemos decir ‘to have dinner/supper’ en inglés. NO decimos ‘to take dinner/supper’. Ahora escucha la siguiente pregunta."
    ],
    "words": [
     {
      "w": "en",
-     "start": 698.1,
-     "end": 698.9
+     "start": 699.25,
+     "end": 700.05
     },
     {
      "w": "vez",
-     "start": 698.9,
-     "end": 699.22
+     "start": 700.05,
+     "end": 700.37
     },
     {
      "w": "de",
-     "start": 699.22,
-     "end": 699.44
+     "start": 700.37,
+     "end": 700.59
     },
     {
      "w": "decir",
-     "start": 699.44,
-     "end": 699.94
+     "start": 700.59,
+     "end": 701.09
     },
     {
      "w": "to",
-     "start": 699.94,
-     "end": 700.54
+     "start": 701.09,
+     "end": 701.69
     },
     {
      "w": "eat",
-     "start": 700.54,
-     "end": 700.78
+     "start": 701.69,
+     "end": 701.93
     },
     {
      "w": "in",
-     "start": 700.78,
-     "end": 700.9
+     "start": 701.93,
+     "end": 702.05
     },
     {
      "w": "the",
-     "start": 700.9,
-     "end": 701.02
+     "start": 702.05,
+     "end": 702.17
     },
     {
      "w": "evening",
-     "start": 701.02,
-     "end": 701.5
+     "start": 702.17,
+     "end": 702.65
     },
     {
      "w": "puedes",
-     "start": 701.84,
-     "end": 702.78
+     "start": 702.99,
+     "end": 703.93
     },
     {
      "w": "escuchar",
-     "start": 702.78,
-     "end": 703.32
+     "start": 703.93,
+     "end": 704.47
     },
     {
      "w": "a",
-     "start": 703.32,
-     "end": 703.4
+     "start": 704.47,
+     "end": 704.55
     },
     {
      "w": "los",
-     "start": 703.4,
-     "end": 703.46
+     "start": 704.55,
+     "end": 704.61
     },
     {
      "w": "gringos",
-     "start": 703.46,
-     "end": 703.74
+     "start": 704.61,
+     "end": 704.89
     },
     {
      "w": "decir",
-     "start": 703.74,
-     "end": 704.16
+     "start": 704.89,
+     "end": 705.31
     },
     {
      "w": "eat",
-     "start": 704.16,
-     "end": 705.04
+     "start": 705.31,
+     "end": 706.19
     },
     {
      "w": "dinner",
-     "start": 705.04,
-     "end": 705.46
+     "start": 706.19,
+     "end": 706.61
     },
     {
      "w": "o",
-     "start": 705.46,
-     "end": 706.12
+     "start": 706.61,
+     "end": 707.27
     },
     {
      "w": "to",
-     "start": 706.14,
-     "end": 706.14
+     "start": 707.29,
+     "end": 707.29
     },
     {
      "w": "eat",
-     "start": 706.12,
-     "end": 706.96
+     "start": 707.27,
+     "end": 708.11
     },
     {
      "w": "supper",
-     "start": 706.96,
-     "end": 707.4
+     "start": 708.11,
+     "end": 708.55
     },
     {
      "w": "no",
-     "start": 708.16,
-     "end": 708.56
+     "start": 709.31,
+     "end": 709.71
     },
     {
      "w": "hay",
-     "start": 708.56,
-     "end": 708.66
+     "start": 709.71,
+     "end": 709.81
     },
     {
      "w": "ninguna",
-     "start": 708.66,
-     "end": 709.02
+     "start": 709.81,
+     "end": 710.17
     },
     {
      "w": "gran",
-     "start": 709.02,
-     "end": 709.4
+     "start": 710.17,
+     "end": 710.55
     },
     {
      "w": "diferencia",
-     "start": 709.4,
-     "end": 709.96
+     "start": 710.55,
+     "end": 711.11
     },
     {
      "w": "entre",
-     "start": 709.96,
-     "end": 710.28
+     "start": 711.11,
+     "end": 711.43
     },
     {
      "w": "dinner",
-     "start": 710.28,
-     "end": 710.8
+     "start": 711.43,
+     "end": 711.95
     },
     {
      "w": "o",
-     "start": 710.8,
-     "end": 711.46
+     "start": 711.95,
+     "end": 712.61
     },
     {
      "w": "supper",
-     "start": 711.46,
-     "end": 711.98
+     "start": 712.61,
+     "end": 713.13
     },
     {
      "w": "recuerda",
-     "start": 712.56,
-     "end": 713.36
+     "start": 713.71,
+     "end": 714.51
     },
     {
      "w": "tambien",
-     "start": 713.36,
-     "end": 713.74
+     "start": 714.51,
+     "end": 714.89
     },
     {
      "w": "que",
-     "start": 713.74,
-     "end": 714.02
+     "start": 714.89,
+     "end": 715.17
     },
     {
      "w": "podemos",
-     "start": 714.02,
-     "end": 714.34
+     "start": 715.17,
+     "end": 715.49
     },
     {
      "w": "decir",
-     "start": 714.34,
-     "end": 714.82
+     "start": 715.49,
+     "end": 715.97
     },
     {
      "w": "to",
-     "start": 714.82,
-     "end": 715.52
+     "start": 715.97,
+     "end": 716.67
     },
     {
      "w": "have",
-     "start": 715.52,
-     "end": 715.74
+     "start": 716.67,
+     "end": 716.89
     },
     {
      "w": "dinnersupper",
-     "start": 715.76,
-     "end": 716.12
+     "start": 716.91,
+     "end": 717.27
     },
     {
      "w": "en",
-     "start": 716.5,
-     "end": 717.2
+     "start": 717.65,
+     "end": 718.35
     },
     {
      "w": "ingles",
-     "start": 717.2,
-     "end": 717.46
+     "start": 718.35,
+     "end": 718.61
     },
     {
      "w": "no",
-     "start": 718.4,
-     "end": 718.88
+     "start": 719.55,
+     "end": 720.03
     },
     {
      "w": "decimos",
-     "start": 718.88,
-     "end": 720.24
+     "start": 720.03,
+     "end": 721.39
     },
     {
      "w": "to",
-     "start": 720.24,
-     "end": 720.48
+     "start": 721.39,
+     "end": 721.63
     },
     {
      "w": "take",
-     "start": 720.48,
-     "end": 720.9
+     "start": 721.63,
+     "end": 722.05
     },
     {
      "w": "dinnersupper",
-     "start": 720.92,
-     "end": 722.22
+     "start": 722.07,
+     "end": 723.37
     },
     {
      "w": "ahora",
-     "start": 723.55,
-     "end": 723.92
+     "start": 724.7,
+     "end": 725.07
     },
     {
      "w": "escucha",
-     "start": 724.44,
-     "end": 724.86
+     "start": 725.59,
+     "end": 726.01
     },
     {
      "w": "la",
-     "start": 724.86,
-     "end": 724.98
+     "start": 726.01,
+     "end": 726.13
     },
     {
      "w": "siguiente",
-     "start": 724.98,
-     "end": 725.28
+     "start": 726.13,
+     "end": 726.43
     },
     {
      "w": "pregunta",
-     "start": 725.28,
-     "end": 725.9
+     "start": 726.43,
+     "end": 727.05
     }
    ]
   },
   {
    "t": "english",
-   "start": 726.56,
-   "end": 729.24,
+   "start": 727.71,
+   "end": 730.39,
    "text": "Do you eat in the evening?",
    "words": [
     {
      "w": "do",
-     "start": 726.56,
-     "end": 727.08
+     "start": 727.71,
+     "end": 728.23
     },
     {
      "w": "you",
-     "start": 727.08,
-     "end": 727.34
+     "start": 728.23,
+     "end": 728.49
     },
     {
      "w": "eat",
-     "start": 727.34,
-     "end": 727.6
+     "start": 728.49,
+     "end": 728.75
     },
     {
      "w": "in",
-     "start": 727.6,
-     "end": 727.74
+     "start": 728.75,
+     "end": 728.89
     },
     {
      "w": "the",
-     "start": 727.74,
-     "end": 727.86
+     "start": 728.89,
+     "end": 729.01
     },
     {
      "w": "evening",
-     "start": 727.86,
-     "end": 728.2
+     "start": 729.01,
+     "end": 729.35
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 729.24,
-   "pauseAt": 733.41,
+   "start": 730.39,
+   "pauseAt": 734.56,
    "spanish": "Responde, “no, yo no como por las noches.”",
    "expected": [
     "No, I don’t eat in the evenings."
    ],
-   "end": 733.56
+   "end": 734.71
   },
   {
    "t": "english",
-   "start": 733.56,
-   "end": 739.34,
+   "start": 734.71,
+   "end": 740.49,
    "text": "No, I don’t eat in the evenings.",
    "words": [
     {
      "w": "no",
-     "start": 733.56,
-     "end": 734.16
+     "start": 734.71,
+     "end": 735.31
     },
     {
      "w": "i",
-     "start": 734.32,
-     "end": 734.54
+     "start": 735.47,
+     "end": 735.69
     },
     {
      "w": "dont",
-     "start": 734.54,
-     "end": 734.82
+     "start": 735.69,
+     "end": 735.97
     },
     {
      "w": "eat",
-     "start": 734.82,
-     "end": 735.0
+     "start": 735.97,
+     "end": 736.15
     },
     {
      "w": "in",
-     "start": 735.0,
-     "end": 735.18
+     "start": 736.15,
+     "end": 736.33
     },
     {
      "w": "the",
-     "start": 735.18,
-     "end": 735.28
+     "start": 736.33,
+     "end": 736.43
     },
     {
      "w": "evenings",
-     "start": 735.28,
-     "end": 735.8
+     "start": 736.43,
+     "end": 736.95
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 739.34,
-   "pauseAt": 742.25,
+   "start": 740.49,
+   "pauseAt": 743.4,
    "spanish": "Di, “no como por las noches.”",
    "expected": [
     "I don’t eat in the evenings."
    ],
-   "end": 742.4
+   "end": 743.55
   },
   {
    "t": "english",
-   "start": 742.4,
-   "end": 747.3,
+   "start": 743.55,
+   "end": 748.45,
    "text": "I don’t eat in the evenings.",
    "words": [
     {
      "w": "i",
-     "start": 742.4,
-     "end": 743.08
+     "start": 743.55,
+     "end": 744.23
     },
     {
      "w": "dont",
-     "start": 743.08,
-     "end": 743.36
+     "start": 744.23,
+     "end": 744.51
     },
     {
      "w": "eat",
-     "start": 743.36,
-     "end": 743.54
+     "start": 744.51,
+     "end": 744.69
     },
     {
      "w": "in",
-     "start": 743.54,
-     "end": 743.72
+     "start": 744.69,
+     "end": 744.87
     },
     {
      "w": "the",
-     "start": 743.72,
-     "end": 743.82
+     "start": 744.87,
+     "end": 744.97
     },
     {
      "w": "evenings",
-     "start": 743.82,
-     "end": 744.36
+     "start": 744.97,
+     "end": 745.51
     }
    ]
   },
   {
-   "t": "narration",
-   "start": 747.3,
-   "end": 751.38,
-   "lines": [
-    "Cambia el tema y pregunta “¿caminas por las mañanas?”."
-   ],
+   "t": "prompt",
+   "start": 748.45,
+   "end": 752.53,
    "words": [
     {
      "w": "cambia",
-     "start": 747.3,
-     "end": 747.88
+     "start": 748.45,
+     "end": 749.03
     },
     {
      "w": "el",
-     "start": 747.88,
-     "end": 748.04
+     "start": 749.03,
+     "end": 749.19
     },
     {
      "w": "tema",
-     "start": 748.04,
-     "end": 748.32
+     "start": 749.19,
+     "end": 749.47
     },
     {
      "w": "y",
-     "start": 748.32,
-     "end": 748.46
+     "start": 749.47,
+     "end": 749.61
     },
     {
      "w": "pregunta",
-     "start": 748.46,
-     "end": 748.9
+     "start": 749.61,
+     "end": 750.05
     },
     {
      "w": "caminas",
-     "start": 749.68,
-     "end": 750.26
+     "start": 750.83,
+     "end": 751.41
     },
     {
      "w": "por",
-     "start": 750.26,
-     "end": 750.42
+     "start": 751.41,
+     "end": 751.57
     },
     {
      "w": "las",
-     "start": 750.42,
-     "end": 750.58
+     "start": 751.57,
+     "end": 751.73
     },
     {
      "w": "mananas",
-     "start": 750.58,
-     "end": 751.04
+     "start": 751.73,
+     "end": 752.19
     }
-   ]
+   ],
+   "spanish": "Cambia el tema y pregunta “¿caminas por las mañanas?”.",
+   "expected": [
+    "Do you walk in the morning?"
+   ],
+   "pauseAt": 752.38
   },
   {
    "t": "english",
-   "start": 751.38,
-   "end": 763.42,
+   "start": 752.53,
+   "end": 764.57,
    "text": "Do you walk in the morning? Do you walk in the morning?",
    "words": [
     {
      "w": "do",
-     "start": 751.38,
-     "end": 751.96
+     "start": 752.53,
+     "end": 753.11
     },
     {
      "w": "you",
-     "start": 751.96,
-     "end": 752.14
+     "start": 753.11,
+     "end": 753.29
     },
     {
      "w": "walk",
-     "start": 752.14,
-     "end": 752.4
+     "start": 753.29,
+     "end": 753.55
     },
     {
      "w": "in",
-     "start": 752.4,
-     "end": 752.52
+     "start": 753.55,
+     "end": 753.67
     },
     {
      "w": "the",
-     "start": 752.52,
-     "end": 752.64
+     "start": 753.67,
+     "end": 753.79
     },
     {
      "w": "morning",
-     "start": 752.64,
-     "end": 752.94
+     "start": 753.79,
+     "end": 754.09
     },
     {
      "w": "do",
-     "start": 756.08,
-     "end": 756.66
+     "start": 757.23,
+     "end": 757.81
     },
     {
      "w": "you",
-     "start": 756.66,
-     "end": 756.88
+     "start": 757.81,
+     "end": 758.03
     },
     {
      "w": "walk",
-     "start": 756.88,
-     "end": 757.14
+     "start": 758.03,
+     "end": 758.29
     },
     {
      "w": "in",
-     "start": 757.14,
-     "end": 757.3
+     "start": 758.29,
+     "end": 758.45
     },
     {
      "w": "the",
-     "start": 757.3,
-     "end": 757.42
+     "start": 758.45,
+     "end": 758.57
     },
     {
      "w": "morning",
-     "start": 757.42,
-     "end": 757.72
+     "start": 758.57,
+     "end": 758.87
     }
    ]
   },
   {
    "t": "narration",
-   "start": 761.96,
-   "end": 762.54,
+   "start": 763.11,
+   "end": 763.69,
    "lines": [
     "Excelente."
    ],
    "words": [
     {
      "w": "excelente",
-     "start": 761.96,
-     "end": 762.54
+     "start": 763.11,
+     "end": 763.69
     }
    ]
   },
   {
    "t": "narration",
-   "start": 763.42,
-   "end": 765.9,
+   "start": 764.57,
+   "end": 767.05,
    "lines": [
     "Escucha esta respuesta."
    ],
    "words": [
     {
      "w": "escucha",
-     "start": 763.42,
-     "end": 764.0
+     "start": 764.57,
+     "end": 765.15
     },
     {
      "w": "esta",
-     "start": 764.0,
-     "end": 764.4
+     "start": 765.15,
+     "end": 765.55
     },
     {
      "w": "respuesta",
-     "start": 764.4,
-     "end": 765.08
+     "start": 765.55,
+     "end": 766.23
     }
    ]
   },
   {
    "t": "english",
-   "start": 765.9,
-   "end": 770.4,
+   "start": 767.05,
+   "end": 771.55,
    "text": "Yes, I walk in the morning. I always walk in the morning.",
    "words": [
     {
      "w": "yes",
-     "start": 765.9,
-     "end": 766.48
+     "start": 767.05,
+     "end": 767.63
     },
     {
      "w": "i",
-     "start": 766.68,
-     "end": 766.96
+     "start": 767.83,
+     "end": 768.11
     },
     {
      "w": "walk",
-     "start": 766.96,
-     "end": 767.22
+     "start": 768.11,
+     "end": 768.37
     },
     {
      "w": "in",
-     "start": 767.22,
-     "end": 767.36
+     "start": 768.37,
+     "end": 768.51
     },
     {
      "w": "the",
-     "start": 767.36,
-     "end": 767.46
+     "start": 768.51,
+     "end": 768.61
     },
     {
      "w": "morning",
-     "start": 767.46,
-     "end": 767.74
+     "start": 768.61,
+     "end": 768.89
     },
     {
      "w": "i",
-     "start": 767.74,
-     "end": 768.36
+     "start": 768.89,
+     "end": 769.51
     },
     {
      "w": "always",
-     "start": 768.36,
-     "end": 768.78
+     "start": 769.51,
+     "end": 769.93
     },
     {
      "w": "walk",
-     "start": 768.78,
-     "end": 769.06
+     "start": 769.93,
+     "end": 770.21
     },
     {
      "w": "in",
-     "start": 769.06,
-     "end": 769.24
+     "start": 770.21,
+     "end": 770.39
     },
     {
      "w": "the",
-     "start": 769.24,
-     "end": 769.32
+     "start": 770.39,
+     "end": 770.47
     },
     {
      "w": "morning",
-     "start": 769.32,
-     "end": 769.64
+     "start": 770.47,
+     "end": 770.79
     }
    ]
   },
   {
    "t": "narration",
-   "start": 770.4,
-   "end": 785.42,
+   "start": 771.55,
+   "end": 786.57,
    "lines": [
     "Ella acaba de decir “I always walk in the morning.\" “I always walk in the morning,\" significa \"siempre camino por la mañana.\" Así es cómo dices la palabra ‘siempre’. Escucha y repite."
    ],
    "words": [
     {
      "w": "ella",
-     "start": 770.4,
-     "end": 771.14
+     "start": 771.55,
+     "end": 772.29
     },
     {
      "w": "acaba",
-     "start": 771.14,
-     "end": 771.5
+     "start": 772.29,
+     "end": 772.65
     },
     {
      "w": "de",
-     "start": 771.5,
-     "end": 771.68
+     "start": 772.65,
+     "end": 772.83
     },
     {
      "w": "decir",
-     "start": 771.68,
-     "end": 772.08
+     "start": 772.83,
+     "end": 773.23
     },
     {
      "w": "i",
-     "start": 772.82,
-     "end": 772.92
+     "start": 773.97,
+     "end": 774.07
     },
     {
      "w": "always",
-     "start": 772.92,
-     "end": 773.42
+     "start": 774.07,
+     "end": 774.57
     },
     {
      "w": "walk",
-     "start": 773.42,
-     "end": 773.76
+     "start": 774.57,
+     "end": 774.91
     },
     {
      "w": "in",
-     "start": 773.76,
-     "end": 773.96
+     "start": 774.91,
+     "end": 775.11
     },
     {
      "w": "the",
-     "start": 773.96,
-     "end": 774.08
+     "start": 775.11,
+     "end": 775.23
     },
     {
      "w": "morning",
-     "start": 774.08,
-     "end": 774.4
+     "start": 775.23,
+     "end": 775.55
     },
     {
      "w": "i",
-     "start": 775.21,
-     "end": 775.58
+     "start": 776.36,
+     "end": 776.73
     },
     {
      "w": "always",
-     "start": 775.58,
-     "end": 775.92
+     "start": 776.73,
+     "end": 777.07
     },
     {
      "w": "walk",
-     "start": 775.92,
-     "end": 776.16
+     "start": 777.07,
+     "end": 777.31
     },
     {
      "w": "in",
-     "start": 776.16,
-     "end": 776.34
+     "start": 777.31,
+     "end": 777.49
     },
     {
      "w": "the",
-     "start": 776.34,
-     "end": 776.44
+     "start": 777.49,
+     "end": 777.59
     },
     {
      "w": "morning",
-     "start": 776.44,
-     "end": 776.8
+     "start": 777.59,
+     "end": 777.95
     },
     {
      "w": "significa",
-     "start": 776.8,
-     "end": 777.36
+     "start": 777.95,
+     "end": 778.51
     },
     {
      "w": "siempre",
-     "start": 777.9,
-     "end": 778.52
+     "start": 779.05,
+     "end": 779.67
     },
     {
      "w": "camino",
-     "start": 778.52,
-     "end": 778.96
+     "start": 779.67,
+     "end": 780.11
     },
     {
      "w": "por",
-     "start": 778.96,
-     "end": 779.16
+     "start": 780.11,
+     "end": 780.31
     },
     {
      "w": "la",
-     "start": 779.16,
-     "end": 779.26
+     "start": 780.31,
+     "end": 780.41
     },
     {
      "w": "manana",
-     "start": 779.26,
-     "end": 779.58
+     "start": 780.41,
+     "end": 780.73
     },
     {
      "w": "asi",
-     "start": 780.04,
-     "end": 780.6
+     "start": 781.19,
+     "end": 781.75
     },
     {
      "w": "es",
-     "start": 780.6,
-     "end": 780.78
+     "start": 781.75,
+     "end": 781.93
     },
     {
      "w": "como",
-     "start": 780.78,
-     "end": 781.02
+     "start": 781.93,
+     "end": 782.17
     },
     {
      "w": "dices",
-     "start": 781.02,
-     "end": 781.4
+     "start": 782.17,
+     "end": 782.55
     },
     {
      "w": "la",
-     "start": 781.4,
-     "end": 781.54
+     "start": 782.55,
+     "end": 782.69
     },
     {
      "w": "palabra",
-     "start": 781.54,
-     "end": 781.9
+     "start": 782.69,
+     "end": 783.05
     },
     {
      "w": "siempre",
-     "start": 781.9,
-     "end": 782.34
+     "start": 783.05,
+     "end": 783.49
     },
     {
      "w": "escucha",
-     "start": 782.84,
-     "end": 783.58
+     "start": 783.99,
+     "end": 784.73
     },
     {
      "w": "y",
-     "start": 783.58,
-     "end": 783.92
+     "start": 784.73,
+     "end": 785.07
     },
     {
      "w": "repite",
-     "start": 783.92,
-     "end": 784.72
+     "start": 785.07,
+     "end": 785.87
     }
    ]
   },
   {
    "t": "english",
-   "start": 785.42,
-   "end": 790.5,
+   "start": 786.57,
+   "end": 791.65,
    "text": "Always. Always.",
    "words": [
     {
      "w": "always",
-     "start": 785.42,
-     "end": 785.96
+     "start": 786.57,
+     "end": 787.11
     },
     {
      "w": "always",
-     "start": 787.9,
-     "end": 788.64
+     "start": 789.05,
+     "end": 789.79
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 790.5,
-   "pauseAt": 793.52,
+   "start": 791.65,
+   "pauseAt": 794.67,
    "spanish": "Otra vez, ¿cómo se dice ‘siempre’?",
    "expected": [
     "Always."
    ],
-   "end": 793.82,
-   "leadEnd": 791.28
+   "end": 794.97,
+   "leadEnd": 792.43
   },
   {
    "t": "english",
-   "start": 793.82,
-   "end": 800.06,
+   "start": 794.97,
+   "end": 801.21,
    "text": "Always. Always.",
    "words": [
     {
      "w": "always",
-     "start": 793.82,
-     "end": 794.56
+     "start": 794.97,
+     "end": 795.71
     },
     {
      "w": "always",
-     "start": 796.94,
-     "end": 797.68
+     "start": 798.09,
+     "end": 798.83
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 800.06,
-   "pauseAt": 804.39,
+   "start": 801.21,
+   "pauseAt": 805.54,
    "spanish": "Ahora pregunta “¿Ustedes siempre caminan por las tardes?”",
    "expected": [
     "Do you guys always walk in the afternoons?"
    ],
-   "end": 804.54
+   "end": 805.69
   },
   {
    "t": "english",
-   "start": 804.54,
-   "end": 820.74,
+   "start": 805.69,
+   "end": 821.89,
    "text": "Do you guys always walk in the afternoons? Do you guys always walk in the afternoons?",
    "words": [
     {
      "w": "do",
-     "start": 804.54,
-     "end": 804.9
+     "start": 805.69,
+     "end": 806.05
     },
     {
      "w": "you",
-     "start": 804.9,
-     "end": 805.08
+     "start": 806.05,
+     "end": 806.23
     },
     {
      "w": "guys",
-     "start": 805.08,
-     "end": 805.26
+     "start": 806.23,
+     "end": 806.41
     },
     {
      "w": "always",
-     "start": 805.26,
-     "end": 805.64
+     "start": 806.41,
+     "end": 806.79
     },
     {
      "w": "walk",
-     "start": 805.64,
-     "end": 806.02
+     "start": 806.79,
+     "end": 807.17
     },
     {
      "w": "in",
-     "start": 806.02,
-     "end": 806.18
+     "start": 807.17,
+     "end": 807.33
     },
     {
      "w": "the",
-     "start": 806.18,
-     "end": 806.32
+     "start": 807.33,
+     "end": 807.47
     },
     {
      "w": "afternoons",
-     "start": 806.32,
-     "end": 807.1
+     "start": 807.47,
+     "end": 808.25
     },
     {
      "w": "do",
-     "start": 811.62,
-     "end": 812.3
+     "start": 812.77,
+     "end": 813.45
     },
     {
      "w": "you",
-     "start": 812.3,
-     "end": 812.5
+     "start": 813.45,
+     "end": 813.65
     },
     {
      "w": "guys",
-     "start": 812.5,
-     "end": 812.76
+     "start": 813.65,
+     "end": 813.91
     },
     {
      "w": "always",
-     "start": 812.76,
-     "end": 813.1
+     "start": 813.91,
+     "end": 814.25
     },
     {
      "w": "walk",
-     "start": 813.1,
-     "end": 813.5
+     "start": 814.25,
+     "end": 814.65
     },
     {
      "w": "in",
-     "start": 813.5,
-     "end": 813.68
+     "start": 814.65,
+     "end": 814.83
     },
     {
      "w": "the",
-     "start": 813.68,
-     "end": 813.8
+     "start": 814.83,
+     "end": 814.95
     },
     {
      "w": "afternoons",
-     "start": 813.8,
-     "end": 814.54
+     "start": 814.95,
+     "end": 815.69
     }
    ]
   },
   {
    "t": "narration",
-   "start": 819.72,
-   "end": 820.4,
+   "start": 820.87,
+   "end": 821.55,
    "lines": [
     "Perfecto."
    ],
    "words": [
     {
      "w": "perfecto",
-     "start": 819.72,
-     "end": 820.4
+     "start": 820.87,
+     "end": 821.55
     }
    ]
   },
   {
    "t": "narration",
-   "start": 820.74,
-   "end": 822.68,
+   "start": 821.89,
+   "end": 823.83,
    "lines": [
     "Escucha esta respuesta:"
    ],
    "words": [
     {
      "w": "escucha",
-     "start": 820.74,
-     "end": 821.32
+     "start": 821.89,
+     "end": 822.47
     },
     {
      "w": "esta",
-     "start": 821.32,
-     "end": 821.6
+     "start": 822.47,
+     "end": 822.75
     },
     {
      "w": "respuesta",
-     "start": 821.6,
-     "end": 822.26
+     "start": 822.75,
+     "end": 823.41
     }
    ]
   },
   {
    "t": "english",
-   "start": 822.68,
-   "end": 824.4,
+   "start": 823.83,
+   "end": 825.55,
    "text": "We never walk in the afternoon.",
    "words": [
     {
      "w": "we",
-     "start": 822.68,
-     "end": 822.96
+     "start": 823.83,
+     "end": 824.11
     },
     {
      "w": "never",
-     "start": 822.96,
-     "end": 823.22
+     "start": 824.11,
+     "end": 824.37
     },
     {
      "w": "walk",
-     "start": 823.22,
-     "end": 823.58
+     "start": 824.37,
+     "end": 824.73
     },
     {
      "w": "in",
-     "start": 823.58,
-     "end": 823.78
+     "start": 824.73,
+     "end": 824.93
     },
     {
      "w": "the",
-     "start": 823.78,
-     "end": 823.88
+     "start": 824.93,
+     "end": 825.03
     },
     {
      "w": "afternoon",
-     "start": 823.88,
-     "end": 824.4
+     "start": 825.03,
+     "end": 825.55
     }
    ]
   },
   {
    "t": "narration",
-   "start": 824.4,
-   "end": 835.62,
+   "start": 825.55,
+   "end": 836.77,
    "lines": [
     "Ella acaba de decir “We never walk in the afternoon.” Así es cómo decimos ‘nunca’. Escucha y repite."
    ],
    "words": [
     {
      "w": "ella",
-     "start": 824.4,
-     "end": 825.66
+     "start": 825.55,
+     "end": 826.81
     },
     {
      "w": "acaba",
-     "start": 825.66,
-     "end": 825.94
+     "start": 826.81,
+     "end": 827.09
     },
     {
      "w": "de",
-     "start": 825.94,
-     "end": 826.1
+     "start": 827.09,
+     "end": 827.25
     },
     {
      "w": "decir",
-     "start": 826.1,
-     "end": 826.52
+     "start": 827.25,
+     "end": 827.67
     },
     {
      "w": "we",
-     "start": 826.84,
-     "end": 827.3
+     "start": 827.99,
+     "end": 828.45
     },
     {
      "w": "never",
-     "start": 827.3,
-     "end": 827.76
+     "start": 828.45,
+     "end": 828.91
     },
     {
      "w": "walk",
-     "start": 827.76,
-     "end": 828.16
+     "start": 828.91,
+     "end": 829.31
     },
     {
      "w": "in",
-     "start": 828.16,
-     "end": 828.36
+     "start": 829.31,
+     "end": 829.51
     },
     {
      "w": "the",
-     "start": 828.36,
-     "end": 828.48
+     "start": 829.51,
+     "end": 829.63
     },
     {
      "w": "afternoon",
-     "start": 828.48,
-     "end": 828.96
+     "start": 829.63,
+     "end": 830.11
     },
     {
      "w": "asi",
-     "start": 829.42,
-     "end": 830.24
+     "start": 830.57,
+     "end": 831.39
     },
     {
      "w": "es",
-     "start": 830.24,
-     "end": 830.5
+     "start": 831.39,
+     "end": 831.65
     },
     {
      "w": "como",
-     "start": 830.5,
-     "end": 830.7
+     "start": 831.65,
+     "end": 831.85
     },
     {
      "w": "decimos",
-     "start": 830.7,
-     "end": 831.22
+     "start": 831.85,
+     "end": 832.37
     },
     {
      "w": "nunca",
-     "start": 831.44,
-     "end": 832.2
+     "start": 832.59,
+     "end": 833.35
     },
     {
      "w": "escucha",
-     "start": 832.92,
-     "end": 833.88
+     "start": 834.07,
+     "end": 835.03
     },
     {
      "w": "y",
-     "start": 833.88,
-     "end": 834.28
+     "start": 835.03,
+     "end": 835.43
     },
     {
      "w": "repite",
-     "start": 834.28,
-     "end": 835.1
+     "start": 835.43,
+     "end": 836.25
     }
    ]
   },
   {
    "t": "english",
-   "start": 835.62,
-   "end": 840.64,
+   "start": 836.77,
+   "end": 841.79,
    "text": "Never. Never.",
    "words": [
     {
      "w": "never",
-     "start": 835.62,
-     "end": 835.96
+     "start": 836.77,
+     "end": 837.11
     },
     {
      "w": "never",
-     "start": 837.82,
-     "end": 838.78
+     "start": 838.97,
+     "end": 839.93
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 840.64,
-   "pauseAt": 844.88,
+   "start": 841.79,
+   "pauseAt": 846.03,
    "spanish": "Otra vez, ¿cómo se dice ‘nunca’?",
    "expected": [
     "Never."
    ],
-   "end": 845.1,
-   "leadEnd": 841.86
+   "end": 846.25,
+   "leadEnd": 843.01
   },
   {
    "t": "english",
-   "start": 845.1,
-   "end": 851.2,
+   "start": 846.25,
+   "end": 852.35,
    "text": "Never. Never.",
    "words": [
     {
      "w": "never",
-     "start": 845.1,
-     "end": 845.86
+     "start": 846.25,
+     "end": 847.01
     },
     {
      "w": "never",
-     "start": 847.96,
-     "end": 848.92
+     "start": 849.11,
+     "end": 850.07
     }
    ]
   },
   {
    "t": "narration",
-   "start": 851.2,
-   "end": 853.92,
+   "start": 852.35,
+   "end": 855.07,
    "lines": [
     "Ahora escucha su respuesta:"
    ],
    "words": [
     {
      "w": "ahora",
-     "start": 851.2,
-     "end": 851.92
+     "start": 852.35,
+     "end": 853.07
     },
     {
      "w": "escucha",
-     "start": 852.18,
-     "end": 852.44
+     "start": 853.33,
+     "end": 853.59
     },
     {
      "w": "su",
-     "start": 852.44,
-     "end": 852.64
+     "start": 853.59,
+     "end": 853.79
     },
     {
      "w": "respuesta",
-     "start": 852.64,
-     "end": 853.36
+     "start": 853.79,
+     "end": 854.51
     }
    ]
   },
   {
    "t": "english",
-   "start": 853.92,
-   "end": 856.14,
+   "start": 855.07,
+   "end": 857.29,
    "text": "Do you guys eat in the morning?",
    "words": [
     {
      "w": "do",
-     "start": 853.92,
-     "end": 854.32
+     "start": 855.07,
+     "end": 855.47
     },
     {
      "w": "you",
-     "start": 854.32,
-     "end": 854.46
+     "start": 855.47,
+     "end": 855.61
     },
     {
      "w": "guys",
-     "start": 854.46,
-     "end": 854.68
+     "start": 855.61,
+     "end": 855.83
     },
     {
      "w": "eat",
-     "start": 854.68,
-     "end": 854.92
+     "start": 855.83,
+     "end": 856.07
     },
     {
      "w": "in",
-     "start": 854.92,
-     "end": 855.06
+     "start": 856.07,
+     "end": 856.21
     },
     {
      "w": "the",
-     "start": 855.06,
-     "end": 855.16
+     "start": 856.21,
+     "end": 856.31
     },
     {
      "w": "morning",
-     "start": 855.16,
-     "end": 855.44
+     "start": 856.31,
+     "end": 856.59
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 856.14,
-   "pauseAt": 859.49,
+   "start": 857.29,
+   "pauseAt": 860.64,
    "spanish": "Responde “nunca comemos por las mañanas.”",
    "expected": [
     "We never eat in the mornings."
    ],
-   "end": 859.64
+   "end": 860.79
   },
   {
    "t": "english",
-   "start": 859.64,
-   "end": 873.02,
+   "start": 860.79,
+   "end": 874.17,
    "text": "We never eat in the mornings. We never eat in the mornings.",
    "words": [
     {
      "w": "we",
-     "start": 859.64,
-     "end": 860.16
+     "start": 860.79,
+     "end": 861.31
     },
     {
      "w": "never",
-     "start": 860.16,
-     "end": 860.54
+     "start": 861.31,
+     "end": 861.69
     },
     {
      "w": "eat",
-     "start": 860.54,
-     "end": 860.88
+     "start": 861.69,
+     "end": 862.03
     },
     {
      "w": "in",
-     "start": 860.88,
-     "end": 861.02
+     "start": 862.03,
+     "end": 862.17
     },
     {
      "w": "the",
-     "start": 861.02,
-     "end": 861.1
+     "start": 862.17,
+     "end": 862.25
     },
     {
      "w": "mornings",
-     "start": 861.1,
-     "end": 861.56
+     "start": 862.25,
+     "end": 862.71
     },
     {
      "w": "we",
-     "start": 865.08,
-     "end": 865.8
+     "start": 866.23,
+     "end": 866.95
     },
     {
      "w": "never",
-     "start": 865.8,
-     "end": 866.26
+     "start": 866.95,
+     "end": 867.41
     },
     {
      "w": "eat",
-     "start": 866.26,
-     "end": 866.58
+     "start": 867.41,
+     "end": 867.73
     },
     {
      "w": "in",
-     "start": 866.58,
-     "end": 866.7
+     "start": 867.73,
+     "end": 867.85
     },
     {
      "w": "the",
-     "start": 866.7,
-     "end": 866.8
+     "start": 867.85,
+     "end": 867.95
     },
     {
      "w": "mornings",
-     "start": 866.8,
-     "end": 867.22
+     "start": 867.95,
+     "end": 868.37
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 873.02,
-   "pauseAt": 874.75,
+   "start": 874.17,
+   "pauseAt": 875.9,
    "spanish": "Otra vez, di, “nunca comemos por las mañanas.”",
    "expected": [
     "We never eat in the mornings."
    ],
-   "end": 874.9
+   "end": 876.05
   },
   {
    "t": "english",
-   "start": 874.9,
-   "end": 884.46,
-   "text": "We never eat in the mornings.",
+   "start": 876.05,
+   "end": 885.61,
+   "text": "We never eat in the mornings. We never eat in the mornings.",
    "words": [
     {
      "w": "we",
-     "start": 874.9,
-     "end": 875.32
+     "start": 876.05,
+     "end": 876.47
     },
     {
      "w": "never",
-     "start": 875.32,
-     "end": 875.64
+     "start": 876.47,
+     "end": 876.79
     },
     {
      "w": "eat",
-     "start": 875.64,
-     "end": 875.98
+     "start": 876.79,
+     "end": 877.13
     },
     {
      "w": "in",
-     "start": 875.98,
-     "end": 876.14
+     "start": 877.13,
+     "end": 877.29
     },
     {
      "w": "the",
-     "start": 876.14,
-     "end": 876.22
+     "start": 877.29,
+     "end": 877.37
     },
     {
      "w": "mornings",
-     "start": 876.22,
-     "end": 876.66
+     "start": 877.37,
+     "end": 877.81
     },
     {
      "w": "We",
-     "start": 879.74,
-     "end": 880.42
+     "start": 880.89,
+     "end": 881.57
     },
     {
      "w": "never",
-     "start": 880.42,
-     "end": 880.68
+     "start": 881.57,
+     "end": 881.83
     },
     {
      "w": "eat",
-     "start": 880.68,
-     "end": 881.02
+     "start": 881.83,
+     "end": 882.17
     },
     {
      "w": "in",
-     "start": 881.02,
-     "end": 881.2
+     "start": 882.17,
+     "end": 882.35
     },
     {
      "w": "the",
-     "start": 881.2,
-     "end": 881.28
+     "start": 882.35,
+     "end": 882.43
     },
     {
      "w": "mornings",
-     "start": 881.28,
-     "end": 881.7
+     "start": 882.43,
+     "end": 882.85
     }
    ]
   },
   {
    "t": "prompt",
-   "start": 884.46,
-   "pauseAt": 887.87,
+   "start": 885.61,
+   "pauseAt": 889.02,
    "spanish": "Y ¿cómo se dice “siempre comemos por las tardes.”?",
    "expected": [
     "We always eat in the afternoons."
    ],
-   "end": 888.02
+   "end": 889.17
   },
   {
    "t": "english",
-   "start": 888.02,
-   "end": 902.6,
+   "start": 889.17,
+   "end": 903.75,
    "text": "We always eat in the afternoons. We always eat in the afternoons.",
    "words": [
     {
      "w": "we",
-     "start": 888.02,
-     "end": 889.02
+     "start": 889.17,
+     "end": 890.17
     },
     {
      "w": "always",
-     "start": 889.02,
-     "end": 889.52
+     "start": 890.17,
+     "end": 890.67
     },
     {
      "w": "eat",
-     "start": 889.52,
-     "end": 889.84
+     "start": 890.67,
+     "end": 890.99
     },
     {
      "w": "in",
-     "start": 889.84,
-     "end": 889.98
+     "start": 890.99,
+     "end": 891.13
     },
     {
      "w": "the",
-     "start": 889.98,
-     "end": 890.12
+     "start": 891.13,
+     "end": 891.27
     },
     {
      "w": "afternoons",
-     "start": 890.12,
-     "end": 891.16
+     "start": 891.27,
+     "end": 892.31
     },
     {
      "w": "we",
-     "start": 895.86,
-     "end": 896.76
+     "start": 897.01,
+     "end": 897.91
     },
     {
      "w": "always",
-     "start": 896.76,
-     "end": 897.36
+     "start": 897.91,
+     "end": 898.51
     },
     {
      "w": "eat",
-     "start": 897.36,
-     "end": 897.8
+     "start": 898.51,
+     "end": 898.95
     },
     {
      "w": "in",
-     "start": 897.8,
-     "end": 897.94
+     "start": 898.95,
+     "end": 899.09
     },
     {
      "w": "the",
-     "start": 897.94,
-     "end": 898.08
+     "start": 899.09,
+     "end": 899.23
     },
     {
      "w": "afternoons",
-     "start": 898.08,
-     "end": 899.08
+     "start": 899.23,
+     "end": 900.23
     }
    ]
   },
   {
    "t": "narration",
-   "start": 902.6,
-   "end": 911.1,
+   "start": 903.75,
+   "end": 912.25,
    "lines": [
     "Ahora escucha la misma conversación que escuchaste al comienzo de la lección."
    ],
    "words": [
     {
      "w": "ahora",
-     "start": 902.6,
-     "end": 903.5
+     "start": 903.75,
+     "end": 904.65
     },
     {
      "w": "escucha",
-     "start": 903.76,
-     "end": 904.0
+     "start": 904.91,
+     "end": 905.15
     },
     {
      "w": "la",
-     "start": 904.0,
-     "end": 904.14
+     "start": 905.15,
+     "end": 905.29
     },
     {
      "w": "misma",
-     "start": 904.14,
-     "end": 904.8
+     "start": 905.29,
+     "end": 905.95
     },
     {
      "w": "conversacion",
-     "start": 904.8,
-     "end": 905.96
+     "start": 905.95,
+     "end": 907.11
     },
     {
      "w": "que",
-     "start": 905.96,
-     "end": 906.18
+     "start": 907.11,
+     "end": 907.33
     },
     {
      "w": "escuchaste",
-     "start": 906.18,
-     "end": 906.94
+     "start": 907.33,
+     "end": 908.09
     },
     {
      "w": "al",
-     "start": 906.94,
-     "end": 907.22
+     "start": 908.09,
+     "end": 908.37
     },
     {
      "w": "comienzo",
-     "start": 907.22,
-     "end": 907.96
+     "start": 908.37,
+     "end": 909.11
     },
     {
      "w": "de",
-     "start": 907.96,
-     "end": 908.14
+     "start": 909.11,
+     "end": 909.29
     },
     {
      "w": "la",
-     "start": 908.14,
-     "end": 908.26
+     "start": 909.29,
+     "end": 909.41
     },
     {
      "w": "leccion",
-     "start": 908.26,
-     "end": 908.72
+     "start": 909.41,
+     "end": 909.87
     }
    ]
   },
   {
    "t": "english",
-   "start": 911.1,
-   "end": 913.7,
+   "start": 912.25,
+   "end": 914.85,
    "text": "Do you eat in the morning?",
    "words": [
     {
      "w": "do",
-     "start": 911.1,
-     "end": 911.7
+     "start": 912.25,
+     "end": 912.85
     },
     {
      "w": "you",
-     "start": 911.7,
-     "end": 911.96
+     "start": 912.85,
+     "end": 913.11
     },
     {
      "w": "eat",
-     "start": 911.96,
-     "end": 912.28
+     "start": 913.11,
+     "end": 913.43
     },
     {
      "w": "in",
-     "start": 912.28,
-     "end": 912.46
+     "start": 913.43,
+     "end": 913.61
     },
     {
      "w": "the",
-     "start": 912.46,
-     "end": 912.58
+     "start": 913.61,
+     "end": 913.73
     },
     {
      "w": "morning",
-     "start": 912.58,
-     "end": 912.92
+     "start": 913.73,
+     "end": 914.07
     }
    ]
   },
   {
    "t": "english",
-   "start": 913.7,
-   "end": 916.4,
+   "start": 914.85,
+   "end": 917.55,
    "text": "Yes, I eat in the morning.",
    "words": [
     {
      "w": "yes",
-     "start": 913.7,
-     "end": 914.3
+     "start": 914.85,
+     "end": 915.45
     },
     {
      "w": "i",
-     "start": 914.62,
-     "end": 914.94
+     "start": 915.77,
+     "end": 916.09
     },
     {
      "w": "eat",
-     "start": 914.94,
-     "end": 915.14
+     "start": 916.09,
+     "end": 916.29
     },
     {
      "w": "in",
-     "start": 915.14,
-     "end": 915.28
+     "start": 916.29,
+     "end": 916.43
     },
     {
      "w": "the",
-     "start": 915.28,
-     "end": 915.36
+     "start": 916.43,
+     "end": 916.51
     },
     {
      "w": "morning",
-     "start": 915.36,
-     "end": 915.68
+     "start": 916.51,
+     "end": 916.83
     }
    ]
   },
   {
    "t": "english",
-   "start": 916.4,
-   "end": 919.4,
+   "start": 917.55,
+   "end": 920.55,
    "text": "But do you eat in the morning every day?",
    "words": [
     {
      "w": "but",
-     "start": 916.4,
-     "end": 917.0
+     "start": 917.55,
+     "end": 918.15
     },
     {
      "w": "do",
-     "start": 917.0,
-     "end": 917.18
+     "start": 918.15,
+     "end": 918.33
     },
     {
      "w": "you",
-     "start": 917.18,
-     "end": 917.4
+     "start": 918.33,
+     "end": 918.55
     },
     {
      "w": "eat",
-     "start": 917.4,
-     "end": 917.7
+     "start": 918.55,
+     "end": 918.85
     },
     {
      "w": "in",
-     "start": 917.7,
-     "end": 917.84
+     "start": 918.85,
+     "end": 918.99
     },
     {
      "w": "the",
-     "start": 917.84,
-     "end": 917.94
+     "start": 918.99,
+     "end": 919.09
     },
     {
      "w": "morning",
-     "start": 917.94,
-     "end": 918.22
+     "start": 919.09,
+     "end": 919.37
     },
     {
      "w": "every",
-     "start": 918.22,
-     "end": 918.54
+     "start": 919.37,
+     "end": 919.69
     },
     {
      "w": "day",
-     "start": 918.54,
-     "end": 918.84
+     "start": 919.69,
+     "end": 919.99
     }
    ]
   },
   {
    "t": "english",
-   "start": 919.4,
-   "end": 928.54,
+   "start": 920.55,
+   "end": 929.69,
    "text": "Yes, I eat in the morning every day. Before going to school I always eat breakfast. And you? Do you eat in the morning every day?",
    "words": [
     {
      "w": "yes",
-     "start": 919.4,
-     "end": 920.0
+     "start": 920.55,
+     "end": 921.15
     },
     {
      "w": "i",
-     "start": 920.2,
-     "end": 920.46
+     "start": 921.35,
+     "end": 921.61
     },
     {
      "w": "eat",
-     "start": 920.46,
-     "end": 920.68
+     "start": 921.61,
+     "end": 921.83
     },
     {
      "w": "in",
-     "start": 920.68,
-     "end": 920.8
+     "start": 921.83,
+     "end": 921.95
     },
     {
      "w": "the",
-     "start": 920.8,
-     "end": 920.88
+     "start": 921.95,
+     "end": 922.03
     },
     {
      "w": "morning",
-     "start": 920.88,
-     "end": 921.16
+     "start": 922.03,
+     "end": 922.31
     },
     {
      "w": "every",
-     "start": 921.16,
-     "end": 921.52
+     "start": 922.31,
+     "end": 922.67
     },
     {
      "w": "day",
-     "start": 921.52,
-     "end": 921.86
+     "start": 922.67,
+     "end": 923.01
     },
     {
      "w": "before",
-     "start": 922.12,
-     "end": 922.6
+     "start": 923.27,
+     "end": 923.75
     },
     {
      "w": "going",
-     "start": 922.6,
-     "end": 922.9
+     "start": 923.75,
+     "end": 924.05
     },
     {
      "w": "to",
-     "start": 922.9,
-     "end": 923.04
+     "start": 924.05,
+     "end": 924.19
     },
     {
      "w": "school",
-     "start": 923.04,
-     "end": 923.36
+     "start": 924.19,
+     "end": 924.51
     },
     {
      "w": "i",
-     "start": 923.58,
-     "end": 923.66
+     "start": 924.73,
+     "end": 924.81
     },
     {
      "w": "always",
-     "start": 923.66,
-     "end": 924.22
+     "start": 924.81,
+     "end": 925.37
     },
     {
      "w": "eat",
-     "start": 924.22,
-     "end": 924.54
+     "start": 925.37,
+     "end": 925.69
     },
     {
      "w": "breakfast",
-     "start": 924.54,
-     "end": 925.0
+     "start": 925.69,
+     "end": 926.15
     },
     {
      "w": "and",
-     "start": 925.36,
-     "end": 925.7
+     "start": 926.51,
+     "end": 926.85
     },
     {
      "w": "you",
-     "start": 925.7,
-     "end": 925.92
+     "start": 926.85,
+     "end": 927.07
     },
     {
      "w": "do",
-     "start": 926.1,
-     "end": 926.56
+     "start": 927.25,
+     "end": 927.71
     },
     {
      "w": "you",
-     "start": 926.56,
-     "end": 926.78
+     "start": 927.71,
+     "end": 927.93
     },
     {
      "w": "eat",
-     "start": 926.78,
-     "end": 927.04
+     "start": 927.93,
+     "end": 928.19
     },
     {
      "w": "in",
-     "start": 927.04,
-     "end": 927.16
+     "start": 928.19,
+     "end": 928.31
     },
     {
      "w": "the",
-     "start": 927.16,
-     "end": 927.26
+     "start": 928.31,
+     "end": 928.41
     },
     {
      "w": "morning",
-     "start": 927.26,
-     "end": 927.54
+     "start": 928.41,
+     "end": 928.69
     },
     {
      "w": "every",
-     "start": 927.54,
-     "end": 927.84
+     "start": 928.69,
+     "end": 928.99
     },
     {
      "w": "day",
-     "start": 927.84,
-     "end": 928.14
+     "start": 928.99,
+     "end": 929.29
     }
    ]
   },
   {
    "t": "english",
-   "start": 928.54,
-   "end": 929.86,
+   "start": 929.69,
+   "end": 931.01,
    "text": "Who? Me?",
    "words": [
     {
      "w": "who",
-     "start": 928.54,
-     "end": 928.82
+     "start": 929.69,
+     "end": 929.97
     },
     {
      "w": "me",
-     "start": 929.02,
-     "end": 929.28
+     "start": 930.17,
+     "end": 930.43
     }
    ]
   },
   {
    "t": "english",
-   "start": 929.86,
-   "end": 933.68,
+   "start": 931.01,
+   "end": 934.83,
    "text": "Yes, you. Do you eat in the morning every day?",
    "words": [
     {
      "w": "yes",
-     "start": 929.86,
-     "end": 930.36
+     "start": 931.01,
+     "end": 931.51
     },
     {
      "w": "you",
-     "start": 930.42,
-     "end": 930.64
+     "start": 931.57,
+     "end": 931.79
     },
     {
      "w": "do",
-     "start": 930.98,
-     "end": 931.34
+     "start": 932.13,
+     "end": 932.49
     },
     {
      "w": "you",
-     "start": 931.34,
-     "end": 931.56
+     "start": 932.49,
+     "end": 932.71
     },
     {
      "w": "eat",
-     "start": 931.56,
-     "end": 931.8
+     "start": 932.71,
+     "end": 932.95
     },
     {
      "w": "in",
-     "start": 931.8,
-     "end": 931.9
+     "start": 932.95,
+     "end": 933.05
     },
     {
      "w": "the",
-     "start": 931.9,
-     "end": 932.0
+     "start": 933.05,
+     "end": 933.15
     },
     {
      "w": "morning",
-     "start": 932.0,
-     "end": 932.26
+     "start": 933.15,
+     "end": 933.41
     },
     {
      "w": "every",
-     "start": 932.26,
-     "end": 932.68
+     "start": 933.41,
+     "end": 933.83
     },
     {
      "w": "day",
-     "start": 932.68,
-     "end": 933.04
+     "start": 933.83,
+     "end": 934.19
     }
    ]
   },
   {
    "t": "english",
-   "start": 933.68,
-   "end": 937.1,
+   "start": 934.83,
+   "end": 938.25,
    "text": "Sometimes yes, sometimes no.",
    "words": [
     {
      "w": "sometimes",
-     "start": 933.68,
-     "end": 934.28
+     "start": 934.83,
+     "end": 935.43
     },
     {
      "w": "yes",
-     "start": 934.28,
-     "end": 934.86
+     "start": 935.43,
+     "end": 936.01
     },
     {
      "w": "sometimes",
-     "start": 935.48,
-     "end": 936.16
+     "start": 936.63,
+     "end": 937.31
     },
     {
      "w": "no",
-     "start": 936.16,
-     "end": 936.62
+     "start": 937.31,
+     "end": 937.77
     }
    ]
   },
   {
    "t": "english",
-   "start": 937.1,
-   "end": 940.94,
+   "start": 938.25,
+   "end": 942.09,
    "text": "And your friends? Do they always eat in the morning?",
    "words": [
     {
      "w": "and",
-     "start": 937.1,
-     "end": 937.5
+     "start": 938.25,
+     "end": 938.65
     },
     {
      "w": "your",
-     "start": 937.5,
-     "end": 937.62
+     "start": 938.65,
+     "end": 938.77
     },
     {
      "w": "friends",
-     "start": 937.62,
-     "end": 938.02
+     "start": 938.77,
+     "end": 939.17
     },
     {
      "w": "do",
-     "start": 938.02,
-     "end": 938.84
+     "start": 939.17,
+     "end": 939.99
     },
     {
      "w": "they",
-     "start": 938.84,
-     "end": 938.98
+     "start": 939.99,
+     "end": 940.13
     },
     {
      "w": "always",
-     "start": 938.98,
-     "end": 939.36
+     "start": 940.13,
+     "end": 940.51
     },
     {
      "w": "eat",
-     "start": 939.36,
-     "end": 939.62
+     "start": 940.51,
+     "end": 940.77
     },
     {
      "w": "in",
-     "start": 939.62,
-     "end": 939.8
+     "start": 940.77,
+     "end": 940.95
     },
     {
      "w": "the",
-     "start": 939.8,
-     "end": 939.9
+     "start": 940.95,
+     "end": 941.05
     },
     {
      "w": "morning",
-     "start": 939.9,
-     "end": 940.14
+     "start": 941.05,
+     "end": 941.29
     }
    ]
   },
   {
    "t": "english",
-   "start": 940.94,
-   "end": 950.7,
+   "start": 942.09,
+   "end": 951.85,
    "text": "My friends never eat in the morning. They always eat in the afternoon. And you? Do you eat in the afternoon?",
    "words": [
     {
      "w": "my",
-     "start": 940.94,
-     "end": 941.06
+     "start": 942.09,
+     "end": 942.21
     },
     {
      "w": "friends",
-     "start": 941.06,
-     "end": 941.52
+     "start": 942.21,
+     "end": 942.67
     },
     {
      "w": "never",
-     "start": 941.52,
-     "end": 942.2
+     "start": 942.67,
+     "end": 943.35
     },
     {
      "w": "eat",
-     "start": 942.2,
-     "end": 942.54
+     "start": 943.35,
+     "end": 943.69
     },
     {
      "w": "in",
-     "start": 942.54,
-     "end": 942.68
+     "start": 943.69,
+     "end": 943.83
     },
     {
      "w": "the",
-     "start": 942.68,
-     "end": 942.8
+     "start": 943.83,
+     "end": 943.95
     },
     {
      "w": "morning",
-     "start": 942.8,
-     "end": 943.08
+     "start": 943.95,
+     "end": 944.23
     },
     {
      "w": "they",
-     "start": 943.38,
-     "end": 944.02
+     "start": 944.53,
+     "end": 945.17
     },
     {
      "w": "always",
-     "start": 944.02,
-     "end": 944.6
+     "start": 945.17,
+     "end": 945.75
     },
     {
      "w": "eat",
-     "start": 944.6,
-     "end": 944.96
+     "start": 945.75,
+     "end": 946.11
     },
     {
      "w": "in",
-     "start": 944.96,
-     "end": 945.12
+     "start": 946.11,
+     "end": 946.27
     },
     {
      "w": "the",
-     "start": 945.12,
-     "end": 945.26
+     "start": 946.27,
+     "end": 946.41
     },
     {
      "w": "afternoon",
-     "start": 945.26,
-     "end": 945.82
+     "start": 946.41,
+     "end": 946.97
     },
     {
      "w": "and",
-     "start": 946.3,
-     "end": 946.84
+     "start": 947.45,
+     "end": 947.99
     },
     {
      "w": "you",
-     "start": 946.84,
-     "end": 947.08
+     "start": 947.99,
+     "end": 948.23
     },
     {
      "w": "do",
-     "start": 947.88,
-     "end": 948.52
+     "start": 949.03,
+     "end": 949.67
     },
     {
      "w": "you",
-     "start": 948.52,
-     "end": 948.84
+     "start": 949.67,
+     "end": 949.99
     },
     {
      "w": "eat",
-     "start": 948.84,
-     "end": 949.14
+     "start": 949.99,
+     "end": 950.29
     },
     {
      "w": "in",
-     "start": 949.14,
-     "end": 949.28
+     "start": 950.29,
+     "end": 950.43
     },
     {
      "w": "the",
-     "start": 949.28,
-     "end": 949.4
+     "start": 950.43,
+     "end": 950.55
     },
     {
      "w": "afternoon",
-     "start": 949.4,
-     "end": 949.86
+     "start": 950.55,
+     "end": 951.01
     }
    ]
   },
   {
    "t": "english",
-   "start": 950.7,
-   "end": 958.52,
+   "start": 951.85,
+   "end": 959.67,
    "text": "No, I never eat lunch. But I always eat in the evening. And you?  Do you eat in the evening?",
    "words": [
     {
      "w": "no",
-     "start": 950.7,
-     "end": 951.34
+     "start": 951.85,
+     "end": 952.49
     },
     {
      "w": "i",
-     "start": 951.5,
-     "end": 951.74
+     "start": 952.65,
+     "end": 952.89
     },
     {
      "w": "never",
-     "start": 951.74,
-     "end": 951.98
+     "start": 952.89,
+     "end": 953.13
     },
     {
      "w": "eat",
-     "start": 951.98,
-     "end": 952.2
+     "start": 953.13,
+     "end": 953.35
     },
     {
      "w": "lunch",
-     "start": 952.2,
-     "end": 952.58
+     "start": 953.35,
+     "end": 953.73
     },
     {
      "w": "but",
-     "start": 952.8,
-     "end": 953.28
+     "start": 953.95,
+     "end": 954.43
     },
     {
      "w": "i",
-     "start": 953.28,
-     "end": 953.38
+     "start": 954.43,
+     "end": 954.53
     },
     {
      "w": "always",
-     "start": 953.38,
-     "end": 953.74
+     "start": 954.53,
+     "end": 954.89
     },
     {
      "w": "eat",
-     "start": 953.74,
-     "end": 953.96
+     "start": 954.89,
+     "end": 955.11
     },
     {
      "w": "in",
-     "start": 953.96,
-     "end": 954.06
+     "start": 955.11,
+     "end": 955.21
     },
     {
      "w": "the",
-     "start": 954.06,
-     "end": 954.14
+     "start": 955.21,
+     "end": 955.29
     },
     {
      "w": "evening",
-     "start": 954.14,
-     "end": 954.48
+     "start": 955.29,
+     "end": 955.63
     },
     {
      "w": "and",
-     "start": 954.86,
-     "end": 955.48
+     "start": 956.01,
+     "end": 956.63
     },
     {
      "w": "you",
-     "start": 955.48,
-     "end": 955.7
+     "start": 956.63,
+     "end": 956.85
     },
     {
      "w": "do",
-     "start": 955.92,
-     "end": 956.34
+     "start": 957.07,
+     "end": 957.49
     },
     {
      "w": "you",
-     "start": 956.34,
-     "end": 956.54
+     "start": 957.49,
+     "end": 957.69
     },
     {
      "w": "eat",
-     "start": 956.54,
-     "end": 956.78
+     "start": 957.69,
+     "end": 957.93
     },
     {
      "w": "in",
-     "start": 956.78,
-     "end": 956.9
+     "start": 957.93,
+     "end": 958.05
     },
     {
      "w": "the",
-     "start": 956.9,
-     "end": 957.0
+     "start": 958.05,
+     "end": 958.15
     },
     {
      "w": "evening",
-     "start": 957.0,
-     "end": 957.3
+     "start": 958.15,
+     "end": 958.45
     }
    ]
   },
   {
    "t": "english",
-   "start": 958.52,
-   "end": 967.3,
-   "text": "Yes. I always eat in the evening. In the evening, I always feel like eating.",
+   "start": 956.28,
+   "end": 968.45,
+   "text": "Me? Yes. I always eat in the evening. In the evening, I always feel like eating.",
    "words": [
     {
+     "w": "Me?",
+     "start": 956.28,
+     "end": 956.8
+    },
+    {
+     "w": "Yes.",
+     "start": 957.02,
+     "end": 957.5
+    },
+    {
      "w": "yes",
-     "start": 958.52,
-     "end": 958.98
+     "start": 958.99,
+     "end": 959.45
     },
     {
      "w": "i",
-     "start": 959.34,
-     "end": 959.94
+     "start": 959.81,
+     "end": 960.41
     },
     {
      "w": "always",
-     "start": 959.94,
-     "end": 960.46
+     "start": 960.41,
+     "end": 960.93
     },
     {
      "w": "eat",
-     "start": 960.46,
-     "end": 960.74
+     "start": 960.93,
+     "end": 961.21
     },
     {
      "w": "in",
-     "start": 960.74,
-     "end": 960.9
+     "start": 961.21,
+     "end": 961.37
     },
     {
      "w": "the",
-     "start": 960.9,
-     "end": 961.02
+     "start": 961.37,
+     "end": 961.49
     },
     {
      "w": "evening",
-     "start": 961.02,
-     "end": 961.42
+     "start": 961.49,
+     "end": 961.89
     },
     {
      "w": "in",
-     "start": 961.64,
-     "end": 962.0
+     "start": 962.11,
+     "end": 962.47
     },
     {
      "w": "the",
-     "start": 962.0,
-     "end": 962.12
+     "start": 962.47,
+     "end": 962.59
     },
     {
      "w": "evening",
-     "start": 962.12,
-     "end": 962.48
+     "start": 962.59,
+     "end": 962.95
     },
     {
      "w": "i",
-     "start": 962.7,
-     "end": 963.42
+     "start": 963.17,
+     "end": 963.89
     },
     {
      "w": "always",
-     "start": 963.42,
-     "end": 963.9
+     "start": 963.89,
+     "end": 964.37
     },
     {
      "w": "feel",
-     "start": 963.9,
-     "end": 964.32
+     "start": 964.37,
+     "end": 964.79
     },
     {
      "w": "like",
-     "start": 964.32,
-     "end": 964.64
+     "start": 964.79,
+     "end": 965.11
     },
     {
      "w": "eating",
-     "start": 964.64,
-     "end": 965.0
+     "start": 965.11,
+     "end": 965.47
     }
    ]
   },
   {
    "t": "narration",
-   "start": 967.3,
-   "end": 1022.44,
+   "start": 968.45,
+   "end": 1021.55,
    "lines": [
-    "Él acaba de decir, “In the evening, I always feel like eating.” “In the evening, I always feel like eating.” significa “Por las noches, siempre tengo ganas de comer.” La frase “feel like” significa “tener ganas de.” Por ejemplo, “to feel like eating” significa “tener ganas de comer.” “to feel like walking” significa “tener ganas de caminar.” Y este es el final de la lección . Si estás cómodo respondiendo a las preguntas, entonces estás listo para seguir con la lección . Si no estás cómodo, escucha la lección otra vez hasta que te sientes cómodo respondiendo a mis preguntas."
+    "Él acaba de decir, “In the evening, I always feel like eating.” “In the evening, I always feel like eating.” significa “Por las noches, siempre tengo ganas de comer.” La frase “feel like” significa “tener ganas de.” Por ejemplo, “to feel like eating” significa “tener ganas de comer.” “to feel like walking” significa “tener ganas de caminar.” Y este es el final de la lección . Si estás cómodo respondiendo a las preguntas, entonces estás listo para seguir con la lección . Si no estás cómodo, escucha la lección otra vez hasta que te sientes cómodo respondiendo a mis preguntas. Y nos vemos en la siguiente lección, mi querido/querida estudiante."
    ],
    "words": [
     {
      "w": "el",
-     "start": 967.3,
-     "end": 967.94
+     "start": 968.45,
+     "end": 969.09
     },
     {
      "w": "acaba",
-     "start": 967.94,
-     "end": 968.52
+     "start": 969.09,
+     "end": 969.67
     },
     {
      "w": "de",
-     "start": 968.52,
-     "end": 968.84
+     "start": 969.67,
+     "end": 969.99
     },
     {
      "w": "decir",
-     "start": 968.84,
-     "end": 969.44
+     "start": 969.99,
+     "end": 970.59
     },
     {
      "w": "in",
-     "start": 969.78,
-     "end": 969.88
+     "start": 970.93,
+     "end": 971.03
     },
     {
      "w": "the",
-     "start": 969.88,
-     "end": 970.04
+     "start": 971.03,
+     "end": 971.19
     },
     {
      "w": "evening",
-     "start": 970.04,
-     "end": 970.34
+     "start": 971.19,
+     "end": 971.49
     },
     {
      "w": "i",
-     "start": 970.48,
-     "end": 970.72
+     "start": 971.63,
+     "end": 971.87
     },
     {
      "w": "always",
-     "start": 970.72,
-     "end": 971.2
+     "start": 971.87,
+     "end": 972.35
     },
     {
      "w": "feel",
-     "start": 971.2,
-     "end": 971.48
+     "start": 972.35,
+     "end": 972.63
     },
     {
      "w": "like",
-     "start": 971.48,
-     "end": 971.76
+     "start": 972.63,
+     "end": 972.91
     },
     {
      "w": "eating",
-     "start": 971.76,
-     "end": 972.14
+     "start": 972.91,
+     "end": 973.29
     },
     {
      "w": "in",
-     "start": 972.6,
-     "end": 973.24
+     "start": 973.75,
+     "end": 974.39
     },
     {
      "w": "the",
-     "start": 973.24,
-     "end": 973.42
+     "start": 974.39,
+     "end": 974.57
     },
     {
      "w": "evening",
-     "start": 973.42,
-     "end": 973.84
+     "start": 974.57,
+     "end": 974.99
     },
     {
      "w": "i",
-     "start": 974.04,
-     "end": 974.3
+     "start": 975.19,
+     "end": 975.45
     },
     {
      "w": "always",
-     "start": 974.3,
-     "end": 974.88
+     "start": 975.45,
+     "end": 976.03
     },
     {
      "w": "feel",
-     "start": 974.88,
-     "end": 975.12
+     "start": 976.03,
+     "end": 976.27
     },
     {
      "w": "like",
-     "start": 975.12,
-     "end": 975.36
+     "start": 976.27,
+     "end": 976.51
     },
     {
      "w": "eating",
-     "start": 975.36,
-     "end": 975.72
+     "start": 976.51,
+     "end": 976.87
     },
     {
      "w": "significa",
-     "start": 976.34,
-     "end": 976.98
+     "start": 977.49,
+     "end": 978.13
     },
     {
      "w": "por",
-     "start": 977.42,
-     "end": 977.84
+     "start": 978.57,
+     "end": 978.99
     },
     {
      "w": "las",
-     "start": 977.84,
-     "end": 978.14
+     "start": 978.99,
+     "end": 979.29
     },
     {
      "w": "noches",
-     "start": 978.14,
-     "end": 978.56
+     "start": 979.29,
+     "end": 979.71
     },
     {
      "w": "siempre",
-     "start": 978.56,
-     "end": 978.96
+     "start": 979.71,
+     "end": 980.11
     },
     {
      "w": "tengo",
-     "start": 978.96,
-     "end": 979.28
+     "start": 980.11,
+     "end": 980.43
     },
     {
      "w": "ganas",
-     "start": 979.28,
-     "end": 979.64
+     "start": 980.43,
+     "end": 980.79
     },
     {
      "w": "de",
-     "start": 979.64,
-     "end": 979.76
+     "start": 980.79,
+     "end": 980.91
     },
     {
      "w": "comer",
-     "start": 979.76,
-     "end": 980.02
+     "start": 980.91,
+     "end": 981.17
     },
     {
      "w": "la",
-     "start": 980.02,
-     "end": 980.84
+     "start": 981.17,
+     "end": 981.99
     },
     {
      "w": "frase",
-     "start": 980.84,
-     "end": 981.24
+     "start": 981.99,
+     "end": 982.39
     },
     {
      "w": "feel",
-     "start": 981.24,
-     "end": 981.84
+     "start": 982.39,
+     "end": 982.99
     },
     {
      "w": "like",
-     "start": 981.84,
-     "end": 982.14
+     "start": 982.99,
+     "end": 983.29
     },
     {
      "w": "significa",
-     "start": 982.28,
-     "end": 983.06
+     "start": 983.43,
+     "end": 984.21
     },
     {
      "w": "tener",
-     "start": 983.06,
-     "end": 983.54
+     "start": 984.21,
+     "end": 984.69
     },
     {
      "w": "ganas",
-     "start": 983.54,
-     "end": 984.0
+     "start": 984.69,
+     "end": 985.15
     },
     {
      "w": "de",
-     "start": 984.0,
-     "end": 984.18
+     "start": 985.15,
+     "end": 985.33
     },
     {
      "w": "por",
-     "start": 984.46,
-     "end": 984.9
+     "start": 985.61,
+     "end": 986.05
     },
     {
      "w": "ejemplo",
-     "start": 984.9,
-     "end": 985.16
+     "start": 986.05,
+     "end": 986.31
     },
     {
      "w": "to",
-     "start": 985.76,
-     "end": 985.9
+     "start": 986.91,
+     "end": 987.05
     },
     {
      "w": "feel",
-     "start": 985.9,
-     "end": 986.16
+     "start": 987.05,
+     "end": 987.31
     },
     {
      "w": "like",
-     "start": 986.16,
-     "end": 986.4
+     "start": 987.31,
+     "end": 987.55
     },
     {
      "w": "eating",
-     "start": 986.4,
-     "end": 987.02
+     "start": 987.55,
+     "end": 988.17
     },
     {
      "w": "significa",
-     "start": 987.32,
-     "end": 988.04
+     "start": 988.47,
+     "end": 989.19
     },
     {
      "w": "tener",
-     "start": 988.04,
-     "end": 988.9
+     "start": 989.19,
+     "end": 990.05
     },
     {
      "w": "ganas",
-     "start": 988.9,
-     "end": 989.46
+     "start": 990.05,
+     "end": 990.61
     },
     {
      "w": "de",
-     "start": 989.46,
-     "end": 989.6
+     "start": 990.61,
+     "end": 990.75
     },
     {
      "w": "comer",
-     "start": 989.6,
-     "end": 989.9
+     "start": 990.75,
+     "end": 991.05
     },
     {
      "w": "to",
-     "start": 990.28,
-     "end": 990.82
+     "start": 991.43,
+     "end": 991.97
     },
     {
      "w": "feel",
-     "start": 990.82,
-     "end": 991.0
+     "start": 991.97,
+     "end": 992.15
     },
     {
      "w": "like",
-     "start": 991.0,
-     "end": 991.2
+     "start": 992.15,
+     "end": 992.35
     },
     {
      "w": "walking",
-     "start": 991.2,
-     "end": 991.64
+     "start": 992.35,
+     "end": 992.79
     },
     {
      "w": "significa",
-     "start": 991.94,
-     "end": 992.98
+     "start": 993.09,
+     "end": 994.13
     },
     {
      "w": "tener",
-     "start": 992.98,
-     "end": 993.72
+     "start": 994.13,
+     "end": 994.87
     },
     {
      "w": "ganas",
-     "start": 993.72,
-     "end": 994.2
+     "start": 994.87,
+     "end": 995.35
     },
     {
      "w": "de",
-     "start": 994.2,
-     "end": 994.32
+     "start": 995.35,
+     "end": 995.47
     },
     {
      "w": "caminar",
-     "start": 994.32,
-     "end": 994.74
+     "start": 995.47,
+     "end": 995.89
     },
     {
      "w": "y",
-     "start": 994.74,
-     "end": 995.84
+     "start": 995.89,
+     "end": 996.99
     },
     {
      "w": "este",
-     "start": 995.84,
-     "end": 996.16
+     "start": 996.99,
+     "end": 997.31
     },
     {
      "w": "es",
-     "start": 996.16,
-     "end": 996.46
+     "start": 997.31,
+     "end": 997.61
     },
     {
      "w": "el",
-     "start": 996.46,
-     "end": 996.72
+     "start": 997.61,
+     "end": 997.87
     },
     {
      "w": "final",
-     "start": 996.72,
-     "end": 997.1
+     "start": 997.87,
+     "end": 998.25
     },
     {
      "w": "de",
-     "start": 997.1,
-     "end": 997.32
+     "start": 998.25,
+     "end": 998.47
     },
     {
      "w": "la",
-     "start": 997.32,
-     "end": 997.44
+     "start": 998.47,
+     "end": 998.59
     },
     {
      "w": "leccion",
-     "start": 997.44,
-     "end": 997.92
+     "start": 998.59,
+     "end": 999.07
     },
     {
      "w": "si",
-     "start": 998.18,
-     "end": 998.56
+     "start": 999.33,
+     "end": 999.71
     },
     {
      "w": "estas",
-     "start": 998.56,
-     "end": 998.86
+     "start": 999.71,
+     "end": 1000.01
     },
     {
      "w": "comodo",
-     "start": 998.86,
-     "end": 999.5
+     "start": 1000.01,
+     "end": 1000.65
     },
     {
      "w": "respondiendo",
-     "start": 999.5,
-     "end": 1000.88
+     "start": 1000.65,
+     "end": 1002.03
     },
     {
      "w": "a",
-     "start": 1000.88,
-     "end": 1001.04
+     "start": 1002.03,
+     "end": 1002.19
     },
     {
      "w": "las",
-     "start": 1001.04,
-     "end": 1001.18
+     "start": 1002.19,
+     "end": 1002.33
     },
     {
      "w": "preguntas",
-     "start": 1001.18,
-     "end": 1001.66
+     "start": 1002.33,
+     "end": 1002.81
     },
     {
      "w": "entonces",
-     "start": 1002.0,
-     "end": 1003.02
+     "start": 1003.15,
+     "end": 1004.17
     },
     {
      "w": "estas",
-     "start": 1003.02,
-     "end": 1003.54
+     "start": 1004.17,
+     "end": 1004.69
     },
     {
      "w": "listo",
-     "start": 1003.54,
-     "end": 1004.14
+     "start": 1004.69,
+     "end": 1005.29
     },
     {
      "w": "para",
-     "start": 1004.78,
-     "end": 1005.2
+     "start": 1005.93,
+     "end": 1006.35
     },
     {
      "w": "seguir",
-     "start": 1005.2,
-     "end": 1005.6
+     "start": 1006.35,
+     "end": 1006.75
     },
     {
      "w": "con",
-     "start": 1005.6,
-     "end": 1005.96
+     "start": 1006.75,
+     "end": 1007.11
     },
     {
      "w": "la",
-     "start": 1005.96,
-     "end": 1006.18
+     "start": 1007.11,
+     "end": 1007.33
     },
     {
      "w": "leccion",
-     "start": 1006.98,
-     "end": 1007.54
+     "start": 1008.13,
+     "end": 1008.69
     },
     {
      "w": "si",
-     "start": 1007.86,
-     "end": 1008.38
+     "start": 1009.01,
+     "end": 1009.53
     },
     {
      "w": "no",
-     "start": 1008.38,
-     "end": 1008.56
+     "start": 1009.53,
+     "end": 1009.71
     },
     {
      "w": "estas",
-     "start": 1008.56,
-     "end": 1008.88
+     "start": 1009.71,
+     "end": 1010.03
     },
     {
      "w": "comodo",
-     "start": 1008.88,
-     "end": 1009.5
+     "start": 1010.03,
+     "end": 1010.65
     },
     {
      "w": "escucha",
-     "start": 1010.02,
-     "end": 1010.6
+     "start": 1011.17,
+     "end": 1011.75
     },
     {
      "w": "la",
-     "start": 1010.6,
-     "end": 1010.72
+     "start": 1011.75,
+     "end": 1011.87
     },
     {
      "w": "leccion",
-     "start": 1010.72,
-     "end": 1011.24
+     "start": 1011.87,
+     "end": 1012.39
     },
     {
      "w": "otra",
-     "start": 1011.24,
-     "end": 1011.54
+     "start": 1012.39,
+     "end": 1012.69
     },
     {
      "w": "vez",
-     "start": 1011.54,
-     "end": 1011.9
+     "start": 1012.69,
+     "end": 1013.05
     },
     {
      "w": "hasta",
-     "start": 1011.9,
-     "end": 1012.28
+     "start": 1013.05,
+     "end": 1013.43
     },
     {
      "w": "que",
-     "start": 1012.28,
-     "end": 1012.44
+     "start": 1013.43,
+     "end": 1013.59
     },
     {
      "w": "te",
-     "start": 1012.44,
-     "end": 1012.66
+     "start": 1013.59,
+     "end": 1013.81
     },
     {
      "w": "sientes",
-     "start": 1012.66,
-     "end": 1013.14
+     "start": 1013.81,
+     "end": 1014.29
     },
     {
      "w": "comodo",
-     "start": 1013.14,
-     "end": 1013.7
+     "start": 1014.29,
+     "end": 1014.85
     },
     {
      "w": "respondiendo",
-     "start": 1013.7,
-     "end": 1015.0
+     "start": 1014.85,
+     "end": 1016.15
     },
     {
      "w": "a",
-     "start": 1015.0,
-     "end": 1015.16
+     "start": 1016.15,
+     "end": 1016.31
     },
     {
      "w": "mis",
-     "start": 1015.16,
-     "end": 1015.3
+     "start": 1016.31,
+     "end": 1016.45
     },
     {
      "w": "preguntas",
-     "start": 1015.3,
-     "end": 1015.84
+     "start": 1016.45,
+     "end": 1016.99
+    },
+    {
+     "w": "y",
+     "start": 1015.49,
+     "end": 1016.1
+    },
+    {
+     "w": "nos",
+     "start": 1016.21,
+     "end": 1016.4
+    },
+    {
+     "w": "vemos",
+     "start": 1016.45,
+     "end": 1016.75
+    },
+    {
+     "w": "en",
+     "start": 1016.77,
+     "end": 1016.9
+    },
+    {
+     "w": "la",
+     "start": 1017.17,
+     "end": 1017.28
+    },
+    {
+     "w": "siguiente",
+     "start": 1017.31,
+     "end": 1017.8
+    },
+    {
+     "w": "leccion",
+     "start": 1017.87,
+     "end": 1018.5
+    },
+    {
+     "w": "mi",
+     "start": 1018.59,
+     "end": 1018.8
+    },
+    {
+     "w": "querido",
+     "start": 1018.91,
+     "end": 1019.7
+    },
+    {
+     "w": "querida",
+     "start": 1019.81,
+     "end": 1020.5
+    },
+    {
+     "w": "estudiante",
+     "start": 1020.71,
+     "end": 1021.55
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 535.26,
+   "end": 1023.85,
+   "lines": [
+    "Perfecto."
+   ],
+   "words": [
+    {
+     "w": "perfecto",
+     "start": 535.26,
+     "end": 535.86
     }
    ]
   }
@@ -8121,16 +8390,16 @@
  "fill": [
   {
    "at": 366.15,
-   "shift": 1.5,
+   "shift": 2.65,
    "insert": [
     [
      "self",
-     358.05,
+     356.9,
      359.55
     ]
    ],
    "donorText": "In the afternoon.",
-   "donor": "second 'In the afternoon.' instance missing from recording at 6:06; donor = woman's repeat at 358.05-359.55 (5:58)"
+   "donor": "second 'In the afternoon.' missing from recording; donor = woman's repeat incl. natural pre-silence (356.90-359.55), speech onset 1.25s into slice"
   }
  ]
 }
