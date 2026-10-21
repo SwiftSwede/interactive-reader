@@ -4339,6 +4339,21 @@
    ]
   },
   {
+   "t": "narration",
+   "start": 537.82,
+   "end": 538.6,
+   "lines": [
+    "Perfecto."
+   ],
+   "words": [
+    {
+     "w": "perfecto",
+     "start": 537.82,
+     "end": 538.6
+    }
+   ]
+  },
+  {
    "t": "prompt",
    "start": 538.86,
    "pauseAt": 544.83,
@@ -8369,21 +8384,6 @@
      "w": "estudiante.",
      "start": 1022.18,
      "end": 1023.0
-    }
-   ]
-  },
-  {
-   "t": "narration",
-   "start": 537.82,
-   "end": 538.6,
-   "lines": [
-    "Perfecto."
-   ],
-   "words": [
-    {
-     "w": "perfecto",
-     "start": 537.82,
-     "end": 538.6
     }
    ]
   }
