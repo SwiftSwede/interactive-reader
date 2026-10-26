@@ -3,7 +3,13 @@
 import { useEffect, useState } from "react";
 import { formatDayTimePattern } from "@/lib/teacher-month";
 
-export default function DayTimePattern({ starts }: { starts: string[] }) {
+export default function DayTimePattern({
+  starts,
+  prefix = "",
+}: {
+  starts: string[];
+  prefix?: string;
+}) {
   const [label, setLabel] = useState("");
 
   useEffect(() => {
@@ -11,5 +17,10 @@ export default function DayTimePattern({ starts }: { starts: string[] }) {
   }, [starts.join("|")]);
 
   if (!label) return null;
-  return <span>{label}</span>;
+  return (
+    <span>
+      {prefix}
+      {label}
+    </span>
+  );
 }

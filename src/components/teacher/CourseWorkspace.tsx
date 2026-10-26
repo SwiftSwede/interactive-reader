@@ -33,7 +33,7 @@ export default function CourseWorkspace({
       </div>
       <div
         role="tabpanel"
-        className="mt-6"
+        className="mt-4"
         aria-label={view === "clases" ? "Clases" : "Estudiantes"}
       >
         {view === "clases" ? classes : students}
@@ -57,10 +57,10 @@ function ViewChip({
       role="tab"
       aria-selected={active}
       onClick={onClick}
-      className={`min-h-11 rounded-card px-4 text-label-md font-medium ${
+      className={`min-h-11 rounded-card border px-4 text-label-md ${
         active
-          ? "bg-accent text-white"
-          : "border border-paper-line text-text-secondary hover:bg-surface-hover"
+          ? "border-accent bg-accent-soft text-text-accent"
+          : "border-paper-line bg-surface text-text-secondary hover:bg-surface-hover"
       }`}
     >
       {label}

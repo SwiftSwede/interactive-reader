@@ -6,7 +6,47 @@ import {
   readySessionCount,
   sessionContentStatus,
   sessionRecordingStatus,
+  sessionTiming,
 } from "./sessions";
+
+describe("sessionTiming", () => {
+  const session = {
+    start: "2026-10-26T20:00:00-05:00",
+    end: "2026-10-26T21:30:00-05:00",
+    classEndedAt: null as string | null,
+  };
+
+  test("before start: not started, not ended", () => {
+    assert.deepEqual(
+      sessionTiming(session, new Date("2026-10-26T19:59:00-05:00")),
+      { started: false, ended: false }
+    );
+  });
+
+  test("during class: started, not ended", () => {
+    assert.deepEqual(
+      sessionTiming(session, new Date("2026-10-26T20:30:00-05:00")),
+      { started: true, ended: false }
+    );
+  });
+
+  test("Terminar clase ends it before the scheduled end", () => {
+    assert.deepEqual(
+      sessionTiming(
+        { ...session, classEndedAt: "2026-10-26T21:00:00-05:00" },
+        new Date("2026-10-26T21:05:00-05:00")
+      ),
+      { started: true, ended: true }
+    );
+  });
+
+  test("after the scheduled end: ended", () => {
+    assert.deepEqual(
+      sessionTiming(session, new Date("2026-10-26T21:30:00-05:00")),
+      { started: true, ended: true }
+    );
+  });
+});
 
 describe("readinessLabel", () => {
   const emptyRefs = {

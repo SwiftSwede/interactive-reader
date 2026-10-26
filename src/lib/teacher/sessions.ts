@@ -229,6 +229,19 @@ export function sessionRecordingStatus(
   return url ? "Grabación" : "Sin grabación";
 }
 
+export function sessionTiming(
+  session: { start: string; end: string; classEndedAt: string | null },
+  now = new Date()
+): { started: boolean; ended: boolean } {
+  const nowMs = now.getTime();
+  return {
+    started: nowMs >= new Date(session.start).getTime(),
+    ended:
+      session.classEndedAt != null ||
+      nowMs >= new Date(session.end).getTime(),
+  };
+}
+
 export function pickTodayTeacherSession(
   sessions: TeacherSession[],
   now = new Date()

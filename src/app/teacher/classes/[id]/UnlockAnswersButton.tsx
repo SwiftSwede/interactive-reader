@@ -42,7 +42,7 @@ export default function UnlockAnswersButton({
           {label}
         </ActionButton>
       </form>
-      {error && <p className="mt-2 text-sm text-error">{error}</p>}
+      {error && <p className="mt-2 text-label-sm text-error">{error}</p>}
     </div>
   );
 }

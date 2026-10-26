@@ -1,14 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import ActionButton from "@/components/ActionButton";
 import { removeClassroomStudent } from "@/app/teacher/actions";
+import { TEACHER_BUTTON_SECONDARY } from "@/components/teacher/teacher-ui";
 
 export default function RemoveStudentButton({
   studentId,
+  afterSuccessHref,
+  inline = false,
 }: {
   studentId: string;
+  afterSuccessHref?: string;
+  inline?: boolean;
 }) {
+  const router = useRouter();
   const [confirming, setConfirming] = useState(false);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
@@ -21,15 +28,19 @@ export default function RemoveStudentButton({
           setError("");
           setConfirming(true);
         }}
-        className="mt-2 flex h-11 w-full items-center justify-center rounded-card border border-paper-line px-3 text-label-md font-medium text-text-primary hover:bg-surface-hover"
+        className={
+          inline
+            ? TEACHER_BUTTON_SECONDARY
+            : "mt-2 flex h-11 w-full items-center justify-center rounded-card border border-paper-line px-3 text-label-md font-medium text-text-primary hover:bg-surface-hover"
+        }
       >
-        Quitar
+        {inline ? "Quitar de clase" : "Quitar"}
       </button>
     );
   }
 
   return (
-    <div className="mt-2">
+    <div className={inline ? "max-w-sm" : "mt-2"}>
       <p className="mb-2 text-label-sm text-text-secondary">
         ¿Lo saco de clase? Deja de entrar a las clases nuevas. Lo que ya hizo se
         queda.
@@ -42,7 +53,9 @@ export default function RemoveStudentButton({
           if (!result.ok) {
             setPending(false);
             setError(result.error);
+            return;
           }
+          if (afterSuccessHref) router.replace(afterSuccessHref);
         }}
       >
         <input type="hidden" name="studentId" value={studentId} />

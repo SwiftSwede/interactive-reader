@@ -15,14 +15,11 @@ import CourseThemeForm from "@/components/teacher/CourseThemeForm";
 import CourseWorkspace from "@/components/teacher/CourseWorkspace";
 import NewClassButton from "@/components/teacher/NewClassButton";
 import ZoomUrlForm from "./ZoomUrlForm";
-import ClassDayCard from "@/components/dashboard/ClassDayCard";
-import { TEACHER_APP_LABEL } from "@/components/dashboard/JoinCard";
-import {
-  isLiveOnlySessionType,
-  sessionTypeLabel,
-  teacherJoinAppHref,
-} from "@/lib/activities";
-import { getClassDayPhase } from "@/lib/session-phase";
+import DayTimePattern from "@/components/teacher/DayTimePattern";
+import GroupTodayBand from "@/components/teacher/GroupTodayBand";
+import TeacherPageHeader from "@/components/teacher/TeacherPageHeader";
+import { toGroupToday } from "@/components/teacher/group-today";
+import { sessionTypeLabel } from "@/lib/activities";
 import { areAnswersUnlocked } from "@/lib/sessions";
 import {
   courseLevelLabel,
@@ -31,8 +28,9 @@ import {
   loadCourseSessions,
   pickTodayTeacherSession,
   sessionContentStatus,
-  sessionRecordingStatus,
+  sessionTiming,
   sessionTitle,
+  studentCountLabel,
   type AttendanceMark,
 } from "@/lib/teacher";
 
@@ -166,7 +164,7 @@ export default async function CourseClassPage({
   const orderedSessions = [...sessions].sort(
     (a, b) => new Date(a.start).getTime() - new Date(b.start).getTime()
   );
-  const { students: roster, displayNames } = await loadCourseRoster(
+  const { students: roster } = await loadCourseRoster(
     supabase,
     course.id,
     sessions
@@ -181,8 +179,6 @@ export default async function CourseClassPage({
           .in("course_session_id", sessionIds)
       : { data: [] };
 
-  const nameByStudentId = new Map(Object.entries(displayNames));
-
   type AttendanceRow = {
     course_session_id: string;
     student_id: string;
@@ -194,7 +190,6 @@ export default async function CourseClassPage({
     string,
     Map<string, { attended: boolean; firstOpenedAt: string | null }>
   >();
-  const attendedNamesBySession = new Map<string, string[]>();
   for (const row of (attendanceRows ?? []) as AttendanceRow[]) {
     const byStudent =
       attendanceBySession.get(row.course_session_id) ?? new Map();
@@ -203,16 +198,6 @@ export default async function CourseClassPage({
       firstOpenedAt: row.first_opened_at ?? null,
     });
     attendanceBySession.set(row.course_session_id, byStudent);
-
-    if (row.attended) {
-      const names = attendedNamesBySession.get(row.course_session_id) ?? [];
-      names.push(nameByStudentId.get(row.student_id) ?? "Sin nombre");
-      attendedNamesBySession.set(row.course_session_id, names);
-    }
-  }
-
-  for (const names of attendedNamesBySession.values()) {
-    names.sort((a, b) => a.localeCompare(b, "es"));
   }
 
   const resolvedIds = orderedSessions
@@ -248,6 +233,8 @@ export default async function CourseClassPage({
     }
   }
 
+  const todaySession = pickTodayTeacherSession(orderedSessions);
+
   const stripSessions: ClassStripItem[] = orderedSessions.map((session) => {
     const byStudent = attendanceBySession.get(session.id);
     const students: AttendanceMark[] = roster.map((student) => {
@@ -271,9 +258,10 @@ export default async function CourseClassPage({
       token: session.token,
       storySlug: session.story?.slug ?? null,
       contentStatus: sessionContentStatus(session),
-      recordingStatus: sessionRecordingStatus(session.recordingYoutubeUrl),
       recordingYoutubeUrl: session.recordingYoutubeUrl,
-      attendedNames: attendedNamesBySession.get(session.id) ?? [],
+      attendedCount: students.filter((student) => student.attended).length,
+      isToday: session.id === todaySession?.id,
+      ...sessionTiming(session),
       unlocked: areAnswersUnlocked({
         answersRevealed: session.answersRevealed,
         sessionStartTime: session.start,
@@ -293,77 +281,49 @@ export default async function CourseClassPage({
     };
   });
 
-  const todaySession = pickTodayTeacherSession(orderedSessions);
-  const todayLiveOnly = todaySession
-    ? isLiveOnlySessionType(todaySession.sessionType)
-    : false;
-
   return (
     <section>
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <h1 className="text-headline-lg text-text-primary">{course.name}</h1>
-          {course.theme ? (
-            <p className="mt-1 text-label-md text-text-secondary">
-              {course.theme}
-            </p>
-          ) : null}
-          <p className="mt-1 text-label-sm text-text-muted">
+      <TeacherPageHeader
+        title={course.name}
+        description={
+          <>
             {courseLevelLabel(course.level as CourseLevel)}
-          </p>
-          <p className="mt-2 text-body-main text-text-secondary">
-            Una clase es un Zoom: una actividad, 90 minutos, un link para el
-            chat.
-          </p>
-        </div>
-        <DeleteCourseButton courseId={course.id} courseName={course.name} />
+            <DayTimePattern
+              prefix=" · "
+              starts={orderedSessions.map((session) => session.start)}
+            />
+            {" · "}
+            {studentCountLabel(roster.length)}
+          </>
+        }
+        action={
+          <NewClassButton
+            courseId={course.id}
+            courseLevel={course.level as CourseLevel}
+            stories={stories}
+            presentationPrompts={presentationPrompts}
+            conversationCopyPrompts={conversationCopyPrompts}
+            writingPrompts={writingPrompts}
+            examPrompts={examPrompts}
+            conversationPrompts={conversationPrompts}
+          />
+        }
+      />
+
+      <div className="mt-4 flex flex-wrap items-center gap-x-10 gap-y-2">
+        <CourseThemeForm courseId={course.id} theme={course.theme} />
+        <ZoomUrlForm courseId={course.id} zoomUrl={course.zoom_url} />
       </div>
 
       {todaySession ? (
-        <ClassDayCard
-          sessionStartTime={todaySession.start}
-          sessionEndTime={todaySession.end}
-          classEndedAt={todaySession.classEndedAt}
-          sessionDate={todaySession.sessionDate}
-          href={teacherJoinAppHref({
-            sessionType: todaySession.sessionType,
-            token: todaySession.token,
-            courseId: course.id,
-            sessionId: todaySession.id,
-            conversationPromptId: todaySession.conversationPromptId,
-          })}
-          zoomHref={course.zoom_url}
-          appLabel={TEACHER_APP_LABEL}
-          typeLabel={sessionTypeLabel(todaySession.sessionType)}
-          courseName={course.name}
-          liveOnly={todayLiveOnly}
-          initialPhase={getClassDayPhase({
-            sessionStartTime: todaySession.start,
-            sessionEndTime: todaySession.end,
-            classEndedAt: todaySession.classEndedAt,
-          })}
-        />
+        <div className="mt-6">
+          <GroupTodayBand today={toGroupToday(course, todaySession)} standalone />
+        </div>
       ) : null}
-
-      <CourseThemeForm courseId={course.id} theme={course.theme} />
-
-      <ZoomUrlForm courseId={course.id} zoomUrl={course.zoom_url} />
 
       <CourseWorkspace
         classes={
           <>
-            <div className="mb-4 flex justify-end">
-              <NewClassButton
-                courseId={course.id}
-                courseLevel={course.level as CourseLevel}
-                stories={stories}
-                presentationPrompts={presentationPrompts}
-                conversationCopyPrompts={conversationCopyPrompts}
-                writingPrompts={writingPrompts}
-                examPrompts={examPrompts}
-                conversationPrompts={conversationPrompts}
-              />
-            </div>
             {orderedSessions.length === 0 ? (
               <p className="text-body-main text-text-muted">
                 Todavía no hay clases. Crea la primera.
@@ -385,18 +345,18 @@ export default async function CourseClassPage({
         }
         students={
           <>
-            <p className="mb-3 text-body-main text-text-secondary">
+            <p className="mb-4 text-label-sm text-text-muted">
               Solo quienes siguen pagando. Si pausaron en ThriveCart, no salen
               aquí. Moverlos de grupo no cambia lo que pagan.
             </p>
-            <CourseRoster
-              courseId={course.id}
-              courseLevel={course.level as CourseLevel}
-              students={roster}
-            />
+            <CourseRoster courseId={course.id} students={roster} />
           </>
         }
       />
+
+      <div className="mt-12 border-t border-paper-line pt-4">
+        <DeleteCourseButton courseId={course.id} courseName={course.name} />
+      </div>
     </section>
   );
 }

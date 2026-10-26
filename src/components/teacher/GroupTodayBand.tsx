@@ -36,7 +36,15 @@ function headline(phase: ClassDayPhase, now: number | null, startMs: number) {
   );
 }
 
-export default function GroupTodayBand({ today }: { today: GroupToday }) {
+export default function GroupTodayBand({
+  today,
+  standalone = false,
+  groupName,
+}: {
+  today: GroupToday;
+  standalone?: boolean;
+  groupName?: string;
+}) {
   const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {
@@ -65,9 +73,18 @@ export default function GroupTodayBand({ today }: { today: GroupToday }) {
       : `${today.typeLabel}: ${today.title}`;
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 border-b border-paper-line bg-accent-softer px-5 py-4">
+    <div
+      className={`flex flex-wrap items-center justify-between gap-x-6 gap-y-4 bg-accent-softer px-5 py-4 ${
+        standalone
+          ? "rounded-sheet border border-paper-line"
+          : "border-b border-paper-line"
+      }`}
+    >
       <div className="min-w-0">
-        <p className="text-label-md text-text-secondary">Hoy · {lesson}</p>
+        <p className="text-label-md text-text-secondary">
+          Hoy · {groupName ? `${groupName} · ` : ""}
+          {lesson}
+        </p>
         <p className="mt-1 flex items-center gap-2 text-headline-md text-text-primary">
           {done ? (
             <Check className="h-5 w-5 shrink-0 text-success" aria-hidden="true" />

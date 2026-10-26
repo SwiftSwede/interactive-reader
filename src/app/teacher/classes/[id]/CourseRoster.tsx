@@ -2,21 +2,17 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 import LocalDateTime from "@/components/LocalDateTime";
 import type { RosterStudent } from "@/lib/teacher";
-import type { CourseLevel } from "@/types";
-import MoveStudentButton from "./MoveStudentButton";
-import RemoveStudentButton from "@/components/RemoveStudentButton";
 
 type SortKey = "name" | "attendance" | "activity";
 
 export default function CourseRoster({
   courseId,
-  courseLevel,
   students,
 }: {
   courseId: string;
-  courseLevel: CourseLevel;
   students: RosterStudent[];
 }) {
   const [sortKey, setSortKey] = useState<SortKey>("name");
@@ -62,7 +58,8 @@ export default function CourseRoster({
   return (
     <div>
       {students.length >= 2 && (
-        <div className="mb-3 flex flex-wrap gap-2">
+        <div className="mb-4 flex flex-wrap items-center gap-2">
+          <span className="mr-1 text-label-sm text-text-muted">Ordenar</span>
           <SortChip
             active={sortKey === "name"}
             onClick={() => setSortKey("name")}
@@ -80,39 +77,40 @@ export default function CourseRoster({
           />
         </div>
       )}
-      <ul className="grid auto-rows-fr grid-cols-1 gap-3 min-[600px]:grid-cols-2 lg:grid-cols-3">
+      <ul className="grid grid-cols-1 gap-3 min-[600px]:grid-cols-2 lg:grid-cols-3">
         {sorted.map((student) => (
-          <li
-            key={student.studentId}
-            className="flex h-full flex-col rounded-sheet border border-paper-line bg-surface p-4"
-          >
+          <li key={student.studentId}>
             <Link
               href={`/teacher/classes/${courseId}/students/${student.studentId}`}
-              className="block min-h-0 flex-1 rounded-card hover:bg-surface-hover"
+              className="flex h-full items-start gap-2 rounded-sheet border border-paper-line bg-surface p-4 hover:bg-surface-hover active:bg-surface-hover"
             >
-              <p className="line-clamp-2 min-h-10 text-label-md text-text-primary">
-                {student.displayName}
-              </p>
-              <p className="mt-1 text-label-sm text-text-secondary">
-                Asistencia: {student.attendedCount}/{student.sessionCount}
-              </p>
-              <div className="mt-0.5 min-h-8 text-label-sm text-text-muted [&_time]:mt-0">
-                {student.lastActivityAt ? (
-                  <>
-                    Última actividad:
-                    <LocalDateTime iso={student.lastActivityAt} />
-                  </>
-                ) : (
-                  <p>Todavía no entra a una clase.</p>
-                )}
-              </div>
+              <span className="min-w-0 flex-1">
+                <span className="block truncate text-label-md text-text-primary">
+                  {student.displayName}
+                </span>
+                <span className="mt-1 block text-label-sm text-text-secondary">
+                  Asistencia: {student.attendedCount} de {student.sessionCount}
+                </span>
+                <span className="mt-0.5 block text-label-sm text-text-muted">
+                  {student.lastActivityAt ? (
+                    <>
+                      En la app:{" "}
+                      <LocalDateTime
+                        iso={student.lastActivityAt}
+                        format="dayTime"
+                        className=""
+                      />
+                    </>
+                  ) : (
+                    "Sin actividad en la app."
+                  )}
+                </span>
+              </span>
+              <ChevronRight
+                className="mt-0.5 h-5 w-5 shrink-0 text-text-muted"
+                aria-hidden="true"
+              />
             </Link>
-            <MoveStudentButton
-              courseId={courseId}
-              studentId={student.studentId}
-              fromLevel={courseLevel}
-            />
-            <RemoveStudentButton studentId={student.studentId} />
           </li>
         ))}
       </ul>
@@ -133,10 +131,11 @@ function SortChip({
     <button
       type="button"
       onClick={onClick}
-      className={`min-h-11 rounded-small px-3 text-label-sm ${
+      aria-pressed={active}
+      className={`min-h-11 rounded-card border px-3 text-label-sm ${
         active
-          ? "bg-accent text-white"
-          : "border border-paper-line text-text-secondary"
+          ? "border-accent bg-accent-soft text-text-accent"
+          : "border-paper-line bg-surface text-text-secondary hover:bg-surface-hover"
       }`}
     >
       {label}

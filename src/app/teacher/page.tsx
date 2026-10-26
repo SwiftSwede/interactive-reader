@@ -1,19 +1,15 @@
 import { CalendarDays } from "lucide-react";
 import { requireTeacher } from "@/lib/auth-server";
 import { createClient } from "@/lib/supabase/server";
-import {
-  isLiveOnlySessionType,
-  sessionTypeLabel,
-  teacherJoinAppHref,
-} from "@/lib/activities";
+import { sessionTypeLabel } from "@/lib/activities";
 import { hasSessionContent } from "@/lib/dashboard";
+import { toGroupToday } from "@/components/teacher/group-today";
 import NewMonthButton from "@/components/teacher/NewMonthButton";
 import TeacherPageHeader from "@/components/teacher/TeacherPageHeader";
 import ThisMonthBoard, {
   type ThisMonthGroup,
 } from "@/components/teacher/ThisMonthBoard";
 import { teacherClassHref } from "@/components/teacher/teacher-ui";
-import { getClassDayPhase } from "@/lib/session-phase";
 import {
   countActiveStudentsByCourse,
   courseLevelLabel,
@@ -110,33 +106,7 @@ export default async function TeacherHomePage() {
               start: current.session.start,
             }
           : null,
-        today: todaySession
-          ? {
-              sessionId: todaySession.id,
-              sessionStartTime: todaySession.start,
-              sessionEndTime: todaySession.end,
-              classEndedAt: todaySession.classEndedAt,
-              typeLabel: sessionTypeLabel(todaySession.sessionType),
-              title: sessionTitle(todaySession),
-              appHref: isLiveOnlySessionType(todaySession.sessionType)
-                ? null
-                : teacherJoinAppHref({
-                    sessionType: todaySession.sessionType,
-                    token: todaySession.token,
-                    courseId: course.id,
-                    sessionId: todaySession.id,
-                    conversationPromptId: todaySession.conversationPromptId,
-                  }),
-              zoomHref: course.zoom_url,
-              classHref: teacherClassHref(course.id, todaySession.id),
-              recordingMissing: !todaySession.recordingYoutubeUrl,
-              initialPhase: getClassDayPhase({
-                sessionStartTime: todaySession.start,
-                sessionEndTime: todaySession.end,
-                classEndedAt: todaySession.classEndedAt,
-              }),
-            }
-          : null,
+        today: todaySession ? toGroupToday(course, todaySession) : null,
       };
     })
     .toSorted((a, b) => Number(Boolean(b.today)) - Number(Boolean(a.today)));

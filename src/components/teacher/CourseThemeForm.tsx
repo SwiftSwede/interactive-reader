@@ -1,14 +1,18 @@
 "use client";
 
-import { useActionState, useEffect, useState } from "react";
+import { useActionState, useState } from "react";
+import { Pencil } from "lucide-react";
 import ActionButton from "@/components/ActionButton";
 import {
   updateCourseTheme,
   type UpdateCourseThemeResult,
 } from "@/app/teacher/actions";
+import { TEACHER_ICON_BUTTON } from "./teacher-ui";
 
 const fieldClass =
-  "w-full rounded-card border border-paper-line bg-surface px-3 py-3 text-body-main text-text-primary placeholder:text-text-muted focus:border-2 focus:border-accent focus:outline-none";
+  "min-h-11 w-64 max-w-full rounded-card border border-paper-line bg-surface px-3 py-2 text-body-main text-text-primary placeholder:text-text-muted focus:border-2 focus:border-accent focus:outline-none";
+
+type ThemeState = UpdateCourseThemeResult | null;
 
 export default function CourseThemeForm({
   courseId,
@@ -19,47 +23,78 @@ export default function CourseThemeForm({
 }) {
   const [state, formAction, isPending] = useActionState(
     updateCourseTheme,
-    null as UpdateCourseThemeResult | null
+    null as ThemeState
   );
-  const [value, setValue] = useState(theme ?? "");
-
-  useEffect(() => {
-    setValue(theme ?? "");
-  }, [theme]);
-
-  useEffect(() => {
-    if (state?.ok) setValue(state.theme ?? "");
-  }, [state]);
+  const [openedWith, setOpenedWith] = useState<ThemeState | undefined>(
+    undefined
+  );
+  const savedSinceOpen = state !== openedWith && state?.ok === true;
+  const editing = openedWith !== undefined && !savedSinceOpen;
+  const saved = state?.ok ? state.theme : theme;
 
   return (
-    <form action={formAction} className="mt-4 space-y-3">
-      <input type="hidden" name="courseId" value={courseId} />
-      <label className="block">
-        <span className="mb-1.5 block text-label-md text-text-secondary">
-          Tema (opcional)
-        </span>
-        <input
-          name="theme"
-          value={value}
-          onChange={(event) => setValue(event.target.value)}
-          maxLength={80}
-          className={fieldClass}
-          placeholder="Viajes, comida, trabajo..."
-        />
-      </label>
-      {state && !state.ok ? (
+    <div>
+      {editing ? (
+        <form action={formAction} className="flex flex-wrap items-center gap-2">
+          <input type="hidden" name="courseId" value={courseId} />
+          <label
+            className="text-label-md text-text-secondary"
+            htmlFor={`course-theme-${courseId}`}
+          >
+            Tema
+          </label>
+          <input
+            id={`course-theme-${courseId}`}
+            name="theme"
+            defaultValue={saved ?? ""}
+            maxLength={80}
+            autoFocus
+            className={fieldClass}
+            placeholder="Viajes, comida, trabajo..."
+            onKeyDown={(event) => {
+              if (event.key === "Escape") {
+                event.stopPropagation();
+                setOpenedWith(undefined);
+              }
+            }}
+          />
+          <ActionButton
+            type="submit"
+            state={isPending ? "pending" : "idle"}
+            pendingLabel="Guardando..."
+          >
+            Guardar
+          </ActionButton>
+          <button
+            type="button"
+            disabled={isPending}
+            onClick={() => setOpenedWith(undefined)}
+            className="min-h-11 px-2 text-label-md text-text-muted underline-offset-4 hover:text-text-primary hover:underline disabled:opacity-60"
+          >
+            Cancelar
+          </button>
+        </form>
+      ) : (
+        <div className="flex items-center gap-2">
+          <span className="text-label-md text-text-secondary">Tema</span>
+          <span
+            className={`text-body-main ${saved ? "text-text-primary" : "text-text-muted"}`}
+          >
+            {saved ?? "Sin tema"}
+          </span>
+          <button
+            type="button"
+            onClick={() => setOpenedWith(state)}
+            aria-label="Editar el tema"
+            className={TEACHER_ICON_BUTTON}
+          >
+            <Pencil className="h-4 w-4" aria-hidden="true" />
+          </button>
+        </div>
+      )}
+      {editing && state && !state.ok ? (
         <p className="text-label-sm text-error">{state.error}</p>
       ) : null}
-      {state?.ok ? (
-        <p className="text-label-sm text-text-secondary">{state.message}</p>
-      ) : null}
-      <ActionButton
-        type="submit"
-        state={isPending ? "pending" : "idle"}
-        pendingLabel="Guardando..."
-      >
-        Guardar tema
-      </ActionButton>
-    </form>
+    </div>
   );
 }

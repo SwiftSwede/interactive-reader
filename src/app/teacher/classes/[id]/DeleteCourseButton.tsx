@@ -38,7 +38,7 @@ export default function DeleteCourseButton({
           setError("");
           setOpen(true);
         }}
-        className="inline-flex min-h-11 items-center justify-center rounded-card border border-paper-line px-4 text-label-md font-medium text-text-primary hover:bg-surface-hover"
+        className="inline-flex min-h-11 items-center text-label-md text-text-muted underline-offset-4 hover:text-text-primary hover:underline"
       >
         Borrar mes
       </button>

@@ -1,22 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { useTeacherPanel } from "./TeacherPanelContext";
 import SessionContextPanel from "./SessionContextPanel";
 import TeacherSessionRow from "./TeacherSessionRow";
 import SessionContentDialog from "./SessionContentDialog";
-import { isLiveOnlySessionType, type SessionType } from "@/lib/activities";
+import {
+  isLiveOnlySessionType,
+  isStoryBackedSessionType,
+  studentSessionPath,
+  type SessionType,
+} from "@/lib/activities";
 import type { AttendanceMark } from "@/lib/teacher";
 import type { CourseLevel } from "@/types";
 
 const SELECTED_SESSION_PARAM = "clase";
-
-function readSelectedSessionId(): string | null {
-  if (typeof window === "undefined") return null;
-  return new URLSearchParams(window.location.search).get(
-    SELECTED_SESSION_PARAM
-  );
-}
 
 function writeSelectedSessionId(sessionId: string | null) {
   const url = new URL(window.location.href);
@@ -41,9 +40,11 @@ export type ClassStripItem = {
   token: string;
   storySlug: string | null;
   contentStatus: string;
-  recordingStatus: string;
   recordingYoutubeUrl: string | null;
-  attendedNames: string[];
+  attendedCount: number;
+  isToday: boolean;
+  started: boolean;
+  ended: boolean;
   unlocked: boolean;
   students: AttendanceMark[];
   canReopen: boolean;
@@ -80,15 +81,44 @@ export default function ClassStrip({
   conversationPrompts: CatalogOption[];
 }) {
   const { setPanel } = useTeacherPanel();
-  const [selectedId, setSelectedId] = useState<string | null>(null);
-  const selected = sessions.find((session) => session.id === selectedId) ?? null;
+  const searchParams = useSearchParams();
+  const urlSessionId = searchParams.get(SELECTED_SESSION_PARAM);
+  const selected =
+    sessions.find((session) => session.id === urlSessionId) ?? null;
+  const selectedId = selected?.id ?? null;
 
-  useEffect(() => {
-    const fromUrl = readSelectedSessionId();
-    if (fromUrl && sessions.some((session) => session.id === fromUrl)) {
-      setSelectedId(fromUrl);
-    }
-  }, [courseId]);
+  const contentDialog = useCallback(
+    (
+      session: ClassStripItem,
+      mode: "assign" | "flex",
+      triggerLabel: string
+    ) => (
+      <SessionContentDialog
+        courseId={courseId}
+        courseLevel={courseLevel}
+        sessionId={session.id}
+        sessionType={session.sessionType}
+        mode={mode}
+        stories={stories}
+        presentationPrompts={presentationPrompts}
+        conversationCopyPrompts={conversationCopyPrompts}
+        writingPrompts={writingPrompts}
+        examPrompts={examPrompts}
+        conversationPrompts={conversationPrompts}
+        triggerLabel={triggerLabel}
+      />
+    ),
+    [
+      courseId,
+      courseLevel,
+      stories,
+      presentationPrompts,
+      conversationCopyPrompts,
+      writingPrompts,
+      examPrompts,
+      conversationPrompts,
+    ]
+  );
 
   useEffect(() => {
     setPanel(
@@ -104,18 +134,33 @@ export default function ClassStrip({
           liveOnly={isLiveOnlySessionType(selected.sessionType)}
           recordingYoutubeUrl={selected.recordingYoutubeUrl}
           students={selected.students}
+          notes={selected.notes}
+          studentHref={studentSessionPath({
+            sessionType: selected.sessionType,
+            token: selected.token,
+            storySlug: selected.storySlug,
+          })}
+          answers={
+            isStoryBackedSessionType(selected.sessionType)
+              ? selected.unlocked
+                ? "unlocked"
+                : "locked"
+              : null
+          }
+          contentAction={
+            selected.sessionType !== "flex" && selected.canReopen
+              ? contentDialog(selected, "flex", "Cambiar tipo")
+              : null
+          }
         />
       ) : null,
-      () => {
-        setSelectedId(null);
-        writeSelectedSessionId(null);
-      }
+      () => writeSelectedSessionId(null)
     );
     return () => setPanel(null);
-  }, [courseId, selected, setPanel]);
+  }, [courseId, selected, setPanel, contentDialog]);
 
   return (
-    <ul className="overflow-hidden divide-y divide-paper-line rounded-sheet border border-paper-line bg-surface">
+    <ul className="divide-y divide-paper-line rounded-sheet border border-paper-line bg-surface">
       {sessions.map((session, index) => (
         <TeacherSessionRow
           key={session.id}
@@ -126,56 +171,26 @@ export default function ClassStrip({
           title={session.title}
           typeLabel={session.typeLabel}
           start={session.start}
-          notes={session.notes}
           token={session.token}
           storySlug={session.storySlug}
           contentStatus={session.contentStatus}
-          recordingStatus={session.recordingStatus}
-          attendedNames={session.attendedNames}
-          unlocked={session.unlocked}
+          hasRecording={Boolean(session.recordingYoutubeUrl)}
+          attendedCount={session.attendedCount}
+          rosterCount={session.students.length}
+          isToday={session.isToday}
+          started={session.started}
+          ended={session.ended}
           selected={session.id === selectedId}
           contentAction={
-            session.sessionType === "flex" || session.canReopen ? (
-              <SessionContentDialog
-                courseId={courseId}
-                courseLevel={courseLevel}
-                sessionId={session.id}
-                sessionType={session.sessionType}
-                mode="flex"
-                stories={stories}
-                presentationPrompts={presentationPrompts}
-                conversationCopyPrompts={conversationCopyPrompts}
-                writingPrompts={writingPrompts}
-                examPrompts={examPrompts}
-                conversationPrompts={conversationPrompts}
-                triggerLabel={
-                  session.sessionType === "flex"
-                    ? "Por elegir"
-                    : "Cambiar tipo"
-                }
-              />
-            ) : session.needsContent ? (
-              <SessionContentDialog
-                courseId={courseId}
-                courseLevel={courseLevel}
-                sessionId={session.id}
-                sessionType={session.sessionType}
-                mode="assign"
-                stories={stories}
-                presentationPrompts={presentationPrompts}
-                conversationCopyPrompts={conversationCopyPrompts}
-                writingPrompts={writingPrompts}
-                examPrompts={examPrompts}
-                conversationPrompts={conversationPrompts}
-                triggerLabel="Elegir contenido"
-              />
-            ) : null
+            session.sessionType === "flex"
+              ? contentDialog(session, "flex", "Por elegir")
+              : session.needsContent
+                ? contentDialog(session, "assign", "Elegir contenido")
+                : null
           }
-          onSelect={() => {
-            const next = selectedId === session.id ? null : session.id;
-            setSelectedId(next);
-            writeSelectedSessionId(next);
-          }}
+          onSelect={() =>
+            writeSelectedSessionId(selectedId === session.id ? null : session.id)
+          }
         />
       ))}
     </ul>

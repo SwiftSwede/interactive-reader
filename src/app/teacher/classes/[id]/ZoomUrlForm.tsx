@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import ActionButton from "@/components/ActionButton";
+import { TEACHER_ICON_BUTTON } from "@/components/teacher/teacher-ui";
 import {
   updateCourseZoomUrl,
   type UpdateZoomUrlResult,
@@ -12,7 +13,7 @@ import { ZOOM_URL_MAX_LENGTH } from "@/lib/zoom-url";
 const initialState: UpdateZoomUrlResult | null = null;
 
 const fieldClass =
-  "w-full rounded-card border border-paper-line bg-surface px-3 py-3 text-body-main text-text-primary placeholder:text-text-muted focus:border-2 focus:border-accent focus:outline-none";
+  "min-h-11 w-72 max-w-full rounded-card border border-paper-line bg-surface px-3 py-2 text-body-main text-text-primary placeholder:text-text-muted focus:border-2 focus:border-accent focus:outline-none";
 
 function zoomLinkLabel(url: string): string {
   try {
@@ -52,69 +53,51 @@ export default function ZoomUrlForm({
   }, [savedUrl, state]);
 
   return (
-    <section className="mt-6">
-      <label
-        htmlFor={savedUrl ? undefined : "course-zoom-url"}
-        className="mb-1.5 block text-label-md text-text-secondary"
-      >
-        Link de Zoom
-      </label>
+    <div>
       {savedUrl ? (
-        <form action={formAction} className="space-y-3">
+        <form action={formAction} className="flex items-center gap-2">
           <input type="hidden" name="courseId" value={courseId} />
           <input type="hidden" name="zoomUrl" value="" />
-          <div className="flex w-fit max-w-full items-center gap-1">
-            <a
-              href={savedUrl}
-              target="_blank"
-              rel="noreferrer"
-              title={savedUrl}
-              className="min-w-0 break-all text-body-main text-text-accent underline-offset-2 hover:underline"
-            >
-              {zoomLinkLabel(savedUrl)}
-            </a>
-            <button
-              type="submit"
-              disabled={isPending}
-              aria-label="Quitar el link de Zoom"
-              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-card text-text-secondary hover:bg-accent-soft hover:text-text-accent disabled:opacity-60"
-            >
-              <X className="h-5 w-5" aria-hidden="true" />
-            </button>
-          </div>
-          <p className="text-label-sm text-text-muted">
-            El mismo salón todo el mes.
-          </p>
-          {state?.ok ? (
-            <p className="text-label-sm text-text-secondary">{state.message}</p>
-          ) : null}
+          <span className="text-label-md text-text-secondary">Zoom</span>
+          <a
+            href={savedUrl}
+            target="_blank"
+            rel="noreferrer"
+            title={savedUrl}
+            className="min-w-0 break-all text-body-main text-text-accent underline-offset-2 hover:underline"
+          >
+            {zoomLinkLabel(savedUrl)}
+          </a>
+          <button
+            type="submit"
+            disabled={isPending}
+            aria-label="Quitar el link de Zoom"
+            className={`${TEACHER_ICON_BUTTON} disabled:opacity-60`}
+          >
+            <X className="h-4 w-4" aria-hidden="true" />
+          </button>
         </form>
       ) : (
-        <form action={formAction} className="space-y-3">
+        <form action={formAction} className="flex flex-wrap items-center gap-2">
           <input type="hidden" name="courseId" value={courseId} />
-          <label className="block">
-            <input
-              ref={inputRef}
-              id="course-zoom-url"
-              type="text"
-              name="zoomUrl"
-              inputMode="url"
-              autoComplete="url"
-              defaultValue=""
-              maxLength={ZOOM_URL_MAX_LENGTH}
-              placeholder="https://zoom.us/j/..."
-              className={fieldClass}
-            />
+          <label
+            htmlFor="course-zoom-url"
+            className="text-label-md text-text-secondary"
+          >
+            Zoom
           </label>
-          <p className="text-label-sm text-text-muted">
-            El mismo salón todo el mes. Vacío está bien.
-          </p>
-          {state && !state.ok ? (
-            <p className="text-label-sm text-error">{state.error}</p>
-          ) : null}
-          {state?.ok ? (
-            <p className="text-label-sm text-text-secondary">{state.message}</p>
-          ) : null}
+          <input
+            ref={inputRef}
+            id="course-zoom-url"
+            type="text"
+            name="zoomUrl"
+            inputMode="url"
+            autoComplete="url"
+            defaultValue=""
+            maxLength={ZOOM_URL_MAX_LENGTH}
+            placeholder="https://zoom.us/j/..."
+            className={fieldClass}
+          />
           <ActionButton
             type="submit"
             state={isPending ? "pending" : "idle"}
@@ -124,6 +107,9 @@ export default function ZoomUrlForm({
           </ActionButton>
         </form>
       )}
-    </section>
+      {state && !state.ok ? (
+        <p className="text-label-sm text-error">{state.error}</p>
+      ) : null}
+    </div>
   );
 }

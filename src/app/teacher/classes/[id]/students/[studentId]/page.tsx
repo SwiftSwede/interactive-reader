@@ -2,6 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import LocalDateTime from "@/components/LocalDateTime";
 import ObservationTagForm from "@/components/teacher/ObservationTagForm";
+import RemoveStudentButton from "@/components/RemoveStudentButton";
+import MoveStudentButton from "../../MoveStudentButton";
+import type { CourseLevel } from "@/types";
 import { createAdminClient } from "@/lib/supabase/admin";
 import {
   getOwnedCourse,
@@ -250,6 +253,28 @@ export default async function StudentDetailPage({
           })}
         </ul>
       )}
+
+      <div className="mt-12 border-t border-paper-line pt-6">
+        <h2 className="text-headline-md text-text-primary">Grupo</h2>
+        <p className="mt-1 text-label-sm text-text-muted">
+          Moverlo de grupo no cambia lo que paga.
+        </p>
+        <div className="mt-4 flex flex-wrap items-start gap-3">
+          {course.archived ? null : (
+            <MoveStudentButton
+              courseId={course.id}
+              studentId={studentId}
+              fromLevel={course.level as CourseLevel}
+              afterSuccessHref={`/teacher/classes/${course.id}`}
+            />
+          )}
+          <RemoveStudentButton
+            studentId={studentId}
+            afterSuccessHref={`/teacher/classes/${course.id}`}
+            inline
+          />
+        </div>
+      </div>
     </section>
   );
 }

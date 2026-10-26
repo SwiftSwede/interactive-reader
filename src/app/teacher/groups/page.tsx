@@ -3,14 +3,9 @@ import { requireTeacher } from "@/lib/auth-server";
 import { createClient } from "@/lib/supabase/server";
 import NewMonthButton from "@/components/teacher/NewMonthButton";
 import LocalDateTime from "@/components/LocalDateTime";
-import ClassDayCard from "@/components/dashboard/ClassDayCard";
-import { TEACHER_APP_LABEL } from "@/components/dashboard/JoinCard";
-import {
-  isLiveOnlySessionType,
-  sessionTypeLabel,
-  teacherJoinAppHref,
-} from "@/lib/activities";
-import { getClassDayPhase } from "@/lib/session-phase";
+import GroupTodayBand from "@/components/teacher/GroupTodayBand";
+import TeacherPageHeader from "@/components/teacher/TeacherPageHeader";
+import { toGroupToday } from "@/components/teacher/group-today";
 import {
   countActiveStudentsByCourse,
   courseLevelLabel,
@@ -52,25 +47,11 @@ export default async function TeacherGroupsPage() {
       sessionsByCourse.get(course.id) ?? []
     );
     if (!todaySession) return [];
-    const liveOnly = isLiveOnlySessionType(todaySession.sessionType);
     return [
       {
         courseId: course.id,
         name: course.name,
-        liveOnly,
-        sessionStartTime: todaySession.start,
-        sessionEndTime: todaySession.end,
-        classEndedAt: todaySession.classEndedAt,
-        sessionDate: todaySession.sessionDate,
-        typeLabel: sessionTypeLabel(todaySession.sessionType),
-        appHref: teacherJoinAppHref({
-          sessionType: todaySession.sessionType,
-          token: todaySession.token,
-          courseId: course.id,
-          sessionId: todaySession.id,
-          conversationPromptId: todaySession.conversationPromptId,
-        }),
-        zoomHref: course.zoom_url,
+        today: toGroupToday(course, todaySession),
       },
     ];
   });
@@ -124,14 +105,12 @@ export default async function TeacherGroupsPage() {
 
   return (
     <section>
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <h1 className="text-headline-lg text-text-primary">Grupos</h1>
-          <p className="mt-2 text-body-main text-text-secondary">
-            Todos los grupos. Los meses anteriores siguen aquí.
-          </p>
-        </div>
+      <TeacherPageHeader
+        title="Grupos"
+        description="Todos los grupos. Los meses anteriores siguen aquí."
+        action={
           <NewMonthButton
+            variant={courses.length > 0 ? "secondary" : "primary"}
             courses={courses.map((course) => {
               const list = sessionsByCourse.get(course.id) ?? [];
               return {
@@ -145,7 +124,8 @@ export default async function TeacherGroupsPage() {
               };
             })}
           />
-      </div>
+        }
+      />
 
       {courses.length === 0 ? (
         <p className="mt-10 text-body-main text-text-muted">
@@ -153,26 +133,18 @@ export default async function TeacherGroupsPage() {
         </p>
       ) : (
         <>
-          {todayCards.map((card) => (
-            <ClassDayCard
-              key={card.courseId}
-              sessionStartTime={card.sessionStartTime}
-              sessionEndTime={card.sessionEndTime}
-              classEndedAt={card.classEndedAt}
-              sessionDate={card.sessionDate}
-              href={card.appHref}
-              zoomHref={card.zoomHref}
-              appLabel={TEACHER_APP_LABEL}
-              typeLabel={card.typeLabel}
-              courseName={card.name}
-              liveOnly={card.liveOnly}
-              initialPhase={getClassDayPhase({
-                sessionStartTime: card.sessionStartTime,
-                sessionEndTime: card.sessionEndTime,
-                classEndedAt: card.classEndedAt,
-              })}
-            />
-          ))}
+          {todayCards.length > 0 ? (
+            <div className="mt-8 space-y-3">
+              {todayCards.map((card) => (
+                <GroupTodayBand
+                  key={card.courseId}
+                  today={card.today}
+                  groupName={card.name}
+                  standalone
+                />
+              ))}
+            </div>
+          ) : null}
           <div className="mt-8">
             <CourseList rows={current} />
           </div>

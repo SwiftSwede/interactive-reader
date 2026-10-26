@@ -23,16 +23,16 @@ export default function DeleteSessionButton({
           setError("");
           setConfirming(true);
         }}
-        className="flex h-11 w-full items-center justify-center whitespace-nowrap rounded-card border border-paper-line px-3 text-sm font-medium text-text-primary"
+        className="inline-flex min-h-11 items-center text-label-md text-text-muted underline-offset-4 hover:text-text-primary hover:underline"
       >
-        Quitar
+        Quitar clase
       </button>
     );
   }
 
   return (
-    <div className="col-span-2">
-      <p className="mb-2 text-sm text-text-secondary">
+    <div>
+      <p className="mb-2 text-label-sm text-text-secondary">
         ¿La quito? El link deja de servir.
       </p>
       <form
@@ -61,11 +61,11 @@ export default function DeleteSessionButton({
         type="button"
         disabled={pending}
         onClick={() => setConfirming(false)}
-        className="mt-2 w-full text-sm text-text-muted underline-offset-2 hover:text-text-primary hover:underline disabled:opacity-60"
+        className="mt-2 min-h-11 w-full text-label-sm text-text-muted underline-offset-2 hover:text-text-primary hover:underline disabled:opacity-60"
       >
         No, déjala
       </button>
-      {error && <p className="mt-2 text-sm text-error">{error}</p>}
+      {error ? <p className="mt-2 text-label-sm text-error">{error}</p> : null}
     </div>
   );
 }
