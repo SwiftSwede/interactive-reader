@@ -15,6 +15,7 @@ import {
 } from "@/lib/content-editor";
 import type { CatalogKind } from "@/lib/catalog-crud";
 import DeleteContentButton from "@/components/teacher/content/DeleteContentButton";
+import { TEACHER_BUTTON_SECONDARY } from "@/components/teacher/teacher-ui";
 
 function Chip({
   active,
@@ -29,7 +30,7 @@ function Chip({
     <button
       type="button"
       onClick={onClick}
-      className={`inline-flex min-h-11 items-center rounded-full border px-4 text-label-md ${
+      className={`inline-flex min-h-11 items-center rounded-card border px-4 text-label-md ${
         active
           ? "border-accent bg-accent-soft text-text-accent"
           : "border-paper-line bg-surface text-text-secondary hover:bg-surface-hover"
@@ -56,6 +57,12 @@ function catalogIdOf(item: ContentIndexItem): string {
   return item.key.split(":")[1] ?? "";
 }
 
+function lessonCountLabel(count: number): string {
+  if (count === 0) return "0 lecciones";
+  if (count === 1) return "1 lección";
+  return `${count} lecciones`;
+}
+
 const SORT_OPTIONS: { id: ContentSort; label: string }[] = [
   { id: "recent", label: "Recientes" },
   { id: "title", label: "Nombre" },
@@ -68,8 +75,6 @@ const CREATE_LINKS = [
   { href: "/teacher/content/exam/new", label: "Nuevo examen" },
   { href: "/teacher/content/presentation/new", label: "Nueva presentación" },
   { href: "/teacher/content/conversation/new", label: "Nueva conversación" },
-  { href: "/teacher/content/courses", label: "Cursos autoguiados" },
-  { href: "/teacher/products", label: "Productos" },
 ] as const;
 
 export default function ContentIndex({
@@ -91,17 +96,26 @@ export default function ContentIndex({
     <div>
       <div className="flex flex-wrap gap-2">
         {CREATE_LINKS.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className="inline-flex min-h-11 items-center rounded-card border border-paper-line bg-surface px-4 text-label-md text-text-primary hover:bg-surface-hover"
-          >
+          <Link key={link.href} href={link.href} className={TEACHER_BUTTON_SECONDARY}>
             {link.label}
           </Link>
         ))}
       </div>
-      <p className="mt-2 text-label-sm text-text-muted">
-        Los cuentos se crean por el pipeline de importación.
+      <p className="mt-3 text-label-sm text-text-muted">
+        Los cuentos se crean por el pipeline de importación.{" "}
+        <Link
+          href="/teacher/content/courses"
+          className="text-text-accent underline-offset-4 hover:underline"
+        >
+          Cursos autoguiados
+        </Link>
+        {" · "}
+        <Link
+          href="/teacher/products"
+          className="text-text-accent underline-offset-4 hover:underline"
+        >
+          Productos
+        </Link>
       </p>
 
       <div className="mt-8 flex flex-col gap-5">
@@ -135,54 +149,63 @@ export default function ContentIndex({
         </p>
       ) : (
         <div className="mt-10">
-          <label className="mb-3 flex items-center justify-end gap-2">
-            <span className="text-label-sm text-text-secondary">Ordenar</span>
-            <select
-              value={sort}
-              onChange={(event) => setSort(event.target.value as ContentSort)}
-              className="min-h-11 min-w-[10rem] rounded-card border border-paper-line bg-surface px-3 text-label-md text-text-primary focus:border-2 focus:border-accent focus:outline-none"
-            >
-              {SORT_OPTIONS.map((option) => (
-                <option key={option.id} value={option.id}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </label>
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+            <p className="text-label-sm text-text-muted">
+              {lessonCountLabel(visible.length)}
+            </p>
+            <label className="flex items-center gap-2">
+              <span className="text-label-sm text-text-secondary">Ordenar</span>
+              <select
+                value={sort}
+                onChange={(event) => setSort(event.target.value as ContentSort)}
+                className="min-h-11 min-w-[10rem] rounded-card border border-paper-line bg-surface px-3 text-label-md text-text-primary focus:border-2 focus:border-accent focus:outline-none"
+              >
+                {SORT_OPTIONS.map((option) => (
+                  <option key={option.id} value={option.id}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
           <ul className="overflow-hidden divide-y divide-paper-line rounded-sheet border border-paper-line bg-surface">
             {visible.map((item) => (
-            <li key={item.key} className="flex items-stretch">
-              <Link
-                href={item.href}
-                className="flex min-h-14 min-w-0 flex-1 flex-col gap-1 px-4 py-3 hover:bg-surface-hover sm:flex-row sm:items-center sm:justify-between"
-              >
-                <span className="text-body-main text-text-primary">
-                  {item.title}
-                </span>
-                <span className="flex flex-wrap items-center gap-2 text-label-sm text-text-muted">
-                  <span className="rounded-full bg-accent-softer px-2 py-0.5 text-text-accent">
-                    {contentKindLabel(item.kind)}
+              <li key={item.key} className="flex items-stretch">
+                <Link
+                  href={item.href}
+                  className="flex min-h-14 min-w-0 flex-1 flex-col gap-1 px-4 py-3 hover:bg-surface-hover sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
+                >
+                  <span className="min-w-0">
+                    <span className="block text-label-sm text-text-muted">
+                      {contentKindLabel(item.kind)} · {contentLevelLabel(item.level)}
+                    </span>
+                    <span className="mt-0.5 block text-label-md text-text-primary">
+                      {item.title}
+                    </span>
                   </span>
-                  <span>{contentLevelLabel(item.level)}</span>
-                  {item.wordCount != null ? (
-                    <span>{item.wordCount} palabras</span>
-                  ) : null}
-                  {item.theme ? <span>{item.theme}</span> : null}
-                  {item.questionCount != null ? (
-                    <span>{item.questionCount} preguntas</span>
-                  ) : null}
-                </span>
-              </Link>
-              {canDelete ? (
-                <DeleteContentButton
-                  kind={catalogKindOf(item)}
-                  id={catalogIdOf(item)}
-                  title={item.title}
-                />
-              ) : null}
-            </li>
-          ))}
-        </ul>
+                  <span className="flex flex-wrap items-center gap-x-3 gap-y-1 text-label-sm text-text-muted sm:justify-end">
+                    {item.wordCount != null && item.wordCount > 0 ? (
+                      <span>{item.wordCount} palabras</span>
+                    ) : null}
+                    {item.theme ? <span>{item.theme}</span> : null}
+                    {item.questionCount != null ? (
+                      <span>
+                        {item.questionCount}{" "}
+                        {item.questionCount === 1 ? "pregunta" : "preguntas"}
+                      </span>
+                    ) : null}
+                  </span>
+                </Link>
+                {canDelete ? (
+                  <DeleteContentButton
+                    kind={catalogKindOf(item)}
+                    id={catalogIdOf(item)}
+                    title={item.title}
+                  />
+                ) : null}
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>
