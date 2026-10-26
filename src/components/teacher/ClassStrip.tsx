@@ -105,7 +105,11 @@ export default function ClassStrip({
           recordingYoutubeUrl={selected.recordingYoutubeUrl}
           students={selected.students}
         />
-      ) : null
+      ) : null,
+      () => {
+        setSelectedId(null);
+        writeSelectedSessionId(null);
+      }
     );
     return () => setPanel(null);
   }, [courseId, selected, setPanel]);

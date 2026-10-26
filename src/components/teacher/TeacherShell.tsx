@@ -34,9 +34,11 @@ function RailFooter({
       <p className="truncate px-3 text-label-sm text-text-secondary min-[600px]:max-lg:sr-only">
         {teacherName}
       </p>
-      <p className="mt-0.5 truncate px-3 text-label-sm text-text-muted min-[600px]:max-lg:sr-only">
-        {teacherEmail}
-      </p>
+      {teacherName !== teacherEmail ? (
+        <p className="mt-0.5 truncate px-3 text-label-sm text-text-muted min-[600px]:max-lg:sr-only">
+          {teacherEmail}
+        </p>
+      ) : null}
       <Link
         href="/teacher/preview"
         className="mt-2 inline-flex min-h-11 w-full items-center rounded-card px-3 text-label-sm text-text-accent hover:bg-accent-soft hover:text-text-accent-dark active:bg-surface-hover min-[600px]:max-lg:justify-center min-[600px]:max-lg:px-0"

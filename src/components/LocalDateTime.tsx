@@ -2,25 +2,27 @@
 
 import { useEffect, useState } from "react";
 
+const FORMATS = {
+  full: { dateStyle: "medium", timeStyle: "short" },
+  day: { weekday: "short", month: "short", day: "numeric" },
+} satisfies Record<string, Intl.DateTimeFormatOptions>;
+
 export default function LocalDateTime({
   iso,
   className,
+  format = "full",
 }: {
   iso: string;
   className?: string;
+  format?: keyof typeof FORMATS;
 }) {
   const [label, setLabel] = useState("");
 
   useEffect(() => {
     const date = new Date(iso);
     if (Number.isNaN(date.getTime())) return;
-    setLabel(
-      date.toLocaleString(undefined, {
-        dateStyle: "medium",
-        timeStyle: "short",
-      })
-    );
-  }, [iso]);
+    setLabel(date.toLocaleString(undefined, FORMATS[format]));
+  }, [iso, format]);
 
   return (
     <time

@@ -6,12 +6,13 @@ import {
   sessionTypeLabel,
   teacherJoinAppHref,
 } from "@/lib/activities";
+import { hasSessionContent } from "@/lib/dashboard";
 import NewMonthButton from "@/components/teacher/NewMonthButton";
+import TeacherPageHeader from "@/components/teacher/TeacherPageHeader";
 import ThisMonthBoard, {
   type ThisMonthGroup,
 } from "@/components/teacher/ThisMonthBoard";
-import ClassDayCard from "@/components/dashboard/ClassDayCard";
-import { TEACHER_APP_LABEL } from "@/components/dashboard/JoinCard";
+import { teacherClassHref } from "@/components/teacher/teacher-ui";
 import { getClassDayPhase } from "@/lib/session-phase";
 import {
   countActiveStudentsByCourse,
@@ -23,8 +24,6 @@ import {
   loadTeacherCourses,
   pickCurrentSession,
   pickTodayTeacherSession,
-  readinessLabel,
-  sessionContentStatus,
   sessionTitle,
   sessionsInMonth,
   studentCountLabel,
@@ -71,15 +70,18 @@ export default async function TeacherHomePage() {
       const upcoming = (sessionsByCourse.get(course.id) ?? []).filter(
         (session) => session.sessionDate >= `${yearMonth}-01`
       );
-      const boardSessions =
-        monthSessions.length > 0 ? monthSessions : upcoming;
+      const boardSessions = (
+        monthSessions.length > 0 ? monthSessions : upcoming
+      ).toSorted(
+        (a, b) => new Date(a.start).getTime() - new Date(b.start).getTime()
+      );
       const current = pickCurrentSession(boardSessions);
       const todaySession = pickTodayTeacherSession(boardSessions);
-      const liveOnly = todaySession
-        ? isLiveOnlySessionType(todaySession.sessionType)
-        : false;
+      const groupHref = `/teacher/classes/${course.id}`;
+
       return {
         id: course.id,
+        href: groupHref,
         name: course.name,
         theme: course.theme,
         levelLabel: courseLevelLabel(course.level),
@@ -87,36 +89,57 @@ export default async function TeacherHomePage() {
           studentCountByCourse.get(course.id) ?? 0
         ),
         sessionStarts: boardSessions.map((session) => session.start),
-        readiness: readinessLabel(boardSessions),
+        zoomHref: course.zoom_url,
+        classes: boardSessions.map((session, index) => ({
+          id: session.id,
+          number: index + 1,
+          typeLabel: sessionTypeLabel(session.sessionType),
+          title: sessionTitle(session),
+          start: session.start,
+          ready: hasSessionContent(session),
+          pending: session.sessionType === "flex",
+          href: teacherClassHref(course.id, session.id),
+          isToday: session.id === todaySession?.id,
+        })),
         next: current
           ? {
+              sessionId: current.session.id,
               kindLabel: currentSessionKindLabel(current.kind),
+              typeLabel: sessionTypeLabel(current.session.sessionType),
               title: sessionTitle(current.session),
               start: current.session.start,
-              typeLabel: sessionTypeLabel(current.session.sessionType),
-              contentStatus: sessionContentStatus(current.session),
             }
           : null,
         today: todaySession
           ? {
+              sessionId: todaySession.id,
               sessionStartTime: todaySession.start,
               sessionEndTime: todaySession.end,
               classEndedAt: todaySession.classEndedAt,
-              sessionDate: todaySession.sessionDate,
               typeLabel: sessionTypeLabel(todaySession.sessionType),
-              liveOnly,
-              appHref: teacherJoinAppHref({
-                sessionType: todaySession.sessionType,
-                token: todaySession.token,
-                courseId: course.id,
-                sessionId: todaySession.id,
-                conversationPromptId: todaySession.conversationPromptId,
-              }),
+              title: sessionTitle(todaySession),
+              appHref: isLiveOnlySessionType(todaySession.sessionType)
+                ? null
+                : teacherJoinAppHref({
+                    sessionType: todaySession.sessionType,
+                    token: todaySession.token,
+                    courseId: course.id,
+                    sessionId: todaySession.id,
+                    conversationPromptId: todaySession.conversationPromptId,
+                  }),
               zoomHref: course.zoom_url,
+              classHref: teacherClassHref(course.id, todaySession.id),
+              recordingMissing: !todaySession.recordingYoutubeUrl,
+              initialPhase: getClassDayPhase({
+                sessionStartTime: todaySession.start,
+                sessionEndTime: todaySession.end,
+                classEndedAt: todaySession.classEndedAt,
+              }),
             }
           : null,
       };
-    });
+    })
+    .toSorted((a, b) => Number(Boolean(b.today)) - Number(Boolean(a.today)));
 
   const wizardCourses = courses.map((course) => {
     const list = sessionsByCourse.get(course.id) ?? [];
@@ -133,15 +156,15 @@ export default async function TeacherHomePage() {
 
   return (
     <section>
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <h1 className="text-headline-lg text-text-primary">Este mes</h1>
-          <p className="mt-2 text-body-main text-text-secondary">
-            Los grupos de este mes. Toca una tarjeta para ver la próxima clase.
-          </p>
-        </div>
-        {groups.length > 0 ? <NewMonthButton courses={wizardCourses} /> : null}
-      </div>
+      <TeacherPageHeader
+        title="Este mes"
+        description="Lo que tienes hoy y lo que falta preparar."
+        action={
+          groups.length > 0 ? (
+            <NewMonthButton courses={wizardCourses} variant="secondary" />
+          ) : null
+        }
+      />
 
       {groups.length === 0 ? (
         <div className="mt-16 flex flex-col items-center px-4 text-center">
@@ -160,29 +183,7 @@ export default async function TeacherHomePage() {
           </div>
         </div>
       ) : (
-        <>
-          {groups
-            .filter((group) => group.today)
-            .map((group) => (
-              <ClassDayCard
-                key={group.id}
-                sessionStartTime={group.today!.sessionStartTime}
-                sessionEndTime={group.today!.sessionEndTime}
-                sessionDate={group.today!.sessionDate}
-                href={group.today!.appHref}
-                zoomHref={group.today!.zoomHref}
-                appLabel={TEACHER_APP_LABEL}
-                typeLabel={group.today!.typeLabel}
-                courseName={group.name}
-                liveOnly={group.today!.liveOnly}
-                initialPhase={getClassDayPhase({
-                  sessionStartTime: group.today!.sessionStartTime,
-                  sessionEndTime: group.today!.sessionEndTime,
-                })}
-              />
-            ))}
-          <ThisMonthBoard groups={groups} />
-        </>
+        <ThisMonthBoard groups={groups} />
       )}
     </section>
   );

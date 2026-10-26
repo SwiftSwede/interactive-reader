@@ -5,13 +5,19 @@ import { X } from "lucide-react";
 import NewMonthWizard, {
   type MonthSourceCourse,
 } from "./NewMonthWizard";
+import {
+  TEACHER_BUTTON_PRIMARY,
+  TEACHER_BUTTON_SECONDARY,
+} from "./teacher-ui";
 
 export default function NewMonthButton({
   courses,
   label = "Nuevo mes",
+  variant = "primary",
 }: {
   courses: MonthSourceCourse[];
   label?: string;
+  variant?: "primary" | "secondary";
 }) {
   const [open, setOpen] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -29,7 +35,11 @@ export default function NewMonthButton({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex min-h-11 items-center justify-center rounded-card bg-accent px-5 py-3 text-label-md font-medium text-white hover:bg-accent-hover active:bg-accent-hover"
+        className={
+          variant === "primary"
+            ? TEACHER_BUTTON_PRIMARY
+            : TEACHER_BUTTON_SECONDARY
+        }
       >
         {label}
       </button>

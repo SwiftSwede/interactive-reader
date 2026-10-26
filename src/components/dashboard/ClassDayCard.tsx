@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { formatCountdownLabel } from "@/lib/dashboard";
+import { Check } from "lucide-react";
+import CountdownText from "./CountdownText";
 import {
   getClassDayPhase,
   type ClassDayPhase,
@@ -58,8 +59,9 @@ export default function ClassDayCard({
   if (phase === "done-pending") {
     return (
       <section className={`rounded-card bg-success-bg px-4 py-3 ${className}`}>
-        <p className="text-label-md text-success">
-          ✓ Clase terminada · La grabación se subirá a YouTube pronto
+        <p className="flex items-center gap-2 text-label-md text-success">
+          <Check className="h-4 w-4 shrink-0" aria-hidden="true" />
+          Clase terminada · La grabación se subirá a YouTube pronto
         </p>
       </section>
     );
@@ -84,8 +86,8 @@ export default function ClassDayCard({
       className={`rounded-card border border-paper-line bg-surface px-4 py-4 ${className}`}
     >
       <p className="text-label-md text-text-secondary">La clase es HOY</p>
-      <p className="mt-1 text-headline-md tabular-nums text-text-primary">
-        Empieza en {formatCountdownLabel(remaining)}
+      <p className="mt-1 text-headline-md text-text-primary">
+        Empieza en <CountdownText ms={remaining} />
       </p>
       <p className="mt-1 text-label-md text-text-secondary">
         {typeLabel} · {courseName}
