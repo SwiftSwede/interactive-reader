@@ -20,6 +20,8 @@ type ExamSeed = {
   task2Raw: string;
   task3Raw: string;
   timeLimitMinutes: number;
+  /** Optional override; defaults to paragraph_restructuring for intermediate, sentence_correction for pre-int. */
+  task2Type?: "paragraph_restructuring" | "sentence_correction";
 };
 
 const EXAMS: ExamSeed[] = [
@@ -276,6 +278,140 @@ Necesitas familiarizarte con el terreno antes de comprometerte por completo con 
 Si tuvieras más suerte, no necesitarías pedirme plata por la quinta vez. | If you had more luck, you wouldn't need to ask me for money for the fifth time.
 Si un gato negro no me hubiera cruzado el camino, yo habría ganado el contrato. | If a black cat hadn't crossed my path, I would have won the contract.`,
   },
+  {
+    title: "Octubre — Halloween",
+    theme: "Halloween",
+    level: "pre-intermediate",
+    timeLimitMinutes: 45,
+    vocabRaw: `Coffin | ataúd
+Cover | tapar
+Creepy/eerie | que da escalofríos
+Curfew | toque de queda
+Disturbed | molestado
+Doorbell | timbre
+Dressed up as | disfrazado de
+Give up | rendirse
+Gory | sangriento
+Graveyard | cementerio
+Greedy | codicioso
+Grumpy | gruñón
+Handful | puñado
+How come | ¿por qué?
+Nightmare | pesadilla
+Pillowcase | funda de almohada
+Scary | que da miedo
+Scared | asustado
+Scare | asustar
+Sneak in | colarse
+Spill the beans | revelar el secreto
+Stranger | desconocido
+Wrapper | envoltorio`,
+    task1Raw: `Last Halloween, I was {disfrazado de|dressed up as} a vampire, and my little brother Leo was a ghost.
+We each carried a {funda de almohada|pillowcase} because it holds more candy than a bucket.
+Mom gave us a {toque de queda|curfew}: we had to be home by nine o'clock.
+Our street looked very {que da escalofríos|creepy|eerie} in the dark.
+I rang the {timbre|doorbell} at the first house, and a {gruñón|grumpy} old man opened the door.
+{¿Por qué?|How come} kids always come so late? he asked.
+He said we had {molestado|disturbed} his dinner.
+He surprisingly gave us a {puñado|handful} of candy, but Leo, who is very {codicioso|greedy}, still complained.
+Then we walked toward the old {cementerio|graveyard}, where there was a haunted house.
+On the porch, there was a fake {ataúd|coffin} with a {sangriento|gory|bloody} zombie inside.
+I thought the house was very {que da miedo|scary}.
+The zombie jumped out to {asustar|scare} us, and Leo was really {asustado|scared|freaked out}.
+He tried to {tapar|cover} his eyes, and he wanted to {rendirse|give up} and go home.
+On the way back, a {desconocido|stranger} in a black coat followed us for two blocks.
+We ran, but it was ten minutes past nine when we got home, so we had to {colarse|sneak in} through the kitchen window.
+Leo promised not to {revelar el secreto|spill the beans}, but Mom found a candy {envoltorio|wrapper} on the floor.
+That night, I had a terrible {pesadilla|nightmare} about the man in the black coat.`,
+    task2Raw: `ok | I haven't been able to watch scary movies again.
+fix | I don't watch movies, scare movies. | I don't watch movies, scary movies.
+ok | I really value a good night's sleep.
+fix | She born here. | She was born here.
+fix | In 20 minutes, I already at university. | In 20 minutes, I'll already be at university.
+fix | Thank you for explaining me. | Thank you for explaining it to me.
+fix | I enjoy to watch scary movies. | I enjoy watching scary movies.
+fix | At this morning, I did exercise. | This morning, I did exercise.
+fix | It's middle of the week. | It's the middle of the week.
+ok | It's not something I do on a daily basis.`,
+    task3Raw: `La última película de miedo que vi fue hace muchos años, y fue El Fotógrafo. | The last scary movie I saw was many years ago, and it was El Fotógrafo. | The last horror movie I watched was many years ago, and it was El Fotógrafo.
+Cuando la película es muy sangrienta, me tapo los ojos. | When the movie is very gory, I cover my eyes. | When the movie is really bloody, I cover my eyes.
+De niña tuve una pesadilla horrible, y no quería ir al baño sola durante semanas. | As a girl, I had a horrible nightmare, and I didn't want to go to the bathroom alone for weeks. | When I was a girl, I had a terrible nightmare, and I didn't want to go to the bathroom alone for weeks.
+Estoy un poco cansada, pero fue un buen fin de semana. | I'm a little tired, but it was a good weekend. | I'm a bit tired, but it was a good weekend.
+No he podido ver películas de terror otra vez. | I haven't been able to watch scary movies again. | I haven't been able to watch horror movies again.
+¿A qué hora es el toque de queda? | What time is curfew? | What time is the curfew?
+Anoche trabajé el turno de noche. | Last night I worked the night shift. | I worked the night shift last night.
+La última vez que vi una película de terror fue en un vuelo. | The last time I watched a scary movie was on a flight. | The last time I saw a horror movie was on a flight.
+Si un desconocido te diera un dulce que se ve deliciosa, ¿la comerías? | If a stranger gave you a candy that looked delicious, would you eat it?
+Si no hubiera tenido esa pesadilla de niña, no habría dejado de ver películas de terror. | If I hadn't had that nightmare as a girl, I wouldn't have stopped watching scary movies. | If I hadn't had that nightmare as a child, I wouldn't have stopped watching horror movies.`,
+  },
+  {
+    title: "Octubre — Oficina Espeluznante",
+    theme: "Halloween",
+    level: "intermediate",
+    timeLimitMinutes: 45,
+    task2Type: "sentence_correction",
+    vocabRaw: `Buried | enterrado
+Churn | la rotación de clientes
+Creepy | espeluznante
+Disturbing | inquietante
+Displeased | disgustado, descontento
+Hassle | molestia
+Moody | de humor cambiante
+Omen | señal, presagio
+Poise | compostura, aplomo
+Pricey | costoso
+Relentless | implacable
+To bomb | fracasar estrepitosamente
+To cut down (on) | reducir el consumo
+To fit the bill | ser el ideal para el puesto
+To get into the weeds | entrar en lo más complicado
+To get rid of | deshacerse de
+To give the cold shoulder | dar el hombro frío
+To overlap | superponerse
+To plow ahead | seguir adelante con determinación
+To trigger | provocar
+To upsell | venderle algo más caro
+To waver | vacilar, no desviarse
+Understaffed | con falta de personal`,
+    task1Raw: `On October 28, our customer success team was {con falta de personal|understaffed}, and our monthly {la rotación de clientes|churn} looked like a horror movie.
+The first {mal señal|omen} came at 8 a.m., when three major clients asked to cancel their contracts.
+One of them was {disgustado|displeased} because our last update had {provocado|triggered} a series of bugs in his system.
+His email was so {inquietante|disturbing} that I read it twice before answering.
+My boss was {de humor cambiante|moody} that week, and she would {dar el hombro frío|give the cold shoulder} to anyone who brought her bad news.
+Nobody wanted to talk about our last product launch, which had {fracasado estrepitosamente|bombed} in September.
+The full report was {enterrado|buried} in a shared folder that nobody ever opened.
+We called an emergency meeting, but it {superponerse|overlapped} with the office costume contest, so half the team showed up dressed as ghosts.
+The conference room was full of candy, so I asked everyone to {reducir el consumo|cut down on} sugar before our tempers got worse.
+I did not want to {entrar en lo más complicado|get into the weeds} about every single bug, so I focused on the biggest problem: our pricing.
+Clients told us our premium plan was too {costoso|pricey} for what it offered.
+Meanwhile, our sales rep kept trying to {venderle algo más caro|upsell something} to angry customers, which only created more {molestia|hassle}.
+We decided to {deshacernos de|get rid of} the premium plan and build a simpler one.
+We had hired Alejandra as account manager because she {fue el ideal para el puesto|fit the bill}, but the empty desks around her looked {espeluznante|creepy} on her first Halloween with us.
+She spoke to angry clients with great {compostura|poise}.
+Her {implacable|relentless} follow-up calls won back two of the three clients.
+She did not {vacilar|waver} even when the third client hung up on her.
+We decided to {seguir adelante con determinación|plow ahead} with the new plan, and by the end of November the team finally felt alive again.`,
+    task2Raw: `ok | I didn't sleep very well that night because I had nightmares.
+fix | It rained very heavy yesterday in Quito. | It rained very heavily yesterday in Quito.
+ok | Yesterday I only spent time with my family and relaxed.
+fix | In this moment, I'm reading a book called Ikigai. | At the moment, I'm reading a book called Ikigai.
+fix | Tomorrow I have a meet with our partner in Mexico, and after that we have to meet with the customer. | Tomorrow I have a meeting with our partner in Mexico, and after that we have to meet with the customer.
+ok | Books were my first experience with horror when I was a child.
+fix | Since I become old, I don't enjoy scary movies anymore. | Since I've gotten older, I don't enjoy scary movies anymore.
+fix | It took too much hours to paint her face. | It took too many hours to paint her face.
+fix | I was a bit tiring because I had to accompany my husband to a medical appointment. | I was a bit tired because I had to accompany my husband to a medical appointment.
+fix | He continued thinking that he wants to cancel the project and came back the money. | He continued thinking that he wants to cancel the project and get the money back.`,
+    task3Raw: `Mi jefe siempre menciona mis errores en las reuniones. | My boss always brings up my mistakes in the meetings. | My boss always brings up my mistakes in meetings.
+El profesor se enojó y adelantó la fecha de entrega una semana. | The professor got mad and pushed the due date up a week.
+Tengo demasiados exámenes y proyectos esta semana, y es una molestia. | I have too many exams and projects this week, and it's a hassle.
+Tengo mucha evidencia de que hicimos nuestro trabajo, pero el cliente es implacable. | I have a lot of evidence that we did our job, but the customer is relentless. | We have all the evidence we need to prove that we did our job, but the customer is relentless.
+El empleado siempre tiene la culpa cuando el cliente está descontento. | The employee is always the one to blame when the customer is displeased.
+Mi papá tiene que reducir el consumo de café porque no duerme bien. | My dad has to cut down on coffee because he doesn't sleep well.
+No sé qué me provocó el llanto esa noche, pero lloré por una hora. | I don't know what triggered me to cry that night, but I cried for an hour.
+Queremos deshacernos de las personas que se mudaron a nuestra casa. | We want to get rid of the people who moved into our house.
+Si tuviera que pasar la noche en un hospital abandonado, estaría muy tenso toda la noche. | If I had to spend the night in an abandoned hospital, I would be on edge all night.
+Si hubiera escuchado un ruido extraño afuera de mi habitación a las 3 de la mañana, no habría investigado. | If I had heard a strange noise outside my bedroom at 3 in the morning, I wouldn't have investigated.`,
+  },
 ];
 
 async function main() {
@@ -296,9 +432,10 @@ async function main() {
 
   for (const seed of EXAMS) {
     const task2Type =
-      seed.level === "intermediate"
+      seed.task2Type ??
+      (seed.level === "intermediate"
         ? "paragraph_restructuring"
-        : "sentence_correction";
+        : "sentence_correction");
 
     const parsed = parseExamForm({
       title: seed.title,
