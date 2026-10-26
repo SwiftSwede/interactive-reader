@@ -26,7 +26,7 @@ type ExamSeed = {
 
 const EXAMS: ExamSeed[] = [
   {
-    title: "Agosto — Niñera",
+    title: "Pre-Int August 2026 — Niñera",
     theme: "Babysitting",
     level: "pre-intermediate",
     timeLimitMinutes: 45,
@@ -91,7 +91,7 @@ Ella contrataría a la niñera mexicana si entendiera lo que decía. | She would
 Yo habría sido un mejor adolescente si mi madre me hubiera abrazado más. | I would have been a better teenager if my mom had hugged me more.`,
   },
   {
-    title: "Agosto — Jefes",
+    title: "Int August 2026 — Jefes",
     theme: "Bosses",
     level: "intermediate",
     timeLimitMinutes: 45,
@@ -155,7 +155,7 @@ Si mi jefe fuera menos mandón, no estaría tan estresado. | If my boss were les
 Si hubiera escuchado a su madre, no se habría desviado del buen camino. | If he had listened to his mother, he wouldn't have gone down the wrong path.`,
   },
   {
-    title: "Septiembre — Tráfico",
+    title: "Pre-Int September 2026 — Tráfico",
     theme: "Driving",
     level: "pre-intermediate",
     timeLimitMinutes: 45,
@@ -218,7 +218,7 @@ Si pudiera comprar cualquier carro, sería un 1997 Toyota Corolla. | If I could 
 No se habría estrellado contra el poste de luz si supiera conducir un carro con cambio manual. | He wouldn't have crashed into the light pole if he knew how to drive a manual car. | He wouldn't have crashed into the light pole if he knew how to drive a stick.`,
   },
   {
-    title: "Septiembre — Supersticiones",
+    title: "Int September 2026 — Supersticiones",
     theme: "Superstition",
     level: "intermediate",
     timeLimitMinutes: 45,
@@ -279,7 +279,7 @@ Si tuvieras más suerte, no necesitarías pedirme plata por la quinta vez. | If 
 Si un gato negro no me hubiera cruzado el camino, yo habría ganado el contrato. | If a black cat hadn't crossed my path, I would have won the contract.`,
   },
   {
-    title: "Octubre — Halloween",
+    title: "Pre-Int October 2026 — Halloween",
     theme: "Halloween",
     level: "pre-intermediate",
     timeLimitMinutes: 45,
@@ -345,7 +345,7 @@ Si un desconocido te diera un dulce que se ve deliciosa, ¿la comerías? | If a 
 Si no hubiera tenido esa pesadilla de niña, no habría dejado de ver películas de terror. | If I hadn't had that nightmare as a girl, I wouldn't have stopped watching scary movies. | If I hadn't had that nightmare as a child, I wouldn't have stopped watching horror movies.`,
   },
   {
-    title: "Octubre — Oficina Espeluznante",
+    title: "Int October 2026 — Oficina Espeluznante",
     theme: "Halloween",
     level: "intermediate",
     timeLimitMinutes: 45,
