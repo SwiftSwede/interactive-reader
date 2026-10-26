@@ -772,47 +772,65 @@ export default function ExamSession({
               {vocabOpen ? "Ocultar lista" : "Ver lista de vocabulario"}
             </button>
             {vocabOpen && (
-              <ul className="rounded-card border border-paper-line bg-white px-3 py-3 text-body-main">
-                {prompt.vocabularyList.map((item) => {
+              <ul className="exam-vocab-list">
+                {prompt.vocabularyList
+                  .filter((item) => item.english.trim())
+                  .map((item) => {
                   const autoUsed = usedVocabIds.has(item.id);
                   const used = autoUsed || tappedVocabIds.has(item.id);
                   const canTap = !isTeacher && !autoUsed;
+                  const label = item.english.trim();
                   return (
                     <li key={item.id}>
-                      <button
-                        type="button"
-                        disabled={!canTap}
-                        aria-pressed={used}
-                        onClick={() => {
-                          if (!canTap) return;
-                          setTappedVocabIds((current) => {
-                            const next = new Set(current);
-                            if (next.has(item.id)) next.delete(item.id);
-                            else next.add(item.id);
-                            try {
-                              window.localStorage.setItem(
-                                vocabTapKey,
-                                JSON.stringify([...next])
-                              );
-                            } catch {
-                              /* ignore quota */
-                            }
-                            return next;
-                          });
-                        }}
-                        className={`flex min-h-11 w-full items-center gap-2 py-1 text-left ${
-                          used ? "text-text-muted line-through" : "text-text-primary"
-                        } ${canTap ? "hover:text-text-secondary" : ""}`}
-                      >
-                        <span>{item.english}</span>
-                        {used ? (
-                          <Check
-                            size={16}
-                            className="shrink-0 text-success"
-                            aria-hidden="true"
-                          />
-                        ) : null}
-                      </button>
+                      {canTap ? (
+                        <button
+                          type="button"
+                          aria-pressed={used}
+                          onClick={() => {
+                            setTappedVocabIds((current) => {
+                              const next = new Set(current);
+                              if (next.has(item.id)) next.delete(item.id);
+                              else next.add(item.id);
+                              try {
+                                window.localStorage.setItem(
+                                  vocabTapKey,
+                                  JSON.stringify([...next])
+                                );
+                              } catch {
+                                /* ignore quota */
+                              }
+                              return next;
+                            });
+                          }}
+                          className={`exam-vocab-item${
+                            used ? " exam-vocab-item--used" : ""
+                          }`}
+                        >
+                          <span>{label}</span>
+                          {used ? (
+                            <Check
+                              size={16}
+                              className="shrink-0 text-success"
+                              aria-hidden="true"
+                            />
+                          ) : null}
+                        </button>
+                      ) : (
+                        <span
+                          className={`exam-vocab-item${
+                            used ? " exam-vocab-item--used" : ""
+                          }`}
+                        >
+                          <span>{label}</span>
+                          {used ? (
+                            <Check
+                              size={16}
+                              className="shrink-0 text-success"
+                              aria-hidden="true"
+                            />
+                          ) : null}
+                        </span>
+                      )}
                     </li>
                   );
                 })}
