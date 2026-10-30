@@ -96,3 +96,26 @@ Data basis: EGP export examples carry learner L1; Spanish-L1 density by level = 
 Spanish-dense EGP subcategories (from the export, for structure prioritization): present perfect simple (B1), reported speech (B1), conditionals (A2-B1), comparatives incl. as...as (A2-B1), future with be going to (A2-B1), adverb position (A2), negation (A2-B1), demonstratives (A2-B1), relative clauses (B1), quantity determiners (A2), yes/no + interrogatives (A2-B1), noun phrases (B1), expressions with be (B1-B2), would (B1), past continuous (B1).
 
 WEIGHTING RULE: ~70-80% of each track's grammar items come from L1-focus structures (the dense subcategories above, intersected with the track skeleton); the remaining ~20-30% spread neutrally (keeps discrimination broad, avoids a ceiling where a student who fixed the Spanish-speaker issues aces the whole test). Vocabulary items prioritize contrastive traps (make/do, say/tell, borrow/lend, false friends) over frequency alone. Tag each structure in the bank with l1_focus: true|false so weighting is data, not vibes.
+
+## v1 filler questions (2026-10-30, pending Kyle copy pass)
+
+These 3 complete the clean 60 (57 clean + 4 flagged dropped + these 3 fill the gaps: 1 beginner, 2 intermediate). Same format as the 21 drafts: Spanish prompt, 4 options + implied 'No sé', single defensible answer.
+
+- BEGINNER: 'Ella siempre llega temprano.' -> She always arrives early.* Distractors: She always arrive early. / She arrive always early. / Always she arrives early. [adverb position + present simple 3rd person, A1; replaces flagged 'Es un libro azul' slot]
+- INTERMEDIATE: 'Ella dijo que estaba cansada.' -> She said that she was tired.* Distractors: She said that she is tired. / She said that she were tired. / She said that she tired. [reported speech backshift, B1 criterial; replaces flagged 'dijo que trabajaba' slot; note: backshift-only-correct is standard exam convention even though 'is' occurs colloquially]
+- INTERMEDIATE: 'Esa debe ser la casa de Ana.' -> That must be Ana's house.* Distractors: That can be Ana's house. / That must to be Ana's house. / That must being Ana's house. [modals of deduction must/can't be, B1; replaces flagged 'conocer a Marc Anthony' slot]
+
+## Item authoring workflow (2026-10-30, Kyle decision)
+
+- Cursor drafts missing bank items from EGP XLSX rows, status: draft, 'borrador' badge visible in dev only. The skeleton does not wait on Kyle's copy pass. [DECIDED]
+- Guardrails for ALL items (draft or approved): single defensible answer (verified against the EGP row), structure-keyed with egp_ref, 'No sé' fifth option on MC, no em dashes, American English. The existing 24 Hermes drafts (21 + 3 fillers) are also status: draft pending Kyle's copy pass.
+- GATE: no draft item runs in production. Launch requires status: approved (Kyle reviewed). Approval pass can be batch-by-track: Kyle edits/approves in one sitting; dev badge makes drafts findable.
+- Suggested item status values: draft -> approved (Kyle) -> retired (replaced by bank expansion). Retired items stay in the rotation-exclusion history so returning students never see them again.
+
+## Skeleton-build decisions (2026-10-30, Cursor Q3-Q7, Kyle answers)
+
+- Q3 BANK LOCATION: Supabase tables (structures, items), seeded by a script under rule 18 (seeder declares and owns content columns only; never touches attempt data). PRD updated first per rule 7 before tables exist. Rationale: retake rotation needs 'items already seen' persistence, and the future content editor wants DB-backed content.
+- Q4 GUEST IDENTITY: no login; anonymous attempt keyed by random httpOnly cookie token. On email capture, attempt links to the email. Retake exclusion follows the cookie; new device isn't recognized until the email matches (then exclusion history merges by email).
+- Q5 EMAIL-CAPTURE UI: inline directly under the Circle offer CTA, above the answer review. Skippable; the review is NEVER gated on giving an email. [replaces the earlier placeholder]
+- Q6 MINIMAL PAIRS IN SKELETON: real pair engine (4 pairs x 3 items, scoring, report line) built now; placeholder audio (silent or browser TTS) shown as 'audio pendiente'; flow never blocked on recordings. Naming convention audio/minimal-pairs/{pair_id}/{word}.mp3 so Kyle drops files in without code changes.
+- Q7 RESULT LOGIC: bands, promote/demote, and settle-track confirmation implemented as pure, unit-tested functions in src/lib/evaluacion.ts; UI is a thin shell. Offer/splash copy and pixel events stubbed with [copy] markers.
