@@ -1,5 +1,6 @@
 import { orderedOptions } from "./draw";
 import { trackIndex } from "./engine";
+import { PAIR_OPTION_IDS, type PairVerdict } from "./pairs";
 import type { EvalResult } from "./result";
 import type {
   AnswerRecord,
@@ -11,12 +12,16 @@ import type {
   Track,
 } from "./types";
 
-/** What the client may see before the quiz ends: no key, no rule. */
+export type QuestionFormat = ItemFormat | "minimal_pair";
+
+/** What the client may see before the quiz ends: no key, no rule, no played word. */
 export type QuestionView = {
   itemId: string;
-  format: ItemFormat;
+  format: QuestionFormat;
   prompt: string;
   options: EvalOption[];
+  /** Minimal pairs only. Served by the API so the file name can't give the word away. */
+  audioUrl: string | null;
   isDraft: boolean;
 };
 
@@ -28,7 +33,7 @@ export type PassProgress = {
   passNumber: number;
 };
 
-export type Transition = "promote" | "demote" | "confirmation";
+export type Transition = "promote" | "demote" | "confirmation" | "pairs";
 
 export type EvalView =
   | {
@@ -37,13 +42,21 @@ export type EvalView =
       progress: PassProgress;
       transition: Transition | null;
     }
-  | { screen: "result"; result: EvalResult; emailCaptured: boolean }
+  | {
+      screen: "result";
+      result: EvalResult;
+      listening: PairVerdict[];
+      emailCaptured: boolean;
+    }
   | { screen: "redirected"; url: string };
+
+export const PAIR_AUDIO_ROUTE = "/api/evaluacion/pair-audio";
 
 /** How the latest pass was reached. `null` for the first pass. */
 export function transitionInto(journey: JourneyPass[]): Transition | null {
   const current = journey[journey.length - 1];
   if (!current || journey.length < 2) return null;
+  if (current.kind === "pairs") return "pairs";
   if (current.kind === "confirmation") return "confirmation";
   const previous = journey
     .slice(0, -1)
@@ -61,6 +74,35 @@ export function currentItemId(
   return current?.itemIds.find((itemId) => !answers.has(itemId)) ?? null;
 }
 
+function pairQuestion(pass: JourneyPass, itemId: string): QuestionView | null {
+  const item = pass.pairItems?.find((pairItem) => pairItem.id === itemId);
+  if (!item) return null;
+  return {
+    itemId: item.id,
+    format: "minimal_pair",
+    prompt: "",
+    options: item.options.map((text, index) => ({ id: PAIR_OPTION_IDS[index], text })),
+    audioUrl: `${PAIR_AUDIO_ROUTE}?item=${encodeURIComponent(item.id)}`,
+    isDraft: false,
+  };
+}
+
+function bankQuestion(
+  item: EvalItem | undefined,
+  seed: number,
+  showDraftBadge: boolean,
+): QuestionView | null {
+  if (!item) return null;
+  return {
+    itemId: item.id,
+    format: item.format,
+    prompt: item.prompt,
+    options: orderedOptions(item, seed),
+    audioUrl: null,
+    isDraft: showDraftBadge && item.status === "draft",
+  };
+}
+
 export function questionView(args: {
   journey: JourneyPass[];
   answers: Map<string, AnswerRecord>;
@@ -71,19 +113,18 @@ export function questionView(args: {
   const { journey, answers, itemsById, seed, showDraftBadge } = args;
   const current = journey[journey.length - 1];
   const itemId = currentItemId(journey, answers);
-  const item = itemId ? itemsById.get(itemId) : undefined;
-  if (!current || !item) return null;
+  if (!current || !itemId) return null;
+
+  const question =
+    current.kind === "pairs"
+      ? pairQuestion(current, itemId)
+      : bankQuestion(itemsById.get(itemId), seed, showDraftBadge);
+  if (!question) return null;
 
   const answered = current.itemIds.filter((id) => answers.has(id)).length;
   return {
     screen: "question",
-    question: {
-      itemId: item.id,
-      format: item.format,
-      prompt: item.prompt,
-      options: orderedOptions(item, seed),
-      isDraft: showDraftBadge && item.status === "draft",
-    },
+    question,
     progress: {
       passKind: current.kind,
       track: current.track,

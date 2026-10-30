@@ -379,6 +379,78 @@ body:has(.evaluacion-classic) {
   background: linear-gradient(to bottom, rgba(250, 250, 250, 0), var(--ev-bg) 30%);
 }
 
+/* Minimal pairs (Slice 97b) */
+.ev-audio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.ev-audio-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 64px;
+  padding: 12px 24px;
+  border: 2px solid var(--ev-green);
+  border-radius: var(--ev-radius-cta);
+  background: var(--ev-surface);
+  color: var(--ev-green);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 200ms var(--ev-ease);
+}
+
+.ev-audio-button:hover:not(:disabled),
+.ev-audio-button[aria-pressed="true"] {
+  background: #f1f8f2;
+}
+
+.ev-audio-button:disabled {
+  border-color: var(--ev-line);
+  color: var(--ev-muted);
+  cursor: not-allowed;
+}
+
+.ev-pair {
+  align-items: center;
+}
+
+.ev-pair-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ev-pair-line {
+  color: var(--ev-label);
+  font-size: 15px;
+}
+
+.ev-pair-count {
+  color: var(--ev-muted);
+  font-size: 14px;
+}
+
+.ev-pair-ok {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 4px;
+  color: var(--ev-green);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ev-ipa {
+  font-family: "Charis SIL", "Doulos SIL", "Gentium Plus", "Lucida Sans Unicode", "Segoe UI", sans-serif;
+}
+
 .ev-draft {
   align-self: flex-start;
   padding: 2px 8px;

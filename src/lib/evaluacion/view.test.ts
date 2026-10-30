@@ -84,6 +84,36 @@ describe("questionView", () => {
     );
   });
 
+  test("a pair question has two options and an API audio url, never the played word", () => {
+    const pairs: JourneyPass[] = [
+      ...journey,
+      {
+        kind: "pairs",
+        track: "int",
+        itemIds: ["pair.bv.0"],
+        pairItems: [{ id: "pair.bv.0", pairId: "bv", options: ["vest", "best"], word: "best" }],
+        pending: { outcome: "settled", placedTrack: "int" },
+      },
+    ];
+    const view = questionView({
+      journey: pairs,
+      answers: answered("i1", "i2"),
+      itemsById: items,
+      seed: 7,
+      showDraftBadge: true,
+    });
+    assert.ok(view);
+    assert.equal(view.transition, "pairs");
+    assert.equal(view.question.format, "minimal_pair");
+    assert.deepEqual(
+      view.question.options.map((option) => option.id),
+      ["pa", "pb"],
+    );
+    assert.equal(view.question.audioUrl, "/api/evaluacion/pair-audio?item=pair.bv.0");
+    assert.ok(!JSON.stringify(view).includes("minimal-pairs/"));
+    assert.ok(!JSON.stringify(view).includes('"word"'));
+  });
+
   test("the first item of a later pass carries the transition", () => {
     const later: JourneyPass[] = [...journey, { kind: "confirmation", track: "int", itemIds: ["c1"] }];
     const view = questionView({

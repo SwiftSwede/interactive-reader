@@ -5,6 +5,7 @@ import { Check, CircleHelp, X } from "lucide-react";
 import { sessionTypeLabel } from "@/lib/activities";
 import { evaluacionConfig } from "@/lib/evaluacion/config";
 import { evalUiCopy, resultHeadline } from "@/lib/evaluacion/copy";
+import type { PairVerdict } from "@/lib/evaluacion/pairs";
 import type { EvalResult as EvalResultData, HoleSummary, ReviewEntry } from "@/lib/evaluacion/result";
 import { evalApi, EvalRequestError } from "./evalApi";
 
@@ -67,6 +68,49 @@ function MissMap({ result }: { result: EvalResultData }) {
         </section>
       ) : null}
     </>
+  );
+}
+
+function Listening({ verdicts }: { verdicts: PairVerdict[] }) {
+  if (verdicts.length === 0) return null;
+  const allClean = verdicts.every((verdict) => verdict.status === null);
+  return (
+    <section className="ev-section" aria-labelledby="ev-listening">
+      <h2 className="ev-subheading" id="ev-listening">
+        {evalUiCopy.listeningTitle}
+      </h2>
+      <p className="ev-note">{allClean ? evalUiCopy.listeningAllClean : evalUiCopy.listeningNote}</p>
+      <ul className="ev-holes">
+        {verdicts.map((verdict) => (
+          <li key={verdict.pairId} className="ev-hole ev-pair">
+            <span className="ev-pair-main">
+              <span className="ev-hole-name ev-ipa">
+                /{verdict.sounds[0]}/ y /{verdict.sounds[1]}/
+              </span>
+              {verdict.said && verdict.heard ? (
+                <span className="ev-pair-line">
+                  Dije <span lang="en">«{verdict.said}»</span>, escuchaste{" "}
+                  <span lang="en">«{verdict.heard}»</span>.
+                </span>
+              ) : null}
+              {verdict.status ? (
+                <span className="ev-pair-count">
+                  {evalUiCopy.listeningMisses(verdict.wrong, verdict.total)}
+                </span>
+              ) : null}
+            </span>
+            {verdict.status ? (
+              <span className="ev-hole-class">Clase: {sessionTypeLabel("pronunciation")}</span>
+            ) : (
+              <span className="ev-pair-ok">
+                <Check size={16} aria-hidden="true" />
+                {evalUiCopy.listeningClean}
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 
@@ -221,10 +265,12 @@ function Review({ review }: { review: ReviewEntry[] }) {
 
 export function EvalResult({
   result,
+  listening,
   emailCaptured,
   onRetake,
 }: {
   result: EvalResultData;
+  listening: PairVerdict[];
   emailCaptured: boolean;
   onRetake: () => void;
 }) {
@@ -243,6 +289,8 @@ export function EvalResult({
       </header>
 
       <MissMap result={result} />
+
+      <Listening verdicts={listening} />
 
       <section className="ev-card ev-card-accent" aria-labelledby="ev-offer">
         <h2 className="ev-subheading" id="ev-offer">

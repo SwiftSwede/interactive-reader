@@ -12,6 +12,16 @@ import {
   type BankIndex,
 } from "./draw";
 import { computeHoles, finalStep, planNext, trackForOpener } from "./engine";
+import {
+  drawPairItems,
+  pairAudioPath,
+  pairIdOf,
+  pairOptionText,
+  pairVerdicts,
+  samplePairs,
+  type PairAnswer,
+  type PairVerdict,
+} from "./pairs";
 import { buildResult } from "./result";
 import {
   NO_SE_OPTION_ID,
@@ -145,21 +155,53 @@ async function loadAnswers(
   client: SupabaseClient,
   attemptId: string,
 ): Promise<Map<string, AnswerRecord>> {
-  const { data, error } = await client
-    .from("eval_answers")
-    .select("item_id, selected_option_id, is_correct")
-    .eq("attempt_id", attemptId);
-  if (error) throw evalError("EVAL_ANSWER_READ", 500, "Could not read answers");
-  return new Map(
-    (data ?? []).map((row) => [
-      row.item_id as string,
-      {
-        itemId: row.item_id as string,
-        selectedOptionId: row.selected_option_id as string,
-        isCorrect: Boolean(row.is_correct),
-      },
-    ]),
-  );
+  const [itemRes, pairRes] = await Promise.all([
+    client
+      .from("eval_answers")
+      .select("item_id, selected_option_id, is_correct")
+      .eq("attempt_id", attemptId),
+    client
+      .from("eval_pair_answers")
+      .select("item_id, selected_word, is_correct")
+      .eq("attempt_id", attemptId),
+  ]);
+  if (itemRes.error || pairRes.error) {
+    throw evalError("EVAL_ANSWER_READ", 500, "Could not read answers");
+  }
+  const answers = new Map<string, AnswerRecord>();
+  for (const row of itemRes.data ?? []) {
+    answers.set(row.item_id as string, {
+      itemId: row.item_id as string,
+      selectedOptionId: row.selected_option_id as string,
+      isCorrect: Boolean(row.is_correct),
+    });
+  }
+  for (const row of pairRes.data ?? []) {
+    answers.set(row.item_id as string, {
+      itemId: row.item_id as string,
+      selectedOptionId: "",
+      selectedWord: row.selected_word as string,
+      isCorrect: Boolean(row.is_correct),
+    });
+  }
+  return answers;
+}
+
+function listeningFor(journey: JourneyPass[], answers: Map<string, AnswerRecord>): PairVerdict[] {
+  const pass = journey.find((entry) => entry.kind === "pairs");
+  if (!pass?.pairItems) return [];
+  const pairAnswers = new Map<string, PairAnswer>();
+  for (const item of pass.pairItems) {
+    const answer = answers.get(item.id);
+    if (answer?.selectedWord) {
+      pairAnswers.set(item.id, {
+        itemId: item.id,
+        selectedWord: answer.selectedWord,
+        isCorrect: answer.isCorrect,
+      });
+    }
+  }
+  return pairVerdicts(pass.pairItems, pairAnswers);
 }
 
 /** Items from earlier attempts on this device or under any email it has given. */
@@ -210,6 +252,7 @@ function resultView(ctx: Context, attempt: AttemptRow, answers: Map<string, Answ
       outcome,
       placedTrack: attempt.placed_track,
     }),
+    listening: listeningFor(attempt.journey, answers),
     emailCaptured: Boolean(attempt.email),
   };
 }
@@ -279,6 +322,42 @@ async function saveJourney(ctx: Context, attempt: AttemptRow): Promise<void> {
   if (error) throw evalError("EVAL_JOURNEY", 500, "Could not save progress");
 }
 
+/**
+ * The grammar verdict is in. Run the minimal-pair listening pass once (Slice 97b),
+ * carrying the verdict in `pending`, then finish.
+ */
+async function listenThenFinish(
+  ctx: Context,
+  attempt: AttemptRow,
+  answers: Map<string, AnswerRecord>,
+  seen: Set<string>,
+  outcome: Outcome,
+  placedTrack: Track,
+): Promise<EvalView> {
+  if (attempt.journey.some((pass) => pass.kind === "pairs")) {
+    return finishAttempt(ctx, attempt, answers, outcome, placedTrack);
+  }
+  const seenPairs = new Set(
+    [...seen].map((itemId) => pairIdOf(itemId)).filter((id): id is string => Boolean(id)),
+  );
+  const seedKey = `${attempt.seed}`;
+  const pairItems = drawPairItems(samplePairs(seenPairs, seedKey), seedKey);
+  if (pairItems.length === 0) return finishAttempt(ctx, attempt, answers, outcome, placedTrack);
+
+  attempt.journey = [
+    ...attempt.journey,
+    {
+      kind: "pairs",
+      track: placedTrack,
+      itemIds: pairItems.map((item) => item.id),
+      pairItems,
+      pending: { outcome, placedTrack },
+    },
+  ];
+  await saveJourney(ctx, attempt);
+  return inProgressView(ctx, attempt, answers);
+}
+
 /** Called once the current pass is fully answered. */
 async function advance(
   ctx: Context,
@@ -287,6 +366,12 @@ async function advance(
   tokenHash: string,
 ): Promise<EvalView> {
   const { bank } = ctx;
+  const current = attempt.journey[attempt.journey.length - 1];
+  if (current?.kind === "pairs") {
+    if (!current.pending) throw evalError("EVAL_STUCK", 500, "Pairs pass has no verdict");
+    return finishAttempt(ctx, attempt, answers, current.pending.outcome, current.pending.placedTrack);
+  }
+
   const servable = servableStatuses(ctx.env);
   const step = planNext({
     journey: attempt.journey,
@@ -294,22 +379,21 @@ async function advance(
     itemsById: bank.itemsById,
     structuresById: bank.structuresById,
   });
-
   if (step.type === "continue") return inProgressView(ctx, attempt, answers);
-  if (step.type === "finish") {
-    return finishAttempt(ctx, attempt, answers, step.outcome, step.placedTrack);
-  }
 
   const seen = await seenItemIds(ctx.client, tokenHash, attempt.id);
   for (const pass of attempt.journey) for (const itemId of pass.itemIds) seen.add(itemId);
+  const finish = (outcome: Outcome, placedTrack: Track) =>
+    listenThenFinish(ctx, attempt, answers, seen, outcome, placedTrack);
+
+  if (step.type === "finish") return finish(step.outcome, step.placedTrack);
 
   if (step.type === "placement") {
     const itemIds = drawPlacementPass(bank.index, step.track, servable, seen);
     if (itemIds.length === 0) {
-      const current = attempt.journey[attempt.journey.length - 1];
       return step.transition === "promote"
-        ? finishAttempt(ctx, attempt, answers, "settled", current.track)
-        : finishAttempt(ctx, attempt, answers, "gentle", step.track);
+        ? finish("settled", current.track)
+        : finish("gentle", step.track);
     }
     attempt.journey = [...attempt.journey, { kind: "placement", track: step.track, itemIds }];
     await saveJourney(ctx, attempt);
@@ -319,7 +403,7 @@ async function advance(
   const itemIds = drawConfirmationPass(bank.index, step.structureIds, servable, seen);
   if (itemIds.length === 0) {
     const final = finalStep(attempt.journey, answers, bank.itemsById);
-    return finishAttempt(ctx, attempt, answers, final.outcome, final.placedTrack);
+    return finish(final.outcome, final.placedTrack);
   }
   attempt.journey = [...attempt.journey, { kind: "confirmation", track: step.track, itemIds }];
   await saveJourney(ctx, attempt);
@@ -421,6 +505,34 @@ export async function answerEvaluacion(
     throw evalError("EVAL_OUT_OF_ORDER", 409, "That is not the current question");
   }
 
+  const pass = attempt.journey[attempt.journey.length - 1];
+  if (pass.kind === "pairs") {
+    const pairItem = pass.pairItems?.find((entry) => entry.id === args.itemId);
+    if (!pairItem) throw evalError("EVAL_ITEM_MISSING", 409, "That question is gone");
+    const selectedWord = pairOptionText(pairItem, args.optionId);
+    if (!selectedWord) throw evalError("EVAL_INVALID_OPTION", 422, "Unknown option");
+    const record: AnswerRecord = {
+      itemId: pairItem.id,
+      selectedOptionId: args.optionId,
+      selectedWord,
+      isCorrect: selectedWord === pairItem.word,
+    };
+    const { error } = await client.from("eval_pair_answers").insert({
+      attempt_id: attempt.id,
+      item_id: pairItem.id,
+      pair_id: pairItem.pairId,
+      word_played: pairItem.word,
+      selected_word: selectedWord,
+      is_correct: record.isCorrect,
+    });
+    if (error) {
+      if (error.code === "23505") return resume(await loadAnswers(client, attempt.id));
+      throw evalError("EVAL_ANSWER_SAVE", 500, "Could not save the answer");
+    }
+    answers.set(pairItem.id, record);
+    return resume(answers);
+  }
+
   const item = bank.itemsById.get(args.itemId);
   if (!item) throw evalError("EVAL_ITEM_MISSING", 409, "That question is gone");
   const validOption =
@@ -445,6 +557,17 @@ export async function answerEvaluacion(
   }
   answers.set(item.id, record);
   return resume(answers);
+}
+
+/** Public path of the word this attempt plays for a pair item, or null. */
+export async function pairAudioPathFor(
+  client: SupabaseClient,
+  args: { tokenHash: string; itemId: string },
+): Promise<string | null> {
+  const attempt = await latestAttempt(client, args.tokenHash);
+  const pass = attempt?.journey.find((entry) => entry.kind === "pairs");
+  const item = pass?.pairItems?.find((entry) => entry.id === args.itemId);
+  return item ? pairAudioPath(item.pairId, item.word) : null;
 }
 
 /** Email goes on the latest finished attempt. MailerLite stays a stub (config flag). */

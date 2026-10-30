@@ -3,13 +3,15 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { evalUiCopy } from "@/lib/evaluacion/copy";
-import { NO_SE_OPTION_ID, type ItemFormat } from "@/lib/evaluacion/types";
-import type { PassProgress, QuestionView } from "@/lib/evaluacion/view";
+import { NO_SE_OPTION_ID } from "@/lib/evaluacion/types";
+import type { PassProgress, QuestionFormat, QuestionView } from "@/lib/evaluacion/view";
+import { PairAudio } from "./PairAudio";
 
-const instruction: Record<ItemFormat, string> = {
+const instruction: Record<QuestionFormat, string> = {
   translation: evalUiCopy.questionTranslation,
   fill_blank: evalUiCopy.questionFill,
   mc: evalUiCopy.questionMc,
+  minimal_pair: evalUiCopy.questionPairs,
 };
 
 export function EvalHeader({
@@ -73,10 +75,21 @@ export function EvalQuestion({
     >
       <div className="ev-screen-head">
         {question.isDraft ? <span className="ev-draft">{evalUiCopy.draftBadge}</span> : null}
-        <p className="ev-note" id="ev-instruction">
-          {instruction[question.format]}
-        </p>
-        <h1 className="ev-prompt">{question.prompt}</h1>
+        {question.audioUrl ? (
+          <>
+            <h1 className="ev-prompt" id="ev-instruction">
+              {instruction[question.format]}
+            </h1>
+            <PairAudio src={question.audioUrl} />
+          </>
+        ) : (
+          <>
+            <p className="ev-note" id="ev-instruction">
+              {instruction[question.format]}
+            </p>
+            <h1 className="ev-prompt">{question.prompt}</h1>
+          </>
+        )}
       </div>
 
       <fieldset className="ev-options" aria-labelledby="ev-instruction">

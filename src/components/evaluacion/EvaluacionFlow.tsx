@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { evalUiCopy } from "@/lib/evaluacion/copy";
+import type { PairVerdict } from "@/lib/evaluacion/pairs";
 import type { EvalResult as EvalResultData } from "@/lib/evaluacion/result";
 import { track } from "@/lib/evaluacion/track";
 import type { Opener } from "@/lib/evaluacion/types";
@@ -26,7 +27,7 @@ type Phase =
   | { name: "opener" }
   | { name: "transition"; view: QuestionScreen }
   | { name: "question"; view: QuestionScreen }
-  | { name: "result"; result: EvalResultData; emailCaptured: boolean }
+  | { name: "result"; result: EvalResultData; listening: PairVerdict[]; emailCaptured: boolean }
   | { name: "redirecting" };
 
 function messageOf(error: unknown): string {
@@ -54,7 +55,12 @@ export function EvaluacionFlow() {
       }
       if (view.screen === "result") {
         track("result_shown", { outcome: view.result.outcome, track: view.result.placedTrack });
-        show({ name: "result", result: view.result, emailCaptured: view.emailCaptured });
+        show({
+          name: "result",
+          result: view.result,
+          listening: view.listening,
+          emailCaptured: view.emailCaptured,
+        });
         return;
       }
       if (view.transition) {
@@ -189,6 +195,7 @@ export function EvaluacionFlow() {
         {phase.name === "result" ? (
           <EvalResult
             result={phase.result}
+            listening={phase.listening}
             emailCaptured={phase.emailCaptured}
             onRetake={() => show({ name: "opener" })}
           />

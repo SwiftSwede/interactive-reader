@@ -39,9 +39,14 @@ function mulberry32(seed: number): () => number {
   };
 }
 
+/** Deterministic [0, 1) stream for a string key. */
+export function seededRandom(key: string): () => number {
+  return mulberry32(hashString(key));
+}
+
 /** Same attempt seed + item id always gives the same order. "No sé" is last. */
 export function orderedOptions(item: Pick<EvalItem, "id" | "options">, seed: number): EvalOption[] {
-  const random = mulberry32(hashString(`${seed}:${item.id}`));
+  const random = seededRandom(`${seed}:${item.id}`);
   const shuffled = [...item.options];
   for (let i = shuffled.length - 1; i > 0; i -= 1) {
     const j = Math.floor(random() * (i + 1));

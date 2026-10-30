@@ -48,23 +48,36 @@ export type EvalItem = {
   status: ItemStatus;
 };
 
-export type PassKind = "placement" | "confirmation";
+export type PassKind = "placement" | "confirmation" | "pairs";
+
+/** Server-side only: `word` is the answer and never goes to the client. */
+export type PairItem = {
+  id: string;
+  pairId: string;
+  options: [string, string];
+  word: string;
+};
 
 export type JourneyPass = {
   kind: PassKind;
   track: Track;
   itemIds: string[];
+  /** `pairs` pass only. */
+  pairItems?: PairItem[];
+  /** `pairs` pass only: the grammar verdict, fixed before listening starts. */
+  pending?: { outcome: Outcome; placedTrack: Track };
 };
 
 export type Band = "promote" | "settle" | "demote";
 
 export type Outcome = "settled" | "top" | "gentle";
 
-/** One answered item, as the engine sees it. */
+/** One answered item, as the engine sees it. Pair items also carry the word heard. */
 export type AnswerRecord = {
   itemId: string;
   selectedOptionId: string;
   isCorrect: boolean;
+  selectedWord?: string;
 };
 
 export type HoleStatus = "candidate" | "confirmed";

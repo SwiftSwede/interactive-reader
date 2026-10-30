@@ -5,8 +5,11 @@ import { evalCopy, evalEnv, evalErrorResponse, guestTokenHash } from "@/lib/eval
 import { answerEvaluacion } from "@/lib/evaluacion/service";
 
 const BodySchema = z.object({
-  itemId: z.string().regex(/^[a-z0-9_]+\.[a-z0-9]+$/).max(80),
-  optionId: z.string().regex(/^(no_se|o[0-9a-f]{8})$/),
+  itemId: z
+    .string()
+    .regex(/^([a-z0-9_]+\.[a-z0-9]+|pair\.[A-Za-z]+\.[0-9]+)$/)
+    .max(80),
+  optionId: z.string().regex(/^(no_se|o[0-9a-f]{8}|p[ab])$/),
 });
 
 export async function POST(request: Request) {
