@@ -99,6 +99,11 @@ describe("draws", () => {
     assert.deepEqual(drawPlacementPass(bank, "pre_int", servable, seen), ["s1.r1", "s2.p1"]);
   });
 
+  test("a retake uses the confirmation item when the bank has no rotation row", () => {
+    const seen = new Set(["s1.p1", "s1.r1", "s2.p1"]);
+    assert.deepEqual(drawPlacementPass(bank, "pre_int", servable, seen), ["s1.c1", "s2.p1"]);
+  });
+
   test("drafts never serve in production", () => {
     assert.deepEqual(
       drawPlacementPass(bank, "pre_int", servableStatuses({ nodeEnv: "production" }), new Set()),

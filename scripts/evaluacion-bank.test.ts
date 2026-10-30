@@ -8,7 +8,7 @@ describe("evaluación bank v1", () => {
     assert.deepEqual(validateBank(EVALUACION_BANK_V1), []);
   });
 
-  test("has 60 placement structures in the agreed track split", () => {
+  test("has 60 placement structures, split by EGP level rather than 15 per track", () => {
     const counts: Record<string, number> = {};
     for (const structure of EVALUACION_BANK_V1) {
       counts[structure.track] = (counts[structure.track] ?? 0) + 1;

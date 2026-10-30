@@ -95,9 +95,10 @@ export function indexBank(structures: EvalStructure[], items: EvalItem[]): BankI
 }
 
 /**
- * One item per structure in track order. A retake gets the rotation item when
- * the placement item was already seen; with no fresh item left, the placement
- * item repeats rather than skipping the structure.
+ * One item per structure in track order. A retake skips items already seen:
+ * rotation first, then the confirmation item when no rotation row exists.
+ * With nothing fresh left, the placement item repeats rather than skipping
+ * the structure.
  */
 export function drawPlacementPass(
   bank: BankIndex,
@@ -109,7 +110,7 @@ export function drawPlacementPass(
   for (const structure of bank.structuresByTrack.get(track) ?? []) {
     const items = bank.itemsByStructure.get(structure.id) ?? [];
     const item =
-      pickItem(items, PLACEMENT_ROLES, servable, seen) ??
+      pickItem(items, [...PLACEMENT_ROLES, "confirmation"], servable, seen) ??
       pickItem(items, PLACEMENT_ROLES, servable, new Set());
     if (item) itemIds.push(item.id);
   }

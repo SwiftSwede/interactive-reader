@@ -1,5 +1,11 @@
 // Evaluación v1 bank (Slice 97a). Source of truth for scripts/seed-evaluacion.ts.
 //
+// Track sizes are 15 / 17 / 14 / 14 (beginner, pre-int, int, upper), not 15
+// each. Structures sit on their EGP level: two A2 items live on pre-int, and
+// int and upper are one short after flagged legacy questions were dropped.
+// Bands are exact fractions, so a longer or shorter pass does not move the
+// promote (12/15) or settle (7/15) cutoff. Do not pad or cut to force 15.
+//
 // Placement items: 57 clean (40 legacy Thrive quiz minus 4 flagged, plus 21
 // Hermes drafts) + 3 fillers = 60. Confirmation items are Cursor drafts, one
 // per structure. Everything seeds as `draft` until Kyle's copy pass.
