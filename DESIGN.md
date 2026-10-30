@@ -108,6 +108,7 @@ components:
   teacher_preguntas_queue: "Session page, under the title. Disclosure, not a modal. 16px card. Header is 1fr auto 1fr: headline-md Preguntas left, unaddressed count chip center (rounded-small, tabular-nums; accent-softer when >0), 44px ChevronDown/Up right (swap, no rotate). Panel 200ms ease-smooth-out via grid-template-rows; body fades 180ms. Empty: CircleHelp 32px plus Todavía no hay preguntas. Item: paper fill, name label-md, body-main phrase, surface · time on one label-sm row, Enseñada secondary right. Auto-opens on the first waiting question."
   navigation: browsing mode (3 tabs; ask lives in the header) vs lesson mode (full-screen, step nav); never coexist
   workshop_landing: "Public /workshop. Thrive webinar skin, one 680px column, html lang=es. Inline form in the first viewport (Olly/Brunson archive pattern): kicker, facts, date, name/email, privacy line, repeated CTAs. Liberty is an img under a navy wash that darkens toward the form. IPA as a list, not three cards. No popup, no phone. Open Sans. Not paper, no tab bar."
+  evaluacion_classic: "Public /evaluacion (Slice 97a). Classic WordPress-quiz skin scoped to .evaluacion-classic, html lang=es, Open Sans, one 560px column, no tab bar or app nav. #fafafa page, navy #202f60 headlines, #363942 labels. #4dc082 is the progress fill only; #217a2e carries text, CTA, borders, focus; #7fd5ac is a selected-option tint only. Header (quit X + progress bar) and option card are PROPOSED, pending Kyle."
 ---
 
 # Design System
@@ -333,6 +334,32 @@ On screens wider than 1024px, the layout does NOT change structurally. The same 
 ## Public marketing routes (`/workshop`)
 
 **Deliberate exception to Paper Light.** `/workshop` and `/workshop/gracias` follow Kyle's Thrive webinar ([live page](https://www.profekyle.com/webinar-no-congelarte-mas/)), with phonetic-signup proof of a simple lead form ([live page](https://www.profekyle.com/signup-phonetic-training/)): Statue of Liberty photo (`<img>` in a top band, cropped to the statue, navy wash becoming solid behind the form; thanks page does not load the photo), navy `#202f60` date card, coral `#cc333d` CTA (AA with white), the form on the photo (not a white band), then a gray learn list with coral IPA circles in a row, not three floating cards. Bio portrait: circular crop with a 4px `#202f60` ring. Document language is Spanish (`html lang=es`). Open Sans. Conversion order matches archived free-registration funnels (Olly, Brunson challenges): kicker, title, event facts, date card, then the form. No "Cuándo" label. The date stays above the fields. Privacy line, link to profekyle.com política de privacidad (and terms in footer), repeated CTAs. This is a registration lander for ad traffic, not a short ad itself. One 680px column at every width. No popup, no phone field, no two-column hero. Not paper, no tab bar. Student and teacher routes never import this skin.
+
+## Public evaluation (`/evaluacion`, classic skin)
+
+**Deliberate exception to Paper Light** (Kyle, Q13 + Q16, 2026-10-30). The placement quiz wears the classic WordPress evaluation look ([legacy badge](docs/design-overhaul/ref-quiz-badge-legacy.png)), scoped to `.evaluacion-classic` in `src/app/evaluacion/evaluacion.css`. Student and teacher routes never import it. Structure is the app's lesson mode without app chrome: one 560px column, no tab bar, no app nav. Spanish UI (`html lang=es`), English test content. Open Sans 400/600/700 via the same `next/font` loader as `/workshop`.
+
+| Token | Value | Use |
+|---|---|---|
+| `--ev-bg` | `#fafafa` | Page |
+| `--ev-surface` | `#ffffff` | Cards, options, inputs |
+| `--ev-navy` | `#202f60` | Headlines, prompts |
+| `--ev-label` | `#363942` | Body and labels |
+| `--ev-muted` | `#62697d` | Notes, rule lines, No sé |
+| `--ev-line` | `#dddddd` | Card and option borders |
+| `--ev-fill` | `#4dc082` | Progress fill only |
+| `--ev-green` | `#217a2e` | CTA fill, green text, selected border, focus ring, progress track border |
+| `--ev-tint` | `#7fd5ac` | Selected-option tint only (22% mix into white), never text or a boundary |
+| `--ev-wrong` | `#b3261e` | Review: your wrong answer (always with an icon) |
+| `--ev-draft` | `#8a5a00` | Dev-only borrador badge |
+
+Radius: 10px cards and options, 14px CTA, 9999px progress bar and quit hit area. Spacing on the 4px scale (12 between options, 24 between screen blocks, 40 between result sections). Motion: 200ms fade + 8px rise on screen change, progress width 200ms; all off under `prefers-reduced-motion`.
+
+Screens: splash ("¿Puedes ganarme?" 40px, 52px from 640px; lead; one CTA, or Seguir donde iba + Empezar de nuevo when an attempt is open), opener (5 Kyle-copy rows), question, transition (centered title + body + Seguir), result (eyebrow, headline, miss map rows with `Clase: Tipo` on the right, Circle offer card with a 2px green border, email card with Ahora no, review), loading skeleton, error with retry. Review: wrong answers expanded first (X or CircleHelp for No sé in `--ev-wrong`, Check + correct answer in green, one-line rule under a divider); correct answers collapsed in a `<details>` with a count. No score anywhere.
+
+**PROPOSED patterns (pending Kyle, not yet approved):**
+- **Quiz header:** sticky, 56px, 1px bottom border. 44px quit X on the left (confirm before leaving; answers stay saved), a 12px progress bar (white track, 1px `--ev-green` border, `--ev-fill` fill), then `n/total` tabular count. Progress counts the current pass only (the quiz is adaptive, so there is no global total).
+- **Option card:** full-width radio label, 56px min height, 20px ring mark on the left. Selected: 2px `--ev-green` border, `--ev-tint` wash, filled mark. "No sé" is always last, muted italic. Siguiente sits in a sticky footer and stays disabled until a choice is made. The opener reuses the card as plain buttons (tap = choose).
 
 ## Teacher Dashboard (`/teacher/*`)
 

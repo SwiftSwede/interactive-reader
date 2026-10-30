@@ -29,7 +29,8 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const pathname = (await headers()).get("x-pathname") ?? "";
-  const lang = pathname.startsWith("/workshop") ? "es" : "en";
+  const lang =
+    pathname.startsWith("/workshop") || pathname.startsWith("/evaluacion") ? "es" : "en";
 
   return (
     <html

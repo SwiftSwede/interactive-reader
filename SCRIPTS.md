@@ -366,6 +366,18 @@ npx tsx scripts/seed-drill-content.ts
 
 **Cost / time / status:** Safe to re-run after Slice 75. Teach content is `{ lead, examples, closing?, sourceUrl }` (closing kept as its own field). No AI cost. Requires the knowledge-tag catalogs (`make_vs_do`, `age_expression`, `present_perfect`).
 
+### Seed the evaluación bank (/evaluacion)
+
+Loads `scripts/evaluacion-bank-v1.ts` (60 structures, one placement and one draft confirmation item each) into `eval_structures` and `eval_items`. Validates every item rule first and writes nothing if one fails. New items land as `draft`. A re-run never touches `status`, so Kyle's approvals and retirements stay put. An existing item whose content changed is logged and left alone unless you pass `--force`, which is refused once any `eval_attempts` row exists (retire the old item and add a new one instead). Never touches attempts, answers, or error tags.
+
+```bash
+npx tsx scripts/seed-evaluacion.ts --dry-run
+npx tsx scripts/seed-evaluacion.ts
+```
+
+**Flags:** `--dry-run` (validate and show diffs), `--force` (rewrite changed items, only before the first attempt).
+**Cost / time / status:** Run 2026-10-30 (120 items, all draft). About 45 seconds on a re-run. Production serves only `approved` items, so approve items in Supabase before launch.
+
 ---
 
 ## Database & Schema
