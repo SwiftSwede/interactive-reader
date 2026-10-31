@@ -153,6 +153,13 @@ export default function AudioCoursePlayer({
   // cards, captions, karaoke) could lag up to ~0.5s behind the audio
   // (Kyle QA 2026-10-31, day 5 4:23: prompt text ~0.5s late). While playing,
   // drive the clock from requestAnimationFrame instead.
+  // The pause check MUST run in the same tick, BEFORE setTime: the card's
+  // window closes when time crosses pauseAt, but pauseFor (which sets
+  // activeIndex and keeps the card up) fired from the slow onTimeUpdate
+  // clock - the skew left the card gone for a frame or two at every prompt
+  // pause (Kyle QA 2026-10-31: "appears, disappears and reappears").
+  const considerPauseRef = useRef(considerPause);
+  considerPauseRef.current = considerPause;
   useEffect(() => {
     if (!playing) return;
     let raf = 0;
@@ -161,6 +168,7 @@ export default function AudioCoursePlayer({
       const audio = audioRef.current;
       if (audio) {
         const now = audio.currentTime;
+        considerPauseRef.current(now);
         if (Math.abs(now - last) >= 0.05) {
           last = now;
           setTime(now);
