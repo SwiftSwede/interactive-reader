@@ -159,7 +159,24 @@ export function englishOnScreen(
 ): ScreenLine | null {
   const segment = segmentAt(segments, time);
   if (segment?.t === "english") return { kind: "english", segment };
-  if (segment?.t === "narration" && segment.text) return { kind: "narration", segment };
+  if (segment?.t === "narration" && segment.text) {
+    // Linger: a question that is followed immediately by narration kept its
+    // text cut off the instant the narration segment began, while the
+    // question audio was still finishing (Kyle QA 2026-10-21, day 5 9:31 /
+    // 13:48). Hold the previous english line up to 0.5s past its end, but
+    // only while the narration has not started speaking yet.
+    const index = segments.indexOf(segment);
+    const prev = index > 0 ? segments[index - 1] : null;
+    if (
+      prev?.t === "english" &&
+      time < prev.end + 0.5 &&
+      prev.start <= time + 0.02 &&
+      (segment.words?.[0]?.start ?? segment.start) > time + 0.02
+    ) {
+      return { kind: "english", segment: prev };
+    }
+    return { kind: "narration", segment };
+  }
   return null;
 }
 
@@ -325,28 +342,43 @@ function lineCount(text: string): number {
   return wrapLines(text, IPLO_SUBTITLE_CHARS).length;
 }
 
-/** Keep a whole sentence when it fits in three lines. Longer sentences break on a clause. */
+/** Keep a whole sentence when it fits in three lines. Longer sentences break
+ * on a clause, distributed so the tail never strands as a one-word orphan
+ * ("poquito" alone on the next slide, Kyle QA 2026-10-21 day 5 4:10). */
 function packSentence(sentence: string): string[] {
   if (lineCount(sentence) <= IPLO_SUBTITLE_MAX_LINES) return [sentence];
   const clauses = sentence.split(/(?<=[,;:])\s+/).filter(Boolean);
-  const packed: string[] = [];
-  let buffer = "";
-  for (const clause of clauses) {
-    const next = buffer ? `${buffer} ${clause}` : clause;
-    if (buffer && lineCount(next) > IPLO_SUBTITLE_MAX_LINES) {
+  const costs = clauses.map(lineCount);
+  const total = costs.reduce((a, b) => a + b, 0);
+  const cueCount = Math.max(1, Math.ceil(total / IPLO_SUBTITLE_MAX_LINES));
+  const target = total / cueCount;
+  const packed: string[][] = [];
+  let buffer: string[] = [];
+  let bufferLines = 0;
+  for (let i = 0; i < clauses.length; i++) {
+    const startNew =
+      buffer.length > 0 &&
+      (bufferLines + costs[i] > IPLO_SUBTITLE_MAX_LINES ||
+        (bufferLines >= target && packed.length < cueCount - 1));
+    if (startNew) {
       packed.push(buffer);
-      buffer = clause;
-    } else {
-      buffer = next;
+      buffer = [];
+      bufferLines = 0;
     }
+    buffer.push(clauses[i]);
+    bufferLines += costs[i];
   }
-  if (buffer) packed.push(buffer);
-  return packed.flatMap((cue) => {
+  if (buffer.length) packed.push(buffer);
+  return packed.map((cue) => cue.join(" ")).flatMap((cue) => {
     if (lineCount(cue) <= IPLO_SUBTITLE_MAX_LINES) return [cue];
     const lines = wrapLines(cue, IPLO_SUBTITLE_CHARS);
+    // Balance the groups: greedy 3-line chunks strand a one-word tail
+    // ("poquito") on its own slide.
+    const groupCount = Math.ceil(lines.length / IPLO_SUBTITLE_MAX_LINES);
+    const perGroup = Math.ceil(lines.length / groupCount);
     const groups: string[] = [];
-    for (let i = 0; i < lines.length; i += IPLO_SUBTITLE_MAX_LINES) {
-      groups.push(lines.slice(i, i + IPLO_SUBTITLE_MAX_LINES).join(" "));
+    for (let i = 0; i < lines.length; i += perGroup) {
+      groups.push(lines.slice(i, i + perGroup).join(" "));
     }
     return groups;
   });

@@ -115,15 +115,18 @@ def lint_day(day: int, findings: list):
         # --- prompt checks
         if seg["t"] == "prompt":
             for expected in seg.get("expected", []):
-                sentences = len(re.findall(r"[.?!]", expected))
-                if sentences > 1:
-                    findings.append((at, "DOUBLED_EXPECTED", repr(expected)))
-                elif QUESTION_START.match(expected) and expected.rstrip().endswith("."):
-                    findings.append((at, "EXPECTED_PUNCTUATION", repr(expected)))
-                elif re.match(r"^(Yes|No)\b", expected, re.I) and "," not in expected:
-                    findings.append((at, "EXPECTED_PUNCTUATION", repr(expected)))
-                elif re.match(r"^Who (me|him|her|us|them)\.$", expected, re.I):
-                    findings.append((at, "EXPECTED_PUNCTUATION", repr(expected)))
+                # " / " separates accepted alternatives (answersMatch); each
+                # alternative is judged on its own.
+                for piece in expected.split(" / "):
+                    sentences = len(re.findall(r"[.?!]", piece))
+                    if sentences > 1:
+                        findings.append((at, "DOUBLED_EXPECTED", repr(expected)))
+                    elif QUESTION_START.match(piece) and piece.rstrip().endswith("."):
+                        findings.append((at, "EXPECTED_PUNCTUATION", repr(expected)))
+                    elif re.match(r"^(Yes|No)\b", piece, re.I) and "," not in piece:
+                        findings.append((at, "EXPECTED_PUNCTUATION", repr(expected)))
+                    elif re.match(r"^Who (me|him|her|us|them)\.$", piece, re.I):
+                        findings.append((at, "EXPECTED_PUNCTUATION", repr(expected)))
 
         # --- english checks
         if seg["t"] == "english":
