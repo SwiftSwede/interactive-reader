@@ -148,6 +148,29 @@ export default function AudioCoursePlayer({
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [answers, setAnswers] = useState<Record<number, StoredAnswer>>({});
   const [done, setDone] = useState(false);
+
+  // onTimeUpdate fires only ~4x/second, so text driven by `time` (prompt
+  // cards, captions, karaoke) could lag up to ~0.5s behind the audio
+  // (Kyle QA 2026-10-31, day 5 4:23: prompt text ~0.5s late). While playing,
+  // drive the clock from requestAnimationFrame instead.
+  useEffect(() => {
+    if (!playing) return;
+    let raf = 0;
+    let last = -1;
+    const tick = () => {
+      const audio = audioRef.current;
+      if (audio) {
+        const now = audio.currentTime;
+        if (Math.abs(now - last) >= 0.05) {
+          last = now;
+          setTime(now);
+        }
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [playing]);
   const [doneLine, setDoneLine] = useState(closingLine);
   const [saveError, setSaveError] = useState<string | null>(null);
 
