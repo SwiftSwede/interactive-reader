@@ -139,3 +139,7 @@ Kyle caught an A2 item (any/negation) in the int track and ruled: a track's plac
 3. Track = POOL: placement pass draws 15 structures seeded per attempt (seeded shuffle of the pool, then canonical order), so pools can exceed 15 without changing session length. Bank now: beginner 15, pre-int 19, int 17, upper 15 (66 structures, 198 items).
 4. Confirmation items NEVER serve as placement (draw fallback now repeats the placement item instead); test updated.
 Track sizes: beginner 15, pre_int 19, int 17, upper 15. Validation clean, 46/46 tests, seeder ran (18 new items).
+
+## Vocabulary expansion (2026-10-30, Kyle flagged thin vocab)
+
+Bank audit: vocab was 0 (beginner) / 2 (pre-int) / 1 (int) / 7 (upper) vs the ~5-per-track design. Added 12 vocabulary structures (each with placement + confirmation + rotation): beginner 5 (house rooms, kitchen words, body, weather, fridge/oven/sink), pre-int 4 (borrow vs lend, remind vs remember, win vs beat, wait-for/expect/assist false friends), int 3 (say vs tell, steal vs rob, come up with / come across, attend vs assist false friends), upper unchanged at 7. 11 of 12 are L1-focus (Spanish-speaker traps: said me, robbed my bike, assist to the meeting, win to someone). Bank now: 79 structures, 237 items (79 x 3); pools: beginner 20, pre-int 23, int 21, upper 15. Tests 46/46, seeded (39 new DB rows), commit 73cf9d4. Review doc needs regeneration to include these.
