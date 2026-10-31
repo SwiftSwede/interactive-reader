@@ -26,6 +26,7 @@ const GRAMMAR_BY_DAY: Record<number, string> = {
   3: "present_simple",
   4: "frequency_adverbs",
   5: "third_person_singular",
+  6: "food",
 };
 
 function onlyDay(): number {

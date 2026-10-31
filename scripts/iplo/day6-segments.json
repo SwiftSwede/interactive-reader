@@ -1,0 +1,6985 @@
+{
+ "lesson": 6,
+ "segments": [
+  {
+   "t": "narration",
+   "start": 8.12,
+   "end": 38.86,
+   "lines": [
+    "Bienvenidos a la lección 6. Algo nuevo para reforzar lo que aprendiste en la última lección. Repasemos antes de comenzar la lección. En el siguiente ejercicio, tomarás el papel de solo la mujer. Esté seguro de responder antes y después. Así reforzarás tu inglés y seguirás avanzando más rápido."
+   ],
+   "words": [
+    {
+     "w": "bienvenidos",
+     "start": 8.14,
+     "end": 8.14
+    },
+    {
+     "w": "a",
+     "start": 8.12,
+     "end": 8.5
+    },
+    {
+     "w": "la",
+     "start": 8.5,
+     "end": 8.58
+    },
+    {
+     "w": "leccion",
+     "start": 8.58,
+     "end": 9.18
+    },
+    {
+     "w": "6",
+     "start": 9.18,
+     "end": 9.7
+    },
+    {
+     "w": "algo",
+     "start": 10.2,
+     "end": 10.88
+    },
+    {
+     "w": "nuevo",
+     "start": 10.88,
+     "end": 11.36
+    },
+    {
+     "w": "para",
+     "start": 11.36,
+     "end": 11.7
+    },
+    {
+     "w": "reforzar",
+     "start": 11.7,
+     "end": 12.7
+    },
+    {
+     "w": "lo",
+     "start": 12.7,
+     "end": 12.88
+    },
+    {
+     "w": "que",
+     "start": 12.88,
+     "end": 13.02
+    },
+    {
+     "w": "aprendiste",
+     "start": 13.02,
+     "end": 13.5
+    },
+    {
+     "w": "en",
+     "start": 13.5,
+     "end": 13.6
+    },
+    {
+     "w": "la",
+     "start": 13.6,
+     "end": 13.66
+    },
+    {
+     "w": "ultima",
+     "start": 13.66,
+     "end": 13.86
+    },
+    {
+     "w": "leccion",
+     "start": 13.86,
+     "end": 14.36
+    },
+    {
+     "w": "repasemos",
+     "start": 15.02,
+     "end": 15.94
+    },
+    {
+     "w": "antes",
+     "start": 15.94,
+     "end": 16.36
+    },
+    {
+     "w": "de",
+     "start": 16.36,
+     "end": 16.54
+    },
+    {
+     "w": "comenzar",
+     "start": 16.54,
+     "end": 17.28
+    },
+    {
+     "w": "la",
+     "start": 17.28,
+     "end": 17.5
+    },
+    {
+     "w": "leccion",
+     "start": 17.5,
+     "end": 17.98
+    },
+    {
+     "w": "en",
+     "start": 18.3,
+     "end": 18.82
+    },
+    {
+     "w": "el",
+     "start": 18.82,
+     "end": 19.0
+    },
+    {
+     "w": "siguiente",
+     "start": 19.0,
+     "end": 19.66
+    },
+    {
+     "w": "ejercicio",
+     "start": 19.66,
+     "end": 20.6
+    },
+    {
+     "w": "tomaras",
+     "start": 20.62,
+     "end": 21.05
+    },
+    {
+     "w": "el",
+     "start": 21.5,
+     "end": 21.82
+    },
+    {
+     "w": "papel",
+     "start": 21.84,
+     "end": 22.08
+    },
+    {
+     "w": "de",
+     "start": 22.34,
+     "end": 23.34
+    },
+    {
+     "w": "solo",
+     "start": 23.36,
+     "end": 23.36
+    },
+    {
+     "w": "la",
+     "start": 23.34,
+     "end": 23.78
+    },
+    {
+     "w": "mujer",
+     "start": 23.78,
+     "end": 24.32
+    },
+    {
+     "w": "este",
+     "start": 24.34,
+     "end": 25.85
+    },
+    {
+     "w": "seguro",
+     "start": 25.87,
+     "end": 26.62
+    },
+    {
+     "w": "de",
+     "start": 26.64,
+     "end": 27.0
+    },
+    {
+     "w": "responder",
+     "start": 27.02,
+     "end": 27.19
+    },
+    {
+     "w": "antes",
+     "start": 27.38,
+     "end": 28.02
+    },
+    {
+     "w": "y",
+     "start": 28.04,
+     "end": 28.04
+    },
+    {
+     "w": "despues",
+     "start": 28.06,
+     "end": 28.06
+    },
+    {
+     "w": "asi",
+     "start": 28.08,
+     "end": 28.08
+    },
+    {
+     "w": "reforzaras",
+     "start": 28.1,
+     "end": 28.1
+    },
+    {
+     "w": "tu",
+     "start": 28.12,
+     "end": 28.12
+    },
+    {
+     "w": "ingles",
+     "start": 28.14,
+     "end": 28.14
+    },
+    {
+     "w": "y",
+     "start": 28.16,
+     "end": 28.16
+    },
+    {
+     "w": "seguiras",
+     "start": 28.18,
+     "end": 28.18
+    },
+    {
+     "w": "avanzando",
+     "start": 28.2,
+     "end": 28.2
+    },
+    {
+     "w": "mas",
+     "start": 28.22,
+     "end": 28.22
+    },
+    {
+     "w": "rapido",
+     "start": 28.24,
+     "end": 28.24
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 38.86,
+   "pauseAt": 41.84,
+   "spanish": "Pregunta a tu amigo “¿bebes?”",
+   "expected": [
+    "Do you drink?",
+    "Yes, I drink.",
+    "And you?",
+    "Do you drink?"
+   ],
+   "end": 43.42
+  },
+  {
+   "t": "english",
+   "start": 43.42,
+   "end": 48.28,
+   "text": "Do you drink?",
+   "words": [
+    {
+     "w": "do",
+     "start": 43.42,
+     "end": 43.75
+    },
+    {
+     "w": "you",
+     "start": 43.98,
+     "end": 44.1
+    },
+    {
+     "w": "drink",
+     "start": 44.18,
+     "end": 44.6
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 48.28,
+   "end": 51.2,
+   "text": "Yes, I drink. And you? Do you drink?",
+   "words": [
+    {
+     "w": "yes",
+     "start": 48.28,
+     "end": 48.76
+    },
+    {
+     "w": "i",
+     "start": 48.78,
+     "end": 49.26
+    },
+    {
+     "w": "drink",
+     "start": 49.28,
+     "end": 49.76
+    },
+    {
+     "w": "and",
+     "start": 49.78,
+     "end": 50.26
+    },
+    {
+     "w": "you",
+     "start": 50.28,
+     "end": 50.76
+    },
+    {
+     "w": "do",
+     "start": 50.78,
+     "end": 51.26
+    },
+    {
+     "w": "you",
+     "start": 51.28,
+     "end": 51.76
+    },
+    {
+     "w": "drink",
+     "start": 51.78,
+     "end": 52.26
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 51.2,
+   "pauseAt": 54.3,
+   "spanish": "Responde, “no, no bebo.”",
+   "expected": [
+    "No, I don’t drink."
+   ],
+   "end": 53.26
+  },
+  {
+   "t": "english",
+   "start": 53.26,
+   "end": 58.18,
+   "text": "No, I don’t drink.",
+   "words": [
+    {
+     "w": "no",
+     "start": 53.26,
+     "end": 53.8
+    },
+    {
+     "w": "i",
+     "start": 55.36,
+     "end": 55.96
+    },
+    {
+     "w": "dont",
+     "start": 55.96,
+     "end": 56.24
+    },
+    {
+     "w": "drink",
+     "start": 56.24,
+     "end": 56.54
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 58.18,
+   "pauseAt": 61.52,
+   "spanish": "Ahora pregunta a tu amigo “bebes muchos?”",
+   "expected": [
+    "Do you drink a lot?",
+    "I don’t drink a lot.",
+    "I only drink a little bit."
+   ],
+   "end": 63.86
+  },
+  {
+   "t": "english",
+   "start": 63.86,
+   "end": 68.24,
+   "text": "Do you drink a lot?",
+   "words": [
+    {
+     "w": "do",
+     "start": 63.86,
+     "end": 64.46
+    },
+    {
+     "w": "you",
+     "start": 64.46,
+     "end": 64.6
+    },
+    {
+     "w": "drink",
+     "start": 64.6,
+     "end": 64.8
+    },
+    {
+     "w": "a",
+     "start": 64.8,
+     "end": 64.96
+    },
+    {
+     "w": "lot",
+     "start": 64.96,
+     "end": 65.26
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 68.24,
+   "end": 72.42,
+   "text": "I don’t drink a lot. I only drink a little bit.",
+   "words": [
+    {
+     "w": "i",
+     "start": 68.24,
+     "end": 68.84
+    },
+    {
+     "w": "dont",
+     "start": 68.84,
+     "end": 69.28
+    },
+    {
+     "w": "drink",
+     "start": 69.28,
+     "end": 69.52
+    },
+    {
+     "w": "a",
+     "start": 69.52,
+     "end": 69.7
+    },
+    {
+     "w": "lot",
+     "start": 69.7,
+     "end": 69.9
+    },
+    {
+     "w": "i",
+     "start": 70.16,
+     "end": 70.5
+    },
+    {
+     "w": "only",
+     "start": 70.5,
+     "end": 70.76
+    },
+    {
+     "w": "drink",
+     "start": 70.76,
+     "end": 71.02
+    },
+    {
+     "w": "a",
+     "start": 71.02,
+     "end": 71.2
+    },
+    {
+     "w": "little",
+     "start": 71.2,
+     "end": 71.36
+    },
+    {
+     "w": "bit",
+     "start": 71.36,
+     "end": 71.58
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 72.42,
+   "pauseAt": 75.78,
+   "spanish": "Ahora dile a tu amigo “NUNCA bebo.”",
+   "expected": [
+    "I never drink."
+   ],
+   "end": 78.14,
+   "leadEnd": 73.24
+  },
+  {
+   "t": "english",
+   "start": 78.14,
+   "end": 82.3,
+   "text": "I never drink.",
+   "words": [
+    {
+     "w": "i",
+     "start": 78.14,
+     "end": 78.86
+    },
+    {
+     "w": "never",
+     "start": 78.86,
+     "end": 79.12
+    },
+    {
+     "w": "drink",
+     "start": 79.12,
+     "end": 79.5
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 82.3,
+   "pauseAt": 86.74,
+   "spanish": "Ahora pregunta a tu amigo “¿bebes todos los días?”",
+   "expected": [
+    "Do you drink every day?",
+    "No, I don’t drink every day.",
+    "Do you eat a lot?"
+   ],
+   "end": 89.16
+  },
+  {
+   "t": "english",
+   "start": 89.16,
+   "end": 93.42,
+   "text": "Do you drink every day?",
+   "words": [
+    {
+     "w": "do",
+     "start": 89.16,
+     "end": 89.72
+    },
+    {
+     "w": "you",
+     "start": 89.72,
+     "end": 89.86
+    },
+    {
+     "w": "drink",
+     "start": 89.86,
+     "end": 90.1
+    },
+    {
+     "w": "every",
+     "start": 90.1,
+     "end": 90.4
+    },
+    {
+     "w": "day",
+     "start": 90.4,
+     "end": 90.68
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 93.42,
+   "end": 98.12,
+   "text": "No, I don’t drink every day. Do you eat a lot?",
+   "words": [
+    {
+     "w": "no",
+     "start": 93.42,
+     "end": 93.98
+    },
+    {
+     "w": "i",
+     "start": 94.3,
+     "end": 94.76
+    },
+    {
+     "w": "dont",
+     "start": 94.76,
+     "end": 94.98
+    },
+    {
+     "w": "drink",
+     "start": 94.98,
+     "end": 95.18
+    },
+    {
+     "w": "every",
+     "start": 95.18,
+     "end": 95.42
+    },
+    {
+     "w": "day",
+     "start": 95.42,
+     "end": 95.62
+    },
+    {
+     "w": "do",
+     "start": 96.06,
+     "end": 96.48
+    },
+    {
+     "w": "you",
+     "start": 96.48,
+     "end": 96.62
+    },
+    {
+     "w": "eat",
+     "start": 96.62,
+     "end": 96.82
+    },
+    {
+     "w": "a",
+     "start": 96.82,
+     "end": 96.94
+    },
+    {
+     "w": "lot",
+     "start": 96.94,
+     "end": 97.14
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 98.12,
+   "end": 104.6,
+   "lines": [
+    "Dile a tu amigo “No, no como mucho.”"
+   ],
+   "words": [
+    {
+     "w": "dile",
+     "start": 98.12,
+     "end": 98.68
+    },
+    {
+     "w": "a",
+     "start": 98.68,
+     "end": 98.8
+    },
+    {
+     "w": "tu",
+     "start": 98.8,
+     "end": 98.86
+    },
+    {
+     "w": "amigo",
+     "start": 98.86,
+     "end": 99.14
+    },
+    {
+     "w": "no",
+     "start": 99.44,
+     "end": 99.72
+    },
+    {
+     "w": "no",
+     "start": 100.04,
+     "end": 100.36
+    },
+    {
+     "w": "como",
+     "start": 100.36,
+     "end": 100.6
+    },
+    {
+     "w": "mucho",
+     "start": 100.6,
+     "end": 100.94
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 104.6,
+   "end": 109.84,
+   "text": "No, I don’t eat a lot.",
+   "words": [
+    {
+     "w": "no",
+     "start": 104.6,
+     "end": 105.22
+    },
+    {
+     "w": "i",
+     "start": 105.84,
+     "end": 105.84
+    },
+    {
+     "w": "dont",
+     "start": 105.84,
+     "end": 106.14
+    },
+    {
+     "w": "eat",
+     "start": 106.14,
+     "end": 106.36
+    },
+    {
+     "w": "a",
+     "start": 106.36,
+     "end": 106.52
+    },
+    {
+     "w": "lot",
+     "start": 106.52,
+     "end": 106.8
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 109.84,
+   "pauseAt": 112.66,
+   "spanish": "Ahora dile “como poco.”",
+   "expected": [
+    "I eat little."
+   ],
+   "end": 115.42,
+   "leadEnd": 110.74
+  },
+  {
+   "t": "english",
+   "start": 115.42,
+   "end": 120.14,
+   "text": "I eat little.",
+   "words": [
+    {
+     "w": "i",
+     "start": 115.42,
+     "end": 116.14
+    },
+    {
+     "w": "eat",
+     "start": 116.14,
+     "end": 116.34
+    },
+    {
+     "w": "little",
+     "start": 116.52,
+     "end": 116.72
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 120.14,
+   "pauseAt": 123.44,
+   "spanish": "Ahora pregúntale “¿comes mucho?”",
+   "expected": [
+    "Do you eat a lot?",
+    "Sometimes I eat a lot."
+   ],
+   "end": 126.12
+  },
+  {
+   "t": "english",
+   "start": 126.12,
+   "end": 131.16,
+   "text": "Do you eat a lot?",
+   "words": [
+    {
+     "w": "do",
+     "start": 126.12,
+     "end": 126.84
+    },
+    {
+     "w": "you",
+     "start": 126.84,
+     "end": 127.02
+    },
+    {
+     "w": "eat",
+     "start": 127.02,
+     "end": 127.22
+    },
+    {
+     "w": "a",
+     "start": 127.22,
+     "end": 127.34
+    },
+    {
+     "w": "lot",
+     "start": 127.34,
+     "end": 127.58
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 131.16,
+   "end": 133.8,
+   "text": "Sometimes I eat a lot.",
+   "words": [
+    {
+     "w": "sometimes",
+     "start": 131.16,
+     "end": 131.78
+    },
+    {
+     "w": "i",
+     "start": 131.78,
+     "end": 132.3
+    },
+    {
+     "w": "eat",
+     "start": 132.3,
+     "end": 132.5
+    },
+    {
+     "w": "a",
+     "start": 132.5,
+     "end": 132.6
+    },
+    {
+     "w": "lot",
+     "start": 132.6,
+     "end": 132.82
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 133.8,
+   "pauseAt": 137.42,
+   "spanish": "Ahora pregunta a tu amigo “¿bebes mucha agua?”",
+   "expected": [
+    "Do you drink a lot of water?",
+    "Yes, I drink a lot of water."
+   ],
+   "end": 140.4
+  },
+  {
+   "t": "english",
+   "start": 140.4,
+   "end": 145.08,
+   "text": "Do you drink a lot of water?",
+   "words": [
+    {
+     "w": "do",
+     "start": 140.4,
+     "end": 140.76
+    },
+    {
+     "w": "you",
+     "start": 140.76,
+     "end": 140.9
+    },
+    {
+     "w": "drink",
+     "start": 140.9,
+     "end": 141.1
+    },
+    {
+     "w": "a",
+     "start": 141.1,
+     "end": 141.26
+    },
+    {
+     "w": "lot",
+     "start": 141.26,
+     "end": 141.38
+    },
+    {
+     "w": "of",
+     "start": 141.38,
+     "end": 141.52
+    },
+    {
+     "w": "water",
+     "start": 141.52,
+     "end": 141.86
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 145.08,
+   "end": 148.44,
+   "text": "Yes, I drink a lot of water.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 145.08,
+     "end": 145.8
+    },
+    {
+     "w": "i",
+     "start": 146.16,
+     "end": 146.52
+    },
+    {
+     "w": "drink",
+     "start": 146.52,
+     "end": 146.78
+    },
+    {
+     "w": "a",
+     "start": 146.78,
+     "end": 146.92
+    },
+    {
+     "w": "lot",
+     "start": 146.92,
+     "end": 147.06
+    },
+    {
+     "w": "of",
+     "start": 147.06,
+     "end": 147.16
+    },
+    {
+     "w": "water",
+     "start": 147.16,
+     "end": 147.46
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 148.44,
+   "pauseAt": 153.4,
+   "spanish": "Ahora pregunta a tu amigo “¿tomas agua todos los días?”",
+   "expected": [
+    "Do you drink water every day?",
+    "Yes, I drink water every day."
+   ],
+   "end": 156.82
+  },
+  {
+   "t": "english",
+   "start": 156.82,
+   "end": 162.72,
+   "text": "Do you drink water every day?",
+   "words": [
+    {
+     "w": "do",
+     "start": 156.82,
+     "end": 157.42
+    },
+    {
+     "w": "you",
+     "start": 157.42,
+     "end": 157.54
+    },
+    {
+     "w": "drink",
+     "start": 157.54,
+     "end": 157.76
+    },
+    {
+     "w": "water",
+     "start": 157.76,
+     "end": 158.08
+    },
+    {
+     "w": "every",
+     "start": 158.08,
+     "end": 158.42
+    },
+    {
+     "w": "day",
+     "start": 158.42,
+     "end": 158.74
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 162.72,
+   "end": 165.84,
+   "text": "Yes, I drink water every day.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 162.72,
+     "end": 163.32
+    },
+    {
+     "w": "i",
+     "start": 163.7,
+     "end": 163.74
+    },
+    {
+     "w": "drink",
+     "start": 163.74,
+     "end": 163.98
+    },
+    {
+     "w": "water",
+     "start": 163.98,
+     "end": 164.28
+    },
+    {
+     "w": "every",
+     "start": 164.28,
+     "end": 164.56
+    },
+    {
+     "w": "day",
+     "start": 164.56,
+     "end": 164.8
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 165.84,
+   "pauseAt": 170.12,
+   "spanish": "Ahora pregunta a tu amigo “¿bebes mucha agua por las mañanas?”",
+   "expected": [
+    "Do you drink a lot of water in the mornings?",
+    "Yes, I drink a lot of water in the mornings.",
+    "And you?",
+    "Do you drink a lot of water in the mornings?"
+   ],
+   "end": 174.94
+  },
+  {
+   "t": "english",
+   "start": 174.94,
+   "end": 182.18,
+   "text": "Do you drink a lot of water in the mornings?",
+   "words": [
+    {
+     "w": "do",
+     "start": 174.94,
+     "end": 175.54
+    },
+    {
+     "w": "you",
+     "start": 175.54,
+     "end": 175.66
+    },
+    {
+     "w": "drink",
+     "start": 175.66,
+     "end": 175.96
+    },
+    {
+     "w": "a",
+     "start": 175.96,
+     "end": 176.14
+    },
+    {
+     "w": "lot",
+     "start": 176.14,
+     "end": 176.28
+    },
+    {
+     "w": "of",
+     "start": 176.28,
+     "end": 176.44
+    },
+    {
+     "w": "water",
+     "start": 176.44,
+     "end": 176.72
+    },
+    {
+     "w": "in",
+     "start": 176.72,
+     "end": 176.88
+    },
+    {
+     "w": "the",
+     "start": 176.88,
+     "end": 176.98
+    },
+    {
+     "w": "mornings",
+     "start": 176.98,
+     "end": 177.3
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 182.18,
+   "end": 188.98,
+   "text": "Yes, I drink a lot of water in the mornings. And you? Do you drink a lot of water in the mornings?",
+   "words": [
+    {
+     "w": "yes",
+     "start": 182.18,
+     "end": 182.74
+    },
+    {
+     "w": "i",
+     "start": 183.08,
+     "end": 183.14
+    },
+    {
+     "w": "drink",
+     "start": 183.14,
+     "end": 183.42
+    },
+    {
+     "w": "a",
+     "start": 183.42,
+     "end": 183.56
+    },
+    {
+     "w": "lot",
+     "start": 183.56,
+     "end": 183.72
+    },
+    {
+     "w": "of",
+     "start": 183.72,
+     "end": 183.84
+    },
+    {
+     "w": "water",
+     "start": 183.84,
+     "end": 184.16
+    },
+    {
+     "w": "in",
+     "start": 184.16,
+     "end": 184.36
+    },
+    {
+     "w": "the",
+     "start": 184.36,
+     "end": 184.46
+    },
+    {
+     "w": "mornings",
+     "start": 184.46,
+     "end": 184.94
+    },
+    {
+     "w": "and",
+     "start": 185.28,
+     "end": 185.62
+    },
+    {
+     "w": "you",
+     "start": 185.62,
+     "end": 185.84
+    },
+    {
+     "w": "do",
+     "start": 186.18,
+     "end": 186.72
+    },
+    {
+     "w": "you",
+     "start": 186.72,
+     "end": 186.88
+    },
+    {
+     "w": "drink",
+     "start": 186.88,
+     "end": 187.1
+    },
+    {
+     "w": "a",
+     "start": 187.1,
+     "end": 187.24
+    },
+    {
+     "w": "lot",
+     "start": 187.24,
+     "end": 187.32
+    },
+    {
+     "w": "of",
+     "start": 187.32,
+     "end": 187.44
+    },
+    {
+     "w": "water",
+     "start": 187.44,
+     "end": 187.64
+    },
+    {
+     "w": "in",
+     "start": 187.64,
+     "end": 187.78
+    },
+    {
+     "w": "the",
+     "start": 187.78,
+     "end": 187.86
+    },
+    {
+     "w": "mornings",
+     "start": 187.86,
+     "end": 188.16
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 188.98,
+   "end": 198.7,
+   "lines": [
+    "Dile “siempre bebo mucha agua por las mañanas.”"
+   ],
+   "words": [
+    {
+     "w": "dile",
+     "start": 188.98,
+     "end": 189.54
+    },
+    {
+     "w": "siempre",
+     "start": 189.96,
+     "end": 190.48
+    },
+    {
+     "w": "bebo",
+     "start": 190.48,
+     "end": 190.84
+    },
+    {
+     "w": "mucha",
+     "start": 190.84,
+     "end": 191.3
+    },
+    {
+     "w": "agua",
+     "start": 191.3,
+     "end": 191.56
+    },
+    {
+     "w": "por",
+     "start": 191.56,
+     "end": 191.78
+    },
+    {
+     "w": "las",
+     "start": 191.78,
+     "end": 192.0
+    },
+    {
+     "w": "mananas",
+     "start": 192.0,
+     "end": 192.48
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 198.7,
+   "end": 206.68,
+   "text": "I always drink a lot of water in the mornings.",
+   "words": [
+    {
+     "w": "i",
+     "start": 198.7,
+     "end": 199.26
+    },
+    {
+     "w": "always",
+     "start": 199.26,
+     "end": 199.72
+    },
+    {
+     "w": "drink",
+     "start": 199.72,
+     "end": 200.04
+    },
+    {
+     "w": "a",
+     "start": 200.04,
+     "end": 200.16
+    },
+    {
+     "w": "lot",
+     "start": 200.16,
+     "end": 200.36
+    },
+    {
+     "w": "of",
+     "start": 200.36,
+     "end": 200.52
+    },
+    {
+     "w": "water",
+     "start": 200.52,
+     "end": 200.84
+    },
+    {
+     "w": "in",
+     "start": 200.84,
+     "end": 201.0
+    },
+    {
+     "w": "the",
+     "start": 201.0,
+     "end": 201.1
+    },
+    {
+     "w": "mornings",
+     "start": 201.1,
+     "end": 201.54
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 206.68,
+   "end": 211.52,
+   "text": "And in the afternoon? Do you drink a lot of water in the afternoon?",
+   "words": [
+    {
+     "w": "and",
+     "start": 206.68,
+     "end": 207.12
+    },
+    {
+     "w": "in",
+     "start": 207.12,
+     "end": 207.3
+    },
+    {
+     "w": "the",
+     "start": 207.3,
+     "end": 207.4
+    },
+    {
+     "w": "afternoon",
+     "start": 207.4,
+     "end": 207.84
+    },
+    {
+     "w": "do",
+     "start": 208.3,
+     "end": 208.74
+    },
+    {
+     "w": "you",
+     "start": 208.74,
+     "end": 208.82
+    },
+    {
+     "w": "drink",
+     "start": 208.82,
+     "end": 209.02
+    },
+    {
+     "w": "a",
+     "start": 209.02,
+     "end": 209.18
+    },
+    {
+     "w": "lot",
+     "start": 209.18,
+     "end": 209.28
+    },
+    {
+     "w": "of",
+     "start": 209.28,
+     "end": 209.42
+    },
+    {
+     "w": "water",
+     "start": 209.42,
+     "end": 209.7
+    },
+    {
+     "w": "in",
+     "start": 209.7,
+     "end": 209.86
+    },
+    {
+     "w": "the",
+     "start": 209.86,
+     "end": 209.94
+    },
+    {
+     "w": "afternoon",
+     "start": 209.94,
+     "end": 210.38
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 211.52,
+   "end": 221.04,
+   "lines": [
+    "Dile, \"no, no bebo mucha agua por las tardes.\""
+   ],
+   "words": [
+    {
+     "w": "dile",
+     "start": 211.52,
+     "end": 211.86
+    },
+    {
+     "w": "no",
+     "start": 212.06,
+     "end": 212.32
+    },
+    {
+     "w": "no",
+     "start": 212.48,
+     "end": 212.7
+    },
+    {
+     "w": "bebo",
+     "start": 212.7,
+     "end": 212.96
+    },
+    {
+     "w": "mucha",
+     "start": 212.96,
+     "end": 213.28
+    },
+    {
+     "w": "agua",
+     "start": 213.28,
+     "end": 213.54
+    },
+    {
+     "w": "por",
+     "start": 213.54,
+     "end": 213.76
+    },
+    {
+     "w": "las",
+     "start": 213.76,
+     "end": 213.98
+    },
+    {
+     "w": "tardes",
+     "start": 213.98,
+     "end": 214.48
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 221.04,
+   "end": 229.9,
+   "text": "No, I don’t drink a lot of water in the afternoons.",
+   "words": [
+    {
+     "w": "no",
+     "start": 221.04,
+     "end": 221.48
+    },
+    {
+     "w": "i",
+     "start": 221.7,
+     "end": 221.94
+    },
+    {
+     "w": "dont",
+     "start": 221.94,
+     "end": 222.18
+    },
+    {
+     "w": "drink",
+     "start": 222.18,
+     "end": 222.36
+    },
+    {
+     "w": "a",
+     "start": 222.36,
+     "end": 222.48
+    },
+    {
+     "w": "lot",
+     "start": 222.48,
+     "end": 222.6
+    },
+    {
+     "w": "of",
+     "start": 222.6,
+     "end": 222.76
+    },
+    {
+     "w": "water",
+     "start": 222.76,
+     "end": 223.06
+    },
+    {
+     "w": "in",
+     "start": 223.06,
+     "end": 223.24
+    },
+    {
+     "w": "the",
+     "start": 223.24,
+     "end": 223.34
+    },
+    {
+     "w": "afternoons",
+     "start": 223.34,
+     "end": 224.08
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 229.9,
+   "pauseAt": 232.44,
+   "spanish": "Pregúntale “¿bebes mucha cerveza?”",
+   "expected": [
+    "Do you drink a lot of beer?",
+    "Yes, I drink a lot of beer."
+   ],
+   "end": 235.86
+  },
+  {
+   "t": "english",
+   "start": 235.86,
+   "end": 242.3,
+   "text": "Do you drink a lot of beer?",
+   "words": [
+    {
+     "w": "do",
+     "start": 235.86,
+     "end": 236.5
+    },
+    {
+     "w": "you",
+     "start": 236.5,
+     "end": 236.64
+    },
+    {
+     "w": "drink",
+     "start": 236.64,
+     "end": 236.9
+    },
+    {
+     "w": "a",
+     "start": 236.9,
+     "end": 237.06
+    },
+    {
+     "w": "lot",
+     "start": 237.06,
+     "end": 237.2
+    },
+    {
+     "w": "of",
+     "start": 237.2,
+     "end": 237.36
+    },
+    {
+     "w": "beer",
+     "start": 237.36,
+     "end": 237.66
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 242.3,
+   "end": 245.48,
+   "text": "Yes, I drink a lot of beer.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 242.3,
+     "end": 242.94
+    },
+    {
+     "w": "i",
+     "start": 243.28,
+     "end": 243.58
+    },
+    {
+     "w": "drink",
+     "start": 243.58,
+     "end": 243.82
+    },
+    {
+     "w": "a",
+     "start": 243.82,
+     "end": 243.96
+    },
+    {
+     "w": "lot",
+     "start": 243.96,
+     "end": 244.08
+    },
+    {
+     "w": "of",
+     "start": 244.08,
+     "end": 244.18
+    },
+    {
+     "w": "beer",
+     "start": 244.18,
+     "end": 244.4
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 245.48,
+   "pauseAt": 248.88,
+   "spanish": "Pregúntale “¿bebes mucha cerveza por las tardes?”",
+   "expected": [
+    "Do you drink a lot of beer in the afternoons?",
+    "No, I don't drink a lot of beer in the afternoons.",
+    "I drink a lot of beer at night.",
+    "Does she drink?"
+   ],
+   "end": 253.38
+  },
+  {
+   "t": "english",
+   "start": 253.38,
+   "end": 261.12,
+   "text": "Do you drink a lot of beer in the afternoons?",
+   "words": [
+    {
+     "w": "do",
+     "start": 253.38,
+     "end": 253.94
+    },
+    {
+     "w": "you",
+     "start": 253.94,
+     "end": 254.08
+    },
+    {
+     "w": "drink",
+     "start": 254.08,
+     "end": 254.34
+    },
+    {
+     "w": "a",
+     "start": 254.34,
+     "end": 254.48
+    },
+    {
+     "w": "lot",
+     "start": 254.48,
+     "end": 254.6
+    },
+    {
+     "w": "of",
+     "start": 254.6,
+     "end": 254.74
+    },
+    {
+     "w": "beer",
+     "start": 254.74,
+     "end": 255.04
+    },
+    {
+     "w": "in",
+     "start": 255.04,
+     "end": 255.22
+    },
+    {
+     "w": "the",
+     "start": 255.22,
+     "end": 255.32
+    },
+    {
+     "w": "afternoons",
+     "start": 255.32,
+     "end": 256.06
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 261.12,
+   "end": 269.42,
+   "text": "No, I don't drink a lot of beer in the afternoons. I drink a lot of beer at night. Does she drink?",
+   "words": [
+    {
+     "w": "no",
+     "start": 261.12,
+     "end": 261.68
+    },
+    {
+     "w": "i",
+     "start": 261.9,
+     "end": 262.28
+    },
+    {
+     "w": "dont",
+     "start": 262.28,
+     "end": 262.5
+    },
+    {
+     "w": "drink",
+     "start": 262.5,
+     "end": 262.68
+    },
+    {
+     "w": "a",
+     "start": 262.68,
+     "end": 262.82
+    },
+    {
+     "w": "lot",
+     "start": 262.82,
+     "end": 262.98
+    },
+    {
+     "w": "of",
+     "start": 262.98,
+     "end": 263.08
+    },
+    {
+     "w": "beer",
+     "start": 263.08,
+     "end": 263.3
+    },
+    {
+     "w": "in",
+     "start": 263.3,
+     "end": 263.46
+    },
+    {
+     "w": "the",
+     "start": 263.46,
+     "end": 263.56
+    },
+    {
+     "w": "afternoons",
+     "start": 263.56,
+     "end": 264.4
+    },
+    {
+     "w": "i",
+     "start": 264.7,
+     "end": 265.08
+    },
+    {
+     "w": "drink",
+     "start": 265.08,
+     "end": 265.36
+    },
+    {
+     "w": "a",
+     "start": 265.36,
+     "end": 265.5
+    },
+    {
+     "w": "lot",
+     "start": 265.5,
+     "end": 265.64
+    },
+    {
+     "w": "of",
+     "start": 265.64,
+     "end": 265.76
+    },
+    {
+     "w": "beer",
+     "start": 265.76,
+     "end": 266.14
+    },
+    {
+     "w": "at",
+     "start": 266.14,
+     "end": 266.42
+    },
+    {
+     "w": "night",
+     "start": 266.42,
+     "end": 266.92
+    },
+    {
+     "w": "does",
+     "start": 267.66,
+     "end": 267.92
+    },
+    {
+     "w": "she",
+     "start": 267.92,
+     "end": 268.12
+    },
+    {
+     "w": "drink",
+     "start": 268.12,
+     "end": 268.42
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 269.42,
+   "pauseAt": 273.14,
+   "spanish": "No entendiste su pregunta. Pregúntale “¿qué?”",
+   "expected": [
+    "What?",
+    "Does she drink?",
+    "Your friend.",
+    "Does your friend drink?"
+   ],
+   "end": 274.66
+  },
+  {
+   "t": "english",
+   "start": 274.66,
+   "end": 276.62,
+   "text": "What?",
+   "words": [
+    {
+     "w": "what",
+     "start": 274.66,
+     "end": 275.22
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 276.62,
+   "end": 281.8,
+   "text": "Does she drink? Your friend. Does your friend drink?",
+   "words": [
+    {
+     "w": "does",
+     "start": 276.62,
+     "end": 277.3
+    },
+    {
+     "w": "she",
+     "start": 277.3,
+     "end": 277.54
+    },
+    {
+     "w": "drink",
+     "start": 277.54,
+     "end": 277.92
+    },
+    {
+     "w": "your",
+     "start": 278.2,
+     "end": 278.84
+    },
+    {
+     "w": "friend",
+     "start": 278.84,
+     "end": 279.26
+    },
+    {
+     "w": "does",
+     "start": 279.48,
+     "end": 280.02
+    },
+    {
+     "w": "your",
+     "start": 280.02,
+     "end": 280.16
+    },
+    {
+     "w": "friend",
+     "start": 280.16,
+     "end": 280.36
+    },
+    {
+     "w": "drink",
+     "start": 280.36,
+     "end": 280.6
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 281.8,
+   "end": 292.44,
+   "lines": [
+    "Él acaba de preguntarte “Does your friend drink?” “Does your friend drink?” significa “tu amiga bebe?” Dile “ella bebe.”"
+   ],
+   "words": [
+    {
+     "w": "el",
+     "start": 281.82,
+     "end": 281.82
+    },
+    {
+     "w": "acaba",
+     "start": 281.8,
+     "end": 282.08
+    },
+    {
+     "w": "de",
+     "start": 282.08,
+     "end": 282.18
+    },
+    {
+     "w": "preguntarte",
+     "start": 282.18,
+     "end": 282.86
+    },
+    {
+     "w": "does",
+     "start": 283.06,
+     "end": 283.76
+    },
+    {
+     "w": "your",
+     "start": 283.76,
+     "end": 283.94
+    },
+    {
+     "w": "friend",
+     "start": 283.94,
+     "end": 284.22
+    },
+    {
+     "w": "drink",
+     "start": 284.22,
+     "end": 284.6
+    },
+    {
+     "w": "does",
+     "start": 284.88,
+     "end": 285.22
+    },
+    {
+     "w": "your",
+     "start": 285.22,
+     "end": 285.4
+    },
+    {
+     "w": "friend",
+     "start": 285.4,
+     "end": 285.68
+    },
+    {
+     "w": "drink",
+     "start": 285.68,
+     "end": 286.08
+    },
+    {
+     "w": "significa",
+     "start": 286.18,
+     "end": 286.78
+    },
+    {
+     "w": "tu",
+     "start": 286.96,
+     "end": 287.12
+    },
+    {
+     "w": "amiga",
+     "start": 287.12,
+     "end": 287.36
+    },
+    {
+     "w": "bebe",
+     "start": 287.36,
+     "end": 287.68
+    },
+    {
+     "w": "dile",
+     "start": 288.12,
+     "end": 288.42
+    },
+    {
+     "w": "ella",
+     "start": 289.06,
+     "end": 289.36
+    },
+    {
+     "w": "bebe",
+     "start": 289.36,
+     "end": 289.68
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 292.44,
+   "end": 296.2,
+   "text": "She drinks.",
+   "words": [
+    {
+     "w": "she",
+     "start": 292.44,
+     "end": 293.12
+    },
+    {
+     "w": "drinks",
+     "start": 293.12,
+     "end": 293.52
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 296.2,
+   "pauseAt": 299.82,
+   "spanish": "Ahora dile “ella bebe un poquito.”",
+   "expected": [
+    "She drinks a little bit.",
+    "Does she drink a lot of pop?"
+   ],
+   "end": 302.22,
+   "leadEnd": 297.16
+  },
+  {
+   "t": "english",
+   "start": 302.22,
+   "end": 307.34,
+   "text": "She drinks a little bit.",
+   "words": [
+    {
+     "w": "she",
+     "start": 302.22,
+     "end": 302.86
+    },
+    {
+     "w": "drinks",
+     "start": 302.86,
+     "end": 303.22
+    },
+    {
+     "w": "a",
+     "start": 303.22,
+     "end": 303.46
+    },
+    {
+     "w": "little",
+     "start": 303.46,
+     "end": 303.64
+    },
+    {
+     "w": "bit",
+     "start": 303.64,
+     "end": 304.02
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 307.34,
+   "end": 310.02,
+   "text": "Does she drink a lot of pop?",
+   "words": [
+    {
+     "w": "does",
+     "start": 307.34,
+     "end": 307.98
+    },
+    {
+     "w": "she",
+     "start": 307.98,
+     "end": 308.16
+    },
+    {
+     "w": "drink",
+     "start": 308.16,
+     "end": 308.38
+    },
+    {
+     "w": "a",
+     "start": 308.38,
+     "end": 308.54
+    },
+    {
+     "w": "lot",
+     "start": 308.54,
+     "end": 308.6
+    },
+    {
+     "w": "of",
+     "start": 308.6,
+     "end": 308.72
+    },
+    {
+     "w": "pop",
+     "start": 308.72,
+     "end": 309.04
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 310.02,
+   "pauseAt": 314.28,
+   "spanish": "Responde \"sí, Ella bebe mucha gaseosa.\"",
+   "expected": [
+    "Yes, she drinks a lot of pop.",
+    "Does she drink a lot of wine?"
+   ],
+   "end": 317.24
+  },
+  {
+   "t": "english",
+   "start": 317.24,
+   "end": 322.82,
+   "text": "Yes, she drinks a lot of pop.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 317.24,
+     "end": 317.88
+    },
+    {
+     "w": "she",
+     "start": 318.16,
+     "end": 318.42
+    },
+    {
+     "w": "drinks",
+     "start": 318.42,
+     "end": 318.74
+    },
+    {
+     "w": "a",
+     "start": 318.74,
+     "end": 318.96
+    },
+    {
+     "w": "lot",
+     "start": 318.96,
+     "end": 319.12
+    },
+    {
+     "w": "of",
+     "start": 319.12,
+     "end": 319.28
+    },
+    {
+     "w": "pop",
+     "start": 319.28,
+     "end": 319.6
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 322.82,
+   "end": 325.24,
+   "text": "Does she drink a lot of wine?",
+   "words": [
+    {
+     "w": "does",
+     "start": 322.82,
+     "end": 323.46
+    },
+    {
+     "w": "she",
+     "start": 323.46,
+     "end": 323.62
+    },
+    {
+     "w": "drink",
+     "start": 323.62,
+     "end": 323.84
+    },
+    {
+     "w": "a",
+     "start": 323.84,
+     "end": 323.98
+    },
+    {
+     "w": "lot",
+     "start": 323.98,
+     "end": 324.1
+    },
+    {
+     "w": "of",
+     "start": 324.1,
+     "end": 324.2
+    },
+    {
+     "w": "wine",
+     "start": 324.2,
+     "end": 324.54
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 325.24,
+   "pauseAt": 329.14,
+   "spanish": "Ahora dile “sí, ella siempre bebe mucho vino.”",
+   "expected": [
+    "Yes, she always drinks a lot of wine.",
+    "She eats a lot?"
+   ],
+   "end": 332.98,
+   "leadEnd": 325.98
+  },
+  {
+   "t": "english",
+   "start": 332.98,
+   "end": 339.56,
+   "text": "Yes, she always drinks a lot of wine.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 332.98,
+     "end": 333.68
+    },
+    {
+     "w": "she",
+     "start": 333.86,
+     "end": 334.1
+    },
+    {
+     "w": "always",
+     "start": 334.1,
+     "end": 334.46
+    },
+    {
+     "w": "drinks",
+     "start": 334.46,
+     "end": 334.82
+    },
+    {
+     "w": "a",
+     "start": 334.82,
+     "end": 335.06
+    },
+    {
+     "w": "lot",
+     "start": 335.06,
+     "end": 335.22
+    },
+    {
+     "w": "of",
+     "start": 335.22,
+     "end": 335.38
+    },
+    {
+     "w": "wine",
+     "start": 335.38,
+     "end": 335.78
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 339.56,
+   "end": 341.44,
+   "text": "She eats a lot?",
+   "words": [
+    {
+     "w": "she",
+     "start": 339.56,
+     "end": 340.26
+    },
+    {
+     "w": "eats",
+     "start": 340.26,
+     "end": 340.54
+    },
+    {
+     "w": "a",
+     "start": 340.54,
+     "end": 340.68
+    },
+    {
+     "w": "lot",
+     "start": 340.68,
+     "end": 340.92
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 341.44,
+   "end": 348.66,
+   "lines": [
+    "Dile “sí, ella siempre come mucho.”"
+   ],
+   "words": [
+    {
+     "w": "dile",
+     "start": 341.44,
+     "end": 341.92
+    },
+    {
+     "w": "si",
+     "start": 342.26,
+     "end": 342.8
+    },
+    {
+     "w": "ella",
+     "start": 343.12,
+     "end": 343.58
+    },
+    {
+     "w": "siempre",
+     "start": 343.58,
+     "end": 343.94
+    },
+    {
+     "w": "come",
+     "start": 343.94,
+     "end": 344.24
+    },
+    {
+     "w": "mucho",
+     "start": 344.24,
+     "end": 344.62
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 348.66,
+   "end": 354.8,
+   "text": "Yes, she always eats a lot.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 348.66,
+     "end": 349.36
+    },
+    {
+     "w": "she",
+     "start": 349.58,
+     "end": 349.82
+    },
+    {
+     "w": "always",
+     "start": 349.82,
+     "end": 350.18
+    },
+    {
+     "w": "eats",
+     "start": 350.18,
+     "end": 350.48
+    },
+    {
+     "w": "a",
+     "start": 350.48,
+     "end": 350.66
+    },
+    {
+     "w": "lot",
+     "start": 350.66,
+     "end": 350.92
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 354.8,
+   "pauseAt": 358.02,
+   "spanish": "Ahora pregúntale “¿bebes mucho vino?”",
+   "expected": [
+    "Do you drink a lot of wine?",
+    "No, I never drink a lot of wine.",
+    "But I drink a lot of beer.",
+    "And them?",
+    "Do they drink a lot of milk?"
+   ],
+   "end": 360.8
+  },
+  {
+   "t": "english",
+   "start": 360.8,
+   "end": 365.78,
+   "text": "Do you drink a lot of wine?",
+   "words": [
+    {
+     "w": "do",
+     "start": 360.8,
+     "end": 361.4
+    },
+    {
+     "w": "you",
+     "start": 361.4,
+     "end": 361.54
+    },
+    {
+     "w": "drink",
+     "start": 361.54,
+     "end": 361.8
+    },
+    {
+     "w": "a",
+     "start": 361.8,
+     "end": 361.98
+    },
+    {
+     "w": "lot",
+     "start": 361.98,
+     "end": 362.1
+    },
+    {
+     "w": "of",
+     "start": 362.1,
+     "end": 362.24
+    },
+    {
+     "w": "wine",
+     "start": 362.24,
+     "end": 362.6
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 365.78,
+   "end": 373.9,
+   "text": "No, I never drink a lot of wine. But I drink a lot of beer. And them? Do they drink a lot of milk?",
+   "words": [
+    {
+     "w": "no",
+     "start": 365.78,
+     "end": 366.38
+    },
+    {
+     "w": "i",
+     "start": 366.6,
+     "end": 366.88
+    },
+    {
+     "w": "never",
+     "start": 366.88,
+     "end": 367.16
+    },
+    {
+     "w": "drink",
+     "start": 367.16,
+     "end": 367.4
+    },
+    {
+     "w": "a",
+     "start": 367.4,
+     "end": 367.54
+    },
+    {
+     "w": "lot",
+     "start": 367.54,
+     "end": 367.62
+    },
+    {
+     "w": "of",
+     "start": 367.62,
+     "end": 367.74
+    },
+    {
+     "w": "wine",
+     "start": 367.74,
+     "end": 368.02
+    },
+    {
+     "w": "but",
+     "start": 368.28,
+     "end": 368.56
+    },
+    {
+     "w": "i",
+     "start": 368.56,
+     "end": 368.7
+    },
+    {
+     "w": "drink",
+     "start": 368.7,
+     "end": 369.04
+    },
+    {
+     "w": "a",
+     "start": 369.04,
+     "end": 369.26
+    },
+    {
+     "w": "lot",
+     "start": 369.26,
+     "end": 369.56
+    },
+    {
+     "w": "of",
+     "start": 369.56,
+     "end": 369.76
+    },
+    {
+     "w": "beer",
+     "start": 369.76,
+     "end": 370.08
+    },
+    {
+     "w": "and",
+     "start": 370.46,
+     "end": 370.8
+    },
+    {
+     "w": "them",
+     "start": 370.8,
+     "end": 371.08
+    },
+    {
+     "w": "do",
+     "start": 371.54,
+     "end": 371.92
+    },
+    {
+     "w": "they",
+     "start": 371.92,
+     "end": 372.08
+    },
+    {
+     "w": "drink",
+     "start": 372.08,
+     "end": 372.3
+    },
+    {
+     "w": "a",
+     "start": 372.3,
+     "end": 372.44
+    },
+    {
+     "w": "lot",
+     "start": 372.44,
+     "end": 372.52
+    },
+    {
+     "w": "of",
+     "start": 372.52,
+     "end": 372.64
+    },
+    {
+     "w": "milk",
+     "start": 372.64,
+     "end": 372.9
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 373.9,
+   "pauseAt": 378.34,
+   "spanish": "Responde, “sí, ellos beben mucha leche.”",
+   "expected": [
+    "Yes, they drink a lot of milk."
+   ],
+   "end": 380.92
+  },
+  {
+   "t": "english",
+   "start": 380.92,
+   "end": 386.24,
+   "text": "Yes, they drink a lot of milk.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 380.92,
+     "end": 381.52
+    },
+    {
+     "w": "they",
+     "start": 381.72,
+     "end": 381.92
+    },
+    {
+     "w": "drink",
+     "start": 381.92,
+     "end": 382.18
+    },
+    {
+     "w": "a",
+     "start": 382.18,
+     "end": 382.34
+    },
+    {
+     "w": "lot",
+     "start": 382.34,
+     "end": 382.48
+    },
+    {
+     "w": "of",
+     "start": 382.48,
+     "end": 382.64
+    },
+    {
+     "w": "milk",
+     "start": 382.64,
+     "end": 382.98
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 386.24,
+   "pauseAt": 392.22,
+   "spanish": "Ahora dile “ellos beben mucha leche por las noches.”",
+   "expected": [
+    "They drink a lot of milk in the evenings."
+   ],
+   "end": 396.06,
+   "leadEnd": 387.18
+  },
+  {
+   "t": "english",
+   "start": 396.06,
+   "end": 403.48,
+   "text": "They drink a lot of milk in the evenings.",
+   "words": [
+    {
+     "w": "they",
+     "start": 396.06,
+     "end": 396.74
+    },
+    {
+     "w": "drink",
+     "start": 396.74,
+     "end": 396.98
+    },
+    {
+     "w": "a",
+     "start": 396.98,
+     "end": 397.12
+    },
+    {
+     "w": "lot",
+     "start": 397.12,
+     "end": 397.24
+    },
+    {
+     "w": "of",
+     "start": 397.24,
+     "end": 397.4
+    },
+    {
+     "w": "milk",
+     "start": 397.4,
+     "end": 397.74
+    },
+    {
+     "w": "in",
+     "start": 397.74,
+     "end": 398.0
+    },
+    {
+     "w": "the",
+     "start": 398.0,
+     "end": 398.1
+    },
+    {
+     "w": "evenings",
+     "start": 398.1,
+     "end": 398.58
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 403.48,
+   "pauseAt": 408.7,
+   "spanish": "Ahora dile “ellos siempre beben mucha leche por las noches.”",
+   "expected": [
+    "They always drink a lot of milk in the evenings."
+   ],
+   "end": 412.66,
+   "leadEnd": 404.46
+  },
+  {
+   "t": "english",
+   "start": 412.66,
+   "end": 420.26,
+   "text": "They always drink a lot of milk in the evenings.",
+   "words": [
+    {
+     "w": "they",
+     "start": 412.66,
+     "end": 413.22
+    },
+    {
+     "w": "always",
+     "start": 413.22,
+     "end": 413.5
+    },
+    {
+     "w": "drink",
+     "start": 413.5,
+     "end": 413.74
+    },
+    {
+     "w": "a",
+     "start": 413.74,
+     "end": 413.92
+    },
+    {
+     "w": "lot",
+     "start": 413.92,
+     "end": 414.06
+    },
+    {
+     "w": "of",
+     "start": 414.06,
+     "end": 414.2
+    },
+    {
+     "w": "milk",
+     "start": 414.2,
+     "end": 414.52
+    },
+    {
+     "w": "in",
+     "start": 414.52,
+     "end": 414.72
+    },
+    {
+     "w": "the",
+     "start": 414.72,
+     "end": 414.84
+    },
+    {
+     "w": "evenings",
+     "start": 414.84,
+     "end": 415.38
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 420.26,
+   "pauseAt": 424.24,
+   "spanish": "Ahora pregúntale “¿ellos comen por las mañanas?”",
+   "expected": [
+    "Do they eat in the mornings?",
+    "Yes, they always eat in the mornings.",
+    "And you guys?",
+    "Do you guys eat in the mornings?"
+   ],
+   "end": 428.3
+  },
+  {
+   "t": "english",
+   "start": 428.3,
+   "end": 429.42,
+   "text": "Do they eat in the mornings?",
+   "words": [
+    {
+     "w": "do",
+     "start": 428.3,
+     "end": 428.86
+    },
+    {
+     "w": "they",
+     "start": 428.86,
+     "end": 429.0
+    },
+    {
+     "w": "eat",
+     "start": 429.0,
+     "end": 429.26
+    },
+    {
+     "w": "in",
+     "start": 429.26,
+     "end": 429.42
+    },
+    {
+     "w": "the",
+     "start": 429.42,
+     "end": 429.5
+    },
+    {
+     "w": "mornings",
+     "start": 429.5,
+     "end": 429.84
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 429.42,
+   "end": 441.24,
+   "text": "Yes, they always eat in the mornings. And you guys? Do you guys eat in the mornings?",
+   "words": [
+    {
+     "w": "yes",
+     "start": 429.44,
+     "end": 429.44
+    },
+    {
+     "w": "they",
+     "start": 429.46,
+     "end": 429.46
+    },
+    {
+     "w": "always",
+     "start": 429.48,
+     "end": 429.48
+    },
+    {
+     "w": "eat",
+     "start": 429.5,
+     "end": 429.5
+    },
+    {
+     "w": "in",
+     "start": 429.52,
+     "end": 429.52
+    },
+    {
+     "w": "the",
+     "start": 429.42,
+     "end": 429.5
+    },
+    {
+     "w": "mornings",
+     "start": 429.52,
+     "end": 432.49
+    },
+    {
+     "w": "and",
+     "start": 432.51,
+     "end": 433.99
+    },
+    {
+     "w": "you",
+     "start": 434.01,
+     "end": 434.74
+    },
+    {
+     "w": "guys",
+     "start": 434.76,
+     "end": 435.11
+    },
+    {
+     "w": "do",
+     "start": 435.13,
+     "end": 435.3
+    },
+    {
+     "w": "you",
+     "start": 435.32,
+     "end": 435.39
+    },
+    {
+     "w": "guys",
+     "start": 435.41,
+     "end": 435.44
+    },
+    {
+     "w": "eat",
+     "start": 435.46,
+     "end": 435.46
+    },
+    {
+     "w": "in",
+     "start": 435.48,
+     "end": 435.48
+    },
+    {
+     "w": "the",
+     "start": 435.5,
+     "end": 435.5
+    },
+    {
+     "w": "mornings",
+     "start": 435.52,
+     "end": 435.52
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 441.24,
+   "pauseAt": 445.56,
+   "spanish": "Responde, “no, nunca comemos por las mañanas.”",
+   "expected": [
+    "No, we never eat in the mornings.",
+    "Do you guys drink coffee in the morning?"
+   ],
+   "end": 449.76
+  },
+  {
+   "t": "english",
+   "start": 449.76,
+   "end": 456.94,
+   "text": "No, we never eat in the mornings.",
+   "words": [
+    {
+     "w": "no",
+     "start": 449.76,
+     "end": 450.42
+    },
+    {
+     "w": "we",
+     "start": 450.62,
+     "end": 450.78
+    },
+    {
+     "w": "never",
+     "start": 450.78,
+     "end": 450.98
+    },
+    {
+     "w": "eat",
+     "start": 450.98,
+     "end": 451.3
+    },
+    {
+     "w": "in",
+     "start": 451.3,
+     "end": 451.44
+    },
+    {
+     "w": "the",
+     "start": 451.44,
+     "end": 451.52
+    },
+    {
+     "w": "mornings",
+     "start": 451.52,
+     "end": 451.92
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 456.94,
+   "end": 460.12,
+   "text": "Do you guys drink coffee in the morning?",
+   "words": [
+    {
+     "w": "do",
+     "start": 456.94,
+     "end": 457.54
+    },
+    {
+     "w": "you",
+     "start": 457.54,
+     "end": 457.68
+    },
+    {
+     "w": "guys",
+     "start": 457.68,
+     "end": 457.92
+    },
+    {
+     "w": "drink",
+     "start": 457.92,
+     "end": 458.14
+    },
+    {
+     "w": "coffee",
+     "start": 458.14,
+     "end": 458.6
+    },
+    {
+     "w": "in",
+     "start": 458.6,
+     "end": 458.72
+    },
+    {
+     "w": "the",
+     "start": 458.72,
+     "end": 458.8
+    },
+    {
+     "w": "morning",
+     "start": 458.8,
+     "end": 459.06
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 460.12,
+   "pauseAt": 464.42,
+   "spanish": "Responde, “sí, bebemos café por las mañanas.”",
+   "expected": [
+    "Yes, we drink coffee in the mornings."
+   ],
+   "end": 468.42
+  },
+  {
+   "t": "english",
+   "start": 468.42,
+   "end": 473.82,
+   "text": "Yes, we drink coffee in the mornings.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 468.42,
+     "end": 469.02
+    },
+    {
+     "w": "we",
+     "start": 469.24,
+     "end": 469.3
+    },
+    {
+     "w": "drink",
+     "start": 469.3,
+     "end": 469.52
+    },
+    {
+     "w": "coffee",
+     "start": 469.52,
+     "end": 469.98
+    },
+    {
+     "w": "in",
+     "start": 469.98,
+     "end": 470.16
+    },
+    {
+     "w": "the",
+     "start": 470.16,
+     "end": 470.24
+    },
+    {
+     "w": "mornings",
+     "start": 470.24,
+     "end": 470.6
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 473.82,
+   "pauseAt": 477.56,
+   "spanish": "Y ahora dile “bebemos té por la tarde.”",
+   "expected": [
+    "We drink tea in the afternoon."
+   ],
+   "end": 481.1
+  },
+  {
+   "t": "english",
+   "start": 481.1,
+   "end": 487.48,
+   "text": "We drink tea in the afternoon.",
+   "words": [
+    {
+     "w": "we",
+     "start": 481.1,
+     "end": 481.76
+    },
+    {
+     "w": "drink",
+     "start": 481.76,
+     "end": 482.0
+    },
+    {
+     "w": "tea",
+     "start": 482.0,
+     "end": 482.28
+    },
+    {
+     "w": "in",
+     "start": 482.28,
+     "end": 482.48
+    },
+    {
+     "w": "the",
+     "start": 482.48,
+     "end": 482.58
+    },
+    {
+     "w": "afternoon",
+     "start": 482.58,
+     "end": 483.04
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 487.48,
+   "end": 492.46,
+   "lines": [
+    "Ahora escucha la siguiente conversación."
+   ],
+   "words": [
+    {
+     "w": "ahora",
+     "start": 487.48,
+     "end": 488.14
+    },
+    {
+     "w": "escucha",
+     "start": 488.38,
+     "end": 488.66
+    },
+    {
+     "w": "la",
+     "start": 488.66,
+     "end": 488.78
+    },
+    {
+     "w": "siguiente",
+     "start": 488.78,
+     "end": 489.12
+    },
+    {
+     "w": "conversacion",
+     "start": 489.12,
+     "end": 490.06
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 492.46,
+   "end": 495.02,
+   "text": "Hello. What do you sell?",
+   "words": [
+    {
+     "w": "hello",
+     "start": 492.46,
+     "end": 493.12
+    },
+    {
+     "w": "what",
+     "start": 493.56,
+     "end": 493.94
+    },
+    {
+     "w": "do",
+     "start": 493.94,
+     "end": 494.08
+    },
+    {
+     "w": "you",
+     "start": 494.08,
+     "end": 494.18
+    },
+    {
+     "w": "sell",
+     "start": 494.18,
+     "end": 494.54
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 495.02,
+   "end": 497.86,
+   "text": "We sell fruit. Do you eat apples?",
+   "words": [
+    {
+     "w": "we",
+     "start": 495.02,
+     "end": 495.52
+    },
+    {
+     "w": "sell",
+     "start": 495.52,
+     "end": 495.84
+    },
+    {
+     "w": "fruit",
+     "start": 495.84,
+     "end": 496.28
+    },
+    {
+     "w": "do",
+     "start": 496.6,
+     "end": 497.16
+    },
+    {
+     "w": "you",
+     "start": 497.16,
+     "end": 497.3
+    },
+    {
+     "w": "eat",
+     "start": 497.3,
+     "end": 497.5
+    },
+    {
+     "w": "apples",
+     "start": 497.5,
+     "end": 497.86
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 497.86,
+   "end": 500.68,
+   "text": "Yes, I eat apples every day.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 497.86,
+     "end": 498.66
+    },
+    {
+     "w": "i",
+     "start": 498.86,
+     "end": 498.98
+    },
+    {
+     "w": "eat",
+     "start": 498.98,
+     "end": 499.16
+    },
+    {
+     "w": "apples",
+     "start": 499.16,
+     "end": 499.58
+    },
+    {
+     "w": "every",
+     "start": 499.58,
+     "end": 499.98
+    },
+    {
+     "w": "day",
+     "start": 499.98,
+     "end": 500.3
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 500.68,
+   "end": 502.88,
+   "text": "We sell apples every day.",
+   "words": [
+    {
+     "w": "we",
+     "start": 500.68,
+     "end": 501.12
+    },
+    {
+     "w": "sell",
+     "start": 501.12,
+     "end": 501.44
+    },
+    {
+     "w": "apples",
+     "start": 501.44,
+     "end": 501.92
+    },
+    {
+     "w": "every",
+     "start": 501.92,
+     "end": 502.22
+    },
+    {
+     "w": "day",
+     "start": 502.22,
+     "end": 502.48
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 502.88,
+   "end": 505.44,
+   "text": "And wine, do you guys sell wine?",
+   "words": [
+    {
+     "w": "and",
+     "start": 502.88,
+     "end": 503.16
+    },
+    {
+     "w": "wine",
+     "start": 503.16,
+     "end": 503.52
+    },
+    {
+     "w": "do",
+     "start": 503.72,
+     "end": 504.02
+    },
+    {
+     "w": "you",
+     "start": 504.02,
+     "end": 504.18
+    },
+    {
+     "w": "guys",
+     "start": 504.18,
+     "end": 504.4
+    },
+    {
+     "w": "sell",
+     "start": 504.4,
+     "end": 504.7
+    },
+    {
+     "w": "wine",
+     "start": 504.7,
+     "end": 505.06
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 505.44,
+   "end": 508.98,
+   "text": "No, we don’t sell wine. But they sell wine.",
+   "words": [
+    {
+     "w": "no",
+     "start": 505.44,
+     "end": 505.9
+    },
+    {
+     "w": "we",
+     "start": 506.08,
+     "end": 506.28
+    },
+    {
+     "w": "dont",
+     "start": 506.28,
+     "end": 506.58
+    },
+    {
+     "w": "sell",
+     "start": 506.58,
+     "end": 506.84
+    },
+    {
+     "w": "wine",
+     "start": 506.84,
+     "end": 507.2
+    },
+    {
+     "w": "but",
+     "start": 507.42,
+     "end": 507.7
+    },
+    {
+     "w": "they",
+     "start": 507.7,
+     "end": 507.92
+    },
+    {
+     "w": "sell",
+     "start": 507.92,
+     "end": 508.22
+    },
+    {
+     "w": "wine",
+     "start": 508.22,
+     "end": 508.54
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 508.98,
+   "end": 510.32,
+   "text": "Who, them?",
+   "words": [
+    {
+     "w": "who",
+     "start": 508.98,
+     "end": 509.4
+    },
+    {
+     "w": "them",
+     "start": 509.54,
+     "end": 509.72
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 510.32,
+   "end": 513.3,
+   "text": "Yes. They sell wine and beer.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 510.32,
+     "end": 510.76
+    },
+    {
+     "w": "they",
+     "start": 511.26,
+     "end": 511.6
+    },
+    {
+     "w": "sell",
+     "start": 511.6,
+     "end": 511.96
+    },
+    {
+     "w": "wine",
+     "start": 511.96,
+     "end": 512.4
+    },
+    {
+     "w": "and",
+     "start": 512.4,
+     "end": 512.6
+    },
+    {
+     "w": "beer",
+     "start": 512.6,
+     "end": 512.92
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 513.3,
+   "end": 520.16,
+   "text": "I don't drink beer, but I drink a little bit of wine in the afternoon.",
+   "words": [
+    {
+     "w": "i",
+     "start": 513.3,
+     "end": 513.6
+    },
+    {
+     "w": "dont",
+     "start": 513.6,
+     "end": 513.82
+    },
+    {
+     "w": "drink",
+     "start": 513.82,
+     "end": 514.04
+    },
+    {
+     "w": "beer",
+     "start": 514.04,
+     "end": 514.38
+    },
+    {
+     "w": "but",
+     "start": 514.58,
+     "end": 514.92
+    },
+    {
+     "w": "i",
+     "start": 514.92,
+     "end": 515.02
+    },
+    {
+     "w": "drink",
+     "start": 515.02,
+     "end": 515.28
+    },
+    {
+     "w": "a",
+     "start": 515.28,
+     "end": 515.46
+    },
+    {
+     "w": "little",
+     "start": 515.46,
+     "end": 515.66
+    },
+    {
+     "w": "bit",
+     "start": 515.66,
+     "end": 515.82
+    },
+    {
+     "w": "of",
+     "start": 515.82,
+     "end": 515.98
+    },
+    {
+     "w": "wine",
+     "start": 515.98,
+     "end": 516.3
+    },
+    {
+     "w": "in",
+     "start": 516.3,
+     "end": 516.48
+    },
+    {
+     "w": "the",
+     "start": 516.48,
+     "end": 516.58
+    },
+    {
+     "w": "afternoon",
+     "start": 516.58,
+     "end": 517.06
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 520.16,
+   "end": 535.48,
+   "lines": [
+    "Ahora aprendamos otro verbo en el presente simple. Y aprendemos los nombres de algunas frutas en inglés. Ahora aprendamos cómo decir el verbo \"vender.\" Escucha y repite."
+   ],
+   "words": [
+    {
+     "w": "ahora",
+     "start": 520.16,
+     "end": 520.76
+    },
+    {
+     "w": "aprendamos",
+     "start": 520.76,
+     "end": 521.36
+    },
+    {
+     "w": "otro",
+     "start": 521.36,
+     "end": 521.78
+    },
+    {
+     "w": "verbo",
+     "start": 521.78,
+     "end": 522.18
+    },
+    {
+     "w": "en",
+     "start": 522.18,
+     "end": 522.36
+    },
+    {
+     "w": "el",
+     "start": 522.36,
+     "end": 522.48
+    },
+    {
+     "w": "presente",
+     "start": 522.48,
+     "end": 522.86
+    },
+    {
+     "w": "simple",
+     "start": 522.86,
+     "end": 523.26
+    },
+    {
+     "w": "y",
+     "start": 523.26,
+     "end": 523.8
+    },
+    {
+     "w": "aprendemos",
+     "start": 523.8,
+     "end": 524.48
+    },
+    {
+     "w": "los",
+     "start": 524.48,
+     "end": 524.88
+    },
+    {
+     "w": "nombres",
+     "start": 524.88,
+     "end": 525.76
+    },
+    {
+     "w": "de",
+     "start": 525.76,
+     "end": 526.06
+    },
+    {
+     "w": "algunas",
+     "start": 526.06,
+     "end": 526.38
+    },
+    {
+     "w": "frutas",
+     "start": 526.38,
+     "end": 526.96
+    },
+    {
+     "w": "en",
+     "start": 526.96,
+     "end": 527.62
+    },
+    {
+     "w": "ingles",
+     "start": 527.62,
+     "end": 527.94
+    },
+    {
+     "w": "ahora",
+     "start": 528.4,
+     "end": 528.98
+    },
+    {
+     "w": "aprendamos",
+     "start": 528.98,
+     "end": 529.74
+    },
+    {
+     "w": "como",
+     "start": 529.74,
+     "end": 529.96
+    },
+    {
+     "w": "decir",
+     "start": 529.96,
+     "end": 530.26
+    },
+    {
+     "w": "el",
+     "start": 530.26,
+     "end": 530.52
+    },
+    {
+     "w": "verbo",
+     "start": 530.52,
+     "end": 531.06
+    },
+    {
+     "w": "vender",
+     "start": 531.06,
+     "end": 531.74
+    },
+    {
+     "w": "escucha",
+     "start": 532.14,
+     "end": 533.18
+    },
+    {
+     "w": "y",
+     "start": 533.18,
+     "end": 533.76
+    },
+    {
+     "w": "repite",
+     "start": 533.76,
+     "end": 534.62
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 535.48,
+   "end": 540.28,
+   "text": "Sell. Sell.",
+   "words": [
+    {
+     "w": "sell",
+     "start": 535.48,
+     "end": 535.9
+    },
+    {
+     "w": "sell",
+     "start": 537.34,
+     "end": 538.5
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 540.28,
+   "pauseAt": 542.7,
+   "spanish": "¿Cómo se dice ‘vender’?",
+   "expected": [
+    "Sell."
+   ],
+   "end": 542.94
+  },
+  {
+   "t": "english",
+   "start": 542.94,
+   "end": 548.32,
+   "text": "Sell. Sell.",
+   "words": [
+    {
+     "w": "sell",
+     "start": 542.94,
+     "end": 543.74
+    },
+    {
+     "w": "sell",
+     "start": 545.26,
+     "end": 546.28
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 548.32,
+   "end": 550.24,
+   "lines": [
+    "Escucha esta pregunta:"
+   ],
+   "words": [
+    {
+     "w": "escucha",
+     "start": 548.32,
+     "end": 549.14
+    },
+    {
+     "w": "esta",
+     "start": 549.14,
+     "end": 549.32
+    },
+    {
+     "w": "pregunta",
+     "start": 549.32,
+     "end": 549.78
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 550.24,
+   "end": 551.6,
+   "text": "Do you sell?",
+   "words": [
+    {
+     "w": "do",
+     "start": 550.24,
+     "end": 550.64
+    },
+    {
+     "w": "you",
+     "start": 550.64,
+     "end": 550.84
+    },
+    {
+     "w": "sell",
+     "start": 550.84,
+     "end": 551.22
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 551.6,
+   "pauseAt": 554.83,
+   "spanish": "Intenta responder, “Sí, vendo”.",
+   "expected": [
+    "Yes, I sell."
+   ],
+   "end": 554.98
+  },
+  {
+   "t": "english",
+   "start": 554.98,
+   "end": 563.68,
+   "text": "Yes, I sell. Yes, I sell.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 554.98,
+     "end": 555.46
+    },
+    {
+     "w": "i",
+     "start": 555.86,
+     "end": 556.26
+    },
+    {
+     "w": "sell",
+     "start": 556.26,
+     "end": 556.62
+    },
+    {
+     "w": "yes",
+     "start": 559.36,
+     "end": 560.18
+    },
+    {
+     "w": "i",
+     "start": 560.54,
+     "end": 560.8
+    },
+    {
+     "w": "sell",
+     "start": 560.8,
+     "end": 561.16
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 563.68,
+   "end": 566.84,
+   "lines": [
+    "Escucha la misma pregunta otra vez."
+   ],
+   "words": [
+    {
+     "w": "escucha",
+     "start": 563.68,
+     "end": 564.5
+    },
+    {
+     "w": "la",
+     "start": 564.5,
+     "end": 564.64
+    },
+    {
+     "w": "misma",
+     "start": 564.64,
+     "end": 564.92
+    },
+    {
+     "w": "pregunta",
+     "start": 564.92,
+     "end": 565.46
+    },
+    {
+     "w": "otra",
+     "start": 565.46,
+     "end": 565.98
+    },
+    {
+     "w": "vez",
+     "start": 565.98,
+     "end": 566.34
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 566.84,
+   "end": 568.82,
+   "text": "Do you sell?",
+   "words": [
+    {
+     "w": "do",
+     "start": 566.84,
+     "end": 567.3
+    },
+    {
+     "w": "you",
+     "start": 567.3,
+     "end": 567.48
+    },
+    {
+     "w": "sell",
+     "start": 567.48,
+     "end": 567.84
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 568.82,
+   "pauseAt": 570.94,
+   "spanish": "Responde, “vendo”.",
+   "expected": [
+    "I sell."
+   ],
+   "end": 571.1
+  },
+  {
+   "t": "english",
+   "start": 571.1,
+   "end": 575.32,
+   "text": "I sell. I sell.",
+   "words": [
+    {
+     "w": "i",
+     "start": 571.1,
+     "end": 571.36
+    },
+    {
+     "w": "sell",
+     "start": 571.36,
+     "end": 571.76
+    },
+    {
+     "w": "i",
+     "start": 572.82,
+     "end": 573.64
+    },
+    {
+     "w": "sell",
+     "start": 573.64,
+     "end": 574.06
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 575.32,
+   "pauseAt": 577.95,
+   "spanish": "¿Cómo preguntas “¿vendes?”?",
+   "expected": [
+    "Do you sell?"
+   ],
+   "end": 578.1
+  },
+  {
+   "t": "english",
+   "start": 578.1,
+   "end": 582.3,
+   "text": "Do you sell? Do you sell?",
+   "words": [
+    {
+     "w": "do",
+     "start": 578.1,
+     "end": 578.6
+    },
+    {
+     "w": "you",
+     "start": 578.6,
+     "end": 578.8
+    },
+    {
+     "w": "sell",
+     "start": 578.8,
+     "end": 579.16
+    },
+    {
+     "w": "do",
+     "start": 584.72,
+     "end": 584.88
+    },
+    {
+     "w": "you",
+     "start": 584.88,
+     "end": 585.02
+    },
+    {
+     "w": "sell",
+     "start": 585.02,
+     "end": 585.4
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 582.3,
+   "end": 584.34,
+   "lines": [
+    "Ahora escucha esta pregunta."
+   ],
+   "words": [
+    {
+     "w": "ahora",
+     "start": 582.3,
+     "end": 582.76
+    },
+    {
+     "w": "escucha",
+     "start": 582.76,
+     "end": 583.22
+    },
+    {
+     "w": "esta",
+     "start": 583.22,
+     "end": 583.38
+    },
+    {
+     "w": "pregunta",
+     "start": 583.38,
+     "end": 583.8
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 584.34,
+   "end": 585.82,
+   "text": "What do you sell?",
+   "words": [
+    {
+     "w": "what",
+     "start": 584.34,
+     "end": 584.72
+    },
+    {
+     "w": "do",
+     "start": 584.72,
+     "end": 584.88
+    },
+    {
+     "w": "you",
+     "start": 584.88,
+     "end": 585.02
+    },
+    {
+     "w": "sell",
+     "start": 585.02,
+     "end": 585.4
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 585.82,
+   "end": 596.3,
+   "lines": [
+    "Ella acaba de preguntar “What do you sell?” “What do you sell?” significa “¿Qué vendes?” Ahora escucha esta pregunta."
+   ],
+   "words": [
+    {
+     "w": "ella",
+     "start": 585.82,
+     "end": 586.58
+    },
+    {
+     "w": "acaba",
+     "start": 586.58,
+     "end": 587.16
+    },
+    {
+     "w": "de",
+     "start": 587.16,
+     "end": 587.28
+    },
+    {
+     "w": "preguntar",
+     "start": 587.28,
+     "end": 587.9
+    },
+    {
+     "w": "what",
+     "start": 588.06,
+     "end": 588.76
+    },
+    {
+     "w": "do",
+     "start": 588.76,
+     "end": 588.98
+    },
+    {
+     "w": "you",
+     "start": 588.98,
+     "end": 589.14
+    },
+    {
+     "w": "sell",
+     "start": 589.14,
+     "end": 589.54
+    },
+    {
+     "w": "what",
+     "start": 589.96,
+     "end": 590.72
+    },
+    {
+     "w": "do",
+     "start": 590.72,
+     "end": 590.92
+    },
+    {
+     "w": "you",
+     "start": 590.92,
+     "end": 591.08
+    },
+    {
+     "w": "sell",
+     "start": 591.08,
+     "end": 591.52
+    },
+    {
+     "w": "significa",
+     "start": 591.68,
+     "end": 592.44
+    },
+    {
+     "w": "que",
+     "start": 592.64,
+     "end": 593.04
+    },
+    {
+     "w": "vendes",
+     "start": 593.04,
+     "end": 593.5
+    },
+    {
+     "w": "ahora",
+     "start": 593.88,
+     "end": 594.64
+    },
+    {
+     "w": "escucha",
+     "start": 594.64,
+     "end": 595.14
+    },
+    {
+     "w": "esta",
+     "start": 595.14,
+     "end": 595.3
+    },
+    {
+     "w": "pregunta",
+     "start": 595.3,
+     "end": 595.72
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 596.3,
+   "end": 597.84,
+   "text": "Do you sell fruit?",
+   "words": [
+    {
+     "w": "do",
+     "start": 596.3,
+     "end": 596.68
+    },
+    {
+     "w": "you",
+     "start": 596.68,
+     "end": 596.84
+    },
+    {
+     "w": "sell",
+     "start": 596.84,
+     "end": 597.06
+    },
+    {
+     "w": "fruit",
+     "start": 597.06,
+     "end": 597.42
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 597.84,
+   "end": 610.48,
+   "lines": [
+    "Ella acaba de preguntar “Do you sell fruit?” “Do you sell fruit?” significa “¿vendes fruta?” Así es cómo dices “fruta.” Escucha y repite."
+   ],
+   "words": [
+    {
+     "w": "ella",
+     "start": 597.84,
+     "end": 598.6
+    },
+    {
+     "w": "acaba",
+     "start": 598.6,
+     "end": 598.9
+    },
+    {
+     "w": "de",
+     "start": 598.9,
+     "end": 599.04
+    },
+    {
+     "w": "preguntar",
+     "start": 599.04,
+     "end": 599.66
+    },
+    {
+     "w": "do",
+     "start": 599.96,
+     "end": 600.22
+    },
+    {
+     "w": "you",
+     "start": 600.22,
+     "end": 600.44
+    },
+    {
+     "w": "sell",
+     "start": 600.44,
+     "end": 600.7
+    },
+    {
+     "w": "fruit",
+     "start": 600.7,
+     "end": 601.16
+    },
+    {
+     "w": "do",
+     "start": 601.38,
+     "end": 601.94
+    },
+    {
+     "w": "you",
+     "start": 601.94,
+     "end": 602.14
+    },
+    {
+     "w": "sell",
+     "start": 602.14,
+     "end": 602.36
+    },
+    {
+     "w": "fruit",
+     "start": 602.36,
+     "end": 602.78
+    },
+    {
+     "w": "significa",
+     "start": 602.78,
+     "end": 603.48
+    },
+    {
+     "w": "vendes",
+     "start": 603.5,
+     "end": 604.13
+    },
+    {
+     "w": "fruta",
+     "start": 604.78,
+     "end": 605.14
+    },
+    {
+     "w": "asi",
+     "start": 605.88,
+     "end": 606.42
+    },
+    {
+     "w": "es",
+     "start": 606.42,
+     "end": 606.58
+    },
+    {
+     "w": "como",
+     "start": 606.58,
+     "end": 606.8
+    },
+    {
+     "w": "dices",
+     "start": 606.8,
+     "end": 607.14
+    },
+    {
+     "w": "fruta",
+     "start": 607.14,
+     "end": 607.52
+    },
+    {
+     "w": "escucha",
+     "start": 607.82,
+     "end": 608.64
+    },
+    {
+     "w": "y",
+     "start": 608.64,
+     "end": 608.98
+    },
+    {
+     "w": "repite",
+     "start": 608.98,
+     "end": 609.66
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 610.48,
+   "end": 615.88,
+   "text": "Fruit. Fruit.",
+   "words": [
+    {
+     "w": "fruit",
+     "start": 610.48,
+     "end": 611.12
+    },
+    {
+     "w": "fruit",
+     "start": 613.28,
+     "end": 613.82
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 615.88,
+   "pauseAt": 617.93,
+   "spanish": "¿Cómo dirías “la fruta”?",
+   "expected": [
+    "The fruit."
+   ],
+   "end": 618.08
+  },
+  {
+   "t": "english",
+   "start": 618.08,
+   "end": 623.06,
+   "text": "The fruit. The fruit.",
+   "words": [
+    {
+     "w": "the",
+     "start": 618.08,
+     "end": 618.56
+    },
+    {
+     "w": "fruit",
+     "start": 618.56,
+     "end": 618.98
+    },
+    {
+     "w": "the",
+     "start": 620.14,
+     "end": 620.68
+    },
+    {
+     "w": "fruit",
+     "start": 620.68,
+     "end": 621.04
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 623.06,
+   "pauseAt": 625.79,
+   "spanish": "¿Cómo dirías “las frutas”?",
+   "expected": [
+    "The fruits."
+   ],
+   "end": 625.94
+  },
+  {
+   "t": "english",
+   "start": 625.94,
+   "end": 631.92,
+   "text": "The fruits. The fruits.",
+   "words": [
+    {
+     "w": "the",
+     "start": 625.94,
+     "end": 626.6
+    },
+    {
+     "w": "fruits",
+     "start": 626.6,
+     "end": 627.1
+    },
+    {
+     "w": "the",
+     "start": 629.04,
+     "end": 629.58
+    },
+    {
+     "w": "fruits",
+     "start": 629.58,
+     "end": 630.02
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 631.92,
+   "pauseAt": 635.98,
+   "spanish": "¿Cómo preguntas “vendes las frutas?”",
+   "expected": [
+    "Do you sell fruit?"
+   ],
+   "end": 638.82
+  },
+  {
+   "t": "english",
+   "start": 638.82,
+   "end": 643.16,
+   "text": "Do you sell fruit?",
+   "words": [
+    {
+     "w": "do",
+     "start": 638.82,
+     "end": 639.66
+    },
+    {
+     "w": "you",
+     "start": 639.66,
+     "end": 639.82
+    },
+    {
+     "w": "sell",
+     "start": 639.82,
+     "end": 640.06
+    },
+    {
+     "w": "fruit",
+     "start": 640.06,
+     "end": 640.46
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 643.16,
+   "pauseAt": 646.97,
+   "spanish": "Responde, “no, no vendo las frutas.”",
+   "expected": [
+    "No, I don't sell fruit."
+   ],
+   "end": 647.12
+  },
+  {
+   "t": "english",
+   "start": 647.12,
+   "end": 660.56,
+   "text": "No, I don’t sell fruit. No, I don’t sell fruit.",
+   "words": [
+    {
+     "w": "no",
+     "start": 647.12,
+     "end": 647.68
+    },
+    {
+     "w": "i",
+     "start": 648.0,
+     "end": 648.62
+    },
+    {
+     "w": "dont",
+     "start": 648.62,
+     "end": 648.94
+    },
+    {
+     "w": "sell",
+     "start": 648.94,
+     "end": 649.22
+    },
+    {
+     "w": "fruit",
+     "start": 649.22,
+     "end": 649.62
+    },
+    {
+     "w": "no",
+     "start": 653.66,
+     "end": 654.5
+    },
+    {
+     "w": "i",
+     "start": 654.8,
+     "end": 655.58
+    },
+    {
+     "w": "dont",
+     "start": 655.58,
+     "end": 655.9
+    },
+    {
+     "w": "sell",
+     "start": 655.9,
+     "end": 656.16
+    },
+    {
+     "w": "fruit",
+     "start": 656.16,
+     "end": 656.56
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 660.56,
+   "end": 683.42,
+   "lines": [
+    "Nota que no dice “the fruits”. En inglés, cuando nos referimos a algo en general, no utilizamos el artículo definido “the” como lo haces en español. Dile otra vez, “no, no vendo las frutas.”"
+   ],
+   "words": [
+    {
+     "w": "nota",
+     "start": 660.56,
+     "end": 661.28
+    },
+    {
+     "w": "que",
+     "start": 661.28,
+     "end": 661.42
+    },
+    {
+     "w": "no",
+     "start": 661.42,
+     "end": 661.64
+    },
+    {
+     "w": "dice",
+     "start": 661.64,
+     "end": 662.02
+    },
+    {
+     "w": "the",
+     "start": 662.02,
+     "end": 662.74
+    },
+    {
+     "w": "fruits",
+     "start": 662.74,
+     "end": 663.3
+    },
+    {
+     "w": "en",
+     "start": 663.86,
+     "end": 664.58
+    },
+    {
+     "w": "ingles",
+     "start": 664.58,
+     "end": 664.84
+    },
+    {
+     "w": "cuando",
+     "start": 665.12,
+     "end": 665.72
+    },
+    {
+     "w": "nos",
+     "start": 665.72,
+     "end": 666.06
+    },
+    {
+     "w": "referimos",
+     "start": 666.06,
+     "end": 667.0
+    },
+    {
+     "w": "a",
+     "start": 667.0,
+     "end": 667.38
+    },
+    {
+     "w": "algo",
+     "start": 667.38,
+     "end": 667.68
+    },
+    {
+     "w": "en",
+     "start": 667.68,
+     "end": 667.86
+    },
+    {
+     "w": "general",
+     "start": 667.86,
+     "end": 668.22
+    },
+    {
+     "w": "no",
+     "start": 668.56,
+     "end": 669.28
+    },
+    {
+     "w": "utilizamos",
+     "start": 669.28,
+     "end": 670.44
+    },
+    {
+     "w": "el",
+     "start": 670.44,
+     "end": 670.72
+    },
+    {
+     "w": "articulo",
+     "start": 670.72,
+     "end": 671.44
+    },
+    {
+     "w": "definido",
+     "start": 671.44,
+     "end": 672.42
+    },
+    {
+     "w": "the",
+     "start": 672.42,
+     "end": 673.1
+    },
+    {
+     "w": "como",
+     "start": 673.38,
+     "end": 673.92
+    },
+    {
+     "w": "lo",
+     "start": 673.92,
+     "end": 674.06
+    },
+    {
+     "w": "haces",
+     "start": 674.06,
+     "end": 674.42
+    },
+    {
+     "w": "en",
+     "start": 674.42,
+     "end": 674.6
+    },
+    {
+     "w": "espanol",
+     "start": 674.6,
+     "end": 675.08
+    },
+    {
+     "w": "dile",
+     "start": 678.92,
+     "end": 679.64
+    },
+    {
+     "w": "otra",
+     "start": 679.64,
+     "end": 680.08
+    },
+    {
+     "w": "vez",
+     "start": 680.08,
+     "end": 680.38
+    },
+    {
+     "w": "no",
+     "start": 680.62,
+     "end": 681.06
+    },
+    {
+     "w": "no",
+     "start": 681.28,
+     "end": 681.72
+    },
+    {
+     "w": "vendo",
+     "start": 681.72,
+     "end": 681.94
+    },
+    {
+     "w": "las",
+     "start": 681.94,
+     "end": 682.18
+    },
+    {
+     "w": "frutas",
+     "start": 682.18,
+     "end": 682.68
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 683.42,
+   "end": 688.76,
+   "text": "No, I don’t sell fruit.",
+   "words": [
+    {
+     "w": "no",
+     "start": 683.42,
+     "end": 684.14
+    },
+    {
+     "w": "i",
+     "start": 684.42,
+     "end": 684.74
+    },
+    {
+     "w": "dont",
+     "start": 684.74,
+     "end": 685.02
+    },
+    {
+     "w": "sell",
+     "start": 685.02,
+     "end": 685.24
+    },
+    {
+     "w": "fruit",
+     "start": 685.24,
+     "end": 685.6
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 688.76,
+   "pauseAt": 692.33,
+   "spanish": "¿Cómo preguntas “¿vendes las frutas?”?",
+   "expected": [
+    "Do you sell fruit?"
+   ],
+   "end": 692.48
+  },
+  {
+   "t": "english",
+   "start": 692.48,
+   "end": 701.74,
+   "text": "Do you sell fruit? Do you sell fruit?",
+   "words": [
+    {
+     "w": "do",
+     "start": 692.48,
+     "end": 693.24
+    },
+    {
+     "w": "you",
+     "start": 693.24,
+     "end": 693.42
+    },
+    {
+     "w": "sell",
+     "start": 693.42,
+     "end": 693.66
+    },
+    {
+     "w": "fruit",
+     "start": 693.66,
+     "end": 694.04
+    },
+    {
+     "w": "do",
+     "start": 697.02,
+     "end": 697.86
+    },
+    {
+     "w": "you",
+     "start": 697.86,
+     "end": 698.08
+    },
+    {
+     "w": "sell",
+     "start": 698.08,
+     "end": 698.32
+    },
+    {
+     "w": "fruit",
+     "start": 698.32,
+     "end": 698.72
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 701.74,
+   "pauseAt": 706.99,
+   "spanish": "Y ¿cómo responderías, “sí, vendo las frutas.”",
+   "expected": [
+    "Yes, I sell fruit."
+   ],
+   "end": 707.14
+  },
+  {
+   "t": "english",
+   "start": 707.14,
+   "end": 716.8,
+   "text": "Yes, I sell fruit. Yes, I sell fruit.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 707.14,
+     "end": 707.54
+    },
+    {
+     "w": "i",
+     "start": 707.72,
+     "end": 707.8
+    },
+    {
+     "w": "sell",
+     "start": 707.8,
+     "end": 708.1
+    },
+    {
+     "w": "fruit",
+     "start": 708.1,
+     "end": 708.5
+    },
+    {
+     "w": "yes",
+     "start": 711.08,
+     "end": 711.92
+    },
+    {
+     "w": "i",
+     "start": 712.12,
+     "end": 712.24
+    },
+    {
+     "w": "sell",
+     "start": 712.24,
+     "end": 712.52
+    },
+    {
+     "w": "fruit",
+     "start": 712.52,
+     "end": 712.94
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 716.8,
+   "end": 718.6,
+   "lines": [
+    "Escucha esta pregunta."
+   ],
+   "words": [
+    {
+     "w": "escucha",
+     "start": 716.8,
+     "end": 717.52
+    },
+    {
+     "w": "esta",
+     "start": 717.52,
+     "end": 717.78
+    },
+    {
+     "w": "pregunta",
+     "start": 717.78,
+     "end": 718.24
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 718.6,
+   "end": 720.28,
+   "text": "Does he sell?",
+   "words": [
+    {
+     "w": "does",
+     "start": 718.6,
+     "end": 719.1
+    },
+    {
+     "w": "he",
+     "start": 719.1,
+     "end": 719.3
+    },
+    {
+     "w": "sell",
+     "start": 719.3,
+     "end": 719.62
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 720.28,
+   "pauseAt": 723.63,
+   "spanish": "Intenta responder, “sí, él vende.”",
+   "expected": [
+    "Yes, he sells."
+   ],
+   "end": 723.78
+  },
+  {
+   "t": "english",
+   "start": 723.78,
+   "end": 735.08,
+   "text": "Yes, he sells. Yes, he sells.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 723.78,
+     "end": 724.44
+    },
+    {
+     "w": "he",
+     "start": 724.64,
+     "end": 724.96
+    },
+    {
+     "w": "sells",
+     "start": 724.96,
+     "end": 725.44
+    },
+    {
+     "w": "yes",
+     "start": 729.26,
+     "end": 729.98
+    },
+    {
+     "w": "he",
+     "start": 730.24,
+     "end": 730.48
+    },
+    {
+     "w": "sells",
+     "start": 730.48,
+     "end": 730.88
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 735.08,
+   "end": 737.78,
+   "lines": [
+    "Escucha la misma pregunta otra vez."
+   ],
+   "words": [
+    {
+     "w": "escucha",
+     "start": 735.08,
+     "end": 735.8
+    },
+    {
+     "w": "la",
+     "start": 735.8,
+     "end": 735.96
+    },
+    {
+     "w": "misma",
+     "start": 735.96,
+     "end": 736.32
+    },
+    {
+     "w": "pregunta",
+     "start": 736.32,
+     "end": 736.82
+    },
+    {
+     "w": "otra",
+     "start": 736.82,
+     "end": 737.08
+    },
+    {
+     "w": "vez",
+     "start": 737.08,
+     "end": 737.4
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 737.78,
+   "end": 738.92,
+   "text": "Does he sell?",
+   "words": [
+    {
+     "w": "does",
+     "start": 737.78,
+     "end": 738.16
+    },
+    {
+     "w": "he",
+     "start": 738.16,
+     "end": 738.36
+    },
+    {
+     "w": "sell",
+     "start": 738.36,
+     "end": 738.66
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 738.92,
+   "pauseAt": 742.56,
+   "spanish": "Otra vez responde, “sí, él vende”.",
+   "expected": [
+    "Yes, he sells."
+   ],
+   "end": 742.76,
+   "leadEnd": 739.7
+  },
+  {
+   "t": "english",
+   "start": 742.76,
+   "end": 753.1,
+   "text": "Yes, he sells. Yes, he sells.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 742.76,
+     "end": 743.48
+    },
+    {
+     "w": "he",
+     "start": 743.78,
+     "end": 744.24
+    },
+    {
+     "w": "sells",
+     "start": 744.24,
+     "end": 744.68
+    },
+    {
+     "w": "yes",
+     "start": 747.5,
+     "end": 748.42
+    },
+    {
+     "w": "he",
+     "start": 748.7,
+     "end": 748.92
+    },
+    {
+     "w": "sells",
+     "start": 748.92,
+     "end": 749.34
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 753.1,
+   "pauseAt": 755.91,
+   "spanish": "¿Cómo preguntas “¿él vende?”",
+   "expected": [
+    "Does he sell?"
+   ],
+   "end": 756.06
+  },
+  {
+   "t": "english",
+   "start": 756.06,
+   "end": 762.44,
+   "text": "Does he sell? Does he sell?",
+   "words": [
+    {
+     "w": "does",
+     "start": 756.06,
+     "end": 756.74
+    },
+    {
+     "w": "he",
+     "start": 756.74,
+     "end": 756.92
+    },
+    {
+     "w": "sell",
+     "start": 756.92,
+     "end": 757.22
+    },
+    {
+     "w": "does",
+     "start": 759.22,
+     "end": 760.14
+    },
+    {
+     "w": "he",
+     "start": 760.14,
+     "end": 760.36
+    },
+    {
+     "w": "sell",
+     "start": 760.36,
+     "end": 760.66
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 762.44,
+   "pauseAt": 765.43,
+   "spanish": "Ahora pregunta “¿qué vende él?”",
+   "expected": [
+    "What does he sell?"
+   ],
+   "end": 765.58
+  },
+  {
+   "t": "english",
+   "start": 765.58,
+   "end": 768.8,
+   "text": "What does he sell?",
+   "words": [
+    {
+     "w": "what",
+     "start": 765.58,
+     "end": 765.96
+    },
+    {
+     "w": "does",
+     "start": 765.96,
+     "end": 766.16
+    },
+    {
+     "w": "he",
+     "start": 766.16,
+     "end": 766.34
+    },
+    {
+     "w": "sell",
+     "start": 766.34,
+     "end": 766.7
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 768.8,
+   "end": 771.26,
+   "lines": [
+    "Escucha esta respuesta."
+   ],
+   "words": [
+    {
+     "w": "escucha",
+     "start": 768.8,
+     "end": 769.72
+    },
+    {
+     "w": "esta",
+     "start": 769.72,
+     "end": 769.98
+    },
+    {
+     "w": "respuesta",
+     "start": 769.98,
+     "end": 770.58
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 771.26,
+   "end": 772.9,
+   "text": "He sells apples.",
+   "words": [
+    {
+     "w": "he",
+     "start": 771.26,
+     "end": 771.98
+    },
+    {
+     "w": "sells",
+     "start": 771.98,
+     "end": 772.42
+    },
+    {
+     "w": "apples",
+     "start": 772.42,
+     "end": 772.9
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 772.9,
+   "end": 788.12,
+   "lines": [
+    "Él acaba de decir “he sells apples.” “He sells apples” significa “él vende manzanas.” Así es cómo dices “manzana.” Escucha y repite."
+   ],
+   "words": [
+    {
+     "w": "el",
+     "start": 772.9,
+     "end": 774.22
+    },
+    {
+     "w": "acaba",
+     "start": 774.22,
+     "end": 774.46
+    },
+    {
+     "w": "de",
+     "start": 774.46,
+     "end": 774.66
+    },
+    {
+     "w": "decir",
+     "start": 774.66,
+     "end": 775.08
+    },
+    {
+     "w": "he",
+     "start": 775.08,
+     "end": 775.74
+    },
+    {
+     "w": "sells",
+     "start": 775.74,
+     "end": 776.16
+    },
+    {
+     "w": "apples",
+     "start": 776.16,
+     "end": 776.66
+    },
+    {
+     "w": "he",
+     "start": 777.1,
+     "end": 777.66
+    },
+    {
+     "w": "sells",
+     "start": 777.66,
+     "end": 778.04
+    },
+    {
+     "w": "apples",
+     "start": 778.04,
+     "end": 778.64
+    },
+    {
+     "w": "significa",
+     "start": 778.64,
+     "end": 779.8
+    },
+    {
+     "w": "el",
+     "start": 779.8,
+     "end": 780.72
+    },
+    {
+     "w": "vende",
+     "start": 780.72,
+     "end": 781.06
+    },
+    {
+     "w": "manzanas",
+     "start": 781.06,
+     "end": 781.68
+    },
+    {
+     "w": "asi",
+     "start": 782.16,
+     "end": 782.9
+    },
+    {
+     "w": "es",
+     "start": 782.9,
+     "end": 783.2
+    },
+    {
+     "w": "como",
+     "start": 783.2,
+     "end": 783.44
+    },
+    {
+     "w": "dices",
+     "start": 783.44,
+     "end": 783.9
+    },
+    {
+     "w": "manzana",
+     "start": 783.9,
+     "end": 784.9
+    },
+    {
+     "w": "escucha",
+     "start": 785.24,
+     "end": 786.1
+    },
+    {
+     "w": "y",
+     "start": 786.1,
+     "end": 786.6
+    },
+    {
+     "w": "repite",
+     "start": 786.6,
+     "end": 787.42
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 788.12,
+   "end": 792.94,
+   "text": "Apple. Apple.",
+   "words": [
+    {
+     "w": "apple",
+     "start": 788.12,
+     "end": 788.44
+    },
+    {
+     "w": "apple",
+     "start": 789.62,
+     "end": 790.62
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 792.94,
+   "pauseAt": 794.35,
+   "spanish": "¿Cómo se dice “una manzana”?",
+   "expected": [
+    "An apple."
+   ],
+   "end": 794.5
+  },
+  {
+   "t": "english",
+   "start": 794.5,
+   "end": 800.34,
+   "text": "An apple. An apple.",
+   "words": [
+    {
+     "w": "an",
+     "start": 794.5,
+     "end": 795.56
+    },
+    {
+     "w": "apple",
+     "start": 795.56,
+     "end": 795.92
+    },
+    {
+     "w": "an",
+     "start": 796.82,
+     "end": 797.86
+    },
+    {
+     "w": "apple",
+     "start": 797.86,
+     "end": 798.2
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 800.34,
+   "pauseAt": 813.91,
+   "spanish": "Nota que dice “an” no “a”. Usamos “an” cuando el sustantivo o adjetivo que sigue comienza con una vocal. ¿Y cómo dirías ‘las manzanas’?",
+   "expected": [
+    "The apples."
+   ],
+   "end": 814.06
+  },
+  {
+   "t": "english",
+   "start": 814.06,
+   "end": 818.06,
+   "text": "The apples. The apples.",
+   "words": [
+    {
+     "w": "the",
+     "start": 814.06,
+     "end": 814.82
+    },
+    {
+     "w": "apples",
+     "start": 814.82,
+     "end": 815.4
+    },
+    {
+     "w": "the",
+     "start": 816.66,
+     "end": 817.5
+    },
+    {
+     "w": "apples",
+     "start": 817.5,
+     "end": 818.06
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 820.0,
+   "end": 820.84,
+   "lines": [
+    "Perfecto."
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 821.0,
+   "pauseAt": 823.86,
+   "spanish": "Ahora pregunta “¿él vende manzanas?”",
+   "expected": [
+    "Does he sell apples?"
+   ],
+   "end": 824.08
+  },
+  {
+   "t": "english",
+   "start": 824.08,
+   "end": 829.82,
+   "text": "Does he sell apples? Does he sell apples?",
+   "words": [
+    {
+     "w": "does",
+     "start": 824.1,
+     "end": 824.1
+    },
+    {
+     "w": "he",
+     "start": 824.08,
+     "end": 824.24
+    },
+    {
+     "w": "sell",
+     "start": 824.24,
+     "end": 824.46
+    },
+    {
+     "w": "apples",
+     "start": 824.46,
+     "end": 824.88
+    },
+    {
+     "w": "does",
+     "start": 824.93,
+     "end": 825.38
+    },
+    {
+     "w": "he",
+     "start": 825.43,
+     "end": 825.88
+    },
+    {
+     "w": "sell",
+     "start": 825.93,
+     "end": 826.38
+    },
+    {
+     "w": "apples",
+     "start": 826.43,
+     "end": 826.88
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 829.82,
+   "pauseAt": 832.63,
+   "spanish": "Responde, “sí, él vende manzanas.”",
+   "expected": [
+    "Yes, he sells apples."
+   ],
+   "end": 832.78
+  },
+  {
+   "t": "english",
+   "start": 832.78,
+   "end": 845.4,
+   "text": "Yes, he sells apples. Yes, he sells apples.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 832.78,
+     "end": 833.48
+    },
+    {
+     "w": "he",
+     "start": 833.74,
+     "end": 834.26
+    },
+    {
+     "w": "sells",
+     "start": 834.26,
+     "end": 834.66
+    },
+    {
+     "w": "apples",
+     "start": 834.66,
+     "end": 835.2
+    },
+    {
+     "w": "yes",
+     "start": 839.14,
+     "end": 839.98
+    },
+    {
+     "w": "he",
+     "start": 840.38,
+     "end": 840.8
+    },
+    {
+     "w": "sells",
+     "start": 840.8,
+     "end": 841.2
+    },
+    {
+     "w": "apples",
+     "start": 841.2,
+     "end": 841.62
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 845.4,
+   "pauseAt": 849.63,
+   "spanish": "Otra vez, ¿cómo preguntar “¿él vende manzanas?”?",
+   "expected": [
+    "Does he sell apples?"
+   ],
+   "end": 849.78,
+   "leadEnd": 846.38
+  },
+  {
+   "t": "english",
+   "start": 849.78,
+   "end": 854.94,
+   "text": "Does he sell apples? Does he sell apples?",
+   "words": [
+    {
+     "w": "does",
+     "start": 849.78,
+     "end": 850.26
+    },
+    {
+     "w": "he",
+     "start": 850.26,
+     "end": 850.42
+    },
+    {
+     "w": "sell",
+     "start": 850.42,
+     "end": 850.64
+    },
+    {
+     "w": "apples",
+     "start": 850.64,
+     "end": 851.1
+    },
+    {
+     "w": "does",
+     "start": 851.15,
+     "end": 851.15
+    },
+    {
+     "w": "he",
+     "start": 851.2,
+     "end": 851.2
+    },
+    {
+     "w": "sell",
+     "start": 851.25,
+     "end": 851.25
+    },
+    {
+     "w": "apples",
+     "start": 851.3,
+     "end": 851.3
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 854.94,
+   "end": 858.9,
+   "lines": [
+    "Y cómo responderías “no, él no vende manzanas.”"
+   ],
+   "words": [
+    {
+     "w": "y",
+     "start": 854.96,
+     "end": 854.96
+    },
+    {
+     "w": "como",
+     "start": 854.94,
+     "end": 855.46
+    },
+    {
+     "w": "responderias",
+     "start": 855.46,
+     "end": 856.48
+    },
+    {
+     "w": "no",
+     "start": 856.68,
+     "end": 857.02
+    },
+    {
+     "w": "el",
+     "start": 857.28,
+     "end": 857.62
+    },
+    {
+     "w": "no",
+     "start": 857.64,
+     "end": 857.79
+    },
+    {
+     "w": "vende",
+     "start": 857.81,
+     "end": 857.88
+    },
+    {
+     "w": "manzanas",
+     "start": 857.96,
+     "end": 858.52
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 858.9,
+   "end": 873.98,
+   "text": "No, he doesn’t sell apples. No, he doesn’t sell apples.",
+   "words": [
+    {
+     "w": "no",
+     "start": 858.9,
+     "end": 859.52
+    },
+    {
+     "w": "he",
+     "start": 859.74,
+     "end": 860.08
+    },
+    {
+     "w": "doesnt",
+     "start": 860.08,
+     "end": 860.48
+    },
+    {
+     "w": "sell",
+     "start": 860.48,
+     "end": 860.78
+    },
+    {
+     "w": "apples",
+     "start": 860.78,
+     "end": 861.26
+    },
+    {
+     "w": "no",
+     "start": 865.46,
+     "end": 866.22
+    },
+    {
+     "w": "he",
+     "start": 866.44,
+     "end": 866.7
+    },
+    {
+     "w": "doesnt",
+     "start": 866.7,
+     "end": 867.08
+    },
+    {
+     "w": "sell",
+     "start": 867.08,
+     "end": 867.34
+    },
+    {
+     "w": "apples",
+     "start": 867.34,
+     "end": 867.82
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 873.98,
+   "end": 875.8,
+   "lines": [
+    "Escucha esta pregunta."
+   ],
+   "words": [
+    {
+     "w": "escucha",
+     "start": 873.98,
+     "end": 874.64
+    },
+    {
+     "w": "esta",
+     "start": 874.64,
+     "end": 874.82
+    },
+    {
+     "w": "pregunta",
+     "start": 874.82,
+     "end": 875.28
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 875.8,
+   "end": 878.16,
+   "text": "Does he eat apples?",
+   "words": [
+    {
+     "w": "does",
+     "start": 875.8,
+     "end": 876.24
+    },
+    {
+     "w": "he",
+     "start": 876.24,
+     "end": 876.44
+    },
+    {
+     "w": "eat",
+     "start": 876.44,
+     "end": 876.76
+    },
+    {
+     "w": "apples",
+     "start": 876.76,
+     "end": 877.14
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 878.16,
+   "pauseAt": 881.96,
+   "spanish": "Responde, “sí, él come manzanas.”",
+   "expected": [
+    "Yes, he eats apples."
+   ],
+   "end": 882.12
+  },
+  {
+   "t": "english",
+   "start": 882.12,
+   "end": 889.86,
+   "text": "Yes, he eats apples. Yes, he eats apples.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 882.12,
+     "end": 882.9
+    },
+    {
+     "w": "he",
+     "start": 883.18,
+     "end": 883.68
+    },
+    {
+     "w": "eats",
+     "start": 883.68,
+     "end": 884.06
+    },
+    {
+     "w": "apples",
+     "start": 884.06,
+     "end": 884.52
+    },
+    {
+     "w": "yes",
+     "start": 887.79,
+     "end": 888.24
+    },
+    {
+     "w": "he",
+     "start": 888.56,
+     "end": 889.04
+    },
+    {
+     "w": "eats",
+     "start": 889.04,
+     "end": 889.46
+    },
+    {
+     "w": "apples",
+     "start": 889.46,
+     "end": 889.86
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 893.18,
+   "end": 894.08,
+   "lines": [
+    "Perfecto."
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 894.28,
+   "pauseAt": 896.51,
+   "spanish": "Pregunta “¿comes manzanas?\"",
+   "expected": [
+    "Do you eat apples?"
+   ],
+   "end": 896.66
+  },
+  {
+   "t": "english",
+   "start": 896.66,
+   "end": 905.18,
+   "text": "Do you eat apples? Do you eat apples?",
+   "words": [
+    {
+     "w": "do",
+     "start": 896.66,
+     "end": 897.34
+    },
+    {
+     "w": "you",
+     "start": 897.34,
+     "end": 897.56
+    },
+    {
+     "w": "eat",
+     "start": 897.56,
+     "end": 897.8
+    },
+    {
+     "w": "apples",
+     "start": 897.8,
+     "end": 898.2
+    },
+    {
+     "w": "do",
+     "start": 900.58,
+     "end": 901.38
+    },
+    {
+     "w": "you",
+     "start": 901.38,
+     "end": 901.6
+    },
+    {
+     "w": "eat",
+     "start": 901.6,
+     "end": 901.84
+    },
+    {
+     "w": "apples",
+     "start": 901.84,
+     "end": 902.24
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 905.18,
+   "pauseAt": 908.99,
+   "spanish": "¿Cómo respondes “sí, como manzanas.”?",
+   "expected": [
+    "Yes, I eat apples."
+   ],
+   "end": 909.14
+  },
+  {
+   "t": "english",
+   "start": 909.14,
+   "end": 913.66,
+   "text": "Yes, I eat apples.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 909.14,
+     "end": 909.76
+    },
+    {
+     "w": "i",
+     "start": 910.02,
+     "end": 910.16
+    },
+    {
+     "w": "eat",
+     "start": 910.16,
+     "end": 910.42
+    },
+    {
+     "w": "apples",
+     "start": 910.42,
+     "end": 910.82
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 913.66,
+   "pauseAt": 918.19,
+   "spanish": "Ahora pregunta “¿comes manzanas todos los días?\"",
+   "expected": [
+    "Do you eat apples every day?"
+   ],
+   "end": 918.34
+  },
+  {
+   "t": "english",
+   "start": 918.34,
+   "end": 925.34,
+   "text": "Do you eat apples every day? Do you eat apples every day?",
+   "words": [
+    {
+     "w": "do",
+     "start": 918.34,
+     "end": 918.84
+    },
+    {
+     "w": "you",
+     "start": 918.84,
+     "end": 919.02
+    },
+    {
+     "w": "eat",
+     "start": 919.02,
+     "end": 919.24
+    },
+    {
+     "w": "apples",
+     "start": 919.24,
+     "end": 919.58
+    },
+    {
+     "w": "every",
+     "start": 919.58,
+     "end": 919.84
+    },
+    {
+     "w": "day",
+     "start": 919.84,
+     "end": 920.12
+    },
+    {
+     "w": "do",
+     "start": 923.22,
+     "end": 924.02
+    },
+    {
+     "w": "you",
+     "start": 924.02,
+     "end": 924.24
+    },
+    {
+     "w": "eat",
+     "start": 924.24,
+     "end": 924.46
+    },
+    {
+     "w": "apples",
+     "start": 924.46,
+     "end": 924.74
+    },
+    {
+     "w": "every",
+     "start": 924.74,
+     "end": 925.02
+    },
+    {
+     "w": "day",
+     "start": 925.02,
+     "end": 925.34
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 928.78,
+   "end": 929.5,
+   "lines": [
+    "Excelente."
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 929.82,
+   "end": 932.28,
+   "lines": [
+    "Solo escucha esta respuesta."
+   ],
+   "words": [
+    {
+     "w": "solo",
+     "start": 929.82,
+     "end": 930.42
+    },
+    {
+     "w": "escucha",
+     "start": 930.42,
+     "end": 930.96
+    },
+    {
+     "w": "esta",
+     "start": 930.96,
+     "end": 931.2
+    },
+    {
+     "w": "respuesta",
+     "start": 931.2,
+     "end": 931.86
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 932.28,
+   "end": 941.06,
+   "text": "No, I don’t eat apples every day. I eat apples every once in a while. And you? Do you eat apples every day?",
+   "words": [
+    {
+     "w": "no",
+     "start": 932.28,
+     "end": 932.8
+    },
+    {
+     "w": "i",
+     "start": 932.92,
+     "end": 933.1
+    },
+    {
+     "w": "dont",
+     "start": 933.1,
+     "end": 933.36
+    },
+    {
+     "w": "eat",
+     "start": 933.36,
+     "end": 933.48
+    },
+    {
+     "w": "apples",
+     "start": 933.48,
+     "end": 933.84
+    },
+    {
+     "w": "every",
+     "start": 933.84,
+     "end": 934.2
+    },
+    {
+     "w": "day",
+     "start": 934.2,
+     "end": 934.48
+    },
+    {
+     "w": "i",
+     "start": 934.72,
+     "end": 935.12
+    },
+    {
+     "w": "eat",
+     "start": 935.12,
+     "end": 935.3
+    },
+    {
+     "w": "apples",
+     "start": 935.3,
+     "end": 935.72
+    },
+    {
+     "w": "every",
+     "start": 935.72,
+     "end": 936.08
+    },
+    {
+     "w": "once",
+     "start": 936.08,
+     "end": 936.4
+    },
+    {
+     "w": "in",
+     "start": 936.4,
+     "end": 936.6
+    },
+    {
+     "w": "a",
+     "start": 936.6,
+     "end": 936.72
+    },
+    {
+     "w": "while",
+     "start": 936.72,
+     "end": 937.0
+    },
+    {
+     "w": "and",
+     "start": 937.36,
+     "end": 937.68
+    },
+    {
+     "w": "you",
+     "start": 937.68,
+     "end": 937.94
+    },
+    {
+     "w": "do",
+     "start": 938.22,
+     "end": 938.6
+    },
+    {
+     "w": "you",
+     "start": 938.6,
+     "end": 938.8
+    },
+    {
+     "w": "eat",
+     "start": 938.8,
+     "end": 939.0
+    },
+    {
+     "w": "apples",
+     "start": 939.0,
+     "end": 939.36
+    },
+    {
+     "w": "every",
+     "start": 939.36,
+     "end": 939.72
+    },
+    {
+     "w": "day",
+     "start": 939.72,
+     "end": 940.04
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 941.06,
+   "pauseAt": 946.23,
+   "spanish": "Responde “sí, como manzanas todos los días.”",
+   "expected": [
+    "Yes, I eat apples every day."
+   ],
+   "end": 946.38
+  },
+  {
+   "t": "english",
+   "start": 946.38,
+   "end": 955.64,
+   "text": "Yes, I eat apples every day.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 946.38,
+     "end": 947.1
+    },
+    {
+     "w": "i",
+     "start": 947.4,
+     "end": 948.0
+    },
+    {
+     "w": "eat",
+     "start": 948.0,
+     "end": 948.28
+    },
+    {
+     "w": "apples",
+     "start": 948.28,
+     "end": 948.72
+    },
+    {
+     "w": "every",
+     "start": 948.72,
+     "end": 949.26
+    },
+    {
+     "w": "day",
+     "start": 949.26,
+     "end": 949.54
+    }
+   ]
+  },
+  {
+   "t": "prompt",
+   "start": 955.64,
+   "pauseAt": 958.65,
+   "spanish": "¿Cómo preguntas “ella come manzanas todos los días?\"?",
+   "expected": [
+    "Does she eat apples every day?"
+   ],
+   "end": 958.8
+  },
+  {
+   "t": "english",
+   "start": 958.8,
+   "end": 966.34,
+   "text": "Does she eat apples every day?",
+   "words": [
+    {
+     "w": "does",
+     "start": 958.8,
+     "end": 959.52
+    },
+    {
+     "w": "she",
+     "start": 959.52,
+     "end": 959.82
+    },
+    {
+     "w": "eat",
+     "start": 959.82,
+     "end": 960.1
+    },
+    {
+     "w": "apples",
+     "start": 960.1,
+     "end": 960.48
+    },
+    {
+     "w": "every",
+     "start": 960.48,
+     "end": 960.8
+    },
+    {
+     "w": "day",
+     "start": 960.8,
+     "end": 961.06
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 966.34,
+   "end": 968.54,
+   "lines": [
+    "Escucha esta respuesta."
+   ],
+   "words": [
+    {
+     "w": "escucha",
+     "start": 966.34,
+     "end": 967.0
+    },
+    {
+     "w": "esta",
+     "start": 967.0,
+     "end": 967.32
+    },
+    {
+     "w": "respuesta",
+     "start": 967.32,
+     "end": 967.92
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 968.54,
+   "end": 974.8,
+   "text": "No, she doesn’t eat apples every day. But she does eat avocados every day.",
+   "words": [
+    {
+     "w": "no",
+     "start": 968.54,
+     "end": 969.16
+    },
+    {
+     "w": "she",
+     "start": 969.64,
+     "end": 970.02
+    },
+    {
+     "w": "doesnt",
+     "start": 970.02,
+     "end": 970.46
+    },
+    {
+     "w": "eat",
+     "start": 970.46,
+     "end": 970.6
+    },
+    {
+     "w": "apples",
+     "start": 970.6,
+     "end": 970.96
+    },
+    {
+     "w": "every",
+     "start": 970.96,
+     "end": 971.22
+    },
+    {
+     "w": "day",
+     "start": 971.22,
+     "end": 971.48
+    },
+    {
+     "w": "but",
+     "start": 971.82,
+     "end": 972.28
+    },
+    {
+     "w": "she",
+     "start": 972.28,
+     "end": 972.56
+    },
+    {
+     "w": "does",
+     "start": 972.56,
+     "end": 972.98
+    },
+    {
+     "w": "eat",
+     "start": 972.98,
+     "end": 973.18
+    },
+    {
+     "w": "avocados",
+     "start": 973.18,
+     "end": 973.86
+    },
+    {
+     "w": "every",
+     "start": 973.86,
+     "end": 974.1
+    },
+    {
+     "w": "day",
+     "start": 974.1,
+     "end": 974.32
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 974.8,
+   "end": 999.3,
+   "lines": [
+    "Él acaba de decir, “But she does eat avocados every day.” “But she does eat avocados every day,” significa “Pero sí ella come aguacates todos los días.” La palabra “avocado” significa aguacate en inglés. Ahora escucha la conversación completa."
+   ],
+   "words": [
+    {
+     "w": "el",
+     "start": 974.8,
+     "end": 975.36
+    },
+    {
+     "w": "acaba",
+     "start": 975.36,
+     "end": 975.66
+    },
+    {
+     "w": "de",
+     "start": 975.66,
+     "end": 975.82
+    },
+    {
+     "w": "decir",
+     "start": 975.82,
+     "end": 976.2
+    },
+    {
+     "w": "but",
+     "start": 976.6,
+     "end": 977.08
+    },
+    {
+     "w": "she",
+     "start": 977.08,
+     "end": 977.3
+    },
+    {
+     "w": "does",
+     "start": 977.3,
+     "end": 977.72
+    },
+    {
+     "w": "eat",
+     "start": 977.72,
+     "end": 977.94
+    },
+    {
+     "w": "avocados",
+     "start": 977.94,
+     "end": 978.7
+    },
+    {
+     "w": "every",
+     "start": 978.7,
+     "end": 978.94
+    },
+    {
+     "w": "day",
+     "start": 978.94,
+     "end": 979.16
+    },
+    {
+     "w": "but",
+     "start": 979.52,
+     "end": 980.18
+    },
+    {
+     "w": "she",
+     "start": 980.18,
+     "end": 980.36
+    },
+    {
+     "w": "does",
+     "start": 980.36,
+     "end": 980.62
+    },
+    {
+     "w": "eat",
+     "start": 980.62,
+     "end": 980.84
+    },
+    {
+     "w": "avocados",
+     "start": 980.84,
+     "end": 981.44
+    },
+    {
+     "w": "every",
+     "start": 981.44,
+     "end": 981.66
+    },
+    {
+     "w": "day",
+     "start": 981.66,
+     "end": 981.88
+    },
+    {
+     "w": "significa",
+     "start": 982.72,
+     "end": 982.72
+    },
+    {
+     "w": "pero",
+     "start": 982.96,
+     "end": 983.6
+    },
+    {
+     "w": "si",
+     "start": 983.6,
+     "end": 983.9
+    },
+    {
+     "w": "ella",
+     "start": 984.2,
+     "end": 984.66
+    },
+    {
+     "w": "come",
+     "start": 984.66,
+     "end": 985.6
+    },
+    {
+     "w": "aguacates",
+     "start": 985.62,
+     "end": 986.16
+    },
+    {
+     "w": "todos",
+     "start": 986.72,
+     "end": 987.58
+    },
+    {
+     "w": "los",
+     "start": 987.58,
+     "end": 987.94
+    },
+    {
+     "w": "dias",
+     "start": 987.94,
+     "end": 988.26
+    },
+    {
+     "w": "la",
+     "start": 988.82,
+     "end": 989.28
+    },
+    {
+     "w": "palabra",
+     "start": 989.28,
+     "end": 989.9
+    },
+    {
+     "w": "avocado",
+     "start": 989.9,
+     "end": 990.74
+    },
+    {
+     "w": "significa",
+     "start": 990.74,
+     "end": 991.76
+    },
+    {
+     "w": "aguacate",
+     "start": 991.78,
+     "end": 992.21
+    },
+    {
+     "w": "en",
+     "start": 992.66,
+     "end": 992.82
+    },
+    {
+     "w": "ingles",
+     "start": 992.82,
+     "end": 993.04
+    },
+    {
+     "w": "ahora",
+     "start": 993.72,
+     "end": 994.3
+    },
+    {
+     "w": "escucha",
+     "start": 994.9,
+     "end": 995.24
+    },
+    {
+     "w": "la",
+     "start": 995.24,
+     "end": 995.42
+    },
+    {
+     "w": "conversacion",
+     "start": 995.42,
+     "end": 996.28
+    },
+    {
+     "w": "completa",
+     "start": 996.28,
+     "end": 996.96
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 999.3,
+   "end": 1001.96,
+   "text": "Hello. What do you sell?",
+   "words": [
+    {
+     "w": "hello",
+     "start": 999.3,
+     "end": 999.98
+    },
+    {
+     "w": "what",
+     "start": 1000.46,
+     "end": 1000.88
+    },
+    {
+     "w": "do",
+     "start": 1000.88,
+     "end": 1001.0
+    },
+    {
+     "w": "you",
+     "start": 1001.0,
+     "end": 1001.1
+    },
+    {
+     "w": "sell",
+     "start": 1001.1,
+     "end": 1001.46
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1001.96,
+   "end": 1005.12,
+   "text": "We sell fruit. Do you eat apples?",
+   "words": [
+    {
+     "w": "we",
+     "start": 1001.96,
+     "end": 1002.44
+    },
+    {
+     "w": "sell",
+     "start": 1002.44,
+     "end": 1002.76
+    },
+    {
+     "w": "fruit",
+     "start": 1002.76,
+     "end": 1003.16
+    },
+    {
+     "w": "do",
+     "start": 1003.52,
+     "end": 1004.06
+    },
+    {
+     "w": "you",
+     "start": 1004.06,
+     "end": 1004.22
+    },
+    {
+     "w": "eat",
+     "start": 1004.22,
+     "end": 1004.42
+    },
+    {
+     "w": "apples",
+     "start": 1004.42,
+     "end": 1004.78
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1005.12,
+   "end": 1007.6,
+   "text": "Yes, I eat apples every day.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 1005.12,
+     "end": 1005.62
+    },
+    {
+     "w": "i",
+     "start": 1005.8,
+     "end": 1005.92
+    },
+    {
+     "w": "eat",
+     "start": 1005.92,
+     "end": 1006.1
+    },
+    {
+     "w": "apples",
+     "start": 1006.1,
+     "end": 1006.5
+    },
+    {
+     "w": "every",
+     "start": 1006.5,
+     "end": 1006.9
+    },
+    {
+     "w": "day",
+     "start": 1006.9,
+     "end": 1007.2
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1007.6,
+   "end": 1009.74,
+   "text": "We sell apples every day.",
+   "words": [
+    {
+     "w": "we",
+     "start": 1007.6,
+     "end": 1008.06
+    },
+    {
+     "w": "sell",
+     "start": 1008.06,
+     "end": 1008.38
+    },
+    {
+     "w": "apples",
+     "start": 1008.38,
+     "end": 1008.84
+    },
+    {
+     "w": "every",
+     "start": 1008.84,
+     "end": 1009.14
+    },
+    {
+     "w": "day",
+     "start": 1009.14,
+     "end": 1009.4
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1009.74,
+   "end": 1012.28,
+   "text": "And wine, do you guys sell wine?",
+   "words": [
+    {
+     "w": "and",
+     "start": 1009.74,
+     "end": 1010.1
+    },
+    {
+     "w": "wine",
+     "start": 1010.1,
+     "end": 1010.44
+    },
+    {
+     "w": "do",
+     "start": 1010.6,
+     "end": 1010.94
+    },
+    {
+     "w": "you",
+     "start": 1010.94,
+     "end": 1011.08
+    },
+    {
+     "w": "guys",
+     "start": 1011.08,
+     "end": 1011.32
+    },
+    {
+     "w": "sell",
+     "start": 1011.32,
+     "end": 1011.62
+    },
+    {
+     "w": "wine",
+     "start": 1011.62,
+     "end": 1011.98
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1012.28,
+   "end": 1015.82,
+   "text": "No, we don’t sell wine. But they sell wine.",
+   "words": [
+    {
+     "w": "no",
+     "start": 1012.28,
+     "end": 1012.82
+    },
+    {
+     "w": "we",
+     "start": 1013.0,
+     "end": 1013.22
+    },
+    {
+     "w": "dont",
+     "start": 1013.22,
+     "end": 1013.52
+    },
+    {
+     "w": "sell",
+     "start": 1013.52,
+     "end": 1013.76
+    },
+    {
+     "w": "wine",
+     "start": 1013.76,
+     "end": 1014.14
+    },
+    {
+     "w": "but",
+     "start": 1014.28,
+     "end": 1014.64
+    },
+    {
+     "w": "they",
+     "start": 1014.64,
+     "end": 1014.86
+    },
+    {
+     "w": "sell",
+     "start": 1014.86,
+     "end": 1015.14
+    },
+    {
+     "w": "wine",
+     "start": 1015.14,
+     "end": 1015.46
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1015.82,
+   "end": 1017.08,
+   "text": "Who, them?",
+   "words": [
+    {
+     "w": "who",
+     "start": 1015.82,
+     "end": 1016.34
+    },
+    {
+     "w": "them",
+     "start": 1016.46,
+     "end": 1016.64
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1017.08,
+   "end": 1019.86,
+   "text": "Yes. They sell wine and beer.",
+   "words": [
+    {
+     "w": "yes",
+     "start": 1017.08,
+     "end": 1017.68
+    },
+    {
+     "w": "they",
+     "start": 1017.92,
+     "end": 1018.54
+    },
+    {
+     "w": "sell",
+     "start": 1018.54,
+     "end": 1018.88
+    },
+    {
+     "w": "wine",
+     "start": 1018.88,
+     "end": 1019.32
+    },
+    {
+     "w": "and",
+     "start": 1019.32,
+     "end": 1019.54
+    },
+    {
+     "w": "beer",
+     "start": 1019.54,
+     "end": 1019.86
+    }
+   ]
+  },
+  {
+   "t": "english",
+   "start": 1019.86,
+   "end": 1027.24,
+   "text": "I don't drink beer, but I drink a little bit of wine in the afternoon.",
+   "words": [
+    {
+     "w": "i",
+     "start": 1019.86,
+     "end": 1020.54
+    },
+    {
+     "w": "dont",
+     "start": 1020.54,
+     "end": 1020.76
+    },
+    {
+     "w": "drink",
+     "start": 1020.76,
+     "end": 1020.94
+    },
+    {
+     "w": "beer",
+     "start": 1020.94,
+     "end": 1021.3
+    },
+    {
+     "w": "but",
+     "start": 1021.5,
+     "end": 1021.84
+    },
+    {
+     "w": "i",
+     "start": 1021.84,
+     "end": 1021.96
+    },
+    {
+     "w": "drink",
+     "start": 1021.96,
+     "end": 1022.18
+    },
+    {
+     "w": "a",
+     "start": 1022.18,
+     "end": 1022.38
+    },
+    {
+     "w": "little",
+     "start": 1022.38,
+     "end": 1022.58
+    },
+    {
+     "w": "bit",
+     "start": 1022.58,
+     "end": 1022.76
+    },
+    {
+     "w": "of",
+     "start": 1022.76,
+     "end": 1022.92
+    },
+    {
+     "w": "wine",
+     "start": 1022.92,
+     "end": 1023.24
+    },
+    {
+     "w": "in",
+     "start": 1023.24,
+     "end": 1023.4
+    },
+    {
+     "w": "the",
+     "start": 1023.4,
+     "end": 1023.52
+    },
+    {
+     "w": "afternoon",
+     "start": 1023.52,
+     "end": 1023.96
+    }
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 1027.24,
+   "end": 1059.14,
+   "lines": [
+    "Este es el fin de la lección 6. Repite esta lección tantas veces como sea necesario para que te sientas cómodo respondiendo a mis preguntas."
+   ],
+   "words": [
+    {
+     "w": "este",
+     "start": 1027.24,
+     "end": 1027.62
+    },
+    {
+     "w": "es",
+     "start": 1027.62,
+     "end": 1027.88
+    },
+    {
+     "w": "el",
+     "start": 1027.88,
+     "end": 1028.04
+    },
+    {
+     "w": "fin",
+     "start": 1028.04,
+     "end": 1028.3
+    },
+    {
+     "w": "de",
+     "start": 1028.3,
+     "end": 1028.54
+    },
+    {
+     "w": "la",
+     "start": 1028.54,
+     "end": 1028.68
+    },
+    {
+     "w": "leccion",
+     "start": 1028.68,
+     "end": 1029.2
+    },
+    {
+     "w": "6",
+     "start": 1029.2,
+     "end": 1029.72
+    },
+    {
+     "w": "repite",
+     "start": 1031.7,
+     "end": 1032.4
+    },
+    {
+     "w": "esta",
+     "start": 1032.4,
+     "end": 1032.56
+    },
+    {
+     "w": "leccion",
+     "start": 1032.56,
+     "end": 1032.92
+    },
+    {
+     "w": "tantas",
+     "start": 1032.92,
+     "end": 1033.46
+    },
+    {
+     "w": "veces",
+     "start": 1033.46,
+     "end": 1033.7
+    },
+    {
+     "w": "como",
+     "start": 1033.7,
+     "end": 1033.94
+    },
+    {
+     "w": "sea",
+     "start": 1033.94,
+     "end": 1034.16
+    },
+    {
+     "w": "necesario",
+     "start": 1034.16,
+     "end": 1034.68
+    },
+    {
+     "w": "para",
+     "start": 1034.68,
+     "end": 1034.94
+    },
+    {
+     "w": "que",
+     "start": 1034.94,
+     "end": 1035.1
+    },
+    {
+     "w": "te",
+     "start": 1035.1,
+     "end": 1035.34
+    },
+    {
+     "w": "sientas",
+     "start": 1035.34,
+     "end": 1035.88
+    },
+    {
+     "w": "comodo",
+     "start": 1035.88,
+     "end": 1036.3
+    },
+    {
+     "w": "respondiendo",
+     "start": 1036.3,
+     "end": 1037.46
+    },
+    {
+     "w": "a",
+     "start": 1037.46,
+     "end": 1037.6
+    },
+    {
+     "w": "mis",
+     "start": 1037.6,
+     "end": 1037.78
+    },
+    {
+     "w": "preguntas",
+     "start": 1037.78,
+     "end": 1038.3
+    }
+   ]
+  }
+ ]
+}
