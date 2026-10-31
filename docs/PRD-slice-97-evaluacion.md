@@ -62,6 +62,21 @@ Vocabulary: B1 collocations + extended phrasal verbs + B2-entry idioms (5 items)
 Grammar: mixed conditionals (B2/C1); wish/if only (B2/C1); narrative tenses (B2); modals of speculation past (can't have/needn't have, B2); future perfect (B2); inversion with negative adverbials (C1); would past habits (B2); full passive forms (C1); split phrasal verbs (C1); would/habit + registers (C1 filler).
 Vocabulary: B2 idioms (set your sights on, jump at, give away, head out, by chance) + C1 collocational precision items (5 items).
 
+## Kyle track overrides (2026-10-30, classroom judgment over EGP tags)
+
+Kyle reviewed the skeleton and moved four structures down; all four moves are bank + rotation items traveling together (structure ids renamed, DB orphans cleaned):
+
+1. do/make collocations: was int (inherited from the legacy quiz's own ordering, where the IELTS item sat at Q24 of 40). Kyle: beginner or pre-int material. -> pre_int. EGP context: 'do' task senses are A1/A2 in EVP; the collocation trap is vocabulary, not advanced grammar.
+2. question tags: was int (EGP tags the affirmative-main + negative-tag combination B1). Kyle: he begins teaching tags in beginner courses, and Spanish 'verdad?' maps directly. -> pre_int. EGP validates the direction: basic tags are tagged A2 ('QUESTIONS/tags: FORM: QUESTION TAGS'); only the combination variant is B1.
+3. gerund as subject (both items: 'No se permite fumar' and 'Training for a career'): was int/upper. EGP tags '-ING forms, subject' B2 (that is where the 'advanced' impression came from) while -ing as OBJECT is A2. Kyle: he teaches gerund-as-subject to pre-intermediates and they catch on quickly. -> both to pre_int.
+
+Standing rule (already on file, restated as used): CEFR/Egp tags are descriptive and Kyle's LatAm classroom sequencing overrides a profile assignment whenever they disagree; record the override and the evidence in the bank (egp_ref stays, track moves).
+
+## Review doc regeneration + Spanish edits (2026-10-30, applied)
+
+- Review doc regenerated to include all three passes (placement/confirmation/rotation) with the '[ ]' marker convention.
+- Kyle's Spanish corrections applied to bank content: recamara -> cuarto, 'cuarto delavado' -> bano, refri -> refrigerador, fregadero -> lavaplatos (LatAm household vocabulary; the Spain variants read as foreign to his students). Applied to prompts AND the structure rule text that names the Spanish gloss. One flagged item: 'duerme en la cuarto' applied verbatim; gender may be a typo ('el cuarto'), pending Kyle's confirm.
+
 ## Open items
 - [DECIDED] Opener: 5 options; 'No sé nada' → Superpack redirect.
 - [DECIDED] Splash/offer/result copy: Kyle's voice (Kyle writes or copy-passes drafts).
@@ -109,8 +124,11 @@ These 3 complete the clean 60 (57 clean + 4 flagged dropped + these 3 fill the g
 
 - Cursor drafts missing bank items from EGP XLSX rows, status: draft, 'borrador' badge visible in dev only. The skeleton does not wait on Kyle's copy pass. [DECIDED]
 - Guardrails for ALL items (draft or approved): single defensible answer (verified against the EGP row), structure-keyed with egp_ref, 'No sé' fifth option on MC, no em dashes, American English. The existing 24 Hermes drafts (21 + 3 fillers) are also status: draft pending Kyle's copy pass.
-- GATE: no draft item runs in production. Launch requires status: approved (Kyle reviewed). Approval pass can be batch-by-track: Kyle edits/approves in one sitting; dev badge makes drafts findable.
-- Suggested item status values: draft -> approved (Kyle) -> retired (replaced by bank expansion). Retired items stay in the rotation-exclusion history so returning students never see them again.
+- REVIEW IS DISAPPROVE-ONLY (Kyle ruling): Kyle will not approve 180 items one by one. Everything unmarked ships approved; his review marks ONLY exceptions. Markup convention (in the review MD, on the '[ ]' line under each item): FUERA = drop; EDITA: <text> = replace the item; MAL = drop, handle later; or edit the item text in place (diffs are detected automatically); or a chat/voice list ('fuera X, quítale Y a Z') which is equally valid. After his pass: unmarked -> approved, marked -> retired (or the edited text in as replacement).
+- GATE (inverted to match): production serves everything except explicitly disapproved/retired items. Kyle's review pass is the act of marking exceptions, not a blanket approval chore.
+- Status values: draft -> approved (default after Kyle's disapprove-only pass) -> retired. Retired items stay in the rotation-exclusion history so returning students never see them again.
+- Review-doc regeneration: a tsx dump script imports the bank and renders every item (prompt, options, correct marked with a checkmark, rule, source) grouped by track into ~/Desktop/evaluacion-item-review.md; it is disposable, so regenerate it from the bank whenever the review doc must reflect new items (the dump pattern is 20 lines; do not hand-maintain the doc).
+- Review-doc Spanish edits flow back to the BANK by diffing his Desktop file against a fresh dump: changed prompt/option lines are bank content edits (apply verbatim, including colloquialisms; flag apparent typos in chat, do not silently fix). Rule text fields that mention the Spanish gloss must be updated in the same pass.
 
 ## Skeleton-build decisions (2026-10-30, Cursor Q3-Q7, Kyle answers)
 

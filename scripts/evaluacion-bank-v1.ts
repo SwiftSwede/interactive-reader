@@ -877,8 +877,8 @@ export const EVALUACION_BANK_V1: SeedStructure[] = [
     confirmation: fill("They fixed the _____ window.", "broken", ["broke", "break", "breaked"], CONF),
   },
   {
-    id: "int_gerund_not_allowed",
-    track: "int",
+    id: "pre_gerund_not_allowed",
+    track: "pre_int",
     kind: "grammar",
     nameEs: "-ing como sujeto (Smoking is not allowed)",
     egpRef: "PASSIVES / passives: form / B1 / FORM: PRESENT SIMPLE, NEGATIVE",
@@ -904,8 +904,8 @@ export const EVALUACION_BANK_V1: SeedStructure[] = [
     ),
   },
   {
-    id: "int_do_make",
-    track: "int",
+    id: "pre_do_make",
+    track: "pre_int",
     kind: "vocabulary",
     nameEs: "Do o make ('hacer')",
     egpRef: "EVP: do (an exam, homework) / B1",
@@ -1019,8 +1019,8 @@ export const EVALUACION_BANK_V1: SeedStructure[] = [
     ),
   },
   {
-    id: "int_question_tags",
-    track: "int",
+    id: "pre_question_tags",
+    track: "pre_int",
     kind: "grammar",
     nameEs: "Question tags (¿verdad?)",
     egpRef: "QUESTIONS / tags / B1 / FORM: AFFIRMATIVE MAIN CLAUSES + NEGATIVE QUESTION TAGS",
@@ -1147,8 +1147,8 @@ export const EVALUACION_BANK_V1: SeedStructure[] = [
     confirmation: fill("We _____ to wait outside.", "were told", ["was told", "told", "were tell"], CONF),
   },
   {
-    id: "upp_gerund_subject",
-    track: "upper",
+    id: "pre_gerund_subject",
+    track: "pre_int",
     kind: "grammar",
     nameEs: "-ing como sujeto (Training...)",
     egpRef: "NOUNS / types / B2 / FORM'-ING' FORMS, SUBJECT",
@@ -1587,7 +1587,7 @@ export const EVALUACION_BANK_V1: SeedStructure[] = [
     classType: "story",
     rule: "bathroom es el bano, bedroom es la recamara y kitchen es la cocina. Se confunden por el sonido.",
     placement: translation("El baño está sucio.", "The bathroom is dirty.", ["The bedroom is dirty.", "The backyard is dirty.", "The kitchen is dirty."], "hermes_new"),
-    confirmation: translation("Cocina en la cocina, duerme en la recámara.", "Cook in the kitchen, sleep in the bedroom.", ["Cook in the bathroom, sleep in the kitchen.", "Cook in the bedroom, sleep in the backyard.", "Cook in the backyard, sleep in the bathroom."], "hermes_new"),
+    confirmation: translation("Cocina en la cocina, duerme en la cuarto.", "Cook in the kitchen, sleep in the bedroom.", ["Cook in the bathroom, sleep in the kitchen.", "Cook in the bedroom, sleep in the backyard.", "Cook in the backyard, sleep in the bathroom."], "hermes_new"),
   },
   {
     id: "beg_vocab_food",
@@ -1637,8 +1637,8 @@ export const EVALUACION_BANK_V1: SeedStructure[] = [
     egpLevel: "A1",
     l1Focus: false,
     classType: "story",
-    rule: "fridge es el refri, oven es el horno y sink es el fregadero.",
-    placement: translation("Guarda la leche en el refri.", "Put the milk in the fridge.", ["Put the milk in the oven.", "Put the milk in the sink.", "Put the milk in the closet."], "hermes_new"),
+    rule: "fridge es el refrigerador, oven es el horno y sink es el lavaplatos.",
+    placement: translation("Guarda la leche en el refrigerador.", "Put the milk in the fridge.", ["Put the milk in the oven.", "Put the milk in the sink.", "Put the milk in the closet."], "hermes_new"),
     confirmation: translation("El pan está en el horno.", "The bread is in the oven.", ["The bread is in the fridge.", "The bread is in the sink.", "The bread is in the closet."], "hermes_new"),
   },
   {

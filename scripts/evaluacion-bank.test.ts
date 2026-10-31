@@ -14,7 +14,7 @@ describe("evaluación bank v1", () => {
       counts[structure.track] = (counts[structure.track] ?? 0) + 1;
     }
     assert.equal(EVALUACION_BANK_V1.length, 79);
-    assert.deepEqual(counts, { beginner: 20, pre_int: 23, int: 21, upper: 15 });
+    assert.deepEqual(counts, { beginner: 20, pre_int: 27, int: 18, upper: 14 }); // do/make, question tags, gerund-as-subject moved down per Kyle (EGP validated)
   });
 
   test("rows carry opaque option ids with the key among them", () => {
