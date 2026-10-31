@@ -40,7 +40,7 @@ Copy source: Business-Wiki/workshops/2026-10-landing-page-spec.md level field (K
 - `attempt`: {student_ref (email nullable until capture), started_at, selections[], placement_scores per track, confirmation_results, settled_track, confirmed_holes[], candidate_holes[], pixel_events}
 - `error_tag`: per-structure weakness record {student, structure_id, status: candidate|confirmed, first_seen, last_seen} — app-internal, NEVER sent to MailerLite.
 - MailerLite: only placed-level tag + funnel-state tags. Meta pixel: coarse events only.
-- Minimal-pair sub-engine [PAIR LIST DECIDED 2026-10-29]: 14 pairs (7 consonant + 7 vowel), bank below. Per sitting: 4 pairs × 3 items = 12 items (2 consonant + 2 vowel pairs, rotated; exclude pairs the student already saw). Flag rule with 3 items: 2+ wrong of 3 = confirmed listening gap (guesser passes 1/8); 1 wrong = candidate. Per-pair result on the report ('you heard X when she said Y'), routed to the class type that drills that sound.
+- Minimal-pair sub-engine [PAIR LIST DECIDED 2026-10-29]: 11 pairs (7 consonant + 4 vowel), bank below. Per sitting: 4 pairs × 3 items = 12 items (2 consonant + 2 vowel pairs, rotated; exclude pairs the student already saw). Flag rule with 3 items: 2+ wrong of 3 = confirmed listening gap (guesser passes 1/8); 1 wrong = candidate. Per-pair result on the report ('you heard X when she said Y'), routed to the class type that drills that sound.
 
 ## Bank skeleton (v1: 15 structures per track, 3 items each = 45/track, 180 total)
 
@@ -66,7 +66,7 @@ Vocabulary: B2 idioms (set your sights on, jump at, give away, head out, by chan
 - [DECIDED] Opener: 5 options; 'No sé nada' → Superpack redirect.
 - [DECIDED] Splash/offer/result copy: Kyle's voice (Kyle writes or copy-passes drafts).
 - [PLACEHOLDER] Pixel event names, email-capture UI point.
-- [PLACEHOLDER] Per-item word audio: evaluation items need ONE word per item; existing MP3s at "/Volumes/Kyle's Passport/English/pronunciationCourse/audioPractice/" are whole-pair practice tracks (minimalPairs_bv.mp3, _sz, _dTH, _tTH, _ chSH, _yJ, _nNG, ShortUvsShortA, LongEvsShorti, LongUvsAngryMonkey, LongOvsListerine). Kyle records/slices per-item audio; naming convention: audio/minimal-pairs/{pair_id}/{word}.mp3.
+- [DONE] Per-item word audio: 157 per-word MP3s sliced from Kyle's practice tracks (source: "/Volumes/Kyle's Passport/English/pronunciationCourse/audioPractice/"), committed to the repo at public/audio/minimal-pairs/{pair_id}/{word}.mp3, all 11 pairs covered. Built with the audio-word-slicing skill. Naming matches pairs.ts pairAudioPath(): lowercase, apostrophes stripped, spaces hyphenated ('sit in' = sit-in.mp3). [PLACEHOLDER remains: none — audio complete]
 
 ## Minimal-pair bank (Kyle's pair list, verbatim word pairs)
 
@@ -130,15 +130,12 @@ These 3 complete the clean 60 (57 clean + 4 flagged dropped + these 3 fill the g
 - Q13 CHROME [KYLE AMENDMENT]: NOT Paper Light. Kyle wants the CLASSIC design scheme from the old WordPress evaluation: white/#fafafa background, navy headline type, green accents (#4dc082 progress fill, #7fd5ac next step, #363942 label color, from the Thrive export details.json), big centered friendly sans-serif, playful challenge framing ('¿Puedes ganarme?' was the old results headline). Source refs: ~/Downloads/Quiz_12389 (1)/12389.png (results badge) + details.json tokens. KEEP from Cursor's proposal: single-column layout, no tab bar, no app nav, thin header with progress + quit 'x' (those are UX structure, independent of skin). Implement as a scoped 'evaluacion-classic' style section; any new pattern still proposed to Kyle before entering DESIGN.md (ask-before-inventing gate).
 - Q14 STUBS: pixel events fire to a track() no-op (logs in dev); MailerLite call behind a config flag, email stored on the attempt only; beginner redirect URL in src/lib/evaluacion/config.ts; splash/offer/result copy marked [copy].
 - Q15 SLICES: split into 97a (PRD/ADR updates, tables, seeder, pure logic + tests, clickable flow, review) and 97b (minimal-pair engine + audio loader). Each ends with a commit and its own PRD row.
-- Q16 CONTRAST: #4dc082 is the progress fill only (track gets a visible border). The darker badge green (#217a2e) carries text, CTA, borders, and focus. #7fd5ac is a selected-option tint only, never text or a boundary.
-- Q17 FONT: Open Sans through the same `next/font` loader as /workshop. Scoped `.evaluacion-classic` wrapper with its own CSS variables. Progress bar and option-card patterns get proposed to Kyle with a mock before they enter DESIGN.md.
 
-## Build notes (Cursor, 2026-10-30, flag for Kyle)
+## EGP floor enforcement + track pools (2026-10-30, Kyle approved)
 
-- BAND THRESHOLDS: '47%' read literally on the exact fraction would DEMOTE 7/15 (46.7%), which contradicts the original 7-11 settle band. Built as exact fractions that keep the original bands: promote = correct/total >= 12/15 (80%), settle = >= 7/15 (shown as 47%), demote below that. Integer cross-multiplication, no rounding anywhere.
-- FLAGGED SLOTS: 40 legacy + 21 drafts = 61; 4 dropped = 57. Dropped: 'Ellos van a la tienda', 'Voy a conocer a Marc Anthony', 'Él me dijo que trabajaba en Canadá', 'So far, 13 hockey games'. The beginner filler note says it replaces 'Es un libro azul', but that item was never on the flagged list, so it stays. If Kyle meant to drop it too, v1 is 59.
-- V1 TRACKS (by EGP level, not legacy shelf): beginner 15, pre-int 17 (legacy Q9-16 + 7 drafts + the A2 indirect question and A2 simple passive moved down per EGP), intermediate 14 (legacy Q17-24 minus Marc Anthony + 5 drafts + 2 fillers), upper 14 (legacy Q25-40 minus the two flagged). Sizes vary, bands are fractions.
-- EGP LEVELS FROM THE LIVE EXPORT differ from the EQUALS list again: 'have to' and 'enjoy + -ing' are both A2 rows in EGP-full-1222 (FORM: AFFIRMATIVE / USE: OBLIGATION; FORM: 'ENJOY' + '-ING'). Stored as A2.
-- LEGACY FIX: 'To "set your sight on"' corrected to 'set your sights on'. Q36's HTML entity is decoded.
-- ERROR TAGS are per attempt (attempt_id, structure_id, status), not per student with first_seen/last_seen: a guest has no student id (ADR 017). Seen items are derived from earlier attempts' journeys, no separate table.
-- CONFIRMATION STUBS: one Cursor-drafted item per structure (60), status draft. Rule text is Spanish, one line, drafted from the EGP can-do; Kyle's copy pass approves both.
+Kyle caught an A2 item (any/negation) in the int track and ruled: a track's placement items must be at or above its CEFR floor (beginner >= A1, pre-int >= A2, int >= B1, upper >= B2). Bank audit found 7 below-floor structures (2 int A2: any/negation, ago; 5 upper B1: would/could, passive past, as soon as, haven't in ages, should have + -ing). Implemented (commit 6532466):
+1. All 7 moved to their correct track (bank + rotation items travel with them).
+2. 6 new upper structures authored (wish + past perfect B2, inversion Never had I B2, mixed conditional C1, can't have + participle B2, make/do/go collocations B2 vocab, idioms B2 vocab), each with placement + confirmation + rotation. Upper back to 15, all B2/C1.
+3. Track = POOL: placement pass draws 15 structures seeded per attempt (seeded shuffle of the pool, then canonical order), so pools can exceed 15 without changing session length. Bank now: beginner 15, pre-int 19, int 17, upper 15 (66 structures, 198 items).
+4. Confirmation items NEVER serve as placement (draw fallback now repeats the placement item instead); test updated.
+Track sizes: beginner 15, pre_int 19, int 17, upper 15. Validation clean, 46/46 tests, seeder ran (18 new items).
