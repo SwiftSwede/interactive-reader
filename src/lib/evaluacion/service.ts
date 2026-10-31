@@ -389,7 +389,7 @@ async function advance(
   if (step.type === "finish") return finish(step.outcome, step.placedTrack);
 
   if (step.type === "placement") {
-    const itemIds = drawPlacementPass(bank.index, step.track, servable, seen);
+    const itemIds = drawPlacementPass(bank.index, step.track, servable, seen, attempt.seed);
     if (itemIds.length === 0) {
       return step.transition === "promote"
         ? finish("settled", current.track)
@@ -442,11 +442,12 @@ export async function startEvaluacion(
     }
   }
 
+  const seed = randomInt(0, 2 ** 31 - 1);
   const base = {
     token_hash: args.tokenHash,
     ip_hash: args.ipHash,
     opener: args.opener,
-    seed: randomInt(0, 2 ** 31 - 1),
+    seed,
   };
 
   const track = trackForOpener(args.opener);
@@ -466,7 +467,7 @@ export async function startEvaluacion(
   if (!hasServableBank(bank.index, servable)) {
     throw evalError("EVAL_UNAVAILABLE", 503, "No servable items");
   }
-  const itemIds = drawPlacementPass(bank.index, track, servable, seen);
+  const itemIds = drawPlacementPass(bank.index, track, servable, seen, seed);
   if (itemIds.length === 0) throw evalError("EVAL_UNAVAILABLE", 503, "No servable items");
 
   const journey: JourneyPass[] = [{ kind: "placement", track, itemIds }];

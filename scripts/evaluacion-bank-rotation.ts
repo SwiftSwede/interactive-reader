@@ -76,4 +76,10 @@ export const ROTATION_ITEMS: Record<string, SeedItem> = {
   upp_despite: t("Aunque estaba cansado, terminó el proyecto.", "Despite being tired, he finished the project.", ["Despite he was tired, he finished the project.", "Despite of being tired, he finished the project.", "Despite of he was tired, he finished the project."]),
   upp_phrasal_head_out: f("We _____ early to avoid traffic.", "set off", ["set down", "set up", "set in"]),
   upp_should_have_ing: t("Deberías haber revisado el contrato antes de firmarlo.", "You should have reviewed the contract before signing it.", ["You should have review the contract before signing it.", "You should have reviewed the contract before sign it.", "You should has reviewed the contract before signing it."]),
+  upp_wish_if_only: t("Ojalá no hubiera dicho eso.", "I wish I hadn't said that.", ["I wish I haven't said that.", "I wish I wouldn't say that.", "I wish I didn't say that."]),
+  upp_inversion_never: t("Nunca había comido sushi hasta ayer.", "Never had I eaten sushi until yesterday.", ["Never I had eaten sushi until yesterday.", "I had never ate sushi until yesterday.", "Never I eaten sushi until yesterday."]),
+  upp_mixed_conditional: f("If you had taken the earlier flight, you _____ here by now.", "would be", ["will be", "would have", "had been"]),
+  upp_cant_have: t("No puede haber dicho eso.", "He can't have said that.", ["He can't has said that.", "He couldn't said that.", "He can't to have said that."]),
+  upp_vocab_collocations: t("El perro hizo ruido toda la noche.", "The dog made noise all night.", ["The dog did noise all night.", "The dog took noise all night.", "The dog gave noise all night."]),
+  upp_idiom_blue_moon: m('If a meeting is "up in the air", it is _____.', "not decided yet", ["confirmed", "cancelled forever", "in the sky"]),
 };

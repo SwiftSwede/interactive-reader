@@ -8,19 +8,19 @@ describe("evaluación bank v1", () => {
     assert.deepEqual(validateBank(EVALUACION_BANK_V1), []);
   });
 
-  test("has 60 placement structures, split by EGP level rather than 15 per track", () => {
+  test("structures form a per-track pool >= 15, floor-compliant by EGP level", () => {
     const counts: Record<string, number> = {};
     for (const structure of EVALUACION_BANK_V1) {
       counts[structure.track] = (counts[structure.track] ?? 0) + 1;
     }
-    assert.equal(EVALUACION_BANK_V1.length, 60);
-    assert.deepEqual(counts, { beginner: 15, pre_int: 17, int: 14, upper: 14 });
+    assert.equal(EVALUACION_BANK_V1.length, 66);
+    assert.deepEqual(counts, { beginner: 15, pre_int: 19, int: 17, upper: 15 });
   });
 
   test("rows carry opaque option ids with the key among them", () => {
     const { structures, items } = toRows(EVALUACION_BANK_V1);
-    assert.equal(structures.length, 60);
-    assert.equal(items.length, 180); // 60 x (placement + confirmation + rotation)
+    assert.equal(structures.length, 66);
+    assert.equal(items.length, 198); // 60 x (placement + confirmation + rotation)
     for (const item of items) {
       assert.equal(item.options.length, 4);
       assert.ok(item.options.some((option) => option.id === item.correct_option_id));

@@ -91,17 +91,17 @@ describe("draws", () => {
   const servable = servableStatuses({ nodeEnv: "development" });
 
   test("placement follows track order and skips retired-only structures", () => {
-    assert.deepEqual(drawPlacementPass(bank, "pre_int", servable, new Set()), ["s1.p1", "s2.p1"]);
+    assert.deepEqual(drawPlacementPass(bank, "pre_int", servable, new Set(), 7), ["s1.p1", "s2.p1"]);
   });
 
   test("a retake gets the rotation item, then repeats when nothing is fresh", () => {
     const seen = new Set(["s1.p1", "s2.p1"]);
-    assert.deepEqual(drawPlacementPass(bank, "pre_int", servable, seen), ["s1.r1", "s2.p1"]);
+    assert.deepEqual(drawPlacementPass(bank, "pre_int", servable, seen, 7), ["s1.r1", "s2.p1"]);
   });
 
-  test("a retake uses the confirmation item when the bank has no rotation row", () => {
+  test("a retake repeats the placement item when nothing else is fresh; confirmation never serves as placement", () => {
     const seen = new Set(["s1.p1", "s1.r1", "s2.p1"]);
-    assert.deepEqual(drawPlacementPass(bank, "pre_int", servable, seen), ["s1.c1", "s2.p1"]);
+    assert.deepEqual(drawPlacementPass(bank, "pre_int", servable, seen, 7), ["s1.p1", "s2.p1"]);
   });
 
   test("drafts never serve in production", () => {

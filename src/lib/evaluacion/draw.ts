@@ -100,18 +100,37 @@ export function indexBank(structures: EvalStructure[], items: EvalItem[]): BankI
  * With nothing fresh left, the placement item repeats rather than skipping
  * the structure.
  */
+const PLACEMENT_PASS_LENGTH = 15;
+
 export function drawPlacementPass(
   bank: BankIndex,
   track: Track,
   servable: Set<ItemStatus>,
   seen: Set<string>,
+  seed: number,
 ): string[] {
+  // The track is a pool (>= PLACEMENT_PASS_LENGTH structures when possible).
+  // Each sitting draws PLACEMENT_PASS_LENGTH of them, seeded per attempt, so
+  // sessions stay 15 items while the bank keeps rotation depth for retakes.
+  let pool = [...(bank.structuresByTrack.get(track) ?? [])];
+  if (pool.length > PLACEMENT_PASS_LENGTH) {
+    const random = seededRandom(`${seed}:${track}`);
+    for (let i = pool.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+    pool = pool.slice(0, PLACEMENT_PASS_LENGTH);
+  }
+  pool.sort((a, b) => a.position - b.position);
   const itemIds: string[] = [];
-  for (const structure of bank.structuresByTrack.get(track) ?? []) {
+  for (const structure of pool) {
     const items = bank.itemsByStructure.get(structure.id) ?? [];
+    // Confirmation items never serve as placement: they are the fresh
+    // observation a hole-check needs. When a structure has nothing fresh, the
+    // placement item repeats rather than burning the confirmation row.
     const item =
-      pickItem(items, [...PLACEMENT_ROLES, "confirmation"], servable, seen) ??
-      pickItem(items, PLACEMENT_ROLES, servable, new Set());
+      pickItem(items, PLACEMENT_ROLES, servable, seen) ??
+      pickItem(items, ["placement"], servable, new Set());
     if (item) itemIds.push(item.id);
   }
   return itemIds;
