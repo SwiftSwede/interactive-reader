@@ -15,6 +15,7 @@
 // Grammar maps to the writing class, vocabulary to the story class.
 
 import type { SeedItem, SeedStructure } from "../src/lib/evaluacion/seed";
+import { ROTATION_ITEMS } from "./evaluacion-bank-rotation";
 
 type Wrong = [string, string, string];
 
@@ -1438,3 +1439,8 @@ export const EVALUACION_BANK_V1: SeedStructure[] = [
     ),
   },
 ];
+
+for (const structure of EVALUACION_BANK_V1) {
+  const rotation = ROTATION_ITEMS[structure.id];
+  if (rotation) structure.rotation = rotation;
+}

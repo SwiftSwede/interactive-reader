@@ -24,6 +24,7 @@ export type SeedStructure = {
   rule: string;
   placement: SeedItem;
   confirmation: SeedItem;
+  rotation?: SeedItem;
 };
 
 export type StructureRow = {
@@ -42,7 +43,7 @@ export type StructureRow = {
 export type ItemContentRow = {
   id: string;
   structure_id: string;
-  role: "placement" | "confirmation";
+  role: "placement" | "confirmation" | "rotation";
   format: ItemFormat;
   prompt: string;
   options: { id: string; text: string }[];
@@ -60,10 +61,10 @@ export function optionId(itemId: string, text: string): string {
 
 function itemRow(
   structure: SeedStructure,
-  role: "placement" | "confirmation",
+  role: "placement" | "confirmation" | "rotation",
   item: SeedItem,
 ): ItemContentRow {
-  const id = `${structure.id}.${role === "placement" ? "p1" : "c1"}`;
+  const id = `${structure.id}.${role === "placement" ? "p1" : role === "rotation" ? "r1" : "c1"}`;
   const texts = [item.correct, ...item.wrong];
   return {
     id,
@@ -101,6 +102,7 @@ export function toRows(bank: SeedStructure[]): {
     });
     items.push(itemRow(structure, "placement", structure.placement));
     items.push(itemRow(structure, "confirmation", structure.confirmation));
+    if (structure.rotation) items.push(itemRow(structure, "rotation", structure.rotation));
   }
   return { structures, items };
 }
@@ -119,7 +121,8 @@ export function validateBank(bank: SeedStructure[]): string[] {
     for (const [role, item] of [
       ["placement", structure.placement],
       ["confirmation", structure.confirmation],
-    ] as const) {
+      ...(structure.rotation ? [["rotation", structure.rotation] as const] : []),
+    ]) {
       const label = `${structure.id}.${role}`;
       const texts = [item.correct, ...item.wrong];
       if (new Set(texts.map((text) => text.trim().toLowerCase())).size !== 4) {

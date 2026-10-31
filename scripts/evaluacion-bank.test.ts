@@ -20,7 +20,7 @@ describe("evaluación bank v1", () => {
   test("rows carry opaque option ids with the key among them", () => {
     const { structures, items } = toRows(EVALUACION_BANK_V1);
     assert.equal(structures.length, 60);
-    assert.equal(items.length, 120);
+    assert.equal(items.length, 180); // 60 x (placement + confirmation + rotation)
     for (const item of items) {
       assert.equal(item.options.length, 4);
       assert.ok(item.options.some((option) => option.id === item.correct_option_id));
