@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { nivelForShare, whatsappPrefill, whatsappResultUrl } from "./whatsapp";
+import { evaluacionConfig } from "./config";
+import { nivelForShare, resultMoreInfoUrl, whatsappPrefill, whatsappResultUrl } from "./whatsapp";
 
 test("nivel is a short label, never the track id", () => {
   assert.equal(nivelForShare("settled", "pre_int"), "A2");
@@ -26,4 +27,15 @@ test("the link uses digits only and a different message from the workshop invite
   assert.equal(text.includes("Unirme al grupo"), false);
   assert.equal(whatsappResultUrl("A2", "   "), null);
   assert.equal(whatsappResultUrl("A2", undefined), null);
+});
+
+test("A1 (beginner track) links to the Superpack, not WhatsApp", () => {
+  assert.equal(
+    resultMoreInfoUrl("gentle", "beginner", undefined),
+    evaluacionConfig.beginnerRedirectUrl,
+  );
+  assert.equal(
+    resultMoreInfoUrl("settled", "pre_int", "5215512345678")?.startsWith("https://wa.me/"),
+    true,
+  );
 });

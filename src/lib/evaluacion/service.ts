@@ -23,6 +23,7 @@ import {
   type PairVerdict,
 } from "./pairs";
 import { buildResult } from "./result";
+import { resultMoreInfoUrl } from "./whatsapp";
 import {
   NO_SE_OPTION_ID,
   type AnswerRecord,
@@ -254,6 +255,7 @@ function resultView(ctx: Context, attempt: AttemptRow, answers: Map<string, Answ
     }),
     listening: listeningFor(attempt.journey, answers),
     emailCaptured: Boolean(attempt.email),
+    moreInfoUrl: resultMoreInfoUrl(outcome, attempt.placed_track, process.env.NEXT_PUBLIC_WHATSAPP_NUMBER),
   };
 }
 

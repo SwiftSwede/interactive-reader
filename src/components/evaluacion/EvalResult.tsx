@@ -5,8 +5,6 @@ import { Check, CircleHelp, X } from "lucide-react";
 import { evalUiCopy, resultHeadline } from "@/lib/evaluacion/copy";
 import type { PairVerdict } from "@/lib/evaluacion/pairs";
 import type { EvalResult as EvalResultData, HoleSummary, ReviewEntry } from "@/lib/evaluacion/result";
-import { nivelForShare, whatsappResultUrl } from "@/lib/evaluacion/whatsapp";
-import { evalApi, EvalRequestError } from "./evalApi";
 
 function HoleList({ holes }: { holes: HoleSummary[] }) {
   return (
@@ -107,82 +105,6 @@ function Listening({ verdicts }: { verdicts: PairVerdict[] }) {
   );
 }
 
-function EmailCapture({ alreadySaved }: { alreadySaved: boolean }) {
-  const [email, setEmail] = useState("");
-  const [website, setWebsite] = useState("");
-  const [status, setStatus] = useState<"idle" | "saving" | "saved" | "skipped">(
-    alreadySaved ? "saved" : "idle",
-  );
-  const [error, setError] = useState<string | null>(null);
-
-  if (status === "skipped") return null;
-  if (status === "saved") {
-    return (
-      <p className="ev-body ev-review-right" role="status">
-        {evalUiCopy.emailSaved}
-      </p>
-    );
-  }
-
-  return (
-    <form
-      className="ev-card"
-      onSubmit={async (event) => {
-        event.preventDefault();
-        setStatus("saving");
-        setError(null);
-        try {
-          await evalApi.email(email, website);
-          setStatus("saved");
-        } catch (caught) {
-          setError(caught instanceof EvalRequestError ? caught.message : evalUiCopy.error);
-          setStatus("idle");
-        }
-      }}
-    >
-      <h2 className="ev-subheading">{evalUiCopy.emailTitle}</h2>
-      <p className="ev-note">{evalUiCopy.emailNote}</p>
-      <div className="ev-field">
-        <label htmlFor="ev-email">{evalUiCopy.emailLabel}</label>
-        <input
-          id="ev-email"
-          className="ev-input"
-          type="email"
-          inputMode="email"
-          autoComplete="email"
-          required
-          maxLength={200}
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-      </div>
-      <div className="ev-honeypot" aria-hidden="true">
-        <label htmlFor="ev-website">Website</label>
-        <input
-          id="ev-website"
-          tabIndex={-1}
-          autoComplete="off"
-          value={website}
-          onChange={(event) => setWebsite(event.target.value)}
-        />
-      </div>
-      {error ? (
-        <p className="ev-error" role="alert">
-          {error}
-        </p>
-      ) : null}
-      <div className="ev-actions">
-        <button type="submit" className="ev-cta" disabled={status === "saving"}>
-          {status === "saving" ? "Enviando…" : evalUiCopy.emailCta}
-        </button>
-        <button type="button" className="ev-link" onClick={() => setStatus("skipped")}>
-          {evalUiCopy.emailSkip}
-        </button>
-      </div>
-    </form>
-  );
-}
-
 function ReviewItem({ entry }: { entry: ReviewEntry }) {
   return (
     <li className="ev-review-item">
@@ -259,23 +181,20 @@ function Review({ review }: { review: ReviewEntry[] }) {
 export function EvalResult({
   result,
   listening,
-  emailCaptured,
+  moreInfoUrl,
   onRetake,
 }: {
   result: EvalResultData;
   listening: PairVerdict[];
-  emailCaptured: boolean;
+  moreInfoUrl: string | null;
   onRetake: () => void;
 }) {
-  const [tab, setTab] = useState<"grammar" | "sounds">("grammar");
+  const [tab, setTab] = useState<"grammar" | "sounds" | "answers">("grammar");
   const tabs = [
     ["grammar", evalUiCopy.tabGrammar],
     ["sounds", evalUiCopy.tabSounds],
+    ["answers", evalUiCopy.tabAnswers],
   ] as const;
-  const whatsapp = whatsappResultUrl(
-    nivelForShare(result.outcome, result.placedTrack),
-    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER,
-  );
 
   return (
     <div className="ev-column ev-result ev-fade">
@@ -311,13 +230,8 @@ export function EvalResult({
       >
         {tab === "grammar" ? <MissMap result={result} /> : null}
         {tab === "sounds" ? <Listening verdicts={listening} /> : null}
+        {tab === "answers" ? <Review review={result.review} /> : null}
       </div>
-
-      {whatsapp ? (
-        <a className="ev-cta" href={whatsapp} target="_blank" rel="noopener noreferrer">
-          {evalUiCopy.whatsappCta}
-        </a>
-      ) : null}
 
       <section className="ev-card" aria-labelledby="ev-offer">
         <h2 className="ev-subheading" id="ev-offer">
@@ -326,9 +240,11 @@ export function EvalResult({
         <p className="ev-body">{evalUiCopy.offerBody}</p>
       </section>
 
-      <EmailCapture alreadySaved={emailCaptured} />
-
-      <Review review={result.review} />
+      {moreInfoUrl ? (
+        <a className="ev-cta" href={moreInfoUrl} target="_blank" rel="noopener noreferrer">
+          {evalUiCopy.whatsappCta}
+        </a>
+      ) : null}
 
       <button type="button" className="ev-secondary" onClick={onRetake}>
         {evalUiCopy.retake}

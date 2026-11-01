@@ -53,7 +53,8 @@ export const evalUiCopy = {
   resultGentleTitle: "Empecemos por la base.",
   tabGrammar: "Gramática",
   tabSounds: "Sonidos",
-  whatsappCta: "Escríbeme por WhatsApp",
+  tabAnswers: "Respuestas",
+  whatsappCta: "Quiero más información",
   grammarIntro:
     "Estos aspectos problemáticos se arreglan en las clases de conversación y escritura del Confident Speaker's Circle.",
   soundIntro:

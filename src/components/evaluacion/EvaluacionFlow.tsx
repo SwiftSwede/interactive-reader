@@ -27,7 +27,7 @@ type Phase =
   | { name: "opener" }
   | { name: "transition"; view: QuestionScreen }
   | { name: "question"; view: QuestionScreen }
-  | { name: "result"; result: EvalResultData; listening: PairVerdict[]; emailCaptured: boolean }
+  | { name: "result"; result: EvalResultData; listening: PairVerdict[]; moreInfoUrl: string | null }
   | { name: "redirecting" };
 
 function messageOf(error: unknown): string {
@@ -59,7 +59,7 @@ export function EvaluacionFlow() {
           name: "result",
           result: view.result,
           listening: view.listening,
-          emailCaptured: view.emailCaptured,
+          moreInfoUrl: view.moreInfoUrl,
         });
         return;
       }
@@ -196,7 +196,7 @@ export function EvaluacionFlow() {
           <EvalResult
             result={phase.result}
             listening={phase.listening}
-            emailCaptured={phase.emailCaptured}
+            moreInfoUrl={phase.moreInfoUrl}
             onRetake={() => show({ name: "opener" })}
           />
         ) : null}

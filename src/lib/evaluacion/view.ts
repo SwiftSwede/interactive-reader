@@ -47,6 +47,8 @@ export type EvalView =
       result: EvalResult;
       listening: PairVerdict[];
       emailCaptured: boolean;
+      /** Superpack for A1 (beginner track), else WhatsApp when configured. */
+      moreInfoUrl: string | null;
     }
   | { screen: "redirected"; url: string };
 

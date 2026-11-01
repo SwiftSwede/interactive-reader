@@ -1,3 +1,4 @@
+import { evaluacionConfig } from "./config";
 import type { Outcome, Track } from "./types";
 
 /** Short label for the WhatsApp prefill. Never the internal track id. */
@@ -27,4 +28,14 @@ export function whatsappResultUrl(nivel: string, rawNumber: string | undefined):
   const digits = (rawNumber ?? "").replace(/\D/g, "");
   if (!digits) return null;
   return `https://wa.me/${digits}?text=${encodeURIComponent(whatsappPrefill(nivel))}`;
+}
+
+/** A1 has no Circle class: Superpack. Everyone else: WhatsApp when the number env is set. */
+export function resultMoreInfoUrl(
+  outcome: Outcome,
+  track: Track,
+  rawNumber: string | undefined,
+): string | null {
+  if (track === "beginner") return evaluacionConfig.beginnerRedirectUrl;
+  return whatsappResultUrl(nivelForShare(outcome, track), rawNumber);
 }
