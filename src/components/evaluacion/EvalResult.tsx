@@ -233,12 +233,14 @@ export function EvalResult({
         {tab === "answers" ? <Review review={result.review} /> : null}
       </div>
 
-      <section className="ev-card" aria-labelledby="ev-offer">
-        <h2 className="ev-subheading" id="ev-offer">
-          {evalUiCopy.offerTitle}
-        </h2>
-        <p className="ev-body">{evalUiCopy.offerBody}</p>
-      </section>
+      {result.placedTrack !== "beginner" ? (
+        <section className="ev-card" aria-labelledby="ev-offer">
+          <h2 className="ev-subheading" id="ev-offer">
+            {evalUiCopy.offerTitle}
+          </h2>
+          <p className="ev-body">{evalUiCopy.offerBody}</p>
+        </section>
+      ) : null}
 
       {moreInfoUrl ? (
         <a className="ev-cta" href={moreInfoUrl} target="_blank" rel="noopener noreferrer">
