@@ -52,9 +52,34 @@ export type SelfPacedCourseCard = {
   courseId: string;
   name: string;
   completed: number;
-  total: number;
+  ready: number;
+  planned: number;
   nextHref: string | null;
 };
+
+export type CourseOutlineStatus = "done" | "current" | "locked";
+
+export type CourseOutlineLesson = {
+  storyId: string;
+  slug: string;
+  title: string;
+  position: number;
+};
+
+export type CourseOutlineRow = {
+  storyId: string;
+  title: string;
+  status: CourseOutlineStatus;
+  href: string | null;
+};
+
+export type AudioCourseExit = {
+  href: string;
+  label: "Siguiente" | "Volver al curso";
+};
+
+export const COURSE_PENDING_LINE =
+  "Las demás lecciones todavía no están en la app.";
 
 export function isLibraryLevel(value: string): value is LibraryLevel {
   return (LIBRARY_LEVELS as readonly string[]).includes(value);
@@ -108,14 +133,70 @@ export function nextIncompleteLesson(
 
 export function selfPacedCardCopy(
   completed: number,
-  total: number
-): { meter: string; showContinue: boolean; finished: boolean } {
-  const finished = total > 0 && completed >= total;
+  ready: number,
+  planned: number
+): {
+  meter: string;
+  showContinue: boolean;
+  showCatalog: boolean;
+  finished: boolean;
+} {
+  const finished = planned > 0 && ready >= planned && completed >= planned;
+  const showContinue = ready > 0 && completed < ready && !finished;
   return {
-    meter: `${completed}/${total} lecciones`,
-    showContinue: total > 0 && !finished,
+    meter: `${completed}/${ready} lecciones`,
+    showContinue,
+    showCatalog: ready > 0 && !finished && !showContinue,
     finished,
   };
+}
+
+export function coursePendingLine(ready: number, planned: number): string | null {
+  return planned > ready ? COURSE_PENDING_LINE : null;
+}
+
+export function courseOutlineRows(
+  lessons: CourseOutlineLesson[],
+  completedStoryIds: Set<string>,
+  unlockAll: boolean
+): CourseOutlineRow[] {
+  const ordered = [...lessons].sort((a, b) => a.position - b.position);
+  const currentId =
+    ordered.find((lesson) => !completedStoryIds.has(lesson.storyId))?.storyId ??
+    null;
+  return ordered.map((lesson) => {
+    const status: CourseOutlineStatus = completedStoryIds.has(lesson.storyId)
+      ? "done"
+      : lesson.storyId === currentId
+        ? "current"
+        : "locked";
+    return {
+      storyId: lesson.storyId,
+      title: lesson.title,
+      status,
+      href: unlockAll || status !== "locked" ? `/lesson/${lesson.slug}` : null,
+    };
+  });
+}
+
+export function audioCourseExit(input: {
+  lessons: { storyId: string; slug: string; position: number }[];
+  currentStoryId: string;
+  completedStoryIds: Iterable<string>;
+  courseId: string;
+  unlockAll?: boolean;
+}): AudioCourseExit {
+  const courseHref = `/course/${input.courseId}`;
+  const ordered = [...input.lessons].sort((a, b) => a.position - b.position);
+  const index = ordered.findIndex((lesson) => lesson.storyId === input.currentStoryId);
+  const next = index >= 0 ? ordered[index + 1] : undefined;
+  if (!next) return { href: courseHref, label: "Volver al curso" };
+  if (input.unlockAll) return { href: `/lesson/${next.slug}`, label: "Siguiente" };
+  const done = new Set(input.completedStoryIds);
+  done.add(input.currentStoryId);
+  const priorOpen = ordered.slice(0, index).every((lesson) => done.has(lesson.storyId));
+  if (!priorOpen) return { href: courseHref, label: "Volver al curso" };
+  return { href: `/lesson/${next.slug}`, label: "Siguiente" };
 }
 
 export function decideSelfPacedLesson(input: {
@@ -289,20 +370,209 @@ export async function loadSelfPacedCards(
         [...completed].map((storyId) => ({ storyId, status: "completed" }))
       );
       const done = rows.filter((row) => completed.has(row.storyId)).length;
-      const total = courseLessonTotal(
-        rows.length,
+      const ready = rows.length;
+      const planned = courseLessonTotal(
+        ready,
         rows.some((row) => row.kind === "audio_course")
       );
-      const copy = selfPacedCardCopy(done, total);
+      const copy = selfPacedCardCopy(done, ready, planned);
       return {
         courseId: course.id,
         name: nameById.get(course.id) ?? course.name,
         completed: done,
-        total,
+        ready,
+        planned,
         nextHref: copy.showContinue && next ? `/lesson/${next.slug}` : null,
       };
     })
     .sort((a, b) => a.name.localeCompare(b.name, "es"));
+}
+
+type OutlineStory = {
+  slug: string | null;
+  title: string | null;
+  kind: string | null;
+};
+
+type OutlineLessonRow = {
+  story_id: string;
+  position: number;
+  stories: OutlineStory | OutlineStory[] | null;
+};
+
+function oneStory(value: OutlineStory | OutlineStory[] | null): OutlineStory | null {
+  if (!value) return null;
+  return Array.isArray(value) ? (value[0] ?? null) : value;
+}
+
+function outlineFromRows(rows: OutlineLessonRow[]): {
+  lessons: CourseOutlineLesson[];
+  hasAudio: boolean;
+} {
+  const lessons: CourseOutlineLesson[] = [];
+  let hasAudio = false;
+  for (const row of rows) {
+    const story = oneStory(row.stories);
+    if (!story?.slug) continue;
+    if (story.kind === "audio_course") hasAudio = true;
+    lessons.push({
+      storyId: row.story_id,
+      slug: story.slug,
+      title: story.title?.trim() || `Día ${row.position}`,
+      position: row.position,
+    });
+  }
+  return { lessons, hasAudio };
+}
+
+export type SelfPacedCoursePage =
+  | { kind: "missing" }
+  | { kind: "denied" }
+  | {
+      kind: "ok";
+      name: string;
+      meter: string;
+      finished: boolean;
+      pendingLine: string | null;
+      rows: CourseOutlineRow[];
+    };
+
+export async function loadSelfPacedCoursePage(input: {
+  userId: string;
+  courseId: string;
+  access: "teacher" | "preview" | "student";
+  previewLevel: string | null;
+}): Promise<SelfPacedCoursePage> {
+  const admin = createAdminClient();
+  const { data, error } = await admin
+    .from("courses")
+    .select("id, name, level, format, is_published, archived")
+    .eq("id", input.courseId)
+    .maybeSingle();
+  if (error) throw new AppError(error.message, "COURSE_READ_FAILED", 500);
+  if (!data || data.archived || data.format !== "self_paced") return { kind: "missing" };
+
+  const published = data.is_published === true;
+  if (input.access === "preview") {
+    if (!published || data.level !== input.previewLevel) return { kind: "denied" };
+  } else if (input.access === "student") {
+    if (!published) return { kind: "denied" };
+    const grants = await getOwnedGrants(input.userId);
+    const allowed = studentCanAccessSelfPacedCourse(grants, {
+      id: data.id as string,
+      format: "self_paced",
+      level: data.level as string,
+    });
+    if (!allowed) return { kind: "denied" };
+  }
+
+  const { data: lessonRows, error: lessonError } = await admin
+    .from("course_lessons")
+    .select("story_id, position, stories(slug, title, kind)")
+    .eq("course_id", input.courseId)
+    .order("position", { ascending: true });
+  if (lessonError) throw new AppError(lessonError.message, "COURSE_LESSONS_READ_FAILED", 500);
+
+  const { lessons, hasAudio } = outlineFromRows((lessonRows ?? []) as OutlineLessonRow[]);
+  const completed = await completedStoryIds(
+    input.userId,
+    lessons.map((lesson) => lesson.storyId)
+  );
+  const ready = lessons.length;
+  const planned = courseLessonTotal(ready, hasAudio);
+  const copy = selfPacedCardCopy(completed.size, ready, planned);
+  return {
+    kind: "ok",
+    name: (data.name as string) || "Curso",
+    meter: copy.meter,
+    finished: copy.finished,
+    pendingLine: coursePendingLine(ready, planned),
+    rows: courseOutlineRows(lessons, completed, input.access === "teacher"),
+  };
+}
+
+export async function loadAudioCourseChrome(input: {
+  userId: string | null;
+  storyId: string;
+  unlockAll: boolean;
+}): Promise<{ courseHref: string | null; exit: AudioCourseExit | null }> {
+  const admin = createAdminClient();
+  const { data, error } = await admin
+    .from("course_lessons")
+    .select("course_id, courses!inner(id, format, archived)")
+    .eq("story_id", input.storyId);
+  if (error) {
+    console.error("loadAudioCourseChrome:", error.message);
+    return { courseHref: null, exit: null };
+  }
+
+  type Hit = {
+    course_id: string;
+    courses:
+      | { id: string; format: string; archived: boolean }
+      | { id: string; format: string; archived: boolean }[]
+      | null;
+  };
+  const courseId = ((data ?? []) as Hit[])
+    .map((row) => {
+      const course = Array.isArray(row.courses) ? row.courses[0] : row.courses;
+      if (!course || course.format !== "self_paced" || course.archived) return null;
+      return row.course_id;
+    })
+    .find((id): id is string => Boolean(id));
+  if (!courseId) return { courseHref: null, exit: null };
+
+  const { data: lessonRows, error: lessonError } = await admin
+    .from("course_lessons")
+    .select("story_id, position, stories(slug, title, kind)")
+    .eq("course_id", courseId)
+    .order("position", { ascending: true });
+  if (lessonError) {
+    console.error("loadAudioCourseChrome lessons:", lessonError.message);
+    return { courseHref: `/course/${courseId}`, exit: null };
+  }
+
+  const { lessons } = outlineFromRows((lessonRows ?? []) as OutlineLessonRow[]);
+  let completed = new Set<string>();
+  if (input.userId) {
+    try {
+      completed = await completedStoryIds(
+        input.userId,
+        lessons.map((lesson) => lesson.storyId)
+      );
+    } catch (error) {
+      console.error(
+        "loadAudioCourseChrome progress:",
+        error instanceof Error ? error.message : error
+      );
+    }
+  }
+  return {
+    courseHref: `/course/${courseId}`,
+    exit: audioCourseExit({
+      lessons,
+      currentStoryId: input.storyId,
+      completedStoryIds: completed,
+      courseId,
+      unlockAll: input.unlockAll,
+    }),
+  };
+}
+
+async function completedStoryIds(userId: string, storyIds: string[]): Promise<Set<string>> {
+  const completed = new Set<string>();
+  if (storyIds.length === 0) return completed;
+  const admin = createAdminClient();
+  const { data, error } = await admin
+    .from("user_progress")
+    .select("story_id, status")
+    .eq("user_id", userId)
+    .in("story_id", storyIds);
+  if (error) throw new AppError(error.message, "PROGRESS_READ_FAILED", 500);
+  for (const row of data ?? []) {
+    if (row.status === "completed") completed.add(row.story_id as string);
+  }
+  return completed;
 }
 
 type MembershipLesson = {

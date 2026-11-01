@@ -99,6 +99,11 @@ export const ENV_MANIFEST: EnvVarSpec[] = [
     feature: "Teacher catalog delete",
   },
   {
+    name: "SPEAKING_PROTOTYPE_EMAILS",
+    severity: "feature",
+    feature: "Speaking feedback prototype",
+  },
+  {
     name: "MAILERLITE_API_TOKEN",
     severity: "feature",
     feature: "Workshop registration (MailerLite)",

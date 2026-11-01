@@ -5,6 +5,7 @@ import VideoSummaryPlayer from "@/components/VideoSummaryPlayer";
 import AudioCoursePlayer from "@/components/AudioCoursePlayer";
 import { parseAudioScript } from "@/lib/iplo";
 import { loadIploSessionState } from "@/lib/iplo-session";
+import { loadAudioCourseChrome } from "@/lib/library-access";
 import { getSoundVideos } from "@/lib/sound-videos";
 import type { LoadedStory } from "@/lib/stories";
 import type { SavedComprehensionResponse } from "@/components/ComprehensionQuestions";
@@ -143,9 +144,20 @@ export default async function StoryReader({
       data: { user },
     } = await supabase.auth.getUser();
     const script = parseAudioScript(story.audio_script);
-    const session = user
-      ? await loadIploSessionState(story.id, user.id)
-      : { completedOnce: false, closingLine: false, dayMarks: [] as string[] };
+    const [session, chrome] = await Promise.all([
+      user
+        ? loadIploSessionState(story.id, user.id)
+        : Promise.resolve({
+            completedOnce: false,
+            closingLine: false,
+            dayMarks: [] as string[],
+          }),
+      loadAudioCourseChrome({
+        userId: user?.id ?? null,
+        storyId: story.id,
+        unlockAll: isTeacher,
+      }),
+    ]);
     if (!script) {
       return (
         <p className="px-4 pt-16 text-center text-body-md text-text-secondary">
@@ -166,6 +178,8 @@ export default async function StoryReader({
         isTeacher={isTeacher}
         previewLevel={previewLevel}
         viewToggle={viewToggle}
+        courseHref={chrome.courseHref}
+        exit={chrome.exit}
       />
     );
   }

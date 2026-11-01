@@ -269,10 +269,10 @@ export default function SpeakingSession({
     const payload = (await response.json()) as {
       error?: string;
       code?: string;
-      attempt?: SpeakingAttemptView;
+      attemptId?: string;
       remaining?: number | null;
     };
-    if (!response.ok || !payload.attempt) {
+    if (!response.ok || !payload.attemptId) {
       const error = new Error(payload.error || "Algo salió mal. Intenta de nuevo.");
       (error as Error & { code?: string }).code = payload.code;
       throw error;
@@ -280,22 +280,73 @@ export default function SpeakingSession({
     return payload;
   }
 
+  async function poll(attemptId: string): Promise<SpeakingAttemptView> {
+    const started = Date.now();
+    while (Date.now() - started < 11 * 60 * 1000) {
+      const response = await fetch(
+        `/api/speaking-feedback?attemptId=${encodeURIComponent(attemptId)}`
+      );
+      const payload = (await response.json()) as {
+        error?: string;
+        attempt?: SpeakingAttemptView;
+      };
+      if (!response.ok || !payload.attempt) {
+        throw new Error(payload.error || "Algo salió mal. Intenta de nuevo.");
+      }
+      if (payload.attempt.status === "done") return payload.attempt;
+      if (payload.attempt.status === "failed") {
+        throw new Error(
+          payload.attempt.errorMessage || "No pude revisar ese audio. Intenta de nuevo."
+        );
+      }
+      await new Promise((resolve) => window.setTimeout(resolve, 3000));
+    }
+    throw new Error("Tardó demasiado. Intenta de nuevo.");
+  }
+
+  function remember(attempt: SpeakingAttemptView) {
+    setAttempts((current) => [
+      attempt,
+      ...current.filter((item) => item.id !== attempt.id),
+    ]);
+  }
+
+  async function markReference(attemptId: string) {
+    const response = await fetch("/api/speaking-feedback/reference", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ attemptId }),
+    });
+    const payload = (await response.json()) as { error?: string };
+    if (!response.ok) {
+      setMessage(payload.error || "No pude guardar la referencia.");
+      return;
+    }
+    setAttempts((current) =>
+      current.map((item) => ({
+        ...item,
+        isReference: item.id === attemptId,
+      }))
+    );
+  }
+
   async function upload(blob: Blob, mime: string, durationS: number) {
     setPhase("processing");
     setMessage(null);
     const extension = mime.includes("mp4") ? "m4a" : mime.includes("wav") ? "wav" : "webm";
     try {
-      let result: Awaited<ReturnType<typeof send>>;
+      let submitted: Awaited<ReturnType<typeof send>>;
       try {
-        result = await send(blob, `speaking.${extension}`, durationS);
+        submitted = await send(blob, `speaking.${extension}`, durationS);
       } catch (error) {
         const code = (error as Error & { code?: string }).code;
         if (code !== "FFMPEG_FAILED") throw error;
         const wav = await blobToWav(blob);
-        result = await send(wav, "speaking.wav", durationS);
+        submitted = await send(wav, "speaking.wav", durationS);
       }
-      setAttempts((current) => [result.attempt!, ...current.filter((item) => item.id !== result.attempt!.id)]);
-      if (typeof result.remaining !== "undefined") setRemaining(result.remaining);
+      if (typeof submitted.remaining !== "undefined") setRemaining(submitted.remaining);
+      const attempt = await poll(submitted.attemptId!);
+      remember(attempt);
       setPhase("idle");
     } catch (error) {
       setMessage(
@@ -325,6 +376,31 @@ export default function SpeakingSession({
   }
 
   stopRef.current = finishRecording;
+
+  useEffect(() => {
+    const pending = attempts.find((item) => item.status === "processing");
+    if (!pending) return;
+    let cancelled = false;
+    setPhase("processing");
+    void poll(pending.id)
+      .then((attempt) => {
+        if (cancelled) return;
+        remember(attempt);
+        setPhase("idle");
+      })
+      .catch((error: unknown) => {
+        if (cancelled) return;
+        setMessage(
+          error instanceof Error ? error.message : "Algo salió mal. Intenta de nuevo."
+        );
+        setPhase("error");
+      });
+    return () => {
+      cancelled = true;
+    };
+    // Resume a refresh that landed while Azure was still running.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   async function startRecording() {
     if (phase === "recording" || phase === "processing") return;
@@ -465,7 +541,7 @@ export default function SpeakingSession({
         </button>
         <p className="mt-4 text-center text-label-md text-text-muted">
           {busy
-            ? "Estoy escuchando."
+            ? "Estoy escuchando tu audio. Esto puede tomar uno o dos minutos."
             : nudge && recording
               ? "Sigue. Un poco más ayuda."
               : "Al menos quince segundos."}
@@ -496,6 +572,15 @@ export default function SpeakingSession({
           {latest.playbackUrl ? (
             <audio className="mt-4 w-full" controls src={latest.playbackUrl} preload="none" />
           ) : null}
+          {owner && latest.mine ? (
+            <button
+              type="button"
+              className="mt-4 min-h-11 text-label-md text-text-accent hover:text-text-accent-dark"
+              onClick={() => void markReference(latest.id)}
+            >
+              {latest.isReference ? "Es la referencia" : "Usar como referencia"}
+            </button>
+          ) : null}
         </div>
       ) : null}
 
@@ -521,9 +606,18 @@ export default function SpeakingSession({
                   </div>
                 ) : (
                   <p className="mt-3 text-body-main text-text-secondary">
-                    Este audio se guardó, pero la nota no salió.
+                    {attempt.errorMessage || "Este audio se guardó, pero la nota no salió."}
                   </p>
                 )}
+                {attempt.mine && attempt.status === "done" ? (
+                  <button
+                    type="button"
+                    className="mt-3 min-h-11 text-label-md text-text-accent hover:text-text-accent-dark"
+                    onClick={() => void markReference(attempt.id)}
+                  >
+                    {attempt.isReference ? "Es la referencia" : "Usar como referencia"}
+                  </button>
+                ) : null}
               </li>
             ))}
           </ul>

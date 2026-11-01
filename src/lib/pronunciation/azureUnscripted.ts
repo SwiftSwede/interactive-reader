@@ -23,6 +23,17 @@ function numberField(value: unknown): number {
   return typeof value === "number" && Number.isFinite(value) ? value : 0;
 }
 
+export function spokenWordsFromAzureJson(json: unknown): SpokenWord[] {
+  if (Array.isArray(json)) {
+    return json.flatMap((item) => spokenWordsFromAzureJson(item));
+  }
+  const root = asRecord(json);
+  if (root && Array.isArray(root.wordEntries)) {
+    return parseWords({ NBest: [{ Words: root.wordEntries }] });
+  }
+  return parseWords(json);
+}
+
 function parseWords(json: unknown): SpokenWord[] {
   const root = asRecord(json);
   const nBest = Array.isArray(root?.NBest) ? root.NBest : [];

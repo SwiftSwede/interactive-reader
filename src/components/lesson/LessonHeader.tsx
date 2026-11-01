@@ -23,6 +23,7 @@ export default function LessonHeader({
   isTeacher = false,
   previewLevel = null,
   viewToggle = null,
+  courseHref = null,
 }: {
   typeLabel: string;
   title: string;
@@ -31,6 +32,7 @@ export default function LessonHeader({
   isTeacher?: boolean;
   previewLevel?: CourseLevel | null;
   viewToggle?: LessonViewToggle | null;
+  courseHref?: string | null;
 }) {
   const rootRef = useRef<HTMLElement>(null);
   const meta = formatLessonMeta(level, wordCount);
@@ -80,6 +82,11 @@ export default function LessonHeader({
                   {previewLevel ? "Vista de profe" : "Vista de estudiante"}
                 </button>
               </form>
+            ) : null}
+            {courseHref ? (
+              <Link href={courseHref} className={LINK_CLASS}>
+                Curso
+              </Link>
             ) : null}
             {!isTeacher ? (
               <Link href="/progress" className={LINK_CLASS}>

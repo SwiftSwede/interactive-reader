@@ -39,6 +39,8 @@ supabase/.temp/
 
 # Audio files: committed to git for Vercel deployment (~14MB total)
 # Word audio and story MP3s are needed at build/runtime on Vercel
+# Raw Iplo day-4 master MP3 is ~172MB (GitHub limit 100MB); ship day-4.m4a instead
+public/audio/iplo/day-4.mp3
 
 # Cursor
 .cursor/
@@ -50,3 +52,4 @@ tsconfig.tsbuildinfo
 .env*
 .venv/
 .annotate-cache/
+scripts/speaking-probe/

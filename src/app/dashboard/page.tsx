@@ -137,9 +137,11 @@ export default async function DashboardPage() {
         {data.selfPacedCourses.map((course) => (
           <SelfPacedCourseCard
             key={course.courseId}
+            courseId={course.courseId}
             name={course.name}
             completed={course.completed}
-            total={course.total}
+            ready={course.ready}
+            planned={course.planned}
             nextHref={course.nextHref}
           />
         ))}

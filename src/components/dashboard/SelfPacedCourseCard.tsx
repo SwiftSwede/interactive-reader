@@ -1,24 +1,37 @@
 import Link from "next/link";
 import { selfPacedCardCopy } from "@/lib/library-access";
 
+const actionClass =
+  "mt-4 inline-flex min-h-12 items-center justify-center rounded-card bg-accent px-4 text-label-md text-white hover:bg-accent-hover active:bg-accent-hover";
+
 export default function SelfPacedCourseCard({
+  courseId,
   name,
   completed,
-  total,
+  ready,
+  planned,
   nextHref,
 }: {
+  courseId: string;
   name: string;
   completed: number;
-  total: number;
+  ready: number;
+  planned: number;
   nextHref: string | null;
 }) {
-  const copy = selfPacedCardCopy(completed, total);
+  const copy = selfPacedCardCopy(completed, ready, planned);
   const percent =
-    total === 0 ? 0 : Math.min(100, Math.round((completed / total) * 100));
+    ready === 0 ? 0 : Math.min(100, Math.round((completed / ready) * 100));
+  const courseHref = `/course/${courseId}`;
 
   return (
     <article className="mt-4 rounded-sheet border border-paper-line bg-surface p-4">
-      <p className="text-label-md text-text-primary">{name}</p>
+      <Link
+        href={courseHref}
+        className="text-label-md text-text-primary hover:text-text-accent"
+      >
+        {name}
+      </Link>
       <p className="mt-1 text-label-md text-text-secondary">{copy.meter}</p>
       <div
         className="mt-3 h-1 overflow-hidden rounded-full bg-paper-line"
@@ -31,11 +44,12 @@ export default function SelfPacedCourseCard({
           Completaste el curso.
         </p>
       ) : nextHref ? (
-        <Link
-          href={nextHref}
-          className="mt-4 inline-flex min-h-12 items-center justify-center rounded-card bg-accent px-4 text-label-md text-white hover:bg-accent-hover active:bg-accent-hover"
-        >
+        <Link href={nextHref} className={actionClass}>
           Continuar
+        </Link>
+      ) : copy.showCatalog ? (
+        <Link href={courseHref} className={actionClass}>
+          Ver lecciones
         </Link>
       ) : null}
     </article>

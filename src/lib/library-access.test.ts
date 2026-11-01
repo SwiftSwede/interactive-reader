@@ -1,12 +1,16 @@
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";
 import {
+  audioCourseExit,
+  courseOutlineRows,
+  coursePendingLine,
   decideSelfPacedLesson,
   grantsFromItems,
   levelsGrantedBy,
   nextIncompleteLesson,
   selfPacedCardCopy,
   studentCanAccessSelfPacedCourse,
+  COURSE_PENDING_LINE,
   type OwnedGrants,
 } from "./library-access";
 
@@ -284,22 +288,111 @@ describe("decideSelfPacedLesson", () => {
 });
 
 describe("selfPacedCardCopy", () => {
-  test("Continuar stays while any lesson remains", () => {
-    const mid = selfPacedCardCopy(3, 12);
+  test("Continuar stays while any ready lesson remains", () => {
+    const mid = selfPacedCardCopy(3, 12, 12);
     assert.equal(mid.showContinue, true);
+    assert.equal(mid.showCatalog, false);
     assert.equal(mid.finished, false);
     assert.equal(mid.meter, "3/12 lecciones");
   });
 
-  test("Completaste el curso only when none remain", () => {
-    const done = selfPacedCardCopy(12, 12);
+  test("Completaste el curso only when the planned lessons exist and are done", () => {
+    const done = selfPacedCardCopy(12, 12, 12);
     assert.equal(done.showContinue, false);
+    assert.equal(done.showCatalog, false);
     assert.equal(done.finished, true);
   });
 
   test("an empty course is not marked finished", () => {
-    const empty = selfPacedCardCopy(0, 0);
+    const empty = selfPacedCardCopy(0, 0, 0);
     assert.equal(empty.finished, false);
     assert.equal(empty.showContinue, false);
+    assert.equal(empty.showCatalog, false);
+  });
+
+  test("a partial audio course counts ready lessons and does not finish early", () => {
+    const mid = selfPacedCardCopy(2, 5, 23);
+    assert.equal(mid.meter, "2/5 lecciones");
+    assert.equal(mid.showContinue, true);
+    assert.equal(mid.finished, false);
+
+    const waiting = selfPacedCardCopy(5, 5, 23);
+    assert.equal(waiting.meter, "5/5 lecciones");
+    assert.equal(waiting.showContinue, false);
+    assert.equal(waiting.showCatalog, true);
+    assert.equal(waiting.finished, false);
+  });
+});
+
+describe("course outline", () => {
+  const lessons = [
+    { storyId: "d1", slug: "iplo-day-1", title: "Día 1", position: 1 },
+    { storyId: "d2", slug: "iplo-day-2", title: "Día 2", position: 2 },
+    { storyId: "d3", slug: "iplo-day-3", title: "Día 3", position: 3 },
+  ];
+
+  test("the first unfinished day is the only open one after a done day", () => {
+    const rows = courseOutlineRows(lessons, new Set(["d1"]), false);
+    assert.deepEqual(
+      rows.map((row) => ({ title: row.title, status: row.status, href: row.href })),
+      [
+        { title: "Día 1", status: "done", href: "/lesson/iplo-day-1" },
+        { title: "Día 2", status: "current", href: "/lesson/iplo-day-2" },
+        { title: "Día 3", status: "locked", href: null },
+      ]
+    );
+  });
+
+  test("a teacher can open a locked day", () => {
+    const rows = courseOutlineRows(lessons, new Set(), true);
+    assert.equal(rows[1]?.status, "locked");
+    assert.equal(rows[1]?.href, "/lesson/iplo-day-2");
+  });
+
+  test("the pending line appears only while planned lessons are missing", () => {
+    assert.equal(coursePendingLine(5, 23), COURSE_PENDING_LINE);
+    assert.equal(coursePendingLine(23, 23), null);
+    assert.equal(coursePendingLine(12, 12), null);
+  });
+});
+
+describe("audioCourseExit", () => {
+  const lessons = [
+    { storyId: "d1", slug: "iplo-day-1", position: 1 },
+    { storyId: "d2", slug: "iplo-day-2", position: 2 },
+  ];
+
+  test("the day being finished opens the next day", () => {
+    const exit = audioCourseExit({
+      lessons,
+      currentStoryId: "d1",
+      completedStoryIds: [],
+      courseId: "course-1",
+    });
+    assert.deepEqual(exit, { href: "/lesson/iplo-day-2", label: "Siguiente" });
+  });
+
+  test("the last ready day returns to the course", () => {
+    const exit = audioCourseExit({
+      lessons,
+      currentStoryId: "d2",
+      completedStoryIds: ["d1"],
+      courseId: "course-1",
+    });
+    assert.deepEqual(exit, { href: "/course/course-1", label: "Volver al curso" });
+  });
+
+  test("a later day stays closed until the earlier one is done", () => {
+    const three = [
+      ...lessons,
+      { storyId: "d3", slug: "iplo-day-3", position: 3 },
+    ];
+    const exit = audioCourseExit({
+      lessons: three,
+      currentStoryId: "d2",
+      completedStoryIds: [],
+      courseId: "course-1",
+    });
+    assert.equal(exit.label, "Volver al curso");
   });
 });

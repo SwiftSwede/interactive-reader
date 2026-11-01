@@ -1,6 +1,8 @@
 import { z } from "zod";
 import { AppError } from "@/lib/errors";
-import { aggregatePhonemePatterns } from "@/lib/pronunciation/aggregatePhonemes";
+import { selectSpeakingPatterns } from "@/lib/pronunciation/aggregatePatterns";
+import type { SpeakingAggregate } from "@/lib/pronunciation/aggregatePatterns";
+import type { SpokenWord } from "@/lib/pronunciation/aggregatePhonemes";
 import { assessUnscriptedPronunciation } from "@/lib/pronunciation/azureUnscripted";
 import {
   FeedbackCardSchema,
@@ -109,7 +111,7 @@ async function specialist<T>(
 
 export async function runSpeakingAgents(input: {
   transcript: string;
-  aggregate: PhonemeAggregate;
+  aggregate: SpeakingAggregate;
 }): Promise<{ agents: AgentOutputs; card: FeedbackCard }> {
   const [grammar, vocabulary, pronunciation] = await Promise.all([
     specialist(grammarPrompt(input.transcript), GrammarAgentSchema, "GRAMMAR_AGENT"),
@@ -148,9 +150,12 @@ export async function runSpeakingAgents(input: {
   };
 }
 
-export async function analyzeSpeakingWav(wavPath: string): Promise<{
+export async function analyzeSpeakingWav(
+  wavPath: string,
+  referenceWords: SpokenWord[] | null = null
+): Promise<{
   transcript: string;
-  aggregate: PhonemeAggregate;
+  aggregate: SpeakingAggregate;
   agents: AgentOutputs;
   card: FeedbackCard;
   azureRaw: unknown[];
@@ -176,7 +181,7 @@ export async function analyzeSpeakingWav(wavPath: string): Promise<{
     );
   }
 
-  const aggregate = aggregatePhonemePatterns(assessment.words);
+  const aggregate = selectSpeakingPatterns(assessment.words, referenceWords);
   const { agents, card } = await runSpeakingAgents({
     transcript: assessment.transcript,
     aggregate,

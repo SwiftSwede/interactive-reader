@@ -1,12 +1,13 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { AppError } from "@/lib/errors";
+import { getAppOrigin } from "@/lib/auth-server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { getSpeakingAccess } from "@/lib/speakingAccess";
-import { submitSpeakingAttempt } from "@/lib/speakingAttempts";
+import { speakingJobSecret } from "@/lib/speakingJob";
+import { getSpeakingAttempt, submitSpeakingAttempt } from "@/lib/speakingAttempts";
 
 export const runtime = "nodejs";
-export const maxDuration = 300;
 
 async function viewer() {
   const supabase = await createClient();
@@ -35,6 +36,33 @@ function errorResponse(error: unknown) {
     { error: "Algo salió mal. Intenta de nuevo.", code: "UNEXPECTED" },
     { status: 500 }
   );
+}
+
+export async function GET(request: Request) {
+  try {
+    const { user, owner } = await viewer();
+    const attemptId = new URL(request.url).searchParams.get("attemptId") ?? "";
+    if (!attemptId) {
+      return NextResponse.json(
+        { error: "Pedido inválido.", code: "BAD_QUERY" },
+        { status: 400 }
+      );
+    }
+    const attempt = await getSpeakingAttempt(createAdminClient(), {
+      attemptId,
+      userId: user.id,
+      owner,
+    });
+    if (!attempt) {
+      return NextResponse.json(
+        { error: "No encontré ese intento.", code: "NOT_FOUND" },
+        { status: 404 }
+      );
+    }
+    return NextResponse.json({ attempt });
+  } catch (error) {
+    return errorResponse(error);
+  }
 }
 
 export async function POST(request: Request) {
@@ -67,6 +95,24 @@ export async function POST(request: Request) {
       filename: audio.name || "audio.webm",
       contentType: audio.type || "audio/webm",
       durationS,
+    });
+
+    const origin = await getAppOrigin();
+    const secret = speakingJobSecret();
+    after(() => {
+      void fetch(`${origin}/api/speaking-feedback/run`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "x-speaking-job": secret,
+        },
+        body: JSON.stringify({ attemptId: result.attemptId }),
+      }).catch((error: unknown) => {
+        console.error(
+          "speaking run kick failed:",
+          error instanceof Error ? error.message : "unknown"
+        );
+      });
     });
 
     return NextResponse.json(result);

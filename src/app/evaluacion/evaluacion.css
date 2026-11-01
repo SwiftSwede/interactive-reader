@@ -484,6 +484,46 @@ body:has(.evaluacion-classic) {
   text-align: center;
 }
 
+.ev-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  margin: 0 -20px;
+  padding: 0 8px;
+  background: var(--ev-bg);
+  border-bottom: 1px solid var(--ev-line);
+}
+
+.ev-tab {
+  flex: 1;
+  min-height: 48px;
+  padding: 12px 8px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--ev-muted);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ev-tab[aria-selected="true"] {
+  color: var(--ev-navy);
+  border-bottom-color: var(--ev-green);
+}
+
+.ev-tab:hover {
+  color: var(--ev-navy);
+}
+
+.ev-tab-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .ev-section {
   display: flex;
   flex-direction: column;
@@ -526,13 +566,6 @@ body:has(.evaluacion-classic) {
 
 .ev-hole-name {
   color: var(--ev-label);
-  font-weight: 600;
-}
-
-.ev-hole-class {
-  flex: none;
-  color: var(--ev-green);
-  font-size: 14px;
   font-weight: 600;
 }
 

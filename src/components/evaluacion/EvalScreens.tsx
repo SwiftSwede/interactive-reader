@@ -17,7 +17,6 @@ export function EvalSplash({
     <div className="ev-column ev-center ev-fade">
       <h1 className="ev-title">{evalUiCopy.splashTitle}</h1>
       <p className="ev-body">{evalUiCopy.splashLead}</p>
-      <p className="ev-note">{evalUiCopy.splashNote}</p>
       <div className="ev-actions">
         {canResume ? (
           <>
@@ -34,6 +33,7 @@ export function EvalSplash({
           </button>
         )}
       </div>
+      <p className="ev-note">{evalUiCopy.splashNote}</p>
     </div>
   );
 }

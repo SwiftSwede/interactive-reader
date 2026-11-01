@@ -2,13 +2,16 @@ import { randomUUID } from "node:crypto";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { AppError } from "@/lib/errors";
 import { convertToWavPcm16kMono } from "@/lib/pronunciation/audioConvert";
-import type { PhonemeAggregate } from "@/lib/pronunciation/aggregatePhonemes";
+import type { SpeakingAggregate } from "@/lib/pronunciation/aggregatePatterns";
+import type { SpokenWord } from "@/lib/pronunciation/aggregatePhonemes";
+import { spokenWordsFromAzureJson } from "@/lib/pronunciation/azureUnscripted";
 import {
   MAX_AUDIO_SECONDS,
   MAX_SPEAKING_AUDIO_BYTES,
   MIN_AUDIO_SECONDS,
   SPEAKING_DAILY_CAP,
   SPEAKING_PROMPT_ID,
+  SPEAKING_STUCK_MS,
 } from "@/lib/pronunciation/speakingFeedbackConfig";
 import {
   FeedbackCardSchema,
@@ -20,23 +23,34 @@ import { analyzeSpeakingWav } from "@/lib/speakingFeedbackRun";
 
 const BUCKET = "speaking-attempts";
 
+export type SpeakingAttemptStatus = "processing" | "done" | "failed";
+
 export type SpeakingAttemptView = {
   id: string;
   createdAt: string;
   durationS: number | null;
   playbackUrl: string | null;
   feedback: FeedbackCard | null;
-  aggregate: PhonemeAggregate | null;
+  aggregate: SpeakingAggregate | null;
+  status: SpeakingAttemptStatus;
+  errorMessage: string | null;
+  isReference: boolean;
+  mine: boolean;
 };
 
 type AttemptRow = {
   id: string;
   user_id: string;
+  prompt_id: string;
   created_at: string;
   duration_s: number | null;
   audio_path: string | null;
   aggregate: unknown;
   final_feedback: unknown;
+  azure_raw?: unknown;
+  status: string | null;
+  error_message: string | null;
+  is_reference: boolean | null;
 };
 
 function extensionFor(type: string, filename: string): string {
@@ -60,11 +74,16 @@ function readFeedback(value: unknown): FeedbackCard | null {
   return parsed.success ? parsed.data : null;
 }
 
-function readAggregate(value: unknown, include: boolean): PhonemeAggregate | null {
+function readAggregate(value: unknown, include: boolean): SpeakingAggregate | null {
   if (!include || !value || typeof value !== "object") return null;
-  const row = value as PhonemeAggregate;
+  const row = value as SpeakingAggregate;
   if (!Array.isArray(row.patterns) || !Array.isArray(row.mangledWords)) return null;
   return row;
+}
+
+function readStatus(value: string | null, feedback: FeedbackCard | null): SpeakingAttemptStatus {
+  if (value === "processing" || value === "done" || value === "failed") return value;
+  return feedback ? "done" : "failed";
 }
 
 async function playbackUrl(
@@ -80,17 +99,26 @@ async function playbackUrl(
 async function toView(
   admin: SupabaseClient,
   row: AttemptRow,
+  viewerId: string,
   includeAggregate: boolean
 ): Promise<SpeakingAttemptView> {
+  const feedback = readFeedback(row.final_feedback);
   return {
     id: row.id,
     createdAt: row.created_at,
     durationS: row.duration_s,
     playbackUrl: await playbackUrl(admin, row.audio_path),
-    feedback: readFeedback(row.final_feedback),
+    feedback,
     aggregate: readAggregate(row.aggregate, includeAggregate),
+    status: readStatus(row.status, feedback),
+    errorMessage: row.error_message,
+    isReference: row.is_reference === true,
+    mine: row.user_id === viewerId,
   };
 }
+
+const ATTEMPT_COLUMNS =
+  "id, user_id, prompt_id, created_at, duration_s, audio_path, aggregate, final_feedback, status, error_message, is_reference";
 
 export async function countCompletedToday(
   admin: SupabaseClient,
@@ -101,7 +129,7 @@ export async function countCompletedToday(
     .from("speaking_attempts")
     .select("id", { count: "exact", head: true })
     .eq("user_id", userId)
-    .not("final_feedback", "is", null)
+    .eq("status", "done")
     .gte("created_at", start);
 
   if (error) {
@@ -116,7 +144,7 @@ export async function listSpeakingAttempts(
 ): Promise<SpeakingAttemptView[]> {
   let query = admin
     .from("speaking_attempts")
-    .select("id, user_id, created_at, duration_s, audio_path, aggregate, final_feedback")
+    .select(ATTEMPT_COLUMNS)
     .order("created_at", { ascending: false })
     .limit(40);
 
@@ -128,7 +156,7 @@ export async function listSpeakingAttempts(
   }
 
   const rows = (data ?? []) as AttemptRow[];
-  return Promise.all(rows.map((row) => toView(admin, row, input.owner)));
+  return Promise.all(rows.map((row) => toView(admin, row, input.userId, input.owner)));
 }
 
 export async function submitSpeakingAttempt(
@@ -141,7 +169,7 @@ export async function submitSpeakingAttempt(
     contentType: string;
     durationS: number;
   }
-): Promise<{ attempt: SpeakingAttemptView; remaining: number | null }> {
+): Promise<{ attemptId: string; remaining: number | null }> {
   if (!Number.isFinite(input.durationS)) {
     throw new AppError("No recibí la duración.", "BAD_DURATION", 400);
   }
@@ -170,21 +198,6 @@ export async function submitSpeakingAttempt(
   }
 
   const extension = extensionFor(input.contentType, input.filename);
-  let converted: Awaited<ReturnType<typeof convertToWavPcm16kMono>>;
-  try {
-    converted = await convertToWavPcm16kMono({
-      inputBuffer: input.audio,
-      inputExtensionHint: extension,
-    });
-  } catch (error) {
-    console.error("speaking ffmpeg failed:", error instanceof Error ? error.message : "unknown");
-    throw new AppError(
-      "No pude leer ese audio. Intenta de nuevo.",
-      "FFMPEG_FAILED",
-      422
-    );
-  }
-
   const id = randomUUID();
   const audioPath = `${input.userId}/${id}.${extension}`;
 
@@ -194,10 +207,10 @@ export async function submitSpeakingAttempt(
     prompt_id: SPEAKING_PROMPT_ID,
     audio_path: audioPath,
     duration_s: Math.round(input.durationS * 10) / 10,
+    status: "processing",
   });
 
   if (insertError) {
-    await converted.cleanup();
     throw new AppError("No pude guardar el intento.", "ATTEMPT_INSERT", 500);
   }
 
@@ -209,50 +222,172 @@ export async function submitSpeakingAttempt(
     });
 
   if (uploadError) {
-    await converted.cleanup();
     await admin.from("speaking_attempts").delete().eq("id", id);
     throw new AppError("No pude guardar el audio.", "AUDIO_UPLOAD", 500);
   }
 
+  return {
+    attemptId: id,
+    remaining: remainingAttempts(completed, owner),
+  };
+}
+
+const FAILED_COPY = "No pude revisar ese audio. Intenta de nuevo.";
+const STUCK_COPY = "Tardó demasiado. Intenta de nuevo.";
+
+async function loadReferenceWords(
+  admin: SupabaseClient,
+  promptId: string,
+  attemptId: string
+): Promise<SpokenWord[] | null> {
+  const { data, error } = await admin
+    .from("speaking_attempts")
+    .select("azure_raw")
+    .eq("prompt_id", promptId)
+    .eq("is_reference", true)
+    .neq("id", attemptId)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (error || !data?.azure_raw) return null;
+  const words = spokenWordsFromAzureJson(data.azure_raw);
+  return words.length > 0 ? words : null;
+}
+
+async function markFailed(
+  admin: SupabaseClient,
+  attemptId: string,
+  message: string
+): Promise<void> {
+  await admin
+    .from("speaking_attempts")
+    .update({ status: "failed", error_message: message })
+    .eq("id", attemptId)
+    .eq("status", "processing");
+}
+
+export async function runSpeakingAttempt(
+  admin: SupabaseClient,
+  attemptId: string
+): Promise<void> {
+  const { data, error } = await admin
+    .from("speaking_attempts")
+    .select("id, prompt_id, audio_path, status")
+    .eq("id", attemptId)
+    .maybeSingle();
+
+  if (error || !data?.audio_path) {
+    console.error("speaking run missing row:", attemptId);
+    return;
+  }
+  if (data.status === "done") return;
+
+  const extension = data.audio_path.split(".").pop() ?? "webm";
+  const downloaded = await admin.storage.from(BUCKET).download(data.audio_path);
+  if (downloaded.error || !downloaded.data) {
+    await markFailed(admin, attemptId, FAILED_COPY);
+    return;
+  }
+
+  let converted: Awaited<ReturnType<typeof convertToWavPcm16kMono>> | null = null;
   try {
-    const analysis = await analyzeSpeakingWav(converted.wavPath);
+    converted = await convertToWavPcm16kMono({
+      inputBuffer: Buffer.from(await downloaded.data.arrayBuffer()),
+      inputExtensionHint: extension,
+    });
+    const referenceWords = await loadReferenceWords(
+      admin,
+      data.prompt_id as string,
+      attemptId
+    );
+    const analysis = await analyzeSpeakingWav(converted.wavPath, referenceWords);
     const { error: updateError } = await admin
       .from("speaking_attempts")
       .update({
+        status: "done",
+        error_message: null,
         azure_raw: analysis.azureRaw,
         aggregate: analysis.aggregate,
         agent_outputs: analysis.agents,
         final_feedback: analysis.card,
       })
-      .eq("id", id);
+      .eq("id", attemptId);
 
     if (updateError) {
-      throw new AppError("No pude guardar la nota.", "ATTEMPT_UPDATE", 500);
+      await markFailed(admin, attemptId, FAILED_COPY);
     }
-  } catch (error) {
-    if (error instanceof AppError) throw error;
+  } catch (runError) {
     console.error(
       "speaking analysis failed:",
-      error instanceof Error ? error.message : "unknown"
+      runError instanceof Error ? runError.message : "unknown"
     );
-    throw new AppError("No pude revisar el audio. Intenta de nuevo.", "ANALYSIS", 502);
+    const message =
+      runError instanceof AppError && runError.statusCode < 500
+        ? runError.message
+        : FAILED_COPY;
+    await markFailed(admin, attemptId, message);
   } finally {
-    await converted.cleanup();
+    await converted?.cleanup();
+  }
+}
+
+export async function getSpeakingAttempt(
+  admin: SupabaseClient,
+  input: { attemptId: string; userId: string; owner: boolean }
+): Promise<SpeakingAttemptView | null> {
+  let query = admin
+    .from("speaking_attempts")
+    .select(ATTEMPT_COLUMNS)
+    .eq("id", input.attemptId);
+  if (!input.owner) query = query.eq("user_id", input.userId);
+  const { data, error } = await query.maybeSingle();
+  if (error || !data) return null;
+
+  const row = data as AttemptRow;
+  const age = Date.now() - new Date(row.created_at).getTime();
+  if (row.status === "processing" && age > SPEAKING_STUCK_MS) {
+    await markFailed(admin, row.id, STUCK_COPY);
+    row.status = "failed";
+    row.error_message = STUCK_COPY;
   }
 
+  return toView(admin, row, input.userId, input.owner);
+}
+
+export async function markSpeakingReference(
+  admin: SupabaseClient,
+  input: { userId: string; attemptId: string }
+): Promise<void> {
   const { data, error } = await admin
     .from("speaking_attempts")
-    .select("id, user_id, created_at, duration_s, audio_path, aggregate, final_feedback")
-    .eq("id", id)
-    .single();
+    .select("id, user_id, prompt_id, status")
+    .eq("id", input.attemptId)
+    .maybeSingle();
 
-  if (error || !data) {
-    throw new AppError("Guardé el audio, pero no pude mostrarte la nota.", "ATTEMPT_READ", 500);
+  if (error || !data || data.user_id !== input.userId) {
+    throw new AppError("No encontré ese intento.", "NOT_FOUND", 404);
+  }
+  if (data.status !== "done") {
+    throw new AppError("Ese intento todavía no tiene nota.", "NOT_READY", 422);
   }
 
-  const nextCompleted = owner ? completed : completed + 1;
-  return {
-    attempt: await toView(admin, data as AttemptRow, owner),
-    remaining: remainingAttempts(nextCompleted, owner),
-  };
+  const { error: clearError } = await admin
+    .from("speaking_attempts")
+    .update({ is_reference: false })
+    .eq("prompt_id", data.prompt_id)
+    .eq("is_reference", true);
+
+  if (clearError) {
+    throw new AppError("No pude guardar la referencia.", "REFERENCE", 500);
+  }
+
+  const { error: markError } = await admin
+    .from("speaking_attempts")
+    .update({ is_reference: true })
+    .eq("id", input.attemptId);
+
+  if (markError) {
+    throw new AppError("No pude guardar la referencia.", "REFERENCE", 500);
+  }
 }

@@ -13,7 +13,7 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   title: "Evaluación de inglés | Profe Kyle",
   description:
-    "¿Puedes ganarme? Una evaluación rápida de inglés, sin registro. Al final te digo tu nivel y qué te falta.",
+    "¿No sabes tu nivel de inglés? Toma esta evaluación corta para saber más o menos tu nivel.",
 };
 
 export default function EvaluacionLayout({ children }: { children: ReactNode }) {

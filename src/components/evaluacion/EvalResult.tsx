@@ -2,42 +2,34 @@
 
 import { useState } from "react";
 import { Check, CircleHelp, X } from "lucide-react";
-import { sessionTypeLabel } from "@/lib/activities";
-import { evaluacionConfig } from "@/lib/evaluacion/config";
 import { evalUiCopy, resultHeadline } from "@/lib/evaluacion/copy";
 import type { PairVerdict } from "@/lib/evaluacion/pairs";
 import type { EvalResult as EvalResultData, HoleSummary, ReviewEntry } from "@/lib/evaluacion/result";
+import { nivelForShare, whatsappResultUrl } from "@/lib/evaluacion/whatsapp";
 import { evalApi, EvalRequestError } from "./evalApi";
 
-const MAX_LISTED = 5;
-
 function HoleList({ holes }: { holes: HoleSummary[] }) {
-  const shown = holes.slice(0, MAX_LISTED);
-  const hidden = holes.length - shown.length;
   return (
-    <>
-      <ul className="ev-holes">
-        {shown.map((hole) => (
-          <li key={hole.structureId} className="ev-hole">
-            <span className="ev-hole-name">{hole.nameEs}</span>
-            <span className="ev-hole-class">Clase: {sessionTypeLabel(hole.classType)}</span>
-          </li>
-        ))}
-      </ul>
-      {hidden > 0 ? <p className="ev-note">Y {hidden} más en la revisión de abajo.</p> : null}
-    </>
+    <ul className="ev-holes">
+      {holes.map((hole) => (
+        <li key={hole.structureId} className="ev-hole">
+          <span className="ev-hole-name">{hole.nameEs}</span>
+        </li>
+      ))}
+    </ul>
   );
 }
 
 function MissMap({ result }: { result: EvalResultData }) {
   if (result.outcome === "gentle") {
     const start = [...result.confirmed, ...result.candidates];
-    if (start.length === 0) return null;
+    if (start.length === 0) return <p className="ev-body">{evalUiCopy.noHoles}</p>;
     return (
       <section className="ev-section" aria-labelledby="ev-start-here">
         <h2 className="ev-subheading" id="ev-start-here">
           Por dónde empezar
         </h2>
+        <p className="ev-body">{evalUiCopy.grammarIntro}</p>
         <HoleList holes={start} />
       </section>
     );
@@ -54,6 +46,7 @@ function MissMap({ result }: { result: EvalResultData }) {
           <h2 className="ev-subheading" id="ev-confirmed">
             {evalUiCopy.confirmedTitle}
           </h2>
+          <p className="ev-body">{evalUiCopy.grammarIntro}</p>
           <p className="ev-note">{evalUiCopy.confirmedNote}</p>
           <HoleList holes={result.confirmed} />
         </section>
@@ -63,6 +56,7 @@ function MissMap({ result }: { result: EvalResultData }) {
           <h2 className="ev-subheading" id="ev-candidates">
             {evalUiCopy.candidatesTitle}
           </h2>
+          {result.confirmed.length === 0 ? <p className="ev-body">{evalUiCopy.grammarIntro}</p> : null}
           <p className="ev-note">{evalUiCopy.candidatesNote}</p>
           <HoleList holes={result.candidates} />
         </section>
@@ -79,6 +73,7 @@ function Listening({ verdicts }: { verdicts: PairVerdict[] }) {
       <h2 className="ev-subheading" id="ev-listening">
         {evalUiCopy.listeningTitle}
       </h2>
+      {allClean ? null : <p className="ev-body">{evalUiCopy.soundIntro}</p>}
       <p className="ev-note">{allClean ? evalUiCopy.listeningAllClean : evalUiCopy.listeningNote}</p>
       <ul className="ev-holes">
         {verdicts.map((verdict) => (
@@ -99,9 +94,7 @@ function Listening({ verdicts }: { verdicts: PairVerdict[] }) {
                 </span>
               ) : null}
             </span>
-            {verdict.status ? (
-              <span className="ev-hole-class">Clase: {sessionTypeLabel("pronunciation")}</span>
-            ) : (
+            {verdict.status ? null : (
               <span className="ev-pair-ok">
                 <Check size={16} aria-hidden="true" />
                 {evalUiCopy.listeningClean}
@@ -274,32 +267,63 @@ export function EvalResult({
   emailCaptured: boolean;
   onRetake: () => void;
 }) {
+  const [tab, setTab] = useState<"grammar" | "sounds">("grammar");
+  const tabs = [
+    ["grammar", evalUiCopy.tabGrammar],
+    ["sounds", evalUiCopy.tabSounds],
+  ] as const;
+  const whatsapp = whatsappResultUrl(
+    nivelForShare(result.outcome, result.placedTrack),
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER,
+  );
+
   return (
     <div className="ev-column ev-result ev-fade">
       <header className="ev-result-head">
         <p className="ev-eyebrow">{evalUiCopy.resultEyebrow}</p>
         <h1 className="ev-heading">{resultHeadline(result.outcome, result.placedTrack)}</h1>
-        {result.outcome === "gentle" ? (
-          <p className="ev-body">{evalUiCopy.resultGentleBody}</p>
-        ) : (
-          <p className="ev-note">
-            {result.outcome === "top" ? evalUiCopy.challengeWon : evalUiCopy.challengeNotYet}
-          </p>
-        )}
+        {result.outcome === "gentle" ? <p className="ev-body">{evalUiCopy.resultGentleBody}</p> : null}
       </header>
 
-      <MissMap result={result} />
+      <div className="ev-tabs" role="tablist" aria-label={evalUiCopy.resultEyebrow}>
+        {tabs.map(([id, label]) => (
+          <button
+            key={id}
+            type="button"
+            className="ev-tab"
+            role="tab"
+            id={`ev-tab-${id}`}
+            aria-selected={tab === id}
+            aria-controls={`ev-panel-${id}`}
+            tabIndex={tab === id ? 0 : -1}
+            onClick={() => setTab(id)}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
 
-      <Listening verdicts={listening} />
+      <div
+        className="ev-tab-panel"
+        role="tabpanel"
+        id={`ev-panel-${tab}`}
+        aria-labelledby={`ev-tab-${tab}`}
+      >
+        {tab === "grammar" ? <MissMap result={result} /> : null}
+        {tab === "sounds" ? <Listening verdicts={listening} /> : null}
+      </div>
 
-      <section className="ev-card ev-card-accent" aria-labelledby="ev-offer">
+      {whatsapp ? (
+        <a className="ev-cta" href={whatsapp} target="_blank" rel="noopener noreferrer">
+          {evalUiCopy.whatsappCta}
+        </a>
+      ) : null}
+
+      <section className="ev-card" aria-labelledby="ev-offer">
         <h2 className="ev-subheading" id="ev-offer">
           {evalUiCopy.offerTitle}
         </h2>
         <p className="ev-body">{evalUiCopy.offerBody}</p>
-        <a className="ev-cta" href={evaluacionConfig.circleOfferUrl}>
-          {evalUiCopy.offerCta}
-        </a>
       </section>
 
       <EmailCapture alreadySaved={emailCaptured} />

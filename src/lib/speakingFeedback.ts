@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { isTeacherEmail } from "@/lib/auth";
-import type { PhonemeAggregate } from "@/lib/pronunciation/aggregatePhonemes";
+import type { SpeakingAggregate } from "@/lib/pronunciation/aggregatePatterns";
 import {
   SPEAKING_DAILY_CAP,
   SPEAKING_LEVEL,
@@ -42,6 +42,7 @@ export const PronunciationAgentSchema = z.object({
         friendlyName: z.string().min(1).max(160),
         examples: z.array(z.string().min(1).max(80)).max(3),
         tip: z.string().min(1).max(400),
+        signal: z.enum(["sag", "reference", "both", "absolute"]).optional(),
       })
     )
     .max(2),
@@ -123,15 +124,18 @@ export function vocabularyPrompt(transcript: string): string {
 
 export function pronunciationPrompt(
   transcript: string,
-  aggregate: PhonemeAggregate
+  aggregate: SpeakingAggregate
 ): string {
   return [
     `Level: ${SPEAKING_LEVEL}. Prompt: ${SPEAKING_PROMPT}`,
     SHARED_RULES,
     "You write for a student whose pronunciation is still forming.",
     "Use only the patterns and mangled words given. Do not add sounds.",
+    "If feedbackShape is quality, the phoneme is the right one and the vowel is more relaxed than English. Say that. Do not call it the wrong sound.",
+    "If feedbackShape is substitution, name the English sound they missed.",
+    "Copy signal onto each pattern you return.",
     "friendlyName and tip are Spanish. examples are the English words given.",
-    'Shape: {"ok": boolean, "patterns": [{"pattern": string, "friendlyName": string, "examples": string[], "tip": string}], "mangledWords": string[]}',
+    'Shape: {"ok": boolean, "patterns": [{"pattern": string, "friendlyName": string, "examples": string[], "tip": string, "signal": "sag"|"reference"|"both"|"absolute"}], "mangledWords": string[]}',
     `Patterns: ${JSON.stringify(aggregate.patterns)}`,
     `Mangled words: ${JSON.stringify(aggregate.mangledWords)}`,
     `Transcript: ${transcript}`,
@@ -192,7 +196,9 @@ export function clampFeedbackCard(
   card: FeedbackCard,
   agents: AgentOutputs,
   transcript: string,
-  aggregate: PhonemeAggregate
+  aggregate: {
+    patterns: Array<{ ipaDisplay: string; exampleWords: string[] }>;
+  }
 ): FeedbackCard {
   const grammarFixes = agents.grammar.ok
     ? []

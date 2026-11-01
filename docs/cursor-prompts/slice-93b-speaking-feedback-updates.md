@@ -1,7 +1,7 @@
 # Slice 93b: Speaking feedback prototype updates (two-signal aggregator + async flow)
 
-Status: SPEC — deltas to the BUILT Slice 93 (build commit be0392d, verified:
-`npx tsx --test src/lib/speakingFeedback.test.ts` 0 fail, `npx tsc --noEmit` clean)
+Status: BUILT locally 2026-10-19, not committed. Constants locked at the suggested values (sag 12/12, reference gap 8/8). Display cap stays 2 by gap size.
+
 Read `docs/cursor-prompts/slice-93-speaking-feedback-prototype.md` sections
 "Spike 1 findings" and "Spike 1b: Kyle validation takes" FIRST. This file changes
 two mechanisms; everything else in Slice 93 stands.

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import { Check, Pause, Play, SkipBack, SkipForward, X } from "lucide-react";
 import LessonHeader from "@/components/lesson/LessonHeader";
 import ActionButton from "@/components/ActionButton";
@@ -29,6 +30,7 @@ import {
   type KaraokePiece,
 } from "@/lib/iplo";
 import type { CourseLevel } from "@/types";
+import type { AudioCourseExit } from "@/lib/library-access";
 import type { LessonViewToggle } from "@/lib/student-preview";
 
 type StoredAnswer = { given: string; correct: boolean };
@@ -88,6 +90,8 @@ export default function AudioCoursePlayer({
   isTeacher,
   previewLevel,
   viewToggle,
+  courseHref = null,
+  exit = null,
 }: {
   storyId: string;
   title: string;
@@ -100,6 +104,8 @@ export default function AudioCoursePlayer({
   isTeacher: boolean;
   previewLevel: CourseLevel | null;
   viewToggle: LessonViewToggle | null;
+  courseHref?: string | null;
+  exit?: AudioCourseExit | null;
 }) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const answerRef = useRef<HTMLInputElement>(null);
@@ -511,6 +517,7 @@ export default function AudioCoursePlayer({
         isTeacher={isTeacher}
         previewLevel={previewLevel}
         viewToggle={viewToggle}
+        courseHref={courseHref}
       />
       <main className="mx-auto flex w-full max-w-[672px] flex-col px-4 pb-8">
         {blocked ? (
@@ -524,6 +531,14 @@ export default function AudioCoursePlayer({
                 ? "Listo. Ya puedes seguir con English for Latinos 1."
                 : "Listo."}
             </p>
+            {exit ? (
+              <Link
+                href={exit.href}
+                className="mt-8 inline-flex min-h-12 items-center justify-center rounded-card bg-accent px-4 text-label-md text-white hover:bg-accent-hover active:bg-accent-hover"
+              >
+                {exit.label}
+              </Link>
+            ) : null}
             {vocabulary.length > 0 ? (
               <div className="mt-10">
                 <h2 className="font-headline text-headline-md text-text-primary">Palabras de hoy</h2>

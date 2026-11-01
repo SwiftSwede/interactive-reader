@@ -1,15 +1,16 @@
 import type { Opener, Track } from "./types";
 
 /**
- * [copy] Every string here is a Cursor draft until Kyle's copy pass.
- * Opener labels are Kyle's verbatim (workshop level field + "No sé nada").
+ * [copy] Strings here are Cursor drafts until Kyle's copy pass, except the
+ * splash (his old quiz, verbatim) and the opener labels (workshop level field
+ * plus "No sé nada").
  */
 export const evalUiCopy = {
-  splashTitle: "¿Puedes ganarme?",
+  splashTitle: "La Evaluación Rápida de Tu Inglés",
   splashLead:
-    "Una evaluación rápida de inglés. Sin registro. Al final te digo en qué nivel estás y qué te falta.",
-  splashNote: "Unos 10 minutos. Si no sabes una, toca No sé. Eso también me dice algo.",
-  splashStart: "Empezar",
+    "¿No sabes tu nivel de inglés? Toma esta evaluación corta de 40 preguntas para saber más o menos tu nivel.",
+  splashNote: "*Las preguntas van de fáciles a difíciles.*",
+  splashStart: "Empezar la evaluation",
   splashResume: "Seguir donde iba",
   splashRestart: "Empezar de nuevo",
   openerTitle: "¿Cómo va tu inglés hoy?",
@@ -49,9 +50,14 @@ export const evalUiCopy = {
   listeningAllClean: "Distingues bien estos sonidos. Tu oído va por buen camino.",
   continueCta: "Seguir",
   resultEyebrow: "Tu resultado",
-  challengeWon: "¿Puedes ganarme? Parece que sí.",
-  challengeNotYet: "¿Puedes ganarme? Todavía no, pero ya sé por qué.",
   resultGentleTitle: "Empecemos por la base.",
+  tabGrammar: "Gramática",
+  tabSounds: "Sonidos",
+  whatsappCta: "Escríbeme por WhatsApp",
+  grammarIntro:
+    "Estos aspectos problemáticos se arreglan en las clases de conversación y escritura del Confident Speaker's Circle.",
+  soundIntro:
+    "Estos aspectos problemáticos se arreglan en las clases de pronunciación y música del Confident Speaker's Circle.",
   resultGentleBody:
     "Hoy te costó bastante, y está bien. Eso me dice exactamente por dónde empezar contigo.",
   confirmedTitle: "Lo que te está frenando",
@@ -62,7 +68,6 @@ export const evalUiCopy = {
   offerTitle: "El Círculo",
   offerBody:
     "Ocho clases en vivo al mes, en grupo pequeño, justo en tu nivel. Atacamos exactamente esto.",
-  offerCta: "Ver el Círculo",
   emailTitle: "¿Te mando tu resultado?",
   emailNote: "Te lo envío para que no lo pierdas. Nada de spam.",
   emailLabel: "Tu email",
