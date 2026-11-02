@@ -1,0 +1,5900 @@
+[
+  {
+    "position": 0,
+    "text": "It",
+    "start": 1.96,
+    "end": 2.64
+  },
+  {
+    "position": 1,
+    "text": "is",
+    "start": 2.64,
+    "end": 2.82
+  },
+  {
+    "position": 2,
+    "text": "Thanksgiving",
+    "start": 2.82,
+    "end": 3.3
+  },
+  {
+    "position": 3,
+    "text": "in",
+    "start": 3.3,
+    "end": 3.62
+  },
+  {
+    "position": 4,
+    "text": "the",
+    "start": 3.62,
+    "end": 3.72
+  },
+  {
+    "position": 5,
+    "text": "Thompson",
+    "start": 3.72,
+    "end": 4.14
+  },
+  {
+    "position": 6,
+    "text": "household.",
+    "start": 4.14,
+    "end": 4.82
+  },
+  {
+    "position": 7,
+    "text": "Grandma",
+    "start": 5.16,
+    "end": 5.7
+  },
+  {
+    "position": 8,
+    "text": "and",
+    "start": 5.7,
+    "end": 5.92
+  },
+  {
+    "position": 9,
+    "text": "grandpa",
+    "start": 5.92,
+    "end": 6.34
+  },
+  {
+    "position": 10,
+    "text": "traveled",
+    "start": 6.34,
+    "end": 6.34
+  },
+  {
+    "position": 11,
+    "text": "8",
+    "start": 6.34,
+    "end": 6.34
+  },
+  {
+    "position": 12,
+    "text": "hours",
+    "start": 7.08,
+    "end": 7.58
+  },
+  {
+    "position": 13,
+    "text": "to",
+    "start": 7.58,
+    "end": 7.78
+  },
+  {
+    "position": 14,
+    "text": "spend",
+    "start": 7.78,
+    "end": 8.06
+  },
+  {
+    "position": 15,
+    "text": "the",
+    "start": 8.06,
+    "end": 8.24
+  },
+  {
+    "position": 16,
+    "text": "weekend",
+    "start": 8.24,
+    "end": 8.56
+  },
+  {
+    "position": 17,
+    "text": "with",
+    "start": 8.56,
+    "end": 8.8
+  },
+  {
+    "position": 18,
+    "text": "us.",
+    "start": 8.8,
+    "end": 9.1
+  },
+  {
+    "position": 19,
+    "text": "Uncle",
+    "start": 9.34,
+    "end": 9.88
+  },
+  {
+    "position": 20,
+    "text": "Tom",
+    "start": 9.88,
+    "end": 10.16
+  },
+  {
+    "position": 21,
+    "text": "and",
+    "start": 10.16,
+    "end": 10.32
+  },
+  {
+    "position": 22,
+    "text": "Auntie",
+    "start": 10.32,
+    "end": 10.58
+  },
+  {
+    "position": 23,
+    "text": "Sara",
+    "start": 10.58,
+    "end": 10.58
+  },
+  {
+    "position": 24,
+    "text": "traveled",
+    "start": 10.58,
+    "end": 10.58
+  },
+  {
+    "position": 25,
+    "text": "2",
+    "start": 10.58,
+    "end": 10.58
+  },
+  {
+    "position": 26,
+    "text": "hours.",
+    "start": 11.58,
+    "end": 11.98
+  },
+  {
+    "position": 27,
+    "text": "Thanksgiving",
+    "start": 12.46,
+    "end": 13.14
+  },
+  {
+    "position": 28,
+    "text": "is",
+    "start": 13.14,
+    "end": 13.52
+  },
+  {
+    "position": 29,
+    "text": "always",
+    "start": 13.52,
+    "end": 14.0
+  },
+  {
+    "position": 30,
+    "text": "an",
+    "start": 14.0,
+    "end": 14.36
+  },
+  {
+    "position": 31,
+    "text": "important",
+    "start": 14.36,
+    "end": 14.8
+  },
+  {
+    "position": 32,
+    "text": "holiday",
+    "start": 14.8,
+    "end": 15.32
+  },
+  {
+    "position": 33,
+    "text": "in",
+    "start": 15.32,
+    "end": 15.54
+  },
+  {
+    "position": 34,
+    "text": "our",
+    "start": 15.54,
+    "end": 15.66
+  },
+  {
+    "position": 35,
+    "text": "family.",
+    "start": 15.66,
+    "end": 16.1
+  },
+  {
+    "position": 36,
+    "text": "Besides",
+    "start": 16.4,
+    "end": 17.04
+  },
+  {
+    "position": 37,
+    "text": "Christmas,",
+    "start": 17.04,
+    "end": 17.48
+  },
+  {
+    "position": 38,
+    "text": "it",
+    "start": 17.78,
+    "end": 18.2
+  },
+  {
+    "position": 39,
+    "text": "is",
+    "start": 18.2,
+    "end": 18.3
+  },
+  {
+    "position": 40,
+    "text": "the",
+    "start": 18.3,
+    "end": 18.42
+  },
+  {
+    "position": 41,
+    "text": "only",
+    "start": 18.42,
+    "end": 18.76
+  },
+  {
+    "position": 42,
+    "text": "time",
+    "start": 18.76,
+    "end": 19.2
+  },
+  {
+    "position": 43,
+    "text": "of",
+    "start": 19.2,
+    "end": 19.5
+  },
+  {
+    "position": 44,
+    "text": "year",
+    "start": 19.5,
+    "end": 19.88
+  },
+  {
+    "position": 45,
+    "text": "where",
+    "start": 19.88,
+    "end": 20.18
+  },
+  {
+    "position": 46,
+    "text": "the",
+    "start": 20.18,
+    "end": 20.38
+  },
+  {
+    "position": 47,
+    "text": "entire",
+    "start": 20.38,
+    "end": 20.92
+  },
+  {
+    "position": 48,
+    "text": "family",
+    "start": 20.92,
+    "end": 21.54
+  },
+  {
+    "position": 49,
+    "text": "tries",
+    "start": 21.54,
+    "end": 21.88
+  },
+  {
+    "position": 50,
+    "text": "to",
+    "start": 21.88,
+    "end": 22.12
+  },
+  {
+    "position": 51,
+    "text": "get",
+    "start": 22.12,
+    "end": 22.48
+  },
+  {
+    "position": 52,
+    "text": "together",
+    "start": 22.48,
+    "end": 22.94
+  },
+  {
+    "position": 53,
+    "text": "and",
+    "start": 22.94,
+    "end": 23.16
+  },
+  {
+    "position": 54,
+    "text": "catch",
+    "start": 23.16,
+    "end": 23.44
+  },
+  {
+    "position": 55,
+    "text": "up.",
+    "start": 23.44,
+    "end": 23.7
+  },
+  {
+    "position": 56,
+    "text": "While",
+    "start": 24.02,
+    "end": 24.7
+  },
+  {
+    "position": 57,
+    "text": "I",
+    "start": 24.7,
+    "end": 24.84
+  },
+  {
+    "position": 58,
+    "text": "love",
+    "start": 24.84,
+    "end": 25.12
+  },
+  {
+    "position": 59,
+    "text": "catching",
+    "start": 25.12,
+    "end": 25.46
+  },
+  {
+    "position": 60,
+    "text": "up",
+    "start": 25.46,
+    "end": 25.66
+  },
+  {
+    "position": 61,
+    "text": "with",
+    "start": 25.66,
+    "end": 25.78
+  },
+  {
+    "position": 62,
+    "text": "my",
+    "start": 25.78,
+    "end": 25.94
+  },
+  {
+    "position": 63,
+    "text": "family",
+    "start": 25.94,
+    "end": 26.34
+  },
+  {
+    "position": 64,
+    "text": "members,",
+    "start": 26.34,
+    "end": 26.7
+  },
+  {
+    "position": 65,
+    "text": "I",
+    "start": 27.0,
+    "end": 27.82
+  },
+  {
+    "position": 66,
+    "text": "cannot",
+    "start": 27.82,
+    "end": 28.22
+  },
+  {
+    "position": 67,
+    "text": "lie,",
+    "start": 28.22,
+    "end": 28.68
+  },
+  {
+    "position": 68,
+    "text": "my",
+    "start": 28.86,
+    "end": 29.18
+  },
+  {
+    "position": 69,
+    "text": "favorite",
+    "start": 29.18,
+    "end": 29.6
+  },
+  {
+    "position": 70,
+    "text": "part",
+    "start": 29.6,
+    "end": 29.94
+  },
+  {
+    "position": 71,
+    "text": "of",
+    "start": 29.94,
+    "end": 30.06
+  },
+  {
+    "position": 72,
+    "text": "Thanksgiving",
+    "start": 30.06,
+    "end": 30.5
+  },
+  {
+    "position": 73,
+    "text": "is",
+    "start": 30.5,
+    "end": 30.88
+  },
+  {
+    "position": 74,
+    "text": "eating",
+    "start": 30.88,
+    "end": 31.34
+  },
+  {
+    "position": 75,
+    "text": "grandma's",
+    "start": 31.34,
+    "end": 32.18
+  },
+  {
+    "position": 76,
+    "text": "apple",
+    "start": 32.18,
+    "end": 32.52
+  },
+  {
+    "position": 77,
+    "text": "salad.",
+    "start": 32.52,
+    "end": 33.02
+  },
+  {
+    "position": 78,
+    "text": "I",
+    "start": 33.4,
+    "end": 34.02
+  },
+  {
+    "position": 79,
+    "text": "showed",
+    "start": 34.02,
+    "end": 34.26
+  },
+  {
+    "position": 80,
+    "text": "apple",
+    "start": 34.26,
+    "end": 34.56
+  },
+  {
+    "position": 81,
+    "text": "salad",
+    "start": 34.56,
+    "end": 34.88
+  },
+  {
+    "position": 82,
+    "text": "to",
+    "start": 34.88,
+    "end": 35.06
+  },
+  {
+    "position": 83,
+    "text": "a",
+    "start": 35.06,
+    "end": 35.26
+  },
+  {
+    "position": 84,
+    "text": "Venezuelan",
+    "start": 35.26,
+    "end": 35.98
+  },
+  {
+    "position": 85,
+    "text": "friend",
+    "start": 35.98,
+    "end": 36.2
+  },
+  {
+    "position": 86,
+    "text": "before,",
+    "start": 36.2,
+    "end": 36.58
+  },
+  {
+    "position": 87,
+    "text": "and",
+    "start": 36.58,
+    "end": 36.86
+  },
+  {
+    "position": 88,
+    "text": "they",
+    "start": 36.86,
+    "end": 37.54
+  },
+  {
+    "position": 89,
+    "text": "asked",
+    "start": 37.54,
+    "end": 37.82
+  },
+  {
+    "position": 90,
+    "text": "for",
+    "start": 37.82,
+    "end": 37.98
+  },
+  {
+    "position": 91,
+    "text": "the",
+    "start": 37.98,
+    "end": 38.12
+  },
+  {
+    "position": 92,
+    "text": "recipe.",
+    "start": 38.12,
+    "end": 38.5
+  },
+  {
+    "position": 93,
+    "text": "I",
+    "start": 38.7,
+    "end": 39.14
+  },
+  {
+    "position": 94,
+    "text": "told",
+    "start": 39.14,
+    "end": 39.38
+  },
+  {
+    "position": 95,
+    "text": "them,",
+    "start": 39.38,
+    "end": 39.58
+  },
+  {
+    "position": 96,
+    "text": "a",
+    "start": 39.78,
+    "end": 40.32
+  },
+  {
+    "position": 97,
+    "text": "little",
+    "start": 40.32,
+    "end": 40.48
+  },
+  {
+    "position": 98,
+    "text": "ashamed,",
+    "start": 40.48,
+    "end": 41.04
+  },
+  {
+    "position": 99,
+    "text": "that",
+    "start": 41.3,
+    "end": 41.74
+  },
+  {
+    "position": 100,
+    "text": "it",
+    "start": 41.74,
+    "end": 41.8
+  },
+  {
+    "position": 101,
+    "text": "was",
+    "start": 41.8,
+    "end": 41.92
+  },
+  {
+    "position": 102,
+    "text": "only",
+    "start": 41.92,
+    "end": 42.22
+  },
+  {
+    "position": 103,
+    "text": "diced",
+    "start": 42.22,
+    "end": 42.86
+  },
+  {
+    "position": 104,
+    "text": "apples",
+    "start": 42.86,
+    "end": 43.28
+  },
+  {
+    "position": 105,
+    "text": "and",
+    "start": 43.28,
+    "end": 43.68
+  },
+  {
+    "position": 106,
+    "text": "whipped",
+    "start": 43.68,
+    "end": 43.98
+  },
+  {
+    "position": 107,
+    "text": "cream.",
+    "start": 43.98,
+    "end": 44.26
+  },
+  {
+    "position": 108,
+    "text": "I",
+    "start": 44.62,
+    "end": 45.2
+  },
+  {
+    "position": 109,
+    "text": "love",
+    "start": 45.2,
+    "end": 45.5
+  },
+  {
+    "position": 110,
+    "text": "apple",
+    "start": 45.5,
+    "end": 45.92
+  },
+  {
+    "position": 111,
+    "text": "salad",
+    "start": 45.92,
+    "end": 46.34
+  },
+  {
+    "position": 112,
+    "text": "so",
+    "start": 46.34,
+    "end": 46.76
+  },
+  {
+    "position": 113,
+    "text": "much",
+    "start": 46.76,
+    "end": 47.26
+  },
+  {
+    "position": 114,
+    "text": "that",
+    "start": 47.26,
+    "end": 47.98
+  },
+  {
+    "position": 115,
+    "text": "I",
+    "start": 47.98,
+    "end": 48.12
+  },
+  {
+    "position": 116,
+    "text": "even",
+    "start": 48.12,
+    "end": 48.38
+  },
+  {
+    "position": 117,
+    "text": "helped",
+    "start": 48.38,
+    "end": 48.64
+  },
+  {
+    "position": 118,
+    "text": "grandma",
+    "start": 48.64,
+    "end": 48.94
+  },
+  {
+    "position": 119,
+    "text": "in",
+    "start": 48.94,
+    "end": 49.12
+  },
+  {
+    "position": 120,
+    "text": "the",
+    "start": 49.12,
+    "end": 49.2
+  },
+  {
+    "position": 121,
+    "text": "kitchen",
+    "start": 49.2,
+    "end": 49.44
+  },
+  {
+    "position": 122,
+    "text": "to",
+    "start": 49.44,
+    "end": 49.64
+  },
+  {
+    "position": 123,
+    "text": "make",
+    "start": 49.64,
+    "end": 49.98
+  },
+  {
+    "position": 124,
+    "text": "it",
+    "start": 49.98,
+    "end": 50.1
+  },
+  {
+    "position": 125,
+    "text": "this",
+    "start": 50.1,
+    "end": 50.38
+  },
+  {
+    "position": 126,
+    "text": "Thanksgiving.",
+    "start": 50.38,
+    "end": 50.86
+  },
+  {
+    "position": 127,
+    "text": "I",
+    "start": 51.28,
+    "end": 51.78
+  },
+  {
+    "position": 128,
+    "text": "cut",
+    "start": 51.78,
+    "end": 52.0
+  },
+  {
+    "position": 129,
+    "text": "the",
+    "start": 52.0,
+    "end": 52.16
+  },
+  {
+    "position": 130,
+    "text": "apples,",
+    "start": 52.16,
+    "end": 52.58
+  },
+  {
+    "position": 131,
+    "text": "I",
+    "start": 52.58,
+    "end": 53.32
+  },
+  {
+    "position": 132,
+    "text": "whipped",
+    "start": 53.32,
+    "end": 53.64
+  },
+  {
+    "position": 133,
+    "text": "the",
+    "start": 53.64,
+    "end": 53.86
+  },
+  {
+    "position": 134,
+    "text": "cream,",
+    "start": 53.86,
+    "end": 54.18
+  },
+  {
+    "position": 135,
+    "text": "and",
+    "start": 54.32,
+    "end": 54.78
+  },
+  {
+    "position": 136,
+    "text": "then",
+    "start": 54.78,
+    "end": 54.92
+  },
+  {
+    "position": 137,
+    "text": "grandma",
+    "start": 54.92,
+    "end": 55.26
+  },
+  {
+    "position": 138,
+    "text": "mixed",
+    "start": 55.26,
+    "end": 55.8
+  },
+  {
+    "position": 139,
+    "text": "them",
+    "start": 55.8,
+    "end": 55.94
+  },
+  {
+    "position": 140,
+    "text": "together.",
+    "start": 55.94,
+    "end": 56.38
+  },
+  {
+    "position": 141,
+    "text": "Just",
+    "start": 56.96,
+    "end": 57.6
+  },
+  {
+    "position": 142,
+    "text": "looking",
+    "start": 57.6,
+    "end": 58.22
+  },
+  {
+    "position": 143,
+    "text": "at",
+    "start": 58.22,
+    "end": 58.44
+  },
+  {
+    "position": 144,
+    "text": "the",
+    "start": 58.44,
+    "end": 58.58
+  },
+  {
+    "position": 145,
+    "text": "final",
+    "start": 58.58,
+    "end": 58.98
+  },
+  {
+    "position": 146,
+    "text": "product",
+    "start": 58.98,
+    "end": 59.5
+  },
+  {
+    "position": 147,
+    "text": "made",
+    "start": 59.5,
+    "end": 59.86
+  },
+  {
+    "position": 148,
+    "text": "me",
+    "start": 59.86,
+    "end": 60.08
+  },
+  {
+    "position": 149,
+    "text": "hungry.",
+    "start": 60.08,
+    "end": 60.62
+  },
+  {
+    "position": 150,
+    "text": "While",
+    "start": 61.08,
+    "end": 61.54
+  },
+  {
+    "position": 151,
+    "text": "grandma",
+    "start": 61.54,
+    "end": 62.0
+  },
+  {
+    "position": 152,
+    "text": "and",
+    "start": 62.0,
+    "end": 62.14
+  },
+  {
+    "position": 153,
+    "text": "my",
+    "start": 62.14,
+    "end": 62.3
+  },
+  {
+    "position": 154,
+    "text": "mother",
+    "start": 62.3,
+    "end": 62.6
+  },
+  {
+    "position": 155,
+    "text": "finished",
+    "start": 62.6,
+    "end": 62.96
+  },
+  {
+    "position": 156,
+    "text": "cooking",
+    "start": 62.96,
+    "end": 63.32
+  },
+  {
+    "position": 157,
+    "text": "the",
+    "start": 63.32,
+    "end": 63.52
+  },
+  {
+    "position": 158,
+    "text": "turkey",
+    "start": 63.52,
+    "end": 63.84
+  },
+  {
+    "position": 159,
+    "text": "and",
+    "start": 63.84,
+    "end": 64.04
+  },
+  {
+    "position": 160,
+    "text": "preparing",
+    "start": 64.04,
+    "end": 64.42
+  },
+  {
+    "position": 161,
+    "text": "the",
+    "start": 64.42,
+    "end": 64.62
+  },
+  {
+    "position": 162,
+    "text": "other",
+    "start": 64.62,
+    "end": 64.74
+  },
+  {
+    "position": 163,
+    "text": "food,",
+    "start": 64.74,
+    "end": 65.1
+  },
+  {
+    "position": 164,
+    "text": "we",
+    "start": 65.26,
+    "end": 65.74
+  },
+  {
+    "position": 165,
+    "text": "all",
+    "start": 65.74,
+    "end": 66.0
+  },
+  {
+    "position": 166,
+    "text": "waited",
+    "start": 66.0,
+    "end": 66.42
+  },
+  {
+    "position": 167,
+    "text": "in",
+    "start": 66.42,
+    "end": 66.62
+  },
+  {
+    "position": 168,
+    "text": "the",
+    "start": 66.62,
+    "end": 66.74
+  },
+  {
+    "position": 169,
+    "text": "living",
+    "start": 66.74,
+    "end": 67.0
+  },
+  {
+    "position": 170,
+    "text": "room.",
+    "start": 67.0,
+    "end": 67.28
+  },
+  {
+    "position": 171,
+    "text": "My",
+    "start": 67.5,
+    "end": 67.92
+  },
+  {
+    "position": 172,
+    "text": "father,",
+    "start": 67.92,
+    "end": 68.24
+  },
+  {
+    "position": 173,
+    "text": "uncle",
+    "start": 68.54,
+    "end": 68.94
+  },
+  {
+    "position": 174,
+    "text": "and",
+    "start": 69.16,
+    "end": 69.28
+  },
+  {
+    "position": 175,
+    "text": "grandfather",
+    "start": 69.28,
+    "end": 69.94
+  },
+  {
+    "position": 176,
+    "text": "were",
+    "start": 69.94,
+    "end": 70.66
+  },
+  {
+    "position": 177,
+    "text": "all",
+    "start": 70.66,
+    "end": 71.0
+  },
+  {
+    "position": 178,
+    "text": "watching",
+    "start": 71.0,
+    "end": 71.54
+  },
+  {
+    "position": 179,
+    "text": "the",
+    "start": 71.54,
+    "end": 71.72
+  },
+  {
+    "position": 180,
+    "text": "football",
+    "start": 71.72,
+    "end": 72.08
+  },
+  {
+    "position": 181,
+    "text": "game",
+    "start": 72.08,
+    "end": 72.46
+  },
+  {
+    "position": 182,
+    "text": "on",
+    "start": 72.46,
+    "end": 72.72
+  },
+  {
+    "position": 183,
+    "text": "the",
+    "start": 72.72,
+    "end": 72.94
+  },
+  {
+    "position": 184,
+    "text": "television,",
+    "start": 72.94,
+    "end": 73.52
+  },
+  {
+    "position": 185,
+    "text": "while",
+    "start": 73.52,
+    "end": 74.24
+  },
+  {
+    "position": 186,
+    "text": "my",
+    "start": 74.24,
+    "end": 74.48
+  },
+  {
+    "position": 187,
+    "text": "auntie",
+    "start": 74.48,
+    "end": 74.84
+  },
+  {
+    "position": 188,
+    "text": "talked",
+    "start": 74.84,
+    "end": 75.24
+  },
+  {
+    "position": 189,
+    "text": "with",
+    "start": 75.24,
+    "end": 75.52
+  },
+  {
+    "position": 190,
+    "text": "my",
+    "start": 75.52,
+    "end": 75.74
+  },
+  {
+    "position": 191,
+    "text": "sister.",
+    "start": 75.74,
+    "end": 76.12
+  },
+  {
+    "position": 192,
+    "text": "Finally,",
+    "start": 76.74,
+    "end": 77.38
+  },
+  {
+    "position": 193,
+    "text": "my",
+    "start": 77.62,
+    "end": 78.04
+  },
+  {
+    "position": 194,
+    "text": "mother",
+    "start": 78.04,
+    "end": 78.34
+  },
+  {
+    "position": 195,
+    "text": "came",
+    "start": 78.34,
+    "end": 78.64
+  },
+  {
+    "position": 196,
+    "text": "into",
+    "start": 78.64,
+    "end": 78.94
+  },
+  {
+    "position": 197,
+    "text": "the",
+    "start": 78.94,
+    "end": 79.14
+  },
+  {
+    "position": 198,
+    "text": "living",
+    "start": 79.14,
+    "end": 79.38
+  },
+  {
+    "position": 199,
+    "text": "room",
+    "start": 79.38,
+    "end": 79.6
+  },
+  {
+    "position": 200,
+    "text": "and",
+    "start": 79.6,
+    "end": 79.76
+  },
+  {
+    "position": 201,
+    "text": "said,",
+    "start": 79.76,
+    "end": 80.1
+  },
+  {
+    "position": 202,
+    "text": "\"well,",
+    "start": 80.48,
+    "end": 81.12
+  },
+  {
+    "position": 203,
+    "text": "I",
+    "start": 81.32,
+    "end": 81.62
+  },
+  {
+    "position": 204,
+    "text": "think",
+    "start": 81.62,
+    "end": 81.96
+  },
+  {
+    "position": 205,
+    "text": "supper",
+    "start": 81.96,
+    "end": 82.34
+  },
+  {
+    "position": 206,
+    "text": "is",
+    "start": 82.34,
+    "end": 82.6
+  },
+  {
+    "position": 207,
+    "text": "ready.",
+    "start": 82.6,
+    "end": 83.12
+  },
+  {
+    "position": 208,
+    "text": "Honey,",
+    "start": 83.48,
+    "end": 84.06
+  },
+  {
+    "position": 209,
+    "text": "could",
+    "start": 84.28,
+    "end": 84.42
+  },
+  {
+    "position": 210,
+    "text": "you",
+    "start": 84.42,
+    "end": 84.56
+  },
+  {
+    "position": 211,
+    "text": "shut",
+    "start": 84.56,
+    "end": 84.78
+  },
+  {
+    "position": 212,
+    "text": "off",
+    "start": 84.78,
+    "end": 84.94
+  },
+  {
+    "position": 213,
+    "text": "the",
+    "start": 84.94,
+    "end": 85.06
+  },
+  {
+    "position": 214,
+    "text": "television.\"",
+    "start": 85.06,
+    "end": 85.54
+  },
+  {
+    "position": 215,
+    "text": "My",
+    "start": 85.92,
+    "end": 86.52
+  },
+  {
+    "position": 216,
+    "text": "father",
+    "start": 86.52,
+    "end": 86.84
+  },
+  {
+    "position": 217,
+    "text": "shut",
+    "start": 86.84,
+    "end": 87.08
+  },
+  {
+    "position": 218,
+    "text": "off",
+    "start": 87.08,
+    "end": 87.26
+  },
+  {
+    "position": 219,
+    "text": "the",
+    "start": 87.26,
+    "end": 87.4
+  },
+  {
+    "position": 220,
+    "text": "television",
+    "start": 87.4,
+    "end": 87.94
+  },
+  {
+    "position": 221,
+    "text": "and",
+    "start": 87.94,
+    "end": 88.24
+  },
+  {
+    "position": 222,
+    "text": "we",
+    "start": 88.24,
+    "end": 88.54
+  },
+  {
+    "position": 223,
+    "text": "all",
+    "start": 88.54,
+    "end": 88.88
+  },
+  {
+    "position": 224,
+    "text": "went",
+    "start": 88.88,
+    "end": 89.18
+  },
+  {
+    "position": 225,
+    "text": "to",
+    "start": 89.18,
+    "end": 89.44
+  },
+  {
+    "position": 226,
+    "text": "the",
+    "start": 89.44,
+    "end": 89.6
+  },
+  {
+    "position": 227,
+    "text": "dining",
+    "start": 89.6,
+    "end": 89.92
+  },
+  {
+    "position": 228,
+    "text": "room",
+    "start": 89.92,
+    "end": 90.14
+  },
+  {
+    "position": 229,
+    "text": "to",
+    "start": 90.14,
+    "end": 90.28
+  },
+  {
+    "position": 230,
+    "text": "take",
+    "start": 90.28,
+    "end": 90.56
+  },
+  {
+    "position": 231,
+    "text": "our",
+    "start": 90.56,
+    "end": 90.76
+  },
+  {
+    "position": 232,
+    "text": "seats.",
+    "start": 90.76,
+    "end": 90.76
+  },
+  {
+    "position": 233,
+    "text": "I",
+    "start": 91.44,
+    "end": 92.04
+  },
+  {
+    "position": 234,
+    "text": "sat",
+    "start": 92.04,
+    "end": 92.44
+  },
+  {
+    "position": 235,
+    "text": "between",
+    "start": 92.44,
+    "end": 92.78
+  },
+  {
+    "position": 236,
+    "text": "my",
+    "start": 92.78,
+    "end": 93.06
+  },
+  {
+    "position": 237,
+    "text": "grandmother",
+    "start": 93.06,
+    "end": 93.6
+  },
+  {
+    "position": 238,
+    "text": "and",
+    "start": 93.6,
+    "end": 93.96
+  },
+  {
+    "position": 239,
+    "text": "my",
+    "start": 93.96,
+    "end": 94.14
+  },
+  {
+    "position": 240,
+    "text": "father.",
+    "start": 94.14,
+    "end": 94.54
+  },
+  {
+    "position": 241,
+    "text": "Ever",
+    "start": 94.94,
+    "end": 95.54
+  },
+  {
+    "position": 242,
+    "text": "since",
+    "start": 95.54,
+    "end": 95.82
+  },
+  {
+    "position": 243,
+    "text": "I",
+    "start": 95.82,
+    "end": 96.02
+  },
+  {
+    "position": 244,
+    "text": "was",
+    "start": 96.02,
+    "end": 96.18
+  },
+  {
+    "position": 245,
+    "text": "a",
+    "start": 96.18,
+    "end": 96.36
+  },
+  {
+    "position": 246,
+    "text": "kid,",
+    "start": 96.36,
+    "end": 96.54
+  },
+  {
+    "position": 247,
+    "text": "my",
+    "start": 96.68,
+    "end": 96.76
+  },
+  {
+    "position": 248,
+    "text": "father",
+    "start": 96.76,
+    "end": 97.22
+  },
+  {
+    "position": 249,
+    "text": "sat",
+    "start": 97.22,
+    "end": 97.52
+  },
+  {
+    "position": 250,
+    "text": "at",
+    "start": 97.52,
+    "end": 97.7
+  },
+  {
+    "position": 251,
+    "text": "one",
+    "start": 97.7,
+    "end": 98.02
+  },
+  {
+    "position": 252,
+    "text": "end",
+    "start": 98.02,
+    "end": 98.28
+  },
+  {
+    "position": 253,
+    "text": "of",
+    "start": 98.28,
+    "end": 98.4
+  },
+  {
+    "position": 254,
+    "text": "the",
+    "start": 98.4,
+    "end": 98.52
+  },
+  {
+    "position": 255,
+    "text": "table,",
+    "start": 98.52,
+    "end": 98.86
+  },
+  {
+    "position": 256,
+    "text": "and",
+    "start": 98.86,
+    "end": 99.58
+  },
+  {
+    "position": 257,
+    "text": "my",
+    "start": 99.58,
+    "end": 99.88
+  },
+  {
+    "position": 258,
+    "text": "grandfather",
+    "start": 99.88,
+    "end": 100.44
+  },
+  {
+    "position": 259,
+    "text": "sat",
+    "start": 100.44,
+    "end": 100.96
+  },
+  {
+    "position": 260,
+    "text": "at",
+    "start": 100.96,
+    "end": 101.14
+  },
+  {
+    "position": 261,
+    "text": "the",
+    "start": 101.14,
+    "end": 101.26
+  },
+  {
+    "position": 262,
+    "text": "other",
+    "start": 101.26,
+    "end": 101.56
+  },
+  {
+    "position": 263,
+    "text": "end",
+    "start": 101.56,
+    "end": 101.86
+  },
+  {
+    "position": 264,
+    "text": "of",
+    "start": 101.86,
+    "end": 102.0
+  },
+  {
+    "position": 265,
+    "text": "the",
+    "start": 102.0,
+    "end": 102.14
+  },
+  {
+    "position": 266,
+    "text": "table",
+    "start": 102.14,
+    "end": 102.5
+  },
+  {
+    "position": 267,
+    "text": "for",
+    "start": 102.5,
+    "end": 103.14
+  },
+  {
+    "position": 268,
+    "text": "Thanksgiving",
+    "start": 103.14,
+    "end": 104.02
+  },
+  {
+    "position": 269,
+    "text": "and",
+    "start": 104.02,
+    "end": 104.34
+  },
+  {
+    "position": 270,
+    "text": "Christmas.",
+    "start": 104.34,
+    "end": 104.68
+  },
+  {
+    "position": 271,
+    "text": "I",
+    "start": 104.94,
+    "end": 105.32
+  },
+  {
+    "position": 272,
+    "text": "guess",
+    "start": 105.32,
+    "end": 105.6
+  },
+  {
+    "position": 273,
+    "text": "my",
+    "start": 105.6,
+    "end": 105.82
+  },
+  {
+    "position": 274,
+    "text": "grandmother",
+    "start": 105.82,
+    "end": 106.34
+  },
+  {
+    "position": 275,
+    "text": "always",
+    "start": 106.34,
+    "end": 107.02
+  },
+  {
+    "position": 276,
+    "text": "considered",
+    "start": 107.02,
+    "end": 107.62
+  },
+  {
+    "position": 277,
+    "text": "me",
+    "start": 107.62,
+    "end": 108.06
+  },
+  {
+    "position": 278,
+    "text": "the",
+    "start": 108.06,
+    "end": 108.34
+  },
+  {
+    "position": 279,
+    "text": "next",
+    "start": 108.34,
+    "end": 108.74
+  },
+  {
+    "position": 280,
+    "text": "man",
+    "start": 108.74,
+    "end": 109.06
+  },
+  {
+    "position": 281,
+    "text": "of",
+    "start": 109.06,
+    "end": 109.2
+  },
+  {
+    "position": 282,
+    "text": "the",
+    "start": 109.2,
+    "end": 109.34
+  },
+  {
+    "position": 283,
+    "text": "house,",
+    "start": 109.34,
+    "end": 109.72
+  },
+  {
+    "position": 284,
+    "text": "so",
+    "start": 109.96,
+    "end": 110.52
+  },
+  {
+    "position": 285,
+    "text": "she",
+    "start": 110.52,
+    "end": 110.72
+  },
+  {
+    "position": 286,
+    "text": "always",
+    "start": 110.72,
+    "end": 111.04
+  },
+  {
+    "position": 287,
+    "text": "made",
+    "start": 111.04,
+    "end": 111.32
+  },
+  {
+    "position": 288,
+    "text": "me",
+    "start": 111.32,
+    "end": 111.54
+  },
+  {
+    "position": 289,
+    "text": "sit",
+    "start": 111.54,
+    "end": 111.84
+  },
+  {
+    "position": 290,
+    "text": "beside",
+    "start": 111.84,
+    "end": 112.22
+  },
+  {
+    "position": 291,
+    "text": "my",
+    "start": 112.22,
+    "end": 112.42
+  },
+  {
+    "position": 292,
+    "text": "father",
+    "start": 112.42,
+    "end": 112.8
+  },
+  {
+    "position": 293,
+    "text": "near",
+    "start": 112.8,
+    "end": 113.08
+  },
+  {
+    "position": 294,
+    "text": "the",
+    "start": 113.08,
+    "end": 113.26
+  },
+  {
+    "position": 295,
+    "text": "end",
+    "start": 113.26,
+    "end": 113.42
+  },
+  {
+    "position": 296,
+    "text": "of",
+    "start": 113.42,
+    "end": 113.56
+  },
+  {
+    "position": 297,
+    "text": "the",
+    "start": 113.56,
+    "end": 113.66
+  },
+  {
+    "position": 298,
+    "text": "table.",
+    "start": 113.66,
+    "end": 114.02
+  },
+  {
+    "position": 299,
+    "text": "Before",
+    "start": 114.48,
+    "end": 115.04
+  },
+  {
+    "position": 300,
+    "text": "we",
+    "start": 115.04,
+    "end": 115.2
+  },
+  {
+    "position": 301,
+    "text": "could",
+    "start": 115.2,
+    "end": 115.34
+  },
+  {
+    "position": 302,
+    "text": "begin",
+    "start": 115.34,
+    "end": 115.7
+  },
+  {
+    "position": 303,
+    "text": "dishing",
+    "start": 115.7,
+    "end": 116.12
+  },
+  {
+    "position": 304,
+    "text": "up,",
+    "start": 116.12,
+    "end": 116.38
+  },
+  {
+    "position": 305,
+    "text": "grandma",
+    "start": 116.8,
+    "end": 117.04
+  },
+  {
+    "position": 306,
+    "text": "said,",
+    "start": 117.04,
+    "end": 117.36
+  },
+  {
+    "position": 307,
+    "text": "\"grandpa,",
+    "start": 117.96,
+    "end": 118.66
+  },
+  {
+    "position": 308,
+    "text": "can",
+    "start": 118.94,
+    "end": 119.28
+  },
+  {
+    "position": 309,
+    "text": "you",
+    "start": 119.28,
+    "end": 119.42
+  },
+  {
+    "position": 310,
+    "text": "say",
+    "start": 119.42,
+    "end": 119.66
+  },
+  {
+    "position": 311,
+    "text": "grace",
+    "start": 119.66,
+    "end": 120.0
+  },
+  {
+    "position": 312,
+    "text": "for",
+    "start": 120.0,
+    "end": 120.2
+  },
+  {
+    "position": 313,
+    "text": "us?\"",
+    "start": 120.2,
+    "end": 120.52
+  },
+  {
+    "position": 314,
+    "text": "\"Sure,\"",
+    "start": 121.26,
+    "end": 121.82
+  },
+  {
+    "position": 315,
+    "text": "grandpa",
+    "start": 122.32,
+    "end": 122.66
+  },
+  {
+    "position": 316,
+    "text": "replied,",
+    "start": 122.66,
+    "end": 123.14
+  },
+  {
+    "position": 317,
+    "text": "and",
+    "start": 123.16,
+    "end": 123.34
+  },
+  {
+    "position": 318,
+    "text": "we",
+    "start": 123.34,
+    "end": 123.46
+  },
+  {
+    "position": 319,
+    "text": "all",
+    "start": 123.46,
+    "end": 123.68
+  },
+  {
+    "position": 320,
+    "text": "bowed",
+    "start": 123.68,
+    "end": 124.14
+  },
+  {
+    "position": 321,
+    "text": "our",
+    "start": 124.14,
+    "end": 124.32
+  },
+  {
+    "position": 322,
+    "text": "heads,",
+    "start": 124.32,
+    "end": 124.72
+  },
+  {
+    "position": 323,
+    "text": "\"God,",
+    "start": 125.16,
+    "end": 125.72
+  },
+  {
+    "position": 324,
+    "text": "thank",
+    "start": 126.1,
+    "end": 126.54
+  },
+  {
+    "position": 325,
+    "text": "you",
+    "start": 126.54,
+    "end": 126.64
+  },
+  {
+    "position": 326,
+    "text": "for",
+    "start": 126.64,
+    "end": 126.8
+  },
+  {
+    "position": 327,
+    "text": "giving",
+    "start": 126.8,
+    "end": 127.04
+  },
+  {
+    "position": 328,
+    "text": "us",
+    "start": 127.04,
+    "end": 127.3
+  },
+  {
+    "position": 329,
+    "text": "this",
+    "start": 127.3,
+    "end": 127.56
+  },
+  {
+    "position": 330,
+    "text": "bounty",
+    "start": 127.56,
+    "end": 127.96
+  },
+  {
+    "position": 331,
+    "text": "of",
+    "start": 127.96,
+    "end": 128.22
+  },
+  {
+    "position": 332,
+    "text": "food.",
+    "start": 128.22,
+    "end": 128.5
+  },
+  {
+    "position": 333,
+    "text": "Thank",
+    "start": 128.78,
+    "end": 129.34
+  },
+  {
+    "position": 334,
+    "text": "you",
+    "start": 129.34,
+    "end": 129.48
+  },
+  {
+    "position": 335,
+    "text": "for",
+    "start": 129.48,
+    "end": 129.7
+  },
+  {
+    "position": 336,
+    "text": "keeping",
+    "start": 129.7,
+    "end": 130.1
+  },
+  {
+    "position": 337,
+    "text": "us",
+    "start": 130.1,
+    "end": 130.4
+  },
+  {
+    "position": 338,
+    "text": "safe",
+    "start": 130.4,
+    "end": 130.7
+  },
+  {
+    "position": 339,
+    "text": "during",
+    "start": 130.7,
+    "end": 130.92
+  },
+  {
+    "position": 340,
+    "text": "our",
+    "start": 130.92,
+    "end": 131.1
+  },
+  {
+    "position": 341,
+    "text": "travels",
+    "start": 131.1,
+    "end": 131.5
+  },
+  {
+    "position": 342,
+    "text": "here.",
+    "start": 131.5,
+    "end": 131.74
+  },
+  {
+    "position": 343,
+    "text": "May",
+    "start": 132.1,
+    "end": 132.62
+  },
+  {
+    "position": 344,
+    "text": "you",
+    "start": 132.62,
+    "end": 132.74
+  },
+  {
+    "position": 345,
+    "text": "continue",
+    "start": 132.74,
+    "end": 133.14
+  },
+  {
+    "position": 346,
+    "text": "to",
+    "start": 133.14,
+    "end": 133.34
+  },
+  {
+    "position": 347,
+    "text": "bring",
+    "start": 133.34,
+    "end": 133.52
+  },
+  {
+    "position": 348,
+    "text": "us",
+    "start": 133.52,
+    "end": 133.76
+  },
+  {
+    "position": 349,
+    "text": "good",
+    "start": 133.76,
+    "end": 134.02
+  },
+  {
+    "position": 350,
+    "text": "fortune",
+    "start": 134.02,
+    "end": 134.44
+  },
+  {
+    "position": 351,
+    "text": "in",
+    "start": 134.44,
+    "end": 134.6
+  },
+  {
+    "position": 352,
+    "text": "the",
+    "start": 134.6,
+    "end": 134.68
+  },
+  {
+    "position": 353,
+    "text": "time",
+    "start": 134.68,
+    "end": 134.88
+  },
+  {
+    "position": 354,
+    "text": "ahead.",
+    "start": 134.88,
+    "end": 135.22
+  },
+  {
+    "position": 355,
+    "text": "Amen.\"",
+    "start": 135.7,
+    "end": 136.26
+  },
+  {
+    "position": 356,
+    "text": "\"Amen,\"",
+    "start": 136.64,
+    "end": 136.94
+  },
+  {
+    "position": 357,
+    "text": "everybody",
+    "start": 137.54,
+    "end": 138.0
+  },
+  {
+    "position": 358,
+    "text": "repeated.",
+    "start": 138.0,
+    "end": 138.54
+  },
+  {
+    "position": 359,
+    "text": "\"Let's",
+    "start": 139.12,
+    "end": 139.76
+  },
+  {
+    "position": 360,
+    "text": "eat,\"",
+    "start": 139.76,
+    "end": 139.96
+  },
+  {
+    "position": 361,
+    "text": "grandpa",
+    "start": 140.24,
+    "end": 140.58
+  },
+  {
+    "position": 362,
+    "text": "said.",
+    "start": 140.58,
+    "end": 140.9
+  },
+  {
+    "position": 363,
+    "text": "\"How",
+    "start": 141.8,
+    "end": 142.44
+  },
+  {
+    "position": 364,
+    "text": "do",
+    "start": 142.44,
+    "end": 142.62
+  },
+  {
+    "position": 365,
+    "text": "you",
+    "start": 142.62,
+    "end": 142.72
+  },
+  {
+    "position": 366,
+    "text": "want",
+    "start": 142.72,
+    "end": 142.92
+  },
+  {
+    "position": 367,
+    "text": "to",
+    "start": 142.92,
+    "end": 143.02
+  },
+  {
+    "position": 368,
+    "text": "do",
+    "start": 143.02,
+    "end": 143.24
+  },
+  {
+    "position": 369,
+    "text": "this,",
+    "start": 143.24,
+    "end": 143.62
+  },
+  {
+    "position": 370,
+    "text": "grandma?\"",
+    "start": 143.8,
+    "end": 144.08
+  },
+  {
+    "position": 371,
+    "text": "my",
+    "start": 144.28,
+    "end": 144.66
+  },
+  {
+    "position": 372,
+    "text": "father",
+    "start": 144.66,
+    "end": 144.98
+  },
+  {
+    "position": 373,
+    "text": "asked.",
+    "start": 144.98,
+    "end": 145.4
+  },
+  {
+    "position": 374,
+    "text": "\"Let's",
+    "start": 146.1,
+    "end": 146.66
+  },
+  {
+    "position": 375,
+    "text": "pass",
+    "start": 146.66,
+    "end": 146.98
+  },
+  {
+    "position": 376,
+    "text": "the",
+    "start": 146.98,
+    "end": 147.18
+  },
+  {
+    "position": 377,
+    "text": "food",
+    "start": 147.18,
+    "end": 147.5
+  },
+  {
+    "position": 378,
+    "text": "counter-clockwise,\"",
+    "start": 147.5,
+    "end": 147.5
+  },
+  {
+    "position": 379,
+    "text": "said",
+    "start": 148.96,
+    "end": 149.36
+  },
+  {
+    "position": 380,
+    "text": "grandma.",
+    "start": 149.36,
+    "end": 149.7
+  },
+  {
+    "position": 381,
+    "text": "There's",
+    "start": 150.16,
+    "end": 150.64
+  },
+  {
+    "position": 382,
+    "text": "always",
+    "start": 150.64,
+    "end": 150.84
+  },
+  {
+    "position": 383,
+    "text": "so",
+    "start": 150.84,
+    "end": 151.08
+  },
+  {
+    "position": 384,
+    "text": "much",
+    "start": 151.08,
+    "end": 151.3
+  },
+  {
+    "position": 385,
+    "text": "food",
+    "start": 151.3,
+    "end": 151.7
+  },
+  {
+    "position": 386,
+    "text": "during",
+    "start": 151.7,
+    "end": 152.0
+  },
+  {
+    "position": 387,
+    "text": "Thanksgiving",
+    "start": 152.0,
+    "end": 152.58
+  },
+  {
+    "position": 388,
+    "text": "that",
+    "start": 152.58,
+    "end": 152.98
+  },
+  {
+    "position": 389,
+    "text": "we",
+    "start": 152.98,
+    "end": 153.16
+  },
+  {
+    "position": 390,
+    "text": "have",
+    "start": 153.16,
+    "end": 153.4
+  },
+  {
+    "position": 391,
+    "text": "to",
+    "start": 153.4,
+    "end": 153.58
+  },
+  {
+    "position": 392,
+    "text": "have",
+    "start": 153.58,
+    "end": 153.78
+  },
+  {
+    "position": 393,
+    "text": "a",
+    "start": 153.78,
+    "end": 153.98
+  },
+  {
+    "position": 394,
+    "text": "system",
+    "start": 153.98,
+    "end": 154.36
+  },
+  {
+    "position": 395,
+    "text": "in",
+    "start": 154.36,
+    "end": 154.56
+  },
+  {
+    "position": 396,
+    "text": "order",
+    "start": 154.56,
+    "end": 154.8
+  },
+  {
+    "position": 397,
+    "text": "to",
+    "start": 154.8,
+    "end": 155.0
+  },
+  {
+    "position": 398,
+    "text": "make",
+    "start": 155.0,
+    "end": 155.2
+  },
+  {
+    "position": 399,
+    "text": "sure",
+    "start": 155.2,
+    "end": 155.38
+  },
+  {
+    "position": 400,
+    "text": "that",
+    "start": 155.38,
+    "end": 155.58
+  },
+  {
+    "position": 401,
+    "text": "everybody",
+    "start": 155.58,
+    "end": 156.06
+  },
+  {
+    "position": 402,
+    "text": "gets",
+    "start": 156.06,
+    "end": 156.52
+  },
+  {
+    "position": 403,
+    "text": "their",
+    "start": 156.52,
+    "end": 156.72
+  },
+  {
+    "position": 404,
+    "text": "food",
+    "start": 156.72,
+    "end": 157.16
+  },
+  {
+    "position": 405,
+    "text": "in",
+    "start": 157.16,
+    "end": 157.8
+  },
+  {
+    "position": 406,
+    "text": "an",
+    "start": 157.8,
+    "end": 157.94
+  },
+  {
+    "position": 407,
+    "text": "efficient",
+    "start": 157.94,
+    "end": 158.46
+  },
+  {
+    "position": 408,
+    "text": "manner.",
+    "start": 158.46,
+    "end": 159.1
+  },
+  {
+    "position": 409,
+    "text": "We",
+    "start": 159.36,
+    "end": 159.86
+  },
+  {
+    "position": 410,
+    "text": "don't",
+    "start": 159.86,
+    "end": 160.04
+  },
+  {
+    "position": 411,
+    "text": "want",
+    "start": 160.04,
+    "end": 160.26
+  },
+  {
+    "position": 412,
+    "text": "people",
+    "start": 160.26,
+    "end": 160.64
+  },
+  {
+    "position": 413,
+    "text": "reaching",
+    "start": 160.64,
+    "end": 161.02
+  },
+  {
+    "position": 414,
+    "text": "across",
+    "start": 161.02,
+    "end": 161.4
+  },
+  {
+    "position": 415,
+    "text": "the",
+    "start": 161.4,
+    "end": 161.66
+  },
+  {
+    "position": 416,
+    "text": "table",
+    "start": 161.66,
+    "end": 162.0
+  },
+  {
+    "position": 417,
+    "text": "to",
+    "start": 162.0,
+    "end": 162.16
+  },
+  {
+    "position": 418,
+    "text": "grab",
+    "start": 162.16,
+    "end": 162.44
+  },
+  {
+    "position": 419,
+    "text": "stuff.",
+    "start": 162.44,
+    "end": 162.88
+  },
+  {
+    "position": 420,
+    "text": "That",
+    "start": 162.88,
+    "end": 163.56
+  },
+  {
+    "position": 421,
+    "text": "would",
+    "start": 163.56,
+    "end": 163.72
+  },
+  {
+    "position": 422,
+    "text": "be",
+    "start": 163.72,
+    "end": 163.92
+  },
+  {
+    "position": 423,
+    "text": "bad",
+    "start": 163.92,
+    "end": 164.56
+  },
+  {
+    "position": 424,
+    "text": "manners.",
+    "start": 164.56,
+    "end": 165.08
+  },
+  {
+    "position": 425,
+    "text": "Grandma",
+    "start": 165.78,
+    "end": 166.2
+  },
+  {
+    "position": 426,
+    "text": "grabbed",
+    "start": 166.2,
+    "end": 166.56
+  },
+  {
+    "position": 427,
+    "text": "the",
+    "start": 166.56,
+    "end": 166.72
+  },
+  {
+    "position": 428,
+    "text": "apple",
+    "start": 166.72,
+    "end": 166.96
+  },
+  {
+    "position": 429,
+    "text": "salad.",
+    "start": 166.96,
+    "end": 167.4
+  },
+  {
+    "position": 430,
+    "text": "I",
+    "start": 167.7,
+    "end": 168.26
+  },
+  {
+    "position": 431,
+    "text": "realized",
+    "start": 168.26,
+    "end": 168.74
+  },
+  {
+    "position": 432,
+    "text": "that",
+    "start": 168.74,
+    "end": 169.24
+  },
+  {
+    "position": 433,
+    "text": "if",
+    "start": 169.24,
+    "end": 169.42
+  },
+  {
+    "position": 434,
+    "text": "the",
+    "start": 169.42,
+    "end": 169.58
+  },
+  {
+    "position": 435,
+    "text": "food",
+    "start": 169.58,
+    "end": 169.9
+  },
+  {
+    "position": 436,
+    "text": "was",
+    "start": 169.9,
+    "end": 170.12
+  },
+  {
+    "position": 437,
+    "text": "going",
+    "start": 170.12,
+    "end": 170.44
+  },
+  {
+    "position": 438,
+    "text": "counter-clockwise,",
+    "start": 170.44,
+    "end": 170.44
+  },
+  {
+    "position": 439,
+    "text": "I",
+    "start": 171.64,
+    "end": 172.62
+  },
+  {
+    "position": 440,
+    "text": "would",
+    "start": 172.62,
+    "end": 172.78
+  },
+  {
+    "position": 441,
+    "text": "be",
+    "start": 172.78,
+    "end": 172.9
+  },
+  {
+    "position": 442,
+    "text": "the",
+    "start": 172.9,
+    "end": 173.06
+  },
+  {
+    "position": 443,
+    "text": "last",
+    "start": 173.06,
+    "end": 173.56
+  },
+  {
+    "position": 444,
+    "text": "one",
+    "start": 173.56,
+    "end": 173.92
+  },
+  {
+    "position": 445,
+    "text": "to",
+    "start": 173.92,
+    "end": 174.12
+  },
+  {
+    "position": 446,
+    "text": "get",
+    "start": 174.12,
+    "end": 174.3
+  },
+  {
+    "position": 447,
+    "text": "the",
+    "start": 174.3,
+    "end": 174.44
+  },
+  {
+    "position": 448,
+    "text": "apple",
+    "start": 174.44,
+    "end": 174.74
+  },
+  {
+    "position": 449,
+    "text": "salad.",
+    "start": 174.74,
+    "end": 175.16
+  },
+  {
+    "position": 450,
+    "text": "I",
+    "start": 176.06,
+    "end": 176.7
+  },
+  {
+    "position": 451,
+    "text": "got",
+    "start": 176.7,
+    "end": 176.92
+  },
+  {
+    "position": 452,
+    "text": "the",
+    "start": 176.92,
+    "end": 177.1
+  },
+  {
+    "position": 453,
+    "text": "turkey",
+    "start": 177.1,
+    "end": 177.42
+  },
+  {
+    "position": 454,
+    "text": "first",
+    "start": 177.42,
+    "end": 177.86
+  },
+  {
+    "position": 455,
+    "text": "and",
+    "start": 177.86,
+    "end": 178.04
+  },
+  {
+    "position": 456,
+    "text": "I",
+    "start": 178.04,
+    "end": 178.12
+  },
+  {
+    "position": 457,
+    "text": "put",
+    "start": 178.12,
+    "end": 178.36
+  },
+  {
+    "position": 458,
+    "text": "some",
+    "start": 178.36,
+    "end": 178.58
+  },
+  {
+    "position": 459,
+    "text": "on",
+    "start": 178.58,
+    "end": 178.74
+  },
+  {
+    "position": 460,
+    "text": "my",
+    "start": 178.74,
+    "end": 178.88
+  },
+  {
+    "position": 461,
+    "text": "plate.",
+    "start": 178.88,
+    "end": 179.22
+  },
+  {
+    "position": 462,
+    "text": "\"So,",
+    "start": 179.88,
+    "end": 180.52
+  },
+  {
+    "position": 463,
+    "text": "how",
+    "start": 180.76,
+    "end": 181.28
+  },
+  {
+    "position": 464,
+    "text": "is",
+    "start": 181.28,
+    "end": 181.28
+  },
+  {
+    "position": 465,
+    "text": "school",
+    "start": 181.4,
+    "end": 181.58
+  },
+  {
+    "position": 466,
+    "text": "going?\"",
+    "start": 181.58,
+    "end": 181.88
+  },
+  {
+    "position": 467,
+    "text": "my",
+    "start": 182.04,
+    "end": 182.24
+  },
+  {
+    "position": 468,
+    "text": "uncle",
+    "start": 182.24,
+    "end": 182.46
+  },
+  {
+    "position": 469,
+    "text": "asked",
+    "start": 182.46,
+    "end": 182.9
+  },
+  {
+    "position": 470,
+    "text": "me.",
+    "start": 182.9,
+    "end": 183.08
+  },
+  {
+    "position": 471,
+    "text": "\"Oh,",
+    "start": 183.84,
+    "end": 184.38
+  },
+  {
+    "position": 472,
+    "text": "it's",
+    "start": 184.6,
+    "end": 184.98
+  },
+  {
+    "position": 473,
+    "text": "going",
+    "start": 184.98,
+    "end": 185.4
+  },
+  {
+    "position": 474,
+    "text": "good.\"",
+    "start": 185.4,
+    "end": 185.68
+  },
+  {
+    "position": 475,
+    "text": "\"Michael",
+    "start": 186.52,
+    "end": 187.16
+  },
+  {
+    "position": 476,
+    "text": "has",
+    "start": 187.16,
+    "end": 187.5
+  },
+  {
+    "position": 477,
+    "text": "perfect",
+    "start": 187.5,
+    "end": 188.12
+  },
+  {
+    "position": 478,
+    "text": "grades",
+    "start": 188.12,
+    "end": 188.54
+  },
+  {
+    "position": 479,
+    "text": "so",
+    "start": 188.54,
+    "end": 188.78
+  },
+  {
+    "position": 480,
+    "text": "far,",
+    "start": 188.78,
+    "end": 189.18
+  },
+  {
+    "position": 481,
+    "text": "tell",
+    "start": 189.4,
+    "end": 189.9
+  },
+  {
+    "position": 482,
+    "text": "him",
+    "start": 189.9,
+    "end": 190.04
+  },
+  {
+    "position": 483,
+    "text": "about",
+    "start": 190.04,
+    "end": 190.26
+  },
+  {
+    "position": 484,
+    "text": "what",
+    "start": 190.26,
+    "end": 190.5
+  },
+  {
+    "position": 485,
+    "text": "your",
+    "start": 190.5,
+    "end": 190.78
+  },
+  {
+    "position": 486,
+    "text": "teacher",
+    "start": 190.78,
+    "end": 191.52
+  },
+  {
+    "position": 487,
+    "text": "said",
+    "start": 191.52,
+    "end": 191.94
+  },
+  {
+    "position": 488,
+    "text": "about",
+    "start": 191.94,
+    "end": 192.2
+  },
+  {
+    "position": 489,
+    "text": "you,\"",
+    "start": 192.2,
+    "end": 192.54
+  },
+  {
+    "position": 490,
+    "text": "my",
+    "start": 192.56,
+    "end": 193.04
+  },
+  {
+    "position": 491,
+    "text": "mother",
+    "start": 193.04,
+    "end": 193.3
+  },
+  {
+    "position": 492,
+    "text": "said.",
+    "start": 193.3,
+    "end": 193.6
+  },
+  {
+    "position": 493,
+    "text": "\"Oh,",
+    "start": 194.1,
+    "end": 194.6
+  },
+  {
+    "position": 494,
+    "text": "yeah,",
+    "start": 194.76,
+    "end": 194.96
+  },
+  {
+    "position": 495,
+    "text": "he",
+    "start": 195.12,
+    "end": 195.84
+  },
+  {
+    "position": 496,
+    "text": "said",
+    "start": 195.84,
+    "end": 196.78
+  },
+  {
+    "position": 497,
+    "text": "that",
+    "start": 196.78,
+    "end": 197.34
+  },
+  {
+    "position": 498,
+    "text": "I",
+    "start": 197.34,
+    "end": 197.88
+  },
+  {
+    "position": 499,
+    "text": "was",
+    "start": 197.88,
+    "end": 198.04
+  },
+  {
+    "position": 500,
+    "text": "one",
+    "start": 198.04,
+    "end": 198.16
+  },
+  {
+    "position": 501,
+    "text": "of",
+    "start": 198.16,
+    "end": 198.24
+  },
+  {
+    "position": 502,
+    "text": "the",
+    "start": 198.24,
+    "end": 198.32
+  },
+  {
+    "position": 503,
+    "text": "best",
+    "start": 198.32,
+    "end": 198.54
+  },
+  {
+    "position": 504,
+    "text": "students",
+    "start": 198.54,
+    "end": 198.86
+  },
+  {
+    "position": 505,
+    "text": "he",
+    "start": 198.86,
+    "end": 199.12
+  },
+  {
+    "position": 506,
+    "text": "ever",
+    "start": 199.12,
+    "end": 199.32
+  },
+  {
+    "position": 507,
+    "text": "had.\"",
+    "start": 199.32,
+    "end": 199.54
+  },
+  {
+    "position": 508,
+    "text": "I",
+    "start": 200.02,
+    "end": 200.52
+  },
+  {
+    "position": 509,
+    "text": "was",
+    "start": 200.52,
+    "end": 200.7
+  },
+  {
+    "position": 510,
+    "text": "a",
+    "start": 200.7,
+    "end": 200.84
+  },
+  {
+    "position": 511,
+    "text": "bit",
+    "start": 200.84,
+    "end": 200.96
+  },
+  {
+    "position": 512,
+    "text": "distracted.",
+    "start": 200.96,
+    "end": 201.52
+  },
+  {
+    "position": 513,
+    "text": "I",
+    "start": 201.84,
+    "end": 202.34
+  },
+  {
+    "position": 514,
+    "text": "saw",
+    "start": 202.34,
+    "end": 202.7
+  },
+  {
+    "position": 515,
+    "text": "that",
+    "start": 202.7,
+    "end": 202.9
+  },
+  {
+    "position": 516,
+    "text": "my",
+    "start": 202.9,
+    "end": 203.06
+  },
+  {
+    "position": 517,
+    "text": "father",
+    "start": 203.06,
+    "end": 203.4
+  },
+  {
+    "position": 518,
+    "text": "took",
+    "start": 203.4,
+    "end": 203.64
+  },
+  {
+    "position": 519,
+    "text": "a",
+    "start": 203.64,
+    "end": 203.76
+  },
+  {
+    "position": 520,
+    "text": "big",
+    "start": 203.76,
+    "end": 203.94
+  },
+  {
+    "position": 521,
+    "text": "portion",
+    "start": 203.94,
+    "end": 204.46
+  },
+  {
+    "position": 522,
+    "text": "of",
+    "start": 204.46,
+    "end": 204.66
+  },
+  {
+    "position": 523,
+    "text": "apple",
+    "start": 204.66,
+    "end": 205.06
+  },
+  {
+    "position": 524,
+    "text": "salad",
+    "start": 205.06,
+    "end": 205.56
+  },
+  {
+    "position": 525,
+    "text": "and",
+    "start": 205.56,
+    "end": 206.04
+  },
+  {
+    "position": 526,
+    "text": "my",
+    "start": 206.04,
+    "end": 206.2
+  },
+  {
+    "position": 527,
+    "text": "uncle",
+    "start": 206.2,
+    "end": 206.54
+  },
+  {
+    "position": 528,
+    "text": "was",
+    "start": 206.54,
+    "end": 206.78
+  },
+  {
+    "position": 529,
+    "text": "now",
+    "start": 206.78,
+    "end": 206.96
+  },
+  {
+    "position": 530,
+    "text": "taking",
+    "start": 206.96,
+    "end": 207.32
+  },
+  {
+    "position": 531,
+    "text": "a",
+    "start": 207.32,
+    "end": 207.56
+  },
+  {
+    "position": 532,
+    "text": "big",
+    "start": 207.56,
+    "end": 207.78
+  },
+  {
+    "position": 533,
+    "text": "portion",
+    "start": 207.78,
+    "end": 208.26
+  },
+  {
+    "position": 534,
+    "text": "as",
+    "start": 208.26,
+    "end": 208.5
+  },
+  {
+    "position": 535,
+    "text": "well.",
+    "start": 208.5,
+    "end": 208.82
+  },
+  {
+    "position": 536,
+    "text": "I",
+    "start": 209.1,
+    "end": 209.56
+  },
+  {
+    "position": 537,
+    "text": "dished",
+    "start": 209.56,
+    "end": 210.02
+  },
+  {
+    "position": 538,
+    "text": "myself",
+    "start": 210.02,
+    "end": 210.48
+  },
+  {
+    "position": 539,
+    "text": "up",
+    "start": 210.48,
+    "end": 210.78
+  },
+  {
+    "position": 540,
+    "text": "some",
+    "start": 210.78,
+    "end": 211.0
+  },
+  {
+    "position": 541,
+    "text": "turkey",
+    "start": 211.0,
+    "end": 211.4
+  },
+  {
+    "position": 542,
+    "text": "stuffing.",
+    "start": 211.4,
+    "end": 211.88
+  },
+  {
+    "position": 543,
+    "text": "\"Oh,",
+    "start": 212.46,
+    "end": 212.96
+  },
+  {
+    "position": 544,
+    "text": "you're",
+    "start": 212.96,
+    "end": 213.18
+  },
+  {
+    "position": 545,
+    "text": "being",
+    "start": 213.18,
+    "end": 213.4
+  },
+  {
+    "position": 546,
+    "text": "humble.",
+    "start": 213.4,
+    "end": 213.78
+  },
+  {
+    "position": 547,
+    "text": "Tell",
+    "start": 213.94,
+    "end": 214.1
+  },
+  {
+    "position": 548,
+    "text": "him",
+    "start": 214.1,
+    "end": 214.26
+  },
+  {
+    "position": 549,
+    "text": "what",
+    "start": 214.26,
+    "end": 214.4
+  },
+  {
+    "position": 550,
+    "text": "else",
+    "start": 214.4,
+    "end": 214.62
+  },
+  {
+    "position": 551,
+    "text": "he",
+    "start": 214.62,
+    "end": 214.76
+  },
+  {
+    "position": 552,
+    "text": "said.\"",
+    "start": 214.76,
+    "end": 215.06
+  },
+  {
+    "position": 553,
+    "text": "I",
+    "start": 215.44,
+    "end": 215.94
+  },
+  {
+    "position": 554,
+    "text": "was",
+    "start": 215.94,
+    "end": 216.18
+  },
+  {
+    "position": 555,
+    "text": "a",
+    "start": 216.18,
+    "end": 216.32
+  },
+  {
+    "position": 556,
+    "text": "little",
+    "start": 216.32,
+    "end": 216.46
+  },
+  {
+    "position": 557,
+    "text": "distracted",
+    "start": 216.46,
+    "end": 217.0
+  },
+  {
+    "position": 558,
+    "text": "watching",
+    "start": 217.0,
+    "end": 217.44
+  },
+  {
+    "position": 559,
+    "text": "the",
+    "start": 217.44,
+    "end": 217.66
+  },
+  {
+    "position": 560,
+    "text": "apple",
+    "start": 217.66,
+    "end": 217.92
+  },
+  {
+    "position": 561,
+    "text": "salad",
+    "start": 217.92,
+    "end": 218.38
+  },
+  {
+    "position": 562,
+    "text": "get",
+    "start": 218.38,
+    "end": 218.64
+  },
+  {
+    "position": 563,
+    "text": "to",
+    "start": 218.64,
+    "end": 218.8
+  },
+  {
+    "position": 564,
+    "text": "my",
+    "start": 218.8,
+    "end": 218.96
+  },
+  {
+    "position": 565,
+    "text": "sister.",
+    "start": 218.96,
+    "end": 219.34
+  },
+  {
+    "position": 566,
+    "text": "She",
+    "start": 219.56,
+    "end": 220.02
+  },
+  {
+    "position": 567,
+    "text": "also",
+    "start": 220.02,
+    "end": 220.38
+  },
+  {
+    "position": 568,
+    "text": "loved",
+    "start": 220.38,
+    "end": 220.72
+  },
+  {
+    "position": 569,
+    "text": "apple",
+    "start": 220.72,
+    "end": 221.0
+  },
+  {
+    "position": 570,
+    "text": "salad.",
+    "start": 221.0,
+    "end": 221.42
+  },
+  {
+    "position": 571,
+    "text": "I",
+    "start": 221.68,
+    "end": 222.2
+  },
+  {
+    "position": 572,
+    "text": "hoped",
+    "start": 222.2,
+    "end": 222.54
+  },
+  {
+    "position": 573,
+    "text": "that",
+    "start": 222.54,
+    "end": 222.74
+  },
+  {
+    "position": 574,
+    "text": "she",
+    "start": 222.74,
+    "end": 222.92
+  },
+  {
+    "position": 575,
+    "text": "didn't",
+    "start": 222.92,
+    "end": 223.16
+  },
+  {
+    "position": 576,
+    "text": "take",
+    "start": 223.16,
+    "end": 223.38
+  },
+  {
+    "position": 577,
+    "text": "too",
+    "start": 223.38,
+    "end": 223.58
+  },
+  {
+    "position": 578,
+    "text": "much.",
+    "start": 223.58,
+    "end": 223.98
+  },
+  {
+    "position": 579,
+    "text": "\"Ummm\u2014oh,",
+    "start": 223.98,
+    "end": 223.98
+  },
+  {
+    "position": 580,
+    "text": "yeah.",
+    "start": 225.84,
+    "end": 226.06
+  },
+  {
+    "position": 581,
+    "text": "He",
+    "start": 226.36,
+    "end": 226.68
+  },
+  {
+    "position": 582,
+    "text": "said",
+    "start": 226.68,
+    "end": 226.94
+  },
+  {
+    "position": 583,
+    "text": "that",
+    "start": 226.94,
+    "end": 227.1
+  },
+  {
+    "position": 584,
+    "text": "I",
+    "start": 227.1,
+    "end": 227.26
+  },
+  {
+    "position": 585,
+    "text": "would",
+    "start": 227.26,
+    "end": 227.42
+  },
+  {
+    "position": 586,
+    "text": "be",
+    "start": 227.42,
+    "end": 227.6
+  },
+  {
+    "position": 587,
+    "text": "successful",
+    "start": 227.6,
+    "end": 228.22
+  },
+  {
+    "position": 588,
+    "text": "in",
+    "start": 228.22,
+    "end": 228.54
+  },
+  {
+    "position": 589,
+    "text": "whatever",
+    "start": 228.54,
+    "end": 228.84
+  },
+  {
+    "position": 590,
+    "text": "I",
+    "start": 228.84,
+    "end": 229.16
+  },
+  {
+    "position": 591,
+    "text": "decided",
+    "start": 229.16,
+    "end": 229.16
+  },
+  {
+    "position": 592,
+    "text": "to",
+    "start": 229.52,
+    "end": 229.68
+  },
+  {
+    "position": 593,
+    "text": "focus",
+    "start": 229.68,
+    "end": 229.96
+  },
+  {
+    "position": 594,
+    "text": "on",
+    "start": 229.96,
+    "end": 230.2
+  },
+  {
+    "position": 595,
+    "text": "in",
+    "start": 230.2,
+    "end": 230.36
+  },
+  {
+    "position": 596,
+    "text": "the",
+    "start": 230.36,
+    "end": 230.44
+  },
+  {
+    "position": 597,
+    "text": "future.\"",
+    "start": 230.44,
+    "end": 230.76
+  },
+  {
+    "position": 598,
+    "text": "I",
+    "start": 231.28,
+    "end": 231.8
+  },
+  {
+    "position": 599,
+    "text": "dished",
+    "start": 231.8,
+    "end": 232.16
+  },
+  {
+    "position": 600,
+    "text": "myself",
+    "start": 232.16,
+    "end": 232.54
+  },
+  {
+    "position": 601,
+    "text": "up",
+    "start": 232.54,
+    "end": 232.82
+  },
+  {
+    "position": 602,
+    "text": "some",
+    "start": 232.82,
+    "end": 233.02
+  },
+  {
+    "position": 603,
+    "text": "mashed",
+    "start": 233.02,
+    "end": 233.32
+  },
+  {
+    "position": 604,
+    "text": "potatoes.",
+    "start": 233.32,
+    "end": 233.8
+  },
+  {
+    "position": 605,
+    "text": "I",
+    "start": 233.98,
+    "end": 234.5
+  },
+  {
+    "position": 606,
+    "text": "made",
+    "start": 234.5,
+    "end": 234.7
+  },
+  {
+    "position": 607,
+    "text": "sure",
+    "start": 234.7,
+    "end": 234.9
+  },
+  {
+    "position": 608,
+    "text": "to",
+    "start": 234.9,
+    "end": 235.06
+  },
+  {
+    "position": 609,
+    "text": "leave",
+    "start": 235.06,
+    "end": 235.26
+  },
+  {
+    "position": 610,
+    "text": "enough",
+    "start": 235.26,
+    "end": 235.5
+  },
+  {
+    "position": 611,
+    "text": "space",
+    "start": 235.5,
+    "end": 236.06
+  },
+  {
+    "position": 612,
+    "text": "on",
+    "start": 236.06,
+    "end": 236.42
+  },
+  {
+    "position": 613,
+    "text": "my",
+    "start": 236.42,
+    "end": 236.66
+  },
+  {
+    "position": 614,
+    "text": "plate",
+    "start": 236.66,
+    "end": 236.98
+  },
+  {
+    "position": 615,
+    "text": "for",
+    "start": 236.98,
+    "end": 237.24
+  },
+  {
+    "position": 616,
+    "text": "apple",
+    "start": 237.24,
+    "end": 237.6
+  },
+  {
+    "position": 617,
+    "text": "salad,",
+    "start": 237.6,
+    "end": 238.08
+  },
+  {
+    "position": 618,
+    "text": "if",
+    "start": 238.14,
+    "end": 238.56
+  },
+  {
+    "position": 619,
+    "text": "there",
+    "start": 238.56,
+    "end": 239.12
+  },
+  {
+    "position": 620,
+    "text": "was",
+    "start": 239.12,
+    "end": 239.38
+  },
+  {
+    "position": 621,
+    "text": "any",
+    "start": 239.38,
+    "end": 239.58
+  },
+  {
+    "position": 622,
+    "text": "left",
+    "start": 239.58,
+    "end": 239.98
+  },
+  {
+    "position": 623,
+    "text": "by",
+    "start": 239.98,
+    "end": 240.18
+  },
+  {
+    "position": 624,
+    "text": "the",
+    "start": 240.18,
+    "end": 240.32
+  },
+  {
+    "position": 625,
+    "text": "time",
+    "start": 240.32,
+    "end": 240.6
+  },
+  {
+    "position": 626,
+    "text": "it",
+    "start": 240.6,
+    "end": 240.8
+  },
+  {
+    "position": 627,
+    "text": "got",
+    "start": 240.8,
+    "end": 241.02
+  },
+  {
+    "position": 628,
+    "text": "to",
+    "start": 241.02,
+    "end": 241.2
+  },
+  {
+    "position": 629,
+    "text": "me.",
+    "start": 241.2,
+    "end": 241.4
+  },
+  {
+    "position": 630,
+    "text": "\"That's",
+    "start": 242.26,
+    "end": 242.78
+  },
+  {
+    "position": 631,
+    "text": "awesome,",
+    "start": 242.78,
+    "end": 243.2
+  },
+  {
+    "position": 632,
+    "text": "and",
+    "start": 243.22,
+    "end": 243.44
+  },
+  {
+    "position": 633,
+    "text": "it",
+    "start": 243.44,
+    "end": 243.54
+  },
+  {
+    "position": 634,
+    "text": "will",
+    "start": 243.54,
+    "end": 243.7
+  },
+  {
+    "position": 635,
+    "text": "become",
+    "start": 243.7,
+    "end": 244.04
+  },
+  {
+    "position": 636,
+    "text": "true",
+    "start": 244.04,
+    "end": 244.44
+  },
+  {
+    "position": 637,
+    "text": "as",
+    "start": 244.44,
+    "end": 244.72
+  },
+  {
+    "position": 638,
+    "text": "long",
+    "start": 244.72,
+    "end": 244.94
+  },
+  {
+    "position": 639,
+    "text": "as",
+    "start": 244.94,
+    "end": 245.14
+  },
+  {
+    "position": 640,
+    "text": "you",
+    "start": 245.14,
+    "end": 245.26
+  },
+  {
+    "position": 641,
+    "text": "stay",
+    "start": 245.26,
+    "end": 245.54
+  },
+  {
+    "position": 642,
+    "text": "focused.",
+    "start": 245.54,
+    "end": 246.14
+  },
+  {
+    "position": 643,
+    "text": "If",
+    "start": 246.14,
+    "end": 246.14
+  },
+  {
+    "position": 644,
+    "text": "there",
+    "start": 246.14,
+    "end": 246.14
+  },
+  {
+    "position": 645,
+    "text": "is",
+    "start": 246.14,
+    "end": 246.14
+  },
+  {
+    "position": 646,
+    "text": "one",
+    "start": 246.98,
+    "end": 247.22
+  },
+  {
+    "position": 647,
+    "text": "thing",
+    "start": 247.22,
+    "end": 247.46
+  },
+  {
+    "position": 648,
+    "text": "I",
+    "start": 247.46,
+    "end": 247.64
+  },
+  {
+    "position": 649,
+    "text": "regret",
+    "start": 247.64,
+    "end": 248.0
+  },
+  {
+    "position": 650,
+    "text": "from",
+    "start": 248.0,
+    "end": 248.3
+  },
+  {
+    "position": 651,
+    "text": "high",
+    "start": 248.3,
+    "end": 248.52
+  },
+  {
+    "position": 652,
+    "text": "school,",
+    "start": 248.52,
+    "end": 248.82
+  },
+  {
+    "position": 653,
+    "text": "it",
+    "start": 249.02,
+    "end": 249.36
+  },
+  {
+    "position": 654,
+    "text": "would",
+    "start": 249.36,
+    "end": 249.48
+  },
+  {
+    "position": 655,
+    "text": "be",
+    "start": 249.48,
+    "end": 249.6
+  },
+  {
+    "position": 656,
+    "text": "how",
+    "start": 249.6,
+    "end": 249.82
+  },
+  {
+    "position": 657,
+    "text": "much",
+    "start": 249.82,
+    "end": 250.06
+  },
+  {
+    "position": 658,
+    "text": "time",
+    "start": 250.06,
+    "end": 250.38
+  },
+  {
+    "position": 659,
+    "text": "I",
+    "start": 250.38,
+    "end": 250.58
+  },
+  {
+    "position": 660,
+    "text": "wasted",
+    "start": 250.58,
+    "end": 250.96
+  },
+  {
+    "position": 661,
+    "text": "partying.",
+    "start": 250.96,
+    "end": 251.48
+  },
+  {
+    "position": 662,
+    "text": "If",
+    "start": 251.7,
+    "end": 252.14
+  },
+  {
+    "position": 663,
+    "text": "I",
+    "start": 252.14,
+    "end": 252.22
+  },
+  {
+    "position": 664,
+    "text": "hadn't",
+    "start": 252.22,
+    "end": 252.52
+  },
+  {
+    "position": 665,
+    "text": "partied",
+    "start": 252.52,
+    "end": 252.86
+  },
+  {
+    "position": 666,
+    "text": "so",
+    "start": 252.86,
+    "end": 253.06
+  },
+  {
+    "position": 667,
+    "text": "much,",
+    "start": 253.06,
+    "end": 253.38
+  },
+  {
+    "position": 668,
+    "text": "I",
+    "start": 253.54,
+    "end": 253.96
+  },
+  {
+    "position": 669,
+    "text": "would",
+    "start": 253.96,
+    "end": 254.08
+  },
+  {
+    "position": 670,
+    "text": "have",
+    "start": 254.08,
+    "end": 254.2
+  },
+  {
+    "position": 671,
+    "text": "gotten",
+    "start": 254.2,
+    "end": 254.44
+  },
+  {
+    "position": 672,
+    "text": "into",
+    "start": 254.44,
+    "end": 254.72
+  },
+  {
+    "position": 673,
+    "text": "a",
+    "start": 254.72,
+    "end": 254.9
+  },
+  {
+    "position": 674,
+    "text": "better",
+    "start": 254.9,
+    "end": 255.16
+  },
+  {
+    "position": 675,
+    "text": "school,\"",
+    "start": 255.16,
+    "end": 255.6
+  },
+  {
+    "position": 676,
+    "text": "my",
+    "start": 255.8,
+    "end": 256.18
+  },
+  {
+    "position": 677,
+    "text": "uncle",
+    "start": 256.18,
+    "end": 256.34
+  },
+  {
+    "position": 678,
+    "text": "said",
+    "start": 256.34,
+    "end": 256.6
+  },
+  {
+    "position": 679,
+    "text": "to",
+    "start": 256.6,
+    "end": 256.76
+  },
+  {
+    "position": 680,
+    "text": "me.",
+    "start": 256.76,
+    "end": 256.92
+  },
+  {
+    "position": 681,
+    "text": "\"Yeah,",
+    "start": 257.38,
+    "end": 257.84
+  },
+  {
+    "position": 682,
+    "text": "that's",
+    "start": 257.98,
+    "end": 258.22
+  },
+  {
+    "position": 683,
+    "text": "great",
+    "start": 258.22,
+    "end": 258.58
+  },
+  {
+    "position": 684,
+    "text": "advice,",
+    "start": 258.58,
+    "end": 258.92
+  },
+  {
+    "position": 685,
+    "text": "uncle,\"",
+    "start": 258.94,
+    "end": 259.2
+  },
+  {
+    "position": 686,
+    "text": "I",
+    "start": 259.38,
+    "end": 259.8
+  },
+  {
+    "position": 687,
+    "text": "replied",
+    "start": 259.8,
+    "end": 260.2
+  },
+  {
+    "position": 688,
+    "text": "while",
+    "start": 260.2,
+    "end": 260.46
+  },
+  {
+    "position": 689,
+    "text": "looking",
+    "start": 260.46,
+    "end": 260.84
+  },
+  {
+    "position": 690,
+    "text": "over",
+    "start": 260.84,
+    "end": 261.1
+  },
+  {
+    "position": 691,
+    "text": "at",
+    "start": 261.1,
+    "end": 261.26
+  },
+  {
+    "position": 692,
+    "text": "the",
+    "start": 261.26,
+    "end": 261.36
+  },
+  {
+    "position": 693,
+    "text": "apple",
+    "start": 261.36,
+    "end": 261.62
+  },
+  {
+    "position": 694,
+    "text": "salad.",
+    "start": 261.62,
+    "end": 261.98
+  },
+  {
+    "position": 695,
+    "text": "The",
+    "start": 262.24,
+    "end": 262.66
+  },
+  {
+    "position": 696,
+    "text": "bowl",
+    "start": 262.66,
+    "end": 263.1
+  },
+  {
+    "position": 697,
+    "text": "had",
+    "start": 263.1,
+    "end": 263.32
+  },
+  {
+    "position": 698,
+    "text": "gotten",
+    "start": 263.32,
+    "end": 263.84
+  },
+  {
+    "position": 699,
+    "text": "to",
+    "start": 263.84,
+    "end": 264.04
+  },
+  {
+    "position": 700,
+    "text": "my",
+    "start": 264.04,
+    "end": 264.2
+  },
+  {
+    "position": 701,
+    "text": "grandpa",
+    "start": 264.2,
+    "end": 264.68
+  },
+  {
+    "position": 702,
+    "text": "and",
+    "start": 264.68,
+    "end": 264.84
+  },
+  {
+    "position": 703,
+    "text": "he",
+    "start": 264.84,
+    "end": 265.0
+  },
+  {
+    "position": 704,
+    "text": "passed",
+    "start": 265.0,
+    "end": 265.48
+  },
+  {
+    "position": 705,
+    "text": "it",
+    "start": 265.48,
+    "end": 265.64
+  },
+  {
+    "position": 706,
+    "text": "on",
+    "start": 265.64,
+    "end": 265.78
+  },
+  {
+    "position": 707,
+    "text": "to",
+    "start": 265.78,
+    "end": 265.92
+  },
+  {
+    "position": 708,
+    "text": "my",
+    "start": 265.92,
+    "end": 266.08
+  },
+  {
+    "position": 709,
+    "text": "auntie.",
+    "start": 266.08,
+    "end": 266.52
+  },
+  {
+    "position": 710,
+    "text": "She",
+    "start": 266.74,
+    "end": 267.24
+  },
+  {
+    "position": 711,
+    "text": "had",
+    "start": 267.24,
+    "end": 267.38
+  },
+  {
+    "position": 712,
+    "text": "taken",
+    "start": 267.38,
+    "end": 267.66
+  },
+  {
+    "position": 713,
+    "text": "her",
+    "start": 267.66,
+    "end": 267.92
+  },
+  {
+    "position": 714,
+    "text": "portion,",
+    "start": 267.92,
+    "end": 268.42
+  },
+  {
+    "position": 715,
+    "text": "and",
+    "start": 268.42,
+    "end": 268.74
+  },
+  {
+    "position": 716,
+    "text": "there",
+    "start": 268.74,
+    "end": 268.92
+  },
+  {
+    "position": 717,
+    "text": "wasn't",
+    "start": 268.92,
+    "end": 269.54
+  },
+  {
+    "position": 718,
+    "text": "much",
+    "start": 269.54,
+    "end": 269.96
+  },
+  {
+    "position": 719,
+    "text": "left.",
+    "start": 269.96,
+    "end": 270.46
+  },
+  {
+    "position": 720,
+    "text": "She",
+    "start": 270.46,
+    "end": 271.22
+  },
+  {
+    "position": 721,
+    "text": "handed",
+    "start": 271.22,
+    "end": 271.56
+  },
+  {
+    "position": 722,
+    "text": "the",
+    "start": 271.56,
+    "end": 271.78
+  },
+  {
+    "position": 723,
+    "text": "bowl",
+    "start": 271.78,
+    "end": 272.06
+  },
+  {
+    "position": 724,
+    "text": "of",
+    "start": 272.06,
+    "end": 272.22
+  },
+  {
+    "position": 725,
+    "text": "apple",
+    "start": 272.22,
+    "end": 272.5
+  },
+  {
+    "position": 726,
+    "text": "salad",
+    "start": 272.5,
+    "end": 272.96
+  },
+  {
+    "position": 727,
+    "text": "to",
+    "start": 272.96,
+    "end": 273.26
+  },
+  {
+    "position": 728,
+    "text": "my",
+    "start": 273.26,
+    "end": 273.46
+  },
+  {
+    "position": 729,
+    "text": "mother.",
+    "start": 273.46,
+    "end": 273.92
+  },
+  {
+    "position": 730,
+    "text": "I",
+    "start": 274.36,
+    "end": 274.84
+  },
+  {
+    "position": 731,
+    "text": "got",
+    "start": 274.84,
+    "end": 275.02
+  },
+  {
+    "position": 732,
+    "text": "nervous.",
+    "start": 275.02,
+    "end": 275.46
+  },
+  {
+    "position": 733,
+    "text": "If",
+    "start": 275.86,
+    "end": 276.34
+  },
+  {
+    "position": 734,
+    "text": "my",
+    "start": 276.34,
+    "end": 276.46
+  },
+  {
+    "position": 735,
+    "text": "mom",
+    "start": 276.46,
+    "end": 276.66
+  },
+  {
+    "position": 736,
+    "text": "took",
+    "start": 276.66,
+    "end": 276.86
+  },
+  {
+    "position": 737,
+    "text": "her",
+    "start": 276.86,
+    "end": 277.12
+  },
+  {
+    "position": 738,
+    "text": "portion,",
+    "start": 277.12,
+    "end": 277.56
+  },
+  {
+    "position": 739,
+    "text": "there",
+    "start": 277.74,
+    "end": 277.86
+  },
+  {
+    "position": 740,
+    "text": "would",
+    "start": 277.86,
+    "end": 278.02
+  },
+  {
+    "position": 741,
+    "text": "hardly",
+    "start": 278.02,
+    "end": 278.42
+  },
+  {
+    "position": 742,
+    "text": "be",
+    "start": 278.42,
+    "end": 278.66
+  },
+  {
+    "position": 743,
+    "text": "any",
+    "start": 278.66,
+    "end": 278.98
+  },
+  {
+    "position": 744,
+    "text": "left",
+    "start": 278.98,
+    "end": 279.34
+  },
+  {
+    "position": 745,
+    "text": "for",
+    "start": 279.34,
+    "end": 279.54
+  },
+  {
+    "position": 746,
+    "text": "me.",
+    "start": 279.54,
+    "end": 279.8
+  },
+  {
+    "position": 747,
+    "text": "\"I",
+    "start": 280.0,
+    "end": 280.3
+  },
+  {
+    "position": 748,
+    "text": "don't",
+    "start": 280.3,
+    "end": 280.52
+  },
+  {
+    "position": 749,
+    "text": "think",
+    "start": 280.52,
+    "end": 280.74
+  },
+  {
+    "position": 750,
+    "text": "we'll",
+    "start": 280.74,
+    "end": 280.9
+  },
+  {
+    "position": 751,
+    "text": "have",
+    "start": 280.9,
+    "end": 281.08
+  },
+  {
+    "position": 752,
+    "text": "to",
+    "start": 281.08,
+    "end": 281.22
+  },
+  {
+    "position": 753,
+    "text": "worry",
+    "start": 281.22,
+    "end": 281.48
+  },
+  {
+    "position": 754,
+    "text": "about",
+    "start": 281.48,
+    "end": 281.72
+  },
+  {
+    "position": 755,
+    "text": "that.",
+    "start": 281.72,
+    "end": 282.08
+  },
+  {
+    "position": 756,
+    "text": "Michael",
+    "start": 282.34,
+    "end": 282.8
+  },
+  {
+    "position": 757,
+    "text": "is",
+    "start": 282.8,
+    "end": 283.02
+  },
+  {
+    "position": 758,
+    "text": "a",
+    "start": 283.02,
+    "end": 283.18
+  },
+  {
+    "position": 759,
+    "text": "bookworm.",
+    "start": 283.18,
+    "end": 283.78
+  },
+  {
+    "position": 760,
+    "text": "He",
+    "start": 284.0,
+    "end": 284.48
+  },
+  {
+    "position": 761,
+    "text": "prefers",
+    "start": 284.48,
+    "end": 284.84
+  },
+  {
+    "position": 762,
+    "text": "to",
+    "start": 284.84,
+    "end": 285.04
+  },
+  {
+    "position": 763,
+    "text": "stay",
+    "start": 285.04,
+    "end": 285.24
+  },
+  {
+    "position": 764,
+    "text": "at",
+    "start": 285.24,
+    "end": 285.44
+  },
+  {
+    "position": 765,
+    "text": "home",
+    "start": 285.44,
+    "end": 285.86
+  },
+  {
+    "position": 766,
+    "text": "and",
+    "start": 285.86,
+    "end": 286.36
+  },
+  {
+    "position": 767,
+    "text": "read,",
+    "start": 286.36,
+    "end": 286.84
+  },
+  {
+    "position": 768,
+    "text": "listen",
+    "start": 287.28,
+    "end": 287.86
+  },
+  {
+    "position": 769,
+    "text": "to",
+    "start": 287.86,
+    "end": 287.98
+  },
+  {
+    "position": 770,
+    "text": "music,",
+    "start": 287.98,
+    "end": 288.5
+  },
+  {
+    "position": 771,
+    "text": "and",
+    "start": 288.68,
+    "end": 288.94
+  },
+  {
+    "position": 772,
+    "text": "draw,\"",
+    "start": 288.94,
+    "end": 289.28
+  },
+  {
+    "position": 773,
+    "text": "my",
+    "start": 289.48,
+    "end": 290.08
+  },
+  {
+    "position": 774,
+    "text": "mom",
+    "start": 290.08,
+    "end": 290.32
+  },
+  {
+    "position": 775,
+    "text": "said",
+    "start": 290.32,
+    "end": 290.56
+  },
+  {
+    "position": 776,
+    "text": "to",
+    "start": 290.56,
+    "end": 290.7
+  },
+  {
+    "position": 777,
+    "text": "my",
+    "start": 290.7,
+    "end": 290.8
+  },
+  {
+    "position": 778,
+    "text": "uncle,",
+    "start": 290.8,
+    "end": 291.08
+  },
+  {
+    "position": 779,
+    "text": "\"I",
+    "start": 291.28,
+    "end": 291.72
+  },
+  {
+    "position": 780,
+    "text": "have",
+    "start": 291.72,
+    "end": 291.94
+  },
+  {
+    "position": 781,
+    "text": "to",
+    "start": 291.94,
+    "end": 292.06
+  },
+  {
+    "position": 782,
+    "text": "try",
+    "start": 292.06,
+    "end": 292.24
+  },
+  {
+    "position": 783,
+    "text": "to",
+    "start": 292.24,
+    "end": 292.38
+  },
+  {
+    "position": 784,
+    "text": "convince",
+    "start": 292.38,
+    "end": 292.76
+  },
+  {
+    "position": 785,
+    "text": "him",
+    "start": 292.76,
+    "end": 292.96
+  },
+  {
+    "position": 786,
+    "text": "to",
+    "start": 292.96,
+    "end": 293.08
+  },
+  {
+    "position": 787,
+    "text": "go",
+    "start": 293.08,
+    "end": 293.22
+  },
+  {
+    "position": 788,
+    "text": "out",
+    "start": 293.22,
+    "end": 293.38
+  },
+  {
+    "position": 789,
+    "text": "and",
+    "start": 293.38,
+    "end": 293.52
+  },
+  {
+    "position": 790,
+    "text": "hang",
+    "start": 293.52,
+    "end": 293.8
+  },
+  {
+    "position": 791,
+    "text": "out",
+    "start": 293.8,
+    "end": 294.08
+  },
+  {
+    "position": 792,
+    "text": "with",
+    "start": 294.08,
+    "end": 294.3
+  },
+  {
+    "position": 793,
+    "text": "his",
+    "start": 294.3,
+    "end": 294.52
+  },
+  {
+    "position": 794,
+    "text": "friends.\"",
+    "start": 294.52,
+    "end": 294.9
+  },
+  {
+    "position": 795,
+    "text": "My",
+    "start": 294.9,
+    "end": 296.08
+  },
+  {
+    "position": 796,
+    "text": "mom",
+    "start": 296.08,
+    "end": 296.28
+  },
+  {
+    "position": 797,
+    "text": "looked",
+    "start": 296.28,
+    "end": 296.54
+  },
+  {
+    "position": 798,
+    "text": "down",
+    "start": 296.54,
+    "end": 296.78
+  },
+  {
+    "position": 799,
+    "text": "at",
+    "start": 296.78,
+    "end": 296.92
+  },
+  {
+    "position": 800,
+    "text": "the",
+    "start": 296.92,
+    "end": 297.02
+  },
+  {
+    "position": 801,
+    "text": "bowl",
+    "start": 297.02,
+    "end": 297.24
+  },
+  {
+    "position": 802,
+    "text": "of",
+    "start": 297.24,
+    "end": 297.4
+  },
+  {
+    "position": 803,
+    "text": "apple",
+    "start": 297.4,
+    "end": 297.7
+  },
+  {
+    "position": 804,
+    "text": "salad",
+    "start": 297.7,
+    "end": 298.22
+  },
+  {
+    "position": 805,
+    "text": "in",
+    "start": 298.22,
+    "end": 298.44
+  },
+  {
+    "position": 806,
+    "text": "her",
+    "start": 298.44,
+    "end": 298.58
+  },
+  {
+    "position": 807,
+    "text": "hand,",
+    "start": 298.58,
+    "end": 299.0
+  },
+  {
+    "position": 808,
+    "text": "and",
+    "start": 299.0,
+    "end": 299.32
+  },
+  {
+    "position": 809,
+    "text": "took",
+    "start": 299.32,
+    "end": 299.56
+  },
+  {
+    "position": 810,
+    "text": "a",
+    "start": 299.56,
+    "end": 299.7
+  },
+  {
+    "position": 811,
+    "text": "scoop.",
+    "start": 299.7,
+    "end": 300.06
+  },
+  {
+    "position": 812,
+    "text": "My",
+    "start": 300.4,
+    "end": 300.96
+  },
+  {
+    "position": 813,
+    "text": "heart",
+    "start": 300.96,
+    "end": 301.14
+  },
+  {
+    "position": 814,
+    "text": "jumped.",
+    "start": 301.14,
+    "end": 301.44
+  },
+  {
+    "position": 815,
+    "text": "There",
+    "start": 302.16,
+    "end": 302.8
+  },
+  {
+    "position": 816,
+    "text": "was",
+    "start": 302.8,
+    "end": 302.98
+  },
+  {
+    "position": 817,
+    "text": "only",
+    "start": 302.98,
+    "end": 303.24
+  },
+  {
+    "position": 818,
+    "text": "a",
+    "start": 303.24,
+    "end": 303.42
+  },
+  {
+    "position": 819,
+    "text": "spoonful",
+    "start": 303.42,
+    "end": 303.88
+  },
+  {
+    "position": 820,
+    "text": "of",
+    "start": 303.88,
+    "end": 304.3
+  },
+  {
+    "position": 821,
+    "text": "apple",
+    "start": 304.3,
+    "end": 304.62
+  },
+  {
+    "position": 822,
+    "text": "salad",
+    "start": 304.62,
+    "end": 305.06
+  },
+  {
+    "position": 823,
+    "text": "left.",
+    "start": 305.06,
+    "end": 305.62
+  },
+  {
+    "position": 824,
+    "text": "Way",
+    "start": 306.14,
+    "end": 306.88
+  },
+  {
+    "position": 825,
+    "text": "less",
+    "start": 306.88,
+    "end": 307.34
+  },
+  {
+    "position": 826,
+    "text": "than",
+    "start": 307.34,
+    "end": 307.66
+  },
+  {
+    "position": 827,
+    "text": "what",
+    "start": 307.66,
+    "end": 307.92
+  },
+  {
+    "position": 828,
+    "text": "I",
+    "start": 307.92,
+    "end": 308.06
+  },
+  {
+    "position": 829,
+    "text": "wanted",
+    "start": 308.06,
+    "end": 308.54
+  },
+  {
+    "position": 830,
+    "text": "to",
+    "start": 308.54,
+    "end": 308.76
+  },
+  {
+    "position": 831,
+    "text": "have.",
+    "start": 308.76,
+    "end": 309.18
+  },
+  {
+    "position": 832,
+    "text": "I",
+    "start": 309.54,
+    "end": 310.18
+  },
+  {
+    "position": 833,
+    "text": "lowered",
+    "start": 310.18,
+    "end": 310.66
+  },
+  {
+    "position": 834,
+    "text": "my",
+    "start": 310.66,
+    "end": 310.9
+  },
+  {
+    "position": 835,
+    "text": "head",
+    "start": 310.9,
+    "end": 311.22
+  },
+  {
+    "position": 836,
+    "text": "in",
+    "start": 311.22,
+    "end": 311.36
+  },
+  {
+    "position": 837,
+    "text": "disappointment",
+    "start": 311.36,
+    "end": 311.98
+  },
+  {
+    "position": 838,
+    "text": "and",
+    "start": 311.98,
+    "end": 312.4
+  },
+  {
+    "position": 839,
+    "text": "put",
+    "start": 312.4,
+    "end": 312.72
+  },
+  {
+    "position": 840,
+    "text": "what",
+    "start": 312.72,
+    "end": 312.92
+  },
+  {
+    "position": 841,
+    "text": "was",
+    "start": 312.92,
+    "end": 313.14
+  },
+  {
+    "position": 842,
+    "text": "left",
+    "start": 313.14,
+    "end": 313.46
+  },
+  {
+    "position": 843,
+    "text": "of",
+    "start": 313.46,
+    "end": 313.64
+  },
+  {
+    "position": 844,
+    "text": "the",
+    "start": 313.64,
+    "end": 313.78
+  },
+  {
+    "position": 845,
+    "text": "apple",
+    "start": 313.78,
+    "end": 314.12
+  },
+  {
+    "position": 846,
+    "text": "salad",
+    "start": 314.12,
+    "end": 314.68
+  },
+  {
+    "position": 847,
+    "text": "onto",
+    "start": 314.68,
+    "end": 315.44
+  },
+  {
+    "position": 848,
+    "text": "my",
+    "start": 315.44,
+    "end": 315.72
+  },
+  {
+    "position": 849,
+    "text": "plate.",
+    "start": 315.72,
+    "end": 316.1
+  },
+  {
+    "position": 850,
+    "text": "It",
+    "start": 316.52,
+    "end": 317.16
+  },
+  {
+    "position": 851,
+    "text": "would",
+    "start": 317.16,
+    "end": 317.28
+  },
+  {
+    "position": 852,
+    "text": "be",
+    "start": 317.28,
+    "end": 317.42
+  },
+  {
+    "position": 853,
+    "text": "bad",
+    "start": 317.42,
+    "end": 317.84
+  },
+  {
+    "position": 854,
+    "text": "manners",
+    "start": 317.84,
+    "end": 318.34
+  },
+  {
+    "position": 855,
+    "text": "to",
+    "start": 318.34,
+    "end": 318.54
+  },
+  {
+    "position": 856,
+    "text": "whine,",
+    "start": 318.54,
+    "end": 319.08
+  },
+  {
+    "position": 857,
+    "text": "but",
+    "start": 319.08,
+    "end": 319.86
+  },
+  {
+    "position": 858,
+    "text": "it",
+    "start": 319.86,
+    "end": 319.98
+  },
+  {
+    "position": 859,
+    "text": "was",
+    "start": 319.98,
+    "end": 320.16
+  },
+  {
+    "position": 860,
+    "text": "hard",
+    "start": 320.16,
+    "end": 320.54
+  },
+  {
+    "position": 861,
+    "text": "to",
+    "start": 320.54,
+    "end": 320.78
+  },
+  {
+    "position": 862,
+    "text": "hide",
+    "start": 320.78,
+    "end": 321.08
+  },
+  {
+    "position": 863,
+    "text": "my",
+    "start": 321.08,
+    "end": 321.28
+  },
+  {
+    "position": 864,
+    "text": "disappointment.",
+    "start": 321.28,
+    "end": 321.88
+  },
+  {
+    "position": 865,
+    "text": "Suddenly,",
+    "start": 322.86,
+    "end": 323.44
+  },
+  {
+    "position": 866,
+    "text": "I",
+    "start": 323.66,
+    "end": 324.0
+  },
+  {
+    "position": 867,
+    "text": "felt",
+    "start": 324.0,
+    "end": 324.28
+  },
+  {
+    "position": 868,
+    "text": "my",
+    "start": 324.28,
+    "end": 324.5
+  },
+  {
+    "position": 869,
+    "text": "grandma",
+    "start": 324.5,
+    "end": 325.06
+  },
+  {
+    "position": 870,
+    "text": "grab",
+    "start": 325.06,
+    "end": 325.44
+  },
+  {
+    "position": 871,
+    "text": "my",
+    "start": 325.44,
+    "end": 325.68
+  },
+  {
+    "position": 872,
+    "text": "thigh,",
+    "start": 325.68,
+    "end": 326.08
+  },
+  {
+    "position": 873,
+    "text": "and",
+    "start": 326.08,
+    "end": 326.32
+  },
+  {
+    "position": 874,
+    "text": "then",
+    "start": 326.32,
+    "end": 326.46
+  },
+  {
+    "position": 875,
+    "text": "she",
+    "start": 326.46,
+    "end": 326.68
+  },
+  {
+    "position": 876,
+    "text": "whispered",
+    "start": 326.68,
+    "end": 327.16
+  },
+  {
+    "position": 877,
+    "text": "in",
+    "start": 327.16,
+    "end": 327.24
+  },
+  {
+    "position": 878,
+    "text": "my",
+    "start": 327.24,
+    "end": 327.36
+  },
+  {
+    "position": 879,
+    "text": "ear.",
+    "start": 327.36,
+    "end": 327.58
+  },
+  {
+    "position": 880,
+    "text": "\"I",
+    "start": 327.94,
+    "end": 328.62
+  },
+  {
+    "position": 881,
+    "text": "know",
+    "start": 328.62,
+    "end": 328.84
+  },
+  {
+    "position": 882,
+    "text": "you",
+    "start": 328.84,
+    "end": 329.1
+  },
+  {
+    "position": 883,
+    "text": "were",
+    "start": 329.1,
+    "end": 329.32
+  },
+  {
+    "position": 884,
+    "text": "worried",
+    "start": 329.32,
+    "end": 329.72
+  },
+  {
+    "position": 885,
+    "text": "about",
+    "start": 329.72,
+    "end": 329.92
+  },
+  {
+    "position": 886,
+    "text": "grandma",
+    "start": 329.92,
+    "end": 330.44
+  },
+  {
+    "position": 887,
+    "text": "not",
+    "start": 330.44,
+    "end": 330.74
+  },
+  {
+    "position": 888,
+    "text": "having",
+    "start": 330.74,
+    "end": 331.2
+  },
+  {
+    "position": 889,
+    "text": "enough",
+    "start": 331.2,
+    "end": 331.52
+  },
+  {
+    "position": 890,
+    "text": "apple",
+    "start": 331.52,
+    "end": 331.92
+  },
+  {
+    "position": 891,
+    "text": "salad",
+    "start": 331.92,
+    "end": 332.38
+  },
+  {
+    "position": 892,
+    "text": "for",
+    "start": 332.38,
+    "end": 332.66
+  },
+  {
+    "position": 893,
+    "text": "you,",
+    "start": 332.66,
+    "end": 332.94
+  },
+  {
+    "position": 894,
+    "text": "but",
+    "start": 333.12,
+    "end": 333.58
+  },
+  {
+    "position": 895,
+    "text": "don't",
+    "start": 333.58,
+    "end": 333.9
+  },
+  {
+    "position": 896,
+    "text": "worry.",
+    "start": 333.9,
+    "end": 334.34
+  },
+  {
+    "position": 897,
+    "text": "I",
+    "start": 334.62,
+    "end": 335.12
+  },
+  {
+    "position": 898,
+    "text": "saved",
+    "start": 335.12,
+    "end": 335.54
+  },
+  {
+    "position": 899,
+    "text": "a",
+    "start": 335.54,
+    "end": 335.72
+  },
+  {
+    "position": 900,
+    "text": "big",
+    "start": 335.72,
+    "end": 336.1
+  },
+  {
+    "position": 901,
+    "text": "bowl",
+    "start": 336.1,
+    "end": 336.46
+  },
+  {
+    "position": 902,
+    "text": "just",
+    "start": 336.46,
+    "end": 336.86
+  },
+  {
+    "position": 903,
+    "text": "for",
+    "start": 336.86,
+    "end": 337.14
+  },
+  {
+    "position": 904,
+    "text": "you",
+    "start": 337.14,
+    "end": 337.42
+  },
+  {
+    "position": 905,
+    "text": "in",
+    "start": 337.42,
+    "end": 337.64
+  },
+  {
+    "position": 906,
+    "text": "the",
+    "start": 337.64,
+    "end": 337.76
+  },
+  {
+    "position": 907,
+    "text": "fridge.\"",
+    "start": 337.76,
+    "end": 338.22
+  },
+  {
+    "position": 908,
+    "text": "I",
+    "start": 339.08,
+    "end": 339.66
+  },
+  {
+    "position": 909,
+    "text": "got",
+    "start": 339.66,
+    "end": 339.92
+  },
+  {
+    "position": 910,
+    "text": "up",
+    "start": 339.92,
+    "end": 340.06
+  },
+  {
+    "position": 911,
+    "text": "from",
+    "start": 340.06,
+    "end": 340.24
+  },
+  {
+    "position": 912,
+    "text": "my",
+    "start": 340.24,
+    "end": 340.4
+  },
+  {
+    "position": 913,
+    "text": "seat,",
+    "start": 340.4,
+    "end": 340.74
+  },
+  {
+    "position": 914,
+    "text": "went",
+    "start": 341.02,
+    "end": 341.46
+  },
+  {
+    "position": 915,
+    "text": "to",
+    "start": 341.46,
+    "end": 341.64
+  },
+  {
+    "position": 916,
+    "text": "the",
+    "start": 341.64,
+    "end": 341.78
+  },
+  {
+    "position": 917,
+    "text": "fridge",
+    "start": 341.78,
+    "end": 342.16
+  },
+  {
+    "position": 918,
+    "text": "and",
+    "start": 342.16,
+    "end": 342.32
+  },
+  {
+    "position": 919,
+    "text": "opened",
+    "start": 342.32,
+    "end": 342.76
+  },
+  {
+    "position": 920,
+    "text": "it",
+    "start": 342.76,
+    "end": 342.9
+  },
+  {
+    "position": 921,
+    "text": "up.",
+    "start": 342.9,
+    "end": 343.14
+  },
+  {
+    "position": 922,
+    "text": "Sure",
+    "start": 343.36,
+    "end": 343.94
+  },
+  {
+    "position": 923,
+    "text": "enough,",
+    "start": 343.94,
+    "end": 344.24
+  },
+  {
+    "position": 924,
+    "text": "on",
+    "start": 344.58,
+    "end": 344.94
+  },
+  {
+    "position": 925,
+    "text": "the",
+    "start": 344.94,
+    "end": 345.06
+  },
+  {
+    "position": 926,
+    "text": "top",
+    "start": 345.06,
+    "end": 345.3
+  },
+  {
+    "position": 927,
+    "text": "shelf",
+    "start": 345.3,
+    "end": 345.72
+  },
+  {
+    "position": 928,
+    "text": "there",
+    "start": 345.72,
+    "end": 345.96
+  },
+  {
+    "position": 929,
+    "text": "was",
+    "start": 345.96,
+    "end": 346.1
+  },
+  {
+    "position": 930,
+    "text": "a",
+    "start": 346.1,
+    "end": 346.24
+  },
+  {
+    "position": 931,
+    "text": "big",
+    "start": 346.24,
+    "end": 346.48
+  },
+  {
+    "position": 932,
+    "text": "bowl",
+    "start": 346.48,
+    "end": 346.76
+  },
+  {
+    "position": 933,
+    "text": "of",
+    "start": 346.76,
+    "end": 346.98
+  },
+  {
+    "position": 934,
+    "text": "apple",
+    "start": 346.98,
+    "end": 347.26
+  },
+  {
+    "position": 935,
+    "text": "salad.",
+    "start": 347.26,
+    "end": 347.7
+  },
+  {
+    "position": 936,
+    "text": "I",
+    "start": 347.96,
+    "end": 348.54
+  },
+  {
+    "position": 937,
+    "text": "smiled",
+    "start": 348.54,
+    "end": 349.16
+  },
+  {
+    "position": 938,
+    "text": "and",
+    "start": 349.16,
+    "end": 349.4
+  },
+  {
+    "position": 939,
+    "text": "took",
+    "start": 349.4,
+    "end": 349.62
+  },
+  {
+    "position": 940,
+    "text": "it",
+    "start": 349.62,
+    "end": 349.78
+  },
+  {
+    "position": 941,
+    "text": "to",
+    "start": 349.78,
+    "end": 349.9
+  },
+  {
+    "position": 942,
+    "text": "the",
+    "start": 349.9,
+    "end": 350.06
+  },
+  {
+    "position": 943,
+    "text": "table.",
+    "start": 350.06,
+    "end": 350.42
+  },
+  {
+    "position": 944,
+    "text": "Once",
+    "start": 351.1,
+    "end": 351.7
+  },
+  {
+    "position": 945,
+    "text": "everybody",
+    "start": 351.7,
+    "end": 352.08
+  },
+  {
+    "position": 946,
+    "text": "had",
+    "start": 352.08,
+    "end": 352.32
+  },
+  {
+    "position": 947,
+    "text": "finished",
+    "start": 352.32,
+    "end": 352.64
+  },
+  {
+    "position": 948,
+    "text": "dishing",
+    "start": 352.64,
+    "end": 353.24
+  },
+  {
+    "position": 949,
+    "text": "up,",
+    "start": 353.24,
+    "end": 353.5
+  },
+  {
+    "position": 950,
+    "text": "we",
+    "start": 353.66,
+    "end": 354.06
+  },
+  {
+    "position": 951,
+    "text": "began",
+    "start": 354.06,
+    "end": 354.36
+  },
+  {
+    "position": 952,
+    "text": "to",
+    "start": 354.36,
+    "end": 354.56
+  },
+  {
+    "position": 953,
+    "text": "eat.",
+    "start": 354.56,
+    "end": 354.82
+  },
+  {
+    "position": 954,
+    "text": "I",
+    "start": 355.02,
+    "end": 355.6
+  },
+  {
+    "position": 955,
+    "text": "put",
+    "start": 355.6,
+    "end": 355.82
+  },
+  {
+    "position": 956,
+    "text": "the",
+    "start": 355.82,
+    "end": 355.98
+  },
+  {
+    "position": 957,
+    "text": "apple",
+    "start": 355.98,
+    "end": 356.34
+  },
+  {
+    "position": 958,
+    "text": "salad",
+    "start": 356.34,
+    "end": 356.78
+  },
+  {
+    "position": 959,
+    "text": "in",
+    "start": 356.78,
+    "end": 357.0
+  },
+  {
+    "position": 960,
+    "text": "my",
+    "start": 357.0,
+    "end": 357.18
+  },
+  {
+    "position": 961,
+    "text": "mouth",
+    "start": 357.18,
+    "end": 357.64
+  },
+  {
+    "position": 962,
+    "text": "and",
+    "start": 357.64,
+    "end": 357.86
+  },
+  {
+    "position": 963,
+    "text": "it",
+    "start": 357.86,
+    "end": 357.98
+  },
+  {
+    "position": 964,
+    "text": "tasted",
+    "start": 357.98,
+    "end": 358.32
+  },
+  {
+    "position": 965,
+    "text": "so",
+    "start": 358.32,
+    "end": 358.9
+  },
+  {
+    "position": 966,
+    "text": "good.",
+    "start": 358.9,
+    "end": 359.6
+  },
+  {
+    "position": 967,
+    "text": "\"Oh",
+    "start": 359.92,
+    "end": 360.52
+  },
+  {
+    "position": 968,
+    "text": "my",
+    "start": 360.52,
+    "end": 360.82
+  },
+  {
+    "position": 969,
+    "text": "goodness,",
+    "start": 360.82,
+    "end": 361.3
+  },
+  {
+    "position": 970,
+    "text": "grandma.",
+    "start": 361.44,
+    "end": 361.84
+  },
+  {
+    "position": 971,
+    "text": "It",
+    "start": 362.16,
+    "end": 362.36
+  },
+  {
+    "position": 972,
+    "text": "always",
+    "start": 362.36,
+    "end": 362.72
+  },
+  {
+    "position": 973,
+    "text": "tastes",
+    "start": 362.72,
+    "end": 363.02
+  },
+  {
+    "position": 974,
+    "text": "so",
+    "start": 363.02,
+    "end": 363.36
+  },
+  {
+    "position": 975,
+    "text": "good.\"",
+    "start": 363.36,
+    "end": 363.92
+  },
+  {
+    "position": 976,
+    "text": "Grandma",
+    "start": 365.06,
+    "end": 365.66
+  },
+  {
+    "position": 977,
+    "text": "always",
+    "start": 365.66,
+    "end": 366.38
+  },
+  {
+    "position": 978,
+    "text": "knows",
+    "start": 366.38,
+    "end": 367.1
+  },
+  {
+    "position": 979,
+    "text": "how",
+    "start": 367.1,
+    "end": 367.36
+  },
+  {
+    "position": 980,
+    "text": "to",
+    "start": 367.36,
+    "end": 367.52
+  },
+  {
+    "position": 981,
+    "text": "spoil",
+    "start": 367.52,
+    "end": 367.98
+  },
+  {
+    "position": 982,
+    "text": "me.",
+    "start": 367.98,
+    "end": 368.26
+  }
+]
