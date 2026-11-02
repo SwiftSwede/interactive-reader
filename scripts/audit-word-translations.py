@@ -34,7 +34,7 @@ EXPECTED = {
     "of": ["de", "del", "por", "con", "en"],
     "to": ["a", "para", "que", "de", "al", "hacia", "ser", "darse", "continuar", "verla", "darte", "ir", "seguir", "hasta", "(infinitivo)", "(preposición de infinitivo)", "contigo"],
     "in": ["en", "dentro", "a", "con", "frente", "en la", "en el", "para"],
-    "on": ["en", "sobre", "encima", "adelante", "partícula", "en ello", "al", "el", "de", "a bordo"],
+    "on": ["en", "sobre", "encima", "adelante", "partícula", "en ello", "al", "el", "de", "a bordo", "con"],
     "she": ["ella"],
     "he": ["él", "el"],
     "her": ["su", "sus", "la", "le", "ella", "a su", "a ella", "se"],
