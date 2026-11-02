@@ -75,7 +75,7 @@ Sentence: ${drill.practica_coral_standard}`;
       Authorization: `Bearer ${OPENROUTER_API_KEY}`,
     },
     body: JSON.stringify({
-      model: "anthropic/claude-sonnet-4",
+      model: "anthropic/claude-sonnet-4.5",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.3,
       max_tokens: 200,
@@ -98,7 +98,7 @@ Sentence: ${drill.practica_coral_standard}`;
 
   await captureOpenRouterGeneration({
     spanName: "generate_coral_ipa",
-    model: "anthropic/claude-sonnet-4",
+    model: "anthropic/claude-sonnet-4.5",
     messages: [{ role: "user", content: prompt }],
     content: ipa,
     usage: data.usage,

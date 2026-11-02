@@ -382,7 +382,7 @@ Return a JSON array of ${questions.length} answer strings:`;
       Authorization: `Bearer ${OPENROUTER_API_KEY}`,
     },
     body: JSON.stringify({
-      model: "anthropic/claude-sonnet-4",
+      model: "anthropic/claude-sonnet-4.5",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.3,
       max_tokens: 2000,
@@ -405,7 +405,7 @@ Return a JSON array of ${questions.length} answer strings:`;
 
   await captureOpenRouterGeneration({
     spanName: "generate_comprehension_answers",
-    model: "anthropic/claude-sonnet-4",
+    model: "anthropic/claude-sonnet-4.5",
     messages: [{ role: "user", content: prompt }],
     content,
     usage: data.usage,
