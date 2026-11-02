@@ -106,7 +106,7 @@ describe("draws", () => {
 
   test("drafts never serve in production", () => {
     assert.deepEqual(
-      drawPlacementPass(bank, "pre_int", servableStatuses({ nodeEnv: "production" }), new Set()),
+      drawPlacementPass(bank, "pre_int", servableStatuses({ nodeEnv: "production" }), new Set(), 7),
       [],
     );
   });

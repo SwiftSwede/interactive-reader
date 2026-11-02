@@ -118,11 +118,12 @@ export function validateBank(bank: SeedStructure[]): string[] {
     ids.add(structure.id);
     if (!/^[a-z0-9_]+$/.test(structure.id)) problems.push(`${structure.id}: id must be a slug`);
     if (!structure.rule.trim()) problems.push(`${structure.id}: missing rule`);
-    for (const [role, item] of [
+    const roles: ["placement" | "confirmation" | "rotation", SeedItem][] = [
       ["placement", structure.placement],
       ["confirmation", structure.confirmation],
-      ...(structure.rotation ? [["rotation", structure.rotation] as const] : []),
-    ]) {
+    ];
+    if (structure.rotation) roles.push(["rotation", structure.rotation]);
+    for (const [role, item] of roles) {
       const label = `${structure.id}.${role}`;
       const texts = [item.correct, ...item.wrong];
       if (new Set(texts.map((text) => text.trim().toLowerCase())).size !== 4) {
