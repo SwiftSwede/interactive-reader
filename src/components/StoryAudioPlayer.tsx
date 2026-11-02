@@ -42,7 +42,16 @@ export default function StoryAudioPlayer({
   const updateTime = useCallback(() => {
     const audio = audioRef.current;
     if (audio && !audio.paused) {
-      const elapsed = (performance.now() - perfTimeRef.current) / 1000;
+      // While seeking/buffering, audio.currentTime is unreliable and the
+      // decoder has not reached the new position yet — hold the highlight
+      // at the seek target instead of interpolating past it (fixes the
+      // highlight running ahead of the audio after skip/±10s).
+      if (audio.seeking || audio.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) {
+        rafRef.current = requestAnimationFrame(updateTime);
+        return;
+      }
+      const elapsed =
+        ((performance.now() - perfTimeRef.current) / 1000) * audio.playbackRate;
       const interpolatedTime = audioTimeRef.current + elapsed;
       setCurrentTime(interpolatedTime);
       onTimeUpdate(interpolatedTime);
@@ -141,6 +150,10 @@ export default function StoryAudioPlayer({
       audioTimeRef.current = audio.currentTime;
       perfTimeRef.current = performance.now();
       setCurrentTime(audio.currentTime);
+      // Notify the parent even when the seek happens while paused —
+      // otherwise the RAF loop (paused) never reports the new position
+      // and the highlight stays at the old spot.
+      onTimeUpdate(audio.currentTime);
     };
 
     const handleError = () => {
