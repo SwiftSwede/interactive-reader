@@ -242,15 +242,17 @@ export function EvalResult({
         </section>
       ) : null}
 
-      {moreInfoUrl ? (
-        <a className="ev-cta" href={moreInfoUrl} target="_blank" rel="noopener noreferrer">
-          {evalUiCopy.whatsappCta}
-        </a>
-      ) : null}
+      <div className="ev-actions">
+        {moreInfoUrl ? (
+          <a className="ev-cta" href={moreInfoUrl} target="_blank" rel="noopener noreferrer">
+            {evalUiCopy.whatsappCta}
+          </a>
+        ) : null}
 
-      <button type="button" className="ev-secondary" onClick={onRetake}>
-        {evalUiCopy.retake}
-      </button>
+        <button type="button" className="ev-secondary" onClick={onRetake}>
+          {evalUiCopy.retake}
+        </button>
+      </div>
     </div>
   );
 }
