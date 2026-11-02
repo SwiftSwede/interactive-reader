@@ -86,6 +86,7 @@ export default async function SelfPacedCoursePage({
       previewLevel={previewLevel}
       accountHref={isTeacher ? "/teacher" : "/profile"}
       accountLabel={isTeacher ? "Inicio" : "Perfil"}
+      askSurface={isTeacher || previewLevel ? null : "lecciones"}
     >
       <CourseOutline
         name={page.name}

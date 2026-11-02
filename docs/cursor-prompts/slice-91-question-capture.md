@@ -62,7 +62,7 @@ Teacher reads/writes go through the existing admin-client pattern (service role)
 Shared client component, e.g. `AskTeacherButton` (one implementation, wired into every placement above):
 
 - Round accent button, `?` icon, aria-label "Preguntar al Profe".
-- Tap opens a bottom sheet (existing sheet/bottom-sheet pattern from Slice 82's Cómo sheet): title "¿No sabes cómo decirlo?", one textarea, placeholder: "Escríbelo en español, o hazme una pregunta sobre la lección", char counter not needed, submit button "Enviar".
+- Tap opens a bottom sheet (existing sheet/bottom-sheet pattern from Slice 82's Cómo sheet): title "¿Preguntas?", one textarea, placeholder: "Escríbelo en español, o hazme una pregunta sobre la lección", char counter not needed, submit button "Enviar".
 - On submit: POST insert (student's own row, story_id/course_session_id filled from the page's context), sheet closes, quiet confirmation ("Enviado. Pregúntame en el descanso."). The student can reopen and send again.
 - Zero interruption to the lesson: no step navigation, no state changes, no audio interference.
 - Spanish UI copy carries written accents (Sabías-style QA) and no em dashes.

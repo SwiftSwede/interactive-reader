@@ -105,7 +105,7 @@ components:
   icons: Lucide React only, never emojis
   lesson_card: "Inicio and Lecciones row. Equal height via one reserved 16px muted line under the status. Song uses the Music icon. Live-only with a recording says Grabación disponible and does not link out."
   browsing_bottom_pad: "Content clears the tab bar: 72px on mobile (56px bar + 16px gap), 88px on desktop (56px bar + 16px float + 16px gap), plus the safe area."
-  ask_teacher_button: "Student-only. Lesson step-nav: 44px accent circle, literal ?. Mid-lesson it sits between the pills (step-nav-ask). Last step it sits on the right, where Siguiente was; Listo stays in the middle column (step-nav-ask-done). Quiet bar: circle only, presentation live / conversation / Traducción. Browsing: ghost 44px ? in the header next to Perfil, same hit area as User, not in the tab bar. Hidden for teacher chrome, preview, exam, writing, and logged-out browsing. Sheet is WordHelpSheet."
+  ask_teacher_button: "Student-only. Lesson step-nav: 44px accent circle, literal ?. Mid-lesson it sits between the pills (step-nav-ask). Last step it sits on the right, where Siguiente was; Listo stays in the middle column (step-nav-ask-done). Quiet bar: circle only, presentation live / conversation / Traducción / audio course. Browsing: ghost 44px ? in the header next to Perfil, same hit area as User, not in the tab bar. Hidden for teacher chrome, preview, exam, writing, and logged-out browsing. Sheet is WordHelpSheet; title ¿Preguntas?"
   teacher_preguntas_queue: "Session page, under the title. Disclosure, not a modal. 16px card. Header is 1fr auto 1fr: headline-md Preguntas left, unaddressed count chip center (rounded-small, tabular-nums; accent-softer when >0), 44px ChevronDown/Up right (swap, no rotate). Panel 200ms ease-smooth-out via grid-template-rows; body fades 180ms. Empty: CircleHelp 32px plus Todavía no hay preguntas. Item: paper fill, name label-md, body-main phrase, surface · time on one label-sm row, Enseñada secondary right. Auto-opens on the first waiting question."
   navigation: browsing mode (3 tabs; ask lives in the header) vs lesson mode (full-screen, step nav); never coexist
   workshop_landing: "Public /workshop. Thrive webinar skin, one 680px column, html lang=es. Inline form in the first viewport (Olly/Brunson archive pattern): kicker, facts, date, name/email, privacy line, repeated CTAs. Liberty is an img under a navy wash that darkens toward the form. IPA as a list, not three cards. No popup, no phone. Open Sans. Not paper, no tab bar."
@@ -728,7 +728,7 @@ Pages: story lessons, writing lessons, exams, movie talk, music, future lesson t
 
 **Main header (lesson mode):**
 - Sticky, `--paper-header` background with backdrop blur. Two identity lines, shared by every lesson type (`LessonHeader`).
-- Line 1: lesson type left (`label-sm`, `--text-muted`, e.g. "Historia", "Escritura", "Movie Talk"). Right: **Progreso** (`/progress`) and **Inicio** (`/dashboard`) for students (`label-md`, `--text-secondary`, 44px touch). An audio course adds **Curso** (`/course/{id}`) before Progreso, for students and teachers. Teacher on a session-backed lesson: **Vista de estudiante** (becomes **Vista de profe** in preview) then **Inicio** to `/teacher`. Same header-link style, 44px touch. No Volver. No "Profe Kyle" wordmark (brand stays on browsing, login, and document titles).
+- Line 1: lesson type left (`label-sm`, `--text-muted`, e.g. "Historia", "Escritura", "Movie Talk"). Right: **Progreso** (`/progress`) and **Inicio** (`/dashboard`) for students (`label-md`, `--text-secondary`, 44px touch). An audio course adds **Curso** (`/course/{id}`) before Progreso, for students and teachers. Teacher on a session-backed lesson: **Vista de estudiante** (becomes **Vista de profe** in preview) then **Inicio** to `/teacher`. Same header-link style, 44px touch. No Volver. No "Profe Kyle" wordmark (brand stays on browsing, login, and document titles). Audio course students also get the quiet glass `?` bar (Traducción pattern): circle only, under the sticky player. No Inicio / Lecciones / Herramientas tab bar on the lesson itself.
 - Line 2: lesson name left (`headline-md`, Lora, truncates) and CEFR right on the same line (`label-sm`, `--text-muted`). CEFR is derived from `level`: beginner A1/A2, pre-intermediate A2/B1, intermediate B1/B2. Stories and dialogues also append ` · {n} palabras`. Other types show CEFR only.
 - Do not put timers, task labels, or step dots in this identity block.
 
@@ -758,7 +758,7 @@ Pages: story lessons, writing lessons, exams, movie talk, music, future lesson t
 **Bottom navigation (lesson mode):**
 - Fixed glass bar at the bottom of the viewport (not in the scroll). Same spot on every step.
 - Full-bleed Paper frost (`rgba(250, 246, 240, 0.78)` + `backdrop-filter: blur(16px)`), 1px `--paper-line` top border, subtle top shadow. Opaque `--paper` when `prefers-reduced-transparency`. Inner row max-width 672px, centered, 16px side padding, iPhone safe-area below the pills.
-- Pill-shaped buttons (9999px radius): "← El cuento" (left, secondary style) and "Comprensión →" (right, primary style). Students, mid-lesson: a 44px accent `?` between the pills (`step-nav-ask`). Last step: `?` on the right where Siguiente was; Listo stays in the middle (`step-nav-ask-done`). Teacher live: **Bloquear pasos / Abrir todas** in the middle of that row (no `?`). Presentation before/during class, conversation, and Traducción: a quiet glass bar that is only the circle.
+- Pill-shaped buttons (9999px radius): "← El cuento" (left, secondary style) and "Comprensión →" (right, primary style). Students, mid-lesson: a 44px accent `?` between the pills (`step-nav-ask`). Last step: `?` on the right where Siguiente was; Listo stays in the middle (`step-nav-ask-done`). Teacher live: **Bloquear pasos / Abrir todas** in the middle of that row (no `?`). Presentation before/during class, conversation, Traducción, and audio course: a quiet glass bar that is only the circle. On audio course the sticky player sits above that bar. Hidden for teacher and preview.
 - Left arrow hidden on first step. Right arrow hidden on last step.
 - Last step shows completion message instead of right arrow: "Listo! Has practicado todos los ejercicios." (`label-md`, `--text-secondary`, centered)
 - Body padding keeps the last paragraph clear of the bar. Sticky audio and the character band stack above it (`body:has(.step-nav)`). The bar never jumps when those appear.
@@ -1102,7 +1102,7 @@ Keep YouTube in review mode with normal controls. No pronunciation. No group wor
 
 ### Audio course lesson (Iplo)
 
-Self-paced only. `stories.kind = audio_course`. Route `/lesson/[slug]`. No step dots, no word flags, no `?`, no Nueva clase row.
+Self-paced only. `stories.kind = audio_course`. Route `/lesson/[slug]`. No step dots, no word flags, no Nueva clase row. Students get the same lesson-mode identity header as stories (sticky, paper-header, Curso / Progreso / Inicio) plus a quiet glass `?` bar (`surface=leccion`, story id, no session). Teacher and preview hide `?`. No browsing tab bar on the lesson.
 
 **Header:** type "Audio", lesson title, level. No word count. **Curso** sits before Progreso and opens `/course/{id}`.
 
@@ -1118,7 +1118,7 @@ An Iplo course with fewer than 23 lessons meters the lessons that exist (`2/5`).
 
 ### Self-paced course list
 
-Browsing mode. Route `/course/[courseId]`. The tab bar stays and no tab is active. Signed-in students need a published course and a grant. Teachers can open it, including an unpublished course, and can open every day. Teacher preview follows the published course at that preview level. Anyone else sees the existing course-denied message. Logged-out visitors go to login.
+Browsing mode. Route `/course/[courseId]`. The tab bar stays and no tab is active. Header is browsing chrome: Profe Kyle, student `?` (`surface=lecciones`, next to Perfil), then Perfil. Teachers and preview omit `?`; teacher account link is Inicio to `/teacher`. Signed-in students need a published course and a grant. Teachers can open it, including an unpublished course, and can open every day. Teacher preview follows the published course at that preview level. Anyone else sees the existing course-denied message. Logged-out visitors go to login.
 
 Title is the course name (`headline-lg`). The meter matches the Inicio card. Rows are only lessons that exist, in order, 8px apart, at least 48px tall. A done row is a white card with a moss check and links back to that day. The current row is an accent-soft fill with an accent border and links. A locked row is muted text and does not link. Reference: [Speak's course list](https://mobbin.com/flows/0d99978e-02fb-4583-aac4-919e2be0cdc7) for the named vertical list, and [Duolingo's section index](https://mobbin.com/flows/80ea8db0-5785-4e9a-a01d-4ff8694634ba) only for a fraction plus one locked sentence. No path, stars, or scores.
 

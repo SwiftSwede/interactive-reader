@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { Check, Pause, Play, SkipBack, SkipForward, X } from "lucide-react";
 import LessonHeader from "@/components/lesson/LessonHeader";
+import AskTeacherButton from "@/components/ask/AskTeacherButton";
 import ActionButton from "@/components/ActionButton";
 import { SeekBar } from "@/components/StickyNowPlaying";
 import { completeIploAttempt } from "@/app/lesson/[slug]/iplo-actions";
@@ -507,18 +508,24 @@ export default function AudioCoursePlayer({
       : showInput
         ? "Traduce"
         : "Escucha";
+  const showAsk = !isTeacher && previewLevel == null;
 
   return (
     <div className="min-h-dvh bg-paper">
-      <LessonHeader
-        typeLabel="Audio"
-        title={title}
-        level={level}
-        isTeacher={isTeacher}
-        previewLevel={previewLevel}
-        viewToggle={viewToggle}
-        courseHref={courseHref}
-      />
+      <div
+        className="story-page-header sticky top-0 z-20 border-b border-paper-line backdrop-blur-sm"
+        data-lesson-sticky
+      >
+        <LessonHeader
+          typeLabel="Audio"
+          title={title}
+          level={level}
+          isTeacher={isTeacher}
+          previewLevel={previewLevel}
+          viewToggle={viewToggle}
+          courseHref={courseHref}
+        />
+      </div>
       <main className="mx-auto flex w-full max-w-[672px] flex-col px-4 pb-8">
         {blocked ? (
           <p className="px-2 pt-16 text-center text-body-md text-text-secondary">
@@ -676,6 +683,14 @@ export default function AudioCoursePlayer({
           </>
         )}
       </main>
+
+      {showAsk ? (
+        <AskTeacherButton
+          layout="quiet-bar"
+          surface="leccion"
+          storyId={storyId}
+        />
+      ) : null}
 
       {!blocked && !done ? (
         <div className="sticky-audio-player" role="region" aria-label={playing ? "Reproduciendo" : "Audio pausado"}>

@@ -118,7 +118,7 @@ export default function AskTeacherButton({
       <WordHelpSheet
         open={open}
         onClose={close}
-        title="¿No sabes cómo decirlo?"
+        title="¿Preguntas?"
       >
         {sent ? (
           <p className="text-body-main text-text-primary">
