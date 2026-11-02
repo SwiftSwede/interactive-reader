@@ -33,7 +33,6 @@ export function EvalSplash({
           </button>
         )}
       </div>
-      <p className="ev-note">{evalUiCopy.splashNote}</p>
     </div>
   );
 }
