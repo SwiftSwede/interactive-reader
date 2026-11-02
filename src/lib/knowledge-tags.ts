@@ -212,6 +212,8 @@ export const ERROR_TAG_SEEDS: TagSeed[] = [
   { name: "third_person_s_missing", displayName: "Third person -s" },
   { name: "gerund_after_preposition", displayName: "Gerund after preposition" },
   { name: "be_omission", displayName: "Missing verb be (gonna)" },
+  { name: "plural_s_omission", displayName: "Plural noun -s" },
+  { name: "another_vs_other", displayName: "Another vs other" },
 ];
 
 export const TAG_SEEDS: Record<TagType, TagSeed[]> = {

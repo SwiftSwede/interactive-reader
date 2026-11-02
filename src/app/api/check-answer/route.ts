@@ -68,6 +68,8 @@ ERROR TAGS. Use these exact names in error_tags. One phrase each:
 - comparative_formation: Comparative formation. Spanish "mas facil" makes students say "more easy": correct is "easier". "More better" becomes "better". Short adjectives also fail in superlatives: "the most white" becomes "the whitest".
 - article_omission: Articles (a/an/the). Spanish drops articles: "today was special day" becomes "today was a special day". Wrong a/an before a vowel sound: "a interesting class" becomes "an interesting class". Extra "the" on place names: "in the Latin America" becomes "in Latin America".
 - tener_haber_contraction_confusion: Haber vs tener (have). In American English only auxiliary have (Spanish haber) contracts: "She hasn't arrived". The verb have (tener, obligation) never contracts: "She hasn't to pay anything" becomes "She doesn't have to pay anything". "I haven't time" becomes "I don't have time".
+- plural_s_omission: Missing -s on plural nouns. Spanish pluralizes but students drop the English -s, especially in writing: "All adjustment was done" becomes "All adjustments were done". "reports from manager" becomes "reports from the managers". "the procedures were appropriate" (plural noun stays). "3 client" becomes "3 clients".
+- another_vs_other: "Another" only goes with a singular count noun. For plurals use "other": "explain another people" becomes "explain to other people". "another questions" becomes "other questions". "another days" becomes "other days". "another ways to say it" becomes "other ways to say it".
 - compound_subject_agreement: Compound subject agreement. Two subjects joined by "and" take a plural verb: "My daughter and my husband doesn't like it" becomes "My daughter and my husband don't like it". "The kids doesn't have school" becomes "The kids don't have school".
 - third_person_s_missing: Missing -s on third person singular. Spanish verbs don't change with the subject, English does: "My customer complain every time" becomes "My customer complains every time". "She visit my brother" becomes "She visits my brother" (or "She visited my brother" in the past). "He want" becomes "He wants".
 - gerund_after_preposition: Gerund (-ing) after a preposition. After "for", "about", "of", "in", "by", a verb needs -ing: "I'm sorry for show up late" becomes "I'm sorry for showing up late". "Instead of watch TV" becomes "Instead of watching TV". "Thank you for come" becomes "Thank you for coming".
@@ -189,6 +191,14 @@ Output:
   "corrected": "My customer complains every time and she visits us tomorrow",
   "note": "Tercera persona (he, she, it) siempre lleva -s: 'complains', 'visits'.",
   "error_tags": ["third_person_s_missing"]
+}
+
+Input: "I had to explain another people that all adjustment was done manually"
+Output:
+{
+  "corrected": "I had to explain to other people that all adjustments were done manually",
+  "note": "'Another' va con singular; con plural usa 'other'. Y los sustantivos plurales llevan su -s: 'adjustments were'.",
+  "error_tags": ["another_vs_other", "plural_s_omission"]
 }
 
 Input: "I'm sorry for show up late, teacher"
