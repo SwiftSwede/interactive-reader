@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import {
   BarChart3,
   BookOpen,
+  ClipboardList,
   Home,
   Search,
   Users,
@@ -23,6 +24,7 @@ const NAV: NavItem[] = [
   { href: "/teacher/groups", label: "Grupos", icon: Users },
   { href: "/teacher/students", label: "Estudiantes", icon: Search },
   { href: "/teacher/analytics", label: "Analíticas", icon: BarChart3 },
+  { href: "/teacher/evaluacion", label: "Evaluación", icon: ClipboardList },
   { href: "/teacher/content", label: "Contenido", icon: BookOpen },
 ];
 
