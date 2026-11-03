@@ -8,7 +8,7 @@ import type { Opener, Track } from "./types";
 export const evalUiCopy = {
   splashTitle: "La Evaluación Rápida de Tu Inglés",
   splashLead:
-    "¿No sabes tu nivel de inglés? Toma esta evaluación corta de 40 preguntas para saber más o menos tu nivel.",
+    "¿No sabes tu nivel de inglés? Toma esta evaluación corta para saber más o menos tu nivel.",
   splashStart: "Empezar la evaluation",
   splashResume: "Seguir donde iba",
   splashRestart: "Empezar de nuevo",
