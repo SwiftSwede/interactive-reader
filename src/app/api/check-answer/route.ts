@@ -74,6 +74,8 @@ ERROR TAGS. Use these exact names in error_tags. One phrase each:
 - third_person_s_missing: Missing -s on third person singular. Spanish verbs don't change with the subject, English does: "My customer complain every time" becomes "My customer complains every time". "She visit my brother" becomes "She visits my brother" (or "She visited my brother" in the past). "He want" becomes "He wants".
 - gerund_after_preposition: Gerund (-ing) after a preposition. After "for", "about", "of", "in", "by", a verb needs -ing: "I'm sorry for show up late" becomes "I'm sorry for showing up late". "Instead of watch TV" becomes "Instead of watching TV". "Thank you for come" becomes "Thank you for coming".
 - be_omission: Missing "be" before "gonna"/"going to". Spanish drops the auxiliary: "I gonna wake up my husband" becomes "I'm gonna wake up my husband" (or "I'm going to wake up my husband"). "She gonna call" becomes "She's gonna call". "They going to investigate" becomes "They're going to investigate".
+- narrative_tense_drift: Narrative tense drift (past narration slides into present mid-sentence). The first clause is correctly past, but a later clause in the same sentence slips into present: "I went to my brother-in-law's and they have a party there" becomes "they had a party there". Use past_simple_omission when the whole narration stays in present, not when only part of one sentence drifts.
+- subjunctive_interference: Want/need/hope + that-clause (use person + infinitive). Spanish subjunctive after "quiero que" makes students say "I don't want that kids eat": correct is "I don't want their kids to eat". Same pattern for need/hope: person + to + verb, not "that" + subject + verb.
 
 YOUR JOB: Return the student's meaning in correct English. Output ONLY a JSON object. No markdown, no code fences, no other text.
 
@@ -215,6 +217,22 @@ Output:
   "corrected": "I'm gonna wake up my husband and he's gonna check",
   "note": "Nunca 'I gonna'. Siempre 'I'm gonna' (o 'I'm going to').",
   "error_tags": ["be_omission"]
+}
+
+Input: "I went to my brother-in-law's and they have a party there"
+Output:
+{
+  "corrected": "I went to my brother-in-law's and they had a party there",
+  "note": "Cuando cuentas algo del pasado, la oracion completa va en pasado: 'they had a party', no 'they have a party'.",
+  "error_tags": ["narrative_tense_drift"]
+}
+
+Input: "New moms don't want that kids eat a lot of candy"
+Output:
+{
+  "corrected": "New moms don't want their kids to eat a lot of candy",
+  "note": "En ingles no decimos 'want that kids eat'. Decimos 'want the kids TO eat'. Want + persona + infinitivo.",
+  "error_tags": ["subjunctive_interference"]
 }
 
 Return ONLY the JSON object. No other text.`;

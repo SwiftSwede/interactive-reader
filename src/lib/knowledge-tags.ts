@@ -214,6 +214,8 @@ export const ERROR_TAG_SEEDS: TagSeed[] = [
   { name: "be_omission", displayName: "Missing verb be (gonna)" },
   { name: "plural_s_omission", displayName: "Plural noun -s" },
   { name: "another_vs_other", displayName: "Another vs other" },
+  { name: "narrative_tense_drift", displayName: "Narrative tense drift" },
+  { name: "subjunctive_interference", displayName: "Spanish subjunctive interference" },
 ];
 
 export const TAG_SEEDS: Record<TagType, TagSeed[]> = {
