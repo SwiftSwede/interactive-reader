@@ -6,7 +6,11 @@ import { requireTeacher } from "@/lib/auth-server";
 import { createClient } from "@/lib/supabase/server";
 import {
   enrollMatchingStudentsInCourse,
+  MAIN_COHORT,
+  moveStudentToClassroomCohort,
   moveStudentToClassroomLevel,
+  normalizeClassroomCohort,
+  otherClassroomCohort,
   otherCourseLevel,
   removeClassroomStudent as removeClassroomStudentRecord,
 } from "@/lib/classroom-placement";
@@ -75,6 +79,7 @@ export async function createCourse(
   const enrolled = await enrollMatchingStudentsInCourse({
     courseId: created.id,
     level,
+    cohort: MAIN_COHORT,
   });
 
   revalidatePath("/teacher");
@@ -110,6 +115,11 @@ export async function generateMonthAction(
   const level = String(formData.get("level") ?? "").trim() as CourseLevel;
   const yearMonth = String(formData.get("yearMonth") ?? "").trim();
   const theme = String(formData.get("theme") ?? "").trim() || null;
+  const cohortRaw = String(formData.get("cohort") ?? "").trim();
+  const cohort = normalizeClassroomCohort(cohortRaw);
+  if (cohortRaw && cohortRaw !== cohort) {
+    return { ok: false, error: "Elige el horario de siempre o el otro." };
+  }
   let occurrences: GenerateOccurrence[] = [];
   try {
     const parsed = JSON.parse(String(formData.get("occurrences") ?? "[]"));
@@ -127,6 +137,7 @@ export async function generateMonthAction(
     teacherId: teacher.id,
     name,
     level,
+    cohort,
     theme,
     yearMonth,
     occurrences,
@@ -290,6 +301,102 @@ export async function moveStudentToOtherGroup(
       ok: false,
       error: "No pude moverlo. Inténtalo de nuevo.",
     };
+  }
+}
+
+export async function moveStudentsToCohort(
+  formData: FormData
+): Promise<MoveStudentResult> {
+  const teacher = await requireTeacher("/teacher");
+  const courseId = String(formData.get("courseId") ?? "").trim();
+  let studentIds: string[] = [];
+  try {
+    const parsed = JSON.parse(String(formData.get("studentIds") ?? "[]"));
+    if (!Array.isArray(parsed)) {
+      return { ok: false, error: "Elige al menos un estudiante." };
+    }
+    studentIds = [
+      ...new Set(
+        parsed.filter((id): id is string => typeof id === "string" && id.length > 0)
+      ),
+    ];
+  } catch {
+    return { ok: false, error: "Elige al menos un estudiante." };
+  }
+
+  if (!courseId || studentIds.length === 0) {
+    return { ok: false, error: "Elige al menos un estudiante." };
+  }
+  if (studentIds.length > 80) {
+    return { ok: false, error: "Mueve menos de 80 a la vez." };
+  }
+
+  const supabase = await createClient();
+  const { data: course } = await supabase
+    .from("courses")
+    .select("id, level, cohort, archived")
+    .eq("id", courseId)
+    .eq("teacher_id", teacher.id)
+    .maybeSingle();
+
+  if (!course || course.archived) {
+    return { ok: false, error: "Ese curso no es tuyo." };
+  }
+
+  const { data: enrollments, error: enrollmentError } = await supabase
+    .from("course_enrollments")
+    .select("student_id")
+    .eq("course_id", courseId)
+    .in("student_id", studentIds);
+
+  if (enrollmentError) {
+    console.error("moveStudentsToCohort load failed:", enrollmentError);
+    return { ok: false, error: "No pude moverlos. Inténtalo de nuevo." };
+  }
+
+  const enrolledIds = new Set(
+    (enrollments ?? []).map((row) => row.student_id as string)
+  );
+  if (enrolledIds.size !== studentIds.length) {
+    return { ok: false, error: "Alguno de esos estudiantes no está en este curso." };
+  }
+
+  const toCohort = otherClassroomCohort(
+    normalizeClassroomCohort(course.cohort as string)
+  );
+
+  try {
+    let waitingForMonth = false;
+    for (const studentId of studentIds) {
+      const { enrolledInLiveCourse } = await moveStudentToClassroomCohort({
+        studentId,
+        toCohort,
+      });
+      if (!enrolledInLiveCourse) waitingForMonth = true;
+    }
+    revalidatePath("/teacher", "layout");
+    const label =
+      toCohort === "extra" ? "al otro horario" : "al horario de siempre";
+    if (waitingForMonth) {
+      return {
+        ok: true,
+        message: `Listo. Ahora van ${label}. Cuando crees ese mes, entran solos.`,
+      };
+    }
+    return {
+      ok: true,
+      message: `Listo. Ahora van ${label}. Siguen pagando igual.`,
+    };
+  } catch (error) {
+    console.error("moveStudentsToCohort failed:", error);
+    const message = error instanceof Error ? error.message : "";
+    if (message.includes("classroom_cohort")) {
+      return {
+        ok: false,
+        error: "Falta una pieza en Supabase. Aplica la migración del horario.",
+      };
+    }
+    return { ok: false, error: "No pude moverlos. Inténtalo de nuevo." };
   }
 }
 

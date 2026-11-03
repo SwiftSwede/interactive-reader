@@ -252,6 +252,7 @@ export interface Profile {
   purchased: boolean;
   purchasedAt: string | null;
   classroomLevel: CourseLevel | null;
+  classroomCohort: "main" | "extra";
   createdAt: string;
 }
 
@@ -268,6 +269,7 @@ export interface Course {
   id: string;
   name: string;
   level: CourseLevel;
+  cohort: "main" | "extra";
   teacherId: string;
   createdAt: string;
   archived: boolean;

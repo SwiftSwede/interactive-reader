@@ -1,3 +1,7 @@
+import {
+  normalizeClassroomCohort,
+  type ClassroomCohort,
+} from "@/lib/classroom-cohort";
 import { enrollMatchingStudentsInCourse } from "@/lib/classroom-placement";
 import {
   MONTHLY_TEMPLATE,
@@ -22,6 +26,7 @@ export type GenerateMonthInput = {
   teacherId: string;
   name: string;
   level: CourseLevel;
+  cohort: ClassroomCohort;
   theme: string | null;
   yearMonth: string;
   occurrences: GenerateOccurrence[];
@@ -34,14 +39,17 @@ export type GenerateMonthResult =
 const LEVELS: CourseLevel[] = ["pre-intermediate", "intermediate"];
 
 export function coursesToArchive(
-  courses: Array<{ id: string; monthKey: string }>,
+  courses: Array<{ id: string; monthKey: string; cohort?: string | null }>,
   generatedMonth: string,
-  newCourseId: string
+  newCourseId: string,
+  cohort: string
 ): string[] {
+  const target = normalizeClassroomCohort(cohort);
   return courses
     .filter(
       (course) =>
         course.id !== newCourseId &&
+        normalizeClassroomCohort(course.cohort) === target &&
         shouldArchiveMonthKey(course.monthKey, generatedMonth)
     )
     .map((course) => course.id);
@@ -102,11 +110,13 @@ export async function generateMonth(
     return { ok: false, error: "El tema se pasó de 80 letras." };
   }
 
+  const cohort = normalizeClassroomCohort(input.cohort);
   const { data: priorRows, error: priorError } = await supabase
     .from("courses")
-    .select("id, created_at, archived, zoom_url")
+    .select("id, created_at, archived, zoom_url, cohort")
     .eq("teacher_id", input.teacherId)
     .eq("level", input.level)
+    .eq("cohort", cohort)
     .eq("format", "group")
     .order("created_at", { ascending: false });
 
@@ -121,6 +131,7 @@ export async function generateMonth(
       created_at: string;
       archived: boolean;
       zoom_url: string | null;
+      cohort: string | null;
     }> | null) ?? [];
   const priorIds = prior.map((row) => row.id);
   const { data: priorSessions, error: priorSessionError } =
@@ -173,6 +184,7 @@ export async function generateMonth(
     .insert({
       name,
       level: input.level,
+      cohort,
       teacher_id: input.teacherId,
       zoom_url: zoomUrl,
       theme,
@@ -217,12 +229,14 @@ export async function generateMonth(
   await enrollMatchingStudentsInCourse({
     courseId: created.id,
     level: input.level,
+    cohort,
   });
 
   const archiveCandidates = prior
     .filter((course) => !course.archived)
     .map((course) => ({
       id: course.id,
+      cohort: course.cohort,
       monthKey: courseMonthKey(
         sessionsByCourse.get(course.id) ?? [],
         course.created_at
@@ -231,7 +245,8 @@ export async function generateMonth(
   const archivedIds = coursesToArchive(
     archiveCandidates,
     input.yearMonth,
-    created.id
+    created.id,
+    cohort
   );
 
   if (archivedIds.length > 0) {

@@ -15,11 +15,12 @@ type ProfileRow = {
   purchased: boolean;
   purchased_at: string | null;
   classroom_level: CourseLevel | null;
+  classroom_cohort: string | null;
   created_at: string;
 };
 
 const PROFILE_COLUMNS =
-  "id, email, role, stripe_customer_id, subscription_status, purchased, purchased_at, classroom_level, created_at";
+  "id, email, role, stripe_customer_id, subscription_status, purchased, purchased_at, classroom_level, classroom_cohort, created_at";
 
 export function mapProfile(row: ProfileRow): Profile {
   return {
@@ -31,6 +32,7 @@ export function mapProfile(row: ProfileRow): Profile {
     purchased: row.purchased,
     purchasedAt: row.purchased_at,
     classroomLevel: row.classroom_level,
+    classroomCohort: row.classroom_cohort === "extra" ? "extra" : "main",
     createdAt: row.created_at,
   };
 }
@@ -67,8 +69,9 @@ export async function getProfile(userId: string): Promise<Profile | null> {
 
   if (!fallback) return null;
   return mapProfile({
-    ...(fallback as Omit<ProfileRow, "classroom_level">),
+    ...(fallback as Omit<ProfileRow, "classroom_level" | "classroom_cohort">),
     classroom_level: null,
+    classroom_cohort: "main",
   });
 }
 

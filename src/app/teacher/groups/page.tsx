@@ -6,6 +6,7 @@ import LocalDateTime from "@/components/LocalDateTime";
 import GroupTodayBand from "@/components/teacher/GroupTodayBand";
 import TeacherPageHeader from "@/components/teacher/TeacherPageHeader";
 import { toGroupToday } from "@/components/teacher/group-today";
+import { normalizeClassroomCohort } from "@/lib/classroom-cohort";
 import {
   countActiveStudentsByCourse,
   courseLevelLabel,
@@ -117,6 +118,7 @@ export default async function TeacherGroupsPage() {
                 id: course.id,
                 name: course.name,
                 level: course.level,
+                cohort: normalizeClassroomCohort(course.cohort),
                 archived: course.archived,
                 createdAt: course.created_at,
                 sessionStarts: list.map((session) => session.start),

@@ -4,6 +4,8 @@ import LocalDateTime from "@/components/LocalDateTime";
 import ObservationTagForm from "@/components/teacher/ObservationTagForm";
 import RemoveStudentButton from "@/components/RemoveStudentButton";
 import MoveStudentButton from "../../MoveStudentButton";
+import MoveCohortButton from "../../MoveCohortButton";
+import { normalizeClassroomCohort } from "@/lib/classroom-cohort";
 import type { CourseLevel } from "@/types";
 import { createAdminClient } from "@/lib/supabase/admin";
 import {
@@ -261,12 +263,20 @@ export default async function StudentDetailPage({
         </p>
         <div className="mt-4 flex flex-wrap items-start gap-3">
           {course.archived ? null : (
-            <MoveStudentButton
-              courseId={course.id}
-              studentId={studentId}
-              fromLevel={course.level as CourseLevel}
-              afterSuccessHref={`/teacher/classes/${course.id}`}
-            />
+            <>
+              <MoveStudentButton
+                courseId={course.id}
+                studentId={studentId}
+                fromLevel={course.level as CourseLevel}
+                afterSuccessHref={`/teacher/classes/${course.id}`}
+              />
+              <MoveCohortButton
+                courseId={course.id}
+                studentId={studentId}
+                cohort={normalizeClassroomCohort(course.cohort)}
+                afterSuccessHref={`/teacher/classes/${course.id}`}
+              />
+            </>
           )}
           <RemoveStudentButton
             studentId={studentId}

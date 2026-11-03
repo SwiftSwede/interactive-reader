@@ -7,6 +7,7 @@ import {
 } from "@/lib/catalog-crud";
 import type { CourseLevel } from "@/types";
 import CourseRoster from "./CourseRoster";
+import { normalizeClassroomCohort } from "@/lib/classroom-cohort";
 import ClassStrip, {
   type ClassStripItem,
 } from "@/components/teacher/ClassStrip";
@@ -349,7 +350,12 @@ export default async function CourseClassPage({
               Solo quienes siguen pagando. Si pausaron en ThriveCart, no salen
               aquí. Moverlos de grupo no cambia lo que pagan.
             </p>
-            <CourseRoster courseId={course.id} students={roster} />
+            <CourseRoster
+              courseId={course.id}
+              cohort={normalizeClassroomCohort(course.cohort)}
+              canMove={!course.archived}
+              students={roster}
+            />
           </>
         }
       />

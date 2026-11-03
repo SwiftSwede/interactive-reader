@@ -15,7 +15,10 @@ import {
   classroomStudentCanAccessSession,
   isActiveClassroomSubscription,
 } from "@/lib/classroom-access";
-import { seedClassroomLevelIfEmpty } from "@/lib/classroom-placement";
+import {
+  cohortAllowsSessionEnroll,
+  seedClassroomLevelIfEmpty,
+} from "@/lib/classroom-placement";
 import {
   isConversationPlan,
   isConversationRoundState,
@@ -363,7 +366,7 @@ async function enrollClassroomStudent(
   // class-link open has no enrollment yet, so this lookup must bypass RLS.
   const { data: course } = await admin
     .from("courses")
-    .select("level")
+    .select("level, cohort")
     .eq("id", courseId)
     .maybeSingle();
 
@@ -372,9 +375,18 @@ async function enrollClassroomStudent(
   const courseLevel = course.level as CourseLevel;
   const { data: profile } = await admin
     .from("profiles")
-    .select("classroom_level")
+    .select("classroom_level, classroom_cohort")
     .eq("id", studentId)
     .maybeSingle();
+
+  if (
+    !cohortAllowsSessionEnroll(
+      profile?.classroom_cohort,
+      course.cohort as string | null
+    )
+  ) {
+    return "wrong-group";
+  }
 
   const home = profile?.classroom_level;
   if (

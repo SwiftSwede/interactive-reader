@@ -20,12 +20,18 @@ import {
 } from "@/lib/monthly-template";
 import { patternFromSessionStarts } from "@/lib/monthly-template";
 import ActionButton from "@/components/ActionButton";
+import {
+  EXTRA_COHORT,
+  MAIN_COHORT,
+  type ClassroomCohort,
+} from "@/lib/classroom-cohort";
 import type { CourseLevel } from "@/types";
 
 export type MonthSourceCourse = {
   id: string;
   name: string;
   level: CourseLevel;
+  cohort: ClassroomCohort;
   archived: boolean;
   createdAt: string;
   sessionStarts: string[];
@@ -78,9 +84,12 @@ function monthOptions(now = new Date()): Array<{ value: string; label: string }>
 
 function mostRecentAtLevel(
   courses: MonthSourceCourse[],
-  level: CourseLevel
+  level: CourseLevel,
+  cohort: ClassroomCohort
 ): MonthSourceCourse | null {
-  const matches = courses.filter((course) => course.level === level);
+  const matches = courses.filter(
+    (course) => course.level === level && course.cohort === cohort
+  );
   if (matches.length === 0) return null;
   return [...matches].sort((a, b) => {
     const aStart = a.sessionStarts.reduce((max, iso) => {
@@ -110,6 +119,7 @@ export default function NewMonthWizard({
   );
   const [step, setStep] = useState<Step>("nivel");
   const [level, setLevel] = useState<CourseLevel | "">("");
+  const [cohort, setCohort] = useState<ClassroomCohort>(MAIN_COHORT);
   const [yearMonth, setYearMonth] = useState(currentYearMonth());
   const [weekdays, setWeekdays] = useState<number[]>([]);
   const [startDate, setStartDate] = useState<string | null>(null);
@@ -122,7 +132,7 @@ export default function NewMonthWizard({
 
   useEffect(() => {
     if (!level) return;
-    const prior = mostRecentAtLevel(courses, level);
+    const prior = mostRecentAtLevel(courses, level, cohort);
     setStartDate(null);
     if (!prior) {
       setWeekdays([]);
@@ -134,12 +144,13 @@ export default function NewMonthWizard({
     setWeekdays(pattern.weekdays);
     setHour(pattern.hour);
     setMinute(pattern.minute);
-  }, [courses, level]);
+  }, [courses, level, cohort]);
 
   useEffect(() => {
     if (!level || nameTouched) return;
-    setName(defaultCourseName(level, yearMonth));
-  }, [level, yearMonth, nameTouched]);
+    const base = defaultCourseName(level, yearMonth);
+    setName(cohort === EXTRA_COHORT ? `${base} B` : base);
+  }, [level, yearMonth, nameTouched, cohort]);
 
   const dates = useMemo(
     () => generateMonthDates(yearMonth, weekdays, undefined, startDate),
@@ -169,8 +180,8 @@ export default function NewMonthWizard({
   const duplicate = useMemo(() => {
     if (!level) return null;
     return (
-      courses.find((course) => {
-        if (course.level !== level) return false;
+        courses.find((course) => {
+        if (course.level !== level || course.cohort !== cohort) return false;
         const key = courseMonthKey(
           course.sessionDates.map((sessionDate) => ({ sessionDate })),
           course.createdAt
@@ -178,7 +189,7 @@ export default function NewMonthWizard({
         return key === yearMonth;
       }) ?? null
     );
-  }, [courses, level, yearMonth]);
+  }, [courses, level, cohort, yearMonth]);
 
   const preview = formatClassPreview(dates);
   const canPattern = weekdays.length > 0 && hour !== "" && minute !== "";
@@ -191,6 +202,7 @@ export default function NewMonthWizard({
   return (
     <form action={formAction} className="space-y-5">
       <input type="hidden" name="level" value={level} />
+      <input type="hidden" name="cohort" value={cohort} />
       <input type="hidden" name="yearMonth" value={yearMonth} />
       <input type="hidden" name="occurrences" value={JSON.stringify(occurrences)} />
 
@@ -214,6 +226,56 @@ export default function NewMonthWizard({
                 {levelLabel(value)}
               </button>
             ))}
+          </div>
+        </fieldset>
+      ) : null}
+
+      {step === "nivel" && level ? (
+        <fieldset>
+          <legend className="mb-1.5 block text-label-md text-text-secondary">
+            Horario
+          </legend>
+          <div className="grid grid-cols-1 gap-2">
+            <button
+              type="button"
+              onClick={() => setCohort(MAIN_COHORT)}
+              className={`min-h-11 rounded-card border px-4 py-3 text-left ${
+                cohort === MAIN_COHORT
+                  ? "border-accent bg-accent text-white"
+                  : "border-paper-line text-text-primary hover:bg-surface-hover"
+              }`}
+            >
+              <span className="block text-label-md font-medium">
+                El de siempre
+              </span>
+              <span
+                className={`mt-0.5 block text-label-sm ${
+                  cohort === MAIN_COHORT ? "text-white/80" : "text-text-muted"
+                }`}
+              >
+                Aquí caen los pagos nuevos.
+              </span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setCohort(EXTRA_COHORT)}
+              className={`min-h-11 rounded-card border px-4 py-3 text-left ${
+                cohort === EXTRA_COHORT
+                  ? "border-accent bg-accent text-white"
+                  : "border-paper-line text-text-primary hover:bg-surface-hover"
+              }`}
+            >
+              <span className="block text-label-md font-medium">
+                Otro horario
+              </span>
+              <span
+                className={`mt-0.5 block text-label-sm ${
+                  cohort === EXTRA_COHORT ? "text-white/80" : "text-text-muted"
+                }`}
+              >
+                Empieza vacío. Quien muevas se queda el próximo mes.
+              </span>
+            </button>
           </div>
         </fieldset>
       ) : null}

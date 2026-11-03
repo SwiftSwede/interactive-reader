@@ -3,28 +3,30 @@ import { describe, test } from "node:test";
 import { coursesToArchive } from "./generate-month";
 
 describe("coursesToArchive", () => {
-  test("archives only earlier months at this level, not a same-month sibling", () => {
+  test("archives only earlier months in this horario, not a same-month sibling", () => {
     const ids = coursesToArchive(
       [
-        { id: "sep", monthKey: "2026-09" },
-        { id: "oct-a", monthKey: "2026-10" },
-        { id: "oct-new", monthKey: "2026-10" },
+        { id: "sep", monthKey: "2026-09", cohort: "main" },
+        { id: "oct-a", monthKey: "2026-10", cohort: "main" },
+        { id: "oct-new", monthKey: "2026-10", cohort: "main" },
       ],
       "2026-10",
-      "oct-new"
+      "oct-new",
+      "main"
     );
     assert.deepEqual(ids, ["sep"]);
   });
 
-  test("archives both prior groups when two ran last month", () => {
+  test("creating the other horario does not archive the usual one", () => {
     const ids = coursesToArchive(
       [
-        { id: "oct-a", monthKey: "2026-10" },
-        { id: "oct-b", monthKey: "2026-10" },
+        { id: "oct-main", monthKey: "2026-10", cohort: "main" },
+        { id: "oct-extra", monthKey: "2026-10", cohort: "extra" },
       ],
       "2026-11",
-      "nov"
+      "nov-extra",
+      "extra"
     );
-    assert.deepEqual(ids, ["oct-a", "oct-b"]);
+    assert.deepEqual(ids, ["oct-extra"]);
   });
 });

@@ -82,6 +82,7 @@ export type TeacherCourseRow = {
   id: string;
   name: string;
   level: CourseLevel;
+  cohort: string;
   created_at: string;
   archived: boolean;
   zoom_url: string | null;
@@ -94,7 +95,7 @@ export async function loadTeacherCourses(
 ): Promise<TeacherCourseRow[]> {
   const { data, error } = await supabase
     .from("courses")
-    .select("id, name, level, created_at, archived, zoom_url, theme")
+    .select("id, name, level, cohort, created_at, archived, zoom_url, theme")
     .eq("teacher_id", teacherId)
     .eq("format", "group")
     .order("created_at", { ascending: false });
@@ -106,6 +107,7 @@ export async function loadTeacherCourses(
 
   return (data as TeacherCourseRow[]).map((row) => ({
     ...row,
+    cohort: row.cohort === "extra" ? "extra" : "main",
     zoom_url: row.zoom_url ?? null,
     theme: row.theme?.trim() ? row.theme : null,
   }));

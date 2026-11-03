@@ -10,6 +10,7 @@ import ThisMonthBoard, {
   type ThisMonthGroup,
 } from "@/components/teacher/ThisMonthBoard";
 import { teacherClassHref } from "@/components/teacher/teacher-ui";
+import { normalizeClassroomCohort } from "@/lib/classroom-cohort";
 import {
   countActiveStudentsByCourse,
   courseLevelLabel,
@@ -117,6 +118,7 @@ export default async function TeacherHomePage() {
       id: course.id,
       name: course.name,
       level: course.level,
+      cohort: normalizeClassroomCohort(course.cohort),
       archived: course.archived,
       createdAt: course.created_at,
       sessionStarts: list.map((session) => session.start),

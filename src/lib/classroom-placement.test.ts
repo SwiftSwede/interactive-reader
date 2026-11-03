@@ -2,9 +2,24 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 
 import {
+  cohortAllowsSessionEnroll,
+  normalizeClassroomCohort,
+  otherClassroomCohort,
+} from "./classroom-cohort";
+import {
   futureLiveCourseIdsToDrop,
   isLiveStripeManaged,
 } from "./classroom-placement";
+
+test("a class link stays inside the student's horario", () => {
+  assert.equal(cohortAllowsSessionEnroll("main", "main"), true);
+  assert.equal(cohortAllowsSessionEnroll("extra", "extra"), true);
+  assert.equal(cohortAllowsSessionEnroll("main", "extra"), false);
+  assert.equal(cohortAllowsSessionEnroll(null, "main"), true);
+  assert.equal(normalizeClassroomCohort(null), "main");
+  assert.equal(otherClassroomCohort("main"), "extra");
+  assert.equal(otherClassroomCohort("extra"), "main");
+});
 
 test("cancelled Stripe leftover does not block Quitar", () => {
   assert.equal(isLiveStripeManaged(["cancelled"]), false);

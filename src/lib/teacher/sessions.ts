@@ -10,6 +10,7 @@ export type OwnedCourse = {
   id: string;
   name: string;
   level: CourseLevel;
+  cohort: string;
   teacher_id: string;
   archived: boolean;
   zoom_url: string | null;
@@ -333,7 +334,7 @@ export async function getOwnedCourse(courseId: string): Promise<{
   const supabase = await createClient();
   const { data } = await supabase
     .from("courses")
-    .select("id, name, level, teacher_id, archived, zoom_url, theme, format")
+    .select("id, name, level, cohort, teacher_id, archived, zoom_url, theme, format")
     .eq("id", courseId)
     .eq("teacher_id", teacher.id)
     .maybeSingle();

@@ -1,6 +1,20 @@
 import { createAdminClient } from "@/lib/supabase/admin";
 import { isActiveClassroomSubscription } from "@/lib/classroom-access";
+import {
+  MAIN_COHORT,
+  normalizeClassroomCohort,
+  type ClassroomCohort,
+} from "@/lib/classroom-cohort";
 import type { CourseLevel } from "@/types";
+
+export {
+  EXTRA_COHORT,
+  MAIN_COHORT,
+  cohortAllowsSessionEnroll,
+  normalizeClassroomCohort,
+  otherClassroomCohort,
+  type ClassroomCohort,
+} from "@/lib/classroom-cohort";
 
 export function otherCourseLevel(level: CourseLevel): CourseLevel {
   return level === "pre-intermediate" ? "intermediate" : "pre-intermediate";
@@ -71,16 +85,32 @@ async function displayNameForStudent(studentId: string): Promise<string> {
   return profile?.email?.split("@")[0] ?? "Sin nombre";
 }
 
+export async function getClassroomCohort(
+  studentId: string
+): Promise<ClassroomCohort> {
+  const admin = createAdminClient();
+  const { data, error } = await admin
+    .from("profiles")
+    .select("classroom_cohort")
+    .eq("id", studentId)
+    .maybeSingle();
+
+  if (error || !data) return MAIN_COHORT;
+  return normalizeClassroomCohort(data.classroom_cohort);
+}
+
 export async function enrollStudentInUnarchivedLevel(params: {
   studentId: string;
   level: CourseLevel;
   displayName: string;
+  cohort: ClassroomCohort;
 }): Promise<void> {
   const admin = createAdminClient();
   const { data: courses, error } = await admin
     .from("courses")
     .select("id")
     .eq("level", params.level)
+    .eq("cohort", params.cohort)
     .eq("format", "group")
     .eq("archived", false);
 
@@ -142,10 +172,12 @@ export async function enrollInClassroomHome(params: {
     await seedClassroomLevelIfEmpty(params.studentId, level);
   }
 
+  const cohort = await getClassroomCohort(params.studentId);
   await enrollStudentInUnarchivedLevel({
     studentId: params.studentId,
     level,
     displayName: params.displayName,
+    cohort,
   });
 }
 
@@ -171,16 +203,62 @@ export async function moveStudentToClassroomLevel(params: {
     studentId: params.studentId,
     level: fromLevel,
   });
+  const cohort = await getClassroomCohort(params.studentId);
   await enrollStudentInUnarchivedLevel({
     studentId: params.studentId,
     level: params.toLevel,
     displayName,
+    cohort,
   });
 
   const { count } = await admin
     .from("courses")
     .select("id", { count: "exact", head: true })
     .eq("level", params.toLevel)
+    .eq("cohort", cohort)
+    .eq("format", "group")
+    .eq("archived", false);
+
+  return { enrolledInLiveCourse: (count ?? 0) > 0 };
+}
+
+export async function moveStudentToClassroomCohort(params: {
+  studentId: string;
+  toCohort: ClassroomCohort;
+}): Promise<{ enrolledInLiveCourse: boolean }> {
+  const level = await getClassroomLevel(params.studentId);
+  if (!level) {
+    throw new Error("no classroom level");
+  }
+
+  const displayName = await displayNameForStudent(params.studentId);
+  const admin = createAdminClient();
+  const { error } = await admin
+    .from("profiles")
+    .update({ classroom_cohort: params.toCohort })
+    .eq("id", params.studentId)
+    .eq("role", "student-classroom");
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  await unenrollStudentFromUnarchivedLevel({
+    studentId: params.studentId,
+    level,
+  });
+  await enrollStudentInUnarchivedLevel({
+    studentId: params.studentId,
+    level,
+    displayName,
+    cohort: params.toCohort,
+  });
+
+  const { count } = await admin
+    .from("courses")
+    .select("id", { count: "exact", head: true })
+    .eq("level", level)
+    .eq("cohort", params.toCohort)
     .eq("format", "group")
     .eq("archived", false);
 
@@ -190,13 +268,15 @@ export async function moveStudentToClassroomLevel(params: {
 export async function enrollMatchingStudentsInCourse(params: {
   courseId: string;
   level: CourseLevel;
+  cohort: ClassroomCohort;
 }): Promise<number> {
   const admin = createAdminClient();
   const { data: profiles, error } = await admin
     .from("profiles")
     .select("id, subscription_status")
     .eq("role", "student-classroom")
-    .eq("classroom_level", params.level);
+    .eq("classroom_level", params.level)
+    .eq("classroom_cohort", params.cohort);
 
   if (error) {
     console.error("enrollMatchingStudentsInCourse load failed:", error);
