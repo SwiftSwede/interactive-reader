@@ -1,4 +1,6 @@
 import {
+  EXTRA_COHORT,
+  MAIN_COHORT,
   normalizeClassroomCohort,
   type ClassroomCohort,
 } from "@/lib/classroom-cohort";
@@ -37,6 +39,21 @@ export type GenerateMonthResult =
   | { ok: false; error: string };
 
 const LEVELS: CourseLevel[] = ["pre-intermediate", "intermediate"];
+
+/**
+ * A second group in a month that already has the usual one starts as the
+ * other horario, so the existing roster is not copied in.
+ */
+export function cohortForNewMonth(
+  requested: string | null | undefined,
+  sameMonthCohorts: Array<string | null | undefined>
+): ClassroomCohort {
+  const want = normalizeClassroomCohort(requested);
+  const taken = sameMonthCohorts.map((value) => normalizeClassroomCohort(value));
+  if (want === EXTRA_COHORT) return EXTRA_COHORT;
+  if (taken.includes(MAIN_COHORT)) return EXTRA_COHORT;
+  return want === MAIN_COHORT ? MAIN_COHORT : want;
+}
 
 export function coursesToArchive(
   courses: Array<{ id: string; monthKey: string; cohort?: string | null }>,
@@ -110,13 +127,11 @@ export async function generateMonth(
     return { ok: false, error: "El tema se pasó de 80 letras." };
   }
 
-  const cohort = normalizeClassroomCohort(input.cohort);
   const { data: priorRows, error: priorError } = await supabase
     .from("courses")
     .select("id, created_at, archived, zoom_url, cohort")
     .eq("teacher_id", input.teacherId)
     .eq("level", input.level)
-    .eq("cohort", cohort)
     .eq("format", "group")
     .order("created_at", { ascending: false });
 
@@ -161,10 +176,25 @@ export async function generateMonth(
     sessionsByCourse.set(row.course_id, list);
   }
 
+  const sameMonthCohorts = prior
+    .filter((course) => !course.archived)
+    .filter((course) => {
+      const key = courseMonthKey(
+        sessionsByCourse.get(course.id) ?? [],
+        course.created_at
+      );
+      return key === input.yearMonth;
+    })
+    .map((course) => course.cohort);
+  const cohort = cohortForNewMonth(input.cohort, sameMonthCohorts);
+  const cohortPrior = prior.filter(
+    (course) => normalizeClassroomCohort(course.cohort) === cohort
+  );
+
   let zoomUrl: string | null = null;
   let latestStart = -1;
   let latestCreated = "";
-  for (const course of prior) {
+  for (const course of cohortPrior) {
     const sessions = sessionsByCourse.get(course.id) ?? [];
     const maxStart = sessions.reduce((max, session) => {
       const t = new Date(session.start).getTime();
@@ -232,7 +262,7 @@ export async function generateMonth(
     cohort,
   });
 
-  const archiveCandidates = prior
+  const archiveCandidates = cohortPrior
     .filter((course) => !course.archived)
     .map((course) => ({
       id: course.id,

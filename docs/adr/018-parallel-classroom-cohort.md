@@ -19,5 +19,5 @@ Archiving a new month, and copying its Zoom link, stays inside the same cohort. 
 ## Consequences
 
 - A third room needs a new cohort value and a CHECK update (ADR 007).
-- The extra month starts empty. Kyle moves people onto it. Next month, Nuevo mes on that cohort enrolls them again.
+- The extra month starts empty. Kyle moves people onto it. Next month, Nuevo mes on that cohort enrolls them again. A second group created for a month that already has the usual one is forced to `extra`, so the existing roster is not copied. A move with no destination month is refused, so students are not dropped from the only live group.
 - A student who opens the other room's class link sees the wrong-group state. The link does not switch their cohort.

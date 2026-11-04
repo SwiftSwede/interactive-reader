@@ -12,6 +12,7 @@ import ClassStrip, {
   type ClassStripItem,
 } from "@/components/teacher/ClassStrip";
 import DeleteCourseButton from "./DeleteCourseButton";
+import CourseNameForm from "@/components/teacher/CourseNameForm";
 import CourseThemeForm from "@/components/teacher/CourseThemeForm";
 import CourseWorkspace from "@/components/teacher/CourseWorkspace";
 import NewClassButton from "@/components/teacher/NewClassButton";
@@ -285,7 +286,9 @@ export default async function CourseClassPage({
   return (
     <section>
       <TeacherPageHeader
-        title={course.name}
+        heading={
+          <CourseNameForm courseId={course.id} name={course.name} />
+        }
         description={
           <>
             {courseLevelLabel(course.level as CourseLevel)}

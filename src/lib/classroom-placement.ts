@@ -231,8 +231,23 @@ export async function moveStudentToClassroomCohort(params: {
     throw new Error("no classroom level");
   }
 
-  const displayName = await displayNameForStudent(params.studentId);
   const admin = createAdminClient();
+  const { count: destinationCount, error: destinationError } = await admin
+    .from("courses")
+    .select("id", { count: "exact", head: true })
+    .eq("level", level)
+    .eq("cohort", params.toCohort)
+    .eq("format", "group")
+    .eq("archived", false);
+
+  if (destinationError) {
+    throw new Error(destinationError.message);
+  }
+  if ((destinationCount ?? 0) === 0) {
+    throw new Error("no destination course");
+  }
+
+  const displayName = await displayNameForStudent(params.studentId);
   const { error } = await admin
     .from("profiles")
     .update({ classroom_cohort: params.toCohort })

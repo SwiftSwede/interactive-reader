@@ -2,17 +2,21 @@ import type { ReactNode } from "react";
 
 export default function TeacherPageHeader({
   title,
+  heading,
   description,
   action,
 }: {
-  title: string;
+  title?: string;
+  heading?: ReactNode;
   description?: ReactNode;
   action?: ReactNode;
 }) {
   return (
     <header className="flex flex-wrap items-start justify-between gap-4">
       <div className="min-w-0">
-        <h1 className="text-headline-lg text-text-primary">{title}</h1>
+        {heading ?? (
+          <h1 className="text-headline-lg text-text-primary">{title}</h1>
+        )}
         {description ? (
           <p className="mt-2 text-body-main text-text-secondary">
             {description}

@@ -177,11 +177,11 @@ export default function NewMonthWizard({
     });
   }, [dates, hour, minute]);
 
-  const duplicate = useMemo(() => {
+  const sameMonthCourse = useMemo(() => {
     if (!level) return null;
     return (
-        courses.find((course) => {
-        if (course.level !== level || course.cohort !== cohort) return false;
+      courses.find((course) => {
+        if (course.level !== level || course.archived) return false;
         const key = courseMonthKey(
           course.sessionDates.map((sessionDate) => ({ sessionDate })),
           course.createdAt
@@ -189,7 +189,11 @@ export default function NewMonthWizard({
         return key === yearMonth;
       }) ?? null
     );
-  }, [courses, level, cohort, yearMonth]);
+  }, [courses, level, yearMonth]);
+
+  useEffect(() => {
+    setCohort(sameMonthCourse ? EXTRA_COHORT : MAIN_COHORT);
+  }, [sameMonthCourse, yearMonth, level]);
 
   const preview = formatClassPreview(dates);
   const canPattern = weekdays.length > 0 && hour !== "" && minute !== "";
@@ -238,8 +242,9 @@ export default function NewMonthWizard({
           <div className="grid grid-cols-1 gap-2">
             <button
               type="button"
+              disabled={Boolean(sameMonthCourse)}
               onClick={() => setCohort(MAIN_COHORT)}
-              className={`min-h-11 rounded-card border px-4 py-3 text-left ${
+              className={`min-h-11 rounded-card border px-4 py-3 text-left disabled:opacity-60 ${
                 cohort === MAIN_COHORT
                   ? "border-accent bg-accent text-white"
                   : "border-paper-line text-text-primary hover:bg-surface-hover"
@@ -455,7 +460,10 @@ export default function NewMonthWizard({
         <div className="space-y-4">
           <label className="block">
             <span className="mb-1.5 block text-label-md text-text-secondary">
-              Nombre
+              Nombre del grupo
+            </span>
+            <span className="mb-1.5 block text-label-sm text-text-muted">
+              Así lo ves tú y los alumnos. El otro horario necesita otro nombre.
             </span>
             <input
               name="name"
@@ -488,10 +496,10 @@ export default function NewMonthWizard({
         </div>
       ) : null}
 
-      {duplicate ? (
+      {sameMonthCourse ? (
         <p className="text-label-sm text-text-secondary">
-          Ya hay un curso de {level ? levelLabel(level) : ""} para este mes (
-          {duplicate.name}). Puedes crear otro.
+          Ya hay un grupo de {level ? levelLabel(level) : ""} este mes (
+          {sameMonthCourse.name}). Este nuevo empieza vacío.
         </p>
       ) : null}
 

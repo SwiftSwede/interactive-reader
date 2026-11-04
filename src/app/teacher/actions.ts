@@ -196,6 +196,49 @@ export async function updateCourseTheme(
   };
 }
 
+export type UpdateCourseNameResult =
+  | { ok: true; name: string }
+  | { ok: false; error: string };
+
+export async function updateCourseName(
+  _prev: UpdateCourseNameResult | null,
+  formData: FormData
+): Promise<UpdateCourseNameResult> {
+  const teacher = await requireTeacher("/teacher");
+  const courseId = String(formData.get("courseId") ?? "").trim();
+  const name = String(formData.get("name") ?? "").trim();
+  if (!courseId) {
+    return { ok: false, error: "No encontré ese grupo." };
+  }
+  if (!name) {
+    return { ok: false, error: "Ponle un nombre al grupo." };
+  }
+  if (name.length > 80) {
+    return { ok: false, error: "El nombre se pasó de 80 letras." };
+  }
+
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("courses")
+    .update({ name })
+    .eq("id", courseId)
+    .eq("teacher_id", teacher.id)
+    .select("id")
+    .maybeSingle();
+
+  if (error || !data) {
+    console.error("updateCourseName failed:", error);
+    return { ok: false, error: "No pude guardar el nombre. Inténtalo de nuevo." };
+  }
+
+  revalidatePath("/teacher");
+  revalidatePath("/teacher/groups");
+  revalidatePath(`/teacher/classes/${courseId}`);
+  revalidatePath("/dashboard");
+  revalidatePath("/lessons");
+  return { ok: true, name };
+}
+
 export type DeleteCourseResult = { ok: false; error: string };
 
 export async function deleteCourse(
@@ -390,6 +433,13 @@ export async function moveStudentsToCohort(
   } catch (error) {
     console.error("moveStudentsToCohort failed:", error);
     const message = error instanceof Error ? error.message : "";
+    if (message.includes("no destination course")) {
+      return {
+        ok: false,
+        error:
+          "Ese horario todavía no tiene un mes. Créalo primero y vuelve a moverlos.",
+      };
+    }
     if (message.includes("classroom_cohort")) {
       return {
         ok: false,

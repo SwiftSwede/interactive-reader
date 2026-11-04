@@ -1,6 +1,20 @@
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";
-import { coursesToArchive } from "./generate-month";
+import { cohortForNewMonth, coursesToArchive } from "./generate-month";
+
+describe("cohortForNewMonth", () => {
+  test("a second group in a month that already has the usual one starts empty", () => {
+    assert.equal(cohortForNewMonth("main", ["main"]), "extra");
+  });
+
+  test("the first group of a month keeps the usual horario", () => {
+    assert.equal(cohortForNewMonth("main", []), "main");
+  });
+
+  test("choosing the other horario stays the other horario", () => {
+    assert.equal(cohortForNewMonth("extra", ["main"]), "extra");
+  });
+});
 
 describe("coursesToArchive", () => {
   test("archives only earlier months in this horario, not a same-month sibling", () => {
