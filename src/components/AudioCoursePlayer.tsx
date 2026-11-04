@@ -508,7 +508,7 @@ export default function AudioCoursePlayer({
       : showInput
         ? "Traduce"
         : "Escucha";
-  const showAsk = !isTeacher && previewLevel == null;
+  const showAsk = writes && !isTeacher && previewLevel == null;
 
   return (
     <div className="min-h-dvh bg-paper">

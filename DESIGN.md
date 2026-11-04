@@ -729,7 +729,7 @@ Pages: story lessons, writing lessons, exams, movie talk, music, future lesson t
 
 **Main header (lesson mode):**
 - Sticky, `--paper-header` background with backdrop blur. Two identity lines, shared by every lesson type (`LessonHeader`).
-- Line 1: lesson type left (`label-sm`, `--text-muted`, e.g. "Historia", "Escritura", "Movie Talk"). Right: **Progreso** (`/progress`) and **Inicio** (`/dashboard`) for students (`label-md`, `--text-secondary`, 44px touch). An audio course adds **Curso** (`/course/{id}`) before Progreso, for students and teachers. Teacher on a session-backed lesson: **Vista de estudiante** (becomes **Vista de profe** in preview) then **Inicio** to `/teacher`. Same header-link style, 44px touch. No Volver. No "Profe Kyle" wordmark (brand stays on browsing, login, and document titles). Audio course students also get the quiet glass `?` bar (Traducción pattern): circle only, under the sticky player. No Inicio / Lecciones / Herramientas tab bar on the lesson itself.
+- Line 1: lesson type left (`label-sm`, `--text-muted`, e.g. "Historia", "Escritura", "Movie Talk"). Right: **Progreso** (`/progress`) and **Inicio** (`/dashboard`) for students (`label-md`, `--text-secondary`, 44px touch). An audio course adds **Curso** (`/course/{id}`) before Progreso, for students and teachers. Teacher on a session-backed lesson: **Vista de estudiante** (becomes **Vista de profe** in preview) then **Inicio** to `/teacher`. Same header-link style, 44px touch. No Volver. No "Profe Kyle" wordmark (brand stays on browsing, login, and document titles). Logged-in audio course students also get the quiet glass `?` bar (Traducción pattern): circle only, under the sticky player. Logged-out free preview has no `?`. No Inicio / Lecciones / Herramientas tab bar on the lesson itself.
 - Line 2: lesson name left (`headline-md`, Lora, truncates) and CEFR right on the same line (`label-sm`, `--text-muted`). CEFR is derived from `level`: beginner A1/A2, pre-intermediate A2/B1, intermediate B1/B2. Stories and dialogues also append ` · {n} palabras`. Other types show CEFR only.
 - Do not put timers, task labels, or step dots in this identity block.
 
@@ -759,7 +759,7 @@ Pages: story lessons, writing lessons, exams, movie talk, music, future lesson t
 **Bottom navigation (lesson mode):**
 - Fixed glass bar at the bottom of the viewport (not in the scroll). Same spot on every step.
 - Full-bleed Paper frost (`rgba(250, 246, 240, 0.78)` + `backdrop-filter: blur(16px)`), 1px `--paper-line` top border, subtle top shadow. Opaque `--paper` when `prefers-reduced-transparency`. Inner row max-width 672px, centered, 16px side padding, iPhone safe-area below the pills.
-- Pill-shaped buttons (9999px radius): "← El cuento" (left, secondary style) and "Comprensión →" (right, primary style). Students, mid-lesson: a 44px accent `?` between the pills (`step-nav-ask`). Last step: `?` on the right where Siguiente was; Listo stays in the middle (`step-nav-ask-done`). Teacher live: **Bloquear pasos / Abrir todas** in the middle of that row (no `?`). Presentation before/during class, conversation, Traducción, and audio course: a quiet glass bar that is only the circle. On audio course the sticky player sits above that bar. Hidden for teacher and preview.
+- Pill-shaped buttons (9999px radius): "← El cuento" (left, secondary style) and "Comprensión →" (right, primary style). Students, mid-lesson: a 44px accent `?` between the pills (`step-nav-ask`). Last step: `?` on the right where Siguiente was; Listo stays in the middle (`step-nav-ask-done`). Teacher live: **Bloquear pasos / Abrir todas** in the middle of that row (no `?`). Presentation before/during class, conversation, Traducción, and audio course: a quiet glass bar that is only the circle. On audio course the sticky player sits above that bar. Hidden for teacher, preview, and logged-out free preview.
 - Left arrow hidden on first step. Right arrow hidden on last step.
 - Last step shows completion message instead of right arrow: "Listo! Has practicado todos los ejercicios." (`label-md`, `--text-secondary`, centered)
 - Body padding keeps the last paragraph clear of the bar. Sticky audio and the character band stack above it (`body:has(.step-nav)`). The bar never jumps when those appear.
@@ -1103,7 +1103,7 @@ Keep YouTube in review mode with normal controls. No pronunciation. No group wor
 
 ### Audio course lesson (Iplo)
 
-Self-paced only. `stories.kind = audio_course`. Route `/lesson/[slug]`. No step dots, no word flags, no Nueva clase row. Students get the same lesson-mode identity header as stories (sticky, paper-header, Curso / Progreso / Inicio) plus a quiet glass `?` bar (`surface=leccion`, story id, no session). Teacher and preview hide `?`. No browsing tab bar on the lesson.
+Self-paced only. `stories.kind = audio_course`. Route `/lesson/[slug]`. No step dots, no word flags, no Nueva clase row. Students get the same lesson-mode identity header as stories (sticky, paper-header, Curso / Progreso / Inicio) plus a quiet glass `?` bar (`surface=leccion`, story id, no session). Teacher, preview, and logged-out free preview hide `?` (submit requires an account; there is no anonymous Preguntas queue). No browsing tab bar on the lesson.
 
 **Header:** type "Audio", lesson title, level. No word count. **Curso** sits before Progreso and opens `/course/{id}`.
 
