@@ -146,7 +146,7 @@ El granjero va a su habitación, donde un Bitzer sucio se esconde rápidamente d
 {
 slug: "little-bear-first-frost",
 title: "Little Bear: First Frost",
-youtubeUrl: "https://www.youtube.com/watch?v=1bAux_FVcu0",
+youtubeUrl: "https://youtu.be/1bAux_FVcu0?t=63",
 englishSummary: `Father and Little Bear were outside. Father was raking leaves while Little Bear played in the tree. When Little Bear jumped down from the tree, he noticed his father was listening to something.
 
 "What are you listening to?" he asked him.

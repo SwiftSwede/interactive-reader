@@ -6,7 +6,7 @@ import LessonHeader from "@/components/lesson/LessonHeader";
 import ClassroomYoutubePlayer from "@/components/ClassroomYoutubePlayer";
 import RecordingBanner from "@/components/lesson/RecordingBanner";
 import { createClient } from "@/lib/supabase/client";
-import { youtubeEmbedId } from "@/lib/youtube-sync";
+import { youtubeEmbedId, youtubeStartSeconds } from "@/lib/youtube-sync";
 import VideoSummaryFreeWrite from "@/components/VideoSummaryFreeWrite";
 import VideoSummaryTranslationStep from "@/components/VideoSummaryTranslationStep";
 import AskTeacherButton from "@/components/ask/AskTeacherButton";
@@ -100,6 +100,7 @@ export default function VideoSummaryPlayer({
   const [timerStartedAt, setTimerStartedAt] = useState(initialTimer);
   const [classEndedAt, setClassEndedAt] = useState(initialEndedAt);
   const youtubeId = youtubeEmbedId(youtubeUrl);
+  const youtubeStart = youtubeStartSeconds(youtubeUrl);
   const englishCheatSheet = bodyText
     .split("\n\n")
     .map((part) => part.trim())
@@ -256,6 +257,7 @@ export default function VideoSummaryPlayer({
               sessionId={sessionId}
               isTeacher={isTeacher}
               live={live}
+              startSeconds={youtubeStart}
             />
           </div>
         ) : null}
