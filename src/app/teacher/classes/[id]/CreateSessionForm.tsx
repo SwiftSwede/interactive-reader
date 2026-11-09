@@ -94,8 +94,6 @@ export default function CreateSessionForm({
   const [previousPromptId, setPreviousPromptId] = useState("");
   const [conversationListText, setConversationListText] = useState("");
   const conversationQuestions = parsePastedQuestionList(conversationListText);
-  const conversationPreview = conversationQuestions.slice(0, 6);
-  const conversationOverflow = conversationQuestions.length > 6;
 
   useEffect(() => {
     if (state?.ok) onCreated?.();
@@ -758,7 +756,7 @@ export default function CreateSessionForm({
           <div>
             <label className="block">
               <span className="mb-1.5 block text-sm font-medium text-text-secondary">
-                Preguntas (3 a 6)
+                Preguntas (mínimo 3)
               </span>
               <textarea
                 rows={8}
@@ -786,7 +784,7 @@ export default function CreateSessionForm({
                 estudiantes las ven numeradas.
               </span>
             </label>
-            {conversationPreview.map((question, index) => (
+            {conversationQuestions.map((question, index) => (
               <input
                 key={`q-${index}`}
                 type="hidden"
@@ -794,17 +792,12 @@ export default function CreateSessionForm({
                 value={question}
               />
             ))}
-            {conversationPreview.length > 0 ? (
+            {conversationQuestions.length > 0 ? (
               <ol className="mt-3 list-decimal space-y-1 pl-6 text-body-main text-text-primary">
-                {conversationPreview.map((question, index) => (
+                {conversationQuestions.map((question, index) => (
                   <li key={`preview-${index}`}>{question}</li>
                 ))}
               </ol>
-            ) : null}
-            {conversationOverflow ? (
-              <p className="mt-2 text-xs text-text-muted">
-                Solo se guardan las primeras 6.
-              </p>
             ) : null}
           </div>
         </>
@@ -1025,7 +1018,7 @@ export default function CreateSessionForm({
             (conversationPrompts.length === 0 || !previousPromptId)) ||
           (sessionType === "conversation" &&
             promptMode === "new" &&
-            conversationPreview.filter((row) => row.trim()).length < 3)
+            conversationQuestions.filter((row) => row.trim()).length < 3)
         }
       >
         {assignToSessionId ? "Guardar" : "Crear clase"}

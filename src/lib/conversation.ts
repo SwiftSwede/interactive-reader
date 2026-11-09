@@ -171,6 +171,20 @@ export function parseConversationRoundSync(
   };
 }
 
+/** Methodology floor; upper bound is abuse protection only, not pedagogy. */
+export const CONVERSATION_QUESTION_MIN = 3;
+export const CONVERSATION_QUESTION_MAX = 30;
+
+export function conversationQuestionCountError(count: number): string | null {
+  if (count < CONVERSATION_QUESTION_MIN) {
+    return `Pon al menos ${CONVERSATION_QUESTION_MIN} preguntas.`;
+  }
+  if (count > CONVERSATION_QUESTION_MAX) {
+    return `Máximo ${CONVERSATION_QUESTION_MAX} preguntas por conversación.`;
+  }
+  return null;
+}
+
 export function conversationPlanLabels(
   level: CourseLevel
 ): { plan: ConversationPlan; label: string }[] {

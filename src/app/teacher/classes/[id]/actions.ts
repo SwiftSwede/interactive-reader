@@ -23,6 +23,7 @@ import {
   setSessionAttendance,
   setSessionRecordingUrl,
 } from "@/lib/teacher";
+import { conversationQuestionCountError } from "@/lib/conversation";
 import {
   parseSessionYoutubeUrl,
   YOUTUBE_URL_MAX_LENGTH,
@@ -459,8 +460,9 @@ export async function createSession(
     if (!title) {
       return { ok: false, error: "Ponle un título a la conversación." };
     }
-    if (questions.length < 3 || questions.length > 6) {
-      return { ok: false, error: "Pon entre 3 y 6 preguntas." };
+    const questionCountError = conversationQuestionCountError(questions.length);
+    if (questionCountError) {
+      return { ok: false, error: questionCountError };
     }
     if (questions.some((question) => question.length > 500)) {
       return { ok: false, error: "Alguna pregunta se pasó de 500 letras." };

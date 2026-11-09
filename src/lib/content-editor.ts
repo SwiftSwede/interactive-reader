@@ -29,6 +29,7 @@ import {
   type ExamPromptRow,
 } from "@/lib/exam";
 import {
+  conversationQuestionCountError,
   mapConversationPromptRow,
   parseConversationQuestions,
   serializeConversationQuestions,
@@ -1368,8 +1369,9 @@ export async function saveConversationPrompt(
   const questions = fields.questions
     .map((row) => ({ id: row.id, question: row.question.trim() }))
     .filter((row) => row.question);
-  if (questions.length < 3 || questions.length > 6) {
-    return fail("La conversación lleva de 3 a 6 preguntas.");
+  const questionCountError = conversationQuestionCountError(questions.length);
+  if (questionCountError) {
+    return fail(questionCountError);
   }
   const { error } = await supabase
     .from("conversation_prompts")

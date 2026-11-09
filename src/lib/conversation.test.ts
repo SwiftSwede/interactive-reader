@@ -2,6 +2,9 @@ import assert from "node:assert/strict";
 import { describe, test } from "node:test";
 import {
   appendNumberedQuestions,
+  conversationQuestionCountError,
+  CONVERSATION_QUESTION_MAX,
+  CONVERSATION_QUESTION_MIN,
   conversationChannelName,
   formatRoundClock,
   isRoundsComplete,
@@ -158,6 +161,17 @@ describe("questions", () => {
     assert.equal(
       appendNumberedQuestions("Write about Gabo.", ["Have you read him?"]),
       "Write about Gabo.\n1. Have you read him?"
+    );
+  });
+
+  test("enforces minimum and generous maximum counts", () => {
+    assert.equal(CONVERSATION_QUESTION_MIN, 3);
+    assert.ok(CONVERSATION_QUESTION_MAX >= 7);
+    assert.equal(conversationQuestionCountError(2), "Pon al menos 3 preguntas.");
+    assert.equal(conversationQuestionCountError(7), null);
+    assert.equal(
+      conversationQuestionCountError(CONVERSATION_QUESTION_MAX + 1),
+      `Máximo ${CONVERSATION_QUESTION_MAX} preguntas por conversación.`
     );
   });
 

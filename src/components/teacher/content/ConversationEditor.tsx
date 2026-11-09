@@ -84,22 +84,20 @@ export default function ConversationEditor({
           />
         </div>
       ))}
-      {questions.length < 6 ? (
-        <AddButton
-          label="+ Agregar"
-          onClick={() => {
-            setQuestions([
-              ...questions,
-              {
-                id: nextStableId(questions.map((row) => row.id)),
-                question: "",
-              },
-            ]);
-            setSaved(false);
-          }}
-        />
-      ) : null}
-      <p className="text-label-sm text-text-muted">De 3 a 6 preguntas.</p>
+      <AddButton
+        label="+ Agregar"
+        onClick={() => {
+          setQuestions([
+            ...questions,
+            {
+              id: nextStableId(questions.map((row) => row.id)),
+              question: "",
+            },
+          ]);
+          setSaved(false);
+        }}
+      />
+      <p className="text-label-sm text-text-muted">Mínimo 3 preguntas.</p>
       <SaveBar
         dirty={dirty}
         pending={pending}
