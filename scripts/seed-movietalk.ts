@@ -488,6 +488,134 @@ Lydia-What if this is a dream? Can you guys do any tricks to prove I'm not dream
       { position: 9, question: "What does Lydia say her stepmother is doing tonight?", answer: "Sleeping with Prince Valium" }
     ],
   },
+  {
+    slug: "planes-trains-automobiles",
+    title: "Planes, Trains and Automobiles",
+    level: "intermediate",
+    cefr: "B1/B2",
+    synopsis:
+      "In New York the marketing executive Neal Page wants to travel home to Chicago for Thanksgiving. He has difficulties getting a taxi and his flight is cancelled. He meets in the airport the clumsy and talkative shower curtain ring salesman Del Griffith who has taken his cab and they travel side-by-side to Chicago. However the bad weather shuts down O'Hare Airport and they land at Wichita, Kansas. They both want to go to Chicago and they decide to travel together. Along their journey Neal changes his viewpoint about Del Griffith and his own behavior.",
+    warmupQuestion: "Have you ever had to travel with someone you didn't want to?",
+    scenes: [
+      {
+        sceneNumber: 1,
+        youtubeUrl: "https://www.youtube.com/watch?v=Rd5dYQHoZS0",
+        startSeconds: null,
+        endSeconds: null,
+        questionStartPosition: 1,
+        questionEndPosition: 3,
+      },
+      {
+        sceneNumber: 2,
+        youtubeUrl: "https://www.youtube.com/watch?v=nWRxPDhd3d0",
+        startSeconds: null,
+        endSeconds: null,
+        questionStartPosition: 4,
+        questionEndPosition: 6,
+      },
+      {
+        sceneNumber: 3,
+        youtubeUrl: "https://www.youtube.com/watch?v=FuZNswuwAxM",
+        startSeconds: null,
+        endSeconds: null,
+        questionStartPosition: 7,
+        questionEndPosition: 9,
+      },
+      {
+        sceneNumber: 4,
+        youtubeUrl: "https://www.youtube.com/watch?v=ZKtFIgmoqoI",
+        startSeconds: null,
+        endSeconds: null,
+        questionStartPosition: 10,
+        questionEndPosition: 12,
+      },
+    ],
+    body: `Del-I never did introduce myself. Del Griffith. American Light and Fixture. Director of Sales. Shower Curtain Ring Division. I sell shower curtain rings. Best in the world. And you are?
+Neal-Neal Page.
+Del-Neal Page. Pleased to meet you, Neal Page. So what do you do for a living, Neal Page?
+Neal-Marketing.
+Del-Marketing. Super. Super. Fabulous. Isn't that nice.
+Neal-Uh—look—I don't wanna be rude, but I'm not much of a conversationalist. I'd really like to finish this article. A friend of mine wrote it. So—
+Del-Don't let me stand in your way. Please, don't let me stand in your way. The last thing I wanna be remembered as is as an annoying blabbermouth. You know, nothing grinds my gears worse than some chowderhead who doesn't know when to keep his big trap shut. You catch me running off with the mouth, just give me a poke in the chops.
+[Takes off shoe and then sock]
+Del-Awww, awww, that feels good. Oh, God. I'm telling ya. My dogs are barking today. Woof, oohh. That feels better.
+[Some time later and Neal is being used as a pillow by the two men on either side of him]
+Del-6 bucks and my right nut says we're not landing in Chicago.
+***
+Agent-No, mom's gonna do the turkey. Yeah, dad wants ambrosia, so I guess we gotta get those miniature marshmallows. I'll do the crescent rolls, and you do the cranberries. You know I can't cook. Hahahaha— Yeah, well I'll see you tomorrow, then. Gobble, gobble. Hahahaha, bye bye.
+[Hangs up phone]
+Agent-Welcome to Marathon. May I help you?
+Neal-Yes.
+Agent-How may I help you?
+Neal-You can start by wiping that fucking dumbass smile off your rosy fucking cheeks. And you can give me a fucking automobile. A fucking Datsun. A fucking Toyota. A fucking Mustang. A fucking Buick. 4 fucking wheels and a seat.
+Agent-I really don't care for the way you're speaking to me.
+Neal-And I really don't care for the way your company left me in the middle of fucking nowhere with keys to a fucking car that isn't fucking there. And I really didn't care to walk down a highway and cross a fucking runway to get back here and have you smile at my fucking face. I want a fucking car right fucking now.
+Agent-May I see your rental agreement?
+Neal-I threw it away.
+Agent-Oh, boy.
+Neal-Oh, boy what?
+Agent-You're fucked.
+***
+Neal-I need one room.
+Del-Uh—if you're pissed at me, maybe we should get separate rooms.
+Neal-You get your own room.
+Receptionist-I'm gonna need your credit card.
+Neal-I have Diner's, Visa, and a gasoline card.
+Receptionist-Uh—these aren't credit cards.
+Neal-Alright, then I'll pay cash.
+Receptionist-42.50
+Neal-Alright. How about 17 dollars?
+Receptionist-I can't do that.
+Neal-Please, have mercy. I've been wearing the same underwear since Tuesday.
+Del-I can vouch for that.
+Receptionist-I don't own the place.
+Neal-17 dollars and a hell of a nice watch.
+[Parks car]
+Receptionist-Umm—would you like a room?
+Del-I got a slight problem here. I don't have the 42.50.
+Receptionist-Do you have 17 dollars and a good watch?
+Del-No, I don't. I have 2 dollars and a… Casio.
+Receptionist-I'm gonna have to say good night.
+***
+Neal-Ooohh, great, great. Watch it! How fast are you going?
+Del-I can't tell. The speedometer's melted.
+Neal-Well, pull over.
+[Pulls over the car]
+Del-Top of the morning, officer.
+Officer-Hi.
+Del-Is there something I can help you with?
+Officer-What the hell are you driving here?
+Del-We had a small fire last night, but we caught it in the nick of time.
+Officer-Do you have any idea how fast you were going?
+Del-Oh, funnily enough, I was just talking to my friend about that. Our speedometer is melted and as a result it's hard to say with any degree of accuracy exactly how fast we were going.
+Officer-78 miles an hour.
+Del-78, huh? Well, yeah. I could buy that, sure, I guess, you know, you would know better than us, especially since we got a melted speedometer.
+Officer-Do you feel this vehicle is safe for highway travel?
+Del-Yes, I do. Yes, I really do. I believe that. I know it's not pretty to look at, but it'll get you where you wanna go.
+Officer-You got no outside mirror.
+Del-No, we lost that.
+Officer-You have no functioning gauges.
+Del-Not one. However, the radio still works. Funny as that may seem, with all this mess, the radio is the only thing that is really working good. It's as clear as a bell. Don't ask me how.
+Officer-I can't let you go ahead with this vehicle.
+Neal-Can't what?
+Officer-No. It's not fit for the road. The vehicle will be impounded until such time it can be made safe for travel on state highways.
+Del-Ok, officer, I admit it. I broke the law, and for that I'm really sorry. It'll never happen again. You got me there. And I won't argue with you one iota. I swear. However, if you impound our car, I'm gonna be unable to get my friend home in time for his Thanksgiving dinner.`,
+    comprehensionQuestions: [
+      // AI-drafted answers from the transcript, full sentences — review in the teacher editor
+      { position: 1, question: "Who's the talkative one? Neal or Del?", answer: "Del is the talkative one." },
+      { position: 2, question: "What did Neal want to finish?", answer: "He wanted to finish an article that a friend of his wrote." },
+      { position: 3, question: "What did Del do that grossed out Neal?", answer: "He took off his shoe and his sock and aired out his smelly feet." },
+      { position: 4, question: "What was the agent discussing before talking to Neal?", answer: "She was discussing the Thanksgiving food plans with her mom on the phone." },
+      { position: 5, question: "What did Neal want?", answer: "He wanted a rental car immediately." },
+      { position: 6, question: "What had Neal thrown away?", answer: "He had thrown away the rental agreement." },
+      { position: 7, question: "How did Neal pay for his room?", answer: "He paid with 17 dollars and a hell of a nice watch." },
+      { position: 8, question: "What had Neal been wearing since Tuesday?", answer: "He had been wearing the same underwear since Tuesday." },
+      { position: 9, question: "How much money did Del have?", answer: "He had 2 dollars and a Casio watch." },
+      { position: 10, question: "Why was the speedometer not working?", answer: "It was not working because it melted in a small fire the night before." },
+      { position: 11, question: "How fast were they going?", answer: "They were going 78 miles an hour." },
+      { position: 12, question: "What was the only thing still working in the car?", answer: "The radio was the only thing still working in the car." },
+    ],
+  },
 ];
 
 function tokensOf(body: string): number {
