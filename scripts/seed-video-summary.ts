@@ -143,6 +143,48 @@ Las ovejas se esconden en la ducha del granjero cuando este entra al baño. Una 
 
 El granjero va a su habitación, donde un Bitzer sucio se esconde rápidamente detrás de la puerta. Cuando el granjero cierra la puerta, ve una extraña criatura colgando de ella y grita. Bitzer baja corriendo al salón y ve una oveja espumando en la boca, ¡y grita! La oveja ve una criatura negra y fea y grita también. Shaun las calla. Entonces aparece Timmy con la cara cubierta de salsa de pizza. ¡Parece sangre! Todos empiezan a gritar de nuevo. Shaun los calma otra vez y demuestra que es salsa de pizza, no sangre. Entonces oyen que se abre la puerta y todos saltan por la ventana antes de que el granjero los encuentre. Bitzer coge la película al salir, y los animales terminan la noche viendo el resto.`,
 },
+{
+slug: "little-bear-first-frost",
+title: "Little Bear: First Frost",
+youtubeUrl: "https://www.youtube.com/watch?v=1bAux_FVcu0",
+englishSummary: `Father and Little Bear were outside. Father was raking leaves while Little Bear played in the tree. When Little Bear jumped down from the tree, he noticed his father was listening to something.
+
+"What are you listening to?" he asked him.
+
+His father said he was listening to the wind. The wind told him that Frost was coming to visit. When frost visited, they would get their first snowfall. This got Little Bear excited cause he wanted to go skating on the pond when it froze. Father then hid and Little Bear went to find him.
+
+"Old frost wiggles his toes. Where is he hiding? Nobody knows," father told him.
+
+Little Bear loved the rhyme. He decided to go looking for Frost. First he went to the garden where his mother was preparing the rose bushes for winter. He asked his mom if she had seen Frost. She replied that she hadn't seen him, but she had felt him. There was a chill in the air. Little Bear repeated the rhyme to his mother.
+
+"Do you think Frost is hiding in the garden?" she asked him. Little Bear wasn't sure. His mother told him she needed to cover the rose bushes with straw so they didn't catch a cold. Little Bear helped. He found his friend No Feet sleeping in the straw pile. He was planning to nap their all winter long. However, Little Bear told him that they needed the straw to protect the rose bushes. No Feet understood and went to look for a different spot to take his long winter's nap. Mother wanted Little Bear to take a nap as well. Little Bear said he was too big to take naps. He ran off to help his father with the fire wood.
+
+"Did you find Frost?" his father asked.
+
+Little Bear said he hadn't. They began making a stack of firewood beside the house. With Frost coming, they would need the firewood to stay warm. Little Bear was a bit too small to carry the firewood. Mother then asked them if they wanted to drink hot chocolate beside the fire. Of course they did.
+
+After drinking his hot chocolate, mother put Little Bear to bed. She blew out the candle. Outside, the wind blew and frost arrived announcing the beginning of winter.`,
+// Kyle's edited, English-structured Spanish translation.
+// Some phrasing is deliberately non-idiomatic to mirror English syntax
+// (the "English-structured Spanish" technique) — do NOT "fix" it.
+spanishSummary: `Papá y Osito estaban afuera. Papá rastrillaba hojas mientras Osito jugaba en el árbol. Cuando Osito saltó del árbol, notó que su padre estaba escuchando a algo.
+
+—¿A qué escuchas? —le preguntó.
+
+Su padre le dijo que escuchaba al viento. El viento le decía que Frost venía de visita. Cuando Frost venía, llegaba la primera nevada. Esto emocionó Osito porque quería patinar en el estanque cuando congelara. Entonces papá escondió y Osito fue a buscar para él.
+
+—La vieja escarcha mueve sus dedos de los pies. ¿Dónde se esconde? Nadie lo sabe —le dijo papá.
+
+Osito encantó la rima. Decidió ir a buscar Frost. Primero fue al jardín donde su madre estaba preparando los rosales para invierno. Le preguntó su mamá si había visto Frost. Ella respondió que no lo había visto, pero que lo había sentido. Había un frío en el aire. Osito repitió la rima a su madre.
+
+—¿Crees que Frost se esconde en el jardín? —le preguntó ella. Osito no estaba seguro. Su madre le dijo que necesitaba cubrir los rosales con paja para que no se resfriaran. Osito ayudó. Encontró su amigo Sin Pies durmiendo en el montón de paja. Planeaba dormir allí todo el invierno. Sin embargo, Osito le dijo que necesitaban la paja para proteger los rosales. Sin Pies entendió y fue a buscar un otro lugar para su larga siesta invernal. Su madre quería Osito tomar un siesta también. Osito dijo que era demasiado grande para tomar una siesta. Corrió a ayudar su padre con la leña.
+
+—¿Encontraste a Frost? —preguntó su padre.
+
+Osito dijo que no. Empezaron a apilar leña junto a la casa. Con la llegada de Frost, necesitarían la leña para mantenerse calientes. Osito era demasiado pequeño para cargar la leña. Entonces su madre les preguntó si querían tomar chocolate caliente junto al fuego. Por supuesto que sí.
+
+Después de tomar su chocolate caliente, su madre acostó Osito. Apagó la vela. Afuera, soplaba el viento y llegó escarcha, anunciando el comienzo del invierno.`,
+},
 ];
 
 
