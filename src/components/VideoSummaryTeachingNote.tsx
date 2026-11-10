@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type {
   VideoSummaryNoteSide,
   VideoSummaryNoteType,
@@ -27,13 +28,11 @@ export function HighlightedText({
   text,
   notes,
   className,
-  onSelect,
   onOpenNote,
 }: {
   text: string;
   notes: VideoSummaryTeachingNote[];
   className?: string;
-  onSelect?: () => void;
   onOpenNote?: (note: VideoSummaryTeachingNote) => void;
 }) {
   const pieces: Array<{ text: string; note?: VideoSummaryTeachingNote }> = [
@@ -61,15 +60,7 @@ export function HighlightedText({
   }
 
   return (
-    <div
-      className={className}
-      onMouseUp={(event) => {
-        if ((event.target as HTMLElement).closest(".teaching-note-mark")) {
-          return;
-        }
-        onSelect?.();
-      }}
-    >
+    <div className={className}>
       {pieces.map((piece, index) =>
         piece.note ? (
           <button
@@ -92,20 +83,33 @@ export function HighlightedText({
 
 function useNoteDialog(onClose: () => void) {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
 
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog || dialog.open) return;
+    const y = window.scrollY;
+    const restore = () => {
+      if (Math.abs(window.scrollY - y) > 1) window.scrollTo(0, y);
+    };
     dialog.showModal();
-  }, []);
-
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-    const handleClose = () => onClose();
+    restore();
+    const frame = requestAnimationFrame(restore);
+    const handleClose = () => {
+      restore();
+      requestAnimationFrame(restore);
+      onCloseRef.current();
+    };
     dialog.addEventListener("close", handleClose);
-    return () => dialog.removeEventListener("close", handleClose);
-  }, [onClose]);
+    return () => {
+      cancelAnimationFrame(frame);
+      dialog.removeEventListener("close", handleClose);
+      restore();
+      if (dialog.open) dialog.close();
+      restore();
+    };
+  }, []);
 
   return dialogRef;
 }
@@ -126,7 +130,9 @@ export function TeachingNoteLightbox({
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
 
-  return (
+  if (typeof document === "undefined") return null;
+
+  return createPortal(
     <dialog
       ref={dialogRef}
       className="teaching-note-modal"
@@ -185,11 +191,30 @@ export function TeachingNoteLightbox({
           </ActionButton>
         ) : null}
       </div>
-    </dialog>
+    </dialog>,
+    document.body
   );
 }
 
-export function TeachingNotePopup({
+export type TeachingNoteAnchor = {
+  top: number;
+  bottom: number;
+  center: number;
+};
+
+function menuPlacement(rect: TeachingNoteAnchor, open: boolean) {
+  const needed = open ? 300 : 60;
+  const above = rect.top >= needed;
+  const center = Math.min(window.innerWidth - 16, Math.max(16, rect.center));
+  return {
+    top: above ? rect.top - 8 : rect.bottom + 8,
+    left: center,
+    transform: above ? "translate(-50%, -100%)" : "translate(-50%, 0)",
+  };
+}
+
+export function TeachingNoteMenu({
+  rect,
   sessionId,
   storyId,
   paragraphPosition,
@@ -198,6 +223,7 @@ export function TeachingNotePopup({
   onClose,
   onSaved,
 }: {
+  rect: TeachingNoteAnchor;
   sessionId: string;
   storyId: string;
   paragraphPosition: number;
@@ -206,68 +232,73 @@ export function TeachingNotePopup({
   onClose: () => void;
   onSaved: (note: VideoSummaryTeachingNote) => void;
 }) {
-  const dialogRef = useNoteDialog(onClose);
-  const titleId = useId();
+  const [open, setOpen] = useState(false);
   const [note, setNote] = useState("");
   const [noteType, setNoteType] = useState<VideoSummaryNoteType>("vocabulary");
   const [error, setError] = useState("");
   const [pending, setPending] = useState(false);
+  const noteRef = useRef<HTMLTextAreaElement>(null);
+  const place = menuPlacement(rect, open);
 
-  return (
-    <dialog
-      ref={dialogRef}
-      className="teaching-note-modal"
-      aria-labelledby={titleId}
-      onClick={(event) => {
-        event.stopPropagation();
-        if (event.target === dialogRef.current) {
-          dialogRef.current?.close();
-        }
+  useEffect(() => {
+    if (!open) return;
+    noteRef.current?.focus({ preventScroll: true });
+  }, [open]);
+
+  if (typeof document === "undefined") return null;
+
+  return createPortal(
+    <div
+      className="selection-flag-menu"
+      style={{ top: place.top, left: place.left, transform: place.transform }}
+      role="toolbar"
+      aria-label="Nota"
+      onMouseDown={(event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) return;
+        if (target.closest("textarea")) return;
+        event.preventDefault();
       }}
     >
-      <div className="px-4 py-4">
-        <p id={titleId} className="text-label-sm text-text-muted">
-          &ldquo;{selectedText}&rdquo;
-        </p>
-        <label
-          className="mt-2 block text-label-sm text-text-secondary"
-          htmlFor="note-type"
-        >
-          Tipo
-        </label>
-        <select
-          id="note-type"
-          value={noteType}
-          onChange={(event) =>
-            setNoteType(event.target.value as VideoSummaryNoteType)
-          }
-          className="mt-1 min-h-11 w-full rounded-card border border-paper-line px-3 text-label-md"
-        >
-          {NOTE_TYPES.map((row) => (
-            <option key={row.id} value={row.id}>
-              {row.label}
-            </option>
-          ))}
-        </select>
-        <label
-          className="mt-2 block text-label-sm text-text-secondary"
-          htmlFor="note-text"
+      <div className="selection-flag-menu-row">
+        <button
+          type="button"
+          className={`selection-flag-menu-action${open ? " selection-flag-menu-action-on" : ""}`}
+          aria-expanded={open}
+          onClick={() => setOpen(true)}
         >
           Nota
-        </label>
-        <textarea
-          id="note-text"
-          value={note}
-          onChange={(event) => setNote(event.target.value)}
-          rows={3}
-          className="mt-1 w-full rounded-card border border-paper-line px-3 py-2 text-body-main"
-        />
-        {error ? (
-          <p className="mt-1 text-label-sm text-error">{error}</p>
-        ) : null}
-        <div className="mt-3 flex gap-2">
+        </button>
+      </div>
+      {open ? (
+        <div className="selection-flag-menu-note">
+          <div className="selection-flag-menu-row" role="group" aria-label="Tipo">
+            {NOTE_TYPES.map((row) => (
+              <button
+                key={row.id}
+                type="button"
+                className={`selection-flag-menu-action${noteType === row.id ? " selection-flag-menu-action-on" : ""}`}
+                aria-pressed={noteType === row.id}
+                onClick={() => setNoteType(row.id)}
+              >
+                {row.label}
+              </button>
+            ))}
+          </div>
+          <label className="mt-2 block text-label-sm text-text-secondary" htmlFor="note-text">
+            Nota
+          </label>
+          <textarea
+            ref={noteRef}
+            id="note-text"
+            value={note}
+            onChange={(event) => setNote(event.target.value)}
+            rows={3}
+            className="mt-1 min-h-20 w-full rounded-card border border-paper-line bg-surface p-2 text-label-md text-text-primary focus:border-accent focus:outline-none"
+          />
+          {error ? <p className="mt-1 text-label-sm text-error">{error}</p> : null}
           <ActionButton
-            className="flex-1"
+            className="mt-2 w-full"
             state={pending ? "pending" : "idle"}
             pendingLabel="Guardando..."
             onClick={async () => {
@@ -299,21 +330,15 @@ export function TeachingNotePopup({
                 createdBy: "",
                 createdAt: new Date().toISOString(),
               });
-              dialogRef.current?.close();
+              onClose();
             }}
           >
             Guardar
           </ActionButton>
-          <button
-            type="button"
-            onClick={() => dialogRef.current?.close()}
-            className="h-11 flex-1 rounded-card border border-paper-line text-label-md"
-          >
-            Cancelar
-          </button>
         </div>
-      </div>
-    </dialog>
+      ) : null}
+    </div>,
+    document.body
   );
 }
 

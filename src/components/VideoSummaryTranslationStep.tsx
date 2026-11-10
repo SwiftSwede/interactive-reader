@@ -11,7 +11,8 @@ import {
 import {
   HighlightedText,
   TeachingNoteLightbox,
-  TeachingNotePopup,
+  TeachingNoteMenu,
+  type TeachingNoteAnchor,
 } from "@/components/VideoSummaryTeachingNote";
 import { notesOnSide } from "@/lib/video-summary-notes";
 import type {
@@ -47,11 +48,16 @@ export default function VideoSummaryTranslationStep({
     }
     return next;
   });
-  const [popup, setPopup] = useState<{
+  const [noteMenu, setNoteMenu] = useState<{
     position: number;
     selectedText: string;
     textSide: VideoSummaryNoteSide;
+    rect: TeachingNoteAnchor;
+    fieldId?: string;
+    offsetX?: number;
+    offsetY?: number;
   } | null>(null);
+  const noteRootRef = useRef<HTMLDivElement>(null);
   const [viewNote, setViewNote] = useState<VideoSummaryTeachingNote | null>(
     null
   );
@@ -229,26 +235,143 @@ export default function VideoSummaryTranslationStep({
     }, 800);
   }
 
-  function captureSelection(
-    position: number,
-    textSide: VideoSummaryNoteSide,
-    fromField?: string
-  ) {
+  useEffect(() => {
     if (!isTeacher || !live) return;
-    const selected = (
-      fromField ??
-      window.getSelection()?.toString() ??
-      ""
-    ).trim();
-    if (!selected || selected.length > 200) return;
-    setViewNote(null);
-    setPopup({ position, selectedText: selected, textSide });
-  }
+    const root = noteRootRef.current;
+    if (!root) return;
+
+    const inMenu = (target: EventTarget | null) =>
+      target instanceof Element && Boolean(target.closest(".selection-flag-menu"));
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (inMenu(event.target)) return;
+      setNoteMenu(null);
+    };
+
+    const onPointerUp = (event: PointerEvent) => {
+      if (inMenu(event.target)) return;
+      const target = event.target;
+      if (target instanceof HTMLTextAreaElement && root.contains(target)) {
+        const selected = target.value
+          .slice(target.selectionStart, target.selectionEnd)
+          .trim();
+        if (!selected || selected.length > 200) return;
+        const box = target.getBoundingClientRect();
+        const position = Number(target.dataset.paragraphPosition);
+        if (Number.isNaN(position)) return;
+        setViewNote(null);
+        setNoteMenu({
+          position,
+          selectedText: selected,
+          textSide: "english",
+          fieldId: target.id,
+          offsetX: event.clientX - box.left,
+          offsetY: event.clientY - box.top,
+          rect: {
+            top: event.clientY,
+            bottom: event.clientY + 12,
+            center: event.clientX,
+          },
+        });
+        return;
+      }
+
+      const selection = window.getSelection();
+      if (!selection || selection.rangeCount === 0 || selection.isCollapsed) {
+        return;
+      }
+      const range = selection.getRangeAt(0);
+      const ancestor = range.commonAncestorContainer;
+      const ancestorEl =
+        ancestor.nodeType === Node.ELEMENT_NODE
+          ? (ancestor as Element)
+          : ancestor.parentElement;
+      const host = ancestorEl?.closest("[data-note-side]");
+      if (!host || !root.contains(host)) return;
+      const selected = selection.toString().trim();
+      if (!selected || selected.length > 200) return;
+      const box = range.getBoundingClientRect();
+      if (box.width === 0 && box.height === 0) return;
+      const position = Number(host.getAttribute("data-paragraph-position"));
+      if (Number.isNaN(position)) return;
+      const textSide = host.getAttribute("data-note-side");
+      setViewNote(null);
+      setNoteMenu({
+        position,
+        selectedText: selected,
+        textSide: textSide === "english" ? "english" : "spanish",
+        rect: {
+          top: box.top,
+          bottom: box.bottom,
+          center: box.left + box.width / 2,
+        },
+      });
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setNoteMenu(null);
+        return;
+      }
+      if (inMenu(event.target)) return;
+      if (event.shiftKey || event.key === "Shift" || event.key.startsWith("Arrow")) {
+        return;
+      }
+      if (event.metaKey || event.ctrlKey || event.altKey) return;
+      setNoteMenu(null);
+    };
+
+    const onScroll = () => {
+      setNoteMenu((current) => {
+        if (!current) return current;
+        if (current.fieldId) {
+          const field = document.getElementById(current.fieldId);
+          if (!(field instanceof HTMLTextAreaElement)) return current;
+          const box = field.getBoundingClientRect();
+          return {
+            ...current,
+            rect: {
+              top: box.top + (current.offsetY ?? 0),
+              bottom: box.top + (current.offsetY ?? 0) + 12,
+              center: box.left + (current.offsetX ?? box.width / 2),
+            },
+          };
+        }
+        const selection = window.getSelection();
+        if (!selection || selection.rangeCount === 0 || selection.isCollapsed) {
+          return current;
+        }
+        const box = selection.getRangeAt(0).getBoundingClientRect();
+        if (box.width === 0 && box.height === 0) return current;
+        return {
+          ...current,
+          rect: {
+            top: box.top,
+            bottom: box.bottom,
+            center: box.left + box.width / 2,
+          },
+        };
+      });
+    };
+
+    document.addEventListener("pointerdown", onPointerDown, true);
+    document.addEventListener("pointerup", onPointerUp);
+    document.addEventListener("keydown", onKeyDown);
+    window.addEventListener("scroll", onScroll, true);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown, true);
+      document.removeEventListener("pointerup", onPointerUp);
+      document.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("scroll", onScroll, true);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [isTeacher, live]);
 
   const showOriginal = isTeacher || !live;
 
   return (
-    <div className="space-y-8">
+    <div ref={noteRootRef} className="space-y-8">
       {showOriginal && (
         <div>
           <button
@@ -294,13 +417,17 @@ export default function VideoSummaryTranslationStep({
             <p className="text-label-sm text-text-muted">
               Párrafo {paragraph.position + 1}
             </p>
-            <HighlightedText
-              text={paragraph.spanishText}
-              notes={spanishNotes}
-              className="mt-2 font-heading text-story-body text-text-primary"
-              onSelect={() => captureSelection(paragraph.position, "spanish")}
-              onOpenNote={setViewNote}
-            />
+            <div
+              data-note-side="spanish"
+              data-paragraph-position={paragraph.position}
+            >
+              <HighlightedText
+                text={paragraph.spanishText}
+                notes={spanishNotes}
+                className="mt-2 font-heading text-story-body text-text-primary"
+                onOpenNote={setViewNote}
+              />
+            </div>
             {showTeacherInput ? (
               <>
                 <label
@@ -320,14 +447,7 @@ export default function VideoSummaryTranslationStep({
                     }));
                     scheduleSave(paragraph.id, value);
                   }}
-                  onMouseUp={(event) => {
-                    const field = event.currentTarget;
-                    captureSelection(
-                      paragraph.position,
-                      "english",
-                      field.value.slice(field.selectionStart, field.selectionEnd)
-                    );
-                  }}
+                  data-paragraph-position={paragraph.position}
                   rows={5}
                   className="mt-1 w-full rounded-card border-2 border-accent bg-white px-3 py-2 text-story-english text-text-primary focus:outline-none"
                 />
@@ -370,27 +490,33 @@ export default function VideoSummaryTranslationStep({
             ) : english ? (
               <>
                 <p className="mt-4 text-label-sm text-text-muted">Inglés</p>
-                <HighlightedText
-                  text={english}
-                  notes={englishNotes}
-                  className="mt-1 text-story-english text-text-primary"
-                  onSelect={() => captureSelection(paragraph.position, "english")}
-                  onOpenNote={setViewNote}
-                />
+                <div
+                  data-note-side="english"
+                  data-paragraph-position={paragraph.position}
+                >
+                  <HighlightedText
+                    text={english}
+                    notes={englishNotes}
+                    className="mt-1 text-story-english text-text-primary"
+                    onOpenNote={setViewNote}
+                  />
+                </div>
               </>
             ) : null}
           </article>
         );
       })}
 
-      {popup ? (
-        <TeachingNotePopup
+      {noteMenu ? (
+        <TeachingNoteMenu
+          key={`${noteMenu.position}-${noteMenu.textSide}-${noteMenu.selectedText}`}
+          rect={noteMenu.rect}
           sessionId={sessionId}
           storyId={storyId}
-          paragraphPosition={popup.position}
-          selectedText={popup.selectedText}
-          textSide={popup.textSide}
-          onClose={() => setPopup(null)}
+          paragraphPosition={noteMenu.position}
+          selectedText={noteMenu.selectedText}
+          textSide={noteMenu.textSide}
+          onClose={() => setNoteMenu(null)}
           onSaved={(note) => setNotes((current) => [...current, note])}
         />
       ) : null}
