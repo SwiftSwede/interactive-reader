@@ -599,7 +599,13 @@ export default function AudioCoursePlayer({
                   </p>
                   {known ? (
                     <div className="mt-6">
-                      <ResultLine correct={known.correct} model={activePrompt.prompt.expected[0] ?? ""} />
+                      <AnswerField
+                        value={known.given}
+                        tone={known.correct ? "correct" : "wrong"}
+                      />
+                      <div className="mt-4">
+                        <ResultLine correct={known.correct} model={activePrompt.prompt.expected[0] ?? ""} />
+                      </div>
                       <div className="mt-6 flex justify-end">
                         <ActionButton className="min-h-12 px-5" onClick={continueKnown}>
                           Seguir
@@ -625,7 +631,7 @@ export default function AudioCoursePlayer({
                         onChange={(event) => setDraft(event.target.value)}
                         autoComplete="off"
                         autoCapitalize="off"
-                        className="mt-2 h-12 w-full rounded-card border border-paper-line bg-surface px-3 text-body-md text-text-primary outline-none focus:border-2 focus:border-accent"
+                        className={answerFieldClass("idle")}
                       />
                       <div className="mt-4 flex items-center justify-between gap-3">
                         <button
@@ -660,7 +666,15 @@ export default function AudioCoursePlayer({
                     />
                   ) : null}
                   {feedback && (screenLine?.kind === "english" || !feedback.withLine) ? (
-                    <ResultLine correct={feedback.correct} model={feedback.model} />
+                    <div className="w-full max-w-md">
+                      <AnswerField
+                        value={answers[feedback.index]?.given ?? ""}
+                        tone={feedback.correct ? "correct" : "wrong"}
+                      />
+                      <div className="mt-4">
+                        <ResultLine correct={feedback.correct} model={feedback.model} />
+                      </div>
+                    </div>
                   ) : null}
                 </div>
               )}
@@ -830,6 +844,36 @@ function KaraokeLine({
   );
 }
 
+function answerFieldClass(tone: "idle" | "correct" | "wrong"): string {
+  const shared =
+    "mt-2 h-12 w-full rounded-card px-3 text-center text-body-md text-text-primary outline-none";
+  if (tone === "correct") {
+    return `${shared} border-2 border-success bg-success-bg`;
+  }
+  if (tone === "wrong") {
+    return `${shared} border-2 border-error bg-error-bg`;
+  }
+  return `${shared} border border-paper-line bg-surface focus:border-2 focus:border-accent`;
+}
+
+function AnswerField({
+  value,
+  tone,
+}: {
+  value: string;
+  tone: "correct" | "wrong";
+}) {
+  return (
+    <input
+      readOnly
+      value={value}
+      lang="en"
+      aria-label={tone === "correct" ? "Respuesta correcta" : "Respuesta incorrecta"}
+      className={answerFieldClass(tone)}
+    />
+  );
+}
+
 function ResultLine({ correct, model }: { correct: boolean; model: string }) {
   if (correct) {
     return (
@@ -840,7 +884,7 @@ function ResultLine({ correct, model }: { correct: boolean; model: string }) {
     );
   }
   return (
-    <p className="flex items-center justify-center gap-2 text-center text-body-md text-text-secondary" aria-live="polite">
+    <p className="flex items-center justify-center gap-2 text-center text-body-md text-error" aria-live="polite">
       <X size={18} aria-hidden="true" />
       <span>
         Era: <span lang="en">{model}</span>

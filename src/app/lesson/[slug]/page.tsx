@@ -145,7 +145,12 @@ export default async function LessonSlugPage({
   const previewLevel = await readTeacherStudentPreview(profile?.role);
   const isTeacher = isTeacherView(profile?.role, previewLevel);
 
-  if (access.kind !== "ok" && user && profile?.role !== "teacher") {
+  if (
+    access.kind !== "ok" &&
+    user &&
+    profile?.role !== "teacher" &&
+    !data.story.is_free
+  ) {
     let gate: "skip" | "allow" | "denied" | "locked" = "skip";
     try {
       gate = await loadSelfPacedLessonGate({

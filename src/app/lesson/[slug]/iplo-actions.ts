@@ -49,7 +49,7 @@ export async function completeIploAttempt(input: unknown): Promise<IploAttemptRe
   const admin = createAdminClient();
   const { data: story, error: storyError } = await admin
     .from("stories")
-    .select("id, kind, audio_script")
+    .select("id, kind, audio_script, is_free")
     .eq("id", parsed.data.storyId)
     .maybeSingle();
   if (storyError || !story || story.kind !== "audio_course") {
@@ -57,19 +57,23 @@ export async function completeIploAttempt(input: unknown): Promise<IploAttemptRe
   }
 
   let gate: "skip" | "allow" | "denied" | "locked" = "skip";
-  try {
-    gate = await loadSelfPacedLessonGate({
-      userId: user.id,
-      storyId: story.id,
-      isTeacher: false,
-      sessionOk: false,
-    });
-  } catch (error) {
-    console.error(
-      "completeIploAttempt gate:",
-      error instanceof Error ? error.message : error
-    );
-    return { ok: false, error: "Algo salió mal. Intenta de nuevo." };
+  if (story.is_free === true) {
+    gate = "allow";
+  } else {
+    try {
+      gate = await loadSelfPacedLessonGate({
+        userId: user.id,
+        storyId: story.id,
+        isTeacher: false,
+        sessionOk: false,
+      });
+    } catch (error) {
+      console.error(
+        "completeIploAttempt gate:",
+        error instanceof Error ? error.message : error
+      );
+      return { ok: false, error: "Algo salió mal. Intenta de nuevo." };
+    }
   }
   if (gate === "denied" || gate === "locked") {
     return { ok: false, error: "Esta lección todavía no está abierta." };
