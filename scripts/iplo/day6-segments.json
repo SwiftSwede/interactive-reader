@@ -11,253 +11,253 @@
    "words": [
     {
      "w": "bienvenidos",
-     "start": 7.52,
-     "end": 8.42
+     "start": 6.92,
+     "end": 8.14
     },
     {
      "w": "a",
-     "start": 8.42,
-     "end": 8.78
+     "start": 8.14,
+     "end": 8.5
     },
     {
      "w": "la",
-     "start": 8.78,
-     "end": 8.88
+     "start": 8.5,
+     "end": 8.58
     },
     {
      "w": "leccion",
-     "start": 8.88,
-     "end": 9.46
+     "start": 8.58,
+     "end": 9.16
     },
     {
      "w": "6",
-     "start": 9.46,
-     "end": 10.0
+     "start": 9.16,
+     "end": 9.72
     },
     {
      "w": "algo",
-     "start": 10.0,
-     "end": 10.66
+     "start": 10.2,
+     "end": 10.9
     },
     {
      "w": "nuevo",
-     "start": 10.66,
-     "end": 11.14
+     "start": 10.9,
+     "end": 11.36
     },
     {
      "w": "para",
-     "start": 11.14,
-     "end": 11.48
+     "start": 11.36,
+     "end": 11.7
     },
     {
      "w": "reforzar",
-     "start": 11.48,
-     "end": 12.48
+     "start": 11.7,
+     "end": 12.7
     },
     {
      "w": "lo",
-     "start": 12.48,
-     "end": 12.66
+     "start": 12.7,
+     "end": 12.88
     },
     {
      "w": "que",
-     "start": 12.66,
-     "end": 12.8
+     "start": 12.88,
+     "end": 13.02
     },
     {
      "w": "aprendiste",
-     "start": 12.8,
-     "end": 13.28
+     "start": 13.02,
+     "end": 13.5
     },
     {
      "w": "en",
-     "start": 13.28,
-     "end": 13.4
+     "start": 13.5,
+     "end": 13.62
     },
     {
      "w": "la",
-     "start": 13.4,
-     "end": 13.48
+     "start": 13.62,
+     "end": 13.66
     },
     {
      "w": "ultima",
-     "start": 13.48,
-     "end": 13.68
+     "start": 13.66,
+     "end": 13.86
     },
     {
      "w": "leccion",
-     "start": 13.68,
-     "end": 14.18
+     "start": 13.86,
+     "end": 14.36
     },
     {
      "w": "repasemos",
-     "start": 14.18,
-     "end": 15.08
+     "start": 14.98,
+     "end": 15.94
     },
     {
      "w": "antes",
-     "start": 15.08,
-     "end": 15.5
+     "start": 15.94,
+     "end": 16.36
     },
     {
      "w": "de",
-     "start": 15.5,
-     "end": 15.68
+     "start": 16.36,
+     "end": 16.54
     },
     {
      "w": "comenzar",
-     "start": 15.68,
-     "end": 16.42
+     "start": 16.54,
+     "end": 17.28
     },
     {
      "w": "la",
-     "start": 16.42,
-     "end": 16.64
+     "start": 17.28,
+     "end": 17.52
     },
     {
      "w": "leccion",
-     "start": 16.64,
-     "end": 17.12
+     "start": 17.52,
+     "end": 17.98
     },
     {
      "w": "en",
-     "start": 17.12,
-     "end": 17.64
+     "start": 18.34,
+     "end": 18.82
     },
     {
      "w": "el",
-     "start": 17.64,
-     "end": 17.82
+     "start": 18.82,
+     "end": 19.0
     },
     {
      "w": "siguiente",
-     "start": 17.82,
-     "end": 18.48
+     "start": 19.0,
+     "end": 19.66
     },
     {
      "w": "ejercicio",
-     "start": 18.48,
-     "end": 19.42
+     "start": 19.66,
+     "end": 20.62
     },
     {
      "w": "vas",
-     "start": 19.42,
-     "end": 19.94
-    },
-    {
-     "w": "a",
-     "start": 19.94,
-     "end": 20.04
-    },
-    {
-     "w": "tomar",
-     "start": 20.04,
-     "end": 20.3
-    },
-    {
-     "w": "el",
-     "start": 20.3,
-     "end": 20.64
-    },
-    {
-     "w": "rol",
-     "start": 20.64,
+     "start": 20.62,
      "end": 21.12
     },
     {
-     "w": "de",
+     "w": "a",
      "start": 21.12,
-     "end": 22.16
+     "end": 21.26
+    },
+    {
+     "w": "tomar",
+     "start": 21.26,
+     "end": 21.48
+    },
+    {
+     "w": "el",
+     "start": 21.48,
+     "end": 21.82
+    },
+    {
+     "w": "rol",
+     "start": 21.82,
+     "end": 22.34
+    },
+    {
+     "w": "de",
+     "start": 22.34,
+     "end": 23.36
     },
     {
      "w": "la",
-     "start": 22.16,
-     "end": 22.58
+     "start": 23.36,
+     "end": 23.78
     },
     {
      "w": "mujer",
-     "start": 22.58,
-     "end": 23.06
+     "start": 23.78,
+     "end": 24.32
     },
     {
      "w": "asegurate",
-     "start": 23.06,
-     "end": 23.98
+     "start": 24.9,
+     "end": 25.58
     },
     {
      "w": "que",
-     "start": 23.98,
-     "end": 24.36
+     "start": 25.58,
+     "end": 26.0
     },
     {
      "w": "respondas",
-     "start": 24.36,
-     "end": 25.76
+     "start": 26.0,
+     "end": 27.36
     },
     {
      "w": "antes",
-     "start": 25.76,
-     "end": 26.4
+     "start": 27.36,
+     "end": 28.02
     },
     {
      "w": "de",
-     "start": 26.4,
-     "end": 26.66
+     "start": 28.02,
+     "end": 28.28
     },
     {
      "w": "la",
-     "start": 26.66,
-     "end": 26.78
+     "start": 28.28,
+     "end": 28.4
     },
     {
      "w": "mujer",
-     "start": 26.78,
-     "end": 27.2
+     "start": 28.4,
+     "end": 28.82
     },
     {
      "w": "y",
-     "start": 27.2,
-     "end": 28.22
+     "start": 28.82,
+     "end": 29.82
     },
     {
      "w": "repite",
-     "start": 28.22,
-     "end": 29.62
+     "start": 29.82,
+     "end": 31.24
     },
     {
      "w": "despues",
-     "start": 29.62,
-     "end": 30.28
+     "start": 31.24,
+     "end": 31.92
     },
     {
      "w": "de",
-     "start": 30.28,
-     "end": 30.88
+     "start": 31.92,
+     "end": 32.5
     },
     {
      "w": "ella",
-     "start": 30.88,
-     "end": 31.52
+     "start": 32.5,
+     "end": 33.14
     },
     {
      "w": "su",
-     "start": 31.52,
-     "end": 32.48
+     "start": 33.14,
+     "end": 34.08
     },
     {
      "w": "respuesta",
-     "start": 32.48,
-     "end": 33.62
+     "start": 34.08,
+     "end": 35.26
     },
     {
      "w": "correcta",
-     "start": 33.62,
-     "end": 34.82
+     "start": 35.26,
+     "end": 36.42
     },
     {
      "w": "comencemos",
-     "start": 34.82,
-     "end": 35.46
+     "start": 36.42,
+     "end": 36.42
     }
    ]
   },
@@ -276,72 +276,72 @@
   },
   {
    "t": "english",
-   "start": 43.88,
-   "end": 45.1,
+   "start": 43.22,
+   "end": 44.54,
    "text": "Do you drink?",
    "words": [
     {
      "w": "do",
-     "start": 43.88,
-     "end": 44.64
+     "start": 43.22,
+     "end": 43.98
     },
     {
      "w": "you",
-     "start": 44.64,
-     "end": 44.84
+     "start": 43.98,
+     "end": 44.18
     },
     {
      "w": "drink",
-     "start": 44.84,
-     "end": 45.1
+     "start": 44.18,
+     "end": 44.54
     }
    ]
   },
   {
    "t": "english",
-   "start": 47.44,
-   "end": 49.9,
+   "start": 47.34,
+   "end": 50.54,
    "text": "Yes, I drink. And you? Do you drink?",
    "words": [
     {
      "w": "yes",
-     "start": 47.44,
-     "end": 48.04
+     "start": 47.34,
+     "end": 47.82
     },
     {
      "w": "i",
-     "start": 48.04,
-     "end": 48.22
+     "start": 48.3,
+     "end": 48.4
     },
     {
      "w": "drink",
-     "start": 48.22,
-     "end": 48.58
+     "start": 48.4,
+     "end": 48.78
     },
     {
      "w": "and",
-     "start": 48.58,
-     "end": 48.98
+     "start": 49.06,
+     "end": 49.54
     },
     {
      "w": "you",
-     "start": 48.98,
-     "end": 49.24
+     "start": 49.54,
+     "end": 49.74
     },
     {
      "w": "do",
-     "start": 49.24,
-     "end": 49.44
+     "start": 49.94,
+     "end": 50.1
     },
     {
      "w": "you",
-     "start": 49.44,
-     "end": 49.6
+     "start": 50.1,
+     "end": 50.26
     },
     {
      "w": "drink",
-     "start": 49.6,
-     "end": 49.9
+     "start": 50.26,
+     "end": 50.54
     }
    ]
   },
@@ -357,29 +357,29 @@
   },
   {
    "t": "english",
-   "start": 53.64,
-   "end": 55.22,
+   "start": 53.06,
+   "end": 56.46,
    "text": "No, I don’t drink.",
    "words": [
     {
      "w": "no",
-     "start": 53.64,
-     "end": 54.04
+     "start": 53.06,
+     "end": 53.84
     },
     {
      "w": "i",
-     "start": 54.04,
-     "end": 54.64
+     "start": 55.36,
+     "end": 55.96
     },
     {
      "w": "dont",
-     "start": 54.64,
-     "end": 54.92
+     "start": 55.96,
+     "end": 56.26
     },
     {
      "w": "drink",
-     "start": 54.92,
-     "end": 55.22
+     "start": 56.26,
+     "end": 56.46
     }
    ]
   },
@@ -397,97 +397,97 @@
   },
   {
    "t": "english",
-   "start": 64.4,
-   "end": 65.8,
+   "start": 64.08,
+   "end": 65.28,
    "text": "Do you drink a lot?",
    "words": [
     {
      "w": "do",
-     "start": 64.4,
-     "end": 65.0
+     "start": 64.08,
+     "end": 64.48
     },
     {
      "w": "you",
-     "start": 65.0,
-     "end": 65.14
+     "start": 64.48,
+     "end": 64.6
     },
     {
      "w": "drink",
-     "start": 65.14,
-     "end": 65.36
+     "start": 64.6,
+     "end": 64.84
     },
     {
      "w": "a",
-     "start": 65.36,
-     "end": 65.5
+     "start": 64.84,
+     "end": 64.98
     },
     {
      "w": "lot",
-     "start": 65.5,
-     "end": 65.8
+     "start": 64.98,
+     "end": 65.28
     }
    ]
   },
   {
    "t": "english",
-   "start": 68.66,
-   "end": 71.74,
+   "start": 68.34,
+   "end": 71.6,
    "text": "I don’t drink a lot. I only drink a little bit.",
    "words": [
     {
      "w": "i",
-     "start": 68.66,
-     "end": 69.26
+     "start": 68.34,
+     "end": 68.82
     },
     {
      "w": "dont",
-     "start": 69.26,
-     "end": 69.7
+     "start": 68.82,
+     "end": 69.28
     },
     {
      "w": "drink",
-     "start": 69.7,
-     "end": 69.94
+     "start": 69.28,
+     "end": 69.48
     },
     {
      "w": "a",
-     "start": 69.94,
-     "end": 70.12
+     "start": 69.48,
+     "end": 69.68
     },
     {
      "w": "lot",
-     "start": 70.12,
-     "end": 70.32
+     "start": 69.68,
+     "end": 69.92
     },
     {
      "w": "i",
-     "start": 70.32,
-     "end": 70.66
+     "start": 70.12,
+     "end": 70.5
     },
     {
      "w": "only",
-     "start": 70.66,
-     "end": 70.92
+     "start": 70.5,
+     "end": 70.76
     },
     {
      "w": "drink",
-     "start": 70.92,
-     "end": 71.18
+     "start": 70.76,
+     "end": 71.02
     },
     {
      "w": "a",
-     "start": 71.18,
-     "end": 71.36
+     "start": 71.02,
+     "end": 71.2
     },
     {
      "w": "little",
-     "start": 71.36,
-     "end": 71.52
+     "start": 71.2,
+     "end": 71.36
     },
     {
      "w": "bit",
-     "start": 71.52,
-     "end": 71.74
+     "start": 71.36,
+     "end": 71.6
     }
    ]
   },
@@ -504,24 +504,24 @@
   },
   {
    "t": "english",
-   "start": 78.78,
-   "end": 80.02,
+   "start": 77.94,
+   "end": 79.5,
    "text": "I never drink.",
    "words": [
     {
      "w": "i",
-     "start": 78.78,
-     "end": 79.4
+     "start": 77.94,
+     "end": 78.88
     },
     {
      "w": "never",
-     "start": 79.4,
-     "end": 79.66
+     "start": 78.88,
+     "end": 79.14
     },
     {
      "w": "drink",
-     "start": 79.66,
-     "end": 80.02
+     "start": 79.14,
+     "end": 79.5
     }
    ]
   },
@@ -539,97 +539,97 @@
   },
   {
    "t": "english",
-   "start": 89.66,
-   "end": 91.22,
+   "start": 88.96,
+   "end": 90.66,
    "text": "Do you drink every day?",
    "words": [
     {
      "w": "do",
-     "start": 89.66,
-     "end": 90.28
+     "start": 88.96,
+     "end": 89.74
     },
     {
      "w": "you",
-     "start": 90.28,
-     "end": 90.4
+     "start": 89.74,
+     "end": 89.86
     },
     {
      "w": "drink",
-     "start": 90.4,
-     "end": 90.62
+     "start": 89.86,
+     "end": 90.1
     },
     {
      "w": "every",
-     "start": 90.62,
-     "end": 90.94
+     "start": 90.1,
+     "end": 90.36
     },
     {
      "w": "day",
-     "start": 90.94,
-     "end": 91.22
+     "start": 90.36,
+     "end": 90.66
     }
    ]
   },
   {
    "t": "english",
-   "start": 93.76,
-   "end": 96.64,
+   "start": 93.58,
+   "end": 97.12,
    "text": "No, I don’t drink every day. Do you eat a lot?",
    "words": [
     {
      "w": "no",
-     "start": 93.76,
-     "end": 94.38
+     "start": 93.58,
+     "end": 94.0
     },
     {
      "w": "i",
-     "start": 94.38,
-     "end": 94.78
+     "start": 94.68,
+     "end": 94.76
     },
     {
      "w": "dont",
-     "start": 94.78,
+     "start": 94.76,
      "end": 95.0
     },
     {
      "w": "drink",
      "start": 95.0,
-     "end": 95.18
+     "end": 95.2
     },
     {
      "w": "every",
-     "start": 95.18,
-     "end": 95.42
+     "start": 95.2,
+     "end": 95.38
     },
     {
      "w": "day",
-     "start": 95.42,
+     "start": 95.38,
      "end": 95.62
     },
     {
      "w": "do",
-     "start": 95.62,
-     "end": 96.02
+     "start": 96.08,
+     "end": 96.5
     },
     {
      "w": "you",
-     "start": 96.02,
-     "end": 96.14
+     "start": 96.5,
+     "end": 96.6
     },
     {
      "w": "eat",
-     "start": 96.14,
-     "end": 96.34
+     "start": 96.6,
+     "end": 96.82
     },
     {
      "w": "a",
-     "start": 96.34,
-     "end": 96.46
+     "start": 96.82,
+     "end": 96.92
     },
     {
      "w": "lot",
-     "start": 96.46,
-     "end": 96.64
+     "start": 96.92,
+     "end": 97.12
     }
    ]
   },
@@ -690,39 +690,39 @@
   },
   {
    "t": "english",
-   "start": 104.96,
-   "end": 107.0,
+   "start": 104.4,
+   "end": 106.8,
    "text": "No, I don’t eat a lot.",
    "words": [
     {
      "w": "no",
-     "start": 104.96,
-     "end": 105.62
+     "start": 104.4,
+     "end": 105.24
     },
     {
      "w": "i",
-     "start": 105.62,
-     "end": 106.04
+     "start": 105.58,
+     "end": 105.86
     },
     {
      "w": "dont",
-     "start": 106.04,
-     "end": 106.36
+     "start": 105.86,
+     "end": 106.16
     },
     {
      "w": "eat",
-     "start": 106.36,
-     "end": 106.56
+     "start": 106.16,
+     "end": 106.36
     },
     {
      "w": "a",
-     "start": 106.56,
-     "end": 106.72
+     "start": 106.36,
+     "end": 106.52
     },
     {
      "w": "lot",
-     "start": 106.72,
-     "end": 107.0
+     "start": 106.52,
+     "end": 106.8
     }
    ]
   },
@@ -732,31 +732,36 @@
    "pauseAt": 112.66,
    "spanish": "Ahora dile “como poco.”",
    "expected": [
-    "I eat little."
+    "I eat little. / I eat a little bit. / I eat a little."
    ],
    "end": 115.42,
    "leadEnd": 110.74
   },
   {
    "t": "english",
-   "start": 116.04,
-   "end": 117.06,
-   "text": "I eat little.",
+   "start": 115.8,
+   "end": 116.9,
+   "text": "I eat a little.",
    "words": [
     {
      "w": "i",
-     "start": 116.04,
-     "end": 116.7
+     "start": 115.8,
+     "end": 116.16
     },
     {
      "w": "eat",
-     "start": 116.7,
-     "end": 116.9
+     "start": 116.16,
+     "end": 116.34
+    },
+    {
+     "w": "a",
+     "start": 116.34,
+     "end": 116.52
     },
     {
      "w": "little",
-     "start": 116.9,
-     "end": 117.06
+     "start": 116.52,
+     "end": 116.9
     }
    ]
   },
@@ -773,67 +778,67 @@
   },
   {
    "t": "english",
-   "start": 126.74,
-   "end": 128.2,
+   "start": 126.44,
+   "end": 127.62,
    "text": "Do you eat a lot?",
    "words": [
     {
      "w": "do",
-     "start": 126.74,
-     "end": 127.46
+     "start": 126.44,
+     "end": 126.84
     },
     {
      "w": "you",
-     "start": 127.46,
-     "end": 127.66
+     "start": 126.84,
+     "end": 127.04
     },
     {
      "w": "eat",
-     "start": 127.66,
-     "end": 127.84
+     "start": 127.04,
+     "end": 127.24
     },
     {
      "w": "a",
-     "start": 127.84,
-     "end": 127.94
+     "start": 127.24,
+     "end": 127.34
     },
     {
      "w": "lot",
-     "start": 127.94,
-     "end": 128.2
+     "start": 127.34,
+     "end": 127.62
     }
    ]
   },
   {
    "t": "english",
-   "start": 131.36,
-   "end": 133.04,
+   "start": 131.38,
+   "end": 132.82,
    "text": "Sometimes I eat a lot.",
    "words": [
     {
      "w": "sometimes",
-     "start": 131.36,
-     "end": 132.08
+     "start": 131.38,
+     "end": 131.94
     },
     {
      "w": "i",
-     "start": 132.08,
-     "end": 132.52
+     "start": 131.94,
+     "end": 132.28
     },
     {
      "w": "eat",
-     "start": 132.52,
-     "end": 132.72
+     "start": 132.28,
+     "end": 132.5
     },
     {
      "w": "a",
-     "start": 132.72,
-     "end": 132.84
+     "start": 132.5,
+     "end": 132.64
     },
     {
      "w": "lot",
-     "start": 132.84,
-     "end": 133.04
+     "start": 132.64,
+     "end": 132.82
     }
    ]
   },
@@ -850,87 +855,87 @@
   },
   {
    "t": "english",
-   "start": 140.7,
-   "end": 142.44,
+   "start": 140.2,
+   "end": 141.86,
    "text": "Do you drink a lot of water?",
    "words": [
     {
      "w": "do",
-     "start": 140.7,
-     "end": 141.34
+     "start": 140.2,
+     "end": 140.78
     },
     {
      "w": "you",
-     "start": 141.34,
-     "end": 141.48
+     "start": 140.78,
+     "end": 140.92
     },
     {
      "w": "drink",
-     "start": 141.48,
-     "end": 141.68
+     "start": 140.92,
+     "end": 141.12
     },
     {
      "w": "a",
-     "start": 141.68,
-     "end": 141.84
+     "start": 141.12,
+     "end": 141.26
     },
     {
      "w": "lot",
-     "start": 141.84,
-     "end": 141.96
+     "start": 141.26,
+     "end": 141.38
     },
     {
      "w": "of",
-     "start": 141.96,
-     "end": 142.1
+     "start": 141.38,
+     "end": 141.52
     },
     {
      "w": "water",
-     "start": 142.1,
-     "end": 142.44
+     "start": 141.52,
+     "end": 141.86
     }
    ]
   },
   {
    "t": "english",
-   "start": 145.5,
-   "end": 147.42,
+   "start": 145.26,
+   "end": 147.48,
    "text": "Yes, I drink a lot of water.",
    "words": [
     {
      "w": "yes",
-     "start": 145.5,
-     "end": 146.14
+     "start": 145.26,
+     "end": 145.82
     },
     {
      "w": "i",
-     "start": 146.14,
-     "end": 146.48
+     "start": 146.42,
+     "end": 146.5
     },
     {
      "w": "drink",
-     "start": 146.48,
-     "end": 146.74
+     "start": 146.5,
+     "end": 146.78
     },
     {
      "w": "a",
-     "start": 146.74,
-     "end": 146.9
+     "start": 146.78,
+     "end": 146.96
     },
     {
      "w": "lot",
-     "start": 146.9,
-     "end": 147.02
+     "start": 146.96,
+     "end": 147.04
     },
     {
      "w": "of",
-     "start": 147.02,
-     "end": 147.12
+     "start": 147.04,
+     "end": 147.16
     },
     {
      "w": "water",
-     "start": 147.12,
-     "end": 147.42
+     "start": 147.16,
+     "end": 147.48
     }
    ]
   },
@@ -947,77 +952,77 @@
   },
   {
    "t": "english",
-   "start": 157.36,
-   "end": 159.28,
+   "start": 156.62,
+   "end": 158.72,
    "text": "Do you drink water every day?",
    "words": [
     {
      "w": "do",
-     "start": 157.36,
-     "end": 157.96
+     "start": 156.62,
+     "end": 157.42
     },
     {
      "w": "you",
-     "start": 157.96,
-     "end": 158.08
+     "start": 157.42,
+     "end": 157.58
     },
     {
      "w": "drink",
-     "start": 158.08,
-     "end": 158.3
+     "start": 157.58,
+     "end": 157.78
     },
     {
      "w": "water",
-     "start": 158.3,
-     "end": 158.62
+     "start": 157.78,
+     "end": 158.08
     },
     {
      "w": "every",
-     "start": 158.62,
-     "end": 158.96
+     "start": 158.08,
+     "end": 158.4
     },
     {
      "w": "day",
-     "start": 158.96,
-     "end": 159.28
+     "start": 158.4,
+     "end": 158.72
     }
    ]
   },
   {
    "t": "english",
-   "start": 163.04,
-   "end": 164.78,
+   "start": 162.78,
+   "end": 164.8,
    "text": "Yes, I drink water every day.",
    "words": [
     {
      "w": "yes",
-     "start": 163.04,
-     "end": 163.64
+     "start": 162.78,
+     "end": 163.36
     },
     {
      "w": "i",
-     "start": 163.64,
-     "end": 163.72
+     "start": 163.68,
+     "end": 163.76
     },
     {
      "w": "drink",
-     "start": 163.72,
-     "end": 163.96
+     "start": 163.76,
+     "end": 163.98
     },
     {
      "w": "water",
-     "start": 163.96,
-     "end": 164.26
+     "start": 163.98,
+     "end": 164.3
     },
     {
      "w": "every",
-     "start": 164.26,
+     "start": 164.3,
      "end": 164.54
     },
     {
      "w": "day",
      "start": 164.54,
-     "end": 164.78
+     "end": 164.8
     }
    ]
   },
@@ -1036,481 +1041,485 @@
   },
   {
    "t": "english",
-   "start": 175.46,
-   "end": 177.54,
+   "start": 175.16,
+   "end": 177.34,
    "text": "Do you drink a lot of water in the mornings?",
    "words": [
     {
      "w": "do",
-     "start": 175.46,
-     "end": 175.82
+     "start": 175.16,
+     "end": 175.56
     },
     {
      "w": "you",
-     "start": 175.82,
-     "end": 175.96
+     "start": 175.56,
+     "end": 175.68
     },
     {
      "w": "drink",
-     "start": 175.96,
-     "end": 176.22
+     "start": 175.68,
+     "end": 175.94
     },
     {
      "w": "a",
-     "start": 176.22,
-     "end": 176.4
+     "start": 175.94,
+     "end": 176.14
     },
     {
      "w": "lot",
-     "start": 176.4,
-     "end": 176.58
+     "start": 176.14,
+     "end": 176.3
     },
     {
      "w": "of",
-     "start": 176.58,
-     "end": 176.72
+     "start": 176.3,
+     "end": 176.44
     },
     {
      "w": "water",
-     "start": 176.72,
-     "end": 176.98
+     "start": 176.44,
+     "end": 176.72
     },
     {
      "w": "in",
-     "start": 176.98,
-     "end": 177.16
+     "start": 176.72,
+     "end": 176.9
     },
     {
      "w": "the",
-     "start": 177.16,
-     "end": 177.26
+     "start": 176.9,
+     "end": 176.98
     },
     {
      "w": "mornings",
-     "start": 177.26,
-     "end": 177.54
+     "start": 176.98,
+     "end": 177.34
     }
    ]
   },
   {
    "t": "english",
-   "start": 182.48,
-   "end": 187.48,
+   "start": 182.42,
+   "end": 188.16,
    "text": "Yes, I drink a lot of water in the mornings. And you? Do you drink a lot of water in the mornings?",
    "words": [
     {
      "w": "yes",
-     "start": 182.48,
-     "end": 183.0
+     "start": 182.42,
+     "end": 182.8
     },
     {
      "w": "i",
-     "start": 183.0,
+     "start": 183.08,
      "end": 183.14
     },
     {
      "w": "drink",
      "start": 183.14,
-     "end": 183.4
+     "end": 183.42
     },
     {
      "w": "a",
-     "start": 183.4,
-     "end": 183.52
+     "start": 183.42,
+     "end": 183.56
     },
     {
      "w": "lot",
-     "start": 183.52,
-     "end": 183.68
+     "start": 183.56,
+     "end": 183.72
     },
     {
      "w": "of",
-     "start": 183.68,
+     "start": 183.72,
      "end": 183.84
     },
     {
      "w": "water",
      "start": 183.84,
-     "end": 184.16
+     "end": 184.18
     },
     {
      "w": "in",
-     "start": 184.16,
-     "end": 184.34
+     "start": 184.18,
+     "end": 184.36
     },
     {
      "w": "the",
-     "start": 184.34,
-     "end": 184.44
+     "start": 184.36,
+     "end": 184.46
     },
     {
      "w": "mornings",
-     "start": 184.44,
+     "start": 184.46,
      "end": 184.94
     },
     {
      "w": "and",
-     "start": 184.94,
-     "end": 185.3
+     "start": 185.28,
+     "end": 185.66
     },
     {
      "w": "you",
-     "start": 185.3,
-     "end": 185.52
+     "start": 185.66,
+     "end": 185.84
     },
     {
      "w": "do",
-     "start": 185.52,
-     "end": 186.04
+     "start": 186.34,
+     "end": 186.72
     },
     {
      "w": "you",
-     "start": 186.04,
-     "end": 186.2
+     "start": 186.72,
+     "end": 186.88
     },
     {
      "w": "drink",
-     "start": 186.2,
-     "end": 186.42
-    },
-    {
-     "w": "a",
-     "start": 186.42,
-     "end": 186.56
-    },
-    {
-     "w": "lot",
-     "start": 186.56,
-     "end": 186.64
-    },
-    {
-     "w": "of",
-     "start": 186.64,
-     "end": 186.76
-    },
-    {
-     "w": "water",
-     "start": 186.76,
-     "end": 186.98
-    },
-    {
-     "w": "in",
-     "start": 186.98,
+     "start": 186.88,
      "end": 187.1
     },
     {
-     "w": "the",
+     "w": "a",
      "start": 187.1,
-     "end": 187.18
+     "end": 187.22
+    },
+    {
+     "w": "lot",
+     "start": 187.22,
+     "end": 187.32
+    },
+    {
+     "w": "of",
+     "start": 187.32,
+     "end": 187.44
+    },
+    {
+     "w": "water",
+     "start": 187.44,
+     "end": 187.64
+    },
+    {
+     "w": "in",
+     "start": 187.64,
+     "end": 187.78
+    },
+    {
+     "w": "the",
+     "start": 187.78,
+     "end": 187.86
     },
     {
      "w": "mornings",
-     "start": 187.18,
-     "end": 187.48
+     "start": 187.86,
+     "end": 188.16
     }
    ]
   },
   {
-   "t": "narration",
+   "t": "prompt",
    "start": 188.98,
    "end": 198.7,
-   "lines": [
-    "Dile “siempre bebo mucha agua por las mañanas.”"
-   ],
    "words": [
     {
      "w": "dile",
-     "start": 189.18,
-     "end": 189.7
+     "start": 187.96,
+     "end": 189.56
     },
     {
      "w": "siempre",
-     "start": 189.7,
-     "end": 190.22
+     "start": 189.76,
+     "end": 190.46
     },
     {
      "w": "bebo",
-     "start": 190.22,
-     "end": 190.58
+     "start": 190.46,
+     "end": 190.84
     },
     {
      "w": "mucha",
-     "start": 190.58,
-     "end": 191.04
-    },
-    {
-     "w": "agua",
-     "start": 191.04,
+     "start": 190.84,
      "end": 191.3
     },
     {
-     "w": "por",
+     "w": "agua",
      "start": 191.3,
-     "end": 191.52
+     "end": 191.56
+    },
+    {
+     "w": "por",
+     "start": 191.56,
+     "end": 191.78
     },
     {
      "w": "las",
-     "start": 191.52,
-     "end": 191.74
+     "start": 191.78,
+     "end": 192.0
     },
     {
      "w": "mananas",
-     "start": 191.74,
-     "end": 192.22
+     "start": 192.0,
+     "end": 192.52
     }
-   ]
+   ],
+   "spanish": "Dile “siempre bebo mucha agua por las mañanas.”",
+   "expected": [
+    "I always drink a lot of water in the mornings."
+   ],
+   "pauseAt": 192.77
   },
   {
    "t": "english",
-   "start": 199.14,
-   "end": 201.94,
+   "start": 199.02,
+   "end": 201.5,
    "text": "I always drink a lot of water in the mornings.",
    "words": [
     {
      "w": "i",
-     "start": 199.14,
-     "end": 199.66
+     "start": 199.02,
+     "end": 199.38
     },
     {
      "w": "always",
-     "start": 199.66,
-     "end": 200.12
+     "start": 199.38,
+     "end": 199.74
     },
     {
      "w": "drink",
-     "start": 200.12,
-     "end": 200.44
+     "start": 199.74,
+     "end": 200.04
     },
     {
      "w": "a",
-     "start": 200.44,
-     "end": 200.56
+     "start": 200.04,
+     "end": 200.2
     },
     {
      "w": "lot",
-     "start": 200.56,
-     "end": 200.76
+     "start": 200.2,
+     "end": 200.38
     },
     {
      "w": "of",
-     "start": 200.76,
-     "end": 200.92
+     "start": 200.38,
+     "end": 200.52
     },
     {
      "w": "water",
-     "start": 200.92,
-     "end": 201.24
+     "start": 200.52,
+     "end": 200.84
     },
     {
      "w": "in",
-     "start": 201.24,
-     "end": 201.4
+     "start": 200.84,
+     "end": 201.02
     },
     {
      "w": "the",
-     "start": 201.4,
-     "end": 201.5
+     "start": 201.02,
+     "end": 201.1
     },
     {
      "w": "mornings",
-     "start": 201.5,
-     "end": 201.94
+     "start": 201.1,
+     "end": 201.5
     }
    ]
   },
   {
    "t": "english",
-   "start": 207.0,
-   "end": 210.49,
+   "start": 206.76,
+   "end": 210.42,
    "text": "And in the afternoon? Do you drink a lot of water in the afternoon?",
    "words": [
     {
      "w": "and",
-     "start": 207.0,
-     "end": 207.52
+     "start": 206.76,
+     "end": 207.14
     },
     {
      "w": "in",
-     "start": 207.52,
-     "end": 207.66
+     "start": 207.14,
+     "end": 207.3
     },
     {
      "w": "the",
-     "start": 207.66,
-     "end": 207.78
+     "start": 207.3,
+     "end": 207.4
     },
     {
      "w": "afternoon",
-     "start": 207.78,
-     "end": 208.22
+     "start": 207.4,
+     "end": 207.84
     },
     {
      "w": "do",
-     "start": 208.6,
-     "end": 208.85
+     "start": 208.36,
+     "end": 208.74
     },
     {
      "w": "you",
-     "start": 208.85,
-     "end": 208.93
+     "start": 208.74,
+     "end": 208.82
     },
     {
      "w": "drink",
-     "start": 208.93,
-     "end": 209.15
+     "start": 208.82,
+     "end": 209.04
     },
     {
      "w": "a",
-     "start": 209.15,
-     "end": 209.27
+     "start": 209.04,
+     "end": 209.18
     },
     {
      "w": "lot",
-     "start": 209.27,
-     "end": 209.41
+     "start": 209.18,
+     "end": 209.32
     },
     {
      "w": "of",
-     "start": 209.41,
-     "end": 209.53
+     "start": 209.32,
+     "end": 209.42
     },
     {
      "w": "water",
-     "start": 209.53,
-     "end": 209.83
+     "start": 209.42,
+     "end": 209.7
     },
     {
      "w": "in",
-     "start": 209.83,
-     "end": 209.97
+     "start": 209.7,
+     "end": 209.86
     },
     {
      "w": "the",
-     "start": 209.97,
-     "end": 210.05
+     "start": 209.86,
+     "end": 209.94
     },
     {
      "w": "afternoon",
-     "start": 210.05,
-     "end": 210.49
+     "start": 209.94,
+     "end": 210.42
     }
    ]
   },
   {
-   "t": "narration",
+   "t": "prompt",
    "start": 211.52,
    "end": 221.04,
-   "lines": [
-    "Dile, \"no, no bebo mucha agua por las tardes.\""
-   ],
    "words": [
     {
      "w": "dile",
-     "start": 211.56,
-     "end": 212.06
+     "start": 211.4,
+     "end": 211.88
     },
     {
      "w": "no",
-     "start": 212.06,
+     "start": 211.98,
      "end": 212.32
     },
     {
      "w": "no",
-     "start": 212.32,
-     "end": 212.56
+     "start": 212.48,
+     "end": 212.72
     },
     {
      "w": "bebo",
-     "start": 212.56,
-     "end": 212.8
+     "start": 212.72,
+     "end": 212.96
     },
     {
      "w": "mucha",
-     "start": 212.8,
-     "end": 213.12
+     "start": 212.96,
+     "end": 213.28
     },
     {
      "w": "agua",
-     "start": 213.12,
-     "end": 213.38
+     "start": 213.28,
+     "end": 213.54
     },
     {
      "w": "por",
-     "start": 213.38,
-     "end": 213.62
+     "start": 213.54,
+     "end": 213.76
     },
     {
      "w": "las",
-     "start": 213.62,
-     "end": 213.82
+     "start": 213.76,
+     "end": 213.98
     },
     {
      "w": "tardes",
-     "start": 213.82,
-     "end": 214.34
+     "start": 213.98,
+     "end": 214.52
     }
-   ]
+   ],
+   "spanish": "Dile, “no, no bebo mucha agua por las tardes.”",
+   "expected": [
+    "No, I don’t drink a lot of water in the afternoons."
+   ],
+   "pauseAt": 214.77
   },
   {
    "t": "english",
-   "start": 221.28,
-   "end": 224.18,
+   "start": 220.84,
+   "end": 224.08,
    "text": "No, I don’t drink a lot of water in the afternoons.",
    "words": [
     {
      "w": "no",
-     "start": 221.28,
-     "end": 221.78
+     "start": 220.84,
+     "end": 221.5
     },
     {
      "w": "i",
-     "start": 221.78,
-     "end": 222.06
+     "start": 221.74,
+     "end": 221.96
     },
     {
      "w": "dont",
-     "start": 222.06,
-     "end": 222.32
+     "start": 221.96,
+     "end": 222.2
     },
     {
      "w": "drink",
-     "start": 222.32,
-     "end": 222.48
+     "start": 222.2,
+     "end": 222.36
     },
     {
      "w": "a",
-     "start": 222.48,
-     "end": 222.58
+     "start": 222.36,
+     "end": 222.48
     },
     {
      "w": "lot",
-     "start": 222.58,
-     "end": 222.74
+     "start": 222.48,
+     "end": 222.62
     },
     {
      "w": "of",
-     "start": 222.74,
-     "end": 222.88
+     "start": 222.62,
+     "end": 222.76
     },
     {
      "w": "water",
-     "start": 222.88,
-     "end": 223.18
+     "start": 222.76,
+     "end": 223.06
     },
     {
      "w": "in",
-     "start": 223.18,
-     "end": 223.36
+     "start": 223.06,
+     "end": 223.24
     },
     {
      "w": "the",
-     "start": 223.36,
-     "end": 223.46
+     "start": 223.24,
+     "end": 223.34
     },
     {
      "w": "afternoons",
-     "start": 223.46,
-     "end": 224.18
+     "start": 223.34,
+     "end": 224.08
     }
    ]
   },
@@ -1527,87 +1536,87 @@
   },
   {
    "t": "english",
-   "start": 236.44,
-   "end": 238.1,
+   "start": 236.14,
+   "end": 237.68,
    "text": "Do you drink a lot of beer?",
    "words": [
     {
      "w": "do",
-     "start": 236.44,
-     "end": 236.94
+     "start": 236.14,
+     "end": 236.52
     },
     {
      "w": "you",
-     "start": 236.94,
-     "end": 237.08
+     "start": 236.52,
+     "end": 236.64
     },
     {
      "w": "drink",
-     "start": 237.08,
-     "end": 237.34
+     "start": 236.64,
+     "end": 236.92
     },
     {
      "w": "a",
-     "start": 237.34,
-     "end": 237.52
+     "start": 236.92,
+     "end": 237.08
     },
     {
      "w": "lot",
-     "start": 237.52,
-     "end": 237.64
+     "start": 237.08,
+     "end": 237.22
     },
     {
      "w": "of",
-     "start": 237.64,
-     "end": 237.8
+     "start": 237.22,
+     "end": 237.36
     },
     {
      "w": "beer",
-     "start": 237.8,
-     "end": 238.1
+     "start": 237.36,
+     "end": 237.68
     }
    ]
   },
   {
    "t": "english",
-   "start": 242.64,
-   "end": 244.24,
+   "start": 242.52,
+   "end": 244.4,
    "text": "Yes, I drink a lot of beer.",
    "words": [
     {
      "w": "yes",
-     "start": 242.64,
-     "end": 243.16
+     "start": 242.52,
+     "end": 242.96
     },
     {
      "w": "i",
-     "start": 243.16,
-     "end": 243.42
+     "start": 243.36,
+     "end": 243.58
     },
     {
      "w": "drink",
-     "start": 243.42,
-     "end": 243.66
+     "start": 243.58,
+     "end": 243.82
     },
     {
      "w": "a",
-     "start": 243.66,
-     "end": 243.8
+     "start": 243.82,
+     "end": 243.96
     },
     {
      "w": "lot",
-     "start": 243.8,
-     "end": 243.9
+     "start": 243.96,
+     "end": 244.08
     },
     {
      "w": "of",
-     "start": 243.9,
-     "end": 244.02
+     "start": 244.08,
+     "end": 244.2
     },
     {
      "w": "beer",
-     "start": 244.02,
-     "end": 244.24
+     "start": 244.2,
+     "end": 244.4
     }
    ]
   },
@@ -1626,126 +1635,126 @@
   },
   {
    "t": "english",
-   "start": 253.88,
-   "end": 256.36,
+   "start": 253.68,
+   "end": 256.06,
    "text": "Do you drink a lot of beer in the afternoons?",
    "words": [
     {
      "w": "do",
-     "start": 253.88,
-     "end": 254.24
+     "start": 253.68,
+     "end": 253.96
     },
     {
      "w": "you",
-     "start": 254.24,
-     "end": 254.38
+     "start": 253.96,
+     "end": 254.1
     },
     {
      "w": "drink",
-     "start": 254.38,
-     "end": 254.64
+     "start": 254.1,
+     "end": 254.34
     },
     {
      "w": "a",
-     "start": 254.64,
-     "end": 254.78
+     "start": 254.34,
+     "end": 254.48
     },
     {
      "w": "lot",
-     "start": 254.78,
-     "end": 254.9
+     "start": 254.48,
+     "end": 254.62
     },
     {
      "w": "of",
-     "start": 254.9,
-     "end": 255.04
+     "start": 254.62,
+     "end": 254.74
     },
     {
      "w": "beer",
-     "start": 255.04,
-     "end": 255.34
+     "start": 254.74,
+     "end": 255.04
     },
     {
      "w": "in",
-     "start": 255.34,
-     "end": 255.52
+     "start": 255.04,
+     "end": 255.22
     },
     {
      "w": "the",
-     "start": 255.52,
-     "end": 255.62
+     "start": 255.22,
+     "end": 255.32
     },
     {
      "w": "afternoons",
-     "start": 255.62,
-     "end": 256.36
+     "start": 255.32,
+     "end": 256.06
     }
    ]
   },
   {
    "t": "english",
-   "start": 261.48,
-   "end": 267.84,
+   "start": 261.18,
+   "end": 268.4,
    "text": "No, I don't drink a lot of beer in the afternoons. I drink a lot of beer at night. Does she drink?",
    "words": [
     {
      "w": "no",
-     "start": 261.48,
-     "end": 261.98
+     "start": 261.18,
+     "end": 261.66
     },
     {
      "w": "i",
-     "start": 261.98,
-     "end": 262.48
+     "start": 262.06,
+     "end": 262.26
     },
     {
      "w": "dont",
-     "start": 262.48,
-     "end": 262.74
+     "start": 262.26,
+     "end": 262.52
     },
     {
      "w": "drink",
-     "start": 262.74,
-     "end": 262.9
+     "start": 262.52,
+     "end": 262.68
     },
     {
      "w": "a",
-     "start": 262.9,
-     "end": 263.06
+     "start": 262.68,
+     "end": 262.84
     },
     {
      "w": "lot",
-     "start": 263.06,
-     "end": 263.18
+     "start": 262.84,
+     "end": 262.94
     },
     {
      "w": "of",
-     "start": 263.18,
-     "end": 263.3
+     "start": 262.94,
+     "end": 263.08
     },
     {
      "w": "beer",
-     "start": 263.3,
-     "end": 263.54
+     "start": 263.08,
+     "end": 263.3
     },
     {
      "w": "in",
-     "start": 263.54,
-     "end": 263.68
+     "start": 263.3,
+     "end": 263.46
     },
     {
      "w": "the",
-     "start": 263.68,
-     "end": 263.8
+     "start": 263.46,
+     "end": 263.56
     },
     {
      "w": "afternoons",
-     "start": 263.8,
-     "end": 264.62
+     "start": 263.56,
+     "end": 264.42
     },
     {
      "w": "i",
-     "start": 264.62,
+     "start": 264.66,
      "end": 265.08
     },
     {
@@ -1756,16 +1765,16 @@
     {
      "w": "a",
      "start": 265.34,
-     "end": 265.5
+     "end": 265.48
     },
     {
      "w": "lot",
-     "start": 265.5,
-     "end": 265.62
+     "start": 265.48,
+     "end": 265.6
     },
     {
      "w": "of",
-     "start": 265.62,
+     "start": 265.6,
      "end": 265.76
     },
     {
@@ -1785,18 +1794,18 @@
     },
     {
      "w": "does",
-     "start": 266.92,
-     "end": 267.32
+     "start": 267.44,
+     "end": 267.92
     },
     {
      "w": "she",
-     "start": 267.32,
-     "end": 267.52
+     "start": 267.92,
+     "end": 268.12
     },
     {
      "w": "drink",
-     "start": 267.52,
-     "end": 267.84
+     "start": 268.12,
+     "end": 268.4
     }
    ]
   },
@@ -1815,74 +1824,74 @@
   },
   {
    "t": "english",
-   "start": 274.98,
-   "end": 275.86,
+   "start": 274.96,
+   "end": 275.28,
    "text": "What?",
    "words": [
     {
      "w": "what",
-     "start": 274.98,
-     "end": 275.86
+     "start": 274.96,
+     "end": 275.28
     }
    ]
   },
   {
    "t": "english",
-   "start": 277.2,
-   "end": 280.24,
+   "start": 276.0,
+   "end": 280.66,
    "text": "Does she drink? Your friend. Does your friend drink?",
    "words": [
     {
      "w": "does",
-     "start": 277.2,
-     "end": 277.64
+     "start": 276.0,
+     "end": 277.32
     },
     {
      "w": "she",
-     "start": 277.64,
-     "end": 277.88
+     "start": 277.32,
+     "end": 277.54
     },
     {
      "w": "drink",
-     "start": 277.88,
-     "end": 278.24
+     "start": 277.54,
+     "end": 277.92
     },
     {
      "w": "your",
-     "start": 278.24,
-     "end": 278.74
+     "start": 278.18,
+     "end": 278.86
     },
     {
      "w": "friend",
-     "start": 278.74,
-     "end": 279.16
+     "start": 278.86,
+     "end": 279.26
     },
     {
      "w": "does",
-     "start": 279.16,
-     "end": 279.68
+     "start": 279.5,
+     "end": 280.04
     },
     {
      "w": "your",
-     "start": 279.68,
-     "end": 279.82
+     "start": 280.04,
+     "end": 280.16
     },
     {
      "w": "friend",
-     "start": 279.82,
-     "end": 280.02
+     "start": 280.16,
+     "end": 280.36
     },
     {
      "w": "drink",
-     "start": 280.02,
-     "end": 280.24
+     "start": 280.36,
+     "end": 280.66
     }
    ]
   },
   {
    "t": "narration",
    "start": 281.8,
-   "end": 292.44,
+   "end": 292.23,
    "lines": [
     "Él acaba de preguntarte “Does your friend drink?” “Does your friend drink?” significa “tu amiga bebe?” Dile “ella bebe.”"
    ],
@@ -1986,19 +1995,19 @@
   },
   {
    "t": "english",
-   "start": 292.94,
-   "end": 294.02,
+   "start": 292.24,
+   "end": 293.52,
    "text": "She drinks.",
    "words": [
     {
      "w": "she",
-     "start": 292.94,
-     "end": 293.62
+     "start": 292.24,
+     "end": 293.16
     },
     {
      "w": "drinks",
-     "start": 293.62,
-     "end": 294.02
+     "start": 293.16,
+     "end": 293.52
     }
    ]
   },
@@ -2016,77 +2025,77 @@
   },
   {
    "t": "english",
-   "start": 302.72,
-   "end": 304.52,
+   "start": 302.02,
+   "end": 303.98,
    "text": "She drinks a little bit.",
    "words": [
     {
      "w": "she",
-     "start": 302.72,
-     "end": 303.36
+     "start": 302.02,
+     "end": 302.9
     },
     {
      "w": "drinks",
-     "start": 303.36,
-     "end": 303.72
+     "start": 302.9,
+     "end": 303.22
     },
     {
      "w": "a",
-     "start": 303.72,
-     "end": 303.96
+     "start": 303.22,
+     "end": 303.5
     },
     {
      "w": "little",
-     "start": 303.96,
-     "end": 304.14
+     "start": 303.5,
+     "end": 303.64
     },
     {
      "w": "bit",
-     "start": 304.14,
-     "end": 304.52
+     "start": 303.64,
+     "end": 303.98
     }
    ]
   },
   {
    "t": "english",
-   "start": 307.76,
-   "end": 309.48,
+   "start": 307.44,
+   "end": 309.06,
    "text": "Does she drink a lot of pop?",
    "words": [
     {
      "w": "does",
-     "start": 307.76,
-     "end": 308.4
+     "start": 307.44,
+     "end": 307.98
     },
     {
      "w": "she",
-     "start": 308.4,
-     "end": 308.58
+     "start": 307.98,
+     "end": 308.16
     },
     {
      "w": "drink",
-     "start": 308.58,
-     "end": 308.8
+     "start": 308.16,
+     "end": 308.4
     },
     {
      "w": "a",
-     "start": 308.8,
-     "end": 308.96
+     "start": 308.4,
+     "end": 308.54
     },
     {
      "w": "lot",
-     "start": 308.96,
-     "end": 309.04
+     "start": 308.54,
+     "end": 308.62
     },
     {
      "w": "of",
-     "start": 309.04,
-     "end": 309.16
+     "start": 308.62,
+     "end": 308.72
     },
     {
      "w": "pop",
-     "start": 309.16,
-     "end": 309.48
+     "start": 308.72,
+     "end": 309.06
     }
    ]
   },
@@ -2103,87 +2112,87 @@
   },
   {
    "t": "english",
-   "start": 317.64,
-   "end": 319.34,
+   "start": 317.04,
+   "end": 319.6,
    "text": "Yes, she drinks a lot of pop.",
    "words": [
     {
      "w": "yes",
-     "start": 317.64,
-     "end": 317.88
+     "start": 317.04,
+     "end": 317.9
     },
     {
      "w": "she",
-     "start": 317.88,
-     "end": 318.12
+     "start": 318.3,
+     "end": 318.44
     },
     {
      "w": "drinks",
-     "start": 318.12,
-     "end": 318.42
+     "start": 318.44,
+     "end": 318.72
     },
     {
      "w": "a",
-     "start": 318.42,
-     "end": 318.68
-    },
-    {
-     "w": "lot",
-     "start": 318.68,
-     "end": 318.84
-    },
-    {
-     "w": "of",
-     "start": 318.84,
+     "start": 318.72,
      "end": 318.98
     },
     {
-     "w": "pop",
+     "w": "lot",
      "start": 318.98,
-     "end": 319.34
+     "end": 319.14
+    },
+    {
+     "w": "of",
+     "start": 319.14,
+     "end": 319.28
+    },
+    {
+     "w": "pop",
+     "start": 319.28,
+     "end": 319.6
     }
    ]
   },
   {
    "t": "english",
-   "start": 323.36,
-   "end": 324.94,
+   "start": 322.86,
+   "end": 324.58,
    "text": "Does she drink a lot of wine?",
    "words": [
     {
      "w": "does",
-     "start": 323.36,
-     "end": 323.84
+     "start": 322.86,
+     "end": 323.46
     },
     {
      "w": "she",
-     "start": 323.84,
-     "end": 324.0
+     "start": 323.46,
+     "end": 323.64
     },
     {
      "w": "drink",
-     "start": 324.0,
-     "end": 324.22
+     "start": 323.64,
+     "end": 323.86
     },
     {
      "w": "a",
-     "start": 324.22,
-     "end": 324.38
+     "start": 323.86,
+     "end": 323.98
     },
     {
      "w": "lot",
-     "start": 324.38,
-     "end": 324.48
+     "start": 323.98,
+     "end": 324.1
     },
     {
      "w": "of",
-     "start": 324.48,
-     "end": 324.58
+     "start": 324.1,
+     "end": 324.2
     },
     {
      "w": "wine",
-     "start": 324.58,
-     "end": 324.94
+     "start": 324.2,
+     "end": 324.58
     }
    ]
   },
@@ -2201,155 +2210,157 @@
   },
   {
    "t": "english",
-   "start": 333.42,
-   "end": 336.0,
+   "start": 332.78,
+   "end": 335.76,
    "text": "Yes, she always drinks a lot of wine.",
    "words": [
     {
      "w": "yes",
-     "start": 333.42,
-     "end": 334.1
+     "start": 332.78,
+     "end": 333.7
     },
     {
      "w": "she",
-     "start": 334.1,
-     "end": 334.3
+     "start": 333.98,
+     "end": 334.1
     },
     {
      "w": "always",
-     "start": 334.3,
-     "end": 334.68
+     "start": 334.1,
+     "end": 334.48
     },
     {
      "w": "drinks",
-     "start": 334.68,
-     "end": 335.0
+     "start": 334.48,
+     "end": 334.8
     },
     {
      "w": "a",
-     "start": 335.0,
-     "end": 335.26
+     "start": 334.8,
+     "end": 335.04
     },
     {
      "w": "lot",
-     "start": 335.26,
-     "end": 335.42
+     "start": 335.04,
+     "end": 335.24
     },
     {
      "w": "of",
-     "start": 335.42,
-     "end": 335.58
+     "start": 335.24,
+     "end": 335.38
     },
     {
      "w": "wine",
-     "start": 335.58,
-     "end": 336.0
+     "start": 335.38,
+     "end": 335.76
     }
    ]
   },
   {
    "t": "english",
-   "start": 340.06,
-   "end": 341.4,
+   "start": 339.74,
+   "end": 340.94,
    "text": "She eats a lot?",
    "words": [
     {
      "w": "she",
-     "start": 340.06,
-     "end": 340.74
+     "start": 339.74,
+     "end": 340.26
     },
     {
      "w": "eats",
-     "start": 340.74,
-     "end": 341.0
+     "start": 340.26,
+     "end": 340.54
     },
     {
      "w": "a",
-     "start": 341.0,
-     "end": 341.16
+     "start": 340.54,
+     "end": 340.7
     },
     {
      "w": "lot",
-     "start": 341.16,
-     "end": 341.4
+     "start": 340.7,
+     "end": 340.94
     }
    ]
   },
   {
-   "t": "narration",
+   "t": "prompt",
    "start": 341.44,
    "end": 348.66,
-   "lines": [
-    "Dile “sí, ella siempre come mucho.”"
-   ],
    "words": [
     {
      "w": "dile",
-     "start": 341.62,
-     "end": 342.14
+     "start": 340.74,
+     "end": 341.98
     },
     {
      "w": "si",
-     "start": 342.14,
-     "end": 342.52
+     "start": 342.26,
+     "end": 342.8
     },
     {
      "w": "ella",
-     "start": 342.52,
-     "end": 342.82
+     "start": 343.36,
+     "end": 343.6
     },
     {
      "w": "siempre",
-     "start": 342.82,
-     "end": 343.18
+     "start": 343.6,
+     "end": 343.94
     },
     {
      "w": "come",
-     "start": 343.18,
-     "end": 343.48
+     "start": 343.94,
+     "end": 344.26
     },
     {
      "w": "mucho",
-     "start": 343.48,
-     "end": 343.86
+     "start": 344.26,
+     "end": 344.64
     }
-   ]
+   ],
+   "spanish": "Dile “sí, ella siempre come mucho.”",
+   "expected": [
+    "Yes, she always eats a lot."
+   ],
+   "pauseAt": 344.89
   },
   {
    "t": "english",
-   "start": 349.1,
-   "end": 351.04,
+   "start": 348.46,
+   "end": 350.94,
    "text": "Yes, she always eats a lot.",
    "words": [
     {
      "w": "yes",
-     "start": 349.1,
-     "end": 349.76
+     "start": 348.46,
+     "end": 349.38
     },
     {
      "w": "she",
-     "start": 349.76,
-     "end": 349.92
+     "start": 349.66,
+     "end": 349.84
     },
     {
      "w": "always",
-     "start": 349.92,
-     "end": 350.28
+     "start": 349.84,
+     "end": 350.2
     },
     {
      "w": "eats",
-     "start": 350.28,
-     "end": 350.6
+     "start": 350.2,
+     "end": 350.48
     },
     {
      "w": "a",
-     "start": 350.6,
-     "end": 350.76
+     "start": 350.48,
+     "end": 350.66
     },
     {
      "w": "lot",
-     "start": 350.76,
-     "end": 351.04
+     "start": 350.66,
+     "end": 350.94
     }
    ]
   },
@@ -2369,172 +2380,172 @@
   },
   {
    "t": "english",
-   "start": 361.34,
-   "end": 363.14,
+   "start": 360.6,
+   "end": 362.62,
    "text": "Do you drink a lot of wine?",
    "words": [
     {
      "w": "do",
-     "start": 361.34,
-     "end": 361.94
+     "start": 360.6,
+     "end": 361.42
     },
     {
      "w": "you",
-     "start": 361.94,
-     "end": 362.08
+     "start": 361.42,
+     "end": 361.54
     },
     {
      "w": "drink",
-     "start": 362.08,
-     "end": 362.34
+     "start": 361.54,
+     "end": 361.84
     },
     {
      "w": "a",
-     "start": 362.34,
-     "end": 362.52
+     "start": 361.84,
+     "end": 361.98
     },
     {
      "w": "lot",
-     "start": 362.52,
-     "end": 362.64
+     "start": 361.98,
+     "end": 362.12
     },
     {
      "w": "of",
-     "start": 362.64,
-     "end": 362.78
+     "start": 362.12,
+     "end": 362.24
     },
     {
      "w": "wine",
-     "start": 362.78,
-     "end": 363.14
+     "start": 362.24,
+     "end": 362.62
     }
    ]
   },
   {
    "t": "english",
-   "start": 366.06,
-   "end": 371.76,
+   "start": 365.86,
+   "end": 372.9,
    "text": "No, I never drink a lot of wine. But I drink a lot of beer. And them? Do they drink a lot of milk?",
    "words": [
     {
      "w": "no",
-     "start": 366.06,
-     "end": 366.66
+     "start": 365.86,
+     "end": 366.34
     },
     {
      "w": "i",
      "start": 366.66,
-     "end": 366.92
+     "end": 366.88
     },
     {
      "w": "never",
-     "start": 366.92,
-     "end": 367.2
+     "start": 366.88,
+     "end": 367.16
     },
     {
      "w": "drink",
-     "start": 367.2,
-     "end": 367.44
+     "start": 367.16,
+     "end": 367.4
     },
     {
      "w": "a",
-     "start": 367.44,
-     "end": 367.58
+     "start": 367.4,
+     "end": 367.54
     },
     {
      "w": "lot",
-     "start": 367.58,
-     "end": 367.68
+     "start": 367.54,
+     "end": 367.64
     },
     {
      "w": "of",
-     "start": 367.68,
-     "end": 367.78
+     "start": 367.64,
+     "end": 367.74
     },
     {
      "w": "wine",
-     "start": 367.78,
-     "end": 368.08
+     "start": 367.74,
+     "end": 368.02
     },
     {
      "w": "but",
-     "start": 368.08,
-     "end": 368.36
+     "start": 368.26,
+     "end": 368.56
     },
     {
      "w": "i",
-     "start": 368.36,
-     "end": 368.5
+     "start": 368.56,
+     "end": 368.7
     },
     {
      "w": "drink",
-     "start": 368.5,
-     "end": 368.84
+     "start": 368.7,
+     "end": 369.02
     },
     {
      "w": "a",
-     "start": 368.84,
-     "end": 369.04
+     "start": 369.02,
+     "end": 369.24
     },
     {
      "w": "lot",
-     "start": 369.04,
-     "end": 369.36
-    },
-    {
-     "w": "of",
-     "start": 369.36,
+     "start": 369.24,
      "end": 369.56
     },
     {
-     "w": "beer",
+     "w": "of",
      "start": 369.56,
-     "end": 369.9
+     "end": 369.76
+    },
+    {
+     "w": "beer",
+     "start": 369.76,
+     "end": 370.1
     },
     {
      "w": "and",
-     "start": 369.9,
-     "end": 370.02
+     "start": 370.68,
+     "end": 370.8
     },
     {
      "w": "them",
-     "start": 370.02,
-     "end": 370.32
+     "start": 370.8,
+     "end": 371.08
     },
     {
      "w": "do",
-     "start": 370.32,
-     "end": 370.74
+     "start": 371.46,
+     "end": 371.94
     },
     {
      "w": "they",
-     "start": 370.74,
-     "end": 370.9
+     "start": 371.94,
+     "end": 372.06
     },
     {
      "w": "drink",
-     "start": 370.9,
-     "end": 371.12
+     "start": 372.06,
+     "end": 372.28
     },
     {
      "w": "a",
-     "start": 371.12,
-     "end": 371.26
+     "start": 372.28,
+     "end": 372.44
     },
     {
      "w": "lot",
-     "start": 371.26,
-     "end": 371.34
+     "start": 372.44,
+     "end": 372.52
     },
     {
      "w": "of",
-     "start": 371.34,
-     "end": 371.46
+     "start": 372.52,
+     "end": 372.64
     },
     {
      "w": "milk",
-     "start": 371.46,
-     "end": 371.76
+     "start": 372.64,
+     "end": 372.9
     }
    ]
   },
@@ -2550,44 +2561,44 @@
   },
   {
    "t": "english",
-   "start": 381.28,
-   "end": 383.16,
+   "start": 380.72,
+   "end": 383.0,
    "text": "Yes, they drink a lot of milk.",
    "words": [
     {
      "w": "yes",
-     "start": 381.28,
-     "end": 381.88
+     "start": 380.72,
+     "end": 381.54
     },
     {
      "w": "they",
-     "start": 381.88,
-     "end": 382.04
+     "start": 381.78,
+     "end": 381.94
     },
     {
      "w": "drink",
-     "start": 382.04,
-     "end": 382.34
+     "start": 381.94,
+     "end": 382.18
     },
     {
      "w": "a",
-     "start": 382.34,
-     "end": 382.48
+     "start": 382.18,
+     "end": 382.36
     },
     {
      "w": "lot",
-     "start": 382.48,
-     "end": 382.64
+     "start": 382.36,
+     "end": 382.5
     },
     {
      "w": "of",
-     "start": 382.64,
-     "end": 382.78
+     "start": 382.5,
+     "end": 382.64
     },
     {
      "w": "milk",
-     "start": 382.78,
-     "end": 383.16
+     "start": 382.64,
+     "end": 383.0
     }
    ]
   },
@@ -2604,54 +2615,54 @@
   },
   {
    "t": "english",
-   "start": 396.64,
-   "end": 399.2,
+   "start": 395.86,
+   "end": 398.5,
    "text": "They drink a lot of milk in the evenings.",
    "words": [
     {
      "w": "they",
-     "start": 396.64,
-     "end": 397.3
+     "start": 395.86,
+     "end": 396.76
     },
     {
      "w": "drink",
-     "start": 397.3,
-     "end": 397.54
+     "start": 396.76,
+     "end": 397.0
     },
     {
      "w": "a",
-     "start": 397.54,
-     "end": 397.68
+     "start": 397.0,
+     "end": 397.14
     },
     {
      "w": "lot",
-     "start": 397.68,
-     "end": 397.82
+     "start": 397.14,
+     "end": 397.26
     },
     {
      "w": "of",
-     "start": 397.82,
-     "end": 397.96
+     "start": 397.26,
+     "end": 397.4
     },
     {
      "w": "milk",
-     "start": 397.96,
-     "end": 398.3
+     "start": 397.4,
+     "end": 397.74
     },
     {
      "w": "in",
-     "start": 398.3,
-     "end": 398.56
+     "start": 397.74,
+     "end": 398.0
     },
     {
      "w": "the",
-     "start": 398.56,
-     "end": 398.66
+     "start": 398.0,
+     "end": 398.12
     },
     {
      "w": "evenings",
-     "start": 398.66,
-     "end": 399.2
+     "start": 398.12,
+     "end": 398.5
     }
    ]
   },
@@ -2668,59 +2679,59 @@
   },
   {
    "t": "english",
-   "start": 413.16,
-   "end": 415.92,
+   "start": 412.46,
+   "end": 415.24,
    "text": "They always drink a lot of milk in the evenings.",
    "words": [
     {
      "w": "they",
-     "start": 413.16,
-     "end": 413.82
+     "start": 412.46,
+     "end": 413.24
     },
     {
      "w": "always",
-     "start": 413.82,
-     "end": 414.06
+     "start": 413.24,
+     "end": 413.5
     },
     {
      "w": "drink",
-     "start": 414.06,
-     "end": 414.32
+     "start": 413.5,
+     "end": 413.74
     },
     {
      "w": "a",
-     "start": 414.32,
-     "end": 414.48
+     "start": 413.74,
+     "end": 413.9
     },
     {
      "w": "lot",
-     "start": 414.48,
-     "end": 414.64
+     "start": 413.9,
+     "end": 414.06
     },
     {
      "w": "of",
-     "start": 414.64,
-     "end": 414.78
+     "start": 414.06,
+     "end": 414.2
     },
     {
      "w": "milk",
-     "start": 414.78,
-     "end": 415.1
+     "start": 414.2,
+     "end": 414.52
     },
     {
      "w": "in",
-     "start": 415.1,
-     "end": 415.3
+     "start": 414.52,
+     "end": 414.72
     },
     {
      "w": "the",
-     "start": 415.3,
-     "end": 415.4
+     "start": 414.72,
+     "end": 414.84
     },
     {
      "w": "evenings",
-     "start": 415.4,
-     "end": 415.92
+     "start": 414.84,
+     "end": 415.24
     }
    ]
   },
@@ -2739,132 +2750,132 @@
   },
   {
    "t": "english",
-   "start": 428.8,
-   "end": 430.38,
+   "start": 428.1,
+   "end": 429.86,
    "text": "Do they eat in the mornings?",
    "words": [
     {
      "w": "do",
-     "start": 428.8,
-     "end": 429.36
+     "start": 428.1,
+     "end": 428.86
     },
     {
      "w": "they",
-     "start": 429.36,
-     "end": 429.52
+     "start": 428.86,
+     "end": 429.0
     },
     {
      "w": "eat",
-     "start": 429.52,
-     "end": 429.78
+     "start": 429.0,
+     "end": 429.28
     },
     {
      "w": "in",
-     "start": 429.78,
-     "end": 429.94
+     "start": 429.28,
+     "end": 429.42
     },
     {
      "w": "the",
-     "start": 429.94,
-     "end": 430.02
+     "start": 429.42,
+     "end": 429.5
     },
     {
      "w": "mornings",
-     "start": 430.02,
-     "end": 430.38
+     "start": 429.5,
+     "end": 429.86
     }
    ]
   },
   {
    "t": "english",
-   "start": 434.82,
-   "end": 441.48,
+   "start": 434.6,
+   "end": 440.18,
    "text": "Yes, they always eat in the mornings. And you guys? Do you guys eat in the mornings?",
    "words": [
     {
      "w": "yes",
-     "start": 434.82,
-     "end": 434.9
+     "start": 434.6,
+     "end": 435.16
     },
     {
      "w": "they",
-     "start": 434.9,
-     "end": 434.98
+     "start": 435.5,
+     "end": 435.62
     },
     {
      "w": "always",
-     "start": 434.98,
-     "end": 435.06
+     "start": 435.62,
+     "end": 436.04
     },
     {
      "w": "eat",
-     "start": 435.06,
-     "end": 435.14
+     "start": 436.04,
+     "end": 436.28
     },
     {
      "w": "in",
-     "start": 435.14,
-     "end": 435.22
+     "start": 436.28,
+     "end": 436.4
     },
     {
      "w": "the",
-     "start": 435.22,
-     "end": 435.3
+     "start": 436.4,
+     "end": 436.5
     },
     {
      "w": "mornings",
-     "start": 435.3,
-     "end": 438.27
+     "start": 436.5,
+     "end": 436.9
     },
     {
      "w": "and",
-     "start": 438.27,
-     "end": 439.75
+     "start": 437.16,
+     "end": 437.52
     },
     {
      "w": "you",
-     "start": 439.75,
-     "end": 440.48
+     "start": 437.52,
+     "end": 437.68
     },
     {
      "w": "guys",
-     "start": 440.48,
-     "end": 440.83
+     "start": 437.68,
+     "end": 438.0
     },
     {
      "w": "do",
-     "start": 440.83,
-     "end": 441.0
+     "start": 438.34,
+     "end": 438.9
     },
     {
      "w": "you",
-     "start": 441.0,
-     "end": 441.08
+     "start": 438.9,
+     "end": 439.16
     },
     {
      "w": "guys",
-     "start": 441.08,
-     "end": 441.16
+     "start": 439.16,
+     "end": 439.4
     },
     {
      "w": "eat",
-     "start": 441.16,
-     "end": 441.24
+     "start": 439.4,
+     "end": 439.62
     },
     {
      "w": "in",
-     "start": 441.24,
-     "end": 441.32
+     "start": 439.62,
+     "end": 439.74
     },
     {
      "w": "the",
-     "start": 441.32,
-     "end": 441.4
+     "start": 439.74,
+     "end": 439.82
     },
     {
      "w": "mornings",
-     "start": 441.4,
-     "end": 441.48
+     "start": 439.82,
+     "end": 440.18
     }
    ]
   },
@@ -2881,92 +2892,92 @@
   },
   {
    "t": "english",
-   "start": 450.2,
-   "end": 452.16,
+   "start": 449.56,
+   "end": 451.9,
    "text": "No, we never eat in the mornings.",
    "words": [
     {
      "w": "no",
-     "start": 450.2,
-     "end": 450.86
+     "start": 449.56,
+     "end": 450.44
     },
     {
      "w": "we",
-     "start": 450.86,
-     "end": 451.02
+     "start": 450.68,
+     "end": 450.8
     },
     {
      "w": "never",
-     "start": 451.02,
-     "end": 451.22
+     "start": 450.8,
+     "end": 451.02
     },
     {
      "w": "eat",
-     "start": 451.22,
-     "end": 451.54
+     "start": 451.02,
+     "end": 451.3
     },
     {
      "w": "in",
-     "start": 451.54,
-     "end": 451.68
+     "start": 451.3,
+     "end": 451.46
     },
     {
      "w": "the",
-     "start": 451.68,
-     "end": 451.76
+     "start": 451.46,
+     "end": 451.54
     },
     {
      "w": "mornings",
-     "start": 451.76,
-     "end": 452.16
+     "start": 451.54,
+     "end": 451.9
     }
    ]
   },
   {
    "t": "english",
-   "start": 457.46,
-   "end": 459.58,
+   "start": 457.04,
+   "end": 459.12,
    "text": "Do you guys drink coffee in the morning?",
    "words": [
     {
      "w": "do",
-     "start": 457.46,
-     "end": 458.06
+     "start": 457.04,
+     "end": 457.52
     },
     {
      "w": "you",
-     "start": 458.06,
-     "end": 458.2
+     "start": 457.52,
+     "end": 457.68
     },
     {
      "w": "guys",
-     "start": 458.2,
-     "end": 458.44
+     "start": 457.68,
+     "end": 457.92
     },
     {
      "w": "drink",
-     "start": 458.44,
-     "end": 458.66
+     "start": 457.92,
+     "end": 458.14
     },
     {
      "w": "coffee",
-     "start": 458.66,
-     "end": 459.12
+     "start": 458.14,
+     "end": 458.62
     },
     {
      "w": "in",
-     "start": 459.12,
-     "end": 459.24
+     "start": 458.62,
+     "end": 458.72
     },
     {
      "w": "the",
-     "start": 459.24,
-     "end": 459.32
+     "start": 458.72,
+     "end": 458.8
     },
     {
      "w": "morning",
-     "start": 459.32,
-     "end": 459.58
+     "start": 458.8,
+     "end": 459.12
     }
    ]
   },
@@ -2982,44 +2993,44 @@
   },
   {
    "t": "english",
-   "start": 468.76,
-   "end": 470.76,
+   "start": 468.22,
+   "end": 470.64,
    "text": "Yes, we drink coffee in the mornings.",
    "words": [
     {
      "w": "yes",
-     "start": 468.76,
-     "end": 469.3
+     "start": 468.22,
+     "end": 469.02
     },
     {
      "w": "we",
-     "start": 469.3,
-     "end": 469.42
+     "start": 469.2,
+     "end": 469.32
     },
     {
      "w": "drink",
-     "start": 469.42,
-     "end": 469.64
+     "start": 469.32,
+     "end": 469.54
     },
     {
      "w": "coffee",
-     "start": 469.64,
-     "end": 470.12
+     "start": 469.54,
+     "end": 469.98
     },
     {
      "w": "in",
-     "start": 470.12,
-     "end": 470.28
+     "start": 469.98,
+     "end": 470.16
     },
     {
      "w": "the",
-     "start": 470.28,
-     "end": 470.36
+     "start": 470.16,
+     "end": 470.24
     },
     {
      "w": "mornings",
-     "start": 470.36,
-     "end": 470.76
+     "start": 470.24,
+     "end": 470.64
     }
    ]
   },
@@ -3035,619 +3046,619 @@
   },
   {
    "t": "english",
-   "start": 481.68,
-   "end": 483.5,
+   "start": 480.9,
+   "end": 483.02,
    "text": "We drink tea in the afternoon.",
    "words": [
     {
      "w": "we",
-     "start": 481.68,
-     "end": 482.22
+     "start": 480.9,
+     "end": 481.78
     },
     {
      "w": "drink",
-     "start": 482.22,
-     "end": 482.48
+     "start": 481.78,
+     "end": 482.02
     },
     {
      "w": "tea",
-     "start": 482.48,
-     "end": 482.74
+     "start": 482.02,
+     "end": 482.28
     },
     {
      "w": "in",
-     "start": 482.74,
-     "end": 482.94
+     "start": 482.28,
+     "end": 482.48
     },
     {
      "w": "the",
-     "start": 482.94,
-     "end": 483.06
+     "start": 482.48,
+     "end": 482.58
     },
     {
      "w": "afternoon",
-     "start": 483.06,
-     "end": 483.5
+     "start": 482.58,
+     "end": 483.02
     }
    ]
   },
   {
    "t": "narration",
    "start": 487.48,
-   "end": 492.46,
+   "end": 492.25,
    "lines": [
     "Ahora escucha la siguiente conversación."
    ],
    "words": [
     {
      "w": "ahora",
-     "start": 487.86,
-     "end": 488.54
+     "start": 487.48,
+     "end": 488.16
     },
     {
      "w": "escucha",
-     "start": 488.54,
-     "end": 489.08
+     "start": 488.38,
+     "end": 488.68
     },
     {
      "w": "la",
-     "start": 489.08,
-     "end": 489.2
+     "start": 488.68,
+     "end": 488.76
     },
     {
      "w": "siguiente",
-     "start": 489.2,
-     "end": 489.54
+     "start": 488.76,
+     "end": 489.1
     },
     {
      "w": "conversacion",
-     "start": 489.54,
-     "end": 490.5
+     "start": 489.1,
+     "end": 490.08
     }
    ]
   },
   {
    "t": "english",
-   "start": 492.92,
-   "end": 494.62,
+   "start": 492.26,
+   "end": 494.35,
    "text": "Hello. What do you sell?",
    "words": [
     {
      "w": "hello",
-     "start": 492.92,
-     "end": 493.6
+     "start": 492.26,
+     "end": 493.16
     },
     {
      "w": "what",
-     "start": 493.6,
-     "end": 494.02
+     "start": 493.56,
+     "end": 493.94
     },
     {
      "w": "do",
-     "start": 494.02,
-     "end": 494.16
+     "start": 493.94,
+     "end": 494.08
     },
     {
      "w": "you",
-     "start": 494.16,
-     "end": 494.24
+     "start": 494.08,
+     "end": 494.2
     },
     {
      "w": "sell",
-     "start": 494.24,
-     "end": 494.62
+     "start": 494.2,
+     "end": 494.35
     }
    ]
   },
   {
    "t": "english",
-   "start": 495.28,
-   "end": 497.84,
+   "start": 494.36,
+   "end": 497.86,
    "text": "We sell fruit. Do you eat apples?",
    "words": [
     {
      "w": "we",
-     "start": 495.28,
-     "end": 495.8
+     "start": 494.36,
+     "end": 495.5
     },
     {
      "w": "sell",
-     "start": 495.8,
-     "end": 496.12
+     "start": 495.5,
+     "end": 495.84
     },
     {
      "w": "fruit",
-     "start": 496.12,
-     "end": 496.56
+     "start": 495.84,
+     "end": 496.28
     },
     {
      "w": "do",
-     "start": 496.56,
-     "end": 497.12
+     "start": 496.54,
+     "end": 497.14
     },
     {
      "w": "you",
-     "start": 497.12,
-     "end": 497.28
+     "start": 497.14,
+     "end": 497.3
     },
     {
      "w": "eat",
-     "start": 497.28,
+     "start": 497.3,
      "end": 497.48
     },
     {
      "w": "apples",
      "start": 497.48,
-     "end": 497.84
+     "end": 497.86
     }
    ]
   },
   {
    "t": "english",
-   "start": 497.86,
-   "end": 499.7,
+   "start": 498.12,
+   "end": 500.07,
    "text": "Yes, I eat apples every day.",
    "words": [
     {
      "w": "yes",
-     "start": 497.86,
-     "end": 498.32
+     "start": 498.12,
+     "end": 498.72
     },
     {
      "w": "i",
-     "start": 498.32,
-     "end": 498.4
+     "start": 498.9,
+     "end": 498.98
     },
     {
      "w": "eat",
-     "start": 498.4,
-     "end": 498.58
+     "start": 498.98,
+     "end": 499.16
     },
     {
      "w": "apples",
-     "start": 498.58,
-     "end": 499.0
+     "start": 499.16,
+     "end": 499.54
     },
     {
      "w": "every",
-     "start": 499.0,
-     "end": 499.4
+     "start": 499.54,
+     "end": 499.94
     },
     {
      "w": "day",
-     "start": 499.4,
-     "end": 499.7
+     "start": 499.94,
+     "end": 500.07
     }
    ]
   },
   {
    "t": "english",
    "start": 500.08,
-   "end": 501.88,
+   "end": 502.27,
    "text": "We sell apples every day.",
    "words": [
     {
      "w": "we",
      "start": 500.08,
-     "end": 500.52
+     "end": 501.12
     },
     {
      "w": "sell",
-     "start": 500.52,
-     "end": 500.84
+     "start": 501.12,
+     "end": 501.44
     },
     {
      "w": "apples",
-     "start": 500.84,
-     "end": 501.3
+     "start": 501.44,
+     "end": 501.9
     },
     {
      "w": "every",
-     "start": 501.3,
-     "end": 501.6
+     "start": 501.9,
+     "end": 502.2
     },
     {
      "w": "day",
-     "start": 501.6,
-     "end": 501.88
+     "start": 502.2,
+     "end": 502.27
     }
    ]
   },
   {
    "t": "english",
-   "start": 502.34,
-   "end": 504.28,
+   "start": 502.28,
+   "end": 504.87,
    "text": "And wine, do you guys sell wine?",
    "words": [
     {
      "w": "and",
-     "start": 502.34,
-     "end": 502.56
+     "start": 502.28,
+     "end": 503.14
     },
     {
      "w": "wine",
-     "start": 502.56,
-     "end": 502.92
+     "start": 503.14,
+     "end": 503.5
     },
     {
      "w": "do",
-     "start": 502.92,
-     "end": 503.24
+     "start": 503.7,
+     "end": 504.02
     },
     {
      "w": "you",
-     "start": 503.24,
-     "end": 503.4
+     "start": 504.02,
+     "end": 504.16
     },
     {
      "w": "guys",
-     "start": 503.4,
-     "end": 503.62
+     "start": 504.16,
+     "end": 504.4
     },
     {
      "w": "sell",
-     "start": 503.62,
-     "end": 503.92
+     "start": 504.4,
+     "end": 504.7
     },
     {
      "w": "wine",
-     "start": 503.92,
-     "end": 504.28
+     "start": 504.7,
+     "end": 504.87
     }
    ]
   },
   {
    "t": "english",
-   "start": 504.8,
-   "end": 507.56,
+   "start": 504.88,
+   "end": 508.54,
    "text": "No, we don’t sell wine. But they sell wine.",
    "words": [
     {
      "w": "no",
-     "start": 504.8,
-     "end": 505.28
+     "start": 504.88,
+     "end": 505.88
     },
     {
      "w": "we",
-     "start": 505.28,
-     "end": 505.46
+     "start": 506.2,
+     "end": 506.28
     },
     {
      "w": "dont",
-     "start": 505.46,
-     "end": 505.76
+     "start": 506.28,
+     "end": 506.6
     },
     {
      "w": "sell",
-     "start": 505.76,
-     "end": 506.04
+     "start": 506.6,
+     "end": 506.82
     },
     {
      "w": "wine",
-     "start": 506.04,
-     "end": 506.38
+     "start": 506.82,
+     "end": 507.2
     },
     {
      "w": "but",
-     "start": 506.38,
-     "end": 506.72
+     "start": 507.36,
+     "end": 507.72
     },
     {
      "w": "they",
-     "start": 506.72,
-     "end": 506.94
+     "start": 507.72,
+     "end": 507.92
     },
     {
      "w": "sell",
-     "start": 506.94,
-     "end": 507.24
+     "start": 507.92,
+     "end": 508.22
     },
     {
      "w": "wine",
-     "start": 507.24,
-     "end": 507.56
+     "start": 508.22,
+     "end": 508.54
     }
    ]
   },
   {
    "t": "english",
-   "start": 508.34,
-   "end": 508.96,
+   "start": 509.06,
+   "end": 509.53,
    "text": "Who, them?",
    "words": [
     {
      "w": "who",
-     "start": 508.34,
-     "end": 508.8
+     "start": 509.06,
+     "end": 509.42
     },
     {
      "w": "them",
-     "start": 508.8,
-     "end": 508.96
+     "start": 509.56,
+     "end": 509.53
     }
    ]
   },
   {
    "t": "english",
-   "start": 509.28,
-   "end": 511.96,
+   "start": 509.54,
+   "end": 512.94,
    "text": "Yes. They sell wine and beer.",
    "words": [
     {
      "w": "yes",
-     "start": 509.28,
-     "end": 510.3
+     "start": 509.54,
+     "end": 510.66
     },
     {
      "w": "they",
-     "start": 510.3,
-     "end": 510.62
-    },
-    {
-     "w": "sell",
-     "start": 510.62,
-     "end": 510.96
-    },
-    {
-     "w": "wine",
-     "start": 510.96,
-     "end": 511.38
-    },
-    {
-     "w": "and",
-     "start": 511.38,
+     "start": 511.32,
      "end": 511.6
     },
     {
-     "w": "beer",
+     "w": "sell",
      "start": 511.6,
-     "end": 511.96
+     "end": 511.94
+    },
+    {
+     "w": "wine",
+     "start": 511.94,
+     "end": 512.38
+    },
+    {
+     "w": "and",
+     "start": 512.38,
+     "end": 512.6
+    },
+    {
+     "w": "beer",
+     "start": 512.6,
+     "end": 512.94
     }
    ]
   },
   {
    "t": "english",
-   "start": 512.74,
-   "end": 516.04,
+   "start": 513.18,
+   "end": 516.98,
    "text": "I don't drink beer, but I drink a little bit of wine in the afternoon.",
    "words": [
     {
      "w": "i",
-     "start": 512.74,
-     "end": 512.98
+     "start": 513.18,
+     "end": 513.58
     },
     {
      "w": "dont",
-     "start": 512.98,
-     "end": 513.24
+     "start": 513.58,
+     "end": 513.84
     },
     {
      "w": "drink",
-     "start": 513.24,
-     "end": 513.44
-    },
-    {
-     "w": "beer",
-     "start": 513.44,
-     "end": 513.78
-    },
-    {
-     "w": "but",
-     "start": 513.78,
-     "end": 513.94
-    },
-    {
-     "w": "i",
-     "start": 513.94,
+     "start": 513.84,
      "end": 514.04
     },
     {
-     "w": "drink",
+     "w": "beer",
      "start": 514.04,
-     "end": 514.28
+     "end": 514.38
+    },
+    {
+     "w": "but",
+     "start": 514.58,
+     "end": 514.92
+    },
+    {
+     "w": "i",
+     "start": 514.92,
+     "end": 515.02
+    },
+    {
+     "w": "drink",
+     "start": 515.02,
+     "end": 515.26
     },
     {
      "w": "a",
-     "start": 514.28,
-     "end": 514.48
+     "start": 515.26,
+     "end": 515.46
     },
     {
      "w": "little",
-     "start": 514.48,
-     "end": 514.68
+     "start": 515.46,
+     "end": 515.66
     },
     {
      "w": "bit",
-     "start": 514.68,
-     "end": 514.84
+     "start": 515.66,
+     "end": 515.82
     },
     {
      "w": "of",
-     "start": 514.84,
-     "end": 515.0
+     "start": 515.82,
+     "end": 515.98
     },
     {
      "w": "wine",
-     "start": 515.0,
-     "end": 515.34
+     "start": 515.98,
+     "end": 516.32
     },
     {
      "w": "in",
-     "start": 515.34,
-     "end": 515.5
+     "start": 516.32,
+     "end": 516.48
     },
     {
      "w": "the",
-     "start": 515.5,
-     "end": 515.6
+     "start": 516.48,
+     "end": 516.58
     },
     {
      "w": "afternoon",
-     "start": 515.6,
-     "end": 516.04
+     "start": 516.58,
+     "end": 516.98
     }
    ]
   },
   {
    "t": "narration",
    "start": 520.16,
-   "end": 535.48,
+   "end": 534.28,
    "lines": [
     "Ahora aprendamos otro verbo en el presente simple. Y aprendemos los nombres de algunas frutas en inglés. Ahora aprendamos cómo decir el verbo \"vender.\" Escucha y repite."
    ],
    "words": [
     {
      "w": "ahora",
-     "start": 520.1,
-     "end": 520.84
+     "start": 518.96,
+     "end": 520.46
     },
     {
      "w": "aprendamos",
-     "start": 520.84,
-     "end": 521.58
+     "start": 520.46,
+     "end": 521.38
     },
     {
      "w": "otro",
-     "start": 521.58,
-     "end": 522.0
+     "start": 521.38,
+     "end": 521.78
     },
     {
      "w": "verbo",
-     "start": 522.0,
-     "end": 522.4
+     "start": 521.78,
+     "end": 522.18
     },
     {
      "w": "en",
-     "start": 522.4,
-     "end": 522.58
+     "start": 522.18,
+     "end": 522.36
     },
     {
      "w": "el",
-     "start": 522.58,
-     "end": 522.7
+     "start": 522.36,
+     "end": 522.48
     },
     {
      "w": "presente",
-     "start": 522.7,
-     "end": 523.08
+     "start": 522.48,
+     "end": 522.86
     },
     {
      "w": "simple",
-     "start": 523.08,
-     "end": 523.48
+     "start": 522.86,
+     "end": 523.28
     },
     {
      "w": "y",
-     "start": 523.48,
-     "end": 523.78
+     "start": 523.28,
+     "end": 523.8
     },
     {
      "w": "aprendemos",
-     "start": 523.78,
-     "end": 524.44
+     "start": 523.8,
+     "end": 524.5
     },
     {
      "w": "los",
-     "start": 524.44,
-     "end": 524.84
+     "start": 524.5,
+     "end": 524.88
     },
     {
      "w": "nombres",
-     "start": 524.84,
-     "end": 525.72
+     "start": 524.88,
+     "end": 525.78
     },
     {
      "w": "de",
-     "start": 525.72,
-     "end": 526.02
+     "start": 525.78,
+     "end": 526.06
     },
     {
      "w": "algunas",
-     "start": 526.02,
-     "end": 526.34
+     "start": 526.06,
+     "end": 526.38
     },
     {
      "w": "frutas",
-     "start": 526.34,
-     "end": 526.92
+     "start": 526.38,
+     "end": 526.98
     },
     {
      "w": "en",
-     "start": 526.92,
-     "end": 527.56
+     "start": 526.98,
+     "end": 527.62
     },
     {
      "w": "ingles",
-     "start": 527.56,
-     "end": 527.86
+     "start": 527.62,
+     "end": 527.94
     },
     {
      "w": "ahora",
-     "start": 527.86,
-     "end": 528.4
+     "start": 528.4,
+     "end": 528.98
     },
     {
      "w": "aprendamos",
-     "start": 528.4,
-     "end": 529.18
+     "start": 528.98,
+     "end": 529.76
     },
     {
      "w": "como",
-     "start": 529.18,
-     "end": 529.4
-    },
-    {
-     "w": "decir",
-     "start": 529.4,
-     "end": 529.7
-    },
-    {
-     "w": "el",
-     "start": 529.7,
+     "start": 529.76,
      "end": 529.96
     },
     {
-     "w": "verbo",
+     "w": "decir",
      "start": 529.96,
-     "end": 530.5
+     "end": 530.26
+    },
+    {
+     "w": "el",
+     "start": 530.26,
+     "end": 530.52
+    },
+    {
+     "w": "verbo",
+     "start": 530.52,
+     "end": 531.08
     },
     {
      "w": "vender",
-     "start": 530.5,
-     "end": 531.2
+     "start": 531.08,
+     "end": 531.78
     },
     {
      "w": "escucha",
-     "start": 531.2,
-     "end": 531.94
+     "start": 532.28,
+     "end": 533.2
     },
     {
      "w": "y",
-     "start": 531.94,
-     "end": 532.52
+     "start": 533.2,
+     "end": 533.78
     },
     {
      "w": "repite",
-     "start": 532.52,
-     "end": 533.36
+     "start": 533.78,
+     "end": 534.24
     }
    ]
   },
   {
    "t": "english",
-   "start": 535.52,
-   "end": 536.58,
+   "start": 534.29,
+   "end": 535.99,
    "text": "Sell. Sell.",
    "words": [
     {
      "w": "sell",
-     "start": 535.52,
-     "end": 536.14
+     "start": 534.29,
+     "end": 534.63
     },
     {
      "w": "sell",
-     "start": 536.14,
-     "end": 536.58
+     "start": 535.53,
+     "end": 535.99
     }
    ]
   },
@@ -3663,67 +3674,67 @@
   },
   {
    "t": "english",
-   "start": 543.24,
-   "end": 546.72,
+   "start": 542.74,
+   "end": 546.3,
    "text": "Sell. Sell.",
    "words": [
     {
      "w": "sell",
-     "start": 543.24,
-     "end": 544.02
+     "start": 542.74,
+     "end": 543.78
     },
     {
      "w": "sell",
-     "start": 545.86,
-     "end": 546.72
+     "start": 543.8,
+     "end": 546.3
     }
    ]
   },
   {
    "t": "narration",
    "start": 548.32,
-   "end": 550.24,
+   "end": 550.03,
    "lines": [
     "Escucha esta pregunta:"
    ],
    "words": [
     {
      "w": "escucha",
-     "start": 548.7,
-     "end": 549.56
+     "start": 548.3,
+     "end": 549.14
     },
     {
      "w": "esta",
-     "start": 549.56,
-     "end": 549.74
+     "start": 549.14,
+     "end": 549.32
     },
     {
      "w": "pregunta",
-     "start": 549.74,
-     "end": 550.18
+     "start": 549.32,
+     "end": 549.78
     }
    ]
   },
   {
    "t": "english",
-   "start": 550.58,
-   "end": 551.42,
+   "start": 550.04,
+   "end": 551.22,
    "text": "Do you sell?",
    "words": [
     {
      "w": "do",
-     "start": 550.58,
-     "end": 550.9
+     "start": 550.04,
+     "end": 550.66
     },
     {
      "w": "you",
-     "start": 550.9,
-     "end": 551.06
+     "start": 550.66,
+     "end": 550.82
     },
     {
      "w": "sell",
-     "start": 551.06,
-     "end": 551.42
+     "start": 550.82,
+     "end": 551.22
     }
    ]
   },
@@ -3739,102 +3750,102 @@
   },
   {
    "t": "english",
-   "start": 555.14,
-   "end": 558.02,
+   "start": 555.13,
+   "end": 556.59,
    "text": "Yes, I sell. Yes, I sell.",
    "words": [
     {
      "w": "yes",
-     "start": 555.14,
-     "end": 555.82
+     "start": 555.13,
+     "end": 555.29
     },
     {
      "w": "i",
-     "start": 555.82,
-     "end": 556.22
+     "start": 555.29,
+     "end": 555.45
     },
     {
      "w": "sell",
-     "start": 556.22,
-     "end": 556.56
+     "start": 555.45,
+     "end": 555.61
     },
     {
      "w": "yes",
-     "start": 556.56,
-     "end": 557.42
+     "start": 556.13,
+     "end": 556.28
     },
     {
      "w": "i",
-     "start": 557.42,
-     "end": 557.66
+     "start": 556.28,
+     "end": 556.44
     },
     {
      "w": "sell",
-     "start": 557.66,
-     "end": 558.02
+     "start": 556.44,
+     "end": 556.59
     }
    ]
   },
   {
    "t": "narration",
    "start": 563.68,
-   "end": 566.84,
+   "end": 566.63,
    "lines": [
     "Escucha la misma pregunta otra vez."
    ],
    "words": [
     {
      "w": "escucha",
-     "start": 564.0,
-     "end": 564.9
+     "start": 563.72,
+     "end": 564.52
     },
     {
      "w": "la",
-     "start": 564.9,
-     "end": 565.04
+     "start": 564.52,
+     "end": 564.64
     },
     {
      "w": "misma",
-     "start": 565.04,
-     "end": 565.32
+     "start": 564.64,
+     "end": 564.92
     },
     {
      "w": "pregunta",
-     "start": 565.32,
-     "end": 565.84
+     "start": 564.92,
+     "end": 565.46
     },
     {
      "w": "otra",
-     "start": 565.84,
-     "end": 566.38
+     "start": 565.46,
+     "end": 565.98
     },
     {
      "w": "vez",
-     "start": 566.38,
-     "end": 566.76
+     "start": 565.98,
+     "end": 566.38
     }
    ]
   },
   {
    "t": "english",
-   "start": 567.22,
-   "end": 568.22,
+   "start": 566.64,
+   "end": 567.88,
    "text": "Do you sell?",
    "words": [
     {
      "w": "do",
-     "start": 567.22,
-     "end": 567.68
+     "start": 566.64,
+     "end": 567.3
     },
     {
      "w": "you",
-     "start": 567.68,
-     "end": 567.84
+     "start": 567.3,
+     "end": 567.46
     },
     {
      "w": "sell",
-     "start": 567.84,
-     "end": 568.22
+     "start": 567.46,
+     "end": 567.88
     }
    ]
   },
@@ -3850,29 +3861,29 @@
   },
   {
    "t": "english",
-   "start": 571.2,
-   "end": 574.37,
+   "start": 571.21,
+   "end": 574.09,
    "text": "I sell. I sell.",
    "words": [
     {
      "w": "i",
-     "start": 571.2,
-     "end": 571.68
+     "start": 571.21,
+     "end": 571.52
     },
     {
      "w": "sell",
-     "start": 571.68,
-     "end": 572.1
+     "start": 571.52,
+     "end": 571.83
     },
     {
      "w": "i",
-     "start": 573.5,
-     "end": 573.95
+     "start": 573.49,
+     "end": 573.79
     },
     {
      "w": "sell",
-     "start": 573.95,
-     "end": 574.37
+     "start": 573.79,
+     "end": 574.09
     }
    ]
   },
@@ -3888,39 +3899,39 @@
   },
   {
    "t": "english",
-   "start": 578.52,
-   "end": 580.26,
+   "start": 578.53,
+   "end": 581.17,
    "text": "Do you sell? Do you sell?",
    "words": [
     {
      "w": "do",
-     "start": 578.52,
-     "end": 579.04
+     "start": 578.53,
+     "end": 578.76
     },
     {
      "w": "you",
-     "start": 579.04,
-     "end": 579.22
+     "start": 578.76,
+     "end": 579.0
     },
     {
      "w": "sell",
-     "start": 579.22,
-     "end": 579.58
+     "start": 579.0,
+     "end": 579.23
     },
     {
      "w": "do",
-     "start": 579.58,
-     "end": 579.74
+     "start": 581.47,
+     "end": 581.17
     },
     {
      "w": "you",
-     "start": 579.74,
-     "end": 579.86
+     "start": 581.65,
+     "end": 581.17
     },
     {
      "w": "sell",
-     "start": 579.86,
-     "end": 580.26
+     "start": 581.83,
+     "end": 581.17
     }
    ]
   },
@@ -3935,198 +3946,198 @@
   {
    "t": "narration",
    "start": 582.3,
-   "end": 584.34,
+   "end": 584.13,
    "lines": [
     "Ahora escucha esta pregunta."
    ],
    "words": [
     {
      "w": "ahora",
-     "start": 581.7,
-     "end": 582.16
+     "start": 581.74,
+     "end": 582.74
     },
     {
      "w": "escucha",
-     "start": 582.16,
-     "end": 582.62
+     "start": 582.74,
+     "end": 583.26
     },
     {
      "w": "esta",
-     "start": 582.62,
-     "end": 582.78
+     "start": 583.26,
+     "end": 583.38
     },
     {
      "w": "pregunta",
-     "start": 582.78,
-     "end": 583.2
+     "start": 583.38,
+     "end": 583.8
     }
    ]
   },
   {
    "t": "english",
-   "start": 584.58,
-   "end": 585.64,
+   "start": 584.14,
+   "end": 585.42,
    "text": "What do you sell?",
    "words": [
     {
      "w": "what",
-     "start": 584.58,
-     "end": 584.96
+     "start": 584.14,
+     "end": 584.72
     },
     {
      "w": "do",
-     "start": 584.96,
-     "end": 585.12
+     "start": 584.72,
+     "end": 584.88
     },
     {
      "w": "you",
-     "start": 585.12,
-     "end": 585.24
+     "start": 584.88,
+     "end": 585.06
     },
     {
      "w": "sell",
-     "start": 585.24,
-     "end": 585.64
+     "start": 585.06,
+     "end": 585.42
     }
    ]
   },
   {
    "t": "narration",
    "start": 585.82,
-   "end": 596.3,
+   "end": 596.09,
    "lines": [
     "Ella acaba de preguntar “What do you sell?” “What do you sell?” significa “¿Qué vendes?” Ahora escucha esta pregunta."
    ],
    "words": [
     {
      "w": "ella",
-     "start": 586.26,
-     "end": 587.14
+     "start": 585.22,
+     "end": 586.56
     },
     {
      "w": "acaba",
-     "start": 587.14,
-     "end": 587.7
+     "start": 586.56,
+     "end": 587.12
     },
     {
      "w": "de",
-     "start": 587.7,
-     "end": 587.82
+     "start": 587.12,
+     "end": 587.28
     },
     {
      "w": "preguntar",
-     "start": 587.82,
-     "end": 588.42
+     "start": 587.28,
+     "end": 587.94
     },
     {
      "w": "what",
-     "start": 588.42,
-     "end": 589.1
+     "start": 588.04,
+     "end": 588.74
     },
     {
      "w": "do",
-     "start": 589.1,
-     "end": 589.32
+     "start": 588.74,
+     "end": 588.98
     },
     {
      "w": "you",
-     "start": 589.32,
-     "end": 589.48
+     "start": 588.98,
+     "end": 589.14
     },
     {
      "w": "sell",
-     "start": 589.48,
-     "end": 589.88
+     "start": 589.14,
+     "end": 589.54
     },
     {
      "w": "what",
-     "start": 589.88,
+     "start": 590.02,
+     "end": 590.74
+    },
+    {
+     "w": "do",
+     "start": 590.74,
+     "end": 590.92
+    },
+    {
+     "w": "you",
+     "start": 590.92,
      "end": 591.08
     },
     {
-     "w": "do",
-     "start": 591.08,
-     "end": 591.26
-    },
-    {
-     "w": "you",
-     "start": 591.26,
-     "end": 591.42
-    },
-    {
      "w": "sell",
-     "start": 591.42,
-     "end": 591.84
+     "start": 591.08,
+     "end": 591.52
     },
     {
      "w": "significa",
-     "start": 591.84,
-     "end": 592.62
+     "start": 591.72,
+     "end": 592.44
     },
     {
      "w": "que",
-     "start": 592.62,
-     "end": 593.0
+     "start": 592.68,
+     "end": 593.04
     },
     {
      "w": "vendes",
-     "start": 593.0,
-     "end": 593.46
+     "start": 593.04,
+     "end": 593.5
     },
     {
      "w": "ahora",
-     "start": 593.46,
-     "end": 594.24
+     "start": 593.92,
+     "end": 594.64
     },
     {
      "w": "escucha",
-     "start": 594.24,
-     "end": 594.72
+     "start": 594.64,
+     "end": 595.14
     },
     {
      "w": "esta",
-     "start": 594.72,
-     "end": 594.88
+     "start": 595.14,
+     "end": 595.3
     },
     {
      "w": "pregunta",
-     "start": 594.88,
-     "end": 595.32
+     "start": 595.3,
+     "end": 595.74
     }
    ]
   },
   {
    "t": "english",
-   "start": 596.6,
-   "end": 597.72,
+   "start": 596.1,
+   "end": 597.48,
    "text": "Do you sell fruit?",
    "words": [
     {
      "w": "do",
-     "start": 596.6,
-     "end": 596.96
+     "start": 596.1,
+     "end": 596.68
     },
     {
      "w": "you",
-     "start": 596.96,
-     "end": 597.1
+     "start": 596.68,
+     "end": 596.84
     },
     {
      "w": "sell",
-     "start": 597.1,
-     "end": 597.36
+     "start": 596.84,
+     "end": 597.08
     },
     {
      "w": "fruit",
-     "start": 597.36,
-     "end": 597.72
+     "start": 597.08,
+     "end": 597.48
     }
    ]
   },
   {
    "t": "narration",
    "start": 597.84,
-   "end": 610.48,
+   "end": 610.27,
    "lines": [
     "Ella acaba de preguntar “Do you sell fruit?” “Do you sell fruit?” significa “¿vendes fruta?” Así es cómo dices “fruta.” Escucha y repite."
    ],
@@ -4250,19 +4261,19 @@
   },
   {
    "t": "english",
-   "start": 610.58,
-   "end": 614.38,
+   "start": 610.28,
+   "end": 613.86,
    "text": "Fruit. Fruit.",
    "words": [
     {
      "w": "fruit",
-     "start": 610.58,
-     "end": 611.2
+     "start": 610.28,
+     "end": 612.56
     },
     {
      "w": "fruit",
-     "start": 613.6,
-     "end": 614.38
+     "start": 613.16,
+     "end": 613.86
     }
    ]
   },
@@ -4278,29 +4289,29 @@
   },
   {
    "t": "english",
-   "start": 618.34,
-   "end": 621.32,
+   "start": 618.35,
+   "end": 621.19,
    "text": "The fruit. The fruit.",
    "words": [
     {
      "w": "the",
-     "start": 618.34,
-     "end": 618.78
+     "start": 618.35,
+     "end": 618.67
     },
     {
      "w": "fruit",
-     "start": 618.78,
-     "end": 619.2
+     "start": 618.67,
+     "end": 618.99
     },
     {
      "w": "the",
-     "start": 620.44,
-     "end": 620.94
+     "start": 620.43,
+     "end": 620.81
     },
     {
      "w": "fruit",
-     "start": 620.94,
-     "end": 621.32
+     "start": 620.81,
+     "end": 621.19
     }
    ]
   },
@@ -4316,29 +4327,29 @@
   },
   {
    "t": "english",
-   "start": 626.42,
-   "end": 630.32,
+   "start": 626.41,
+   "end": 630.25,
    "text": "The fruits. The fruits.",
    "words": [
     {
      "w": "the",
-     "start": 626.42,
-     "end": 627.12
+     "start": 626.41,
+     "end": 626.83
     },
     {
      "w": "fruits",
-     "start": 627.12,
-     "end": 627.6
+     "start": 626.83,
+     "end": 627.25
     },
     {
      "w": "the",
-     "start": 629.36,
-     "end": 629.86
+     "start": 629.35,
+     "end": 629.8
     },
     {
      "w": "fruits",
-     "start": 629.86,
-     "end": 630.32
+     "start": 629.8,
+     "end": 630.25
     }
    ]
   },
@@ -4354,29 +4365,29 @@
   },
   {
    "t": "english",
-   "start": 639.6,
-   "end": 641.4,
+   "start": 639.24,
+   "end": 640.44,
    "text": "Do you sell fruit?",
    "words": [
     {
      "w": "do",
-     "start": 639.6,
-     "end": 640.6
+     "start": 639.24,
+     "end": 639.68
     },
     {
      "w": "you",
-     "start": 640.6,
-     "end": 640.78
+     "start": 639.68,
+     "end": 639.86
     },
     {
      "w": "sell",
-     "start": 640.78,
-     "end": 641.0
+     "start": 639.86,
+     "end": 640.08
     },
     {
      "w": "fruit",
-     "start": 641.0,
-     "end": 641.4
+     "start": 640.08,
+     "end": 640.44
     }
    ]
   },
@@ -4392,272 +4403,272 @@
   },
   {
    "t": "english",
-   "start": 647.4,
-   "end": 652.12,
+   "start": 647.41,
+   "end": 649.47,
    "text": "No, I don’t sell fruit. No, I don’t sell fruit.",
    "words": [
     {
      "w": "no",
-     "start": 647.4,
-     "end": 648.0
+     "start": 647.41,
+     "end": 647.47
     },
     {
      "w": "i",
-     "start": 648.0,
-     "end": 648.6
+     "start": 647.47,
+     "end": 647.52
     },
     {
      "w": "dont",
-     "start": 648.6,
-     "end": 648.94
+     "start": 647.52,
+     "end": 647.58
     },
     {
      "w": "sell",
-     "start": 648.94,
-     "end": 649.2
+     "start": 647.58,
+     "end": 647.63
     },
     {
      "w": "fruit",
-     "start": 649.2,
-     "end": 649.62
+     "start": 647.63,
+     "end": 647.69
     },
     {
      "w": "no",
-     "start": 649.62,
-     "end": 650.46
+     "start": 648.45,
+     "end": 648.65
     },
     {
      "w": "i",
-     "start": 650.46,
-     "end": 651.14
+     "start": 648.65,
+     "end": 648.86
     },
     {
      "w": "dont",
-     "start": 651.14,
-     "end": 651.48
+     "start": 648.86,
+     "end": 649.06
     },
     {
      "w": "sell",
-     "start": 651.48,
-     "end": 651.74
+     "start": 649.06,
+     "end": 649.27
     },
     {
      "w": "fruit",
-     "start": 651.74,
-     "end": 652.12
+     "start": 649.27,
+     "end": 649.47
     }
    ]
   },
   {
    "t": "narration",
    "start": 660.56,
-   "end": 683.42,
+   "end": 683.21,
    "lines": [
     "Nota que no dice “the fruits”. En inglés, cuando nos referimos a algo en general, no utilizamos el artículo definido “the” como lo haces en español. Dile otra vez, “no, no vendo las frutas.”"
    ],
    "words": [
     {
      "w": "nota",
-     "start": 660.88,
-     "end": 661.72
+     "start": 660.52,
+     "end": 661.28
     },
     {
      "w": "que",
-     "start": 661.72,
-     "end": 661.86
+     "start": 661.28,
+     "end": 661.42
     },
     {
      "w": "no",
-     "start": 661.86,
-     "end": 662.06
+     "start": 661.42,
+     "end": 661.64
     },
     {
      "w": "dice",
-     "start": 662.06,
-     "end": 662.42
+     "start": 661.64,
+     "end": 662.02
     },
     {
      "w": "the",
-     "start": 662.42,
-     "end": 662.94
+     "start": 662.02,
+     "end": 662.74
     },
     {
      "w": "fruits",
-     "start": 662.94,
-     "end": 663.5
+     "start": 662.74,
+     "end": 663.32
     },
     {
      "w": "en",
-     "start": 663.5,
-     "end": 664.76
+     "start": 664.2,
+     "end": 664.58
     },
     {
      "w": "ingles",
-     "start": 664.76,
-     "end": 665.04
+     "start": 664.58,
+     "end": 664.84
     },
     {
      "w": "cuando",
-     "start": 665.04,
-     "end": 665.6
+     "start": 665.12,
+     "end": 665.72
     },
     {
      "w": "nos",
-     "start": 665.6,
-     "end": 665.94
+     "start": 665.72,
+     "end": 666.06
     },
     {
      "w": "referimos",
-     "start": 665.94,
-     "end": 666.88
+     "start": 666.06,
+     "end": 667.02
     },
     {
      "w": "a",
-     "start": 666.88,
-     "end": 667.26
+     "start": 667.02,
+     "end": 667.38
     },
     {
      "w": "algo",
-     "start": 667.26,
-     "end": 667.56
+     "start": 667.38,
+     "end": 667.68
     },
     {
      "w": "en",
-     "start": 667.56,
-     "end": 667.74
+     "start": 667.68,
+     "end": 667.86
     },
     {
      "w": "general",
-     "start": 667.74,
-     "end": 668.1
+     "start": 667.86,
+     "end": 668.22
     },
     {
      "w": "no",
-     "start": 668.1,
-     "end": 668.82
+     "start": 668.58,
+     "end": 669.28
     },
     {
      "w": "utilizamos",
-     "start": 668.82,
-     "end": 669.96
+     "start": 669.28,
+     "end": 670.44
     },
     {
      "w": "el",
-     "start": 669.96,
-     "end": 670.26
+     "start": 670.44,
+     "end": 670.72
     },
     {
      "w": "articulo",
-     "start": 670.26,
-     "end": 670.96
+     "start": 670.72,
+     "end": 671.44
     },
     {
      "w": "definido",
-     "start": 670.96,
-     "end": 671.96
+     "start": 671.44,
+     "end": 672.42
     },
     {
      "w": "the",
-     "start": 671.96,
-     "end": 672.4
+     "start": 672.42,
+     "end": 673.1
     },
     {
      "w": "como",
-     "start": 672.4,
-     "end": 672.92
+     "start": 673.38,
+     "end": 673.92
     },
     {
      "w": "lo",
-     "start": 672.92,
-     "end": 673.06
+     "start": 673.92,
+     "end": 674.06
     },
     {
      "w": "haces",
-     "start": 673.06,
-     "end": 673.44
+     "start": 674.06,
+     "end": 674.44
     },
     {
      "w": "en",
-     "start": 673.44,
-     "end": 673.6
+     "start": 674.44,
+     "end": 674.6
     },
     {
      "w": "espanol",
-     "start": 673.6,
-     "end": 674.08
+     "start": 674.6,
+     "end": 675.08
     },
     {
      "w": "dile",
-     "start": 674.08,
-     "end": 674.84
+     "start": 678.88,
+     "end": 679.64
     },
     {
      "w": "otra",
-     "start": 674.84,
-     "end": 675.28
+     "start": 679.64,
+     "end": 680.08
     },
     {
      "w": "vez",
-     "start": 675.28,
-     "end": 675.58
+     "start": 680.08,
+     "end": 680.4
     },
     {
      "w": "no",
-     "start": 675.58,
-     "end": 675.96
+     "start": 680.62,
+     "end": 681.04
     },
     {
      "w": "no",
-     "start": 675.96,
-     "end": 676.36
+     "start": 681.44,
+     "end": 681.74
     },
     {
      "w": "vendo",
-     "start": 676.36,
-     "end": 676.62
+     "start": 681.74,
+     "end": 681.94
     },
     {
      "w": "las",
-     "start": 676.62,
-     "end": 676.86
+     "start": 681.94,
+     "end": 682.18
     },
     {
      "w": "frutas",
-     "start": 676.86,
-     "end": 677.38
+     "start": 682.18,
+     "end": 682.72
     }
    ]
   },
   {
    "t": "english",
-   "start": 683.94,
-   "end": 685.84,
+   "start": 683.22,
+   "end": 685.24,
    "text": "No, I don’t sell fruit.",
    "words": [
     {
      "w": "no",
-     "start": 683.94,
-     "end": 684.64
+     "start": 683.22,
+     "end": 684.14
     },
     {
      "w": "i",
-     "start": 684.64,
-     "end": 684.96
+     "start": 684.6,
+     "end": 684.76
     },
     {
      "w": "dont",
-     "start": 684.96,
-     "end": 685.24
+     "start": 684.76,
+     "end": 685.04
     },
     {
      "w": "sell",
-     "start": 685.24,
-     "end": 685.46
+     "start": 685.04,
+     "end": 685.24
     },
     {
      "w": "fruit",
-     "start": 685.46,
-     "end": 685.84
+     "start": 685.24,
+     "end": 685.24
     }
    ]
   },
@@ -4673,49 +4684,49 @@
   },
   {
    "t": "english",
-   "start": 693.14,
-   "end": 699.4,
+   "start": 693.15,
+   "end": 698.77,
    "text": "Do you sell fruit? Do you sell fruit?",
    "words": [
     {
      "w": "do",
-     "start": 693.14,
-     "end": 694.36
+     "start": 693.15,
+     "end": 693.37
     },
     {
      "w": "you",
-     "start": 694.36,
-     "end": 694.56
+     "start": 693.37,
+     "end": 693.6
     },
     {
      "w": "sell",
-     "start": 694.56,
-     "end": 694.8
+     "start": 693.6,
+     "end": 693.82
     },
     {
      "w": "fruit",
-     "start": 694.8,
-     "end": 695.16
+     "start": 693.82,
+     "end": 694.05
     },
     {
      "w": "do",
-     "start": 697.78,
-     "end": 698.54
+     "start": 697.79,
+     "end": 698.03
     },
     {
      "w": "you",
-     "start": 698.54,
-     "end": 698.78
+     "start": 698.03,
+     "end": 698.28
     },
     {
      "w": "sell",
-     "start": 698.78,
-     "end": 699.02
+     "start": 698.28,
+     "end": 698.52
     },
     {
      "w": "fruit",
-     "start": 699.02,
-     "end": 699.4
+     "start": 698.52,
+     "end": 698.77
     }
    ]
   },
@@ -4731,97 +4742,97 @@
   },
   {
    "t": "english",
-   "start": 707.24,
-   "end": 713.24,
+   "start": 706.94,
+   "end": 712.9,
    "text": "Yes, I sell fruit. Yes, I sell fruit.",
    "words": [
     {
      "w": "yes",
-     "start": 707.24,
-     "end": 707.64
+     "start": 706.94,
+     "end": 707.56
     },
     {
      "w": "i",
-     "start": 707.64,
-     "end": 707.76
+     "start": 707.72,
+     "end": 707.82
     },
     {
      "w": "sell",
-     "start": 707.76,
-     "end": 708.06
+     "start": 707.82,
+     "end": 708.1
     },
     {
      "w": "fruit",
-     "start": 708.06,
-     "end": 708.46
+     "start": 708.1,
+     "end": 708.5
     },
     {
      "w": "yes",
-     "start": 711.68,
-     "end": 712.44
+     "start": 711.38,
+     "end": 711.94
     },
     {
      "w": "i",
-     "start": 712.44,
-     "end": 712.56
+     "start": 712.16,
+     "end": 712.26
     },
     {
      "w": "sell",
-     "start": 712.56,
-     "end": 712.86
+     "start": 712.26,
+     "end": 712.54
     },
     {
      "w": "fruit",
-     "start": 712.86,
-     "end": 713.24
+     "start": 712.54,
+     "end": 712.9
     }
    ]
   },
   {
    "t": "narration",
    "start": 716.8,
-   "end": 718.6,
+   "end": 718.39,
    "lines": [
     "Escucha esta pregunta."
    ],
    "words": [
     {
      "w": "escucha",
-     "start": 717.06,
-     "end": 717.7
+     "start": 716.7,
+     "end": 717.52
     },
     {
      "w": "esta",
-     "start": 717.7,
-     "end": 717.96
+     "start": 717.52,
+     "end": 717.78
     },
     {
      "w": "pregunta",
-     "start": 717.96,
-     "end": 718.4
+     "start": 717.78,
+     "end": 718.24
     }
    ]
   },
   {
    "t": "english",
-   "start": 718.98,
-   "end": 719.98,
+   "start": 718.4,
+   "end": 719.6,
    "text": "Does he sell?",
    "words": [
     {
      "w": "does",
-     "start": 718.98,
-     "end": 719.48
+     "start": 718.4,
+     "end": 719.12
     },
     {
      "w": "he",
-     "start": 719.48,
-     "end": 719.66
+     "start": 719.12,
+     "end": 719.34
     },
     {
      "w": "sell",
-     "start": 719.66,
-     "end": 719.98
+     "start": 719.34,
+     "end": 719.6
     }
    ]
   },
@@ -4837,102 +4848,102 @@
   },
   {
    "t": "english",
-   "start": 724.1,
-   "end": 726.78,
+   "start": 724.09,
+   "end": 725.55,
    "text": "Yes, he sells. Yes, he sells.",
    "words": [
     {
      "w": "yes",
-     "start": 724.1,
-     "end": 724.74
+     "start": 724.09,
+     "end": 724.24
     },
     {
      "w": "he",
-     "start": 724.74,
-     "end": 725.04
+     "start": 724.24,
+     "end": 724.38
     },
     {
      "w": "sells",
-     "start": 725.04,
-     "end": 725.52
+     "start": 724.38,
+     "end": 724.53
     },
     {
      "w": "yes",
-     "start": 725.52,
-     "end": 726.16
+     "start": 724.83,
+     "end": 725.07
     },
     {
      "w": "he",
-     "start": 726.16,
-     "end": 726.42
+     "start": 725.07,
+     "end": 725.31
     },
     {
      "w": "sells",
-     "start": 726.42,
-     "end": 726.78
+     "start": 725.31,
+     "end": 725.55
     }
    ]
   },
   {
    "t": "narration",
    "start": 735.08,
-   "end": 737.78,
+   "end": 737.57,
    "lines": [
     "Escucha la misma pregunta otra vez."
    ],
    "words": [
     {
      "w": "escucha",
-     "start": 735.28,
-     "end": 735.92
+     "start": 735.14,
+     "end": 735.82
     },
     {
      "w": "la",
-     "start": 735.92,
-     "end": 736.08
+     "start": 735.82,
+     "end": 735.96
     },
     {
      "w": "misma",
-     "start": 736.08,
-     "end": 736.42
+     "start": 735.96,
+     "end": 736.3
     },
     {
      "w": "pregunta",
-     "start": 736.42,
-     "end": 736.94
+     "start": 736.3,
+     "end": 736.82
     },
     {
      "w": "otra",
-     "start": 736.94,
-     "end": 737.2
+     "start": 736.82,
+     "end": 737.08
     },
     {
      "w": "vez",
-     "start": 737.2,
-     "end": 737.52
+     "start": 737.08,
+     "end": 737.46
     }
    ]
   },
   {
    "t": "english",
-   "start": 738.04,
-   "end": 738.96,
+   "start": 737.58,
+   "end": 738.68,
    "text": "Does he sell?",
    "words": [
     {
      "w": "does",
-     "start": 738.04,
-     "end": 738.46
+     "start": 737.58,
+     "end": 738.16
     },
     {
      "w": "he",
-     "start": 738.46,
-     "end": 738.66
+     "start": 738.16,
+     "end": 738.36
     },
     {
      "w": "sell",
-     "start": 738.66,
-     "end": 738.96
+     "start": 738.36,
+     "end": 738.68
     }
    ]
   },
@@ -4949,39 +4960,39 @@
   },
   {
    "t": "english",
-   "start": 743.16,
-   "end": 746.3,
+   "start": 743.15,
+   "end": 744.85,
    "text": "Yes, he sells. Yes, he sells.",
    "words": [
     {
      "w": "yes",
-     "start": 743.16,
-     "end": 743.94
+     "start": 743.15,
+     "end": 743.29
     },
     {
      "w": "he",
-     "start": 743.94,
-     "end": 744.34
+     "start": 743.29,
+     "end": 743.43
     },
     {
      "w": "sells",
-     "start": 744.34,
-     "end": 744.84
+     "start": 743.43,
+     "end": 743.57
     },
     {
      "w": "yes",
-     "start": 744.84,
-     "end": 745.62
+     "start": 744.11,
+     "end": 744.36
     },
     {
      "w": "he",
-     "start": 745.62,
-     "end": 745.88
+     "start": 744.36,
+     "end": 744.6
     },
     {
      "w": "sells",
-     "start": 745.88,
-     "end": 746.3
+     "start": 744.6,
+     "end": 744.85
     }
    ]
   },
@@ -4997,39 +5008,39 @@
   },
   {
    "t": "english",
-   "start": 756.6,
-   "end": 761.34,
+   "start": 755.86,
+   "end": 760.66,
    "text": "Does he sell? Does he sell?",
    "words": [
     {
      "w": "does",
-     "start": 756.6,
-     "end": 757.26
+     "start": 755.86,
+     "end": 756.76
     },
     {
      "w": "he",
-     "start": 757.26,
-     "end": 757.46
+     "start": 756.76,
+     "end": 756.94
     },
     {
      "w": "sell",
-     "start": 757.46,
-     "end": 757.76
+     "start": 756.94,
+     "end": 757.22
     },
     {
      "w": "does",
-     "start": 760.04,
-     "end": 760.82
+     "start": 759.6,
+     "end": 760.16
     },
     {
      "w": "he",
-     "start": 760.82,
-     "end": 761.02
+     "start": 760.16,
+     "end": 760.38
     },
     {
      "w": "sell",
-     "start": 761.02,
-     "end": 761.34
+     "start": 760.38,
+     "end": 760.66
     }
    ]
   },
@@ -5045,76 +5056,76 @@
   },
   {
    "t": "english",
-   "start": 765.86,
-   "end": 767.0,
+   "start": 765.38,
+   "end": 766.72,
    "text": "What does he sell?",
    "words": [
     {
      "w": "what",
-     "start": 765.86,
-     "end": 766.24
+     "start": 765.38,
+     "end": 765.98
     },
     {
      "w": "does",
-     "start": 766.24,
-     "end": 766.44
+     "start": 765.98,
+     "end": 766.14
     },
     {
      "w": "he",
-     "start": 766.44,
-     "end": 766.62
+     "start": 766.14,
+     "end": 766.34
     },
     {
      "w": "sell",
-     "start": 766.62,
-     "end": 767.0
+     "start": 766.34,
+     "end": 766.72
     }
    ]
   },
   {
    "t": "narration",
    "start": 768.8,
-   "end": 771.26,
+   "end": 771.05,
    "lines": [
     "Escucha esta respuesta."
    ],
    "words": [
     {
      "w": "escucha",
-     "start": 769.22,
-     "end": 770.16
+     "start": 768.7,
+     "end": 769.72
     },
     {
      "w": "esta",
-     "start": 770.16,
-     "end": 770.4
+     "start": 769.72,
+     "end": 769.98
     },
     {
      "w": "respuesta",
-     "start": 770.4,
-     "end": 771.04
+     "start": 769.98,
+     "end": 770.62
     }
    ]
   },
   {
    "t": "english",
-   "start": 771.78,
+   "start": 771.06,
    "end": 772.89,
    "text": "He sells apples.",
    "words": [
     {
      "w": "he",
-     "start": 771.78,
-     "end": 772.25
+     "start": 771.06,
+     "end": 771.98
     },
     {
      "w": "sells",
-     "start": 772.25,
-     "end": 772.71
+     "start": 771.98,
+     "end": 772.44
     },
     {
      "w": "apples",
-     "start": 772.71,
+     "start": 772.44,
      "end": 772.89
     }
    ]
@@ -5122,138 +5133,138 @@
   {
    "t": "narration",
    "start": 772.9,
-   "end": 788.12,
+   "end": 787.91,
    "lines": [
     "Él acaba de decir “he sells apples.” “He sells apples” significa “él vende manzanas.” Así es cómo dices “manzana.” Escucha y repite."
    ],
    "words": [
     {
      "w": "el",
-     "start": 774.09,
-     "end": 774.91
+     "start": 772.84,
+     "end": 774.22
     },
     {
      "w": "acaba",
-     "start": 774.91,
-     "end": 775.17
+     "start": 774.22,
+     "end": 774.46
     },
     {
      "w": "de",
-     "start": 775.17,
-     "end": 775.35
+     "start": 774.46,
+     "end": 774.66
     },
     {
      "w": "decir",
-     "start": 775.35,
-     "end": 775.77
+     "start": 774.66,
+     "end": 775.08
     },
     {
      "w": "he",
-     "start": 775.77,
-     "end": 775.85
+     "start": 775.74,
+     "end": 775.74
     },
     {
      "w": "sells",
-     "start": 775.85,
-     "end": 776.29
+     "start": 775.74,
+     "end": 776.16
     },
     {
      "w": "apples",
-     "start": 776.29,
-     "end": 776.75
+     "start": 776.16,
+     "end": 776.66
     },
     {
      "w": "he",
-     "start": 776.75,
-     "end": 777.33
+     "start": 777.08,
+     "end": 777.66
     },
     {
      "w": "sells",
-     "start": 777.33,
-     "end": 777.71
+     "start": 777.66,
+     "end": 778.04
     },
     {
      "w": "apples",
-     "start": 777.71,
-     "end": 778.31
+     "start": 778.04,
+     "end": 778.64
     },
     {
      "w": "significa",
-     "start": 778.31,
-     "end": 779.45
+     "start": 778.64,
+     "end": 779.78
     },
     {
      "w": "el",
-     "start": 779.45,
-     "end": 780.05
+     "start": 780.18,
+     "end": 780.72
     },
     {
      "w": "vende",
-     "start": 780.05,
-     "end": 780.39
+     "start": 780.72,
+     "end": 781.06
     },
     {
      "w": "manzanas",
-     "start": 780.39,
-     "end": 781.01
+     "start": 781.06,
+     "end": 781.68
     },
     {
      "w": "asi",
-     "start": 781.01,
-     "end": 781.77
+     "start": 782.1,
+     "end": 782.92
     },
     {
      "w": "es",
-     "start": 781.77,
-     "end": 782.09
+     "start": 782.92,
+     "end": 783.22
     },
     {
      "w": "como",
-     "start": 782.09,
-     "end": 782.31
+     "start": 783.22,
+     "end": 783.46
     },
     {
      "w": "dices",
-     "start": 782.31,
-     "end": 782.77
+     "start": 783.46,
+     "end": 783.9
     },
     {
      "w": "manzana",
-     "start": 782.77,
-     "end": 783.77
+     "start": 783.9,
+     "end": 784.92
     },
     {
      "w": "escucha",
-     "start": 783.77,
-     "end": 784.67
+     "start": 785.24,
+     "end": 786.12
     },
     {
      "w": "y",
-     "start": 784.67,
-     "end": 785.17
+     "start": 786.12,
+     "end": 786.6
     },
     {
      "w": "repite",
-     "start": 785.17,
-     "end": 785.99
+     "start": 786.6,
+     "end": 787.44
     }
    ]
   },
   {
    "t": "english",
-   "start": 788.14,
-   "end": 791.36,
+   "start": 787.92,
+   "end": 790.58,
    "text": "Apple. Apple.",
    "words": [
     {
      "w": "apple",
-     "start": 788.14,
-     "end": 788.5
+     "start": 787.92,
+     "end": 790.18
     },
     {
      "w": "apple",
-     "start": 790.32,
-     "end": 791.36
+     "start": 790.18,
+     "end": 790.58
     }
    ]
   },
@@ -5269,29 +5280,29 @@
   },
   {
    "t": "english",
-   "start": 795.44,
-   "end": 798.62,
+   "start": 794.3,
+   "end": 798.22,
    "text": "An apple. An apple.",
    "words": [
     {
      "w": "an",
-     "start": 795.44,
-     "end": 796.06
+     "start": 794.3,
+     "end": 795.56
     },
     {
      "w": "apple",
-     "start": 796.06,
-     "end": 796.38
+     "start": 795.56,
+     "end": 795.92
     },
     {
      "w": "an",
-     "start": 797.78,
-     "end": 798.3
+     "start": 796.12,
+     "end": 797.88
     },
     {
      "w": "apple",
-     "start": 798.3,
-     "end": 798.62
+     "start": 797.88,
+     "end": 798.22
     }
    ]
   },
@@ -5307,29 +5318,29 @@
   },
   {
    "t": "english",
-   "start": 814.6,
-   "end": 818.58,
+   "start": 813.86,
+   "end": 818.16,
    "text": "The apples. The apples.",
    "words": [
     {
      "w": "the",
-     "start": 814.6,
-     "end": 815.36
+     "start": 813.86,
+     "end": 814.82
     },
     {
      "w": "apples",
-     "start": 815.36,
-     "end": 815.94
+     "start": 814.82,
+     "end": 815.46
     },
     {
      "w": "the",
-     "start": 817.18,
-     "end": 818.02
+     "start": 815.46,
+     "end": 817.52
     },
     {
      "w": "apples",
-     "start": 818.02,
-     "end": 818.58
+     "start": 817.52,
+     "end": 818.16
     }
    ]
   },
@@ -5353,49 +5364,29 @@
   },
   {
    "t": "english",
-   "start": 824.1,
-   "end": 826.78,
-   "text": "Does he sell apples? Does he sell apples?",
+   "start": 824.13,
+   "end": 825.07,
+   "text": "Does he sell apples? ",
    "words": [
     {
      "w": "does",
-     "start": 824.1,
-     "end": 824.18
+     "start": 824.13,
+     "end": 824.36
     },
     {
      "w": "he",
-     "start": 824.18,
-     "end": 824.34
+     "start": 824.36,
+     "end": 824.6
     },
     {
      "w": "sell",
-     "start": 824.34,
-     "end": 824.56
+     "start": 824.6,
+     "end": 824.83
     },
     {
      "w": "apples",
-     "start": 824.56,
-     "end": 824.98
-    },
-    {
-     "w": "does",
-     "start": 824.98,
-     "end": 825.43
-    },
-    {
-     "w": "he",
-     "start": 825.43,
-     "end": 825.88
-    },
-    {
-     "w": "sell",
-     "start": 825.88,
-     "end": 826.33
-    },
-    {
-     "w": "apples",
-     "start": 826.33,
-     "end": 826.78
+     "start": 824.83,
+     "end": 825.07
     }
    ]
   },
@@ -5411,49 +5402,49 @@
   },
   {
    "t": "english",
-   "start": 833.2,
-   "end": 837.22,
+   "start": 833.19,
+   "end": 835.29,
    "text": "Yes, he sells apples. Yes, he sells apples.",
    "words": [
     {
      "w": "yes",
-     "start": 833.2,
-     "end": 833.88
+     "start": 833.19,
+     "end": 833.27
     },
     {
      "w": "he",
-     "start": 833.88,
-     "end": 834.28
+     "start": 833.27,
+     "end": 833.36
     },
     {
      "w": "sells",
-     "start": 834.28,
-     "end": 834.72
+     "start": 833.36,
+     "end": 833.44
     },
     {
      "w": "apples",
-     "start": 834.72,
-     "end": 835.26
+     "start": 833.44,
+     "end": 833.53
     },
     {
      "w": "yes",
-     "start": 835.26,
-     "end": 836.12
+     "start": 834.13,
+     "end": 834.42
     },
     {
      "w": "he",
-     "start": 836.12,
-     "end": 836.4
+     "start": 834.42,
+     "end": 834.71
     },
     {
      "w": "sells",
-     "start": 836.4,
-     "end": 836.8
+     "start": 834.71,
+     "end": 835.0
     },
     {
      "w": "apples",
-     "start": 836.8,
-     "end": 837.22
+     "start": 835.0,
+     "end": 835.29
     }
    ]
   },
@@ -5470,49 +5461,29 @@
   },
   {
    "t": "english",
-   "start": 850.16,
-   "end": 854.93,
-   "text": "Does he sell apples? Does he sell apples?",
+   "start": 850.15,
+   "end": 851.25,
+   "text": "Does he sell apples? ",
    "words": [
     {
      "w": "does",
-     "start": 850.16,
-     "end": 850.64
+     "start": 850.15,
+     "end": 850.42
     },
     {
      "w": "he",
-     "start": 850.64,
-     "end": 850.8
+     "start": 850.42,
+     "end": 850.7
     },
     {
      "w": "sell",
-     "start": 850.8,
-     "end": 851.02
+     "start": 850.7,
+     "end": 850.98
     },
     {
      "w": "apples",
-     "start": 851.02,
-     "end": 851.48
-    },
-    {
-     "w": "does",
-     "start": 854.78,
-     "end": 854.86
-    },
-    {
-     "w": "he",
-     "start": 854.86,
-     "end": 854.93
-    },
-    {
-     "w": "sell",
-     "start": 854.94,
-     "end": 854.93
-    },
-    {
-     "w": "apples",
-     "start": 855.02,
-     "end": 854.93
+     "start": 850.98,
+     "end": 851.25
     }
    ]
   },
@@ -5526,28 +5497,28 @@
    "words": [
     {
      "w": "y",
-     "start": 855.12,
-     "end": 855.92
+     "start": 854.73,
+     "end": 854.97
     },
     {
      "w": "como",
-     "start": 855.92,
-     "end": 856.44
+     "start": 854.97,
+     "end": 855.45
     },
     {
      "w": "responderias",
-     "start": 856.44,
-     "end": 857.46
+     "start": 855.45,
+     "end": 856.51
     },
     {
      "w": "no",
-     "start": 857.46,
-     "end": 857.78
+     "start": 856.63,
+     "end": 857.03
     },
     {
      "w": "el",
-     "start": 857.78,
-     "end": 858.1
+     "start": 857.41,
+     "end": 857.63
     },
     {
      "w": "no",
@@ -5556,124 +5527,124 @@
     },
     {
      "w": "vende",
-     "start": 858.7,
-     "end": 858.78
+     "start": 857.77,
+     "end": 857.97
     },
     {
      "w": "manzanas",
-     "start": 858.78,
-     "end": 859.34
+     "start": 857.97,
+     "end": 858.51
     }
    ]
   },
   {
    "t": "english",
    "start": 859.34,
-   "end": 863.6,
+   "end": 861.38,
    "text": "No, he doesn’t sell apples. No, he doesn’t sell apples.",
    "words": [
     {
      "w": "no",
      "start": 859.34,
-     "end": 859.94
+     "end": 859.38
     },
     {
      "w": "he",
-     "start": 859.94,
-     "end": 860.22
+     "start": 859.38,
+     "end": 859.42
     },
     {
      "w": "doesnt",
-     "start": 860.22,
-     "end": 860.62
+     "start": 859.42,
+     "end": 859.46
     },
     {
      "w": "sell",
-     "start": 860.62,
-     "end": 860.9
+     "start": 859.46,
+     "end": 859.5
     },
     {
      "w": "apples",
-     "start": 860.9,
-     "end": 861.42
+     "start": 859.5,
+     "end": 859.54
     },
     {
      "w": "no",
-     "start": 861.42,
-     "end": 862.22
+     "start": 859.96,
+     "end": 860.24
     },
     {
      "w": "he",
-     "start": 862.22,
-     "end": 862.48
+     "start": 860.24,
+     "end": 860.53
     },
     {
      "w": "doesnt",
-     "start": 862.48,
-     "end": 862.86
+     "start": 860.53,
+     "end": 860.81
     },
     {
      "w": "sell",
-     "start": 862.86,
-     "end": 863.12
+     "start": 860.81,
+     "end": 861.1
     },
     {
      "w": "apples",
-     "start": 863.12,
-     "end": 863.6
+     "start": 861.1,
+     "end": 861.38
     }
    ]
   },
   {
    "t": "narration",
    "start": 873.98,
-   "end": 875.8,
+   "end": 875.59,
    "lines": [
     "Escucha esta pregunta."
    ],
    "words": [
     {
      "w": "escucha",
-     "start": 873.38,
-     "end": 874.04
+     "start": 874.0,
+     "end": 874.64
     },
     {
      "w": "esta",
-     "start": 874.04,
-     "end": 874.22
+     "start": 874.64,
+     "end": 874.82
     },
     {
      "w": "pregunta",
-     "start": 874.22,
-     "end": 874.68
+     "start": 874.82,
+     "end": 875.28
     }
    ]
   },
   {
    "t": "english",
-   "start": 876.12,
-   "end": 877.5,
+   "start": 875.6,
+   "end": 877.18,
    "text": "Does he eat apples?",
    "words": [
     {
      "w": "does",
-     "start": 876.12,
-     "end": 876.58
+     "start": 875.6,
+     "end": 876.24
     },
     {
      "w": "he",
-     "start": 876.58,
-     "end": 876.78
+     "start": 876.24,
+     "end": 876.44
     },
     {
      "w": "eat",
-     "start": 876.78,
-     "end": 877.1
+     "start": 876.44,
+     "end": 876.74
     },
     {
      "w": "apples",
-     "start": 877.1,
-     "end": 877.5
+     "start": 876.74,
+     "end": 877.18
     }
    ]
   },
@@ -5689,49 +5660,49 @@
   },
   {
    "t": "english",
-   "start": 882.58,
-   "end": 886.66,
+   "start": 881.92,
+   "end": 888.14,
    "text": "Yes, he eats apples. Yes, he eats apples.",
    "words": [
     {
      "w": "yes",
-     "start": 882.58,
-     "end": 883.36
+     "start": 881.92,
+     "end": 882.9
     },
     {
      "w": "he",
-     "start": 883.36,
-     "end": 883.78
+     "start": 883.44,
+     "end": 883.68
     },
     {
      "w": "eats",
-     "start": 883.78,
-     "end": 884.18
+     "start": 883.68,
+     "end": 884.04
     },
     {
      "w": "apples",
-     "start": 884.18,
-     "end": 884.64
+     "start": 884.04,
+     "end": 884.52
     },
     {
      "w": "yes",
-     "start": 884.64,
-     "end": 885.54
+     "start": 887.18,
+     "end": 888.14
     },
     {
      "w": "he",
-     "start": 885.54,
-     "end": 885.82
+     "start": 888.14,
+     "end": 888.14
     },
     {
      "w": "eats",
-     "start": 885.82,
-     "end": 886.26
+     "start": 888.14,
+     "end": 888.14
     },
     {
      "w": "apples",
-     "start": 886.26,
-     "end": 886.66
+     "start": 888.14,
+     "end": 888.14
     }
    ]
   },
@@ -5755,49 +5726,49 @@
   },
   {
    "t": "english",
-   "start": 897.26,
-   "end": 900.46,
+   "start": 896.46,
+   "end": 901.94,
    "text": "Do you eat apples? Do you eat apples?",
    "words": [
     {
      "w": "do",
-     "start": 897.26,
-     "end": 897.94
+     "start": 896.46,
+     "end": 897.34
     },
     {
      "w": "you",
-     "start": 897.94,
-     "end": 898.16
+     "start": 897.34,
+     "end": 897.58
     },
     {
      "w": "eat",
-     "start": 898.16,
-     "end": 898.4
+     "start": 897.58,
+     "end": 897.82
     },
     {
      "w": "apples",
-     "start": 898.4,
-     "end": 898.8
+     "start": 897.82,
+     "end": 898.18
     },
     {
      "w": "do",
-     "start": 898.8,
-     "end": 899.6
+     "start": 900.9,
+     "end": 901.38
     },
     {
      "w": "you",
-     "start": 899.6,
-     "end": 899.82
+     "start": 901.38,
+     "end": 901.62
     },
     {
      "w": "eat",
-     "start": 899.82,
-     "end": 900.06
+     "start": 901.62,
+     "end": 901.86
     },
     {
      "w": "apples",
-     "start": 900.06,
-     "end": 900.46
+     "start": 901.86,
+     "end": 901.94
     }
    ]
   },
@@ -5813,29 +5784,29 @@
   },
   {
    "t": "english",
-   "start": 909.54,
-   "end": 911.0,
+   "start": 908.94,
+   "end": 910.78,
    "text": "Yes, I eat apples.",
    "words": [
     {
      "w": "yes",
-     "start": 909.54,
-     "end": 910.22
+     "start": 908.94,
+     "end": 909.82
     },
     {
      "w": "i",
-     "start": 910.22,
-     "end": 910.36
+     "start": 910.06,
+     "end": 910.2
     },
     {
      "w": "eat",
-     "start": 910.36,
-     "end": 910.62
+     "start": 910.2,
+     "end": 910.42
     },
     {
      "w": "apples",
-     "start": 910.62,
-     "end": 911.0
+     "start": 910.42,
+     "end": 910.78
     }
    ]
   },
@@ -5851,69 +5822,69 @@
   },
   {
    "t": "english",
-   "start": 918.76,
-   "end": 926.06,
+   "start": 918.14,
+   "end": 925.3,
    "text": "Do you eat apples every day? Do you eat apples every day?",
    "words": [
     {
      "w": "do",
-     "start": 918.76,
-     "end": 919.26
+     "start": 918.14,
+     "end": 918.84
     },
     {
      "w": "you",
-     "start": 919.26,
-     "end": 919.44
+     "start": 918.84,
+     "end": 919.08
     },
     {
      "w": "eat",
-     "start": 919.44,
-     "end": 919.66
+     "start": 919.08,
+     "end": 919.24
     },
     {
      "w": "apples",
-     "start": 919.66,
-     "end": 920.0
+     "start": 919.24,
+     "end": 919.58
     },
     {
      "w": "every",
-     "start": 920.0,
-     "end": 920.26
+     "start": 919.58,
+     "end": 919.82
     },
     {
      "w": "day",
-     "start": 920.26,
-     "end": 920.54
+     "start": 919.82,
+     "end": 920.14
     },
     {
      "w": "do",
-     "start": 923.94,
-     "end": 924.74
+     "start": 923.46,
+     "end": 924.02
     },
     {
      "w": "you",
-     "start": 924.74,
-     "end": 924.96
+     "start": 924.02,
+     "end": 924.26
     },
     {
      "w": "eat",
-     "start": 924.96,
-     "end": 925.18
+     "start": 924.26,
+     "end": 924.44
     },
     {
      "w": "apples",
-     "start": 925.18,
-     "end": 925.46
+     "start": 924.44,
+     "end": 924.74
     },
     {
      "w": "every",
-     "start": 925.46,
-     "end": 925.74
+     "start": 924.74,
+     "end": 925.0
     },
     {
      "w": "day",
-     "start": 925.74,
-     "end": 926.06
+     "start": 925.0,
+     "end": 925.3
     }
    ]
   },
@@ -5928,153 +5899,153 @@
   {
    "t": "narration",
    "start": 929.82,
-   "end": 932.28,
+   "end": 932.07,
    "lines": [
     "Solo escucha esta respuesta."
    ],
    "words": [
     {
      "w": "solo",
-     "start": 930.12,
-     "end": 930.62
+     "start": 929.3,
+     "end": 930.4
     },
     {
      "w": "escucha",
-     "start": 930.62,
-     "end": 931.16
+     "start": 930.4,
+     "end": 930.98
     },
     {
      "w": "esta",
-     "start": 931.16,
-     "end": 931.4
+     "start": 930.98,
+     "end": 931.2
     },
     {
      "w": "respuesta",
-     "start": 931.4,
-     "end": 932.06
+     "start": 931.2,
+     "end": 931.88
     }
    ]
   },
   {
    "t": "english",
-   "start": 932.6,
-   "end": 939.34,
+   "start": 932.08,
+   "end": 940.02,
    "text": "No, I don’t eat apples every day. I eat apples every once in a while. And you? Do you eat apples every day?",
    "words": [
     {
      "w": "no",
-     "start": 932.6,
+     "start": 932.08,
+     "end": 932.8
+    },
+    {
+     "w": "i",
+     "start": 933.02,
      "end": 933.12
     },
     {
-     "w": "i",
-     "start": 933.12,
-     "end": 933.28
-    },
-    {
      "w": "dont",
-     "start": 933.28,
-     "end": 933.54
+     "start": 933.12,
+     "end": 933.36
     },
     {
      "w": "eat",
-     "start": 933.54,
-     "end": 933.66
+     "start": 933.36,
+     "end": 933.48
     },
     {
      "w": "apples",
-     "start": 933.66,
-     "end": 934.04
+     "start": 933.48,
+     "end": 933.84
     },
     {
      "w": "every",
-     "start": 934.04,
-     "end": 934.38
+     "start": 933.84,
+     "end": 934.18
     },
     {
      "w": "day",
-     "start": 934.38,
-     "end": 934.68
+     "start": 934.18,
+     "end": 934.5
     },
     {
      "w": "i",
-     "start": 934.68,
-     "end": 935.06
+     "start": 934.76,
+     "end": 935.12
     },
     {
      "w": "eat",
-     "start": 935.06,
-     "end": 935.24
+     "start": 935.12,
+     "end": 935.3
     },
     {
      "w": "apples",
-     "start": 935.24,
-     "end": 935.64
+     "start": 935.3,
+     "end": 935.68
     },
     {
      "w": "every",
-     "start": 935.64,
-     "end": 936.02
+     "start": 935.68,
+     "end": 936.1
     },
     {
      "w": "once",
-     "start": 936.02,
-     "end": 936.34
+     "start": 936.1,
+     "end": 936.4
     },
     {
      "w": "in",
-     "start": 936.34,
-     "end": 936.54
+     "start": 936.4,
+     "end": 936.6
     },
     {
      "w": "a",
-     "start": 936.54,
-     "end": 936.66
+     "start": 936.6,
+     "end": 936.7
     },
     {
      "w": "while",
-     "start": 936.66,
-     "end": 936.96
+     "start": 936.7,
+     "end": 937.02
     },
     {
      "w": "and",
-     "start": 936.96,
-     "end": 937.28
+     "start": 937.32,
+     "end": 937.7
     },
     {
      "w": "you",
-     "start": 937.28,
-     "end": 937.52
+     "start": 937.7,
+     "end": 937.96
     },
     {
      "w": "do",
-     "start": 937.52,
-     "end": 937.88
+     "start": 938.18,
+     "end": 938.6
     },
     {
      "w": "you",
-     "start": 937.88,
-     "end": 938.08
+     "start": 938.6,
+     "end": 938.8
     },
     {
      "w": "eat",
-     "start": 938.08,
-     "end": 938.3
+     "start": 938.8,
+     "end": 939.0
     },
     {
      "w": "apples",
-     "start": 938.3,
-     "end": 938.64
+     "start": 939.0,
+     "end": 939.36
     },
     {
      "w": "every",
-     "start": 938.64,
-     "end": 939.02
+     "start": 939.36,
+     "end": 939.72
     },
     {
      "w": "day",
-     "start": 939.02,
-     "end": 939.34
+     "start": 939.72,
+     "end": 940.02
     }
    ]
   },
@@ -6090,39 +6061,39 @@
   },
   {
    "t": "english",
-   "start": 946.84,
-   "end": 949.6,
+   "start": 946.18,
+   "end": 949.52,
    "text": "Yes, I eat apples every day.",
    "words": [
     {
      "w": "yes",
-     "start": 946.84,
-     "end": 948.04
+     "start": 946.18,
+     "end": 947.1
     },
     {
      "w": "i",
-     "start": 948.04,
-     "end": 948.12
+     "start": 947.86,
+     "end": 948.1
     },
     {
      "w": "eat",
-     "start": 948.12,
-     "end": 948.36
+     "start": 948.1,
+     "end": 948.32
     },
     {
      "w": "apples",
-     "start": 948.36,
-     "end": 948.82
+     "start": 948.32,
+     "end": 948.7
     },
     {
      "w": "every",
-     "start": 948.82,
-     "end": 949.3
+     "start": 948.7,
+     "end": 949.24
     },
     {
      "w": "day",
-     "start": 949.3,
-     "end": 949.6
+     "start": 949.24,
+     "end": 949.52
     }
    ]
   },
@@ -6138,729 +6109,729 @@
   },
   {
    "t": "english",
-   "start": 959.38,
-   "end": 961.6,
+   "start": 958.6,
+   "end": 961.04,
    "text": "Does she eat apples every day?",
    "words": [
     {
      "w": "does",
-     "start": 959.38,
-     "end": 960.06
+     "start": 958.6,
+     "end": 959.54
     },
     {
      "w": "she",
-     "start": 960.06,
-     "end": 960.36
+     "start": 959.54,
+     "end": 959.9
     },
     {
      "w": "eat",
-     "start": 960.36,
-     "end": 960.62
+     "start": 959.9,
+     "end": 960.1
     },
     {
      "w": "apples",
-     "start": 960.62,
-     "end": 961.02
+     "start": 960.1,
+     "end": 960.44
     },
     {
      "w": "every",
-     "start": 961.02,
-     "end": 961.34
+     "start": 960.44,
+     "end": 960.76
     },
     {
      "w": "day",
-     "start": 961.34,
-     "end": 961.6
+     "start": 960.76,
+     "end": 961.04
     }
    ]
   },
   {
    "t": "narration",
    "start": 966.34,
-   "end": 968.54,
+   "end": 968.33,
    "lines": [
     "Escucha esta respuesta."
    ],
    "words": [
     {
      "w": "escucha",
-     "start": 966.52,
-     "end": 967.48
+     "start": 965.14,
+     "end": 967.0
     },
     {
      "w": "esta",
-     "start": 967.48,
-     "end": 967.8
+     "start": 967.0,
+     "end": 967.32
     },
     {
      "w": "respuesta",
-     "start": 967.8,
-     "end": 968.38
+     "start": 967.32,
+     "end": 967.94
     }
    ]
   },
   {
    "t": "english",
-   "start": 968.98,
-   "end": 974.54,
+   "start": 968.34,
+   "end": 974.4,
    "text": "No, she doesn’t eat apples every day. But she does eat avocados every day.",
    "words": [
     {
      "w": "no",
-     "start": 968.98,
-     "end": 970.24
+     "start": 968.34,
+     "end": 969.18
     },
     {
      "w": "she",
-     "start": 970.24,
-     "end": 970.56
+     "start": 969.88,
+     "end": 970.04
     },
     {
      "w": "doesnt",
-     "start": 970.56,
-     "end": 971.0
+     "start": 970.04,
+     "end": 970.46
     },
     {
      "w": "eat",
-     "start": 971.0,
-     "end": 971.14
+     "start": 970.46,
+     "end": 970.58
     },
     {
      "w": "apples",
-     "start": 971.14,
+     "start": 970.58,
+     "end": 970.96
+    },
+    {
+     "w": "every",
+     "start": 970.96,
+     "end": 971.2
+    },
+    {
+     "w": "day",
+     "start": 971.2,
      "end": 971.5
     },
     {
-     "w": "every",
-     "start": 971.5,
-     "end": 971.78
-    },
-    {
-     "w": "day",
-     "start": 971.78,
-     "end": 972.02
-    },
-    {
      "w": "but",
-     "start": 972.02,
-     "end": 972.5
+     "start": 971.74,
+     "end": 972.34
     },
     {
      "w": "she",
-     "start": 972.5,
-     "end": 972.8
+     "start": 972.34,
+     "end": 972.6
     },
     {
      "w": "does",
-     "start": 972.8,
-     "end": 973.2
+     "start": 972.6,
+     "end": 972.92
     },
     {
      "w": "eat",
-     "start": 973.2,
-     "end": 973.4
+     "start": 972.92,
+     "end": 973.18
     },
     {
      "w": "avocados",
-     "start": 973.4,
-     "end": 974.08
+     "start": 973.18,
+     "end": 973.9
     },
     {
      "w": "every",
-     "start": 974.08,
-     "end": 974.34
+     "start": 973.9,
+     "end": 974.12
     },
     {
      "w": "day",
-     "start": 974.34,
-     "end": 974.54
+     "start": 974.12,
+     "end": 974.4
     }
    ]
   },
   {
    "t": "narration",
    "start": 974.8,
-   "end": 999.3,
+   "end": 999.09,
    "lines": [
     "Él acaba de decir, “But she does eat avocados every day.” “But she does eat avocados every day,” significa “Pero sí ella come aguacates todos los días.” La palabra “avocado” significa aguacate en inglés. Ahora escucha la conversación completa."
    ],
    "words": [
     {
      "w": "el",
-     "start": 975.22,
-     "end": 975.59
+     "start": 974.2,
+     "end": 975.36
     },
     {
      "w": "acaba",
-     "start": 975.59,
-     "end": 975.89
+     "start": 975.36,
+     "end": 975.64
     },
     {
      "w": "de",
-     "start": 975.89,
-     "end": 976.05
+     "start": 975.64,
+     "end": 975.84
     },
     {
      "w": "decir",
-     "start": 976.05,
-     "end": 976.43
+     "start": 975.84,
+     "end": 976.22
     },
     {
      "w": "but",
-     "start": 976.43,
-     "end": 976.89
+     "start": 976.44,
+     "end": 977.06
     },
     {
      "w": "she",
-     "start": 976.89,
-     "end": 977.13
+     "start": 977.06,
+     "end": 977.32
     },
     {
      "w": "does",
-     "start": 977.13,
-     "end": 977.51
+     "start": 977.32,
+     "end": 977.7
     },
     {
      "w": "eat",
-     "start": 977.51,
-     "end": 977.77
+     "start": 977.7,
+     "end": 977.94
     },
     {
      "w": "avocados",
-     "start": 977.77,
-     "end": 978.53
+     "start": 977.94,
+     "end": 978.7
     },
     {
      "w": "every",
-     "start": 978.53,
-     "end": 978.77
+     "start": 978.7,
+     "end": 978.94
     },
     {
      "w": "day",
-     "start": 978.77,
-     "end": 979.01
+     "start": 978.94,
+     "end": 979.18
     },
     {
      "w": "but",
-     "start": 979.01,
-     "end": 979.59
+     "start": 979.78,
+     "end": 980.16
     },
     {
      "w": "she",
-     "start": 979.59,
-     "end": 979.77
+     "start": 980.16,
+     "end": 980.36
     },
     {
      "w": "does",
-     "start": 979.77,
-     "end": 980.05
+     "start": 980.36,
+     "end": 980.58
     },
     {
      "w": "eat",
-     "start": 980.05,
-     "end": 980.25
+     "start": 980.58,
+     "end": 980.84
     },
     {
      "w": "avocados",
-     "start": 980.25,
-     "end": 980.85
+     "start": 980.84,
+     "end": 981.44
     },
     {
      "w": "every",
-     "start": 980.85,
-     "end": 981.07
+     "start": 981.44,
+     "end": 981.66
     },
     {
      "w": "day",
-     "start": 981.07,
-     "end": 981.29
+     "start": 981.66,
+     "end": 981.88
     },
     {
      "w": "significa",
-     "start": 981.29,
-     "end": 981.93
+     "start": 981.88,
+     "end": 982.66
     },
     {
      "w": "pero",
-     "start": 981.93,
-     "end": 982.13
+     "start": 983.26,
+     "end": 983.62
     },
     {
      "w": "si",
-     "start": 982.13,
-     "end": 982.43
+     "start": 983.62,
+     "end": 983.9
     },
     {
      "w": "ella",
-     "start": 982.43,
-     "end": 982.89
+     "start": 984.2,
+     "end": 984.66
     },
     {
      "w": "come",
-     "start": 982.89,
-     "end": 983.81
+     "start": 984.66,
+     "end": 985.58
     },
     {
      "w": "aguacates",
-     "start": 983.81,
-     "end": 984.95
+     "start": 985.58,
+     "end": 986.74
     },
     {
      "w": "todos",
-     "start": 984.95,
-     "end": 985.79
+     "start": 986.74,
+     "end": 987.58
     },
     {
      "w": "los",
-     "start": 985.79,
-     "end": 986.17
+     "start": 987.58,
+     "end": 987.94
     },
     {
      "w": "dias",
-     "start": 986.17,
-     "end": 986.49
+     "start": 987.94,
+     "end": 988.26
     },
     {
      "w": "la",
-     "start": 986.49,
-     "end": 986.95
+     "start": 988.84,
+     "end": 989.3
     },
     {
      "w": "palabra",
-     "start": 986.95,
-     "end": 987.55
+     "start": 989.3,
+     "end": 989.9
     },
     {
      "w": "avocado",
-     "start": 987.55,
-     "end": 988.53
+     "start": 989.9,
+     "end": 990.86
     },
     {
      "w": "significa",
-     "start": 988.53,
-     "end": 989.61
+     "start": 990.86,
+     "end": 991.94
     },
     {
      "w": "aguacate",
-     "start": 989.61,
-     "end": 990.37
+     "start": 991.94,
+     "end": 992.7
     },
     {
      "w": "en",
-     "start": 990.37,
-     "end": 990.51
+     "start": 992.7,
+     "end": 992.84
     },
     {
      "w": "ingles",
-     "start": 990.51,
-     "end": 990.73
+     "start": 992.84,
+     "end": 993.08
     },
     {
      "w": "ahora",
-     "start": 990.73,
-     "end": 991.93
+     "start": 993.78,
+     "end": 994.3
     },
     {
      "w": "escucha",
-     "start": 991.93,
-     "end": 992.27
+     "start": 994.9,
+     "end": 995.26
     },
     {
      "w": "la",
-     "start": 992.27,
-     "end": 992.45
+     "start": 995.26,
+     "end": 995.42
     },
     {
      "w": "conversacion",
-     "start": 992.45,
-     "end": 993.31
+     "start": 995.42,
+     "end": 996.28
     },
     {
      "w": "completa",
-     "start": 993.31,
-     "end": 993.99
+     "start": 996.28,
+     "end": 996.98
     }
    ]
   },
   {
    "t": "english",
-   "start": 999.86,
-   "end": 1001.5,
+   "start": 999.1,
+   "end": 1001.27,
    "text": "Hello. What do you sell?",
    "words": [
     {
      "w": "hello",
-     "start": 999.86,
-     "end": 1000.54
+     "start": 999.1,
+     "end": 1000.1
     },
     {
      "w": "what",
-     "start": 1000.54,
-     "end": 1000.92
+     "start": 1000.46,
+     "end": 1000.9
     },
     {
      "w": "do",
-     "start": 1000.92,
-     "end": 1001.04
+     "start": 1000.9,
+     "end": 1001.0
     },
     {
      "w": "you",
-     "start": 1001.04,
-     "end": 1001.14
+     "start": 1001.0,
+     "end": 1001.12
     },
     {
      "w": "sell",
-     "start": 1001.14,
-     "end": 1001.5
+     "start": 1001.12,
+     "end": 1001.27
     }
    ]
   },
   {
    "t": "english",
-   "start": 1002.22,
-   "end": 1004.66,
+   "start": 1001.28,
+   "end": 1004.8,
    "text": "We sell fruit. Do you eat apples?",
    "words": [
     {
      "w": "we",
-     "start": 1002.22,
-     "end": 1002.74
+     "start": 1001.28,
+     "end": 1002.44
     },
     {
      "w": "sell",
-     "start": 1002.74,
-     "end": 1003.08
+     "start": 1002.44,
+     "end": 1002.76
     },
     {
      "w": "fruit",
-     "start": 1003.08,
-     "end": 1003.46
+     "start": 1002.76,
+     "end": 1003.22
     },
     {
      "w": "do",
-     "start": 1003.46,
-     "end": 1003.94
+     "start": 1003.48,
+     "end": 1004.1
     },
     {
      "w": "you",
-     "start": 1003.94,
-     "end": 1004.12
+     "start": 1004.1,
+     "end": 1004.24
     },
     {
      "w": "eat",
-     "start": 1004.12,
-     "end": 1004.32
+     "start": 1004.24,
+     "end": 1004.42
     },
     {
      "w": "apples",
-     "start": 1004.32,
-     "end": 1004.66
+     "start": 1004.42,
+     "end": 1004.8
     }
    ]
   },
   {
    "t": "english",
-   "start": 1004.68,
-   "end": 1006.56,
+   "start": 1005.06,
+   "end": 1006.99,
    "text": "Yes, I eat apples every day.",
    "words": [
     {
      "w": "yes",
-     "start": 1004.68,
-     "end": 1005.16
+     "start": 1005.06,
+     "end": 1005.66
     },
     {
      "w": "i",
-     "start": 1005.16,
-     "end": 1005.26
+     "start": 1005.84,
+     "end": 1005.94
     },
     {
      "w": "eat",
-     "start": 1005.26,
-     "end": 1005.46
+     "start": 1005.94,
+     "end": 1006.1
     },
     {
      "w": "apples",
-     "start": 1005.46,
-     "end": 1005.9
+     "start": 1006.1,
+     "end": 1006.48
     },
     {
      "w": "every",
-     "start": 1005.9,
-     "end": 1006.26
+     "start": 1006.48,
+     "end": 1006.88
     },
     {
      "w": "day",
-     "start": 1006.26,
-     "end": 1006.56
+     "start": 1006.88,
+     "end": 1006.99
     }
    ]
   },
   {
    "t": "english",
-   "start": 1006.96,
-   "end": 1008.8,
+   "start": 1007.0,
+   "end": 1009.21,
    "text": "We sell apples every day.",
    "words": [
     {
      "w": "we",
-     "start": 1006.96,
-     "end": 1007.46
+     "start": 1007.0,
+     "end": 1008.04
     },
     {
      "w": "sell",
-     "start": 1007.46,
-     "end": 1007.78
+     "start": 1008.04,
+     "end": 1008.36
     },
     {
      "w": "apples",
-     "start": 1007.78,
-     "end": 1008.24
+     "start": 1008.36,
+     "end": 1008.82
     },
     {
      "w": "every",
-     "start": 1008.24,
-     "end": 1008.52
+     "start": 1008.82,
+     "end": 1009.1
     },
     {
      "w": "day",
-     "start": 1008.52,
-     "end": 1008.8
+     "start": 1009.1,
+     "end": 1009.21
     }
    ]
   },
   {
    "t": "english",
-   "start": 1009.24,
-   "end": 1011.22,
+   "start": 1009.22,
+   "end": 1011.81,
    "text": "And wine, do you guys sell wine?",
    "words": [
     {
      "w": "and",
-     "start": 1009.24,
-     "end": 1009.5
+     "start": 1009.22,
+     "end": 1010.08
     },
     {
      "w": "wine",
-     "start": 1009.5,
-     "end": 1009.84
+     "start": 1010.08,
+     "end": 1010.42
     },
     {
      "w": "do",
-     "start": 1009.84,
-     "end": 1010.2
+     "start": 1010.62,
+     "end": 1010.96
     },
     {
      "w": "you",
-     "start": 1010.2,
-     "end": 1010.34
+     "start": 1010.96,
+     "end": 1011.1
     },
     {
      "w": "guys",
-     "start": 1010.34,
-     "end": 1010.56
+     "start": 1011.1,
+     "end": 1011.34
     },
     {
      "w": "sell",
-     "start": 1010.56,
-     "end": 1010.88
+     "start": 1011.34,
+     "end": 1011.62
     },
     {
      "w": "wine",
-     "start": 1010.88,
-     "end": 1011.22
+     "start": 1011.62,
+     "end": 1011.81
     }
    ]
   },
   {
    "t": "english",
-   "start": 1011.74,
-   "end": 1014.5,
+   "start": 1011.82,
+   "end": 1015.48,
    "text": "No, we don’t sell wine. But they sell wine.",
    "words": [
     {
      "w": "no",
-     "start": 1011.74,
-     "end": 1012.22
+     "start": 1011.82,
+     "end": 1012.8
     },
     {
      "w": "we",
-     "start": 1012.22,
-     "end": 1012.42
+     "start": 1013.14,
+     "end": 1013.22
     },
     {
      "w": "dont",
-     "start": 1012.42,
-     "end": 1012.7
+     "start": 1013.22,
+     "end": 1013.52
     },
     {
      "w": "sell",
-     "start": 1012.7,
-     "end": 1012.98
+     "start": 1013.52,
+     "end": 1013.76
     },
     {
      "w": "wine",
-     "start": 1012.98,
-     "end": 1013.34
+     "start": 1013.76,
+     "end": 1014.14
     },
     {
      "w": "but",
-     "start": 1013.34,
-     "end": 1013.68
+     "start": 1014.3,
+     "end": 1014.64
     },
     {
      "w": "they",
-     "start": 1013.68,
-     "end": 1013.9
+     "start": 1014.64,
+     "end": 1014.86
     },
     {
      "w": "sell",
-     "start": 1013.9,
-     "end": 1014.2
+     "start": 1014.86,
+     "end": 1015.14
     },
     {
      "w": "wine",
-     "start": 1014.2,
-     "end": 1014.5
+     "start": 1015.14,
+     "end": 1015.48
     }
    ]
   },
   {
    "t": "english",
-   "start": 1015.24,
-   "end": 1015.92,
+   "start": 1015.86,
+   "end": 1016.64,
    "text": "Who, them?",
    "words": [
     {
      "w": "who",
-     "start": 1015.24,
-     "end": 1015.74
+     "start": 1015.86,
+     "end": 1016.34
     },
     {
      "w": "them",
-     "start": 1015.74,
-     "end": 1015.92
+     "start": 1016.5,
+     "end": 1016.64
     }
    ]
   },
   {
    "t": "english",
-   "start": 1016.22,
-   "end": 1018.88,
+   "start": 1017.02,
+   "end": 1019.65,
    "text": "Yes. They sell wine and beer.",
    "words": [
     {
      "w": "yes",
-     "start": 1016.22,
-     "end": 1017.24
+     "start": 1017.02,
+     "end": 1017.68
     },
     {
      "w": "they",
-     "start": 1017.24,
-     "end": 1017.54
+     "start": 1018.24,
+     "end": 1018.54
     },
     {
      "w": "sell",
-     "start": 1017.54,
-     "end": 1017.88
+     "start": 1018.54,
+     "end": 1018.88
     },
     {
      "w": "wine",
-     "start": 1017.88,
-     "end": 1018.3
+     "start": 1018.88,
+     "end": 1019.32
     },
     {
      "w": "and",
-     "start": 1018.3,
-     "end": 1018.52
+     "start": 1019.32,
+     "end": 1019.54
     },
     {
      "w": "beer",
-     "start": 1018.52,
-     "end": 1018.88
+     "start": 1019.54,
+     "end": 1019.65
     }
    ]
   },
   {
    "t": "english",
-   "start": 1019.76,
-   "end": 1023.1,
+   "start": 1019.66,
+   "end": 1023.92,
    "text": "I don't drink beer, but I drink a little bit of wine in the afternoon.",
    "words": [
     {
      "w": "i",
-     "start": 1019.76,
-     "end": 1019.92
+     "start": 1019.66,
+     "end": 1020.52
     },
     {
      "w": "dont",
-     "start": 1019.92,
-     "end": 1020.16
+     "start": 1020.52,
+     "end": 1020.78
     },
     {
      "w": "drink",
-     "start": 1020.16,
-     "end": 1020.34
+     "start": 1020.78,
+     "end": 1020.96
     },
     {
      "w": "beer",
-     "start": 1020.34,
-     "end": 1020.7
+     "start": 1020.96,
+     "end": 1021.3
     },
     {
      "w": "but",
-     "start": 1020.7,
-     "end": 1021.0
+     "start": 1021.52,
+     "end": 1021.86
     },
     {
      "w": "i",
-     "start": 1021.0,
-     "end": 1021.12
+     "start": 1021.86,
+     "end": 1021.96
     },
     {
      "w": "drink",
-     "start": 1021.12,
-     "end": 1021.36
+     "start": 1021.96,
+     "end": 1022.2
     },
     {
      "w": "a",
-     "start": 1021.36,
-     "end": 1021.54
+     "start": 1022.2,
+     "end": 1022.38
     },
     {
      "w": "little",
-     "start": 1021.54,
-     "end": 1021.74
+     "start": 1022.38,
+     "end": 1022.6
     },
     {
      "w": "bit",
-     "start": 1021.74,
-     "end": 1021.92
+     "start": 1022.6,
+     "end": 1022.76
     },
     {
      "w": "of",
-     "start": 1021.92,
-     "end": 1022.08
+     "start": 1022.76,
+     "end": 1022.92
     },
     {
      "w": "wine",
-     "start": 1022.08,
-     "end": 1022.4
+     "start": 1022.92,
+     "end": 1023.24
     },
     {
      "w": "in",
-     "start": 1022.4,
-     "end": 1022.58
+     "start": 1023.24,
+     "end": 1023.4
     },
     {
      "w": "the",
-     "start": 1022.58,
-     "end": 1022.68
+     "start": 1023.4,
+     "end": 1023.5
     },
     {
      "w": "afternoon",
-     "start": 1022.68,
-     "end": 1023.1
+     "start": 1023.5,
+     "end": 1023.92
     }
    ]
   },
@@ -6874,128 +6845,128 @@
    "words": [
     {
      "w": "este",
-     "start": 1027.04,
-     "end": 1027.44
+     "start": 1027.22,
+     "end": 1027.62
     },
     {
      "w": "es",
-     "start": 1027.44,
-     "end": 1027.7
+     "start": 1027.62,
+     "end": 1027.88
     },
     {
      "w": "el",
-     "start": 1027.7,
-     "end": 1027.86
+     "start": 1027.88,
+     "end": 1028.04
     },
     {
      "w": "fin",
-     "start": 1027.86,
-     "end": 1028.12
+     "start": 1028.04,
+     "end": 1028.3
     },
     {
      "w": "de",
-     "start": 1028.12,
-     "end": 1028.36
+     "start": 1028.3,
+     "end": 1028.54
     },
     {
      "w": "la",
-     "start": 1028.36,
-     "end": 1028.5
+     "start": 1028.54,
+     "end": 1028.68
     },
     {
      "w": "leccion",
-     "start": 1028.5,
-     "end": 1029.02
+     "start": 1028.68,
+     "end": 1029.2
     },
     {
      "w": "6",
-     "start": 1029.02,
-     "end": 1029.54
+     "start": 1029.2,
+     "end": 1029.72
     },
     {
      "w": "repite",
-     "start": 1029.54,
-     "end": 1030.12
-    },
-    {
-     "w": "esta",
-     "start": 1030.12,
-     "end": 1030.28
-    },
-    {
-     "w": "leccion",
-     "start": 1030.28,
-     "end": 1030.66
-    },
-    {
-     "w": "tantas",
-     "start": 1030.66,
-     "end": 1031.2
-    },
-    {
-     "w": "veces",
-     "start": 1031.2,
-     "end": 1031.42
-    },
-    {
-     "w": "como",
-     "start": 1031.42,
-     "end": 1031.66
-    },
-    {
-     "w": "sea",
-     "start": 1031.66,
-     "end": 1031.88
-    },
-    {
-     "w": "necesario",
-     "start": 1031.88,
+     "start": 1031.6,
      "end": 1032.4
     },
     {
-     "w": "para",
+     "w": "esta",
      "start": 1032.4,
-     "end": 1032.66
+     "end": 1032.56
+    },
+    {
+     "w": "leccion",
+     "start": 1032.56,
+     "end": 1032.94
+    },
+    {
+     "w": "tantas",
+     "start": 1032.94,
+     "end": 1033.48
+    },
+    {
+     "w": "veces",
+     "start": 1033.48,
+     "end": 1033.7
+    },
+    {
+     "w": "como",
+     "start": 1033.7,
+     "end": 1033.94
+    },
+    {
+     "w": "sea",
+     "start": 1033.94,
+     "end": 1034.18
+    },
+    {
+     "w": "necesario",
+     "start": 1034.18,
+     "end": 1034.68
+    },
+    {
+     "w": "para",
+     "start": 1034.68,
+     "end": 1034.94
     },
     {
      "w": "que",
-     "start": 1032.66,
-     "end": 1032.82
+     "start": 1034.94,
+     "end": 1035.1
     },
     {
      "w": "te",
-     "start": 1032.82,
-     "end": 1033.06
+     "start": 1035.1,
+     "end": 1035.34
     },
     {
      "w": "sientas",
-     "start": 1033.06,
-     "end": 1033.6
+     "start": 1035.34,
+     "end": 1035.88
     },
     {
      "w": "comodo",
-     "start": 1033.6,
-     "end": 1034.02
+     "start": 1035.88,
+     "end": 1036.3
     },
     {
      "w": "respondiendo",
-     "start": 1034.02,
-     "end": 1035.18
+     "start": 1036.3,
+     "end": 1037.46
     },
     {
      "w": "a",
-     "start": 1035.18,
-     "end": 1035.32
+     "start": 1037.46,
+     "end": 1037.6
     },
     {
      "w": "mis",
-     "start": 1035.32,
-     "end": 1035.5
+     "start": 1037.6,
+     "end": 1037.78
     },
     {
      "w": "preguntas",
-     "start": 1035.5,
-     "end": 1036.02
+     "start": 1037.78,
+     "end": 1038.32
     }
    ]
   }
