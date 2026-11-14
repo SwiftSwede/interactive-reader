@@ -398,8 +398,13 @@ export default function AudioCoursePlayer({
       ) + 1
     ];
     const nextPrompt = prompts.find((item) => item.index > ref.index);
+    // The echo card stays on screen until the next segment starts (segmentAt
+    // keeps returning the english segment through the silence gap), so the
+    // feedback bar must live the SAME span - clearing at spoken.end (the true
+    // voice end after the probe retime) made the bar vanish while the karaoke
+    // text remained 1-2s (Kyle QA: bar gone, highlighting still on screen).
     const audioEnd = Math.min(
-      spoken?.end ?? ref.prompt.end,
+      spoken ? (afterSpoken ? afterSpoken.start : spoken.end + 0.5) : (spoken?.end ?? ref.prompt.end),
       nextPrompt ? nextPrompt.prompt.start : Infinity,
       afterSpoken ? afterSpoken.start : Infinity
     );
@@ -665,7 +670,7 @@ export default function AudioCoursePlayer({
                       className="max-w-[22rem] text-center font-headline text-headline-lg text-text-primary"
                     />
                   ) : null}
-                  {feedback && (screenLine?.kind === "english" || !feedback.withLine) ? (
+                  {feedback ? (
                     <div className="w-full max-w-md">
                       <AnswerField
                         value={answers[feedback.index]?.given ?? ""}
