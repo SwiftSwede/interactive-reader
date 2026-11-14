@@ -26,6 +26,7 @@ import {
   resolveTimeZone,
   savedProgressIsStale,
   subtitleAt,
+  type IploEnglish,
   type IploScript,
   type IploSegment,
   type KaraokePiece,
@@ -43,6 +44,7 @@ type Feedback = {
   until: number;
   audioEnd: number;
   withLine: boolean;
+  spokenSegment: IploEnglish | null;
 };
 
 function segmentAt(segments: IploSegment[], time: number): IploSegment | null {
@@ -415,16 +417,29 @@ export default function AudioCoursePlayer({
       until: Date.now() + IPLO_FEEDBACK_HOLD_MS,
       audioEnd,
       withLine: Boolean(spoken),
+      spokenSegment: spoken,
     });
     setActiveIndex(null);
-    persist(next, audio.currentTime);
+    // Skip the recording's natural silence between the prompt and the echo
+    // replay: from the student's chair that dead air sat INSIDE the answer
+    // flow (they have already spoken by pauseAt), reading as a frozen 1-2s
+    // after submitting (Kyle QA). Seeking forward keeps every later segment
+    // time valid - only silence is skipped.
+    if (spoken && audio.currentTime < spoken.start - 0.2) {
+      applySeek(audio, Math.max(spoken.start - 0.2, audio.currentTime));
+    }
+    persist(next, spoken ? Math.max(audio.currentTime, spoken.start - 0.2) : audio.currentTime);
     void audio.play();
   }
 
   function continueKnown() {
     const audio = audioRef.current;
     if (!audio || activeIndex == null) return;
+    const spoken = confirmationAfter(script.segments, activeIndex);
     setActiveIndex(null);
+    if (spoken && audio.currentTime < spoken.start - 0.2) {
+      applySeek(audio, Math.max(spoken.start - 0.2, audio.currentTime));
+    }
     void audio.play();
   }
 
@@ -668,6 +683,17 @@ export default function AudioCoursePlayer({
                       pieces={karaokePieces(screenLine.segment.text, screenLine.segment.words, time)}
                       lang="en"
                       className="max-w-[22rem] text-center font-headline text-headline-lg text-text-primary"
+                    />
+                  ) : feedback?.spokenSegment ? (
+                    // The bar shows from submit, but the echo audio only starts
+                    // after the post-answer silence - with the echo card gated on
+                    // segmentAt, the bar sat alone for that gap (Kyle QA: bar and
+                    // echo text must appear together). Render the upcoming echo
+                    // dimmed (karaokePieces keeps it unlit until its words start).
+                    <KaraokeLine
+                      pieces={karaokePieces(feedback.spokenSegment.text, feedback.spokenSegment.words, time)}
+                      lang="en"
+                      className="max-w-[22rem] text-center font-headline text-headline-lg text-text-primary opacity-60"
                     />
                   ) : null}
                   {feedback ? (
