@@ -1891,9 +1891,9 @@
   {
    "t": "narration",
    "start": 280.0,
-   "end": 289.7,
+   "end": 287.7,
    "lines": [
-    "Él acaba de preguntarte “Does your friend drink?” “Does your friend drink?” significa “tu amiga bebe?” Dile “ella bebe.”"
+    "Él acaba de preguntarte “Does your friend drink?” “Does your friend drink?” significa “tu amiga bebe?”"
    ],
    "words": [
     {
@@ -1975,23 +1975,18 @@
      "w": "bebe",
      "start": 287.4,
      "end": 287.7
-    },
-    {
-     "w": "dile",
-     "start": 288.16,
-     "end": 288.5
-    },
-    {
-     "w": "ella",
-     "start": 289.2,
-     "end": 289.4
-    },
-    {
-     "w": "bebe",
-     "start": 289.4,
-     "end": 289.7
     }
    ]
+  },
+  {
+   "t": "prompt",
+   "start": 288.16,
+   "end": 292.5,
+   "spanish": "Dile “ella bebe.”",
+   "expected": [
+    "She drinks."
+   ],
+   "pauseAt": 289.95
   },
   {
    "t": "english",
