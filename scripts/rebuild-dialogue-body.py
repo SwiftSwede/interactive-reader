@@ -27,6 +27,7 @@ VAULT_FILES = {
     "angry-driving": ("pre-int dialogues", "Pre-Angry-Driving.md"),
     "what-are-you-wearing": ("pre-int dialogues", "Pre-What-Are-You-Wearing.md"),
     "interview-with-a-witch": ("int dialogues", "Interview-with-a-Witch.md"),
+    "two-weeks-notice": ("int dialogues", "Two-Weeks-Notice.md"),
 }
 
 

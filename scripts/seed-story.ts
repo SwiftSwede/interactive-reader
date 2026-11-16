@@ -151,6 +151,14 @@ function parseStoryMarkdown(markdown: string, kind: string) {
 
   let bodyText = bodyLines.join("\n").trim();
 
+  // Fail loudly: without "—The End—" the parser finds no body and this would
+  // silently insert a hollow story (and annotation would happily process 0
+  // words). Found 2026-11-16 seeding two-weeks-notice.
+  if (!bodyText) {
+    console.error("ERROR: parsed body_text is empty. Check that the file has a '# Title' line and a '—The End—' marker.");
+    process.exit(1);
+  }
+
   // Dialogue bodies: strip speaker prefixes and stage-direction lines so the
   // karaoke text contains only spoken words. Prefixes become bare lines
   // ("Gordon-" alone on a line) and stage directions are dropped entirely.
