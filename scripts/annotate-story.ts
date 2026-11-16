@@ -22,12 +22,15 @@ import { KYLE_IPA_ALPHA_RULE } from "../src/lib/ipa-conventions";
 import { movieTalkSpokenText } from "../src/lib/movietalk";
 import { captureOpenRouterGeneration, shutdownPosthogAi } from "./posthog-ai";
 
-// Spoken-text stream for dialogues: the reader renders pure bracket lines as
-// italic stage directions and speaker prefixes ("Jane:" / "Jane-") as labels,
-// and NEITHER consumes word positions. The words table must therefore cover
-// only the spoken tokens, so annotation (and its alignment guard) runs on the
-// same stripped stream. Keep the prefix regexes in sync with
-// InteractiveStory.tsx (dialogueName + spokenTokens strip).
+// Spoken-text stream for dialogues: drop stage-direction lines and inline
+// [asides] — they are unspoken, so the words table must not cover them.
+// Speaker prefixes are NOT stripped here. The SEEDER owns prefix stripping
+// (generic class that cannot cross hyphens) and writes spoken-format bodies;
+// re-stripping here with a lazy "Name-" pattern would eat sentence openings
+// whenever the spoken text contains a hyphenated compound: "You need to stop
+// bragging. I know you were born cold-blooded" lost everything before "cold-"
+// and the annotation stream silently dropped 10 real words (found 2026-11-16
+// seeding what-are-you-wearing).
 function dialogueSpokenText(body: string): string {
   return body
     .split("\n")
@@ -35,12 +38,6 @@ function dialogueSpokenText(body: string): string {
       const t = l.trim();
       return t.length > 0 && !/^\[[^\]]*\]$/.test(t); // drop pure stage directions
     })
-    .map((l) =>
-      l.replace(
-        /^([A-Za-zÁÉÍÓÚáéíóúñÑ0-9][A-Za-zÁÉÍÓÚáéíóúñÑ0-9.' \-]*?)(:\s*|\s+-\s*|-\s*)/,
-        ""
-      )
-    )
     .join("\n")
     .replace(/\[[^\]]*\]/g, "") // inline stage directions are unspoken too
     .replace(/[ \t]+/g, " ")

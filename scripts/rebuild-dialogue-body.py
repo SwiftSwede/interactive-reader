@@ -25,6 +25,7 @@ VAULT = os.path.expanduser(
 VAULT_FILES = {
     "superstitious-minds": ("int dialogues", "Superstitious-Minds.md"),
     "angry-driving": ("pre-int dialogues", "Pre-Angry-Driving.md"),
+    "what-are-you-wearing": ("pre-int dialogues", "Pre-What-Are-You-Wearing.md"),
     "interview-with-a-witch": ("int dialogues", "Interview-with-a-Witch.md"),
 }
 
@@ -72,7 +73,12 @@ def vault_display_lines(slug):
                 break
             if s == slug.replace("-", " ").title():
                 continue
-            m = re.match(r"^(Gordon|Pedro|Brenda|Beto|Rebecca|Mother|Paula|Jane)\s*-\s*(.+)$", s)
+            # Generic speaker prefix: 1-2 capitalized words (accents and
+            # apostrophes allowed, no periods) followed by "-". Deliberately
+            # strict so a spoken line that merely CONTAINS a hyphenated
+            # compound ("You need to stop bragging. I know you were born
+            # cold-blooded") is never mistaken for "Name- text".
+            m = re.match(r"^([A-ZÁÉÍÓÚÑ][A-Za-zÁÉÍÓÚáéíóúñÑ']*(?:\s+[A-ZÁÉÍÓÚÑ][A-Za-zÁÉÍÓÚáéíóúñÑ']*)?)\s*-\s*(.+)$", s)
             if m:
                 name, rest = m.group(1), m.group(2).strip()
                 # extract ALL inline stage directions (leading or trailing)
