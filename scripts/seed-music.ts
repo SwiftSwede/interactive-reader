@@ -789,7 +789,7 @@ In today’s class, we’ll look at one of their most popular songs from their s
     youtubeUrl: "https://www.youtube.com/watch?v=dGR65RWwzg8",
     // 2026-11-18 REDO: Kyle rejected the deck-based encoding — the deck's lyric
     // slides omit the 2nd chorus and the outro repeats, so the alineador could
-    // never line up. Body below = Kyle's own full lyrics (41 sung lines),
+    // never line up. Body below = Kyle's own full lyrics (52 sung lines),
     // verbatim including "standin' on the bridge", "Tryin' to figure out".
     // Deck blank slides say "I'm standing on a bridge" — the deck text differs
     // from the real song; prompts follow the REAL lyrics.
@@ -837,6 +837,19 @@ Tryin' to figure out this life
 Won't you take me by the hand
 Take me somewhere new?
 I don't know who you are, but I
+I'm with you
+I'm with you
+
+Take me by the hand
+Take me somewhere new
+I don't know who you are, but I
+I'm with you
+I'm with you
+
+Take me by the hand
+Take me somewhere new
+I don't know who you are, but I
+I'm with you, oh
 I'm with you
 I'm with you`,
     // Blanks (1)-(7). (3) "damn" and (4) "figure out" each sit on THREE
@@ -928,6 +941,17 @@ Today we’ll take a look at one of her most famous singles from her debut album
       { line_index: 38, ipa_text: "aɪ doʊnt noʊ hu jʊ ɑɹ, bʌt aɪ" },
       { line_index: 39, ipa_text: "aɪm wɪð ju" },
       { line_index: 40, ipa_text: "aɪm wɪð ju" },
+      { line_index: 41, ipa_text: "ˈteɪk mi baɪ ðə hænd" },
+      { line_index: 42, ipa_text: "ˈteɪk mi ˈsʌmwɛɹ nu" },
+      { line_index: 43, ipa_text: "aɪ doʊnt noʊ hu jʊ ɑɹ, bʌt aɪ" },
+      { line_index: 44, ipa_text: "aɪm wɪð ju" },
+      { line_index: 45, ipa_text: "aɪm wɪð ju" },
+      { line_index: 46, ipa_text: "ˈteɪk mi baɪ ðə hænd" },
+      { line_index: 47, ipa_text: "ˈteɪk mi ˈsʌmwɛɹ nu" },
+      { line_index: 48, ipa_text: "aɪ doʊnt noʊ hu jʊ ɑɹ, bʌt aɪ" },
+      { line_index: 49, ipa_text: "aɪm wɪð ju, oʊ" },
+      { line_index: 50, ipa_text: "aɪm wɪð ju" },
+      { line_index: 51, ipa_text: "aɪm wɪð ju" },
     ],
   },
 ];
