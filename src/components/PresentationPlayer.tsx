@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Check, ChevronLeft, ChevronRight, Pencil, Plus } from "lucide-react";
 import ActionButton from "@/components/ActionButton";
+import TriggerSurface from "@/components/TriggerSurface";
 import AskTeacherButton from "@/components/ask/AskTeacherButton";
 import EndClassButton from "@/components/EndClassButton";
 import LessonHeader from "@/components/lesson/LessonHeader";
@@ -833,15 +834,18 @@ function VocabCard({
 
       {open ? (
         <div
-          className="fixed inset-0 z-30 flex items-center justify-center bg-black/40 p-4"
+          className="fixed inset-0 z-30 flex items-center justify-center p-4"
           role="dialog"
           aria-modal="true"
           aria-label="Editar vocabulario"
-          onClick={(event) => {
-            if (event.target === event.currentTarget) setOpen(false);
-          }}
         >
-          <div className="h-fit w-full max-w-md overflow-hidden rounded-sheet border border-paper-line bg-surface p-4">
+          <button
+            type="button"
+            className="trigger-fade absolute inset-0 bg-black/40"
+            aria-label="Cerrar"
+            onClick={() => setOpen(false)}
+          />
+          <TriggerSurface className="relative z-10 h-fit w-full max-w-md overflow-hidden rounded-sheet border border-paper-line bg-surface p-4">
             <p className="font-heading text-story-body text-text-primary">
               {item.english}
             </p>
@@ -934,7 +938,7 @@ function VocabCard({
             >
               Quitar de la lista
             </ActionButton>
-          </div>
+          </TriggerSurface>
         </div>
       ) : null}
     </div>
@@ -975,15 +979,18 @@ function AddVocabCard({
       </button>
       {open ? (
         <div
-          className="fixed inset-0 z-30 flex items-center justify-center bg-black/40 p-4"
+          className="fixed inset-0 z-30 flex items-center justify-center p-4"
           role="dialog"
           aria-modal="true"
           aria-label="Agregar palabra"
-          onClick={(event) => {
-            if (event.target === event.currentTarget) close();
-          }}
         >
-          <div className="h-fit w-full max-w-md overflow-hidden rounded-sheet border border-paper-line bg-surface p-4">
+          <button
+            type="button"
+            className="trigger-fade absolute inset-0 bg-black/40"
+            aria-label="Cerrar"
+            onClick={close}
+          />
+          <TriggerSurface className="relative z-10 h-fit w-full max-w-md overflow-hidden rounded-sheet border border-paper-line bg-surface p-4">
             <p className="font-heading text-story-body text-text-primary">
               Nueva palabra
             </p>
@@ -1054,7 +1061,7 @@ function AddVocabCard({
                 Guardar
               </ActionButton>
             </div>
-          </div>
+          </TriggerSurface>
         </div>
       ) : null}
     </>

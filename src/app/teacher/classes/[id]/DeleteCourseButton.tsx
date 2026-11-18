@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { X } from "lucide-react";
 import ActionButton from "@/components/ActionButton";
+import { openDialogFromTrigger } from "@/lib/trigger-origin";
 import { deleteCourse } from "@/app/teacher/actions";
 
 export default function DeleteCourseButton({
@@ -21,7 +22,7 @@ export default function DeleteCourseButton({
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
-    if (open && !dialog.open) dialog.showModal();
+    if (open && !dialog.open) openDialogFromTrigger(dialog);
     if (!open && dialog.open) dialog.close();
   }, [open]);
 

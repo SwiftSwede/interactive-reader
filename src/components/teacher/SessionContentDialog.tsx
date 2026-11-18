@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { X } from "lucide-react";
+import { openDialogFromTrigger } from "@/lib/trigger-origin";
 import CreateSessionForm from "@/app/teacher/classes/[id]/CreateSessionForm";
 import FlexResolveForm from "./FlexResolveForm";
 import type { SessionType } from "@/lib/activities";
@@ -50,7 +51,7 @@ export default function SessionContentDialog({
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
-    if (open && !dialog.open) dialog.showModal();
+    if (open && !dialog.open) openDialogFromTrigger(dialog);
     if (!open && dialog.open) dialog.close();
   }, [open]);
 

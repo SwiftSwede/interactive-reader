@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
+import TriggerSurface from "@/components/TriggerSurface";
 
 export default function NoteLightbox({
   note,
@@ -62,11 +63,11 @@ export default function NoteLightbox({
     >
       <button
         type="button"
-        className="absolute inset-0 bg-text-primary/40"
+        className="trigger-fade absolute inset-0 bg-text-primary/40"
         aria-label="Cerrar nota"
         onClick={onClose}
       />
-      <div className="relative z-10 w-full max-w-sm rounded-sheet border border-paper-line bg-surface p-5">
+      <TriggerSurface className="relative z-10 w-full max-w-sm rounded-sheet border border-paper-line bg-surface p-5">
         <div className="mb-3 flex items-start justify-between gap-3">
           <h2
             id="note-lightbox-title"
@@ -87,7 +88,7 @@ export default function NoteLightbox({
         <p className="whitespace-pre-wrap text-body-main text-text-primary">
           {note}
         </p>
-      </div>
+      </TriggerSurface>
     </div>,
     document.body
   );

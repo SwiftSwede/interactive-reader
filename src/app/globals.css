@@ -660,11 +660,55 @@ button.exam-vocab-item:disabled {
   position: fixed;
   z-index: 50;
   max-width: calc(100vw - 16px);
+}
+
+.selection-flag-menu-pop {
   padding: 4px;
   border: 1px solid var(--paper-line);
   border-radius: var(--radius-card);
   background: var(--surface);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Popovers, menus, and trigger-opened dialogs scale from the control
+   that opened them. Bottom sheets stay on their own slide. */
+.trigger-pop[data-origin="ready"] {
+  animation: trigger-pop-in var(--duration-quick) var(--ease-smooth-out) backwards;
+}
+
+.trigger-pop-modal[data-origin="ready"] {
+  animation-duration: var(--duration-fast);
+}
+
+.trigger-pop[data-origin="ready"]::backdrop,
+.trigger-fade {
+  animation: trigger-fade var(--duration-fast) var(--ease-smooth-out) backwards;
+}
+
+@keyframes trigger-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(var(--scale-large));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes trigger-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trigger-pop[data-origin="ready"] {
+    animation-name: trigger-fade;
+  }
 }
 
 .selection-flag-menu-row {
@@ -774,17 +818,16 @@ button.exam-vocab-item:disabled {
 
 .teaching-note-modal {
   position: fixed;
-  top: 50%;
-  left: 50%;
+  inset: 0;
   z-index: 80;
   width: min(400px, calc(100vw - 24px));
+  height: fit-content;
   max-height: calc(100vh - 32px);
-  margin: 0;
+  margin: auto;
   padding: 0;
   border: 1px solid var(--paper-line);
   border-radius: var(--radius-sheet);
   background: var(--surface);
-  transform: translate(-50%, -50%);
   overflow: auto;
 }
 

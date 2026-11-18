@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef } from "react";
 import Link from "next/link";
 import type { SoundVideo } from "@/types";
+import { openDialogFromTrigger } from "@/lib/trigger-origin";
 import SoundVideoFrame from "./SoundVideoFrame";
 
 export default function SoundVideoModal({
@@ -23,7 +24,7 @@ export default function SoundVideoModal({
     if (!dialog) return;
 
     if (video) {
-      if (!dialog.open) dialog.showModal();
+      if (!dialog.open) openDialogFromTrigger(dialog);
       closeButtonRef.current?.focus();
     } else if (dialog.open) {
       dialog.close();
