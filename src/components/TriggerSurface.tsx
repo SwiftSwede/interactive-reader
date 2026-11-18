@@ -1,23 +1,21 @@
 "use client";
 
 import { useLayoutEffect, useRef, type ReactNode } from "react";
-import { playFromTrigger } from "@/lib/trigger-origin";
+import { replayCenterPop } from "@/lib/trigger-origin";
 
-/** Panel that scales from the control that was focused when it opened. */
+/** Centered dialog panel. Scales from its own center, not from the button. */
 export default function TriggerSurface({
   className,
   children,
-  modal = true,
 }: {
   className?: string;
   children: ReactNode;
-  modal?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
-    if (ref.current) playFromTrigger(ref.current, modal);
-  }, [modal]);
+    if (ref.current) replayCenterPop(ref.current);
+  }, []);
 
   return (
     <div ref={ref} className={className}>

@@ -220,7 +220,6 @@ select:not([multiple]) {
 .karaoke-rewind.is-ready {
   transition:
     transform 200ms var(--ease-smooth-out),
-    height 200ms var(--ease-smooth-out),
     opacity 200ms var(--ease-smooth-out);
 }
 
@@ -670,17 +669,13 @@ button.exam-vocab-item:disabled {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
-/* Popovers, menus, and trigger-opened dialogs scale from the control
-   that opened them. Bottom sheets stay on their own slide. */
-.trigger-pop[data-origin="ready"] {
-  animation: trigger-pop-in var(--duration-quick) var(--ease-smooth-out) backwards;
+/* Centered dialogs only. Menus show immediately. Sheets keep their own slide. */
+.trigger-pop-modal {
+  transform-origin: center;
+  animation: trigger-pop-in var(--duration-fast) var(--ease-smooth-out) backwards;
 }
 
-.trigger-pop-modal[data-origin="ready"] {
-  animation-duration: var(--duration-fast);
-}
-
-.trigger-pop[data-origin="ready"]::backdrop,
+.trigger-pop-modal::backdrop,
 .trigger-fade {
   animation: trigger-fade var(--duration-fast) var(--ease-smooth-out) backwards;
 }
@@ -706,7 +701,7 @@ button.exam-vocab-item:disabled {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .trigger-pop[data-origin="ready"] {
+  .trigger-pop-modal {
     animation-name: trigger-fade;
   }
 }
@@ -1083,10 +1078,6 @@ button.exam-vocab-item:disabled {
   flex-shrink: 0;
 }
 
-.step-progress-hit:hover .step-progress-dot {
-  transform: scale(1.15);
-}
-
 .step-progress-hit:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
@@ -1102,7 +1093,7 @@ button.exam-vocab-item:disabled {
   border-radius: 9999px;
   background: var(--paper-dot);
   color: var(--surface);
-  transition: background-color 0.15s ease, transform 0.15s ease;
+  transition: background-color 0.15s ease;
 }
 
 .step-progress-dot-done {
@@ -1119,7 +1110,7 @@ button.exam-vocab-item:disabled {
 }
 
 .step-panel {
-  animation: step-fade-in 0.18s ease-out;
+  animation: step-fade-in 180ms var(--ease-smooth-out);
 }
 
 .step-nav {
@@ -1696,11 +1687,11 @@ body:has(.step-nav):has(
   position: absolute;
   inset: 0;
   background: rgba(28, 22, 16, 0.35);
-  animation: sheet-overlay-in 0.2s ease-out;
+  animation: sheet-overlay-in 200ms var(--ease-smooth-out);
 }
 
 .story-text-sheet-exit .story-text-sheet-overlay {
-  animation: sheet-overlay-out 0.2s ease-out forwards;
+  animation: sheet-overlay-out 200ms var(--ease-smooth-out) forwards;
 }
 
 .story-text-sheet-panel {
@@ -1715,11 +1706,11 @@ body:has(.step-nav):has(
   background: var(--surface);
   border-top: 1px solid var(--paper-line);
   border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
-  animation: story-sheet-in 0.2s ease-out;
+  animation: story-sheet-in 200ms var(--ease-smooth-out);
 }
 
 .story-text-sheet-exit .story-text-sheet-panel {
-  animation: story-sheet-out 0.2s ease-out forwards;
+  animation: story-sheet-out 200ms var(--ease-smooth-out) forwards;
 }
 
 .story-text-sheet-handle {
@@ -1808,6 +1799,24 @@ body:has(.step-nav):has(
   }
 }
 
+@keyframes word-help-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes word-help-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 @keyframes sheet-overlay-in {
   from {
     opacity: 0;
@@ -1862,11 +1871,11 @@ body.sticky-character-band-active .word-help-sheet {
   inset: 0;
   background: rgba(28, 22, 16, 0.35);
   pointer-events: auto;
-  animation: sheet-overlay-in 0.2s ease-out;
+  animation: sheet-overlay-in var(--duration-quick) var(--ease-smooth-out);
 }
 
 .word-help-sheet-exit .word-help-sheet-overlay {
-  animation: sheet-overlay-out 0.2s ease-out forwards;
+  animation: sheet-overlay-out var(--duration-quick) var(--ease-smooth-out) forwards;
 }
 
 .word-help-sheet-panel {
@@ -1884,11 +1893,11 @@ body.sticky-character-band-active .word-help-sheet {
   background: var(--surface);
   border-top: 1px solid var(--paper-line);
   border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
-  animation: story-sheet-in 0.2s ease-out;
+  animation: word-help-fade-in var(--duration-quick) var(--ease-smooth-out);
 }
 
 .word-help-sheet-exit .word-help-sheet-panel {
-  animation: story-sheet-out 0.2s ease-out forwards;
+  animation: word-help-fade-out var(--duration-quick) var(--ease-smooth-out) forwards;
 }
 
 .word-help-sheet-handle {
@@ -2350,7 +2359,7 @@ body.sticky-character-band-active {
   display: flex;
   justify-content: center;
   pointer-events: none;
-  animation: sticky-timer-in 0.2s ease;
+  animation: sticky-timer-in 200ms var(--ease-smooth-out);
 }
 
 .sticky-lesson-timer-inner {
@@ -2626,28 +2635,34 @@ body.sticky-character-band-active {
 
 @media (prefers-reduced-motion: reduce) {
   .word-tooltip,
+  .word-hint {
+    animation: none;
+  }
+
   .sticky-audio-player,
   .sticky-character-band,
   .sticky-lesson-timer,
   .step-panel,
-  .step-nav,
   .story-text-sheet-panel,
   .story-text-sheet-overlay,
   .word-help-sheet-panel,
   .word-help-sheet-overlay {
-    animation: none;
+    animation-name: word-help-fade-in;
+    animation-duration: var(--duration-quick);
+    animation-timing-function: var(--ease-smooth-out);
+  }
+
+  .story-text-sheet-exit .story-text-sheet-panel,
+  .story-text-sheet-exit .story-text-sheet-overlay,
+  .word-help-sheet-exit .word-help-sheet-panel,
+  .word-help-sheet-exit .word-help-sheet-overlay {
+    animation-name: word-help-fade-out;
+    animation-duration: var(--duration-quick);
+    animation-timing-function: var(--ease-smooth-out);
   }
 
   .step-nav {
     transition: none;
-  }
-
-  .step-progress-dot {
-    transition: none;
-  }
-
-  .word-hint {
-    animation: none;
   }
 }
 

@@ -5,7 +5,7 @@ import { X } from "lucide-react";
 import NewMonthWizard, {
   type MonthSourceCourse,
 } from "./NewMonthWizard";
-import { openDialogFromTrigger } from "@/lib/trigger-origin";
+import { openCenteredDialog } from "@/lib/trigger-origin";
 import {
   TEACHER_BUTTON_PRIMARY,
   TEACHER_BUTTON_SECONDARY,
@@ -27,7 +27,7 @@ export default function NewMonthButton({
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
-    if (open && !dialog.open) openDialogFromTrigger(dialog);
+    if (open && !dialog.open) openCenteredDialog(dialog);
     if (!open && dialog.open) dialog.close();
   }, [open]);
 

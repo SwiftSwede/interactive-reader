@@ -69,8 +69,8 @@ motion:
   duration_quick: 150ms # step nav sliding off for the keyboard
   karaoke_highlight: "200ms ease-smooth-out. Duration stays 200ms."
   sticky_bar_enter: "180ms ease-smooth-out. Audio bar and character band."
-  sheets_and_steps: "Still 200ms ease-out, symmetric. Not retimed to the shared scale."
-  trigger_pop: "Menus and dialogs opened by a control scale from that control (transform-origin at the trigger). 150ms for menus, 250ms for dialogs, ease-smooth-out, scale 0.96. Reduced motion keeps the fade and drops the scale. Bottom sheets and the teacher side panel stay on their edge slides."
+  sheets_and_steps: "Ver el texto and Cómo: 200ms --ease-smooth-out rise, symmetric. Word help: 150ms fade only, no slide. Reduced motion keeps a short fade and drops the slide."
+  trigger_pop: "Dialogs only, transform-origin center. 250ms ease-smooth-out, scale 0.96 plus fade. Reduced motion keeps the fade and drops the scale. Selection and Traducción note menus show immediately. Bottom sheets and the teacher side panel stay on their edge slides."
   unused: "Bounce easings are defined and not used. No bounce or rotation. No scale on chrome except sound-chart cells (see Guía de sonidos) and trigger_pop."
 layout:
   model: one layout that breathes; mobile-first, 672px max content column on desktop
@@ -102,7 +102,7 @@ components:
   step_instructions: "story steps + dialogue read step (kind=dialogue uses DIALOGUE_READ_COPY; other dialogue steps inherit story copy) + video summary steps + presentation cycle steps + Movie Talk steps except Fin + conversation page + music class steps. Content-column header: step title headline-md, then copy.line as one label-md text-secondary sentence. Conversation has no steps: hide the title and put Cómo beside the one-liner. 44px Info (aria-label Cómo) opens the existing bottom sheet (no sheet title; close only in the toolbar): section ¿Qué hago? (full instructions + note) then ¿Por qué? (full why paragraph). No why: only ¿Qué hago?. Live class uses lineLive for Traducción and Respuestas. Why cards: MicroExplanation shows whyShort (accent-softer, label-md, X only, one-time localStorage) under the one-liner; first-time students, every mode; skip teacher chrome. Presentation Video has no why card. Movie Talk Warm-up and Fin have no why card. Conversation dismiss key is conversation (one-time across classes). Dialogue read dismiss key is dialogue. Music dismiss keys are music-{stepId} (one-time across songs). Sticky header and dot nav unchanged."
   welcome_card: "Classroom first-run only. localStorage welcome-seen. Replaces Inicio main content or the story lesson article (kind=story, not teacher, not preview). White rounded-card, 1px paper-line, p-4. Title headline-md. Lead and closing body-main text-secondary. Its own disc list (8px gap, 20px indent), bold leads. One ActionButton Entendido, vamos (48px). Canonical /welcome. Fail-open if storage is blocked. Copy in src/lib/lesson-copy.ts WELCOME_COPY."
   story_text_selection: "Native selection inside .story-running-text uses the same quiet wash as sentence audio: accent-soft mixed 55% with paper, text-primary. No new color. Spaces live in .word-gap so the wash is one strip, not per-word boxes."
-  selection_flag_menu: "Teacher only, story / dialogue / Movie Talk running text (songs stay off). A non-collapsed selection shows a fixed menu above the range: Negrita, Subrayar, Nota. Surface, 1px paper-line, 16px radius, 44px actions. The menu scales from the selection edge (bottom when it sits above, top when it sits below), 150ms. Negrita and Subrayar toggle and the menu stays. Nota opens a note field on that menu. Pointer down outside the menu closes it. A collapsed word tap still opens the word help sheet and does not show the menu. Traducción uses the same menu with one action, Nota. The type (Vocabulario, Gramática, Pronunciación, Cultura) and the note field open on that menu. Highlighting does not open a dialog. Escape, typing, or Delete dismisses it."
+  selection_flag_menu: "Teacher only, story / dialogue / Movie Talk running text (songs stay off). A non-collapsed selection shows a fixed menu above the range: Negrita, Subrayar, Nota. Surface, 1px paper-line, 16px radius, 44px actions. No open animation. Negrita and Subrayar toggle and the menu stays. Nota opens a note field on that menu. Pointer down outside the menu closes it. A collapsed word tap still opens the word help sheet and does not show the menu. Traducción uses the same menu with one action, Nota. The type (Vocabulario, Gramática, Pronunciación, Cultura) and the note field open on that menu. Highlighting does not open a dialog. Escape, typing, or Delete dismisses it."
   icons: Lucide React only, never emojis
   lesson_card: "Inicio and Lecciones row. Equal height via one reserved 16px muted line under the status. Song uses the Music icon. Live-only with a recording says Grabación disponible and does not link out."
   browsing_bottom_pad: "Content clears the tab bar: 72px on mobile (56px bar + 16px gap), 88px on desktop (56px bar + 16px float + 16px gap), plus the safe area."
@@ -355,7 +355,7 @@ On screens wider than 1024px, the layout does NOT change structurally. The same 
 | `--ev-wrong` | `#b3261e` | Review: your wrong answer (always with an icon) |
 | `--ev-draft` | `#8a5a00` | Dev-only borrador badge |
 
-Radius: 10px cards and options, 14px CTA, 9999px progress bar and quit hit area. Spacing on the 4px scale (12 between options, 24 between screen blocks, 40 between result sections). Motion: 200ms fade + 8px rise on screen change, progress width 200ms; all off under `prefers-reduced-motion`.
+Radius: 10px cards and options, 14px CTA, 9999px progress bar and quit hit area. Spacing on the 4px scale (12 between options, 24 between screen blocks, 40 between result sections). Motion: 200ms fade + 8px rise on screen change. The progress fill scales from the left edge (`scaleX`), it does not animate width. `prefers-reduced-motion`: screen changes keep a short fade and drop the rise. The progress fill snaps.
 
 Screens: splash (Kyle's old-quiz title "La Evaluación Rápida de Tu Inglés", 40px, 52px from 640px; lead; one CTA, or Seguir donde iba + Empezar de nuevo when an attempt is open), opener (5 Kyle-copy rows), question, transition (centered title + body + Seguir), result (eyebrow, headline, sticky tabs Gramática / Sonidos / Respuestas, Circle offer text only for A2+ tracks, then **Quiero más información** (Superpack for beginner/A1, WhatsApp for A2+ when configured), retake). Email capture hidden for now; `/api/evaluacion/email` stays for a later slice. Gramática and Sonidos put one intro sentence between the section title and the cards. Cards name the problem only. The review lists wrong answers first; correct answers stay collapsed in a `<details>` with a count. Loading skeleton and error with retry stay. No score anywhere. No share step.
 
@@ -545,14 +545,14 @@ Before play, the story shows one control. After play starts, that control leaves
 - Works with touch (drag) and mouse (click/drag)
 
 ## Bottom Sheet (Ver el texto)
-- Slides up from bottom. Enter **and exit** are 200ms ease-out fade + slide (not a hard cut). Overlay fades with the panel.
+- Slides up from bottom. Enter **and exit** are 200ms `--ease-smooth-out` fade + slide (not a hard cut). Overlay fades with the panel.
 - Background: `--surface` (white)
 - Top radius: `lg` (24px)
 - No shadow (tonal layering: white sheet on paper background, 1px border at top)
 - Drag handle: 36px wide, 4px tall, `#d1d5db` (gray-300), centered, 8px top margin
 - Max height: 75vh (leaves a strip at top so learner knows questions are underneath)
 - Close: tap outside, swipe down, or X button
-- `prefers-reduced-motion`: jump to open/closed, no slide
+- `prefers-reduced-motion`: short opacity fade. No slide.
 
 ## Word help sheet
 Short paper sheet for a tapped word. Same family as Ver el texto, not 75vh.
@@ -561,24 +561,24 @@ Short paper sheet for a tapped word. Same family as Ver el texto, not 75vh.
 - Tight stack: grabber, English head (the word, or the full expression when the tap is inside one) + close, then the gloss. Plain words: Spanish, POS in lowercase parentheses, IPA, ghost play. Expressions: Spanish, explanation when set, then the tapped word's IPA and play.
 - Rises from the **viewport bottom behind** sticky audio (`z-index` 40) and `.step-nav` (`z-index` 35). Sheet stack is `z-index` 30. Overlay is full-screen so story text behind the frosted nav/audio dims the same as the rest of the page. Panel padding-bottom equals that chrome height so word copy is not hidden; the white sheet continues under the player and nav so its outline reads behind them. Nav and audio stay the same style and stay tappable.
 - Grabber, tap outside, swipe down, Escape, or X. Focus trap while open. One sheet at a time.
-- Motion: 200ms ease-out enter **and** exit. Overlay fades. Reduced motion: instant.
+- Motion: 150ms `--ease-smooth-out` fade only, enter and exit. No slide. Overlay fades on the same timing. Reduced motion: the same fade.
 - A plain word: English headword, then one gloss line (Spanish, POS in lowercase parentheses, IPA, ghost play), then No entendí, teacher flags. Do not auto-play audio. A teacher drag-selection does not open this sheet. That gesture shows the selection flag menu.
 - A word inside a multi-word expression (`words.expression_id`): the whole phrase shares one `--accent-soft` wash, including the spaces between its words. Sheet head is `expressions.text`. Gloss is the expression's Spanish. `explanation` follows when it is set. IPA and play stay on the tapped word, on a second line that names that word, so they are not read as the phrase. No POS on an expression. Flags and No entendí stay on the tapped word. Same behavior for story, dialogue, Movie Talk, song lyrics, and any future lesson that stores expressions.
 - Same component on story, dialogue, lyrics, bio, and taps inside Ver el texto.
 - After a lookup, that word's dotted line becomes a 2px solid `--text-secondary` underline (`word-seen`). The 1px dotted `--paper-line` line on every other word stays. A teacher pronunciation underline stays 2px `--accent` and wins when both are on the same word. There is no control to clear the lookup line. The lookup row stays for the teacher. Logged-out / teacher preview: no writes.
 
 ## Motion
-Shared names live on `:root` in `src/app/globals.css` (`--duration-*`, `--ease-*`, `--distance-*`, `--scale-*`, `--blur-*`). Use a name when the motion matches that name's job. Do not retune a specced 200ms ease-out just because another duration is nearby.
+Shared names live on `:root` in `src/app/globals.css` (`--duration-*`, `--ease-*`, `--distance-*`, `--scale-*`, `--blur-*`). Use a name when the motion matches that name's job. Do not retune a specced duration just because another duration is nearby.
 
-- Karaoke highlight: 200ms `--ease-smooth-out`. The bar slides to the next line. Reduced motion jumps.
-- Sticky audio bar and character band: enter in 180ms `--ease-smooth-out`, 8px rise.
-- Step nav, keyboard open: slides off in `--duration-quick` (150ms) `--ease-smooth-out`.
-- Bottom sheets, word help, and step content stay 200ms ease-out, enter and exit the same. See those sections.
-- Trigger pop: a menu or a dialog opened by a control scales from that control, not from the panel center. Menus (selection marks, Traducción notes) use the edge that faces the selection, 150ms `--ease-smooth-out`, from `--scale-large` (0.96). Dialogs (Nuevo mes, Nueva clase, Borrar, Elegir contenido, sound video, note lightboxes, presentation edit) measure the trigger and set `transform-origin` there, 250ms, same scale. The scrim fades. `prefers-reduced-motion`: fade only. Sheets and the teacher side panel are not part of this. They already enter from an edge.
+- Karaoke highlight: 200ms `--ease-smooth-out` on transform and opacity. Line height snaps. Reduced motion jumps.
+- Sticky audio bar and character band: enter in 180ms `--ease-smooth-out`, 8px rise. Reduced motion: short fade, no rise.
+- Step nav, keyboard open: slides off in `--duration-quick` (150ms) `--ease-smooth-out`. Reduced motion: no slide.
+- Ver el texto and Cómo stay a 200ms `--ease-smooth-out` rise, enter and exit the same. Word help is a 150ms fade with no slide. Step content is 180ms `--ease-smooth-out`. Reduced motion on sheets and step content keeps a short fade and drops the slide.
+- Dialogs (Nuevo mes, Nueva clase, Borrar, Elegir contenido, sound video, note lightboxes, presentation edit) scale from their own center, 250ms `--ease-smooth-out`, from `--scale-large` (0.96), plus a fade. The scrim fades. `prefers-reduced-motion`: fade only. Selection and Traducción note menus show immediately. Sheets and the teacher side panel are not part of this. They already enter from an edge.
 - `--ease-bounce` and `--ease-bounce-strong` are on the scale and unused. No bounce, no rotation. No scale on chrome except a sound-chart cell (`.sound-card` only) and trigger pop (see Motion). Sound-chart press scales to `--scale-medium` (0.97) for `--duration-quick` (150ms) with `--ease-smooth-out`. `prefers-reduced-motion` skips that scale. No bounce, no loop, no halo.
 
 ## Step Transitions
-- Fade + slight slide: 200ms ease-out
+- Fade + slight slide: 180ms `--ease-smooth-out`
 - No bounce, no rotation, no scale
 - Only the content area transitions. Header and progress dots stay fixed.
 
@@ -1064,7 +1064,7 @@ Same Lesson mode shell as stories. `Story.kind = "song"`. Session type is `song`
 - Primera escucha: 16:9 `ClassroomYoutubePlayer` (rounded 16px, paper-line border). Same live lock / review solo rules as Traducción. The old "Escucha sin leer la letra…" line is gone.
 - Completa la canción: compact player under the title and instructions, then lyrics. Lyric block is centered; lines are `text-align: left`. Lyrics use `text-story-body` (Lora 18px / 32px). Blanks are underlines in the line (same size as the lyrics, caret on focus), not tall input boxes. Empty blanks are 3 characters wide and grow with the typed word. A multi-word answer (`pull up`) is one numbered blank with one underline per word; typed parts join as one answer. After Entregar, each underline hugs that word. Each blank is numbered in a 20px terracotta (`--accent`) circle with white centered `label-sm` text. Wrong answers: student words, then the correct phrase in moss `label-sm`, then the X. Live class: Entregar only, no marks; teacher typing in a blank replaces that blank on student phones (student submissions stay saved). Review and self-study: one Entregar tap shows marks immediately. Sheet ¿Qué hago? is the three blanks bullets; no live/review line variants.
 - La letra: lyric cluster centered on the page; lines share a left edge (`text-align: left`, stanza gaps). Word tooltips via `InteractiveStory`. Meaning block "Qué significa la canción" when `song_meaning` is set.
-- Truquitos y karaoke: same lyric cluster (lines left-aligned, stanza gaps). Line-swap toggle (starts off). Karaoke highlight from `line_timestamps` vs embed playhead; the highlight bar slides to the next line in 200ms (native CSS, no extra library; `prefers-reduced-motion` jumps). The page does not scroll on every line. When the highlight would tuck under the sticky player (or the header), lyrics recenter so that line sits in the middle of the visible well. After first play, the story sticky transport (play/pause, ±10s, speed, seek) controls the YouTube embed so pause stays on screen. Live students do not get the sticky bar (teacher lock). Review/consumer: one rewind button to the left of the current highlighted line; tapping any timestamped lyric line jumps to that line's start and plays. Sheet ¿Qué hago? covers the line-swap button and the two muted-mic karaoke rounds.
+- Truquitos y karaoke: same lyric cluster (lines left-aligned, stanza gaps). Line-swap toggle (starts off). Karaoke highlight from `line_timestamps` vs embed playhead; the highlight bar moves to the next line in 200ms on transform and opacity (height snaps; native CSS, no extra library; `prefers-reduced-motion` jumps). The page does not scroll on every line. When the highlight would tuck under the sticky player (or the header), lyrics recenter so that line sits in the middle of the visible well. After first play, the story sticky transport (play/pause, ±10s, speed, seek) controls the YouTube embed so pause stays on screen. Live students do not get the sticky bar (teacher lock). Review/consumer: one rewind button to the left of the current highlighted line; tapping any timestamped lyric line jumps to that line's start and plays. Sheet ¿Qué hago? covers the line-swap button and the two muted-mic karaoke rounds.
 
 ### Dialogue Lesson Page (detailed)
 Same as the story lesson page. Lesson type label "Diálogo". First step "El diálogo". Speaker names (`Name:`) render in terracotta `label-md` before the line. Same tooltips and practice steps. The read step uses `DIALOGUE_READ_COPY` (`readStepCopy("dialogue")`): one-liner, **Cómo** sheet, and a first-time why card (`dismissKey` `dialogue`). Comprensión, Personal, Dictado, Coral, and Pronunciación keep the story copy.

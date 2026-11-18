@@ -8,7 +8,7 @@ import {
   deleteCatalogAction,
   previewCatalogDeleteAction,
 } from "@/app/teacher/content/actions";
-import { openDialogFromTrigger } from "@/lib/trigger-origin";
+import { openCenteredDialog } from "@/lib/trigger-origin";
 import type { CatalogKind } from "@/lib/catalog-crud";
 
 export default function DeleteContentButton({
@@ -34,7 +34,7 @@ export default function DeleteContentButton({
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
-    if (open && !dialog.open) openDialogFromTrigger(dialog);
+    if (open && !dialog.open) openCenteredDialog(dialog);
     if (!open && dialog.open) dialog.close();
   }, [open]);
 

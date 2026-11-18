@@ -10,7 +10,7 @@ import type {
 import ActionButton from "@/components/ActionButton";
 import { addVideoSummaryNote, deleteVideoSummaryNote } from "@/app/lesson/[slug]/video-summary-actions";
 import { markFirstMatch } from "@/lib/video-summary-notes";
-import { openDialogFromTrigger } from "@/lib/trigger-origin";
+import { openCenteredDialog } from "@/lib/trigger-origin";
 
 const NOTE_TYPES: { id: VideoSummaryNoteType; label: string }[] = [
   { id: "vocabulary", label: "Vocabulario" },
@@ -94,7 +94,7 @@ function useNoteDialog(onClose: () => void) {
     const restore = () => {
       if (Math.abs(window.scrollY - y) > 1) window.scrollTo(0, y);
     };
-    openDialogFromTrigger(dialog, restore);
+    openCenteredDialog(dialog, restore);
     const frame = requestAnimationFrame(restore);
     const handleClose = () => {
       restore();
@@ -207,7 +207,6 @@ function menuPlacement(rect: TeachingNoteAnchor, open: boolean) {
   const above = rect.top >= needed;
   const center = Math.min(window.innerWidth - 16, Math.max(16, rect.center));
   return {
-    above,
     top: above ? rect.top - 8 : rect.bottom + 8,
     left: center,
     transform: above ? "translate(-50%, -100%)" : "translate(-50%, 0)",
@@ -261,11 +260,7 @@ export function TeachingNoteMenu({
         event.preventDefault();
       }}
     >
-      <div
-        className="selection-flag-menu-pop trigger-pop"
-        data-origin="ready"
-        style={{ transformOrigin: place.above ? "bottom center" : "top center" }}
-      >
+      <div className="selection-flag-menu-pop">
       <div className="selection-flag-menu-row">
         <button
           type="button"

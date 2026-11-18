@@ -42,7 +42,10 @@ export function EvalHeader({
           aria-valuenow={progress.answered}
           aria-label={`Pregunta ${current} de ${progress.total}`}
         >
-          <div className="ev-progress-fill" style={{ width: `${percent}%` }} />
+          <div
+            className="ev-progress-fill"
+            style={{ transform: `scaleX(${percent / 100})` }}
+          />
         </div>
         <span className="ev-progress-count" aria-hidden="true">
           {current}/{progress.total}

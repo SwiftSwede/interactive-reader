@@ -32,7 +32,6 @@ function menuPlacement(rect: SelectionRect, noteOpen: boolean) {
     Math.max(16, rect.center)
   );
   return {
-    above,
     top: above ? rect.top - 8 : rect.bottom + 8,
     left: center,
     transform: above ? "translate(-50%, -100%)" : "translate(-50%, 0)",
@@ -77,11 +76,7 @@ export default function SelectionFlagMenu({
         event.preventDefault();
       }}
     >
-      <div
-        className="selection-flag-menu-pop trigger-pop"
-        data-origin="ready"
-        style={{ transformOrigin: place.above ? "bottom center" : "top center" }}
-      >
+      <div className="selection-flag-menu-pop">
       <div className="selection-flag-menu-row">
         <button
           type="button"

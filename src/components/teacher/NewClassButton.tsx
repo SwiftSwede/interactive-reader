@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { X } from "lucide-react";
-import { openDialogFromTrigger } from "@/lib/trigger-origin";
+import { openCenteredDialog } from "@/lib/trigger-origin";
 import CreateSessionForm from "@/app/teacher/classes/[id]/CreateSessionForm";
 import type { CourseLevel } from "@/types";
 
@@ -55,7 +55,7 @@ export default function NewClassButton({
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
-    if (open && !dialog.open) openDialogFromTrigger(dialog);
+    if (open && !dialog.open) openCenteredDialog(dialog);
     if (!open && dialog.open) dialog.close();
   }, [open]);
 

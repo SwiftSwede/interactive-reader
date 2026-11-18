@@ -501,7 +501,7 @@ export default function SpeakingSession({
           aria-label="Tiempo de la grabación"
         >
           <div
-            className="h-full bg-accent transition-[width] duration-200 ease-out motion-reduce:transition-none"
+            className="h-full bg-accent"
             style={{ width: `${Math.min(100, (elapsed / MAX_AUDIO_SECONDS) * 100)}%` }}
           />
         </div>

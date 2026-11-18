@@ -111,10 +111,12 @@ body:has(.evaluacion-classic) {
 }
 
 .ev-progress-fill {
+  width: 100%;
   height: 100%;
   background: var(--ev-fill);
   border-radius: 9999px;
-  transition: width 200ms var(--ev-ease);
+  transform-origin: left center;
+  transition: transform 200ms var(--ev-ease);
 }
 
 .ev-progress-count {
@@ -697,10 +699,25 @@ body:has(.evaluacion-classic) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .evaluacion-classic *,
-  .evaluacion-classic *::before,
-  .evaluacion-classic *::after {
-    animation: none !important;
-    transition: none !important;
+  .ev-fade {
+    animation-name: ev-fade-opacity;
+    animation-duration: var(--duration-quick, 150ms);
+  }
+
+  .ev-progress-fill {
+    transition: none;
+  }
+
+  .ev-skeleton {
+    animation: none;
+  }
+}
+
+@keyframes ev-fade-opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
