@@ -781,6 +781,133 @@ In today’s class, we’ll look at one of their most popular songs from their s
       { line_index: 34, ipa_text: "(aɪm taɪɚd əv biɪŋ wʌt ju wɑnt mi tə bi)" },
     ],
   },
+  {
+    slug: "im-with-you",
+    title: "I'm with You",
+    artist: "Avril Lavigne",
+    level: "pre-intermediate",
+    youtubeUrl: "https://www.youtube.com/watch?v=dGR65RWwzg8",
+    body: `I'm standing on a bridge
+I'm waitin' in the dark
+I thought that you'd be here by now
+There's nothing but the rain
+No footsteps on the ground
+I'm listening but there's no sound
+
+Isn't anyone tryin' to find me?
+Won't somebody come take me home?
+It's a damn cold night
+Trying to figure out this life
+Won't you take me by the hand?
+Take me somewhere new
+I don't know who you are
+But I, I'm with you
+I'm with you
+I'm looking for a place
+I'm searching for a face
+Is anybody here I know
+'Cause nothing's going right
+And everything's a mess
+And no one likes to be alone
+
+Oh, why is everything so confusing?
+Maybe I'm just out of my mind
+Yeah, yeah, yeah, yeah, yeah
+Yeah, yeah, yeah, yeah
+Yeah
+
+It's a damn cold night
+Trying to figure out this life
+Won't you take me by the hand?
+Take me somewhere new
+I don't know who you are
+But I, I'm with you
+I'm with you`,
+    // Blanks transcribed from the deck's own numbering (1)-(7), Nov 2026 deck.
+    // - (3) "damn" and (4) "figure out" each sit on TWO IDENTICAL chorus
+    //   lines -> ONE entry, two placements (checker's legit multi-line case).
+    // - Deck body text uses "I'm waitin' in the dark" contraction; kept verbatim.
+    lyricBlanks: [
+      {
+        id: 1,
+        prompt: "I'm standing on a ________",
+        answer: "bridge",
+      },
+      {
+        id: 2,
+        prompt: "No footsteps on the ________",
+        answer: "ground",
+      },
+      {
+        id: 3,
+        prompt: "It's a ____ cold night",
+        answer: "damn",
+      },
+      {
+        id: 4,
+        prompt: "Trying to ________ ___ this life",
+        answer: "figure out",
+      },
+      {
+        id: 5,
+        prompt: "I'm ___________ for a face",
+        answer: "searching",
+      },
+      {
+        id: 6,
+        prompt: "And everything's a ____",
+        answer: "mess",
+      },
+      {
+        id: 7,
+        prompt: "Oh, why is everything so ___________?",
+        answer: "confusing",
+      },
+    ],
+    // VERBATIM from the deck bio slide. Never rewrite.
+    artistBio: `Avril Lavigne
+Is a Canadian singer and songwriter born in Ontario. Avril comes from a middle-class Christian family. She began getting experience as a singer performing at country fairs. She sang mostly country and gospel music. One of her major influences as a young girl was Canadian country pop superstar Shania Twain.
+Even though she grew up singing country and gospel music, it was a skateboarding/punk style that defined her when she signed her first record deal.
+Her first album Let Go was a huge hit. Almost overnight, Avril became an idol to teenage girls around the world. She was very different from the typical over-sexualized pop stars of that time like Christina Aguilera and Britney Spears.
+Today we’ll take a look at one of her most famous singles from her debut album “I’m with you".`,
+    // songMeaning intentionally ABSENT — ratification 2026-09-16: Kyle dictates
+    // his interpretation first; it gets pasted verbatim. Never AI-draft.
+    lyricsIpa: [
+      { line_index: 0, ipa_text: "aɪm ˈstændɪŋ ɑn ə brɪdʒ" },
+      { line_index: 1, ipa_text: "aɪm ˈweɪtɪn ɪn ðə dɑɹk" },
+      { line_index: 2, ipa_text: "aɪ ˈθɔt ðətʃud bi hɪɹ baɪ naʊ" },
+      { line_index: 3, ipa_text: "ðɛɹz ˈnʌθɪŋ bʌt ðə ɹeɪn" },
+      { line_index: 4, ipa_text: "noʊ ˈfʊtstɛps ɑn ðə ɡɹaʊnd" },
+      { line_index: 5, ipa_text: "aɪm ˈlɪsənɪŋ bʌt ðɛɹz noʊ saʊnd" },
+      { line_index: 6, ipa_text: "ˈɪzənt ˈɛniwʌn ˈtɹaɪɪn tə faɪnd mi" },
+      { line_index: 7, ipa_text: "woʊnt ˈsʌmbədi kʌm ˈteɪk mi hoʊm" },
+      { line_index: 8, ipa_text: "ɪts ə dæm koʊld naɪt" },
+      { line_index: 9, ipa_text: "ˈtɹaɪɪŋ tə ˈfɪɡjɚ aʊt ðɪs laɪf" },
+      { line_index: 10, ipa_text: "woʊntʃu ˈteɪk mi baɪ ðə hænd" },
+      { line_index: 11, ipa_text: "ˈteɪk mi ˈsʌmwɛɹ nu" },
+      { line_index: 12, ipa_text: "aɪ doʊnt noʊ hu jʊ ɑɹ" },
+      { line_index: 13, ipa_text: "bʌt aɪ, aɪm wɪð ju" },
+      { line_index: 14, ipa_text: "aɪm wɪð ju" },
+      { line_index: 15, ipa_text: "aɪm ˈlʊkɪŋ fɚɹ ə ˈpleɪs" },
+      { line_index: 16, ipa_text: "aɪm ˈsɜɹtʃɪŋ fɚɹ ə ˈfeɪs" },
+      { line_index: 17, ipa_text: "ɪz ˈɛnibɑdi hɪɹ aɪ noʊ" },
+      { line_index: 18, ipa_text: "kəz ˈnʌθɪŋz ˈɡoʊɪŋ ɹaɪt" },
+      { line_index: 19, ipa_text: "ænd ˈɛvɹiθɪŋz ə ˈmɛs" },
+      { line_index: 20, ipa_text: "ænd noʊ wʌn laɪks tə bi əˈloʊn" },
+      { line_index: 21, ipa_text: "oʊ, waɪ ɪz ˈɛvɹiθɪŋ soʊ kənˈfjuzɪŋ" },
+      { line_index: 22, ipa_text: "ˈmeɪbi aɪm dʒʌst aʊt əv maɪ maɪnd" },
+      { line_index: 23, ipa_text: "jɛ, jɛ, jɛ, jɛ, jɛ" },
+      { line_index: 24, ipa_text: "jɛ, jɛ, jɛ, jɛ" },
+      { line_index: 25, ipa_text: "jɛ" },
+      { line_index: 26, ipa_text: "ɪts ə dæm koʊld naɪt" },
+      { line_index: 27, ipa_text: "ˈtɹaɪɪŋ tə ˈfɪɡjɚ aʊt ðɪs laɪf" },
+      { line_index: 28, ipa_text: "woʊntʃu ˈteɪk mi baɪ ðə hænd" },
+      { line_index: 29, ipa_text: "ˈteɪk mi ˈsʌmwɛɹ nu" },
+      { line_index: 30, ipa_text: "aɪ doʊnt noʊ hu jʊ ɑɹ" },
+      { line_index: 31, ipa_text: "bʌt aɪ, aɪm wɪð ju" },
+      { line_index: 32, ipa_text: "aɪm wɪð ju" },
+    ],
+  },
 ];
 
 function tokensOf(body: string): number {
