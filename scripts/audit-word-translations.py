@@ -34,7 +34,7 @@ EXPECTED = {
     "of": ["de", "del", "por", "con", "en"],
     "to": ["a", "para", "que", "de", "al", "hacia", "ser", "darse", "continuar", "verla", "darte", "ir", "seguir", "hasta", "(infinitivo)", "(preposición de infinitivo)", "contigo"],
     "in": ["en", "dentro", "a", "con", "frente", "en la", "en el", "para"],
-    "on": ["en", "sobre", "encima", "adelante", "partícula", "en ello", "al", "el", "de", "a bordo", "con"],
+    "on": ["en", "sobre", "encima", "adelante", "partícula", "en ello", "al", "el", "de", "a bordo", "con", "por"],  # "call me ON the phone" => por teléfono
     "she": ["ella"],
     "he": ["él", "el"],
     "her": ["su", "sus", "la", "le", "ella", "a su", "a ella", "se"],
@@ -47,7 +47,7 @@ EXPECTED = {
     "with": ["con"],
     "but": ["pero", "sino", "más que", "solo"],
     "not": ["no", "ni"],
-    "it": ["eso", "lo", "él", "el", "eso/lo", "que", "no", "esto", "lo ", "así", "era", "eran", "la"],
+    "it": ["eso", "lo", "él", "el", "eso/lo", "que", "no", "esto", "lo ", "así", "era", "eran", "la", "te"],  # "Don't IT make you sad" => no te da pena
     "what": ["qué", "que", "qué/que", "lo que", "de qué", "cuáles", "cual", "qué "],
     "how": ["cómo", "como", "cuánto", "cuanto", "qué tan", "qué tal"],  # "How about..." => qué tal
     "why": ["por qué", "porque"],

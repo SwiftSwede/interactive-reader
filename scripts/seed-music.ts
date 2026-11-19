@@ -960,10 +960,11 @@ Today we’ll take a look at one of her most famous singles from her debut album
     artist: "Justin Timberlake",
     level: "intermediate",
     youtubeUrl: "https://www.youtube.com/watch?v=DksSPZTZES0",
-    // Kyle dropped the full clean lyrics + the numbered blank worksheet
-    // (2026-11-18). Body is his lyric text verbatim; stanza breaks added
-    // at his section boundaries. His worksheet line "Why did you leave me
-    // all alone" has no blanks there.
+    // Body = Kyle's lyrics VERBATIM (2026-11-18 second paste, WITH echo
+    // vocals and all repeat lines, 86 non-empty lines). First seed wrongly
+    // dropped the parenthetical echoes and 4 repeat lines (82 lines), which
+    // desynced his tap-aligned line_timestamps after line 31.
+    // Stanza breaks only; they don't count as lyric lines.
     body: `You were my sun
 You were my earth
 But you didn't know all the ways I loved you, no
@@ -998,28 +999,30 @@ And all of these things people told me
 Keep messin' with my head (messin' with my head)
 Should've picked honesty
 Then you may not have blown it (yeah)
+You don't have to say (don't have to say)
 
-You don't have to say, what you did
-I already know, I found out from him
-Now there's just no chance
-For you and me
+What you did (what you did)
+I already know (I already know)
+I found out from him (uh)
+Now there's just no chance (no chance)
+For you and me (you and me)
 There'll never be
-And don't it make you sad about it?
-
+Don't it make you sad about it?
 You told me you love me
-Why did you leave me all alone?
-Now you tell me you need me
-When you call me on the phone
-Girl, I refuse
-You must have me confused with some other guy
-The bridges were burned
-Now it's your turn, to cry
-Cry me a river
-Cry me a river
-Cry me a river
-Cry me a river (yeah, yeah)
 
+Why did you leave me all alone (all alone)
+Now you tell me you need me
+When you call me on the phone (when you call me on the phone)
+Girl, I refuse
+You must have me confused with some other guy (I'm not like them baby)
+The bridges were burned
+Now it's your turn (it's your turn) to cry
+So cry me a river (go on and just)
+Cry me a river (go on and just)
+Cry me a river (baby, go on and just)
+Cry me a river (yeah, yeah)
 Oh (oh!)
+
 The damage is done, so I guess I be leaving
 Oh (oh!)
 The damage is done, so I guess I be leaving
@@ -1027,23 +1030,26 @@ Oh (oh!)
 The damage is done, so I guess I be leaving
 Oh (oh!)
 The damage is done, so I guess I be, leaving
+You don't have to say (you don't have to say)
 
-You don't have to say, what you did
-I already know, I found out from him
-Now there's just no chance
-For you and me
+What you did (what you did)
+I already know (I already know)
+I found out from him (uh)
+Now there's just no chance (no chance)
+For you and me (you and me)
 There'll never be
-And don't it make you sad about it?
+Don't it make you sad about it?
+Cry me a river (go on and just)
 
-Cry me a river (go on and just)
-Cry me a river (go on and just)
 Cry me a river (baby, go on and just)
+Cry me a river (you can go on and just)
 Cry me a river (yeah, yeah)
-Cry me a river (go on and just)
+Cry me a river (baby, go on and just)
 Cry me a river (go on and just)
 Cry me a river (come on baby, cry)
 Cry me a river (I don't wanna cry no more, yeah yeah)
 Cry me a river
+
 Cry me a river, oh
 Cry me a river, oh
 Cry me a river, oh
