@@ -1061,7 +1061,7 @@ Cry me a river (cry me, cry me)`,
     lyricBlanks: [
       {
         id: 1,
-        prompt: "So you took a _____, and made other plans",
+        prompt: "So you took a _____",
         answer: "chance",
       },
       {
@@ -1087,7 +1087,8 @@ Cry me a river (cry me, cry me)`,
       },
       {
         id: 6,
-        prompt: "That some things are better left _____",
+        prompt:
+          "You know that they say that some things are better left _____",
         answer: "unsaid",
       },
       {
@@ -1192,11 +1193,13 @@ async function seedSong(
       diffs.push("lyric_blanks");
     if ((existing.artist_bio ?? "") !== (song.artistBio ?? ""))
       diffs.push("artist_bio");
-    if ((existing.song_meaning ?? "") !== (song.songMeaning ?? ""))
+    if (song.songMeaning !== undefined && (existing.song_meaning ?? "") !== song.songMeaning)
       diffs.push("song_meaning");
     if ((existing.youtube_url ?? "") !== song.youtubeUrl)
       diffs.push("youtube_url");
-    if (canon(existing.lyrics_ipa) !== canon(song.lyricsIpa ?? null))
+    // Only flag IPA drift when the entry defines IPA; a draft living only in
+    // the DB is legitimate (AI-drafted, Kyle-corrected in the editor).
+    if (song.lyricsIpa !== undefined && canon(existing.lyrics_ipa) !== canon(song.lyricsIpa))
       diffs.push("lyrics_ipa");
     if (diffs.length > 0) {
       console.log(
@@ -1229,8 +1232,12 @@ async function seedSong(
         youtube_url: song.youtubeUrl,
         lyric_blanks: song.lyricBlanks,
         artist_bio: song.artistBio ?? null,
-        song_meaning: song.songMeaning ?? null,
-        lyrics_ipa: song.lyricsIpa ?? null,
+        // song_meaning + lyrics_ipa are PASTED/EDITED in Supabase (Kyle dictates
+        // the meaning; the IPA is an AI draft he corrects in the editor). The
+        // seed must NEVER overwrite them when its entry defines none — same
+        // regression class as the 2026-09-16 line_timestamps wipe.
+        ...(song.songMeaning !== undefined ? { song_meaning: song.songMeaning } : {}),
+        ...(song.lyricsIpa !== undefined ? { lyrics_ipa: song.lyricsIpa } : {}),
         // line_timestamps is TAP-ALIGN-OWNED data (Kyle taps them in the tool,
         // pastes into Supabase). The seed must NEVER overwrite them: include the
         // column in the upsert only when the entry explicitly defines timestamps.
