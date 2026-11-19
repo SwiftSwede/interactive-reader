@@ -1837,60 +1837,60 @@
   },
   {
    "t": "english",
-   "start": 276.0,
-   "end": 279.99,
+   "start": 277.2,
+   "end": 280.95,
    "text": "Does she drink? Your friend. Does your friend drink?",
    "words": [
     {
      "w": "does",
-     "start": 276.0,
-     "end": 277.32
+     "start": 277.2,
+     "end": 277.45
     },
     {
      "w": "she",
-     "start": 277.32,
-     "end": 277.54
+     "start": 277.45,
+     "end": 277.65
     },
     {
      "w": "drink",
-     "start": 277.54,
-     "end": 277.92
+     "start": 277.65,
+     "end": 277.95
     },
     {
      "w": "your",
-     "start": 278.18,
-     "end": 278.86
+     "start": 278.75,
+     "end": 279.0
     },
     {
      "w": "friend",
-     "start": 278.86,
-     "end": 279.26
+     "start": 279.0,
+     "end": 279.35
     },
     {
      "w": "does",
-     "start": 279.5,
-     "end": 279.99
+     "start": 279.95,
+     "end": 280.2
     },
     {
      "w": "your",
-     "start": 280.04,
-     "end": 279.99
+     "start": 280.2,
+     "end": 280.42
     },
     {
      "w": "friend",
-     "start": 280.16,
-     "end": 279.99
+     "start": 280.42,
+     "end": 280.6
     },
     {
      "w": "drink",
-     "start": 280.36,
-     "end": 279.99
+     "start": 280.6,
+     "end": 280.95
     }
    ]
   },
   {
    "t": "narration",
-   "start": 280.0,
+   "start": 281.3,
    "end": 287.7,
    "lines": [
     "Él acaba de preguntarte “Does your friend drink?” “Does your friend drink?” significa “tu amiga bebe?”"
@@ -1898,8 +1898,8 @@
    "words": [
     {
      "w": "el",
-     "start": 280.0,
-     "end": 280.74
+     "start": 281.3,
+     "end": 281.68
     },
     {
      "w": "acaba",
