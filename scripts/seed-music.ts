@@ -954,6 +954,165 @@ Today we’ll take a look at one of her most famous singles from her debut album
       { line_index: 51, ipa_text: "aɪm wɪθ ju" },
     ],
   },
+  {
+    slug: "cry-me-a-river",
+    title: "Cry Me a River",
+    artist: "Justin Timberlake",
+    level: "intermediate",
+    youtubeUrl: "https://www.youtube.com/watch?v=DksSPZTZES0",
+    // Kyle dropped the full clean lyrics + the numbered blank worksheet
+    // (2026-11-18). Body is his lyric text verbatim; stanza breaks added
+    // at his section boundaries. His worksheet line "Why did you leave me
+    // all alone" has no blanks there.
+    body: `You were my sun
+You were my earth
+But you didn't know all the ways I loved you, no
+So you took a chance
+And made other plans
+But I bet you didn't think that they would come crashing down, no
+
+You don't have to say, what you did
+I already know, I found out from him
+Now there's just no chance
+For you and me
+There'll never be
+And don't it make you sad about it?
+
+You told me you love me
+Why did you leave me all alone?
+Now you tell me you need me
+When you call me on the phone
+Girl, I refuse
+You must have me confused with some other guy
+The bridges were burned
+Now it's your turn, to cry
+Cry me a river
+Cry me a river
+Cry me a river
+Cry me a river (yeah, yeah)
+
+You know that they say that some things are better left unsaid
+And it wasn't like you only talked to him and you know it
+Don't act like you don't know it
+And all of these things people told me
+Keep messin' with my head (messin' with my head)
+Should've picked honesty
+Then you may not have blown it (yeah)
+
+You don't have to say, what you did
+I already know, I found out from him
+Now there's just no chance
+For you and me
+There'll never be
+And don't it make you sad about it?
+
+You told me you love me
+Why did you leave me all alone?
+Now you tell me you need me
+When you call me on the phone
+Girl, I refuse
+You must have me confused with some other guy
+The bridges were burned
+Now it's your turn, to cry
+Cry me a river
+Cry me a river
+Cry me a river
+Cry me a river (yeah, yeah)
+
+Oh (oh!)
+The damage is done, so I guess I be leaving
+Oh (oh!)
+The damage is done, so I guess I be leaving
+Oh (oh!)
+The damage is done, so I guess I be leaving
+Oh (oh!)
+The damage is done, so I guess I be, leaving
+
+You don't have to say, what you did
+I already know, I found out from him
+Now there's just no chance
+For you and me
+There'll never be
+And don't it make you sad about it?
+
+Cry me a river (go on and just)
+Cry me a river (go on and just)
+Cry me a river (baby, go on and just)
+Cry me a river (yeah, yeah)
+Cry me a river (go on and just)
+Cry me a river (go on and just)
+Cry me a river (come on baby, cry)
+Cry me a river (I don't wanna cry no more, yeah yeah)
+Cry me a river
+Cry me a river, oh
+Cry me a river, oh
+Cry me a river, oh
+Cry me a river (cry me, cry me) oh
+Cry me a river (cry me, cry me) oh
+Cry me a river (cry me, cry me) oh
+Cry me a river (cry me, cry me) oh
+Cry me a river (cry me, cry me) oh
+Cry me a river (cry me, cry me) oh
+Cry me a river (cry me, cry me)`,
+    // Blanks transcribed verbatim from Kyle's worksheet (2026-11-18),
+    // ids (1)-(9) in order of first appearance (2026-11-18: Kyle added
+    // "blown" as (8) and shifted "damage" to (9)). The bridge/chorus repeats
+    // reuse the same ids (one entry per unique blank).
+    lyricBlanks: [
+      {
+        id: 1,
+        prompt: "So you took a _____, and made other plans",
+        answer: "chance",
+      },
+      {
+        id: 2,
+        prompt:
+          "But I bet you didn't think that they would come _____ _____",
+        answer: "crashing down",
+      },
+      {
+        id: 3,
+        prompt: "And don't it make you ___ ___ __?",
+        answer: "sad about it",
+      },
+      {
+        id: 4,
+        prompt: "Girl, I _____",
+        answer: "refuse",
+      },
+      {
+        id: 5,
+        prompt: "The bridges were _____",
+        answer: "burned",
+      },
+      {
+        id: 6,
+        prompt: "That some things are better left _____",
+        answer: "unsaid",
+      },
+      {
+        id: 7,
+        prompt: "Keep _____ with my head",
+        answer: "messin'",
+      },
+      {
+        id: 8,
+        prompt: "Then you may not have _____ it",
+        answer: "blown",
+      },
+      {
+        id: 9,
+        prompt: "The _____ is done",
+        answer: "damage",
+      },
+    ],
+    // VERBATIM from Kyle's mini bio (2026-11-18). Never rewrite.
+    artistBio: `What is there to say? He is one of the biggest pop stars in the world. His career started with the boy band N’Sync, but 8 years later he would start his solo career with the album Justified. 
+We will be taking a look at his single “Cry Me a River” from his debut album. Supposedly it is a song about his breakup with Britney Spears in 2002. Rolling Stone has called the song one of the greatest pop songs ever made. Many people call the video a defining moment of the 2000’s. 
+Let’s take a look.`,
+    // songMeaning intentionally ABSENT — ratification 2026-09-16: Kyle dictates
+    // his interpretation first; it gets pasted verbatim. Never AI-draft.
+  },
 ];
 
 function tokensOf(body: string): number {
