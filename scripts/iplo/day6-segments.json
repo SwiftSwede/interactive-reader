@@ -4787,39 +4787,39 @@
   },
   {
    "t": "english",
-   "start": 724.09,
-   "end": 725.55,
+   "start": 724.12,
+   "end": 725.66,
    "text": "Yes, he sells. Yes, he sells.",
    "words": [
     {
      "w": "yes",
-     "start": 724.09,
-     "end": 724.24
+     "start": 724.12,
+     "end": 724.36
     },
     {
      "w": "he",
-     "start": 724.24,
-     "end": 724.38
+     "start": 724.36,
+     "end": 724.52
     },
     {
      "w": "sells",
-     "start": 724.38,
-     "end": 724.53
+     "start": 724.52,
+     "end": 724.66
     },
     {
      "w": "yes",
-     "start": 724.83,
-     "end": 725.07
+     "start": 724.84,
+     "end": 725.1
     },
     {
      "w": "he",
-     "start": 725.07,
-     "end": 725.31
+     "start": 725.1,
+     "end": 725.44
     },
     {
      "w": "sells",
-     "start": 725.31,
-     "end": 725.55
+     "start": 725.44,
+     "end": 725.66
     }
    ]
   },
@@ -4899,39 +4899,39 @@
   },
   {
    "t": "english",
-   "start": 743.15,
-   "end": 744.85,
+   "start": 743.18,
+   "end": 744.94,
    "text": "Yes, he sells. Yes, he sells.",
    "words": [
     {
      "w": "yes",
-     "start": 743.15,
-     "end": 743.29
+     "start": 743.18,
+     "end": 743.4
     },
     {
      "w": "he",
-     "start": 743.29,
-     "end": 743.43
+     "start": 743.4,
+     "end": 743.58
     },
     {
      "w": "sells",
-     "start": 743.43,
-     "end": 743.57
+     "start": 743.58,
+     "end": 743.72
     },
     {
      "w": "yes",
-     "start": 744.11,
-     "end": 744.36
+     "start": 744.18,
+     "end": 744.5
     },
     {
      "w": "he",
-     "start": 744.36,
-     "end": 744.6
+     "start": 744.5,
+     "end": 744.74
     },
     {
      "w": "sells",
-     "start": 744.6,
-     "end": 744.85
+     "start": 744.74,
+     "end": 744.94
     }
    ]
   },
@@ -5048,30 +5048,30 @@
   },
   {
    "t": "english",
-   "start": 771.78,
-   "end": 772.89,
+   "start": 771.82,
+   "end": 773.18,
    "text": "He sells apples.",
    "words": [
     {
      "w": "he",
-     "start": 771.78,
-     "end": 772.7
+     "start": 771.82,
+     "end": 772.1
     },
     {
      "w": "sells",
-     "start": 772.7,
-     "end": 773.16
+     "start": 772.1,
+     "end": 772.74
     },
     {
      "w": "apples",
-     "start": 773.16,
-     "end": 773.61
+     "start": 772.78,
+     "end": 773.18
     }
    ]
   },
   {
    "t": "narration",
-   "start": 772.9,
+   "start": 774.1,
    "end": 787.91,
    "lines": [
     "Él acaba de decir “he sells apples.” “He sells apples” significa “él vende manzanas.” Así es cómo dices “manzana.” Escucha y repite."
@@ -5079,7 +5079,7 @@
    "words": [
     {
      "w": "el",
-     "start": 772.84,
+     "start": 774.1,
      "end": 774.22
     },
     {
@@ -5210,7 +5210,7 @@
   {
    "t": "prompt",
    "start": 792.94,
-   "pauseAt": 794.35,
+   "pauseAt": 794.55,
    "spanish": "¿Cómo se dice “una manzana”?",
    "expected": [
     "An apple."
@@ -5219,29 +5219,29 @@
   },
   {
    "t": "english",
-   "start": 794.3,
-   "end": 798.22,
+   "start": 794.74,
+   "end": 798.35,
    "text": "An apple. An apple.",
    "words": [
     {
      "w": "an",
-     "start": 794.3,
-     "end": 795.56
+     "start": 794.74,
+     "end": 795.1
     },
     {
      "w": "apple",
-     "start": 795.56,
-     "end": 795.92
+     "start": 795.1,
+     "end": 795.9
     },
     {
      "w": "an",
-     "start": 796.12,
-     "end": 797.88
+     "start": 797.34,
+     "end": 797.7
     },
     {
      "w": "apple",
-     "start": 797.88,
-     "end": 798.22
+     "start": 797.7,
+     "end": 798.35
     }
    ]
   },
@@ -5358,7 +5358,7 @@
    "expected": [
     "The apples."
    ],
-   "pauseAt": 813.4,
+   "pauseAt": 813.95,
    "leadEnd": 813.16
   },
   {
