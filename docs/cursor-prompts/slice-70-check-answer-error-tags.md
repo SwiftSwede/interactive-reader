@@ -89,3 +89,6 @@ Transcript-mining workflow established: Kyle drops Zoom recording transcripts (m
 ## 2026-10-30 (Paola class 3 transcript)
 - Added plural_s_omission (Plural noun -s) and another_vs_other (Another vs other). Catalog now 35. Evidence: Paola diaries "All adjustment was done", "reports from manager"; "explain another people". Both approved by Kyle 2026-10-30.
 - Flashcard lane items logged in vault storylearning-app-ideas.md Idea 6: sensible/sensitive pair; meeting-panic phrases (freeze up, draw a blank, think on your feet).
+
+## 2026-11-13 (Paola class 5)
+- Kyle ruled: fold 3 candidates into existing tags, no new rows. adverb_placement gloss += only placement (only before verb, not before subject; Paola "only I take one bus", "only my days off"). preposition_partner gloss += explain/describe/say/mention need TO before person ("she didn't explain me a lot"). article_omission gloss += no article with last/next + time word ("the last week", "for the next year").

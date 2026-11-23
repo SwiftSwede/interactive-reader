@@ -39,7 +39,7 @@ You know the COMMON ERRORS Spanish speakers make in English (L1 interference):
 13. Time phrases: "at the time" for punctuality is wrong. English is "on time." "in time" means before a deadline.
 
 ERROR TAGS. Use these exact names in error_tags. One phrase each:
-- adverb_placement: Adverb placement
+- adverb_placement: Adverb placement. Spanish "nunca I watch" becomes "I never watch". Frequency adverbs go after the subject, before the verb. Also "only": only goes right before the verb (or before the noun it limits), never before the subject: "only I take one bus" becomes "I only take one bus". "Only my days off is Saturday" becomes "My only days off are Saturday".
 - negative_auxiliary: Negative auxiliary (don't/doesn't)
 - question_auxiliary: Question auxiliary (do/does)
 - embedded_question: Question word order inside a statement. When a question word ("what", "where", "how", "when", "who") is part of a statement, English uses statement word order: "I didn't know where she was from", not "where was she from". "Do you know what I want", not "what do I want". "She told me how old she was", not "how old was she".
@@ -53,7 +53,7 @@ ERROR TAGS. Use these exact names in error_tags. One phrase each:
 - people_agreement: People is/are
 - i_am_agree: I am agree
 - on_time: On time vs at the time
-- preposition_partner: Prepositions with verbs
+- preposition_partner: Prepositions with verbs. Verbs fix their prepositions: "depend of" becomes "depend on". Verbs like explain/describe/say/mention need TO before the person: "she didn't explain me a lot" becomes "she didn't explain much to me". "He described me the file" becomes "He described the file to me".
 - false_friend: False friends
 - make_vs_do: Make vs do
 - say_vs_tell: Say vs tell
@@ -66,7 +66,7 @@ ERROR TAGS. Use these exact names in error_tags. One phrase each:
 - place_preposition: Prepositions of place. Spanish "en" covers many relations that English splits: "en el bus" is "on the bus" (not "in his boss", which also mispronounces bus), "en mi casa" is "at my house" (not "on my house"), "at the street" is "in the street".
 - negative_infinitive: Negative infinitive. Spanish "para no gritar" becomes "to don't scream": correct is "not to scream" or "so as not to scream". "I covered my mouth to don't scream" becomes "I covered my mouth so as not to scream".
 - comparative_formation: Comparative formation. Spanish "mas facil" makes students say "more easy": correct is "easier". "More better" becomes "better". Short adjectives also fail in superlatives: "the most white" becomes "the whitest".
-- article_omission: Articles (a/an/the). Spanish drops articles: "today was special day" becomes "today was a special day". Wrong a/an before a vowel sound: "a interesting class" becomes "an interesting class". Extra "the" on place names: "in the Latin America" becomes "in Latin America".
+- article_omission: Articles (a/an/the). Spanish drops articles: "today was special day" becomes "today was a special day". Wrong a/an before a vowel sound: "a interesting class" becomes "an interesting class". Extra "the" on place names: "in the Latin America" becomes "in Latin America". No article with last/next + a time word: "the last week" becomes "last week", "for the next year" becomes "for next year", "the last class" becomes "last class".
 - tener_haber_contraction_confusion: Haber vs tener (have). In American English only auxiliary have (Spanish haber) contracts: "She hasn't arrived". The verb have (tener, obligation) never contracts: "She hasn't to pay anything" becomes "She doesn't have to pay anything". "I haven't time" becomes "I don't have time".
 - plural_s_omission: Missing -s on plural nouns. Spanish pluralizes but students drop the English -s, especially in writing: "All adjustment was done" becomes "All adjustments were done". "reports from manager" becomes "reports from the managers". "the procedures were appropriate" (plural noun stays). "3 client" becomes "3 clients".
 - another_vs_other: "Another" only goes with a singular count noun. For plurals use "other": "explain another people" becomes "explain to other people". "another questions" becomes "other questions". "another days" becomes "other days". "another ways to say it" becomes "other ways to say it".
