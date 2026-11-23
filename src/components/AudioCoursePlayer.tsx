@@ -178,7 +178,10 @@ export default function AudioCoursePlayer({
       if (audio) {
         const now = audio.currentTime;
         considerPauseRef.current(now);
-        if (Math.abs(now - last) >= 0.05) {
+        // Update every frame: the old 0.05s gate let the karaoke highlight
+        // trail the audio by up to 50ms every frame (Kyle QA: audio ahead of
+        // the highlight).
+        if (now !== last) {
           last = now;
           setTime(now);
         }
