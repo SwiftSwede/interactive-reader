@@ -3113,46 +3113,46 @@
   },
   {
    "t": "english",
-   "start": 492.26,
-   "end": 494.35,
+   "start": 492.46,
+   "end": 494.55,
    "text": "Hello. What do you sell?",
    "words": [
     {
      "w": "hello",
-     "start": 492.26,
-     "end": 493.16
+     "start": 492.46,
+     "end": 493.5
     },
     {
      "w": "what",
-     "start": 493.88,
-     "end": 494.26
+     "start": 493.52,
+     "end": 493.94
     },
     {
      "w": "do",
      "start": 493.94,
-     "end": 494.08
+     "end": 494.06
     },
     {
      "w": "you",
-     "start": 494.08,
-     "end": 494.2
+     "start": 494.06,
+     "end": 494.18
     },
     {
      "w": "sell",
-     "start": 494.2,
-     "end": 494.35
+     "start": 494.18,
+     "end": 494.55
     }
    ]
   },
   {
    "t": "english",
-   "start": 494.36,
-   "end": 497.86,
+   "start": 494.98,
+   "end": 497.95,
    "text": "We sell fruit. Do you eat apples?",
    "words": [
     {
      "w": "we",
-     "start": 494.36,
+     "start": 494.98,
      "end": 495.5
     },
     {
@@ -3163,44 +3163,44 @@
     {
      "w": "fruit",
      "start": 495.84,
-     "end": 496.28
+     "end": 496.4
     },
     {
      "w": "do",
-     "start": 496.96,
-     "end": 497.56
+     "start": 496.6,
+     "end": 497.14
     },
     {
      "w": "you",
      "start": 497.14,
-     "end": 497.3
+     "end": 497.28
     },
     {
      "w": "eat",
-     "start": 497.3,
+     "start": 497.28,
      "end": 497.48
     },
     {
      "w": "apples",
      "start": 497.48,
-     "end": 497.86
+     "end": 497.95
     }
    ]
   },
   {
    "t": "english",
-   "start": 498.47,
-   "end": 500.07,
+   "start": 498.24,
+   "end": 500.42,
    "text": "Yes, I eat apples every day.",
    "words": [
     {
      "w": "yes",
-     "start": 498.47,
-     "end": 499.07
+     "start": 498.24,
+     "end": 498.92
     },
     {
      "w": "i",
-     "start": 498.9,
+     "start": 498.92,
      "end": 498.98
     },
     {
@@ -3211,29 +3211,29 @@
     {
      "w": "apples",
      "start": 499.16,
-     "end": 499.54
+     "end": 499.58
     },
     {
      "w": "every",
-     "start": 499.78,
-     "end": 500.18
+     "start": 499.58,
+     "end": 499.96
     },
     {
      "w": "day",
-     "start": 499.94,
-     "end": 500.07
+     "start": 499.96,
+     "end": 500.42
     }
    ]
   },
   {
    "t": "english",
-   "start": 500.08,
-   "end": 502.27,
+   "start": 500.66,
+   "end": 502.62,
    "text": "We sell apples every day.",
    "words": [
     {
      "w": "we",
-     "start": 500.08,
+     "start": 500.66,
      "end": 501.12
     },
     {
@@ -3243,36 +3243,36 @@
     },
     {
      "w": "apples",
-     "start": 501.8,
-     "end": 502.26
+     "start": 501.44,
+     "end": 501.92
     },
     {
      "w": "every",
-     "start": 501.9,
+     "start": 501.92,
      "end": 502.2
     },
     {
      "w": "day",
      "start": 502.2,
-     "end": 502.27
+     "end": 502.62
     }
    ]
   },
   {
    "t": "english",
-   "start": 502.28,
-   "end": 504.87,
+   "start": 502.86,
+   "end": 505.15,
    "text": "And wine, do you guys sell wine?",
    "words": [
     {
      "w": "and",
-     "start": 502.28,
-     "end": 503.14
+     "start": 502.86,
+     "end": 503.16
     },
     {
      "w": "wine",
-     "start": 503.14,
-     "end": 503.5
+     "start": 503.16,
+     "end": 503.66
     },
     {
      "w": "do",
@@ -3297,49 +3297,49 @@
     {
      "w": "wine",
      "start": 504.7,
-     "end": 504.87
+     "end": 505.15
     }
    ]
   },
   {
    "t": "english",
-   "start": 504.88,
-   "end": 508.54,
+   "start": 505.44,
+   "end": 508.62,
    "text": "No, we don’t sell wine. But they sell wine.",
    "words": [
     {
      "w": "no",
-     "start": 504.88,
-     "end": 505.88
+     "start": 505.44,
+     "end": 506.05
     },
     {
      "w": "we",
-     "start": 506.2,
+     "start": 506.08,
      "end": 506.28
     },
     {
      "w": "dont",
      "start": 506.28,
-     "end": 506.6
+     "end": 506.58
     },
     {
      "w": "sell",
-     "start": 506.6,
-     "end": 506.82
+     "start": 506.58,
+     "end": 506.84
     },
     {
      "w": "wine",
-     "start": 506.82,
-     "end": 507.2
+     "start": 506.84,
+     "end": 507.25
     },
     {
      "w": "but",
-     "start": 507.6,
-     "end": 507.96
+     "start": 507.36,
+     "end": 507.7
     },
     {
      "w": "they",
-     "start": 507.72,
+     "start": 507.7,
      "end": 507.92
     },
     {
@@ -3350,24 +3350,24 @@
     {
      "w": "wine",
      "start": 508.22,
-     "end": 508.54
+     "end": 508.62
     }
    ]
   },
   {
    "t": "english",
-   "start": 509.29,
+   "start": 509.14,
    "end": 509.53,
    "text": "Who, them?",
    "words": [
     {
      "w": "who",
-     "start": 509.29,
-     "end": 509.65
+     "start": 509.14,
+     "end": 509.42
     },
     {
      "w": "them",
-     "start": 509.56,
+     "start": 509.42,
      "end": 509.53
     }
    ]
@@ -3496,7 +3496,7 @@
   {
    "t": "narration",
    "start": 519.6,
-   "end": 534.28,
+   "end": 533.99,
    "lines": [
     "Ahora aprendamos otro verbo en el presente simple. Y aprendemos los nombres de algunas frutas en inglés. Ahora aprendamos cómo decir el verbo \"vender.\" Escucha y repite."
    ],
@@ -3629,30 +3629,30 @@
     {
      "w": "y",
      "start": 533.62,
-     "end": 534.2
+     "end": 533.99
     },
     {
      "w": "repite",
      "start": 533.78,
-     "end": 534.24
+     "end": 533.99
     }
    ]
   },
   {
    "t": "english",
-   "start": 534.29,
-   "end": 535.99,
+   "start": 534.0,
+   "end": 536.06,
    "text": "Sell. Sell.",
    "words": [
     {
      "w": "sell",
-     "start": 534.29,
-     "end": 534.63
+     "start": 534.0,
+     "end": 534.4
     },
     {
      "w": "sell",
-     "start": 535.53,
-     "end": 535.99
+     "start": 535.52,
+     "end": 536.06
     }
    ]
   },
@@ -3669,18 +3669,18 @@
   {
    "t": "english",
    "start": 543.24,
-   "end": 546.3,
+   "end": 546.56,
    "text": "Sell. Sell.",
    "words": [
     {
      "w": "sell",
      "start": 543.24,
-     "end": 544.28
+     "end": 543.62
     },
     {
      "w": "sell",
-     "start": 544.3,
-     "end": 546.8
+     "start": 545.84,
+     "end": 546.56
     }
    ]
   },

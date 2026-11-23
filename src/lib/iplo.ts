@@ -505,8 +505,11 @@ export function promptLeadText(spanish: string): string | null {
  * at the lead's end; prompts without a lead open at the segment start, because
  * the request begins immediately. */
 export function promptInputAt(prompt: IploPrompt): number {
-  const lead = prompt.leadEnd;
-  if (lead != null && lead > prompt.start + 0.05 && lead < prompt.pauseAt - 0.05) return lead;
+  // The card (and its input) opens when the prompt SEGMENT starts, not at
+  // leadEnd: with true segment starts the lead speech begins right at
+  // prompt.start, so waiting for leadEnd made the question card arrive ~1s
+  // after the audio began (Kyle QA: 1:52 prompt arrives late) and left a bare
+  // "Escucha" chip with no caption in between (Kyle QA: 6:26).
   return prompt.start;
 }
 
@@ -515,10 +518,11 @@ export function promptAnswerAt(prompt: IploPrompt): number {
   return prompt.pauseAt;
 }
 
-/** Input screen only. Repeat prompts ("Otra vez, ¿cómo...?") drop the lead and
- * show the bare question. "Ahora di ..." / "Ahora dime cómo decir ..." keep the
- * full sentence: the lead is the sentence's subject, not a repeat prompt.
- * Whisper transcripts lowercase after ¿ ("¿cómo...") - normalize casing here. */
+/** Input screen opens with the prompt segment. (Kyle QA: waiting for leadEnd
+ * made the question card arrive ~1s after the audio and flashed a bare
+ * "Escucha" chip in between.) Repeat prompts ("Otra vez, ¿cómo...?") drop the
+ * lead and show the bare question. Whisper transcripts lowercase after ¿
+ * ("¿cómo...") - normalize casing here. */
 export function promptQuestionText(spanish: string): string {
   const trimmed = spanish.trim();
   // Repeat leads may carry an instruction between lead and question
