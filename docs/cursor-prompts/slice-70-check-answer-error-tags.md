@@ -95,3 +95,6 @@ Transcript-mining workflow established: Kyle drops Zoom recording transcripts (m
 
 ## 2026-11-23 (article tag rename)
 - Kyle ruled: article_omission is too narrow now that the gloss also covers extra articles and last/next time words. Renamed IN PLACE to article_usage (displayName "Article usage") via scripts/rename-article-tag.ts (row id 9a791376 preserved), then re-seeded (37 tags). Seeds, SYSTEM_PROMPT, EXAMPLES entry, test updated. NOTE: historical analytics events/evidence keyed by the old NAME article_omission do not merge with article_usage under mergeErrors (name-keyed grouping); leave legacy rows unless Kyle asks for a data migration.
+
+## 2026-11-23 (article tag event migration)
+- Kyle approved repointing old-name analytics rows. scripts/migrate-article-tag-events.ts: learning_events.detail.error_tags article_omission -> article_usage (JSONB array element swap, .contains filter). Result: 1 row updated, 0 leftover, 1 row with new name. eval_error_tags keys on structure_id (not tag names), out of scope. user_topic_evidence is UUID-keyed, auto-repointed by the in-place rename.
