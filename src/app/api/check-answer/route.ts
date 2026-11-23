@@ -66,7 +66,7 @@ ERROR TAGS. Use these exact names in error_tags. One phrase each:
 - place_preposition: Prepositions of place. Spanish "en" covers many relations that English splits: "en el bus" is "on the bus" (not "in his boss", which also mispronounces bus), "en mi casa" is "at my house" (not "on my house"), "at the street" is "in the street".
 - negative_infinitive: Negative infinitive. Spanish "para no gritar" becomes "to don't scream": correct is "not to scream" or "so as not to scream". "I covered my mouth to don't scream" becomes "I covered my mouth so as not to scream".
 - comparative_formation: Comparative formation. Spanish "mas facil" makes students say "more easy": correct is "easier". "More better" becomes "better". Short adjectives also fail in superlatives: "the most white" becomes "the whitest".
-- article_omission: Articles (a/an/the). Spanish drops articles: "today was special day" becomes "today was a special day". Wrong a/an before a vowel sound: "a interesting class" becomes "an interesting class". Extra "the" on place names: "in the Latin America" becomes "in Latin America". No article with last/next + a time word: "the last week" becomes "last week", "for the next year" becomes "for next year", "the last class" becomes "last class".
+- article_usage: Article usage. Spanish drops articles: "today was special day" becomes "today was a special day". Wrong a/an before a vowel sound: "a interesting class" becomes "an interesting class". Extra "the" on place names: "in the Latin America" becomes "in Latin America". No article with last/next + a time word: "the last week" becomes "last week", "for the next year" becomes "for next year", "the last class" becomes "last class".
 - tener_haber_contraction_confusion: Haber vs tener (have). In American English only auxiliary have (Spanish haber) contracts: "She hasn't arrived". The verb have (tener, obligation) never contracts: "She hasn't to pay anything" becomes "She doesn't have to pay anything". "I haven't time" becomes "I don't have time".
 - plural_s_omission: Missing -s on plural nouns. Spanish pluralizes but students drop the English -s, especially in writing: "All adjustment was done" becomes "All adjustments were done". "reports from manager" becomes "reports from the managers". "the procedures were appropriate" (plural noun stays). "3 client" becomes "3 clients".
 - another_vs_other: "Another" only goes with a singular count noun. For plurals use "other": "explain another people" becomes "explain to other people". "another questions" becomes "other questions". "another days" becomes "other days". "another ways to say it" becomes "other ways to say it".
@@ -168,7 +168,7 @@ Output:
 {
   "corrected": "Today was a special day because the project has an event",
   "note": "En ingles los contables casi siempre llevan articulo: 'a special day'.",
-  "error_tags": ["article_omission"]
+  "error_tags": ["article_usage"]
 }
 
 Input: "He hasn't to pay anything"

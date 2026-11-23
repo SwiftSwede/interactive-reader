@@ -161,7 +161,7 @@ test("error tags are a fixed 37-name vocabulary", () => {
   assert.equal(ERROR_TAG_SEEDS.length, 37);
   assert.equal(isValidErrorTag("embedded_question"), true);
   assert.equal(isValidErrorTag("age_expression"), true);
-  assert.equal(isValidErrorTag("article_omission"), true);
+  assert.equal(isValidErrorTag("article_usage"), true);
   assert.equal(isValidErrorTag("comparative_formation"), true);
   assert.equal(isValidErrorTag("tener_haber_contraction_confusion"), true);
   assert.equal(isValidErrorTag("double_comparative"), false);

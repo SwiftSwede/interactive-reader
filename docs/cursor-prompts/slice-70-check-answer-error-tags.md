@@ -92,3 +92,6 @@ Transcript-mining workflow established: Kyle drops Zoom recording transcripts (m
 
 ## 2026-11-13 (Paola class 5)
 - Kyle ruled: fold 3 candidates into existing tags, no new rows. adverb_placement gloss += only placement (only before verb, not before subject; Paola "only I take one bus", "only my days off"). preposition_partner gloss += explain/describe/say/mention need TO before person ("she didn't explain me a lot"). article_omission gloss += no article with last/next + time word ("the last week", "for the next year").
+
+## 2026-11-23 (article tag rename)
+- Kyle ruled: article_omission is too narrow now that the gloss also covers extra articles and last/next time words. Renamed IN PLACE to article_usage (displayName "Article usage") via scripts/rename-article-tag.ts (row id 9a791376 preserved), then re-seeded (37 tags). Seeds, SYSTEM_PROMPT, EXAMPLES entry, test updated. NOTE: historical analytics events/evidence keyed by the old NAME article_omission do not merge with article_usage under mergeErrors (name-keyed grouping); leave legacy rows unless Kyle asks for a data migration.
