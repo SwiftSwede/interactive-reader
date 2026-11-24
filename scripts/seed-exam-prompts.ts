@@ -412,6 +412,72 @@ Queremos deshacernos de las personas que se mudaron a nuestra casa. | We want to
 Si tuviera que pasar la noche en un hospital abandonado, estaría muy tenso toda la noche. | If I had to spend the night in an abandoned hospital, I would be on edge all night.
 Si hubiera escuchado un ruido extraño afuera de mi habitación a las 3 de la mañana, no habría investigado. | If I had heard a strange noise outside my bedroom at 3 in the morning, I wouldn't have investigated.`,
   },
+  {
+    title: "Pre-Int November 2026 — Acción de Gracias",
+    theme: "Thanksgiving",
+    level: "pre-intermediate",
+    timeLimitMinutes: 45,
+    vocabRaw: `Ashamed | avergonzado
+Bad manners | malos modales
+Beside | al lado de
+Brag | presumir
+By now | para ahora
+Chilly | un poco frío
+Dish up | servirse
+Drawback | desventaja
+Catch up | ponerse al día
+Figure out | averiguar
+Get cold easily | ser friolento
+Get together | juntarse
+Had better | debería
+Janitor | conserje
+Layer | capa
+Out of one's mind | loco
+Pile | montón
+Put to bed | acostar
+Regret (verb) | arrepentirse de
+So far | hasta ahora
+Spoil | consentir`,
+    task1Raw: `Every November, my family drives to my aunt Rosa's house, and we all {juntarnos|get together} for Thanksgiving.
+This year it was {un poco frío|chilly} outside, almost cold enough to snow.
+My little brother {es friolento|gets cold easily}, so Mom made him wear an extra {capa|layer} under his jacket.
+In the car, Dad said, "You {deberías|had better} bring your gloves today."
+When we arrived, there was a big {montón|pile} of coats and boots next to the front door.
+Aunt Rosa works as a {conserje|janitor} at a school, so she had the day off.
+She was in the kitchen, trying to {averiguar|figure out} why the oven was taking so long to heat up.
+{Para ahora|By now}, all the cousins were playing in the yard.
+My cousin Danny started {presumiendo con palabras|bragging} about his expensive sneakers.
+My grandma told him that talking like that is {malos modales|bad manners}.
+Danny looked {avergonzado|ashamed}, but he kept talking about them anyway.
+Grandma {consiente|spoils} all the grandkids with too many treats before dinner.
+Mom told her, "They are going to be {locos|out of their minds} with all that sugar."
+Finally, Aunt Rosa called everyone to the table so they could {servirse|dish up} and eat.
+I sat {al lado de|beside} my cousin Ana, and we {nos pusimos al día|caught up} on everything from the year.
+The only {desventaja|drawback} of the dinner is that the house is too small for so many people.
+I {me arrepiento de|regret} not wearing warmer socks, because my feet were freezing under the table.
+After dessert, we {acostamos|put to bed} our baby in the back room.
+It was my favorite Thanksgiving {hasta ahora|so far}.`,
+    task2Raw: `fix | I miss a lot of time walking to work. | I waste a lot of time walking to work.
+fix | It's more warm at night. | It's warmer at night.
+ok | I have a cold.
+fix | I use a sweater when it gets cold. | I wear a sweater when it gets cold.
+fix | She sleep better in the cold. | She sleeps better in the cold.
+fix | Before to move to Chile, I was in La Paz. | Before moving to Chile, I was in La Paz.
+ok | I realized that I enjoy being alone.
+ok | Everything depends on your decision.
+fix | In this moment, I work in a telecommunications company. | At the moment, I work in a telecommunications company.
+fix | There was many crazy Gringos there. | There were many crazy Gringos there.`,
+    task3Raw: `Estoy usando mi ropa formal. | I'm wearing my formal clothes. | I'm wearing formal clothes.
+Agarré un resfriado la semana pasada. | I caught a cold last week. | I got a cold last week.
+Estoy acostumbrado al clima frío. | I'm used to the cold weather. | I'm used to cold weather.
+Panamá hace calor todo el año. | It's warm in Panama all year round. | It's hot in Panama all year round.
+Nunca he experimentado temperaturas tan frías. | I have never experienced such cold temperatures. | I've never felt such cold temperatures.
+Desde 2018 que vivo aquí. | I have lived here since 2018. | I've lived here since 2018.
+¿Por qué estás perdiendo tiempo? | Why are you wasting time? | Why are you wasting your time?
+No quiero perder la clase. | I don't want to miss the class.
+¿Qué comerías si tuvieras Thanksgiving en tu país? | What would you eat if you had Thanksgiving in your country? | What would you eat if you had Thanksgiving in your own country?
+Si me hubiera puesto otra capa, no habría tenido tanto frío en la calle. | If I had put on another layer, I wouldn't have been so cold outside.`,
+  },
 ];
 
 async function main() {
