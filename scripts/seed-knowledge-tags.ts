@@ -3,6 +3,7 @@
 //   npx tsx scripts/seed-knowledge-tags.ts
 //
 // Idempotent: upserts on `name`, then resolves grammar prerequisites to UUIDs.
+// Name changes and merges must run a one-off script first so row ids survive.
 // Tags are catalog data, so writes go through the service role, never the
 // browser.
 

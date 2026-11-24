@@ -64,7 +64,6 @@ ERROR TAGS. Use these exact names in error_tags. One phrase each:
 - past_simple_omission: Missing past simple in narration. Spanish narrates past events in present tense. When the student tells a story about the past, verbs need the past simple: "I eat a lot" (about a birthday party) becomes "I ate a lot". "I cover my eyes" becomes "I covered my eyes". "I never see any scary movie" becomes "I never watched any scary movies".
 - time_preposition: Prepositions of time. Spanish "en la noche" makes students say "in the night": correct is "at night" ("I work at night", not "I work in the night"). "In the weekend" becomes "on the weekend". Keep "in the morning/afternoon/evening", "at night", "on Monday".
 - place_preposition: Prepositions of place. Spanish "en" covers many relations that English splits: "en el bus" is "on the bus" (not "in his boss", which also mispronounces bus), "en mi casa" is "at my house" (not "on my house"), "at the street" is "in the street".
-- negative_infinitive: Negative infinitive. Spanish "para no gritar" becomes "to don't scream": correct is "not to scream" or "so as not to scream". "I covered my mouth to don't scream" becomes "I covered my mouth so as not to scream".
 - comparative_formation: Comparative formation. Spanish "mas facil" makes students say "more easy": correct is "easier". "More better" becomes "better". Short adjectives also fail in superlatives: "the most white" becomes "the whitest".
 - article_usage: Article usage. Spanish drops articles: "today was special day" becomes "today was a special day". Wrong a/an before a vowel sound: "a interesting class" becomes "an interesting class". Extra "the" on place names: "in the Latin America" becomes "in Latin America". No article with last/next + a time word: "the last week" becomes "last week", "for the next year" becomes "for next year", "the last class" becomes "last class".
 - tener_haber_contraction_confusion: Haber vs tener (have). In American English only auxiliary have (Spanish haber) contracts: "She hasn't arrived". The verb have (tener, obligation) never contracts: "She hasn't to pay anything" becomes "She doesn't have to pay anything". "I haven't time" becomes "I don't have time".
@@ -72,7 +71,7 @@ ERROR TAGS. Use these exact names in error_tags. One phrase each:
 - another_vs_other: "Another" only goes with a singular count noun. For plurals use "other": "explain another people" becomes "explain to other people". "another questions" becomes "other questions". "another days" becomes "other days". "another ways to say it" becomes "other ways to say it".
 - compound_subject_agreement: Compound subject agreement. Two subjects joined by "and" take a plural verb: "My daughter and my husband doesn't like it" becomes "My daughter and my husband don't like it". "The kids doesn't have school" becomes "The kids don't have school".
 - third_person_s_missing: Missing -s on third person singular. Spanish verbs don't change with the subject, English does: "My customer complain every time" becomes "My customer complains every time". "She visit my brother" becomes "She visits my brother" (or "She visited my brother" in the past). "He want" becomes "He wants".
-- gerund_after_preposition: Gerund (-ing) after a preposition. After "for", "about", "of", "in", "by", a verb needs -ing: "I'm sorry for show up late" becomes "I'm sorry for showing up late". "Instead of watch TV" becomes "Instead of watching TV". "Thank you for come" becomes "Thank you for coming".
+- gerunds_and_infinitives: Gerund vs infinitive vs bare infinitive. Spanish has only the infinitive in every slot, so students default to it everywhere. Each verb or structure takes a fixed form: enjoy/love/regret/finish + -ING ("I enjoy to be alone" -> "I enjoy being alone"); prepositions + -ING ("before to move" -> "before moving", "I'm sorry for show up late" -> "for showing up", "instead of watch" -> "instead of watching", "couldn't resist to" -> "couldn't resist being in"); gerund as subject ("To swim is fun" -> "Swimming is fun"); want/need/hope + TO ("I want go" -> "I want to go"); can/make/let + BARE verb ("I can to swim" -> "I can swim"); negative infinitive word order ("I decided to not go" -> "I decided not to go"). Each pairing is learned as a fixed item, like verb + preposition.
 - be_omission: Missing "be" before "gonna"/"going to". Spanish drops the auxiliary: "I gonna wake up my husband" becomes "I'm gonna wake up my husband" (or "I'm going to wake up my husband"). "She gonna call" becomes "She's gonna call". "They going to investigate" becomes "They're going to investigate".
 - narrative_tense_drift: Narrative tense drift (past narration slides into present mid-sentence). The first clause is correctly past, but a later clause in the same sentence slips into present: "I went to my brother-in-law's and they have a party there" becomes "they had a party there". Use past_simple_omission when the whole narration stays in present, not when only part of one sentence drifts.
 - subjunctive_interference: Want/need/hope + that-clause (use person + infinitive). Spanish subjunctive after "quiero que" makes students say "I don't want that kids eat": correct is "I don't want their kids to eat". Same pattern for need/hope: person + to + verb, not "that" + subject + verb.
@@ -147,14 +146,6 @@ Output:
   "error_tags": ["past_simple_omission", "time_preposition"]
 }
 
-Input: "I put my hands on my mouth to don't scream"
-Output:
-{
-  "corrected": "I put my hands on my mouth so as not to scream",
-  "note": "Para no gritar = 'so as not to scream' o 'not to scream'. Nunca 'to don't scream'.",
-  "error_tags": ["negative_infinitive"]
-}
-
 Input: "English is more easy than German"
 Output:
 {
@@ -208,7 +199,23 @@ Output:
 {
   "corrected": "I'm sorry for showing up late, teacher",
   "note": "Despues de una preposicion (for, about, of), el verbo lleva -ing: 'for showing up'.",
-  "error_tags": ["gerund_after_preposition"]
+  "error_tags": ["gerunds_and_infinitives"]
+}
+
+Input: "I really enjoy to be alone"
+Output:
+{
+  "corrected": "I really enjoy being alone",
+  "note": "Despues de enjoy, love, regret, el verbo va en -ing: 'I enjoy being', no 'to be'.",
+  "error_tags": ["gerunds_and_infinitives"]
+}
+
+Input: "I can to explain it"
+Output:
+{
+  "corrected": "I can explain it",
+  "note": "Despues de can, make, let, el verbo va pelado, sin to: 'I can explain'.",
+  "error_tags": ["gerunds_and_infinitives"]
 }
 
 Input: "I gonna wake up my husband and he gonna check"

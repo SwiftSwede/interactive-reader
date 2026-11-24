@@ -157,13 +157,14 @@ test("vocabulary keywords respect word boundaries", () => {
   assert.ok(hits.some((tag) => tag.name === "sports"));
 });
 
-test("error tags are a fixed 37-name vocabulary", () => {
-  assert.equal(ERROR_TAG_SEEDS.length, 37);
+test("error tags are a fixed 36-name vocabulary", () => {
+  assert.equal(ERROR_TAG_SEEDS.length, 36);
   assert.equal(isValidErrorTag("embedded_question"), true);
   assert.equal(isValidErrorTag("age_expression"), true);
   assert.equal(isValidErrorTag("article_usage"), true);
   assert.equal(isValidErrorTag("comparative_formation"), true);
   assert.equal(isValidErrorTag("tener_haber_contraction_confusion"), true);
+  assert.equal(isValidErrorTag("gerunds_and_infinitives"), true);
   assert.equal(isValidErrorTag("double_comparative"), false);
   assert.equal(isValidErrorTag("invented_tag"), false);
   for (const seed of ERROR_TAG_SEEDS) {

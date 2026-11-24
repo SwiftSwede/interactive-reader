@@ -348,7 +348,7 @@ npx tsx scripts/apply-content-tags.ts
 
 ### Seed the Phase 4 tag catalogs
 
-Seeds the GrammarTag, VocabularyTag, and PhoneticTag catalogs, then the 21 error tags into `error_tags`. Idempotent upsert on `name`. Run once after `supabase/migrations/20260929_slice71_teacher_observation.sql` is applied. Safe to re-run.
+Seeds the GrammarTag, VocabularyTag, and PhoneticTag catalogs, then the error tags into `error_tags`. Idempotent upsert on `name`. Run once after `supabase/migrations/20260929_slice71_teacher_observation.sql` is applied. Safe to re-run. Does not rename or merge rows: a name change in the seed file would insert a new id. Use the one-off merge/rename scripts first.
 
 ```bash
 npx tsx scripts/seed-knowledge-tags.ts
@@ -516,6 +516,17 @@ npx tsx scripts/verify-import.ts
 ---
 
 ## One-Off Scripts (already run, kept for reference)
+
+### Merge gerund/infinitive error tags
+
+Renames `gerund_after_preposition` in place to `gerunds_and_infinitives` (same id), re-points `negative_infinitive` UUID refs (`user_topic_evidence`, `student_missions`, `drill_items`, `content_tags`, mission events), rewrites name-keyed `learning_events` arrays, then deletes `negative_infinitive`. Run before `seed-knowledge-tags.ts` after the catalog merge.
+
+```bash
+npx tsx scripts/merge-gerund-infinitive-tags.ts
+npx tsx scripts/seed-knowledge-tags.ts
+```
+
+**Status:** Run as part of the 2026-11-24 gerunds/infinitives merge. Idempotent if the survivor is already renamed and the loser is gone.
 
 ### Import Stripe subscribers
 

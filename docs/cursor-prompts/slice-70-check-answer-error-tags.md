@@ -98,3 +98,6 @@ Transcript-mining workflow established: Kyle drops Zoom recording transcripts (m
 
 ## 2026-11-23 (article tag event migration)
 - Kyle approved repointing old-name analytics rows. scripts/migrate-article-tag-events.ts: learning_events.detail.error_tags article_omission -> article_usage (JSONB array element swap, .contains filter). Result: 1 row updated, 0 leftover, 1 row with new name. eval_error_tags keys on structure_id (not tag names), out of scope. user_topic_evidence is UUID-keyed, auto-repointed by the in-place rename.
+
+## 2026-11-24 (gerunds and infinitives merge)
+- Kyle ruled: `gerund_after_preposition` + `negative_infinitive` are one family (form of the verb, not position). Survivor is the `gerund_after_preposition` row, renamed in place to `gerunds_and_infinitives` ("Gerunds and infinitives"). `negative_infinitive` refs re-point then the row is deleted. Catalog 37 → 36. Grammar seeds `infinitive_clauses` / `gerunds` untouched. Spec: `docs/cursor-prompts/slice-97-verb-form-tag-merge.md`.
