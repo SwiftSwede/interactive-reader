@@ -472,7 +472,7 @@ Agarré un resfriado la semana pasada. | I caught a cold last week. | I got a co
 Estoy acostumbrado al clima frío. | I'm used to the cold weather. | I'm used to cold weather.
 Panamá hace calor todo el año. | It's warm in Panama all year round. | It's hot in Panama all year round.
 Nunca he experimentado temperaturas tan frías. | I have never experienced such cold temperatures. | I've never felt such cold temperatures.
-Desde 2018 que vivo aquí. | I have lived here since 2018. | I've lived here since 2018.
+Desde 2018 que vivo aquí. | I have lived here since 2018. | I've lived here since 2018. | I have been living here since 2018.
 ¿Por qué estás perdiendo tiempo? | Why are you wasting time? | Why are you wasting your time?
 No quiero perder la clase. | I don't want to miss the class.
 ¿Qué comerías si tuvieras Thanksgiving en tu país? | What would you eat if you had Thanksgiving in your country? | What would you eat if you had Thanksgiving in your own country?
