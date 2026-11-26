@@ -413,7 +413,7 @@ Si tuviera que pasar la noche en un hospital abandonado, estaría muy tenso toda
 Si hubiera escuchado un ruido extraño afuera de mi habitación a las 3 de la mañana, no habría investigado. | If I had heard a strange noise outside my bedroom at 3 in the morning, I wouldn't have investigated.`,
   },
   {
-    title: "Pre-Int November 2026 — Acción de Gracias",
+    title: "Pre-Int November 2026 — Thanksgiving",
     theme: "Thanksgiving",
     level: "pre-intermediate",
     timeLimitMinutes: 45,
@@ -477,6 +477,75 @@ Desde 2018 que vivo aquí. | I have lived here since 2018. | I've lived here sin
 No quiero perder la clase. | I don't want to miss the class.
 ¿Qué comerías si tuvieras Thanksgiving en tu país? | What would you eat if you had Thanksgiving in your country? | What would you eat if you had Thanksgiving in your own country?
 Si me hubiera puesto otra capa, no habría tenido tanto frío en la calle. | If I had put on another layer, I wouldn't have been so cold outside.`,
+  },
+  {
+    title: "Int November 2026 — Gratitud en el Trabajo",
+    theme: "Gratitude",
+    level: "intermediate",
+    timeLimitMinutes: 45,
+    task2Type: "sentence_correction",
+    vocabRaw: `Burned out | agotado
+Drowsy | con sueño
+End up | terminar
+Gauge | medidor
+Grievance | queja
+Harsh | dura
+Higher up on the food chain | más arriba en la jerarquía
+Hitch a ride | conseguir aventón
+Lull | respiro
+Moreover | además
+Nick of time | momento justo
+On top of that | adicionalmente
+Pay one's dues | pagar sus deudas
+Seldom | rara vez
+Slight | leve
+Step up | trabajar más duro
+Take for granted | tomados por sentado
+Take one for the team | nos sacrificamos por el equipo
+Tone deaf | insensible
+Undervalued | subestimados
+Vouch | respaldar
+Whip up | preparado rápidamente`,
+    task1Raw: `Last November, everybody in my department was completely {agotado|burned out} after working ten-hour days for months.
+We {rara vez|seldom} missed a deadline, but the people {más arriba en la jerarquía|higher up on the food chain} didn't recognize all our effort.
+When one of our teammates quit, we all {nos sacrificamos por el equipo|took one for the team} to make sure we didn't fall behind.
+Nobody wrote a formal {queja|grievance}, because we didn't want to make problems at work.
+Daniel was the worst case: with a newborn at home and classes at night, {adicionalmente|on top of that} he was covering two jobs at once.
+Some days he was so {con sueño|drowsy} in the afternoon that he could barely keep his eyes open at his desk.
+One Friday, during the {respiro|lull} after lunch, when the office went quiet, I decided to do something about it.
+I went to the manager and told her that we were tired of feeling {subestimados|undervalued} and {tomados por sentado|taken for granted}.
+Her first reaction was {dura|harsh}: she said the team's attitude was the real problem.
+But I had caught her in the {momento justo|nick of time} because Daniel came in and handed in his two weeks' notice.
+When she saw it, she admitted that the company had ignored the everyday worker for years, and that her joke about salaries during the last layoffs had been {insensible|tone deaf}.
+{Además|Moreover}, she promised to review salaries in January and to thank the team from now on.
+Over the next month, she started to {respaldar|vouch for} us whenever clients complained.
+She also stopped asking us to {trabajar más duro|step up} when we were already at our limit.
+The following Friday, we {conseguimos aventón|hitched a ride} from a coworker to attend a barbecue Daniel had invited us to.
+The gas {medidor|gauge} was almost on empty, so we stopped at a station on the way.
+Daniel had {preparado rápidamente|whipped up} enough food for twenty people.
+He had {pagado sus deudas|paid his dues} at that company for years, and had finally gotten his promotion.
+There was only one {leve|slight} problem: he had made so much food that he and his wife would be eating leftovers for days.
+In the end, we {terminamos|ended up} staying at his place till late, telling stories and laughing.`,
+    task2Raw: `fix | I didn't know that they have that chance. | I didn't know that they had that chance.
+fix | She is the only one who do her job. | She is the only one who does her job.
+fix | All the people was drinking Bacardi. | All the people were drinking Bacardi.
+ok | It's common that you won't agree with everybody.
+ok | He got scared when he entered the place.
+ok | I've been working at the company for 18 years.
+fix | I have been in Cartagena. | I have been to Cartagena.
+fix | Yes, she lives near from my house. | Yes, she lives near my house.
+fix | I think it's not good with my health. | I think it's not good for my health.
+fix | They are so rude with us. | They are so rude to us.`,
+    task3Raw: `Todos en mi trabajo son muy serviciales. | Everybody at my workplace is very helpful. | Everyone at my workplace is very helpful.
+Es importante que cada uno haga su trabajo. | It's important that everyone does their job.
+Es muy bueno haciendo seguimiento con el cliente. | He's really good at following up with the customer.
+Vendemos repuestos para maquinaria pesada. | We sell spare parts for heavy machinery.
+La persona que está encima de ti debe asumir la responsabilidad. | The person above you needs to take responsibility.
+No te hagas el que no sabe. | Don't act like you don't know it. | Don't act like you don't know.
+Los cambios de clima son un golpe para el cuerpo. | The changes in weather are a shock to the body.
+Quiero alabarte por un trabajo bien hecho. | I want to praise you for a job well done.
+Si mi jefe reconociera mi esfuerzo, no pensaría en renunciar. | If my boss recognized my effort, I wouldn't think about quitting. | If my boss recognized my effort, I wouldn't think about quitting my job.
+Si me hubieras comunicado tus quejas, te habría escuchado. | If you had communicated with me your grievances, I would have listened. | If you had communicated your grievances to me, I would have listened.`,
   },
 ];
 
