@@ -3668,19 +3668,19 @@
   },
   {
    "t": "english",
-   "start": 543.24,
-   "end": 546.56,
+   "start": 543.25,
+   "end": 546.59,
    "text": "Sell. Sell.",
    "words": [
     {
      "w": "sell",
-     "start": 543.24,
-     "end": 543.62
+     "start": 543.25,
+     "end": 543.67
     },
     {
      "w": "sell",
-     "start": 545.84,
-     "end": 546.56
+     "start": 545.87,
+     "end": 546.59
     }
    ]
   },
@@ -3744,39 +3744,39 @@
   },
   {
    "t": "english",
-   "start": 555.13,
-   "end": 556.59,
+   "start": 554.9,
+   "end": 556.95,
    "text": "Yes, I sell. Yes, I sell.",
    "words": [
     {
      "w": "yes",
-     "start": 555.13,
-     "end": 555.29
+     "start": 554.9,
+     "end": 555.4
     },
     {
      "w": "i",
-     "start": 555.29,
-     "end": 555.45
+     "start": 555.88,
+     "end": 556.05
     },
     {
      "w": "sell",
-     "start": 555.45,
-     "end": 555.61
+     "start": 556.3,
+     "end": 556.8
     },
     {
      "w": "yes",
      "start": 556.13,
-     "end": 556.28
+     "end": 556.6
     },
     {
      "w": "i",
      "start": 556.28,
-     "end": 556.44
+     "end": 556.45
     },
     {
      "w": "sell",
      "start": 556.44,
-     "end": 556.59
+     "end": 556.95
     }
    ]
   },
@@ -3855,29 +3855,29 @@
   },
   {
    "t": "english",
-   "start": 571.21,
-   "end": 574.09,
+   "start": 570.9,
+   "end": 574.2,
    "text": "I sell. I sell.",
    "words": [
     {
      "w": "i",
-     "start": 571.21,
-     "end": 571.52
+     "start": 570.9,
+     "end": 571.25
     },
     {
      "w": "sell",
-     "start": 571.52,
-     "end": 571.83
+     "start": 571.34,
+     "end": 571.9
     },
     {
      "w": "i",
-     "start": 573.49,
-     "end": 573.79
+     "start": 572.72,
+     "end": 573.0
     },
     {
      "w": "sell",
-     "start": 573.79,
-     "end": 574.09
+     "start": 573.62,
+     "end": 574.2
     }
    ]
   },
@@ -3900,31 +3900,31 @@
     {
      "w": "do",
      "start": 578.53,
-     "end": 578.76
+     "end": 578.85
     },
     {
      "w": "you",
-     "start": 578.76,
-     "end": 579.0
+     "start": 578.64,
+     "end": 578.89
     },
     {
      "w": "sell",
-     "start": 579.0,
-     "end": 579.23
+     "start": 578.8,
+     "end": 579.32
     },
     {
      "w": "do",
-     "start": 581.47,
+     "start": 581.51,
      "end": 581.17
     },
     {
      "w": "you",
-     "start": 581.65,
+     "start": 581.62,
      "end": 581.17
     },
     {
      "w": "sell",
-     "start": 581.83,
+     "start": 581.8,
      "end": 581.17
     }
    ]
@@ -4131,7 +4131,7 @@
   {
    "t": "narration",
    "start": 597.82,
-   "end": 609.4,
+   "end": 608.66,
    "lines": [
     "Ella acaba de preguntar “Do you sell fruit?” “Do you sell fruit?” significa “¿vender fruta?”. Así es como dices “fruta”. Escucha y repite."
    ],
@@ -4219,30 +4219,30 @@
     {
      "w": "escucha",
      "start": 608.1,
-     "end": 608.88
+     "end": 608.66
     },
     {
      "w": "y",
      "start": 608.64,
-     "end": 608.98
+     "end": 608.66
     },
     {
      "w": "repite",
      "start": 608.98,
-     "end": 609.4
+     "end": 608.66
     }
    ]
   },
   {
    "t": "english",
-   "start": 610.2,
-   "end": 610.9,
+   "start": 608.67,
+   "end": 609.27,
    "text": "Fruit.",
    "words": [
     {
      "w": "fruit",
-     "start": 610.2,
-     "end": 610.9
+     "start": 608.67,
+     "end": 609.27
     }
    ]
   },
@@ -4259,28 +4259,28 @@
   {
    "t": "english",
    "start": 618.35,
-   "end": 621.19,
+   "end": 621.28,
    "text": "The fruit. The fruit.",
    "words": [
     {
      "w": "the",
      "start": 618.35,
-     "end": 618.67
+     "end": 618.65
     },
     {
      "w": "fruit",
-     "start": 618.67,
-     "end": 618.99
+     "start": 618.42,
+     "end": 618.94
     },
     {
      "w": "the",
-     "start": 620.43,
-     "end": 620.81
+     "start": 620.44,
+     "end": 620.76
     },
     {
      "w": "fruit",
-     "start": 620.81,
-     "end": 621.19
+     "start": 620.79,
+     "end": 621.28
     }
    ]
   },
@@ -4296,29 +4296,29 @@
   },
   {
    "t": "english",
-   "start": 626.41,
-   "end": 630.53,
+   "start": 626.43,
+   "end": 630.25,
    "text": "The fruits. The fruits.",
    "words": [
     {
      "w": "the",
-     "start": 626.41,
-     "end": 626.83
+     "start": 626.43,
+     "end": 626.73
     },
     {
      "w": "fruits",
-     "start": 626.83,
-     "end": 627.25
+     "start": 626.52,
+     "end": 627.1
     },
     {
      "w": "the",
-     "start": 629.35,
-     "end": 629.8
+     "start": 629.36,
+     "end": 629.66
     },
     {
      "w": "fruits",
-     "start": 630.08,
-     "end": 630.53
+     "start": 629.67,
+     "end": 630.25
     }
    ]
   },
@@ -4372,59 +4372,59 @@
   },
   {
    "t": "english",
-   "start": 647.41,
-   "end": 649.47,
+   "start": 647.2,
+   "end": 651.8,
    "text": "No, I don’t sell fruit. No, I don’t sell fruit.",
    "words": [
     {
      "w": "no",
-     "start": 647.41,
-     "end": 647.47
+     "start": 647.2,
+     "end": 647.6
     },
     {
      "w": "i",
-     "start": 647.47,
-     "end": 647.52
+     "start": 648.46,
+     "end": 648.62
     },
     {
      "w": "dont",
-     "start": 647.52,
-     "end": 647.58
+     "start": 648.62,
+     "end": 648.96
     },
     {
      "w": "sell",
-     "start": 647.58,
-     "end": 647.63
+     "start": 648.96,
+     "end": 649.2
     },
     {
      "w": "fruit",
-     "start": 647.63,
-     "end": 647.69
+     "start": 649.2,
+     "end": 649.7
     },
     {
      "w": "no",
-     "start": 648.45,
-     "end": 648.65
+     "start": 649.3,
+     "end": 649.7
     },
     {
      "w": "i",
-     "start": 648.65,
-     "end": 648.86
+     "start": 650.5,
+     "end": 650.66
     },
     {
      "w": "dont",
-     "start": 648.86,
-     "end": 649.06
+     "start": 650.66,
+     "end": 651.0
     },
     {
      "w": "sell",
-     "start": 649.06,
-     "end": 649.27
+     "start": 651.0,
+     "end": 651.24
     },
     {
      "w": "fruit",
-     "start": 649.27,
-     "end": 649.47
+     "start": 651.24,
+     "end": 651.8
     }
    ]
   },
@@ -4624,48 +4624,48 @@
   {
    "t": "english",
    "start": 693.15,
-   "end": 698.77,
+   "end": 698.92,
    "text": "Do you sell fruit? Do you sell fruit?",
    "words": [
     {
      "w": "do",
      "start": 693.15,
-     "end": 693.37
+     "end": 693.49
     },
     {
      "w": "you",
-     "start": 693.37,
-     "end": 693.6
+     "start": 693.26,
+     "end": 693.52
     },
     {
      "w": "sell",
-     "start": 693.6,
-     "end": 693.82
+     "start": 693.52,
+     "end": 693.77
     },
     {
      "w": "fruit",
-     "start": 693.82,
-     "end": 694.05
+     "start": 693.68,
+     "end": 694.22
     },
     {
      "w": "do",
      "start": 697.79,
-     "end": 698.03
+     "end": 698.13
     },
     {
      "w": "you",
-     "start": 698.03,
-     "end": 698.28
+     "start": 697.8,
+     "end": 698.06
     },
     {
      "w": "sell",
-     "start": 698.28,
-     "end": 698.52
+     "start": 698.16,
+     "end": 698.41
     },
     {
      "w": "fruit",
-     "start": 698.52,
-     "end": 698.77
+     "start": 698.36,
+     "end": 698.92
     }
    ]
   },
@@ -4787,39 +4787,39 @@
   },
   {
    "t": "english",
-   "start": 724.12,
-   "end": 725.66,
+   "start": 723.9,
+   "end": 725.7,
    "text": "Yes, he sells. Yes, he sells.",
    "words": [
     {
      "w": "yes",
-     "start": 724.12,
-     "end": 724.36
+     "start": 723.9,
+     "end": 724.4
     },
     {
      "w": "he",
-     "start": 724.36,
-     "end": 724.52
+     "start": 724.82,
+     "end": 724.98
     },
     {
      "w": "sells",
-     "start": 724.52,
-     "end": 724.66
+     "start": 724.98,
+     "end": 725.4
     },
     {
      "w": "yes",
-     "start": 724.84,
+     "start": 724.83,
      "end": 725.1
     },
     {
      "w": "he",
-     "start": 725.1,
-     "end": 725.44
+     "start": 725.07,
+     "end": 725.25
     },
     {
      "w": "sells",
-     "start": 725.44,
-     "end": 725.66
+     "start": 725.25,
+     "end": 725.7
     }
    ]
   },
@@ -4899,39 +4899,39 @@
   },
   {
    "t": "english",
-   "start": 743.18,
-   "end": 744.94,
+   "start": 742.9,
+   "end": 745.3,
    "text": "Yes, he sells. Yes, he sells.",
    "words": [
     {
      "w": "yes",
-     "start": 743.18,
+     "start": 742.9,
      "end": 743.4
     },
     {
      "w": "he",
-     "start": 743.4,
-     "end": 743.58
+     "start": 744.1,
+     "end": 744.26
     },
     {
      "w": "sells",
-     "start": 743.58,
-     "end": 743.72
+     "start": 744.26,
+     "end": 744.7
     },
     {
      "w": "yes",
      "start": 744.18,
-     "end": 744.5
+     "end": 744.6
     },
     {
      "w": "he",
-     "start": 744.5,
-     "end": 744.74
+     "start": 744.7,
+     "end": 744.86
     },
     {
      "w": "sells",
-     "start": 744.74,
-     "end": 744.94
+     "start": 744.86,
+     "end": 745.3
     }
    ]
   },
@@ -5409,29 +5409,29 @@
   },
   {
    "t": "english",
-   "start": 824.13,
-   "end": 825.07,
+   "start": 823.99,
+   "end": 825.06,
    "text": "Does he sell apples? ",
    "words": [
     {
      "w": "does",
-     "start": 824.13,
-     "end": 824.36
+     "start": 823.99,
+     "end": 824.24
     },
     {
      "w": "he",
-     "start": 824.36,
-     "end": 824.6
+     "start": 824.1,
+     "end": 824.35
     },
     {
      "w": "sell",
-     "start": 824.76,
-     "end": 824.99
+     "start": 824.26,
+     "end": 824.51
     },
     {
      "w": "apples",
-     "start": 824.83,
-     "end": 825.07
+     "start": 824.52,
+     "end": 825.06
     }
    ]
   },
@@ -5447,49 +5447,49 @@
   },
   {
    "t": "english",
-   "start": 833.19,
-   "end": 835.29,
+   "start": 833.0,
+   "end": 835.9,
    "text": "Yes, he sells apples. Yes, he sells apples.",
    "words": [
     {
      "w": "yes",
-     "start": 833.19,
-     "end": 833.27
+     "start": 833.0,
+     "end": 833.5
     },
     {
      "w": "he",
-     "start": 833.27,
-     "end": 833.36
+     "start": 834.08,
+     "end": 834.26
     },
     {
      "w": "sells",
-     "start": 833.36,
-     "end": 833.44
+     "start": 834.26,
+     "end": 834.64
     },
     {
      "w": "apples",
-     "start": 833.44,
-     "end": 833.53
+     "start": 834.64,
+     "end": 835.2
     },
     {
      "w": "yes",
      "start": 834.13,
-     "end": 834.42
+     "end": 834.6
     },
     {
      "w": "he",
-     "start": 834.42,
-     "end": 834.71
+     "start": 834.7,
+     "end": 834.9
     },
     {
      "w": "sells",
-     "start": 834.71,
-     "end": 835.0
+     "start": 834.9,
+     "end": 835.3
     },
     {
      "w": "apples",
-     "start": 835.0,
-     "end": 835.29
+     "start": 835.3,
+     "end": 835.9
     }
    ]
   },
@@ -5506,29 +5506,29 @@
   },
   {
    "t": "english",
-   "start": 850.15,
-   "end": 851.25,
+   "start": 850.17,
+   "end": 851.26,
    "text": "Does he sell apples? ",
    "words": [
     {
      "w": "does",
-     "start": 850.15,
-     "end": 850.42
+     "start": 850.17,
+     "end": 850.53
     },
     {
      "w": "he",
-     "start": 850.42,
-     "end": 850.7
+     "start": 850.28,
+     "end": 850.53
     },
     {
      "w": "sell",
-     "start": 850.7,
-     "end": 850.98
+     "start": 850.44,
+     "end": 850.69
     },
     {
      "w": "apples",
-     "start": 850.98,
-     "end": 851.25
+     "start": 850.7,
+     "end": 851.26
     }
    ]
   },
@@ -5586,59 +5586,59 @@
   },
   {
    "t": "english",
-   "start": 859.34,
-   "end": 861.38,
+   "start": 859.1,
+   "end": 863.3,
    "text": "No, he doesn’t sell apples. No, he doesn’t sell apples.",
    "words": [
     {
      "w": "no",
-     "start": 859.34,
-     "end": 859.38
-    },
-    {
-     "w": "he",
-     "start": 859.38,
-     "end": 859.42
-    },
-    {
-     "w": "doesnt",
-     "start": 859.42,
-     "end": 859.46
-    },
-    {
-     "w": "sell",
-     "start": 859.46,
+     "start": 859.1,
      "end": 859.5
     },
     {
-     "w": "apples",
-     "start": 859.5,
-     "end": 859.54
-    },
-    {
-     "w": "no",
-     "start": 859.96,
-     "end": 860.24
-    },
-    {
      "w": "he",
-     "start": 860.24,
-     "end": 860.53
+     "start": 859.96,
+     "end": 860.1
     },
     {
      "w": "doesnt",
-     "start": 860.53,
-     "end": 860.81
+     "start": 860.1,
+     "end": 860.48
     },
     {
      "w": "sell",
-     "start": 860.81,
-     "end": 861.1
+     "start": 860.48,
+     "end": 860.76
     },
     {
      "w": "apples",
-     "start": 861.1,
-     "end": 861.38
+     "start": 860.76,
+     "end": 861.4
+    },
+    {
+     "w": "no",
+     "start": 861.4,
+     "end": 861.8
+    },
+    {
+     "w": "he",
+     "start": 861.9,
+     "end": 862.05
+    },
+    {
+     "w": "doesnt",
+     "start": 862.05,
+     "end": 862.4
+    },
+    {
+     "w": "sell",
+     "start": 862.4,
+     "end": 862.7
+    },
+    {
+     "w": "apples",
+     "start": 862.7,
+     "end": 863.3
     }
    ]
   },
