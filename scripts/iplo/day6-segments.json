@@ -3745,13 +3745,13 @@
   {
    "t": "english",
    "start": 555.14,
-   "end": 556.6,
+   "end": 561.16,
    "text": "Yes, I sell. Yes, I sell.",
    "words": [
     {
      "w": "yes",
      "start": 555.14,
-     "end": 555.5
+     "end": 555.6
     },
     {
      "w": "i",
@@ -3765,18 +3765,18 @@
     },
     {
      "w": "yes",
-     "start": 556.12,
-     "end": 556.45
+     "start": 559.56,
+     "end": 560.45
     },
     {
      "w": "i",
-     "start": 556.3,
-     "end": 556.42
+     "start": 560.56,
+     "end": 560.75
     },
     {
      "w": "sell",
-     "start": 556.45,
-     "end": 556.6
+     "start": 560.8,
+     "end": 561.16
     }
    ]
   },
@@ -4393,27 +4393,27 @@
     },
     {
      "w": "no",
-     "start": 654.2,
+     "start": 653.92,
      "end": 654.68
     },
     {
      "w": "i",
-     "start": 654.9,
-     "end": 655.2
+     "start": 655.28,
+     "end": 655.55
     },
     {
      "w": "dont",
-     "start": 655.2,
-     "end": 655.48
+     "start": 655.6,
+     "end": 655.88
     },
     {
      "w": "sell",
-     "start": 655.48,
-     "end": 655.9
+     "start": 655.92,
+     "end": 656.12
     },
     {
      "w": "fruit",
-     "start": 655.9,
+     "start": 656.16,
      "end": 656.58
     }
    ]
@@ -5433,53 +5433,53 @@
    "expected": [
     "Yes, he sells apples."
    ],
-   "end": 832.78
+   "end": 832.4
   },
   {
    "t": "english",
-   "start": 833.22,
-   "end": 835.9,
+   "start": 832.44,
+   "end": 841.82,
    "text": "Yes, he sells apples. Yes, he sells apples.",
    "words": [
     {
      "w": "yes",
-     "start": 833.0,
-     "end": 833.5
+     "start": 832.44,
+     "end": 832.95
     },
     {
      "w": "he",
-     "start": 834.08,
-     "end": 834.26
+     "start": 833.42,
+     "end": 833.9
     },
     {
      "w": "sells",
-     "start": 834.26,
-     "end": 834.64
+     "start": 834.24,
+     "end": 834.6
     },
     {
      "w": "apples",
      "start": 834.64,
-     "end": 835.2
+     "end": 835.34
     },
     {
      "w": "yes",
-     "start": 834.13,
-     "end": 834.6
+     "start": 839.12,
+     "end": 839.8
     },
     {
      "w": "he",
-     "start": 834.7,
-     "end": 834.9
+     "start": 840.66,
+     "end": 840.9
     },
     {
      "w": "sells",
-     "start": 834.9,
-     "end": 835.3
+     "start": 840.9,
+     "end": 841.15
     },
     {
      "w": "apples",
-     "start": 835.3,
-     "end": 835.9
+     "start": 841.15,
+     "end": 841.82
     }
    ]
   },
