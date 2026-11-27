@@ -354,9 +354,9 @@ test("the question and the input open when the question starts, and the pause wa
   assert.equal(promptLeadText("Ahora di “yo hablo.”"), null);
   assert.equal(promptLeadText("¿Cómo se dice “yo hablo”?"), null);
   assert.equal(promptQuestionText(prompt.spanish), "¿Cómo se dice ‘hablar’ en inglés?");
-  assert.equal(promptInputAt(prompt), 99.46);
+  assert.equal(promptInputAt(prompt), 98.74);
   assert.equal(promptAnswerAt(prompt), 102.41);
-  // Input opens when the question starts being said: leadEnd, else seg start.
+  // The card opens at the prompt segment start, not at leadEnd.
   assert.equal(
     promptInputAt({ ...prompt, leadEnd: undefined, spanish: "¿Cómo se dice “yo hablo”?" }),
     98.74

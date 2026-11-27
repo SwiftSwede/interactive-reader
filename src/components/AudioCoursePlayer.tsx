@@ -409,7 +409,11 @@ export default function AudioCoursePlayer({
     // voice end after the probe retime) made the bar vanish while the karaoke
     // text remained 1-2s (Kyle QA: bar gone, highlighting still on screen).
     const audioEnd = Math.min(
-      spoken ? (afterSpoken ? afterSpoken.start : spoken.end + 0.5) : (spoken?.end ?? ref.prompt.end),
+      spoken
+        ? afterSpoken
+          ? afterSpoken.start
+          : spoken.end + 0.5
+        : ref.prompt.end,
       nextPrompt ? nextPrompt.prompt.start : Infinity,
       afterSpoken ? afterSpoken.start : Infinity
     );
