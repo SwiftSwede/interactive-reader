@@ -5412,7 +5412,7 @@
   },
   {
    "t": "english",
-   "start": 833.0,
+   "start": 833.22,
    "end": 835.9,
    "text": "Yes, he sells apples. Yes, he sells apples.",
    "words": [
@@ -5582,8 +5582,8 @@
     },
     {
      "w": "no",
-     "start": 861.28,
-     "end": 861.45
+     "start": 865.9,
+     "end": 866.05
     },
     {
      "w": "he",
@@ -5721,8 +5721,8 @@
     },
     {
      "w": "apples",
-     "start": 889.8,
-     "end": 890.15
+     "start": 889.3,
+     "end": 890.1
     }
    ]
   },
