@@ -3640,19 +3640,19 @@
   },
   {
    "t": "english",
-   "start": 534.6,
-   "end": 536.45,
+   "start": 535.36,
+   "end": 538.62,
    "text": "Sell. Sell.",
    "words": [
     {
      "w": "sell",
-     "start": 534.6,
-     "end": 535.1
+     "start": 535.36,
+     "end": 535.95
     },
     {
      "w": "sell",
-     "start": 535.92,
-     "end": 536.45
+     "start": 538.18,
+     "end": 538.62
     }
    ]
   },
@@ -4363,8 +4363,8 @@
   {
    "t": "english",
    "start": 647.42,
-   "end": 649.64,
-   "text": "No, I don't sell fruit.",
+   "end": 656.58,
+   "text": "No, I don't sell fruit. No, I don't sell fruit.",
    "words": [
     {
      "w": "no",
@@ -4390,6 +4390,31 @@
      "w": "fruit",
      "start": 649.2,
      "end": 649.64
+    },
+    {
+     "w": "no",
+     "start": 654.2,
+     "end": 654.68
+    },
+    {
+     "w": "i",
+     "start": 654.9,
+     "end": 655.2
+    },
+    {
+     "w": "dont",
+     "start": 655.2,
+     "end": 655.48
+    },
+    {
+     "w": "sell",
+     "start": 655.48,
+     "end": 655.9
+    },
+    {
+     "w": "fruit",
+     "start": 655.9,
+     "end": 656.58
     }
    ]
   },
@@ -5602,8 +5627,8 @@
     },
     {
      "w": "apples",
-     "start": 867.6,
-     "end": 868.0
+     "start": 867.35,
+     "end": 867.92
     }
    ]
   },
