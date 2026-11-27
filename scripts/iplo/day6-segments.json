@@ -3496,7 +3496,7 @@
   {
    "t": "narration",
    "start": 519.6,
-   "end": 534.15,
+   "end": 534.55,
    "lines": [
     "Ahora aprendamos otro verbo en el presente simple. Y aprendemos los nombres de algunas frutas en inglés. Ahora aprendamos cómo decir el verbo \"vender.\" Escucha y repite."
    ],
@@ -3633,26 +3633,26 @@
     },
     {
      "w": "repite",
-     "start": 533.78,
-     "end": 534.15
+     "start": 533.62,
+     "end": 534.55
     }
    ]
   },
   {
    "t": "english",
-   "start": 534.34,
-   "end": 536.0,
+   "start": 534.6,
+   "end": 536.45,
    "text": "Sell. Sell.",
    "words": [
     {
      "w": "sell",
-     "start": 534.34,
-     "end": 534.7
+     "start": 534.6,
+     "end": 535.1
     },
     {
      "w": "sell",
-     "start": 535.54,
-     "end": 536.0
+     "start": 535.92,
+     "end": 536.45
     }
    ]
   },
@@ -3744,39 +3744,39 @@
   },
   {
    "t": "english",
-   "start": 554.9,
-   "end": 556.95,
+   "start": 555.14,
+   "end": 556.6,
    "text": "Yes, I sell. Yes, I sell.",
    "words": [
     {
      "w": "yes",
-     "start": 554.9,
-     "end": 555.4
+     "start": 555.14,
+     "end": 555.5
     },
     {
      "w": "i",
-     "start": 555.88,
-     "end": 556.05
+     "start": 555.35,
+     "end": 555.5
     },
     {
      "w": "sell",
-     "start": 556.3,
-     "end": 556.8
+     "start": 555.5,
+     "end": 555.62
     },
     {
      "w": "yes",
-     "start": 556.13,
-     "end": 556.6
-    },
-    {
-     "w": "i",
-     "start": 556.28,
+     "start": 556.12,
      "end": 556.45
     },
     {
+     "w": "i",
+     "start": 556.3,
+     "end": 556.42
+    },
+    {
      "w": "sell",
-     "start": 556.44,
-     "end": 556.95
+     "start": 556.45,
+     "end": 556.6
     }
    ]
   },
@@ -4220,14 +4220,19 @@
   },
   {
    "t": "english",
-   "start": 610.31,
-   "end": 611.0,
-   "text": "Fruit.",
+   "start": 610.53,
+   "end": 613.2,
+   "text": "Fruit. Fruit.",
    "words": [
     {
      "w": "fruit",
-     "start": 610.31,
-     "end": 611.0
+     "start": 610.53,
+     "end": 611.1
+    },
+    {
+     "w": "fruit",
+     "start": 612.56,
+     "end": 613.2
     }
    ]
   },
@@ -4747,39 +4752,39 @@
   },
   {
    "t": "english",
-   "start": 724.8,
-   "end": 731.0,
+   "start": 723.68,
+   "end": 731.05,
    "text": "Yes, he sells. Yes, he sells.",
    "words": [
     {
      "w": "yes",
-     "start": 724.8,
-     "end": 725.3
+     "start": 723.68,
+     "end": 724.7
     },
     {
      "w": "he",
-     "start": 724.96,
-     "end": 725.2
+     "start": 724.82,
+     "end": 724.96
     },
     {
      "w": "sells",
-     "start": 725.25,
+     "start": 724.96,
      "end": 725.55
     },
     {
      "w": "yes",
      "start": 729.72,
-     "end": 730.2
+     "end": 730.1
     },
     {
      "w": "he",
      "start": 730.3,
-     "end": 730.6
+     "end": 730.45
     },
     {
      "w": "sells",
-     "start": 730.6,
-     "end": 731.0
+     "start": 730.45,
+     "end": 731.05
     }
    ]
   },
@@ -5546,23 +5551,23 @@
   },
   {
    "t": "english",
-   "start": 859.34,
-   "end": 867.9,
+   "start": 858.28,
+   "end": 868.0,
    "text": "No, he doesn’t sell apples. No, he doesn’t sell apples.",
    "words": [
     {
      "w": "no",
-     "start": 859.34,
-     "end": 859.6
+     "start": 858.28,
+     "end": 859.3
     },
     {
      "w": "he",
      "start": 859.96,
-     "end": 860.08
+     "end": 860.04
     },
     {
      "w": "doesnt",
-     "start": 860.08,
+     "start": 860.04,
      "end": 860.5
     },
     {
@@ -5577,28 +5582,28 @@
     },
     {
      "w": "no",
-     "start": 861.26,
-     "end": 861.6
+     "start": 861.28,
+     "end": 861.45
     },
     {
      "w": "he",
-     "start": 866.22,
-     "end": 866.5
+     "start": 866.04,
+     "end": 866.4
     },
     {
      "w": "doesnt",
-     "start": 866.5,
-     "end": 866.74
+     "start": 866.4,
+     "end": 866.64
     },
     {
      "w": "sell",
-     "start": 866.74,
-     "end": 867.1
+     "start": 866.64,
+     "end": 867.6
     },
     {
      "w": "apples",
-     "start": 867.1,
-     "end": 867.9
+     "start": 867.6,
+     "end": 868.0
     }
    ]
   },
@@ -5675,49 +5680,49 @@
   },
   {
    "t": "english",
-   "start": 882.58,
-   "end": 888.8,
+   "start": 882.6,
+   "end": 890.15,
    "text": "Yes, he eats apples. Yes, he eats apples.",
    "words": [
     {
      "w": "yes",
-     "start": 882.58,
-     "end": 883.56
+     "start": 882.6,
+     "end": 883.3
     },
     {
      "w": "he",
-     "start": 884.1,
-     "end": 884.34
+     "start": 883.48,
+     "end": 883.68
     },
     {
      "w": "eats",
-     "start": 884.34,
-     "end": 884.7
+     "start": 883.68,
+     "end": 884.0
     },
     {
      "w": "apples",
-     "start": 884.7,
-     "end": 885.18
+     "start": 884.04,
+     "end": 884.75
     },
     {
      "w": "yes",
-     "start": 887.98,
-     "end": 888.94
+     "start": 887.96,
+     "end": 888.45
     },
     {
      "w": "he",
      "start": 888.8,
-     "end": 888.8
+     "end": 888.95
     },
     {
      "w": "eats",
-     "start": 888.8,
-     "end": 888.8
+     "start": 888.95,
+     "end": 889.25
     },
     {
      "w": "apples",
-     "start": 888.8,
-     "end": 888.8
+     "start": 889.8,
+     "end": 890.15
     }
    ]
   },
