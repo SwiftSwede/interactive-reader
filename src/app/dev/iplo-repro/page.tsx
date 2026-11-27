@@ -19,6 +19,8 @@ const DAY_FILES: Record<string, { file: string; duration: number }> = {
   "5": { file: "/audio/iplo/day-5.m4a", duration: 1137.39 },
   // Unfilled final take; segments are on the unfilled timeline.
   "6": { file: "/audio/iplo/day-6.m4a", duration: 1059.77 },
+  // Unfilled final take; segments are on the unfilled timeline.
+  "7": { file: "/audio/iplo/day-7.m4a", duration: 1155.0 },
 };
 
 export default async function Page({
