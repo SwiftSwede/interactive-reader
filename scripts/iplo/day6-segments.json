@@ -4748,7 +4748,7 @@
   {
    "t": "english",
    "start": 724.8,
-   "end": 725.6,
+   "end": 731.0,
    "text": "Yes, he sells. Yes, he sells.",
    "words": [
     {
@@ -4759,12 +4759,27 @@
     {
      "w": "he",
      "start": 724.96,
-     "end": 725.3
+     "end": 725.2
     },
     {
      "w": "sells",
-     "start": 725.0,
-     "end": 725.6
+     "start": 725.25,
+     "end": 725.55
+    },
+    {
+     "w": "yes",
+     "start": 729.72,
+     "end": 730.2
+    },
+    {
+     "w": "he",
+     "start": 730.3,
+     "end": 730.6
+    },
+    {
+     "w": "sells",
+     "start": 730.6,
+     "end": 731.0
     }
    ]
   },
