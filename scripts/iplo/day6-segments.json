@@ -3893,39 +3893,24 @@
   },
   {
    "t": "english",
-   "start": 578.53,
-   "end": 581.17,
-   "text": "Do you sell? Do you sell?",
+   "start": 578.02,
+   "end": 578.95,
+   "text": "Do you sell?",
    "words": [
     {
      "w": "do",
-     "start": 578.53,
-     "end": 578.85
+     "start": 578.02,
+     "end": 578.25
     },
     {
      "w": "you",
-     "start": 578.64,
-     "end": 578.89
+     "start": 578.25,
+     "end": 578.42
     },
     {
      "w": "sell",
-     "start": 578.8,
-     "end": 579.32
-    },
-    {
-     "w": "do",
-     "start": 581.51,
-     "end": 581.17
-    },
-    {
-     "w": "you",
-     "start": 581.62,
-     "end": 581.17
-    },
-    {
-     "w": "sell",
-     "start": 581.8,
-     "end": 581.17
+     "start": 578.42,
+     "end": 578.95
     }
    ]
   },
@@ -4133,7 +4118,7 @@
    "start": 597.82,
    "end": 608.66,
    "lines": [
-    "Ella acaba de preguntar “Do you sell fruit?” “Do you sell fruit?” significa “¿vender fruta?”. Así es como dices “fruta”. Escucha y repite."
+    "Ella acaba de preguntar “Do you sell fruit?” “Do you sell fruit?” significa “¿vendes fruta?”. Así es como dices “fruta”. Escucha y repite."
    ],
    "words": [
     {
@@ -4235,14 +4220,14 @@
   },
   {
    "t": "english",
-   "start": 608.67,
-   "end": 609.27,
+   "start": 610.31,
+   "end": 611.0,
    "text": "Fruit.",
    "words": [
     {
      "w": "fruit",
-     "start": 608.67,
-     "end": 609.27
+     "start": 610.31,
+     "end": 611.0
     }
    ]
   },
@@ -4899,39 +4884,39 @@
   },
   {
    "t": "english",
-   "start": 742.9,
-   "end": 745.3,
+   "start": 742.78,
+   "end": 746.8,
    "text": "Yes, he sells. Yes, he sells.",
    "words": [
     {
      "w": "yes",
-     "start": 742.9,
-     "end": 743.4
+     "start": 742.78,
+     "end": 743.3
     },
     {
      "w": "he",
-     "start": 744.1,
-     "end": 744.26
+     "start": 743.86,
+     "end": 744.05
     },
     {
      "w": "sells",
-     "start": 744.26,
-     "end": 744.7
+     "start": 744.24,
+     "end": 744.85
     },
     {
      "w": "yes",
-     "start": 744.18,
-     "end": 744.6
+     "start": 745.4,
+     "end": 745.9
     },
     {
      "w": "he",
-     "start": 744.7,
-     "end": 744.86
+     "start": 746.0,
+     "end": 746.2
     },
     {
      "w": "sells",
-     "start": 744.86,
-     "end": 745.3
+     "start": 746.2,
+     "end": 746.8
     }
    ]
   },
@@ -5219,35 +5204,35 @@
   },
   {
    "t": "english",
-   "start": 794.74,
-   "end": 798.35,
+   "start": 795.1,
+   "end": 798.3,
    "text": "An apple. An apple.",
    "words": [
     {
      "w": "an",
-     "start": 794.74,
-     "end": 795.1
+     "start": 795.1,
+     "end": 795.56
     },
     {
      "w": "apple",
-     "start": 795.46,
-     "end": 796.26
+     "start": 795.56,
+     "end": 796.3
     },
     {
      "w": "an",
-     "start": 797.34,
-     "end": 797.7
+     "start": 797.28,
+     "end": 797.6
     },
     {
      "w": "apple",
-     "start": 797.7,
-     "end": 798.35
+     "start": 797.6,
+     "end": 798.3
     }
    ]
   },
   {
    "t": "narration",
-   "start": 799.0,
+   "start": 799.56,
    "end": 810.6,
    "lines": [
     "Nota que dice “an” no “a”. Usamos “an” cuando el sustantivo o adjetivo que sigue comienza con una vocal."
@@ -5255,7 +5240,7 @@
    "words": [
     {
      "w": "nota",
-     "start": 799.92,
+     "start": 799.56,
      "end": 800.32
     },
     {
@@ -5539,43 +5524,43 @@
    "words": [
     {
      "w": "y",
-     "start": 854.73,
-     "end": 854.97
+     "start": 855.0,
+     "end": 855.3
     },
     {
      "w": "como",
-     "start": 854.97,
-     "end": 855.45
+     "start": 855.3,
+     "end": 855.44
     },
     {
      "w": "responderias",
-     "start": 855.45,
-     "end": 856.51
+     "start": 855.44,
+     "end": 856.4
     },
     {
      "w": "no",
-     "start": 856.63,
-     "end": 857.03
+     "start": 856.62,
+     "end": 856.95
     },
     {
      "w": "el",
-     "start": 857.41,
-     "end": 857.63
+     "start": 857.4,
+     "end": 857.64
     },
     {
      "w": "no",
-     "start": 858.1,
-     "end": 858.7
+     "start": 857.64,
+     "end": 857.74
     },
     {
      "w": "vende",
-     "start": 858.1,
-     "end": 858.1800000000001
+     "start": 857.74,
+     "end": 857.96
     },
     {
      "w": "manzanas",
-     "start": 858.1,
-     "end": 858.51
+     "start": 857.96,
+     "end": 858.9
     }
    ],
    "spanish": "Y cómo responderías “no, él no vende manzanas.”",
@@ -5644,26 +5629,34 @@
   },
   {
    "t": "narration",
-   "start": 873.98,
-   "end": 875.59,
+   "start": 872.62,
+   "end": 874.0,
+   "lines": [
+    "Buen trabajo."
+   ]
+  },
+  {
+   "t": "narration",
+   "start": 874.06,
+   "end": 875.55,
    "lines": [
     "Escucha esta pregunta."
    ],
    "words": [
     {
      "w": "escucha",
-     "start": 874.23,
-     "end": 874.87
+     "start": 874.06,
+     "end": 874.64
     },
     {
      "w": "esta",
      "start": 874.64,
-     "end": 874.82
+     "end": 874.84
     },
     {
      "w": "pregunta",
-     "start": 874.82,
-     "end": 875.28
+     "start": 874.84,
+     "end": 875.55
     }
    ]
   },
@@ -6509,7 +6502,7 @@
   },
   {
    "t": "narration",
-   "start": 993.0,
+   "start": 993.5,
    "end": 996.8,
    "lines": [
     "Ahora, escuche la conversación completa."
@@ -6517,13 +6510,13 @@
    "words": [
     {
      "w": "ahora",
-     "start": 993.0,
-     "end": 994.0
+     "start": 993.5,
+     "end": 994.4
     },
     {
      "w": "escuche",
-     "start": 994.77,
-     "end": 995.09
+     "start": 994.64,
+     "end": 995.24
     },
     {
      "w": "la",
@@ -6533,11 +6526,11 @@
     {
      "w": "conversacion",
      "start": 995.42,
-     "end": 995.8
+     "end": 995.7
     },
     {
      "w": "completa",
-     "start": 995.8,
+     "start": 995.7,
      "end": 996.8
     }
    ]
