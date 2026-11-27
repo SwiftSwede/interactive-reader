@@ -3894,8 +3894,8 @@
   {
    "t": "english",
    "start": 578.02,
-   "end": 578.95,
-   "text": "Do you sell?",
+   "end": 579.95,
+   "text": "Do you sell? Do you sell?",
    "words": [
     {
      "w": "do",
@@ -3911,6 +3911,21 @@
      "w": "sell",
      "start": 578.42,
      "end": 578.95
+    },
+    {
+     "w": "do",
+     "start": 579.02,
+     "end": 579.25
+    },
+    {
+     "w": "you",
+     "start": 579.25,
+     "end": 579.42
+    },
+    {
+     "w": "sell",
+     "start": 579.42,
+     "end": 579.95
     }
    ]
   },
