@@ -3893,39 +3893,24 @@
   },
   {
    "t": "english",
-   "start": 578.02,
-   "end": 579.95,
-   "text": "Do you sell? Do you sell?",
+   "start": 577.98,
+   "end": 579.25,
+   "text": "Do you sell?",
    "words": [
     {
      "w": "do",
-     "start": 578.02,
-     "end": 578.25
+     "start": 577.98,
+     "end": 578.3
     },
     {
      "w": "you",
-     "start": 578.25,
-     "end": 578.42
+     "start": 578.62,
+     "end": 578.78
     },
     {
      "w": "sell",
-     "start": 578.42,
-     "end": 578.95
-    },
-    {
-     "w": "do",
-     "start": 579.02,
+     "start": 578.78,
      "end": 579.25
-    },
-    {
-     "w": "you",
-     "start": 579.25,
-     "end": 579.42
-    },
-    {
-     "w": "sell",
-     "start": 579.42,
-     "end": 579.95
     }
    ]
   },
