@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { Check, X } from "lucide-react";
+import { examNoFill } from "@/components/exam/no-fill";
 import {
   applyBlankSlotEdit,
   splitBlankTyped,
@@ -117,6 +118,7 @@ function ExamBlank({
               {blankSizerText(part, revealed, empty ? spanish : "", wordSlot)}
             </span>
             <input
+              {...examNoFill(`${inputId}-${wordSlot}`)}
               id={`${inputId}-${wordSlot}`}
               value={part}
               size={1}

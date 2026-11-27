@@ -1,13 +1,16 @@
 "use client";
 
 import { Check, Plus } from "lucide-react";
+import { examNoFill } from "@/components/exam/no-fill";
 
 export default function ExamItemCheck({
+  fieldKey,
   accepted,
   revealed,
   onAcceptedChange,
   onCheck,
 }: {
+  fieldKey: string;
   accepted: string[];
   revealed: boolean;
   onAcceptedChange: (next: string[]) => void;
@@ -33,6 +36,7 @@ export default function ExamItemCheck({
             <span className="h-11 w-5 shrink-0" aria-hidden="true" />
           )}
           <input
+            {...examNoFill(`${fieldKey}-${index}`)}
             value={value}
             onChange={(event) => {
               const next = [...values];

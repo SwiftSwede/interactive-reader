@@ -23,6 +23,7 @@ export default function ExamTimerStart({
   courseId,
   sessionId,
   sessionEndTime,
+  classEndedAt,
   started,
   timerStartedAt,
   initialMode,
@@ -31,6 +32,7 @@ export default function ExamTimerStart({
   courseId: string;
   sessionId: string;
   sessionEndTime: string;
+  classEndedAt: string | null;
   started: boolean;
   timerStartedAt: string | null;
   initialMode: ExamTimerMode;
@@ -52,10 +54,11 @@ export default function ExamTimerStart({
   }, [initialMinutes]);
 
   useEffect(() => {
-    if (!started) return;
+    const end = new Date(sessionEndTime).getTime();
+    if (classEndedAt || Date.now() >= end) return;
     const id = window.setInterval(() => setNow(Date.now()), 1000);
     return () => window.clearInterval(id);
-  }, [started]);
+  }, [classEndedAt, sessionEndTime]);
 
   const preview = useMemo(() => {
     const startedAt = new Date(now).toISOString();
@@ -84,8 +87,12 @@ export default function ExamTimerStart({
     now
   );
 
+  const classOver =
+    Boolean(classEndedAt) || now >= new Date(sessionEndTime).getTime();
+  const clockDone = started && remaining <= 0;
+
   useEffect(() => {
-    if (started) return;
+    if (started || classOver) return;
     const formData = new FormData();
     formData.set("courseId", courseId);
     formData.set("sessionId", sessionId);
@@ -95,7 +102,7 @@ export default function ExamTimerStart({
       void saveExamTimerSettings(formData);
     }, 400);
     return () => window.clearTimeout(id);
-  }, [courseId, sessionId, mode, minutes, started]);
+  }, [courseId, sessionId, mode, minutes, started, classOver]);
 
   const runAction = async (
     key: string,
@@ -121,15 +128,30 @@ export default function ExamTimerStart({
     }
   };
 
+  if (classOver) {
+    return (
+      <p className="flex items-center text-sm text-text-muted">
+        La clase ya terminó.
+      </p>
+    );
+  }
+
   if (started) {
     return (
       <div className="space-y-3">
         <p className="text-sm text-text-secondary">
-          Quedan {formatCountdown(remaining)}
-          {liveDeadline
-            ? `. Revisión a las ${formatExamReviewTime(liveDeadline)}`
-            : "."}
+          {clockDone ? (
+            "Tiempo terminado."
+          ) : (
+            <>
+              Quedan {formatCountdown(remaining)}
+              {liveDeadline
+                ? `. Revisión a las ${formatExamReviewTime(liveDeadline)}`
+                : "."}
+            </>
+          )}
         </p>
+        {clockDone ? null : (
         <div className="grid grid-cols-2 gap-2">
           <ActionButton
             className="w-full"
@@ -172,6 +194,7 @@ export default function ExamTimerStart({
             Parar
           </ActionButton>
         </div>
+        )}
         {error ? <p className="text-sm text-error">{error}</p> : null}
       </div>
     );

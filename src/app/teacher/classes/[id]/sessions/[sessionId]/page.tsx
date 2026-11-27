@@ -276,6 +276,7 @@ export default async function SessionDetailPage({
               courseId={course.id}
               sessionId={session.id}
               sessionEndTime={session.end}
+              classEndedAt={session.classEndedAt}
               started={Boolean(session.timerStartedAt)}
               timerStartedAt={session.timerStartedAt}
               initialMode={session.examTimerMode}

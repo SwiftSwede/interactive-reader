@@ -1015,7 +1015,7 @@ Same Lesson mode shell as writing / music. Discussion groups of 2-3, each studen
 **Header zone:**
 - Main header: lesson type "Examen", exam name, CEFR, Progreso / Inicio (teacher: Inicio only)
 - Subheader: progress dots (Parte 1, Parte 2, Parte 3, Puntaje). No "Tarea N de 3" text. Puntaje stays locked until the score is published (or after class for attendees / after three Entregar for absentees).
-- Countdown sits in the body and docks under the header. It does not run until Iniciar. Live class counts down to review time. Makeup counts 45 minutes.
+- Countdown sits in the body and docks under the header. It does not run until Iniciar. Live class counts down to review time. Makeup counts 45 minutes. On the teacher session page, +5 min, -5 min, Reiniciar, and Parar stay up only while that clock is still running. At 0:00 they go away (the line reads "Tiempo terminado."). After the class ends, the clock block reads "La clase ya terminó."
 
 **Bottom navigation:**
 - Same Atrás / Siguiente pills as other lessons. Teacher live: Abrir todas / Bloquear pasos in the middle. Work period starts unlocked so students can jump between parts. Review may lock and snap. Do not hide the bar on exam input focus.

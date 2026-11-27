@@ -10,6 +10,7 @@ import LessonHeader from "@/components/lesson/LessonHeader";
 import LessonTimer from "@/components/lesson/LessonTimer";
 import ExamFillBlanks from "@/components/exam/ExamFillBlanks";
 import ExamItemCheck from "@/components/exam/ExamItemCheck";
+import { examNoFill } from "@/components/exam/no-fill";
 import ExamCorrectToggle from "@/components/exam/ExamCorrectToggle";
 import WritingCorrectionView from "@/components/WritingCorrectionView";
 import { createClient } from "@/lib/supabase/client";
@@ -870,6 +871,7 @@ export default function ExamSession({
                   ? (slotIndex) => (
                       <ExamItemCheck
                         key={slotIndex}
+                        fieldKey={`t1-${slotIndex}`}
                         accepted={
                           classAnswers[`t1-${slotIndex}`]?.accepted ?? [""]
                         }
@@ -938,6 +940,7 @@ export default function ExamSession({
                           {letter}.
                         </span>
                         <input
+                          {...examNoFill(`t2-pos-${sentence.number}`)}
                           value={position}
                           disabled={isTeacher ? false : taskReadOnly(2)}
                           maxLength={1}
@@ -988,6 +991,7 @@ export default function ExamSession({
                       ) : null}
                       {teacherLive ? (
                         <ExamItemCheck
+                          fieldKey={key}
                           accepted={classAnswers[key]?.accepted ?? [""]}
                           revealed={classAnswers[key]?.revealed === true}
                           onAcceptedChange={(next) => setAccepted(key, next)}
@@ -1163,6 +1167,7 @@ export default function ExamSession({
                           </div>
                           {row && !row.isCorrect && (
                             <textarea
+                              {...examNoFill(`t2-fix-${sentence.number}`)}
                               value={row.correctedText ?? ""}
                               disabled={readOnly}
                               onChange={(event) => {
@@ -1256,6 +1261,7 @@ export default function ExamSession({
                       {sentence.number}. {sentence.spanish}
                     </p>
                     <textarea
+                      {...examNoFill(`t3-${sentence.number}`)}
                       value={value}
                       disabled={isTeacher ? teacherLocked : taskReadOnly(3)}
                       onChange={(event) => {
@@ -1284,6 +1290,7 @@ export default function ExamSession({
                       ? teacherAccepted.slice(1).map((variant, index) => (
                           <textarea
                             key={`t3-extra-${sentence.number}-${index}`}
+                            {...examNoFill(`t3-${sentence.number}-extra-${index}`)}
                             value={variant}
                             disabled={teacherLocked}
                             onChange={(event) => {
