@@ -6,9 +6,13 @@ import { parentTeacherPath } from "@/lib/teacher-nav";
 
 export { parentTeacherPath };
 
-export default function TeacherBackLink() {
+export default function TeacherBackLink({
+  className = "",
+}: {
+  className?: string;
+}) {
   const pathname = usePathname();
   const href = parentTeacherPath(pathname);
   if (!href) return null;
-  return <BackLink href={href} />;
+  return <BackLink href={href} compact className={className} />;
 }

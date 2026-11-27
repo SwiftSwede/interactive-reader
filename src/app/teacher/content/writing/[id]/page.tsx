@@ -3,6 +3,7 @@ import { requireTeacher } from "@/lib/auth-server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { loadWritingPromptForEdit } from "@/lib/content-editor";
 import WritingEditor from "@/components/teacher/content/WritingEditor";
+import { TeacherTitle } from "@/components/teacher/TeacherHeading";
 
 export const metadata = {
   title: "Editar escritura - Profe Kyle",
@@ -20,7 +21,7 @@ export default async function EditWritingPage({
 
   return (
     <section>
-      <h1 className="text-headline-lg text-text-primary">{prompt.title}</h1>
+      <TeacherTitle>{prompt.title}</TeacherTitle>
       <div className="mt-8">
         <WritingEditor prompt={prompt} />
       </div>

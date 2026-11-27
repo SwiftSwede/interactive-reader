@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TeacherTitle } from "@/components/teacher/TeacherHeading";
 import { requireTeacher } from "@/lib/auth-server";
 import { courseLevelLabel } from "@/lib/teacher/groups-students";
 import { listSelfPacedCourses } from "@/lib/self-paced-admin";
@@ -13,7 +14,7 @@ export default async function SelfPacedCourseListPage() {
 
   return (
     <section>
-      <h1 className="text-headline-lg text-text-primary">Cursos autoguiados</h1>
+      <TeacherTitle>Cursos autoguiados</TeacherTitle>
       <p className="mt-2 text-body-main text-text-secondary">
         Sin Zoom y sin clases en vivo. Ordenas las lecciones aquí.
       </p>

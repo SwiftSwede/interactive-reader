@@ -32,8 +32,10 @@ export default function CourseNameForm({
 
   if (!editing) {
     return (
-      <div className="flex items-start gap-1">
-        <h1 className="text-headline-lg text-text-primary">{shown}</h1>
+      <div className="flex min-w-0 items-center gap-1">
+        <h1 className="min-w-0 text-balance break-words text-headline-lg text-text-primary">
+          {shown}
+        </h1>
         <button
           type="button"
           onClick={() => setEditing(true)}

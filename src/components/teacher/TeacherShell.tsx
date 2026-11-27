@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { Eye, LogOut, Menu, X } from "lucide-react";
 import { signOut } from "@/app/dashboard/actions";
-import TeacherBackLink from "@/app/teacher/TeacherBackLink";
 import TeacherNav from "./TeacherNav";
 import ContextPanel from "./ContextPanel";
 import { TeacherPanelProvider } from "./TeacherPanelContext";
@@ -150,7 +149,6 @@ export default function TeacherShell({
         <div className="flex min-h-0 min-w-0 flex-1">
           <main className="min-w-0 flex-1 overflow-y-auto">
             <div className="mx-auto max-w-[960px] px-6 py-8">
-              <TeacherBackLink />
               {children}
             </div>
           </main>

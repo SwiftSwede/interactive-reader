@@ -3,6 +3,7 @@ import { requireTeacher } from "@/lib/auth-server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { loadStoryForEdit } from "@/lib/content-editor";
 import StoryEditor from "@/components/teacher/content/StoryEditor";
+import { TeacherTitle } from "@/components/teacher/TeacherHeading";
 
 export const metadata = {
   title: "Editar lección - Profe Kyle",
@@ -20,7 +21,7 @@ export default async function EditStoryPage({
 
   return (
     <section>
-      <h1 className="text-headline-lg text-text-primary">{data.story.title}</h1>
+      <TeacherTitle>{data.story.title}</TeacherTitle>
       <div className="mt-8">
         <StoryEditor data={data} />
       </div>

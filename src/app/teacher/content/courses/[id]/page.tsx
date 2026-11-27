@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TeacherTitle } from "@/components/teacher/TeacherHeading";
 import { notFound } from "next/navigation";
 import { requireTeacher } from "@/lib/auth-server";
 import { courseLevelLabel } from "@/lib/teacher/groups-students";
@@ -45,7 +46,7 @@ export default async function SelfPacedCoursePage({
       >
         Cursos autoguiados
       </Link>
-      <h1 className="mt-3 text-headline-lg text-text-primary">{course.name}</h1>
+      <TeacherTitle className="mt-3">{course.name}</TeacherTitle>
       <p className="mt-2 text-body-main text-text-secondary">
         {courseLevelLabel(course.level)}
         {course.description ? `. ${course.description}` : ""}

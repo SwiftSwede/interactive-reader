@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TeacherTitle } from "@/components/teacher/TeacherHeading";
 import { notFound } from "next/navigation";
 import {
   getOwnedCourse,
@@ -52,7 +53,7 @@ export default async function WritingSubmissionPage({
           {session.writingPrompt?.title || "Escritura"}
         </Link>
       </p>
-      <h1 className="mt-2 text-headline-lg text-text-primary">{studentName}</h1>
+      <TeacherTitle className="mt-2">{studentName}</TeacherTitle>
       <p className="mt-1 text-sm text-text-muted">
         {submission.wordCount} palabras
         {session.writingPrompt?.level === "pre-intermediate" && submission.wpm

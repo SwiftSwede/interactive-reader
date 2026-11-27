@@ -1,4 +1,5 @@
 import { requireTeacher } from "@/lib/auth-server";
+import { TeacherTitle } from "@/components/teacher/TeacherHeading";
 import SelfPacedCourseForm from "@/components/teacher/SelfPacedCourseForm";
 
 export const metadata = {
@@ -9,9 +10,7 @@ export default async function NewSelfPacedCoursePage() {
   await requireTeacher("/teacher/content/courses/new");
   return (
     <section>
-      <h1 className="text-headline-lg text-text-primary">
-        Nuevo curso autoguiado
-      </h1>
+      <TeacherTitle>Nuevo curso autoguiado</TeacherTitle>
       <p className="mt-2 text-body-main text-text-secondary">
         Nombre, nivel y una descripción. Las lecciones las agregas después.
       </p>

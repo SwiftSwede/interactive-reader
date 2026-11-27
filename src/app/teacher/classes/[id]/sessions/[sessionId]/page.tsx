@@ -1,4 +1,5 @@
 import Link from "next/link";
+import TeacherPageHeader from "@/components/teacher/TeacherPageHeader";
 import { notFound } from "next/navigation";
 import { areAnswersUnlocked } from "@/lib/sessions";
 import { isLiveOnlySessionType, studentSessionPath, type SessionType } from "@/lib/activities";
@@ -215,17 +216,20 @@ export default async function SessionDetailPage({
 
   return (
     <section>
-      <p className="text-sm text-text-muted">
-        <Link
-          href={`/teacher/classes/${course.id}`}
-          className="underline-offset-2 hover:text-text-primary hover:underline"
-        >
-          {course.name}
-        </Link>
-      </p>
-      <h1 className="mt-2 text-headline-lg text-text-primary">
-        {sessionTitle(session)}
-      </h1>
+      <TeacherPageHeader
+        title={sessionTitle(session)}
+        description={
+          <Link
+            href={`/teacher/classes/${course.id}`}
+            className="underline-offset-2 hover:text-text-primary hover:underline"
+          >
+            {course.name}
+          </Link>
+        }
+        action={
+          copyHref ? <CopySessionLink href={copyHref} compact /> : undefined
+        }
+      />
       <LocalDateTime iso={session.start} />
       <SessionQuestionQueue
         sessionId={session.id}
@@ -248,8 +252,8 @@ export default async function SessionDetailPage({
         />
       ) : null}
 
+      {isConversation || isPresentation ? null : (
       <div className="mt-4 grid grid-cols-2 gap-2">
-        {copyHref ? <CopySessionLink href={copyHref} /> : <span />}
         {isWriting || isVideo ? (
           session.timerStartedAt ? (
             <p className="flex items-center text-sm text-text-muted">
@@ -283,8 +287,6 @@ export default async function SessionDetailPage({
               initialMinutes={session.examTimerMinutes}
             />
           </div>
-        ) : isConversation || isPresentation ? (
-          <span />
         ) : unlocked ? (
           <p className="flex items-center text-sm text-text-muted">
             Respuestas desbloqueadas.
@@ -296,6 +298,7 @@ export default async function SessionDetailPage({
           />
         )}
       </div>
+      )}
 
       <div className="mt-6">
         <SessionRecordingForm

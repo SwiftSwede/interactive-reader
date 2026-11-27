@@ -6,6 +6,7 @@ import {
   loadExamPromptForEdit,
 } from "@/lib/content-editor";
 import ExamEditor from "@/components/teacher/content/ExamEditor";
+import { TeacherTitle } from "@/components/teacher/TeacherHeading";
 
 export const metadata = {
   title: "Editar examen - Profe Kyle",
@@ -27,7 +28,7 @@ export default async function EditExamPage({
 
   return (
     <section>
-      <h1 className="text-headline-lg text-text-primary">{exam.title}</h1>
+      <TeacherTitle>{exam.title}</TeacherTitle>
       <div className="mt-8">
         <ExamEditor exam={exam} sessions={sessions} />
       </div>

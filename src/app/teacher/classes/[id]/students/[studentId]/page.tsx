@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TeacherTitle } from "@/components/teacher/TeacherHeading";
 import { notFound } from "next/navigation";
 import LocalDateTime from "@/components/LocalDateTime";
 import ObservationTagForm from "@/components/teacher/ObservationTagForm";
@@ -108,7 +109,7 @@ export default async function StudentDetailPage({
           {course.name}
         </Link>
       </p>
-      <h1 className="mt-2 text-headline-lg text-text-primary">{displayName}</h1>
+      <TeacherTitle className="mt-2">{displayName}</TeacherTitle>
       <p className="mt-1 text-sm text-text-secondary">
         Lo que hizo en cada clase. Sin juicios, solo lo que se ve.
       </p>
